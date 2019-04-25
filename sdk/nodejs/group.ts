@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Group within Azure Active Directory.
+ * 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const myGroup = new azuread.Group("my_group", {});
+ * ```
+ */
 export class Group extends pulumi.CustomResource {
     /**
      * Get an existing Group resource's state with the given name, ID, and optional extra
@@ -17,6 +31,9 @@ export class Group extends pulumi.CustomResource {
         return new Group(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * The display name for the Group.
+     */
     public readonly name: pulumi.Output<string>;
 
     /**
@@ -44,6 +61,9 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * The display name for the Group.
+     */
     readonly name?: pulumi.Input<string>;
 }
 
@@ -51,5 +71,8 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * The display name for the Group.
+     */
     readonly name?: pulumi.Input<string>;
 }

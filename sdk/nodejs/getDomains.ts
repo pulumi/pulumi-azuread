@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Use this data source to access information about an existing Domains within Azure Active Directory.
+ * 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const aadDomains = pulumi.output(azuread.getDomains({}));
+ * 
+ * export const domains = aadDomains.apply(aadDomains => aadDomains.domains);
+ * ```
+ */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
     return pulumi.runtime.invoke("azuread:index/getDomains:getDomains", {
@@ -17,8 +33,17 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getDomains.
  */
 export interface GetDomainsArgs {
+    /**
+     * Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
+     */
     readonly includeUnverified?: boolean;
+    /**
+     * Set to `true` to only return the default domain.
+     */
     readonly onlyDefault?: boolean;
+    /**
+     * Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+     */
     readonly onlyInitial?: boolean;
 }
 
@@ -26,6 +51,9 @@ export interface GetDomainsArgs {
  * A collection of values returned by getDomains.
  */
 export interface GetDomainsResult {
+    /**
+     * One or more `domain` blocks as defined below.
+     */
     readonly domains: { authenticationType: string, domainName: string, isDefault: boolean, isInitial: boolean, isVerified: boolean }[];
     readonly includeUnverified?: boolean;
     readonly onlyDefault?: boolean;

@@ -4,6 +4,44 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
+ * 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+ * 
+ * ## Example Usage (by Application Display Name)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const test = pulumi.output(azuread.getServicePrincipal({
+ *     displayName: "my-awesome-application",
+ * }));
+ * ```
+ * 
+ * ## Example Usage (by Application ID)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const test = pulumi.output(azuread.getServicePrincipal({
+ *     applicationId: "00000000-0000-0000-0000-000000000000",
+ * }));
+ * ```
+ * 
+ * ## Example Usage (by Object ID)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const test = pulumi.output(azuread.getServicePrincipal({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * }));
+ * ```
+ */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
@@ -17,8 +55,17 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalArgs {
+    /**
+     * The ID of the Azure AD Application for which to create a Service Principal.
+     */
     readonly applicationId?: string;
+    /**
+     * The Display Name of the Azure AD Application associated with this Service Principal.
+     */
     readonly displayName?: string;
+    /**
+     * The ID of the Azure AD Service Principal.
+     */
     readonly objectId?: string;
 }
 

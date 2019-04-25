@@ -4,6 +4,25 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a User within Azure Active Directory.
+ * 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const testUser = new azuread.User("test_user", {
+ *     displayName: "John Doe",
+ *     mailNickname: "johnd",
+ *     password: "SecretP@sswd99!",
+ *     userPrincipalName: "john@hashicorp.com",
+ * });
+ * ```
+ */
 export class User extends pulumi.CustomResource {
     /**
      * Get an existing User resource's state with the given name, ID, and optional extra
@@ -17,12 +36,31 @@ export class User extends pulumi.CustomResource {
         return new User(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+     * * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+     */
     public readonly accountEnabled: pulumi.Output<boolean | undefined>;
+    /**
+     * The name to display in the address book for the user.
+     */
     public readonly displayName: pulumi.Output<string>;
+    /**
+     * `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+     */
     public readonly forcePasswordChange: pulumi.Output<boolean | undefined>;
+    /**
+     * The primary email address of the Azure AD User.
+     */
     public /*out*/ readonly mail: pulumi.Output<string>;
     public readonly mailNickname: pulumi.Output<string>;
+    /**
+     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+     */
     public readonly password: pulumi.Output<string>;
+    /**
+     * The User Principal Name of the Azure AD User.
+     */
     public readonly userPrincipalName: pulumi.Output<string>;
 
     /**
@@ -71,12 +109,31 @@ export class User extends pulumi.CustomResource {
  * Input properties used for looking up and filtering User resources.
  */
 export interface UserState {
+    /**
+     * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+     * * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+     */
     readonly accountEnabled?: pulumi.Input<boolean>;
+    /**
+     * The name to display in the address book for the user.
+     */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+     */
     readonly forcePasswordChange?: pulumi.Input<boolean>;
+    /**
+     * The primary email address of the Azure AD User.
+     */
     readonly mail?: pulumi.Input<string>;
     readonly mailNickname?: pulumi.Input<string>;
+    /**
+     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+     */
     readonly password?: pulumi.Input<string>;
+    /**
+     * The User Principal Name of the Azure AD User.
+     */
     readonly userPrincipalName?: pulumi.Input<string>;
 }
 
@@ -84,10 +141,26 @@ export interface UserState {
  * The set of arguments for constructing a User resource.
  */
 export interface UserArgs {
+    /**
+     * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+     * * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+     */
     readonly accountEnabled?: pulumi.Input<boolean>;
+    /**
+     * The name to display in the address book for the user.
+     */
     readonly displayName: pulumi.Input<string>;
+    /**
+     * `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+     */
     readonly forcePasswordChange?: pulumi.Input<boolean>;
     readonly mailNickname?: pulumi.Input<string>;
+    /**
+     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+     */
     readonly password: pulumi.Input<string>;
+    /**
+     * The User Principal Name of the Azure AD User.
+     */
     readonly userPrincipalName: pulumi.Input<string>;
 }

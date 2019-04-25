@@ -31,7 +31,7 @@ func TestExamples(t *testing.T) {
 		},
 		Tracing: "https://tracing.pulumi-engineering.com/collector/api/v1/spans",
 	}
-	baseJS := base.With(integration.ProgramTestOptions{
+	base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
 			// JavaScript dependencies
 		},

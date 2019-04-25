@@ -68,17 +68,17 @@ This package is available in many languages in the standard packaging formats.
 
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
-    $ npm install @pulumi/xyx
+    $ npm install @pulumi/azuread
 
 or `yarn`:
 
-    $ yarn add @pulumi/xyx
+    $ yarn add @pulumi/azuread
 
 ### Python
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_xyx
+    $ pip install pulumi_azuread
 
 ### Go
 

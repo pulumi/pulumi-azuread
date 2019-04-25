@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Gets information about an Azure Active Directory group.
+ * 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+ * 
+ * ## Example Usage (by Group Display Name)
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const testGroup = pulumi.output(azuread.getGroup({
+ *     name: "MyTestGroup",
+ * }));
+ * ```
+ */
 export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "name": args.name,
@@ -14,6 +30,9 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
  * A collection of arguments for invoking getGroup.
  */
 export interface GetGroupArgs {
+    /**
+     * The Name of the Azure AD Group we want to lookup.
+     */
     readonly name: string;
 }
 

@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Gets information about an Azure Active Directory user.
+ * 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+ * 
+ * ## Example Usage
+ * 
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * 
+ * const testUser = pulumi.output(azuread.getUser({
+ *     userPrincipalName: "john@hashicorp.com",
+ * }));
+ * ```
+ */
 export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
         "userPrincipalName": args.userPrincipalName,
@@ -14,6 +30,9 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The User Principal Name of the Azure AD User.
+     */
     readonly userPrincipalName: string;
 }
 
@@ -21,10 +40,25 @@ export interface GetUserArgs {
  * A collection of values returned by getUser.
  */
 export interface GetUserResult {
+    /**
+     * `True` if the account is enabled; otherwise `False`.
+     */
     readonly accountEnabled: boolean;
+    /**
+     * The Display Name of the Azure AD User.
+     */
     readonly displayName: string;
+    /**
+     * The primary email address of the Azure AD User.
+     */
     readonly mail: string;
+    /**
+     * The email alias of the Azure AD User.
+     */
     readonly mailNickname: string;
+    /**
+     * The User Principal Name of the Azure AD User.
+     */
     readonly userPrincipalName: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
