@@ -17,11 +17,11 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform/pkg/tfgen"
 
-	xyz "github.com/pulumi/pulumi-xyz"
-	"github.com/pulumi/pulumi-xyz/pkg/version"
+	azuread "github.com/pulumi/pulumi-azuread"
+	"github.com/pulumi/pulumi-azuread/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("xyz", version.Version, xyz.Provider())
+	tfgen.Main("azuread", version.Version, azuread.Provider())
 }

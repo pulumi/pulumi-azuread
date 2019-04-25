@@ -12,15 +12,17 @@ Modify this README to describe:
 
 ## Creating a Pulumi Terraform Bridge Provider
 
-First, clone this repo with the name of the desired provider in place of `xyz`:
+*Note: Go 1.12 is needed to build Pulumi providers using Go Modules. Currently, we recommend pinning the version in `.travis.yml` to `1.12.1` to work around an issue with running later versions on Travis CI.*
+
+First, clone this repo with the name of the desired provider in place of `azuread`:
 
 ```
-git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-xyz
+git clone https://github.com/pulumi/pulumi-tf-provider-boilerplate pulumi-azuread
 ```
 
-Next, replace references to `xyz` with the name of your provider:
-- Search/replace the string `xyz` with the name of your provider throughout this repo
-- Rename the `cmd/pulumi-{resource,tfgen}-xyz` directories to match the provider name
+Next, replace references to `azuread` with the name of your provider:
+- Search/replace the string `azuread` with the name of your provider throughout this repo
+- Rename the `cmd/pulumi-{resource,tfgen}-azuread` directories to match the provider name
 - Replace the module name in `go.mod` to reflect the repository name.
 - If the pulumi provider name differs from the Terraform provider name, set
   `TF_NAME` in `Makefile` to the Terraform name, leaving `PACK` set to the
@@ -33,7 +35,23 @@ Next, replace references to `xyz` with the name of your provider:
 In the root of the repository, run:
 
 - `GO111MODULE=on go get github.com/pulumi/pulumi-terraform@master`
-- `GO111MODULE=on go get github.com/terraform-providers/terraform-provider-xyz` (where `xyz` is the name of the provider)
+- Install `bazaar` using `brew install bazaar` or your favorite package manager.
+- `GO111MODULE=on go get github.com/terraform-providers/terraform-provider-azuread` (where `azuread` is the name of the provider)
+  - If this fails with an error like this:
+  ```
+  # contrib.go.opencensus.io/exporter/ocagent
+../../../../pkg/mod/contrib.go.opencensus.io/exporter/ocagent@v0.4.2/transform_stats_to_metrics.go:210:61: cannot use data.ExemplarsPerBucket (type []*metricdata.Exemplar) as type []*exemplar.Exemplar in argument to bucketsToProtoBucket
+  ```
+  - ..then copy the `replace` section from [this](https://github.com/pulumi/pulumi-azure/blob/master/go.mod) into the `go.mod` file in this repo. It should look something like this:
+  ```
+  replace (
+	contrib.go.opencensus.io/exporter/ocagent => contrib.go.opencensus.io/exporter/ocagent v0.4.12
+	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
+	github.com/Sirupsen/logrus => github.com/sirupsen/logrus v1.4.2-0.20190403091019-9b3cdde74fbe
+	github.com/golang/glog => github.com/pulumi/glog v0.0.0-20180820174630-7eaa6ffb71e4
+	github.com/terraform-providers/terraform-provider-azurerm => github.com/pulumi/terraform-provider-azurerm v0.0.0-20190417123607-dd01e8265e07
+  )
+  ```
 - `GO111MODULE=on go mod vendor`
 - `make ensure`
 
@@ -67,7 +85,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-xyz/sdk/go/...
+    $ go get github.com/pulumi/pulumi-azuread/sdk/go/...
 
 ## Reference
 

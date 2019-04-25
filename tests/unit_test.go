@@ -24,9 +24,9 @@ import (
 
 func TestMountTarget(t *testing.T) {
 	// Get configuration from the CI environment
-	configPoint := os.Getenv("XYZ_CONFIG_POINT")
+	configPoint := os.Getenv("azuread_CONFIG_POINT")
 	if configPoint == "" {
-		t.Skipf("Skipping test due to missing XYZ_CONFIG_POINT environment variable")
+		t.Skipf("Skipping test due to missing azuread_CONFIG_POINT environment variable")
 	}
 	cwd, err := os.Getwd()
 	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
@@ -35,13 +35,13 @@ func TestMountTarget(t *testing.T) {
 
 	base := integration.ProgramTestOptions{
 		Config: map[string]string{
-			//"xyz:configPoint": configPoint,
+			//"azuread:configPoint": configPoint,
 		},
 	}
 
 	baseJS := base.With(integration.ProgramTestOptions{
 		Dependencies: []string{
-			"@pulumi/xyz",
+			"@pulumi/azuread",
 		},
 	})
 
@@ -49,7 +49,7 @@ func TestMountTarget(t *testing.T) {
 		// Each test runs the program referenced in Dir, and then each of EditDirs
 		// runs in turn.
 		//baseJS.With(integration.ProgramTestOptions{
-		//	Dir: path.Join(cwd, "xyz_test", "step1"),
+		//	Dir: path.Join(cwd, "azuread_test", "step1"),
 		//	EditDirs: []integration.EditDir{
 		//		{
 		//			Dir:      "step2",
