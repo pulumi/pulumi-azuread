@@ -109,12 +109,16 @@ func Provider() tfbridge.ProviderInfo {
 			// },
 		},
 		PreConfigureCallback: preConfigureCallback,
-		Resources:            map[string]*tfbridge.ResourceInfo{
+		Resources: map[string]*tfbridge.ResourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi type. Two examples
 			// are below - the single line form is the common case. The multi-line form is
 			// needed only if you wish to override types or other default options.
 			//
-			// "aws_iam_role": {Tok: makeResource(mainMod, "IamRole")}
+			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
+			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
+			"azuread_user":                       {Tok: makeResource(mainMod, "User")},
 			//
 			// "aws_acm_certificate": {
 			// 	Tok: makeResource(mainMod, "Certificate"),
@@ -126,7 +130,11 @@ func Provider() tfbridge.ProviderInfo {
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Map each resource in the Terraform provider to a Pulumi function. An example
 			// is below.
-			// "aws_ami": {Tok: makeDataSource(mainMod, "getAmi")},
+			"azuread_application":       {Tok: makeDataSource(mainMod, "getApplication")},
+			"azuread_domains":           {Tok: makeDataSource(mainMod, "getDomains")},
+			"azuread_group":             {Tok: makeDataSource(mainMod, "getGroup")},
+			"azuread_service_principal": {Tok: makeDataSource(mainMod, "getServicePrincipal")},
+			"azuread_user":              {Tok: makeDataSource(mainMod, "getUser")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

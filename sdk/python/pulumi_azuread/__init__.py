@@ -10,4 +10,14 @@ for pkg in __all__:
         importlib.import_module(f'{__name__}.{pkg}')
 
 # Export this package's modules as members:
+from .application import *
+from .group import *
+from .service_principal import *
+from .service_principal_password import *
+from .user import *
+from .get_application import *
+from .get_domains import *
+from .get_group import *
+from .get_service_principal import *
+from .get_user import *
 from .provider import *
