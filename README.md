@@ -39,8 +39,7 @@ In the root of the repository, run:
 - `GO111MODULE=on go get github.com/terraform-providers/terraform-provider-azuread` (where `azuread` is the name of the provider)
   - If this fails with an error like this:
   ```
-  # contrib.go.opencensus.io/exporter/ocagent
-../../../../pkg/mod/contrib.go.opencensus.io/exporter/ocagent@v0.4.2/transform_stats_to_metrics.go:210:61: cannot use data.ExemplarsPerBucket (type []*metricdata.Exemplar) as type []*exemplar.Exemplar in argument to bucketsToProtoBucket
+  # contrib.go.opencensus.io/exporter/ocagent ../../../../pkg/mod/contrib.go.opencensus.io/exporter/ocagent@v0.4.2/transform_stats_to_metrics.go:210:61: cannot use data.ExemplarsPerBucket (type []*metricdata.Exemplar) as type []*exemplar.Exemplar in argument to bucketsToProtoBucket
   ```
   - ..then copy the `replace` section from [this](https://github.com/pulumi/pulumi-azure/blob/master/go.mod) into the `go.mod` file in this repo. It should look something like this:
   ```
