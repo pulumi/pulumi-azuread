@@ -1,8 +1,8 @@
 [![Build Status](https://travis-ci.com/pulumi/pulumi-azuread.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-azuread)
 
-# Microsoft Azure Resource Provider
+# Microsoft Azure Active Directory Resource Provider
 
-The Microsoft Azure resource provider for Pulumi lets you use Azure resources in your cloud programs.  To use
+The Microsoft Azure AD resource provider for Pulumi lets you use Azure Active Directory resources in your cloud programs.  To use
 this package, please [install the Pulumi CLI first](https://pulumi.io/).
 
 ## Installing
