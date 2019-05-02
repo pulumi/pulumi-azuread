@@ -1,0 +1,3 @@
+name: aadsimple
+runtime: nodejs
+description: Simple AAD management with Pulumi.

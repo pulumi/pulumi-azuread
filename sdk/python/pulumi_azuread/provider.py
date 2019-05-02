@@ -34,24 +34,40 @@ class Provider(pulumi.ProviderResource):
 
         __props__ = dict()
 
+        if client_certificate_password is None:
+            client_certificate_password = (utilities.get_env('ARM_CLIENT_CERTIFICATE_PASSWORD') or '')
         __props__['client_certificate_password'] = client_certificate_password
 
+        if client_certificate_path is None:
+            client_certificate_path = (utilities.get_env('ARM_CLIENT_CERTIFICATE_PATH') or '')
         __props__['client_certificate_path'] = client_certificate_path
 
+        if client_id is None:
+            client_id = (utilities.get_env('ARM_CLIENT_ID') or '')
         __props__['client_id'] = client_id
 
+        if client_secret is None:
+            client_secret = (utilities.get_env('ARM_CLIENT_SECRET') or '')
         __props__['client_secret'] = client_secret
 
         if environment is None:
-            raise TypeError("Missing required property 'environment'")
+            environment = (utilities.get_env('ARM_ENVIRONMENT') or 'public')
         __props__['environment'] = environment
 
+        if msi_endpoint is None:
+            msi_endpoint = (utilities.get_env('ARM_MSI_ENDPOINT') or '')
         __props__['msi_endpoint'] = msi_endpoint
 
+        if subscription_id is None:
+            subscription_id = (utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
         __props__['subscription_id'] = subscription_id
 
+        if tenant_id is None:
+            tenant_id = (utilities.get_env('ARM_TENANT_ID') or '')
         __props__['tenant_id'] = tenant_id
 
+        if use_msi is None:
+            use_msi = (utilities.get_env_bool('ARM_USE_MSI') or False)
         __props__['use_msi'] = pulumi.Output.from_input(use_msi).apply(json.dumps) if use_msi is not None else None
 
         super(Provider, __self__).__init__(

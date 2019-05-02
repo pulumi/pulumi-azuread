@@ -10,21 +10,21 @@ from .. import utilities, tables
 
 __config__ = pulumi.Config('azuread')
 
-client_certificate_password = __config__.get('clientCertificatePassword')
+client_certificate_password = __config__.get('clientCertificatePassword') or (utilities.get_env('ARM_CLIENT_CERTIFICATE_PASSWORD') or '')
 
-client_certificate_path = __config__.get('clientCertificatePath')
+client_certificate_path = __config__.get('clientCertificatePath') or (utilities.get_env('ARM_CLIENT_CERTIFICATE_PATH') or '')
 
-client_id = __config__.get('clientId')
+client_id = __config__.get('clientId') or (utilities.get_env('ARM_CLIENT_ID') or '')
 
-client_secret = __config__.get('clientSecret')
+client_secret = __config__.get('clientSecret') or (utilities.get_env('ARM_CLIENT_SECRET') or '')
 
-environment = __config__.require('environment')
+environment = utilities.require_with_default(lambda: __config__.require('environment'), (utilities.get_env('ARM_ENVIRONMENT') or 'public'))
 
-msi_endpoint = __config__.get('msiEndpoint')
+msi_endpoint = __config__.get('msiEndpoint') or (utilities.get_env('ARM_MSI_ENDPOINT') or '')
 
-subscription_id = __config__.get('subscriptionId')
+subscription_id = __config__.get('subscriptionId') or (utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
 
-tenant_id = __config__.get('tenantId')
+tenant_id = __config__.get('tenantId') or (utilities.get_env('ARM_TENANT_ID') or '')
 
-use_msi = __config__.get('useMsi')
+use_msi = __config__.get('useMsi') or (utilities.get_env_bool('ARM_USE_MSI') or False)
 
