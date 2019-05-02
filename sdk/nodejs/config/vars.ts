@@ -6,12 +6,12 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("azuread");
 
-export let clientCertificatePassword: string | undefined = __config.get("clientCertificatePassword");
-export let clientCertificatePath: string | undefined = __config.get("clientCertificatePath");
-export let clientId: string | undefined = __config.get("clientId");
-export let clientSecret: string | undefined = __config.get("clientSecret");
-export let environment: string = __config.require("environment");
-export let msiEndpoint: string | undefined = __config.get("msiEndpoint");
-export let subscriptionId: string | undefined = __config.get("subscriptionId");
-export let tenantId: string | undefined = __config.get("tenantId");
-export let useMsi: boolean | undefined = __config.getObject<boolean>("useMsi");
+export let clientCertificatePassword: string | undefined = __config.get("clientCertificatePassword") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") || "");
+export let clientCertificatePath: string | undefined = __config.get("clientCertificatePath") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH") || "");
+export let clientId: string | undefined = __config.get("clientId") || (utilities.getEnv("ARM_CLIENT_ID") || "");
+export let clientSecret: string | undefined = __config.get("clientSecret") || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
+export let environment: string = utilities.requireWithDefault(() => __config.require("environment"), (utilities.getEnv("ARM_ENVIRONMENT") || "public"));
+export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
+export let subscriptionId: string | undefined = __config.get("subscriptionId") || (utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
+export let tenantId: string | undefined = __config.get("tenantId") || (utilities.getEnv("ARM_TENANT_ID") || "");
+export let useMsi: boolean | undefined = __config.getObject<boolean>("useMsi") || (utilities.getEnvBoolean("ARM_USE_MSI") || false);

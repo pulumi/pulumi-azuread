@@ -59,24 +59,9 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// boolRef returns a reference to the bool argument.
-// func boolRef(b bool) *bool {
-// 	return &b
-// }
-
-// stringValue gets a string value from a property map if present, else ""
-// func stringValue(vars resource.PropertyMap, prop resource.PropertyKey) string {
-// 	val, ok := vars[prop]
-// 	if ok && val.IsString() {
-// 		return val.StringValue()
-// 	}
-// 	return ""
-// }
-
 // preConfigureCallback is called before the providerConfigure function of the underlying provider.
 // It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be. Configuration variables can be read from `vars` using the `stringValue` function -
-// for example `stringValue(vars, "accessKey")`.
+// it cannot be.
 func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
 	return nil
 }
@@ -98,38 +83,71 @@ func Provider() tfbridge.ProviderInfo {
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
-		Config:      map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: makeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Config: map[string]*tfbridge.SchemaInfo{
+			"client_id": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_CLIENT_ID"},
+				},
+			},
+			"environment": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "public",
+					EnvVars: []string{"ARM_ENVIRONMENT"},
+				},
+			},
+			"subscription_id": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_SUBSCRIPTION_ID"},
+				},
+			},
+			"tenant_id": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_TENANT_ID"},
+				},
+			},
+			"client_certificate_password": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"},
+				},
+			},
+			"client_certificate_path": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_CLIENT_CERTIFICATE_PATH"},
+				},
+			},
+			"client_secret": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_CLIENT_SECRET"},
+				},
+			},
+			"msi_endpoint": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"ARM_MSI_ENDPOINT"},
+				},
+			},
+			"use_msi": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   false,
+					EnvVars: []string{"ARM_USE_MSI"},
+				},
+			},
 		},
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi type. Two examples
-			// are below - the single line form is the common case. The multi-line form is
-			// needed only if you wish to override types or other default options.
-			//
 			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
 			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
 			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
 			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
 			"azuread_user":                       {Tok: makeResource(mainMod, "User")},
-			//
-			// "aws_acm_certificate": {
-			// 	Tok: makeResource(mainMod, "Certificate"),
-			// 	Fields: map[string]*tfbridge.SchemaInfo{
-			// 		"tags": {Type: makeType(mainPkg, "Tags")},
-			// 	},
-			// },
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			// Map each resource in the Terraform provider to a Pulumi function. An example
-			// is below.
 			"azuread_application":       {Tok: makeDataSource(mainMod, "getApplication")},
 			"azuread_domains":           {Tok: makeDataSource(mainMod, "getDomains")},
 			"azuread_group":             {Tok: makeDataSource(mainMod, "getGroup")},
@@ -145,10 +163,6 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			// See the documentation for tfbridge.OverlayInfo for how to lay out this
-			// section, or refer to the AWS provider. Delete this section if there are
-			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges

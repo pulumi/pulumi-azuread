@@ -9,37 +9,101 @@ import (
 )
 
 func GetClientCertificatePassword(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientCertificatePassword")
+	v, err := config.Try(ctx, "azuread:clientCertificatePassword")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetClientCertificatePath(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientCertificatePath")
+	v, err := config.Try(ctx, "azuread:clientCertificatePath")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PATH").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetClientId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientId")
+	v, err := config.Try(ctx, "azuread:clientId")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_CLIENT_ID").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetClientSecret(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:clientSecret")
+	v, err := config.Try(ctx, "azuread:clientSecret")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_CLIENT_SECRET").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetEnvironment(ctx *pulumi.Context) string {
-	return config.Require(ctx, "azuread:environment")
+	v, err := config.Try(ctx, "azuread:environment")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string); ok {
+		return dv
+	}
+	panic(err.Error())
+	return v
 }
 
 func GetMsiEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:msiEndpoint")
+	v, err := config.Try(ctx, "azuread:msiEndpoint")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetSubscriptionId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:subscriptionId")
+	v, err := config.Try(ctx, "azuread:subscriptionId")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_SUBSCRIPTION_ID").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetTenantId(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:tenantId")
+	v, err := config.Try(ctx, "azuread:tenantId")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "ARM_TENANT_ID").(string); ok {
+		return dv
+	}
+	return v
 }
 
 func GetUseMsi(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azuread:useMsi")
+	v, err := config.TryBool(ctx, "azuread:useMsi")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI").(bool); ok {
+		return dv
+	}
+	return v
 }
