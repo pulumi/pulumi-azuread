@@ -35,7 +35,12 @@ func TestExamples(t *testing.T) {
 
 	tests := []integration.ProgramTestOptions{
 		// List each test
-		base.With(integration.ProgramTestOptions{Dir: path.Join(cwd, "simple")}),
+		base.With(integration.ProgramTestOptions{
+			Dir: path.Join(cwd, "simple"),
+			Secrets: map[string]string{
+				"password": "SecretP@sswd99!",
+			},
+		}),
 	}
 
 	for _, ex := range tests {
