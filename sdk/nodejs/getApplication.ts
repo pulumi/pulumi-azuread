@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     name: "My First AzureAD Application",
  * }));
  * 
- * export const azureAdObjectId = test.apply(test => test.id);
+ * export const azureAdObjectId = test.id;
  * ```
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {

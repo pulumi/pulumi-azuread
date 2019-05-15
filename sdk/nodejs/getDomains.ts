@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * 
  * const aadDomains = pulumi.output(azuread.getDomains({}));
  * 
- * export const domains = aadDomains.apply(aadDomains => aadDomains.domains);
+ * export const domains = aadDomains.domains;
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
