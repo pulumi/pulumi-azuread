@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-   $ npm install @pulumi/azuread
+    $ npm install @pulumi/azuread
 
 or ``yarn``:
 
 ::
 
-   $ yarn add @pulumi/azuread
+    $ yarn add @pulumi/azuread
 
 Python 3
 ~~~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-   $ pip install pulumi_azuread
+    $ pip install pulumi_azuread
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-   $ go get github.com/pulumi/pulumi-azuread/sdk/go/...
+    $ go get github.com/pulumi/pulumi-azuread/sdk/go/...
 
 Build from source
 -----------------
