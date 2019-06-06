@@ -27,9 +27,13 @@ class User(pulumi.CustomResource):
     The primary email address of the Azure AD User.
     """
     mail_nickname: pulumi.Output[str]
+    object_id: pulumi.Output[str]
+    """
+    The Object ID of the Azure AD User.
+    """
     password: pulumi.Output[str]
     """
-    The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+    The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
     """
     user_principal_name: pulumi.Output[str]
     """
@@ -47,7 +51,7 @@ class User(pulumi.CustomResource):
                * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-        :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+        :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
         """
         if __name__ is not None:
@@ -84,6 +88,7 @@ class User(pulumi.CustomResource):
         __props__['user_principal_name'] = user_principal_name
 
         __props__['mail'] = None
+        __props__['object_id'] = None
 
         super(User, __self__).__init__(
             'azuread:index/user:User',

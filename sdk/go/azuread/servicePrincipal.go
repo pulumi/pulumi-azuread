@@ -10,7 +10,7 @@ import (
 
 // Manages a Service Principal associated with an Application within Azure Active Directory.
 // 
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
 type ServicePrincipal struct {
 	s *pulumi.ResourceState
 }
@@ -30,6 +30,7 @@ func NewServicePrincipal(ctx *pulumi.Context,
 		inputs["tags"] = args.Tags
 	}
 	inputs["displayName"] = nil
+	inputs["objectId"] = nil
 	s, err := ctx.RegisterResource("azuread:index/servicePrincipal:ServicePrincipal", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -45,6 +46,7 @@ func GetServicePrincipal(ctx *pulumi.Context,
 	if state != nil {
 		inputs["applicationId"] = state.ApplicationId
 		inputs["displayName"] = state.DisplayName
+		inputs["objectId"] = state.ObjectId
 		inputs["tags"] = state.Tags
 	}
 	s, err := ctx.ReadResource("azuread:index/servicePrincipal:ServicePrincipal", name, id, inputs, opts...)
@@ -74,6 +76,11 @@ func (r *ServicePrincipal) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
+// The Service Principal's Object ID.
+func (r *ServicePrincipal) ObjectId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["objectId"])
+}
+
 // A list of tags to apply to the Service Principal.
 func (r *ServicePrincipal) Tags() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["tags"])
@@ -85,6 +92,8 @@ type ServicePrincipalState struct {
 	ApplicationId interface{}
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
 	DisplayName interface{}
+	// The Service Principal's Object ID.
+	ObjectId interface{}
 	// A list of tags to apply to the Service Principal.
 	Tags interface{}
 }

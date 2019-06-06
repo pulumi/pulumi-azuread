@@ -13,6 +13,7 @@ import (
 func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["objectId"] = args.ObjectId
 		inputs["userPrincipalName"] = args.UserPrincipalName
 	}
 	outputs, err := ctx.Invoke("azuread:index/getUser:getUser", inputs)
@@ -24,6 +25,7 @@ func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) 
 		DisplayName: outputs["displayName"],
 		Mail: outputs["mail"],
 		MailNickname: outputs["mailNickname"],
+		ObjectId: outputs["objectId"],
 		UserPrincipalName: outputs["userPrincipalName"],
 		Id: outputs["id"],
 	}, nil
@@ -31,6 +33,8 @@ func LookupUser(ctx *pulumi.Context, args *GetUserArgs) (*GetUserResult, error) 
 
 // A collection of arguments for invoking getUser.
 type GetUserArgs struct {
+	// Specifies the Object ID of the Application within Azure Active Directory.
+	ObjectId interface{}
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName interface{}
 }
@@ -45,6 +49,7 @@ type GetUserResult struct {
 	Mail interface{}
 	// The email alias of the Azure AD User.
 	MailNickname interface{}
+	ObjectId interface{}
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName interface{}
 	// id is the provider-assigned unique ID for this managed resource.

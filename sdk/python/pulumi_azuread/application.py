@@ -17,6 +17,10 @@ class Application(pulumi.CustomResource):
     """
     Is this Azure AD Application available to other tenants? Defaults to `false`.
     """
+    group_membership_claims: pulumi.Output[str]
+    """
+    Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+    """
     homepage: pulumi.Output[str]
     """
     The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
@@ -33,6 +37,14 @@ class Application(pulumi.CustomResource):
     """
     Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
     """
+    oauth2_permissions: pulumi.Output[list]
+    """
+    A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+    """
+    object_id: pulumi.Output[str]
+    """
+    The Application's Object ID.
+    """
     reply_urls: pulumi.Output[list]
     """
     A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -41,7 +53,11 @@ class Application(pulumi.CustomResource):
     """
     A collection of `required_resource_access` blocks as documented below.
     """
-    def __init__(__self__, resource_name, opts=None, available_to_other_tenants=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, reply_urls=None, required_resource_accesses=None, __name__=None, __opts__=None):
+    type: pulumi.Output[str]
+    """
+    Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+    """
+    def __init__(__self__, resource_name, opts=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, reply_urls=None, required_resource_accesses=None, type=None, __name__=None, __opts__=None):
         """
         Manages an Application within Azure Active Directory.
         
@@ -50,12 +66,14 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`.
+        :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
         :param pulumi.Input[str] homepage: The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
         :param pulumi.Input[list] identifier_uris: A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] name: The display name for the application.
         :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[str] type: Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -74,6 +92,8 @@ class Application(pulumi.CustomResource):
 
         __props__['available_to_other_tenants'] = available_to_other_tenants
 
+        __props__['group_membership_claims'] = group_membership_claims
+
         __props__['homepage'] = homepage
 
         __props__['identifier_uris'] = identifier_uris
@@ -86,7 +106,11 @@ class Application(pulumi.CustomResource):
 
         __props__['required_resource_accesses'] = required_resource_accesses
 
+        __props__['type'] = type
+
         __props__['application_id'] = None
+        __props__['oauth2_permissions'] = None
+        __props__['object_id'] = None
 
         super(Application, __self__).__init__(
             'azuread:index/application:Application',

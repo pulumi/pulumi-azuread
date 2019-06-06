@@ -11,6 +11,7 @@ for pkg in __all__:
 
 # Export this package's modules as members:
 from .application import *
+from .application_password import *
 from .group import *
 from .service_principal import *
 from .service_principal_password import *

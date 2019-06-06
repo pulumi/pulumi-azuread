@@ -49,6 +49,7 @@ export class Group extends pulumi.CustomResource {
      * The display name for the Group.
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly objectId!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -63,9 +64,11 @@ export class Group extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["name"] = state ? state.name : undefined;
+            inputs["objectId"] = state ? state.objectId : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["objectId"] = undefined /*out*/;
         }
         super(Group.__pulumiType, name, inputs, opts);
     }
@@ -79,6 +82,7 @@ export interface GroupState {
      * The display name for the Group.
      */
     readonly name?: pulumi.Input<string>;
+    readonly objectId?: pulumi.Input<string>;
 }
 
 /**

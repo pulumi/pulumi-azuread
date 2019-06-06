@@ -69,7 +69,11 @@ export class User extends pulumi.CustomResource {
     public /*out*/ readonly mail!: pulumi.Output<string>;
     public readonly mailNickname!: pulumi.Output<string>;
     /**
-     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+     * The Object ID of the Azure AD User.
+     */
+    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -94,6 +98,7 @@ export class User extends pulumi.CustomResource {
             inputs["forcePasswordChange"] = state ? state.forcePasswordChange : undefined;
             inputs["mail"] = state ? state.mail : undefined;
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
+            inputs["objectId"] = state ? state.objectId : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["userPrincipalName"] = state ? state.userPrincipalName : undefined;
         } else {
@@ -114,6 +119,7 @@ export class User extends pulumi.CustomResource {
             inputs["password"] = args ? args.password : undefined;
             inputs["userPrincipalName"] = args ? args.userPrincipalName : undefined;
             inputs["mail"] = undefined /*out*/;
+            inputs["objectId"] = undefined /*out*/;
         }
         super(User.__pulumiType, name, inputs, opts);
     }
@@ -142,7 +148,11 @@ export interface UserState {
     readonly mail?: pulumi.Input<string>;
     readonly mailNickname?: pulumi.Input<string>;
     /**
-     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+     * The Object ID of the Azure AD User.
+     */
+    readonly objectId?: pulumi.Input<string>;
+    /**
+     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
     readonly password?: pulumi.Input<string>;
     /**
@@ -170,7 +180,7 @@ export interface UserArgs {
     readonly forcePasswordChange?: pulumi.Input<boolean>;
     readonly mailNickname?: pulumi.Input<string>;
     /**
-     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+     * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
     readonly password: pulumi.Input<string>;
     /**

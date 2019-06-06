@@ -142,6 +142,7 @@ func Provider() tfbridge.ProviderInfo {
 		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
+			"azuread_application_password":       {Tok: makeResource(mainMod, "ApplicationPassword")},
 			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
 			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
 			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},

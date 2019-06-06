@@ -12,10 +12,13 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, name=None, id=None):
+    def __init__(__self__, name=None, object_id=None, id=None):
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        if object_id and not isinstance(object_id, str):
+            raise TypeError("Expected argument 'object_id' to be a str")
+        __self__.object_id = object_id
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -23,7 +26,7 @@ class GetGroupResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_group(name=None,opts=None):
+async def get_group(name=None,object_id=None,opts=None):
     """
     Gets information about an Azure Active Directory group.
     
@@ -32,8 +35,10 @@ async def get_group(name=None,opts=None):
     __args__ = dict()
 
     __args__['name'] = name
+    __args__['objectId'] = object_id
     __ret__ = await pulumi.runtime.invoke('azuread:index/getGroup:getGroup', __args__, opts=opts)
 
     return GetGroupResult(
         name=__ret__.get('name'),
+        object_id=__ret__.get('objectId'),
         id=__ret__.get('id'))

@@ -20,9 +20,11 @@ import * as utilities from "./utilities";
  * }));
  * ```
  */
-export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
+export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
+    args = args || {};
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "name": args.name,
+        "objectId": args.objectId,
     }, opts);
 }
 
@@ -31,9 +33,13 @@ export function getGroup(args: GetGroupArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetGroupArgs {
     /**
-     * The Name of the Azure AD Group we want to lookup.
+     * The Name of the AD Group we want to lookup.
      */
-    readonly name: string;
+    readonly name?: string;
+    /**
+     * Specifies the Object ID of the AD Group within Azure Active Directory.
+     */
+    readonly objectId?: string;
 }
 
 /**
@@ -41,6 +47,7 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     readonly name: string;
+    readonly objectId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

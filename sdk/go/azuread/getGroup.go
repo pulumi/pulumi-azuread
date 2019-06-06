@@ -14,6 +14,7 @@ func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, erro
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["name"] = args.Name
+		inputs["objectId"] = args.ObjectId
 	}
 	outputs, err := ctx.Invoke("azuread:index/getGroup:getGroup", inputs)
 	if err != nil {
@@ -21,19 +22,23 @@ func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, erro
 	}
 	return &GetGroupResult{
 		Name: outputs["name"],
+		ObjectId: outputs["objectId"],
 		Id: outputs["id"],
 	}, nil
 }
 
 // A collection of arguments for invoking getGroup.
 type GetGroupArgs struct {
-	// The Name of the Azure AD Group we want to lookup.
+	// The Name of the AD Group we want to lookup.
 	Name interface{}
+	// Specifies the Object ID of the AD Group within Azure Active Directory.
+	ObjectId interface{}
 }
 
 // A collection of values returned by getGroup.
 type GetGroupResult struct {
 	Name interface{}
+	ObjectId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

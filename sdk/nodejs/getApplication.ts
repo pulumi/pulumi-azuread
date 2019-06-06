@@ -26,6 +26,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
     args = args || {};
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
         "name": args.name,
+        "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
     }, opts);
 }
@@ -38,6 +39,7 @@ export interface GetApplicationArgs {
      * Specifies the name of the Application within Azure Active Directory.
      */
     readonly name?: string;
+    readonly oauth2Permissions?: { adminConsentDescription?: string, adminConsentDisplayName?: string, id?: string, isEnabled?: boolean, type?: string, userConsentDescription?: string, userConsentDisplayName?: string, value?: string }[];
     /**
      * Specifies the Object ID of the Application within Azure Active Directory.
      */
@@ -56,6 +58,10 @@ export interface GetApplicationResult {
      * Is this Azure AD Application available to other tenants?
      */
     readonly availableToOtherTenants: boolean;
+    /**
+     * The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
+     */
+    readonly groupMembershipClaims: string;
     readonly homepage: string;
     /**
      * A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -66,6 +72,10 @@ export interface GetApplicationResult {
      * Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
      */
     readonly oauth2AllowImplicitFlow: boolean;
+    /**
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+     */
+    readonly oauth2Permissions: { adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[];
     /**
      * the Object ID of the Azure Active Directory Application.
      */
@@ -78,6 +88,10 @@ export interface GetApplicationResult {
      * A collection of `required_resource_access` blocks as documented below.
      */
     readonly requiredResourceAccesses: { resourceAccesses: { id: string, type: string }[], resourceAppId: string }[];
+    /**
+     * The type of the permission
+     */
+    readonly type: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

@@ -14,6 +14,7 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 	inputs := make(map[string]interface{})
 	if args != nil {
 		inputs["name"] = args.Name
+		inputs["oauth2Permissions"] = args.Oauth2Permissions
 		inputs["objectId"] = args.ObjectId
 	}
 	outputs, err := ctx.Invoke("azuread:index/getApplication:getApplication", inputs)
@@ -23,13 +24,16 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 	return &GetApplicationResult{
 		ApplicationId: outputs["applicationId"],
 		AvailableToOtherTenants: outputs["availableToOtherTenants"],
+		GroupMembershipClaims: outputs["groupMembershipClaims"],
 		Homepage: outputs["homepage"],
 		IdentifierUris: outputs["identifierUris"],
 		Name: outputs["name"],
 		Oauth2AllowImplicitFlow: outputs["oauth2AllowImplicitFlow"],
+		Oauth2Permissions: outputs["oauth2Permissions"],
 		ObjectId: outputs["objectId"],
 		ReplyUrls: outputs["replyUrls"],
 		RequiredResourceAccesses: outputs["requiredResourceAccesses"],
+		Type: outputs["type"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -38,6 +42,7 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 type GetApplicationArgs struct {
 	// Specifies the name of the Application within Azure Active Directory.
 	Name interface{}
+	Oauth2Permissions interface{}
 	// Specifies the Object ID of the Application within Azure Active Directory.
 	ObjectId interface{}
 }
@@ -48,18 +53,24 @@ type GetApplicationResult struct {
 	ApplicationId interface{}
 	// Is this Azure AD Application available to other tenants?
 	AvailableToOtherTenants interface{}
+	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
+	GroupMembershipClaims interface{}
 	Homepage interface{}
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris interface{}
 	Name interface{}
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow interface{}
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+	Oauth2Permissions interface{}
 	// the Object ID of the Azure Active Directory Application.
 	ObjectId interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls interface{}
 	// A collection of `required_resource_access` blocks as documented below.
 	RequiredResourceAccesses interface{}
+	// The type of the permission
+	Type interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

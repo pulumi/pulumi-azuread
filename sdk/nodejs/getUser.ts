@@ -20,8 +20,10 @@ import * as utilities from "./utilities";
  * }));
  * ```
  */
-export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+    args = args || {};
     return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
+        "objectId": args.objectId,
         "userPrincipalName": args.userPrincipalName,
     }, opts);
 }
@@ -31,9 +33,13 @@ export function getUser(args: GetUserArgs, opts?: pulumi.InvokeOptions): Promise
  */
 export interface GetUserArgs {
     /**
+     * Specifies the Object ID of the Application within Azure Active Directory.
+     */
+    readonly objectId?: string;
+    /**
      * The User Principal Name of the Azure AD User.
      */
-    readonly userPrincipalName: string;
+    readonly userPrincipalName?: string;
 }
 
 /**
@@ -56,6 +62,7 @@ export interface GetUserResult {
      * The email alias of the Azure AD User.
      */
     readonly mailNickname: string;
+    readonly objectId: string;
     /**
      * The User Principal Name of the Azure AD User.
      */

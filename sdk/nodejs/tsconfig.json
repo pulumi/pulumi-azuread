@@ -14,6 +14,7 @@
     },
     "files": [
         "application.ts",
+        "applicationPassword.ts",
         "config/index.ts",
         "config/vars.ts",
         "getApplication.ts",
