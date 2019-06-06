@@ -10,7 +10,7 @@ export let clientCertificatePassword: string | undefined = __config.get("clientC
 export let clientCertificatePath: string | undefined = __config.get("clientCertificatePath") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH") || "");
 export let clientId: string | undefined = __config.get("clientId") || (utilities.getEnv("ARM_CLIENT_ID") || "");
 export let clientSecret: string | undefined = __config.get("clientSecret") || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
-export let environment: string = utilities.requireWithDefault(() => __config.require("environment"), (utilities.getEnv("ARM_ENVIRONMENT") || "public"));
+export let environment: string | undefined = __config.get("environment") || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
 export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
 export let subscriptionId: string | undefined = __config.get("subscriptionId") || (utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
 export let tenantId: string | undefined = __config.get("tenantId") || (utilities.getEnv("ARM_TENANT_ID") || "");
