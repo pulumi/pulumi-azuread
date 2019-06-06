@@ -45,18 +45,32 @@ export class ServicePrincipal extends pulumi.CustomResource {
         return new ServicePrincipal(name, <any>state, { ...opts, id: id });
     }
 
+    /** @internal */
+    public static readonly __pulumiType = 'azuread:index/servicePrincipal:ServicePrincipal';
+
+    /**
+     * Returns true if the given object is an instance of ServicePrincipal.  This is designed to work even
+     * when multiple copies of the Pulumi SDK have been loaded into the same process.
+     */
+    public static isInstance(obj: any): obj is ServicePrincipal {
+        if (obj === undefined || obj === null) {
+            return false;
+        }
+        return obj['__pulumiType'] === ServicePrincipal.__pulumiType;
+    }
+
     /**
      * The ID of the Azure AD Application for which to create a Service Principal.
      */
-    public readonly applicationId: pulumi.Output<string>;
+    public readonly applicationId!: pulumi.Output<string>;
     /**
      * The Display Name of the Azure Active Directory Application associated with this Service Principal.
      */
-    public /*out*/ readonly displayName: pulumi.Output<string>;
+    public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
      * A list of tags to apply to the Service Principal.
      */
-    public readonly tags: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a ServicePrincipal resource with the given unique name, arguments, and options.
@@ -69,7 +83,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
     constructor(name: string, argsOrState?: ServicePrincipalArgs | ServicePrincipalState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
-            const state: ServicePrincipalState = argsOrState as ServicePrincipalState | undefined;
+            const state = argsOrState as ServicePrincipalState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -82,7 +96,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["tags"] = args ? args.tags : undefined;
             inputs["displayName"] = undefined /*out*/;
         }
-        super("azuread:index/servicePrincipal:ServicePrincipal", name, inputs, opts);
+        super(ServicePrincipal.__pulumiType, name, inputs, opts);
     }
 }
 
