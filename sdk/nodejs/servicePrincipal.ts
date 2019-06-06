@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Manages a Service Principal associated with an Application within Azure Active Directory.
  * 
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
  * 
  * ## Example Usage
  * 
@@ -68,6 +68,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
+     * The Service Principal's Object ID.
+     */
+    public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
      * A list of tags to apply to the Service Principal.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
@@ -86,6 +90,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             const state = argsOrState as ServicePrincipalState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["objectId"] = state ? state.objectId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
@@ -95,6 +100,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["displayName"] = undefined /*out*/;
+            inputs["objectId"] = undefined /*out*/;
         }
         super(ServicePrincipal.__pulumiType, name, inputs, opts);
     }
@@ -112,6 +118,10 @@ export interface ServicePrincipalState {
      * The Display Name of the Azure Active Directory Application associated with this Service Principal.
      */
     readonly displayName?: pulumi.Input<string>;
+    /**
+     * The Service Principal's Object ID.
+     */
+    readonly objectId?: pulumi.Input<string>;
     /**
      * A list of tags to apply to the Service Principal.
      */

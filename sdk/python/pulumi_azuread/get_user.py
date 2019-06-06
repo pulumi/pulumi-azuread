@@ -12,7 +12,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, display_name=None, mail=None, mail_nickname=None, user_principal_name=None, id=None):
+    def __init__(__self__, account_enabled=None, display_name=None, mail=None, mail_nickname=None, object_id=None, user_principal_name=None, id=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         __self__.account_enabled = account_enabled
@@ -37,6 +37,9 @@ class GetUserResult:
         """
         The email alias of the Azure AD User.
         """
+        if object_id and not isinstance(object_id, str):
+            raise TypeError("Expected argument 'object_id' to be a str")
+        __self__.object_id = object_id
         if user_principal_name and not isinstance(user_principal_name, str):
             raise TypeError("Expected argument 'user_principal_name' to be a str")
         __self__.user_principal_name = user_principal_name
@@ -50,7 +53,7 @@ class GetUserResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_user(user_principal_name=None,opts=None):
+async def get_user(object_id=None,user_principal_name=None,opts=None):
     """
     Gets information about an Azure Active Directory user.
     
@@ -58,6 +61,7 @@ async def get_user(user_principal_name=None,opts=None):
     """
     __args__ = dict()
 
+    __args__['objectId'] = object_id
     __args__['userPrincipalName'] = user_principal_name
     __ret__ = await pulumi.runtime.invoke('azuread:index/getUser:getUser', __args__, opts=opts)
 
@@ -66,5 +70,6 @@ async def get_user(user_principal_name=None,opts=None):
         display_name=__ret__.get('displayName'),
         mail=__ret__.get('mail'),
         mail_nickname=__ret__.get('mailNickname'),
+        object_id=__ret__.get('objectId'),
         user_principal_name=__ret__.get('userPrincipalName'),
         id=__ret__.get('id'))

@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./application";
+export * from "./applicationPassword";
 export * from "./getApplication";
 export * from "./getDomains";
 export * from "./getGroup";

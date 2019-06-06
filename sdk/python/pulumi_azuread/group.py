@@ -13,6 +13,7 @@ class Group(pulumi.CustomResource):
     """
     The display name for the Group.
     """
+    object_id: pulumi.Output[str]
     def __init__(__self__, resource_name, opts=None, name=None, __name__=None, __opts__=None):
         """
         Manages a Group within Azure Active Directory.
@@ -39,6 +40,8 @@ class Group(pulumi.CustomResource):
         __props__ = dict()
 
         __props__['name'] = name
+
+        __props__['object_id'] = None
 
         super(Group, __self__).__init__(
             'azuread:index/group:Group',

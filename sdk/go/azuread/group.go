@@ -23,6 +23,7 @@ func NewGroup(ctx *pulumi.Context,
 	} else {
 		inputs["name"] = args.Name
 	}
+	inputs["objectId"] = nil
 	s, err := ctx.RegisterResource("azuread:index/group:Group", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -37,6 +38,7 @@ func GetGroup(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["name"] = state.Name
+		inputs["objectId"] = state.ObjectId
 	}
 	s, err := ctx.ReadResource("azuread:index/group:Group", name, id, inputs, opts...)
 	if err != nil {
@@ -60,10 +62,15 @@ func (r *Group) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
 
+func (r *Group) ObjectId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["objectId"])
+}
+
 // Input properties used for looking up and filtering Group resources.
 type GroupState struct {
 	// The display name for the Group.
 	Name interface{}
+	ObjectId interface{}
 }
 
 // The set of arguments for constructing a Group resource.

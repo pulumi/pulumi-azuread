@@ -56,7 +56,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  */
 export interface GetServicePrincipalArgs {
     /**
-     * The ID of the Azure AD Application for which to create a Service Principal.
+     * The ID of the Azure AD Application.
      */
     readonly applicationId?: string;
     /**

@@ -31,7 +31,7 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) 
 
 // A collection of arguments for invoking getServicePrincipal.
 type GetServicePrincipalArgs struct {
-	// The ID of the Azure AD Application for which to create a Service Principal.
+	// The ID of the Azure AD Application.
 	ApplicationId interface{}
 	// The Display Name of the Azure AD Application associated with this Service Principal.
 	DisplayName interface{}

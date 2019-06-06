@@ -20,22 +20,28 @@ func NewApplication(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["availableToOtherTenants"] = nil
+		inputs["groupMembershipClaims"] = nil
 		inputs["homepage"] = nil
 		inputs["identifierUris"] = nil
 		inputs["name"] = nil
 		inputs["oauth2AllowImplicitFlow"] = nil
 		inputs["replyUrls"] = nil
 		inputs["requiredResourceAccesses"] = nil
+		inputs["type"] = nil
 	} else {
 		inputs["availableToOtherTenants"] = args.AvailableToOtherTenants
+		inputs["groupMembershipClaims"] = args.GroupMembershipClaims
 		inputs["homepage"] = args.Homepage
 		inputs["identifierUris"] = args.IdentifierUris
 		inputs["name"] = args.Name
 		inputs["oauth2AllowImplicitFlow"] = args.Oauth2AllowImplicitFlow
 		inputs["replyUrls"] = args.ReplyUrls
 		inputs["requiredResourceAccesses"] = args.RequiredResourceAccesses
+		inputs["type"] = args.Type
 	}
 	inputs["applicationId"] = nil
+	inputs["oauth2Permissions"] = nil
+	inputs["objectId"] = nil
 	s, err := ctx.RegisterResource("azuread:index/application:Application", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -51,12 +57,16 @@ func GetApplication(ctx *pulumi.Context,
 	if state != nil {
 		inputs["applicationId"] = state.ApplicationId
 		inputs["availableToOtherTenants"] = state.AvailableToOtherTenants
+		inputs["groupMembershipClaims"] = state.GroupMembershipClaims
 		inputs["homepage"] = state.Homepage
 		inputs["identifierUris"] = state.IdentifierUris
 		inputs["name"] = state.Name
 		inputs["oauth2AllowImplicitFlow"] = state.Oauth2AllowImplicitFlow
+		inputs["oauth2Permissions"] = state.Oauth2Permissions
+		inputs["objectId"] = state.ObjectId
 		inputs["replyUrls"] = state.ReplyUrls
 		inputs["requiredResourceAccesses"] = state.RequiredResourceAccesses
+		inputs["type"] = state.Type
 	}
 	s, err := ctx.ReadResource("azuread:index/application:Application", name, id, inputs, opts...)
 	if err != nil {
@@ -85,6 +95,11 @@ func (r *Application) AvailableToOtherTenants() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["availableToOtherTenants"])
 }
 
+// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+func (r *Application) GroupMembershipClaims() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["groupMembershipClaims"])
+}
+
 // The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 func (r *Application) Homepage() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["homepage"])
@@ -105,6 +120,16 @@ func (r *Application) Oauth2AllowImplicitFlow() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["oauth2AllowImplicitFlow"])
 }
 
+// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+func (r *Application) Oauth2Permissions() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["oauth2Permissions"])
+}
+
+// The Application's Object ID.
+func (r *Application) ObjectId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["objectId"])
+}
+
 // A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 func (r *Application) ReplyUrls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["replyUrls"])
@@ -115,12 +140,19 @@ func (r *Application) RequiredResourceAccesses() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["requiredResourceAccesses"])
 }
 
+// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+func (r *Application) Type() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["type"])
+}
+
 // Input properties used for looking up and filtering Application resources.
 type ApplicationState struct {
 	// The Application ID.
 	ApplicationId interface{}
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants interface{}
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	GroupMembershipClaims interface{}
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage interface{}
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -129,16 +161,24 @@ type ApplicationState struct {
 	Name interface{}
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow interface{}
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+	Oauth2Permissions interface{}
+	// The Application's Object ID.
+	ObjectId interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls interface{}
 	// A collection of `required_resource_access` blocks as documented below.
 	RequiredResourceAccesses interface{}
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	Type interface{}
 }
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants interface{}
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	GroupMembershipClaims interface{}
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage interface{}
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -151,4 +191,6 @@ type ApplicationArgs struct {
 	ReplyUrls interface{}
 	// A collection of `required_resource_access` blocks as documented below.
 	RequiredResourceAccesses interface{}
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	Type interface{}
 }

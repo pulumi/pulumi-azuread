@@ -17,6 +17,10 @@ class ServicePrincipal(pulumi.CustomResource):
     """
     The Display Name of the Azure Active Directory Application associated with this Service Principal.
     """
+    object_id: pulumi.Output[str]
+    """
+    The Service Principal's Object ID.
+    """
     tags: pulumi.Output[list]
     """
     A list of tags to apply to the Service Principal.
@@ -25,7 +29,7 @@ class ServicePrincipal(pulumi.CustomResource):
         """
         Manages a Service Principal associated with an Application within Azure Active Directory.
         
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -54,6 +58,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__['tags'] = tags
 
         __props__['display_name'] = None
+        __props__['object_id'] = None
 
         super(ServicePrincipal, __self__).__init__(
             'azuread:index/servicePrincipal:ServicePrincipal',

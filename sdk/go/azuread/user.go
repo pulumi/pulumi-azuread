@@ -44,6 +44,7 @@ func NewUser(ctx *pulumi.Context,
 		inputs["userPrincipalName"] = args.UserPrincipalName
 	}
 	inputs["mail"] = nil
+	inputs["objectId"] = nil
 	s, err := ctx.RegisterResource("azuread:index/user:User", name, true, inputs, opts...)
 	if err != nil {
 		return nil, err
@@ -62,6 +63,7 @@ func GetUser(ctx *pulumi.Context,
 		inputs["forcePasswordChange"] = state.ForcePasswordChange
 		inputs["mail"] = state.Mail
 		inputs["mailNickname"] = state.MailNickname
+		inputs["objectId"] = state.ObjectId
 		inputs["password"] = state.Password
 		inputs["userPrincipalName"] = state.UserPrincipalName
 	}
@@ -107,7 +109,12 @@ func (r *User) MailNickname() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["mailNickname"])
 }
 
-// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+// The Object ID of the Azure AD User.
+func (r *User) ObjectId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["objectId"])
+}
+
+// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 func (r *User) Password() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["password"])
 }
@@ -129,7 +136,9 @@ type UserState struct {
 	// The primary email address of the Azure AD User.
 	Mail interface{}
 	MailNickname interface{}
-	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+	// The Object ID of the Azure AD User.
+	ObjectId interface{}
+	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password interface{}
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName interface{}
@@ -145,7 +154,7 @@ type UserArgs struct {
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange interface{}
 	MailNickname interface{}
-	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 16 characters.
+	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password interface{}
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName interface{}
