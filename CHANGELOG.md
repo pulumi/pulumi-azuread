@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v0.5.0 of the Azuread Terraform Provider
+* Upgrade to 98fabcf5067b of pulumi-terraform
 
 ---
 
