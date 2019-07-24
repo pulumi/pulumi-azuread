@@ -28,6 +28,8 @@ import * as utilities from "./utilities";
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
  */
 export class ApplicationPassword extends pulumi.CustomResource {
     /**
@@ -57,6 +59,10 @@ export class ApplicationPassword extends pulumi.CustomResource {
     }
 
     public readonly applicationId!: pulumi.Output<string>;
+    /**
+     * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+     */
+    public readonly applicationObjectId!: pulumi.Output<string>;
     /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
@@ -91,6 +97,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ApplicationPasswordState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
+            inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
             inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
@@ -98,13 +105,11 @@ export class ApplicationPassword extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationPasswordArgs | undefined;
-            if (!args || args.applicationId === undefined) {
-                throw new Error("Missing required property 'applicationId'");
-            }
             if (!args || args.value === undefined) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["applicationId"] = args ? args.applicationId : undefined;
+            inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             inputs["endDate"] = args ? args.endDate : undefined;
             inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
@@ -120,6 +125,10 @@ export class ApplicationPassword extends pulumi.CustomResource {
  */
 export interface ApplicationPasswordState {
     readonly applicationId?: pulumi.Input<string>;
+    /**
+     * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+     */
+    readonly applicationObjectId?: pulumi.Input<string>;
     /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
@@ -146,7 +155,11 @@ export interface ApplicationPasswordState {
  * The set of arguments for constructing a ApplicationPassword resource.
  */
 export interface ApplicationPasswordArgs {
-    readonly applicationId: pulumi.Input<string>;
+    readonly applicationId?: pulumi.Input<string>;
+    /**
+     * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+     */
+    readonly applicationObjectId?: pulumi.Input<string>;
     /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */

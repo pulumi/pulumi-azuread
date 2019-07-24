@@ -11,6 +11,8 @@ import (
 // Manages a Password associated with an Application within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
 type ApplicationPassword struct {
 	s *pulumi.ResourceState
 }
@@ -18,15 +20,13 @@ type ApplicationPassword struct {
 // NewApplicationPassword registers a new resource with the given unique name, arguments, and options.
 func NewApplicationPassword(ctx *pulumi.Context,
 	name string, args *ApplicationPasswordArgs, opts ...pulumi.ResourceOpt) (*ApplicationPassword, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
 	if args == nil || args.Value == nil {
 		return nil, errors.New("missing required argument 'Value'")
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["applicationId"] = nil
+		inputs["applicationObjectId"] = nil
 		inputs["endDate"] = nil
 		inputs["endDateRelative"] = nil
 		inputs["keyId"] = nil
@@ -34,6 +34,7 @@ func NewApplicationPassword(ctx *pulumi.Context,
 		inputs["value"] = nil
 	} else {
 		inputs["applicationId"] = args.ApplicationId
+		inputs["applicationObjectId"] = args.ApplicationObjectId
 		inputs["endDate"] = args.EndDate
 		inputs["endDateRelative"] = args.EndDateRelative
 		inputs["keyId"] = args.KeyId
@@ -54,6 +55,7 @@ func GetApplicationPassword(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if state != nil {
 		inputs["applicationId"] = state.ApplicationId
+		inputs["applicationObjectId"] = state.ApplicationObjectId
 		inputs["endDate"] = state.EndDate
 		inputs["endDateRelative"] = state.EndDateRelative
 		inputs["keyId"] = state.KeyId
@@ -79,6 +81,11 @@ func (r *ApplicationPassword) ID() *pulumi.IDOutput {
 
 func (r *ApplicationPassword) ApplicationId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["applicationId"])
+}
+
+// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+func (r *ApplicationPassword) ApplicationObjectId() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["applicationObjectId"])
 }
 
 // The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -109,6 +116,8 @@ func (r *ApplicationPassword) Value() *pulumi.StringOutput {
 // Input properties used for looking up and filtering ApplicationPassword resources.
 type ApplicationPasswordState struct {
 	ApplicationId interface{}
+	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationObjectId interface{}
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate interface{}
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -124,6 +133,8 @@ type ApplicationPasswordState struct {
 // The set of arguments for constructing a ApplicationPassword resource.
 type ApplicationPasswordArgs struct {
 	ApplicationId interface{}
+	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+	ApplicationObjectId interface{}
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate interface{}
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.

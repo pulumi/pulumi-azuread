@@ -17,6 +17,10 @@ class ServicePrincipal(pulumi.CustomResource):
     """
     The Display Name of the Azure Active Directory Application associated with this Service Principal.
     """
+    oauth2_permissions: pulumi.Output[list]
+    """
+    A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+    """
     object_id: pulumi.Output[str]
     """
     The Service Principal's Object ID.
@@ -25,7 +29,7 @@ class ServicePrincipal(pulumi.CustomResource):
     """
     A list of tags to apply to the Service Principal.
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, tags=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, application_id=None, oauth2_permissions=None, tags=None, __name__=None, __opts__=None):
         """
         Manages a Service Principal associated with an Application within Azure Active Directory.
         
@@ -34,7 +38,10 @@ class ServicePrincipal(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_id: The ID of the Azure AD Application for which to create a Service Principal.
+        :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         :param pulumi.Input[list] tags: A list of tags to apply to the Service Principal.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -54,6 +61,8 @@ class ServicePrincipal(pulumi.CustomResource):
         if application_id is None:
             raise TypeError("Missing required property 'application_id'")
         __props__['application_id'] = application_id
+
+        __props__['oauth2_permissions'] = oauth2_permissions
 
         __props__['tags'] = tags
 

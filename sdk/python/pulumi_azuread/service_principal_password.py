@@ -47,6 +47,8 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         :param pulumi.Input[str] service_principal_id: The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The Password for this Service Principal.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal_password.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

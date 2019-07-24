@@ -15,17 +15,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const testUser = pulumi.output(azuread.getUser({
- *     userPrincipalName: "john@hashicorp.com",
+ * const example = pulumi.output(azuread.getUser({
+ *     userPrincipalName: "user@hashicorp.com",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
  */
-export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
     args = args || {};
-    return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
+    const promise: Promise<GetUserResult> = pulumi.runtime.invoke("azuread:index/getUser:getUser", {
         "objectId": args.objectId,
         "userPrincipalName": args.userPrincipalName,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

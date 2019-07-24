@@ -12,13 +12,19 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, name=None, object_id=None, id=None):
+    def __init__(__self__, members=None, name=None, object_id=None, owners=None, id=None):
+        if members and not isinstance(members, list):
+            raise TypeError("Expected argument 'members' to be a list")
+        __self__.members = members
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         __self__.object_id = object_id
+        if owners and not isinstance(owners, list):
+            raise TypeError("Expected argument 'owners' to be a list")
+        __self__.owners = owners
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
@@ -31,6 +37,8 @@ async def get_group(name=None,object_id=None,opts=None):
     Gets information about an Azure Active Directory group.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/group.html.markdown.
     """
     __args__ = dict()
 
@@ -39,6 +47,8 @@ async def get_group(name=None,object_id=None,opts=None):
     __ret__ = await pulumi.runtime.invoke('azuread:index/getGroup:getGroup', __args__, opts=opts)
 
     return GetGroupResult(
+        members=__ret__.get('members'),
         name=__ret__.get('name'),
         object_id=__ret__.get('objectId'),
+        owners=__ret__.get('owners'),
         id=__ret__.get('id'))

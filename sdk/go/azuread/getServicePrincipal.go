@@ -10,11 +10,15 @@ import (
 // Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
 func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) (*GetServicePrincipalResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["appRoles"] = args.AppRoles
 		inputs["applicationId"] = args.ApplicationId
 		inputs["displayName"] = args.DisplayName
+		inputs["oauth2Permissions"] = args.Oauth2Permissions
 		inputs["objectId"] = args.ObjectId
 	}
 	outputs, err := ctx.Invoke("azuread:index/getServicePrincipal:getServicePrincipal", inputs)
@@ -22,8 +26,10 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) 
 		return nil, err
 	}
 	return &GetServicePrincipalResult{
+		AppRoles: outputs["appRoles"],
 		ApplicationId: outputs["applicationId"],
 		DisplayName: outputs["displayName"],
+		Oauth2Permissions: outputs["oauth2Permissions"],
 		ObjectId: outputs["objectId"],
 		Id: outputs["id"],
 	}, nil
@@ -31,18 +37,25 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) 
 
 // A collection of arguments for invoking getServicePrincipal.
 type GetServicePrincipalArgs struct {
+	// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+	AppRoles interface{}
 	// The ID of the Azure AD Application.
 	ApplicationId interface{}
 	// The Display Name of the Azure AD Application associated with this Service Principal.
 	DisplayName interface{}
+	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+	Oauth2Permissions interface{}
 	// The ID of the Azure AD Service Principal.
 	ObjectId interface{}
 }
 
 // A collection of values returned by getServicePrincipal.
 type GetServicePrincipalResult struct {
+	AppRoles interface{}
 	ApplicationId interface{}
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName interface{}
+	Oauth2Permissions interface{}
 	ObjectId interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}

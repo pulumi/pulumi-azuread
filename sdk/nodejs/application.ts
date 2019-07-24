@@ -15,7 +15,17 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const test = new azuread.Application("test", {
+ * const example = new azuread.Application("example", {
+ *     appRoles: [{
+ *         allowedMemberTypes: [
+ *             "User",
+ *             "Application",
+ *         ],
+ *         description: "Admins can manage roles and perform all task actions",
+ *         displayName: "Admin",
+ *         isEnabled: true,
+ *         value: "Admin",
+ *     }],
  *     availableToOtherTenants: false,
  *     homepage: "https://homepage",
  *     identifierUris: ["https://uri"],
@@ -50,6 +60,8 @@ import * as utilities from "./utilities";
  *     type: "webapp/api",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application.html.markdown.
  */
 export class Application extends pulumi.CustomResource {
     /**
@@ -78,6 +90,10 @@ export class Application extends pulumi.CustomResource {
         return obj['__pulumiType'] === Application.__pulumiType;
     }
 
+    /**
+     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     */
+    public readonly appRoles!: pulumi.Output<{ allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled?: boolean, value: string }[] | undefined>;
     /**
      * The Application ID.
      */
@@ -109,11 +125,15 @@ export class Application extends pulumi.CustomResource {
     /**
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
      */
-    public /*out*/ readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
+    public readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
     /**
      * The Application's Object ID.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * Is this Azure AD Application a public client? Defaults to `false`.
+     */
+    public readonly publicClient!: pulumi.Output<boolean>;
     /**
      * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
      */
@@ -139,6 +159,7 @@ export class Application extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ApplicationState | undefined;
+            inputs["appRoles"] = state ? state.appRoles : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["availableToOtherTenants"] = state ? state.availableToOtherTenants : undefined;
             inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
@@ -148,22 +169,25 @@ export class Application extends pulumi.CustomResource {
             inputs["oauth2AllowImplicitFlow"] = state ? state.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["publicClient"] = state ? state.publicClient : undefined;
             inputs["replyUrls"] = state ? state.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
             inputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
+            inputs["appRoles"] = args ? args.appRoles : undefined;
             inputs["availableToOtherTenants"] = args ? args.availableToOtherTenants : undefined;
             inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
             inputs["homepage"] = args ? args.homepage : undefined;
             inputs["identifierUris"] = args ? args.identifierUris : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oauth2AllowImplicitFlow"] = args ? args.oauth2AllowImplicitFlow : undefined;
+            inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
+            inputs["publicClient"] = args ? args.publicClient : undefined;
             inputs["replyUrls"] = args ? args.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["applicationId"] = undefined /*out*/;
-            inputs["oauth2Permissions"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
         }
         super(Application.__pulumiType, name, inputs, opts);
@@ -174,6 +198,10 @@ export class Application extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Application resources.
  */
 export interface ApplicationState {
+    /**
+     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     */
+    readonly appRoles?: pulumi.Input<pulumi.Input<{ allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>, description: pulumi.Input<string>, displayName: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, value: pulumi.Input<string> }>[]>;
     /**
      * The Application ID.
      */
@@ -211,6 +239,10 @@ export interface ApplicationState {
      */
     readonly objectId?: pulumi.Input<string>;
     /**
+     * Is this Azure AD Application a public client? Defaults to `false`.
+     */
+    readonly publicClient?: pulumi.Input<boolean>;
+    /**
      * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
      */
     readonly replyUrls?: pulumi.Input<pulumi.Input<string>[]>;
@@ -228,6 +260,10 @@ export interface ApplicationState {
  * The set of arguments for constructing a Application resource.
  */
 export interface ApplicationArgs {
+    /**
+     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     */
+    readonly appRoles?: pulumi.Input<pulumi.Input<{ allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>, description: pulumi.Input<string>, displayName: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, value: pulumi.Input<string> }>[]>;
     /**
      * Is this Azure AD Application available to other tenants? Defaults to `false`.
      */
@@ -252,6 +288,14 @@ export interface ApplicationArgs {
      * Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
      */
     readonly oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
+    /**
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+     */
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
+    /**
+     * Is this Azure AD Application a public client? Defaults to `false`.
+     */
+    readonly publicClient?: pulumi.Input<boolean>;
     /**
      * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
      */

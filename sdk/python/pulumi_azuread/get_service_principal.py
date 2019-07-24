@@ -12,13 +12,22 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, application_id=None, display_name=None, object_id=None, id=None):
+    def __init__(__self__, app_roles=None, application_id=None, display_name=None, oauth2_permissions=None, object_id=None, id=None):
+        if app_roles and not isinstance(app_roles, list):
+            raise TypeError("Expected argument 'app_roles' to be a list")
+        __self__.app_roles = app_roles
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         __self__.application_id = application_id
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         __self__.display_name = display_name
+        """
+        Display name for the permission that appears in the admin consent and app assignment experiences.
+        """
+        if oauth2_permissions and not isinstance(oauth2_permissions, list):
+            raise TypeError("Expected argument 'oauth2_permissions' to be a list")
+        __self__.oauth2_permissions = oauth2_permissions
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         __self__.object_id = object_id
@@ -29,21 +38,27 @@ class GetServicePrincipalResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_service_principal(application_id=None,display_name=None,object_id=None,opts=None):
+async def get_service_principal(app_roles=None,application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
     """
     __args__ = dict()
 
+    __args__['appRoles'] = app_roles
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
+    __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
     __ret__ = await pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts)
 
     return GetServicePrincipalResult(
+        app_roles=__ret__.get('appRoles'),
         application_id=__ret__.get('applicationId'),
         display_name=__ret__.get('displayName'),
+        oauth2_permissions=__ret__.get('oauth2Permissions'),
         object_id=__ret__.get('objectId'),
         id=__ret__.get('id'))

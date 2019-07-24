@@ -11,6 +11,8 @@ import (
 // Manages a User within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
 type User struct {
 	s *pulumi.ResourceState
 }

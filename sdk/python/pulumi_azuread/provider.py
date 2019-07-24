@@ -14,10 +14,12 @@ class Provider(pulumi.ProviderResource):
         The provider type for the azuread package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
         construction to achieve fine-grained programmatic control over provider settings. See the
-        [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
+        [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/index.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

@@ -53,6 +53,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

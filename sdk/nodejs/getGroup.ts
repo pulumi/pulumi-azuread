@@ -15,17 +15,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const testGroup = pulumi.output(azuread.getGroup({
- *     name: "MyTestGroup",
+ * const example = pulumi.output(azuread.getGroup({
+ *     name: "A-AD-Group",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/group.html.markdown.
  */
-export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
+export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> & GetGroupResult {
     args = args || {};
-    return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
+    const promise: Promise<GetGroupResult> = pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "name": args.name,
         "objectId": args.objectId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
@@ -46,8 +50,10 @@ export interface GetGroupArgs {
  * A collection of values returned by getGroup.
  */
 export interface GetGroupResult {
+    readonly members: string[];
     readonly name: string;
     readonly objectId: string;
+    readonly owners: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.
      */

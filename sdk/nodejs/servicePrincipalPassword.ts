@@ -15,22 +15,24 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const testApplication = new azuread.Application("test", {
+ * const exampleApplication = new azuread.Application("example", {
  *     availableToOtherTenants: false,
  *     homepage: "http://homepage",
  *     identifierUris: ["http://uri"],
  *     oauth2AllowImplicitFlow: true,
  *     replyUrls: ["http://replyurl"],
  * });
- * const testServicePrincipal = new azuread.ServicePrincipal("test", {
- *     applicationId: testApplication.applicationId,
- * });
- * const testServicePrincipalPassword = new azuread.ServicePrincipalPassword("test", {
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
  *     endDate: "2020-01-01T01:02:03Z",
- *     servicePrincipalId: testServicePrincipal.id,
+ *     servicePrincipalId: azuread_service_principal_test.id,
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
  * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     applicationId: exampleApplication.applicationId,
+ * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal_password.html.markdown.
  */
 export class ServicePrincipalPassword extends pulumi.CustomResource {
     /**

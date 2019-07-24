@@ -147,6 +147,7 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
 			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
 			"azuread_user":                       {Tok: makeResource(mainMod, "User")},
+			"azuread_group_member":               {Tok: makeResource(mainMod, "GroupMember")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":       {Tok: makeDataSource(mainMod, "getApplication")},
@@ -154,6 +155,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_group":             {Tok: makeDataSource(mainMod, "getGroup")},
 			"azuread_service_principal": {Tok: makeDataSource(mainMod, "getServicePrincipal")},
 			"azuread_user":              {Tok: makeDataSource(mainMod, "getUser")},
+			"azuread_groups":            {Tok: makeDataSource(mainMod, "getGroups")},
+			"azuread_users":             {Tok: makeDataSource(mainMod, "getUsers")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
