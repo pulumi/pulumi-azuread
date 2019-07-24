@@ -10,6 +10,8 @@ import (
 // Manages a Group within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.html.markdown.
 type Group struct {
 	s *pulumi.ResourceState
 }
@@ -19,9 +21,13 @@ func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOpt) (*Group, error) {
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["members"] = nil
 		inputs["name"] = nil
+		inputs["owners"] = nil
 	} else {
+		inputs["members"] = args.Members
 		inputs["name"] = args.Name
+		inputs["owners"] = args.Owners
 	}
 	inputs["objectId"] = nil
 	s, err := ctx.RegisterResource("azuread:index/group:Group", name, true, inputs, opts...)
@@ -37,8 +43,10 @@ func GetGroup(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *GroupState, opts ...pulumi.ResourceOpt) (*Group, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["members"] = state.Members
 		inputs["name"] = state.Name
 		inputs["objectId"] = state.ObjectId
+		inputs["owners"] = state.Owners
 	}
 	s, err := ctx.ReadResource("azuread:index/group:Group", name, id, inputs, opts...)
 	if err != nil {
@@ -57,7 +65,12 @@ func (r *Group) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// The display name for the Group.
+// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+func (r *Group) Members() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["members"])
+}
+
+// The display name for the Group. Changing this forces a new resource to be created.
 func (r *Group) Name() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["name"])
 }
@@ -66,15 +79,28 @@ func (r *Group) ObjectId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["objectId"])
 }
 
+// A set of owners who own this Group. Supported Object types are Users or Service Principals.
+func (r *Group) Owners() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["owners"])
+}
+
 // Input properties used for looking up and filtering Group resources.
 type GroupState struct {
-	// The display name for the Group.
+	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+	Members interface{}
+	// The display name for the Group. Changing this forces a new resource to be created.
 	Name interface{}
 	ObjectId interface{}
+	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
+	Owners interface{}
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The display name for the Group.
+	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+	Members interface{}
+	// The display name for the Group. Changing this forces a new resource to be created.
 	Name interface{}
+	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
+	Owners interface{}
 }

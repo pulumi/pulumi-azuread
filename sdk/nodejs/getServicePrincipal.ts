@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const test = pulumi.output(azuread.getServicePrincipal({
+ * const example = pulumi.output(azuread.getServicePrincipal({
  *     displayName: "my-awesome-application",
  * }));
  * ```
@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const test = pulumi.output(azuread.getServicePrincipal({
+ * const example = pulumi.output(azuread.getServicePrincipal({
  *     applicationId: "00000000-0000-0000-0000-000000000000",
  * }));
  * ```
@@ -37,24 +37,34 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const test = pulumi.output(azuread.getServicePrincipal({
+ * const example = pulumi.output(azuread.getServicePrincipal({
  *     objectId: "00000000-0000-0000-0000-000000000000",
  * }));
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
  */
-export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
+export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> & GetServicePrincipalResult {
     args = args || {};
-    return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
+    const promise: Promise<GetServicePrincipalResult> = pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
+        "appRoles": args.appRoles,
         "applicationId": args.applicationId,
         "displayName": args.displayName,
+        "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalArgs {
+    /**
+     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     */
+    readonly appRoles?: { allowedMemberTypes?: string[], description?: string, displayName?: string, id?: string, isEnabled?: boolean, value?: string }[];
     /**
      * The ID of the Azure AD Application.
      */
@@ -63,6 +73,10 @@ export interface GetServicePrincipalArgs {
      * The Display Name of the Azure AD Application associated with this Service Principal.
      */
     readonly displayName?: string;
+    /**
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     */
+    readonly oauth2Permissions?: { adminConsentDescription?: string, adminConsentDisplayName?: string, id?: string, isEnabled?: boolean, type?: string, userConsentDescription?: string, userConsentDisplayName?: string, value?: string }[];
     /**
      * The ID of the Azure AD Service Principal.
      */
@@ -73,8 +87,13 @@ export interface GetServicePrincipalArgs {
  * A collection of values returned by getServicePrincipal.
  */
 export interface GetServicePrincipalResult {
+    readonly appRoles: { allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled: boolean, value: string }[];
     readonly applicationId: string;
+    /**
+     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     */
     readonly displayName: string;
+    readonly oauth2Permissions: { adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[];
     readonly objectId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

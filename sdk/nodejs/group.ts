@@ -5,18 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages a Group within Azure Active Directory.
- * 
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * 
- * const myGroup = new azuread.Group("my_group", {});
- * ```
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.html.markdown.
  */
 export class Group extends pulumi.CustomResource {
     /**
@@ -46,10 +35,18 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * The display name for the Group.
+     * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+     */
+    public readonly members!: pulumi.Output<string[]>;
+    /**
+     * The display name for the Group. Changing this forces a new resource to be created.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * A set of owners who own this Group. Supported Object types are Users or Service Principals.
+     */
+    public readonly owners!: pulumi.Output<string[]>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -63,11 +60,15 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as GroupState | undefined;
+            inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["owners"] = state ? state.owners : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
+            inputs["members"] = args ? args.members : undefined;
             inputs["name"] = args ? args.name : undefined;
+            inputs["owners"] = args ? args.owners : undefined;
             inputs["objectId"] = undefined /*out*/;
         }
         super(Group.__pulumiType, name, inputs, opts);
@@ -79,10 +80,18 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * The display name for the Group.
+     * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+     */
+    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The display name for the Group. Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
     readonly objectId?: pulumi.Input<string>;
+    /**
+     * A set of owners who own this Group. Supported Object types are Users or Service Principals.
+     */
+    readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -90,7 +99,15 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * The display name for the Group.
+     * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+     */
+    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The display name for the Group. Changing this forces a new resource to be created.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * A set of owners who own this Group. Supported Object types are Users or Service Principals.
+     */
+    readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
 }

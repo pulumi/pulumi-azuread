@@ -9,12 +9,20 @@ import pulumi.runtime
 from . import utilities, tables
 
 class Group(pulumi.CustomResource):
+    members: pulumi.Output[list]
+    """
+    A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+    """
     name: pulumi.Output[str]
     """
-    The display name for the Group.
+    The display name for the Group. Changing this forces a new resource to be created.
     """
     object_id: pulumi.Output[str]
-    def __init__(__self__, resource_name, opts=None, name=None, __name__=None, __opts__=None):
+    owners: pulumi.Output[list]
+    """
+    A set of owners who own this Group. Supported Object types are Users or Service Principals.
+    """
+    def __init__(__self__, resource_name, opts=None, members=None, name=None, owners=None, __name__=None, __opts__=None):
         """
         Manages a Group within Azure Active Directory.
         
@@ -22,7 +30,11 @@ class Group(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The display name for the Group.
+        :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
+        :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -39,7 +51,11 @@ class Group(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__['members'] = members
+
         __props__['name'] = name
+
+        __props__['owners'] = owners
 
         __props__['object_id'] = None
 

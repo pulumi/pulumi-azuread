@@ -12,7 +12,13 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, reply_urls=None, required_resource_accesses=None, type=None, id=None):
+    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, reply_urls=None, required_resource_accesses=None, type=None, id=None):
+        if app_roles and not isinstance(app_roles, list):
+            raise TypeError("Expected argument 'app_roles' to be a list")
+        __self__.app_roles = app_roles
+        """
+        A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+        """
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         __self__.application_id = application_id
@@ -86,20 +92,24 @@ class GetApplicationResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
+async def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
     """
     __args__ = dict()
 
+    __args__['appRoles'] = app_roles
     __args__['name'] = name
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
     __ret__ = await pulumi.runtime.invoke('azuread:index/getApplication:getApplication', __args__, opts=opts)
 
     return GetApplicationResult(
+        app_roles=__ret__.get('appRoles'),
         application_id=__ret__.get('applicationId'),
         available_to_other_tenants=__ret__.get('availableToOtherTenants'),
         group_membership_claims=__ret__.get('groupMembershipClaims'),

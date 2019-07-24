@@ -15,15 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const testApplication = new azuread.Application("test", {
+ * const exampleApplication = new azuread.Application("example", {
  *     availableToOtherTenants: false,
  *     homepage: "http://homepage",
  *     identifierUris: ["http://uri"],
  *     oauth2AllowImplicitFlow: true,
  *     replyUrls: ["http://replyurl"],
  * });
- * const testServicePrincipal = new azuread.ServicePrincipal("test", {
- *     applicationId: testApplication.applicationId,
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     applicationId: exampleApplication.applicationId,
  *     tags: [
  *         "example",
  *         "tags",
@@ -31,6 +31,8 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal.html.markdown.
  */
 export class ServicePrincipal extends pulumi.CustomResource {
     /**
@@ -68,6 +70,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     */
+    public readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
+    /**
      * The Service Principal's Object ID.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
@@ -90,6 +96,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             const state = argsOrState as ServicePrincipalState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["tags"] = state ? state.tags : undefined;
         } else {
@@ -98,6 +105,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
                 throw new Error("Missing required property 'applicationId'");
             }
             inputs["applicationId"] = args ? args.applicationId : undefined;
+            inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["displayName"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
@@ -119,6 +127,10 @@ export interface ServicePrincipalState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     */
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
+    /**
      * The Service Principal's Object ID.
      */
     readonly objectId?: pulumi.Input<string>;
@@ -136,6 +148,10 @@ export interface ServicePrincipalArgs {
      * The ID of the Azure AD Application for which to create a Service Principal.
      */
     readonly applicationId: pulumi.Input<string>;
+    /**
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     */
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
     /**
      * A list of tags to apply to the Service Principal.
      */

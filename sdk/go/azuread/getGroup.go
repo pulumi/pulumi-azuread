@@ -10,6 +10,8 @@ import (
 // Gets information about an Azure Active Directory group.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/group.html.markdown.
 func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
@@ -21,8 +23,10 @@ func LookupGroup(ctx *pulumi.Context, args *GetGroupArgs) (*GetGroupResult, erro
 		return nil, err
 	}
 	return &GetGroupResult{
+		Members: outputs["members"],
 		Name: outputs["name"],
 		ObjectId: outputs["objectId"],
+		Owners: outputs["owners"],
 		Id: outputs["id"],
 	}, nil
 }
@@ -37,8 +41,10 @@ type GetGroupArgs struct {
 
 // A collection of values returned by getGroup.
 type GetGroupResult struct {
+	Members interface{}
 	Name interface{}
 	ObjectId interface{}
+	Owners interface{}
 	// id is the provider-assigned unique ID for this managed resource.
 	Id interface{}
 }

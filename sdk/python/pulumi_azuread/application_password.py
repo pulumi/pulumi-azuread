@@ -10,6 +10,10 @@ from . import utilities, tables
 
 class ApplicationPassword(pulumi.CustomResource):
     application_id: pulumi.Output[str]
+    application_object_id: pulumi.Output[str]
+    """
+    The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+    """
     end_date: pulumi.Output[str]
     """
     The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -30,7 +34,7 @@ class ApplicationPassword(pulumi.CustomResource):
     """
     The Password for this Application .
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, application_id=None, application_object_id=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None, __name__=None, __opts__=None):
         """
         Manages a Password associated with an Application within Azure Active Directory.
         
@@ -38,11 +42,14 @@ class ApplicationPassword(pulumi.CustomResource):
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The Password for this Application .
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -59,9 +66,9 @@ class ApplicationPassword(pulumi.CustomResource):
 
         __props__ = dict()
 
-        if application_id is None:
-            raise TypeError("Missing required property 'application_id'")
         __props__['application_id'] = application_id
+
+        __props__['application_object_id'] = application_object_id
 
         __props__['end_date'] = end_date
 

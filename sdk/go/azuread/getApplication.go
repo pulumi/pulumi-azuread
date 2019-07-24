@@ -10,9 +10,12 @@ import (
 // Use this data source to access information about an existing Application within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
 func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetApplicationResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["appRoles"] = args.AppRoles
 		inputs["name"] = args.Name
 		inputs["oauth2Permissions"] = args.Oauth2Permissions
 		inputs["objectId"] = args.ObjectId
@@ -22,6 +25,7 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 		return nil, err
 	}
 	return &GetApplicationResult{
+		AppRoles: outputs["appRoles"],
 		ApplicationId: outputs["applicationId"],
 		AvailableToOtherTenants: outputs["availableToOtherTenants"],
 		GroupMembershipClaims: outputs["groupMembershipClaims"],
@@ -40,6 +44,7 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 
 // A collection of arguments for invoking getApplication.
 type GetApplicationArgs struct {
+	AppRoles interface{}
 	// Specifies the name of the Application within Azure Active Directory.
 	Name interface{}
 	Oauth2Permissions interface{}
@@ -49,6 +54,8 @@ type GetApplicationArgs struct {
 
 // A collection of values returned by getApplication.
 type GetApplicationResult struct {
+	// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+	AppRoles interface{}
 	// the Application ID of the Azure Active Directory Application.
 	ApplicationId interface{}
 	// Is this Azure AD Application available to other tenants?

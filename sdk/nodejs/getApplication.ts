@@ -15,26 +15,32 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const test = pulumi.output(azuread.getApplication({
+ * const example = pulumi.output(azuread.getApplication({
  *     name: "My First AzureAD Application",
  * }));
  * 
- * export const azureAdObjectId = test.id;
+ * export const azureAdObjectId = example.id;
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
  */
-export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
+export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> & GetApplicationResult {
     args = args || {};
-    return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
+    const promise: Promise<GetApplicationResult> = pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
+        "appRoles": args.appRoles,
         "name": args.name,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
     }, opts);
+
+    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
+    readonly appRoles?: { allowedMemberTypes?: string[], description?: string, displayName?: string, id?: string, isEnabled?: boolean, value?: string }[];
     /**
      * Specifies the name of the Application within Azure Active Directory.
      */
@@ -50,6 +56,10 @@ export interface GetApplicationArgs {
  * A collection of values returned by getApplication.
  */
 export interface GetApplicationResult {
+    /**
+     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     */
+    readonly appRoles: { allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled: boolean, value: string }[];
     /**
      * the Application ID of the Azure Active Directory Application.
      */

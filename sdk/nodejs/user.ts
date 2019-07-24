@@ -15,13 +15,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const testUser = new azuread.User("test_user", {
- *     displayName: "John Doe",
- *     mailNickname: "johnd",
+ * const example = new azuread.User("example", {
+ *     displayName: "J. Doe",
+ *     mailNickname: "jdoe",
  *     password: "SecretP@sswd99!",
- *     userPrincipalName: "john@hashicorp.com",
+ *     userPrincipalName: "jdo@hashicorp.com",
  * });
  * ```
+ *
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
  */
 export class User extends pulumi.CustomResource {
     /**

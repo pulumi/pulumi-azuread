@@ -11,6 +11,8 @@ import (
 // Manages a Service Principal associated with an Application within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal.html.markdown.
 type ServicePrincipal struct {
 	s *pulumi.ResourceState
 }
@@ -24,9 +26,11 @@ func NewServicePrincipal(ctx *pulumi.Context,
 	inputs := make(map[string]interface{})
 	if args == nil {
 		inputs["applicationId"] = nil
+		inputs["oauth2Permissions"] = nil
 		inputs["tags"] = nil
 	} else {
 		inputs["applicationId"] = args.ApplicationId
+		inputs["oauth2Permissions"] = args.Oauth2Permissions
 		inputs["tags"] = args.Tags
 	}
 	inputs["displayName"] = nil
@@ -46,6 +50,7 @@ func GetServicePrincipal(ctx *pulumi.Context,
 	if state != nil {
 		inputs["applicationId"] = state.ApplicationId
 		inputs["displayName"] = state.DisplayName
+		inputs["oauth2Permissions"] = state.Oauth2Permissions
 		inputs["objectId"] = state.ObjectId
 		inputs["tags"] = state.Tags
 	}
@@ -76,6 +81,11 @@ func (r *ServicePrincipal) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
+// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+func (r *ServicePrincipal) Oauth2Permissions() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["oauth2Permissions"])
+}
+
 // The Service Principal's Object ID.
 func (r *ServicePrincipal) ObjectId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["objectId"])
@@ -92,6 +102,8 @@ type ServicePrincipalState struct {
 	ApplicationId interface{}
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
 	DisplayName interface{}
+	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+	Oauth2Permissions interface{}
 	// The Service Principal's Object ID.
 	ObjectId interface{}
 	// A list of tags to apply to the Service Principal.
@@ -102,6 +114,8 @@ type ServicePrincipalState struct {
 type ServicePrincipalArgs struct {
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId interface{}
+	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+	Oauth2Permissions interface{}
 	// A list of tags to apply to the Service Principal.
 	Tags interface{}
 }

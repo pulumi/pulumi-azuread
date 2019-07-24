@@ -10,6 +10,8 @@ import (
 // Use this data source to access information about an existing Domains within Azure Active Directory.
 // 
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
 func LookupDomains(ctx *pulumi.Context, args *GetDomainsArgs) (*GetDomainsResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
