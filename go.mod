@@ -17,7 +17,7 @@ require (
 	github.com/pulumi/pulumi v0.17.23-0.20190715212628-02ffff88409f
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190719221554-98fabcf5067b
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
-	github.com/terraform-providers/terraform-provider-azuread v0.5.0
+	github.com/terraform-providers/terraform-provider-azuread v0.5.1
 	labix.org/v2/mgo v0.0.0-20140701140051-000000000287 // indirect
 	launchpad.net/gocheck v0.0.0-20140225173054-000000000087 // indirect
 )
