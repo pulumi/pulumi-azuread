@@ -32,7 +32,15 @@ class GetUsersResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_users(object_ids=None,user_principal_names=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_users(object_ids=None,user_principal_names=None,opts=None):
     """
     Gets Object IDs or UPNs for multiple Azure Active Directory users.
     
@@ -44,7 +52,11 @@ async def get_users(object_ids=None,user_principal_names=None,opts=None):
 
     __args__['objectIds'] = object_ids
     __args__['userPrincipalNames'] = user_principal_names
-    __ret__ = await pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts).value
 
     return GetUsersResult(
         object_ids=__ret__.get('objectIds'),

@@ -82,6 +82,10 @@ class ApplicationPassword(pulumi.CustomResource):
             raise TypeError("Missing required property 'value'")
         __props__['value'] = value
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ApplicationPassword, __self__).__init__(
             'azuread:index/applicationPassword:ApplicationPassword',
             resource_name,

@@ -24,6 +24,13 @@ import * as utilities from "./utilities";
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> & GetDomainsResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetDomainsResult> = pulumi.runtime.invoke("azuread:index/getDomains:getDomains", {
         "includeUnverified": args.includeUnverified,
         "onlyDefault": args.onlyDefault,

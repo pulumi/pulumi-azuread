@@ -130,6 +130,10 @@ class Application(pulumi.CustomResource):
         __props__['application_id'] = None
         __props__['object_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Application, __self__).__init__(
             'azuread:index/application:Application',
             resource_name,

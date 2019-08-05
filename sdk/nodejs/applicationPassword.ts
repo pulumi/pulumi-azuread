@@ -116,6 +116,13 @@ export class ApplicationPassword extends pulumi.CustomResource {
             inputs["startDate"] = args ? args.startDate : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ApplicationPassword.__pulumiType, name, inputs, opts);
     }
 }

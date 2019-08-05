@@ -88,6 +88,13 @@ export class GroupMember extends pulumi.CustomResource {
             inputs["groupObjectId"] = args ? args.groupObjectId : undefined;
             inputs["memberObjectId"] = args ? args.memberObjectId : undefined;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(GroupMember.__pulumiType, name, inputs, opts);
     }
 }

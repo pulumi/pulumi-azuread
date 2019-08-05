@@ -110,6 +110,13 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["displayName"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(ServicePrincipal.__pulumiType, name, inputs, opts);
     }
 }

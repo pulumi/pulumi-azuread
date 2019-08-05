@@ -35,7 +35,15 @@ class GetDomainsResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_domains(include_unverified=None,only_default=None,only_initial=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_domains(include_unverified=None,only_default=None,only_initial=None,opts=None):
     """
     Use this data source to access information about an existing Domains within Azure Active Directory.
     
@@ -48,7 +56,11 @@ async def get_domains(include_unverified=None,only_default=None,only_initial=Non
     __args__['includeUnverified'] = include_unverified
     __args__['onlyDefault'] = only_default
     __args__['onlyInitial'] = only_initial
-    __ret__ = await pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts).value
 
     return GetDomainsResult(
         domains=__ret__.get('domains'),

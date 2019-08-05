@@ -27,6 +27,13 @@ import * as utilities from "./utilities";
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> & GetUsersResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetUsersResult> = pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
         "objectIds": args.objectIds,
         "userPrincipalNames": args.userPrincipalNames,
