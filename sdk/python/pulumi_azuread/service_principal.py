@@ -69,6 +69,10 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__['display_name'] = None
         __props__['object_id'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(ServicePrincipal, __self__).__init__(
             'azuread:index/servicePrincipal:ServicePrincipal',
             resource_name,

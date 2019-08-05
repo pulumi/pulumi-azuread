@@ -32,7 +32,15 @@ class GetGroupsResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_groups(names=None,object_ids=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_groups(names=None,object_ids=None,opts=None):
     """
     Gets Object IDs or Display Names for multiple Azure Active Directory groups.
     
@@ -44,7 +52,11 @@ async def get_groups(names=None,object_ids=None,opts=None):
 
     __args__['names'] = names
     __args__['objectIds'] = object_ids
-    __ret__ = await pulumi.runtime.invoke('azuread:index/getGroups:getGroups', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getGroups:getGroups', __args__, opts=opts).value
 
     return GetGroupsResult(
         names=__ret__.get('names'),

@@ -53,7 +53,15 @@ class GetUserResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_user(object_id=None,user_principal_name=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_user(object_id=None,user_principal_name=None,opts=None):
     """
     Gets information about an Azure Active Directory user.
     
@@ -65,7 +73,11 @@ async def get_user(object_id=None,user_principal_name=None,opts=None):
 
     __args__['objectId'] = object_id
     __args__['userPrincipalName'] = user_principal_name
-    __ret__ = await pulumi.runtime.invoke('azuread:index/getUser:getUser', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getUser:getUser', __args__, opts=opts).value
 
     return GetUserResult(
         account_enabled=__ret__.get('accountEnabled'),

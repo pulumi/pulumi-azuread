@@ -24,6 +24,13 @@ import * as utilities from "./utilities";
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> & GetGroupResult {
     args = args || {};
+    if (!opts) {
+        opts = {}
+    }
+
+    if (!opts.version) {
+        opts.version = utilities.getVersion();
+    }
     const promise: Promise<GetGroupResult> = pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "name": args.name,
         "objectId": args.objectId,

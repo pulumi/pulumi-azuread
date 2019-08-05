@@ -38,7 +38,15 @@ class GetServicePrincipalResult:
         id is the provider-assigned unique ID for this managed resource.
         """
 
-async def get_service_principal(app_roles=None,application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
+    # pylint: disable=using-constant-test
+    def __await__(self):
+        if False:
+            yield self
+        return self
+
+    __iter__ = __await__
+
+def get_service_principal(app_roles=None,application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
     
@@ -53,7 +61,11 @@ async def get_service_principal(app_roles=None,application_id=None,display_name=
     __args__['displayName'] = display_name
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
-    __ret__ = await pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts)
+    if opts is None:
+        opts = pulumi.ResourceOptions()
+    if opts.version is None:
+        opts.version = utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts).value
 
     return GetServicePrincipalResult(
         app_roles=__ret__.get('appRoles'),

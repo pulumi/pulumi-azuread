@@ -53,6 +53,10 @@ class GroupMember(pulumi.CustomResource):
             raise TypeError("Missing required property 'member_object_id'")
         __props__['member_object_id'] = member_object_id
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(GroupMember, __self__).__init__(
             'azuread:index/groupMember:GroupMember',
             resource_name,

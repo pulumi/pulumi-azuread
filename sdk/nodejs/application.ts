@@ -190,6 +190,13 @@ export class Application extends pulumi.CustomResource {
             inputs["applicationId"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(Application.__pulumiType, name, inputs, opts);
     }
 }

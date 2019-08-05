@@ -123,6 +123,13 @@ export class User extends pulumi.CustomResource {
             inputs["mail"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
         }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
+        }
         super(User.__pulumiType, name, inputs, opts);
     }
 }
