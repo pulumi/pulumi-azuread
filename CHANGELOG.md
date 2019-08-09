@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Update to pulumi-terraform@9db2fc93cd
+___NULL___
 
 ---
+
+## 0.18.4 (2019-08-09)
+* Update to pulumi-terraform@9db2fc93cd
 
 ## 0.18.3 (2019-07-24)
 * Upgrade to v0.5.1 of the Azuread Terraform Provider
