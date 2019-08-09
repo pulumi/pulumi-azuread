@@ -94,7 +94,7 @@ func (r *Application) ID() *pulumi.IDOutput {
 	return r.s.ID()
 }
 
-// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 func (r *Application) AppRoles() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["appRoles"])
 }
@@ -134,7 +134,7 @@ func (r *Application) Oauth2AllowImplicitFlow() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["oauth2AllowImplicitFlow"])
 }
 
-// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 func (r *Application) Oauth2Permissions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["oauth2Permissions"])
 }
@@ -154,7 +154,7 @@ func (r *Application) ReplyUrls() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["replyUrls"])
 }
 
-// A collection of `required_resource_access` blocks as documented below.
+// A collection of `requiredResourceAccess` blocks as documented below.
 func (r *Application) RequiredResourceAccesses() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["requiredResourceAccesses"])
 }
@@ -166,7 +166,7 @@ func (r *Application) Type() *pulumi.StringOutput {
 
 // Input properties used for looking up and filtering Application resources.
 type ApplicationState struct {
-	// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles interface{}
 	// The Application ID.
 	ApplicationId interface{}
@@ -182,7 +182,7 @@ type ApplicationState struct {
 	Name interface{}
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow interface{}
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
 	// The Application's Object ID.
 	ObjectId interface{}
@@ -190,7 +190,7 @@ type ApplicationState struct {
 	PublicClient interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls interface{}
-	// A collection of `required_resource_access` blocks as documented below.
+	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses interface{}
 	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
 	Type interface{}
@@ -198,7 +198,7 @@ type ApplicationState struct {
 
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
-	// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles interface{}
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants interface{}
@@ -212,13 +212,13 @@ type ApplicationArgs struct {
 	Name interface{}
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow interface{}
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls interface{}
-	// A collection of `required_resource_access` blocks as documented below.
+	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses interface{}
 	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
 	Type interface{}

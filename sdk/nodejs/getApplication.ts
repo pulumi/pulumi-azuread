@@ -64,7 +64,7 @@ export interface GetApplicationArgs {
  */
 export interface GetApplicationResult {
     /**
-     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
     readonly appRoles: { allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled: boolean, value: string }[];
     /**
@@ -90,7 +90,7 @@ export interface GetApplicationResult {
      */
     readonly oauth2AllowImplicitFlow: boolean;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions: { adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[];
     /**
@@ -102,7 +102,7 @@ export interface GetApplicationResult {
      */
     readonly replyUrls: string[];
     /**
-     * A collection of `required_resource_access` blocks as documented below.
+     * A collection of `requiredResourceAccess` blocks as documented below.
      */
     readonly requiredResourceAccesses: { resourceAccesses: { id: string, type: string }[], resourceAppId: string }[];
     /**

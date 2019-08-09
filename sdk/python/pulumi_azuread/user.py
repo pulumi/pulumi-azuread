@@ -39,7 +39,7 @@ class User(pulumi.CustomResource):
     """
     The User Principal Name of the Azure AD User.
     """
-    def __init__(__self__, resource_name, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail_nickname=None, password=None, user_principal_name=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail_nickname=None, password=None, user_principal_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a User within Azure Active Directory.
         
@@ -62,47 +62,68 @@ class User(pulumi.CustomResource):
         if __opts__ is not None:
             warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
             opts = __opts__
-        if not resource_name:
-            raise TypeError('Missing resource name argument (for URN creation)')
-        if not isinstance(resource_name, str):
-            raise TypeError('Expected resource name to be a string')
-        if opts and not isinstance(opts, pulumi.ResourceOptions):
-            raise TypeError('Expected resource options to be a ResourceOptions instance')
-
-        __props__ = dict()
-
-        __props__['account_enabled'] = account_enabled
-
-        if display_name is None:
-            raise TypeError("Missing required property 'display_name'")
-        __props__['display_name'] = display_name
-
-        __props__['force_password_change'] = force_password_change
-
-        __props__['mail_nickname'] = mail_nickname
-
-        if password is None:
-            raise TypeError("Missing required property 'password'")
-        __props__['password'] = password
-
-        if user_principal_name is None:
-            raise TypeError("Missing required property 'user_principal_name'")
-        __props__['user_principal_name'] = user_principal_name
-
-        __props__['mail'] = None
-        __props__['object_id'] = None
-
         if opts is None:
             opts = pulumi.ResourceOptions()
+        if not isinstance(opts, pulumi.ResourceOptions):
+            raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
             opts.version = utilities.get_version()
+        if opts.id is None:
+            if __props__ is not None:
+                raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
+            __props__ = dict()
+
+            __props__['account_enabled'] = account_enabled
+            if display_name is None:
+                raise TypeError("Missing required property 'display_name'")
+            __props__['display_name'] = display_name
+            __props__['force_password_change'] = force_password_change
+            __props__['mail_nickname'] = mail_nickname
+            if password is None:
+                raise TypeError("Missing required property 'password'")
+            __props__['password'] = password
+            if user_principal_name is None:
+                raise TypeError("Missing required property 'user_principal_name'")
+            __props__['user_principal_name'] = user_principal_name
+            __props__['mail'] = None
+            __props__['object_id'] = None
         super(User, __self__).__init__(
             'azuread:index/user:User',
             resource_name,
             __props__,
             opts)
 
+    @staticmethod
+    def get(resource_name, id, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail=None, mail_nickname=None, object_id=None, password=None, user_principal_name=None):
+        """
+        Get an existing User resource's state with the given name, id, and optional extra
+        properties used to qualify the lookup.
+        :param str resource_name: The unique name of the resulting resource.
+        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+               * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        :param pulumi.Input[str] display_name: The name to display in the address book for the user.
+        :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+        :param pulumi.Input[str] mail: The primary email address of the Azure AD User.
+        :param pulumi.Input[str] object_id: The Object ID of the Azure AD User.
+        :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
 
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
+        """
+        opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
+
+        __props__ = dict()
+        __props__["account_enabled"] = account_enabled
+        __props__["display_name"] = display_name
+        __props__["force_password_change"] = force_password_change
+        __props__["mail"] = mail
+        __props__["mail_nickname"] = mail_nickname
+        __props__["object_id"] = object_id
+        __props__["password"] = password
+        __props__["user_principal_name"] = user_principal_name
+        return User(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):
         return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 

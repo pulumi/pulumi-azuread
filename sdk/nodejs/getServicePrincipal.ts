@@ -69,7 +69,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  */
 export interface GetServicePrincipalArgs {
     /**
-     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
     readonly appRoles?: { allowedMemberTypes?: string[], description?: string, displayName?: string, id?: string, isEnabled?: boolean, value?: string }[];
     /**
@@ -81,7 +81,7 @@ export interface GetServicePrincipalArgs {
      */
     readonly displayName?: string;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: { adminConsentDescription?: string, adminConsentDisplayName?: string, id?: string, isEnabled?: boolean, type?: string, userConsentDescription?: string, userConsentDisplayName?: string, value?: string }[];
     /**

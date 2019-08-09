@@ -91,7 +91,7 @@ export class Application extends pulumi.CustomResource {
     }
 
     /**
-     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
     public readonly appRoles!: pulumi.Output<{ allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled?: boolean, value: string }[] | undefined>;
     /**
@@ -123,7 +123,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly oauth2AllowImplicitFlow!: pulumi.Output<boolean | undefined>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     public readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
     /**
@@ -139,7 +139,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly replyUrls!: pulumi.Output<string[]>;
     /**
-     * A collection of `required_resource_access` blocks as documented below.
+     * A collection of `requiredResourceAccess` blocks as documented below.
      */
     public readonly requiredResourceAccesses!: pulumi.Output<{ resourceAccesses: { id: string, type: string }[], resourceAppId: string }[] | undefined>;
     /**
@@ -206,7 +206,7 @@ export class Application extends pulumi.CustomResource {
  */
 export interface ApplicationState {
     /**
-     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
     readonly appRoles?: pulumi.Input<pulumi.Input<{ allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>, description: pulumi.Input<string>, displayName: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, value: pulumi.Input<string> }>[]>;
     /**
@@ -238,7 +238,7 @@ export interface ApplicationState {
      */
     readonly oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
     /**
@@ -254,7 +254,7 @@ export interface ApplicationState {
      */
     readonly replyUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A collection of `required_resource_access` blocks as documented below.
+     * A collection of `requiredResourceAccess` blocks as documented below.
      */
     readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<{ resourceAccesses: pulumi.Input<pulumi.Input<{ id: pulumi.Input<string>, type: pulumi.Input<string> }>[]>, resourceAppId: pulumi.Input<string> }>[]>;
     /**
@@ -268,7 +268,7 @@ export interface ApplicationState {
  */
 export interface ApplicationArgs {
     /**
-     * A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+     * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
     readonly appRoles?: pulumi.Input<pulumi.Input<{ allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>, description: pulumi.Input<string>, displayName: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, value: pulumi.Input<string> }>[]>;
     /**
@@ -296,7 +296,7 @@ export interface ApplicationArgs {
      */
     readonly oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
     /**
@@ -308,7 +308,7 @@ export interface ApplicationArgs {
      */
     readonly replyUrls?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A collection of `required_resource_access` blocks as documented below.
+     * A collection of `requiredResourceAccess` blocks as documented below.
      */
     readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<{ resourceAccesses: pulumi.Input<pulumi.Input<{ id: pulumi.Input<string>, type: pulumi.Input<string> }>[]>, resourceAppId: pulumi.Input<string> }>[]>;
     /**

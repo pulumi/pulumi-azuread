@@ -37,14 +37,18 @@ class GetServicePrincipalResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetServicePrincipalResult(
+            app_roles=self.app_roles,
+            application_id=self.application_id,
+            display_name=self.display_name,
+            oauth2_permissions=self.oauth2_permissions,
+            object_id=self.object_id,
+            id=self.id)
 
 def get_service_principal(app_roles=None,application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
@@ -67,7 +71,7 @@ def get_service_principal(app_roles=None,application_id=None,display_name=None,o
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts).value
 
-    return GetServicePrincipalResult(
+    return AwaitableGetServicePrincipalResult(
         app_roles=__ret__.get('appRoles'),
         application_id=__ret__.get('applicationId'),
         display_name=__ret__.get('displayName'),

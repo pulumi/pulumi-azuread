@@ -34,14 +34,17 @@ class GetDomainsResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetDomainsResult(GetDomainsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetDomainsResult(
+            domains=self.domains,
+            include_unverified=self.include_unverified,
+            only_default=self.only_default,
+            only_initial=self.only_initial,
+            id=self.id)
 
 def get_domains(include_unverified=None,only_default=None,only_initial=None,opts=None):
     """
@@ -62,7 +65,7 @@ def get_domains(include_unverified=None,only_default=None,only_initial=None,opts
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts).value
 
-    return GetDomainsResult(
+    return AwaitableGetDomainsResult(
         domains=__ret__.get('domains'),
         include_unverified=__ret__.get('includeUnverified'),
         only_default=__ret__.get('onlyDefault'),

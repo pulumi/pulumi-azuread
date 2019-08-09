@@ -54,7 +54,7 @@ type GetApplicationArgs struct {
 
 // A collection of values returned by getApplication.
 type GetApplicationResult struct {
-	// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles interface{}
 	// the Application ID of the Azure Active Directory Application.
 	ApplicationId interface{}
@@ -68,13 +68,13 @@ type GetApplicationResult struct {
 	Name interface{}
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow interface{}
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
 	// the Object ID of the Azure Active Directory Application.
 	ObjectId interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls interface{}
-	// A collection of `required_resource_access` blocks as documented below.
+	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses interface{}
 	// The type of the permission
 	Type interface{}

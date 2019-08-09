@@ -91,14 +91,26 @@ class GetApplicationResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetApplicationResult(GetApplicationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetApplicationResult(
+            app_roles=self.app_roles,
+            application_id=self.application_id,
+            available_to_other_tenants=self.available_to_other_tenants,
+            group_membership_claims=self.group_membership_claims,
+            homepage=self.homepage,
+            identifier_uris=self.identifier_uris,
+            name=self.name,
+            oauth2_allow_implicit_flow=self.oauth2_allow_implicit_flow,
+            oauth2_permissions=self.oauth2_permissions,
+            object_id=self.object_id,
+            reply_urls=self.reply_urls,
+            required_resource_accesses=self.required_resource_accesses,
+            type=self.type,
+            id=self.id)
 
 def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
@@ -120,7 +132,7 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getApplication:getApplication', __args__, opts=opts).value
 
-    return GetApplicationResult(
+    return AwaitableGetApplicationResult(
         app_roles=__ret__.get('appRoles'),
         application_id=__ret__.get('applicationId'),
         available_to_other_tenants=__ret__.get('availableToOtherTenants'),

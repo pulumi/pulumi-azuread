@@ -70,7 +70,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     public readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
     /**
@@ -134,7 +134,7 @@ export interface ServicePrincipalState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
     /**
@@ -156,7 +156,7 @@ export interface ServicePrincipalArgs {
      */
     readonly applicationId: pulumi.Input<string>;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
     /**
