@@ -37,13 +37,13 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) 
 
 // A collection of arguments for invoking getServicePrincipal.
 type GetServicePrincipalArgs struct {
-	// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles interface{}
 	// The ID of the Azure AD Application.
 	ApplicationId interface{}
 	// The Display Name of the Azure AD Application associated with this Service Principal.
 	DisplayName interface{}
-	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
 	// The ID of the Azure AD Service Principal.
 	ObjectId interface{}

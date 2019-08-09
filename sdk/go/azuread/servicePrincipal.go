@@ -81,7 +81,7 @@ func (r *ServicePrincipal) DisplayName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["displayName"])
 }
 
-// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
 func (r *ServicePrincipal) Oauth2Permissions() *pulumi.ArrayOutput {
 	return (*pulumi.ArrayOutput)(r.s.State["oauth2Permissions"])
 }
@@ -102,7 +102,7 @@ type ServicePrincipalState struct {
 	ApplicationId interface{}
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
 	DisplayName interface{}
-	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
 	// The Service Principal's Object ID.
 	ObjectId interface{}
@@ -114,7 +114,7 @@ type ServicePrincipalState struct {
 type ServicePrincipalArgs struct {
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId interface{}
-	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
 	// A list of tags to apply to the Service Principal.
 	Tags interface{}

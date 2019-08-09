@@ -31,14 +31,15 @@ class GetUsersResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetUsersResult(GetUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetUsersResult(
+            object_ids=self.object_ids,
+            user_principal_names=self.user_principal_names,
+            id=self.id)
 
 def get_users(object_ids=None,user_principal_names=None,opts=None):
     """
@@ -58,7 +59,7 @@ def get_users(object_ids=None,user_principal_names=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts).value
 
-    return GetUsersResult(
+    return AwaitableGetUsersResult(
         object_ids=__ret__.get('objectIds'),
         user_principal_names=__ret__.get('userPrincipalNames'),
         id=__ret__.get('id'))

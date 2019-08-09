@@ -31,14 +31,17 @@ class GetGroupResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
-
+class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return self
-
-    __iter__ = __await__
+        return GetGroupResult(
+            members=self.members,
+            name=self.name,
+            object_id=self.object_id,
+            owners=self.owners,
+            id=self.id)
 
 def get_group(name=None,object_id=None,opts=None):
     """
@@ -58,7 +61,7 @@ def get_group(name=None,object_id=None,opts=None):
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getGroup:getGroup', __args__, opts=opts).value
 
-    return GetGroupResult(
+    return AwaitableGetGroupResult(
         members=__ret__.get('members'),
         name=__ret__.get('name'),
         object_id=__ret__.get('objectId'),

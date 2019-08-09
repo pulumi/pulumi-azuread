@@ -87,7 +87,7 @@ func (r *User) ID() *pulumi.IDOutput {
 }
 
 // `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-// * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 func (r *User) AccountEnabled() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["accountEnabled"])
 }
@@ -129,7 +129,7 @@ func (r *User) UserPrincipalName() *pulumi.StringOutput {
 // Input properties used for looking up and filtering User resources.
 type UserState struct {
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled interface{}
 	// The name to display in the address book for the user.
 	DisplayName interface{}
@@ -149,7 +149,7 @@ type UserState struct {
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
+	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled interface{}
 	// The name to display in the address book for the user.
 	DisplayName interface{}
