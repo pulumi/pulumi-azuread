@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = pulumi.output(azuread.getApplication({
+ * const example = azuread.getApplication({
  *     name: "My First AzureAD Application",
- * }));
+ * });
  * 
  * export const azureAdObjectId = example.id;
  * ```
@@ -47,12 +49,12 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
-    readonly appRoles?: { allowedMemberTypes?: string[], description?: string, displayName?: string, id?: string, isEnabled?: boolean, value?: string }[];
+    readonly appRoles?: inputs.GetApplicationAppRole[];
     /**
      * Specifies the name of the Application within Azure Active Directory.
      */
     readonly name?: string;
-    readonly oauth2Permissions?: { adminConsentDescription?: string, adminConsentDisplayName?: string, id?: string, isEnabled?: boolean, type?: string, userConsentDescription?: string, userConsentDisplayName?: string, value?: string }[];
+    readonly oauth2Permissions?: inputs.GetApplicationOauth2Permission[];
     /**
      * Specifies the Object ID of the Application within Azure Active Directory.
      */
@@ -66,7 +68,7 @@ export interface GetApplicationResult {
     /**
      * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
-    readonly appRoles: { allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled: boolean, value: string }[];
+    readonly appRoles: outputs.GetApplicationAppRole[];
     /**
      * the Application ID of the Azure Active Directory Application.
      */
@@ -92,7 +94,7 @@ export interface GetApplicationResult {
     /**
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    readonly oauth2Permissions: { adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[];
+    readonly oauth2Permissions: outputs.GetApplicationOauth2Permission[];
     /**
      * the Object ID of the Azure Active Directory Application.
      */
@@ -104,7 +106,7 @@ export interface GetApplicationResult {
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    readonly requiredResourceAccesses: { resourceAccesses: { id: string, type: string }[], resourceAppId: string }[];
+    readonly requiredResourceAccesses: outputs.GetApplicationRequiredResourceAccess[];
     /**
      * The type of the permission
      */

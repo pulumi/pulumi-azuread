@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const aadDomains = pulumi.output(azuread.getDomains({}));
+ * const aadDomains = azuread.getDomains({});
  * 
  * export const domains = aadDomains.domains;
  * ```
@@ -65,7 +67,7 @@ export interface GetDomainsResult {
     /**
      * One or more `domain` blocks as defined below.
      */
-    readonly domains: { authenticationType: string, domainName: string, isDefault: boolean, isInitial: boolean, isVerified: boolean }[];
+    readonly domains: outputs.GetDomainsDomain[];
     readonly includeUnverified?: boolean;
     readonly onlyDefault?: boolean;
     readonly onlyInitial?: boolean;

@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -72,7 +74,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
     /**
      * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    public readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
+    public readonly oauth2Permissions!: pulumi.Output<outputs.ServicePrincipalOauth2Permission[]>;
     /**
      * The Service Principal's Object ID.
      */
@@ -136,7 +138,7 @@ export interface ServicePrincipalState {
     /**
      * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
     /**
      * The Service Principal's Object ID.
      */
@@ -158,7 +160,7 @@ export interface ServicePrincipalArgs {
     /**
      * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
     /**
      * A list of tags to apply to the Service Principal.
      */
