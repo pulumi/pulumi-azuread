@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -93,7 +95,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
-    public readonly appRoles!: pulumi.Output<{ allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled?: boolean, value: string }[] | undefined>;
+    public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
     /**
      * The Application ID.
      */
@@ -125,7 +127,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    public readonly oauth2Permissions!: pulumi.Output<{ adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[]>;
+    public readonly oauth2Permissions!: pulumi.Output<outputs.ApplicationOauth2Permission[]>;
     /**
      * The Application's Object ID.
      */
@@ -141,7 +143,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    public readonly requiredResourceAccesses!: pulumi.Output<{ resourceAccesses: { id: string, type: string }[], resourceAppId: string }[] | undefined>;
+    public readonly requiredResourceAccesses!: pulumi.Output<outputs.ApplicationRequiredResourceAccess[] | undefined>;
     /**
      * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */
@@ -208,7 +210,7 @@ export interface ApplicationState {
     /**
      * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
-    readonly appRoles?: pulumi.Input<pulumi.Input<{ allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>, description: pulumi.Input<string>, displayName: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, value: pulumi.Input<string> }>[]>;
+    readonly appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
      * The Application ID.
      */
@@ -240,7 +242,7 @@ export interface ApplicationState {
     /**
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
     /**
      * The Application's Object ID.
      */
@@ -256,7 +258,7 @@ export interface ApplicationState {
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<{ resourceAccesses: pulumi.Input<pulumi.Input<{ id: pulumi.Input<string>, type: pulumi.Input<string> }>[]>, resourceAppId: pulumi.Input<string> }>[]>;
+    readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
      * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */
@@ -270,7 +272,7 @@ export interface ApplicationArgs {
     /**
      * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
-    readonly appRoles?: pulumi.Input<pulumi.Input<{ allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>, description: pulumi.Input<string>, displayName: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, value: pulumi.Input<string> }>[]>;
+    readonly appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
      * Is this Azure AD Application available to other tenants? Defaults to `false`.
      */
@@ -298,7 +300,7 @@ export interface ApplicationArgs {
     /**
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<{ adminConsentDescription?: pulumi.Input<string>, adminConsentDisplayName?: pulumi.Input<string>, id?: pulumi.Input<string>, isEnabled?: pulumi.Input<boolean>, type?: pulumi.Input<string>, userConsentDescription?: pulumi.Input<string>, userConsentDisplayName?: pulumi.Input<string>, value?: pulumi.Input<string> }>[]>;
+    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */
@@ -310,7 +312,7 @@ export interface ApplicationArgs {
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
-    readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<{ resourceAccesses: pulumi.Input<pulumi.Input<{ id: pulumi.Input<string>, type: pulumi.Input<string> }>[]>, resourceAppId: pulumi.Input<string> }>[]>;
+    readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
      * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */

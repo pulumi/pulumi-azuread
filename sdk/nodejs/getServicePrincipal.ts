@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = pulumi.output(azuread.getServicePrincipal({
+ * const example = azuread.getServicePrincipal({
  *     displayName: "my-awesome-application",
- * }));
+ * });
  * ```
  * 
  * ## Example Usage (by Application ID)
@@ -26,9 +28,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = pulumi.output(azuread.getServicePrincipal({
+ * const example = azuread.getServicePrincipal({
  *     applicationId: "00000000-0000-0000-0000-000000000000",
- * }));
+ * });
  * ```
  * 
  * ## Example Usage (by Object ID)
@@ -37,9 +39,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = pulumi.output(azuread.getServicePrincipal({
+ * const example = azuread.getServicePrincipal({
  *     objectId: "00000000-0000-0000-0000-000000000000",
- * }));
+ * });
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
@@ -71,7 +73,7 @@ export interface GetServicePrincipalArgs {
     /**
      * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
-    readonly appRoles?: { allowedMemberTypes?: string[], description?: string, displayName?: string, id?: string, isEnabled?: boolean, value?: string }[];
+    readonly appRoles?: inputs.GetServicePrincipalAppRole[];
     /**
      * The ID of the Azure AD Application.
      */
@@ -83,7 +85,7 @@ export interface GetServicePrincipalArgs {
     /**
      * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
      */
-    readonly oauth2Permissions?: { adminConsentDescription?: string, adminConsentDisplayName?: string, id?: string, isEnabled?: boolean, type?: string, userConsentDescription?: string, userConsentDisplayName?: string, value?: string }[];
+    readonly oauth2Permissions?: inputs.GetServicePrincipalOauth2Permission[];
     /**
      * The ID of the Azure AD Service Principal.
      */
@@ -94,13 +96,13 @@ export interface GetServicePrincipalArgs {
  * A collection of values returned by getServicePrincipal.
  */
 export interface GetServicePrincipalResult {
-    readonly appRoles: { allowedMemberTypes: string[], description: string, displayName: string, id: string, isEnabled: boolean, value: string }[];
+    readonly appRoles: outputs.GetServicePrincipalAppRole[];
     readonly applicationId: string;
     /**
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
     readonly displayName: string;
-    readonly oauth2Permissions: { adminConsentDescription: string, adminConsentDisplayName: string, id: string, isEnabled: boolean, type: string, userConsentDescription: string, userConsentDisplayName: string, value: string }[];
+    readonly oauth2Permissions: outputs.GetServicePrincipalOauth2Permission[];
     readonly objectId: string;
     /**
      * id is the provider-assigned unique ID for this managed resource.

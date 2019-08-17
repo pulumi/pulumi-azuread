@@ -30,6 +30,9 @@
         "provider.ts",
         "servicePrincipal.ts",
         "servicePrincipalPassword.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "user.ts",
         "utilities.ts"
     ]

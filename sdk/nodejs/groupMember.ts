@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -16,9 +18,9 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * 
  * const exampleGroup = new azuread.Group("example", {});
- * const exampleUser = pulumi.output(azuread.getUser({
+ * const exampleUser = azuread.getUser({
  *     userPrincipalName: "jdoe@hashicorp.com",
- * }));
+ * });
  * const exampleGroupMember = new azuread.GroupMember("example", {
  *     groupObjectId: exampleGroup.id,
  *     memberObjectId: exampleUser.id,
