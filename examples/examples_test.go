@@ -36,7 +36,8 @@ func TestExamples(t *testing.T) {
 	tests := []integration.ProgramTestOptions{
 		// List each test
 		base.With(integration.ProgramTestOptions{
-			Dir: path.Join(cwd, "simple"),
+			Dir:           path.Join(cwd, "simple"),
+			RunUpdateTest: true,
 			Secrets: map[string]string{
 				"password": "SecretP@sswd99!",
 			},
