@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to pulumi-terraform@14e049b09d_
+* Upgrade to v0.6.0 of the Azuread Terraform Provider
 
 ---
 
