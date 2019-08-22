@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * Manages a Service Principal associated with an Application within Azure Active Directory.
  * 
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
  * 
  * ## Example Usage
  * 
@@ -25,6 +25,7 @@ import * as utilities from "./utilities";
  *     replyUrls: ["http://replyurl"],
  * });
  * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     appRoleAssignmentRequired: false,
  *     applicationId: exampleApplication.applicationId,
  *     tags: [
  *         "example",
@@ -64,6 +65,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
     }
 
     /**
+     * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+     */
+    public readonly appRoleAssignmentRequired!: pulumi.Output<boolean | undefined>;
+    /**
      * The ID of the Azure AD Application for which to create a Service Principal.
      */
     public readonly applicationId!: pulumi.Output<string>;
@@ -96,6 +101,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
+            inputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
@@ -106,6 +112,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             if (!args || args.applicationId === undefined) {
                 throw new Error("Missing required property 'applicationId'");
             }
+            inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
@@ -127,6 +134,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePrincipal resources.
  */
 export interface ServicePrincipalState {
+    /**
+     * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+     */
+    readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
      * The ID of the Azure AD Application for which to create a Service Principal.
      */
@@ -153,6 +164,10 @@ export interface ServicePrincipalState {
  * The set of arguments for constructing a ServicePrincipal resource.
  */
 export interface ServicePrincipalArgs {
+    /**
+     * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+     */
+    readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
      * The ID of the Azure AD Application for which to create a Service Principal.
      */

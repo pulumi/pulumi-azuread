@@ -4,6 +4,7 @@
 
 _SNAKE_TO_CAMEL_CASE_TABLE = {
     "account_enabled": "accountEnabled",
+    "app_role_assignment_required": "appRoleAssignmentRequired",
     "app_roles": "appRoles",
     "application_id": "applicationId",
     "application_object_id": "applicationObjectId",
@@ -39,6 +40,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
 
 _CAMEL_TO_SNAKE_CASE_TABLE = {
     "accountEnabled": "account_enabled",
+    "appRoleAssignmentRequired": "app_role_assignment_required",
     "appRoles": "app_roles",
     "applicationId": "application_id",
     "applicationObjectId": "application_object_id",

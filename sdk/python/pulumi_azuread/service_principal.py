@@ -9,6 +9,10 @@ import pulumi.runtime
 from . import utilities, tables
 
 class ServicePrincipal(pulumi.CustomResource):
+    app_role_assignment_required: pulumi.Output[bool]
+    """
+    Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+    """
     application_id: pulumi.Output[str]
     """
     The ID of the Azure AD Application for which to create a Service Principal.
@@ -29,14 +33,15 @@ class ServicePrincipal(pulumi.CustomResource):
     """
     A list of tags to apply to the Service Principal.
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, oauth2_permissions=None, tags=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_role_assignment_required=None, application_id=None, oauth2_permissions=None, tags=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Service Principal associated with an Application within Azure Active Directory.
         
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
         
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] app_role_assignment_required: Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
         :param pulumi.Input[str] application_id: The ID of the Azure AD Application for which to create a Service Principal.
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         :param pulumi.Input[list] tags: A list of tags to apply to the Service Principal.
@@ -60,6 +65,7 @@ class ServicePrincipal(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['app_role_assignment_required'] = app_role_assignment_required
             if application_id is None:
                 raise TypeError("Missing required property 'application_id'")
             __props__['application_id'] = application_id
@@ -74,13 +80,14 @@ class ServicePrincipal(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, application_id=None, display_name=None, oauth2_permissions=None, object_id=None, tags=None):
+    def get(resource_name, id, opts=None, app_role_assignment_required=None, application_id=None, display_name=None, oauth2_permissions=None, object_id=None, tags=None):
         """
         Get an existing ServicePrincipal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] app_role_assignment_required: Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
         :param pulumi.Input[str] application_id: The ID of the Azure AD Application for which to create a Service Principal.
         :param pulumi.Input[str] display_name: The Display Name of the Azure Active Directory Application associated with this Service Principal.
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
@@ -92,6 +99,7 @@ class ServicePrincipal(pulumi.CustomResource):
         opts = pulumi.ResourceOptions(id=id) if opts is None else opts.merge(pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+        __props__["app_role_assignment_required"] = app_role_assignment_required
         __props__["application_id"] = application_id
         __props__["display_name"] = display_name
         __props__["oauth2_permissions"] = oauth2_permissions

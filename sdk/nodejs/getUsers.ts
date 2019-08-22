@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  * 
  * const users = azuread.getUsers({
- *     userPrincipalName: [
+ *     userPrincipalNames: [
  *         "kat@hashicorp.com",
  *         "byte@hashicorp.com",
  *     ],
