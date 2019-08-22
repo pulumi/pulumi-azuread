@@ -116,7 +116,7 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
     
-    > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+    > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
     """

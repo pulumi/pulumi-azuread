@@ -10,7 +10,7 @@ import (
 
 // Manages a Service Principal associated with an Application within Azure Active Directory.
 // 
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps. 
+// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal.html.markdown.
 type ServicePrincipal struct {
@@ -25,10 +25,12 @@ func NewServicePrincipal(ctx *pulumi.Context,
 	}
 	inputs := make(map[string]interface{})
 	if args == nil {
+		inputs["appRoleAssignmentRequired"] = nil
 		inputs["applicationId"] = nil
 		inputs["oauth2Permissions"] = nil
 		inputs["tags"] = nil
 	} else {
+		inputs["appRoleAssignmentRequired"] = args.AppRoleAssignmentRequired
 		inputs["applicationId"] = args.ApplicationId
 		inputs["oauth2Permissions"] = args.Oauth2Permissions
 		inputs["tags"] = args.Tags
@@ -48,6 +50,7 @@ func GetServicePrincipal(ctx *pulumi.Context,
 	name string, id pulumi.ID, state *ServicePrincipalState, opts ...pulumi.ResourceOpt) (*ServicePrincipal, error) {
 	inputs := make(map[string]interface{})
 	if state != nil {
+		inputs["appRoleAssignmentRequired"] = state.AppRoleAssignmentRequired
 		inputs["applicationId"] = state.ApplicationId
 		inputs["displayName"] = state.DisplayName
 		inputs["oauth2Permissions"] = state.Oauth2Permissions
@@ -69,6 +72,11 @@ func (r *ServicePrincipal) URN() *pulumi.URNOutput {
 // ID is this resource's unique identifier assigned by its provider.
 func (r *ServicePrincipal) ID() *pulumi.IDOutput {
 	return r.s.ID()
+}
+
+// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+func (r *ServicePrincipal) AppRoleAssignmentRequired() *pulumi.BoolOutput {
+	return (*pulumi.BoolOutput)(r.s.State["appRoleAssignmentRequired"])
 }
 
 // The ID of the Azure AD Application for which to create a Service Principal.
@@ -98,6 +106,8 @@ func (r *ServicePrincipal) Tags() *pulumi.ArrayOutput {
 
 // Input properties used for looking up and filtering ServicePrincipal resources.
 type ServicePrincipalState struct {
+	// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+	AppRoleAssignmentRequired interface{}
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId interface{}
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
@@ -112,6 +122,8 @@ type ServicePrincipalState struct {
 
 // The set of arguments for constructing a ServicePrincipal resource.
 type ServicePrincipalArgs struct {
+	// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+	AppRoleAssignmentRequired interface{}
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId interface{}
 	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
