@@ -2,10 +2,15 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform@14e049b09d_
-* Upgrade to v0.6.0 of the Azuread Terraform Provider
+_(none)_
 
 ---
+
+## 1.0.0-beta.2 (2019-08-26)
+* Upgrade to pulumi-terraform@14e049b09d_
+* Upgrade to v0.6.0 of the Azuread Terraform Provider
+* Update pulumi-terraform reference to 58c7473d0
+* Use 1.0-beta versions of python dependencies
 
 ## 1.0.0-beta.1 (2019-08-13)
 * No significant changes
