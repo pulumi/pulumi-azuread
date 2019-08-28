@@ -118,6 +118,29 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
     Use this data source to access information about an existing Application within Azure Active Directory.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+    
+    :param str name: Specifies the name of the Application within Azure Active Directory.
+    :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
+    
+    The **app_roles** object supports the following:
+    
+      * `allowedMemberTypes` (`list`) - Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+      * `description` (`str`) - Permission help text that appears in the admin app assignment and consent experiences.
+      * `display_name` (`str`) - Display name for the permission that appears in the admin consent and app assignment experiences.
+      * `id` (`str`) - The unique identifier of the `app_role`.
+      * `isEnabled` (`bool`) - Determines if the app role is enabled.
+      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+    
+    The **oauth2_permissions** object supports the following:
+    
+      * `adminConsentDescription` (`str`) - The description of the admin consent
+      * `adminConsentDisplayName` (`str`) - The display name of the admin consent
+      * `id` (`str`) - The unique identifier of the `app_role`.
+      * `isEnabled` (`bool`) - Determines if the app role is enabled.
+      * `type` (`str`) - The type of the permission
+      * `userConsentDescription` (`str`) - The description of the user consent
+      * `userConsentDisplayName` (`str`) - The display name of the user consent
+      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
     """
@@ -128,7 +151,7 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getApplication:getApplication', __args__, opts=opts).value

@@ -72,6 +72,9 @@ def get_user(object_id=None,user_principal_name=None,opts=None):
     Gets information about an Azure Active Directory user.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    
+    :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
+    :param str user_principal_name: The User Principal Name of the Azure AD User.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
     """
@@ -80,7 +83,7 @@ def get_user(object_id=None,user_principal_name=None,opts=None):
     __args__['objectId'] = object_id
     __args__['userPrincipalName'] = user_principal_name
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getUser:getUser', __args__, opts=opts).value

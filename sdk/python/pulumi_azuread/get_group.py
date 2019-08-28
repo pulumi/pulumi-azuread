@@ -49,6 +49,9 @@ def get_group(name=None,object_id=None,opts=None):
     Gets information about an Azure Active Directory group.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    
+    :param str name: The Name of the AD Group we want to lookup.
+    :param str object_id: Specifies the Object ID of the AD Group within Azure Active Directory.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/group.html.markdown.
     """
@@ -57,7 +60,7 @@ def get_group(name=None,object_id=None,opts=None):
     __args__['name'] = name
     __args__['objectId'] = object_id
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getGroup:getGroup', __args__, opts=opts).value

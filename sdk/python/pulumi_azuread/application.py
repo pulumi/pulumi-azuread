@@ -13,6 +13,13 @@ class Application(pulumi.CustomResource):
     app_roles: pulumi.Output[list]
     """
     A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+    
+      * `allowedMemberTypes` (`list`) - Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+      * `description` (`str`) - Permission help text that appears in the admin app assignment and consent experiences.
+      * `display_name` (`str`) - Display name for the permission that appears in the admin consent and app assignment experiences.
+      * `id` (`str`) - The unique identifier of the `app_role`.
+      * `isEnabled` (`bool`) - Determines if the app role is enabled: Defaults to `true`.
+      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
     """
     application_id: pulumi.Output[str]
     """
@@ -45,6 +52,15 @@ class Application(pulumi.CustomResource):
     oauth2_permissions: pulumi.Output[list]
     """
     A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+    
+      * `adminConsentDescription` (`str`) - The description of the admin consent.
+      * `adminConsentDisplayName` (`str`) - The display name of the admin consent.
+      * `id` (`str`) - The unique identifier of the `app_role`.
+      * `isEnabled` (`bool`) - Determines if the app role is enabled: Defaults to `true`.
+      * `type` (`str`) - Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+      * `userConsentDescription` (`str`) - The description of the user consent.
+      * `userConsentDisplayName` (`str`) - The display name of the user consent.
+      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
     """
     object_id: pulumi.Output[str]
     """
@@ -61,6 +77,13 @@ class Application(pulumi.CustomResource):
     required_resource_accesses: pulumi.Output[list]
     """
     A collection of `required_resource_access` blocks as documented below.
+    
+      * `resourceAccesses` (`list`) - A collection of `resource_access` blocks as documented below.
+    
+        * `id` (`str`) - The unique identifier of the `app_role`.
+        * `type` (`str`) - Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+    
+      * `resourceAppId` (`str`) - The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
     """
     type: pulumi.Output[str]
     """
@@ -86,6 +109,35 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] type: Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        
+        The **app_roles** object supports the following:
+        
+          * `allowedMemberTypes` (`pulumi.Input[list]`) - Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+          * `description` (`pulumi.Input[str]`) - Permission help text that appears in the admin app assignment and consent experiences.
+          * `display_name` (`pulumi.Input[str]`) - Display name for the permission that appears in the admin consent and app assignment experiences.
+          * `id` (`pulumi.Input[str]`) - The unique identifier of the `app_role`.
+          * `isEnabled` (`pulumi.Input[bool]`) - Determines if the app role is enabled: Defaults to `true`.
+          * `value` (`pulumi.Input[str]`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        
+        The **oauth2_permissions** object supports the following:
+        
+          * `adminConsentDescription` (`pulumi.Input[str]`) - The description of the admin consent.
+          * `adminConsentDisplayName` (`pulumi.Input[str]`) - The display name of the admin consent.
+          * `id` (`pulumi.Input[str]`) - The unique identifier of the `app_role`.
+          * `isEnabled` (`pulumi.Input[bool]`) - Determines if the app role is enabled: Defaults to `true`.
+          * `type` (`pulumi.Input[str]`) - Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+          * `userConsentDescription` (`pulumi.Input[str]`) - The description of the user consent.
+          * `userConsentDisplayName` (`pulumi.Input[str]`) - The display name of the user consent.
+          * `value` (`pulumi.Input[str]`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        
+        The **required_resource_accesses** object supports the following:
+        
+          * `resourceAccesses` (`pulumi.Input[list]`) - A collection of `resource_access` blocks as documented below.
+        
+            * `id` (`pulumi.Input[str]`) - The unique identifier of the `app_role`.
+            * `type` (`pulumi.Input[str]`) - Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        
+          * `resourceAppId` (`pulumi.Input[str]`) - The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application.html.markdown.
         """
@@ -149,6 +201,35 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] type: Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        
+        The **app_roles** object supports the following:
+        
+          * `allowedMemberTypes` (`pulumi.Input[list]`) - Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+          * `description` (`pulumi.Input[str]`) - Permission help text that appears in the admin app assignment and consent experiences.
+          * `display_name` (`pulumi.Input[str]`) - Display name for the permission that appears in the admin consent and app assignment experiences.
+          * `id` (`pulumi.Input[str]`) - The unique identifier of the `app_role`.
+          * `isEnabled` (`pulumi.Input[bool]`) - Determines if the app role is enabled: Defaults to `true`.
+          * `value` (`pulumi.Input[str]`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        
+        The **oauth2_permissions** object supports the following:
+        
+          * `adminConsentDescription` (`pulumi.Input[str]`) - The description of the admin consent.
+          * `adminConsentDisplayName` (`pulumi.Input[str]`) - The display name of the admin consent.
+          * `id` (`pulumi.Input[str]`) - The unique identifier of the `app_role`.
+          * `isEnabled` (`pulumi.Input[bool]`) - Determines if the app role is enabled: Defaults to `true`.
+          * `type` (`pulumi.Input[str]`) - Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+          * `userConsentDescription` (`pulumi.Input[str]`) - The description of the user consent.
+          * `userConsentDisplayName` (`pulumi.Input[str]`) - The display name of the user consent.
+          * `value` (`pulumi.Input[str]`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        
+        The **required_resource_accesses** object supports the following:
+        
+          * `resourceAccesses` (`pulumi.Input[list]`) - A collection of `resource_access` blocks as documented below.
+        
+            * `id` (`pulumi.Input[str]`) - The unique identifier of the `app_role`.
+            * `type` (`pulumi.Input[str]`) - Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        
+          * `resourceAppId` (`pulumi.Input[str]`) - The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application.html.markdown.
         """
