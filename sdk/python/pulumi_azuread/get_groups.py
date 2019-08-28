@@ -47,6 +47,9 @@ def get_groups(names=None,object_ids=None,opts=None):
     Gets Object IDs or Display Names for multiple Azure Active Directory groups.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    
+    :param list names: The Display Names of the Azure AD Groups.
+    :param list object_ids: The Object IDs of the Azure AD Groups.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
     """
@@ -55,7 +58,7 @@ def get_groups(names=None,object_ids=None,opts=None):
     __args__['names'] = names
     __args__['objectIds'] = object_ids
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getGroups:getGroups', __args__, opts=opts).value

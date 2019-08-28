@@ -25,6 +25,15 @@ class ServicePrincipal(pulumi.CustomResource):
     oauth2_permissions: pulumi.Output[list]
     """
     A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+    
+      * `adminConsentDescription` (`str`) - The description of the admin consent.
+      * `adminConsentDisplayName` (`str`) - The display name of the admin consent.
+      * `id` (`str`) - The unique identifier for one of the `OAuth2Permission`.
+      * `isEnabled` (`bool`) - Is this permission enabled?
+      * `type` (`str`) - The type of the permission.
+      * `userConsentDescription` (`str`) - The description of the user consent.
+      * `userConsentDisplayName` (`str`) - The display name of the user consent.
+      * `value` (`str`) - The name of this permission.
     """
     object_id: pulumi.Output[str]
     """
@@ -46,6 +55,17 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] application_id: The ID of the Azure AD Application for which to create a Service Principal.
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         :param pulumi.Input[list] tags: A list of tags to apply to the Service Principal.
+        
+        The **oauth2_permissions** object supports the following:
+        
+          * `adminConsentDescription` (`pulumi.Input[str]`) - The description of the admin consent.
+          * `adminConsentDisplayName` (`pulumi.Input[str]`) - The display name of the admin consent.
+          * `id` (`pulumi.Input[str]`) - The unique identifier for one of the `OAuth2Permission`.
+          * `isEnabled` (`pulumi.Input[bool]`) - Is this permission enabled?
+          * `type` (`pulumi.Input[str]`) - The type of the permission.
+          * `userConsentDescription` (`pulumi.Input[str]`) - The description of the user consent.
+          * `userConsentDisplayName` (`pulumi.Input[str]`) - The display name of the user consent.
+          * `value` (`pulumi.Input[str]`) - The name of this permission.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal.html.markdown.
         """
@@ -95,6 +115,17 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         :param pulumi.Input[str] object_id: The Service Principal's Object ID.
         :param pulumi.Input[list] tags: A list of tags to apply to the Service Principal.
+        
+        The **oauth2_permissions** object supports the following:
+        
+          * `adminConsentDescription` (`pulumi.Input[str]`) - The description of the admin consent.
+          * `adminConsentDisplayName` (`pulumi.Input[str]`) - The display name of the admin consent.
+          * `id` (`pulumi.Input[str]`) - The unique identifier for one of the `OAuth2Permission`.
+          * `isEnabled` (`pulumi.Input[bool]`) - Is this permission enabled?
+          * `type` (`pulumi.Input[str]`) - The type of the permission.
+          * `userConsentDescription` (`pulumi.Input[str]`) - The description of the user consent.
+          * `userConsentDisplayName` (`pulumi.Input[str]`) - The display name of the user consent.
+          * `value` (`pulumi.Input[str]`) - The name of this permission.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/service_principal.html.markdown.
         """

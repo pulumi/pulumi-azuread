@@ -47,6 +47,9 @@ def get_users(object_ids=None,user_principal_names=None,opts=None):
     Gets Object IDs or UPNs for multiple Azure Active Directory users.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    
+    :param list object_ids: The Object IDs of the Azure AD Users.
+    :param list user_principal_names: The User Principal Names of the Azure AD Users.
 
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/users.html.markdown.
     """
@@ -55,7 +58,7 @@ def get_users(object_ids=None,user_principal_names=None,opts=None):
     __args__['objectIds'] = object_ids
     __args__['userPrincipalNames'] = user_principal_names
     if opts is None:
-        opts = pulumi.ResourceOptions()
+        opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = utilities.get_version()
     __ret__ = pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts).value
