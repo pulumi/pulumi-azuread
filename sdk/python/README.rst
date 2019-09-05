@@ -5,7 +5,17 @@ Microsoft Azure Active Directory Resource Provider
 
 The Microsoft Azure AD resource provider for Pulumi lets you use Azure
 Active Directory resources in your cloud programs. To use this package,
-please `install the Pulumi CLI first <https://pulumi.io/>`__.
+please `install the Pulumi CLI first <https://pulumi.io/>`__. For a
+streamlined Pulumi walkthrough, including language runtime installation
+and Azure configuration, click “Get Started” below.
+
+.. container::
+
+   ::
+
+      <a href="https://www.pulumi.com/docs/get-started/azure" title="Get Started">
+         <img src="https://www.pulumi.com/images/get-started.svg" width="120">
+      </a>
 
 Installing
 ----------
