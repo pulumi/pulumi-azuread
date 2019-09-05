@@ -1,4 +1,4 @@
-|Build Status|
+|Build Status| |Slack| |NPM version| |Python version| |GoDoc| |License|
 
 Microsoft Azure Active Directory Resource Provider
 ==================================================
@@ -73,3 +73,13 @@ docs <https://pulumi.io/reference/pkg/nodejs/@pulumi/azuread/index.html>`__.
 
 .. |Build Status| image:: https://travis-ci.com/pulumi/pulumi-azuread.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master
    :target: https://travis-ci.com/pulumi/pulumi-azuread
+.. |Slack| image:: http://www.pulumi.com/images/docs/badges/slack.svg
+   :target: https://slack.pulumi.com
+.. |NPM version| image:: https://badge.fury.io/js/%40pulumi%2Fazuread.svg
+   :target: https://npmjs.com/package/@pulumi/azuread
+.. |Python version| image:: https://badge.fury.io/py/pulumi-azuread.svg
+   :target: https://pypi.org/project/pulumi-azuread
+.. |GoDoc| image:: https://godoc.org/github.com/pulumi/pulumi-azuread?status.svg
+   :target: https://godoc.org/github.com/pulumi/pulumi-azuread
+.. |License| image:: https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg
+   :target: https://github.com/pulumi/pulumi-azuread/blob/master/LICENSE
