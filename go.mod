@@ -1,10 +1,7 @@
 module github.com/pulumi/pulumi-azuread
 
-go 1.12
-
 replace (
 	contrib.go.opencensus.io/exporter/ocagent => contrib.go.opencensus.io/exporter/ocagent v0.4.12
-	git.apache.org/thrift.git => github.com/apache/thrift v0.12.0
 	github.com/Azure/azure-sdk-for-go => github.com/Azure/azure-sdk-for-go v31.1.0+incompatible
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
@@ -16,8 +13,11 @@ require (
 	github.com/Azure/go-autorest/autorest/azure/auth v0.1.0 // indirect
 	github.com/hashicorp/terraform v0.12.6
 	github.com/pkg/errors v0.8.1
-	github.com/pulumi/pulumi v1.0.0-beta.4.0.20190824005806-5188232afad4
+	github.com/pulumi/pulumi v1.1.0
 	github.com/pulumi/pulumi-terraform v0.18.4-0.20190828172748-3f206601e7a1
 	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-azuread v0.6.0
+	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )
+
+go 1.13
