@@ -2,15 +2,23 @@
 
 import * as azuread from "@pulumi/azuread";
 import * as pulumi from "@pulumi/pulumi";
+import * as random from "@pulumi/random";
 
 const config = new pulumi.Config();
 const password = config.require("password");
 
+const serverRandomPet = new random.RandomPet("random-name");
+
+const randomString = new random.RandomString("random", {
+    length: 6,
+    special: false,
+});
+
 const user = new azuread.User("me", {
-    displayName: "John Doe",
-    mailNickname: "johnd",
+    displayName: serverRandomPet.id,
+    mailNickname: randomString.result,
     password: password,
-    userPrincipalName: "johndoe@pulumi.com",
+    userPrincipalName: pulumi.interpolate`${randomString.result}@pulumi.com`,
 });
 
 export const userid: pulumi.Output<string> = user.id;
