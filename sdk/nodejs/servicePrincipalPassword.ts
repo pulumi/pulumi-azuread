@@ -24,13 +24,13 @@ import * as utilities from "./utilities";
  *     oauth2AllowImplicitFlow: true,
  *     replyUrls: ["http://replyurl"],
  * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
+ *     applicationId: exampleApplication.applicationId,
+ * });
  * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
  *     endDate: "2020-01-01T01:02:03Z",
  *     servicePrincipalId: azuread_service_principal_test.id,
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     applicationId: exampleApplication.applicationId,
  * });
  * ```
  *
