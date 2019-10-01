@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const aadDomains = azuread.getDomains({});
+ * const aadDomains = azuread.getDomains();
  * 
  * export const domains = aadDomains.domains;
  * ```

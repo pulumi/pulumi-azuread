@@ -17,10 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const exampleGroup = new azuread.Group("example", {});
  * const exampleUser = azuread.getUser({
  *     userPrincipalName: "jdoe@hashicorp.com",
  * });
+ * const exampleGroup = new azuread.Group("example", {});
  * const exampleGroupMember = new azuread.GroupMember("example", {
  *     groupObjectId: exampleGroup.id,
  *     memberObjectId: exampleUser.id,
