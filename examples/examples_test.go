@@ -7,47 +7,54 @@ import (
 	"path"
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/pulumi/pulumi/pkg/testing/integration"
 )
 
-func TestExamples(t *testing.T) {
-	// Ensure we have any required configuration points
-	environ := os.Getenv("ARM_ENVIRONMENT")
-	if environ == "" {
-		t.Skipf("Skipping test due to missing ARM_ENVIRONMENT variable")
+func TestSimple(t *testing.T) {
+	test := getBaseOptions(t).
+		With(integration.ProgramTestOptions{
+			Dir:           path.Join(getCwd(t), "simple"),
+			RunUpdateTest: true,
+			Secrets: map[string]string{
+				"password": "SecretP@sswd99!",
+			},
+		})
+
+	integration.ProgramTest(t, &test)
+}
+
+func skipIfShort(t *testing.T) {
+	if testing.Short() {
+		t.Skip("skipping long-running test in short mode")
 	}
-	cwd, err := os.Getwd()
-	if !assert.NoError(t, err, "expected a valid working directory: %v", err) {
-		return
+}
+
+func getEnviron(t *testing.T) string {
+	env := os.Getenv("ARM_ENVIRONMENT")
+	if env == "" {
+		t.Skipf("Skipping test due to missing ARM_ENVIRONMENT environment variable")
 	}
 
-	// base options shared amongst all tests.
-	base := integration.ProgramTestOptions{
+	return env
+}
+
+func getCwd(t *testing.T) string {
+	cwd, err := os.Getwd()
+	if err != nil {
+		t.Error("expected a valid working directory", err)
+	}
+
+	return cwd
+}
+
+func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
+	environ := getEnviron(t)
+	return integration.ProgramTestOptions{
 		Config: map[string]string{
 			"azure:environment": environ,
 		},
 		Dependencies: []string{
 			"@pulumi/azuread",
 		},
-	}
-
-	tests := []integration.ProgramTestOptions{
-		// List each test
-		base.With(integration.ProgramTestOptions{
-			Dir:           path.Join(cwd, "simple"),
-			RunUpdateTest: true,
-			Secrets: map[string]string{
-				"password": "SecretP@sswd99!",
-			},
-		}),
-	}
-
-	for _, ex := range tests {
-		example := ex
-		t.Run(example.Dir, func(t *testing.T) {
-			integration.ProgramTest(t, &example)
-		})
 	}
 }
