@@ -42,6 +42,33 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-azuread/sdk/go/...
 
+## Configuration
+
+The following configuration points are available:
+
+- `azuread:clientId` - The Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID` Environment 
+   Variable.
+- `azuread:subscriptionId` - The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` 
+   Environment Variable.
+- `azuread:tenantId` - The Tenant ID which should be used. This can also be sourced from the `ARM_TENANT_ID` Environment 
+   Variable.
+- `azuread:clientSecret` - The Client Secret which should be used. This can also be sourced from the `ARM_CLIENT_SECRET` 
+   Environment Variable.
+- `azuread:certificatePassword` - The password associated with the Client Certificate. This can also be sourced from 
+   the `ARM_CLIENT_CERTIFICATE_PASSWORD` Environment Variable.
+- `azuread:clientCertificatePath` - The path to the Client Certificate associated with the Service Principal which should 
+   be used. This can also be sourced from the `ARM_CLIENT_CERTIFICATE_PATH` Environment Variable.
+- `azuread:environment` -  The Cloud Environment which be used. Possible values are public, usgovernment, german and china. 
+   Defaults to `public`. This can also be sourced from the `ARM_ENVIRONMENT` environment variable.
+- `azuread:msiEndpoint` - The path to a custom endpoint for Managed Service Identity - in most circumstances this should
+   be detected automatically. This can also be sourced from the `ARM_MSI_ENDPOINT` Environment Variable.
+- `azuread:useMsi` - Should Managed Service Identity be used for Authentication? This can also be sourced from the 
+   `ARM_USE_MSI` Environment Variable. Defaults to `false`.
+   
+## Reference
+
+For detailed reference documentation, please visit [the API docs][1].
+
 ## Build from source
 
 ### Add dependencies
@@ -54,10 +81,6 @@ In the root of the repository, run:
 ### Build the provider:
 
 - `make`
-
-## Reference
-
-For detailed reference documentation, please visit [the API docs][1].
 
 
 [1]: https://pulumi.io/reference/pkg/nodejs/@pulumi/azuread/index.html
