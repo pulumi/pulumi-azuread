@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 * Upgrade to support go1.13
 * Regenerate SDK against tf2pulumi 0.6.0
+* Add a **preview** .NET SDK
 
 ---
 
