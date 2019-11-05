@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using Pulumi;
 
-namespace Pulumi.Azuread
+namespace Pulumi.AzureAD
 {
     static class Utilities
     {
@@ -66,7 +66,7 @@ namespace Pulumi.Azuread
         static Utilities()
         {
             var assembly = typeof(Utilities).GetTypeInfo().Assembly;
-            using (var stream = assembly.GetManifestResourceStream("Pulumi.Azuread.version.txt"))
+            using (var stream = assembly.GetManifestResourceStream("Pulumi.AzureAD.version.txt"))
             using (var reader = new StreamReader(stream))
             {
                 version = reader.ReadToEnd().Trim();

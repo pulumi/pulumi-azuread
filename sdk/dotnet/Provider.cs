@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Azuread
+namespace Pulumi.AzureAD
 {
     /// <summary>
     /// The provider type for the azuread package. By default, resources use package-wide configuration
