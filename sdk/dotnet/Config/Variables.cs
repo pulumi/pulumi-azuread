@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Azuread.Config
+namespace Pulumi.AzureAD.Config
 {
     public static class Config
     {

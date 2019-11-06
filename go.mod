@@ -14,7 +14,7 @@ require (
 	github.com/hashicorp/terraform v0.12.7
 	github.com/pkg/errors v0.8.1
 	github.com/pulumi/pulumi v1.1.0
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20191030013051-eccdb58dc332
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20191106002356-df2ca0d49bbf
 	github.com/terraform-providers/terraform-provider-azuread v0.6.0
 	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 )
