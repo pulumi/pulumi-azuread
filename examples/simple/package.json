@@ -7,8 +7,7 @@
         "@pulumi/random": "latest"
     },
     "devDependencies": {
-        "@types/node": "^10.0.0",
-        "typescript": "^3.0.0"
+        "@types/node": "^10.0.0"
     },
     "license": "Apache 2.0"
 }
