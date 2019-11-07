@@ -2,11 +2,14 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.1.0 (2019-11-07)
 * Upgrade to support go1.13
 * Regenerate SDK against tf2pulumi 0.6.0
 * Add a **preview** .NET SDK
-
----
 
 ## 1.0.0 (2019-09-03)
 * Use 1.0 version of Pulumi dependency
