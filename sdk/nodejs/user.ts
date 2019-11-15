@@ -81,6 +81,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
+     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+     */
+    public readonly usageLocation!: pulumi.Output<string>;
+    /**
      * The User Principal Name of the Azure AD User.
      */
     public readonly userPrincipalName!: pulumi.Output<string>;
@@ -104,6 +108,7 @@ export class User extends pulumi.CustomResource {
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["password"] = state ? state.password : undefined;
+            inputs["usageLocation"] = state ? state.usageLocation : undefined;
             inputs["userPrincipalName"] = state ? state.userPrincipalName : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
@@ -121,6 +126,7 @@ export class User extends pulumi.CustomResource {
             inputs["forcePasswordChange"] = args ? args.forcePasswordChange : undefined;
             inputs["mailNickname"] = args ? args.mailNickname : undefined;
             inputs["password"] = args ? args.password : undefined;
+            inputs["usageLocation"] = args ? args.usageLocation : undefined;
             inputs["userPrincipalName"] = args ? args.userPrincipalName : undefined;
             inputs["mail"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
@@ -167,6 +173,10 @@ export interface UserState {
      */
     readonly password?: pulumi.Input<string>;
     /**
+     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+     */
+    readonly usageLocation?: pulumi.Input<string>;
+    /**
      * The User Principal Name of the Azure AD User.
      */
     readonly userPrincipalName?: pulumi.Input<string>;
@@ -194,6 +204,10 @@ export interface UserArgs {
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
     readonly password: pulumi.Input<string>;
+    /**
+     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+     */
+    readonly usageLocation?: pulumi.Input<string>;
     /**
      * The User Principal Name of the Azure AD User.
      */

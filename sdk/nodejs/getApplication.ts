@@ -36,7 +36,6 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetApplicationResult> = pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
-        "appRoles": args.appRoles,
         "name": args.name,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
@@ -49,7 +48,6 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
-    readonly appRoles?: inputs.GetApplicationAppRole[];
     /**
      * Specifies the name of the Application within Azure Active Directory.
      */
@@ -99,6 +97,7 @@ export interface GetApplicationResult {
      * the Object ID of the Azure Active Directory Application.
      */
     readonly objectId: string;
+    readonly owners: string[];
     /**
      * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
      */

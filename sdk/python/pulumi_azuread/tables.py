@@ -34,6 +34,7 @@ _SNAKE_TO_CAMEL_CASE_TABLE = {
     "start_date": "startDate",
     "subscription_id": "subscriptionId",
     "tenant_id": "tenantId",
+    "usage_location": "usageLocation",
     "use_msi": "useMsi",
     "user_principal_name": "userPrincipalName",
 }
@@ -70,6 +71,7 @@ _CAMEL_TO_SNAKE_CASE_TABLE = {
     "startDate": "start_date",
     "subscriptionId": "subscription_id",
     "tenantId": "tenant_id",
+    "usageLocation": "usage_location",
     "useMsi": "use_msi",
     "userPrincipalName": "user_principal_name",
 }

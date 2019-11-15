@@ -36,6 +36,7 @@ func NewUser(ctx *pulumi.Context,
 		inputs["forcePasswordChange"] = nil
 		inputs["mailNickname"] = nil
 		inputs["password"] = nil
+		inputs["usageLocation"] = nil
 		inputs["userPrincipalName"] = nil
 	} else {
 		inputs["accountEnabled"] = args.AccountEnabled
@@ -43,6 +44,7 @@ func NewUser(ctx *pulumi.Context,
 		inputs["forcePasswordChange"] = args.ForcePasswordChange
 		inputs["mailNickname"] = args.MailNickname
 		inputs["password"] = args.Password
+		inputs["usageLocation"] = args.UsageLocation
 		inputs["userPrincipalName"] = args.UserPrincipalName
 	}
 	inputs["mail"] = nil
@@ -67,6 +69,7 @@ func GetUser(ctx *pulumi.Context,
 		inputs["mailNickname"] = state.MailNickname
 		inputs["objectId"] = state.ObjectId
 		inputs["password"] = state.Password
+		inputs["usageLocation"] = state.UsageLocation
 		inputs["userPrincipalName"] = state.UserPrincipalName
 	}
 	s, err := ctx.ReadResource("azuread:index/user:User", name, id, inputs, opts...)
@@ -121,6 +124,11 @@ func (r *User) Password() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["password"])
 }
 
+// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+func (r *User) UsageLocation() *pulumi.StringOutput {
+	return (*pulumi.StringOutput)(r.s.State["usageLocation"])
+}
+
 // The User Principal Name of the Azure AD User.
 func (r *User) UserPrincipalName() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["userPrincipalName"])
@@ -142,6 +150,8 @@ type UserState struct {
 	ObjectId interface{}
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password interface{}
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	UsageLocation interface{}
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName interface{}
 }
@@ -158,6 +168,8 @@ type UserArgs struct {
 	MailNickname interface{}
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password interface{}
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	UsageLocation interface{}
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName interface{}
 }

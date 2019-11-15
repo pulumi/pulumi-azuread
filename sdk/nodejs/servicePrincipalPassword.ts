@@ -68,7 +68,7 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
      */
     public readonly endDate!: pulumi.Output<string>;
     /**
-     * A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     * A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
@@ -141,7 +141,7 @@ export interface ServicePrincipalPasswordState {
      */
     readonly endDate?: pulumi.Input<string>;
     /**
-     * A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     * A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      */
     readonly endDateRelative?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface ServicePrincipalPasswordArgs {
      */
     readonly endDate?: pulumi.Input<string>;
     /**
-     * A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     * A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
      */
     readonly endDateRelative?: pulumi.Input<string>;
     /**

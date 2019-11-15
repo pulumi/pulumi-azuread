@@ -23,6 +23,12 @@ namespace Pulumi.AzureAD
     public sealed class GetUserArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The email alias of the Azure AD User.
+        /// </summary>
+        [Input("mailNickname")]
+        public Input<string>? MailNickname { get; set; }
+
+        /// <summary>
         /// Specifies the Object ID of the Application within Azure Active Directory.
         /// </summary>
         [Input("objectId")]
@@ -60,6 +66,10 @@ namespace Pulumi.AzureAD
         public readonly string MailNickname;
         public readonly string ObjectId;
         /// <summary>
+        /// The usage location of the Azure AD User.
+        /// </summary>
+        public readonly string UsageLocation;
+        /// <summary>
         /// The User Principal Name of the Azure AD User.
         /// </summary>
         public readonly string UserPrincipalName;
@@ -75,6 +85,7 @@ namespace Pulumi.AzureAD
             string mail,
             string mailNickname,
             string objectId,
+            string usageLocation,
             string userPrincipalName,
             string id)
         {
@@ -83,6 +94,7 @@ namespace Pulumi.AzureAD
             Mail = mail;
             MailNickname = mailNickname;
             ObjectId = objectId;
+            UsageLocation = usageLocation;
             UserPrincipalName = userPrincipalName;
             Id = id;
         }

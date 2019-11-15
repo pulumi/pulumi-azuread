@@ -66,6 +66,7 @@ class Application(pulumi.CustomResource):
     """
     The Application's Object ID.
     """
+    owners: pulumi.Output[list]
     public_client: pulumi.Output[bool]
     """
     Is this Azure AD Application a public client? Defaults to `false`.
@@ -89,7 +90,7 @@ class Application(pulumi.CustomResource):
     """
     Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
     """
-    def __init__(__self__, resource_name, opts=None, app_roles=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_roles=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, owners=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Application within Azure Active Directory.
         
@@ -166,6 +167,7 @@ class Application(pulumi.CustomResource):
             __props__['name'] = name
             __props__['oauth2_allow_implicit_flow'] = oauth2_allow_implicit_flow
             __props__['oauth2_permissions'] = oauth2_permissions
+            __props__['owners'] = owners
             __props__['public_client'] = public_client
             __props__['reply_urls'] = reply_urls
             __props__['required_resource_accesses'] = required_resource_accesses
@@ -179,7 +181,7 @@ class Application(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None):
+    def get(resource_name, id, opts=None, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -246,6 +248,7 @@ class Application(pulumi.CustomResource):
         __props__["oauth2_allow_implicit_flow"] = oauth2_allow_implicit_flow
         __props__["oauth2_permissions"] = oauth2_permissions
         __props__["object_id"] = object_id
+        __props__["owners"] = owners
         __props__["public_client"] = public_client
         __props__["reply_urls"] = reply_urls
         __props__["required_resource_accesses"] = required_resource_accesses

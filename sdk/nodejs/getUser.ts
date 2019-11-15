@@ -34,6 +34,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetUserResult> = pulumi.runtime.invoke("azuread:index/getUser:getUser", {
+        "mailNickname": args.mailNickname,
         "objectId": args.objectId,
         "userPrincipalName": args.userPrincipalName,
     }, opts);
@@ -45,6 +46,10 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The email alias of the Azure AD User.
+     */
+    readonly mailNickname?: string;
     /**
      * Specifies the Object ID of the Application within Azure Active Directory.
      */
@@ -76,6 +81,10 @@ export interface GetUserResult {
      */
     readonly mailNickname: string;
     readonly objectId: string;
+    /**
+     * The usage location of the Azure AD User.
+     */
+    readonly usageLocation: string;
     /**
      * The User Principal Name of the Azure AD User.
      */

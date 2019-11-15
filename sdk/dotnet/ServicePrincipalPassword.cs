@@ -23,7 +23,7 @@ namespace Pulumi.AzureAD
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         /// </summary>
         [Output("endDateRelative")]
         public Output<string?> EndDateRelative { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.AzureAD
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
@@ -148,7 +148,7 @@ namespace Pulumi.AzureAD
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }

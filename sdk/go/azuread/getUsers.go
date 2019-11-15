@@ -15,6 +15,7 @@ import (
 func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
+		inputs["mailNicknames"] = args.MailNicknames
 		inputs["objectIds"] = args.ObjectIds
 		inputs["userPrincipalNames"] = args.UserPrincipalNames
 	}
@@ -23,6 +24,7 @@ func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, erro
 		return nil, err
 	}
 	return &GetUsersResult{
+		MailNicknames: outputs["mailNicknames"],
 		ObjectIds: outputs["objectIds"],
 		UserPrincipalNames: outputs["userPrincipalNames"],
 		Id: outputs["id"],
@@ -31,6 +33,8 @@ func LookupUsers(ctx *pulumi.Context, args *GetUsersArgs) (*GetUsersResult, erro
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
+	// The email aliases of the Azure AD Users.
+	MailNicknames interface{}
 	// The Object IDs of the Azure AD Users.
 	ObjectIds interface{}
 	// The User Principal Names of the Azure AD Users.
@@ -39,6 +43,8 @@ type GetUsersArgs struct {
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
+	// The email aliases of the Azure AD Users.
+	MailNicknames interface{}
 	// The Object IDs of the Azure AD Users.
 	ObjectIds interface{}
 	// The User Principal Names of the Azure AD Users.

@@ -56,7 +56,6 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetServicePrincipalResult> = pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
-        "appRoles": args.appRoles,
         "applicationId": args.applicationId,
         "displayName": args.displayName,
         "oauth2Permissions": args.oauth2Permissions,
@@ -70,10 +69,6 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  * A collection of arguments for invoking getServicePrincipal.
  */
 export interface GetServicePrincipalArgs {
-    /**
-     * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-     */
-    readonly appRoles?: inputs.GetServicePrincipalAppRole[];
     /**
      * The ID of the Azure AD Application.
      */

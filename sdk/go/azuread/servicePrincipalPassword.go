@@ -84,7 +84,7 @@ func (r *ServicePrincipalPassword) EndDate() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["endDate"])
 }
 
-// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 func (r *ServicePrincipalPassword) EndDateRelative() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["endDateRelative"])
 }
@@ -113,7 +113,7 @@ func (r *ServicePrincipalPassword) Value() *pulumi.StringOutput {
 type ServicePrincipalPasswordState struct {
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate interface{}
-	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	EndDateRelative interface{}
 	// A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
 	KeyId interface{}
@@ -129,7 +129,7 @@ type ServicePrincipalPasswordState struct {
 type ServicePrincipalPasswordArgs struct {
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate interface{}
-	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
 	EndDateRelative interface{}
 	// A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
 	KeyId interface{}
