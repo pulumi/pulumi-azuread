@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v0.7.0 of the AzureAD Terraform Provider
+_(none)_
 
 ---
+
+## 1.2.0 (2019-11-16)
+* Upgrade to v0.7.0 of the AzureAD Terraform Provider
 
 ## 1.1.0 (2019-11-07)
 * Upgrade to support go1.13
@@ -42,4 +45,3 @@ CHANGELOG
 
 ## 0.18.0 (2019-05-02)
 * Initial release of the Azure AD provider based on v0.3.1 of the AzureAD Terraform provider
-
