@@ -15,7 +15,6 @@ import (
 func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetApplicationResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
-		inputs["appRoles"] = args.AppRoles
 		inputs["name"] = args.Name
 		inputs["oauth2Permissions"] = args.Oauth2Permissions
 		inputs["objectId"] = args.ObjectId
@@ -35,6 +34,7 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 		Oauth2AllowImplicitFlow: outputs["oauth2AllowImplicitFlow"],
 		Oauth2Permissions: outputs["oauth2Permissions"],
 		ObjectId: outputs["objectId"],
+		Owners: outputs["owners"],
 		ReplyUrls: outputs["replyUrls"],
 		RequiredResourceAccesses: outputs["requiredResourceAccesses"],
 		Type: outputs["type"],
@@ -44,7 +44,6 @@ func LookupApplication(ctx *pulumi.Context, args *GetApplicationArgs) (*GetAppli
 
 // A collection of arguments for invoking getApplication.
 type GetApplicationArgs struct {
-	AppRoles interface{}
 	// Specifies the name of the Application within Azure Active Directory.
 	Name interface{}
 	Oauth2Permissions interface{}
@@ -72,6 +71,7 @@ type GetApplicationResult struct {
 	Oauth2Permissions interface{}
 	// the Object ID of the Azure Active Directory Application.
 	ObjectId interface{}
+	Owners interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls interface{}
 	// A collection of `requiredResourceAccess` blocks as documented below.

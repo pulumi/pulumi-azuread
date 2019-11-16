@@ -36,11 +36,15 @@ class User(pulumi.CustomResource):
     """
     The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
     """
+    usage_location: pulumi.Output[str]
+    """
+    The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+    """
     user_principal_name: pulumi.Output[str]
     """
     The User Principal Name of the Azure AD User.
     """
-    def __init__(__self__, resource_name, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail_nickname=None, password=None, user_principal_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail_nickname=None, password=None, usage_location=None, user_principal_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a User within Azure Active Directory.
         
@@ -53,6 +57,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
@@ -83,6 +88,7 @@ class User(pulumi.CustomResource):
             if password is None:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
+            __props__['usage_location'] = usage_location
             if user_principal_name is None:
                 raise TypeError("Missing required property 'user_principal_name'")
             __props__['user_principal_name'] = user_principal_name
@@ -95,7 +101,7 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail=None, mail_nickname=None, object_id=None, password=None, user_principal_name=None):
+    def get(resource_name, id, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail=None, mail_nickname=None, object_id=None, password=None, usage_location=None, user_principal_name=None):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -110,6 +116,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] mail: The primary email address of the Azure AD User.
         :param pulumi.Input[str] object_id: The Object ID of the Azure AD User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
 
         > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
@@ -124,6 +131,7 @@ class User(pulumi.CustomResource):
         __props__["mail_nickname"] = mail_nickname
         __props__["object_id"] = object_id
         __props__["password"] = password
+        __props__["usage_location"] = usage_location
         __props__["user_principal_name"] = user_principal_name
         return User(resource_name, opts=opts, __props__=__props__)
     def translate_output_property(self, prop):

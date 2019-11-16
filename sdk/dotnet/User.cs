@@ -57,6 +57,12 @@ namespace Pulumi.AzureAD
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
+        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        /// </summary>
+        [Output("usageLocation")]
+        public Output<string> UsageLocation { get; private set; } = null!;
+
+        /// <summary>
         /// The User Principal Name of the Azure AD User.
         /// </summary>
         [Output("userPrincipalName")]
@@ -137,6 +143,12 @@ namespace Pulumi.AzureAD
         public Input<string> Password { get; set; } = null!;
 
         /// <summary>
+        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        /// </summary>
+        [Input("usageLocation")]
+        public Input<string>? UsageLocation { get; set; }
+
+        /// <summary>
         /// The User Principal Name of the Azure AD User.
         /// </summary>
         [Input("userPrincipalName", required: true)]
@@ -188,6 +200,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        /// </summary>
+        [Input("usageLocation")]
+        public Input<string>? UsageLocation { get; set; }
 
         /// <summary>
         /// The User Principal Name of the Azure AD User.

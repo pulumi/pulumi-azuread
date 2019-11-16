@@ -28,7 +28,7 @@ export interface ApplicationAppRole {
     /**
      * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
      */
-    value: string;
+    value?: string;
 }
 
 export interface ApplicationOauth2Permission {

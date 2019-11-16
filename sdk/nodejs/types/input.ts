@@ -28,7 +28,7 @@ export interface ApplicationAppRole {
     /**
      * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
      */
-    value: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface ApplicationOauth2Permission {
@@ -88,33 +88,6 @@ export interface ApplicationRequiredResourceAccessResourceAccess {
     type: pulumi.Input<string>;
 }
 
-export interface GetApplicationAppRole {
-    /**
-     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-     */
-    allowedMemberTypes?: string[];
-    /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
-     */
-    description?: string;
-    /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
-     */
-    displayName?: string;
-    /**
-     * The unique identifier of the `appRole`.
-     */
-    id?: string;
-    /**
-     * Determines if the app role is enabled.
-     */
-    isEnabled?: boolean;
-    /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-     */
-    value?: string;
-}
-
 export interface GetApplicationOauth2Permission {
     /**
      * The description of the admin consent
@@ -144,33 +117,6 @@ export interface GetApplicationOauth2Permission {
      * The display name of the user consent
      */
     userConsentDisplayName?: string;
-    /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-     */
-    value?: string;
-}
-
-export interface GetServicePrincipalAppRole {
-    /**
-     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-     */
-    allowedMemberTypes?: string[];
-    /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
-     */
-    description?: string;
-    /**
-     * The Display Name of the Azure AD Application associated with this Service Principal.
-     */
-    displayName?: string;
-    /**
-     * The unique identifier of the `appRole`.
-     */
-    id?: string;
-    /**
-     * Determines if the app role is enabled.
-     */
-    isEnabled?: boolean;
     /**
      * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
      */

@@ -51,26 +51,16 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             object_id=self.object_id,
             id=self.id)
 
-def get_service_principal(app_roles=None,application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
+def get_service_principal(application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
     
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     
-    :param list app_roles: A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
     :param str application_id: The ID of the Azure AD Application.
     :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
     :param list oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: The ID of the Azure AD Service Principal.
-    
-    The **app_roles** object supports the following:
-    
-      * `allowedMemberTypes` (`list`) - Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-      * `description` (`str`) - Permission help text that appears in the admin app assignment and consent experiences.
-      * `display_name` (`str`) - The Display Name of the Azure AD Application associated with this Service Principal.
-      * `id` (`str`) - The unique identifier of the `app_role`.
-      * `isEnabled` (`bool`) - Determines if the app role is enabled.
-      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
     
     The **oauth2_permissions** object supports the following:
     
@@ -87,7 +77,6 @@ def get_service_principal(app_roles=None,application_id=None,display_name=None,o
     """
     __args__ = dict()
 
-    __args__['appRoles'] = app_roles
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
     __args__['oauth2Permissions'] = oauth2_permissions

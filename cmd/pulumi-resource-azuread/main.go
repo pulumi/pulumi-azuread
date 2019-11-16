@@ -15,7 +15,7 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 
 	azuread "github.com/pulumi/pulumi-azuread"
 	"github.com/pulumi/pulumi-azuread/pkg/version"

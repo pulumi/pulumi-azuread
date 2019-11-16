@@ -132,6 +132,7 @@ export class Application extends pulumi.CustomResource {
      * The Application's Object ID.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    public readonly owners!: pulumi.Output<string[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */
@@ -171,6 +172,7 @@ export class Application extends pulumi.CustomResource {
             inputs["oauth2AllowImplicitFlow"] = state ? state.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["owners"] = state ? state.owners : undefined;
             inputs["publicClient"] = state ? state.publicClient : undefined;
             inputs["replyUrls"] = state ? state.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
@@ -185,6 +187,7 @@ export class Application extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["oauth2AllowImplicitFlow"] = args ? args.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
+            inputs["owners"] = args ? args.owners : undefined;
             inputs["publicClient"] = args ? args.publicClient : undefined;
             inputs["replyUrls"] = args ? args.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
@@ -247,6 +250,7 @@ export interface ApplicationState {
      * The Application's Object ID.
      */
     readonly objectId?: pulumi.Input<string>;
+    readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */
@@ -301,6 +305,7 @@ export interface ApplicationArgs {
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
+    readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */

@@ -13,7 +13,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, reply_urls=None, required_resource_accesses=None, type=None, id=None):
+    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None, id=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         __self__.app_roles = app_roles
@@ -68,6 +68,9 @@ class GetApplicationResult:
         """
         the Object ID of the Azure Active Directory Application.
         """
+        if owners and not isinstance(owners, list):
+            raise TypeError("Expected argument 'owners' to be a list")
+        __self__.owners = owners
         if reply_urls and not isinstance(reply_urls, list):
             raise TypeError("Expected argument 'reply_urls' to be a list")
         __self__.reply_urls = reply_urls
@@ -108,12 +111,13 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             oauth2_allow_implicit_flow=self.oauth2_allow_implicit_flow,
             oauth2_permissions=self.oauth2_permissions,
             object_id=self.object_id,
+            owners=self.owners,
             reply_urls=self.reply_urls,
             required_resource_accesses=self.required_resource_accesses,
             type=self.type,
             id=self.id)
 
-def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=None,opts=None):
+def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
     
@@ -121,15 +125,6 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
     
     :param str name: Specifies the name of the Application within Azure Active Directory.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
-    
-    The **app_roles** object supports the following:
-    
-      * `allowedMemberTypes` (`list`) - Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-      * `description` (`str`) - Permission help text that appears in the admin app assignment and consent experiences.
-      * `display_name` (`str`) - Display name for the permission that appears in the admin consent and app assignment experiences.
-      * `id` (`str`) - The unique identifier of the `app_role`.
-      * `isEnabled` (`bool`) - Determines if the app role is enabled.
-      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
     
     The **oauth2_permissions** object supports the following:
     
@@ -146,7 +141,6 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
     """
     __args__ = dict()
 
-    __args__['appRoles'] = app_roles
     __args__['name'] = name
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
@@ -167,6 +161,7 @@ def get_application(app_roles=None,name=None,oauth2_permissions=None,object_id=N
         oauth2_allow_implicit_flow=__ret__.get('oauth2AllowImplicitFlow'),
         oauth2_permissions=__ret__.get('oauth2Permissions'),
         object_id=__ret__.get('objectId'),
+        owners=__ret__.get('owners'),
         reply_urls=__ret__.get('replyUrls'),
         required_resource_accesses=__ret__.get('requiredResourceAccesses'),
         type=__ret__.get('type'),

@@ -29,6 +29,7 @@ func NewApplication(ctx *pulumi.Context,
 		inputs["name"] = nil
 		inputs["oauth2AllowImplicitFlow"] = nil
 		inputs["oauth2Permissions"] = nil
+		inputs["owners"] = nil
 		inputs["publicClient"] = nil
 		inputs["replyUrls"] = nil
 		inputs["requiredResourceAccesses"] = nil
@@ -42,6 +43,7 @@ func NewApplication(ctx *pulumi.Context,
 		inputs["name"] = args.Name
 		inputs["oauth2AllowImplicitFlow"] = args.Oauth2AllowImplicitFlow
 		inputs["oauth2Permissions"] = args.Oauth2Permissions
+		inputs["owners"] = args.Owners
 		inputs["publicClient"] = args.PublicClient
 		inputs["replyUrls"] = args.ReplyUrls
 		inputs["requiredResourceAccesses"] = args.RequiredResourceAccesses
@@ -72,6 +74,7 @@ func GetApplication(ctx *pulumi.Context,
 		inputs["oauth2AllowImplicitFlow"] = state.Oauth2AllowImplicitFlow
 		inputs["oauth2Permissions"] = state.Oauth2Permissions
 		inputs["objectId"] = state.ObjectId
+		inputs["owners"] = state.Owners
 		inputs["publicClient"] = state.PublicClient
 		inputs["replyUrls"] = state.ReplyUrls
 		inputs["requiredResourceAccesses"] = state.RequiredResourceAccesses
@@ -144,6 +147,10 @@ func (r *Application) ObjectId() *pulumi.StringOutput {
 	return (*pulumi.StringOutput)(r.s.State["objectId"])
 }
 
+func (r *Application) Owners() *pulumi.ArrayOutput {
+	return (*pulumi.ArrayOutput)(r.s.State["owners"])
+}
+
 // Is this Azure AD Application a public client? Defaults to `false`.
 func (r *Application) PublicClient() *pulumi.BoolOutput {
 	return (*pulumi.BoolOutput)(r.s.State["publicClient"])
@@ -186,6 +193,7 @@ type ApplicationState struct {
 	Oauth2Permissions interface{}
 	// The Application's Object ID.
 	ObjectId interface{}
+	Owners interface{}
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -214,6 +222,7 @@ type ApplicationArgs struct {
 	Oauth2AllowImplicitFlow interface{}
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions interface{}
+	Owners interface{}
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient interface{}
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.

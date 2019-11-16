@@ -15,7 +15,6 @@ import (
 func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) (*GetServicePrincipalResult, error) {
 	inputs := make(map[string]interface{})
 	if args != nil {
-		inputs["appRoles"] = args.AppRoles
 		inputs["applicationId"] = args.ApplicationId
 		inputs["displayName"] = args.DisplayName
 		inputs["oauth2Permissions"] = args.Oauth2Permissions
@@ -37,8 +36,6 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *GetServicePrincipalArgs) 
 
 // A collection of arguments for invoking getServicePrincipal.
 type GetServicePrincipalArgs struct {
-	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles interface{}
 	// The ID of the Azure AD Application.
 	ApplicationId interface{}
 	// The Display Name of the Azure AD Application associated with this Service Principal.

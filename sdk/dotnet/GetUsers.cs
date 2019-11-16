@@ -22,6 +22,18 @@ namespace Pulumi.AzureAD
 
     public sealed class GetUsersArgs : Pulumi.ResourceArgs
     {
+        [Input("mailNicknames")]
+        private InputList<string>? _mailNicknames;
+
+        /// <summary>
+        /// The email aliases of the Azure AD Users.
+        /// </summary>
+        public InputList<string> MailNicknames
+        {
+            get => _mailNicknames ?? (_mailNicknames = new InputList<string>());
+            set => _mailNicknames = value;
+        }
+
         [Input("objectIds")]
         private InputList<string>? _objectIds;
 
@@ -55,6 +67,10 @@ namespace Pulumi.AzureAD
     public sealed class GetUsersResult
     {
         /// <summary>
+        /// The email aliases of the Azure AD Users.
+        /// </summary>
+        public readonly ImmutableArray<string> MailNicknames;
+        /// <summary>
         /// The Object IDs of the Azure AD Users.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
@@ -69,10 +85,12 @@ namespace Pulumi.AzureAD
 
         [OutputConstructor]
         private GetUsersResult(
+            ImmutableArray<string> mailNicknames,
             ImmutableArray<string> objectIds,
             ImmutableArray<string> userPrincipalNames,
             string id)
         {
+            MailNicknames = mailNicknames;
             ObjectIds = objectIds;
             UserPrincipalNames = userPrincipalNames;
             Id = id;

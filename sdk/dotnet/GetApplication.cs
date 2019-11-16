@@ -22,14 +22,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationArgs : Pulumi.ResourceArgs
     {
-        [Input("appRoles")]
-        private InputList<Inputs.GetApplicationAppRolesArgs>? _appRoles;
-        public InputList<Inputs.GetApplicationAppRolesArgs> AppRoles
-        {
-            get => _appRoles ?? (_appRoles = new InputList<Inputs.GetApplicationAppRolesArgs>());
-            set => _appRoles = value;
-        }
-
         /// <summary>
         /// Specifies the name of the Application within Azure Active Directory.
         /// </summary>
@@ -92,6 +84,7 @@ namespace Pulumi.AzureAD
         /// the Object ID of the Azure Active Directory Application.
         /// </summary>
         public readonly string ObjectId;
+        public readonly ImmutableArray<string> Owners;
         /// <summary>
         /// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         /// </summary>
@@ -121,6 +114,7 @@ namespace Pulumi.AzureAD
             bool oauth2AllowImplicitFlow,
             ImmutableArray<Outputs.GetApplicationOauth2PermissionsResult> oauth2Permissions,
             string objectId,
+            ImmutableArray<string> owners,
             ImmutableArray<string> replyUrls,
             ImmutableArray<Outputs.GetApplicationRequiredResourceAccessesResult> requiredResourceAccesses,
             string type,
@@ -136,6 +130,7 @@ namespace Pulumi.AzureAD
             Oauth2AllowImplicitFlow = oauth2AllowImplicitFlow;
             Oauth2Permissions = oauth2Permissions;
             ObjectId = objectId;
+            Owners = owners;
             ReplyUrls = replyUrls;
             RequiredResourceAccesses = requiredResourceAccesses;
             Type = type;
@@ -145,55 +140,6 @@ namespace Pulumi.AzureAD
 
     namespace Inputs
     {
-
-    public sealed class GetApplicationAppRolesArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedMemberTypes")]
-        private InputList<string>? _allowedMemberTypes;
-
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-        /// </summary>
-        public InputList<string> AllowedMemberTypes
-        {
-            get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
-            set => _allowedMemberTypes = value;
-        }
-
-        /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public GetApplicationAppRolesArgs()
-        {
-        }
-    }
 
     public sealed class GetApplicationOauth2PermissionsArgs : Pulumi.ResourceArgs
     {

@@ -37,6 +37,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     const promise: Promise<GetUsersResult> = pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
+        "mailNicknames": args.mailNicknames,
         "objectIds": args.objectIds,
         "userPrincipalNames": args.userPrincipalNames,
     }, opts);
@@ -48,6 +49,10 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * The email aliases of the Azure AD Users.
+     */
+    readonly mailNicknames?: string[];
     /**
      * The Object IDs of the Azure AD Users.
      */
@@ -62,6 +67,10 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    /**
+     * The email aliases of the Azure AD Users.
+     */
+    readonly mailNicknames: string[];
     /**
      * The Object IDs of the Azure AD Users.
      */

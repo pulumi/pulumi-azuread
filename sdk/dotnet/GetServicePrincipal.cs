@@ -22,18 +22,6 @@ namespace Pulumi.AzureAD
 
     public sealed class GetServicePrincipalArgs : Pulumi.ResourceArgs
     {
-        [Input("appRoles")]
-        private InputList<Inputs.GetServicePrincipalAppRolesArgs>? _appRoles;
-
-        /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-        /// </summary>
-        public InputList<Inputs.GetServicePrincipalAppRolesArgs> AppRoles
-        {
-            get => _appRoles ?? (_appRoles = new InputList<Inputs.GetServicePrincipalAppRolesArgs>());
-            set => _appRoles = value;
-        }
-
         /// <summary>
         /// The ID of the Azure AD Application.
         /// </summary>
@@ -105,55 +93,6 @@ namespace Pulumi.AzureAD
 
     namespace Inputs
     {
-
-    public sealed class GetServicePrincipalAppRolesArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedMemberTypes")]
-        private InputList<string>? _allowedMemberTypes;
-
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-        /// </summary>
-        public InputList<string> AllowedMemberTypes
-        {
-            get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
-            set => _allowedMemberTypes = value;
-        }
-
-        /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// The Display Name of the Azure AD Application associated with this Service Principal.
-        /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public GetServicePrincipalAppRolesArgs()
-        {
-        }
-    }
 
     public sealed class GetServicePrincipalOauth2PermissionsArgs : Pulumi.ResourceArgs
     {

@@ -76,6 +76,9 @@ namespace Pulumi.AzureAD
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
+        [Output("owners")]
+        public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
+
         /// <summary>
         /// Is this Azure AD Application a public client? Defaults to `false`.
         /// </summary>
@@ -212,6 +215,14 @@ namespace Pulumi.AzureAD
             set => _oauth2Permissions = value;
         }
 
+        [Input("owners")]
+        private InputList<string>? _owners;
+        public InputList<string> Owners
+        {
+            get => _owners ?? (_owners = new InputList<string>());
+            set => _owners = value;
+        }
+
         /// <summary>
         /// Is this Azure AD Application a public client? Defaults to `false`.
         /// </summary>
@@ -333,6 +344,14 @@ namespace Pulumi.AzureAD
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
+        [Input("owners")]
+        private InputList<string>? _owners;
+        public InputList<string> Owners
+        {
+            get => _owners ?? (_owners = new InputList<string>());
+            set => _owners = value;
+        }
+
         /// <summary>
         /// Is this Azure AD Application a public client? Defaults to `false`.
         /// </summary>
@@ -418,8 +437,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public ApplicationAppRolesArgs()
         {
@@ -467,8 +486,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public ApplicationAppRolesGetArgs()
         {
@@ -703,7 +722,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
         /// </summary>
-        public readonly string Value;
+        public readonly string? Value;
 
         [OutputConstructor]
         private ApplicationAppRoles(
@@ -712,7 +731,7 @@ namespace Pulumi.AzureAD
             string displayName,
             string id,
             bool? isEnabled,
-            string value)
+            string? value)
         {
             AllowedMemberTypes = allowedMemberTypes;
             Description = description;
