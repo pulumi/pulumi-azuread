@@ -17,7 +17,7 @@ namespace Pulumi.AzureAD
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
         /// </summary>
         public static Task<GetGroupsResult> GetGroups(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("azuread:index/getGroups:getGroups", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetGroupsArgs : Pulumi.ResourceArgs
