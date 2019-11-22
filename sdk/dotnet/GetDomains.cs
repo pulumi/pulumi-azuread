@@ -17,7 +17,7 @@ namespace Pulumi.AzureAD
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
         /// </summary>
         public static Task<GetDomainsResult> GetDomains(GetDomainsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("azuread:index/getDomains:getDomains", args, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("azuread:index/getDomains:getDomains", args ?? ResourceArgs.Empty, options.WithVersion());
     }
 
     public sealed class GetDomainsArgs : Pulumi.ResourceArgs

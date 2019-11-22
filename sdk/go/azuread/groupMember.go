@@ -58,23 +58,23 @@ func GetGroupMember(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *GroupMember) URN() *pulumi.URNOutput {
+func (r *GroupMember) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *GroupMember) ID() *pulumi.IDOutput {
+func (r *GroupMember) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
-func (r *GroupMember) GroupObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["groupObjectId"])
+func (r *GroupMember) GroupObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["groupObjectId"])
 }
 
 // The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-func (r *GroupMember) MemberObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["memberObjectId"])
+func (r *GroupMember) MemberObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["memberObjectId"])
 }
 
 // Input properties used for looking up and filtering GroupMember resources.

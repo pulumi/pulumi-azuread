@@ -65,43 +65,43 @@ func GetServicePrincipal(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ServicePrincipal) URN() *pulumi.URNOutput {
+func (r *ServicePrincipal) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ServicePrincipal) ID() *pulumi.IDOutput {
+func (r *ServicePrincipal) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
-func (r *ServicePrincipal) AppRoleAssignmentRequired() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["appRoleAssignmentRequired"])
+func (r *ServicePrincipal) AppRoleAssignmentRequired() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["appRoleAssignmentRequired"])
 }
 
 // The ID of the Azure AD Application for which to create a Service Principal.
-func (r *ServicePrincipal) ApplicationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["applicationId"])
+func (r *ServicePrincipal) ApplicationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["applicationId"])
 }
 
 // The Display Name of the Azure Active Directory Application associated with this Service Principal.
-func (r *ServicePrincipal) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *ServicePrincipal) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
-func (r *ServicePrincipal) Oauth2Permissions() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["oauth2Permissions"])
+func (r *ServicePrincipal) Oauth2Permissions() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["oauth2Permissions"])
 }
 
 // The Service Principal's Object ID.
-func (r *ServicePrincipal) ObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectId"])
+func (r *ServicePrincipal) ObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectId"])
 }
 
 // A list of tags to apply to the Service Principal.
-func (r *ServicePrincipal) Tags() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["tags"])
+func (r *ServicePrincipal) Tags() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["tags"])
 }
 
 // Input properties used for looking up and filtering ServicePrincipal resources.

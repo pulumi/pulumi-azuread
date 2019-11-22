@@ -64,7 +64,7 @@ namespace Pulumi.AzureAD
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApplicationPassword(string name, ApplicationPasswordArgs args, CustomResourceOptions? options = null)
-            : base("azuread:index/applicationPassword:ApplicationPassword", name, args, MakeResourceOptions(options, ""))
+            : base("azuread:index/applicationPassword:ApplicationPassword", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

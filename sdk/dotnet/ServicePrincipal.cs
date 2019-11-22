@@ -61,7 +61,7 @@ namespace Pulumi.AzureAD
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ServicePrincipal(string name, ServicePrincipalArgs args, CustomResourceOptions? options = null)
-            : base("azuread:index/servicePrincipal:ServicePrincipal", name, args, MakeResourceOptions(options, ""))
+            : base("azuread:index/servicePrincipal:ServicePrincipal", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 

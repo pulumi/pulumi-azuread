@@ -70,47 +70,47 @@ func GetApplicationPassword(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *ApplicationPassword) URN() *pulumi.URNOutput {
+func (r *ApplicationPassword) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *ApplicationPassword) ID() *pulumi.IDOutput {
+func (r *ApplicationPassword) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
-func (r *ApplicationPassword) ApplicationId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["applicationId"])
+func (r *ApplicationPassword) ApplicationId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["applicationId"])
 }
 
 // The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
-func (r *ApplicationPassword) ApplicationObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["applicationObjectId"])
+func (r *ApplicationPassword) ApplicationObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["applicationObjectId"])
 }
 
 // The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-func (r *ApplicationPassword) EndDate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endDate"])
+func (r *ApplicationPassword) EndDate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endDate"])
 }
 
 // A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-func (r *ApplicationPassword) EndDateRelative() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["endDateRelative"])
+func (r *ApplicationPassword) EndDateRelative() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["endDateRelative"])
 }
 
 // A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-func (r *ApplicationPassword) KeyId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["keyId"])
+func (r *ApplicationPassword) KeyId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["keyId"])
 }
 
 // The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-func (r *ApplicationPassword) StartDate() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["startDate"])
+func (r *ApplicationPassword) StartDate() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["startDate"])
 }
 
 // The Password for this Application .
-func (r *ApplicationPassword) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *ApplicationPassword) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // Input properties used for looking up and filtering ApplicationPassword resources.

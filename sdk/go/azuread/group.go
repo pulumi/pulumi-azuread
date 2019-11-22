@@ -56,32 +56,32 @@ func GetGroup(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Group) URN() *pulumi.URNOutput {
+func (r *Group) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Group) ID() *pulumi.IDOutput {
+func (r *Group) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-func (r *Group) Members() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["members"])
+func (r *Group) Members() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["members"])
 }
 
 // The display name for the Group. Changing this forces a new resource to be created.
-func (r *Group) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Group) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
-func (r *Group) ObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectId"])
+func (r *Group) ObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectId"])
 }
 
 // A set of owners who own this Group. Supported Object types are Users or Service Principals.
-func (r *Group) Owners() *pulumi.ArrayOutput {
-	return (*pulumi.ArrayOutput)(r.s.State["owners"])
+func (r *Group) Owners() pulumi.ArrayOutput {
+	return (pulumi.ArrayOutput)(r.s.State["owners"])
 }
 
 // Input properties used for looking up and filtering Group resources.
