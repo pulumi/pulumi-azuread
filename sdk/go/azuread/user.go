@@ -80,58 +80,58 @@ func GetUser(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *User) URN() *pulumi.URNOutput {
+func (r *User) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *User) ID() *pulumi.IDOutput {
+func (r *User) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
 // * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
-func (r *User) AccountEnabled() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["accountEnabled"])
+func (r *User) AccountEnabled() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["accountEnabled"])
 }
 
 // The name to display in the address book for the user.
-func (r *User) DisplayName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["displayName"])
+func (r *User) DisplayName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["displayName"])
 }
 
 // `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-func (r *User) ForcePasswordChange() *pulumi.BoolOutput {
-	return (*pulumi.BoolOutput)(r.s.State["forcePasswordChange"])
+func (r *User) ForcePasswordChange() pulumi.BoolOutput {
+	return (pulumi.BoolOutput)(r.s.State["forcePasswordChange"])
 }
 
 // The primary email address of the Azure AD User.
-func (r *User) Mail() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mail"])
+func (r *User) Mail() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mail"])
 }
 
-func (r *User) MailNickname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["mailNickname"])
+func (r *User) MailNickname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["mailNickname"])
 }
 
 // The Object ID of the Azure AD User.
-func (r *User) ObjectId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["objectId"])
+func (r *User) ObjectId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["objectId"])
 }
 
 // The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
-func (r *User) Password() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["password"])
+func (r *User) Password() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["password"])
 }
 
 // The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
-func (r *User) UsageLocation() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["usageLocation"])
+func (r *User) UsageLocation() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["usageLocation"])
 }
 
 // The User Principal Name of the Azure AD User.
-func (r *User) UserPrincipalName() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["userPrincipalName"])
+func (r *User) UserPrincipalName() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["userPrincipalName"])
 }
 
 // Input properties used for looking up and filtering User resources.

@@ -37,7 +37,7 @@ namespace Pulumi.AzureAD
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public GroupMember(string name, GroupMemberArgs args, CustomResourceOptions? options = null)
-            : base("azuread:index/groupMember:GroupMember", name, args, MakeResourceOptions(options, ""))
+            : base("azuread:index/groupMember:GroupMember", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
         {
         }
 
