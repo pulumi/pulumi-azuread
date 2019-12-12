@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v1.5.2
+_(none)_
 
 ---
+
+## 1.3.0 (2019-12-12)
+* Upgrade to pulumi-terraform-bridge v1.5.2
 
 ## 1.2.0 (2019-11-16)
 * Upgrade to v0.7.0 of the AzureAD Terraform Provider
