@@ -6,8 +6,11 @@ _(none)_
 
 ---
 
-## 1.3.0 (2019-12-12)
+## 1.4.0 (2019-12-12)
 * Upgrade to pulumi-terraform-bridge v1.5.2
+
+## 1.3.0 (2019-12-02)
+* Upgrade to pulumi-terraform-bridge v1.4.3
 
 ## 1.2.0 (2019-11-16)
 * Upgrade to v0.7.0 of the AzureAD Terraform Provider
