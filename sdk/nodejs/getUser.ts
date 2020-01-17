@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
  */
-export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> & GetUserResult {
+export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,13 +33,11 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetUserResult> = pulumi.runtime.invoke("azuread:index/getUser:getUser", {
+    return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
         "mailNickname": args.mailNickname,
         "objectId": args.objectId,
         "userPrincipalName": args.userPrincipalName,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**
