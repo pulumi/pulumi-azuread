@@ -2,9 +2,9 @@
     "name": "aadsimple",
     "version": "0.0.1",
     "dependencies": {
-        "@pulumi/pulumi": "dev",
+        "@pulumi/pulumi": "feature-2.0",
         "@pulumi/azuread": "latest",
-        "@pulumi/random": "latest"
+        "@pulumi/random": "feature-2.0"
     },
     "devDependencies": {
         "@types/node": "^10.0.0"
