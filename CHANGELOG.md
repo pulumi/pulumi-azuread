@@ -51,3 +51,4 @@ _(none)_
 
 ## 0.18.0 (2019-05-02)
 * Initial release of the Azure AD provider based on v0.3.1 of the AzureAD Terraform provider
+
