@@ -13,7 +13,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None, id=None):
+    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         __self__.app_roles = app_roles
@@ -41,6 +41,12 @@ class GetApplicationResult:
         if homepage and not isinstance(homepage, str):
             raise TypeError("Expected argument 'homepage' to be a str")
         __self__.homepage = homepage
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
+        """
         if identifier_uris and not isinstance(identifier_uris, list):
             raise TypeError("Expected argument 'identifier_uris' to be a list")
         __self__.identifier_uris = identifier_uris
@@ -89,12 +95,6 @@ class GetApplicationResult:
         """
         The type of the permission
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetApplicationResult(GetApplicationResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -106,6 +106,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             available_to_other_tenants=self.available_to_other_tenants,
             group_membership_claims=self.group_membership_claims,
             homepage=self.homepage,
+            id=self.id,
             identifier_uris=self.identifier_uris,
             name=self.name,
             oauth2_allow_implicit_flow=self.oauth2_allow_implicit_flow,
@@ -114,20 +115,22 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             owners=self.owners,
             reply_urls=self.reply_urls,
             required_resource_accesses=self.required_resource_accesses,
-            type=self.type,
-            id=self.id)
+            type=self.type)
 
 def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
-    
+
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
+
+
     :param str name: Specifies the name of the Application within Azure Active Directory.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
-    
+
     The **oauth2_permissions** object supports the following:
-    
+
       * `adminConsentDescription` (`str`) - The description of the admin consent
       * `adminConsentDisplayName` (`str`) - The display name of the admin consent
       * `id` (`str`) - The unique identifier of the `app_role`.
@@ -136,10 +139,9 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
       * `userConsentDescription` (`str`) - The description of the user consent
       * `userConsentDisplayName` (`str`) - The display name of the user consent
       * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['name'] = name
     __args__['oauth2Permissions'] = oauth2_permissions
@@ -156,6 +158,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
         available_to_other_tenants=__ret__.get('availableToOtherTenants'),
         group_membership_claims=__ret__.get('groupMembershipClaims'),
         homepage=__ret__.get('homepage'),
+        id=__ret__.get('id'),
         identifier_uris=__ret__.get('identifierUris'),
         name=__ret__.get('name'),
         oauth2_allow_implicit_flow=__ret__.get('oauth2AllowImplicitFlow'),
@@ -164,5 +167,4 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
         owners=__ret__.get('owners'),
         reply_urls=__ret__.get('replyUrls'),
         required_resource_accesses=__ret__.get('requiredResourceAccesses'),
-        type=__ret__.get('type'),
-        id=__ret__.get('id'))
+        type=__ret__.get('type'))
