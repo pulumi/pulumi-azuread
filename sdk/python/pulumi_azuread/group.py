@@ -26,16 +26,16 @@ class Group(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, members=None, name=None, owners=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Group within Azure Active Directory.
-        
+
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -69,19 +69,18 @@ class Group(pulumi.CustomResource):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["members"] = members
         __props__["name"] = name
         __props__["object_id"] = object_id

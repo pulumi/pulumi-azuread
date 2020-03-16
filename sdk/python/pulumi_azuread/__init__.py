@@ -12,11 +12,6 @@ for pkg in __all__:
 # Export this package's modules as members:
 from .application import *
 from .application_password import *
-from .group import *
-from .group_member import *
-from .service_principal import *
-from .service_principal_password import *
-from .user import *
 from .get_application import *
 from .get_domains import *
 from .get_group import *
@@ -24,4 +19,9 @@ from .get_groups import *
 from .get_service_principal import *
 from .get_user import *
 from .get_users import *
+from .group import *
+from .group_member import *
 from .provider import *
+from .service_principal import *
+from .service_principal_password import *
+from .user import *

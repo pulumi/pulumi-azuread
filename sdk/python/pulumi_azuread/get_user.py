@@ -13,7 +13,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, display_name=None, mail=None, mail_nickname=None, object_id=None, usage_location=None, user_principal_name=None, id=None):
+    def __init__(__self__, account_enabled=None, display_name=None, id=None, mail=None, mail_nickname=None, object_id=None, usage_location=None, user_principal_name=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         __self__.account_enabled = account_enabled
@@ -25,6 +25,12 @@ class GetUserResult:
         __self__.display_name = display_name
         """
         The Display Name of the Azure AD User.
+        """
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        __self__.id = id
+        """
+        id is the provider-assigned unique ID for this managed resource.
         """
         if mail and not isinstance(mail, str):
             raise TypeError("Expected argument 'mail' to be a str")
@@ -53,12 +59,6 @@ class GetUserResult:
         """
         The User Principal Name of the Azure AD User.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
-        """
-        id is the provider-assigned unique ID for this managed resource.
-        """
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -67,26 +67,28 @@ class AwaitableGetUserResult(GetUserResult):
         return GetUserResult(
             account_enabled=self.account_enabled,
             display_name=self.display_name,
+            id=self.id,
             mail=self.mail,
             mail_nickname=self.mail_nickname,
             object_id=self.object_id,
             usage_location=self.usage_location,
-            user_principal_name=self.user_principal_name,
-            id=self.id)
+            user_principal_name=self.user_principal_name)
 
 def get_user(mail_nickname=None,object_id=None,user_principal_name=None,opts=None):
     """
     Gets information about an Azure Active Directory user.
-    
+
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
+
+
     :param str mail_nickname: The email alias of the Azure AD User.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
     :param str user_principal_name: The User Principal Name of the Azure AD User.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['mailNickname'] = mail_nickname
     __args__['objectId'] = object_id
@@ -100,9 +102,9 @@ def get_user(mail_nickname=None,object_id=None,user_principal_name=None,opts=Non
     return AwaitableGetUserResult(
         account_enabled=__ret__.get('accountEnabled'),
         display_name=__ret__.get('displayName'),
+        id=__ret__.get('id'),
         mail=__ret__.get('mail'),
         mail_nickname=__ret__.get('mailNickname'),
         object_id=__ret__.get('objectId'),
         usage_location=__ret__.get('usageLocation'),
-        user_principal_name=__ret__.get('userPrincipalName'),
-        id=__ret__.get('id'))
+        user_principal_name=__ret__.get('userPrincipalName'))
