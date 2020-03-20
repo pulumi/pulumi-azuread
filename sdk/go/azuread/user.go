@@ -12,9 +12,9 @@ import (
 )
 
 // Manages a User within Azure Active Directory.
-// 
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
 type User struct {
 	pulumi.CustomResourceState
@@ -27,13 +27,13 @@ type User struct {
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrOutput `pulumi:"forcePasswordChange"`
 	// The primary email address of the Azure AD User.
-	Mail pulumi.StringOutput `pulumi:"mail"`
+	Mail         pulumi.StringOutput `pulumi:"mail"`
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
 	// The Object ID of the Azure AD User.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation pulumi.StringOutput `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName pulumi.StringOutput `pulumi:"userPrincipalName"`
@@ -84,13 +84,13 @@ type userState struct {
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
 	// The primary email address of the Azure AD User.
-	Mail *string `pulumi:"mail"`
+	Mail         *string `pulumi:"mail"`
 	MailNickname *string `pulumi:"mailNickname"`
 	// The Object ID of the Azure AD User.
 	ObjectId *string `pulumi:"objectId"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password *string `pulumi:"password"`
-	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation *string `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
@@ -105,13 +105,13 @@ type UserState struct {
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrInput
 	// The primary email address of the Azure AD User.
-	Mail pulumi.StringPtrInput
+	Mail         pulumi.StringPtrInput
 	MailNickname pulumi.StringPtrInput
 	// The Object ID of the Azure AD User.
 	ObjectId pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringPtrInput
-	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation pulumi.StringPtrInput
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName pulumi.StringPtrInput
@@ -128,11 +128,11 @@ type userArgs struct {
 	// The name to display in the address book for the user.
 	DisplayName string `pulumi:"displayName"`
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
-	MailNickname *string `pulumi:"mailNickname"`
+	ForcePasswordChange *bool   `pulumi:"forcePasswordChange"`
+	MailNickname        *string `pulumi:"mailNickname"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password string `pulumi:"password"`
-	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation *string `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
@@ -147,10 +147,10 @@ type UserArgs struct {
 	DisplayName pulumi.StringInput
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrInput
-	MailNickname pulumi.StringPtrInput
+	MailNickname        pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringInput
-	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation pulumi.StringPtrInput
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName pulumi.StringInput
@@ -159,4 +159,3 @@ type UserArgs struct {
 func (UserArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*userArgs)(nil)).Elem()
 }
-

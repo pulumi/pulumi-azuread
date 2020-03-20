@@ -9,9 +9,9 @@ import (
 )
 
 // Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
-// 
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
 func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArgs, opts ...pulumi.InvokeOption) (*LookupServicePrincipalResult, error) {
 	var rv LookupServicePrincipalResult
@@ -34,16 +34,14 @@ type LookupServicePrincipalArgs struct {
 	ObjectId *string `pulumi:"objectId"`
 }
 
-
 // A collection of values returned by getServicePrincipal.
 type LookupServicePrincipalResult struct {
-	AppRoles []GetServicePrincipalAppRole `pulumi:"appRoles"`
-	ApplicationId string `pulumi:"applicationId"`
+	AppRoles      []GetServicePrincipalAppRole `pulumi:"appRoles"`
+	ApplicationId string                       `pulumi:"applicationId"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName string `pulumi:"displayName"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                string                                `pulumi:"id"`
 	Oauth2Permissions []GetServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
-	ObjectId string `pulumi:"objectId"`
+	ObjectId          string                                `pulumi:"objectId"`
 }
-

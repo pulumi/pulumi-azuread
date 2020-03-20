@@ -38,9 +38,11 @@ class ApplicationPassword(pulumi.CustomResource):
     def __init__(__self__, resource_name, opts=None, application_id=None, application_object_id=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Password associated with an Application within Azure Active Directory.
-        
+
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-        
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
@@ -49,8 +51,6 @@ class ApplicationPassword(pulumi.CustomResource):
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The Password for this Application .
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -89,7 +89,7 @@ class ApplicationPassword(pulumi.CustomResource):
         """
         Get an existing ApplicationPassword resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
-        
+
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,12 +99,11 @@ class ApplicationPassword(pulumi.CustomResource):
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The Password for this Application .
-
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
+
         __props__["application_id"] = application_id
         __props__["application_object_id"] = application_object_id
         __props__["end_date"] = end_date

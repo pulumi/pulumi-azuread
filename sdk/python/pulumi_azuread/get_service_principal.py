@@ -13,7 +13,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, app_roles=None, application_id=None, display_name=None, oauth2_permissions=None, object_id=None, id=None):
+    def __init__(__self__, app_roles=None, application_id=None, display_name=None, id=None, oauth2_permissions=None, object_id=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         __self__.app_roles = app_roles
@@ -26,18 +26,18 @@ class GetServicePrincipalResult:
         """
         Display name for the permission that appears in the admin consent and app assignment experiences.
         """
-        if oauth2_permissions and not isinstance(oauth2_permissions, list):
-            raise TypeError("Expected argument 'oauth2_permissions' to be a list")
-        __self__.oauth2_permissions = oauth2_permissions
-        if object_id and not isinstance(object_id, str):
-            raise TypeError("Expected argument 'object_id' to be a str")
-        __self__.object_id = object_id
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if oauth2_permissions and not isinstance(oauth2_permissions, list):
+            raise TypeError("Expected argument 'oauth2_permissions' to be a list")
+        __self__.oauth2_permissions = oauth2_permissions
+        if object_id and not isinstance(object_id, str):
+            raise TypeError("Expected argument 'object_id' to be a str")
+        __self__.object_id = object_id
 class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -47,23 +47,26 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             app_roles=self.app_roles,
             application_id=self.application_id,
             display_name=self.display_name,
+            id=self.id,
             oauth2_permissions=self.oauth2_permissions,
-            object_id=self.object_id,
-            id=self.id)
+            object_id=self.object_id)
 
 def get_service_principal(application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
     """
     Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
-    
+
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-    
+
+    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
+
+
     :param str application_id: The ID of the Azure AD Application.
     :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
     :param list oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: The ID of the Azure AD Service Principal.
-    
+
     The **oauth2_permissions** object supports the following:
-    
+
       * `adminConsentDescription` (`str`) - The description of the admin consent
       * `adminConsentDisplayName` (`str`) - The display name of the admin consent
       * `id` (`str`) - The unique identifier of the `app_role`.
@@ -72,10 +75,9 @@ def get_service_principal(application_id=None,display_name=None,oauth2_permissio
       * `userConsentDescription` (`str`) - The description of the user consent
       * `userConsentDisplayName` (`str`) - The display name of the user consent
       * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
     """
     __args__ = dict()
+
 
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
@@ -91,6 +93,6 @@ def get_service_principal(application_id=None,display_name=None,oauth2_permissio
         app_roles=__ret__.get('appRoles'),
         application_id=__ret__.get('applicationId'),
         display_name=__ret__.get('displayName'),
+        id=__ret__.get('id'),
         oauth2_permissions=__ret__.get('oauth2Permissions'),
-        object_id=__ret__.get('objectId'),
-        id=__ret__.get('id'))
+        object_id=__ret__.get('objectId'))

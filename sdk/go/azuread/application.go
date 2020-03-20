@@ -11,9 +11,9 @@ import (
 )
 
 // Manages an Application within Azure Active Directory.
-// 
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application.html.markdown.
 type Application struct {
 	pulumi.CustomResourceState
@@ -37,8 +37,8 @@ type Application struct {
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayOutput `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
-	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	Owners pulumi.StringArrayOutput `pulumi:"owners"`
+	ObjectId pulumi.StringOutput      `pulumi:"objectId"`
+	Owners   pulumi.StringArrayOutput `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolOutput `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -96,8 +96,8 @@ type applicationState struct {
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
-	ObjectId *string `pulumi:"objectId"`
-	Owners []string `pulumi:"owners"`
+	ObjectId *string  `pulumi:"objectId"`
+	Owners   []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -129,7 +129,7 @@ type ApplicationState struct {
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
 	// The Application's Object ID.
 	ObjectId pulumi.StringPtrInput
-	Owners pulumi.StringArrayInput
+	Owners   pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -161,7 +161,7 @@ type applicationArgs struct {
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
-	Owners []string `pulumi:"owners"`
+	Owners            []string                      `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -190,7 +190,7 @@ type ApplicationArgs struct {
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
-	Owners pulumi.StringArrayInput
+	Owners            pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -204,4 +204,3 @@ type ApplicationArgs struct {
 func (ApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationArgs)(nil)).Elem()
 }
-

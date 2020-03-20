@@ -9,9 +9,9 @@ import (
 )
 
 // Use this data source to access information about an existing Domains within Azure Active Directory.
-// 
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult
@@ -32,15 +32,13 @@ type GetDomainsArgs struct {
 	OnlyInitial *bool `pulumi:"onlyInitial"`
 }
 
-
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
 	// One or more `domain` blocks as defined below.
 	Domains []GetDomainsDomain `pulumi:"domains"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	IncludeUnverified *bool `pulumi:"includeUnverified"`
-	OnlyDefault *bool `pulumi:"onlyDefault"`
-	OnlyInitial *bool `pulumi:"onlyInitial"`
+	Id                string `pulumi:"id"`
+	IncludeUnverified *bool  `pulumi:"includeUnverified"`
+	OnlyDefault       *bool  `pulumi:"onlyDefault"`
+	OnlyInitial       *bool  `pulumi:"onlyInitial"`
 }
-

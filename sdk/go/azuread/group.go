@@ -11,17 +11,17 @@ import (
 )
 
 // Manages a Group within Azure Active Directory.
-// 
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
-// 
-// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.html.markdown.
+//
+// > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group.markdown.
 type Group struct {
 	pulumi.CustomResourceState
 
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name     pulumi.StringOutput `pulumi:"name"`
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
@@ -58,7 +58,7 @@ type groupState struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 	ObjectId *string `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
@@ -68,7 +68,7 @@ type GroupState struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
 	// The display name for the Group. Changing this forces a new resource to be created.
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
 	ObjectId pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput
@@ -100,4 +100,3 @@ type GroupArgs struct {
 func (GroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupArgs)(nil)).Elem()
 }
-

@@ -9,9 +9,9 @@ import (
 )
 
 // Gets information about an Azure Active Directory user.
-// 
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
-// 
+//
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
 	var rv LookupUserResult
@@ -32,7 +32,6 @@ type LookupUserArgs struct {
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
-
 // A collection of values returned by getUser.
 type LookupUserResult struct {
 	// `True` if the account is enabled; otherwise `False`.
@@ -45,10 +44,9 @@ type LookupUserResult struct {
 	Mail string `pulumi:"mail"`
 	// The email alias of the Azure AD User.
 	MailNickname string `pulumi:"mailNickname"`
-	ObjectId string `pulumi:"objectId"`
+	ObjectId     string `pulumi:"objectId"`
 	// The usage location of the Azure AD User.
 	UsageLocation string `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
 }
-
