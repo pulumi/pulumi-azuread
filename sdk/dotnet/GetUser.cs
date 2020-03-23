@@ -59,6 +59,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+        /// </summary>
+        public readonly string ImmutableId;
+        /// <summary>
         /// The primary email address of the Azure AD User.
         /// </summary>
         public readonly string Mail;
@@ -67,6 +71,14 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string MailNickname;
         public readonly string ObjectId;
+        /// <summary>
+        /// The on premise sam account name of the Azure AD User.
+        /// </summary>
+        public readonly string OnpremisesSamAccountName;
+        /// <summary>
+        /// The on premise user principal name of the Azure AD User.
+        /// </summary>
+        public readonly string OnpremisesUserPrincipalName;
         /// <summary>
         /// The usage location of the Azure AD User.
         /// </summary>
@@ -84,18 +96,24 @@ namespace Pulumi.AzureAD
         private GetUserResult(
             bool accountEnabled,
             string displayName,
+            string immutableId,
             string mail,
             string mailNickname,
             string objectId,
+            string onpremisesSamAccountName,
+            string onpremisesUserPrincipalName,
             string usageLocation,
             string userPrincipalName,
             string id)
         {
             AccountEnabled = accountEnabled;
             DisplayName = displayName;
+            ImmutableId = immutableId;
             Mail = mail;
             MailNickname = mailNickname;
             ObjectId = objectId;
+            OnpremisesSamAccountName = onpremisesSamAccountName;
+            OnpremisesUserPrincipalName = onpremisesUserPrincipalName;
             UsageLocation = usageLocation;
             UserPrincipalName = userPrincipalName;
             Id = id;

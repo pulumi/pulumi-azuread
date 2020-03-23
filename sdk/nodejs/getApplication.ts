@@ -84,6 +84,10 @@ export interface GetApplicationResult {
      * A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
     readonly identifierUris: string[];
+    /**
+     * The URL of the logout page.
+     */
+    readonly logoutUrl: string;
     readonly name: string;
     /**
      * Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
@@ -97,6 +101,9 @@ export interface GetApplicationResult {
      * the Object ID of the Azure Active Directory Application.
      */
     readonly objectId: string;
+    /**
+     * A list of User Object IDs that are assigned ownership of the application registration.
+     */
     readonly owners: string[];
     /**
      * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.

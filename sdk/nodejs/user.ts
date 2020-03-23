@@ -68,6 +68,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly forcePasswordChange!: pulumi.Output<boolean | undefined>;
     /**
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+     */
+    public readonly immutableId!: pulumi.Output<string>;
+    /**
      * The primary email address of the Azure AD User.
      */
     public /*out*/ readonly mail!: pulumi.Output<string>;
@@ -76,6 +80,14 @@ export class User extends pulumi.CustomResource {
      * The Object ID of the Azure AD User.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * The on premise sam account name of the Azure AD User.
+     */
+    public /*out*/ readonly onpremisesSamAccountName!: pulumi.Output<string>;
+    /**
+     * The on premise user principal name of the Azure AD User.
+     */
+    public /*out*/ readonly onpremisesUserPrincipalName!: pulumi.Output<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
@@ -104,9 +116,12 @@ export class User extends pulumi.CustomResource {
             inputs["accountEnabled"] = state ? state.accountEnabled : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["forcePasswordChange"] = state ? state.forcePasswordChange : undefined;
+            inputs["immutableId"] = state ? state.immutableId : undefined;
             inputs["mail"] = state ? state.mail : undefined;
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
+            inputs["onpremisesUserPrincipalName"] = state ? state.onpremisesUserPrincipalName : undefined;
             inputs["password"] = state ? state.password : undefined;
             inputs["usageLocation"] = state ? state.usageLocation : undefined;
             inputs["userPrincipalName"] = state ? state.userPrincipalName : undefined;
@@ -124,12 +139,15 @@ export class User extends pulumi.CustomResource {
             inputs["accountEnabled"] = args ? args.accountEnabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["forcePasswordChange"] = args ? args.forcePasswordChange : undefined;
+            inputs["immutableId"] = args ? args.immutableId : undefined;
             inputs["mailNickname"] = args ? args.mailNickname : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["usageLocation"] = args ? args.usageLocation : undefined;
             inputs["userPrincipalName"] = args ? args.userPrincipalName : undefined;
             inputs["mail"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
+            inputs["onpremisesSamAccountName"] = undefined /*out*/;
+            inputs["onpremisesUserPrincipalName"] = undefined /*out*/;
         }
         if (!opts) {
             opts = {}
@@ -160,6 +178,10 @@ export interface UserState {
      */
     readonly forcePasswordChange?: pulumi.Input<boolean>;
     /**
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+     */
+    readonly immutableId?: pulumi.Input<string>;
+    /**
      * The primary email address of the Azure AD User.
      */
     readonly mail?: pulumi.Input<string>;
@@ -168,6 +190,14 @@ export interface UserState {
      * The Object ID of the Azure AD User.
      */
     readonly objectId?: pulumi.Input<string>;
+    /**
+     * The on premise sam account name of the Azure AD User.
+     */
+    readonly onpremisesSamAccountName?: pulumi.Input<string>;
+    /**
+     * The on premise user principal name of the Azure AD User.
+     */
+    readonly onpremisesUserPrincipalName?: pulumi.Input<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
@@ -199,6 +229,10 @@ export interface UserArgs {
      * `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
      */
     readonly forcePasswordChange?: pulumi.Input<boolean>;
+    /**
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+     */
+    readonly immutableId?: pulumi.Input<string>;
     readonly mailNickname?: pulumi.Input<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.

@@ -13,7 +13,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, display_name=None, id=None, mail=None, mail_nickname=None, object_id=None, usage_location=None, user_principal_name=None):
+    def __init__(__self__, account_enabled=None, display_name=None, id=None, immutable_id=None, mail=None, mail_nickname=None, object_id=None, onpremises_sam_account_name=None, onpremises_user_principal_name=None, usage_location=None, user_principal_name=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         __self__.account_enabled = account_enabled
@@ -32,6 +32,12 @@ class GetUserResult:
         """
         id is the provider-assigned unique ID for this managed resource.
         """
+        if immutable_id and not isinstance(immutable_id, str):
+            raise TypeError("Expected argument 'immutable_id' to be a str")
+        __self__.immutable_id = immutable_id
+        """
+        The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+        """
         if mail and not isinstance(mail, str):
             raise TypeError("Expected argument 'mail' to be a str")
         __self__.mail = mail
@@ -47,6 +53,18 @@ class GetUserResult:
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         __self__.object_id = object_id
+        if onpremises_sam_account_name and not isinstance(onpremises_sam_account_name, str):
+            raise TypeError("Expected argument 'onpremises_sam_account_name' to be a str")
+        __self__.onpremises_sam_account_name = onpremises_sam_account_name
+        """
+        The on premise sam account name of the Azure AD User.
+        """
+        if onpremises_user_principal_name and not isinstance(onpremises_user_principal_name, str):
+            raise TypeError("Expected argument 'onpremises_user_principal_name' to be a str")
+        __self__.onpremises_user_principal_name = onpremises_user_principal_name
+        """
+        The on premise user principal name of the Azure AD User.
+        """
         if usage_location and not isinstance(usage_location, str):
             raise TypeError("Expected argument 'usage_location' to be a str")
         __self__.usage_location = usage_location
@@ -68,9 +86,12 @@ class AwaitableGetUserResult(GetUserResult):
             account_enabled=self.account_enabled,
             display_name=self.display_name,
             id=self.id,
+            immutable_id=self.immutable_id,
             mail=self.mail,
             mail_nickname=self.mail_nickname,
             object_id=self.object_id,
+            onpremises_sam_account_name=self.onpremises_sam_account_name,
+            onpremises_user_principal_name=self.onpremises_user_principal_name,
             usage_location=self.usage_location,
             user_principal_name=self.user_principal_name)
 
@@ -103,8 +124,11 @@ def get_user(mail_nickname=None,object_id=None,user_principal_name=None,opts=Non
         account_enabled=__ret__.get('accountEnabled'),
         display_name=__ret__.get('displayName'),
         id=__ret__.get('id'),
+        immutable_id=__ret__.get('immutableId'),
         mail=__ret__.get('mail'),
         mail_nickname=__ret__.get('mailNickname'),
         object_id=__ret__.get('objectId'),
+        onpremises_sam_account_name=__ret__.get('onpremisesSamAccountName'),
+        onpremises_user_principal_name=__ret__.get('onpremisesUserPrincipalName'),
         usage_location=__ret__.get('usageLocation'),
         user_principal_name=__ret__.get('userPrincipalName'))

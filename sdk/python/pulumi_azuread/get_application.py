@@ -13,7 +13,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
+    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         __self__.app_roles = app_roles
@@ -53,6 +53,12 @@ class GetApplicationResult:
         """
         A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         """
+        if logout_url and not isinstance(logout_url, str):
+            raise TypeError("Expected argument 'logout_url' to be a str")
+        __self__.logout_url = logout_url
+        """
+        The URL of the logout page.
+        """
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
@@ -77,6 +83,9 @@ class GetApplicationResult:
         if owners and not isinstance(owners, list):
             raise TypeError("Expected argument 'owners' to be a list")
         __self__.owners = owners
+        """
+        A list of User Object IDs that are assigned ownership of the application registration.
+        """
         if reply_urls and not isinstance(reply_urls, list):
             raise TypeError("Expected argument 'reply_urls' to be a list")
         __self__.reply_urls = reply_urls
@@ -108,6 +117,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             homepage=self.homepage,
             id=self.id,
             identifier_uris=self.identifier_uris,
+            logout_url=self.logout_url,
             name=self.name,
             oauth2_allow_implicit_flow=self.oauth2_allow_implicit_flow,
             oauth2_permissions=self.oauth2_permissions,
@@ -160,6 +170,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
         homepage=__ret__.get('homepage'),
         id=__ret__.get('id'),
         identifier_uris=__ret__.get('identifierUris'),
+        logout_url=__ret__.get('logoutUrl'),
         name=__ret__.get('name'),
         oauth2_allow_implicit_flow=__ret__.get('oauth2AllowImplicitFlow'),
         oauth2_permissions=__ret__.get('oauth2Permissions'),

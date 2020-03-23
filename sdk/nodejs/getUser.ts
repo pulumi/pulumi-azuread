@@ -73,6 +73,10 @@ export interface GetUserResult {
      */
     readonly displayName: string;
     /**
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+     */
+    readonly immutableId: string;
+    /**
      * The primary email address of the Azure AD User.
      */
     readonly mail: string;
@@ -81,6 +85,14 @@ export interface GetUserResult {
      */
     readonly mailNickname: string;
     readonly objectId: string;
+    /**
+     * The on premise sam account name of the Azure AD User.
+     */
+    readonly onpremisesSamAccountName: string;
+    /**
+     * The on premise user principal name of the Azure AD User.
+     */
+    readonly onpremisesUserPrincipalName: string;
     /**
      * The usage location of the Azure AD User.
      */

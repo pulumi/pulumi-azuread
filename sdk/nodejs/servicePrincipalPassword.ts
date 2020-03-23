@@ -28,8 +28,8 @@ import * as utilities from "./utilities";
  *     applicationId: exampleApplication.applicationId,
  * });
  * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
- *     endDate: "2020-01-01T01:02:03Z",
- *     servicePrincipalId: azuread_service_principal_test.id,
+ *     endDate: "2099-01-01T01:02:03Z",
+ *     servicePrincipalId: exampleServicePrincipal.id,
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
  * });
  * ```

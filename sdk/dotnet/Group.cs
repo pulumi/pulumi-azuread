@@ -19,6 +19,12 @@ namespace Pulumi.AzureAD
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>
+        /// The description for the Group.  Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         /// </summary>
         [Output("members")]
@@ -85,6 +91,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GroupArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description for the Group.  Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("members")]
         private InputList<string>? _members;
 
@@ -122,6 +134,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GroupState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The description for the Group.  Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         [Input("members")]
         private InputList<string>? _members;
 

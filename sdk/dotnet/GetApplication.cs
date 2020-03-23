@@ -73,6 +73,10 @@ namespace Pulumi.AzureAD
         /// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         /// </summary>
         public readonly ImmutableArray<string> IdentifierUris;
+        /// <summary>
+        /// The URL of the logout page.
+        /// </summary>
+        public readonly string LogoutUrl;
         public readonly string Name;
         /// <summary>
         /// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
@@ -86,6 +90,9 @@ namespace Pulumi.AzureAD
         /// the Object ID of the Azure Active Directory Application.
         /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// A list of User Object IDs that are assigned ownership of the application registration.
+        /// </summary>
         public readonly ImmutableArray<string> Owners;
         /// <summary>
         /// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -112,6 +119,7 @@ namespace Pulumi.AzureAD
             string groupMembershipClaims,
             string homepage,
             ImmutableArray<string> identifierUris,
+            string logoutUrl,
             string name,
             bool oauth2AllowImplicitFlow,
             ImmutableArray<Outputs.GetApplicationOauth2PermissionsResult> oauth2Permissions,
@@ -128,6 +136,7 @@ namespace Pulumi.AzureAD
             GroupMembershipClaims = groupMembershipClaims;
             Homepage = homepage;
             IdentifierUris = identifierUris;
+            LogoutUrl = logoutUrl;
             Name = name;
             Oauth2AllowImplicitFlow = oauth2AllowImplicitFlow;
             Oauth2Permissions = oauth2Permissions;

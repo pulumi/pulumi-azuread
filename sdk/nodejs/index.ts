@@ -5,6 +5,7 @@
 export * from "./application";
 export * from "./applicationPassword";
 export * from "./getApplication";
+export * from "./getClientConfig";
 export * from "./getDomains";
 export * from "./getGroup";
 export * from "./getGroups";

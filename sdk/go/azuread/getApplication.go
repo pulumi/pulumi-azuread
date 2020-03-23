@@ -47,6 +47,8 @@ type LookupApplicationResult struct {
 	Id string `pulumi:"id"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl string `pulumi:"logoutUrl"`
 	Name string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow bool `pulumi:"oauth2AllowImplicitFlow"`
@@ -54,6 +56,7 @@ type LookupApplicationResult struct {
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// the Object ID of the Azure Active Directory Application.
 	ObjectId string `pulumi:"objectId"`
+	// A list of User Object IDs that are assigned ownership of the application registration.
 	Owners []string `pulumi:"owners"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls []string `pulumi:"replyUrls"`

@@ -10,6 +10,10 @@ from typing import Union
 from . import utilities, tables
 
 class Group(pulumi.CustomResource):
+    description: pulumi.Output[str]
+    """
+    The description for the Group.  Changing this forces a new resource to be created.
+    """
     members: pulumi.Output[list]
     """
     A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
@@ -23,7 +27,7 @@ class Group(pulumi.CustomResource):
     """
     A set of owners who own this Group. Supported Object types are Users or Service Principals.
     """
-    def __init__(__self__, resource_name, opts=None, members=None, name=None, owners=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, members=None, name=None, owners=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Group within Azure Active Directory.
 
@@ -33,6 +37,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
         :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
@@ -54,6 +59,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['description'] = description
             __props__['members'] = members
             __props__['name'] = name
             __props__['owners'] = owners
@@ -65,7 +71,7 @@ class Group(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, members=None, name=None, object_id=None, owners=None):
+    def get(resource_name, id, opts=None, description=None, members=None, name=None, object_id=None, owners=None):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -73,6 +79,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
         :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
@@ -81,6 +88,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = description
         __props__["members"] = members
         __props__["name"] = name
         __props__["object_id"] = object_id
