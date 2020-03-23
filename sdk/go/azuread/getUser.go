@@ -41,11 +41,17 @@ type LookupUserResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+	ImmutableId string `pulumi:"immutableId"`
 	// The primary email address of the Azure AD User.
 	Mail string `pulumi:"mail"`
 	// The email alias of the Azure AD User.
 	MailNickname string `pulumi:"mailNickname"`
 	ObjectId string `pulumi:"objectId"`
+	// The on premise sam account name of the Azure AD User.
+	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
+	// The on premise user principal name of the Azure AD User.
+	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
 	// The usage location of the Azure AD User.
 	UsageLocation string `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.

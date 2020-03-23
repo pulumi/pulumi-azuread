@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleApplicationPassword = new azuread.ApplicationPassword("example", {
  *     applicationId: exampleApplication.id,
- *     endDate: "2020-01-01T01:02:03Z",
+ *     endDate: "2099-01-01T01:02:03Z",
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
  * });
  * ```

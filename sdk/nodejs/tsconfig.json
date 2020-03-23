@@ -18,6 +18,7 @@
         "config/index.ts",
         "config/vars.ts",
         "getApplication.ts",
+        "getClientConfig.ts",
         "getDomains.ts",
         "getGroup.ts",
         "getGroups.ts",

@@ -32,6 +32,7 @@ import * as utilities from "./utilities";
  *     homepage: "https://homepage",
  *     identifierUris: ["https://uri"],
  *     oauth2AllowImplicitFlow: true,
+ *     owners: ["00000004-0000-0000-c000-000000000000"],
  *     replyUrls: ["https://replyurl"],
  *     requiredResourceAccesses: [
  *         {
@@ -117,6 +118,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly identifierUris!: pulumi.Output<string[]>;
     /**
+     * The URL of the logout page.
+     */
+    public readonly logoutUrl!: pulumi.Output<string | undefined>;
+    /**
      * The display name for the application.
      */
     public readonly name!: pulumi.Output<string>;
@@ -132,6 +137,9 @@ export class Application extends pulumi.CustomResource {
      * The Application's Object ID.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+     */
     public readonly owners!: pulumi.Output<string[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
@@ -168,6 +176,7 @@ export class Application extends pulumi.CustomResource {
             inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
             inputs["homepage"] = state ? state.homepage : undefined;
             inputs["identifierUris"] = state ? state.identifierUris : undefined;
+            inputs["logoutUrl"] = state ? state.logoutUrl : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["oauth2AllowImplicitFlow"] = state ? state.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
@@ -184,6 +193,7 @@ export class Application extends pulumi.CustomResource {
             inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
             inputs["homepage"] = args ? args.homepage : undefined;
             inputs["identifierUris"] = args ? args.identifierUris : undefined;
+            inputs["logoutUrl"] = args ? args.logoutUrl : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["oauth2AllowImplicitFlow"] = args ? args.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
@@ -235,6 +245,10 @@ export interface ApplicationState {
      */
     readonly identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The URL of the logout page.
+     */
+    readonly logoutUrl?: pulumi.Input<string>;
+    /**
      * The display name for the application.
      */
     readonly name?: pulumi.Input<string>;
@@ -250,6 +264,9 @@ export interface ApplicationState {
      * The Application's Object ID.
      */
     readonly objectId?: pulumi.Input<string>;
+    /**
+     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+     */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
@@ -294,6 +311,10 @@ export interface ApplicationArgs {
      */
     readonly identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The URL of the logout page.
+     */
+    readonly logoutUrl?: pulumi.Input<string>;
+    /**
      * The display name for the application.
      */
     readonly name?: pulumi.Input<string>;
@@ -305,6 +326,9 @@ export interface ApplicationArgs {
      * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
+    /**
+     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+     */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.

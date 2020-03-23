@@ -41,6 +41,10 @@ class Application(pulumi.CustomResource):
     """
     A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
     """
+    logout_url: pulumi.Output[str]
+    """
+    The URL of the logout page.
+    """
     name: pulumi.Output[str]
     """
     The display name for the application.
@@ -67,6 +71,9 @@ class Application(pulumi.CustomResource):
     The Application's Object ID.
     """
     owners: pulumi.Output[list]
+    """
+    A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+    """
     public_client: pulumi.Output[bool]
     """
     Is this Azure AD Application a public client? Defaults to `false`.
@@ -89,7 +96,7 @@ class Application(pulumi.CustomResource):
     """
     Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
     """
-    def __init__(__self__, resource_name, opts=None, app_roles=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, owners=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, app_roles=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, owners=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages an Application within Azure Active Directory.
 
@@ -104,9 +111,11 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
         :param pulumi.Input[str] homepage: The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
         :param pulumi.Input[list] identifier_uris: A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] logout_url: The URL of the logout page.
         :param pulumi.Input[str] name: The display name for the application.
         :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        :param pulumi.Input[list] owners: A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
         :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`.
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
@@ -162,6 +171,7 @@ class Application(pulumi.CustomResource):
             __props__['group_membership_claims'] = group_membership_claims
             __props__['homepage'] = homepage
             __props__['identifier_uris'] = identifier_uris
+            __props__['logout_url'] = logout_url
             __props__['name'] = name
             __props__['oauth2_allow_implicit_flow'] = oauth2_allow_implicit_flow
             __props__['oauth2_permissions'] = oauth2_permissions
@@ -179,7 +189,7 @@ class Application(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None):
+    def get(resource_name, id, opts=None, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, public_client=None, reply_urls=None, required_resource_accesses=None, type=None):
         """
         Get an existing Application resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -193,10 +203,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
         :param pulumi.Input[str] homepage: The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
         :param pulumi.Input[list] identifier_uris: A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] logout_url: The URL of the logout page.
         :param pulumi.Input[str] name: The display name for the application.
         :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         :param pulumi.Input[str] object_id: The Application's Object ID.
+        :param pulumi.Input[list] owners: A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
         :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`.
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
@@ -240,6 +252,7 @@ class Application(pulumi.CustomResource):
         __props__["group_membership_claims"] = group_membership_claims
         __props__["homepage"] = homepage
         __props__["identifier_uris"] = identifier_uris
+        __props__["logout_url"] = logout_url
         __props__["name"] = name
         __props__["oauth2_allow_implicit_flow"] = oauth2_allow_implicit_flow
         __props__["oauth2_permissions"] = oauth2_permissions

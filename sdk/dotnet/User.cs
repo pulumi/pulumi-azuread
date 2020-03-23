@@ -38,6 +38,12 @@ namespace Pulumi.AzureAD
         public Output<bool?> ForcePasswordChange { get; private set; } = null!;
 
         /// <summary>
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        /// </summary>
+        [Output("immutableId")]
+        public Output<string> ImmutableId { get; private set; } = null!;
+
+        /// <summary>
         /// The primary email address of the Azure AD User.
         /// </summary>
         [Output("mail")]
@@ -51,6 +57,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The on premise sam account name of the Azure AD User.
+        /// </summary>
+        [Output("onpremisesSamAccountName")]
+        public Output<string> OnpremisesSamAccountName { get; private set; } = null!;
+
+        /// <summary>
+        /// The on premise user principal name of the Azure AD User.
+        /// </summary>
+        [Output("onpremisesUserPrincipalName")]
+        public Output<string> OnpremisesUserPrincipalName { get; private set; } = null!;
 
         /// <summary>
         /// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
@@ -135,6 +153,12 @@ namespace Pulumi.AzureAD
         [Input("forcePasswordChange")]
         public Input<bool>? ForcePasswordChange { get; set; }
 
+        /// <summary>
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        /// </summary>
+        [Input("immutableId")]
+        public Input<string>? ImmutableId { get; set; }
+
         [Input("mailNickname")]
         public Input<string>? MailNickname { get; set; }
 
@@ -183,6 +207,12 @@ namespace Pulumi.AzureAD
         public Input<bool>? ForcePasswordChange { get; set; }
 
         /// <summary>
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        /// </summary>
+        [Input("immutableId")]
+        public Input<string>? ImmutableId { get; set; }
+
+        /// <summary>
         /// The primary email address of the Azure AD User.
         /// </summary>
         [Input("mail")]
@@ -196,6 +226,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
+
+        /// <summary>
+        /// The on premise sam account name of the Azure AD User.
+        /// </summary>
+        [Input("onpremisesSamAccountName")]
+        public Input<string>? OnpremisesSamAccountName { get; set; }
+
+        /// <summary>
+        /// The on premise user principal name of the Azure AD User.
+        /// </summary>
+        [Input("onpremisesUserPrincipalName")]
+        public Input<string>? OnpremisesUserPrincipalName { get; set; }
 
         /// <summary>
         /// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.

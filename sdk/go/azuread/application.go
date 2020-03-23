@@ -30,6 +30,8 @@ type Application struct {
 	Homepage pulumi.StringOutput `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayOutput `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl pulumi.StringPtrOutput `pulumi:"logoutUrl"`
 	// The display name for the application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
@@ -38,6 +40,7 @@ type Application struct {
 	Oauth2Permissions ApplicationOauth2PermissionArrayOutput `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolOutput `pulumi:"publicClient"`
@@ -89,6 +92,8 @@ type applicationState struct {
 	Homepage *string `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl *string `pulumi:"logoutUrl"`
 	// The display name for the application.
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
@@ -97,6 +102,7 @@ type applicationState struct {
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
 	ObjectId *string `pulumi:"objectId"`
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
 	Owners []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
@@ -121,6 +127,8 @@ type ApplicationState struct {
 	Homepage pulumi.StringPtrInput
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
+	// The URL of the logout page.
+	LogoutUrl pulumi.StringPtrInput
 	// The display name for the application.
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
@@ -129,6 +137,7 @@ type ApplicationState struct {
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
 	// The Application's Object ID.
 	ObjectId pulumi.StringPtrInput
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
 	Owners pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
@@ -155,12 +164,15 @@ type applicationArgs struct {
 	Homepage *string `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl *string `pulumi:"logoutUrl"`
 	// The display name for the application.
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
 	Owners []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
@@ -184,12 +196,15 @@ type ApplicationArgs struct {
 	Homepage pulumi.StringPtrInput
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
+	// The URL of the logout page.
+	LogoutUrl pulumi.StringPtrInput
 	// The display name for the application.
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
 	Owners pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput

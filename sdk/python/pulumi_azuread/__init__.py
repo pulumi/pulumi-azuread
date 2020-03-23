@@ -13,6 +13,7 @@ for pkg in __all__:
 from .application import *
 from .application_password import *
 from .get_application import *
+from .get_client_config import *
 from .get_domains import *
 from .get_group import *
 from .get_groups import *

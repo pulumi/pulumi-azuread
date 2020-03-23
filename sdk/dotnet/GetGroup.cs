@@ -44,9 +44,22 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetGroupResult
     {
+        /// <summary>
+        /// The description of the AD Group.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
+        /// The Object IDs of the Azure AD Group members.
+        /// </summary>
         public readonly ImmutableArray<string> Members;
+        /// <summary>
+        /// The name of the Azure AD Group.
+        /// </summary>
         public readonly string Name;
         public readonly string ObjectId;
+        /// <summary>
+        /// The Object IDs of the Azure AD Group owners.
+        /// </summary>
         public readonly ImmutableArray<string> Owners;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
@@ -55,12 +68,14 @@ namespace Pulumi.AzureAD
 
         [OutputConstructor]
         private GetGroupResult(
+            string description,
             ImmutableArray<string> members,
             string name,
             string objectId,
             ImmutableArray<string> owners,
             string id)
         {
+            Description = description;
             Members = members;
             Name = name;
             ObjectId = objectId;

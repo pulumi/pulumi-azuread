@@ -18,6 +18,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// The description for the Group.  Changing this forces a new resource to be created.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
@@ -55,6 +57,8 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// The description for the Group.  Changing this forces a new resource to be created.
+	Description *string `pulumi:"description"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
@@ -65,6 +69,8 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// The description for the Group.  Changing this forces a new resource to be created.
+	Description pulumi.StringPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
 	// The display name for the Group. Changing this forces a new resource to be created.
@@ -79,6 +85,8 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// The description for the Group.  Changing this forces a new resource to be created.
+	Description *string `pulumi:"description"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
@@ -89,6 +97,8 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// The description for the Group.  Changing this forces a new resource to be created.
+	Description pulumi.StringPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
 	// The display name for the Group. Changing this forces a new resource to be created.
