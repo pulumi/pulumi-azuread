@@ -26,11 +26,11 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 type LookupApplicationArgs struct {
 	// Specifies the name of the Application within Azure Active Directory.
 	Name *string `pulumi:"name"`
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// Specifies the Object ID of the Application within Azure Active Directory.
 	ObjectId *string `pulumi:"objectId"`
 }
-
 
 // A collection of values returned by getApplication.
 type LookupApplicationResult struct {
@@ -42,14 +42,14 @@ type LookupApplicationResult struct {
 	AvailableToOtherTenants bool `pulumi:"availableToOtherTenants"`
 	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
 	GroupMembershipClaims string `pulumi:"groupMembershipClaims"`
-	Homepage string `pulumi:"homepage"`
+	Homepage              string `pulumi:"homepage"`
 	// id is the provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
 	// The URL of the logout page.
 	LogoutUrl string `pulumi:"logoutUrl"`
-	Name string `pulumi:"name"`
+	Name      string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
@@ -65,4 +65,3 @@ type LookupApplicationResult struct {
 	// The type of the permission
 	Type string `pulumi:"type"`
 }
-

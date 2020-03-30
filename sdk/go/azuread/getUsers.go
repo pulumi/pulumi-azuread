@@ -32,7 +32,6 @@ type GetUsersArgs struct {
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
 
-
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -44,4 +43,3 @@ type GetUsersResult struct {
 	// The User Principal Names of the Azure AD Users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
-

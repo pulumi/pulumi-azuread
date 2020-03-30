@@ -23,7 +23,7 @@ type Group struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
-	Name pulumi.StringOutput `pulumi:"name"`
+	Name     pulumi.StringOutput `pulumi:"name"`
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
@@ -62,7 +62,7 @@ type groupState struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
 	// The display name for the Group. Changing this forces a new resource to be created.
-	Name *string `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 	ObjectId *string `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
@@ -74,7 +74,7 @@ type GroupState struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
 	// The display name for the Group. Changing this forces a new resource to be created.
-	Name pulumi.StringPtrInput
+	Name     pulumi.StringPtrInput
 	ObjectId pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput
@@ -110,4 +110,3 @@ type GroupArgs struct {
 func (GroupArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupArgs)(nil)).Elem()
 }
-

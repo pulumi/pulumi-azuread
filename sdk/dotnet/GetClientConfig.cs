@@ -16,7 +16,18 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/client_config.html.markdown.
         /// </summary>
+        [Obsolete("Use GetClientConfig.InvokeAsync() instead")]
         public static Task<GetClientConfigResult> GetClientConfig(InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("azuread:index/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetClientConfig
+    {
+        /// <summary>
+        /// Use this data source to access the configuration of the AzureRM provider.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/client_config.html.markdown.
+        /// </summary>
+        public static Task<GetClientConfigResult> InvokeAsync(InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetClientConfigResult>("azuread:index/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithVersion());
     }
 

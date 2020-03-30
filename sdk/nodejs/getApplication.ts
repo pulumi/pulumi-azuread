@@ -52,6 +52,9 @@ export interface GetApplicationArgs {
      * Specifies the name of the Application within Azure Active Directory.
      */
     readonly name?: string;
+    /**
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+     */
     readonly oauth2Permissions?: inputs.GetApplicationOauth2Permission[];
     /**
      * Specifies the Object ID of the Application within Azure Active Directory.

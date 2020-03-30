@@ -32,7 +32,6 @@ type LookupUserArgs struct {
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
-
 // A collection of values returned by getUser.
 type LookupUserResult struct {
 	// `True` if the account is enabled; otherwise `False`.
@@ -47,7 +46,7 @@ type LookupUserResult struct {
 	Mail string `pulumi:"mail"`
 	// The email alias of the Azure AD User.
 	MailNickname string `pulumi:"mailNickname"`
-	ObjectId string `pulumi:"objectId"`
+	ObjectId     string `pulumi:"objectId"`
 	// The on premise sam account name of the Azure AD User.
 	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
 	// The on premise user principal name of the Azure AD User.
@@ -57,4 +56,3 @@ type LookupUserResult struct {
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
 }
-

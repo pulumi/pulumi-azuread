@@ -18,7 +18,20 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
         /// </summary>
+        [Obsolete("Use GetApplication.InvokeAsync() instead")]
         public static Task<GetApplicationResult> GetApplication(GetApplicationArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetApplication
+    {
+        /// <summary>
+        /// Use this data source to access information about an existing Application within Azure Active Directory.
+        /// 
+        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
+        /// </summary>
+        public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -32,6 +45,10 @@ namespace Pulumi.AzureAD
 
         [Input("oauth2Permissions")]
         private List<Inputs.GetApplicationOauth2PermissionsArgs>? _oauth2Permissions;
+
+        /// <summary>
+        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// </summary>
         public List<Inputs.GetApplicationOauth2PermissionsArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetApplicationOauth2PermissionsArgs>());

@@ -134,4 +134,3 @@ type ServicePrincipalPasswordArgs struct {
 func (ServicePrincipalPasswordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalPasswordArgs)(nil)).Elem()
 }
-

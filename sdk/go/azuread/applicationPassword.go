@@ -136,4 +136,3 @@ type ApplicationPasswordArgs struct {
 func (ApplicationPasswordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationPasswordArgs)(nil)).Elem()
 }
-

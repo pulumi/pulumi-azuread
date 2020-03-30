@@ -41,7 +41,7 @@ export interface ApplicationOauth2Permission {
      */
     adminConsentDisplayName: string;
     /**
-     * The unique identifier of the `appRole`.
+     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
      */
     id: string;
     /**
@@ -49,7 +49,7 @@ export interface ApplicationOauth2Permission {
      */
     isEnabled: boolean;
     /**
-     * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+     * Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
      */
     type: string;
     /**
@@ -79,7 +79,7 @@ export interface ApplicationRequiredResourceAccess {
 
 export interface ApplicationRequiredResourceAccessResourceAccess {
     /**
-     * The unique identifier of the `appRole`.
+     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
      */
     id: string;
     /**

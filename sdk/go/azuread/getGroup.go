@@ -30,7 +30,6 @@ type LookupGroupArgs struct {
 	ObjectId *string `pulumi:"objectId"`
 }
 
-
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
 	// The description of the AD Group.
@@ -40,9 +39,8 @@ type LookupGroupResult struct {
 	// The Object IDs of the Azure AD Group members.
 	Members []string `pulumi:"members"`
 	// The name of the Azure AD Group.
-	Name string `pulumi:"name"`
+	Name     string `pulumi:"name"`
 	ObjectId string `pulumi:"objectId"`
 	// The Object IDs of the Azure AD Group owners.
 	Owners []string `pulumi:"owners"`
 }
-
