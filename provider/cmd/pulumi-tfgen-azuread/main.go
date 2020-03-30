@@ -12,18 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-//go:generate go run ./generate.go
-
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
 
-	azuread "github.com/pulumi/pulumi-azuread"
-	"github.com/pulumi/pulumi-azuread/pkg/version"
+	azuread "github.com/pulumi/pulumi-azuread/provider"
+	"github.com/pulumi/pulumi-azuread/provider/pkg/version"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("azuread", version.Version, azuread.Provider(), pulumiSchema)
+	tfgen.Main("azuread", version.Version, azuread.Provider())
 }
