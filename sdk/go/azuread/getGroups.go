@@ -30,7 +30,6 @@ type GetGroupsArgs struct {
 	ObjectIds []string `pulumi:"objectIds"`
 }
 
-
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
 	// id is the provider-assigned unique ID for this managed resource.
@@ -40,4 +39,3 @@ type GetGroupsResult struct {
 	// The Object IDs of the Azure AD Groups.
 	ObjectIds []string `pulumi:"objectIds"`
 }
-

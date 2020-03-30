@@ -123,4 +123,3 @@ type ServicePrincipalArgs struct {
 func (ServicePrincipalArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalArgs)(nil)).Elem()
 }
-

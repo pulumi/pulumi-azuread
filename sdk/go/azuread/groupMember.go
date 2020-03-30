@@ -94,4 +94,3 @@ type GroupMemberArgs struct {
 func (GroupMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMemberArgs)(nil)).Elem()
 }
-

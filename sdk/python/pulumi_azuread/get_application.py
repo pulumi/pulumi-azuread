@@ -137,6 +137,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
 
 
     :param str name: Specifies the name of the Application within Azure Active Directory.
+    :param list oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
 
     The **oauth2_permissions** object supports the following:

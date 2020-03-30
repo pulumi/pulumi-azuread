@@ -18,7 +18,20 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
         /// </summary>
+        [Obsolete("Use GetDomains.InvokeAsync() instead")]
         public static Task<GetDomainsResult> GetDomains(GetDomainsArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("azuread:index/getDomains:getDomains", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetDomains
+    {
+        /// <summary>
+        /// Use this data source to access information about an existing Domains within Azure Active Directory.
+        /// 
+        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
+        /// </summary>
+        public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("azuread:index/getDomains:getDomains", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 

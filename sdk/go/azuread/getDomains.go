@@ -32,15 +32,13 @@ type GetDomainsArgs struct {
 	OnlyInitial *bool `pulumi:"onlyInitial"`
 }
 
-
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
 	// One or more `domain` blocks as defined below.
 	Domains []GetDomainsDomain `pulumi:"domains"`
 	// id is the provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	IncludeUnverified *bool `pulumi:"includeUnverified"`
-	OnlyDefault *bool `pulumi:"onlyDefault"`
-	OnlyInitial *bool `pulumi:"onlyInitial"`
+	Id                string `pulumi:"id"`
+	IncludeUnverified *bool  `pulumi:"includeUnverified"`
+	OnlyDefault       *bool  `pulumi:"onlyDefault"`
+	OnlyInitial       *bool  `pulumi:"onlyInitial"`
 }
-

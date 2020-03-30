@@ -40,7 +40,7 @@ type Application struct {
 	Oauth2Permissions ApplicationOauth2PermissionArrayOutput `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolOutput `pulumi:"publicClient"`
@@ -48,7 +48,7 @@ type Application struct {
 	ReplyUrls pulumi.StringArrayOutput `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayOutput `pulumi:"requiredResourceAccesses"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -102,7 +102,7 @@ type applicationState struct {
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
 	ObjectId *string `pulumi:"objectId"`
-	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
@@ -110,7 +110,7 @@ type applicationState struct {
 	ReplyUrls []string `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type *string `pulumi:"type"`
 }
 
@@ -137,7 +137,7 @@ type ApplicationState struct {
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
 	// The Application's Object ID.
 	ObjectId pulumi.StringPtrInput
-	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
@@ -145,7 +145,7 @@ type ApplicationState struct {
 	ReplyUrls pulumi.StringArrayInput
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrInput
 }
 
@@ -172,7 +172,7 @@ type applicationArgs struct {
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
-	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
@@ -180,7 +180,7 @@ type applicationArgs struct {
 	ReplyUrls []string `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type *string `pulumi:"type"`
 }
 
@@ -204,7 +204,7 @@ type ApplicationArgs struct {
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
-	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
@@ -212,11 +212,10 @@ type ApplicationArgs struct {
 	ReplyUrls pulumi.StringArrayInput
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrInput
 }
 
 func (ApplicationArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationArgs)(nil)).Elem()
 }
-
