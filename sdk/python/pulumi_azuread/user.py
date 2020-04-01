@@ -23,6 +23,10 @@ class User(pulumi.CustomResource):
     """
     `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
     """
+    immutable_id: pulumi.Output[str]
+    """
+    The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+    """
     mail: pulumi.Output[str]
     """
     The primary email address of the Azure AD User.
@@ -31,6 +35,14 @@ class User(pulumi.CustomResource):
     object_id: pulumi.Output[str]
     """
     The Object ID of the Azure AD User.
+    """
+    onpremises_sam_account_name: pulumi.Output[str]
+    """
+    The on premise sam account name of the Azure AD User.
+    """
+    onpremises_user_principal_name: pulumi.Output[str]
+    """
+    The on premise user principal name of the Azure AD User.
     """
     password: pulumi.Output[str]
     """
@@ -44,7 +56,7 @@ class User(pulumi.CustomResource):
     """
     The User Principal Name of the Azure AD User.
     """
-    def __init__(__self__, resource_name, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail_nickname=None, password=None, usage_location=None, user_principal_name=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account_enabled=None, display_name=None, force_password_change=None, immutable_id=None, mail_nickname=None, password=None, usage_location=None, user_principal_name=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a User within Azure Active Directory.
 
@@ -58,6 +70,7 @@ class User(pulumi.CustomResource):
                * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
@@ -84,6 +97,7 @@ class User(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['force_password_change'] = force_password_change
+            __props__['immutable_id'] = immutable_id
             __props__['mail_nickname'] = mail_nickname
             if password is None:
                 raise TypeError("Missing required property 'password'")
@@ -94,6 +108,8 @@ class User(pulumi.CustomResource):
             __props__['user_principal_name'] = user_principal_name
             __props__['mail'] = None
             __props__['object_id'] = None
+            __props__['onpremises_sam_account_name'] = None
+            __props__['onpremises_user_principal_name'] = None
         super(User, __self__).__init__(
             'azuread:index/user:User',
             resource_name,
@@ -101,7 +117,7 @@ class User(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, account_enabled=None, display_name=None, force_password_change=None, mail=None, mail_nickname=None, object_id=None, password=None, usage_location=None, user_principal_name=None):
+    def get(resource_name, id, opts=None, account_enabled=None, display_name=None, force_password_change=None, immutable_id=None, mail=None, mail_nickname=None, object_id=None, onpremises_sam_account_name=None, onpremises_user_principal_name=None, password=None, usage_location=None, user_principal_name=None):
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,8 +129,11 @@ class User(pulumi.CustomResource):
                * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
         :param pulumi.Input[str] mail: The primary email address of the Azure AD User.
         :param pulumi.Input[str] object_id: The Object ID of the Azure AD User.
+        :param pulumi.Input[str] onpremises_sam_account_name: The on premise sam account name of the Azure AD User.
+        :param pulumi.Input[str] onpremises_user_principal_name: The on premise user principal name of the Azure AD User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
@@ -126,9 +145,12 @@ class User(pulumi.CustomResource):
         __props__["account_enabled"] = account_enabled
         __props__["display_name"] = display_name
         __props__["force_password_change"] = force_password_change
+        __props__["immutable_id"] = immutable_id
         __props__["mail"] = mail
         __props__["mail_nickname"] = mail_nickname
         __props__["object_id"] = object_id
+        __props__["onpremises_sam_account_name"] = onpremises_sam_account_name
+        __props__["onpremises_user_principal_name"] = onpremises_user_principal_name
         __props__["password"] = password
         __props__["usage_location"] = usage_location
         __props__["user_principal_name"] = user_principal_name

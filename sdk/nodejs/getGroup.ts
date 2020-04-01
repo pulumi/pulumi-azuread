@@ -57,9 +57,22 @@ export interface GetGroupArgs {
  * A collection of values returned by getGroup.
  */
 export interface GetGroupResult {
+    /**
+     * The description of the AD Group.
+     */
+    readonly description: string;
+    /**
+     * The Object IDs of the Azure AD Group members.
+     */
     readonly members: string[];
+    /**
+     * The name of the Azure AD Group.
+     */
     readonly name: string;
     readonly objectId: string;
+    /**
+     * The Object IDs of the Azure AD Group owners.
+     */
     readonly owners: string[];
     /**
      * id is the provider-assigned unique ID for this managed resource.

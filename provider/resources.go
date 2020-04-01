@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package azuread
+package provider
 
 import (
 	"unicode"
@@ -20,8 +20,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
-	"github.com/pulumi/pulumi/pkg/resource"
-	"github.com/pulumi/pulumi/pkg/tokens"
+	"github.com/pulumi/pulumi/sdk/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/go/common/tokens"
 	"github.com/terraform-providers/terraform-provider-azuread/azuread"
 )
 
@@ -157,6 +157,7 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_user":              {Tok: makeDataSource(mainMod, "getUser")},
 			"azuread_groups":            {Tok: makeDataSource(mainMod, "getGroups")},
 			"azuread_users":             {Tok: makeDataSource(mainMod, "getUsers")},
+			"azuread_client_config":     {Tok: makeDataSource(mainMod, "getClientConfig")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			AsyncDataSources: true,

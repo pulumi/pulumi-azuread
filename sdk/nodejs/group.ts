@@ -34,6 +34,10 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
+     * The description for the Group.  Changing this forces a new resource to be created.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     public readonly members!: pulumi.Output<string[]>;
@@ -59,12 +63,14 @@ export class Group extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as GroupState | undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["owners"] = state ? state.owners : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["owners"] = args ? args.owners : undefined;
@@ -86,6 +92,10 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
+     * The description for the Group.  Changing this forces a new resource to be created.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
@@ -104,6 +114,10 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * The description for the Group.  Changing this forces a new resource to be created.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */

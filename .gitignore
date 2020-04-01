@@ -1,8 +1,9 @@
-/vendor/
+**/vendor/
 .pulumi
 **/bin/
 **/obj/
 Pulumi.*.yaml
+**/pulumiManifest.go
 sdk/nodejs/node_modules
 
 **/command-output/

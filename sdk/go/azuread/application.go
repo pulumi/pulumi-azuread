@@ -30,6 +30,8 @@ type Application struct {
 	Homepage pulumi.StringOutput `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayOutput `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl pulumi.StringPtrOutput `pulumi:"logoutUrl"`
 	// The display name for the application.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
@@ -37,15 +39,21 @@ type Application struct {
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayOutput `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
+<<<<<<< HEAD
 	ObjectId pulumi.StringOutput      `pulumi:"objectId"`
 	Owners   pulumi.StringArrayOutput `pulumi:"owners"`
+=======
+	ObjectId pulumi.StringOutput `pulumi:"objectId"`
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
+	Owners pulumi.StringArrayOutput `pulumi:"owners"`
+>>>>>>> master
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolOutput `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls pulumi.StringArrayOutput `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayOutput `pulumi:"requiredResourceAccesses"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -89,6 +97,8 @@ type applicationState struct {
 	Homepage *string `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl *string `pulumi:"logoutUrl"`
 	// The display name for the application.
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
@@ -96,15 +106,21 @@ type applicationState struct {
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
+<<<<<<< HEAD
 	ObjectId *string  `pulumi:"objectId"`
 	Owners   []string `pulumi:"owners"`
+=======
+	ObjectId *string `pulumi:"objectId"`
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
+	Owners []string `pulumi:"owners"`
+>>>>>>> master
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls []string `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type *string `pulumi:"type"`
 }
 
@@ -121,6 +137,8 @@ type ApplicationState struct {
 	Homepage pulumi.StringPtrInput
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
+	// The URL of the logout page.
+	LogoutUrl pulumi.StringPtrInput
 	// The display name for the application.
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
@@ -129,14 +147,19 @@ type ApplicationState struct {
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
 	// The Application's Object ID.
 	ObjectId pulumi.StringPtrInput
+<<<<<<< HEAD
 	Owners   pulumi.StringArrayInput
+=======
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
+	Owners pulumi.StringArrayInput
+>>>>>>> master
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls pulumi.StringArrayInput
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrInput
 }
 
@@ -155,20 +178,27 @@ type applicationArgs struct {
 	Homepage *string `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+	// The URL of the logout page.
+	LogoutUrl *string `pulumi:"logoutUrl"`
 	// The display name for the application.
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
+<<<<<<< HEAD
 	Owners            []string                      `pulumi:"owners"`
+=======
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
+	Owners []string `pulumi:"owners"`
+>>>>>>> master
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls []string `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type *string `pulumi:"type"`
 }
 
@@ -184,20 +214,27 @@ type ApplicationArgs struct {
 	Homepage pulumi.StringPtrInput
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
+	// The URL of the logout page.
+	LogoutUrl pulumi.StringPtrInput
 	// The display name for the application.
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
+<<<<<<< HEAD
 	Owners            pulumi.StringArrayInput
+=======
+	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
+	Owners pulumi.StringArrayInput
+>>>>>>> master
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls pulumi.StringArrayInput
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrInput
 }
 

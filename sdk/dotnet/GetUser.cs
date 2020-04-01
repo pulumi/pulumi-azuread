@@ -18,7 +18,20 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
         /// </summary>
+        [Obsolete("Use GetUser.InvokeAsync() instead")]
         public static Task<GetUserResult> GetUser(GetUserArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azuread:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetUser
+    {
+        /// <summary>
+        /// Gets information about an Azure Active Directory user.
+        /// 
+        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
+        /// </summary>
+        public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azuread:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -59,6 +72,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+        /// </summary>
+        public readonly string ImmutableId;
+        /// <summary>
         /// The primary email address of the Azure AD User.
         /// </summary>
         public readonly string Mail;
@@ -67,6 +84,14 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string MailNickname;
         public readonly string ObjectId;
+        /// <summary>
+        /// The on premise sam account name of the Azure AD User.
+        /// </summary>
+        public readonly string OnpremisesSamAccountName;
+        /// <summary>
+        /// The on premise user principal name of the Azure AD User.
+        /// </summary>
+        public readonly string OnpremisesUserPrincipalName;
         /// <summary>
         /// The usage location of the Azure AD User.
         /// </summary>
@@ -84,18 +109,24 @@ namespace Pulumi.AzureAD
         private GetUserResult(
             bool accountEnabled,
             string displayName,
+            string immutableId,
             string mail,
             string mailNickname,
             string objectId,
+            string onpremisesSamAccountName,
+            string onpremisesUserPrincipalName,
             string usageLocation,
             string userPrincipalName,
             string id)
         {
             AccountEnabled = accountEnabled;
             DisplayName = displayName;
+            ImmutableId = immutableId;
             Mail = mail;
             MailNickname = mailNickname;
             ObjectId = objectId;
+            OnpremisesSamAccountName = onpremisesSamAccountName;
+            OnpremisesUserPrincipalName = onpremisesUserPrincipalName;
             UsageLocation = usageLocation;
             UserPrincipalName = userPrincipalName;
             Id = id;

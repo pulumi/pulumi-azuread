@@ -25,7 +25,12 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 // A collection of arguments for invoking getApplication.
 type LookupApplicationArgs struct {
 	// Specifies the name of the Application within Azure Active Directory.
+<<<<<<< HEAD
 	Name              *string                          `pulumi:"name"`
+=======
+	Name *string `pulumi:"name"`
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+>>>>>>> master
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// Specifies the Object ID of the Application within Azure Active Directory.
 	ObjectId *string `pulumi:"objectId"`
@@ -46,14 +51,26 @@ type LookupApplicationResult struct {
 	Id string `pulumi:"id"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+<<<<<<< HEAD
 	Name           string   `pulumi:"name"`
+=======
+	// The URL of the logout page.
+	LogoutUrl string `pulumi:"logoutUrl"`
+	Name      string `pulumi:"name"`
+>>>>>>> master
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// the Object ID of the Azure Active Directory Application.
+<<<<<<< HEAD
 	ObjectId string   `pulumi:"objectId"`
 	Owners   []string `pulumi:"owners"`
+=======
+	ObjectId string `pulumi:"objectId"`
+	// A list of User Object IDs that are assigned ownership of the application registration.
+	Owners []string `pulumi:"owners"`
+>>>>>>> master
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
 	ReplyUrls []string `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.

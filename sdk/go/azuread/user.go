@@ -26,11 +26,17 @@ type User struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrOutput `pulumi:"forcePasswordChange"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	ImmutableId pulumi.StringOutput `pulumi:"immutableId"`
 	// The primary email address of the Azure AD User.
 	Mail         pulumi.StringOutput `pulumi:"mail"`
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
 	// The Object ID of the Azure AD User.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
+	// The on premise sam account name of the Azure AD User.
+	OnpremisesSamAccountName pulumi.StringOutput `pulumi:"onpremisesSamAccountName"`
+	// The on premise user principal name of the Azure AD User.
+	OnpremisesUserPrincipalName pulumi.StringOutput `pulumi:"onpremisesUserPrincipalName"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringOutput `pulumi:"password"`
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
@@ -83,11 +89,17 @@ type userState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	ImmutableId *string `pulumi:"immutableId"`
 	// The primary email address of the Azure AD User.
 	Mail         *string `pulumi:"mail"`
 	MailNickname *string `pulumi:"mailNickname"`
 	// The Object ID of the Azure AD User.
 	ObjectId *string `pulumi:"objectId"`
+	// The on premise sam account name of the Azure AD User.
+	OnpremisesSamAccountName *string `pulumi:"onpremisesSamAccountName"`
+	// The on premise user principal name of the Azure AD User.
+	OnpremisesUserPrincipalName *string `pulumi:"onpremisesUserPrincipalName"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password *string `pulumi:"password"`
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
@@ -104,11 +116,17 @@ type UserState struct {
 	DisplayName pulumi.StringPtrInput
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrInput
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	ImmutableId pulumi.StringPtrInput
 	// The primary email address of the Azure AD User.
 	Mail         pulumi.StringPtrInput
 	MailNickname pulumi.StringPtrInput
 	// The Object ID of the Azure AD User.
 	ObjectId pulumi.StringPtrInput
+	// The on premise sam account name of the Azure AD User.
+	OnpremisesSamAccountName pulumi.StringPtrInput
+	// The on premise user principal name of the Azure AD User.
+	OnpremisesUserPrincipalName pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringPtrInput
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
@@ -128,8 +146,15 @@ type userArgs struct {
 	// The name to display in the address book for the user.
 	DisplayName string `pulumi:"displayName"`
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+<<<<<<< HEAD
 	ForcePasswordChange *bool   `pulumi:"forcePasswordChange"`
 	MailNickname        *string `pulumi:"mailNickname"`
+=======
+	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	ImmutableId  *string `pulumi:"immutableId"`
+	MailNickname *string `pulumi:"mailNickname"`
+>>>>>>> master
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password string `pulumi:"password"`
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
@@ -147,7 +172,13 @@ type UserArgs struct {
 	DisplayName pulumi.StringInput
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrInput
+<<<<<<< HEAD
 	MailNickname        pulumi.StringPtrInput
+=======
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	ImmutableId  pulumi.StringPtrInput
+	MailNickname pulumi.StringPtrInput
+>>>>>>> master
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringInput
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.

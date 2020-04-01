@@ -18,7 +18,20 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
         /// </summary>
+        [Obsolete("Use GetApplication.InvokeAsync() instead")]
         public static Task<GetApplicationResult> GetApplication(GetApplicationArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? InvokeArgs.Empty, options.WithVersion());
+    }
+    public static class GetApplication
+    {
+        /// <summary>
+        /// Use this data source to access information about an existing Application within Azure Active Directory.
+        /// 
+        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+        /// 
+        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
+        /// </summary>
+        public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? InvokeArgs.Empty, options.WithVersion());
     }
 
@@ -32,6 +45,10 @@ namespace Pulumi.AzureAD
 
         [Input("oauth2Permissions")]
         private List<Inputs.GetApplicationOauth2PermissionsArgs>? _oauth2Permissions;
+
+        /// <summary>
+        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// </summary>
         public List<Inputs.GetApplicationOauth2PermissionsArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetApplicationOauth2PermissionsArgs>());
@@ -73,6 +90,10 @@ namespace Pulumi.AzureAD
         /// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         /// </summary>
         public readonly ImmutableArray<string> IdentifierUris;
+        /// <summary>
+        /// The URL of the logout page.
+        /// </summary>
+        public readonly string LogoutUrl;
         public readonly string Name;
         /// <summary>
         /// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
@@ -86,6 +107,9 @@ namespace Pulumi.AzureAD
         /// the Object ID of the Azure Active Directory Application.
         /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// A list of User Object IDs that are assigned ownership of the application registration.
+        /// </summary>
         public readonly ImmutableArray<string> Owners;
         /// <summary>
         /// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -112,6 +136,7 @@ namespace Pulumi.AzureAD
             string groupMembershipClaims,
             string homepage,
             ImmutableArray<string> identifierUris,
+            string logoutUrl,
             string name,
             bool oauth2AllowImplicitFlow,
             ImmutableArray<Outputs.GetApplicationOauth2PermissionsResult> oauth2Permissions,
@@ -128,6 +153,7 @@ namespace Pulumi.AzureAD
             GroupMembershipClaims = groupMembershipClaims;
             Homepage = homepage;
             IdentifierUris = identifierUris;
+            LogoutUrl = logoutUrl;
             Name = name;
             Oauth2AllowImplicitFlow = oauth2AllowImplicitFlow;
             Oauth2Permissions = oauth2Permissions;

@@ -55,6 +55,12 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> IdentifierUris { get; private set; } = null!;
 
         /// <summary>
+        /// The URL of the logout page.
+        /// </summary>
+        [Output("logoutUrl")]
+        public Output<string?> LogoutUrl { get; private set; } = null!;
+
+        /// <summary>
         /// The display name for the application.
         /// </summary>
         [Output("name")]
@@ -78,6 +84,9 @@ namespace Pulumi.AzureAD
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// </summary>
         [Output("owners")]
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
 
@@ -100,7 +109,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ApplicationRequiredResourceAccesses>> RequiredResourceAccesses { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -194,6 +203,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// The URL of the logout page.
+        /// </summary>
+        [Input("logoutUrl")]
+        public Input<string>? LogoutUrl { get; set; }
+
+        /// <summary>
         /// The display name for the application.
         /// </summary>
         [Input("name")]
@@ -219,6 +234,10 @@ namespace Pulumi.AzureAD
 
         [Input("owners")]
         private InputList<string>? _owners;
+
+        /// <summary>
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// </summary>
         public InputList<string> Owners
         {
             get => _owners ?? (_owners = new InputList<string>());
@@ -256,7 +275,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -317,6 +336,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// The URL of the logout page.
+        /// </summary>
+        [Input("logoutUrl")]
+        public Input<string>? LogoutUrl { get; set; }
+
+        /// <summary>
         /// The display name for the application.
         /// </summary>
         [Input("name")]
@@ -348,6 +373,10 @@ namespace Pulumi.AzureAD
 
         [Input("owners")]
         private InputList<string>? _owners;
+
+        /// <summary>
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// </summary>
         public InputList<string> Owners
         {
             get => _owners ?? (_owners = new InputList<string>());
@@ -385,7 +414,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -511,7 +540,7 @@ namespace Pulumi.AzureAD
         public Input<string>? AdminConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -523,7 +552,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -566,7 +595,7 @@ namespace Pulumi.AzureAD
         public Input<string>? AdminConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -578,7 +607,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -659,7 +688,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationRequiredResourceAccessesResourceAccessesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -678,7 +707,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationRequiredResourceAccessesResourceAccessesGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -756,7 +785,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string AdminConsentDisplayName;
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -764,7 +793,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly bool IsEnabled;
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         /// </summary>
         public readonly string Type;
         /// <summary>
@@ -828,7 +857,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationRequiredResourceAccessesResourceAccesses
     {
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         public readonly string Id;
         /// <summary>

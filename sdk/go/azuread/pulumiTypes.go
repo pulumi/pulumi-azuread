@@ -150,11 +150,11 @@ type ApplicationOauth2Permission struct {
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
 	// The display name of the admin consent.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id *string `pulumi:"id"`
 	// Determines if the app role is enabled: Defaults to `true`.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type *string `pulumi:"type"`
 	// The description of the user consent.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
@@ -176,11 +176,11 @@ type ApplicationOauth2PermissionArgs struct {
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
 	// The display name of the admin consent.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Determines if the app role is enabled: Defaults to `true`.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// The description of the user consent.
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
@@ -247,7 +247,7 @@ func (o ApplicationOauth2PermissionOutput) AdminConsentDisplayName() pulumi.Stri
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 func (o ApplicationOauth2PermissionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -257,7 +257,7 @@ func (o ApplicationOauth2PermissionOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 func (o ApplicationOauth2PermissionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -398,7 +398,7 @@ func (o ApplicationRequiredResourceAccessArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type ApplicationRequiredResourceAccessResourceAccess struct {
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id string `pulumi:"id"`
 	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
 	Type string `pulumi:"type"`
@@ -412,7 +412,7 @@ type ApplicationRequiredResourceAccessResourceAccessInput interface {
 }
 
 type ApplicationRequiredResourceAccessResourceAccessArgs struct {
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -465,7 +465,7 @@ func (o ApplicationRequiredResourceAccessResourceAccessOutput) ToApplicationRequ
 	return o
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 func (o ApplicationRequiredResourceAccessResourceAccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccessResourceAccess) string { return v.Id }).(pulumi.StringOutput)
 }
