@@ -7,7 +7,7 @@ import (
 	"path"
 	"testing"
 
-	"github.com/pulumi/pulumi/pkg/testing/integration"
+	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
 
 func TestSimple(t *testing.T) {
@@ -21,12 +21,6 @@ func TestSimple(t *testing.T) {
 		})
 
 	integration.ProgramTest(t, &test)
-}
-
-func skipIfShort(t *testing.T) {
-	if testing.Short() {
-		t.Skip("skipping long-running test in short mode")
-	}
 }
 
 func getEnviron(t *testing.T) string {

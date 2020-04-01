@@ -16,6 +16,8 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
         /// 
+        /// 
+        /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
         /// </summary>
         [Obsolete("Use GetGroups.InvokeAsync() instead")]
@@ -28,6 +30,8 @@ namespace Pulumi.AzureAD
         /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+        /// 
+        /// 
         /// 
         /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
         /// </summary>

@@ -5,7 +5,7 @@
 package azuread
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Gets information about an Azure Active Directory group.
@@ -35,13 +35,6 @@ type LookupGroupResult struct {
 	// The description of the AD Group.
 	Description string `pulumi:"description"`
 	// id is the provider-assigned unique ID for this managed resource.
-<<<<<<< HEAD
-	Id       string   `pulumi:"id"`
-	Members  []string `pulumi:"members"`
-	Name     string   `pulumi:"name"`
-	ObjectId string   `pulumi:"objectId"`
-	Owners   []string `pulumi:"owners"`
-=======
 	Id string `pulumi:"id"`
 	// The Object IDs of the Azure AD Group members.
 	Members []string `pulumi:"members"`
@@ -50,5 +43,4 @@ type LookupGroupResult struct {
 	ObjectId string `pulumi:"objectId"`
 	// The Object IDs of the Azure AD Group owners.
 	Owners []string `pulumi:"owners"`
->>>>>>> master
 }

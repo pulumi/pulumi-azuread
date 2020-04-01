@@ -133,6 +133,8 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
 
 

@@ -5,12 +5,14 @@
 package azuread
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Gets information about an Azure Active Directory user.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+//
+//
 //
 // > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
 func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.InvokeOption) (*LookupUserResult, error) {
@@ -47,13 +49,10 @@ type LookupUserResult struct {
 	// The email alias of the Azure AD User.
 	MailNickname string `pulumi:"mailNickname"`
 	ObjectId     string `pulumi:"objectId"`
-<<<<<<< HEAD
-=======
 	// The on premise sam account name of the Azure AD User.
 	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
 	// The on premise user principal name of the Azure AD User.
 	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
->>>>>>> master
 	// The usage location of the Azure AD User.
 	UsageLocation string `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.

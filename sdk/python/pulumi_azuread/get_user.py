@@ -101,6 +101,8 @@ def get_user(mail_nickname=None,object_id=None,user_principal_name=None,opts=Non
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
 
+
+
     > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
 
 

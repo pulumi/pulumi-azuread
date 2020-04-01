@@ -5,7 +5,7 @@
 package azuread
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
 // Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
