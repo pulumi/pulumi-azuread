@@ -50,8 +50,6 @@ def get_groups(names=None,object_ids=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
-
 
     :param list names: The Display Names of the Azure AD Groups.
     :param list object_ids: The Object IDs of the Azure AD Groups.

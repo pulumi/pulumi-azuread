@@ -103,8 +103,6 @@ def get_user(mail_nickname=None,object_id=None,user_principal_name=None,opts=Non
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
-
 
     :param str mail_nickname: The email alias of the Azure AD User.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.

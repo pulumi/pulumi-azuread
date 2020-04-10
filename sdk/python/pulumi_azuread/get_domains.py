@@ -55,8 +55,6 @@ def get_domains(include_unverified=None,only_default=None,only_initial=None,opts
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
-
 
     :param bool include_unverified: Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
     :param bool only_default: Set to `true` to only return the default domain.

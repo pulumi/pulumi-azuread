@@ -64,8 +64,6 @@ class User(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.

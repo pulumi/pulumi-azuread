@@ -135,8 +135,6 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
 
 
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/application.html.markdown.
-
 
     :param str name: Specifies the name of the Application within Azure Active Directory.
     :param list oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.

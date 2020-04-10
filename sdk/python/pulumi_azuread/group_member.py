@@ -26,8 +26,6 @@ class GroupMember(pulumi.CustomResource):
 
 
 
-        > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group_member.markdown.
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] group_object_id: The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.

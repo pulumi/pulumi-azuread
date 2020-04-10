@@ -66,8 +66,6 @@ def get_group(name=None,object_id=None,opts=None):
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/group.html.markdown.
-
 
     :param str name: The Name of the AD Group we want to lookup.
     :param str object_id: Specifies the Object ID of the AD Group within Azure Active Directory.
