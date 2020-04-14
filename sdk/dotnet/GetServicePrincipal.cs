@@ -9,31 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
-        /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetServicePrincipal.InvokeAsync() instead")]
-        public static Task<GetServicePrincipalResult> GetServicePrincipal(GetServicePrincipalArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("azuread:index/getServicePrincipal:getServicePrincipal", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetServicePrincipal
     {
         /// <summary>
         /// Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
         /// </summary>
         public static Task<GetServicePrincipalResult> InvokeAsync(GetServicePrincipalArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("azuread:index/getServicePrincipal:getServicePrincipal", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("azuread:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalArgs(), options.WithVersion());
     }
+
 
     public sealed class GetServicePrincipalArgs : Pulumi.InvokeArgs
     {
@@ -50,14 +36,14 @@ namespace Pulumi.AzureAD
         public string? DisplayName { get; set; }
 
         [Input("oauth2Permissions")]
-        private List<Inputs.GetServicePrincipalOauth2PermissionsArgs>? _oauth2Permissions;
+        private List<Inputs.GetServicePrincipalOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
         /// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         /// </summary>
-        public List<Inputs.GetServicePrincipalOauth2PermissionsArgs> Oauth2Permissions
+        public List<Inputs.GetServicePrincipalOauth2PermissionArgs> Oauth2Permissions
         {
-            get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetServicePrincipalOauth2PermissionsArgs>());
+            get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetServicePrincipalOauth2PermissionArgs>());
             set => _oauth2Permissions = value;
         }
 
@@ -72,204 +58,43 @@ namespace Pulumi.AzureAD
         }
     }
 
+
     [OutputType]
     public sealed class GetServicePrincipalResult
     {
-        public readonly ImmutableArray<Outputs.GetServicePrincipalAppRolesResult> AppRoles;
+        public readonly ImmutableArray<Outputs.GetServicePrincipalAppRoleResult> AppRoles;
         public readonly string ApplicationId;
         /// <summary>
         /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         public readonly string DisplayName;
-        public readonly ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionsResult> Oauth2Permissions;
-        public readonly string ObjectId;
         /// <summary>
         /// id is the provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionResult> Oauth2Permissions;
+        public readonly string ObjectId;
 
         [OutputConstructor]
         private GetServicePrincipalResult(
-            ImmutableArray<Outputs.GetServicePrincipalAppRolesResult> appRoles,
+            ImmutableArray<Outputs.GetServicePrincipalAppRoleResult> appRoles,
+
             string applicationId,
+
             string displayName,
-            ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionsResult> oauth2Permissions,
-            string objectId,
-            string id)
+
+            string id,
+
+            ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionResult> oauth2Permissions,
+
+            string objectId)
         {
             AppRoles = appRoles;
             ApplicationId = applicationId;
             DisplayName = displayName;
+            Id = id;
             Oauth2Permissions = oauth2Permissions;
             ObjectId = objectId;
-            Id = id;
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class GetServicePrincipalOauth2PermissionsArgs : Pulumi.InvokeArgs
-    {
-        /// <summary>
-        /// The description of the admin consent
-        /// </summary>
-        [Input("adminConsentDescription")]
-        public string? AdminConsentDescription { get; set; }
-
-        /// <summary>
-        /// The display name of the admin consent
-        /// </summary>
-        [Input("adminConsentDisplayName")]
-        public string? AdminConsentDisplayName { get; set; }
-
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        [Input("id")]
-        public string? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled.
-        /// </summary>
-        [Input("isEnabled")]
-        public bool? IsEnabled { get; set; }
-
-        /// <summary>
-        /// The type of the permission
-        /// </summary>
-        [Input("type")]
-        public string? Type { get; set; }
-
-        /// <summary>
-        /// The description of the user consent
-        /// </summary>
-        [Input("userConsentDescription")]
-        public string? UserConsentDescription { get; set; }
-
-        /// <summary>
-        /// The display name of the user consent
-        /// </summary>
-        [Input("userConsentDisplayName")]
-        public string? UserConsentDisplayName { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public string? Value { get; set; }
-
-        public GetServicePrincipalOauth2PermissionsArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class GetServicePrincipalAppRolesResult
-    {
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedMemberTypes;
-        /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// The Display Name of the Azure AD Application associated with this Service Principal.
-        /// </summary>
-        public readonly string DisplayName;
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Determines if the app role is enabled.
-        /// </summary>
-        public readonly bool IsEnabled;
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private GetServicePrincipalAppRolesResult(
-            ImmutableArray<string> allowedMemberTypes,
-            string description,
-            string displayName,
-            string id,
-            bool isEnabled,
-            string value)
-        {
-            AllowedMemberTypes = allowedMemberTypes;
-            Description = description;
-            DisplayName = displayName;
-            Id = id;
-            IsEnabled = isEnabled;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class GetServicePrincipalOauth2PermissionsResult
-    {
-        /// <summary>
-        /// The description of the admin consent
-        /// </summary>
-        public readonly string AdminConsentDescription;
-        /// <summary>
-        /// The display name of the admin consent
-        /// </summary>
-        public readonly string AdminConsentDisplayName;
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Determines if the app role is enabled.
-        /// </summary>
-        public readonly bool IsEnabled;
-        /// <summary>
-        /// The type of the permission
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// The description of the user consent
-        /// </summary>
-        public readonly string UserConsentDescription;
-        /// <summary>
-        /// The display name of the user consent
-        /// </summary>
-        public readonly string UserConsentDisplayName;
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private GetServicePrincipalOauth2PermissionsResult(
-            string adminConsentDescription,
-            string adminConsentDisplayName,
-            string id,
-            bool isEnabled,
-            string type,
-            string userConsentDescription,
-            string userConsentDisplayName,
-            string value)
-        {
-            AdminConsentDescription = adminConsentDescription;
-            AdminConsentDisplayName = adminConsentDisplayName;
-            Id = id;
-            IsEnabled = isEnabled;
-            Type = type;
-            UserConsentDescription = userConsentDescription;
-            UserConsentDisplayName = userConsentDisplayName;
-            Value = value;
-        }
-    }
     }
 }

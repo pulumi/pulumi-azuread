@@ -2,7 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to Pulumi v2.0.0-beta.2
+* Upgrade to pulumi-terraform-bridge v2.0.0-beta.1
 
 ---
 
@@ -65,3 +66,4 @@ _(none)_
 
 ## 0.18.0 (2019-05-02)
 * Initial release of the Azure AD provider based on v0.3.1 of the AzureAD Terraform provider
+

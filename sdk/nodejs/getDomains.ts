@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -24,7 +26,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
  */
-export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> & GetDomainsResult {
+export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -33,13 +35,11 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetDomainsResult> = pulumi.runtime.invoke("azuread:index/getDomains:getDomains", {
+    return pulumi.runtime.invoke("azuread:index/getDomains:getDomains", {
         "includeUnverified": args.includeUnverified,
         "onlyDefault": args.onlyDefault,
         "onlyInitial": args.onlyInitial,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

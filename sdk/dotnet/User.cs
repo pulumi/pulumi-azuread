@@ -13,8 +13,6 @@ namespace Pulumi.AzureAD
     /// Manages a User within Azure Active Directory.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/user.html.markdown.
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
@@ -97,7 +95,7 @@ namespace Pulumi.AzureAD
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public User(string name, UserArgs args, CustomResourceOptions? options = null)
-            : base("azuread:index/user:User", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("azuread:index/user:User", name, args ?? new UserArgs(), MakeResourceOptions(options, ""))
         {
         }
 

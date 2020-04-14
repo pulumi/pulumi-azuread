@@ -53,7 +53,7 @@ def get_domains(include_unverified=None,only_default=None,only_initial=None,opts
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/domains.html.markdown.
+
 
 
     :param bool include_unverified: Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.

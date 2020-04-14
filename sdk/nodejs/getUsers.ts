@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/users.html.markdown.
  */
-export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> & GetUsersResult {
+export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,13 +38,11 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetUsersResult> = pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
+    return pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
         "mailNicknames": args.mailNicknames,
         "objectIds": args.objectIds,
         "userPrincipalNames": args.userPrincipalNames,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

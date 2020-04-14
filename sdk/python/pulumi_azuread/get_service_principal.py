@@ -57,8 +57,6 @@ def get_service_principal(application_id=None,display_name=None,oauth2_permissio
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
-
 
     :param str application_id: The ID of the Azure AD Application.
     :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.

@@ -2,12 +2,14 @@
     "name": "aadsimple",
     "version": "0.0.1",
     "dependencies": {
-        "@pulumi/pulumi": "dev",
-        "@pulumi/azuread": "latest",
-        "@pulumi/random": "latest"
+        "@pulumi/pulumi": "2.0.0-beta.3",
+        "@pulumi/random": "2.0.0-beta.2"
     },
     "devDependencies": {
         "@types/node": "^10.0.0"
+    },
+    "peerDependencies": {
+        "@pulumi/azuread": "dev"
     },
     "license": "Apache 2.0"
 }

@@ -13,8 +13,6 @@ namespace Pulumi.AzureAD
     /// Manages a Password associated with an Application within Azure Active Directory.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application_password.html.markdown.
     /// </summary>
     public partial class ApplicationPassword : Pulumi.CustomResource
     {
@@ -66,7 +64,7 @@ namespace Pulumi.AzureAD
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public ApplicationPassword(string name, ApplicationPasswordArgs args, CustomResourceOptions? options = null)
-            : base("azuread:index/applicationPassword:ApplicationPassword", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("azuread:index/applicationPassword:ApplicationPassword", name, args ?? new ApplicationPasswordArgs(), MakeResourceOptions(options, ""))
         {
         }
 

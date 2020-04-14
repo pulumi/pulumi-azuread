@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Gets information about an Azure Active Directory user.
-        /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetUser.InvokeAsync() instead")]
-        public static Task<GetUserResult> GetUser(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azuread:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetUser
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azuread:index/getUser:getUser", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azuread:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
     }
+
 
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
@@ -60,6 +49,7 @@ namespace Pulumi.AzureAD
         }
     }
 
+
     [OutputType]
     public sealed class GetUserResult
     {
@@ -71,6 +61,10 @@ namespace Pulumi.AzureAD
         /// The Display Name of the Azure AD User.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
         /// </summary>
@@ -100,27 +94,34 @@ namespace Pulumi.AzureAD
         /// The User Principal Name of the Azure AD User.
         /// </summary>
         public readonly string UserPrincipalName;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetUserResult(
             bool accountEnabled,
+
             string displayName,
+
+            string id,
+
             string immutableId,
+
             string mail,
+
             string mailNickname,
+
             string objectId,
+
             string onpremisesSamAccountName,
+
             string onpremisesUserPrincipalName,
+
             string usageLocation,
-            string userPrincipalName,
-            string id)
+
+            string userPrincipalName)
         {
             AccountEnabled = accountEnabled;
             DisplayName = displayName;
+            Id = id;
             ImmutableId = immutableId;
             Mail = mail;
             MailNickname = mailNickname;
@@ -129,7 +130,6 @@ namespace Pulumi.AzureAD
             OnpremisesUserPrincipalName = onpremisesUserPrincipalName;
             UsageLocation = usageLocation;
             UserPrincipalName = userPrincipalName;
-            Id = id;
         }
     }
 }

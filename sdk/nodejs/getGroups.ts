@@ -13,6 +13,8 @@ import * as utilities from "./utilities";
  * 
  * ## Example Usage
  * 
+ * 
+ * 
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
  */
-export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> & GetGroupsResult {
+export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -36,12 +38,10 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetGroupsResult> = pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
+    return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
         "names": args.names,
         "objectIds": args.objectIds,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

@@ -15,10 +15,9 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfgen"
-
-	azuread "github.com/pulumi/pulumi-azuread/provider"
-	"github.com/pulumi/pulumi-azuread/provider/pkg/version"
+	azuread "github.com/pulumi/pulumi-azuread/provider/v2"
+	"github.com/pulumi/pulumi-azuread/provider/v2/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
 )
 
 func main() {

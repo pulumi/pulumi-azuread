@@ -13,8 +13,6 @@ namespace Pulumi.AzureAD
     /// Manages an Application within Azure Active Directory.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-    /// 
-    /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/application.html.markdown.
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {
@@ -22,7 +20,7 @@ namespace Pulumi.AzureAD
         /// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         /// </summary>
         [Output("appRoles")]
-        public Output<ImmutableArray<Outputs.ApplicationAppRoles>> AppRoles { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
         /// The Application ID.
@@ -76,7 +74,7 @@ namespace Pulumi.AzureAD
         /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         /// </summary>
         [Output("oauth2Permissions")]
-        public Output<ImmutableArray<Outputs.ApplicationOauth2Permissions>> Oauth2Permissions { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationOauth2Permission>> Oauth2Permissions { get; private set; } = null!;
 
         /// <summary>
         /// The Application's Object ID.
@@ -106,7 +104,7 @@ namespace Pulumi.AzureAD
         /// A collection of `required_resource_access` blocks as documented below.
         /// </summary>
         [Output("requiredResourceAccesses")]
-        public Output<ImmutableArray<Outputs.ApplicationRequiredResourceAccesses>> RequiredResourceAccesses { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.ApplicationRequiredResourceAccess>> RequiredResourceAccesses { get; private set; } = null!;
 
         /// <summary>
         /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
@@ -123,7 +121,7 @@ namespace Pulumi.AzureAD
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
         public Application(string name, ApplicationArgs? args = null, CustomResourceOptions? options = null)
-            : base("azuread:index/application:Application", name, args ?? ResourceArgs.Empty, MakeResourceOptions(options, ""))
+            : base("azuread:index/application:Application", name, args ?? new ApplicationArgs(), MakeResourceOptions(options, ""))
         {
         }
 
@@ -161,14 +159,14 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationArgs : Pulumi.ResourceArgs
     {
         [Input("appRoles")]
-        private InputList<Inputs.ApplicationAppRolesArgs>? _appRoles;
+        private InputList<Inputs.ApplicationAppRoleArgs>? _appRoles;
 
         /// <summary>
         /// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         /// </summary>
-        public InputList<Inputs.ApplicationAppRolesArgs> AppRoles
+        public InputList<Inputs.ApplicationAppRoleArgs> AppRoles
         {
-            get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRolesArgs>());
+            get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRoleArgs>());
             set => _appRoles = value;
         }
 
@@ -221,14 +219,14 @@ namespace Pulumi.AzureAD
         public Input<bool>? Oauth2AllowImplicitFlow { get; set; }
 
         [Input("oauth2Permissions")]
-        private InputList<Inputs.ApplicationOauth2PermissionsArgs>? _oauth2Permissions;
+        private InputList<Inputs.ApplicationOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
         /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         /// </summary>
-        public InputList<Inputs.ApplicationOauth2PermissionsArgs> Oauth2Permissions
+        public InputList<Inputs.ApplicationOauth2PermissionArgs> Oauth2Permissions
         {
-            get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ApplicationOauth2PermissionsArgs>());
+            get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ApplicationOauth2PermissionArgs>());
             set => _oauth2Permissions = value;
         }
 
@@ -263,14 +261,14 @@ namespace Pulumi.AzureAD
         }
 
         [Input("requiredResourceAccesses")]
-        private InputList<Inputs.ApplicationRequiredResourceAccessesArgs>? _requiredResourceAccesses;
+        private InputList<Inputs.ApplicationRequiredResourceAccessArgs>? _requiredResourceAccesses;
 
         /// <summary>
         /// A collection of `required_resource_access` blocks as documented below.
         /// </summary>
-        public InputList<Inputs.ApplicationRequiredResourceAccessesArgs> RequiredResourceAccesses
+        public InputList<Inputs.ApplicationRequiredResourceAccessArgs> RequiredResourceAccesses
         {
-            get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessesArgs>());
+            get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessArgs>());
             set => _requiredResourceAccesses = value;
         }
 
@@ -288,14 +286,14 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationState : Pulumi.ResourceArgs
     {
         [Input("appRoles")]
-        private InputList<Inputs.ApplicationAppRolesGetArgs>? _appRoles;
+        private InputList<Inputs.ApplicationAppRoleGetArgs>? _appRoles;
 
         /// <summary>
         /// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         /// </summary>
-        public InputList<Inputs.ApplicationAppRolesGetArgs> AppRoles
+        public InputList<Inputs.ApplicationAppRoleGetArgs> AppRoles
         {
-            get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRolesGetArgs>());
+            get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRoleGetArgs>());
             set => _appRoles = value;
         }
 
@@ -354,14 +352,14 @@ namespace Pulumi.AzureAD
         public Input<bool>? Oauth2AllowImplicitFlow { get; set; }
 
         [Input("oauth2Permissions")]
-        private InputList<Inputs.ApplicationOauth2PermissionsGetArgs>? _oauth2Permissions;
+        private InputList<Inputs.ApplicationOauth2PermissionGetArgs>? _oauth2Permissions;
 
         /// <summary>
         /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         /// </summary>
-        public InputList<Inputs.ApplicationOauth2PermissionsGetArgs> Oauth2Permissions
+        public InputList<Inputs.ApplicationOauth2PermissionGetArgs> Oauth2Permissions
         {
-            get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ApplicationOauth2PermissionsGetArgs>());
+            get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ApplicationOauth2PermissionGetArgs>());
             set => _oauth2Permissions = value;
         }
 
@@ -402,14 +400,14 @@ namespace Pulumi.AzureAD
         }
 
         [Input("requiredResourceAccesses")]
-        private InputList<Inputs.ApplicationRequiredResourceAccessesGetArgs>? _requiredResourceAccesses;
+        private InputList<Inputs.ApplicationRequiredResourceAccessGetArgs>? _requiredResourceAccesses;
 
         /// <summary>
         /// A collection of `required_resource_access` blocks as documented below.
         /// </summary>
-        public InputList<Inputs.ApplicationRequiredResourceAccessesGetArgs> RequiredResourceAccesses
+        public InputList<Inputs.ApplicationRequiredResourceAccessGetArgs> RequiredResourceAccesses
         {
-            get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessesGetArgs>());
+            get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessGetArgs>());
             set => _requiredResourceAccesses = value;
         }
 
@@ -422,457 +420,5 @@ namespace Pulumi.AzureAD
         public ApplicationState()
         {
         }
-    }
-
-    namespace Inputs
-    {
-
-    public sealed class ApplicationAppRolesArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedMemberTypes", required: true)]
-        private InputList<string>? _allowedMemberTypes;
-
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
-        /// </summary>
-        public InputList<string> AllowedMemberTypes
-        {
-            get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
-            set => _allowedMemberTypes = value;
-        }
-
-        /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
-        /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
-
-        /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
-        /// </summary>
-        [Input("displayName", required: true)]
-        public Input<string> DisplayName { get; set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public ApplicationAppRolesArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationAppRolesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("allowedMemberTypes", required: true)]
-        private InputList<string>? _allowedMemberTypes;
-
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
-        /// </summary>
-        public InputList<string> AllowedMemberTypes
-        {
-            get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
-            set => _allowedMemberTypes = value;
-        }
-
-        /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
-        /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
-
-        /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
-        /// </summary>
-        [Input("displayName", required: true)]
-        public Input<string> DisplayName { get; set; } = null!;
-
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public ApplicationAppRolesGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationOauth2PermissionsArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of the admin consent.
-        /// </summary>
-        [Input("adminConsentDescription")]
-        public Input<string>? AdminConsentDescription { get; set; }
-
-        /// <summary>
-        /// The display name of the admin consent.
-        /// </summary>
-        [Input("adminConsentDisplayName")]
-        public Input<string>? AdminConsentDisplayName { get; set; }
-
-        /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// The description of the user consent.
-        /// </summary>
-        [Input("userConsentDescription")]
-        public Input<string>? UserConsentDescription { get; set; }
-
-        /// <summary>
-        /// The display name of the user consent.
-        /// </summary>
-        [Input("userConsentDisplayName")]
-        public Input<string>? UserConsentDisplayName { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public ApplicationOauth2PermissionsArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationOauth2PermissionsGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The description of the admin consent.
-        /// </summary>
-        [Input("adminConsentDescription")]
-        public Input<string>? AdminConsentDescription { get; set; }
-
-        /// <summary>
-        /// The display name of the admin consent.
-        /// </summary>
-        [Input("adminConsentDisplayName")]
-        public Input<string>? AdminConsentDisplayName { get; set; }
-
-        /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
-        /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
-
-        /// <summary>
-        /// The description of the user consent.
-        /// </summary>
-        [Input("userConsentDescription")]
-        public Input<string>? UserConsentDescription { get; set; }
-
-        /// <summary>
-        /// The display name of the user consent.
-        /// </summary>
-        [Input("userConsentDisplayName")]
-        public Input<string>? UserConsentDisplayName { get; set; }
-
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
-
-        public ApplicationOauth2PermissionsGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationRequiredResourceAccessesArgs : Pulumi.ResourceArgs
-    {
-        [Input("resourceAccesses", required: true)]
-        private InputList<ApplicationRequiredResourceAccessesResourceAccessesArgs>? _resourceAccesses;
-
-        /// <summary>
-        /// A collection of `resource_access` blocks as documented below.
-        /// </summary>
-        public InputList<ApplicationRequiredResourceAccessesResourceAccessesArgs> ResourceAccesses
-        {
-            get => _resourceAccesses ?? (_resourceAccesses = new InputList<ApplicationRequiredResourceAccessesResourceAccessesArgs>());
-            set => _resourceAccesses = value;
-        }
-
-        /// <summary>
-        /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
-        /// </summary>
-        [Input("resourceAppId", required: true)]
-        public Input<string> ResourceAppId { get; set; } = null!;
-
-        public ApplicationRequiredResourceAccessesArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationRequiredResourceAccessesGetArgs : Pulumi.ResourceArgs
-    {
-        [Input("resourceAccesses", required: true)]
-        private InputList<ApplicationRequiredResourceAccessesResourceAccessesGetArgs>? _resourceAccesses;
-
-        /// <summary>
-        /// A collection of `resource_access` blocks as documented below.
-        /// </summary>
-        public InputList<ApplicationRequiredResourceAccessesResourceAccessesGetArgs> ResourceAccesses
-        {
-            get => _resourceAccesses ?? (_resourceAccesses = new InputList<ApplicationRequiredResourceAccessesResourceAccessesGetArgs>());
-            set => _resourceAccesses = value;
-        }
-
-        /// <summary>
-        /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
-        /// </summary>
-        [Input("resourceAppId", required: true)]
-        public Input<string> ResourceAppId { get; set; } = null!;
-
-        public ApplicationRequiredResourceAccessesGetArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationRequiredResourceAccessesResourceAccessesArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
-        /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public ApplicationRequiredResourceAccessesResourceAccessesArgs()
-        {
-        }
-    }
-
-    public sealed class ApplicationRequiredResourceAccessesResourceAccessesGetArgs : Pulumi.ResourceArgs
-    {
-        /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        /// </summary>
-        [Input("id", required: true)]
-        public Input<string> Id { get; set; } = null!;
-
-        /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-        /// </summary>
-        [Input("type", required: true)]
-        public Input<string> Type { get; set; } = null!;
-
-        public ApplicationRequiredResourceAccessesResourceAccessesGetArgs()
-        {
-        }
-    }
-    }
-
-    namespace Outputs
-    {
-
-    [OutputType]
-    public sealed class ApplicationAppRoles
-    {
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
-        /// </summary>
-        public readonly ImmutableArray<string> AllowedMemberTypes;
-        /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
-        /// </summary>
-        public readonly string Description;
-        /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
-        /// </summary>
-        public readonly string DisplayName;
-        /// <summary>
-        /// The unique identifier of the `app_role`.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
-        /// </summary>
-        public readonly bool? IsEnabled;
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        public readonly string? Value;
-
-        [OutputConstructor]
-        private ApplicationAppRoles(
-            ImmutableArray<string> allowedMemberTypes,
-            string description,
-            string displayName,
-            string id,
-            bool? isEnabled,
-            string? value)
-        {
-            AllowedMemberTypes = allowedMemberTypes;
-            Description = description;
-            DisplayName = displayName;
-            Id = id;
-            IsEnabled = isEnabled;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApplicationOauth2Permissions
-    {
-        /// <summary>
-        /// The description of the admin consent.
-        /// </summary>
-        public readonly string AdminConsentDescription;
-        /// <summary>
-        /// The display name of the admin consent.
-        /// </summary>
-        public readonly string AdminConsentDisplayName;
-        /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
-        /// </summary>
-        public readonly bool IsEnabled;
-        /// <summary>
-        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
-        /// </summary>
-        public readonly string Type;
-        /// <summary>
-        /// The description of the user consent.
-        /// </summary>
-        public readonly string UserConsentDescription;
-        /// <summary>
-        /// The display name of the user consent.
-        /// </summary>
-        public readonly string UserConsentDisplayName;
-        /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-        /// </summary>
-        public readonly string Value;
-
-        [OutputConstructor]
-        private ApplicationOauth2Permissions(
-            string adminConsentDescription,
-            string adminConsentDisplayName,
-            string id,
-            bool isEnabled,
-            string type,
-            string userConsentDescription,
-            string userConsentDisplayName,
-            string value)
-        {
-            AdminConsentDescription = adminConsentDescription;
-            AdminConsentDisplayName = adminConsentDisplayName;
-            Id = id;
-            IsEnabled = isEnabled;
-            Type = type;
-            UserConsentDescription = userConsentDescription;
-            UserConsentDisplayName = userConsentDisplayName;
-            Value = value;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApplicationRequiredResourceAccesses
-    {
-        /// <summary>
-        /// A collection of `resource_access` blocks as documented below.
-        /// </summary>
-        public readonly ImmutableArray<ApplicationRequiredResourceAccessesResourceAccesses> ResourceAccesses;
-        /// <summary>
-        /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
-        /// </summary>
-        public readonly string ResourceAppId;
-
-        [OutputConstructor]
-        private ApplicationRequiredResourceAccesses(
-            ImmutableArray<ApplicationRequiredResourceAccessesResourceAccesses> resourceAccesses,
-            string resourceAppId)
-        {
-            ResourceAccesses = resourceAccesses;
-            ResourceAppId = resourceAppId;
-        }
-    }
-
-    [OutputType]
-    public sealed class ApplicationRequiredResourceAccessesResourceAccesses
-    {
-        /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        /// </summary>
-        public readonly string Id;
-        /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-        /// </summary>
-        public readonly string Type;
-
-        [OutputConstructor]
-        private ApplicationRequiredResourceAccessesResourceAccesses(
-            string id,
-            string type)
-        {
-            Id = id;
-            Type = type;
-        }
-    }
     }
 }

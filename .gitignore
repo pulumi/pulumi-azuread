@@ -12,3 +12,5 @@ sdk/nodejs/node_modules
 *.iml
 
 yarn.lock
+
+**/pulumiManifest.go

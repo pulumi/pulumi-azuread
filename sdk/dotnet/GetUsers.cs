@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Gets Object IDs or UPNs for multiple Azure Active Directory users.
-        /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/users.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetUsers.InvokeAsync() instead")]
-        public static Task<GetUsersResult> GetUsers(GetUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetUsers
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/users.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
     }
+
 
     public sealed class GetUsersArgs : Pulumi.InvokeArgs
     {
@@ -78,9 +67,14 @@ namespace Pulumi.AzureAD
         }
     }
 
+
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The email aliases of the Azure AD Users.
         /// </summary>
@@ -93,22 +87,21 @@ namespace Pulumi.AzureAD
         /// The User Principal Names of the Azure AD Users.
         /// </summary>
         public readonly ImmutableArray<string> UserPrincipalNames;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetUsersResult(
+            string id,
+
             ImmutableArray<string> mailNicknames,
+
             ImmutableArray<string> objectIds,
-            ImmutableArray<string> userPrincipalNames,
-            string id)
+
+            ImmutableArray<string> userPrincipalNames)
         {
+            Id = id;
             MailNicknames = mailNicknames;
             ObjectIds = objectIds;
             UserPrincipalNames = userPrincipalNames;
-            Id = id;
         }
     }
 }

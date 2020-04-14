@@ -9,19 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    public static partial class Invokes
-    {
-        /// <summary>
-        /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
-        /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
-        /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
-        /// </summary>
-        [Obsolete("Use GetGroups.InvokeAsync() instead")]
-        public static Task<GetGroupsResult> GetGroups(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
-    }
     public static class GetGroups
     {
         /// <summary>
@@ -29,11 +16,13 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
         /// 
-        /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
+        /// {{% examples %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
     }
+
 
     public sealed class GetGroupsArgs : Pulumi.InvokeArgs
     {
@@ -66,9 +55,14 @@ namespace Pulumi.AzureAD
         }
     }
 
+
     [OutputType]
     public sealed class GetGroupsResult
     {
+        /// <summary>
+        /// id is the provider-assigned unique ID for this managed resource.
+        /// </summary>
+        public readonly string Id;
         /// <summary>
         /// The Display Names of the Azure AD Groups.
         /// </summary>
@@ -77,20 +71,18 @@ namespace Pulumi.AzureAD
         /// The Object IDs of the Azure AD Groups.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
-        /// <summary>
-        /// id is the provider-assigned unique ID for this managed resource.
-        /// </summary>
-        public readonly string Id;
 
         [OutputConstructor]
         private GetGroupsResult(
+            string id,
+
             ImmutableArray<string> names,
-            ImmutableArray<string> objectIds,
-            string id)
+
+            ImmutableArray<string> objectIds)
         {
+            Id = id;
             Names = names;
             ObjectIds = objectIds;
-            Id = id;
         }
     }
 }

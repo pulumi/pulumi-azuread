@@ -8,7 +8,6 @@ namespace Pulumi.AzureAD
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("azuread");
-
         public static string? ClientCertificatePassword { get; set; } = __config.Get("clientCertificatePassword") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") ?? "";
 
         public static string? ClientCertificatePath { get; set; } = __config.Get("clientCertificatePath") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PATH") ?? "";
@@ -27,8 +26,5 @@ namespace Pulumi.AzureAD
 
         public static bool? UseMsi { get; set; } = __config.GetBoolean("useMsi") ?? Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

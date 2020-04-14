@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
  */
-export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> & GetServicePrincipalResult {
+export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
     if (!opts) {
         opts = {}
@@ -55,14 +55,12 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
     if (!opts.version) {
         opts.version = utilities.getVersion();
     }
-    const promise: Promise<GetServicePrincipalResult> = pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
+    return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
         "applicationId": args.applicationId,
         "displayName": args.displayName,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
     }, opts);
-
-    return pulumi.utils.liftProperties(promise, opts);
 }
 
 /**

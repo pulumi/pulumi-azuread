@@ -55,7 +55,7 @@ def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
 
-    > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/users.html.markdown.
+
 
 
     :param list mail_nicknames: The email aliases of the Azure AD Users.
