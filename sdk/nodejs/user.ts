@@ -58,7 +58,6 @@ export class User extends pulumi.CustomResource {
 
     /**
      * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-     * * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
      */
     public readonly accountEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -77,6 +76,9 @@ export class User extends pulumi.CustomResource {
      * The primary email address of the Azure AD User.
      */
     public /*out*/ readonly mail!: pulumi.Output<string>;
+    /**
+     * The mail alias for the user. Defaults to the user name part of the User Principal Name.
+     */
     public readonly mailNickname!: pulumi.Output<string>;
     /**
      * The Object ID of the Azure AD User.
@@ -168,7 +170,6 @@ export class User extends pulumi.CustomResource {
 export interface UserState {
     /**
      * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-     * * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
      */
     readonly accountEnabled?: pulumi.Input<boolean>;
     /**
@@ -187,6 +188,9 @@ export interface UserState {
      * The primary email address of the Azure AD User.
      */
     readonly mail?: pulumi.Input<string>;
+    /**
+     * The mail alias for the user. Defaults to the user name part of the User Principal Name.
+     */
     readonly mailNickname?: pulumi.Input<string>;
     /**
      * The Object ID of the Azure AD User.
@@ -220,7 +224,6 @@ export interface UserState {
 export interface UserArgs {
     /**
      * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-     * * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
      */
     readonly accountEnabled?: pulumi.Input<boolean>;
     /**
@@ -235,6 +238,9 @@ export interface UserArgs {
      * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
      */
     readonly immutableId?: pulumi.Input<string>;
+    /**
+     * The mail alias for the user. Defaults to the user name part of the User Principal Name.
+     */
     readonly mailNickname?: pulumi.Input<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.

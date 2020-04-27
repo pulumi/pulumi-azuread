@@ -18,7 +18,6 @@ namespace Pulumi.AzureAD
     {
         /// <summary>
         /// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-        /// * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
         /// </summary>
         [Output("accountEnabled")]
         public Output<bool?> AccountEnabled { get; private set; } = null!;
@@ -47,6 +46,9 @@ namespace Pulumi.AzureAD
         [Output("mail")]
         public Output<string> Mail { get; private set; } = null!;
 
+        /// <summary>
+        /// The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        /// </summary>
         [Output("mailNickname")]
         public Output<string> MailNickname { get; private set; } = null!;
 
@@ -134,7 +136,6 @@ namespace Pulumi.AzureAD
     {
         /// <summary>
         /// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-        /// * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
         /// </summary>
         [Input("accountEnabled")]
         public Input<bool>? AccountEnabled { get; set; }
@@ -157,6 +158,9 @@ namespace Pulumi.AzureAD
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
 
+        /// <summary>
+        /// The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        /// </summary>
         [Input("mailNickname")]
         public Input<string>? MailNickname { get; set; }
 
@@ -187,7 +191,6 @@ namespace Pulumi.AzureAD
     {
         /// <summary>
         /// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-        /// * `mail_nickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
         /// </summary>
         [Input("accountEnabled")]
         public Input<bool>? AccountEnabled { get; set; }
@@ -216,6 +219,9 @@ namespace Pulumi.AzureAD
         [Input("mail")]
         public Input<string>? Mail { get; set; }
 
+        /// <summary>
+        /// The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        /// </summary>
         [Input("mailNickname")]
         public Input<string>? MailNickname { get; set; }
 

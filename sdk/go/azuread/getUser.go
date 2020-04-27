@@ -35,7 +35,7 @@ type LookupUserResult struct {
 	AccountEnabled bool `pulumi:"accountEnabled"`
 	// The Display Name of the Azure AD User.
 	DisplayName string `pulumi:"displayName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
 	ImmutableId string `pulumi:"immutableId"`
