@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = azuread.getUser({
+ * const example = pulumi.output(azuread.getUser({
  *     userPrincipalName: "user@hashicorp.com",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/user.html.markdown.

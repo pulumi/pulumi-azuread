@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const users = azuread.getUsers({
+ * const users = pulumi.output(azuread.getUsers({
  *     userPrincipalNames: [
  *         "kat@hashicorp.com",
  *         "byte@hashicorp.com",
  *     ],
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/users.html.markdown.
