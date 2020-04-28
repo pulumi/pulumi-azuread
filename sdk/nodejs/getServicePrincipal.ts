@@ -17,9 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = azuread.getServicePrincipal({
+ * const example = pulumi.output(azuread.getServicePrincipal({
  *     displayName: "my-awesome-application",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ## Example Usage (by Application ID)
@@ -28,9 +28,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = azuread.getServicePrincipal({
+ * const example = pulumi.output(azuread.getServicePrincipal({
  *     applicationId: "00000000-0000-0000-0000-000000000000",
- * });
+ * }, { async: true }));
  * ```
  * 
  * ## Example Usage (by Object ID)
@@ -39,9 +39,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = azuread.getServicePrincipal({
+ * const example = pulumi.output(azuread.getServicePrincipal({
  *     objectId: "00000000-0000-0000-0000-000000000000",
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/service_principal.html.markdown.
@@ -98,7 +98,7 @@ export interface GetServicePrincipalResult {
     readonly oauth2Permissions: outputs.GetServicePrincipalOauth2Permission[];
     readonly objectId: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

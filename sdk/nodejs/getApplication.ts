@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const example = azuread.getApplication({
+ * const example = pulumi.output(azuread.getApplication({
  *     name: "My First AzureAD Application",
- * });
+ * }, { async: true }));
  * 
  * export const azureAdObjectId = example.id;
  * ```
@@ -121,7 +121,7 @@ export interface GetApplicationResult {
      */
     readonly type: string;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

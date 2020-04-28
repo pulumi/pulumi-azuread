@@ -40,7 +40,7 @@ type LookupApplicationResult struct {
 	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
 	GroupMembershipClaims string `pulumi:"groupMembershipClaims"`
 	Homepage              string `pulumi:"homepage"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`

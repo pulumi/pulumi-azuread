@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const aadDomains = azuread.getDomains();
+ * const aadDomains = pulumi.output(azuread.getDomains({ async: true }));
  * 
  * export const domains = aadDomains.domains;
  * ```
@@ -72,7 +72,7 @@ export interface GetDomainsResult {
     readonly onlyDefault?: boolean;
     readonly onlyInitial?: boolean;
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }

@@ -17,7 +17,6 @@ type User struct {
 	pulumi.CustomResourceState
 
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled pulumi.BoolPtrOutput `pulumi:"accountEnabled"`
 	// The name to display in the address book for the user.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -26,7 +25,8 @@ type User struct {
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
 	ImmutableId pulumi.StringOutput `pulumi:"immutableId"`
 	// The primary email address of the Azure AD User.
-	Mail         pulumi.StringOutput `pulumi:"mail"`
+	Mail pulumi.StringOutput `pulumi:"mail"`
+	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
 	// The Object ID of the Azure AD User.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
@@ -80,7 +80,6 @@ func GetUser(ctx *pulumi.Context,
 // Input properties used for looking up and filtering User resources.
 type userState struct {
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled *bool `pulumi:"accountEnabled"`
 	// The name to display in the address book for the user.
 	DisplayName *string `pulumi:"displayName"`
@@ -89,7 +88,8 @@ type userState struct {
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
 	ImmutableId *string `pulumi:"immutableId"`
 	// The primary email address of the Azure AD User.
-	Mail         *string `pulumi:"mail"`
+	Mail *string `pulumi:"mail"`
+	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname *string `pulumi:"mailNickname"`
 	// The Object ID of the Azure AD User.
 	ObjectId *string `pulumi:"objectId"`
@@ -107,7 +107,6 @@ type userState struct {
 
 type UserState struct {
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled pulumi.BoolPtrInput
 	// The name to display in the address book for the user.
 	DisplayName pulumi.StringPtrInput
@@ -116,7 +115,8 @@ type UserState struct {
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
 	ImmutableId pulumi.StringPtrInput
 	// The primary email address of the Azure AD User.
-	Mail         pulumi.StringPtrInput
+	Mail pulumi.StringPtrInput
+	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringPtrInput
 	// The Object ID of the Azure AD User.
 	ObjectId pulumi.StringPtrInput
@@ -138,14 +138,14 @@ func (UserState) ElementType() reflect.Type {
 
 type userArgs struct {
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled *bool `pulumi:"accountEnabled"`
 	// The name to display in the address book for the user.
 	DisplayName string `pulumi:"displayName"`
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
-	ImmutableId  *string `pulumi:"immutableId"`
+	ImmutableId *string `pulumi:"immutableId"`
+	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname *string `pulumi:"mailNickname"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password string `pulumi:"password"`
@@ -158,14 +158,14 @@ type userArgs struct {
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
 	// `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
-	// * `mailNickname`- (Optional) The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	AccountEnabled pulumi.BoolPtrInput
 	// The name to display in the address book for the user.
 	DisplayName pulumi.StringInput
 	// `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
 	ForcePasswordChange pulumi.BoolPtrInput
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
-	ImmutableId  pulumi.StringPtrInput
+	ImmutableId pulumi.StringPtrInput
+	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringInput

@@ -24,7 +24,7 @@ class GetDomainsResult:
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
-        id is the provider-assigned unique ID for this managed resource.
+        The provider-assigned unique ID for this managed resource.
         """
         if include_unverified and not isinstance(include_unverified, bool):
             raise TypeError("Expected argument 'include_unverified' to be a bool")

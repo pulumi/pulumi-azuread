@@ -31,7 +31,7 @@ type GetUsersArgs struct {
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The email aliases of the Azure AD Users.
 	MailNicknames []string `pulumi:"mailNicknames"`

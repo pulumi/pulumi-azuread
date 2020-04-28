@@ -37,7 +37,7 @@ type LookupServicePrincipalResult struct {
 	ApplicationId string                       `pulumi:"applicationId"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName string `pulumi:"displayName"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                string                                `pulumi:"id"`
 	Oauth2Permissions []GetServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
 	ObjectId          string                                `pulumi:"objectId"`

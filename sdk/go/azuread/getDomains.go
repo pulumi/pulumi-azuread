@@ -33,7 +33,7 @@ type GetDomainsArgs struct {
 type GetDomainsResult struct {
 	// One or more `domain` blocks as defined below.
 	Domains []GetDomainsDomain `pulumi:"domains"`
-	// id is the provider-assigned unique ID for this managed resource.
+	// The provider-assigned unique ID for this managed resource.
 	Id                string `pulumi:"id"`
 	IncludeUnverified *bool  `pulumi:"includeUnverified"`
 	OnlyDefault       *bool  `pulumi:"onlyDefault"`

@@ -19,12 +19,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  * 
- * const groups = azuread.getGroups({
+ * const groups = pulumi.output(azuread.getGroups({
  *     names: [
  *         "group-a",
  *         "group-b",
  *     ],
- * });
+ * }, { async: true }));
  * ```
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/d/groups.html.markdown.
@@ -71,7 +71,7 @@ export interface GetGroupsResult {
      */
     readonly objectIds: string[];
     /**
-     * id is the provider-assigned unique ID for this managed resource.
+     * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
 }
