@@ -160,7 +160,6 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_client_config":     {Tok: makeDataSource(mainMod, "getClientConfig")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			AsyncDataSources: true,
 			// List any npm dependencies and their versions
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^2.0.0",
