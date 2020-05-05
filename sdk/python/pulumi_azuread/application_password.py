@@ -41,6 +41,25 @@ class ApplicationPassword(pulumi.CustomResource):
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication",
+            available_to_other_tenants=False,
+            homepage="http://homepage",
+            identifier_uris=["http://uri"],
+            oauth2_allow_implicit_flow=True,
+            reply_urls=["http://replyurl"])
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
+            application_id=example_application.id,
+            end_date="2099-01-01T01:02:03Z",
+            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
+        ```
 
 
         :param str resource_name: The name of the resource.

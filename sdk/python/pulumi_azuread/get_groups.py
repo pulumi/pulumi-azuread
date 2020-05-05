@@ -48,6 +48,19 @@ def get_groups(names=None,object_ids=None,opts=None):
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    groups = azuread.get_groups(names=[
+        "group-a",
+        "group-b",
+    ])
+    ```
 
 
 

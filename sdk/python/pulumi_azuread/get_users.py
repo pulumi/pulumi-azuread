@@ -55,6 +55,19 @@ def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    users = azuread.get_users(user_principal_names=[
+        "kat@hashicorp.com",
+        "byte@hashicorp.com",
+    ])
+    ```
 
 
 

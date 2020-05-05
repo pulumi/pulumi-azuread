@@ -49,6 +49,29 @@ class ServicePrincipal(pulumi.CustomResource):
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication",
+            available_to_other_tenants=False,
+            homepage="http://homepage",
+            identifier_uris=["http://uri"],
+            oauth2_allow_implicit_flow=True,
+            reply_urls=["http://replyurl"])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            app_role_assignment_required=False,
+            application_id=example_application.application_id,
+            tags=[
+                "example",
+                "tags",
+                "here",
+            ])
+        ```
 
 
         :param str resource_name: The name of the resource.
