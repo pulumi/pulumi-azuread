@@ -102,6 +102,59 @@ class Application(pulumi.CustomResource):
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Application("example",
+            app_roles=[{
+                "allowedMemberTypes": [
+                    "User",
+                    "Application",
+                ],
+                "description": "Admins can manage roles and perform all task actions",
+                "display_name": "Admin",
+                "isEnabled": True,
+                "value": "Admin",
+            }],
+            available_to_other_tenants=False,
+            homepage="https://homepage",
+            identifier_uris=["https://uri"],
+            oauth2_allow_implicit_flow=True,
+            owners=["00000004-0000-0000-c000-000000000000"],
+            reply_urls=["https://replyurl"],
+            required_resource_accesses=[
+                {
+                    "resourceAccess": [
+                        {
+                            "id": "...",
+                            "type": "Role",
+                        },
+                        {
+                            "id": "...",
+                            "type": "Scope",
+                        },
+                        {
+                            "id": "...",
+                            "type": "Scope",
+                        },
+                    ],
+                    "resourceAppId": "00000003-0000-0000-c000-000000000000",
+                },
+                {
+                    "resourceAccess": [{
+                        "id": "...",
+                        "type": "Scope",
+                    }],
+                    "resourceAppId": "00000002-0000-0000-c000-000000000000",
+                },
+            ],
+            type="webapp/api")
+        ```
 
 
         :param str resource_name: The name of the resource.

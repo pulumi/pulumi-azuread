@@ -53,6 +53,17 @@ def get_domains(include_unverified=None,only_default=None,only_initial=None,opts
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
 
+    ## Example Usage
+
+
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    aad_domains = azuread.get_domains()
+    pulumi.export("domains", aad_domains.domains)
+    ```
 
 
 
