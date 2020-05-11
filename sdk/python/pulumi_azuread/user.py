@@ -64,6 +64,20 @@ class User(pulumi.CustomResource):
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.User("example",
+            display_name="J. Doe",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!",
+            user_principal_name="jdo@hashicorp.com")
+        ```
 
 
         :param str resource_name: The name of the resource.

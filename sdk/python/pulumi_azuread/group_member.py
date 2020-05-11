@@ -24,6 +24,20 @@ class GroupMember(pulumi.CustomResource):
 
         > **NOTE:** Do not use this resource at the same time as `azuread_group.members`.
 
+        ## Example Usage
+
+
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup")
+        example_group_member = azuread.GroupMember("exampleGroupMember",
+            group_object_id=example_group.id,
+            member_object_id=example_user.id)
+        ```
 
 
         :param str resource_name: The name of the resource.
