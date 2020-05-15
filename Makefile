@@ -78,6 +78,9 @@ install:: provider
 test_fast::
 	cd examples && $(GO_TEST_FAST) .
 
+test_all::
+	cd examples && $(GO_TEST) .
+
 .PHONY: publish_tgz
 publish_tgz:
 	$(call STEP_MESSAGE)
