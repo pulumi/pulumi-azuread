@@ -41,8 +41,8 @@ github.com/Azure/azure-pipeline-go v0.2.1/go.mod h1:UGSo8XybXnIGZ3epmeBw7Jdz+HiU
 github.com/Azure/azure-sdk-for-go v29.0.0+incompatible/go.mod h1:9XXNKU+eRnpl9moKnB4QOLf1HestfXbmab5FXxiDBjc=
 github.com/Azure/azure-sdk-for-go v30.1.0+incompatible/go.mod h1:9XXNKU+eRnpl9moKnB4QOLf1HestfXbmab5FXxiDBjc=
 github.com/Azure/azure-sdk-for-go v35.0.0+incompatible/go.mod h1:9XXNKU+eRnpl9moKnB4QOLf1HestfXbmab5FXxiDBjc=
-github.com/Azure/azure-sdk-for-go v40.3.0+incompatible h1:NthZg3psrLxvQLN6rVm07pZ9mv2wvGNaBNGQ3fnPvLE=
-github.com/Azure/azure-sdk-for-go v40.3.0+incompatible/go.mod h1:9XXNKU+eRnpl9moKnB4QOLf1HestfXbmab5FXxiDBjc=
+github.com/Azure/azure-sdk-for-go v42.1.0+incompatible h1:ZNliGuvGKIHedRdz8W9BTMSrxBv9Nzz5BjeobotQTAI=
+github.com/Azure/azure-sdk-for-go v42.1.0+incompatible/go.mod h1:9XXNKU+eRnpl9moKnB4QOLf1HestfXbmab5FXxiDBjc=
 github.com/Azure/azure-service-bus-go v0.9.1/go.mod h1:yzBx6/BUGfjfeqbRZny9AQIbIe3AcV9WZbAdpkoXOa0=
 github.com/Azure/azure-storage-blob-go v0.8.0/go.mod h1:lPI3aLPpuLTeUwh1sViKXFxwl2B6teiRqI0deQUvsw0=
 github.com/Azure/go-ansiterm v0.0.0-20170929234023-d6e3b3328b78/go.mod h1:LmzpDX56iTiv29bbRTIsUNlaFfuhWRQBWjQdVyAevI8=
@@ -510,8 +510,8 @@ github.com/stretchr/testify v1.5.1 h1:nOGnQDM7FYENwehXlg/kFVnos3rEvtKTjRvOWSzb6H
 github.com/stretchr/testify v1.5.1/go.mod h1:5W2xD1RspED5o8YsWQXVCued0rvSQ+mT+I5cxcmMvtA=
 github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4Z7KAUjnYwopk1DgGJ/DLH0xowJ8h+/8=
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
-github.com/terraform-providers/terraform-provider-azuread v0.8.0 h1:ZcF5f+F3tFBK7N2T+OSjgFDpgLHYKfSWxhGRfUoPKUU=
-github.com/terraform-providers/terraform-provider-azuread v0.8.0/go.mod h1:7RxccROJFJZmxJpmbRTHA+mn6U/s7UnVeEbOHLX6CQU=
+github.com/terraform-providers/terraform-provider-azuread v0.9.0 h1:XLzFgVHakq6qjJ2L0o/tN2yHu/hT4vIW9sKtejr7gPs=
+github.com/terraform-providers/terraform-provider-azuread v0.9.0/go.mod h1:sSDzB/8CD639+yWo5lZf+NJvGSYQBSS6z+GoET9IrzE=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=
