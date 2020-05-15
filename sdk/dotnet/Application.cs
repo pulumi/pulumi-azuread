@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
         public Output<bool?> AvailableToOtherTenants { get; private set; } = null!;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Output("groupMembershipClaims")]
         public Output<string?> GroupMembershipClaims { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? AvailableToOtherTenants { get; set; }
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Input("groupMembershipClaims")]
         public Input<string>? GroupMembershipClaims { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? AvailableToOtherTenants { get; set; }
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Input("groupMembershipClaims")]
         public Input<string>? GroupMembershipClaims { get; set; }

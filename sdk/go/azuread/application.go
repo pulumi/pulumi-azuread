@@ -21,7 +21,7 @@ type Application struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrOutput `pulumi:"availableToOtherTenants"`
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrOutput `pulumi:"groupMembershipClaims"`
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage pulumi.StringOutput `pulumi:"homepage"`
@@ -83,7 +83,7 @@ type applicationState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims *string `pulumi:"groupMembershipClaims"`
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage *string `pulumi:"homepage"`
@@ -118,7 +118,7 @@ type ApplicationState struct {
 	ApplicationId pulumi.StringPtrInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrInput
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrInput
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage pulumi.StringPtrInput
@@ -155,7 +155,7 @@ type applicationArgs struct {
 	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims *string `pulumi:"groupMembershipClaims"`
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage *string `pulumi:"homepage"`
@@ -187,7 +187,7 @@ type ApplicationArgs struct {
 	AppRoles ApplicationAppRoleArrayInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrInput
-	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrInput
 	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
 	Homepage pulumi.StringPtrInput

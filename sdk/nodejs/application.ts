@@ -108,7 +108,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly availableToOtherTenants!: pulumi.Output<boolean | undefined>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     public readonly groupMembershipClaims!: pulumi.Output<string | undefined>;
     /**
@@ -235,7 +235,7 @@ export interface ApplicationState {
      */
     readonly availableToOtherTenants?: pulumi.Input<boolean>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     readonly groupMembershipClaims?: pulumi.Input<string>;
     /**
@@ -301,7 +301,7 @@ export interface ApplicationArgs {
      */
     readonly availableToOtherTenants?: pulumi.Input<boolean>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup` or `All`.
+     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     readonly groupMembershipClaims?: pulumi.Input<string>;
     /**
