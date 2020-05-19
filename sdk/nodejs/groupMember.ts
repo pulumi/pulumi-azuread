@@ -8,17 +8,17 @@ import * as utilities from "./utilities";
 
 /**
  * Manages a single Group Membership within Azure Active Directory.
- * 
+ *
  * > **NOTE:** Do not use this resource at the same time as `azuread_group.members`.
- * 
+ *
  * ## Example Usage
- * 
- * 
- * 
+ *
+ *
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * 
+ *
  * const exampleUser = pulumi.output(azuread.getUser({
  *     userPrincipalName: "jdoe@hashicorp.com",
  * }, { async: true }));
@@ -28,8 +28,6 @@ import * as utilities from "./utilities";
  *     memberObjectId: exampleUser.id,
  * });
  * ```
- *
- * > This content is derived from https://github.com/terraform-providers/terraform-provider-azuread/blob/master/website/docs/r/group_member.markdown.
  */
 export class GroupMember extends pulumi.CustomResource {
     /**

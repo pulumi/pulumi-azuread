@@ -1,0 +1,2333 @@
+{
+    "name": "azuread",
+    "description": "A Pulumi package for creating and managing azuread cloud resources.",
+    "keywords": [
+        "pulumi",
+        "azuread"
+    ],
+    "homepage": "https://pulumi.io",
+    "license": "Apache-2.0",
+    "attribution": "This Pulumi package is based on the [`azuread` Terraform Provider](https://github.com/terraform-providers/terraform-provider-azuread).",
+    "repository": "https://github.com/pulumi/pulumi-azuread",
+    "meta": {
+        "moduleFormat": "(.*)(?:/[^/]*)"
+    },
+    "config": {
+        "variables": {
+            "clientCertificatePassword": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_CERTIFICATE_PASSWORD"
+                    ]
+                }
+            },
+            "clientCertificatePath": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_CERTIFICATE_PATH"
+                    ]
+                }
+            },
+            "clientId": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_ID"
+                    ]
+                }
+            },
+            "clientSecret": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_SECRET"
+                    ]
+                }
+            },
+            "environment": {
+                "type": "string",
+                "default": "public",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_ENVIRONMENT"
+                    ]
+                }
+            },
+            "msiEndpoint": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_MSI_ENDPOINT"
+                    ]
+                }
+            },
+            "subscriptionId": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_SUBSCRIPTION_ID"
+                    ]
+                }
+            },
+            "tenantId": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_TENANT_ID"
+                    ]
+                }
+            },
+            "useMsi": {
+                "type": "boolean",
+                "default": false,
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_USE_MSI"
+                    ]
+                }
+            }
+        },
+        "defaults": [
+            "environment"
+        ]
+    },
+    "types": {
+        "azuread:/ApplicationAppRole:ApplicationAppRole": {
+            "properties": {
+                "allowedMemberTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin app assignment and consent experiences.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the `app_role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled: Defaults to `true`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedMemberTypes",
+                "description",
+                "displayName"
+            ]
+        },
+        "azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission": {
+            "properties": {
+                "adminConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the admin consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "adminConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the admin consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled: Defaults to `true`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the user consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the user consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess": {
+            "properties": {
+                "resourceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationRequiredResourceAccessResourceAccess:ApplicationRequiredResourceAccessResourceAccess"
+                    },
+                    "description": "A collection of `resource_access` blocks as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceAppId": {
+                    "type": "string",
+                    "description": "The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "resourceAccesses",
+                "resourceAppId"
+            ]
+        },
+        "azuread:/ApplicationRequiredResourceAccessResourceAccess:ApplicationRequiredResourceAccessResourceAccess": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "type"
+            ]
+        },
+        "azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission": {
+            "properties": {
+                "adminConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the admin consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "adminConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the admin consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for one of the `OAuth2Permission`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Is this permission enabled?\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the permission.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the user consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the user consent.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The name of this permission.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:/getApplicationAppRole:getApplicationAppRole": {
+            "properties": {
+                "allowedMemberTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin app assignment and consent experiences.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the `app_role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedMemberTypes",
+                "description",
+                "displayName",
+                "id",
+                "isEnabled",
+                "value"
+            ]
+        },
+        "azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission": {
+            "properties": {
+                "adminConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the admin consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "adminConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the admin consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the `app_role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the permission\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the user consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the user consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "adminConsentDescription",
+                "adminConsentDisplayName",
+                "id",
+                "isEnabled",
+                "type",
+                "userConsentDescription",
+                "userConsentDisplayName",
+                "value"
+            ]
+        },
+        "azuread:/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess": {
+            "properties": {
+                "resourceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess"
+                    },
+                    "description": "A collection of `resource_access` blocks as documented below\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "resourceAppId": {
+                    "type": "string",
+                    "description": "The unique identifier for the resource that the application requires access to.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "resourceAccesses",
+                "resourceAppId"
+            ]
+        },
+        "azuread:/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the `app_role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the permission\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "type"
+            ]
+        },
+        "azuread:/getDomainsDomain:getDomainsDomain": {
+            "properties": {
+                "authenticationType": {
+                    "type": "string",
+                    "description": "The authentication type of the domain (Managed or Federated).\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "domainName": {
+                    "type": "string",
+                    "description": "The name of the domain.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isDefault": {
+                    "type": "boolean",
+                    "description": "`True` if this is the default domain that is used for user creation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isInitial": {
+                    "type": "boolean",
+                    "description": "`True` if this is the initial domain created by Azure Activie Directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isVerified": {
+                    "type": "boolean",
+                    "description": "`True` if the domain has completed domain ownership verification.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "authenticationType",
+                "domainName",
+                "isDefault",
+                "isInitial",
+                "isVerified"
+            ]
+        },
+        "azuread:/getServicePrincipalAppRole:getServicePrincipalAppRole": {
+            "properties": {
+                "allowedMemberTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin app assignment and consent experiences.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The Display Name of the Azure AD Application associated with this Service Principal.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the `app_role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedMemberTypes",
+                "description",
+                "displayName",
+                "id",
+                "isEnabled",
+                "value"
+            ]
+        },
+        "azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission": {
+            "properties": {
+                "adminConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the admin consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "adminConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the admin consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier of the `app_role`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the permission\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDescription": {
+                    "type": "string",
+                    "description": "The description of the user consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userConsentDisplayName": {
+                    "type": "string",
+                    "description": "The display name of the user consent\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "adminConsentDescription",
+                "adminConsentDisplayName",
+                "id",
+                "isEnabled",
+                "type",
+                "userConsentDescription",
+                "userConsentDisplayName",
+                "value"
+            ]
+        }
+    },
+    "provider": {
+        "description": "The provider type for the azuread package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "inputProperties": {
+            "clientCertificatePassword": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_CERTIFICATE_PASSWORD"
+                    ]
+                }
+            },
+            "clientCertificatePath": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_CERTIFICATE_PATH"
+                    ]
+                }
+            },
+            "clientId": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_ID"
+                    ]
+                }
+            },
+            "clientSecret": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_CLIENT_SECRET"
+                    ]
+                }
+            },
+            "environment": {
+                "type": "string",
+                "default": "public",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_ENVIRONMENT"
+                    ]
+                }
+            },
+            "msiEndpoint": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_MSI_ENDPOINT"
+                    ]
+                }
+            },
+            "subscriptionId": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_SUBSCRIPTION_ID"
+                    ]
+                }
+            },
+            "tenantId": {
+                "type": "string",
+                "default": "",
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_TENANT_ID"
+                    ]
+                }
+            },
+            "useMsi": {
+                "type": "boolean",
+                "default": false,
+                "defaultInfo": {
+                    "environment": [
+                        "ARM_USE_MSI"
+                    ]
+                }
+            }
+        }
+    },
+    "resources": {
+        "azuread:index/application:Application": {
+            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Application(\"example\", {\n    appRoles: [{\n        allowedMemberTypes: [\n            \"User\",\n            \"Application\",\n        ],\n        description: \"Admins can manage roles and perform all task actions\",\n        displayName: \"Admin\",\n        isEnabled: true,\n        value: \"Admin\",\n    }],\n    availableToOtherTenants: false,\n    homepage: \"https://homepage\",\n    identifierUris: [\"https://uri\"],\n    oauth2AllowImplicitFlow: true,\n    owners: [\"00000004-0000-0000-c000-000000000000\"],\n    replyUrls: [\"https://replyurl\"],\n    requiredResourceAccesses: [\n        {\n            resourceAccesses: [\n                {\n                    id: \"...\",\n                    type: \"Role\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n            ],\n            resourceAppId: \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            resourceAccesses: [{\n                id: \"...\",\n                type: \"Scope\",\n            }],\n            resourceAppId: \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type: \"webapp/api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Application(\"example\",\n    app_roles=[{\n        \"allowedMemberTypes\": [\n            \"User\",\n            \"Application\",\n        ],\n        \"description\": \"Admins can manage roles and perform all task actions\",\n        \"display_name\": \"Admin\",\n        \"isEnabled\": True,\n        \"value\": \"Admin\",\n    }],\n    available_to_other_tenants=False,\n    homepage=\"https://homepage\",\n    identifier_uris=[\"https://uri\"],\n    oauth2_allow_implicit_flow=True,\n    owners=[\"00000004-0000-0000-c000-000000000000\"],\n    reply_urls=[\"https://replyurl\"],\n    required_resource_accesses=[\n        {\n            \"resourceAccess\": [\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Role\",\n                },\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Scope\",\n                },\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Scope\",\n                },\n            ],\n            \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            \"resourceAccess\": [{\n                \"id\": \"...\",\n                \"type\": \"Scope\",\n            }],\n            \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type=\"webapp/api\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "appRoles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationAppRole:ApplicationAppRole"
+                    },
+                    "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
+                },
+                "applicationId": {
+                    "type": "string",
+                    "description": "The Application ID.\n"
+                },
+                "availableToOtherTenants": {
+                    "type": "boolean",
+                    "description": "Is this Azure AD Application available to other tenants? Defaults to `false`.\n"
+                },
+                "groupMembershipClaims": {
+                    "type": "string",
+                    "description": "Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
+                },
+                "homepage": {
+                    "type": "string",
+                    "description": "The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.\n"
+                },
+                "identifierUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.\n"
+                },
+                "logoutUrl": {
+                    "type": "string",
+                    "description": "The URL of the logout page.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the application.\n"
+                },
+                "oauth2AllowImplicitFlow": {
+                    "type": "boolean",
+                    "description": "Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.\n"
+                },
+                "oauth2Permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
+                    },
+                    "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The Application's Object ID.\n"
+                },
+                "owners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. \n"
+                },
+                "publicClient": {
+                    "type": "boolean",
+                    "description": "Is this Azure AD Application a public client? Defaults to `false`.\n"
+                },
+                "replyUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.\n"
+                },
+                "requiredResourceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
+                    },
+                    "description": "A collection of `required_resource_access` blocks as documented below.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "homepage",
+                "identifierUris",
+                "name",
+                "oauth2Permissions",
+                "objectId",
+                "owners",
+                "publicClient",
+                "replyUrls"
+            ],
+            "inputProperties": {
+                "appRoles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationAppRole:ApplicationAppRole"
+                    },
+                    "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
+                },
+                "availableToOtherTenants": {
+                    "type": "boolean",
+                    "description": "Is this Azure AD Application available to other tenants? Defaults to `false`.\n"
+                },
+                "groupMembershipClaims": {
+                    "type": "string",
+                    "description": "Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
+                },
+                "homepage": {
+                    "type": "string",
+                    "description": "The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.\n"
+                },
+                "identifierUris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.\n"
+                },
+                "logoutUrl": {
+                    "type": "string",
+                    "description": "The URL of the logout page.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the application.\n"
+                },
+                "oauth2AllowImplicitFlow": {
+                    "type": "boolean",
+                    "description": "Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.\n"
+                },
+                "oauth2Permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
+                    },
+                    "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                },
+                "owners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. \n"
+                },
+                "publicClient": {
+                    "type": "boolean",
+                    "description": "Is this Azure AD Application a public client? Defaults to `false`.\n"
+                },
+                "replyUrls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.\n"
+                },
+                "requiredResourceAccesses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
+                    },
+                    "description": "A collection of `required_resource_access` blocks as documented below.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Application resources.\n",
+                "properties": {
+                    "appRoles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/ApplicationAppRole:ApplicationAppRole"
+                        },
+                        "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "description": "The Application ID.\n"
+                    },
+                    "availableToOtherTenants": {
+                        "type": "boolean",
+                        "description": "Is this Azure AD Application available to other tenants? Defaults to `false`.\n"
+                    },
+                    "groupMembershipClaims": {
+                        "type": "string",
+                        "description": "Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.\n"
+                    },
+                    "homepage": {
+                        "type": "string",
+                        "description": "The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.\n"
+                    },
+                    "identifierUris": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.\n"
+                    },
+                    "logoutUrl": {
+                        "type": "string",
+                        "description": "The URL of the logout page.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The display name for the application.\n"
+                    },
+                    "oauth2AllowImplicitFlow": {
+                        "type": "boolean",
+                        "description": "Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.\n"
+                    },
+                    "oauth2Permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
+                        },
+                        "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The Application's Object ID.\n"
+                    },
+                    "owners": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. \n"
+                    },
+                    "publicClient": {
+                        "type": "boolean",
+                        "description": "Is this Azure AD Application a public client? Defaults to `false`.\n"
+                    },
+                    "replyUrls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.\n"
+                    },
+                    "requiredResourceAccesses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
+                        },
+                        "description": "A collection of `required_resource_access` blocks as documented below.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/applicationPassword:ApplicationPassword": {
+            "description": "Manages a Password associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleApplicationPassword = new azuread.ApplicationPassword(\"example\", {\n    applicationId: exampleApplication.id,\n    endDate: \"2099-01-01T01:02:03Z\",\n    value: \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_application_password = azuread.ApplicationPassword(\"exampleApplicationPassword\",\n    application_id=example_application.id,\n    end_date=\"2099-01-01T01:02:03Z\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "applicationId": {
+                    "type": "string",
+                    "deprecationMessage": "Deprecated in favour of `application_object_id` to prevent confusion"
+                },
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Password for this Application .\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "applicationObjectId",
+                "endDate",
+                "keyId",
+                "startDate",
+                "value"
+            ],
+            "inputProperties": {
+                "applicationId": {
+                    "type": "string",
+                    "deprecationMessage": "Deprecated in favour of `application_object_id` to prevent confusion"
+                },
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Password for this Application .\n"
+                }
+            },
+            "requiredInputs": [
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationPassword resources.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "deprecationMessage": "Deprecated in favour of `application_object_id` to prevent confusion"
+                    },
+                    "applicationObjectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDateRelative": {
+                        "type": "string",
+                        "description": "A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The Password for this Application .\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/group:Group": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description for the Group.  Changing this forces a new resource to be created.\n"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                },
+                "objectId": {
+                    "type": "string"
+                },
+                "owners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of owners who own this Group. Supported Object types are Users or Service Principals.\n"
+                }
+            },
+            "required": [
+                "members",
+                "name",
+                "objectId",
+                "owners"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description for the Group.  Changing this forces a new resource to be created.\n"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                },
+                "owners": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of owners who own this Group. Supported Object types are Users or Service Principals.\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Group resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description for the Group.  Changing this forces a new resource to be created.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "owners": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of owners who own this Group. Supported Object types are Users or Service Principals.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/groupMember:GroupMember": {
+            "description": "Manages a single Group Membership within Azure Active Directory.\n\n\u003e **NOTE:** Do not use this resource at the same time as `azuread_group.members`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = pulumi.output(azuread.getUser({\n    userPrincipalName: \"jdoe@hashicorp.com\",\n}, { async: true }));\nconst exampleGroup = new azuread.Group(\"example\", {});\nconst exampleGroupMember = new azuread.GroupMember(\"example\", {\n    groupObjectId: exampleGroup.id,\n    memberObjectId: exampleUser.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.get_user(user_principal_name=\"jdoe@hashicorp.com\")\nexample_group = azuread.Group(\"exampleGroup\")\nexample_group_member = azuread.GroupMember(\"exampleGroupMember\",\n    group_object_id=example_group.id,\n    member_object_id=example_user.id)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "groupObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.\n"
+                },
+                "memberObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "groupObjectId",
+                "memberObjectId"
+            ],
+            "inputProperties": {
+                "groupObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.\n"
+                },
+                "memberObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "requiredInputs": [
+                "groupObjectId",
+                "memberObjectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GroupMember resources.\n",
+                "properties": {
+                    "groupObjectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.\n"
+                    },
+                    "memberObjectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/servicePrincipal:ServicePrincipal": {
+            "description": "Manages a Service Principal associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"example\", {\n    appRoleAssignmentRequired: false,\n    applicationId: exampleApplication.applicationId,\n    tags: [\n        \"example\",\n        \"tags\",\n        \"here\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    app_role_assignment_required=False,\n    application_id=example_application.application_id,\n    tags=[\n        \"example\",\n        \"tags\",\n        \"here\",\n    ])\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "appRoleAssignmentRequired": {
+                    "type": "boolean",
+                    "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                },
+                "applicationId": {
+                    "type": "string",
+                    "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The Display Name of the Azure Active Directory Application associated with this Service Principal.\n"
+                },
+                "oauth2Permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
+                    },
+                    "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The Service Principal's Object ID.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tags to apply to the Service Principal.\n"
+                }
+            },
+            "required": [
+                "applicationId",
+                "displayName",
+                "oauth2Permissions",
+                "objectId"
+            ],
+            "inputProperties": {
+                "appRoleAssignmentRequired": {
+                    "type": "boolean",
+                    "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                },
+                "applicationId": {
+                    "type": "string",
+                    "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
+                },
+                "oauth2Permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
+                    },
+                    "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tags to apply to the Service Principal.\n"
+                }
+            },
+            "requiredInputs": [
+                "applicationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServicePrincipal resources.\n",
+                "properties": {
+                    "appRoleAssignmentRequired": {
+                        "type": "boolean",
+                        "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The Display Name of the Azure Active Directory Application associated with this Service Principal.\n"
+                    },
+                    "oauth2Permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
+                        },
+                        "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The Service Principal's Object ID.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tags to apply to the Service Principal.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": {
+            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"example\", {\n    applicationId: exampleApplication.applicationId,\n});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"example\", {\n    endDate: \"2099-01-01T01:02:03Z\",\n    servicePrincipalId: exampleServicePrincipal.id,\n    value: \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    end_date=\"2099-01-01T01:02:03Z\",\n    service_principal_id=example_service_principal.id,\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\". Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Password for this Service Principal.\n"
+                }
+            },
+            "required": [
+                "endDate",
+                "keyId",
+                "servicePrincipalId",
+                "startDate",
+                "value"
+            ],
+            "inputProperties": {
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\". Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Password for this Service Principal.\n"
+                }
+            },
+            "requiredInputs": [
+                "servicePrincipalId",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServicePrincipalPassword resources.\n",
+                "properties": {
+                    "endDate": {
+                        "type": "string",
+                        "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDateRelative": {
+                        "type": "string",
+                        "description": "A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\". Changing this field forces a new resource to be created.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "servicePrincipalId": {
+                        "type": "string",
+                        "description": "The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The Password for this Service Principal.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/user:User": {
+            "description": "Manages a User within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.User(\"example\", {\n    displayName: \"J. Doe\",\n    mailNickname: \"jdoe\",\n    password: \"SecretP@sswd99!\",\n    userPrincipalName: \"jdo@hashicorp.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.User(\"example\",\n    display_name=\"J. Doe\",\n    mail_nickname=\"jdoe\",\n    password=\"SecretP@sswd99!\",\n    user_principal_name=\"jdo@hashicorp.com\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "properties": {
+                "accountEnabled": {
+                    "type": "boolean",
+                    "description": "`true` if the account should be enabled, otherwise `false`. Defaults to `true`.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The name to display in the address book for the user.\n"
+                },
+                "forcePasswordChange": {
+                    "type": "boolean",
+                    "description": "`true` if the User is forced to change the password during the next sign-in. Defaults to `false`.\n"
+                },
+                "immutableId": {
+                    "type": "string",
+                    "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. \n"
+                },
+                "mail": {
+                    "type": "string",
+                    "description": "The primary email address of the Azure AD User.\n"
+                },
+                "mailNickname": {
+                    "type": "string",
+                    "description": "The mail alias for the user. Defaults to the user name part of the User Principal Name.\n"
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Azure AD User.\n"
+                },
+                "onpremisesSamAccountName": {
+                    "type": "string",
+                    "description": "The on premise sam account name of the Azure AD User.\n"
+                },
+                "onpremisesUserPrincipalName": {
+                    "type": "string",
+                    "description": "The on premise user principal name of the Azure AD User.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.\n"
+                },
+                "usageLocation": {
+                    "type": "string",
+                    "description": "The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. \n"
+                },
+                "userPrincipalName": {
+                    "type": "string",
+                    "description": "The User Principal Name of the Azure AD User.\n"
+                }
+            },
+            "required": [
+                "displayName",
+                "immutableId",
+                "mail",
+                "mailNickname",
+                "objectId",
+                "onpremisesSamAccountName",
+                "onpremisesUserPrincipalName",
+                "password",
+                "usageLocation",
+                "userPrincipalName"
+            ],
+            "inputProperties": {
+                "accountEnabled": {
+                    "type": "boolean",
+                    "description": "`true` if the account should be enabled, otherwise `false`. Defaults to `true`.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The name to display in the address book for the user.\n"
+                },
+                "forcePasswordChange": {
+                    "type": "boolean",
+                    "description": "`true` if the User is forced to change the password during the next sign-in. Defaults to `false`.\n"
+                },
+                "immutableId": {
+                    "type": "string",
+                    "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. \n"
+                },
+                "mailNickname": {
+                    "type": "string",
+                    "description": "The mail alias for the user. Defaults to the user name part of the User Principal Name.\n"
+                },
+                "password": {
+                    "type": "string",
+                    "description": "The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.\n"
+                },
+                "usageLocation": {
+                    "type": "string",
+                    "description": "The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. \n"
+                },
+                "userPrincipalName": {
+                    "type": "string",
+                    "description": "The User Principal Name of the Azure AD User.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "password",
+                "userPrincipalName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering User resources.\n",
+                "properties": {
+                    "accountEnabled": {
+                        "type": "boolean",
+                        "description": "`true` if the account should be enabled, otherwise `false`. Defaults to `true`.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The name to display in the address book for the user.\n"
+                    },
+                    "forcePasswordChange": {
+                        "type": "boolean",
+                        "description": "`true` if the User is forced to change the password during the next sign-in. Defaults to `false`.\n"
+                    },
+                    "immutableId": {
+                        "type": "string",
+                        "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. \n"
+                    },
+                    "mail": {
+                        "type": "string",
+                        "description": "The primary email address of the Azure AD User.\n"
+                    },
+                    "mailNickname": {
+                        "type": "string",
+                        "description": "The mail alias for the user. Defaults to the user name part of the User Principal Name.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Azure AD User.\n"
+                    },
+                    "onpremisesSamAccountName": {
+                        "type": "string",
+                        "description": "The on premise sam account name of the Azure AD User.\n"
+                    },
+                    "onpremisesUserPrincipalName": {
+                        "type": "string",
+                        "description": "The on premise user principal name of the Azure AD User.\n"
+                    },
+                    "password": {
+                        "type": "string",
+                        "description": "The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.\n"
+                    },
+                    "usageLocation": {
+                        "type": "string",
+                        "description": "The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. \n"
+                    },
+                    "userPrincipalName": {
+                        "type": "string",
+                        "description": "The User Principal Name of the Azure AD User.\n"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "functions": {
+        "azuread:index/getApplication:getApplication": {
+            "description": "Use this data source to access information about an existing Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getApplication({\n    name: \"My First AzureAD Application\",\n}, { async: true }));\n\nexport const azureAdObjectId = example.id;\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_application(name=\"My First AzureAD Application\")\npulumi.export(\"azureAdObjectId\", example.id)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getApplication.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Specifies the name of the Application within Azure Active Directory.\n"
+                    },
+                    "oauth2Permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission"
+                        },
+                        "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "Specifies the Object ID of the Application within Azure Active Directory.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getApplication.\n",
+                "properties": {
+                    "appRoles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getApplicationAppRole:getApplicationAppRole"
+                        },
+                        "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
+                    },
+                    "applicationId": {
+                        "type": "string",
+                        "description": "the Application ID of the Azure Active Directory Application.\n"
+                    },
+                    "availableToOtherTenants": {
+                        "type": "boolean",
+                        "description": "Is this Azure AD Application available to other tenants?\n"
+                    },
+                    "groupMembershipClaims": {
+                        "type": "string",
+                        "description": "The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.\n"
+                    },
+                    "homepage": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "identifierUris": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.\n"
+                    },
+                    "logoutUrl": {
+                        "type": "string",
+                        "description": "The URL of the logout page.\n"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "oauth2AllowImplicitFlow": {
+                        "type": "boolean",
+                        "description": "Does this Azure AD Application allow OAuth2.0 implicit flow tokens?\n"
+                    },
+                    "oauth2Permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission"
+                        },
+                        "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "the Object ID of the Azure Active Directory Application.\n"
+                    },
+                    "owners": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of User Object IDs that are assigned ownership of the application registration.\n"
+                    },
+                    "replyUrls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.\n"
+                    },
+                    "requiredResourceAccesses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess"
+                        },
+                        "description": "A collection of `required_resource_access` blocks as documented below.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the permission\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "appRoles",
+                    "applicationId",
+                    "availableToOtherTenants",
+                    "groupMembershipClaims",
+                    "homepage",
+                    "identifierUris",
+                    "logoutUrl",
+                    "name",
+                    "oauth2AllowImplicitFlow",
+                    "oauth2Permissions",
+                    "objectId",
+                    "owners",
+                    "replyUrls",
+                    "requiredResourceAccesses",
+                    "type",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getClientConfig:getClientConfig": {
+            "description": "Use this data source to access the configuration of the AzureRM provider.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nexport const accountId = current.then(current =\u003e current.clientId);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\npulumi.export(\"accountId\", current.client_id)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "outputs": {
+                "description": "A collection of values returned by getClientConfig.\n",
+                "properties": {
+                    "clientId": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "subscriptionId": {
+                        "type": "string"
+                    },
+                    "tenantId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "clientId",
+                    "objectId",
+                    "subscriptionId",
+                    "tenantId",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getDomains:getDomains": {
+            "description": "Use this data source to access information about an existing Domains within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst aadDomains = pulumi.output(azuread.getDomains({ async: true }));\n\nexport const domains = aadDomains.domains;\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\naad_domains = azuread.get_domains()\npulumi.export(\"domains\", aad_domains.domains)\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDomains.\n",
+                "properties": {
+                    "includeUnverified": {
+                        "type": "boolean",
+                        "description": "Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.\n"
+                    },
+                    "onlyDefault": {
+                        "type": "boolean",
+                        "description": "Set to `true` to only return the default domain.\n"
+                    },
+                    "onlyInitial": {
+                        "type": "boolean",
+                        "description": "Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDomains.\n",
+                "properties": {
+                    "domains": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getDomainsDomain:getDomainsDomain"
+                        },
+                        "description": "One or more `domain` blocks as defined below.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "includeUnverified": {
+                        "type": "boolean"
+                    },
+                    "onlyDefault": {
+                        "type": "boolean"
+                    },
+                    "onlyInitial": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "domains",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getGroup:getGroup": {
+            "description": "Gets information about an Azure Active Directory group.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n## Example Usage (by Group Display Name)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroup({\n    name: \"A-AD-Group\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_group(name=\"A-AD-Group\")\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroup.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The Name of the AD Group we want to lookup.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "Specifies the Object ID of the AD Group within Azure Active Directory.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroup.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the AD Group.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "members": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Object IDs of the Azure AD Group members.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Azure AD Group.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "owners": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Object IDs of the Azure AD Group owners.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "members",
+                    "name",
+                    "objectId",
+                    "owners",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getGroups:getGroups": {
+            "description": "Gets Object IDs or Display Names for multiple Azure Active Directory groups.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst groups = pulumi.output(azuread.getGroups({\n    names: [\n        \"group-a\",\n        \"group-b\",\n    ],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ngroups = azuread.get_groups(names=[\n    \"group-a\",\n    \"group-b\",\n])\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getGroups.\n",
+                "properties": {
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Display Names of the Azure AD Groups.\n"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Object IDs of the Azure AD Groups.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGroups.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "names": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Display Names of the Azure AD Groups.\n"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Object IDs of the Azure AD Groups.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "names",
+                    "objectIds",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getServicePrincipal:getServicePrincipal": {
+            "description": "Gets information about an existing Service Principal associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n## Example Usage (by Application Display Name)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getServicePrincipal({\n    displayName: \"my-awesome-application\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principal(display_name=\"my-awesome-application\")\n```\n\n## Example Usage (by Application ID)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getServicePrincipal({\n    applicationId: \"00000000-0000-0000-0000-000000000000\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principal(application_id=\"00000000-0000-0000-0000-000000000000\")\n```\n\n## Example Usage (by Object ID)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getServicePrincipal({\n    objectId: \"00000000-0000-0000-0000-000000000000\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principal(object_id=\"00000000-0000-0000-0000-000000000000\")\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServicePrincipal.\n",
+                "properties": {
+                    "applicationId": {
+                        "type": "string",
+                        "description": "The ID of the Azure AD Application.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The Display Name of the Azure AD Application associated with this Service Principal.\n"
+                    },
+                    "oauth2Permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission"
+                        },
+                        "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The ID of the Azure AD Service Principal.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServicePrincipal.\n",
+                "properties": {
+                    "appRoles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getServicePrincipalAppRole:getServicePrincipalAppRole"
+                        }
+                    },
+                    "applicationId": {
+                        "type": "string"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "oauth2Permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission"
+                        }
+                    },
+                    "objectId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "appRoles",
+                    "applicationId",
+                    "displayName",
+                    "oauth2Permissions",
+                    "objectId",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getUser:getUser": {
+            "description": "Gets information about an Azure Active Directory user.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getUser({\n    userPrincipalName: \"user@hashicorp.com\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_user(user_principal_name=\"user@hashicorp.com\")\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUser.\n",
+                "properties": {
+                    "mailNickname": {
+                        "type": "string",
+                        "description": "The email alias of the Azure AD User.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "Specifies the Object ID of the Application within Azure Active Directory.\n"
+                    },
+                    "userPrincipalName": {
+                        "type": "string",
+                        "description": "The User Principal Name of the Azure AD User.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUser.\n",
+                "properties": {
+                    "accountEnabled": {
+                        "type": "boolean",
+                        "description": "`True` if the account is enabled; otherwise `False`.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The Display Name of the Azure AD User.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "immutableId": {
+                        "type": "string",
+                        "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object.\n"
+                    },
+                    "mail": {
+                        "type": "string",
+                        "description": "The primary email address of the Azure AD User.\n"
+                    },
+                    "mailNickname": {
+                        "type": "string",
+                        "description": "The email alias of the Azure AD User.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "onpremisesSamAccountName": {
+                        "type": "string",
+                        "description": "The on premise sam account name of the Azure AD User.\n"
+                    },
+                    "onpremisesUserPrincipalName": {
+                        "type": "string",
+                        "description": "The on premise user principal name of the Azure AD User.\n"
+                    },
+                    "usageLocation": {
+                        "type": "string",
+                        "description": "The usage location of the Azure AD User.\n"
+                    },
+                    "userPrincipalName": {
+                        "type": "string",
+                        "description": "The User Principal Name of the Azure AD User.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountEnabled",
+                    "displayName",
+                    "immutableId",
+                    "mail",
+                    "mailNickname",
+                    "objectId",
+                    "onpremisesSamAccountName",
+                    "onpremisesUserPrincipalName",
+                    "usageLocation",
+                    "userPrincipalName",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getUsers:getUsers": {
+            "description": "Gets Object IDs or UPNs for multiple Azure Active Directory users.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst users = pulumi.output(azuread.getUsers({\n    userPrincipalNames: [\n        \"kat@hashicorp.com\",\n        \"byte@hashicorp.com\",\n    ],\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nusers = azuread.get_users(user_principal_names=[\n    \"kat@hashicorp.com\",\n    \"byte@hashicorp.com\",\n])\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getUsers.\n",
+                "properties": {
+                    "mailNicknames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The email aliases of the Azure AD Users.\n"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Object IDs of the Azure AD Users.\n"
+                    },
+                    "userPrincipalNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The User Principal Names of the Azure AD Users.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getUsers.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "mailNicknames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The email aliases of the Azure AD Users.\n"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Object IDs of the Azure AD Users.\n"
+                    },
+                    "userPrincipalNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The User Principal Names of the Azure AD Users.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "mailNicknames",
+                    "objectIds",
+                    "userPrincipalNames",
+                    "id"
+                ]
+            }
+        }
+    },
+    "language": {
+        "csharp": {
+            "namespaces": {
+                "azuread": "AzureAD"
+            },
+            "packageReferences": {
+                "Pulumi": "2.*",
+                "System.Collections.Immutable": "1.6.0"
+            }
+        },
+        "nodejs": {
+            "dependencies": {
+                "@pulumi/pulumi": "^2.0.0"
+            },
+            "devDependencies": {
+                "@types/mime": "^2.0.0",
+                "@types/node": "^8.0.25"
+            },
+            "packageDescription": "A Pulumi package for creating and managing azuread cloud resources.",
+            "packageName": "",
+            "typescriptVersion": ""
+        },
+        "python": {
+            "requires": {
+                "pulumi": "\u003e=2.0.0,\u003c3.0.0"
+            }
+        }
+    }
+}
