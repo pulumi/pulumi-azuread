@@ -16,6 +16,7 @@ import (
 type ApplicationPassword struct {
 	pulumi.CustomResourceState
 
+	// Deprecated: Deprecated in favour of `application_object_id` to prevent confusion
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
@@ -62,6 +63,7 @@ func GetApplicationPassword(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationPassword resources.
 type applicationPasswordState struct {
+	// Deprecated: Deprecated in favour of `application_object_id` to prevent confusion
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
@@ -78,6 +80,7 @@ type applicationPasswordState struct {
 }
 
 type ApplicationPasswordState struct {
+	// Deprecated: Deprecated in favour of `application_object_id` to prevent confusion
 	ApplicationId pulumi.StringPtrInput
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
@@ -98,6 +101,7 @@ func (ApplicationPasswordState) ElementType() reflect.Type {
 }
 
 type applicationPasswordArgs struct {
+	// Deprecated: Deprecated in favour of `application_object_id` to prevent confusion
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
@@ -115,6 +119,7 @@ type applicationPasswordArgs struct {
 
 // The set of arguments for constructing a ApplicationPassword resource.
 type ApplicationPasswordArgs struct {
+	// Deprecated: Deprecated in favour of `application_object_id` to prevent confusion
 	ApplicationId pulumi.StringPtrInput
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
