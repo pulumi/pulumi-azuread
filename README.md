@@ -42,6 +42,12 @@ To use from Go, use `go get` to grab the latest version of the library
 
     $ go get github.com/pulumi/pulumi-azuread/sdk/go/...
 
+### .NET
+
+To use from .NET, install using `nuget`:
+
+    $ dotnet add package Pulumi.Azuread
+
 ## Configuration
 
 The following configuration points are available:
@@ -83,4 +89,4 @@ In the root of the repository, run:
 - `make`
 
 
-[1]: https://pulumi.io/reference/pkg/nodejs/@pulumi/azuread/index.html
+[1]: https://pulumi.io/reference/azuread
