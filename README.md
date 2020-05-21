@@ -44,7 +44,7 @@ To use from Go, use `go get` to grab the latest version of the library
 
 ### .NET
 
-To use from .NET, install using `nuget`:
+To use from .NET, install using `dotnet add package`:
 
     $ dotnet add package Pulumi.Azuread
 
@@ -73,20 +73,4 @@ The following configuration points are available:
    
 ## Reference
 
-For detailed reference documentation, please visit [the API docs][1].
-
-## Build from source
-
-### Add dependencies
-
-In the root of the repository, run:
-
-- Download the `install-common-toolchain.sh` script from [here](https://github.com/pulumi/scripts/blob/master/ci/install-common-toolchain.sh) (or clone the repo) and run it in your terminal.
-- `make ensure`
-
-### Build the provider:
-
-- `make`
-
-
-[1]: https://pulumi.io/reference/azuread
+For further information, please visit [the AzureAD provider docs](https://www.pulumi.com/docs/intro/cloud-providers/azuread) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/azuread).
