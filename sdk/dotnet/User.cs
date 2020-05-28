@@ -13,6 +13,30 @@ namespace Pulumi.AzureAD
     /// Manages a User within Azure Active Directory.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AzureAD.User("example", new AzureAD.UserArgs
+    ///         {
+    ///             DisplayName = "J. Doe",
+    ///             MailNickname = "jdoe",
+    ///             Password = "SecretP@sswd99!",
+    ///             UserPrincipalName = "jdo@hashicorp.com",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class User : Pulumi.CustomResource
     {
