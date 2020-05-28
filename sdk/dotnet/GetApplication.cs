@@ -17,6 +17,30 @@ namespace Pulumi.AzureAD
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
         /// 
         /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs
+        ///         {
+        ///             Name = "My First AzureAD Application",
+        ///         }));
+        ///         this.AzureAdObjectId = example.Apply(example =&gt; example.Id);
+        ///     }
+        /// 
+        ///     [Output("azureAdObjectId")]
+        ///     public Output&lt;string&gt; AzureAdObjectId { get; set; }
+        /// }
+        /// ```
+        /// 
+        /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)

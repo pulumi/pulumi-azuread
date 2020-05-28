@@ -13,6 +13,94 @@ namespace Pulumi.AzureAD
     /// Manages an Application within Azure Active Directory.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AzureAD.Application("example", new AzureAD.ApplicationArgs
+    ///         {
+    ///             AppRoles = 
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationAppRoleArgs
+    ///                 {
+    ///                     AllowedMemberTypes = 
+    ///                     {
+    ///                         "User",
+    ///                         "Application",
+    ///                     },
+    ///                     Description = "Admins can manage roles and perform all task actions",
+    ///                     DisplayName = "Admin",
+    ///                     IsEnabled = true,
+    ///                     Value = "Admin",
+    ///                 },
+    ///             },
+    ///             AvailableToOtherTenants = false,
+    ///             Homepage = "https://homepage",
+    ///             IdentifierUris = 
+    ///             {
+    ///                 "https://uri",
+    ///             },
+    ///             Oauth2AllowImplicitFlow = true,
+    ///             Owners = 
+    ///             {
+    ///                 "00000004-0000-0000-c000-000000000000",
+    ///             },
+    ///             ReplyUrls = 
+    ///             {
+    ///                 "https://replyurl",
+    ///             },
+    ///             RequiredResourceAccesses = 
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///                 {
+    ///                     ResourceAccess = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "id", "..." },
+    ///                             { "type", "Role" },
+    ///                         },
+    ///                         
+    ///                         {
+    ///                             { "id", "..." },
+    ///                             { "type", "Scope" },
+    ///                         },
+    ///                         
+    ///                         {
+    ///                             { "id", "..." },
+    ///                             { "type", "Scope" },
+    ///                         },
+    ///                     },
+    ///                     ResourceAppId = "00000003-0000-0000-c000-000000000000",
+    ///                 },
+    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///                 {
+    ///                     ResourceAccess = 
+    ///                     {
+    ///                         
+    ///                         {
+    ///                             { "id", "..." },
+    ///                             { "type", "Scope" },
+    ///                         },
+    ///                     },
+    ///                     ResourceAppId = "00000002-0000-0000-c000-000000000000",
+    ///                 },
+    ///             },
+    ///             Type = "webapp/api",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class Application : Pulumi.CustomResource
     {

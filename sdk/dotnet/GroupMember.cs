@@ -13,6 +13,35 @@ namespace Pulumi.AzureAD
     /// Manages a single Group Membership within Azure Active Directory.
     /// 
     /// &gt; **NOTE:** Do not use this resource at the same time as `azuread_group.members`.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// 
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleUser = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
+    ///         {
+    ///             UserPrincipalName = "jdoe@hashicorp.com",
+    ///         }));
+    ///         var exampleGroup = new AzureAD.Group("exampleGroup", new AzureAD.GroupArgs
+    ///         {
+    ///         });
+    ///         var exampleGroupMember = new AzureAD.GroupMember("exampleGroupMember", new AzureAD.GroupMemberArgs
+    ///         {
+    ///             GroupObjectId = exampleGroup.Id,
+    ///             MemberObjectId = exampleUser.Apply(exampleUser =&gt; exampleUser.Id),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
     /// </summary>
     public partial class GroupMember : Pulumi.CustomResource
     {
