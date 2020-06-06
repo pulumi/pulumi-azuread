@@ -13,7 +13,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
+    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, optional_claims=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         __self__.app_roles = app_roles
@@ -62,6 +62,9 @@ class GetApplicationResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         __self__.name = name
+        """
+        The name of the optional claim.
+        """
         if oauth2_allow_implicit_flow and not isinstance(oauth2_allow_implicit_flow, bool):
             raise TypeError("Expected argument 'oauth2_allow_implicit_flow' to be a bool")
         __self__.oauth2_allow_implicit_flow = oauth2_allow_implicit_flow
@@ -79,6 +82,12 @@ class GetApplicationResult:
         __self__.object_id = object_id
         """
         the Object ID of the Azure Active Directory Application.
+        """
+        if optional_claims and not isinstance(optional_claims, dict):
+            raise TypeError("Expected argument 'optional_claims' to be a dict")
+        __self__.optional_claims = optional_claims
+        """
+        A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
         """
         if owners and not isinstance(owners, list):
             raise TypeError("Expected argument 'owners' to be a list")
@@ -122,12 +131,13 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             oauth2_allow_implicit_flow=self.oauth2_allow_implicit_flow,
             oauth2_permissions=self.oauth2_permissions,
             object_id=self.object_id,
+            optional_claims=self.optional_claims,
             owners=self.owners,
             reply_urls=self.reply_urls,
             required_resource_accesses=self.required_resource_accesses,
             type=self.type)
 
-def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
+def get_application(name=None,oauth2_permissions=None,object_id=None,optional_claims=None,opts=None):
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
 
@@ -150,6 +160,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
     :param str name: Specifies the name of the Application within Azure Active Directory.
     :param list oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
+    :param dict optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
 
     The **oauth2_permissions** object supports the following:
 
@@ -161,6 +172,20 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
       * `userConsentDescription` (`str`) - The description of the user consent
       * `userConsentDisplayName` (`str`) - The display name of the user consent
       * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+
+    The **optional_claims** object supports the following:
+
+      * `accessTokens` (`list`)
+        * `additionalProperties` (`list`) - List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        * `essential` (`bool`) - Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        * `name` (`str`) - Specifies the name of the Application within Azure Active Directory.
+        * `source` (`str`) - The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+
+      * `idTokens` (`list`)
+        * `additionalProperties` (`list`) - List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        * `essential` (`bool`) - Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        * `name` (`str`) - Specifies the name of the Application within Azure Active Directory.
+        * `source` (`str`) - The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
     """
     __args__ = dict()
 
@@ -168,6 +193,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
     __args__['name'] = name
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
+    __args__['optionalClaims'] = optional_claims
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -187,6 +213,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,opts=None):
         oauth2_allow_implicit_flow=__ret__.get('oauth2AllowImplicitFlow'),
         oauth2_permissions=__ret__.get('oauth2Permissions'),
         object_id=__ret__.get('objectId'),
+        optional_claims=__ret__.get('optionalClaims'),
         owners=__ret__.get('owners'),
         reply_urls=__ret__.get('replyUrls'),
         required_resource_accesses=__ret__.get('requiredResourceAccesses'),

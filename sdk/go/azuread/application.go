@@ -33,10 +33,12 @@ type Application struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrOutput `pulumi:"oauth2AllowImplicitFlow"`
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayOutput `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims ApplicationOptionalClaimsPtrOutput `pulumi:"optionalClaims"`
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
@@ -95,10 +97,12 @@ type applicationState struct {
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// The Application's Object ID.
 	ObjectId *string `pulumi:"objectId"`
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
@@ -130,10 +134,12 @@ type ApplicationState struct {
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
 	// The Application's Object ID.
 	ObjectId pulumi.StringPtrInput
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims ApplicationOptionalClaimsPtrInput
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
@@ -167,8 +173,10 @@ type applicationArgs struct {
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
 	Oauth2Permissions []ApplicationOauth2Permission `pulumi:"oauth2Permissions"`
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners []string `pulumi:"owners"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
@@ -199,8 +207,10 @@ type ApplicationArgs struct {
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
-	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
 	Oauth2Permissions ApplicationOauth2PermissionArrayInput
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims ApplicationOptionalClaimsPtrInput
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayInput
 	// Is this Azure AD Application a public client? Defaults to `false`.

@@ -34,6 +34,40 @@ import * as utilities from "./utilities";
  *     homepage: "https://homepage",
  *     identifierUris: ["https://uri"],
  *     oauth2AllowImplicitFlow: true,
+ *     oauth2Permissions: [
+ *         {
+ *             adminConsentDescription: "Allow the application to access example on behalf of the signed-in user.",
+ *             adminConsentDisplayName: "Access example",
+ *             isEnabled: true,
+ *             type: "User",
+ *             userConsentDescription: "Allow the application to access example on your behalf.",
+ *             userConsentDisplayName: "Access example",
+ *             value: "userImpersonation",
+ *         },
+ *         {
+ *             adminConsentDescription: "Administer the example application",
+ *             adminConsentDisplayName: "Administer",
+ *             isEnabled: true,
+ *             type: "Admin",
+ *             value: "administer",
+ *         },
+ *     ],
+ *     optionalClaims: {
+ *         accessTokens: [
+ *             {
+ *                 name: "myclaim",
+ *             },
+ *             {
+ *                 name: "otherclaim",
+ *             },
+ *         ],
+ *         idTokens: [{
+ *             additionalProperties: ["emitAsRoles"],
+ *             essential: true,
+ *             name: "userclaim",
+ *             source: "user",
+ *         }],
+ *     },
  *     owners: ["00000004-0000-0000-c000-000000000000"],
  *     replyUrls: ["https://replyurl"],
  *     requiredResourceAccesses: [
@@ -130,13 +164,17 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly oauth2AllowImplicitFlow!: pulumi.Output<boolean | undefined>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
      */
     public readonly oauth2Permissions!: pulumi.Output<outputs.ApplicationOauth2Permission[]>;
     /**
      * The Application's Object ID.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     */
+    public readonly optionalClaims!: pulumi.Output<outputs.ApplicationOptionalClaims | undefined>;
     /**
      * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
      */
@@ -181,6 +219,7 @@ export class Application extends pulumi.CustomResource {
             inputs["oauth2AllowImplicitFlow"] = state ? state.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["optionalClaims"] = state ? state.optionalClaims : undefined;
             inputs["owners"] = state ? state.owners : undefined;
             inputs["publicClient"] = state ? state.publicClient : undefined;
             inputs["replyUrls"] = state ? state.replyUrls : undefined;
@@ -197,6 +236,7 @@ export class Application extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["oauth2AllowImplicitFlow"] = args ? args.oauth2AllowImplicitFlow : undefined;
             inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
+            inputs["optionalClaims"] = args ? args.optionalClaims : undefined;
             inputs["owners"] = args ? args.owners : undefined;
             inputs["publicClient"] = args ? args.publicClient : undefined;
             inputs["replyUrls"] = args ? args.replyUrls : undefined;
@@ -257,13 +297,17 @@ export interface ApplicationState {
      */
     readonly oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
     /**
      * The Application's Object ID.
      */
     readonly objectId?: pulumi.Input<string>;
+    /**
+     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     */
+    readonly optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
     /**
      * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
      */
@@ -323,9 +367,13 @@ export interface ApplicationArgs {
      */
     readonly oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
+    /**
+     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     */
+    readonly optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
     /**
      * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
      */

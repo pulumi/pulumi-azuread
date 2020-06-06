@@ -19,9 +19,9 @@ type ApplicationAppRole struct {
 	DisplayName string `pulumi:"displayName"`
 	// The unique identifier of the `appRole`.
 	Id *string `pulumi:"id"`
-	// Determines if the app role is enabled: Defaults to `true`.
+	// Determines if the permission is enabled: defaults to `true`.
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
 	Value *string `pulumi:"value"`
 }
 
@@ -46,9 +46,9 @@ type ApplicationAppRoleArgs struct {
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The unique identifier of the `appRole`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Determines if the app role is enabled: Defaults to `true`.
+	// Determines if the permission is enabled: defaults to `true`.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -124,12 +124,12 @@ func (o ApplicationAppRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Determines if the app role is enabled: Defaults to `true`.
+// Determines if the permission is enabled: defaults to `true`.
 func (o ApplicationAppRoleOutput) IsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRole) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+// The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
 func (o ApplicationAppRoleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -155,9 +155,9 @@ func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRo
 }
 
 type ApplicationOauth2Permission struct {
-	// The description of the admin consent.
+	// Permission help text that appears in the admin consent and app assignment experiences.
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent.
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
 	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id *string `pulumi:"id"`
@@ -165,9 +165,9 @@ type ApplicationOauth2Permission struct {
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type *string `pulumi:"type"`
-	// The description of the user consent.
+	// Permission help text that appears in the end user consent experience.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
-	// The display name of the user consent.
+	// Display name for the permission that appears in the end user consent experience.
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
 	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
 	Value *string `pulumi:"value"`
@@ -186,9 +186,9 @@ type ApplicationOauth2PermissionInput interface {
 }
 
 type ApplicationOauth2PermissionArgs struct {
-	// The description of the admin consent.
+	// Permission help text that appears in the admin consent and app assignment experiences.
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent.
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
 	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -196,9 +196,9 @@ type ApplicationOauth2PermissionArgs struct {
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The description of the user consent.
+	// Permission help text that appears in the end user consent experience.
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent.
+	// Display name for the permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
 	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -256,12 +256,12 @@ func (o ApplicationOauth2PermissionOutput) ToApplicationOauth2PermissionOutputWi
 	return o
 }
 
-// The description of the admin consent.
+// Permission help text that appears in the admin consent and app assignment experiences.
 func (o ApplicationOauth2PermissionOutput) AdminConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.AdminConsentDescription }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the admin consent.
+// Display name for the permission that appears in the admin consent and app assignment experiences.
 func (o ApplicationOauth2PermissionOutput) AdminConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
@@ -281,12 +281,12 @@ func (o ApplicationOauth2PermissionOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The description of the user consent.
+// Permission help text that appears in the end user consent experience.
 func (o ApplicationOauth2PermissionOutput) UserConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the user consent.
+// Display name for the permission that appears in the end user consent experience.
 func (o ApplicationOauth2PermissionOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
@@ -314,6 +314,401 @@ func (o ApplicationOauth2PermissionArrayOutput) Index(i pulumi.IntInput) Applica
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOauth2Permission {
 		return vs[0].([]ApplicationOauth2Permission)[vs[1].(int)]
 	}).(ApplicationOauth2PermissionOutput)
+}
+
+type ApplicationOptionalClaims struct {
+	AccessTokens []ApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
+	IdTokens     []ApplicationOptionalClaimsIdToken     `pulumi:"idTokens"`
+}
+
+// ApplicationOptionalClaimsInput is an input type that accepts ApplicationOptionalClaimsArgs and ApplicationOptionalClaimsOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsInput` via:
+//
+// 		 ApplicationOptionalClaimsArgs{...}
+//
+type ApplicationOptionalClaimsInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsOutput() ApplicationOptionalClaimsOutput
+	ToApplicationOptionalClaimsOutputWithContext(context.Context) ApplicationOptionalClaimsOutput
+}
+
+type ApplicationOptionalClaimsArgs struct {
+	AccessTokens ApplicationOptionalClaimsAccessTokenArrayInput `pulumi:"accessTokens"`
+	IdTokens     ApplicationOptionalClaimsIdTokenArrayInput     `pulumi:"idTokens"`
+}
+
+func (ApplicationOptionalClaimsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaims)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsOutput() ApplicationOptionalClaimsOutput {
+	return i.ToApplicationOptionalClaimsOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsOutputWithContext(ctx context.Context) ApplicationOptionalClaimsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsOutput)
+}
+
+func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
+	return i.ToApplicationOptionalClaimsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsOutput).ToApplicationOptionalClaimsPtrOutputWithContext(ctx)
+}
+
+// ApplicationOptionalClaimsPtrInput is an input type that accepts ApplicationOptionalClaimsArgs, ApplicationOptionalClaimsPtr and ApplicationOptionalClaimsPtrOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsPtrInput` via:
+//
+// 		 ApplicationOptionalClaimsArgs{...}
+//
+//  or:
+//
+// 		 nil
+//
+type ApplicationOptionalClaimsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput
+	ToApplicationOptionalClaimsPtrOutputWithContext(context.Context) ApplicationOptionalClaimsPtrOutput
+}
+
+type applicationOptionalClaimsPtrType ApplicationOptionalClaimsArgs
+
+func ApplicationOptionalClaimsPtr(v *ApplicationOptionalClaimsArgs) ApplicationOptionalClaimsPtrInput {
+	return (*applicationOptionalClaimsPtrType)(v)
+}
+
+func (*applicationOptionalClaimsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationOptionalClaims)(nil)).Elem()
+}
+
+func (i *applicationOptionalClaimsPtrType) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
+	return i.ToApplicationOptionalClaimsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationOptionalClaimsPtrType) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsPtrOutput)
+}
+
+type ApplicationOptionalClaimsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaims)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsOutput() ApplicationOptionalClaimsOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsOutputWithContext(ctx context.Context) ApplicationOptionalClaimsOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
+	return o.ToApplicationOptionalClaimsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaims) *ApplicationOptionalClaims {
+		return &v
+	}).(ApplicationOptionalClaimsPtrOutput)
+}
+func (o ApplicationOptionalClaimsOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(ApplicationOptionalClaimsAccessTokenArrayOutput)
+}
+
+func (o ApplicationOptionalClaimsOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken { return v.IdTokens }).(ApplicationOptionalClaimsIdTokenArrayOutput)
+}
+
+type ApplicationOptionalClaimsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationOptionalClaims)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsPtrOutput) ToApplicationOptionalClaimsPtrOutput() ApplicationOptionalClaimsPtrOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsPtrOutput) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsPtrOutput) Elem() ApplicationOptionalClaimsOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaims) ApplicationOptionalClaims { return *v }).(ApplicationOptionalClaimsOutput)
+}
+
+func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken {
+		if v == nil {
+			return nil
+		}
+		return v.AccessTokens
+	}).(ApplicationOptionalClaimsAccessTokenArrayOutput)
+}
+
+func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken {
+		if v == nil {
+			return nil
+		}
+		return v.IdTokens
+	}).(ApplicationOptionalClaimsIdTokenArrayOutput)
+}
+
+type ApplicationOptionalClaimsAccessToken struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties []string `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
+}
+
+// ApplicationOptionalClaimsAccessTokenInput is an input type that accepts ApplicationOptionalClaimsAccessTokenArgs and ApplicationOptionalClaimsAccessTokenOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsAccessTokenInput` via:
+//
+// 		 ApplicationOptionalClaimsAccessTokenArgs{...}
+//
+type ApplicationOptionalClaimsAccessTokenInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsAccessTokenOutput() ApplicationOptionalClaimsAccessTokenOutput
+	ToApplicationOptionalClaimsAccessTokenOutputWithContext(context.Context) ApplicationOptionalClaimsAccessTokenOutput
+}
+
+type ApplicationOptionalClaimsAccessTokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (ApplicationOptionalClaimsAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsAccessTokenArgs) ToApplicationOptionalClaimsAccessTokenOutput() ApplicationOptionalClaimsAccessTokenOutput {
+	return i.ToApplicationOptionalClaimsAccessTokenOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsAccessTokenArgs) ToApplicationOptionalClaimsAccessTokenOutputWithContext(ctx context.Context) ApplicationOptionalClaimsAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsAccessTokenOutput)
+}
+
+// ApplicationOptionalClaimsAccessTokenArrayInput is an input type that accepts ApplicationOptionalClaimsAccessTokenArray and ApplicationOptionalClaimsAccessTokenArrayOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsAccessTokenArrayInput` via:
+//
+// 		 ApplicationOptionalClaimsAccessTokenArray{ ApplicationOptionalClaimsAccessTokenArgs{...} }
+//
+type ApplicationOptionalClaimsAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsAccessTokenArrayOutput() ApplicationOptionalClaimsAccessTokenArrayOutput
+	ToApplicationOptionalClaimsAccessTokenArrayOutputWithContext(context.Context) ApplicationOptionalClaimsAccessTokenArrayOutput
+}
+
+type ApplicationOptionalClaimsAccessTokenArray []ApplicationOptionalClaimsAccessTokenInput
+
+func (ApplicationOptionalClaimsAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsAccessTokenArray) ToApplicationOptionalClaimsAccessTokenArrayOutput() ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return i.ToApplicationOptionalClaimsAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsAccessTokenArray) ToApplicationOptionalClaimsAccessTokenArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsAccessTokenArrayOutput)
+}
+
+type ApplicationOptionalClaimsAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsAccessTokenOutput) ToApplicationOptionalClaimsAccessTokenOutput() ApplicationOptionalClaimsAccessTokenOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsAccessTokenOutput) ToApplicationOptionalClaimsAccessTokenOutputWithContext(ctx context.Context) ApplicationOptionalClaimsAccessTokenOutput {
+	return o
+}
+
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+func (o ApplicationOptionalClaimsAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+}
+
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+func (o ApplicationOptionalClaimsAccessTokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the optional claim.
+func (o ApplicationOptionalClaimsAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+func (o ApplicationOptionalClaimsAccessTokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationOptionalClaimsAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsAccessTokenArrayOutput) ToApplicationOptionalClaimsAccessTokenArrayOutput() ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsAccessTokenArrayOutput) ToApplicationOptionalClaimsAccessTokenArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsAccessTokenArrayOutput) Index(i pulumi.IntInput) ApplicationOptionalClaimsAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOptionalClaimsAccessToken {
+		return vs[0].([]ApplicationOptionalClaimsAccessToken)[vs[1].(int)]
+	}).(ApplicationOptionalClaimsAccessTokenOutput)
+}
+
+type ApplicationOptionalClaimsIdToken struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties []string `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The display name for the application.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
+}
+
+// ApplicationOptionalClaimsIdTokenInput is an input type that accepts ApplicationOptionalClaimsIdTokenArgs and ApplicationOptionalClaimsIdTokenOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsIdTokenInput` via:
+//
+// 		 ApplicationOptionalClaimsIdTokenArgs{...}
+//
+type ApplicationOptionalClaimsIdTokenInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsIdTokenOutput() ApplicationOptionalClaimsIdTokenOutput
+	ToApplicationOptionalClaimsIdTokenOutputWithContext(context.Context) ApplicationOptionalClaimsIdTokenOutput
+}
+
+type ApplicationOptionalClaimsIdTokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The display name for the application.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (ApplicationOptionalClaimsIdTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsIdTokenArgs) ToApplicationOptionalClaimsIdTokenOutput() ApplicationOptionalClaimsIdTokenOutput {
+	return i.ToApplicationOptionalClaimsIdTokenOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsIdTokenArgs) ToApplicationOptionalClaimsIdTokenOutputWithContext(ctx context.Context) ApplicationOptionalClaimsIdTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsIdTokenOutput)
+}
+
+// ApplicationOptionalClaimsIdTokenArrayInput is an input type that accepts ApplicationOptionalClaimsIdTokenArray and ApplicationOptionalClaimsIdTokenArrayOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsIdTokenArrayInput` via:
+//
+// 		 ApplicationOptionalClaimsIdTokenArray{ ApplicationOptionalClaimsIdTokenArgs{...} }
+//
+type ApplicationOptionalClaimsIdTokenArrayInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsIdTokenArrayOutput() ApplicationOptionalClaimsIdTokenArrayOutput
+	ToApplicationOptionalClaimsIdTokenArrayOutputWithContext(context.Context) ApplicationOptionalClaimsIdTokenArrayOutput
+}
+
+type ApplicationOptionalClaimsIdTokenArray []ApplicationOptionalClaimsIdTokenInput
+
+func (ApplicationOptionalClaimsIdTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsIdTokenArray) ToApplicationOptionalClaimsIdTokenArrayOutput() ApplicationOptionalClaimsIdTokenArrayOutput {
+	return i.ToApplicationOptionalClaimsIdTokenArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsIdTokenArray) ToApplicationOptionalClaimsIdTokenArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsIdTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsIdTokenArrayOutput)
+}
+
+type ApplicationOptionalClaimsIdTokenOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsIdTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsIdTokenOutput) ToApplicationOptionalClaimsIdTokenOutput() ApplicationOptionalClaimsIdTokenOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsIdTokenOutput) ToApplicationOptionalClaimsIdTokenOutputWithContext(ctx context.Context) ApplicationOptionalClaimsIdTokenOutput {
+	return o
+}
+
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+func (o ApplicationOptionalClaimsIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+}
+
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+func (o ApplicationOptionalClaimsIdTokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+}
+
+// The display name for the application.
+func (o ApplicationOptionalClaimsIdTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+func (o ApplicationOptionalClaimsIdTokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationOptionalClaimsIdTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsIdTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsIdTokenArrayOutput) ToApplicationOptionalClaimsIdTokenArrayOutput() ApplicationOptionalClaimsIdTokenArrayOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsIdTokenArrayOutput) ToApplicationOptionalClaimsIdTokenArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsIdTokenArrayOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsIdTokenArrayOutput) Index(i pulumi.IntInput) ApplicationOptionalClaimsIdTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOptionalClaimsIdToken {
+		return vs[0].([]ApplicationOptionalClaimsIdToken)[vs[1].(int)]
+	}).(ApplicationOptionalClaimsIdTokenOutput)
 }
 
 type ApplicationRequiredResourceAccess struct {
@@ -1002,6 +1397,314 @@ func (o GetApplicationOauth2PermissionArrayOutput) Index(i pulumi.IntInput) GetA
 	}).(GetApplicationOauth2PermissionOutput)
 }
 
+type GetApplicationOptionalClaims struct {
+	AccessTokens []GetApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
+	IdTokens     []GetApplicationOptionalClaimsIdToken     `pulumi:"idTokens"`
+}
+
+// GetApplicationOptionalClaimsInput is an input type that accepts GetApplicationOptionalClaimsArgs and GetApplicationOptionalClaimsOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimsInput` via:
+//
+// 		 GetApplicationOptionalClaimsArgs{...}
+//
+type GetApplicationOptionalClaimsInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimsOutput() GetApplicationOptionalClaimsOutput
+	ToGetApplicationOptionalClaimsOutputWithContext(context.Context) GetApplicationOptionalClaimsOutput
+}
+
+type GetApplicationOptionalClaimsArgs struct {
+	AccessTokens GetApplicationOptionalClaimsAccessTokenArrayInput `pulumi:"accessTokens"`
+	IdTokens     GetApplicationOptionalClaimsIdTokenArrayInput     `pulumi:"idTokens"`
+}
+
+func (GetApplicationOptionalClaimsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaims)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimsArgs) ToGetApplicationOptionalClaimsOutput() GetApplicationOptionalClaimsOutput {
+	return i.ToGetApplicationOptionalClaimsOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimsArgs) ToGetApplicationOptionalClaimsOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsOutput)
+}
+
+type GetApplicationOptionalClaimsOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaims)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimsOutput) ToGetApplicationOptionalClaimsOutput() GetApplicationOptionalClaimsOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsOutput) ToGetApplicationOptionalClaimsOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsOutput) AccessTokens() GetApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaims) []GetApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(GetApplicationOptionalClaimsAccessTokenArrayOutput)
+}
+
+func (o GetApplicationOptionalClaimsOutput) IdTokens() GetApplicationOptionalClaimsIdTokenArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaims) []GetApplicationOptionalClaimsIdToken { return v.IdTokens }).(GetApplicationOptionalClaimsIdTokenArrayOutput)
+}
+
+type GetApplicationOptionalClaimsAccessToken struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties []string `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// Specifies the name of the Application within Azure Active Directory.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
+}
+
+// GetApplicationOptionalClaimsAccessTokenInput is an input type that accepts GetApplicationOptionalClaimsAccessTokenArgs and GetApplicationOptionalClaimsAccessTokenOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimsAccessTokenInput` via:
+//
+// 		 GetApplicationOptionalClaimsAccessTokenArgs{...}
+//
+type GetApplicationOptionalClaimsAccessTokenInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimsAccessTokenOutput() GetApplicationOptionalClaimsAccessTokenOutput
+	ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(context.Context) GetApplicationOptionalClaimsAccessTokenOutput
+}
+
+type GetApplicationOptionalClaimsAccessTokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// Specifies the name of the Application within Azure Active Directory.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (GetApplicationOptionalClaimsAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimsAccessTokenArgs) ToGetApplicationOptionalClaimsAccessTokenOutput() GetApplicationOptionalClaimsAccessTokenOutput {
+	return i.ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimsAccessTokenArgs) ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsAccessTokenOutput)
+}
+
+// GetApplicationOptionalClaimsAccessTokenArrayInput is an input type that accepts GetApplicationOptionalClaimsAccessTokenArray and GetApplicationOptionalClaimsAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimsAccessTokenArrayInput` via:
+//
+// 		 GetApplicationOptionalClaimsAccessTokenArray{ GetApplicationOptionalClaimsAccessTokenArgs{...} }
+//
+type GetApplicationOptionalClaimsAccessTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimsAccessTokenArrayOutput() GetApplicationOptionalClaimsAccessTokenArrayOutput
+	ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimsAccessTokenArrayOutput
+}
+
+type GetApplicationOptionalClaimsAccessTokenArray []GetApplicationOptionalClaimsAccessTokenInput
+
+func (GetApplicationOptionalClaimsAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimsAccessTokenArray) ToGetApplicationOptionalClaimsAccessTokenArrayOutput() GetApplicationOptionalClaimsAccessTokenArrayOutput {
+	return i.ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimsAccessTokenArray) ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsAccessTokenArrayOutput)
+}
+
+type GetApplicationOptionalClaimsAccessTokenOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimsAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimsAccessTokenOutput) ToGetApplicationOptionalClaimsAccessTokenOutput() GetApplicationOptionalClaimsAccessTokenOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsAccessTokenOutput) ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenOutput {
+	return o
+}
+
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+func (o GetApplicationOptionalClaimsAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+}
+
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+func (o GetApplicationOptionalClaimsAccessTokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the name of the Application within Azure Active Directory.
+func (o GetApplicationOptionalClaimsAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+func (o GetApplicationOptionalClaimsAccessTokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type GetApplicationOptionalClaimsAccessTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimsAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimsAccessTokenArrayOutput) ToGetApplicationOptionalClaimsAccessTokenArrayOutput() GetApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsAccessTokenArrayOutput) ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenArrayOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsAccessTokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimsAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimsAccessToken {
+		return vs[0].([]GetApplicationOptionalClaimsAccessToken)[vs[1].(int)]
+	}).(GetApplicationOptionalClaimsAccessTokenOutput)
+}
+
+type GetApplicationOptionalClaimsIdToken struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties []string `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// Specifies the name of the Application within Azure Active Directory.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
+}
+
+// GetApplicationOptionalClaimsIdTokenInput is an input type that accepts GetApplicationOptionalClaimsIdTokenArgs and GetApplicationOptionalClaimsIdTokenOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimsIdTokenInput` via:
+//
+// 		 GetApplicationOptionalClaimsIdTokenArgs{...}
+//
+type GetApplicationOptionalClaimsIdTokenInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimsIdTokenOutput() GetApplicationOptionalClaimsIdTokenOutput
+	ToGetApplicationOptionalClaimsIdTokenOutputWithContext(context.Context) GetApplicationOptionalClaimsIdTokenOutput
+}
+
+type GetApplicationOptionalClaimsIdTokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// Specifies the name of the Application within Azure Active Directory.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (GetApplicationOptionalClaimsIdTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimsIdTokenArgs) ToGetApplicationOptionalClaimsIdTokenOutput() GetApplicationOptionalClaimsIdTokenOutput {
+	return i.ToGetApplicationOptionalClaimsIdTokenOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimsIdTokenArgs) ToGetApplicationOptionalClaimsIdTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsIdTokenOutput)
+}
+
+// GetApplicationOptionalClaimsIdTokenArrayInput is an input type that accepts GetApplicationOptionalClaimsIdTokenArray and GetApplicationOptionalClaimsIdTokenArrayOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimsIdTokenArrayInput` via:
+//
+// 		 GetApplicationOptionalClaimsIdTokenArray{ GetApplicationOptionalClaimsIdTokenArgs{...} }
+//
+type GetApplicationOptionalClaimsIdTokenArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimsIdTokenArrayOutput() GetApplicationOptionalClaimsIdTokenArrayOutput
+	ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimsIdTokenArrayOutput
+}
+
+type GetApplicationOptionalClaimsIdTokenArray []GetApplicationOptionalClaimsIdTokenInput
+
+func (GetApplicationOptionalClaimsIdTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimsIdTokenArray) ToGetApplicationOptionalClaimsIdTokenArrayOutput() GetApplicationOptionalClaimsIdTokenArrayOutput {
+	return i.ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimsIdTokenArray) ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsIdTokenArrayOutput)
+}
+
+type GetApplicationOptionalClaimsIdTokenOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimsIdTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimsIdTokenOutput) ToGetApplicationOptionalClaimsIdTokenOutput() GetApplicationOptionalClaimsIdTokenOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsIdTokenOutput) ToGetApplicationOptionalClaimsIdTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenOutput {
+	return o
+}
+
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+func (o GetApplicationOptionalClaimsIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+}
+
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+func (o GetApplicationOptionalClaimsIdTokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the name of the Application within Azure Active Directory.
+func (o GetApplicationOptionalClaimsIdTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+func (o GetApplicationOptionalClaimsIdTokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type GetApplicationOptionalClaimsIdTokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimsIdTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimsIdTokenArrayOutput) ToGetApplicationOptionalClaimsIdTokenArrayOutput() GetApplicationOptionalClaimsIdTokenArrayOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsIdTokenArrayOutput) ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenArrayOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimsIdTokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimsIdTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimsIdToken {
+		return vs[0].([]GetApplicationOptionalClaimsIdToken)[vs[1].(int)]
+	}).(GetApplicationOptionalClaimsIdTokenOutput)
+}
+
 type GetApplicationRequiredResourceAccess struct {
 	// A collection of `resourceAccess` blocks as documented below
 	ResourceAccesses []GetApplicationRequiredResourceAccessResourceAccess `pulumi:"resourceAccesses"`
@@ -1666,6 +2369,12 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(ApplicationOauth2PermissionArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsIdTokenOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsIdTokenArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessResourceAccessOutput{})
@@ -1676,6 +2385,11 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(GetApplicationOauth2PermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimsOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimsAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimsAccessTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimsIdTokenOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimsIdTokenArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessResourceAccessOutput{})

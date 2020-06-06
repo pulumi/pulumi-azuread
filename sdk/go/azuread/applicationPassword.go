@@ -20,6 +20,8 @@ type ApplicationPassword struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
+	// A description for the Password.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -28,7 +30,7 @@ type ApplicationPassword struct {
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
-	// The Password for this Application .
+	// The Password for this Application.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -67,6 +69,8 @@ type applicationPasswordState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	// A description for the Password.
+	Description *string `pulumi:"description"`
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -75,7 +79,7 @@ type applicationPasswordState struct {
 	KeyId *string `pulumi:"keyId"`
 	// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
-	// The Password for this Application .
+	// The Password for this Application.
 	Value *string `pulumi:"value"`
 }
 
@@ -84,6 +88,8 @@ type ApplicationPasswordState struct {
 	ApplicationId pulumi.StringPtrInput
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
+	// A description for the Password.
+	Description pulumi.StringPtrInput
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -92,7 +98,7 @@ type ApplicationPasswordState struct {
 	KeyId pulumi.StringPtrInput
 	// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
-	// The Password for this Application .
+	// The Password for this Application.
 	Value pulumi.StringPtrInput
 }
 
@@ -105,6 +111,8 @@ type applicationPasswordArgs struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	// A description for the Password.
+	Description *string `pulumi:"description"`
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -113,7 +121,7 @@ type applicationPasswordArgs struct {
 	KeyId *string `pulumi:"keyId"`
 	// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
-	// The Password for this Application .
+	// The Password for this Application.
 	Value string `pulumi:"value"`
 }
 
@@ -123,6 +131,8 @@ type ApplicationPasswordArgs struct {
 	ApplicationId pulumi.StringPtrInput
 	// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
+	// A description for the Password.
+	Description pulumi.StringPtrInput
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -131,7 +141,7 @@ type ApplicationPasswordArgs struct {
 	KeyId pulumi.StringPtrInput
 	// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
-	// The Password for this Application .
+	// The Password for this Application.
 	Value pulumi.StringInput
 }
 

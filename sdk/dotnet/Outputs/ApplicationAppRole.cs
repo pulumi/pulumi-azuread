@@ -30,11 +30,11 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
+        /// Determines if the permission is enabled: defaults to `true`.
         /// </summary>
         public readonly bool? IsEnabled;
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
         /// </summary>
         public readonly string? Value;
 

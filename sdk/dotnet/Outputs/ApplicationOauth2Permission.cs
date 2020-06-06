@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ApplicationOauth2Permission
     {
         /// <summary>
-        /// The description of the admin consent.
+        /// Permission help text that appears in the admin consent and app assignment experiences.
         /// </summary>
         public readonly string? AdminConsentDescription;
         /// <summary>
-        /// The display name of the admin consent.
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         public readonly string? AdminConsentDisplayName;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// The description of the user consent.
+        /// Permission help text that appears in the end user consent experience.
         /// </summary>
         public readonly string? UserConsentDescription;
         /// <summary>
-        /// The display name of the user consent.
+        /// Display name for the permission that appears in the end user consent experience.
         /// </summary>
         public readonly string? UserConsentDisplayName;
         /// <summary>

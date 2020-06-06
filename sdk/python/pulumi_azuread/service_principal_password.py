@@ -10,6 +10,10 @@ from typing import Union
 from . import utilities, tables
 
 class ServicePrincipalPassword(pulumi.CustomResource):
+    description: pulumi.Output[str]
+    """
+    A description for the Password.
+    """
     end_date: pulumi.Output[str]
     """
     The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -34,7 +38,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
     """
     The Password for this Service Principal.
     """
-    def __init__(__self__, resource_name, opts=None, end_date=None, end_date_relative=None, key_id=None, service_principal_id=None, start_date=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, description=None, end_date=None, end_date_relative=None, key_id=None, service_principal_id=None, start_date=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Password associated with a Service Principal within Azure Active Directory.
 
@@ -56,6 +60,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
             reply_urls=["http://replyurl"])
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
         example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
+            description="My managed password",
             end_date="2099-01-01T01:02:03Z",
             service_principal_id=example_service_principal.id,
             value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
@@ -64,6 +69,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description for the Password.
         :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
@@ -88,6 +94,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['description'] = description
             __props__['end_date'] = end_date
             __props__['end_date_relative'] = end_date_relative
             __props__['key_id'] = key_id
@@ -105,7 +112,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, end_date=None, end_date_relative=None, key_id=None, service_principal_id=None, start_date=None, value=None):
+    def get(resource_name, id, opts=None, description=None, end_date=None, end_date_relative=None, key_id=None, service_principal_id=None, start_date=None, value=None):
         """
         Get an existing ServicePrincipalPassword resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,6 +120,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] description: A description for the Password.
         :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
@@ -124,6 +132,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
         __props__ = dict()
 
+        __props__["description"] = description
         __props__["end_date"] = end_date
         __props__["end_date_relative"] = end_date_relative
         __props__["key_id"] = key_id

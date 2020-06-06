@@ -14,6 +14,7 @@
     },
     "files": [
         "application.ts",
+        "applicationCertificate.ts",
         "applicationPassword.ts",
         "config/index.ts",
         "config/vars.ts",
@@ -30,6 +31,7 @@
         "index.ts",
         "provider.ts",
         "servicePrincipal.ts",
+        "servicePrincipalCertificate.ts",
         "servicePrincipalPassword.ts",
         "types/index.ts",
         "types/input.ts",

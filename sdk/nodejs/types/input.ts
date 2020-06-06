@@ -22,22 +22,22 @@ export interface ApplicationAppRole {
      */
     id?: pulumi.Input<string>;
     /**
-     * Determines if the app role is enabled: Defaults to `true`.
+     * Determines if the permission is enabled: defaults to `true`.
      */
     isEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface ApplicationOauth2Permission {
     /**
-     * The description of the admin consent.
+     * Permission help text that appears in the admin consent and app assignment experiences.
      */
     adminConsentDescription?: pulumi.Input<string>;
     /**
-     * The display name of the admin consent.
+     * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
     adminConsentDisplayName?: pulumi.Input<string>;
     /**
@@ -53,17 +53,60 @@ export interface ApplicationOauth2Permission {
      */
     type?: pulumi.Input<string>;
     /**
-     * The description of the user consent.
+     * Permission help text that appears in the end user consent experience.
      */
     userConsentDescription?: pulumi.Input<string>;
     /**
-     * The display name of the user consent.
+     * Display name for the permission that appears in the end user consent experience.
      */
     userConsentDisplayName?: pulumi.Input<string>;
     /**
      * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
      */
     value?: pulumi.Input<string>;
+}
+
+export interface ApplicationOptionalClaims {
+    accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[]>;
+    idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[]>;
+}
+
+export interface ApplicationOptionalClaimsAccessToken {
+    /**
+     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     */
+    additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+     */
+    essential?: pulumi.Input<boolean>;
+    /**
+     * The name of the optional claim.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface ApplicationOptionalClaimsIdToken {
+    /**
+     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     */
+    additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+     */
+    essential?: pulumi.Input<boolean>;
+    /**
+     * The display name for the application.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+     */
+    source?: pulumi.Input<string>;
 }
 
 export interface ApplicationRequiredResourceAccess {
@@ -121,6 +164,49 @@ export interface GetApplicationOauth2Permission {
      * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
      */
     value?: string;
+}
+
+export interface GetApplicationOptionalClaims {
+    accessTokens?: inputs.GetApplicationOptionalClaimsAccessToken[];
+    idTokens?: inputs.GetApplicationOptionalClaimsIdToken[];
+}
+
+export interface GetApplicationOptionalClaimsAccessToken {
+    /**
+     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     */
+    additionalProperties?: string[];
+    /**
+     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+     */
+    essential?: boolean;
+    /**
+     * Specifies the name of the Application within Azure Active Directory.
+     */
+    name: string;
+    /**
+     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+     */
+    source?: string;
+}
+
+export interface GetApplicationOptionalClaimsIdToken {
+    /**
+     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     */
+    additionalProperties?: string[];
+    /**
+     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+     */
+    essential?: boolean;
+    /**
+     * Specifies the name of the Application within Azure Active Directory.
+     */
+    name: string;
+    /**
+     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+     */
+    source?: string;
 }
 
 export interface GetServicePrincipalOauth2Permission {

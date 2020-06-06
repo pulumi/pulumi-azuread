@@ -16,6 +16,8 @@ import (
 type ServicePrincipalPassword struct {
 	pulumi.CustomResourceState
 
+	// A description for the Password.
+	Description pulumi.StringOutput `pulumi:"description"`
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -64,6 +66,8 @@ func GetServicePrincipalPassword(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalPassword resources.
 type servicePrincipalPasswordState struct {
+	// A description for the Password.
+	Description *string `pulumi:"description"`
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -79,6 +83,8 @@ type servicePrincipalPasswordState struct {
 }
 
 type ServicePrincipalPasswordState struct {
+	// A description for the Password.
+	Description pulumi.StringPtrInput
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -98,6 +104,8 @@ func (ServicePrincipalPasswordState) ElementType() reflect.Type {
 }
 
 type servicePrincipalPasswordArgs struct {
+	// A description for the Password.
+	Description *string `pulumi:"description"`
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -114,6 +122,8 @@ type servicePrincipalPasswordArgs struct {
 
 // The set of arguments for constructing a ServicePrincipalPassword resource.
 type ServicePrincipalPasswordArgs struct {
+	// A description for the Password.
+	Description pulumi.StringPtrInput
 	// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.

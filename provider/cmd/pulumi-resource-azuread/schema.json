@@ -144,7 +144,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Determines if the app role is enabled: Defaults to `true`.\n",
+                    "description": "Determines if the permission is enabled: defaults to `true`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -153,7 +153,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "description": "The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -172,7 +172,7 @@
             "properties": {
                 "adminConsentDescription": {
                     "type": "string",
-                    "description": "The description of the admin consent.\n",
+                    "description": "Permission help text that appears in the admin consent and app assignment experiences.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -181,7 +181,7 @@
                 },
                 "adminConsentDisplayName": {
                     "type": "string",
-                    "description": "The display name of the admin consent.\n",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -217,7 +217,7 @@
                 },
                 "userConsentDescription": {
                     "type": "string",
-                    "description": "The description of the user consent.\n",
+                    "description": "Permission help text that appears in the end user consent experience.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -226,7 +226,7 @@
                 },
                 "userConsentDisplayName": {
                     "type": "string",
-                    "description": "The display name of the user consent.\n",
+                    "description": "Display name for the permission that appears in the end user consent experience.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -244,6 +244,127 @@
                 }
             },
             "type": "object"
+        },
+        "azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims": {
+            "properties": {
+                "accessTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationOptionalClaimsAccessToken:ApplicationOptionalClaimsAccessToken"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "idTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/ApplicationOptionalClaimsIdToken:ApplicationOptionalClaimsIdToken"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:/ApplicationOptionalClaimsAccessToken:ApplicationOptionalClaimsAccessToken": {
+            "properties": {
+                "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "essential": {
+                    "type": "boolean",
+                    "description": "Whether the claim specified by the client is necessary to ensure a smooth authorization experience.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the optional claim.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "azuread:/ApplicationOptionalClaimsIdToken:ApplicationOptionalClaimsIdToken": {
+            "properties": {
+                "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "essential": {
+                    "type": "boolean",
+                    "description": "Whether the claim specified by the client is necessary to ensure a smooth authorization experience.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name for the application.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
         },
         "azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess": {
             "properties": {
@@ -534,6 +655,127 @@
                 "userConsentDescription",
                 "userConsentDisplayName",
                 "value"
+            ]
+        },
+        "azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims": {
+            "properties": {
+                "accessTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/getApplicationOptionalClaimsAccessToken:getApplicationOptionalClaimsAccessToken"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "idTokens": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:/getApplicationOptionalClaimsIdToken:getApplicationOptionalClaimsIdToken"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:/getApplicationOptionalClaimsAccessToken:getApplicationOptionalClaimsAccessToken": {
+            "properties": {
+                "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "essential": {
+                    "type": "boolean",
+                    "description": "Whether the claim specified by the client is necessary to ensure a smooth authorization experience.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Specifies the name of the Application within Azure Active Directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "azuread:/getApplicationOptionalClaimsIdToken:getApplicationOptionalClaimsIdToken": {
+            "properties": {
+                "additionalProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "essential": {
+                    "type": "boolean",
+                    "description": "Whether the claim specified by the client is necessary to ensure a smooth authorization experience.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Specifies the name of the Application within Azure Active Directory.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "source": {
+                    "type": "string",
+                    "description": "The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
             ]
         },
         "azuread:/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess": {
@@ -896,7 +1138,7 @@
     },
     "resources": {
         "azuread:index/application:Application": {
-            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Application(\"example\", {\n    appRoles: [{\n        allowedMemberTypes: [\n            \"User\",\n            \"Application\",\n        ],\n        description: \"Admins can manage roles and perform all task actions\",\n        displayName: \"Admin\",\n        isEnabled: true,\n        value: \"Admin\",\n    }],\n    availableToOtherTenants: false,\n    homepage: \"https://homepage\",\n    identifierUris: [\"https://uri\"],\n    oauth2AllowImplicitFlow: true,\n    owners: [\"00000004-0000-0000-c000-000000000000\"],\n    replyUrls: [\"https://replyurl\"],\n    requiredResourceAccesses: [\n        {\n            resourceAccesses: [\n                {\n                    id: \"...\",\n                    type: \"Role\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n            ],\n            resourceAppId: \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            resourceAccesses: [{\n                id: \"...\",\n                type: \"Scope\",\n            }],\n            resourceAppId: \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type: \"webapp/api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Application(\"example\",\n    app_roles=[{\n        \"allowedMemberTypes\": [\n            \"User\",\n            \"Application\",\n        ],\n        \"description\": \"Admins can manage roles and perform all task actions\",\n        \"display_name\": \"Admin\",\n        \"isEnabled\": True,\n        \"value\": \"Admin\",\n    }],\n    available_to_other_tenants=False,\n    homepage=\"https://homepage\",\n    identifier_uris=[\"https://uri\"],\n    oauth2_allow_implicit_flow=True,\n    owners=[\"00000004-0000-0000-c000-000000000000\"],\n    reply_urls=[\"https://replyurl\"],\n    required_resource_accesses=[\n        {\n            \"resourceAccess\": [\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Role\",\n                },\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Scope\",\n                },\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Scope\",\n                },\n            ],\n            \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            \"resourceAccess\": [{\n                \"id\": \"...\",\n                \"type\": \"Scope\",\n            }],\n            \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type=\"webapp/api\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.Application(\"example\", new AzureAD.ApplicationArgs\n        {\n            AppRoles = \n            {\n                new AzureAD.Inputs.ApplicationAppRoleArgs\n                {\n                    AllowedMemberTypes = \n                    {\n                        \"User\",\n                        \"Application\",\n                    },\n                    Description = \"Admins can manage roles and perform all task actions\",\n                    DisplayName = \"Admin\",\n                    IsEnabled = true,\n                    Value = \"Admin\",\n                },\n            },\n            AvailableToOtherTenants = false,\n            Homepage = \"https://homepage\",\n            IdentifierUris = \n            {\n                \"https://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            Owners = \n            {\n                \"00000004-0000-0000-c000-000000000000\",\n            },\n            ReplyUrls = \n            {\n                \"https://replyurl\",\n            },\n            RequiredResourceAccesses = \n            {\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccess = \n                    {\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Role\" },\n                        },\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Scope\" },\n                        },\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Scope\" },\n                        },\n                    },\n                    ResourceAppId = \"00000003-0000-0000-c000-000000000000\",\n                },\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccess = \n                    {\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Scope\" },\n                        },\n                    },\n                    ResourceAppId = \"00000002-0000-0000-c000-000000000000\",\n                },\n            },\n            Type = \"webapp/api\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "appRoles": {
                     "type": "array",
@@ -945,11 +1187,15 @@
                     "items": {
                         "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
                     },
-                    "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.\n"
                 },
                 "objectId": {
                     "type": "string",
                     "description": "The Application's Object ID.\n"
+                },
+                "optionalClaims": {
+                    "$ref": "#/types/azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims",
+                    "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                 },
                 "owners": {
                     "type": "array",
@@ -1036,7 +1282,11 @@
                     "items": {
                         "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
                     },
-                    "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.\n"
+                },
+                "optionalClaims": {
+                    "$ref": "#/types/azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims",
+                    "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                 },
                 "owners": {
                     "type": "array",
@@ -1118,11 +1368,15 @@
                         "items": {
                             "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
                         },
-                        "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                        "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.\n"
                     },
                     "objectId": {
                         "type": "string",
                         "description": "The Application's Object ID.\n"
+                    },
+                    "optionalClaims": {
+                        "$ref": "#/types/azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims",
+                        "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                     },
                     "owners": {
                         "type": "array",
@@ -1157,8 +1411,116 @@
                 "type": "object"
             }
         },
+        "azuread:index/applicationCertificate:ApplicationCertificate": {
+            "description": "Manages a Certificate associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Certificate for this Service Principal.\n"
+                }
+            },
+            "required": [
+                "applicationObjectId",
+                "endDate",
+                "keyId",
+                "startDate",
+                "value"
+            ],
+            "inputProperties": {
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Certificate for this Service Principal.\n"
+                }
+            },
+            "requiredInputs": [
+                "applicationObjectId",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationCertificate resources.\n",
+                "properties": {
+                    "applicationObjectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDate": {
+                        "type": "string",
+                        "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDateRelative": {
+                        "type": "string",
+                        "description": "A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The Certificate for this Service Principal.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/applicationPassword:ApplicationPassword": {
-            "description": "Manages a Password associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleApplicationPassword = new azuread.ApplicationPassword(\"example\", {\n    applicationId: exampleApplication.id,\n    endDate: \"2099-01-01T01:02:03Z\",\n    value: \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_application_password = azuread.ApplicationPassword(\"exampleApplicationPassword\",\n    application_id=example_application.id,\n    end_date=\"2099-01-01T01:02:03Z\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            AvailableToOtherTenants = false,\n            Homepage = \"http://homepage\",\n            IdentifierUris = \n            {\n                \"http://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            ReplyUrls = \n            {\n                \"http://replyurl\",\n            },\n        });\n        var exampleApplicationPassword = new AzureAD.ApplicationPassword(\"exampleApplicationPassword\", new AzureAD.ApplicationPasswordArgs\n        {\n            ApplicationId = exampleApplication.Id,\n            EndDate = \"2099-01-01T01:02:03Z\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+            "description": "Manages a Password associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
                 "applicationId": {
                     "type": "string",
@@ -1167,6 +1529,10 @@
                 "applicationObjectId": {
                     "type": "string",
                     "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Password.\n"
                 },
                 "endDate": {
                     "type": "string",
@@ -1186,12 +1552,13 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Password for this Application .\n"
+                    "description": "The Password for this Application.\n"
                 }
             },
             "required": [
                 "applicationId",
                 "applicationObjectId",
+                "description",
                 "endDate",
                 "keyId",
                 "startDate",
@@ -1206,6 +1573,10 @@
                     "type": "string",
                     "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
                 },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Password.\n"
+                },
                 "endDate": {
                     "type": "string",
                     "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -1224,7 +1595,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Password for this Application .\n"
+                    "description": "The Password for this Application.\n"
                 }
             },
             "requiredInputs": [
@@ -1240,6 +1611,10 @@
                     "applicationObjectId": {
                         "type": "string",
                         "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the Password.\n"
                     },
                     "endDate": {
                         "type": "string",
@@ -1259,7 +1634,7 @@
                     },
                     "value": {
                         "type": "string",
-                        "description": "The Password for this Application .\n"
+                        "description": "The Password for this Application.\n"
                     }
                 },
                 "type": "object"
@@ -1504,9 +1879,121 @@
                 "type": "object"
             }
         },
-        "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": {
-            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"example\", {\n    applicationId: exampleApplication.applicationId,\n});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"example\", {\n    endDate: \"2099-01-01T01:02:03Z\",\n    servicePrincipalId: exampleServicePrincipal.id,\n    value: \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    end_date=\"2099-01-01T01:02:03Z\",\n    service_principal_id=example_service_principal.id,\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            AvailableToOtherTenants = false,\n            Homepage = \"http://homepage\",\n            IdentifierUris = \n            {\n                \"http://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            ReplyUrls = \n            {\n                \"http://replyurl\",\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", new AzureAD.ServicePrincipalPasswordArgs\n        {\n            EndDate = \"2099-01-01T01:02:03Z\",\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
+        "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate": {
+            "description": "Manages a Certificate associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
             "properties": {
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\". Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Certificate for this Service Principal.\n"
+                }
+            },
+            "required": [
+                "endDate",
+                "keyId",
+                "servicePrincipalId",
+                "startDate",
+                "value"
+            ],
+            "inputProperties": {
+                "endDate": {
+                    "type": "string",
+                    "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\". Changing this field forces a new resource to be created.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The Certificate for this Service Principal.\n"
+                }
+            },
+            "requiredInputs": [
+                "servicePrincipalId",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServicePrincipalCertificate resources.\n",
+                "properties": {
+                    "endDate": {
+                        "type": "string",
+                        "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDateRelative": {
+                        "type": "string",
+                        "description": "A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\". Changing this field forces a new resource to be created.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "servicePrincipalId": {
+                        "type": "string",
+                        "description": "The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "startDate": {
+                        "type": "string",
+                        "description": "The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The Certificate for this Service Principal.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": {
+            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Password.\n"
+                },
                 "endDate": {
                     "type": "string",
                     "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -1533,6 +2020,7 @@
                 }
             },
             "required": [
+                "description",
                 "endDate",
                 "keyId",
                 "servicePrincipalId",
@@ -1540,6 +2028,10 @@
                 "value"
             ],
             "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A description for the Password.\n"
+                },
                 "endDate": {
                     "type": "string",
                     "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -1572,6 +2064,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServicePrincipalPassword resources.\n",
                 "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the Password.\n"
+                    },
                     "endDate": {
                         "type": "string",
                         "description": "The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -1779,6 +2275,10 @@
                     "objectId": {
                         "type": "string",
                         "description": "Specifies the Object ID of the Application within Azure Active Directory.\n"
+                    },
+                    "optionalClaims": {
+                        "$ref": "#/types/azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims",
+                        "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                     }
                 },
                 "type": "object"
@@ -1824,7 +2324,8 @@
                         "description": "The URL of the logout page.\n"
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The name of the optional claim.\n"
                     },
                     "oauth2AllowImplicitFlow": {
                         "type": "boolean",
@@ -1840,6 +2341,10 @@
                     "objectId": {
                         "type": "string",
                         "description": "the Object ID of the Azure Active Directory Application.\n"
+                    },
+                    "optionalClaims": {
+                        "$ref": "#/types/azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims",
+                        "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                     },
                     "owners": {
                         "type": "array",

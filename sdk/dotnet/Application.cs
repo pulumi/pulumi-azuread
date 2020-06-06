@@ -50,6 +50,54 @@ namespace Pulumi.AzureAD
     ///                 "https://uri",
     ///             },
     ///             Oauth2AllowImplicitFlow = true,
+    ///             Oauth2Permissions = 
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationOauth2PermissionArgs
+    ///                 {
+    ///                     AdminConsentDescription = "Allow the application to access example on behalf of the signed-in user.",
+    ///                     AdminConsentDisplayName = "Access example",
+    ///                     IsEnabled = true,
+    ///                     Type = "User",
+    ///                     UserConsentDescription = "Allow the application to access example on your behalf.",
+    ///                     UserConsentDisplayName = "Access example",
+    ///                     Value = "user_impersonation",
+    ///                 },
+    ///                 new AzureAD.Inputs.ApplicationOauth2PermissionArgs
+    ///                 {
+    ///                     AdminConsentDescription = "Administer the example application",
+    ///                     AdminConsentDisplayName = "Administer",
+    ///                     IsEnabled = true,
+    ///                     Type = "Admin",
+    ///                     Value = "administer",
+    ///                 },
+    ///             },
+    ///             OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs
+    ///             {
+    ///                 AccessToken = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "name", "myclaim" },
+    ///                     },
+    ///                     
+    ///                     {
+    ///                         { "name", "otherclaim" },
+    ///                     },
+    ///                 },
+    ///                 IdToken = 
+    ///                 {
+    ///                     
+    ///                     {
+    ///                         { "additionalProperties", 
+    ///                         {
+    ///                             "emit_as_roles",
+    ///                         } },
+    ///                         { "essential", true },
+    ///                         { "name", "userclaim" },
+    ///                         { "source", "user" },
+    ///                     },
+    ///                 },
+    ///             },
     ///             Owners = 
     ///             {
     ///                 "00000004-0000-0000-c000-000000000000",
@@ -159,7 +207,7 @@ namespace Pulumi.AzureAD
         public Output<bool?> Oauth2AllowImplicitFlow { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         /// </summary>
         [Output("oauth2Permissions")]
         public Output<ImmutableArray<Outputs.ApplicationOauth2Permission>> Oauth2Permissions { get; private set; } = null!;
@@ -169,6 +217,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        /// </summary>
+        [Output("optionalClaims")]
+        public Output<Outputs.ApplicationOptionalClaims?> OptionalClaims { get; private set; } = null!;
 
         /// <summary>
         /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
@@ -310,13 +364,19 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOauth2PermissionArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ApplicationOauth2PermissionArgs>());
             set => _oauth2Permissions = value;
         }
+
+        /// <summary>
+        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        /// </summary>
+        [Input("optionalClaims")]
+        public Input<Inputs.ApplicationOptionalClaimsArgs>? OptionalClaims { get; set; }
 
         [Input("owners")]
         private InputList<string>? _owners;
@@ -443,7 +503,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationOauth2PermissionGetArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         /// </summary>
         public InputList<Inputs.ApplicationOauth2PermissionGetArgs> Oauth2Permissions
         {
@@ -456,6 +516,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
+
+        /// <summary>
+        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        /// </summary>
+        [Input("optionalClaims")]
+        public Input<Inputs.ApplicationOptionalClaimsGetArgs>? OptionalClaims { get; set; }
 
         [Input("owners")]
         private InputList<string>? _owners;
