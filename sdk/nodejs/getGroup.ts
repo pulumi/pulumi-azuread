@@ -60,6 +60,10 @@ export interface GetGroupResult {
      */
     readonly description: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The Object IDs of the Azure AD Group members.
      */
     readonly members: string[];
@@ -72,8 +76,4 @@ export interface GetGroupResult {
      * The Object IDs of the Azure AD Group owners.
      */
     readonly owners: string[];
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

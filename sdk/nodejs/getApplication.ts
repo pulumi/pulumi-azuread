@@ -87,6 +87,10 @@ export interface GetApplicationResult {
     readonly groupMembershipClaims: string;
     readonly homepage: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
     readonly identifierUris: string[];
@@ -130,8 +134,4 @@ export interface GetApplicationResult {
      * The type of the permission
      */
     readonly type: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }
