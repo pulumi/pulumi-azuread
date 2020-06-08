@@ -93,10 +93,10 @@ export interface GetServicePrincipalResult {
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
     readonly displayName: string;
-    readonly oauth2Permissions: outputs.GetServicePrincipalOauth2Permission[];
-    readonly objectId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly oauth2Permissions: outputs.GetServicePrincipalOauth2Permission[];
+    readonly objectId: string;
 }

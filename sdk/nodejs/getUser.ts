@@ -71,6 +71,10 @@ export interface GetUserResult {
      */
     readonly displayName: string;
     /**
+     * The provider-assigned unique ID for this managed resource.
+     */
+    readonly id: string;
+    /**
      * The value used to associate an on-premises Active Directory user account with their Azure AD user object.
      */
     readonly immutableId: string;
@@ -99,8 +103,4 @@ export interface GetUserResult {
      * The User Principal Name of the Azure AD User.
      */
     readonly userPrincipalName: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
-    readonly id: string;
 }

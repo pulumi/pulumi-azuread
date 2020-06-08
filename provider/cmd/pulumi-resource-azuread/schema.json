@@ -166,7 +166,17 @@
                 "allowedMemberTypes",
                 "description",
                 "displayName"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowedMemberTypes",
+                        "description",
+                        "displayName",
+                        "id"
+                    ]
+                }
+            }
         },
         "azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission": {
             "properties": {
@@ -243,7 +253,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "adminConsentDescription",
+                        "adminConsentDisplayName",
+                        "id",
+                        "isEnabled",
+                        "type",
+                        "userConsentDescription",
+                        "userConsentDisplayName",
+                        "value"
+                    ]
+                }
+            }
         },
         "azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims": {
             "properties": {
@@ -498,7 +522,21 @@
                     }
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "adminConsentDescription",
+                        "adminConsentDisplayName",
+                        "id",
+                        "isEnabled",
+                        "type",
+                        "userConsentDescription",
+                        "userConsentDisplayName",
+                        "value"
+                    ]
+                }
+            }
         },
         "azuread:/getApplicationAppRole:getApplicationAppRole": {
             "properties": {
@@ -568,7 +606,12 @@
                 "id",
                 "isEnabled",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission": {
             "properties": {
@@ -655,7 +698,12 @@
                 "userConsentDescription",
                 "userConsentDisplayName",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims": {
             "properties": {
@@ -806,7 +854,12 @@
             "required": [
                 "resourceAccesses",
                 "resourceAppId"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "azuread:/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess": {
             "properties": {
@@ -833,7 +886,12 @@
             "required": [
                 "id",
                 "type"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "azuread:/getDomainsDomain:getDomainsDomain": {
             "properties": {
@@ -890,7 +948,12 @@
                 "isDefault",
                 "isInitial",
                 "isVerified"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "azuread:/getServicePrincipalAppRole:getServicePrincipalAppRole": {
             "properties": {
@@ -960,7 +1023,12 @@
                 "id",
                 "isEnabled",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission": {
             "properties": {
@@ -1047,7 +1115,12 @@
                 "userConsentDescription",
                 "userConsentDisplayName",
                 "value"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         }
     },
     "provider": {
@@ -1138,7 +1211,7 @@
     },
     "resources": {
         "azuread:index/application:Application": {
-            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Application(\"example\", {\n    appRoles: [{\n        allowedMemberTypes: [\n            \"User\",\n            \"Application\",\n        ],\n        description: \"Admins can manage roles and perform all task actions\",\n        displayName: \"Admin\",\n        isEnabled: true,\n        value: \"Admin\",\n    }],\n    availableToOtherTenants: false,\n    homepage: \"https://homepage\",\n    identifierUris: [\"https://uri\"],\n    oauth2AllowImplicitFlow: true,\n    oauth2Permissions: [\n        {\n            adminConsentDescription: \"Allow the application to access example on behalf of the signed-in user.\",\n            adminConsentDisplayName: \"Access example\",\n            isEnabled: true,\n            type: \"User\",\n            userConsentDescription: \"Allow the application to access example on your behalf.\",\n            userConsentDisplayName: \"Access example\",\n            value: \"user_impersonation\",\n        },\n        {\n            adminConsentDescription: \"Administer the example application\",\n            adminConsentDisplayName: \"Administer\",\n            isEnabled: true,\n            type: \"Admin\",\n            value: \"administer\",\n        },\n    ],\n    optionalClaims: {\n        accessTokens: [\n            {\n                name: \"myclaim\",\n            },\n            {\n                name: \"otherclaim\",\n            },\n        ],\n        idTokens: [{\n            additionalProperties: [\"emit_as_roles\"],\n            essential: true,\n            name: \"userclaim\",\n            source: \"user\",\n        }],\n    },\n    owners: [\"00000004-0000-0000-c000-000000000000\"],\n    replyUrls: [\"https://replyurl\"],\n    requiredResourceAccesses: [\n        {\n            resourceAccesses: [\n                {\n                    id: \"...\",\n                    type: \"Role\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n            ],\n            resourceAppId: \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            resourceAccesses: [{\n                id: \"...\",\n                type: \"Scope\",\n            }],\n            resourceAppId: \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type: \"webapp/api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Application(\"example\",\n    app_roles=[{\n        \"allowedMemberTypes\": [\n            \"User\",\n            \"Application\",\n        ],\n        \"description\": \"Admins can manage roles and perform all task actions\",\n        \"display_name\": \"Admin\",\n        \"isEnabled\": True,\n        \"value\": \"Admin\",\n    }],\n    available_to_other_tenants=False,\n    homepage=\"https://homepage\",\n    identifier_uris=[\"https://uri\"],\n    oauth2_allow_implicit_flow=True,\n    oauth2_permissions=[\n        {\n            \"adminConsentDescription\": \"Allow the application to access example on behalf of the signed-in user.\",\n            \"adminConsentDisplayName\": \"Access example\",\n            \"isEnabled\": True,\n            \"type\": \"User\",\n            \"userConsentDescription\": \"Allow the application to access example on your behalf.\",\n            \"userConsentDisplayName\": \"Access example\",\n            \"value\": \"user_impersonation\",\n        },\n        {\n            \"adminConsentDescription\": \"Administer the example application\",\n            \"adminConsentDisplayName\": \"Administer\",\n            \"isEnabled\": True,\n            \"type\": \"Admin\",\n            \"value\": \"administer\",\n        },\n    ],\n    optional_claims={\n        \"accessToken\": [\n            {\n                \"name\": \"myclaim\",\n            },\n            {\n                \"name\": \"otherclaim\",\n            },\n        ],\n        \"idToken\": [{\n            \"additionalProperties\": [\"emit_as_roles\"],\n            \"essential\": True,\n            \"name\": \"userclaim\",\n            \"source\": \"user\",\n        }],\n    },\n    owners=[\"00000004-0000-0000-c000-000000000000\"],\n    reply_urls=[\"https://replyurl\"],\n    required_resource_accesses=[\n        {\n            \"resourceAccess\": [\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Role\",\n                },\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Scope\",\n                },\n                {\n                    \"id\": \"...\",\n                    \"type\": \"Scope\",\n                },\n            ],\n            \"resourceAppId\": \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            \"resourceAccess\": [{\n                \"id\": \"...\",\n                \"type\": \"Scope\",\n            }],\n            \"resourceAppId\": \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type=\"webapp/api\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.Application(\"example\", new AzureAD.ApplicationArgs\n        {\n            AppRoles = \n            {\n                new AzureAD.Inputs.ApplicationAppRoleArgs\n                {\n                    AllowedMemberTypes = \n                    {\n                        \"User\",\n                        \"Application\",\n                    },\n                    Description = \"Admins can manage roles and perform all task actions\",\n                    DisplayName = \"Admin\",\n                    IsEnabled = true,\n                    Value = \"Admin\",\n                },\n            },\n            AvailableToOtherTenants = false,\n            Homepage = \"https://homepage\",\n            IdentifierUris = \n            {\n                \"https://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            Oauth2Permissions = \n            {\n                new AzureAD.Inputs.ApplicationOauth2PermissionArgs\n                {\n                    AdminConsentDescription = \"Allow the application to access example on behalf of the signed-in user.\",\n                    AdminConsentDisplayName = \"Access example\",\n                    IsEnabled = true,\n                    Type = \"User\",\n                    UserConsentDescription = \"Allow the application to access example on your behalf.\",\n                    UserConsentDisplayName = \"Access example\",\n                    Value = \"user_impersonation\",\n                },\n                new AzureAD.Inputs.ApplicationOauth2PermissionArgs\n                {\n                    AdminConsentDescription = \"Administer the example application\",\n                    AdminConsentDisplayName = \"Administer\",\n                    IsEnabled = true,\n                    Type = \"Admin\",\n                    Value = \"administer\",\n                },\n            },\n            OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs\n            {\n                AccessToken = \n                {\n                    \n                    {\n                        { \"name\", \"myclaim\" },\n                    },\n                    \n                    {\n                        { \"name\", \"otherclaim\" },\n                    },\n                },\n                IdToken = \n                {\n                    \n                    {\n                        { \"additionalProperties\", \n                        {\n                            \"emit_as_roles\",\n                        } },\n                        { \"essential\", true },\n                        { \"name\", \"userclaim\" },\n                        { \"source\", \"user\" },\n                    },\n                },\n            },\n            Owners = \n            {\n                \"00000004-0000-0000-c000-000000000000\",\n            },\n            ReplyUrls = \n            {\n                \"https://replyurl\",\n            },\n            RequiredResourceAccesses = \n            {\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccess = \n                    {\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Role\" },\n                        },\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Scope\" },\n                        },\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Scope\" },\n                        },\n                    },\n                    ResourceAppId = \"00000003-0000-0000-c000-000000000000\",\n                },\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccess = \n                    {\n                        \n                        {\n                            { \"id\", \"...\" },\n                            { \"type\", \"Scope\" },\n                        },\n                    },\n                    ResourceAppId = \"00000002-0000-0000-c000-000000000000\",\n                },\n            },\n            Type = \"webapp/api\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "appRoles": {
                     "type": "array",
@@ -1412,7 +1485,7 @@
             }
         },
         "azuread:index/applicationCertificate:ApplicationCertificate": {
-            "description": "Manages a Certificate associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Manages a Certificate associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * as fs from \"fs\";\n\nconst exampleApplication = new azuread.Application(\"example\", {});\nconst exampleApplicationCertificate = new azuread.ApplicationCertificate(\"example\", {\n    applicationObjectId: exampleApplication.id,\n    endDate: \"2021-05-01T01:02:03Z\",\n    type: \"AsymmetricX509Cert\",\n    value: fs.readFileSync(\"cert.pem\", \"utf-8\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_application_certificate = azuread.ApplicationCertificate(\"exampleApplicationCertificate\",\n    application_object_id=example_application.id,\n    end_date=\"2021-05-01T01:02:03Z\",\n    type=\"AsymmetricX509Cert\",\n    value=(lambda path: open(path).read())(\"cert.pem\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleApplicationCertificate = new AzureAD.ApplicationCertificate(\"exampleApplicationCertificate\", new AzureAD.ApplicationCertificateArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            EndDate = \"2021-05-01T01:02:03Z\",\n            Type = \"AsymmetricX509Cert\",\n            Value = File.ReadAllText(\"cert.pem\"),\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "applicationObjectId": {
                     "type": "string",
@@ -1520,7 +1593,7 @@
             }
         },
         "azuread:index/applicationPassword:ApplicationPassword": {
-            "description": "Manages a Password associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Manages a Password associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleApplicationPassword = new azuread.ApplicationPassword(\"example\", {\n    applicationObjectId: exampleApplication.id,\n    description: \"My managed password\",\n    endDate: \"2099-01-01T01:02:03Z\",\n    value: \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_application_password = azuread.ApplicationPassword(\"exampleApplicationPassword\",\n    application_object_id=example_application.id,\n    description=\"My managed password\",\n    end_date=\"2099-01-01T01:02:03Z\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            AvailableToOtherTenants = false,\n            Homepage = \"http://homepage\",\n            IdentifierUris = \n            {\n                \"http://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            ReplyUrls = \n            {\n                \"http://replyurl\",\n            },\n        });\n        var exampleApplicationPassword = new AzureAD.ApplicationPassword(\"exampleApplicationPassword\", new AzureAD.ApplicationPasswordArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            Description = \"My managed password\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "applicationId": {
                     "type": "string",
@@ -1880,7 +1953,7 @@
             }
         },
         "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate": {
-            "description": "Manages a Certificate associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Manages a Certificate associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * as fs from \"fs\";\n\nconst exampleApplication = new azuread.Application(\"example\", {});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"example\", {\n    applicationId: exampleApplication.applicationId,\n});\nconst exampleServicePrincipalCertificate = new azuread.ServicePrincipalCertificate(\"example\", {\n    endDate: \"2021-05-01T01:02:03Z\",\n    servicePrincipalId: exampleServicePrincipal.id,\n    type: \"AsymmetricX509Cert\",\n    value: fs.readFileSync(\"cert.pem\", \"utf-8\"),\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_certificate = azuread.ServicePrincipalCertificate(\"exampleServicePrincipalCertificate\",\n    end_date=\"2021-05-01T01:02:03Z\",\n    service_principal_id=example_service_principal.id,\n    type=\"AsymmetricX509Cert\",\n    value=(lambda path: open(path).read())(\"cert.pem\"))\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalCertificate = new AzureAD.ServicePrincipalCertificate(\"exampleServicePrincipalCertificate\", new AzureAD.ServicePrincipalCertificateArgs\n        {\n            EndDate = \"2021-05-01T01:02:03Z\",\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Type = \"AsymmetricX509Cert\",\n            Value = File.ReadAllText(\"cert.pem\"),\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "endDate": {
                     "type": "string",
@@ -1988,7 +2061,7 @@
             }
         },
         "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": {
-            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n{{% /examples %}}\n",
+            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"example\", {\n    availableToOtherTenants: false,\n    homepage: \"http://homepage\",\n    identifierUris: [\"http://uri\"],\n    oauth2AllowImplicitFlow: true,\n    replyUrls: [\"http://replyurl\"],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"example\", {\n    applicationId: exampleApplication.applicationId,\n});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"example\", {\n    description: \"My managed password\",\n    endDate: \"2099-01-01T01:02:03Z\",\n    servicePrincipalId: exampleServicePrincipal.id,\n    value: \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\",\n    available_to_other_tenants=False,\n    homepage=\"http://homepage\",\n    identifier_uris=[\"http://uri\"],\n    oauth2_allow_implicit_flow=True,\n    reply_urls=[\"http://replyurl\"])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    description=\"My managed password\",\n    end_date=\"2099-01-01T01:02:03Z\",\n    service_principal_id=example_service_principal.id,\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            AvailableToOtherTenants = false,\n            Homepage = \"http://homepage\",\n            IdentifierUris = \n            {\n                \"http://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            ReplyUrls = \n            {\n                \"http://replyurl\",\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", new AzureAD.ServicePrincipalPasswordArgs\n        {\n            Description = \"My managed password\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n        });\n    }\n\n}\n```\n\n{{% /example %}}\n{{% /examples %}}\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -2825,8 +2898,10 @@
                 "@types/mime": "^2.0.0",
                 "@types/node": "^8.0.25"
             },
+            "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing azuread cloud resources.",
             "packageName": "",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-azuread)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-azuread` repo](https://github.com/pulumi/pulumi-azuread/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-azuread` repo](https://github.com/terraform-providers/terraform-provider-azuread/issues).",
             "typescriptVersion": ""
         },
         "python": {

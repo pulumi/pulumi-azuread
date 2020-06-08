@@ -66,11 +66,11 @@ export interface GetDomainsResult {
      * One or more `domain` blocks as defined below.
      */
     readonly domains: outputs.GetDomainsDomain[];
-    readonly includeUnverified?: boolean;
-    readonly onlyDefault?: boolean;
-    readonly onlyInitial?: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly includeUnverified?: boolean;
+    readonly onlyDefault?: boolean;
+    readonly onlyInitial?: boolean;
 }

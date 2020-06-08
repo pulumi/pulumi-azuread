@@ -2,8 +2,6 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -42,6 +40,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param id The _unique_ provider ID of the resource to lookup.
      * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ApplicationPasswordState, opts?: pulumi.CustomResourceOptions): ApplicationPassword {
         return new ApplicationPassword(name, <any>state, { ...opts, id: id });
@@ -61,6 +60,9 @@ export class ApplicationPassword extends pulumi.CustomResource {
         return obj['__pulumiType'] === ApplicationPassword.__pulumiType;
     }
 
+    /**
+     * @deprecated Deprecated in favour of `application_object_id` to prevent confusion
+     */
     public readonly applicationId!: pulumi.Output<string>;
     /**
      * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
@@ -140,6 +142,9 @@ export class ApplicationPassword extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationPassword resources.
  */
 export interface ApplicationPasswordState {
+    /**
+     * @deprecated Deprecated in favour of `application_object_id` to prevent confusion
+     */
     readonly applicationId?: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
@@ -175,6 +180,9 @@ export interface ApplicationPasswordState {
  * The set of arguments for constructing a ApplicationPassword resource.
  */
 export interface ApplicationPasswordArgs {
+    /**
+     * @deprecated Deprecated in favour of `application_object_id` to prevent confusion
+     */
     readonly applicationId?: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
