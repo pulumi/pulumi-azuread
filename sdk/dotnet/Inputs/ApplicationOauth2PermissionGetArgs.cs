@@ -13,13 +13,13 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ApplicationOauth2PermissionGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the admin consent.
+        /// Permission help text that appears in the admin consent and app assignment experiences.
         /// </summary>
         [Input("adminConsentDescription")]
         public Input<string>? AdminConsentDescription { get; set; }
 
         /// <summary>
-        /// The display name of the admin consent.
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         [Input("adminConsentDisplayName")]
         public Input<string>? AdminConsentDisplayName { get; set; }
@@ -43,13 +43,13 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The description of the user consent.
+        /// Permission help text that appears in the end user consent experience.
         /// </summary>
         [Input("userConsentDescription")]
         public Input<string>? UserConsentDescription { get; set; }
 
         /// <summary>
-        /// The display name of the user consent.
+        /// Display name for the permission that appears in the end user consent experience.
         /// </summary>
         [Input("userConsentDisplayName")]
         public Input<string>? UserConsentDisplayName { get; set; }

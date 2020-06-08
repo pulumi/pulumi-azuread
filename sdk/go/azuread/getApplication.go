@@ -27,6 +27,8 @@ type LookupApplicationArgs struct {
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// Specifies the Object ID of the Application within Azure Active Directory.
 	ObjectId *string `pulumi:"objectId"`
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims *GetApplicationOptionalClaims `pulumi:"optionalClaims"`
 }
 
 // A collection of values returned by getApplication.
@@ -46,13 +48,16 @@ type LookupApplicationResult struct {
 	IdentifierUris []string `pulumi:"identifierUris"`
 	// The URL of the logout page.
 	LogoutUrl string `pulumi:"logoutUrl"`
-	Name      string `pulumi:"name"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow bool `pulumi:"oauth2AllowImplicitFlow"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// the Object ID of the Azure Active Directory Application.
 	ObjectId string `pulumi:"objectId"`
+	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+	OptionalClaims *GetApplicationOptionalClaims `pulumi:"optionalClaims"`
 	// A list of User Object IDs that are assigned ownership of the application registration.
 	Owners []string `pulumi:"owners"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.

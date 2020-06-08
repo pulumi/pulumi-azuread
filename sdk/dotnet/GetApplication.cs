@@ -74,6 +74,12 @@ namespace Pulumi.AzureAD
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
+        /// <summary>
+        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        /// </summary>
+        [Input("optionalClaims")]
+        public Inputs.GetApplicationOptionalClaimsArgs? OptionalClaims { get; set; }
+
         public GetApplicationArgs()
         {
         }
@@ -112,6 +118,9 @@ namespace Pulumi.AzureAD
         /// The URL of the logout page.
         /// </summary>
         public readonly string LogoutUrl;
+        /// <summary>
+        /// The name of the optional claim.
+        /// </summary>
         public readonly string Name;
         /// <summary>
         /// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
@@ -125,6 +134,10 @@ namespace Pulumi.AzureAD
         /// the Object ID of the Azure Active Directory Application.
         /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        /// </summary>
+        public readonly Outputs.GetApplicationOptionalClaimsResult? OptionalClaims;
         /// <summary>
         /// A list of User Object IDs that are assigned ownership of the application registration.
         /// </summary>
@@ -168,6 +181,8 @@ namespace Pulumi.AzureAD
 
             string objectId,
 
+            Outputs.GetApplicationOptionalClaimsResult? optionalClaims,
+
             ImmutableArray<string> owners,
 
             ImmutableArray<string> replyUrls,
@@ -188,6 +203,7 @@ namespace Pulumi.AzureAD
             Oauth2AllowImplicitFlow = oauth2AllowImplicitFlow;
             Oauth2Permissions = oauth2Permissions;
             ObjectId = objectId;
+            OptionalClaims = optionalClaims;
             Owners = owners;
             ReplyUrls = replyUrls;
             RequiredResourceAccesses = requiredResourceAccesses;

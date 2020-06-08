@@ -27,7 +27,8 @@ import * as utilities from "./utilities";
  *     replyUrls: ["http://replyurl"],
  * });
  * const exampleApplicationPassword = new azuread.ApplicationPassword("example", {
- *     applicationId: exampleApplication.id,
+ *     applicationObjectId: exampleApplication.id,
+ *     description: "My managed password",
  *     endDate: "2099-01-01T01:02:03Z",
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
  * });
@@ -66,6 +67,10 @@ export class ApplicationPassword extends pulumi.CustomResource {
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
+     * A description for the Password.
+     */
+    public readonly description!: pulumi.Output<string>;
+    /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     public readonly endDate!: pulumi.Output<string>;
@@ -82,7 +87,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
      */
     public readonly startDate!: pulumi.Output<string>;
     /**
-     * The Password for this Application .
+     * The Password for this Application.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -100,6 +105,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
             const state = argsOrState as ApplicationPasswordState | undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
             inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
@@ -112,6 +118,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
             }
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
+            inputs["description"] = args ? args.description : undefined;
             inputs["endDate"] = args ? args.endDate : undefined;
             inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
@@ -139,6 +146,10 @@ export interface ApplicationPasswordState {
      */
     readonly applicationObjectId?: pulumi.Input<string>;
     /**
+     * A description for the Password.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     readonly endDate?: pulumi.Input<string>;
@@ -155,7 +166,7 @@ export interface ApplicationPasswordState {
      */
     readonly startDate?: pulumi.Input<string>;
     /**
-     * The Password for this Application .
+     * The Password for this Application.
      */
     readonly value?: pulumi.Input<string>;
 }
@@ -170,6 +181,10 @@ export interface ApplicationPasswordArgs {
      */
     readonly applicationObjectId?: pulumi.Input<string>;
     /**
+     * A description for the Password.
+     */
+    readonly description?: pulumi.Input<string>;
+    /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     readonly endDate?: pulumi.Input<string>;
@@ -186,7 +201,7 @@ export interface ApplicationPasswordArgs {
      */
     readonly startDate?: pulumi.Input<string>;
     /**
-     * The Password for this Application .
+     * The Password for this Application.
      */
     readonly value: pulumi.Input<string>;
 }

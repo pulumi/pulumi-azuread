@@ -15,6 +15,10 @@ class ApplicationPassword(pulumi.CustomResource):
     """
     The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
     """
+    description: pulumi.Output[str]
+    """
+    A description for the Password.
+    """
     end_date: pulumi.Output[str]
     """
     The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -33,9 +37,9 @@ class ApplicationPassword(pulumi.CustomResource):
     """
     value: pulumi.Output[str]
     """
-    The Password for this Application .
+    The Password for this Application.
     """
-    def __init__(__self__, resource_name, opts=None, application_id=None, application_object_id=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, application_id=None, application_object_id=None, description=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Password associated with an Application within Azure Active Directory.
 
@@ -56,7 +60,8 @@ class ApplicationPassword(pulumi.CustomResource):
             oauth2_allow_implicit_flow=True,
             reply_urls=["http://replyurl"])
         example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
-            application_id=example_application.id,
+            application_object_id=example_application.id,
+            description="My managed password",
             end_date="2099-01-01T01:02:03Z",
             value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
         ```
@@ -65,11 +70,12 @@ class ApplicationPassword(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] description: A description for the Password.
         :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] value: The Password for this Application .
+        :param pulumi.Input[str] value: The Password for this Application.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -90,6 +96,7 @@ class ApplicationPassword(pulumi.CustomResource):
 
             __props__['application_id'] = application_id
             __props__['application_object_id'] = application_object_id
+            __props__['description'] = description
             __props__['end_date'] = end_date
             __props__['end_date_relative'] = end_date_relative
             __props__['key_id'] = key_id
@@ -104,7 +111,7 @@ class ApplicationPassword(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, application_id=None, application_object_id=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None):
+    def get(resource_name, id, opts=None, application_id=None, application_object_id=None, description=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None):
         """
         Get an existing ApplicationPassword resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -113,11 +120,12 @@ class ApplicationPassword(pulumi.CustomResource):
         :param str id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] description: A description for the Password.
         :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] value: The Password for this Application .
+        :param pulumi.Input[str] value: The Password for this Application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -125,6 +133,7 @@ class ApplicationPassword(pulumi.CustomResource):
 
         __props__["application_id"] = application_id
         __props__["application_object_id"] = application_object_id
+        __props__["description"] = description
         __props__["end_date"] = end_date
         __props__["end_date_relative"] = end_date_relative
         __props__["key_id"] = key_id

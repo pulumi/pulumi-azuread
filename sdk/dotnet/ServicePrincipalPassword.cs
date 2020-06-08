@@ -46,6 +46,7 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new AzureAD.ServicePrincipalPasswordArgs
     ///         {
+    ///             Description = "My managed password",
     ///             EndDate = "2099-01-01T01:02:03Z",
     ///             ServicePrincipalId = exampleServicePrincipal.Id,
     ///             Value = "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
@@ -57,6 +58,12 @@ namespace Pulumi.AzureAD
     /// </summary>
     public partial class ServicePrincipalPassword : Pulumi.CustomResource
     {
+        /// <summary>
+        /// A description for the Password.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
+
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
@@ -140,6 +147,12 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A description for the Password.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
@@ -182,6 +195,12 @@ namespace Pulumi.AzureAD
 
     public sealed class ServicePrincipalPasswordState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A description for the Password.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>

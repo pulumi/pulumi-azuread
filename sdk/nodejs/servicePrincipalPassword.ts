@@ -30,6 +30,7 @@ import * as utilities from "./utilities";
  *     applicationId: exampleApplication.applicationId,
  * });
  * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
+ *     description: "My managed password",
  *     endDate: "2099-01-01T01:02:03Z",
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
@@ -63,6 +64,10 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
         return obj['__pulumiType'] === ServicePrincipalPassword.__pulumiType;
     }
 
+    /**
+     * A description for the Password.
+     */
+    public readonly description!: pulumi.Output<string>;
     /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
@@ -100,6 +105,7 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ServicePrincipalPasswordState | undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
             inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
@@ -114,6 +120,7 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
             if (!args || args.value === undefined) {
                 throw new Error("Missing required property 'value'");
             }
+            inputs["description"] = args ? args.description : undefined;
             inputs["endDate"] = args ? args.endDate : undefined;
             inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
@@ -136,6 +143,10 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePrincipalPassword resources.
  */
 export interface ServicePrincipalPasswordState {
+    /**
+     * A description for the Password.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
@@ -166,6 +177,10 @@ export interface ServicePrincipalPasswordState {
  * The set of arguments for constructing a ServicePrincipalPassword resource.
  */
 export interface ServicePrincipalPasswordArgs {
+    /**
+     * A description for the Password.
+     */
+    readonly description?: pulumi.Input<string>;
     /**
      * The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */

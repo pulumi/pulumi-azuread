@@ -39,6 +39,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
         "name": args.name,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
+        "optionalClaims": args.optionalClaims,
     }, opts);
 }
 
@@ -58,6 +59,10 @@ export interface GetApplicationArgs {
      * Specifies the Object ID of the Application within Azure Active Directory.
      */
     readonly objectId?: string;
+    /**
+     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     */
+    readonly optionalClaims?: inputs.GetApplicationOptionalClaims;
 }
 
 /**
@@ -89,6 +94,9 @@ export interface GetApplicationResult {
      * The URL of the logout page.
      */
     readonly logoutUrl: string;
+    /**
+     * The name of the optional claim.
+     */
     readonly name: string;
     /**
      * Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
@@ -102,6 +110,10 @@ export interface GetApplicationResult {
      * the Object ID of the Azure Active Directory Application.
      */
     readonly objectId: string;
+    /**
+     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     */
+    readonly optionalClaims?: outputs.GetApplicationOptionalClaims;
     /**
      * A list of User Object IDs that are assigned ownership of the application registration.
      */

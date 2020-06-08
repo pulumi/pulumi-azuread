@@ -42,7 +42,8 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new AzureAD.ApplicationPasswordArgs
     ///         {
-    ///             ApplicationId = exampleApplication.Id,
+    ///             ApplicationObjectId = exampleApplication.Id,
+    ///             Description = "My managed password",
     ///             EndDate = "2099-01-01T01:02:03Z",
     ///             Value = "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
     ///         });
@@ -61,6 +62,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// A description for the Password.
+        /// </summary>
+        [Output("description")]
+        public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -87,7 +94,7 @@ namespace Pulumi.AzureAD
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// The Password for this Application .
+        /// The Password for this Application.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -148,6 +155,12 @@ namespace Pulumi.AzureAD
         public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
+        /// A description for the Password.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
@@ -172,7 +185,7 @@ namespace Pulumi.AzureAD
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The Password for this Application .
+        /// The Password for this Application.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -194,6 +207,12 @@ namespace Pulumi.AzureAD
         public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
+        /// A description for the Password.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
@@ -218,7 +237,7 @@ namespace Pulumi.AzureAD
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The Password for this Application .
+        /// The Password for this Application.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

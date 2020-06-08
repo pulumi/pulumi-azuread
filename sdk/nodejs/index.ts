@@ -3,6 +3,7 @@
 
 // Export members:
 export * from "./application";
+export * from "./applicationCertificate";
 export * from "./applicationPassword";
 export * from "./getApplication";
 export * from "./getClientConfig";
@@ -16,6 +17,7 @@ export * from "./group";
 export * from "./groupMember";
 export * from "./provider";
 export * from "./servicePrincipal";
+export * from "./servicePrincipalCertificate";
 export * from "./servicePrincipalPassword";
 export * from "./user";
 
