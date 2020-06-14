@@ -36,7 +36,6 @@ namespace Pulumi.AzureAD
         ///     public Output&lt;string&gt; Domains { get; set; }
         /// }
         /// ```
-        /// 
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>

@@ -59,7 +59,7 @@ namespace Pulumi.AzureAD
         public Output<bool?> ForcePasswordChange { get; private set; } = null!;
 
         /// <summary>
-        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         /// </summary>
         [Output("immutableId")]
         public Output<string> ImmutableId { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.AzureAD
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         /// </summary>
         [Output("usageLocation")]
         public Output<string> UsageLocation { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? ForcePasswordChange { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         /// </summary>
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
@@ -195,7 +195,7 @@ namespace Pulumi.AzureAD
         public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         /// </summary>
         [Input("usageLocation")]
         public Input<string>? UsageLocation { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? ForcePasswordChange { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         /// </summary>
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
@@ -274,7 +274,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         /// </summary>
         [Input("usageLocation")]
         public Input<string>? UsageLocation { get; set; }

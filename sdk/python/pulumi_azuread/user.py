@@ -24,7 +24,7 @@ class User(pulumi.CustomResource):
     """
     immutable_id: pulumi.Output[str]
     """
-    The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+    The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
     """
     mail: pulumi.Output[str]
     """
@@ -52,7 +52,7 @@ class User(pulumi.CustomResource):
     """
     usage_location: pulumi.Output[str]
     """
-    The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+    The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
     """
     user_principal_name: pulumi.Output[str]
     """
@@ -79,16 +79,15 @@ class User(pulumi.CustomResource):
             user_principal_name="jdo@hashicorp.com")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
-        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
         """
         if __name__ is not None:
@@ -144,14 +143,14 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         :param pulumi.Input[str] mail: The primary email address of the Azure AD User.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
         :param pulumi.Input[str] object_id: The Object ID of the Azure AD User.
         :param pulumi.Input[str] onpremises_sam_account_name: The on premise sam account name of the Azure AD User.
         :param pulumi.Input[str] onpremises_user_principal_name: The on premise user principal name of the Azure AD User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
-        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

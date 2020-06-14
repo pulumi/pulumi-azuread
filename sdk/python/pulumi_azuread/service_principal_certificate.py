@@ -61,7 +61,6 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             value=(lambda path: open(path).read())("cert.pem"))
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.

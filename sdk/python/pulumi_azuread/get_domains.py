@@ -66,7 +66,6 @@ def get_domains(include_unverified=None,only_default=None,only_initial=None,opts
     ```
 
 
-
     :param bool include_unverified: Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
     :param bool only_default: Set to `true` to only return the default domain.
     :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.

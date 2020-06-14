@@ -66,7 +66,6 @@ class ApplicationPassword(pulumi.CustomResource):
             value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.

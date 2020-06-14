@@ -66,7 +66,6 @@ class ServicePrincipalPassword(pulumi.CustomResource):
             value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: A description for the Password.

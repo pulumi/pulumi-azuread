@@ -70,7 +70,6 @@ def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts
     ```
 
 
-
     :param list mail_nicknames: The email aliases of the Azure AD Users.
     :param list object_ids: The Object IDs of the Azure AD Users.
     :param list user_principal_names: The User Principal Names of the Azure AD Users.

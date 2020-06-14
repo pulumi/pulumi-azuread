@@ -225,7 +225,7 @@ namespace Pulumi.AzureAD
         public Output<Outputs.ApplicationOptionalClaims?> OptionalClaims { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         /// </summary>
         [Output("owners")]
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
@@ -382,7 +382,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _owners;
 
         /// <summary>
-        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         /// </summary>
         public InputList<string> Owners
         {
@@ -527,7 +527,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _owners;
 
         /// <summary>
-        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         /// </summary>
         public InputList<string> Owners
         {

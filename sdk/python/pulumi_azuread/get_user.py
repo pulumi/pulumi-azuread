@@ -113,7 +113,6 @@ def get_user(mail_nickname=None,object_id=None,user_principal_name=None,opts=Non
     ```
 
 
-
     :param str mail_nickname: The email alias of the Azure AD User.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
     :param str user_principal_name: The User Principal Name of the Azure AD User.

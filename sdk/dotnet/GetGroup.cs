@@ -16,7 +16,10 @@ namespace Pulumi.AzureAD
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
         /// 
-        /// ## Example Usage (by Group Display Name)
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### By Group Display Name)
         /// 
         /// ```csharp
         /// using Pulumi;
@@ -34,6 +37,8 @@ namespace Pulumi.AzureAD
         /// 
         /// }
         /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
         /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("azuread:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithVersion());

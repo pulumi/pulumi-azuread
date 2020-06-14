@@ -66,7 +66,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly forcePasswordChange!: pulumi.Output<boolean | undefined>;
     /**
-     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
      */
     public readonly immutableId!: pulumi.Output<string>;
     /**
@@ -94,7 +94,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
     public readonly usageLocation!: pulumi.Output<string>;
     /**
@@ -178,7 +178,7 @@ export interface UserState {
      */
     readonly forcePasswordChange?: pulumi.Input<boolean>;
     /**
-     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
      */
     readonly immutableId?: pulumi.Input<string>;
     /**
@@ -206,7 +206,7 @@ export interface UserState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
     readonly usageLocation?: pulumi.Input<string>;
     /**
@@ -232,7 +232,7 @@ export interface UserArgs {
      */
     readonly forcePasswordChange?: pulumi.Input<boolean>;
     /**
-     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account. 
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
      */
     readonly immutableId?: pulumi.Input<string>;
     /**
@@ -244,7 +244,7 @@ export interface UserArgs {
      */
     readonly password: pulumi.Input<string>;
     /**
-     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set. 
+     * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
     readonly usageLocation?: pulumi.Input<string>;
     /**

@@ -11,7 +11,9 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
  *
- * ## Example Usage (by Group Display Name)
+ * ## Example Usage
+ *
+ * ### By Group Display Name)
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";

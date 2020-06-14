@@ -88,7 +88,7 @@ class Application(pulumi.CustomResource):
     """
     owners: pulumi.Output[list]
     """
-    A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+    A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
     """
     public_client: pulumi.Output[bool]
     """
@@ -206,7 +206,6 @@ class Application(pulumi.CustomResource):
             type="webapp/api")
         ```
 
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[list] app_roles: A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
@@ -219,7 +218,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         :param pulumi.Input[dict] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        :param pulumi.Input[list] owners: A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        :param pulumi.Input[list] owners: A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`.
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
@@ -328,7 +327,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[list] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         :param pulumi.Input[str] object_id: The Application's Object ID.
         :param pulumi.Input[dict] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        :param pulumi.Input[list] owners: A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        :param pulumi.Input[list] owners: A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`.
         :param pulumi.Input[list] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         :param pulumi.Input[list] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
