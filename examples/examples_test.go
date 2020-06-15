@@ -4,24 +4,10 @@ package examples
 
 import (
 	"os"
-	"path"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v2/testing/integration"
 )
-
-func TestSimple(t *testing.T) {
-	test := getBaseOptions(t).
-		With(integration.ProgramTestOptions{
-			Dir:           path.Join(getCwd(t), "simple"),
-			RunUpdateTest: true,
-			Secrets: map[string]string{
-				"password": "SecretP@sswd99!",
-			},
-		})
-
-	integration.ProgramTest(t, &test)
-}
 
 func getEnviron(t *testing.T) string {
 	env := os.Getenv("ARM_ENVIRONMENT")
@@ -41,14 +27,8 @@ func getCwd(t *testing.T) string {
 	return cwd
 }
 
-func getBaseOptions(t *testing.T) integration.ProgramTestOptions {
-	environ := getEnviron(t)
+func getBaseOptions() integration.ProgramTestOptions {
 	return integration.ProgramTestOptions{
-		Config: map[string]string{
-			"azure:environment": environ,
-		},
-		Dependencies: []string{
-			"@pulumi/azuread",
-		},
+		ExpectRefreshChanges: true,
 	}
 }
