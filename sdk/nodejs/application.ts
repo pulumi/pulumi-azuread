@@ -13,8 +13,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- *
- *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -42,7 +40,7 @@ import * as utilities from "./utilities";
  *             type: "User",
  *             userConsentDescription: "Allow the application to access example on your behalf.",
  *             userConsentDisplayName: "Access example",
- *             value: "userImpersonation",
+ *             value: "user_impersonation",
  *         },
  *         {
  *             adminConsentDescription: "Administer the example application",
@@ -62,7 +60,7 @@ import * as utilities from "./utilities";
  *             },
  *         ],
  *         idTokens: [{
- *             additionalProperties: ["emitAsRoles"],
+ *             additionalProperties: ["emit_as_roles"],
  *             essential: true,
  *             name: "userclaim",
  *             source: "user",
@@ -177,7 +175,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly optionalClaims!: pulumi.Output<outputs.ApplicationOptionalClaims | undefined>;
     /**
-     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
      */
     public readonly owners!: pulumi.Output<string[]>;
     /**
@@ -310,7 +308,7 @@ export interface ApplicationState {
      */
     readonly optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
     /**
-     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
      */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -376,7 +374,7 @@ export interface ApplicationArgs {
      */
     readonly optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
     /**
-     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+     * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
      */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**

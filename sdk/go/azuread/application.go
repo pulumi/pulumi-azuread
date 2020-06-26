@@ -12,6 +12,119 @@ import (
 // Manages an Application within Azure Active Directory.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err = azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// 			AppRoles: azuread.ApplicationAppRoleArray{
+// 				&azuread.ApplicationAppRoleArgs{
+// 					AllowedMemberTypes: pulumi.StringArray{
+// 						pulumi.String("User"),
+// 						pulumi.String("Application"),
+// 					},
+// 					Description: pulumi.String("Admins can manage roles and perform all task actions"),
+// 					DisplayName: pulumi.String("Admin"),
+// 					IsEnabled:   pulumi.Bool(true),
+// 					Value:       pulumi.String("Admin"),
+// 				},
+// 			},
+// 			AvailableToOtherTenants: pulumi.Bool(false),
+// 			Homepage:                pulumi.String("https://homepage"),
+// 			IdentifierUris: pulumi.StringArray{
+// 				pulumi.String("https://uri"),
+// 			},
+// 			Oauth2AllowImplicitFlow: pulumi.Bool(true),
+// 			Oauth2Permissions: azuread.ApplicationOauth2PermissionArray{
+// 				&azuread.ApplicationOauth2PermissionArgs{
+// 					AdminConsentDescription: pulumi.String("Allow the application to access example on behalf of the signed-in user."),
+// 					AdminConsentDisplayName: pulumi.String("Access example"),
+// 					IsEnabled:               pulumi.Bool(true),
+// 					Type:                    pulumi.String("User"),
+// 					UserConsentDescription:  pulumi.String("Allow the application to access example on your behalf."),
+// 					UserConsentDisplayName:  pulumi.String("Access example"),
+// 					Value:                   pulumi.String("user_impersonation"),
+// 				},
+// 				&azuread.ApplicationOauth2PermissionArgs{
+// 					AdminConsentDescription: pulumi.String("Administer the example application"),
+// 					AdminConsentDisplayName: pulumi.String("Administer"),
+// 					IsEnabled:               pulumi.Bool(true),
+// 					Type:                    pulumi.String("Admin"),
+// 					Value:                   pulumi.String("administer"),
+// 				},
+// 			},
+// 			OptionalClaims: &azuread.ApplicationOptionalClaimsArgs{
+// 				AccessToken: pulumi.MapArray{
+// 					pulumi.Map{
+// 						"name": pulumi.String("myclaim"),
+// 					},
+// 					pulumi.Map{
+// 						"name": pulumi.String("otherclaim"),
+// 					},
+// 				},
+// 				IdToken: pulumi.MapArray{
+// 					pulumi.Map{
+// 						"additionalProperties": pulumi.StringArray{
+// 							pulumi.String("emit_as_roles"),
+// 						},
+// 						"essential": pulumi.Bool(true),
+// 						"name":      pulumi.String("userclaim"),
+// 						"source":    pulumi.String("user"),
+// 					},
+// 				},
+// 			},
+// 			Owners: pulumi.StringArray{
+// 				pulumi.String("00000004-0000-0000-c000-000000000000"),
+// 			},
+// 			ReplyUrls: pulumi.StringArray{
+// 				pulumi.String("https://replyurl"),
+// 			},
+// 			RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+// 				&azuread.ApplicationRequiredResourceAccessArgs{
+// 					ResourceAccess: pulumi.MapArray{
+// 						pulumi.Map{
+// 							"id":   pulumi.String("..."),
+// 							"type": pulumi.String("Role"),
+// 						},
+// 						pulumi.Map{
+// 							"id":   pulumi.String("..."),
+// 							"type": pulumi.String("Scope"),
+// 						},
+// 						pulumi.Map{
+// 							"id":   pulumi.String("..."),
+// 							"type": pulumi.String("Scope"),
+// 						},
+// 					},
+// 					ResourceAppId: pulumi.String("00000003-0000-0000-c000-000000000000"),
+// 				},
+// 				&azuread.ApplicationRequiredResourceAccessArgs{
+// 					ResourceAccess: pulumi.MapArray{
+// 						pulumi.Map{
+// 							"id":   pulumi.String("..."),
+// 							"type": pulumi.String("Scope"),
+// 						},
+// 					},
+// 					ResourceAppId: pulumi.String("00000002-0000-0000-c000-000000000000"),
+// 				},
+// 			},
+// 			Type: pulumi.String("webapp/api"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Application struct {
 	pulumi.CustomResourceState
 
