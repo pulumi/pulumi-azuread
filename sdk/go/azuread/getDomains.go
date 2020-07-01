@@ -10,6 +10,28 @@ import (
 // Use this data source to access information about an existing Domains within Azure Active Directory.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		aadDomains, err := azuread.GetDomains(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("domains", aadDomains.Domains)
+// 		return nil
+// 	})
+// }
+// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult
 	err := ctx.Invoke("azuread:index/getDomains:getDomains", args, &rv, opts...)

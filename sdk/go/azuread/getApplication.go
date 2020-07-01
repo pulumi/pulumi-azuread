@@ -10,6 +10,31 @@ import (
 // Use this data source to access information about an existing Application within Azure Active Directory.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "My First AzureAD Application"
+// 		example, err := azuread.LookupApplication(ctx, &azuread.LookupApplicationArgs{
+// 			Name: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("azureAdObjectId", example.Id)
+// 		return nil
+// 	})
+// }
+// ```
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azuread:index/getApplication:getApplication", args, &rv, opts...)

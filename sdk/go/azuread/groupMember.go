@@ -13,6 +13,41 @@ import (
 // Manages a single Group Membership within Azure Active Directory.
 //
 // > **NOTE:** Do not use this resource at the same time as `azuread_group.members`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "jdoe@hashicorp.com"
+// 		exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+// 			UserPrincipalName: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewGroupMember(ctx, "exampleGroupMember", &azuread.GroupMemberArgs{
+// 			GroupObjectId:  exampleGroup.ID(),
+// 			MemberObjectId: pulumi.String(exampleUser.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type GroupMember struct {
 	pulumi.CustomResourceState
 
