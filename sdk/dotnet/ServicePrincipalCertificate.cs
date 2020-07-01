@@ -16,8 +16,6 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using System.IO;
     /// using Pulumi;

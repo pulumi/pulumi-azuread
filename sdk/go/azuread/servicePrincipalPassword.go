@@ -13,6 +13,54 @@ import (
 // Manages a Password associated with a Service Principal within Azure Active Directory.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			AvailableToOtherTenants: pulumi.Bool(false),
+// 			Homepage:                pulumi.String("http://homepage"),
+// 			IdentifierUris: pulumi.StringArray{
+// 				pulumi.String("http://uri"),
+// 			},
+// 			Oauth2AllowImplicitFlow: pulumi.Bool(true),
+// 			ReplyUrls: pulumi.StringArray{
+// 				pulumi.String("http://replyurl"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewServicePrincipalPassword(ctx, "exampleServicePrincipalPassword", &azuread.ServicePrincipalPasswordArgs{
+// 			Description:        pulumi.String("My managed password"),
+// 			EndDate:            pulumi.String("2099-01-01T01:02:03Z"),
+// 			ServicePrincipalId: exampleServicePrincipal.ID(),
+// 			Value:              pulumi.String(fmt.Sprintf("%v%v%v", "VT=uSgbTanZhyz@", "%", "nL9Hpd+Tfay_MRV#")),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type ServicePrincipalPassword struct {
 	pulumi.CustomResourceState
 

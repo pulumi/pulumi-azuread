@@ -16,8 +16,6 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Example Usage
     /// 
-    /// 
-    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
@@ -73,28 +71,28 @@ namespace Pulumi.AzureAD
     ///             },
     ///             OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs
     ///             {
-    ///                 AccessToken = 
+    ///                 AccessTokens = 
     ///                 {
-    ///                     
+    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
     ///                     {
-    ///                         { "name", "myclaim" },
+    ///                         Name = "myclaim",
     ///                     },
-    ///                     
+    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
     ///                     {
-    ///                         { "name", "otherclaim" },
+    ///                         Name = "otherclaim",
     ///                     },
     ///                 },
-    ///                 IdToken = 
+    ///                 IdTokens = 
     ///                 {
-    ///                     
+    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs
     ///                     {
-    ///                         { "additionalProperties", 
+    ///                         AdditionalProperties = 
     ///                         {
     ///                             "emit_as_roles",
-    ///                         } },
-    ///                         { "essential", true },
-    ///                         { "name", "userclaim" },
-    ///                         { "source", "user" },
+    ///                         },
+    ///                         Essential = true,
+    ///                         Name = "userclaim",
+    ///                         Source = "user",
     ///                     },
     ///                 },
     ///             },
@@ -110,34 +108,34 @@ namespace Pulumi.AzureAD
     ///             {
     ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
     ///                 {
-    ///                     ResourceAccess = 
+    ///                     ResourceAccesses = 
     ///                     {
-    ///                         
+    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                         {
-    ///                             { "id", "..." },
-    ///                             { "type", "Role" },
+    ///                             Id = "...",
+    ///                             Type = "Role",
     ///                         },
-    ///                         
+    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                         {
-    ///                             { "id", "..." },
-    ///                             { "type", "Scope" },
+    ///                             Id = "...",
+    ///                             Type = "Scope",
     ///                         },
-    ///                         
+    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                         {
-    ///                             { "id", "..." },
-    ///                             { "type", "Scope" },
+    ///                             Id = "...",
+    ///                             Type = "Scope",
     ///                         },
     ///                     },
     ///                     ResourceAppId = "00000003-0000-0000-c000-000000000000",
     ///                 },
     ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
     ///                 {
-    ///                     ResourceAccess = 
+    ///                     ResourceAccesses = 
     ///                     {
-    ///                         
+    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                         {
-    ///                             { "id", "..." },
-    ///                             { "type", "Scope" },
+    ///                             Id = "...",
+    ///                             Type = "Scope",
     ///                         },
     ///                     },
     ///                     ResourceAppId = "00000002-0000-0000-c000-000000000000",
@@ -225,7 +223,7 @@ namespace Pulumi.AzureAD
         public Output<Outputs.ApplicationOptionalClaims?> OptionalClaims { get; private set; } = null!;
 
         /// <summary>
-        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         /// </summary>
         [Output("owners")]
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
@@ -382,7 +380,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _owners;
 
         /// <summary>
-        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         /// </summary>
         public InputList<string> Owners
         {
@@ -527,7 +525,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _owners;
 
         /// <summary>
-        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list. 
+        /// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         /// </summary>
         public InputList<string> Owners
         {

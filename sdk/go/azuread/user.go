@@ -13,6 +13,32 @@ import (
 // Manages a User within Azure Active Directory.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.NewUser(ctx, "example", &azuread.UserArgs{
+// 			DisplayName:       pulumi.String("J. Doe"),
+// 			MailNickname:      pulumi.String("jdoe"),
+// 			Password:          pulumi.String("SecretP@sswd99!"),
+// 			UserPrincipalName: pulumi.String("jdo@hashicorp.com"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type User struct {
 	pulumi.CustomResourceState
 
