@@ -53,9 +53,9 @@ class ApplicationCertificate(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication")
         example_application_certificate = azuread.ApplicationCertificate("exampleApplicationCertificate",
             application_object_id=example_application.id,
-            end_date="2021-05-01T01:02:03Z",
             type="AsymmetricX509Cert",
-            value=(lambda path: open(path).read())("cert.pem"))
+            value=(lambda path: open(path).read())("cert.pem"),
+            end_date="2021-05-01T01:02:03Z")
         ```
 
         :param str resource_name: The name of the resource.

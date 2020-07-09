@@ -29,7 +29,7 @@ namespace Pulumi.AzureAD
     ///             DisplayName = "J. Doe",
     ///             MailNickname = "jdoe",
     ///             Password = "SecretP@sswd99!",
-    ///             UserPrincipalName = "jdo@hashicorp.com",
+    ///             UserPrincipalName = "jdoe@hashicorp.com",
     ///         });
     ///     }
     /// 

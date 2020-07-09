@@ -50,6 +50,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetUsersArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+        /// </summary>
+        [Input("ignoreMissing")]
+        public bool? IgnoreMissing { get; set; }
+
         [Input("mailNicknames")]
         private List<string>? _mailNicknames;
 
@@ -99,6 +105,7 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? IgnoreMissing;
         /// <summary>
         /// The email aliases of the Azure AD Users.
         /// </summary>
@@ -111,21 +118,31 @@ namespace Pulumi.AzureAD
         /// The User Principal Names of the Azure AD Users.
         /// </summary>
         public readonly ImmutableArray<string> UserPrincipalNames;
+        /// <summary>
+        /// An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]
         private GetUsersResult(
             string id,
 
+            bool? ignoreMissing,
+
             ImmutableArray<string> mailNicknames,
 
             ImmutableArray<string> objectIds,
 
-            ImmutableArray<string> userPrincipalNames)
+            ImmutableArray<string> userPrincipalNames,
+
+            ImmutableArray<Outputs.GetUsersUserResult> users)
         {
             Id = id;
+            IgnoreMissing = ignoreMissing;
             MailNicknames = mailNicknames;
             ObjectIds = objectIds;
             UserPrincipalNames = userPrincipalNames;
+            Users = users;
         }
     }
 }

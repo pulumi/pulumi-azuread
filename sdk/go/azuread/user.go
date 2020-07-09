@@ -30,7 +30,7 @@ import (
 // 			DisplayName:       pulumi.String("J. Doe"),
 // 			MailNickname:      pulumi.String("jdoe"),
 // 			Password:          pulumi.String("SecretP@sswd99!"),
-// 			UserPrincipalName: pulumi.String("jdo@hashicorp.com"),
+// 			UserPrincipalName: pulumi.String("jdoe@hashicorp.com"),
 // 		})
 // 		if err != nil {
 // 			return err

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// Manages a Password associated with an Application within Azure Active Directory.
+    /// Manages a Password associated with an Application within Azure Active Directory. Also can be referred to as Client secrets.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     /// 
@@ -26,24 +26,13 @@ namespace Pulumi.AzureAD
     ///     {
     ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
     ///         {
-    ///             AvailableToOtherTenants = false,
-    ///             Homepage = "http://homepage",
-    ///             IdentifierUris = 
-    ///             {
-    ///                 "http://uri",
-    ///             },
-    ///             Oauth2AllowImplicitFlow = true,
-    ///             ReplyUrls = 
-    ///             {
-    ///                 "http://replyurl",
-    ///             },
     ///         });
     ///         var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new AzureAD.ApplicationPasswordArgs
     ///         {
     ///             ApplicationObjectId = exampleApplication.Id,
     ///             Description = "My managed password",
-    ///             EndDate = "2099-01-01T01:02:03Z",
     ///             Value = "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+    ///             EndDate = "2099-01-01T01:02:03Z",
     ///         });
     ///     }
     /// 

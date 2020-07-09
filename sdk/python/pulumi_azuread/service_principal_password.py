@@ -50,18 +50,13 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication",
-            available_to_other_tenants=False,
-            homepage="http://homepage",
-            identifier_uris=["http://uri"],
-            oauth2_allow_implicit_flow=True,
-            reply_urls=["http://replyurl"])
+        example_application = azuread.Application("exampleApplication")
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
         example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
-            description="My managed password",
-            end_date="2099-01-01T01:02:03Z",
             service_principal_id=example_service_principal.id,
-            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
+            description="My managed password",
+            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+            end_date="2099-01-01T01:02:03Z")
         ```
 
         :param str resource_name: The name of the resource.

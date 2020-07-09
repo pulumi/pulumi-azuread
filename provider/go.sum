@@ -539,6 +539,8 @@ github.com/terraform-providers/terraform-provider-archive v1.3.0 h1:8WzDXMwTdTd4
 github.com/terraform-providers/terraform-provider-archive v1.3.0/go.mod h1:7oAwNW55F65KauS++/XmAnrXhLfQRTYt549eYs4zU0w=
 github.com/terraform-providers/terraform-provider-azuread v0.10.0 h1:VWYFSLa6t8NMXFu7AgqA0Jo4Uy/7nK6AseAtqjF72Ck=
 github.com/terraform-providers/terraform-provider-azuread v0.10.0/go.mod h1:sSDzB/8CD639+yWo5lZf+NJvGSYQBSS6z+GoET9IrzE=
+github.com/terraform-providers/terraform-provider-azuread v0.11.0 h1:HhKIDfo8fXW/+KpZc489nzCQZcWGv21yHHhezgHkW8M=
+github.com/terraform-providers/terraform-provider-azuread v0.11.0/go.mod h1:sSDzB/8CD639+yWo5lZf+NJvGSYQBSS6z+GoET9IrzE=
 github.com/terraform-providers/terraform-provider-http v1.2.0 h1:pOP/SNlLjB18CydtTJJwzkZGkHYX3LWzIoQpYQuBdyw=
 github.com/terraform-providers/terraform-provider-http v1.2.0/go.mod h1:2Iot921OkLVSZr8FbIkvRN84ZV3w+oFKb7RlmPTQQAQ=
 github.com/texttheater/golang-levenshtein v0.0.0-20191208221605-eb6844b05fc6 h1:9VTskZOIRf2vKF3UL8TuWElry5pgUpV1tFSe/e/0m/E=

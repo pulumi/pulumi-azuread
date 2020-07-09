@@ -27,7 +27,11 @@ class Group(pulumi.CustomResource):
     """
     A set of owners who own this Group. Supported Object types are Users or Service Principals.
     """
-    def __init__(__self__, resource_name, opts=None, description=None, members=None, name=None, owners=None, __props__=None, __name__=None, __opts__=None):
+    prevent_duplicate_names: pulumi.Output[bool]
+    """
+    If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+    """
+    def __init__(__self__, resource_name, opts=None, description=None, members=None, name=None, owners=None, prevent_duplicate_names=None, __props__=None, __name__=None, __opts__=None):
         """
         Manages a Group within Azure Active Directory.
 
@@ -53,7 +57,7 @@ class Group(pulumi.CustomResource):
         example_user = azuread.User("exampleUser",
             display_name="J Doe",
             password="notSecure123",
-            user_principal_name="j.doe@terraform.onmicrosoft.com")
+            user_principal_name="jdoe@hashicorp.com")
         example_group = azuread.Group("exampleGroup", members=[example_user.object_id])
         ```
 
@@ -63,6 +67,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -85,6 +90,7 @@ class Group(pulumi.CustomResource):
             __props__['members'] = members
             __props__['name'] = name
             __props__['owners'] = owners
+            __props__['prevent_duplicate_names'] = prevent_duplicate_names
             __props__['object_id'] = None
         super(Group, __self__).__init__(
             'azuread:index/group:Group',
@@ -93,7 +99,7 @@ class Group(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, members=None, name=None, object_id=None, owners=None):
+    def get(resource_name, id, opts=None, description=None, members=None, name=None, object_id=None, owners=None, prevent_duplicate_names=None):
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -105,6 +111,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -115,6 +122,7 @@ class Group(pulumi.CustomResource):
         __props__["name"] = name
         __props__["object_id"] = object_id
         __props__["owners"] = owners
+        __props__["prevent_duplicate_names"] = prevent_duplicate_names
         return Group(resource_name, opts=opts, __props__=__props__)
 
     def translate_output_property(self, prop):

@@ -14,17 +14,15 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * import * as fs from "fs";
+ * import * from "fs";
  *
- * const exampleApplication = new azuread.Application("example", {});
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     applicationId: exampleApplication.applicationId,
- * });
- * const exampleServicePrincipalCertificate = new azuread.ServicePrincipalCertificate("example", {
- *     endDate: "2021-05-01T01:02:03Z",
+ * const exampleApplication = new azuread.Application("exampleApplication", {});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalCertificate = new azuread.ServicePrincipalCertificate("exampleServicePrincipalCertificate", {
  *     servicePrincipalId: exampleServicePrincipal.id,
  *     type: "AsymmetricX509Cert",
- *     value: fs.readFileSync("cert.pem", "utf-8"),
+ *     value: fs.readFileSync("cert.pem"),
+ *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
  */

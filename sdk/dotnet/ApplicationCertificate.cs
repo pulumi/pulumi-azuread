@@ -31,9 +31,9 @@ namespace Pulumi.AzureAD
     ///         var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("exampleApplicationCertificate", new AzureAD.ApplicationCertificateArgs
     ///         {
     ///             ApplicationObjectId = exampleApplication.Id,
-    ///             EndDate = "2021-05-01T01:02:03Z",
     ///             Type = "AsymmetricX509Cert",
     ///             Value = File.ReadAllText("cert.pem"),
+    ///             EndDate = "2021-05-01T01:02:03Z",
     ///         });
     ///     }
     /// 

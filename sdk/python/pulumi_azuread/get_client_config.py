@@ -27,6 +27,10 @@ class GetClientConfigResult:
         __self__.object_id = object_id
         if subscription_id and not isinstance(subscription_id, str):
             raise TypeError("Expected argument 'subscription_id' to be a str")
+        if subscription_id is not None:
+            warnings.warn("The \"subscription_id\" attribute will be removed in version 1.0 of the provider. If you are using this attribute, you should instead use the \"azurerm_client_config\" data source from the AzureRM provider", DeprecationWarning)
+            pulumi.log.warn("subscription_id is deprecated: The \"subscription_id\" attribute will be removed in version 1.0 of the provider. If you are using this attribute, you should instead use the \"azurerm_client_config\" data source from the AzureRM provider")
+
         __self__.subscription_id = subscription_id
         if tenant_id and not isinstance(tenant_id, str):
             raise TypeError("Expected argument 'tenant_id' to be a str")

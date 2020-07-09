@@ -2329,6 +2329,181 @@ func (o GetServicePrincipalOauth2PermissionArrayOutput) Index(i pulumi.IntInput)
 	}).(GetServicePrincipalOauth2PermissionOutput)
 }
 
+type GetUsersUser struct {
+	// `True` if the account is enabled; otherwise `False`.
+	AccountEnabled bool `pulumi:"accountEnabled"`
+	// The Display Name of the Azure AD User.
+	DisplayName string `pulumi:"displayName"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+	ImmutableId string `pulumi:"immutableId"`
+	// The primary email address of the Azure AD User.
+	Mail string `pulumi:"mail"`
+	// The email alias of the Azure AD User.
+	MailNickname string `pulumi:"mailNickname"`
+	ObjectId     string `pulumi:"objectId"`
+	// The on premise sam account name of the Azure AD User.
+	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
+	// The on premise user principal name of the Azure AD User.
+	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
+	// The usage location of the Azure AD User.
+	UsageLocation string `pulumi:"usageLocation"`
+	// The User Principal Name of the Azure AD User.
+	UserPrincipalName string `pulumi:"userPrincipalName"`
+}
+
+// GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
+// You can construct a concrete instance of `GetUsersUserInput` via:
+//
+//          GetUsersUserArgs{...}
+type GetUsersUserInput interface {
+	pulumi.Input
+
+	ToGetUsersUserOutput() GetUsersUserOutput
+	ToGetUsersUserOutputWithContext(context.Context) GetUsersUserOutput
+}
+
+type GetUsersUserArgs struct {
+	// `True` if the account is enabled; otherwise `False`.
+	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
+	// The Display Name of the Azure AD User.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+	ImmutableId pulumi.StringInput `pulumi:"immutableId"`
+	// The primary email address of the Azure AD User.
+	Mail pulumi.StringInput `pulumi:"mail"`
+	// The email alias of the Azure AD User.
+	MailNickname pulumi.StringInput `pulumi:"mailNickname"`
+	ObjectId     pulumi.StringInput `pulumi:"objectId"`
+	// The on premise sam account name of the Azure AD User.
+	OnpremisesSamAccountName pulumi.StringInput `pulumi:"onpremisesSamAccountName"`
+	// The on premise user principal name of the Azure AD User.
+	OnpremisesUserPrincipalName pulumi.StringInput `pulumi:"onpremisesUserPrincipalName"`
+	// The usage location of the Azure AD User.
+	UsageLocation pulumi.StringInput `pulumi:"usageLocation"`
+	// The User Principal Name of the Azure AD User.
+	UserPrincipalName pulumi.StringInput `pulumi:"userPrincipalName"`
+}
+
+func (GetUsersUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutput() GetUsersUserOutput {
+	return i.ToGetUsersUserOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserOutput)
+}
+
+// GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
+// You can construct a concrete instance of `GetUsersUserArrayInput` via:
+//
+//          GetUsersUserArray{ GetUsersUserArgs{...} }
+type GetUsersUserArrayInput interface {
+	pulumi.Input
+
+	ToGetUsersUserArrayOutput() GetUsersUserArrayOutput
+	ToGetUsersUserArrayOutputWithContext(context.Context) GetUsersUserArrayOutput
+}
+
+type GetUsersUserArray []GetUsersUserInput
+
+func (GetUsersUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return i.ToGetUsersUserArrayOutputWithContext(context.Background())
+}
+
+func (i GetUsersUserArray) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetUsersUserArrayOutput)
+}
+
+type GetUsersUserOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutput() GetUsersUserOutput {
+	return o
+}
+
+func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context) GetUsersUserOutput {
+	return o
+}
+
+// `True` if the account is enabled; otherwise `False`.
+func (o GetUsersUserOutput) AccountEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetUsersUser) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
+}
+
+// The Display Name of the Azure AD User.
+func (o GetUsersUserOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+func (o GetUsersUserOutput) ImmutableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.ImmutableId }).(pulumi.StringOutput)
+}
+
+// The primary email address of the Azure AD User.
+func (o GetUsersUserOutput) Mail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.Mail }).(pulumi.StringOutput)
+}
+
+// The email alias of the Azure AD User.
+func (o GetUsersUserOutput) MailNickname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.MailNickname }).(pulumi.StringOutput)
+}
+
+func (o GetUsersUserOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The on premise sam account name of the Azure AD User.
+func (o GetUsersUserOutput) OnpremisesSamAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
+}
+
+// The on premise user principal name of the Azure AD User.
+func (o GetUsersUserOutput) OnpremisesUserPrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesUserPrincipalName }).(pulumi.StringOutput)
+}
+
+// The usage location of the Azure AD User.
+func (o GetUsersUserOutput) UsageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UsageLocation }).(pulumi.StringOutput)
+}
+
+// The User Principal Name of the Azure AD User.
+func (o GetUsersUserOutput) UserPrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.UserPrincipalName }).(pulumi.StringOutput)
+}
+
+type GetUsersUserArrayOutput struct{ *pulumi.OutputState }
+
+func (GetUsersUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetUsersUser)(nil)).Elem()
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutput() GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) ToGetUsersUserArrayOutputWithContext(ctx context.Context) GetUsersUserArrayOutput {
+	return o
+}
+
+func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetUsersUser {
+		return vs[0].([]GetUsersUser)[vs[1].(int)]
+	}).(GetUsersUserOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationAppRoleOutput{})
 	pulumi.RegisterOutputType(ApplicationAppRoleArrayOutput{})
@@ -2365,4 +2540,6 @@ func init() {
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionArrayOutput{})
+	pulumi.RegisterOutputType(GetUsersUserOutput{})
+	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

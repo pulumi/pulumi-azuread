@@ -17,16 +17,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplication = new azuread.Application("example", {
- *     availableToOtherTenants: false,
+ * const exampleApplication = new azuread.Application("exampleApplication", {
  *     homepage: "http://homepage",
  *     identifierUris: ["http://uri"],
- *     oauth2AllowImplicitFlow: true,
  *     replyUrls: ["http://replyurl"],
+ *     availableToOtherTenants: false,
+ *     oauth2AllowImplicitFlow: true,
  * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     appRoleAssignmentRequired: false,
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
  *     applicationId: exampleApplication.applicationId,
+ *     appRoleAssignmentRequired: false,
  *     tags: [
  *         "example",
  *         "tags",

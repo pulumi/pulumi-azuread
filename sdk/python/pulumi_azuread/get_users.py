@@ -12,13 +12,16 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, id=None, mail_nicknames=None, object_ids=None, user_principal_names=None):
+    def __init__(__self__, id=None, ignore_missing=None, mail_nicknames=None, object_ids=None, user_principal_names=None, users=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         __self__.id = id
         """
         The provider-assigned unique ID for this managed resource.
         """
+        if ignore_missing and not isinstance(ignore_missing, bool):
+            raise TypeError("Expected argument 'ignore_missing' to be a bool")
+        __self__.ignore_missing = ignore_missing
         if mail_nicknames and not isinstance(mail_nicknames, list):
             raise TypeError("Expected argument 'mail_nicknames' to be a list")
         __self__.mail_nicknames = mail_nicknames
@@ -37,6 +40,12 @@ class GetUsersResult:
         """
         The User Principal Names of the Azure AD Users.
         """
+        if users and not isinstance(users, list):
+            raise TypeError("Expected argument 'users' to be a list")
+        __self__.users = users
+        """
+        An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+        """
 class AwaitableGetUsersResult(GetUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -44,11 +53,13 @@ class AwaitableGetUsersResult(GetUsersResult):
             yield self
         return GetUsersResult(
             id=self.id,
+            ignore_missing=self.ignore_missing,
             mail_nicknames=self.mail_nicknames,
             object_ids=self.object_ids,
-            user_principal_names=self.user_principal_names)
+            user_principal_names=self.user_principal_names,
+            users=self.users)
 
-def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts=None):
+def get_users(ignore_missing=None,mail_nicknames=None,object_ids=None,user_principal_names=None,opts=None):
     """
     Gets Object IDs or UPNs for multiple Azure Active Directory users.
 
@@ -67,6 +78,7 @@ def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts
     ```
 
 
+    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
     :param list mail_nicknames: The email aliases of the Azure AD Users.
     :param list object_ids: The Object IDs of the Azure AD Users.
     :param list user_principal_names: The User Principal Names of the Azure AD Users.
@@ -74,6 +86,7 @@ def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts
     __args__ = dict()
 
 
+    __args__['ignoreMissing'] = ignore_missing
     __args__['mailNicknames'] = mail_nicknames
     __args__['objectIds'] = object_ids
     __args__['userPrincipalNames'] = user_principal_names
@@ -85,6 +98,8 @@ def get_users(mail_nicknames=None,object_ids=None,user_principal_names=None,opts
 
     return AwaitableGetUsersResult(
         id=__ret__.get('id'),
+        ignore_missing=__ret__.get('ignoreMissing'),
         mail_nicknames=__ret__.get('mailNicknames'),
         object_ids=__ret__.get('objectIds'),
-        user_principal_names=__ret__.get('userPrincipalNames'))
+        user_principal_names=__ret__.get('userPrincipalNames'),
+        users=__ret__.get('users'))

@@ -14,14 +14,14 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * import * as fs from "fs";
+ * import * from "fs";
  *
- * const exampleApplication = new azuread.Application("example", {});
- * const exampleApplicationCertificate = new azuread.ApplicationCertificate("example", {
+ * const exampleApplication = new azuread.Application("exampleApplication", {});
+ * const exampleApplicationCertificate = new azuread.ApplicationCertificate("exampleApplicationCertificate", {
  *     applicationObjectId: exampleApplication.id,
- *     endDate: "2021-05-01T01:02:03Z",
  *     type: "AsymmetricX509Cert",
- *     value: fs.readFileSync("cert.pem", "utf-8"),
+ *     value: fs.readFileSync("cert.pem"),
+ *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
  */

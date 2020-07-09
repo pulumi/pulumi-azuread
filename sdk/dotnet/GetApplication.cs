@@ -50,6 +50,12 @@ namespace Pulumi.AzureAD
     public sealed class GetApplicationArgs : Pulumi.InvokeArgs
     {
         /// <summary>
+        /// Specifies the Application ID of the Azure Active Directory Application.
+        /// </summary>
+        [Input("applicationId")]
+        public string? ApplicationId { get; set; }
+
+        /// <summary>
         /// Specifies the name of the Application within Azure Active Directory.
         /// </summary>
         [Input("name")]

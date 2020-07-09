@@ -26,14 +26,12 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleUser = new azuread.User("example", {
+ * const exampleUser = new azuread.User("exampleUser", {
  *     displayName: "J Doe",
  *     password: "notSecure123",
- *     userPrincipalName: "j.doe@terraform.onmicrosoft.com",
+ *     userPrincipalName: "jdoe@hashicorp.com",
  * });
- * const exampleGroup = new azuread.Group("example", {
- *     members: [exampleUser.objectId],
- * });
+ * const exampleGroup = new azuread.Group("exampleGroup", {members: [exampleUser.objectId]});
  * ```
  */
 export class Group extends pulumi.CustomResource {
@@ -81,6 +79,10 @@ export class Group extends pulumi.CustomResource {
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.
      */
     public readonly owners!: pulumi.Output<string[]>;
+    /**
+     * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+     */
+    public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -99,12 +101,14 @@ export class Group extends pulumi.CustomResource {
             inputs["name"] = state ? state.name : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["owners"] = state ? state.owners : undefined;
+            inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["owners"] = args ? args.owners : undefined;
+            inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
             inputs["objectId"] = undefined /*out*/;
         }
         if (!opts) {
@@ -139,6 +143,10 @@ export interface GroupState {
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.
      */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+     */
+    readonly preventDuplicateNames?: pulumi.Input<boolean>;
 }
 
 /**
@@ -161,4 +169,8 @@ export interface GroupArgs {
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.
      */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+     */
+    readonly preventDuplicateNames?: pulumi.Input<boolean>;
 }

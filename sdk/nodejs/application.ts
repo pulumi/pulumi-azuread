@@ -179,6 +179,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly owners!: pulumi.Output<string[]>;
     /**
+     * If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+     */
+    public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
+    /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */
     public readonly publicClient!: pulumi.Output<boolean>;
@@ -220,6 +224,7 @@ export class Application extends pulumi.CustomResource {
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["optionalClaims"] = state ? state.optionalClaims : undefined;
             inputs["owners"] = state ? state.owners : undefined;
+            inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
             inputs["publicClient"] = state ? state.publicClient : undefined;
             inputs["replyUrls"] = state ? state.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
@@ -237,6 +242,7 @@ export class Application extends pulumi.CustomResource {
             inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
             inputs["optionalClaims"] = args ? args.optionalClaims : undefined;
             inputs["owners"] = args ? args.owners : undefined;
+            inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
             inputs["publicClient"] = args ? args.publicClient : undefined;
             inputs["replyUrls"] = args ? args.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
@@ -312,6 +318,10 @@ export interface ApplicationState {
      */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+     */
+    readonly preventDuplicateNames?: pulumi.Input<boolean>;
+    /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */
     readonly publicClient?: pulumi.Input<boolean>;
@@ -377,6 +387,10 @@ export interface ApplicationArgs {
      * A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
      */
     readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+     */
+    readonly preventDuplicateNames?: pulumi.Input<boolean>;
     /**
      * Is this Azure AD Application a public client? Defaults to `false`.
      */

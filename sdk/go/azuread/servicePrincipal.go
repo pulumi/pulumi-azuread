@@ -27,22 +27,22 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			AvailableToOtherTenants: pulumi.Bool(false),
-// 			Homepage:                pulumi.String("http://homepage"),
+// 			Homepage: pulumi.String("http://homepage"),
 // 			IdentifierUris: pulumi.StringArray{
 // 				pulumi.String("http://uri"),
 // 			},
-// 			Oauth2AllowImplicitFlow: pulumi.Bool(true),
 // 			ReplyUrls: pulumi.StringArray{
 // 				pulumi.String("http://replyurl"),
 // 			},
+// 			AvailableToOtherTenants: pulumi.Bool(false),
+// 			Oauth2AllowImplicitFlow: pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-// 			AppRoleAssignmentRequired: pulumi.Bool(false),
 // 			ApplicationId:             exampleApplication.ApplicationId,
+// 			AppRoleAssignmentRequired: pulumi.Bool(false),
 // 			Tags: pulumi.StringArray{
 // 				pulumi.String("example"),
 // 				pulumi.String("tags"),

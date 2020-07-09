@@ -26,22 +26,22 @@ namespace Pulumi.AzureAD
     ///     {
     ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
     ///         {
-    ///             AvailableToOtherTenants = false,
     ///             Homepage = "http://homepage",
     ///             IdentifierUris = 
     ///             {
     ///                 "http://uri",
     ///             },
-    ///             Oauth2AllowImplicitFlow = true,
     ///             ReplyUrls = 
     ///             {
     ///                 "http://replyurl",
     ///             },
+    ///             AvailableToOtherTenants = false,
+    ///             Oauth2AllowImplicitFlow = true,
     ///         });
     ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
     ///         {
-    ///             AppRoleAssignmentRequired = false,
     ///             ApplicationId = exampleApplication.ApplicationId,
+    ///             AppRoleAssignmentRequired = false,
     ///             Tags = 
     ///             {
     ///                 "example",

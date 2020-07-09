@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Manages a Password associated with an Application within Azure Active Directory.
+// Manages a Password associated with an Application within Azure Active Directory. Also can be referred to as Client secrets.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 //
@@ -28,25 +28,15 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			AvailableToOtherTenants: pulumi.Bool(false),
-// 			Homepage:                pulumi.String("http://homepage"),
-// 			IdentifierUris: pulumi.StringArray{
-// 				pulumi.String("http://uri"),
-// 			},
-// 			Oauth2AllowImplicitFlow: pulumi.Bool(true),
-// 			ReplyUrls: pulumi.StringArray{
-// 				pulumi.String("http://replyurl"),
-// 			},
-// 		})
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", nil)
 // 		if err != nil {
 // 			return err
 // 		}
 // 		_, err = azuread.NewApplicationPassword(ctx, "exampleApplicationPassword", &azuread.ApplicationPasswordArgs{
 // 			ApplicationObjectId: exampleApplication.ID(),
 // 			Description:         pulumi.String("My managed password"),
-// 			EndDate:             pulumi.String("2099-01-01T01:02:03Z"),
 // 			Value:               pulumi.String(fmt.Sprintf("%v%v%v", "VT=uSgbTanZhyz@", "%", "nL9Hpd+Tfay_MRV#")),
+// 			EndDate:             pulumi.String("2099-01-01T01:02:03Z"),
 // 		})
 // 		if err != nil {
 // 			return err

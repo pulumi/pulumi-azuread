@@ -28,17 +28,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			AvailableToOtherTenants: pulumi.Bool(false),
-// 			Homepage:                pulumi.String("http://homepage"),
-// 			IdentifierUris: pulumi.StringArray{
-// 				pulumi.String("http://uri"),
-// 			},
-// 			Oauth2AllowImplicitFlow: pulumi.Bool(true),
-// 			ReplyUrls: pulumi.StringArray{
-// 				pulumi.String("http://replyurl"),
-// 			},
-// 		})
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", nil)
 // 		if err != nil {
 // 			return err
 // 		}
@@ -49,10 +39,10 @@ import (
 // 			return err
 // 		}
 // 		_, err = azuread.NewServicePrincipalPassword(ctx, "exampleServicePrincipalPassword", &azuread.ServicePrincipalPasswordArgs{
-// 			Description:        pulumi.String("My managed password"),
-// 			EndDate:            pulumi.String("2099-01-01T01:02:03Z"),
 // 			ServicePrincipalId: exampleServicePrincipal.ID(),
+// 			Description:        pulumi.String("My managed password"),
 // 			Value:              pulumi.String(fmt.Sprintf("%v%v%v", "VT=uSgbTanZhyz@", "%", "nL9Hpd+Tfay_MRV#")),
+// 			EndDate:            pulumi.String("2099-01-01T01:02:03Z"),
 // 		})
 // 		if err != nil {
 // 			return err
