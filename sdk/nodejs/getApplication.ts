@@ -17,11 +17,10 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getApplication({
+ * const example = azuread.getApplication({
  *     name: "My First AzureAD Application",
- * }, { async: true }));
- *
- * export const azureAdObjectId = example.id;
+ * });
+ * export const azureAdObjectId = example.then(example => example.id);
  * ```
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
@@ -34,6 +33,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
+        "applicationId": args.applicationId,
         "name": args.name,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
@@ -45,6 +45,10 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getApplication.
  */
 export interface GetApplicationArgs {
+    /**
+     * Specifies the Application ID of the Azure Active Directory Application.
+     */
+    readonly applicationId?: string;
     /**
      * Specifies the name of the Application within Azure Active Directory.
      */

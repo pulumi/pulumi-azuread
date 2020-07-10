@@ -46,6 +46,8 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationArgs struct {
+	// Specifies the Application ID of the Azure Active Directory Application.
+	ApplicationId *string `pulumi:"applicationId"`
 	// Specifies the name of the Application within Azure Active Directory.
 	Name *string `pulumi:"name"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.

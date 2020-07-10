@@ -35,6 +35,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
+        "ignoreMissing": args.ignoreMissing,
         "mailNicknames": args.mailNicknames,
         "objectIds": args.objectIds,
         "userPrincipalNames": args.userPrincipalNames,
@@ -45,6 +46,10 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+     */
+    readonly ignoreMissing?: boolean;
     /**
      * The email aliases of the Azure AD Users.
      */
@@ -67,6 +72,7 @@ export interface GetUsersResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ignoreMissing?: boolean;
     /**
      * The email aliases of the Azure AD Users.
      */
@@ -79,4 +85,8 @@ export interface GetUsersResult {
      * The User Principal Names of the Azure AD Users.
      */
     readonly userPrincipalNames: string[];
+    /**
+     * An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+     */
+    readonly users: outputs.GetUsersUser[];
 }

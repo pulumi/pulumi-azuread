@@ -15,21 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const exampleApplication = new azuread.Application("example", {
- *     availableToOtherTenants: false,
- *     homepage: "http://homepage",
- *     identifierUris: ["http://uri"],
- *     oauth2AllowImplicitFlow: true,
- *     replyUrls: ["http://replyurl"],
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("example", {
- *     applicationId: exampleApplication.applicationId,
- * });
- * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("example", {
- *     description: "My managed password",
- *     endDate: "2099-01-01T01:02:03Z",
+ * const exampleApplication = new azuread.Application("exampleApplication", {});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {
  *     servicePrincipalId: exampleServicePrincipal.id,
- *     value: "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+ *     description: "My managed password",
+ *     value: `VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#`,
+ *     endDate: "2099-01-01T01:02:03Z",
  * });
  * ```
  */

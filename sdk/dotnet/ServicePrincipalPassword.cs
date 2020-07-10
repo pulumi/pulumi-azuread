@@ -26,17 +26,6 @@ namespace Pulumi.AzureAD
     ///     {
     ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
     ///         {
-    ///             AvailableToOtherTenants = false,
-    ///             Homepage = "http://homepage",
-    ///             IdentifierUris = 
-    ///             {
-    ///                 "http://uri",
-    ///             },
-    ///             Oauth2AllowImplicitFlow = true,
-    ///             ReplyUrls = 
-    ///             {
-    ///                 "http://replyurl",
-    ///             },
     ///         });
     ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
     ///         {
@@ -44,10 +33,10 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new AzureAD.ServicePrincipalPasswordArgs
     ///         {
-    ///             Description = "My managed password",
-    ///             EndDate = "2099-01-01T01:02:03Z",
     ///             ServicePrincipalId = exampleServicePrincipal.Id,
+    ///             Description = "My managed password",
     ///             Value = "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+    ///             EndDate = "2099-01-01T01:02:03Z",
     ///         });
     ///     }
     /// 

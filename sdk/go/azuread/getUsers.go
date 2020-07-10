@@ -47,6 +47,8 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
+	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+	IgnoreMissing *bool `pulumi:"ignoreMissing"`
 	// The email aliases of the Azure AD Users.
 	MailNicknames []string `pulumi:"mailNicknames"`
 	// The Object IDs of the Azure AD Users.
@@ -58,11 +60,14 @@ type GetUsersArgs struct {
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id            string `pulumi:"id"`
+	IgnoreMissing *bool  `pulumi:"ignoreMissing"`
 	// The email aliases of the Azure AD Users.
 	MailNicknames []string `pulumi:"mailNicknames"`
 	// The Object IDs of the Azure AD Users.
 	ObjectIds []string `pulumi:"objectIds"`
 	// The User Principal Names of the Azure AD Users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
+	// An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+	Users []GetUsersUser `pulumi:"users"`
 }

@@ -229,6 +229,12 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
 
         /// <summary>
+        /// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+        /// </summary>
+        [Output("preventDuplicateNames")]
+        public Output<bool?> PreventDuplicateNames { get; private set; } = null!;
+
+        /// <summary>
         /// Is this Azure AD Application a public client? Defaults to `false`.
         /// </summary>
         [Output("publicClient")]
@@ -389,6 +395,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+        /// </summary>
+        [Input("preventDuplicateNames")]
+        public Input<bool>? PreventDuplicateNames { get; set; }
+
+        /// <summary>
         /// Is this Azure AD Application a public client? Defaults to `false`.
         /// </summary>
         [Input("publicClient")]
@@ -532,6 +544,12 @@ namespace Pulumi.AzureAD
             get => _owners ?? (_owners = new InputList<string>());
             set => _owners = value;
         }
+
+        /// <summary>
+        /// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+        /// </summary>
+        [Input("preventDuplicateNames")]
+        public Input<bool>? PreventDuplicateNames { get; set; }
 
         /// <summary>
         /// Is this Azure AD Application a public client? Defaults to `false`.

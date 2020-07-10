@@ -41,7 +41,7 @@ class ApplicationPassword(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, application_id=None, application_object_id=None, description=None, end_date=None, end_date_relative=None, key_id=None, start_date=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
-        Manages a Password associated with an Application within Azure Active Directory.
+        Manages a Password associated with an Application within Azure Active Directory. Also can be referred to as Client secrets.
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
@@ -51,17 +51,12 @@ class ApplicationPassword(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example_application = azuread.Application("exampleApplication",
-            available_to_other_tenants=False,
-            homepage="http://homepage",
-            identifier_uris=["http://uri"],
-            oauth2_allow_implicit_flow=True,
-            reply_urls=["http://replyurl"])
+        example_application = azuread.Application("exampleApplication")
         example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
             application_object_id=example_application.id,
             description="My managed password",
-            end_date="2099-01-01T01:02:03Z",
-            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#")
+            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+            end_date="2099-01-01T01:02:03Z")
         ```
 
         :param str resource_name: The name of the resource.

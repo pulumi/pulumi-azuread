@@ -74,7 +74,7 @@ class User(pulumi.CustomResource):
             display_name="J. Doe",
             mail_nickname="jdoe",
             password="SecretP@sswd99!",
-            user_principal_name="jdo@hashicorp.com")
+            user_principal_name="jdoe@hashicorp.com")
         ```
 
         :param str resource_name: The name of the resource.

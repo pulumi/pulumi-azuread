@@ -56,14 +56,14 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example_application = azuread.Application("exampleApplication",
-            available_to_other_tenants=False,
             homepage="http://homepage",
             identifier_uris=["http://uri"],
-            oauth2_allow_implicit_flow=True,
-            reply_urls=["http://replyurl"])
+            reply_urls=["http://replyurl"],
+            available_to_other_tenants=False,
+            oauth2_allow_implicit_flow=True)
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
-            app_role_assignment_required=False,
             application_id=example_application.application_id,
+            app_role_assignment_required=False,
             tags=[
                 "example",
                 "tags",

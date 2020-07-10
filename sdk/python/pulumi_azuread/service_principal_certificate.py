@@ -53,10 +53,10 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication")
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
         example_service_principal_certificate = azuread.ServicePrincipalCertificate("exampleServicePrincipalCertificate",
-            end_date="2021-05-01T01:02:03Z",
             service_principal_id=example_service_principal.id,
             type="AsymmetricX509Cert",
-            value=(lambda path: open(path).read())("cert.pem"))
+            value=(lambda path: open(path).read())("cert.pem"),
+            end_date="2021-05-01T01:02:03Z")
         ```
 
         :param str resource_name: The name of the resource.

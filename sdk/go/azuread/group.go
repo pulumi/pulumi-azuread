@@ -51,7 +51,7 @@ import (
 // 		exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
 // 			DisplayName:       pulumi.String("J Doe"),
 // 			Password:          pulumi.String("notSecure123"),
-// 			UserPrincipalName: pulumi.String("j.doe@terraform.onmicrosoft.com"),
+// 			UserPrincipalName: pulumi.String("jdoe@hashicorp.com"),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -80,6 +80,8 @@ type Group struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
+	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -119,6 +121,8 @@ type groupState struct {
 	ObjectId *string `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
+	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 }
 
 type GroupState struct {
@@ -131,6 +135,8 @@ type GroupState struct {
 	ObjectId pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput
+	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+	PreventDuplicateNames pulumi.BoolPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -146,6 +152,8 @@ type groupArgs struct {
 	Name *string `pulumi:"name"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
+	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -158,6 +166,8 @@ type GroupArgs struct {
 	Name pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput
+	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+	PreventDuplicateNames pulumi.BoolPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {

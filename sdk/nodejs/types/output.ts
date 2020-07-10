@@ -344,6 +344,46 @@ export interface GetServicePrincipalOauth2Permission {
     value: string;
 }
 
+export interface GetUsersUser {
+    /**
+     * `True` if the account is enabled; otherwise `False`.
+     */
+    accountEnabled: boolean;
+    /**
+     * The Display Name of the Azure AD User.
+     */
+    displayName: string;
+    /**
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+     */
+    immutableId: string;
+    /**
+     * The primary email address of the Azure AD User.
+     */
+    mail: string;
+    /**
+     * The email alias of the Azure AD User.
+     */
+    mailNickname: string;
+    objectId: string;
+    /**
+     * The on premise sam account name of the Azure AD User.
+     */
+    onpremisesSamAccountName: string;
+    /**
+     * The on premise user principal name of the Azure AD User.
+     */
+    onpremisesUserPrincipalName: string;
+    /**
+     * The usage location of the Azure AD User.
+     */
+    usageLocation: string;
+    /**
+     * The User Principal Name of the Azure AD User.
+     */
+    userPrincipalName: string;
+}
+
 export interface ServicePrincipalOauth2Permission {
     /**
      * The description of the admin consent.

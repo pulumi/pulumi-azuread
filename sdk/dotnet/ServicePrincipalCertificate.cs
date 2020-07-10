@@ -34,10 +34,10 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleServicePrincipalCertificate = new AzureAD.ServicePrincipalCertificate("exampleServicePrincipalCertificate", new AzureAD.ServicePrincipalCertificateArgs
     ///         {
-    ///             EndDate = "2021-05-01T01:02:03Z",
     ///             ServicePrincipalId = exampleServicePrincipal.Id,
     ///             Type = "AsymmetricX509Cert",
     ///             Value = File.ReadAllText("cert.pem"),
+    ///             EndDate = "2021-05-01T01:02:03Z",
     ///         });
     ///     }
     /// 

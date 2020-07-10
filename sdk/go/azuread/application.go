@@ -154,6 +154,8 @@ type Application struct {
 	OptionalClaims ApplicationOptionalClaimsPtrOutput `pulumi:"optionalClaims"`
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
+	// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolOutput `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -218,6 +220,8 @@ type applicationState struct {
 	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners []string `pulumi:"owners"`
+	// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -255,6 +259,8 @@ type ApplicationState struct {
 	OptionalClaims ApplicationOptionalClaimsPtrInput
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayInput
+	// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+	PreventDuplicateNames pulumi.BoolPtrInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -292,6 +298,8 @@ type applicationArgs struct {
 	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners []string `pulumi:"owners"`
+	// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient *bool `pulumi:"publicClient"`
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
@@ -326,6 +334,8 @@ type ApplicationArgs struct {
 	OptionalClaims ApplicationOptionalClaimsPtrInput
 	// A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
 	Owners pulumi.StringArrayInput
+	// If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+	PreventDuplicateNames pulumi.BoolPtrInput
 	// Is this Azure AD Application a public client? Defaults to `false`.
 	PublicClient pulumi.BoolPtrInput
 	// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.

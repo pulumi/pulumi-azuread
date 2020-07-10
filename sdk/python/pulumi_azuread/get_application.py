@@ -136,7 +136,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             required_resource_accesses=self.required_resource_accesses,
             type=self.type)
 
-def get_application(name=None,oauth2_permissions=None,object_id=None,optional_claims=None,opts=None):
+def get_application(application_id=None,name=None,oauth2_permissions=None,object_id=None,optional_claims=None,opts=None):
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
 
@@ -153,6 +153,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,optional_cl
     ```
 
 
+    :param str application_id: Specifies the Application ID of the Azure Active Directory Application.
     :param str name: Specifies the name of the Application within Azure Active Directory.
     :param list oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
@@ -186,6 +187,7 @@ def get_application(name=None,oauth2_permissions=None,object_id=None,optional_cl
     __args__ = dict()
 
 
+    __args__['applicationId'] = application_id
     __args__['name'] = name
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id

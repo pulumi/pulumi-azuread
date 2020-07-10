@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *     displayName: "J. Doe",
  *     mailNickname: "jdoe",
  *     password: "SecretP@sswd99!",
- *     userPrincipalName: "jdo@hashicorp.com",
+ *     userPrincipalName: "jdoe@hashicorp.com",
  * });
  * ```
  */
