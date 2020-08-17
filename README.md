@@ -1,8 +1,9 @@
-[![Build Status](https://travis-ci.com/pulumi/pulumi-azuread.svg?token=eHg7Zp5zdDDJfTjY8ejq&branch=master)](https://travis-ci.com/pulumi/pulumi-azuread)
+[![Actions Status](https://github.com/pulumi/pulumi-azuread/workflows/master/badge.svg)](https://github.com/pulumi/pulumi-azuread/actions)
 [![Slack](http://www.pulumi.com/images/docs/badges/slack.svg)](https://slack.pulumi.com)
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fazuread.svg)](https://npmjs.com/package/@pulumi/azuread)
+[![NuGet version](https://badge.fury.io/nu/pulumi.azuread.svg)](https://badge.fury.io/nu/pulumi.azured)
 [![Python version](https://badge.fury.io/py/pulumi-azuread.svg)](https://pypi.org/project/pulumi-azuread)
-[![GoDoc](https://godoc.org/github.com/pulumi/pulumi-azuread?status.svg)](https://godoc.org/github.com/pulumi/pulumi-azuread)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-azuread/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-azuread/sdk/v2/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-azuread/blob/master/LICENSE)
 
 # Microsoft Azure Active Directory Resource Provider
