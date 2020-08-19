@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetUsersResult',
+    'AwaitableGetUsersResult',
+    'get_users',
+]
+
+@pulumi.output_type
 class GetUsersResult:
     """
     A collection of values returned by getUsers.
@@ -15,37 +23,69 @@ class GetUsersResult:
     def __init__(__self__, id=None, ignore_missing=None, mail_nicknames=None, object_ids=None, user_principal_names=None, users=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        pulumi.set(__self__, "id", id)
+        if ignore_missing and not isinstance(ignore_missing, bool):
+            raise TypeError("Expected argument 'ignore_missing' to be a bool")
+        pulumi.set(__self__, "ignore_missing", ignore_missing)
+        if mail_nicknames and not isinstance(mail_nicknames, list):
+            raise TypeError("Expected argument 'mail_nicknames' to be a list")
+        pulumi.set(__self__, "mail_nicknames", mail_nicknames)
+        if object_ids and not isinstance(object_ids, list):
+            raise TypeError("Expected argument 'object_ids' to be a list")
+        pulumi.set(__self__, "object_ids", object_ids)
+        if user_principal_names and not isinstance(user_principal_names, list):
+            raise TypeError("Expected argument 'user_principal_names' to be a list")
+        pulumi.set(__self__, "user_principal_names", user_principal_names)
+        if users and not isinstance(users, list):
+            raise TypeError("Expected argument 'users' to be a list")
+        pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if ignore_missing and not isinstance(ignore_missing, bool):
-            raise TypeError("Expected argument 'ignore_missing' to be a bool")
-        __self__.ignore_missing = ignore_missing
-        if mail_nicknames and not isinstance(mail_nicknames, list):
-            raise TypeError("Expected argument 'mail_nicknames' to be a list")
-        __self__.mail_nicknames = mail_nicknames
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="ignoreMissing")
+    def ignore_missing(self) -> Optional[bool]:
+        return pulumi.get(self, "ignore_missing")
+
+    @property
+    @pulumi.getter(name="mailNicknames")
+    def mail_nicknames(self) -> List[str]:
         """
         The email aliases of the Azure AD Users.
         """
-        if object_ids and not isinstance(object_ids, list):
-            raise TypeError("Expected argument 'object_ids' to be a list")
-        __self__.object_ids = object_ids
+        return pulumi.get(self, "mail_nicknames")
+
+    @property
+    @pulumi.getter(name="objectIds")
+    def object_ids(self) -> List[str]:
         """
         The Object IDs of the Azure AD Users.
         """
-        if user_principal_names and not isinstance(user_principal_names, list):
-            raise TypeError("Expected argument 'user_principal_names' to be a list")
-        __self__.user_principal_names = user_principal_names
+        return pulumi.get(self, "object_ids")
+
+    @property
+    @pulumi.getter(name="userPrincipalNames")
+    def user_principal_names(self) -> List[str]:
         """
         The User Principal Names of the Azure AD Users.
         """
-        if users and not isinstance(users, list):
-            raise TypeError("Expected argument 'users' to be a list")
-        __self__.users = users
+        return pulumi.get(self, "user_principal_names")
+
+    @property
+    @pulumi.getter
+    def users(self) -> List['outputs.GetUsersUserResult']:
         """
         An Array of Azure AD Users. Each `user` object consists of the fields documented below.
         """
+        return pulumi.get(self, "users")
+
+
 class AwaitableGetUsersResult(GetUsersResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -59,7 +99,12 @@ class AwaitableGetUsersResult(GetUsersResult):
             user_principal_names=self.user_principal_names,
             users=self.users)
 
-def get_users(ignore_missing=None,mail_nicknames=None,object_ids=None,user_principal_names=None,opts=None):
+
+def get_users(ignore_missing: Optional[bool] = None,
+              mail_nicknames: Optional[List[str]] = None,
+              object_ids: Optional[List[str]] = None,
+              user_principal_names: Optional[List[str]] = None,
+              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     Gets Object IDs or UPNs for multiple Azure Active Directory users.
 
@@ -79,13 +124,11 @@ def get_users(ignore_missing=None,mail_nicknames=None,object_ids=None,user_princ
 
 
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
-    :param list mail_nicknames: The email aliases of the Azure AD Users.
-    :param list object_ids: The Object IDs of the Azure AD Users.
-    :param list user_principal_names: The User Principal Names of the Azure AD Users.
+    :param List[str] mail_nicknames: The email aliases of the Azure AD Users.
+    :param List[str] object_ids: The Object IDs of the Azure AD Users.
+    :param List[str] user_principal_names: The User Principal Names of the Azure AD Users.
     """
     __args__ = dict()
-
-
     __args__['ignoreMissing'] = ignore_missing
     __args__['mailNicknames'] = mail_nicknames
     __args__['objectIds'] = object_ids
@@ -93,13 +136,13 @@ def get_users(ignore_missing=None,mail_nicknames=None,object_ids=None,user_princ
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        id=__ret__.get('id'),
-        ignore_missing=__ret__.get('ignoreMissing'),
-        mail_nicknames=__ret__.get('mailNicknames'),
-        object_ids=__ret__.get('objectIds'),
-        user_principal_names=__ret__.get('userPrincipalNames'),
-        users=__ret__.get('users'))
+        id=__ret__.id,
+        ignore_missing=__ret__.ignore_missing,
+        mail_nicknames=__ret__.mail_nicknames,
+        object_ids=__ret__.object_ids,
+        user_principal_names=__ret__.user_principal_names,
+        users=__ret__.users)

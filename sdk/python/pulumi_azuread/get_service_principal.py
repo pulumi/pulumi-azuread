@@ -5,9 +5,18 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
+from ._inputs import *
 
+__all__ = [
+    'GetServicePrincipalResult',
+    'AwaitableGetServicePrincipalResult',
+    'get_service_principal',
+]
+
+@pulumi.output_type
 class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
@@ -15,28 +24,60 @@ class GetServicePrincipalResult:
     def __init__(__self__, app_roles=None, application_id=None, display_name=None, id=None, oauth2_permissions=None, object_id=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
-        __self__.app_roles = app_roles
+        pulumi.set(__self__, "app_roles", app_roles)
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
-        __self__.application_id = application_id
+        pulumi.set(__self__, "application_id", application_id)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
-        __self__.display_name = display_name
+        pulumi.set(__self__, "display_name", display_name)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if oauth2_permissions and not isinstance(oauth2_permissions, list):
+            raise TypeError("Expected argument 'oauth2_permissions' to be a list")
+        pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
+        if object_id and not isinstance(object_id, str):
+            raise TypeError("Expected argument 'object_id' to be a str")
+        pulumi.set(__self__, "object_id", object_id)
+
+    @property
+    @pulumi.getter(name="appRoles")
+    def app_roles(self) -> List['outputs.GetServicePrincipalAppRoleResult']:
+        return pulumi.get(self, "app_roles")
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
         """
         Display name for the permission that appears in the admin consent and app assignment experiences.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if oauth2_permissions and not isinstance(oauth2_permissions, list):
-            raise TypeError("Expected argument 'oauth2_permissions' to be a list")
-        __self__.oauth2_permissions = oauth2_permissions
-        if object_id and not isinstance(object_id, str):
-            raise TypeError("Expected argument 'object_id' to be a str")
-        __self__.object_id = object_id
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="oauth2Permissions")
+    def oauth2_permissions(self) -> List['outputs.GetServicePrincipalOauth2PermissionResult']:
+        return pulumi.get(self, "oauth2_permissions")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        return pulumi.get(self, "object_id")
+
+
 class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -50,7 +91,12 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             oauth2_permissions=self.oauth2_permissions,
             object_id=self.object_id)
 
-def get_service_principal(application_id=None,display_name=None,oauth2_permissions=None,object_id=None,opts=None):
+
+def get_service_principal(application_id: Optional[str] = None,
+                          display_name: Optional[str] = None,
+                          oauth2_permissions: Optional[List[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']]] = None,
+                          object_id: Optional[str] = None,
+                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
     Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
 
@@ -85,23 +131,10 @@ def get_service_principal(application_id=None,display_name=None,oauth2_permissio
 
     :param str application_id: The ID of the Azure AD Application.
     :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
-    :param list oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+    :param List[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: The ID of the Azure AD Service Principal.
-
-    The **oauth2_permissions** object supports the following:
-
-      * `adminConsentDescription` (`str`) - The description of the admin consent
-      * `adminConsentDisplayName` (`str`) - The display name of the admin consent
-      * `id` (`str`) - The unique identifier of the `app_role`.
-      * `isEnabled` (`bool`) - Determines if the app role is enabled.
-      * `type` (`str`) - The type of the permission
-      * `userConsentDescription` (`str`) - The description of the user consent
-      * `userConsentDisplayName` (`str`) - The display name of the user consent
-      * `value` (`str`) - Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
     """
     __args__ = dict()
-
-
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
     __args__['oauth2Permissions'] = oauth2_permissions
@@ -109,13 +142,13 @@ def get_service_principal(application_id=None,display_name=None,oauth2_permissio
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult).value
 
     return AwaitableGetServicePrincipalResult(
-        app_roles=__ret__.get('appRoles'),
-        application_id=__ret__.get('applicationId'),
-        display_name=__ret__.get('displayName'),
-        id=__ret__.get('id'),
-        oauth2_permissions=__ret__.get('oauth2Permissions'),
-        object_id=__ret__.get('objectId'))
+        app_roles=__ret__.app_roles,
+        application_id=__ret__.application_id,
+        display_name=__ret__.display_name,
+        id=__ret__.id,
+        oauth2_permissions=__ret__.oauth2_permissions,
+        object_id=__ret__.object_id)

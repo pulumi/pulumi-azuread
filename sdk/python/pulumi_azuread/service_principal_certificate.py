@@ -5,40 +5,26 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['ServicePrincipalCertificate']
 
 
 class ServicePrincipalCertificate(pulumi.CustomResource):
-    end_date: pulumi.Output[str]
-    """
-    The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-    """
-    end_date_relative: pulumi.Output[str]
-    """
-    A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
-    """
-    key_id: pulumi.Output[str]
-    """
-    A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-    """
-    service_principal_id: pulumi.Output[str]
-    """
-    The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.
-    """
-    start_date: pulumi.Output[str]
-    """
-    The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-    """
-    type: pulumi.Output[str]
-    """
-    The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
-    """
-    value: pulumi.Output[str]
-    """
-    The Certificate for this Service Principal.
-    """
-    def __init__(__self__, resource_name, opts=None, end_date=None, end_date_relative=None, key_id=None, service_principal_id=None, start_date=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 end_date_relative: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 service_principal_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Certificate associated with a Service Principal within Azure Active Directory.
 
@@ -80,7 +66,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -104,13 +90,22 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, end_date=None, end_date_relative=None, key_id=None, service_principal_id=None, start_date=None, type=None, value=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            end_date: Optional[pulumi.Input[str]] = None,
+            end_date_relative: Optional[pulumi.Input[str]] = None,
+            key_id: Optional[pulumi.Input[str]] = None,
+            service_principal_id: Optional[pulumi.Input[str]] = None,
+            start_date: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'ServicePrincipalCertificate':
         """
         Get an existing ServicePrincipalCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
@@ -133,8 +128,65 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         __props__["value"] = value
         return ServicePrincipalCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> str:
+        """
+        The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date")
+
+    @property
+    @pulumi.getter(name="endDateRelative")
+    def end_date_relative(self) -> Optional[str]:
+        """
+        A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date_relative")
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> str:
+        """
+        A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="servicePrincipalId")
+    def service_principal_id(self) -> str:
+        """
+        The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "service_principal_id")
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> str:
+        """
+        The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "start_date")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The Certificate for this Service Principal.
+        """
+        return pulumi.get(self, "value")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
