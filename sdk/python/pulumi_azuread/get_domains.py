@@ -5,9 +5,17 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+from . import outputs
 
+__all__ = [
+    'GetDomainsResult',
+    'AwaitableGetDomainsResult',
+    'get_domains',
+]
+
+@pulumi.output_type
 class GetDomainsResult:
     """
     A collection of values returned by getDomains.
@@ -15,25 +23,52 @@ class GetDomainsResult:
     def __init__(__self__, domains=None, id=None, include_unverified=None, only_default=None, only_initial=None):
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
-        __self__.domains = domains
+        pulumi.set(__self__, "domains", domains)
+        if id and not isinstance(id, str):
+            raise TypeError("Expected argument 'id' to be a str")
+        pulumi.set(__self__, "id", id)
+        if include_unverified and not isinstance(include_unverified, bool):
+            raise TypeError("Expected argument 'include_unverified' to be a bool")
+        pulumi.set(__self__, "include_unverified", include_unverified)
+        if only_default and not isinstance(only_default, bool):
+            raise TypeError("Expected argument 'only_default' to be a bool")
+        pulumi.set(__self__, "only_default", only_default)
+        if only_initial and not isinstance(only_initial, bool):
+            raise TypeError("Expected argument 'only_initial' to be a bool")
+        pulumi.set(__self__, "only_initial", only_initial)
+
+    @property
+    @pulumi.getter
+    def domains(self) -> List['outputs.GetDomainsDomainResult']:
         """
         One or more `domain` blocks as defined below.
         """
-        if id and not isinstance(id, str):
-            raise TypeError("Expected argument 'id' to be a str")
-        __self__.id = id
+        return pulumi.get(self, "domains")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
         """
         The provider-assigned unique ID for this managed resource.
         """
-        if include_unverified and not isinstance(include_unverified, bool):
-            raise TypeError("Expected argument 'include_unverified' to be a bool")
-        __self__.include_unverified = include_unverified
-        if only_default and not isinstance(only_default, bool):
-            raise TypeError("Expected argument 'only_default' to be a bool")
-        __self__.only_default = only_default
-        if only_initial and not isinstance(only_initial, bool):
-            raise TypeError("Expected argument 'only_initial' to be a bool")
-        __self__.only_initial = only_initial
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="includeUnverified")
+    def include_unverified(self) -> Optional[bool]:
+        return pulumi.get(self, "include_unverified")
+
+    @property
+    @pulumi.getter(name="onlyDefault")
+    def only_default(self) -> Optional[bool]:
+        return pulumi.get(self, "only_default")
+
+    @property
+    @pulumi.getter(name="onlyInitial")
+    def only_initial(self) -> Optional[bool]:
+        return pulumi.get(self, "only_initial")
+
+
 class AwaitableGetDomainsResult(GetDomainsResult):
     # pylint: disable=using-constant-test
     def __await__(self):
@@ -46,7 +81,11 @@ class AwaitableGetDomainsResult(GetDomainsResult):
             only_default=self.only_default,
             only_initial=self.only_initial)
 
-def get_domains(include_unverified=None,only_default=None,only_initial=None,opts=None):
+
+def get_domains(include_unverified: Optional[bool] = None,
+                only_default: Optional[bool] = None,
+                only_initial: Optional[bool] = None,
+                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     Use this data source to access information about an existing Domains within Azure Active Directory.
 
@@ -68,20 +107,18 @@ def get_domains(include_unverified=None,only_default=None,only_initial=None,opts
     :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
     """
     __args__ = dict()
-
-
     __args__['includeUnverified'] = include_unverified
     __args__['onlyDefault'] = only_default
     __args__['onlyInitial'] = only_initial
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
-        opts.version = utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts).value
+        opts.version = _utilities.get_version()
+    __ret__ = pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        domains=__ret__.get('domains'),
-        id=__ret__.get('id'),
-        include_unverified=__ret__.get('includeUnverified'),
-        only_default=__ret__.get('onlyDefault'),
-        only_initial=__ret__.get('onlyInitial'))
+        domains=__ret__.domains,
+        id=__ret__.id,
+        include_unverified=__ret__.include_unverified,
+        only_default=__ret__.only_default,
+        only_initial=__ret__.only_initial)

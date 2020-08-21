@@ -5,33 +5,24 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Group']
 
 
 class Group(pulumi.CustomResource):
-    description: pulumi.Output[str]
-    """
-    The description for the Group.  Changing this forces a new resource to be created.
-    """
-    members: pulumi.Output[list]
-    """
-    A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-    """
-    name: pulumi.Output[str]
-    """
-    The display name for the Group. Changing this forces a new resource to be created.
-    """
-    object_id: pulumi.Output[str]
-    owners: pulumi.Output[list]
-    """
-    A set of owners who own this Group. Supported Object types are Users or Service Principals.
-    """
-    prevent_duplicate_names: pulumi.Output[bool]
-    """
-    If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
-    """
-    def __init__(__self__, resource_name, opts=None, description=None, members=None, name=None, owners=None, prevent_duplicate_names=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owners: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Manages a Group within Azure Active Directory.
 
@@ -64,9 +55,9 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[List[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[List[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         if __name__ is not None:
@@ -80,7 +71,7 @@ class Group(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -99,18 +90,26 @@ class Group(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, description=None, members=None, name=None, object_id=None, owners=None, prevent_duplicate_names=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: Optional[pulumi.Input[str]] = None,
+            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            object_id: Optional[pulumi.Input[str]] = None,
+            owners: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            prevent_duplicate_names: Optional[pulumi.Input[bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[list] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[List[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[list] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[List[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -125,8 +124,54 @@ class Group(pulumi.CustomResource):
         __props__["prevent_duplicate_names"] = prevent_duplicate_names
         return Group(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description for the Group.  Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def members(self) -> List[str]:
+        """
+        A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        """
+        return pulumi.get(self, "members")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The display name for the Group. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter
+    def owners(self) -> List[str]:
+        """
+        A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        """
+        return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter(name="preventDuplicateNames")
+    def prevent_duplicate_names(self) -> Optional[bool]:
+        """
+        If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        """
+        return pulumi.get(self, "prevent_duplicate_names")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
