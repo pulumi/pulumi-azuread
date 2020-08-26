@@ -13,7 +13,7 @@ __all__ = ['ServicePrincipalPassword']
 
 class ServicePrincipalPassword(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -130,7 +130,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> str:
+    def description(self) -> pulumi.Output[str]:
         """
         A description for the Password.
         """
@@ -138,7 +138,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endDate")
-    def end_date(self) -> str:
+    def end_date(self) -> pulumi.Output[str]:
         """
         The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         """
@@ -146,7 +146,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="endDateRelative")
-    def end_date_relative(self) -> Optional[str]:
+    def end_date_relative(self) -> pulumi.Output[Optional[str]]:
         """
         A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         """
@@ -154,7 +154,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> str:
+    def key_id(self) -> pulumi.Output[str]:
         """
         A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         """
@@ -162,7 +162,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="servicePrincipalId")
-    def service_principal_id(self) -> str:
+    def service_principal_id(self) -> pulumi.Output[str]:
         """
         The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
         """
@@ -170,7 +170,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="startDate")
-    def start_date(self) -> str:
+    def start_date(self) -> pulumi.Output[str]:
         """
         The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         """
@@ -178,7 +178,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The Password for this Service Principal.
         """

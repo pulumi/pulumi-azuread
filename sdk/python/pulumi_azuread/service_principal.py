@@ -15,7 +15,7 @@ __all__ = ['ServicePrincipal']
 
 class ServicePrincipal(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
@@ -127,7 +127,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appRoleAssignmentRequired")
-    def app_role_assignment_required(self) -> Optional[bool]:
+    def app_role_assignment_required(self) -> pulumi.Output[Optional[bool]]:
         """
         Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
         """
@@ -135,7 +135,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> str:
+    def application_id(self) -> pulumi.Output[str]:
         """
         The ID of the Azure AD Application for which to create a Service Principal.
         """
@@ -143,7 +143,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The Display Name of the Azure Active Directory Application associated with this Service Principal.
         """
@@ -151,7 +151,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> List['outputs.ServicePrincipalOauth2Permission']:
+    def oauth2_permissions(self) -> pulumi.Output[List['outputs.ServicePrincipalOauth2Permission']]:
         """
         A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         """
@@ -159,7 +159,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> str:
+    def object_id(self) -> pulumi.Output[str]:
         """
         The Service Principal's Object ID.
         """
@@ -167,7 +167,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> Optional[List[str]]:
+    def tags(self) -> pulumi.Output[Optional[List[str]]]:
         """
         A list of tags to apply to the Service Principal.
         """

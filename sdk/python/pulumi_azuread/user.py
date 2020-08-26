@@ -13,7 +13,7 @@ __all__ = ['User']
 
 class User(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -152,7 +152,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="accountEnabled")
-    def account_enabled(self) -> Optional[bool]:
+    def account_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
         `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
         """
@@ -160,7 +160,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="displayName")
-    def display_name(self) -> str:
+    def display_name(self) -> pulumi.Output[str]:
         """
         The name to display in the address book for the user.
         """
@@ -168,7 +168,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="forcePasswordChange")
-    def force_password_change(self) -> Optional[bool]:
+    def force_password_change(self) -> pulumi.Output[Optional[bool]]:
         """
         `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         """
@@ -176,7 +176,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="immutableId")
-    def immutable_id(self) -> str:
+    def immutable_id(self) -> pulumi.Output[str]:
         """
         The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         """
@@ -184,7 +184,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def mail(self) -> str:
+    def mail(self) -> pulumi.Output[str]:
         """
         The primary email address of the Azure AD User.
         """
@@ -192,7 +192,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="mailNickname")
-    def mail_nickname(self) -> str:
+    def mail_nickname(self) -> pulumi.Output[str]:
         """
         The mail alias for the user. Defaults to the user name part of the User Principal Name.
         """
@@ -200,7 +200,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> str:
+    def object_id(self) -> pulumi.Output[str]:
         """
         The Object ID of the Azure AD User.
         """
@@ -208,7 +208,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
-    def onpremises_sam_account_name(self) -> str:
+    def onpremises_sam_account_name(self) -> pulumi.Output[str]:
         """
         The on premise sam account name of the Azure AD User.
         """
@@ -216,7 +216,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="onpremisesUserPrincipalName")
-    def onpremises_user_principal_name(self) -> str:
+    def onpremises_user_principal_name(self) -> pulumi.Output[str]:
         """
         The on premise user principal name of the Azure AD User.
         """
@@ -224,7 +224,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def password(self) -> str:
+    def password(self) -> pulumi.Output[str]:
         """
         The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         """
@@ -232,7 +232,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="usageLocation")
-    def usage_location(self) -> str:
+    def usage_location(self) -> pulumi.Output[str]:
         """
         The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         """
@@ -240,7 +240,7 @@ class User(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="userPrincipalName")
-    def user_principal_name(self) -> str:
+    def user_principal_name(self) -> pulumi.Output[str]:
         """
         The User Principal Name of the Azure AD User.
         """
