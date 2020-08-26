@@ -13,7 +13,7 @@ __all__ = ['Group']
 
 class Group(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
@@ -126,7 +126,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def description(self) -> Optional[str]:
+    def description(self) -> pulumi.Output[Optional[str]]:
         """
         The description for the Group.  Changing this forces a new resource to be created.
         """
@@ -134,7 +134,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> pulumi.Output[List[str]]:
         """
         A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         """
@@ -142,7 +142,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The display name for the Group. Changing this forces a new resource to be created.
         """
@@ -150,12 +150,12 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> str:
+    def object_id(self) -> pulumi.Output[str]:
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter
-    def owners(self) -> List[str]:
+    def owners(self) -> pulumi.Output[List[str]]:
         """
         A set of owners who own this Group. Supported Object types are Users or Service Principals.
         """
@@ -163,7 +163,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[bool]:
+    def prevent_duplicate_names(self) -> pulumi.Output[Optional[bool]]:
         """
         If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """

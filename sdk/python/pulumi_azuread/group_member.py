@@ -13,7 +13,7 @@ __all__ = ['GroupMember']
 
 class GroupMember(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_object_id: Optional[pulumi.Input[str]] = None,
                  member_object_id: Optional[pulumi.Input[str]] = None,
@@ -98,7 +98,7 @@ class GroupMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupObjectId")
-    def group_object_id(self) -> str:
+    def group_object_id(self) -> pulumi.Output[str]:
         """
         The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
         """
@@ -106,7 +106,7 @@ class GroupMember(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="memberObjectId")
-    def member_object_id(self) -> str:
+    def member_object_id(self) -> pulumi.Output[str]:
         """
         The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """

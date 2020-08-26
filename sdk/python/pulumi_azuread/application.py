@@ -15,7 +15,7 @@ __all__ = ['Application']
 
 class Application(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_roles: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
                  available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
@@ -261,7 +261,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> Optional[List['outputs.ApplicationAppRole']]:
+    def app_roles(self) -> pulumi.Output[Optional[List['outputs.ApplicationAppRole']]]:
         """
         A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         """
@@ -269,7 +269,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="applicationId")
-    def application_id(self) -> str:
+    def application_id(self) -> pulumi.Output[str]:
         """
         The Application ID.
         """
@@ -277,7 +277,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="availableToOtherTenants")
-    def available_to_other_tenants(self) -> Optional[bool]:
+    def available_to_other_tenants(self) -> pulumi.Output[Optional[bool]]:
         """
         Is this Azure AD Application available to other tenants? Defaults to `false`.
         """
@@ -285,7 +285,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
-    def group_membership_claims(self) -> Optional[str]:
+    def group_membership_claims(self) -> pulumi.Output[Optional[str]]:
         """
         Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
@@ -293,7 +293,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def homepage(self) -> str:
+    def homepage(self) -> pulumi.Output[str]:
         """
         The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
         """
@@ -301,7 +301,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="identifierUris")
-    def identifier_uris(self) -> List[str]:
+    def identifier_uris(self) -> pulumi.Output[List[str]]:
         """
         A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         """
@@ -309,7 +309,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> Optional[str]:
+    def logout_url(self) -> pulumi.Output[Optional[str]]:
         """
         The URL of the logout page.
         """
@@ -317,7 +317,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The display name for the application.
         """
@@ -325,7 +325,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oauth2AllowImplicitFlow")
-    def oauth2_allow_implicit_flow(self) -> Optional[bool]:
+    def oauth2_allow_implicit_flow(self) -> pulumi.Output[Optional[bool]]:
         """
         Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         """
@@ -333,7 +333,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> List['outputs.ApplicationOauth2Permission']:
+    def oauth2_permissions(self) -> pulumi.Output[List['outputs.ApplicationOauth2Permission']]:
         """
         A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         """
@@ -341,7 +341,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="objectId")
-    def object_id(self) -> str:
+    def object_id(self) -> pulumi.Output[str]:
         """
         The Application's Object ID.
         """
@@ -349,7 +349,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="optionalClaims")
-    def optional_claims(self) -> Optional['outputs.ApplicationOptionalClaims']:
+    def optional_claims(self) -> pulumi.Output[Optional['outputs.ApplicationOptionalClaims']]:
         """
         A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
         """
@@ -357,7 +357,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owners(self) -> List[str]:
+    def owners(self) -> pulumi.Output[List[str]]:
         """
         A list of Azure AD Object IDs that will be granted ownership of the application. Defaults to the Object ID of the caller creating the application. If a list is specified the caller Object ID will no longer be included unless explicitly added to the list.
         """
@@ -365,7 +365,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[bool]:
+    def prevent_duplicate_names(self) -> pulumi.Output[Optional[bool]]:
         """
         If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
         """
@@ -373,7 +373,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="publicClient")
-    def public_client(self) -> bool:
+    def public_client(self) -> pulumi.Output[bool]:
         """
         Is this Azure AD Application a public client? Defaults to `false`.
         """
@@ -381,7 +381,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="replyUrls")
-    def reply_urls(self) -> List[str]:
+    def reply_urls(self) -> pulumi.Output[List[str]]:
         """
         A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         """
@@ -389,7 +389,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
-    def required_resource_accesses(self) -> Optional[List['outputs.ApplicationRequiredResourceAccess']]:
+    def required_resource_accesses(self) -> pulumi.Output[Optional[List['outputs.ApplicationRequiredResourceAccess']]]:
         """
         A collection of `required_resource_access` blocks as documented below.
         """
@@ -397,7 +397,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[str]:
+    def type(self) -> pulumi.Output[Optional[str]]:
         """
         Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         """
