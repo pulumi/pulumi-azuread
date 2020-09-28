@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -55,7 +55,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter(name="mailNicknames")
-    def mail_nicknames(self) -> List[str]:
+    def mail_nicknames(self) -> Sequence[str]:
         """
         The email aliases of the Azure AD Users.
         """
@@ -63,7 +63,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter(name="objectIds")
-    def object_ids(self) -> List[str]:
+    def object_ids(self) -> Sequence[str]:
         """
         The Object IDs of the Azure AD Users.
         """
@@ -71,7 +71,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter(name="userPrincipalNames")
-    def user_principal_names(self) -> List[str]:
+    def user_principal_names(self) -> Sequence[str]:
         """
         The User Principal Names of the Azure AD Users.
         """
@@ -79,7 +79,7 @@ class GetUsersResult:
 
     @property
     @pulumi.getter
-    def users(self) -> List['outputs.GetUsersUserResult']:
+    def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
         An Array of Azure AD Users. Each `user` object consists of the fields documented below.
         """
@@ -101,9 +101,9 @@ class AwaitableGetUsersResult(GetUsersResult):
 
 
 def get_users(ignore_missing: Optional[bool] = None,
-              mail_nicknames: Optional[List[str]] = None,
-              object_ids: Optional[List[str]] = None,
-              user_principal_names: Optional[List[str]] = None,
+              mail_nicknames: Optional[Sequence[str]] = None,
+              object_ids: Optional[Sequence[str]] = None,
+              user_principal_names: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
     Gets Object IDs or UPNs for multiple Azure Active Directory users.
@@ -124,9 +124,9 @@ def get_users(ignore_missing: Optional[bool] = None,
 
 
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
-    :param List[str] mail_nicknames: The email aliases of the Azure AD Users.
-    :param List[str] object_ids: The Object IDs of the Azure AD Users.
-    :param List[str] user_principal_names: The User Principal Names of the Azure AD Users.
+    :param Sequence[str] mail_nicknames: The email aliases of the Azure AD Users.
+    :param Sequence[str] object_ids: The Object IDs of the Azure AD Users.
+    :param Sequence[str] user_principal_names: The User Principal Names of the Azure AD Users.
     """
     __args__ = dict()
     __args__['ignoreMissing'] = ignore_missing

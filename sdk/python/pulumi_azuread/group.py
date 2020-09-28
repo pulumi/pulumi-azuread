@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = ['Group']
@@ -16,9 +16,9 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 owners: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
                  __name__=None,
@@ -55,9 +55,9 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         if __name__ is not None:
@@ -94,10 +94,10 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
-            members: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
-            owners: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+            owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
@@ -107,9 +107,9 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[List[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -134,7 +134,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def members(self) -> pulumi.Output[List[str]]:
+    def members(self) -> pulumi.Output[Sequence[str]]:
         """
         A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         """
@@ -155,7 +155,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def owners(self) -> pulumi.Output[List[str]]:
+    def owners(self) -> pulumi.Output[Sequence[str]]:
         """
         A set of owners who own this Group. Supported Object types are Users or Service Principals.
         """

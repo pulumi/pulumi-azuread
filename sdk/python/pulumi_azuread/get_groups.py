@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -40,7 +40,7 @@ class GetGroupsResult:
 
     @property
     @pulumi.getter
-    def names(self) -> List[str]:
+    def names(self) -> Sequence[str]:
         """
         The Display Names of the Azure AD Groups.
         """
@@ -48,7 +48,7 @@ class GetGroupsResult:
 
     @property
     @pulumi.getter(name="objectIds")
-    def object_ids(self) -> List[str]:
+    def object_ids(self) -> Sequence[str]:
         """
         The Object IDs of the Azure AD Groups.
         """
@@ -66,8 +66,8 @@ class AwaitableGetGroupsResult(GetGroupsResult):
             object_ids=self.object_ids)
 
 
-def get_groups(names: Optional[List[str]] = None,
-               object_ids: Optional[List[str]] = None,
+def get_groups(names: Optional[Sequence[str]] = None,
+               object_ids: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
     Gets Object IDs or Display Names for multiple Azure Active Directory groups.
@@ -87,8 +87,8 @@ def get_groups(names: Optional[List[str]] = None,
     ```
 
 
-    :param List[str] names: The Display Names of the Azure AD Groups.
-    :param List[str] object_ids: The Object IDs of the Azure AD Groups.
+    :param Sequence[str] names: The Display Names of the Azure AD Groups.
+    :param Sequence[str] object_ids: The Object IDs of the Azure AD Groups.
     """
     __args__ = dict()
     __args__['names'] = names

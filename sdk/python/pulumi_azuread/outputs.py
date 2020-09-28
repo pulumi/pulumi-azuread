@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 
@@ -34,14 +34,14 @@ __all__ = [
 @pulumi.output_type
 class ApplicationAppRole(dict):
     def __init__(__self__, *,
-                 allowed_member_types: List[str],
+                 allowed_member_types: Sequence[str],
                  description: str,
                  display_name: str,
                  id: Optional[str] = None,
                  is_enabled: Optional[bool] = None,
                  value: Optional[str] = None):
         """
-        :param List[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
         :param str display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
         :param str id: The unique identifier of the `app_role`.
@@ -60,7 +60,7 @@ class ApplicationAppRole(dict):
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
-    def allowed_member_types(self) -> List[str]:
+    def allowed_member_types(self) -> Sequence[str]:
         """
         Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
         """
@@ -219,8 +219,8 @@ class ApplicationOauth2Permission(dict):
 @pulumi.output_type
 class ApplicationOptionalClaims(dict):
     def __init__(__self__, *,
-                 access_tokens: Optional[List['outputs.ApplicationOptionalClaimsAccessToken']] = None,
-                 id_tokens: Optional[List['outputs.ApplicationOptionalClaimsIdToken']] = None):
+                 access_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']] = None,
+                 id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None):
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
@@ -228,12 +228,12 @@ class ApplicationOptionalClaims(dict):
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[List['outputs.ApplicationOptionalClaimsAccessToken']]:
+    def access_tokens(self) -> Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']]:
         return pulumi.get(self, "access_tokens")
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[List['outputs.ApplicationOptionalClaimsIdToken']]:
+    def id_tokens(self) -> Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']]:
         return pulumi.get(self, "id_tokens")
 
     def _translate_property(self, prop):
@@ -244,12 +244,12 @@ class ApplicationOptionalClaims(dict):
 class ApplicationOptionalClaimsAccessToken(dict):
     def __init__(__self__, *,
                  name: str,
-                 additional_properties: Optional[List[str]] = None,
+                 additional_properties: Optional[Sequence[str]] = None,
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
         :param str name: The name of the optional claim.
-        :param List[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -271,7 +271,7 @@ class ApplicationOptionalClaimsAccessToken(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[List[str]]:
+    def additional_properties(self) -> Optional[Sequence[str]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
@@ -301,12 +301,12 @@ class ApplicationOptionalClaimsAccessToken(dict):
 class ApplicationOptionalClaimsIdToken(dict):
     def __init__(__self__, *,
                  name: str,
-                 additional_properties: Optional[List[str]] = None,
+                 additional_properties: Optional[Sequence[str]] = None,
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
         :param str name: The display name for the application.
-        :param List[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -328,7 +328,7 @@ class ApplicationOptionalClaimsIdToken(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[List[str]]:
+    def additional_properties(self) -> Optional[Sequence[str]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
@@ -357,10 +357,10 @@ class ApplicationOptionalClaimsIdToken(dict):
 @pulumi.output_type
 class ApplicationRequiredResourceAccess(dict):
     def __init__(__self__, *,
-                 resource_accesses: List['outputs.ApplicationRequiredResourceAccessResourceAccess'],
+                 resource_accesses: Sequence['outputs.ApplicationRequiredResourceAccessResourceAccess'],
                  resource_app_id: str):
         """
-        :param List['ApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below.
+        :param Sequence['ApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below.
         :param str resource_app_id: The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
         """
         pulumi.set(__self__, "resource_accesses", resource_accesses)
@@ -368,7 +368,7 @@ class ApplicationRequiredResourceAccess(dict):
 
     @property
     @pulumi.getter(name="resourceAccesses")
-    def resource_accesses(self) -> List['outputs.ApplicationRequiredResourceAccessResourceAccess']:
+    def resource_accesses(self) -> Sequence['outputs.ApplicationRequiredResourceAccessResourceAccess']:
         """
         A collection of `resource_access` blocks as documented below.
         """
@@ -527,14 +527,14 @@ class ServicePrincipalOauth2Permission(dict):
 @pulumi.output_type
 class GetApplicationAppRoleResult(dict):
     def __init__(__self__, *,
-                 allowed_member_types: List[str],
+                 allowed_member_types: Sequence[str],
                  description: str,
                  display_name: str,
                  id: str,
                  is_enabled: bool,
                  value: str):
         """
-        :param List[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
         :param str display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
         :param str id: The unique identifier of the `app_role`.
@@ -550,7 +550,7 @@ class GetApplicationAppRoleResult(dict):
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
-    def allowed_member_types(self) -> List[str]:
+    def allowed_member_types(self) -> Sequence[str]:
         """
         Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         """
@@ -695,8 +695,8 @@ class GetApplicationOauth2PermissionResult(dict):
 @pulumi.output_type
 class GetApplicationOptionalClaimsResult(dict):
     def __init__(__self__, *,
-                 access_tokens: Optional[List['outputs.GetApplicationOptionalClaimsAccessTokenResult']] = None,
-                 id_tokens: Optional[List['outputs.GetApplicationOptionalClaimsIdTokenResult']] = None):
+                 access_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimsAccessTokenResult']] = None,
+                 id_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimsIdTokenResult']] = None):
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
@@ -704,12 +704,12 @@ class GetApplicationOptionalClaimsResult(dict):
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[List['outputs.GetApplicationOptionalClaimsAccessTokenResult']]:
+    def access_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimsAccessTokenResult']]:
         return pulumi.get(self, "access_tokens")
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[List['outputs.GetApplicationOptionalClaimsIdTokenResult']]:
+    def id_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimsIdTokenResult']]:
         return pulumi.get(self, "id_tokens")
 
 
@@ -717,12 +717,12 @@ class GetApplicationOptionalClaimsResult(dict):
 class GetApplicationOptionalClaimsAccessTokenResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 additional_properties: Optional[List[str]] = None,
+                 additional_properties: Optional[Sequence[str]] = None,
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
         :param str name: Specifies the name of the Application within Azure Active Directory.
-        :param List[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -744,7 +744,7 @@ class GetApplicationOptionalClaimsAccessTokenResult(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[List[str]]:
+    def additional_properties(self) -> Optional[Sequence[str]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
@@ -771,12 +771,12 @@ class GetApplicationOptionalClaimsAccessTokenResult(dict):
 class GetApplicationOptionalClaimsIdTokenResult(dict):
     def __init__(__self__, *,
                  name: str,
-                 additional_properties: Optional[List[str]] = None,
+                 additional_properties: Optional[Sequence[str]] = None,
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
         :param str name: Specifies the name of the Application within Azure Active Directory.
-        :param List[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -798,7 +798,7 @@ class GetApplicationOptionalClaimsIdTokenResult(dict):
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[List[str]]:
+    def additional_properties(self) -> Optional[Sequence[str]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
@@ -824,10 +824,10 @@ class GetApplicationOptionalClaimsIdTokenResult(dict):
 @pulumi.output_type
 class GetApplicationRequiredResourceAccessResult(dict):
     def __init__(__self__, *,
-                 resource_accesses: List['outputs.GetApplicationRequiredResourceAccessResourceAccessResult'],
+                 resource_accesses: Sequence['outputs.GetApplicationRequiredResourceAccessResourceAccessResult'],
                  resource_app_id: str):
         """
-        :param List['GetApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below
+        :param Sequence['GetApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below
         :param str resource_app_id: The unique identifier for the resource that the application requires access to.
         """
         pulumi.set(__self__, "resource_accesses", resource_accesses)
@@ -835,7 +835,7 @@ class GetApplicationRequiredResourceAccessResult(dict):
 
     @property
     @pulumi.getter(name="resourceAccesses")
-    def resource_accesses(self) -> List['outputs.GetApplicationRequiredResourceAccessResourceAccessResult']:
+    def resource_accesses(self) -> Sequence['outputs.GetApplicationRequiredResourceAccessResourceAccessResult']:
         """
         A collection of `resource_access` blocks as documented below
         """
@@ -944,14 +944,14 @@ class GetDomainsDomainResult(dict):
 @pulumi.output_type
 class GetServicePrincipalAppRoleResult(dict):
     def __init__(__self__, *,
-                 allowed_member_types: List[str],
+                 allowed_member_types: Sequence[str],
                  description: str,
                  display_name: str,
                  id: str,
                  is_enabled: bool,
                  value: str):
         """
-        :param List[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
         :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
         :param str id: The unique identifier of the `app_role`.
@@ -967,7 +967,7 @@ class GetServicePrincipalAppRoleResult(dict):
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
-    def allowed_member_types(self) -> List[str]:
+    def allowed_member_types(self) -> Sequence[str]:
         """
         Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         """
