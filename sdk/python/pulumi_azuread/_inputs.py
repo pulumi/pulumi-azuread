@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -27,14 +27,14 @@ __all__ = [
 @pulumi.input_type
 class ApplicationAppRoleArgs:
     def __init__(__self__, *,
-                 allowed_member_types: pulumi.Input[List[pulumi.Input[str]]],
+                 allowed_member_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  description: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[List[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
         :param pulumi.Input[str] description: Permission help text that appears in the admin app assignment and consent experiences.
         :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
         :param pulumi.Input[str] id: The unique identifier of the `app_role`.
@@ -53,14 +53,14 @@ class ApplicationAppRoleArgs:
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
-    def allowed_member_types(self) -> pulumi.Input[List[pulumi.Input[str]]]:
+    def allowed_member_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
         Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
         """
         return pulumi.get(self, "allowed_member_types")
 
     @allowed_member_types.setter
-    def allowed_member_types(self, value: pulumi.Input[List[pulumi.Input[str]]]):
+    def allowed_member_types(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_member_types", value)
 
     @property
@@ -262,8 +262,8 @@ class ApplicationOauth2PermissionArgs:
 @pulumi.input_type
 class ApplicationOptionalClaimsArgs:
     def __init__(__self__, *,
-                 access_tokens: Optional[pulumi.Input[List[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
-                 id_tokens: Optional[pulumi.Input[List[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None):
+                 access_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]] = None,
+                 id_tokens: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]] = None):
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
@@ -271,20 +271,20 @@ class ApplicationOptionalClaimsArgs:
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
+    def access_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]:
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
+    def access_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsAccessTokenArgs']]]]):
         pulumi.set(self, "access_tokens", value)
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[pulumi.Input[List[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
+    def id_tokens(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]:
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[pulumi.Input[List[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
+    def id_tokens(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOptionalClaimsIdTokenArgs']]]]):
         pulumi.set(self, "id_tokens", value)
 
 
@@ -292,12 +292,12 @@ class ApplicationOptionalClaimsArgs:
 class ApplicationOptionalClaimsAccessTokenArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 additional_properties: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 additional_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  essential: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The name of the optional claim.
-        :param pulumi.Input[List[pulumi.Input[str]]] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param pulumi.Input[bool] essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param pulumi.Input[str] source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -323,14 +323,14 @@ class ApplicationOptionalClaimsAccessTokenArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def additional_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def additional_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @property
@@ -362,12 +362,12 @@ class ApplicationOptionalClaimsAccessTokenArgs:
 class ApplicationOptionalClaimsIdTokenArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
-                 additional_properties: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 additional_properties: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  essential: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] name: The display name for the application.
-        :param pulumi.Input[List[pulumi.Input[str]]] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param pulumi.Input[bool] essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param pulumi.Input[str] source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -393,14 +393,14 @@ class ApplicationOptionalClaimsIdTokenArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[pulumi.Input[List[pulumi.Input[str]]]]:
+    def additional_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[pulumi.Input[List[pulumi.Input[str]]]]):
+    def additional_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "additional_properties", value)
 
     @property
@@ -431,10 +431,10 @@ class ApplicationOptionalClaimsIdTokenArgs:
 @pulumi.input_type
 class ApplicationRequiredResourceAccessArgs:
     def __init__(__self__, *,
-                 resource_accesses: pulumi.Input[List[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]],
+                 resource_accesses: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]],
                  resource_app_id: pulumi.Input[str]):
         """
-        :param pulumi.Input[List[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]] resource_accesses: A collection of `resource_access` blocks as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]] resource_accesses: A collection of `resource_access` blocks as documented below.
         :param pulumi.Input[str] resource_app_id: The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
         """
         pulumi.set(__self__, "resource_accesses", resource_accesses)
@@ -442,14 +442,14 @@ class ApplicationRequiredResourceAccessArgs:
 
     @property
     @pulumi.getter(name="resourceAccesses")
-    def resource_accesses(self) -> pulumi.Input[List[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]]:
+    def resource_accesses(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]]:
         """
         A collection of `resource_access` blocks as documented below.
         """
         return pulumi.get(self, "resource_accesses")
 
     @resource_accesses.setter
-    def resource_accesses(self, value: pulumi.Input[List[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]]):
+    def resource_accesses(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessResourceAccessArgs']]]):
         pulumi.set(self, "resource_accesses", value)
 
     @property
@@ -767,8 +767,8 @@ class GetApplicationOauth2PermissionArgs:
 @pulumi.input_type
 class GetApplicationOptionalClaimsArgs:
     def __init__(__self__, *,
-                 access_tokens: Optional[List['GetApplicationOptionalClaimsAccessTokenArgs']] = None,
-                 id_tokens: Optional[List['GetApplicationOptionalClaimsIdTokenArgs']] = None):
+                 access_tokens: Optional[Sequence['GetApplicationOptionalClaimsAccessTokenArgs']] = None,
+                 id_tokens: Optional[Sequence['GetApplicationOptionalClaimsIdTokenArgs']] = None):
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
@@ -776,20 +776,20 @@ class GetApplicationOptionalClaimsArgs:
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[List['GetApplicationOptionalClaimsAccessTokenArgs']]:
+    def access_tokens(self) -> Optional[Sequence['GetApplicationOptionalClaimsAccessTokenArgs']]:
         return pulumi.get(self, "access_tokens")
 
     @access_tokens.setter
-    def access_tokens(self, value: Optional[List['GetApplicationOptionalClaimsAccessTokenArgs']]):
+    def access_tokens(self, value: Optional[Sequence['GetApplicationOptionalClaimsAccessTokenArgs']]):
         pulumi.set(self, "access_tokens", value)
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[List['GetApplicationOptionalClaimsIdTokenArgs']]:
+    def id_tokens(self) -> Optional[Sequence['GetApplicationOptionalClaimsIdTokenArgs']]:
         return pulumi.get(self, "id_tokens")
 
     @id_tokens.setter
-    def id_tokens(self, value: Optional[List['GetApplicationOptionalClaimsIdTokenArgs']]):
+    def id_tokens(self, value: Optional[Sequence['GetApplicationOptionalClaimsIdTokenArgs']]):
         pulumi.set(self, "id_tokens", value)
 
 
@@ -797,12 +797,12 @@ class GetApplicationOptionalClaimsArgs:
 class GetApplicationOptionalClaimsAccessTokenArgs:
     def __init__(__self__, *,
                  name: str,
-                 additional_properties: Optional[List[str]] = None,
+                 additional_properties: Optional[Sequence[str]] = None,
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
         :param str name: Specifies the name of the Application within Azure Active Directory.
-        :param List[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -828,14 +828,14 @@ class GetApplicationOptionalClaimsAccessTokenArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[List[str]]:
+    def additional_properties(self) -> Optional[Sequence[str]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[List[str]]):
+    def additional_properties(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "additional_properties", value)
 
     @property
@@ -867,12 +867,12 @@ class GetApplicationOptionalClaimsAccessTokenArgs:
 class GetApplicationOptionalClaimsIdTokenArgs:
     def __init__(__self__, *,
                  name: str,
-                 additional_properties: Optional[List[str]] = None,
+                 additional_properties: Optional[Sequence[str]] = None,
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
         :param str name: Specifies the name of the Application within Azure Active Directory.
-        :param List[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -898,14 +898,14 @@ class GetApplicationOptionalClaimsIdTokenArgs:
 
     @property
     @pulumi.getter(name="additionalProperties")
-    def additional_properties(self) -> Optional[List[str]]:
+    def additional_properties(self) -> Optional[Sequence[str]]:
         """
         List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
         return pulumi.get(self, "additional_properties")
 
     @additional_properties.setter
-    def additional_properties(self, value: Optional[List[str]]):
+    def additional_properties(self, value: Optional[Sequence[str]]):
         pulumi.set(self, "additional_properties", value)
 
     @property

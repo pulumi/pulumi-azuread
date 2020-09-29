@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -19,8 +19,8 @@ class ServicePrincipal(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
-                 tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None,
+                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None,
                  __name__=None,
                  __opts__=None):
@@ -55,8 +55,8 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] app_role_assignment_required: Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
         :param pulumi.Input[str] application_id: The ID of the Azure AD Application for which to create a Service Principal.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -96,9 +96,9 @@ class ServicePrincipal(pulumi.CustomResource):
             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
-            oauth2_permissions: Optional[pulumi.Input[List[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
+            oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[List[pulumi.Input[str]]]] = None) -> 'ServicePrincipal':
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ServicePrincipal':
         """
         Get an existing ServicePrincipal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -109,9 +109,9 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] app_role_assignment_required: Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
         :param pulumi.Input[str] application_id: The ID of the Azure AD Application for which to create a Service Principal.
         :param pulumi.Input[str] display_name: The Display Name of the Azure Active Directory Application associated with this Service Principal.
-        :param pulumi.Input[List[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         :param pulumi.Input[str] object_id: The Service Principal's Object ID.
-        :param pulumi.Input[List[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -151,7 +151,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> pulumi.Output[List['outputs.ServicePrincipalOauth2Permission']]:
+    def oauth2_permissions(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalOauth2Permission']]:
         """
         A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
         """
@@ -167,7 +167,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[List[str]]]:
+    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
         A list of tags to apply to the Service Principal.
         """

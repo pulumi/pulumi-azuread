@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -76,7 +76,7 @@ class GetApplicationResult:
 
     @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> List['outputs.GetApplicationAppRoleResult']:
+    def app_roles(self) -> Sequence['outputs.GetApplicationAppRoleResult']:
         """
         A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         """
@@ -121,7 +121,7 @@ class GetApplicationResult:
 
     @property
     @pulumi.getter(name="identifierUris")
-    def identifier_uris(self) -> List[str]:
+    def identifier_uris(self) -> Sequence[str]:
         """
         A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         """
@@ -153,7 +153,7 @@ class GetApplicationResult:
 
     @property
     @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> List['outputs.GetApplicationOauth2PermissionResult']:
+    def oauth2_permissions(self) -> Sequence['outputs.GetApplicationOauth2PermissionResult']:
         """
         A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         """
@@ -177,7 +177,7 @@ class GetApplicationResult:
 
     @property
     @pulumi.getter
-    def owners(self) -> List[str]:
+    def owners(self) -> Sequence[str]:
         """
         A list of User Object IDs that are assigned ownership of the application registration.
         """
@@ -185,7 +185,7 @@ class GetApplicationResult:
 
     @property
     @pulumi.getter(name="replyUrls")
-    def reply_urls(self) -> List[str]:
+    def reply_urls(self) -> Sequence[str]:
         """
         A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
         """
@@ -193,7 +193,7 @@ class GetApplicationResult:
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
-    def required_resource_accesses(self) -> List['outputs.GetApplicationRequiredResourceAccessResult']:
+    def required_resource_accesses(self) -> Sequence['outputs.GetApplicationRequiredResourceAccessResult']:
         """
         A collection of `required_resource_access` blocks as documented below.
         """
@@ -235,7 +235,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
 
 def get_application(application_id: Optional[str] = None,
                     name: Optional[str] = None,
-                    oauth2_permissions: Optional[List[pulumi.InputType['GetApplicationOauth2PermissionArgs']]] = None,
+                    oauth2_permissions: Optional[Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']]] = None,
                     object_id: Optional[str] = None,
                     optional_claims: Optional[pulumi.InputType['GetApplicationOptionalClaimsArgs']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationResult:
@@ -257,7 +257,7 @@ def get_application(application_id: Optional[str] = None,
 
     :param str application_id: Specifies the Application ID of the Azure Active Directory Application.
     :param str name: Specifies the name of the Application within Azure Active Directory.
-    :param List[pulumi.InputType['GetApplicationOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+    :param Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
     :param pulumi.InputType['GetApplicationOptionalClaimsArgs'] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
     """

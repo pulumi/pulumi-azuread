@@ -101,7 +101,7 @@
         ]
     },
     "types": {
-        "azuread:/ApplicationAppRole:ApplicationAppRole": {
+        "azuread:index/ApplicationAppRole:ApplicationAppRole": {
             "properties": {
                 "allowedMemberTypes": {
                     "type": "array",
@@ -178,7 +178,7 @@
                 }
             }
         },
-        "azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission": {
+        "azuread:index/ApplicationOauth2Permission:ApplicationOauth2Permission": {
             "properties": {
                 "adminConsentDescription": {
                     "type": "string",
@@ -269,12 +269,12 @@
                 }
             }
         },
-        "azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims": {
+        "azuread:index/ApplicationOptionalClaims:ApplicationOptionalClaims": {
             "properties": {
                 "accessTokens": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationOptionalClaimsAccessToken:ApplicationOptionalClaimsAccessToken"
+                        "$ref": "#/types/azuread:index/ApplicationOptionalClaimsAccessToken:ApplicationOptionalClaimsAccessToken"
                     },
                     "language": {
                         "python": {
@@ -285,7 +285,7 @@
                 "idTokens": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationOptionalClaimsIdToken:ApplicationOptionalClaimsIdToken"
+                        "$ref": "#/types/azuread:index/ApplicationOptionalClaimsIdToken:ApplicationOptionalClaimsIdToken"
                     },
                     "language": {
                         "python": {
@@ -296,7 +296,7 @@
             },
             "type": "object"
         },
-        "azuread:/ApplicationOptionalClaimsAccessToken:ApplicationOptionalClaimsAccessToken": {
+        "azuread:index/ApplicationOptionalClaimsAccessToken:ApplicationOptionalClaimsAccessToken": {
             "properties": {
                 "additionalProperties": {
                     "type": "array",
@@ -343,7 +343,7 @@
                 "name"
             ]
         },
-        "azuread:/ApplicationOptionalClaimsIdToken:ApplicationOptionalClaimsIdToken": {
+        "azuread:index/ApplicationOptionalClaimsIdToken:ApplicationOptionalClaimsIdToken": {
             "properties": {
                 "additionalProperties": {
                     "type": "array",
@@ -390,12 +390,12 @@
                 "name"
             ]
         },
-        "azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess": {
+        "azuread:index/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess": {
             "properties": {
                 "resourceAccesses": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationRequiredResourceAccessResourceAccess:ApplicationRequiredResourceAccessResourceAccess"
+                        "$ref": "#/types/azuread:index/ApplicationRequiredResourceAccessResourceAccess:ApplicationRequiredResourceAccessResourceAccess"
                     },
                     "description": "A collection of `resource_access` blocks as documented below.\n",
                     "language": {
@@ -420,7 +420,7 @@
                 "resourceAppId"
             ]
         },
-        "azuread:/ApplicationRequiredResourceAccessResourceAccess:ApplicationRequiredResourceAccessResourceAccess": {
+        "azuread:index/ApplicationRequiredResourceAccessResourceAccess:ApplicationRequiredResourceAccessResourceAccess": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -447,7 +447,7 @@
                 "type"
             ]
         },
-        "azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission": {
+        "azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission": {
             "properties": {
                 "adminConsentDescription": {
                     "type": "string",
@@ -538,7 +538,7 @@
                 }
             }
         },
-        "azuread:/getApplicationAppRole:getApplicationAppRole": {
+        "azuread:index/getApplicationAppRole:getApplicationAppRole": {
             "properties": {
                 "allowedMemberTypes": {
                     "type": "array",
@@ -613,7 +613,7 @@
                 }
             }
         },
-        "azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission": {
+        "azuread:index/getApplicationOauth2Permission:getApplicationOauth2Permission": {
             "properties": {
                 "adminConsentDescription": {
                     "type": "string",
@@ -705,12 +705,12 @@
                 }
             }
         },
-        "azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims": {
+        "azuread:index/getApplicationOptionalClaims:getApplicationOptionalClaims": {
             "properties": {
                 "accessTokens": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/getApplicationOptionalClaimsAccessToken:getApplicationOptionalClaimsAccessToken"
+                        "$ref": "#/types/azuread:index/getApplicationOptionalClaimsAccessToken:getApplicationOptionalClaimsAccessToken"
                     },
                     "language": {
                         "python": {
@@ -721,7 +721,7 @@
                 "idTokens": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/getApplicationOptionalClaimsIdToken:getApplicationOptionalClaimsIdToken"
+                        "$ref": "#/types/azuread:index/getApplicationOptionalClaimsIdToken:getApplicationOptionalClaimsIdToken"
                     },
                     "language": {
                         "python": {
@@ -732,7 +732,7 @@
             },
             "type": "object"
         },
-        "azuread:/getApplicationOptionalClaimsAccessToken:getApplicationOptionalClaimsAccessToken": {
+        "azuread:index/getApplicationOptionalClaimsAccessToken:getApplicationOptionalClaimsAccessToken": {
             "properties": {
                 "additionalProperties": {
                     "type": "array",
@@ -779,7 +779,7 @@
                 "name"
             ]
         },
-        "azuread:/getApplicationOptionalClaimsIdToken:getApplicationOptionalClaimsIdToken": {
+        "azuread:index/getApplicationOptionalClaimsIdToken:getApplicationOptionalClaimsIdToken": {
             "properties": {
                 "additionalProperties": {
                     "type": "array",
@@ -826,12 +826,12 @@
                 "name"
             ]
         },
-        "azuread:/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess": {
+        "azuread:index/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess": {
             "properties": {
                 "resourceAccesses": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess"
+                        "$ref": "#/types/azuread:index/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess"
                     },
                     "description": "A collection of `resource_access` blocks as documented below\n",
                     "language": {
@@ -861,7 +861,7 @@
                 }
             }
         },
-        "azuread:/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess": {
+        "azuread:index/getApplicationRequiredResourceAccessResourceAccess:getApplicationRequiredResourceAccessResourceAccess": {
             "properties": {
                 "id": {
                     "type": "string",
@@ -893,7 +893,7 @@
                 }
             }
         },
-        "azuread:/getDomainsDomain:getDomainsDomain": {
+        "azuread:index/getDomainsDomain:getDomainsDomain": {
             "properties": {
                 "authenticationType": {
                     "type": "string",
@@ -955,7 +955,7 @@
                 }
             }
         },
-        "azuread:/getServicePrincipalAppRole:getServicePrincipalAppRole": {
+        "azuread:index/getServicePrincipalAppRole:getServicePrincipalAppRole": {
             "properties": {
                 "allowedMemberTypes": {
                     "type": "array",
@@ -1030,7 +1030,7 @@
                 }
             }
         },
-        "azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission": {
+        "azuread:index/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission": {
             "properties": {
                 "adminConsentDescription": {
                     "type": "string",
@@ -1122,7 +1122,7 @@
                 }
             }
         },
-        "azuread:/getUsersUser:getUsersUser": {
+        "azuread:index/getUsersUser:getUsersUser": {
             "properties": {
                 "accountEnabled": {
                     "type": "boolean",
@@ -1327,7 +1327,7 @@
                 "appRoles": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationAppRole:ApplicationAppRole"
+                        "$ref": "#/types/azuread:index/ApplicationAppRole:ApplicationAppRole"
                     },
                     "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
                 },
@@ -1369,7 +1369,7 @@
                 "oauth2Permissions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
+                        "$ref": "#/types/azuread:index/ApplicationOauth2Permission:ApplicationOauth2Permission"
                     },
                     "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.\n"
                 },
@@ -1378,7 +1378,7 @@
                     "description": "The Application's Object ID.\n"
                 },
                 "optionalClaims": {
-                    "$ref": "#/types/azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims",
+                    "$ref": "#/types/azuread:index/ApplicationOptionalClaims:ApplicationOptionalClaims",
                     "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                 },
                 "owners": {
@@ -1406,7 +1406,7 @@
                 "requiredResourceAccesses": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
+                        "$ref": "#/types/azuread:index/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
                     },
                     "description": "A collection of `required_resource_access` blocks as documented below.\n"
                 },
@@ -1430,7 +1430,7 @@
                 "appRoles": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationAppRole:ApplicationAppRole"
+                        "$ref": "#/types/azuread:index/ApplicationAppRole:ApplicationAppRole"
                     },
                     "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
                 },
@@ -1468,12 +1468,12 @@
                 "oauth2Permissions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
+                        "$ref": "#/types/azuread:index/ApplicationOauth2Permission:ApplicationOauth2Permission"
                     },
                     "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.\n"
                 },
                 "optionalClaims": {
-                    "$ref": "#/types/azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims",
+                    "$ref": "#/types/azuread:index/ApplicationOptionalClaims:ApplicationOptionalClaims",
                     "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                 },
                 "owners": {
@@ -1501,7 +1501,7 @@
                 "requiredResourceAccesses": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
+                        "$ref": "#/types/azuread:index/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
                     },
                     "description": "A collection of `required_resource_access` blocks as documented below.\n"
                 },
@@ -1516,7 +1516,7 @@
                     "appRoles": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/ApplicationAppRole:ApplicationAppRole"
+                            "$ref": "#/types/azuread:index/ApplicationAppRole:ApplicationAppRole"
                         },
                         "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
                     },
@@ -1558,7 +1558,7 @@
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/ApplicationOauth2Permission:ApplicationOauth2Permission"
+                            "$ref": "#/types/azuread:index/ApplicationOauth2Permission:ApplicationOauth2Permission"
                         },
                         "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.\n"
                     },
@@ -1567,7 +1567,7 @@
                         "description": "The Application's Object ID.\n"
                     },
                     "optionalClaims": {
-                        "$ref": "#/types/azuread:/ApplicationOptionalClaims:ApplicationOptionalClaims",
+                        "$ref": "#/types/azuread:index/ApplicationOptionalClaims:ApplicationOptionalClaims",
                         "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                     },
                     "owners": {
@@ -1595,7 +1595,7 @@
                     "requiredResourceAccesses": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
+                            "$ref": "#/types/azuread:index/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
                         },
                         "description": "A collection of `required_resource_access` blocks as documented below.\n"
                     },
@@ -2002,7 +2002,7 @@
                 "oauth2Permissions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
+                        "$ref": "#/types/azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
                     },
                     "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
                 },
@@ -2036,7 +2036,7 @@
                 "oauth2Permissions": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
+                        "$ref": "#/types/azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
                     },
                     "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
                 },
@@ -2069,7 +2069,7 @@
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
+                            "$ref": "#/types/azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
                         },
                         "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
                     },
@@ -2481,7 +2481,7 @@
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission"
+                            "$ref": "#/types/azuread:index/getApplicationOauth2Permission:getApplicationOauth2Permission"
                         },
                         "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
                     },
@@ -2490,7 +2490,7 @@
                         "description": "Specifies the Object ID of the Application within Azure Active Directory.\n"
                     },
                     "optionalClaims": {
-                        "$ref": "#/types/azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims",
+                        "$ref": "#/types/azuread:index/getApplicationOptionalClaims:getApplicationOptionalClaims",
                         "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                     }
                 },
@@ -2502,7 +2502,7 @@
                     "appRoles": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getApplicationAppRole:getApplicationAppRole"
+                            "$ref": "#/types/azuread:index/getApplicationAppRole:getApplicationAppRole"
                         },
                         "description": "A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles\n"
                     },
@@ -2547,7 +2547,7 @@
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getApplicationOauth2Permission:getApplicationOauth2Permission"
+                            "$ref": "#/types/azuread:index/getApplicationOauth2Permission:getApplicationOauth2Permission"
                         },
                         "description": "A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.\n"
                     },
@@ -2556,7 +2556,7 @@
                         "description": "the Object ID of the Azure Active Directory Application.\n"
                     },
                     "optionalClaims": {
-                        "$ref": "#/types/azuread:/getApplicationOptionalClaims:getApplicationOptionalClaims",
+                        "$ref": "#/types/azuread:index/getApplicationOptionalClaims:getApplicationOptionalClaims",
                         "description": "A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims\n"
                     },
                     "owners": {
@@ -2576,7 +2576,7 @@
                     "requiredResourceAccesses": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess"
+                            "$ref": "#/types/azuread:index/getApplicationRequiredResourceAccess:getApplicationRequiredResourceAccess"
                         },
                         "description": "A collection of `required_resource_access` blocks as documented below.\n"
                     },
@@ -2665,7 +2665,7 @@
                     "domains": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getDomainsDomain:getDomainsDomain"
+                            "$ref": "#/types/azuread:index/getDomainsDomain:getDomainsDomain"
                         },
                         "description": "One or more `domain` blocks as defined below.\n"
                     },
@@ -2818,7 +2818,7 @@
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission"
+                            "$ref": "#/types/azuread:index/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission"
                         },
                         "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
                     },
@@ -2835,7 +2835,7 @@
                     "appRoles": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getServicePrincipalAppRole:getServicePrincipalAppRole"
+                            "$ref": "#/types/azuread:index/getServicePrincipalAppRole:getServicePrincipalAppRole"
                         }
                     },
                     "applicationId": {
@@ -2852,7 +2852,7 @@
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission"
+                            "$ref": "#/types/azuread:index/getServicePrincipalOauth2Permission:getServicePrincipalOauth2Permission"
                         }
                     },
                     "objectId": {
@@ -3020,7 +3020,7 @@
                     "users": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/azuread:/getUsersUser:getUsersUser"
+                            "$ref": "#/types/azuread:index/getUsersUser:getUsersUser"
                         },
                         "description": "An Array of Azure AD Users. Each `user` object consists of the fields documented below.\n"
                     }

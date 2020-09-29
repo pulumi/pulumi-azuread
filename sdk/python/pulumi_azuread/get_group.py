@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 
 __all__ = [
@@ -57,7 +57,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter
-    def members(self) -> List[str]:
+    def members(self) -> Sequence[str]:
         """
         The Object IDs of the Azure AD Group members.
         """
@@ -78,7 +78,7 @@ class GetGroupResult:
 
     @property
     @pulumi.getter
-    def owners(self) -> List[str]:
+    def owners(self) -> Sequence[str]:
         """
         The Object IDs of the Azure AD Group owners.
         """

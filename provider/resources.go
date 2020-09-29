@@ -18,9 +18,8 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
-	"github.com/hashicorp/terraform-plugin-sdk/terraform"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
-	"github.com/pulumi/pulumi/sdk/v2/go/common/resource"
+	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
 	"github.com/terraform-providers/terraform-provider-azuread/azuread"
 )
@@ -59,20 +58,13 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
-// preConfigureCallback is called before the providerConfigure function of the underlying provider.
-// It should validate that the provider can be configured, and provide actionable errors in the case
-// it cannot be.
-func preConfigureCallback(vars resource.PropertyMap, c *terraform.ResourceConfig) error {
-	return nil
-}
-
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 // var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := azuread.Provider().(*schema.Provider)
+	p := shimv1.NewProvider(azuread.Provider().(*schema.Provider))
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -139,7 +131,6 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 		},
-		PreConfigureCallback: preConfigureCallback,
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"azuread_application":                   {Tok: makeResource(mainMod, "Application")},
 			"azuread_application_password":          {Tok: makeResource(mainMod, "ApplicationPassword")},
@@ -188,22 +179,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 	}
 
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const nameProperty = "name"
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[nameProperty]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[nameProperty]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					res.Fields[nameProperty] = tfbridge.AutoName(nameProperty, 255)
-				}
-			}
-		}
-	}
+	prov.SetAutonaming(255, "-")
 
 	return prov
 }

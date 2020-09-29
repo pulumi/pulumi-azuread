@@ -5,7 +5,7 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from typing import Any, Mapping, Optional, Sequence, Union
 from . import _utilities, _tables
 from . import outputs
 from ._inputs import *
@@ -43,7 +43,7 @@ class GetServicePrincipalResult:
 
     @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> List['outputs.GetServicePrincipalAppRoleResult']:
+    def app_roles(self) -> Sequence['outputs.GetServicePrincipalAppRoleResult']:
         return pulumi.get(self, "app_roles")
 
     @property
@@ -69,7 +69,7 @@ class GetServicePrincipalResult:
 
     @property
     @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> List['outputs.GetServicePrincipalOauth2PermissionResult']:
+    def oauth2_permissions(self) -> Sequence['outputs.GetServicePrincipalOauth2PermissionResult']:
         return pulumi.get(self, "oauth2_permissions")
 
     @property
@@ -94,7 +94,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
 
 def get_service_principal(application_id: Optional[str] = None,
                           display_name: Optional[str] = None,
-                          oauth2_permissions: Optional[List[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']]] = None,
+                          oauth2_permissions: Optional[Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']]] = None,
                           object_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
@@ -131,7 +131,7 @@ def get_service_principal(application_id: Optional[str] = None,
 
     :param str application_id: The ID of the Azure AD Application.
     :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
-    :param List[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+    :param Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: The ID of the Azure AD Service Principal.
     """
     __args__ = dict()
