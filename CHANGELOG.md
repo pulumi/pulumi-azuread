@@ -2,8 +2,8 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to pulumi-terraform-bridge v2.10.0
-* Upgrade to Pulumi v2.10.0
+* Upgrade to pulumi-terraform-bridge v2.10.2
+* Upgrade to Pulumi v2.10.2
 
 ---
 
@@ -11,7 +11,7 @@ CHANGELOG
 * Upgrade to pulumi-terraform-bridge v2.7.3
 
 ## 2.5.0 (2020-08-24)
-* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python 
+* Upgrade to Pulumi v2.9.0, which adds type annotations and input/output classes to Python
 * Upgrade to pulumi-terraform-bridge v2.7.2
 
 ## 2.4.0 (2020-07-10)
@@ -32,7 +32,7 @@ CHANGELOG
 
 ## 2.1.0 (2020-04-29)
 * Regenerate datasource examples to be async
-* Upgrade to pulumi-terraform-bridge v2.1.0 
+* Upgrade to pulumi-terraform-bridge v2.1.0
 
 ## 2.0.0 (2020-04-16)
 * Upgrade to Pulumi v2.0.0
