@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type ApplicationCertificateArgs struct {
 
 func (ApplicationCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationCertificateArgs)(nil)).Elem()
+}
+
+type ApplicationCertificateInput interface {
+	pulumi.Input
+
+	ToApplicationCertificateOutput() ApplicationCertificateOutput
+	ToApplicationCertificateOutputWithContext(ctx context.Context) ApplicationCertificateOutput
+}
+
+func (ApplicationCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCertificate)(nil)).Elem()
+}
+
+func (i ApplicationCertificate) ToApplicationCertificateOutput() ApplicationCertificateOutput {
+	return i.ToApplicationCertificateOutputWithContext(context.Background())
+}
+
+func (i ApplicationCertificate) ToApplicationCertificateOutputWithContext(ctx context.Context) ApplicationCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationCertificateOutput)
+}
+
+type ApplicationCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationCertificateOutput)(nil)).Elem()
+}
+
+func (o ApplicationCertificateOutput) ToApplicationCertificateOutput() ApplicationCertificateOutput {
+	return o
+}
+
+func (o ApplicationCertificateOutput) ToApplicationCertificateOutputWithContext(ctx context.Context) ApplicationCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationCertificateOutput{})
 }

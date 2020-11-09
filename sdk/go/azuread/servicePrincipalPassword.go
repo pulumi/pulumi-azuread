@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -186,4 +187,43 @@ type ServicePrincipalPasswordArgs struct {
 
 func (ServicePrincipalPasswordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalPasswordArgs)(nil)).Elem()
+}
+
+type ServicePrincipalPasswordInput interface {
+	pulumi.Input
+
+	ToServicePrincipalPasswordOutput() ServicePrincipalPasswordOutput
+	ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput
+}
+
+func (ServicePrincipalPassword) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalPassword)(nil)).Elem()
+}
+
+func (i ServicePrincipalPassword) ToServicePrincipalPasswordOutput() ServicePrincipalPasswordOutput {
+	return i.ToServicePrincipalPasswordOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalPassword) ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordOutput)
+}
+
+type ServicePrincipalPasswordOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePrincipalPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalPasswordOutput)(nil)).Elem()
+}
+
+func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutput() ServicePrincipalPasswordOutput {
+	return o
+}
+
+func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServicePrincipalPasswordOutput{})
 }

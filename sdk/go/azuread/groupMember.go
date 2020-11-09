@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -133,4 +134,43 @@ type GroupMemberArgs struct {
 
 func (GroupMemberArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMemberArgs)(nil)).Elem()
+}
+
+type GroupMemberInput interface {
+	pulumi.Input
+
+	ToGroupMemberOutput() GroupMemberOutput
+	ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput
+}
+
+func (GroupMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMember)(nil)).Elem()
+}
+
+func (i GroupMember) ToGroupMemberOutput() GroupMemberOutput {
+	return i.ToGroupMemberOutputWithContext(context.Background())
+}
+
+func (i GroupMember) ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupMemberOutput)
+}
+
+type GroupMemberOutput struct {
+	*pulumi.OutputState
+}
+
+func (GroupMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMemberOutput)(nil)).Elem()
+}
+
+func (o GroupMemberOutput) ToGroupMemberOutput() GroupMemberOutput {
+	return o
+}
+
+func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(GroupMemberOutput{})
 }

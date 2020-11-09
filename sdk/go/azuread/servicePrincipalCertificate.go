@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -148,4 +149,43 @@ type ServicePrincipalCertificateArgs struct {
 
 func (ServicePrincipalCertificateArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalCertificateArgs)(nil)).Elem()
+}
+
+type ServicePrincipalCertificateInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCertificateOutput() ServicePrincipalCertificateOutput
+	ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput
+}
+
+func (ServicePrincipalCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCertificate)(nil)).Elem()
+}
+
+func (i ServicePrincipalCertificate) ToServicePrincipalCertificateOutput() ServicePrincipalCertificateOutput {
+	return i.ToServicePrincipalCertificateOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalCertificate) ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateOutput)
+}
+
+type ServicePrincipalCertificateOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePrincipalCertificateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCertificateOutput)(nil)).Elem()
+}
+
+func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutput() ServicePrincipalCertificateOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ServicePrincipalCertificateOutput{})
 }

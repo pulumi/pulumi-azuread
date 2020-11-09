@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"context"
 	"reflect"
 
 	"github.com/pkg/errors"
@@ -187,4 +188,43 @@ type ApplicationPasswordArgs struct {
 
 func (ApplicationPasswordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationPasswordArgs)(nil)).Elem()
+}
+
+type ApplicationPasswordInput interface {
+	pulumi.Input
+
+	ToApplicationPasswordOutput() ApplicationPasswordOutput
+	ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput
+}
+
+func (ApplicationPassword) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPassword)(nil)).Elem()
+}
+
+func (i ApplicationPassword) ToApplicationPasswordOutput() ApplicationPasswordOutput {
+	return i.ToApplicationPasswordOutputWithContext(context.Background())
+}
+
+func (i ApplicationPassword) ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordOutput)
+}
+
+type ApplicationPasswordOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPasswordOutput)(nil)).Elem()
+}
+
+func (o ApplicationPasswordOutput) ToApplicationPasswordOutput() ApplicationPasswordOutput {
+	return o
+}
+
+func (o ApplicationPasswordOutput) ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput {
+	return o
+}
+
+func init() {
+	pulumi.RegisterOutputType(ApplicationPasswordOutput{})
 }
