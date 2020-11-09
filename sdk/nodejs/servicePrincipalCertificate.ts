@@ -25,6 +25,14 @@ import * as utilities from "./utilities";
  *     endDate: "2021-05-01T01:02:03Z",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Certificates can be imported using the `object id` of the Service Principal and the `key id` of the certificate, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+ * ```
  */
 export class ServicePrincipalCertificate extends pulumi.CustomResource {
     /**

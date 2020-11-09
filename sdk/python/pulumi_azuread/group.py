@@ -52,6 +52,14 @@ class Group(pulumi.CustomResource):
         example_group = azuread.Group("exampleGroup", members=[example_user.object_id])
         ```
 
+        ## Import
+
+        Azure Active Directory Groups can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.

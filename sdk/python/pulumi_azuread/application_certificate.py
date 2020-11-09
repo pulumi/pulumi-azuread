@@ -44,6 +44,14 @@ class ApplicationCertificate(pulumi.CustomResource):
             end_date="2021-05-01T01:02:03Z")
         ```
 
+        ## Import
+
+        Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.

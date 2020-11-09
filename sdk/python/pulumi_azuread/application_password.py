@@ -45,6 +45,14 @@ class ApplicationPassword(pulumi.CustomResource):
             end_date="2099-01-01T01:02:03Z")
         ```
 
+        ## Import
+
+        Passwords can be imported using the `object id` of an Application and the `key id` of the password, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/applicationPassword:ApplicationPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
@@ -73,7 +81,7 @@ class ApplicationPassword(pulumi.CustomResource):
             __props__ = dict()
 
             if application_id is not None:
-                warnings.warn("Deprecated in favour of `application_object_id` to prevent confusion", DeprecationWarning)
+                warnings.warn("""Deprecated in favour of `application_object_id` to prevent confusion""", DeprecationWarning)
                 pulumi.log.warn("application_id is deprecated: Deprecated in favour of `application_object_id` to prevent confusion")
             __props__['application_id'] = application_id
             __props__['application_object_id'] = application_object_id

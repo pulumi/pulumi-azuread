@@ -127,6 +127,14 @@ class Application(pulumi.CustomResource):
             type="webapp/api")
         ```
 
+        ## Import
+
+        Azure Active Directory Applications can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles

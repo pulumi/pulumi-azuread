@@ -22,6 +22,14 @@ import * as utilities from "./utilities";
  *     userPrincipalName: "jdoe@hashicorp.com",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * Azure Active Directory Users can be imported using the `object id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+ * ```
  */
 export class User extends pulumi.CustomResource {
     /**

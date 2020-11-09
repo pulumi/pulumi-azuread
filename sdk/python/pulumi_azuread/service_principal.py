@@ -51,6 +51,14 @@ class ServicePrincipal(pulumi.CustomResource):
             ])
         ```
 
+        ## Import
+
+        Azure Active Directory Service Principals can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] app_role_assignment_required: Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.

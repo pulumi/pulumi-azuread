@@ -44,6 +44,14 @@ class User(pulumi.CustomResource):
             user_principal_name="jdoe@hashicorp.com")
         ```
 
+        ## Import
+
+        Azure Active Directory Users can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
