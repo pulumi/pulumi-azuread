@@ -2,8 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import * as inputs from "./types/input";
-import * as outputs from "./types/output";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -33,6 +32,14 @@ import * as utilities from "./utilities";
  *         "here",
  *     ],
  * });
+ * ```
+ *
+ * ## Import
+ *
+ * Azure Active Directory Service Principals can be imported using the `object id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
  * ```
  */
 export class ServicePrincipal extends pulumi.CustomResource {

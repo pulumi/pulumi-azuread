@@ -39,6 +39,14 @@ import (
 // 	})
 // }
 // ```
+//
+// ## Import
+//
+// Azure Active Directory Users can be imported using the `object id`, e.g.
+//
+// ```sh
+//  $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+// ```
 type User struct {
 	pulumi.CustomResourceState
 

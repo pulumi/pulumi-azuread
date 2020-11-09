@@ -45,6 +45,14 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
             end_date="2021-05-01T01:02:03Z")
         ```
 
+        ## Import
+
+        Certificates can be imported using the `object id` of the Service Principal and the `key id` of the certificate, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
