@@ -80,7 +80,7 @@ class ApplicationPassword(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if application_id is not None:
+            if application_id is not None and not opts.urn:
                 warnings.warn("""Deprecated in favour of `application_object_id` to prevent confusion""", DeprecationWarning)
                 pulumi.log.warn("application_id is deprecated: Deprecated in favour of `application_object_id` to prevent confusion")
             __props__['application_id'] = application_id
@@ -90,7 +90,7 @@ class ApplicationPassword(pulumi.CustomResource):
             __props__['end_date_relative'] = end_date_relative
             __props__['key_id'] = key_id
             __props__['start_date'] = start_date
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
         super(ApplicationPassword, __self__).__init__(

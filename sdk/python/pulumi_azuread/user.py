@@ -81,17 +81,17 @@ class User(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_enabled'] = account_enabled
-            if display_name is None:
+            if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['force_password_change'] = force_password_change
             __props__['immutable_id'] = immutable_id
             __props__['mail_nickname'] = mail_nickname
-            if password is None:
+            if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
             __props__['usage_location'] = usage_location
-            if user_principal_name is None:
+            if user_principal_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_principal_name'")
             __props__['user_principal_name'] = user_principal_name
             __props__['mail'] = None

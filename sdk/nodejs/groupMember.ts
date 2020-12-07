@@ -86,10 +86,10 @@ export class GroupMember extends pulumi.CustomResource {
             inputs["memberObjectId"] = state ? state.memberObjectId : undefined;
         } else {
             const args = argsOrState as GroupMemberArgs | undefined;
-            if (!args || args.groupObjectId === undefined) {
+            if ((!args || args.groupObjectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'groupObjectId'");
             }
-            if (!args || args.memberObjectId === undefined) {
+            if ((!args || args.memberObjectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'memberObjectId'");
             }
             inputs["groupObjectId"] = args ? args.groupObjectId : undefined;

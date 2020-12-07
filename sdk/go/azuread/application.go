@@ -181,6 +181,7 @@ func NewApplication(ctx *pulumi.Context,
 	if args == nil {
 		args = &ApplicationArgs{}
 	}
+
 	var resource Application
 	err := ctx.RegisterResource("azuread:index/application:Application", name, args, &resource, opts...)
 	if err != nil {

@@ -44,14 +44,15 @@ type ApplicationCertificate struct {
 // NewApplicationCertificate registers a new resource with the given unique name, arguments, and options.
 func NewApplicationCertificate(ctx *pulumi.Context,
 	name string, args *ApplicationCertificateArgs, opts ...pulumi.ResourceOption) (*ApplicationCertificate, error) {
-	if args == nil || args.ApplicationObjectId == nil {
-		return nil, errors.New("missing required argument 'ApplicationObjectId'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &ApplicationCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationObjectId'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource ApplicationCertificate
 	err := ctx.RegisterResource("azuread:index/applicationCertificate:ApplicationCertificate", name, args, &resource, opts...)

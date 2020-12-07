@@ -115,7 +115,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
-            if (!args || args.applicationId === undefined) {
+            if ((!args || args.applicationId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationId'");
             }
             inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;

@@ -69,14 +69,15 @@ type GroupMember struct {
 // NewGroupMember registers a new resource with the given unique name, arguments, and options.
 func NewGroupMember(ctx *pulumi.Context,
 	name string, args *GroupMemberArgs, opts ...pulumi.ResourceOption) (*GroupMember, error) {
-	if args == nil || args.GroupObjectId == nil {
-		return nil, errors.New("missing required argument 'GroupObjectId'")
-	}
-	if args == nil || args.MemberObjectId == nil {
-		return nil, errors.New("missing required argument 'MemberObjectId'")
-	}
 	if args == nil {
-		args = &GroupMemberArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.GroupObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'GroupObjectId'")
+	}
+	if args.MemberObjectId == nil {
+		return nil, errors.New("invalid value for required argument 'MemberObjectId'")
 	}
 	var resource GroupMember
 	err := ctx.RegisterResource("azuread:index/groupMember:GroupMember", name, args, &resource, opts...)

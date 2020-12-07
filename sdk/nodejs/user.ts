@@ -134,13 +134,13 @@ export class User extends pulumi.CustomResource {
             inputs["userPrincipalName"] = state ? state.userPrincipalName : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
-            if (!args || args.displayName === undefined) {
+            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if (!args || args.password === undefined) {
+            if ((!args || args.password === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'password'");
             }
-            if (!args || args.userPrincipalName === undefined) {
+            if ((!args || args.userPrincipalName === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'userPrincipalName'");
             }
             inputs["accountEnabled"] = args ? args.accountEnabled : undefined;

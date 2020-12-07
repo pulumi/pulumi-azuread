@@ -85,11 +85,12 @@ type ServicePrincipal struct {
 // NewServicePrincipal registers a new resource with the given unique name, arguments, and options.
 func NewServicePrincipal(ctx *pulumi.Context,
 	name string, args *ServicePrincipalArgs, opts ...pulumi.ResourceOption) (*ServicePrincipal, error) {
-	if args == nil || args.ApplicationId == nil {
-		return nil, errors.New("missing required argument 'ApplicationId'")
-	}
 	if args == nil {
-		args = &ServicePrincipalArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ApplicationId == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationId'")
 	}
 	var resource ServicePrincipal
 	err := ctx.RegisterResource("azuread:index/servicePrincipal:ServicePrincipal", name, args, &resource, opts...)

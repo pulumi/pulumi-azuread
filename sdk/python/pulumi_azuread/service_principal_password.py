@@ -84,11 +84,11 @@ class ServicePrincipalPassword(pulumi.CustomResource):
             __props__['end_date'] = end_date
             __props__['end_date_relative'] = end_date_relative
             __props__['key_id'] = key_id
-            if service_principal_id is None:
+            if service_principal_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_principal_id'")
             __props__['service_principal_id'] = service_principal_id
             __props__['start_date'] = start_date
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
         super(ServicePrincipalPassword, __self__).__init__(

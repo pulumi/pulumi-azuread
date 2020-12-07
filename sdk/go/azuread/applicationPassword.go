@@ -78,11 +78,12 @@ type ApplicationPassword struct {
 // NewApplicationPassword registers a new resource with the given unique name, arguments, and options.
 func NewApplicationPassword(ctx *pulumi.Context,
 	name string, args *ApplicationPasswordArgs, opts ...pulumi.ResourceOption) (*ApplicationPassword, error) {
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &ApplicationPasswordArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource ApplicationPassword
 	err := ctx.RegisterResource("azuread:index/applicationPassword:ApplicationPassword", name, args, &resource, opts...)

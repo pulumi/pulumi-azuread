@@ -24,6 +24,7 @@ func NewProvider(ctx *pulumi.Context,
 	if args == nil {
 		args = &ProviderArgs{}
 	}
+
 	if args.ClientCertificatePassword == nil {
 		args.ClientCertificatePassword = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string))
 	}

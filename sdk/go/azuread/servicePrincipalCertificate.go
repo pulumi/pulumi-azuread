@@ -44,14 +44,15 @@ type ServicePrincipalCertificate struct {
 // NewServicePrincipalCertificate registers a new resource with the given unique name, arguments, and options.
 func NewServicePrincipalCertificate(ctx *pulumi.Context,
 	name string, args *ServicePrincipalCertificateArgs, opts ...pulumi.ResourceOption) (*ServicePrincipalCertificate, error) {
-	if args == nil || args.ServicePrincipalId == nil {
-		return nil, errors.New("missing required argument 'ServicePrincipalId'")
-	}
-	if args == nil || args.Value == nil {
-		return nil, errors.New("missing required argument 'Value'")
-	}
 	if args == nil {
-		args = &ServicePrincipalCertificateArgs{}
+		return nil, errors.New("missing one or more required arguments")
+	}
+
+	if args.ServicePrincipalId == nil {
+		return nil, errors.New("invalid value for required argument 'ServicePrincipalId'")
+	}
+	if args.Value == nil {
+		return nil, errors.New("invalid value for required argument 'Value'")
 	}
 	var resource ServicePrincipalCertificate
 	err := ctx.RegisterResource("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate", name, args, &resource, opts...)
