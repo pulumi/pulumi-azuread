@@ -4,7 +4,9 @@
 
 # Export this package's modules as members:
 from .application import *
+from .application_app_role import *
 from .application_certificate import *
+from .application_o_auth2_permission import *
 from .application_password import *
 from .get_application import *
 from .get_client_config import *
@@ -43,8 +45,12 @@ def _register_module():
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
             if typ == "azuread:index/application:Application":
                 return Application(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azuread:index/applicationAppRole:ApplicationAppRole":
+                return ApplicationAppRole(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "azuread:index/applicationCertificate:ApplicationCertificate":
                 return ApplicationCertificate(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission":
+                return ApplicationOAuth2Permission(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "azuread:index/applicationPassword:ApplicationPassword":
                 return ApplicationPassword(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "azuread:index/group:Group":
@@ -65,7 +71,9 @@ def _register_module():
 
     _module_instance = Module()
     pulumi.runtime.register_resource_module("azuread", "index/application", _module_instance)
+    pulumi.runtime.register_resource_module("azuread", "index/applicationAppRole", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/applicationCertificate", _module_instance)
+    pulumi.runtime.register_resource_module("azuread", "index/applicationOAuth2Permission", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/applicationPassword", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/group", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/groupMember", _module_instance)

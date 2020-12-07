@@ -11,7 +11,10 @@ export let clientCertificatePath: string | undefined = __config.get("clientCerti
 export let clientId: string | undefined = __config.get("clientId") || (utilities.getEnv("ARM_CLIENT_ID") || "");
 export let clientSecret: string | undefined = __config.get("clientSecret") || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
 export let environment: string | undefined = __config.get("environment") || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
+/**
+ * The Hostname which should be used to fetch environment metadata from.
+ */
+export let metadataHost: string | undefined = __config.get("metadataHost");
 export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
-export let subscriptionId: string | undefined = __config.get("subscriptionId") || (utilities.getEnv("ARM_SUBSCRIPTION_ID") || "");
 export let tenantId: string | undefined = __config.get("tenantId") || (utilities.getEnv("ARM_TENANT_ID") || "");
 export let useMsi: boolean | undefined = __config.getObject<boolean>("useMsi") || (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false);

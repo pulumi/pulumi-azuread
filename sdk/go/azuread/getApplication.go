@@ -61,7 +61,7 @@ type LookupApplicationArgs struct {
 // A collection of values returned by getApplication.
 type LookupApplicationResult struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles []GetApplicationAppRole `pulumi:"appRoles"`
+	AppRoles []GetApplicationAppRoleType `pulumi:"appRoles"`
 	// the Application ID of the Azure Active Directory Application.
 	ApplicationId string `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants?

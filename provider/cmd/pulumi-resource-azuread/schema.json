@@ -59,21 +59,16 @@
                     ]
                 }
             },
+            "metadataHost": {
+                "type": "string",
+                "description": "The Hostname which should be used to fetch environment metadata from.\n"
+            },
             "msiEndpoint": {
                 "type": "string",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
                         "ARM_MSI_ENDPOINT"
-                    ]
-                }
-            },
-            "subscriptionId": {
-                "type": "string",
-                "default": "",
-                "defaultInfo": {
-                    "environment": [
-                        "ARM_SUBSCRIPTION_ID"
                     ]
                 }
             },
@@ -97,7 +92,8 @@
             }
         },
         "defaults": [
-            "environment"
+            "environment",
+            "metadataHost"
         ]
     },
     "types": {
@@ -135,7 +131,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier of the `app_role`.\n",
+                    "description": "The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -173,7 +169,8 @@
                         "allowedMemberTypes",
                         "description",
                         "displayName",
-                        "id"
+                        "id",
+                        "value"
                     ]
                 }
             }
@@ -1282,21 +1279,16 @@
                     ]
                 }
             },
+            "metadataHost": {
+                "type": "string",
+                "description": "The Hostname which should be used to fetch environment metadata from.\n"
+            },
             "msiEndpoint": {
                 "type": "string",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
                         "ARM_MSI_ENDPOINT"
-                    ]
-                }
-            },
-            "subscriptionId": {
-                "type": "string",
-                "default": "",
-                "defaultInfo": {
-                    "environment": [
-                        "ARM_SUBSCRIPTION_ID"
                     ]
                 }
             },
@@ -1318,7 +1310,10 @@
                     ]
                 }
             }
-        }
+        },
+        "requiredInputs": [
+            "metadataHost"
+        ]
     },
     "resources": {
         "azuread:index/application:Application": {
@@ -1416,6 +1411,7 @@
                 }
             },
             "required": [
+                "appRoles",
                 "applicationId",
                 "homepage",
                 "identifierUris",
@@ -1607,6 +1603,125 @@
                 "type": "object"
             }
         },
+        "azuread:index/applicationAppRole:ApplicationAppRole": {
+            "description": "Manages an App Role associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleApplicationAppRole = new azuread.ApplicationAppRole(\"exampleApplicationAppRole\", {\n    applicationObjectId: exampleApplication.id,\n    allowedMemberTypes: [\"User\"],\n    description: \"Admins can manage roles and perform all task actions\",\n    displayName: \"Admin\",\n    isEnabled: true,\n    value: \"administer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_application_app_role = azuread.ApplicationAppRole(\"exampleApplicationAppRole\",\n    application_object_id=example_application.id,\n    allowed_member_types=[\"User\"],\n    description=\"Admins can manage roles and perform all task actions\",\n    display_name=\"Admin\",\n    is_enabled=True,\n    value=\"administer\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleApplicationAppRole = new AzureAD.ApplicationAppRole(\"exampleApplicationAppRole\", new AzureAD.ApplicationAppRoleArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            AllowedMemberTypes = \n            {\n                \"User\",\n            },\n            Description = \"Admins can manage roles and perform all task actions\",\n            DisplayName = \"Admin\",\n            IsEnabled = true,\n            Value = \"administer\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewApplicationAppRole(ctx, \"exampleApplicationAppRole\", \u0026azuread.ApplicationAppRoleArgs{\n\t\t\tApplicationObjectId: exampleApplication.ID(),\n\t\t\tAllowedMemberTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"User\"),\n\t\t\t},\n\t\t\tDescription: pulumi.String(\"Admins can manage roles and perform all task actions\"),\n\t\t\tDisplayName: pulumi.String(\"Admin\"),\n\t\t\tIsEnabled:   pulumi.Bool(true),\n\t\t\tValue:       pulumi.String(\"administer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nApp Roles can be imported using the `object id` of an Application and the `id` of the App Role, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111\n```\n\n ",
+            "properties": {
+                "allowedMemberTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.\n"
+                },
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin app assignment and consent experiences.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled. Defaults to `true`.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n"
+                }
+            },
+            "required": [
+                "allowedMemberTypes",
+                "applicationObjectId",
+                "description",
+                "displayName",
+                "roleId"
+            ],
+            "inputProperties": {
+                "allowedMemberTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.\n"
+                },
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin app assignment and consent experiences.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the app role is enabled. Defaults to `true`.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n"
+                }
+            },
+            "requiredInputs": [
+                "allowedMemberTypes",
+                "applicationObjectId",
+                "description",
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationAppRole resources.\n",
+                "properties": {
+                    "allowedMemberTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.\n"
+                    },
+                    "applicationObjectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Permission help text that appears in the admin app assignment and consent experiences.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                    },
+                    "isEnabled": {
+                        "type": "boolean",
+                        "description": "Determines if the app role is enabled. Defaults to `true`.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/applicationCertificate:ApplicationCertificate": {
             "description": "Manages a Certificate associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * from \"fs\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleApplicationCertificate = new azuread.ApplicationCertificate(\"exampleApplicationCertificate\", {\n    applicationObjectId: exampleApplication.id,\n    type: \"AsymmetricX509Cert\",\n    value: fs.readFileSync(\"cert.pem\"),\n    endDate: \"2021-05-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_application_certificate = azuread.ApplicationCertificate(\"exampleApplicationCertificate\",\n    application_object_id=example_application.id,\n    type=\"AsymmetricX509Cert\",\n    value=(lambda path: open(path).read())(\"cert.pem\"),\n    end_date=\"2021-05-01T01:02:03Z\")\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleApplicationCertificate = new AzureAD.ApplicationCertificate(\"exampleApplicationCertificate\", new AzureAD.ApplicationCertificateArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            Type = \"AsymmetricX509Cert\",\n            Value = File.ReadAllText(\"cert.pem\"),\n            EndDate = \"2021-05-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCertificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111\n```\n\n ",
             "properties": {
@@ -1715,13 +1830,149 @@
                 "type": "object"
             }
         },
+        "azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission": {
+            "description": "Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleApplicationOAuth2Permission = new azuread.ApplicationOAuth2Permission(\"exampleApplicationOAuth2Permission\", {\n    applicationObjectId: exampleApplication.id,\n    adminConsentDescription: \"Administer the application\",\n    adminConsentDisplayName: \"Administer\",\n    isEnabled: true,\n    type: \"User\",\n    userConsentDescription: \"Administer the application\",\n    userConsentDisplayName: \"Administer\",\n    value: \"administer\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_application_o_auth2_permission = azuread.ApplicationOAuth2Permission(\"exampleApplicationOAuth2Permission\",\n    application_object_id=example_application.id,\n    admin_consent_description=\"Administer the application\",\n    admin_consent_display_name=\"Administer\",\n    is_enabled=True,\n    type=\"User\",\n    user_consent_description=\"Administer the application\",\n    user_consent_display_name=\"Administer\",\n    value=\"administer\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleApplicationOAuth2Permission = new AzureAD.ApplicationOAuth2Permission(\"exampleApplicationOAuth2Permission\", new AzureAD.ApplicationOAuth2PermissionArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            AdminConsentDescription = \"Administer the application\",\n            AdminConsentDisplayName = \"Administer\",\n            IsEnabled = true,\n            Type = \"User\",\n            UserConsentDescription = \"Administer the application\",\n            UserConsentDisplayName = \"Administer\",\n            Value = \"administer\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewApplicationOAuth2Permission(ctx, \"exampleApplicationOAuth2Permission\", \u0026azuread.ApplicationOAuth2PermissionArgs{\n\t\t\tApplicationObjectId:     exampleApplication.ID(),\n\t\t\tAdminConsentDescription: pulumi.String(\"Administer the application\"),\n\t\t\tAdminConsentDisplayName: pulumi.String(\"Administer\"),\n\t\t\tIsEnabled:               pulumi.Bool(true),\n\t\t\tType:                    pulumi.String(\"User\"),\n\t\t\tUserConsentDescription:  pulumi.String(\"Administer the application\"),\n\t\t\tUserConsentDisplayName:  pulumi.String(\"Administer\"),\n\t\t\tValue:                   pulumi.String(\"administer\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nOAuth2 Permissions can be imported using the `object id` of an Application and the `id` of the Permission, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission test 00000000-0000-0000-0000-000000000000/scope/11111111-1111-1111-1111-111111111111\n```\n\n ",
+            "properties": {
+                "adminConsentDescription": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin consent and app assignment experiences.\n"
+                },
+                "adminConsentDisplayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                },
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the Permission is enabled. Defaults to `true`.\n"
+                },
+                "permissionId": {
+                    "type": "string",
+                    "description": "Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are \"User\" or \"Admin\".\n"
+                },
+                "userConsentDescription": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the end user consent experience.\n"
+                },
+                "userConsentDisplayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the end user consent experience.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.\n"
+                }
+            },
+            "required": [
+                "adminConsentDescription",
+                "adminConsentDisplayName",
+                "applicationObjectId",
+                "permissionId",
+                "type",
+                "userConsentDescription",
+                "userConsentDisplayName",
+                "value"
+            ],
+            "inputProperties": {
+                "adminConsentDescription": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the admin consent and app assignment experiences.\n"
+                },
+                "adminConsentDisplayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                },
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Determines if the Permission is enabled. Defaults to `true`.\n"
+                },
+                "permissionId": {
+                    "type": "string",
+                    "description": "Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are \"User\" or \"Admin\".\n"
+                },
+                "userConsentDescription": {
+                    "type": "string",
+                    "description": "Permission help text that appears in the end user consent experience.\n"
+                },
+                "userConsentDisplayName": {
+                    "type": "string",
+                    "description": "Display name for the permission that appears in the end user consent experience.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.\n"
+                }
+            },
+            "requiredInputs": [
+                "adminConsentDescription",
+                "adminConsentDisplayName",
+                "applicationObjectId",
+                "type",
+                "userConsentDescription",
+                "userConsentDisplayName",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationOAuth2Permission resources.\n",
+                "properties": {
+                    "adminConsentDescription": {
+                        "type": "string",
+                        "description": "Permission help text that appears in the admin consent and app assignment experiences.\n"
+                    },
+                    "adminConsentDisplayName": {
+                        "type": "string",
+                        "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                    },
+                    "applicationObjectId": {
+                        "type": "string",
+                        "description": "The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "isEnabled": {
+                        "type": "boolean",
+                        "description": "Determines if the Permission is enabled. Defaults to `true`.\n"
+                    },
+                    "permissionId": {
+                        "type": "string",
+                        "description": "Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are \"User\" or \"Admin\".\n"
+                    },
+                    "userConsentDescription": {
+                        "type": "string",
+                        "description": "Permission help text that appears in the end user consent experience.\n"
+                    },
+                    "userConsentDisplayName": {
+                        "type": "string",
+                        "description": "Display name for the permission that appears in the end user consent experience.\n"
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/applicationPassword:ApplicationPassword": {
             "description": "Manages a Password associated with an Application within Azure Active Directory. Also can be referred to as Client secrets.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleApplicationPassword = new azuread.ApplicationPassword(\"exampleApplicationPassword\", {\n    applicationObjectId: exampleApplication.id,\n    description: \"My managed password\",\n    value: `VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#`,\n    endDate: \"2099-01-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_application_password = azuread.ApplicationPassword(\"exampleApplicationPassword\",\n    application_object_id=example_application.id,\n    description=\"My managed password\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n    end_date=\"2099-01-01T01:02:03Z\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleApplicationPassword = new AzureAD.ApplicationPassword(\"exampleApplicationPassword\", new AzureAD.ApplicationPasswordArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            Description = \"My managed password\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-azuread/sdk/v2/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewApplicationPassword(ctx, \"exampleApplicationPassword\", \u0026azuread.ApplicationPasswordArgs{\n\t\t\tApplicationObjectId: exampleApplication.ID(),\n\t\t\tDescription:         pulumi.String(\"My managed password\"),\n\t\t\tValue:               pulumi.String(fmt.Sprintf(\"%v%v%v\", \"VT=uSgbTanZhyz@\", \"%\", \"nL9Hpd+Tfay_MRV#\")),\n\t\t\tEndDate:             pulumi.String(\"2099-01-01T01:02:03Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPasswords can be imported using the `object id` of an Application and the `key id` of the password, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationPassword:ApplicationPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111\n```\n\n ",
             "properties": {
-                "applicationId": {
-                    "type": "string",
-                    "deprecationMessage": "Deprecated in favour of `application_object_id` to prevent confusion"
-                },
                 "applicationObjectId": {
                     "type": "string",
                     "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
@@ -1752,7 +2003,6 @@
                 }
             },
             "required": [
-                "applicationId",
                 "applicationObjectId",
                 "description",
                 "endDate",
@@ -1761,10 +2011,6 @@
                 "value"
             ],
             "inputProperties": {
-                "applicationId": {
-                    "type": "string",
-                    "deprecationMessage": "Deprecated in favour of `application_object_id` to prevent confusion"
-                },
                 "applicationObjectId": {
                     "type": "string",
                     "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
@@ -1795,15 +2041,12 @@
                 }
             },
             "requiredInputs": [
+                "applicationObjectId",
                 "value"
             ],
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ApplicationPassword resources.\n",
                 "properties": {
-                    "applicationId": {
-                        "type": "string",
-                        "deprecationMessage": "Deprecated in favour of `application_object_id` to prevent confusion"
-                    },
                     "applicationObjectId": {
                         "type": "string",
                         "description": "The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.\n"
@@ -2621,10 +2864,6 @@
                     "objectId": {
                         "type": "string"
                     },
-                    "subscriptionId": {
-                        "type": "string",
-                        "deprecationMessage": "The \"subscription_id\" attribute will be removed in version 1.0 of the provider. If you are using this attribute, you should instead use the \"azurerm_client_config\" data source from the AzureRM provider"
-                    },
                     "tenantId": {
                         "type": "string"
                     }
@@ -2633,7 +2872,6 @@
                 "required": [
                     "clientId",
                     "objectId",
-                    "subscriptionId",
                     "tenantId",
                     "id"
                 ]

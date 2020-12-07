@@ -43,19 +43,17 @@ func GetEnvironment(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string)
 }
+
+// The Hostname which should be used to fetch environment metadata from.
+func GetMetadataHost(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:metadataHost")
+}
 func GetMsiEndpoint(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:msiEndpoint")
 	if err == nil {
 		return v
 	}
 	return getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string)
-}
-func GetSubscriptionId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "azuread:subscriptionId")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ARM_SUBSCRIPTION_ID").(string)
 }
 func GetTenantId(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:tenantId")

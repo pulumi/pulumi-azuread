@@ -18,7 +18,7 @@ export interface ApplicationAppRole {
      */
     displayName: pulumi.Input<string>;
     /**
-     * The unique identifier of the `appRole`.
+     * The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.
      */
     id?: pulumi.Input<string>;
     /**

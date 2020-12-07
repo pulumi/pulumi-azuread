@@ -17,11 +17,10 @@ package provider
 import (
 	"unicode"
 
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
 	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfshim/sdk-v1"
 	"github.com/pulumi/pulumi/sdk/v2/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-azuread/azuread"
+	"github.com/terraform-providers/terraform-provider-azuread/shim"
 )
 
 // all of the token components used below.
@@ -64,7 +63,7 @@ func makeResource(mod string, res string) tokens.Type {
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := shimv1.NewProvider(azuread.Provider().(*schema.Provider))
+	p := shimv1.NewProvider(shim.NewProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
@@ -86,12 +85,6 @@ func Provider() tfbridge.ProviderInfo {
 				Default: &tfbridge.DefaultInfo{
 					Value:   "public",
 					EnvVars: []string{"ARM_ENVIRONMENT"},
-				},
-			},
-			"subscription_id": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"ARM_SUBSCRIPTION_ID"},
 				},
 			},
 			"tenant_id": {
@@ -140,6 +133,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_user":                          {Tok: makeResource(mainMod, "User")},
 			"azuread_group_member":                  {Tok: makeResource(mainMod, "GroupMember")},
 			"azuread_application_certificate":       {Tok: makeResource(mainMod, "ApplicationCertificate")},
+			"azuread_application_app_role":          {Tok: makeResource(mainMod, "ApplicationAppRole")},
+			"azuread_application_oauth2_permission": {Tok: makeResource(mainMod, "ApplicationOAuth2Permission")},
 			"azuread_service_principal_certificate": {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{

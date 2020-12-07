@@ -10,14 +10,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-type ApplicationAppRole struct {
+type ApplicationAppRoleType struct {
 	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description string `pulumi:"description"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName string `pulumi:"displayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationOAuth2Permission resource.
 	Id *string `pulumi:"id"`
 	// Determines if the permission is enabled: defaults to `true`.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -25,25 +25,25 @@ type ApplicationAppRole struct {
 	Value *string `pulumi:"value"`
 }
 
-// ApplicationAppRoleInput is an input type that accepts ApplicationAppRoleArgs and ApplicationAppRoleOutput values.
-// You can construct a concrete instance of `ApplicationAppRoleInput` via:
+// ApplicationAppRoleTypeInput is an input type that accepts ApplicationAppRoleTypeArgs and ApplicationAppRoleTypeOutput values.
+// You can construct a concrete instance of `ApplicationAppRoleTypeInput` via:
 //
-//          ApplicationAppRoleArgs{...}
-type ApplicationAppRoleInput interface {
+//          ApplicationAppRoleTypeArgs{...}
+type ApplicationAppRoleTypeInput interface {
 	pulumi.Input
 
-	ToApplicationAppRoleOutput() ApplicationAppRoleOutput
-	ToApplicationAppRoleOutputWithContext(context.Context) ApplicationAppRoleOutput
+	ToApplicationAppRoleTypeOutput() ApplicationAppRoleTypeOutput
+	ToApplicationAppRoleTypeOutputWithContext(context.Context) ApplicationAppRoleTypeOutput
 }
 
-type ApplicationAppRoleArgs struct {
+type ApplicationAppRoleTypeArgs struct {
 	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationOAuth2Permission resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Determines if the permission is enabled: defaults to `true`.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
@@ -51,105 +51,105 @@ type ApplicationAppRoleArgs struct {
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (ApplicationAppRoleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationAppRole)(nil)).Elem()
+func (ApplicationAppRoleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppRoleType)(nil)).Elem()
 }
 
-func (i ApplicationAppRoleArgs) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {
-	return i.ToApplicationAppRoleOutputWithContext(context.Background())
+func (i ApplicationAppRoleTypeArgs) ToApplicationAppRoleTypeOutput() ApplicationAppRoleTypeOutput {
+	return i.ToApplicationAppRoleTypeOutputWithContext(context.Background())
 }
 
-func (i ApplicationAppRoleArgs) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleOutput)
+func (i ApplicationAppRoleTypeArgs) ToApplicationAppRoleTypeOutputWithContext(ctx context.Context) ApplicationAppRoleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleTypeOutput)
 }
 
-// ApplicationAppRoleArrayInput is an input type that accepts ApplicationAppRoleArray and ApplicationAppRoleArrayOutput values.
-// You can construct a concrete instance of `ApplicationAppRoleArrayInput` via:
+// ApplicationAppRoleTypeArrayInput is an input type that accepts ApplicationAppRoleTypeArray and ApplicationAppRoleTypeArrayOutput values.
+// You can construct a concrete instance of `ApplicationAppRoleTypeArrayInput` via:
 //
-//          ApplicationAppRoleArray{ ApplicationAppRoleArgs{...} }
-type ApplicationAppRoleArrayInput interface {
+//          ApplicationAppRoleTypeArray{ ApplicationAppRoleTypeArgs{...} }
+type ApplicationAppRoleTypeArrayInput interface {
 	pulumi.Input
 
-	ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput
-	ToApplicationAppRoleArrayOutputWithContext(context.Context) ApplicationAppRoleArrayOutput
+	ToApplicationAppRoleTypeArrayOutput() ApplicationAppRoleTypeArrayOutput
+	ToApplicationAppRoleTypeArrayOutputWithContext(context.Context) ApplicationAppRoleTypeArrayOutput
 }
 
-type ApplicationAppRoleArray []ApplicationAppRoleInput
+type ApplicationAppRoleTypeArray []ApplicationAppRoleTypeInput
 
-func (ApplicationAppRoleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationAppRole)(nil)).Elem()
+func (ApplicationAppRoleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppRoleType)(nil)).Elem()
 }
 
-func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput {
-	return i.ToApplicationAppRoleArrayOutputWithContext(context.Background())
+func (i ApplicationAppRoleTypeArray) ToApplicationAppRoleTypeArrayOutput() ApplicationAppRoleTypeArrayOutput {
+	return i.ToApplicationAppRoleTypeArrayOutputWithContext(context.Background())
 }
 
-func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleArrayOutput)
+func (i ApplicationAppRoleTypeArray) ToApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) ApplicationAppRoleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleTypeArrayOutput)
 }
 
-type ApplicationAppRoleOutput struct{ *pulumi.OutputState }
+type ApplicationAppRoleTypeOutput struct{ *pulumi.OutputState }
 
-func (ApplicationAppRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationAppRole)(nil)).Elem()
+func (ApplicationAppRoleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppRoleType)(nil)).Elem()
 }
 
-func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {
+func (o ApplicationAppRoleTypeOutput) ToApplicationAppRoleTypeOutput() ApplicationAppRoleTypeOutput {
 	return o
 }
 
-func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
+func (o ApplicationAppRoleTypeOutput) ToApplicationAppRoleTypeOutputWithContext(ctx context.Context) ApplicationAppRoleTypeOutput {
 	return o
 }
 
 // Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
-func (o ApplicationAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ApplicationAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
+func (o ApplicationAppRoleTypeOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationAppRoleType) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
 // Permission help text that appears in the admin app assignment and consent experiences.
-func (o ApplicationAppRoleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationAppRole) string { return v.Description }).(pulumi.StringOutput)
+func (o ApplicationAppRoleTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Display name for the permission that appears in the admin consent and app assignment experiences.
-func (o ApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o ApplicationAppRoleTypeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the `appRole`.
-func (o ApplicationAppRoleOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRole) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationOAuth2Permission resource.
+func (o ApplicationAppRoleTypeOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppRoleType) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
 // Determines if the permission is enabled: defaults to `true`.
-func (o ApplicationAppRoleOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRole) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+func (o ApplicationAppRoleTypeOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationAppRoleType) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
-func (o ApplicationAppRoleOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o ApplicationAppRoleTypeOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppRoleType) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ApplicationAppRoleArrayOutput struct{ *pulumi.OutputState }
+type ApplicationAppRoleTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (ApplicationAppRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationAppRole)(nil)).Elem()
+func (ApplicationAppRoleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppRoleType)(nil)).Elem()
 }
 
-func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput {
+func (o ApplicationAppRoleTypeArrayOutput) ToApplicationAppRoleTypeArrayOutput() ApplicationAppRoleTypeArrayOutput {
 	return o
 }
 
-func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
+func (o ApplicationAppRoleTypeArrayOutput) ToApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) ApplicationAppRoleTypeArrayOutput {
 	return o
 }
 
-func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppRole {
-		return vs[0].([]ApplicationAppRole)[vs[1].(int)]
-	}).(ApplicationAppRoleOutput)
+func (o ApplicationAppRoleTypeArrayOutput) Index(i pulumi.IntInput) ApplicationAppRoleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppRoleType {
+		return vs[0].([]ApplicationAppRoleType)[vs[1].(int)]
+	}).(ApplicationAppRoleTypeOutput)
 }
 
 type ApplicationOauth2Permission struct {
@@ -1075,7 +1075,7 @@ func (o ServicePrincipalOauth2PermissionArrayOutput) Index(i pulumi.IntInput) Se
 	}).(ServicePrincipalOauth2PermissionOutput)
 }
 
-type GetApplicationAppRole struct {
+type GetApplicationAppRoleType struct {
 	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
@@ -1090,18 +1090,18 @@ type GetApplicationAppRole struct {
 	Value string `pulumi:"value"`
 }
 
-// GetApplicationAppRoleInput is an input type that accepts GetApplicationAppRoleArgs and GetApplicationAppRoleOutput values.
-// You can construct a concrete instance of `GetApplicationAppRoleInput` via:
+// GetApplicationAppRoleTypeInput is an input type that accepts GetApplicationAppRoleTypeArgs and GetApplicationAppRoleTypeOutput values.
+// You can construct a concrete instance of `GetApplicationAppRoleTypeInput` via:
 //
-//          GetApplicationAppRoleArgs{...}
-type GetApplicationAppRoleInput interface {
+//          GetApplicationAppRoleTypeArgs{...}
+type GetApplicationAppRoleTypeInput interface {
 	pulumi.Input
 
-	ToGetApplicationAppRoleOutput() GetApplicationAppRoleOutput
-	ToGetApplicationAppRoleOutputWithContext(context.Context) GetApplicationAppRoleOutput
+	ToGetApplicationAppRoleTypeOutput() GetApplicationAppRoleTypeOutput
+	ToGetApplicationAppRoleTypeOutputWithContext(context.Context) GetApplicationAppRoleTypeOutput
 }
 
-type GetApplicationAppRoleArgs struct {
+type GetApplicationAppRoleTypeArgs struct {
 	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
@@ -1116,105 +1116,105 @@ type GetApplicationAppRoleArgs struct {
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetApplicationAppRoleArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationAppRole)(nil)).Elem()
+func (GetApplicationAppRoleTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAppRoleType)(nil)).Elem()
 }
 
-func (i GetApplicationAppRoleArgs) ToGetApplicationAppRoleOutput() GetApplicationAppRoleOutput {
-	return i.ToGetApplicationAppRoleOutputWithContext(context.Background())
+func (i GetApplicationAppRoleTypeArgs) ToGetApplicationAppRoleTypeOutput() GetApplicationAppRoleTypeOutput {
+	return i.ToGetApplicationAppRoleTypeOutputWithContext(context.Background())
 }
 
-func (i GetApplicationAppRoleArgs) ToGetApplicationAppRoleOutputWithContext(ctx context.Context) GetApplicationAppRoleOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleOutput)
+func (i GetApplicationAppRoleTypeArgs) ToGetApplicationAppRoleTypeOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleTypeOutput)
 }
 
-// GetApplicationAppRoleArrayInput is an input type that accepts GetApplicationAppRoleArray and GetApplicationAppRoleArrayOutput values.
-// You can construct a concrete instance of `GetApplicationAppRoleArrayInput` via:
+// GetApplicationAppRoleTypeArrayInput is an input type that accepts GetApplicationAppRoleTypeArray and GetApplicationAppRoleTypeArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAppRoleTypeArrayInput` via:
 //
-//          GetApplicationAppRoleArray{ GetApplicationAppRoleArgs{...} }
-type GetApplicationAppRoleArrayInput interface {
+//          GetApplicationAppRoleTypeArray{ GetApplicationAppRoleTypeArgs{...} }
+type GetApplicationAppRoleTypeArrayInput interface {
 	pulumi.Input
 
-	ToGetApplicationAppRoleArrayOutput() GetApplicationAppRoleArrayOutput
-	ToGetApplicationAppRoleArrayOutputWithContext(context.Context) GetApplicationAppRoleArrayOutput
+	ToGetApplicationAppRoleTypeArrayOutput() GetApplicationAppRoleTypeArrayOutput
+	ToGetApplicationAppRoleTypeArrayOutputWithContext(context.Context) GetApplicationAppRoleTypeArrayOutput
 }
 
-type GetApplicationAppRoleArray []GetApplicationAppRoleInput
+type GetApplicationAppRoleTypeArray []GetApplicationAppRoleTypeInput
 
-func (GetApplicationAppRoleArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationAppRole)(nil)).Elem()
+func (GetApplicationAppRoleTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAppRoleType)(nil)).Elem()
 }
 
-func (i GetApplicationAppRoleArray) ToGetApplicationAppRoleArrayOutput() GetApplicationAppRoleArrayOutput {
-	return i.ToGetApplicationAppRoleArrayOutputWithContext(context.Background())
+func (i GetApplicationAppRoleTypeArray) ToGetApplicationAppRoleTypeArrayOutput() GetApplicationAppRoleTypeArrayOutput {
+	return i.ToGetApplicationAppRoleTypeArrayOutputWithContext(context.Background())
 }
 
-func (i GetApplicationAppRoleArray) ToGetApplicationAppRoleArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleArrayOutput)
+func (i GetApplicationAppRoleTypeArray) ToGetApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleTypeArrayOutput)
 }
 
-type GetApplicationAppRoleOutput struct{ *pulumi.OutputState }
+type GetApplicationAppRoleTypeOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationAppRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationAppRole)(nil)).Elem()
+func (GetApplicationAppRoleTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAppRoleType)(nil)).Elem()
 }
 
-func (o GetApplicationAppRoleOutput) ToGetApplicationAppRoleOutput() GetApplicationAppRoleOutput {
+func (o GetApplicationAppRoleTypeOutput) ToGetApplicationAppRoleTypeOutput() GetApplicationAppRoleTypeOutput {
 	return o
 }
 
-func (o GetApplicationAppRoleOutput) ToGetApplicationAppRoleOutputWithContext(ctx context.Context) GetApplicationAppRoleOutput {
+func (o GetApplicationAppRoleTypeOutput) ToGetApplicationAppRoleTypeOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeOutput {
 	return o
 }
 
 // Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-func (o GetApplicationAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetApplicationAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
+func (o GetApplicationAppRoleTypeOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationAppRoleType) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
 // Permission help text that appears in the admin app assignment and consent experiences.
-func (o GetApplicationAppRoleOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Description }).(pulumi.StringOutput)
+func (o GetApplicationAppRoleTypeOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Display name for the permission that appears in the admin consent and app assignment experiences.
-func (o GetApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetApplicationAppRoleTypeOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // The unique identifier of the `appRole`.
-func (o GetApplicationAppRoleOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Id }).(pulumi.StringOutput)
+func (o GetApplicationAppRoleTypeOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Determines if the app role is enabled.
-func (o GetApplicationAppRoleOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApplicationAppRole) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+func (o GetApplicationAppRoleTypeOutput) IsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationAppRoleType) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
 // Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
-func (o GetApplicationAppRoleOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Value }).(pulumi.StringOutput)
+func (o GetApplicationAppRoleTypeOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Value }).(pulumi.StringOutput)
 }
 
-type GetApplicationAppRoleArrayOutput struct{ *pulumi.OutputState }
+type GetApplicationAppRoleTypeArrayOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationAppRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationAppRole)(nil)).Elem()
+func (GetApplicationAppRoleTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAppRoleType)(nil)).Elem()
 }
 
-func (o GetApplicationAppRoleArrayOutput) ToGetApplicationAppRoleArrayOutput() GetApplicationAppRoleArrayOutput {
+func (o GetApplicationAppRoleTypeArrayOutput) ToGetApplicationAppRoleTypeArrayOutput() GetApplicationAppRoleTypeArrayOutput {
 	return o
 }
 
-func (o GetApplicationAppRoleArrayOutput) ToGetApplicationAppRoleArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleArrayOutput {
+func (o GetApplicationAppRoleTypeArrayOutput) ToGetApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeArrayOutput {
 	return o
 }
 
-func (o GetApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) GetApplicationAppRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAppRole {
-		return vs[0].([]GetApplicationAppRole)[vs[1].(int)]
-	}).(GetApplicationAppRoleOutput)
+func (o GetApplicationAppRoleTypeArrayOutput) Index(i pulumi.IntInput) GetApplicationAppRoleTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAppRoleType {
+		return vs[0].([]GetApplicationAppRoleType)[vs[1].(int)]
+	}).(GetApplicationAppRoleTypeOutput)
 }
 
 type GetApplicationOauth2Permission struct {
@@ -2505,8 +2505,8 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
-	pulumi.RegisterOutputType(ApplicationAppRoleOutput{})
-	pulumi.RegisterOutputType(ApplicationAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRoleTypeOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRoleTypeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(ApplicationOauth2PermissionArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsOutput{})
@@ -2521,8 +2521,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessResourceAccessArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationAppRoleOutput{})
-	pulumi.RegisterOutputType(GetApplicationAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAppRoleTypeOutput{})
+	pulumi.RegisterOutputType(GetApplicationAppRoleTypeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(GetApplicationOauth2PermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationOptionalClaimsOutput{})

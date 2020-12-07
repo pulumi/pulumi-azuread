@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
@@ -22,9 +23,12 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		args = &ProviderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.MetadataHost == nil {
+		return nil, errors.New("invalid value for required argument 'MetadataHost'")
+	}
 	if args.ClientCertificatePassword == nil {
 		args.ClientCertificatePassword = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string))
 	}
@@ -42,9 +46,6 @@ func NewProvider(ctx *pulumi.Context,
 	}
 	if args.MsiEndpoint == nil {
 		args.MsiEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string))
-	}
-	if args.SubscriptionId == nil {
-		args.SubscriptionId = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_SUBSCRIPTION_ID").(string))
 	}
 	if args.TenantId == nil {
 		args.TenantId = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_TENANT_ID").(string))
@@ -66,10 +67,11 @@ type providerArgs struct {
 	ClientId                  *string `pulumi:"clientId"`
 	ClientSecret              *string `pulumi:"clientSecret"`
 	Environment               *string `pulumi:"environment"`
-	MsiEndpoint               *string `pulumi:"msiEndpoint"`
-	SubscriptionId            *string `pulumi:"subscriptionId"`
-	TenantId                  *string `pulumi:"tenantId"`
-	UseMsi                    *bool   `pulumi:"useMsi"`
+	// The Hostname which should be used to fetch environment metadata from.
+	MetadataHost string  `pulumi:"metadataHost"`
+	MsiEndpoint  *string `pulumi:"msiEndpoint"`
+	TenantId     *string `pulumi:"tenantId"`
+	UseMsi       *bool   `pulumi:"useMsi"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -79,10 +81,11 @@ type ProviderArgs struct {
 	ClientId                  pulumi.StringPtrInput
 	ClientSecret              pulumi.StringPtrInput
 	Environment               pulumi.StringPtrInput
-	MsiEndpoint               pulumi.StringPtrInput
-	SubscriptionId            pulumi.StringPtrInput
-	TenantId                  pulumi.StringPtrInput
-	UseMsi                    pulumi.BoolPtrInput
+	// The Hostname which should be used to fetch environment metadata from.
+	MetadataHost pulumi.StringInput
+	MsiEndpoint  pulumi.StringPtrInput
+	TenantId     pulumi.StringPtrInput
+	UseMsi       pulumi.BoolPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {

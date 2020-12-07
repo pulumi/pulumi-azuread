@@ -1,6 +1,6 @@
-module github.com/pulumi/pulumi-azuread/examples/v2
+module github.com/pulumi/pulumi-azuread/examples/v3
 
-go 1.14
+go 1.15
 
 require (
 	github.com/onsi/ginkgo v1.12.0 // indirect

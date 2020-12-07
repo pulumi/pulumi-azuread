@@ -44,7 +44,7 @@ class ApplicationAppRole(dict):
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
         :param str display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param str id: The unique identifier of the `app_role`.
+        :param str id: The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationOAuth2Permission resource.
         :param bool is_enabled: Determines if the permission is enabled: defaults to `true`.
         :param str value: The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
         """
@@ -86,7 +86,7 @@ class ApplicationAppRole(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The unique identifier of the `app_role`.
+        The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationOAuth2Permission resource.
         """
         return pulumi.get(self, "id")
 

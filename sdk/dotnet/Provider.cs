@@ -24,7 +24,7 @@ namespace Pulumi.AzureAD
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("azuread", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -59,11 +59,14 @@ namespace Pulumi.AzureAD
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
+        /// <summary>
+        /// The Hostname which should be used to fetch environment metadata from.
+        /// </summary>
+        [Input("metadataHost", required: true)]
+        public Input<string> MetadataHost { get; set; } = null!;
+
         [Input("msiEndpoint")]
         public Input<string>? MsiEndpoint { get; set; }
-
-        [Input("subscriptionId")]
-        public Input<string>? SubscriptionId { get; set; }
 
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -79,7 +82,6 @@ namespace Pulumi.AzureAD
             ClientSecret = Utilities.GetEnv("ARM_CLIENT_SECRET") ?? "";
             Environment = Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
             MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
-            SubscriptionId = Utilities.GetEnv("ARM_SUBSCRIPTION_ID") ?? "";
             TenantId = Utilities.GetEnv("ARM_TENANT_ID") ?? "";
             UseMsi = Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
         }

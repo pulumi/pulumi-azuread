@@ -136,7 +136,7 @@ export class Application extends pulumi.CustomResource {
     /**
      * A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
      */
-    public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
+    public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[]>;
     /**
      * The Application ID.
      */

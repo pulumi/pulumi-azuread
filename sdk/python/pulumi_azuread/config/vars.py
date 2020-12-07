@@ -14,8 +14,8 @@ __all__ = [
     'client_id',
     'client_secret',
     'environment',
+    'metadata_host',
     'msi_endpoint',
-    'subscription_id',
     'tenant_id',
     'use_msi',
 ]
@@ -32,9 +32,12 @@ client_secret = __config__.get('clientSecret') or (_utilities.get_env('ARM_CLIEN
 
 environment = __config__.get('environment') or (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
 
-msi_endpoint = __config__.get('msiEndpoint') or (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
+metadata_host = __config__.get('metadataHost')
+"""
+The Hostname which should be used to fetch environment metadata from.
+"""
 
-subscription_id = __config__.get('subscriptionId') or (_utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
+msi_endpoint = __config__.get('msiEndpoint') or (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
 
 tenant_id = __config__.get('tenantId') or (_utilities.get_env('ARM_TENANT_ID') or '')
 

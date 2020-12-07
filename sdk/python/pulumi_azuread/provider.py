@@ -20,8 +20,8 @@ class Provider(pulumi.ProviderResource):
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
+                 metadata_host: Optional[pulumi.Input[str]] = None,
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
-                 subscription_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -35,6 +35,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] metadata_host: The Hostname which should be used to fetch environment metadata from.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -68,12 +69,12 @@ class Provider(pulumi.ProviderResource):
             if environment is None:
                 environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
             __props__['environment'] = environment
+            if metadata_host is None and not opts.urn:
+                raise TypeError("Missing required property 'metadata_host'")
+            __props__['metadata_host'] = metadata_host
             if msi_endpoint is None:
                 msi_endpoint = (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
             __props__['msi_endpoint'] = msi_endpoint
-            if subscription_id is None:
-                subscription_id = (_utilities.get_env('ARM_SUBSCRIPTION_ID') or '')
-            __props__['subscription_id'] = subscription_id
             if tenant_id is None:
                 tenant_id = (_utilities.get_env('ARM_TENANT_ID') or '')
             __props__['tenant_id'] = tenant_id

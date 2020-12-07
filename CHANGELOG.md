@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrade to pulumi-terraform-bridge v2.15.1
+* Upgrade to v1.0.0 of the AzureAD Terraform Provider
+  * *PLEASE NOTE:*  
+    There are a number of breaking changes in this upgrade:
+    * `azuread.applicationPassword` has deprecated the `applicationId` parameter.
+    * `azuread.getGroup` the `name` property is now case-insensitive.
+    * `azuread.Provider` `subscriptionId` is no longer a valid provider argument.
 
 ---
 

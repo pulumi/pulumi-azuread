@@ -15,7 +15,6 @@ class ApplicationPassword(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 application_id: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
@@ -80,10 +79,8 @@ class ApplicationPassword(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if application_id is not None and not opts.urn:
-                warnings.warn("""Deprecated in favour of `application_object_id` to prevent confusion""", DeprecationWarning)
-                pulumi.log.warn("application_id is deprecated: Deprecated in favour of `application_object_id` to prevent confusion")
-            __props__['application_id'] = application_id
+            if application_object_id is None and not opts.urn:
+                raise TypeError("Missing required property 'application_object_id'")
             __props__['application_object_id'] = application_object_id
             __props__['description'] = description
             __props__['end_date'] = end_date
@@ -103,7 +100,6 @@ class ApplicationPassword(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            application_id: Optional[pulumi.Input[str]] = None,
             application_object_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             end_date: Optional[pulumi.Input[str]] = None,
@@ -130,7 +126,6 @@ class ApplicationPassword(pulumi.CustomResource):
 
         __props__ = dict()
 
-        __props__["application_id"] = application_id
         __props__["application_object_id"] = application_object_id
         __props__["description"] = description
         __props__["end_date"] = end_date
@@ -139,11 +134,6 @@ class ApplicationPassword(pulumi.CustomResource):
         __props__["start_date"] = start_date
         __props__["value"] = value
         return ApplicationPassword(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="applicationId")
-    def application_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationObjectId")
