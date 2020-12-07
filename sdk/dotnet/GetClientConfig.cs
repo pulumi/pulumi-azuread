@@ -12,7 +12,7 @@ namespace Pulumi.AzureAD
     public static class GetClientConfig
     {
         /// <summary>
-        /// Use this data source to access the configuration of the AzureRM provider.
+        /// Use this data source to access the configuration of the AzureAD provider.
         /// 
         /// {{% examples %}}
         /// ## Example Usage

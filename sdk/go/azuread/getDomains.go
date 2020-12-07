@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to access information about an existing Domains within Azure Active Directory.
+// Use this data source to access information about existing Domains within Azure Active Directory.
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
 //
@@ -43,7 +43,7 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDomains.
 type GetDomainsArgs struct {
-	// Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
+	// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
 	IncludeUnverified *bool `pulumi:"includeUnverified"`
 	// Set to `true` to only return the default domain.
 	OnlyDefault *bool `pulumi:"onlyDefault"`

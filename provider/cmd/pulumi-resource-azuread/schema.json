@@ -25,6 +25,7 @@
             },
             "clientCertificatePath": {
                 "type": "string",
+                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service\nPrincipal using a Client Certificate.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -34,6 +35,7 @@
             },
             "clientId": {
                 "type": "string",
+                "description": "The Client ID which should be used for service principal authentication.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -43,6 +45,7 @@
             },
             "clientSecret": {
                 "type": "string",
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -50,8 +53,13 @@
                     ]
                 }
             },
+            "disableTerraformPartnerId": {
+                "type": "boolean",
+                "description": "Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.\n"
+            },
             "environment": {
                 "type": "string",
+                "description": "The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.\nDefaults to `public`.\n",
                 "default": "public",
                 "defaultInfo": {
                     "environment": [
@@ -61,10 +69,11 @@
             },
             "metadataHost": {
                 "type": "string",
-                "description": "The Hostname which should be used to fetch environment metadata from.\n"
+                "description": "The Hostname which should be used for the Azure Metadata Service.\n"
             },
             "msiEndpoint": {
                 "type": "string",
+                "description": "The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected\nautomatically.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -72,8 +81,13 @@
                     ]
                 }
             },
+            "partnerId": {
+                "type": "string",
+                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.\n"
+            },
             "tenantId": {
                 "type": "string",
+                "description": "The Tenant ID which should be used. Works with all authentication methods except MSI.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -83,6 +97,7 @@
             },
             "useMsi": {
                 "type": "boolean",
+                "description": "Allow Managed Service Identity to be used for Authentication.\n",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -921,7 +936,7 @@
                 },
                 "isInitial": {
                     "type": "boolean",
-                    "description": "`True` if this is the initial domain created by Azure Activie Directory.\n",
+                    "description": "`True` if this is the initial domain created by Azure Active Directory.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1168,6 +1183,7 @@
                 },
                 "objectId": {
                     "type": "string",
+                    "description": "The Object ID of the Azure AD User.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1176,7 +1192,7 @@
                 },
                 "onpremisesSamAccountName": {
                     "type": "string",
-                    "description": "The on premise sam account name of the Azure AD User.\n",
+                    "description": "The on-premise SAM account name of the Azure AD User.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1185,7 +1201,7 @@
                 },
                 "onpremisesUserPrincipalName": {
                     "type": "string",
-                    "description": "The on premise user principal name of the Azure AD User.\n",
+                    "description": "The on-premise user principal name of the Azure AD User.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1245,6 +1261,7 @@
             },
             "clientCertificatePath": {
                 "type": "string",
+                "description": "The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service\nPrincipal using a Client Certificate.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -1254,6 +1271,7 @@
             },
             "clientId": {
                 "type": "string",
+                "description": "The Client ID which should be used for service principal authentication.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -1263,6 +1281,7 @@
             },
             "clientSecret": {
                 "type": "string",
+                "description": "The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client\nCertificate\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -1270,8 +1289,13 @@
                     ]
                 }
             },
+            "disableTerraformPartnerId": {
+                "type": "boolean",
+                "description": "Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.\n"
+            },
             "environment": {
                 "type": "string",
+                "description": "The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.\nDefaults to `public`.\n",
                 "default": "public",
                 "defaultInfo": {
                     "environment": [
@@ -1281,10 +1305,11 @@
             },
             "metadataHost": {
                 "type": "string",
-                "description": "The Hostname which should be used to fetch environment metadata from.\n"
+                "description": "The Hostname which should be used for the Azure Metadata Service.\n"
             },
             "msiEndpoint": {
                 "type": "string",
+                "description": "The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected\nautomatically.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -1292,8 +1317,13 @@
                     ]
                 }
             },
+            "partnerId": {
+                "type": "string",
+                "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.\n"
+            },
             "tenantId": {
                 "type": "string",
+                "description": "The Tenant ID which should be used. Works with all authentication methods except MSI.\n",
                 "default": "",
                 "defaultInfo": {
                     "environment": [
@@ -1303,6 +1333,7 @@
             },
             "useMsi": {
                 "type": "boolean",
+                "description": "Allow Managed Service Identity to be used for Authentication.\n",
                 "default": false,
                 "defaultInfo": {
                     "environment": [
@@ -1340,7 +1371,7 @@
                 },
                 "homepage": {
                     "type": "string",
-                    "description": "The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.\n"
+                    "description": "The URL to the application's home page.\n"
                 },
                 "identifierUris": {
                     "type": "array",
@@ -1440,7 +1471,7 @@
                 },
                 "homepage": {
                     "type": "string",
-                    "description": "The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.\n"
+                    "description": "The URL to the application's home page.\n"
                 },
                 "identifierUris": {
                     "type": "array",
@@ -1530,7 +1561,7 @@
                     },
                     "homepage": {
                         "type": "string",
-                        "description": "The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.\n"
+                        "description": "The URL to the application's home page.\n"
                     },
                     "identifierUris": {
                         "type": "array",
@@ -2440,7 +2471,7 @@
             }
         },
         "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": {
-            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {applicationId: exampleApplication.applicationId});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    description: \"My managed password\",\n    value: `VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#`,\n    endDate: \"2099-01-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    service_principal_id=example_service_principal.id,\n    description=\"My managed password\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n    end_date=\"2099-01-01T01:02:03Z\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", new AzureAD.ServicePrincipalPasswordArgs\n        {\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Description = \"My managed password\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipalPassword(ctx, \"exampleServicePrincipalPassword\", \u0026azuread.ServicePrincipalPasswordArgs{\n\t\t\tServicePrincipalId: exampleServicePrincipal.ID(),\n\t\t\tDescription:        pulumi.String(\"My managed password\"),\n\t\t\tValue:              pulumi.String(fmt.Sprintf(\"%v%v%v\", \"VT=uSgbTanZhyz@\", \"%\", \"nL9Hpd+Tfay_MRV#\")),\n\t\t\tEndDate:            pulumi.String(\"2099-01-01T01:02:03Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPPasswords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111\n```\n\n ",
+            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {applicationId: exampleApplication.applicationId});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    description: \"My managed password\",\n    value: `VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#`,\n    endDate: \"2099-01-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    service_principal_id=example_service_principal.id,\n    description=\"My managed password\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n    end_date=\"2099-01-01T01:02:03Z\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", new AzureAD.ServicePrincipalPasswordArgs\n        {\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Description = \"My managed password\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipalPassword(ctx, \"exampleServicePrincipalPassword\", \u0026azuread.ServicePrincipalPasswordArgs{\n\t\t\tServicePrincipalId: exampleServicePrincipal.ID(),\n\t\t\tDescription:        pulumi.String(\"My managed password\"),\n\t\t\tValue:              pulumi.String(fmt.Sprintf(\"%v%v%v\", \"VT=uSgbTanZhyz@\", \"%\", \"nL9Hpd+Tfay_MRV#\")),\n\t\t\tEndDate:            pulumi.String(\"2099-01-01T01:02:03Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPasswords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string",
@@ -2555,6 +2586,22 @@
                     "type": "boolean",
                     "description": "`true` if the account should be enabled, otherwise `false`. Defaults to `true`.\n"
                 },
+                "city": {
+                    "type": "string",
+                    "description": "The city in which the user is located.\n"
+                },
+                "companyName": {
+                    "type": "string",
+                    "description": "The company name which the user is associated. This property can be useful for describing the company that an external user comes from.\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "The country/region in which the user is located; for example, “US” or “UK”.\n"
+                },
+                "department": {
+                    "type": "string",
+                    "description": "The name for the department in which the user works.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "The name to display in the address book for the user.\n"
@@ -2563,9 +2610,17 @@
                     "type": "boolean",
                     "description": "`true` if the User is forced to change the password during the next sign-in. Defaults to `false`.\n"
                 },
+                "givenName": {
+                    "type": "string",
+                    "description": "The given name (first name) of the user.\n"
+                },
                 "immutableId": {
                     "type": "string",
-                    "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.\n"
+                    "description": "The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.\n"
+                },
+                "jobTitle": {
+                    "type": "string",
+                    "description": "The user’s job title.\n"
                 },
                 "mail": {
                     "type": "string",
@@ -2575,21 +2630,45 @@
                     "type": "string",
                     "description": "The mail alias for the user. Defaults to the user name part of the User Principal Name.\n"
                 },
+                "mobile": {
+                    "type": "string",
+                    "description": "The primary cellular telephone number for the user.\n"
+                },
                 "objectId": {
                     "type": "string",
                     "description": "The Object ID of the Azure AD User.\n"
                 },
                 "onpremisesSamAccountName": {
                     "type": "string",
-                    "description": "The on premise sam account name of the Azure AD User.\n"
+                    "description": "The on-premise SAM account name of the Azure AD User.\n"
                 },
                 "onpremisesUserPrincipalName": {
                     "type": "string",
-                    "description": "The on premise user principal name of the Azure AD User.\n"
+                    "description": "The on-premise user principal name of the Azure AD User.\n"
                 },
                 "password": {
                     "type": "string",
                     "description": "The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.\n"
+                },
+                "physicalDeliveryOfficeName": {
+                    "type": "string",
+                    "description": "The office location in the user's place of business.\n"
+                },
+                "postalCode": {
+                    "type": "string",
+                    "description": "The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state or province in the user's address.\n"
+                },
+                "streetAddress": {
+                    "type": "string",
+                    "description": "The street address of the user's place of business.\n"
+                },
+                "surname": {
+                    "type": "string",
+                    "description": "The user's surname (family name or last name).\n"
                 },
                 "usageLocation": {
                     "type": "string",
@@ -2601,14 +2680,26 @@
                 }
             },
             "required": [
+                "city",
+                "companyName",
+                "country",
+                "department",
                 "displayName",
+                "givenName",
                 "immutableId",
+                "jobTitle",
                 "mail",
                 "mailNickname",
+                "mobile",
                 "objectId",
                 "onpremisesSamAccountName",
                 "onpremisesUserPrincipalName",
                 "password",
+                "physicalDeliveryOfficeName",
+                "postalCode",
+                "state",
+                "streetAddress",
+                "surname",
                 "usageLocation",
                 "userPrincipalName"
             ],
@@ -2616,6 +2707,22 @@
                 "accountEnabled": {
                     "type": "boolean",
                     "description": "`true` if the account should be enabled, otherwise `false`. Defaults to `true`.\n"
+                },
+                "city": {
+                    "type": "string",
+                    "description": "The city in which the user is located.\n"
+                },
+                "companyName": {
+                    "type": "string",
+                    "description": "The company name which the user is associated. This property can be useful for describing the company that an external user comes from.\n"
+                },
+                "country": {
+                    "type": "string",
+                    "description": "The country/region in which the user is located; for example, “US” or “UK”.\n"
+                },
+                "department": {
+                    "type": "string",
+                    "description": "The name for the department in which the user works.\n"
                 },
                 "displayName": {
                     "type": "string",
@@ -2625,17 +2732,49 @@
                     "type": "boolean",
                     "description": "`true` if the User is forced to change the password during the next sign-in. Defaults to `false`.\n"
                 },
+                "givenName": {
+                    "type": "string",
+                    "description": "The given name (first name) of the user.\n"
+                },
                 "immutableId": {
                     "type": "string",
-                    "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.\n"
+                    "description": "The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.\n"
+                },
+                "jobTitle": {
+                    "type": "string",
+                    "description": "The user’s job title.\n"
                 },
                 "mailNickname": {
                     "type": "string",
                     "description": "The mail alias for the user. Defaults to the user name part of the User Principal Name.\n"
                 },
+                "mobile": {
+                    "type": "string",
+                    "description": "The primary cellular telephone number for the user.\n"
+                },
                 "password": {
                     "type": "string",
                     "description": "The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.\n"
+                },
+                "physicalDeliveryOfficeName": {
+                    "type": "string",
+                    "description": "The office location in the user's place of business.\n"
+                },
+                "postalCode": {
+                    "type": "string",
+                    "description": "The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state or province in the user's address.\n"
+                },
+                "streetAddress": {
+                    "type": "string",
+                    "description": "The street address of the user's place of business.\n"
+                },
+                "surname": {
+                    "type": "string",
+                    "description": "The user's surname (family name or last name).\n"
                 },
                 "usageLocation": {
                     "type": "string",
@@ -2658,6 +2797,22 @@
                         "type": "boolean",
                         "description": "`true` if the account should be enabled, otherwise `false`. Defaults to `true`.\n"
                     },
+                    "city": {
+                        "type": "string",
+                        "description": "The city in which the user is located.\n"
+                    },
+                    "companyName": {
+                        "type": "string",
+                        "description": "The company name which the user is associated. This property can be useful for describing the company that an external user comes from.\n"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "The country/region in which the user is located; for example, “US” or “UK”.\n"
+                    },
+                    "department": {
+                        "type": "string",
+                        "description": "The name for the department in which the user works.\n"
+                    },
                     "displayName": {
                         "type": "string",
                         "description": "The name to display in the address book for the user.\n"
@@ -2666,9 +2821,17 @@
                         "type": "boolean",
                         "description": "`true` if the User is forced to change the password during the next sign-in. Defaults to `false`.\n"
                     },
+                    "givenName": {
+                        "type": "string",
+                        "description": "The given name (first name) of the user.\n"
+                    },
                     "immutableId": {
                         "type": "string",
-                        "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.\n"
+                        "description": "The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.\n"
+                    },
+                    "jobTitle": {
+                        "type": "string",
+                        "description": "The user’s job title.\n"
                     },
                     "mail": {
                         "type": "string",
@@ -2678,21 +2841,45 @@
                         "type": "string",
                         "description": "The mail alias for the user. Defaults to the user name part of the User Principal Name.\n"
                     },
+                    "mobile": {
+                        "type": "string",
+                        "description": "The primary cellular telephone number for the user.\n"
+                    },
                     "objectId": {
                         "type": "string",
                         "description": "The Object ID of the Azure AD User.\n"
                     },
                     "onpremisesSamAccountName": {
                         "type": "string",
-                        "description": "The on premise sam account name of the Azure AD User.\n"
+                        "description": "The on-premise SAM account name of the Azure AD User.\n"
                     },
                     "onpremisesUserPrincipalName": {
                         "type": "string",
-                        "description": "The on premise user principal name of the Azure AD User.\n"
+                        "description": "The on-premise user principal name of the Azure AD User.\n"
                     },
                     "password": {
                         "type": "string",
                         "description": "The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.\n"
+                    },
+                    "physicalDeliveryOfficeName": {
+                        "type": "string",
+                        "description": "The office location in the user's place of business.\n"
+                    },
+                    "postalCode": {
+                        "type": "string",
+                        "description": "The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state or province in the user's address.\n"
+                    },
+                    "streetAddress": {
+                        "type": "string",
+                        "description": "The street address of the user's place of business.\n"
+                    },
+                    "surname": {
+                        "type": "string",
+                        "description": "The user's surname (family name or last name).\n"
                     },
                     "usageLocation": {
                         "type": "string",
@@ -2850,7 +3037,7 @@
             }
         },
         "azuread:index/getClientConfig:getClientConfig": {
-            "description": "Use this data source to access the configuration of the AzureRM provider.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nexport const accountId = current.then(current =\u003e current.clientId);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\npulumi.export(\"accountId\", current.client_id)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        this.AccountId = current.Apply(current =\u003e current.ClientId);\n    }\n\n    [Output(\"accountId\")]\n    public Output\u003cstring\u003e AccountId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"accountId\", current.ClientId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to access the configuration of the AzureAD provider.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nexport const accountId = current.then(current =\u003e current.clientId);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\npulumi.export(\"accountId\", current.client_id)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        this.AccountId = current.Apply(current =\u003e current.ClientId);\n    }\n\n    [Output(\"accountId\")]\n    public Output\u003cstring\u003e AccountId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"accountId\", current.ClientId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
                 "description": "A collection of values returned by getClientConfig.\n",
                 "properties": {
@@ -2878,13 +3065,13 @@
             }
         },
         "azuread:index/getDomains:getDomains": {
-            "description": "Use this data source to access information about an existing Domains within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst aadDomains = azuread.getDomains({});\nexport const domains = aadDomains.then(aadDomains =\u003e aadDomains.domains);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\naad_domains = azuread.get_domains()\npulumi.export(\"domains\", aad_domains.domains)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var aadDomains = Output.Create(AzureAD.GetDomains.InvokeAsync());\n        this.Domains = aadDomains.Apply(aadDomains =\u003e aadDomains.Domains);\n    }\n\n    [Output(\"domains\")]\n    public Output\u003cstring\u003e Domains { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\taadDomains, err := azuread.GetDomains(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"domains\", aadDomains.Domains)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to access information about existing Domains within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst aadDomains = azuread.getDomains({});\nexport const domains = aadDomains.then(aadDomains =\u003e aadDomains.domains);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\naad_domains = azuread.get_domains()\npulumi.export(\"domains\", aad_domains.domains)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var aadDomains = Output.Create(AzureAD.GetDomains.InvokeAsync());\n        this.Domains = aadDomains.Apply(aadDomains =\u003e aadDomains.Domains);\n    }\n\n    [Output(\"domains\")]\n    public Output\u003cstring\u003e Domains { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\taadDomains, err := azuread.GetDomains(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"domains\", aadDomains.Domains)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getDomains.\n",
                 "properties": {
                     "includeUnverified": {
                         "type": "boolean",
-                        "description": "Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.\n"
+                        "description": "Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.\n"
                     },
                     "onlyDefault": {
                         "type": "boolean",
@@ -3119,7 +3306,7 @@
                     },
                     "objectId": {
                         "type": "string",
-                        "description": "Specifies the Object ID of the Application within Azure Active Directory.\n"
+                        "description": "Specifies the Object ID of the User within Azure Active Directory.\n"
                     },
                     "userPrincipalName": {
                         "type": "string",
@@ -3135,9 +3322,29 @@
                         "type": "boolean",
                         "description": "`True` if the account is enabled; otherwise `False`.\n"
                     },
+                    "city": {
+                        "type": "string",
+                        "description": "The city in which the user is located.\n"
+                    },
+                    "companyName": {
+                        "type": "string",
+                        "description": "The company name which the user is associated. This property can be useful for describing the company that an external user comes from.\n"
+                    },
+                    "country": {
+                        "type": "string",
+                        "description": "The country/region in which the user is located; for example, “US” or “UK”.\n"
+                    },
+                    "department": {
+                        "type": "string",
+                        "description": "The name for the department in which the user works.\n"
+                    },
                     "displayName": {
                         "type": "string",
                         "description": "The Display Name of the Azure AD User.\n"
+                    },
+                    "givenName": {
+                        "type": "string",
+                        "description": "The given name (first name) of the user.\n"
                     },
                     "id": {
                         "type": "string",
@@ -3145,7 +3352,11 @@
                     },
                     "immutableId": {
                         "type": "string",
-                        "description": "The value used to associate an on-premises Active Directory user account with their Azure AD user object.\n"
+                        "description": "The value used to associate an on-premise Active Directory user account with their Azure AD user object.\n"
+                    },
+                    "jobTitle": {
+                        "type": "string",
+                        "description": "The user’s job title.\n"
                     },
                     "mail": {
                         "type": "string",
@@ -3155,16 +3366,40 @@
                         "type": "string",
                         "description": "The email alias of the Azure AD User.\n"
                     },
+                    "mobile": {
+                        "type": "string",
+                        "description": "The primary cellular telephone number for the user.\n"
+                    },
                     "objectId": {
                         "type": "string"
                     },
                     "onpremisesSamAccountName": {
                         "type": "string",
-                        "description": "The on premise sam account name of the Azure AD User.\n"
+                        "description": "The on-premise SAM account name of the Azure AD User.\n"
                     },
                     "onpremisesUserPrincipalName": {
                         "type": "string",
-                        "description": "The on premise user principal name of the Azure AD User.\n"
+                        "description": "The on-premise user principal name of the Azure AD User.\n"
+                    },
+                    "physicalDeliveryOfficeName": {
+                        "type": "string",
+                        "description": "The office location in the user's place of business.\n"
+                    },
+                    "postalCode": {
+                        "type": "string",
+                        "description": "The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state or province in the user's address.\n"
+                    },
+                    "streetAddress": {
+                        "type": "string",
+                        "description": "The street address of the user's place of business.\n"
+                    },
+                    "surname": {
+                        "type": "string",
+                        "description": "The user's surname (family name or last name).\n"
                     },
                     "usageLocation": {
                         "type": "string",
@@ -3178,13 +3413,25 @@
                 "type": "object",
                 "required": [
                     "accountEnabled",
+                    "city",
+                    "companyName",
+                    "country",
+                    "department",
                     "displayName",
+                    "givenName",
                     "immutableId",
+                    "jobTitle",
                     "mail",
                     "mailNickname",
+                    "mobile",
                     "objectId",
                     "onpremisesSamAccountName",
                     "onpremisesUserPrincipalName",
+                    "physicalDeliveryOfficeName",
+                    "postalCode",
+                    "state",
+                    "streetAddress",
+                    "surname",
                     "usageLocation",
                     "userPrincipalName",
                     "id"

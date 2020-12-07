@@ -43,9 +43,11 @@ export class Provider extends pulumi.ProviderResource {
             inputs["clientCertificatePath"] = (args ? args.clientCertificatePath : undefined) || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH") || "");
             inputs["clientId"] = (args ? args.clientId : undefined) || (utilities.getEnv("ARM_CLIENT_ID") || "");
             inputs["clientSecret"] = (args ? args.clientSecret : undefined) || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
+            inputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             inputs["environment"] = (args ? args.environment : undefined) || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             inputs["metadataHost"] = args ? args.metadataHost : undefined;
             inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
+            inputs["partnerId"] = args ? args.partnerId : undefined;
             inputs["tenantId"] = (args ? args.tenantId : undefined) || (utilities.getEnv("ARM_TENANT_ID") || "");
             inputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) || (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
         }
@@ -65,15 +67,48 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     readonly clientCertificatePassword?: pulumi.Input<string>;
+    /**
+     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+     * Principal using a Client Certificate.
+     */
     readonly clientCertificatePath?: pulumi.Input<string>;
+    /**
+     * The Client ID which should be used for service principal authentication.
+     */
     readonly clientId?: pulumi.Input<string>;
+    /**
+     * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+     * Certificate
+     */
     readonly clientSecret?: pulumi.Input<string>;
+    /**
+     * Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+     */
+    readonly disableTerraformPartnerId?: pulumi.Input<boolean>;
+    /**
+     * The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+     * Defaults to `public`.
+     */
     readonly environment?: pulumi.Input<string>;
     /**
-     * The Hostname which should be used to fetch environment metadata from.
+     * The Hostname which should be used for the Azure Metadata Service.
      */
     readonly metadataHost: pulumi.Input<string>;
+    /**
+     * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+     * automatically.
+     */
     readonly msiEndpoint?: pulumi.Input<string>;
+    /**
+     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+     */
+    readonly partnerId?: pulumi.Input<string>;
+    /**
+     * The Tenant ID which should be used. Works with all authentication methods except MSI.
+     */
     readonly tenantId?: pulumi.Input<string>;
+    /**
+     * Allow Managed Service Identity to be used for Authentication.
+     */
     readonly useMsi?: pulumi.Input<boolean>;
 }

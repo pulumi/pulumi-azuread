@@ -10,23 +10,58 @@ namespace Pulumi.AzureAD
         private static readonly Pulumi.Config __config = new Pulumi.Config("azuread");
         public static string? ClientCertificatePassword { get; set; } = __config.Get("clientCertificatePassword") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") ?? "";
 
+        /// <summary>
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+        /// Principal using a Client Certificate.
+        /// </summary>
         public static string? ClientCertificatePath { get; set; } = __config.Get("clientCertificatePath") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PATH") ?? "";
 
+        /// <summary>
+        /// The Client ID which should be used for service principal authentication.
+        /// </summary>
         public static string? ClientId { get; set; } = __config.Get("clientId") ?? Utilities.GetEnv("ARM_CLIENT_ID") ?? "";
 
+        /// <summary>
+        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+        /// Certificate
+        /// </summary>
         public static string? ClientSecret { get; set; } = __config.Get("clientSecret") ?? Utilities.GetEnv("ARM_CLIENT_SECRET") ?? "";
 
+        /// <summary>
+        /// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+        /// </summary>
+        public static bool? DisableTerraformPartnerId { get; set; } = __config.GetBoolean("disableTerraformPartnerId");
+
+        /// <summary>
+        /// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+        /// Defaults to `public`.
+        /// </summary>
         public static string? Environment { get; set; } = __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
 
         /// <summary>
-        /// The Hostname which should be used to fetch environment metadata from.
+        /// The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
         public static string? MetadataHost { get; set; } = __config.Get("metadataHost");
 
+        /// <summary>
+        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+        /// automatically.
+        /// </summary>
         public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
 
+        /// <summary>
+        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        /// </summary>
+        public static string? PartnerId { get; set; } = __config.Get("partnerId");
+
+        /// <summary>
+        /// The Tenant ID which should be used. Works with all authentication methods except MSI.
+        /// </summary>
         public static string? TenantId { get; set; } = __config.Get("tenantId") ?? Utilities.GetEnv("ARM_TENANT_ID") ?? "";
 
+        /// <summary>
+        /// Allow Managed Service Identity to be used for Authentication.
+        /// </summary>
         public static bool? UseMsi { get; set; } = __config.GetBoolean("useMsi") ?? Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
 
     }

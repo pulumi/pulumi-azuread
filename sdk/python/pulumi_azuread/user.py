@@ -16,11 +16,23 @@ class User(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_enabled: Optional[pulumi.Input[bool]] = None,
+                 city: Optional[pulumi.Input[str]] = None,
+                 company_name: Optional[pulumi.Input[str]] = None,
+                 country: Optional[pulumi.Input[str]] = None,
+                 department: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force_password_change: Optional[pulumi.Input[bool]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None,
                  immutable_id: Optional[pulumi.Input[str]] = None,
+                 job_title: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
+                 physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 street_address: Optional[pulumi.Input[str]] = None,
+                 surname: Optional[pulumi.Input[str]] = None,
                  usage_location: Optional[pulumi.Input[str]] = None,
                  user_principal_name: Optional[pulumi.Input[str]] = None,
                  __props__=None,
@@ -55,11 +67,23 @@ class User(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+        :param pulumi.Input[str] city: The city in which the user is located.
+        :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        :param pulumi.Input[str] country: The country/region in which the user is located; for example, “US” or “UK”.
+        :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] given_name: The given name (first name) of the user.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        :param pulumi.Input[str] state: The state or province in the user's address.
+        :param pulumi.Input[str] street_address: The street address of the user's place of business.
+        :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
         """
@@ -81,15 +105,27 @@ class User(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['account_enabled'] = account_enabled
+            __props__['city'] = city
+            __props__['company_name'] = company_name
+            __props__['country'] = country
+            __props__['department'] = department
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__['display_name'] = display_name
             __props__['force_password_change'] = force_password_change
+            __props__['given_name'] = given_name
             __props__['immutable_id'] = immutable_id
+            __props__['job_title'] = job_title
             __props__['mail_nickname'] = mail_nickname
+            __props__['mobile'] = mobile
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__['password'] = password
+            __props__['physical_delivery_office_name'] = physical_delivery_office_name
+            __props__['postal_code'] = postal_code
+            __props__['state'] = state
+            __props__['street_address'] = street_address
+            __props__['surname'] = surname
             __props__['usage_location'] = usage_location
             if user_principal_name is None and not opts.urn:
                 raise TypeError("Missing required property 'user_principal_name'")
@@ -109,15 +145,27 @@ class User(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_enabled: Optional[pulumi.Input[bool]] = None,
+            city: Optional[pulumi.Input[str]] = None,
+            company_name: Optional[pulumi.Input[str]] = None,
+            country: Optional[pulumi.Input[str]] = None,
+            department: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             force_password_change: Optional[pulumi.Input[bool]] = None,
+            given_name: Optional[pulumi.Input[str]] = None,
             immutable_id: Optional[pulumi.Input[str]] = None,
+            job_title: Optional[pulumi.Input[str]] = None,
             mail: Optional[pulumi.Input[str]] = None,
             mail_nickname: Optional[pulumi.Input[str]] = None,
+            mobile: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
             onpremises_user_principal_name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
+            physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
+            postal_code: Optional[pulumi.Input[str]] = None,
+            state: Optional[pulumi.Input[str]] = None,
+            street_address: Optional[pulumi.Input[str]] = None,
+            surname: Optional[pulumi.Input[str]] = None,
             usage_location: Optional[pulumi.Input[str]] = None,
             user_principal_name: Optional[pulumi.Input[str]] = None) -> 'User':
         """
@@ -128,15 +176,27 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+        :param pulumi.Input[str] city: The city in which the user is located.
+        :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        :param pulumi.Input[str] country: The country/region in which the user is located; for example, “US” or “UK”.
+        :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] given_name: The given name (first name) of the user.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The primary email address of the Azure AD User.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
         :param pulumi.Input[str] object_id: The Object ID of the Azure AD User.
-        :param pulumi.Input[str] onpremises_sam_account_name: The on premise sam account name of the Azure AD User.
-        :param pulumi.Input[str] onpremises_user_principal_name: The on premise user principal name of the Azure AD User.
+        :param pulumi.Input[str] onpremises_sam_account_name: The on-premise SAM account name of the Azure AD User.
+        :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the Azure AD User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        :param pulumi.Input[str] state: The state or province in the user's address.
+        :param pulumi.Input[str] street_address: The street address of the user's place of business.
+        :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
         """
@@ -145,15 +205,27 @@ class User(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["account_enabled"] = account_enabled
+        __props__["city"] = city
+        __props__["company_name"] = company_name
+        __props__["country"] = country
+        __props__["department"] = department
         __props__["display_name"] = display_name
         __props__["force_password_change"] = force_password_change
+        __props__["given_name"] = given_name
         __props__["immutable_id"] = immutable_id
+        __props__["job_title"] = job_title
         __props__["mail"] = mail
         __props__["mail_nickname"] = mail_nickname
+        __props__["mobile"] = mobile
         __props__["object_id"] = object_id
         __props__["onpremises_sam_account_name"] = onpremises_sam_account_name
         __props__["onpremises_user_principal_name"] = onpremises_user_principal_name
         __props__["password"] = password
+        __props__["physical_delivery_office_name"] = physical_delivery_office_name
+        __props__["postal_code"] = postal_code
+        __props__["state"] = state
+        __props__["street_address"] = street_address
+        __props__["surname"] = surname
         __props__["usage_location"] = usage_location
         __props__["user_principal_name"] = user_principal_name
         return User(resource_name, opts=opts, __props__=__props__)
@@ -165,6 +237,38 @@ class User(pulumi.CustomResource):
         `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
         """
         return pulumi.get(self, "account_enabled")
+
+    @property
+    @pulumi.getter
+    def city(self) -> pulumi.Output[str]:
+        """
+        The city in which the user is located.
+        """
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter(name="companyName")
+    def company_name(self) -> pulumi.Output[str]:
+        """
+        The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        """
+        return pulumi.get(self, "company_name")
+
+    @property
+    @pulumi.getter
+    def country(self) -> pulumi.Output[str]:
+        """
+        The country/region in which the user is located; for example, “US” or “UK”.
+        """
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter
+    def department(self) -> pulumi.Output[str]:
+        """
+        The name for the department in which the user works.
+        """
+        return pulumi.get(self, "department")
 
     @property
     @pulumi.getter(name="displayName")
@@ -183,12 +287,28 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "force_password_change")
 
     @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> pulumi.Output[str]:
+        """
+        The given name (first name) of the user.
+        """
+        return pulumi.get(self, "given_name")
+
+    @property
     @pulumi.getter(name="immutableId")
     def immutable_id(self) -> pulumi.Output[str]:
         """
-        The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         """
         return pulumi.get(self, "immutable_id")
+
+    @property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> pulumi.Output[str]:
+        """
+        The user’s job title.
+        """
+        return pulumi.get(self, "job_title")
 
     @property
     @pulumi.getter
@@ -207,6 +327,14 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "mail_nickname")
 
     @property
+    @pulumi.getter
+    def mobile(self) -> pulumi.Output[str]:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile")
+
+    @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
@@ -218,7 +346,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> pulumi.Output[str]:
         """
-        The on premise sam account name of the Azure AD User.
+        The on-premise SAM account name of the Azure AD User.
         """
         return pulumi.get(self, "onpremises_sam_account_name")
 
@@ -226,7 +354,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="onpremisesUserPrincipalName")
     def onpremises_user_principal_name(self) -> pulumi.Output[str]:
         """
-        The on premise user principal name of the Azure AD User.
+        The on-premise user principal name of the Azure AD User.
         """
         return pulumi.get(self, "onpremises_user_principal_name")
 
@@ -237,6 +365,46 @@ class User(pulumi.CustomResource):
         The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         """
         return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="physicalDeliveryOfficeName")
+    def physical_delivery_office_name(self) -> pulumi.Output[str]:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "physical_delivery_office_name")
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> pulumi.Output[str]:
+        """
+        The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @property
+    @pulumi.getter
+    def state(self) -> pulumi.Output[str]:
+        """
+        The state or province in the user's address.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> pulumi.Output[str]:
+        """
+        The street address of the user's place of business.
+        """
+        return pulumi.get(self, "street_address")
+
+    @property
+    @pulumi.getter
+    def surname(self) -> pulumi.Output[str]:
+        """
+        The user's surname (family name or last name).
+        """
+        return pulumi.get(self, "surname")
 
     @property
     @pulumi.getter(name="usageLocation")

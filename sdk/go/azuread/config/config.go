@@ -15,6 +15,9 @@ func GetClientCertificatePassword(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string)
 }
+
+// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+// Principal using a Client Certificate.
 func GetClientCertificatePath(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:clientCertificatePath")
 	if err == nil {
@@ -22,6 +25,8 @@ func GetClientCertificatePath(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PATH").(string)
 }
+
+// The Client ID which should be used for service principal authentication.
 func GetClientId(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:clientId")
 	if err == nil {
@@ -29,6 +34,9 @@ func GetClientId(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "ARM_CLIENT_ID").(string)
 }
+
+// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+// Certificate
 func GetClientSecret(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:clientSecret")
 	if err == nil {
@@ -36,6 +44,14 @@ func GetClientSecret(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "ARM_CLIENT_SECRET").(string)
 }
+
+// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azuread:disableTerraformPartnerId")
+}
+
+// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+// Defaults to `public`.
 func GetEnvironment(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:environment")
 	if err == nil {
@@ -44,10 +60,13 @@ func GetEnvironment(ctx *pulumi.Context) string {
 	return getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string)
 }
 
-// The Hostname which should be used to fetch environment metadata from.
+// The Hostname which should be used for the Azure Metadata Service.
 func GetMetadataHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:metadataHost")
 }
+
+// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+// automatically.
 func GetMsiEndpoint(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:msiEndpoint")
 	if err == nil {
@@ -55,6 +74,13 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string)
 }
+
+// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+func GetPartnerId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:partnerId")
+}
+
+// The Tenant ID which should be used. Works with all authentication methods except MSI.
 func GetTenantId(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:tenantId")
 	if err == nil {
@@ -62,6 +88,8 @@ func GetTenantId(ctx *pulumi.Context) string {
 	}
 	return getEnvOrDefault("", nil, "ARM_TENANT_ID").(string)
 }
+
+// Allow Managed Service Identity to be used for Authentication.
 func GetUseMsi(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "azuread:useMsi")
 	if err == nil {

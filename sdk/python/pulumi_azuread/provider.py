@@ -19,9 +19,11 @@ class Provider(pulumi.ProviderResource):
                  client_certificate_path: Optional[pulumi.Input[str]] = None,
                  client_id: Optional[pulumi.Input[str]] = None,
                  client_secret: Optional[pulumi.Input[str]] = None,
+                 disable_terraform_partner_id: Optional[pulumi.Input[bool]] = None,
                  environment: Optional[pulumi.Input[str]] = None,
                  metadata_host: Optional[pulumi.Input[str]] = None,
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
+                 partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  __props__=None,
@@ -35,7 +37,20 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] metadata_host: The Hostname which should be used to fetch environment metadata from.
+        :param pulumi.Input[str] client_certificate_path: The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+               Principal using a Client Certificate.
+        :param pulumi.Input[str] client_id: The Client ID which should be used for service principal authentication.
+        :param pulumi.Input[str] client_secret: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+               Certificate
+        :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+        :param pulumi.Input[str] environment: The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+               Defaults to `public`.
+        :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
+        :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+               automatically.
+        :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except MSI.
+        :param pulumi.Input[bool] use_msi: Allow Managed Service Identity to be used for Authentication.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -66,6 +81,7 @@ class Provider(pulumi.ProviderResource):
             if client_secret is None:
                 client_secret = (_utilities.get_env('ARM_CLIENT_SECRET') or '')
             __props__['client_secret'] = client_secret
+            __props__['disable_terraform_partner_id'] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
             if environment is None:
                 environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
             __props__['environment'] = environment
@@ -75,6 +91,7 @@ class Provider(pulumi.ProviderResource):
             if msi_endpoint is None:
                 msi_endpoint = (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
             __props__['msi_endpoint'] = msi_endpoint
+            __props__['partner_id'] = partner_id
             if tenant_id is None:
                 tenant_id = (_utilities.get_env('ARM_TENANT_ID') or '')
             __props__['tenant_id'] = tenant_id

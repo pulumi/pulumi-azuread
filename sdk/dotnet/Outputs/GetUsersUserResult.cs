@@ -33,13 +33,16 @@ namespace Pulumi.AzureAD.Outputs
         /// The email alias of the Azure AD User.
         /// </summary>
         public readonly string MailNickname;
+        /// <summary>
+        /// The Object ID of the Azure AD User.
+        /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// The on premise sam account name of the Azure AD User.
+        /// The on-premise SAM account name of the Azure AD User.
         /// </summary>
         public readonly string OnpremisesSamAccountName;
         /// <summary>
-        /// The on premise user principal name of the Azure AD User.
+        /// The on-premise user principal name of the Azure AD User.
         /// </summary>
         public readonly string OnpremisesUserPrincipalName;
         /// <summary>

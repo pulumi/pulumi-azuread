@@ -46,7 +46,7 @@ export interface GetUserArgs {
      */
     readonly mailNickname?: string;
     /**
-     * Specifies the Object ID of the Application within Azure Active Directory.
+     * Specifies the Object ID of the User within Azure Active Directory.
      */
     readonly objectId?: string;
     /**
@@ -64,17 +64,41 @@ export interface GetUserResult {
      */
     readonly accountEnabled: boolean;
     /**
+     * The city in which the user is located.
+     */
+    readonly city: string;
+    /**
+     * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+     */
+    readonly companyName: string;
+    /**
+     * The country/region in which the user is located; for example, “US” or “UK”.
+     */
+    readonly country: string;
+    /**
+     * The name for the department in which the user works.
+     */
+    readonly department: string;
+    /**
      * The Display Name of the Azure AD User.
      */
     readonly displayName: string;
+    /**
+     * The given name (first name) of the user.
+     */
+    readonly givenName: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object.
      */
     readonly immutableId: string;
+    /**
+     * The user’s job title.
+     */
+    readonly jobTitle: string;
     /**
      * The primary email address of the Azure AD User.
      */
@@ -83,15 +107,39 @@ export interface GetUserResult {
      * The email alias of the Azure AD User.
      */
     readonly mailNickname: string;
+    /**
+     * The primary cellular telephone number for the user.
+     */
+    readonly mobile: string;
     readonly objectId: string;
     /**
-     * The on premise sam account name of the Azure AD User.
+     * The on-premise SAM account name of the Azure AD User.
      */
     readonly onpremisesSamAccountName: string;
     /**
-     * The on premise user principal name of the Azure AD User.
+     * The on-premise user principal name of the Azure AD User.
      */
     readonly onpremisesUserPrincipalName: string;
+    /**
+     * The office location in the user's place of business.
+     */
+    readonly physicalDeliveryOfficeName: string;
+    /**
+     * The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+     */
+    readonly postalCode: string;
+    /**
+     * The state or province in the user's address.
+     */
+    readonly state: string;
+    /**
+     * The street address of the user's place of business.
+     */
+    readonly streetAddress: string;
+    /**
+     * The user's surname (family name or last name).
+     */
+    readonly surname: string;
     /**
      * The usage location of the Azure AD User.
      */

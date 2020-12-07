@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool IsDefault;
         /// <summary>
-        /// `True` if this is the initial domain created by Azure Activie Directory.
+        /// `True` if this is the initial domain created by Azure Active Directory.
         /// </summary>
         public readonly bool IsInitial;
         /// <summary>

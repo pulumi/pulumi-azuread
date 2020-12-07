@@ -7,14 +7,47 @@ import * as utilities from "../utilities";
 let __config = new pulumi.Config("azuread");
 
 export let clientCertificatePassword: string | undefined = __config.get("clientCertificatePassword") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") || "");
+/**
+ * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+ * Principal using a Client Certificate.
+ */
 export let clientCertificatePath: string | undefined = __config.get("clientCertificatePath") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH") || "");
+/**
+ * The Client ID which should be used for service principal authentication.
+ */
 export let clientId: string | undefined = __config.get("clientId") || (utilities.getEnv("ARM_CLIENT_ID") || "");
+/**
+ * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+ * Certificate
+ */
 export let clientSecret: string | undefined = __config.get("clientSecret") || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
+/**
+ * Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+ */
+export let disableTerraformPartnerId: boolean | undefined = __config.getObject<boolean>("disableTerraformPartnerId");
+/**
+ * The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+ * Defaults to `public`.
+ */
 export let environment: string | undefined = __config.get("environment") || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
 /**
- * The Hostname which should be used to fetch environment metadata from.
+ * The Hostname which should be used for the Azure Metadata Service.
  */
 export let metadataHost: string | undefined = __config.get("metadataHost");
+/**
+ * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+ * automatically.
+ */
 export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
+/**
+ * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+ */
+export let partnerId: string | undefined = __config.get("partnerId");
+/**
+ * The Tenant ID which should be used. Works with all authentication methods except MSI.
+ */
 export let tenantId: string | undefined = __config.get("tenantId") || (utilities.getEnv("ARM_TENANT_ID") || "");
+/**
+ * Allow Managed Service Identity to be used for Authentication.
+ */
 export let useMsi: boolean | undefined = __config.getObject<boolean>("useMsi") || (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false);

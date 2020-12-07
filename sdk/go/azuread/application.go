@@ -145,7 +145,7 @@ type Application struct {
 	AvailableToOtherTenants pulumi.BoolPtrOutput `pulumi:"availableToOtherTenants"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrOutput `pulumi:"groupMembershipClaims"`
-	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+	// The URL to the application's home page.
 	Homepage pulumi.StringOutput `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayOutput `pulumi:"identifierUris"`
@@ -212,7 +212,7 @@ type applicationState struct {
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims *string `pulumi:"groupMembershipClaims"`
-	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+	// The URL to the application's home page.
 	Homepage *string `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
@@ -251,7 +251,7 @@ type ApplicationState struct {
 	AvailableToOtherTenants pulumi.BoolPtrInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrInput
-	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+	// The URL to the application's home page.
 	Homepage pulumi.StringPtrInput
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
@@ -292,7 +292,7 @@ type applicationArgs struct {
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims *string `pulumi:"groupMembershipClaims"`
-	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+	// The URL to the application's home page.
 	Homepage *string `pulumi:"homepage"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
@@ -328,7 +328,7 @@ type ApplicationArgs struct {
 	AvailableToOtherTenants pulumi.BoolPtrInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrInput
-	// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+	// The URL to the application's home page.
 	Homepage pulumi.StringPtrInput
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput

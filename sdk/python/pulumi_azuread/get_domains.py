@@ -87,7 +87,7 @@ def get_domains(include_unverified: Optional[bool] = None,
                 only_initial: Optional[bool] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
-    Use this data source to access information about an existing Domains within Azure Active Directory.
+    Use this data source to access information about existing Domains within Azure Active Directory.
 
     > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
 
@@ -102,7 +102,7 @@ def get_domains(include_unverified: Optional[bool] = None,
     ```
 
 
-    :param bool include_unverified: Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
+    :param bool include_unverified: Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
     :param bool only_default: Set to `true` to only return the default domain.
     :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
     """
