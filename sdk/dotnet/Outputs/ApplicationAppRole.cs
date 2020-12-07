@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.
         /// </summary>
         public readonly string? Id;
         /// <summary>

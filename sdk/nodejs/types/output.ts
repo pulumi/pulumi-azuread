@@ -18,7 +18,7 @@ export interface ApplicationAppRole {
      */
     displayName: string;
     /**
-     * The unique identifier of the `appRole`.
+     * The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.
      */
     id: string;
     /**
@@ -28,7 +28,7 @@ export interface ApplicationAppRole {
     /**
      * The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
      */
-    value?: string;
+    value: string;
 }
 
 export interface ApplicationOauth2Permission {

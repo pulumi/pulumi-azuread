@@ -269,7 +269,7 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationAppRole']]]:
+    def app_roles(self) -> pulumi.Output[Sequence['outputs.ApplicationAppRole']]:
         """
         A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         """

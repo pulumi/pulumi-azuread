@@ -138,7 +138,7 @@ type Application struct {
 	pulumi.CustomResourceState
 
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles ApplicationAppRoleArrayOutput `pulumi:"appRoles"`
+	AppRoles ApplicationAppRoleTypeArrayOutput `pulumi:"appRoles"`
 	// The Application ID.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
@@ -205,7 +205,7 @@ func GetApplication(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Application resources.
 type applicationState struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
+	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
 	// The Application ID.
 	ApplicationId *string `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
@@ -244,7 +244,7 @@ type applicationState struct {
 
 type ApplicationState struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles ApplicationAppRoleArrayInput
+	AppRoles ApplicationAppRoleTypeArrayInput
 	// The Application ID.
 	ApplicationId pulumi.StringPtrInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
@@ -287,7 +287,7 @@ func (ApplicationState) ElementType() reflect.Type {
 
 type applicationArgs struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
+	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
@@ -323,7 +323,7 @@ type applicationArgs struct {
 // The set of arguments for constructing a Application resource.
 type ApplicationArgs struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
-	AppRoles ApplicationAppRoleArrayInput
+	AppRoles ApplicationAppRoleTypeArrayInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.

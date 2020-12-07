@@ -61,10 +61,6 @@ export class ApplicationPassword extends pulumi.CustomResource {
     }
 
     /**
-     * @deprecated Deprecated in favour of `application_object_id` to prevent confusion
-     */
-    public readonly applicationId!: pulumi.Output<string>;
-    /**
      * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
@@ -105,7 +101,6 @@ export class ApplicationPassword extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         if (opts && opts.id) {
             const state = argsOrState as ApplicationPasswordState | undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
@@ -115,10 +110,12 @@ export class ApplicationPassword extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationPasswordArgs | undefined;
+            if ((!args || args.applicationObjectId === undefined) && !(opts && opts.urn)) {
+                throw new Error("Missing required property 'applicationObjectId'");
+            }
             if ((!args || args.value === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["endDate"] = args ? args.endDate : undefined;
@@ -142,10 +139,6 @@ export class ApplicationPassword extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ApplicationPassword resources.
  */
 export interface ApplicationPasswordState {
-    /**
-     * @deprecated Deprecated in favour of `application_object_id` to prevent confusion
-     */
-    readonly applicationId?: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
      */
@@ -181,13 +174,9 @@ export interface ApplicationPasswordState {
  */
 export interface ApplicationPasswordArgs {
     /**
-     * @deprecated Deprecated in favour of `application_object_id` to prevent confusion
-     */
-    readonly applicationId?: pulumi.Input<string>;
-    /**
      * The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId?: pulumi.Input<string>;
+    readonly applicationObjectId: pulumi.Input<string>;
     /**
      * A description for the Password.
      */

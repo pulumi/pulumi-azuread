@@ -15,8 +15,8 @@
 package main
 
 import (
-	azuread "github.com/pulumi/pulumi-azuread/provider/v2"
-	"github.com/pulumi/pulumi-azuread/provider/v2/pkg/version"
+	azuread "github.com/pulumi/pulumi-azuread/provider/v3"
+	"github.com/pulumi/pulumi-azuread/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfgen"
 )
 

@@ -18,9 +18,12 @@ namespace Pulumi.AzureAD
 
         public static string? Environment { get; set; } = __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
 
-        public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
+        /// <summary>
+        /// The Hostname which should be used to fetch environment metadata from.
+        /// </summary>
+        public static string? MetadataHost { get; set; } = __config.Get("metadataHost");
 
-        public static string? SubscriptionId { get; set; } = __config.Get("subscriptionId") ?? Utilities.GetEnv("ARM_SUBSCRIPTION_ID") ?? "";
+        public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
 
         public static string? TenantId { get; set; } = __config.Get("tenantId") ?? Utilities.GetEnv("ARM_TENANT_ID") ?? "";
 

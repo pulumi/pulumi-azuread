@@ -51,7 +51,6 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         public readonly string ObjectId;
-        public readonly string SubscriptionId;
         public readonly string TenantId;
 
         [OutputConstructor]
@@ -62,14 +61,11 @@ namespace Pulumi.AzureAD
 
             string objectId,
 
-            string subscriptionId,
-
             string tenantId)
         {
             ClientId = clientId;
             Id = id;
             ObjectId = objectId;
-            SubscriptionId = subscriptionId;
             TenantId = tenantId;
         }
     }

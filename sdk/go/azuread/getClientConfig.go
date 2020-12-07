@@ -45,7 +45,5 @@ type GetClientConfigResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
 	ObjectId string `pulumi:"objectId"`
-	// Deprecated: The "subscription_id" attribute will be removed in version 1.0 of the provider. If you are using this attribute, you should instead use the "azurerm_client_config" data source from the AzureRM provider
-	SubscriptionId string `pulumi:"subscriptionId"`
-	TenantId       string `pulumi:"tenantId"`
+	TenantId string `pulumi:"tenantId"`
 }

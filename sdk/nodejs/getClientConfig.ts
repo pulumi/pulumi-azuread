@@ -40,9 +40,5 @@ export interface GetClientConfigResult {
      */
     readonly id: string;
     readonly objectId: string;
-    /**
-     * @deprecated The "subscription_id" attribute will be removed in version 1.0 of the provider. If you are using this attribute, you should instead use the "azurerm_client_config" data source from the AzureRM provider
-     */
-    readonly subscriptionId: string;
     readonly tenantId: string;
 }

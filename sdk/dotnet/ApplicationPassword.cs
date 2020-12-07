@@ -49,9 +49,6 @@ namespace Pulumi.AzureAD
     /// </summary>
     public partial class ApplicationPassword : Pulumi.CustomResource
     {
-        [Output("applicationId")]
-        public Output<string> ApplicationId { get; private set; } = null!;
-
         /// <summary>
         /// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
@@ -140,14 +137,11 @@ namespace Pulumi.AzureAD
 
     public sealed class ApplicationPasswordArgs : Pulumi.ResourceArgs
     {
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
         /// <summary>
         /// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
-        [Input("applicationObjectId")]
-        public Input<string>? ApplicationObjectId { get; set; }
+        [Input("applicationObjectId", required: true)]
+        public Input<string> ApplicationObjectId { get; set; } = null!;
 
         /// <summary>
         /// A description for the Password.
@@ -192,9 +186,6 @@ namespace Pulumi.AzureAD
 
     public sealed class ApplicationPasswordState : Pulumi.ResourceArgs
     {
-        [Input("applicationId")]
-        public Input<string>? ApplicationId { get; set; }
-
         /// <summary>
         /// The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
