@@ -111,10 +111,10 @@ export class ApplicationCertificate extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationCertificateArgs | undefined;
-            if (!args || args.applicationObjectId === undefined) {
+            if ((!args || args.applicationObjectId === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'applicationObjectId'");
             }
-            if (!args || args.value === undefined) {
+            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;

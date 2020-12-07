@@ -84,7 +84,7 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['app_role_assignment_required'] = app_role_assignment_required
-            if application_id is None:
+            if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__['application_id'] = application_id
             __props__['oauth2_permissions'] = oauth2_permissions

@@ -79,7 +79,7 @@ class ApplicationCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if application_object_id is None:
+            if application_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_object_id'")
             __props__['application_object_id'] = application_object_id
             __props__['end_date'] = end_date
@@ -87,7 +87,7 @@ class ApplicationCertificate(pulumi.CustomResource):
             __props__['key_id'] = key_id
             __props__['start_date'] = start_date
             __props__['type'] = type
-            if value is None:
+            if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__['value'] = value
         super(ApplicationCertificate, __self__).__init__(
