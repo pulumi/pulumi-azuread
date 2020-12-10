@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * PPasswords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.
+ * Passwords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.
  *
  * ```sh
  *  $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111

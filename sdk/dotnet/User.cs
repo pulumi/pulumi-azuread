@@ -53,6 +53,30 @@ namespace Pulumi.AzureAD
         public Output<bool?> AccountEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// The city in which the user is located.
+        /// </summary>
+        [Output("city")]
+        public Output<string> City { get; private set; } = null!;
+
+        /// <summary>
+        /// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        /// </summary>
+        [Output("companyName")]
+        public Output<string> CompanyName { get; private set; } = null!;
+
+        /// <summary>
+        /// The country/region in which the user is located; for example, “US” or “UK”.
+        /// </summary>
+        [Output("country")]
+        public Output<string> Country { get; private set; } = null!;
+
+        /// <summary>
+        /// The name for the department in which the user works.
+        /// </summary>
+        [Output("department")]
+        public Output<string> Department { get; private set; } = null!;
+
+        /// <summary>
         /// The name to display in the address book for the user.
         /// </summary>
         [Output("displayName")]
@@ -65,10 +89,22 @@ namespace Pulumi.AzureAD
         public Output<bool?> ForcePasswordChange { get; private set; } = null!;
 
         /// <summary>
-        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// The given name (first name) of the user.
+        /// </summary>
+        [Output("givenName")]
+        public Output<string> GivenName { get; private set; } = null!;
+
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         /// </summary>
         [Output("immutableId")]
         public Output<string> ImmutableId { get; private set; } = null!;
+
+        /// <summary>
+        /// The user’s job title.
+        /// </summary>
+        [Output("jobTitle")]
+        public Output<string> JobTitle { get; private set; } = null!;
 
         /// <summary>
         /// The primary email address of the Azure AD User.
@@ -83,19 +119,25 @@ namespace Pulumi.AzureAD
         public Output<string> MailNickname { get; private set; } = null!;
 
         /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        [Output("mobile")]
+        public Output<string> Mobile { get; private set; } = null!;
+
+        /// <summary>
         /// The Object ID of the Azure AD User.
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The on premise sam account name of the Azure AD User.
+        /// The on-premise SAM account name of the Azure AD User.
         /// </summary>
         [Output("onpremisesSamAccountName")]
         public Output<string> OnpremisesSamAccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The on premise user principal name of the Azure AD User.
+        /// The on-premise user principal name of the Azure AD User.
         /// </summary>
         [Output("onpremisesUserPrincipalName")]
         public Output<string> OnpremisesUserPrincipalName { get; private set; } = null!;
@@ -105,6 +147,36 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
+
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        [Output("physicalDeliveryOfficeName")]
+        public Output<string> PhysicalDeliveryOfficeName { get; private set; } = null!;
+
+        /// <summary>
+        /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        /// </summary>
+        [Output("postalCode")]
+        public Output<string> PostalCode { get; private set; } = null!;
+
+        /// <summary>
+        /// The state or province in the user's address.
+        /// </summary>
+        [Output("state")]
+        public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// The street address of the user's place of business.
+        /// </summary>
+        [Output("streetAddress")]
+        public Output<string> StreetAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The user's surname (family name or last name).
+        /// </summary>
+        [Output("surname")]
+        public Output<string> Surname { get; private set; } = null!;
 
         /// <summary>
         /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
@@ -171,6 +243,30 @@ namespace Pulumi.AzureAD
         public Input<bool>? AccountEnabled { get; set; }
 
         /// <summary>
+        /// The city in which the user is located.
+        /// </summary>
+        [Input("city")]
+        public Input<string>? City { get; set; }
+
+        /// <summary>
+        /// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        /// </summary>
+        [Input("companyName")]
+        public Input<string>? CompanyName { get; set; }
+
+        /// <summary>
+        /// The country/region in which the user is located; for example, “US” or “UK”.
+        /// </summary>
+        [Input("country")]
+        public Input<string>? Country { get; set; }
+
+        /// <summary>
+        /// The name for the department in which the user works.
+        /// </summary>
+        [Input("department")]
+        public Input<string>? Department { get; set; }
+
+        /// <summary>
         /// The name to display in the address book for the user.
         /// </summary>
         [Input("displayName", required: true)]
@@ -183,10 +279,22 @@ namespace Pulumi.AzureAD
         public Input<bool>? ForcePasswordChange { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// The given name (first name) of the user.
+        /// </summary>
+        [Input("givenName")]
+        public Input<string>? GivenName { get; set; }
+
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         /// </summary>
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
+
+        /// <summary>
+        /// The user’s job title.
+        /// </summary>
+        [Input("jobTitle")]
+        public Input<string>? JobTitle { get; set; }
 
         /// <summary>
         /// The mail alias for the user. Defaults to the user name part of the User Principal Name.
@@ -195,10 +303,46 @@ namespace Pulumi.AzureAD
         public Input<string>? MailNickname { get; set; }
 
         /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        [Input("mobile")]
+        public Input<string>? Mobile { get; set; }
+
+        /// <summary>
         /// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         /// </summary>
         [Input("password", required: true)]
         public Input<string> Password { get; set; } = null!;
+
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        [Input("physicalDeliveryOfficeName")]
+        public Input<string>? PhysicalDeliveryOfficeName { get; set; }
+
+        /// <summary>
+        /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        /// </summary>
+        [Input("postalCode")]
+        public Input<string>? PostalCode { get; set; }
+
+        /// <summary>
+        /// The state or province in the user's address.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The street address of the user's place of business.
+        /// </summary>
+        [Input("streetAddress")]
+        public Input<string>? StreetAddress { get; set; }
+
+        /// <summary>
+        /// The user's surname (family name or last name).
+        /// </summary>
+        [Input("surname")]
+        public Input<string>? Surname { get; set; }
 
         /// <summary>
         /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
@@ -226,6 +370,30 @@ namespace Pulumi.AzureAD
         public Input<bool>? AccountEnabled { get; set; }
 
         /// <summary>
+        /// The city in which the user is located.
+        /// </summary>
+        [Input("city")]
+        public Input<string>? City { get; set; }
+
+        /// <summary>
+        /// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        /// </summary>
+        [Input("companyName")]
+        public Input<string>? CompanyName { get; set; }
+
+        /// <summary>
+        /// The country/region in which the user is located; for example, “US” or “UK”.
+        /// </summary>
+        [Input("country")]
+        public Input<string>? Country { get; set; }
+
+        /// <summary>
+        /// The name for the department in which the user works.
+        /// </summary>
+        [Input("department")]
+        public Input<string>? Department { get; set; }
+
+        /// <summary>
         /// The name to display in the address book for the user.
         /// </summary>
         [Input("displayName")]
@@ -238,10 +406,22 @@ namespace Pulumi.AzureAD
         public Input<bool>? ForcePasswordChange { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// The given name (first name) of the user.
+        /// </summary>
+        [Input("givenName")]
+        public Input<string>? GivenName { get; set; }
+
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         /// </summary>
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
+
+        /// <summary>
+        /// The user’s job title.
+        /// </summary>
+        [Input("jobTitle")]
+        public Input<string>? JobTitle { get; set; }
 
         /// <summary>
         /// The primary email address of the Azure AD User.
@@ -256,19 +436,25 @@ namespace Pulumi.AzureAD
         public Input<string>? MailNickname { get; set; }
 
         /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        [Input("mobile")]
+        public Input<string>? Mobile { get; set; }
+
+        /// <summary>
         /// The Object ID of the Azure AD User.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// The on premise sam account name of the Azure AD User.
+        /// The on-premise SAM account name of the Azure AD User.
         /// </summary>
         [Input("onpremisesSamAccountName")]
         public Input<string>? OnpremisesSamAccountName { get; set; }
 
         /// <summary>
-        /// The on premise user principal name of the Azure AD User.
+        /// The on-premise user principal name of the Azure AD User.
         /// </summary>
         [Input("onpremisesUserPrincipalName")]
         public Input<string>? OnpremisesUserPrincipalName { get; set; }
@@ -278,6 +464,36 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("password")]
         public Input<string>? Password { get; set; }
+
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        [Input("physicalDeliveryOfficeName")]
+        public Input<string>? PhysicalDeliveryOfficeName { get; set; }
+
+        /// <summary>
+        /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        /// </summary>
+        [Input("postalCode")]
+        public Input<string>? PostalCode { get; set; }
+
+        /// <summary>
+        /// The state or province in the user's address.
+        /// </summary>
+        [Input("state")]
+        public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// The street address of the user's place of business.
+        /// </summary>
+        [Input("streetAddress")]
+        public Input<string>? StreetAddress { get; set; }
+
+        /// <summary>
+        /// The user's surname (family name or last name).
+        /// </summary>
+        [Input("surname")]
+        public Input<string>? Surname { get; set; }
 
         /// <summary>
         /// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.

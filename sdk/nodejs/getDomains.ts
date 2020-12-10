@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to access information about an existing Domains within Azure Active Directory.
+ * Use this data source to access information about existing Domains within Azure Active Directory.
  *
  * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
  *
@@ -41,7 +41,7 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetDomainsArgs {
     /**
-     * Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
+     * Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
      */
     readonly includeUnverified?: boolean;
     /**

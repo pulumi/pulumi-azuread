@@ -150,7 +150,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly groupMembershipClaims!: pulumi.Output<string | undefined>;
     /**
-     * The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+     * The URL to the application's home page.
      */
     public readonly homepage!: pulumi.Output<string>;
     /**
@@ -289,7 +289,7 @@ export interface ApplicationState {
      */
     readonly groupMembershipClaims?: pulumi.Input<string>;
     /**
-     * The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+     * The URL to the application's home page.
      */
     readonly homepage?: pulumi.Input<string>;
     /**
@@ -363,7 +363,7 @@ export interface ApplicationArgs {
      */
     readonly groupMembershipClaims?: pulumi.Input<string>;
     /**
-     * The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+     * The URL to the application's home page.
      */
     readonly homepage?: pulumi.Input<string>;
     /**

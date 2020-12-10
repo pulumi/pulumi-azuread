@@ -19,25 +19,46 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, display_name=None, id=None, immutable_id=None, mail=None, mail_nickname=None, object_id=None, onpremises_sam_account_name=None, onpremises_user_principal_name=None, usage_location=None, user_principal_name=None):
+    def __init__(__self__, account_enabled=None, city=None, company_name=None, country=None, department=None, display_name=None, given_name=None, id=None, immutable_id=None, job_title=None, mail=None, mail_nickname=None, mobile=None, object_id=None, onpremises_sam_account_name=None, onpremises_user_principal_name=None, physical_delivery_office_name=None, postal_code=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
+        if city and not isinstance(city, str):
+            raise TypeError("Expected argument 'city' to be a str")
+        pulumi.set(__self__, "city", city)
+        if company_name and not isinstance(company_name, str):
+            raise TypeError("Expected argument 'company_name' to be a str")
+        pulumi.set(__self__, "company_name", company_name)
+        if country and not isinstance(country, str):
+            raise TypeError("Expected argument 'country' to be a str")
+        pulumi.set(__self__, "country", country)
+        if department and not isinstance(department, str):
+            raise TypeError("Expected argument 'department' to be a str")
+        pulumi.set(__self__, "department", department)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if given_name and not isinstance(given_name, str):
+            raise TypeError("Expected argument 'given_name' to be a str")
+        pulumi.set(__self__, "given_name", given_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if immutable_id and not isinstance(immutable_id, str):
             raise TypeError("Expected argument 'immutable_id' to be a str")
         pulumi.set(__self__, "immutable_id", immutable_id)
+        if job_title and not isinstance(job_title, str):
+            raise TypeError("Expected argument 'job_title' to be a str")
+        pulumi.set(__self__, "job_title", job_title)
         if mail and not isinstance(mail, str):
             raise TypeError("Expected argument 'mail' to be a str")
         pulumi.set(__self__, "mail", mail)
         if mail_nickname and not isinstance(mail_nickname, str):
             raise TypeError("Expected argument 'mail_nickname' to be a str")
         pulumi.set(__self__, "mail_nickname", mail_nickname)
+        if mobile and not isinstance(mobile, str):
+            raise TypeError("Expected argument 'mobile' to be a str")
+        pulumi.set(__self__, "mobile", mobile)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         pulumi.set(__self__, "object_id", object_id)
@@ -47,6 +68,21 @@ class GetUserResult:
         if onpremises_user_principal_name and not isinstance(onpremises_user_principal_name, str):
             raise TypeError("Expected argument 'onpremises_user_principal_name' to be a str")
         pulumi.set(__self__, "onpremises_user_principal_name", onpremises_user_principal_name)
+        if physical_delivery_office_name and not isinstance(physical_delivery_office_name, str):
+            raise TypeError("Expected argument 'physical_delivery_office_name' to be a str")
+        pulumi.set(__self__, "physical_delivery_office_name", physical_delivery_office_name)
+        if postal_code and not isinstance(postal_code, str):
+            raise TypeError("Expected argument 'postal_code' to be a str")
+        pulumi.set(__self__, "postal_code", postal_code)
+        if state and not isinstance(state, str):
+            raise TypeError("Expected argument 'state' to be a str")
+        pulumi.set(__self__, "state", state)
+        if street_address and not isinstance(street_address, str):
+            raise TypeError("Expected argument 'street_address' to be a str")
+        pulumi.set(__self__, "street_address", street_address)
+        if surname and not isinstance(surname, str):
+            raise TypeError("Expected argument 'surname' to be a str")
+        pulumi.set(__self__, "surname", surname)
         if usage_location and not isinstance(usage_location, str):
             raise TypeError("Expected argument 'usage_location' to be a str")
         pulumi.set(__self__, "usage_location", usage_location)
@@ -63,12 +99,52 @@ class GetUserResult:
         return pulumi.get(self, "account_enabled")
 
     @property
+    @pulumi.getter
+    def city(self) -> str:
+        """
+        The city in which the user is located.
+        """
+        return pulumi.get(self, "city")
+
+    @property
+    @pulumi.getter(name="companyName")
+    def company_name(self) -> str:
+        """
+        The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        """
+        return pulumi.get(self, "company_name")
+
+    @property
+    @pulumi.getter
+    def country(self) -> str:
+        """
+        The country/region in which the user is located; for example, “US” or “UK”.
+        """
+        return pulumi.get(self, "country")
+
+    @property
+    @pulumi.getter
+    def department(self) -> str:
+        """
+        The name for the department in which the user works.
+        """
+        return pulumi.get(self, "department")
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
         The Display Name of the Azure AD User.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> str:
+        """
+        The given name (first name) of the user.
+        """
+        return pulumi.get(self, "given_name")
 
     @property
     @pulumi.getter
@@ -82,9 +158,17 @@ class GetUserResult:
     @pulumi.getter(name="immutableId")
     def immutable_id(self) -> str:
         """
-        The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object.
         """
         return pulumi.get(self, "immutable_id")
+
+    @property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> str:
+        """
+        The user’s job title.
+        """
+        return pulumi.get(self, "job_title")
 
     @property
     @pulumi.getter
@@ -103,6 +187,14 @@ class GetUserResult:
         return pulumi.get(self, "mail_nickname")
 
     @property
+    @pulumi.getter
+    def mobile(self) -> str:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile")
+
+    @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
         return pulumi.get(self, "object_id")
@@ -111,7 +203,7 @@ class GetUserResult:
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> str:
         """
-        The on premise sam account name of the Azure AD User.
+        The on-premise SAM account name of the Azure AD User.
         """
         return pulumi.get(self, "onpremises_sam_account_name")
 
@@ -119,9 +211,49 @@ class GetUserResult:
     @pulumi.getter(name="onpremisesUserPrincipalName")
     def onpremises_user_principal_name(self) -> str:
         """
-        The on premise user principal name of the Azure AD User.
+        The on-premise user principal name of the Azure AD User.
         """
         return pulumi.get(self, "onpremises_user_principal_name")
+
+    @property
+    @pulumi.getter(name="physicalDeliveryOfficeName")
+    def physical_delivery_office_name(self) -> str:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "physical_delivery_office_name")
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> str:
+        """
+        The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state or province in the user's address.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> str:
+        """
+        The street address of the user's place of business.
+        """
+        return pulumi.get(self, "street_address")
+
+    @property
+    @pulumi.getter
+    def surname(self) -> str:
+        """
+        The user's surname (family name or last name).
+        """
+        return pulumi.get(self, "surname")
 
     @property
     @pulumi.getter(name="usageLocation")
@@ -147,14 +279,26 @@ class AwaitableGetUserResult(GetUserResult):
             yield self
         return GetUserResult(
             account_enabled=self.account_enabled,
+            city=self.city,
+            company_name=self.company_name,
+            country=self.country,
+            department=self.department,
             display_name=self.display_name,
+            given_name=self.given_name,
             id=self.id,
             immutable_id=self.immutable_id,
+            job_title=self.job_title,
             mail=self.mail,
             mail_nickname=self.mail_nickname,
+            mobile=self.mobile,
             object_id=self.object_id,
             onpremises_sam_account_name=self.onpremises_sam_account_name,
             onpremises_user_principal_name=self.onpremises_user_principal_name,
+            physical_delivery_office_name=self.physical_delivery_office_name,
+            postal_code=self.postal_code,
+            state=self.state,
+            street_address=self.street_address,
+            surname=self.surname,
             usage_location=self.usage_location,
             user_principal_name=self.user_principal_name)
 
@@ -179,7 +323,7 @@ def get_user(mail_nickname: Optional[str] = None,
 
 
     :param str mail_nickname: The email alias of the Azure AD User.
-    :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
+    :param str object_id: Specifies the Object ID of the User within Azure Active Directory.
     :param str user_principal_name: The User Principal Name of the Azure AD User.
     """
     __args__ = dict()
@@ -194,13 +338,25 @@ def get_user(mail_nickname: Optional[str] = None,
 
     return AwaitableGetUserResult(
         account_enabled=__ret__.account_enabled,
+        city=__ret__.city,
+        company_name=__ret__.company_name,
+        country=__ret__.country,
+        department=__ret__.department,
         display_name=__ret__.display_name,
+        given_name=__ret__.given_name,
         id=__ret__.id,
         immutable_id=__ret__.immutable_id,
+        job_title=__ret__.job_title,
         mail=__ret__.mail,
         mail_nickname=__ret__.mail_nickname,
+        mobile=__ret__.mobile,
         object_id=__ret__.object_id,
         onpremises_sam_account_name=__ret__.onpremises_sam_account_name,
         onpremises_user_principal_name=__ret__.onpremises_user_principal_name,
+        physical_delivery_office_name=__ret__.physical_delivery_office_name,
+        postal_code=__ret__.postal_code,
+        state=__ret__.state,
+        street_address=__ret__.street_address,
+        surname=__ret__.surname,
         usage_location=__ret__.usage_location,
         user_principal_name=__ret__.user_principal_name)

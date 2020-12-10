@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 )
 
-// Use this data source to access the configuration of the AzureRM provider.
+// Use this data source to access the configuration of the AzureAD provider.
 //
 // ## Example Usage
 //

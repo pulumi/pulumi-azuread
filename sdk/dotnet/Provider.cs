@@ -47,30 +47,67 @@ namespace Pulumi.AzureAD
         [Input("clientCertificatePassword")]
         public Input<string>? ClientCertificatePassword { get; set; }
 
+        /// <summary>
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+        /// Principal using a Client Certificate.
+        /// </summary>
         [Input("clientCertificatePath")]
         public Input<string>? ClientCertificatePath { get; set; }
 
+        /// <summary>
+        /// The Client ID which should be used for service principal authentication.
+        /// </summary>
         [Input("clientId")]
         public Input<string>? ClientId { get; set; }
 
+        /// <summary>
+        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+        /// Certificate
+        /// </summary>
         [Input("clientSecret")]
         public Input<string>? ClientSecret { get; set; }
 
+        /// <summary>
+        /// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+        /// </summary>
+        [Input("disableTerraformPartnerId", json: true)]
+        public Input<bool>? DisableTerraformPartnerId { get; set; }
+
+        /// <summary>
+        /// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+        /// Defaults to `public`.
+        /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// The Hostname which should be used to fetch environment metadata from.
+        /// The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
         [Input("metadataHost", required: true)]
         public Input<string> MetadataHost { get; set; } = null!;
 
+        /// <summary>
+        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+        /// automatically.
+        /// </summary>
         [Input("msiEndpoint")]
         public Input<string>? MsiEndpoint { get; set; }
 
+        /// <summary>
+        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        /// </summary>
+        [Input("partnerId")]
+        public Input<string>? PartnerId { get; set; }
+
+        /// <summary>
+        /// The Tenant ID which should be used. Works with all authentication methods except MSI.
+        /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
 
+        /// <summary>
+        /// Allow Managed Service Identity to be used for Authentication.
+        /// </summary>
         [Input("useMsi", json: true)]
         public Input<bool>? UseMsi { get; set; }
 

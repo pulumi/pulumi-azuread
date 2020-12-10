@@ -1901,7 +1901,7 @@ type GetDomainsDomain struct {
 	DomainName string `pulumi:"domainName"`
 	// `True` if this is the default domain that is used for user creation.
 	IsDefault bool `pulumi:"isDefault"`
-	// `True` if this is the initial domain created by Azure Activie Directory.
+	// `True` if this is the initial domain created by Azure Active Directory.
 	IsInitial bool `pulumi:"isInitial"`
 	// `True` if the domain has completed domain ownership verification.
 	IsVerified bool `pulumi:"isVerified"`
@@ -1925,7 +1925,7 @@ type GetDomainsDomainArgs struct {
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// `True` if this is the default domain that is used for user creation.
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	// `True` if this is the initial domain created by Azure Activie Directory.
+	// `True` if this is the initial domain created by Azure Active Directory.
 	IsInitial pulumi.BoolInput `pulumi:"isInitial"`
 	// `True` if the domain has completed domain ownership verification.
 	IsVerified pulumi.BoolInput `pulumi:"isVerified"`
@@ -1997,7 +1997,7 @@ func (o GetDomainsDomainOutput) IsDefault() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.IsDefault }).(pulumi.BoolOutput)
 }
 
-// `True` if this is the initial domain created by Azure Activie Directory.
+// `True` if this is the initial domain created by Azure Active Directory.
 func (o GetDomainsDomainOutput) IsInitial() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.IsInitial }).(pulumi.BoolOutput)
 }
@@ -2340,10 +2340,11 @@ type GetUsersUser struct {
 	Mail string `pulumi:"mail"`
 	// The email alias of the Azure AD User.
 	MailNickname string `pulumi:"mailNickname"`
-	ObjectId     string `pulumi:"objectId"`
-	// The on premise sam account name of the Azure AD User.
+	// The Object ID of the Azure AD User.
+	ObjectId string `pulumi:"objectId"`
+	// The on-premise SAM account name of the Azure AD User.
 	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
-	// The on premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the Azure AD User.
 	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
 	// The usage location of the Azure AD User.
 	UsageLocation string `pulumi:"usageLocation"`
@@ -2373,10 +2374,11 @@ type GetUsersUserArgs struct {
 	Mail pulumi.StringInput `pulumi:"mail"`
 	// The email alias of the Azure AD User.
 	MailNickname pulumi.StringInput `pulumi:"mailNickname"`
-	ObjectId     pulumi.StringInput `pulumi:"objectId"`
-	// The on premise sam account name of the Azure AD User.
+	// The Object ID of the Azure AD User.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// The on-premise SAM account name of the Azure AD User.
 	OnpremisesSamAccountName pulumi.StringInput `pulumi:"onpremisesSamAccountName"`
-	// The on premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the Azure AD User.
 	OnpremisesUserPrincipalName pulumi.StringInput `pulumi:"onpremisesUserPrincipalName"`
 	// The usage location of the Azure AD User.
 	UsageLocation pulumi.StringInput `pulumi:"usageLocation"`
@@ -2460,16 +2462,17 @@ func (o GetUsersUserOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.MailNickname }).(pulumi.StringOutput)
 }
 
+// The Object ID of the Azure AD User.
 func (o GetUsersUserOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The on premise sam account name of the Azure AD User.
+// The on-premise SAM account name of the Azure AD User.
 func (o GetUsersUserOutput) OnpremisesSamAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
 }
 
-// The on premise user principal name of the Azure AD User.
+// The on-premise user principal name of the Azure AD User.
 func (o GetUsersUserOutput) OnpremisesUserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesUserPrincipalName }).(pulumi.StringOutput)
 }

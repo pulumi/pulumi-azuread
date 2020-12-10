@@ -891,7 +891,7 @@ class GetDomainsDomainResult(dict):
         :param str authentication_type: The authentication type of the domain (Managed or Federated).
         :param str domain_name: The name of the domain.
         :param bool is_default: `True` if this is the default domain that is used for user creation.
-        :param bool is_initial: `True` if this is the initial domain created by Azure Activie Directory.
+        :param bool is_initial: `True` if this is the initial domain created by Azure Active Directory.
         :param bool is_verified: `True` if the domain has completed domain ownership verification.
         """
         pulumi.set(__self__, "authentication_type", authentication_type)
@@ -928,7 +928,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="isInitial")
     def is_initial(self) -> bool:
         """
-        `True` if this is the initial domain created by Azure Activie Directory.
+        `True` if this is the initial domain created by Azure Active Directory.
         """
         return pulumi.get(self, "is_initial")
 
@@ -1128,8 +1128,9 @@ class GetUsersUserResult(dict):
         :param str immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object.
         :param str mail: The primary email address of the Azure AD User.
         :param str mail_nickname: The email alias of the Azure AD User.
-        :param str onpremises_sam_account_name: The on premise sam account name of the Azure AD User.
-        :param str onpremises_user_principal_name: The on premise user principal name of the Azure AD User.
+        :param str object_id: The Object ID of the Azure AD User.
+        :param str onpremises_sam_account_name: The on-premise SAM account name of the Azure AD User.
+        :param str onpremises_user_principal_name: The on-premise user principal name of the Azure AD User.
         :param str usage_location: The usage location of the Azure AD User.
         :param str user_principal_name: The User Principal Name of the Azure AD User.
         """
@@ -1187,13 +1188,16 @@ class GetUsersUserResult(dict):
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The Object ID of the Azure AD User.
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> str:
         """
-        The on premise sam account name of the Azure AD User.
+        The on-premise SAM account name of the Azure AD User.
         """
         return pulumi.get(self, "onpremises_sam_account_name")
 
@@ -1201,7 +1205,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="onpremisesUserPrincipalName")
     def onpremises_user_principal_name(self) -> str:
         """
-        The on premise user principal name of the Azure AD User.
+        The on-premise user principal name of the Azure AD User.
         """
         return pulumi.get(self, "onpremises_user_principal_name")
 

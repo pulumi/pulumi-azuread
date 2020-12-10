@@ -272,7 +272,7 @@ export interface GetDomainsDomain {
      */
     isDefault: boolean;
     /**
-     * `True` if this is the initial domain created by Azure Activie Directory.
+     * `True` if this is the initial domain created by Azure Active Directory.
      */
     isInitial: boolean;
     /**
@@ -364,13 +364,16 @@ export interface GetUsersUser {
      * The email alias of the Azure AD User.
      */
     mailNickname: string;
+    /**
+     * The Object ID of the Azure AD User.
+     */
     objectId: string;
     /**
-     * The on premise sam account name of the Azure AD User.
+     * The on-premise SAM account name of the Azure AD User.
      */
     onpremisesSamAccountName: string;
     /**
-     * The on premise user principal name of the Azure AD User.
+     * The on-premise user principal name of the Azure AD User.
      */
     onpremisesUserPrincipalName: string;
     /**

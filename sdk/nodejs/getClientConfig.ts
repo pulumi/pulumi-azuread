@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Use this data source to access the configuration of the AzureRM provider.
+ * Use this data source to access the configuration of the AzureAD provider.
  *
  * ## Example Usage
  *

@@ -183,7 +183,7 @@ namespace Pulumi.AzureAD
         public Output<string?> GroupMembershipClaims { get; private set; } = null!;
 
         /// <summary>
-        /// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+        /// The URL to the application's home page.
         /// </summary>
         [Output("homepage")]
         public Output<string> Homepage { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.AzureAD
         public Input<string>? GroupMembershipClaims { get; set; }
 
         /// <summary>
-        /// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+        /// The URL to the application's home page.
         /// </summary>
         [Input("homepage")]
         public Input<string>? Homepage { get; set; }
@@ -482,7 +482,7 @@ namespace Pulumi.AzureAD
         public Input<string>? GroupMembershipClaims { get; set; }
 
         /// <summary>
-        /// The URL to the application's home page. If no homepage is specified this defaults to `https://{name}`.
+        /// The URL to the application's home page.
         /// </summary>
         [Input("homepage")]
         public Input<string>? Homepage { get; set; }

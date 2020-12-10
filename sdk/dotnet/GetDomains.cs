@@ -12,7 +12,7 @@ namespace Pulumi.AzureAD
     public static class GetDomains
     {
         /// <summary>
-        /// Use this data source to access information about an existing Domains within Azure Active Directory.
+        /// Use this data source to access information about existing Domains within Azure Active Directory.
         /// 
         /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.AzureAD
     public sealed class GetDomainsArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set to `true` if unverified Azure AD Domains should be included. Defaults to `false`.
+        /// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
         /// </summary>
         [Input("includeUnverified")]
         public bool? IncludeUnverified { get; set; }

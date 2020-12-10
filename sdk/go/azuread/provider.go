@@ -63,29 +63,59 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	ClientCertificatePassword *string `pulumi:"clientCertificatePassword"`
-	ClientCertificatePath     *string `pulumi:"clientCertificatePath"`
-	ClientId                  *string `pulumi:"clientId"`
-	ClientSecret              *string `pulumi:"clientSecret"`
-	Environment               *string `pulumi:"environment"`
-	// The Hostname which should be used to fetch environment metadata from.
-	MetadataHost string  `pulumi:"metadataHost"`
-	MsiEndpoint  *string `pulumi:"msiEndpoint"`
-	TenantId     *string `pulumi:"tenantId"`
-	UseMsi       *bool   `pulumi:"useMsi"`
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate.
+	ClientCertificatePath *string `pulumi:"clientCertificatePath"`
+	// The Client ID which should be used for service principal authentication.
+	ClientId *string `pulumi:"clientId"`
+	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+	// Certificate
+	ClientSecret *string `pulumi:"clientSecret"`
+	// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
+	// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+	// Defaults to `public`.
+	Environment *string `pulumi:"environment"`
+	// The Hostname which should be used for the Azure Metadata Service.
+	MetadataHost string `pulumi:"metadataHost"`
+	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+	// automatically.
+	MsiEndpoint *string `pulumi:"msiEndpoint"`
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	PartnerId *string `pulumi:"partnerId"`
+	// The Tenant ID which should be used. Works with all authentication methods except MSI.
+	TenantId *string `pulumi:"tenantId"`
+	// Allow Managed Service Identity to be used for Authentication.
+	UseMsi *bool `pulumi:"useMsi"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	ClientCertificatePassword pulumi.StringPtrInput
-	ClientCertificatePath     pulumi.StringPtrInput
-	ClientId                  pulumi.StringPtrInput
-	ClientSecret              pulumi.StringPtrInput
-	Environment               pulumi.StringPtrInput
-	// The Hostname which should be used to fetch environment metadata from.
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate.
+	ClientCertificatePath pulumi.StringPtrInput
+	// The Client ID which should be used for service principal authentication.
+	ClientId pulumi.StringPtrInput
+	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+	// Certificate
+	ClientSecret pulumi.StringPtrInput
+	// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+	DisableTerraformPartnerId pulumi.BoolPtrInput
+	// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
+	// Defaults to `public`.
+	Environment pulumi.StringPtrInput
+	// The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringInput
-	MsiEndpoint  pulumi.StringPtrInput
-	TenantId     pulumi.StringPtrInput
-	UseMsi       pulumi.BoolPtrInput
+	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+	// automatically.
+	MsiEndpoint pulumi.StringPtrInput
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	PartnerId pulumi.StringPtrInput
+	// The Tenant ID which should be used. Works with all authentication methods except MSI.
+	TenantId pulumi.StringPtrInput
+	// Allow Managed Service Identity to be used for Authentication.
+	UseMsi pulumi.BoolPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
