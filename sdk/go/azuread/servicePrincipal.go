@@ -69,7 +69,8 @@ type ServicePrincipal struct {
 	pulumi.CustomResourceState
 
 	// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
-	AppRoleAssignmentRequired pulumi.BoolPtrOutput `pulumi:"appRoleAssignmentRequired"`
+	AppRoleAssignmentRequired pulumi.BoolPtrOutput               `pulumi:"appRoleAssignmentRequired"`
+	AppRoles                  ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
@@ -115,7 +116,8 @@ func GetServicePrincipal(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServicePrincipal resources.
 type servicePrincipalState struct {
 	// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
-	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
+	AppRoleAssignmentRequired *bool                     `pulumi:"appRoleAssignmentRequired"`
+	AppRoles                  []ServicePrincipalAppRole `pulumi:"appRoles"`
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
@@ -131,6 +133,7 @@ type servicePrincipalState struct {
 type ServicePrincipalState struct {
 	// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
+	AppRoles                  ServicePrincipalAppRoleArrayInput
 	// The ID of the Azure AD Application for which to create a Service Principal.
 	ApplicationId pulumi.StringPtrInput
 	// The Display Name of the Azure Active Directory Application associated with this Service Principal.

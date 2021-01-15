@@ -70,6 +70,9 @@ namespace Pulumi.AzureAD
         [Output("appRoleAssignmentRequired")]
         public Output<bool?> AppRoleAssignmentRequired { get; private set; } = null!;
 
+        [Output("appRoles")]
+        public Output<ImmutableArray<Outputs.ServicePrincipalAppRole>> AppRoles { get; private set; } = null!;
+
         /// <summary>
         /// The ID of the Azure AD Application for which to create a Service Principal.
         /// </summary>
@@ -194,6 +197,14 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
+
+        [Input("appRoles")]
+        private InputList<Inputs.ServicePrincipalAppRoleGetArgs>? _appRoles;
+        public InputList<Inputs.ServicePrincipalAppRoleGetArgs> AppRoles
+        {
+            get => _appRoles ?? (_appRoles = new InputList<Inputs.ServicePrincipalAppRoleGetArgs>());
+            set => _appRoles = value;
+        }
 
         /// <summary>
         /// The ID of the Azure AD Application for which to create a Service Principal.

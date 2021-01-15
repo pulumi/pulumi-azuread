@@ -17,6 +17,7 @@ __all__ = [
     'ApplicationOptionalClaimsIdToken',
     'ApplicationRequiredResourceAccess',
     'ApplicationRequiredResourceAccessResourceAccess',
+    'ServicePrincipalAppRole',
     'ServicePrincipalOauth2Permission',
     'GetApplicationAppRoleResult',
     'GetApplicationOauth2PermissionResult',
@@ -305,7 +306,7 @@ class ApplicationOptionalClaimsIdToken(dict):
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
-        :param str name: The display name for the application.
+        :param str name: The name of the optional claim.
         :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
@@ -322,7 +323,7 @@ class ApplicationOptionalClaimsIdToken(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The display name for the application.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 
@@ -413,6 +414,80 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
         Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         """
         return pulumi.get(self, "type")
+
+    def _translate_property(self, prop):
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+
+
+@pulumi.output_type
+class ServicePrincipalAppRole(dict):
+    def __init__(__self__, *,
+                 allowed_member_types: Optional[Sequence[str]] = None,
+                 description: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 id: Optional[str] = None,
+                 is_enabled: Optional[bool] = None,
+                 value: Optional[str] = None):
+        """
+        :param str display_name: The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        :param str id: The unique identifier for one of the `OAuth2Permission`.
+        :param bool is_enabled: Is this permission enabled?
+        :param str value: The name of this permission.
+        """
+        if allowed_member_types is not None:
+            pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="allowedMemberTypes")
+    def allowed_member_types(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "allowed_member_types")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[str]:
+        """
+        The unique identifier for one of the `OAuth2Permission`.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[bool]:
+        """
+        Is this permission enabled?
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The name of this permission.
+        """
+        return pulumi.get(self, "value")
 
     def _translate_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
@@ -536,7 +611,7 @@ class GetApplicationAppRoleResult(dict):
         """
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param str display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
+        :param str display_name: Specifies the display name of the Application within Azure Active Directory.
         :param str id: The unique identifier of the `app_role`.
         :param bool is_enabled: Determines if the app role is enabled.
         :param str value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
@@ -568,7 +643,7 @@ class GetApplicationAppRoleResult(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Specifies the display name of the Application within Azure Active Directory.
         """
         return pulumi.get(self, "display_name")
 
@@ -721,7 +796,7 @@ class GetApplicationOptionalClaimsAccessTokenResult(dict):
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
-        :param str name: Specifies the name of the Application within Azure Active Directory.
+        :param str name: The name of the optional claim.
         :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
@@ -738,7 +813,7 @@ class GetApplicationOptionalClaimsAccessTokenResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Specifies the name of the Application within Azure Active Directory.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 
@@ -775,7 +850,7 @@ class GetApplicationOptionalClaimsIdTokenResult(dict):
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
-        :param str name: Specifies the name of the Application within Azure Active Directory.
+        :param str name: The name of the optional claim.
         :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
@@ -792,7 +867,7 @@ class GetApplicationOptionalClaimsIdTokenResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Specifies the name of the Application within Azure Active Directory.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 

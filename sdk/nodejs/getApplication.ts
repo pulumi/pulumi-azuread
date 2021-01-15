@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = azuread.getApplication({
- *     name: "My First AzureAD Application",
+ *     displayName: "My First AzureAD Application",
  * });
  * export const azureAdObjectId = example.then(example => example.id);
  * ```
@@ -33,6 +33,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
     }
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
         "applicationId": args.applicationId,
+        "displayName": args.displayName,
         "name": args.name,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
@@ -49,7 +50,13 @@ export interface GetApplicationArgs {
      */
     readonly applicationId?: string;
     /**
-     * Specifies the name of the Application within Azure Active Directory.
+     * Specifies the display name of the Application within Azure Active Directory.
+     */
+    readonly displayName?: string;
+    /**
+     * The name of the optional claim.
+     *
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
      */
     readonly name?: string;
     /**
@@ -83,6 +90,10 @@ export interface GetApplicationResult {
      */
     readonly availableToOtherTenants: boolean;
     /**
+     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     */
+    readonly displayName: string;
+    /**
      * The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
      */
     readonly groupMembershipClaims: string;
@@ -101,6 +112,8 @@ export interface GetApplicationResult {
     readonly logoutUrl: string;
     /**
      * The name of the optional claim.
+     *
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
      */
     readonly name: string;
     /**

@@ -40,6 +40,7 @@ import (
 // 				},
 // 			},
 // 			AvailableToOtherTenants: pulumi.Bool(false),
+// 			DisplayName:             pulumi.String("example"),
 // 			Homepage:                pulumi.String("https://homepage"),
 // 			IdentifierUris: pulumi.StringArray{
 // 				pulumi.String("https://uri"),
@@ -143,6 +144,8 @@ type Application struct {
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrOutput `pulumi:"availableToOtherTenants"`
+	// The display name for the application.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrOutput `pulumi:"groupMembershipClaims"`
 	// The URL to the application's home page.
@@ -151,7 +154,9 @@ type Application struct {
 	IdentifierUris pulumi.StringArrayOutput `pulumi:"identifierUris"`
 	// The URL of the logout page.
 	LogoutUrl pulumi.StringPtrOutput `pulumi:"logoutUrl"`
-	// The display name for the application.
+	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrOutput `pulumi:"oauth2AllowImplicitFlow"`
@@ -172,6 +177,8 @@ type Application struct {
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayOutput `pulumi:"requiredResourceAccesses"`
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+	//
+	// Deprecated: This property is deprecated and will be removed in version 2.0 of this provider.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -210,6 +217,8 @@ type applicationState struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
+	// The display name for the application.
+	DisplayName *string `pulumi:"displayName"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims *string `pulumi:"groupMembershipClaims"`
 	// The URL to the application's home page.
@@ -218,7 +227,9 @@ type applicationState struct {
 	IdentifierUris []string `pulumi:"identifierUris"`
 	// The URL of the logout page.
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// The display name for the application.
+	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
@@ -239,6 +250,8 @@ type applicationState struct {
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+	//
+	// Deprecated: This property is deprecated and will be removed in version 2.0 of this provider.
 	Type *string `pulumi:"type"`
 }
 
@@ -249,6 +262,8 @@ type ApplicationState struct {
 	ApplicationId pulumi.StringPtrInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrInput
+	// The display name for the application.
+	DisplayName pulumi.StringPtrInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrInput
 	// The URL to the application's home page.
@@ -257,7 +272,9 @@ type ApplicationState struct {
 	IdentifierUris pulumi.StringArrayInput
 	// The URL of the logout page.
 	LogoutUrl pulumi.StringPtrInput
-	// The display name for the application.
+	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
@@ -278,6 +295,8 @@ type ApplicationState struct {
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+	//
+	// Deprecated: This property is deprecated and will be removed in version 2.0 of this provider.
 	Type pulumi.StringPtrInput
 }
 
@@ -290,6 +309,8 @@ type applicationArgs struct {
 	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
+	// The display name for the application.
+	DisplayName *string `pulumi:"displayName"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims *string `pulumi:"groupMembershipClaims"`
 	// The URL to the application's home page.
@@ -298,7 +319,9 @@ type applicationArgs struct {
 	IdentifierUris []string `pulumi:"identifierUris"`
 	// The URL of the logout page.
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// The display name for the application.
+	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name *string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow *bool `pulumi:"oauth2AllowImplicitFlow"`
@@ -317,6 +340,8 @@ type applicationArgs struct {
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+	//
+	// Deprecated: This property is deprecated and will be removed in version 2.0 of this provider.
 	Type *string `pulumi:"type"`
 }
 
@@ -326,6 +351,8 @@ type ApplicationArgs struct {
 	AppRoles ApplicationAppRoleTypeArrayInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrInput
+	// The display name for the application.
+	DisplayName pulumi.StringPtrInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringPtrInput
 	// The URL to the application's home page.
@@ -334,7 +361,9 @@ type ApplicationArgs struct {
 	IdentifierUris pulumi.StringArrayInput
 	// The URL of the logout page.
 	LogoutUrl pulumi.StringPtrInput
-	// The display name for the application.
+	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name pulumi.StringPtrInput
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
 	Oauth2AllowImplicitFlow pulumi.BoolPtrInput
@@ -353,6 +382,8 @@ type ApplicationArgs struct {
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
 	// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+	//
+	// Deprecated: This property is deprecated and will be removed in version 2.0 of this provider.
 	Type pulumi.StringPtrInput
 }
 

@@ -16,6 +16,7 @@ __all__ = [
     'ApplicationOptionalClaimsIdTokenArgs',
     'ApplicationRequiredResourceAccessArgs',
     'ApplicationRequiredResourceAccessResourceAccessArgs',
+    'ServicePrincipalAppRoleArgs',
     'ServicePrincipalOauth2PermissionArgs',
     'GetApplicationOauth2PermissionArgs',
     'GetApplicationOptionalClaimsArgs',
@@ -366,7 +367,7 @@ class ApplicationOptionalClaimsIdTokenArgs:
                  essential: Optional[pulumi.Input[bool]] = None,
                  source: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: The display name for the application.
+        :param pulumi.Input[str] name: The name of the optional claim.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param pulumi.Input[bool] essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param pulumi.Input[str] source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
@@ -383,7 +384,7 @@ class ApplicationOptionalClaimsIdTokenArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The display name for the application.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 
@@ -500,6 +501,101 @@ class ApplicationRequiredResourceAccessResourceAccessArgs:
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
+class ServicePrincipalAppRoleArgs:
+    def __init__(__self__, *,
+                 allowed_member_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 id: Optional[pulumi.Input[str]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        :param pulumi.Input[str] id: The unique identifier for one of the `OAuth2Permission`.
+        :param pulumi.Input[bool] is_enabled: Is this permission enabled?
+        :param pulumi.Input[str] value: The name of this permission.
+        """
+        if allowed_member_types is not None:
+            pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="allowedMemberTypes")
+    def allowed_member_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        return pulumi.get(self, "allowed_member_types")
+
+    @allowed_member_types.setter
+    def allowed_member_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_member_types", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for one of the `OAuth2Permission`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Is this permission enabled?
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of this permission.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 @pulumi.input_type
@@ -801,7 +897,7 @@ class GetApplicationOptionalClaimsAccessTokenArgs:
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
-        :param str name: Specifies the name of the Application within Azure Active Directory.
+        :param str name: The name of the optional claim.
         :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
@@ -818,7 +914,7 @@ class GetApplicationOptionalClaimsAccessTokenArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        Specifies the name of the Application within Azure Active Directory.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 
@@ -871,7 +967,7 @@ class GetApplicationOptionalClaimsIdTokenArgs:
                  essential: Optional[bool] = None,
                  source: Optional[str] = None):
         """
-        :param str name: Specifies the name of the Application within Azure Active Directory.
+        :param str name: The name of the optional claim.
         :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
@@ -888,7 +984,7 @@ class GetApplicationOptionalClaimsIdTokenArgs:
     @pulumi.getter
     def name(self) -> str:
         """
-        Specifies the name of the Application within Azure Active Directory.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 

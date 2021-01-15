@@ -380,7 +380,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The display name for the application.\n",
+                    "description": "The name of the optional claim.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -458,6 +458,78 @@
                 "id",
                 "type"
             ]
+        },
+        "azuread:index/ServicePrincipalAppRole:ServicePrincipalAppRole": {
+            "properties": {
+                "allowedMemberTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "description": {
+                    "type": "string",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The Display Name of the Azure Active Directory Application associated with this Service Principal.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique identifier for one of the `OAuth2Permission`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "isEnabled": {
+                    "type": "boolean",
+                    "description": "Is this permission enabled?\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The name of this permission.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowedMemberTypes",
+                        "description",
+                        "displayName",
+                        "id",
+                        "isEnabled",
+                        "value"
+                    ]
+                }
+            }
         },
         "azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission": {
             "properties": {
@@ -575,7 +647,7 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n",
+                    "description": "Specifies the display name of the Application within Azure Active Directory.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -769,7 +841,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the Application within Azure Active Directory.\n",
+                    "description": "The name of the optional claim.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -816,7 +888,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "Specifies the name of the Application within Azure Active Directory.\n",
+                    "description": "The name of the optional claim.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1348,7 +1420,7 @@
     },
     "resources": {
         "azuread:index/application:Application": {
-            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Application(\"example\", {\n    appRoles: [{\n        allowedMemberTypes: [\n            \"User\",\n            \"Application\",\n        ],\n        description: \"Admins can manage roles and perform all task actions\",\n        displayName: \"Admin\",\n        isEnabled: true,\n        value: \"Admin\",\n    }],\n    availableToOtherTenants: false,\n    homepage: \"https://homepage\",\n    identifierUris: [\"https://uri\"],\n    oauth2AllowImplicitFlow: true,\n    oauth2Permissions: [\n        {\n            adminConsentDescription: \"Allow the application to access example on behalf of the signed-in user.\",\n            adminConsentDisplayName: \"Access example\",\n            isEnabled: true,\n            type: \"User\",\n            userConsentDescription: \"Allow the application to access example on your behalf.\",\n            userConsentDisplayName: \"Access example\",\n            value: \"user_impersonation\",\n        },\n        {\n            adminConsentDescription: \"Administer the example application\",\n            adminConsentDisplayName: \"Administer\",\n            isEnabled: true,\n            type: \"Admin\",\n            value: \"administer\",\n        },\n    ],\n    optionalClaims: {\n        accessTokens: [\n            {\n                name: \"myclaim\",\n            },\n            {\n                name: \"otherclaim\",\n            },\n        ],\n        idTokens: [{\n            additionalProperties: [\"emit_as_roles\"],\n            essential: true,\n            name: \"userclaim\",\n            source: \"user\",\n        }],\n    },\n    owners: [\"00000004-0000-0000-c000-000000000000\"],\n    replyUrls: [\"https://replyurl\"],\n    requiredResourceAccesses: [\n        {\n            resourceAccesses: [\n                {\n                    id: \"...\",\n                    type: \"Role\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n            ],\n            resourceAppId: \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            resourceAccesses: [{\n                id: \"...\",\n                type: \"Scope\",\n            }],\n            resourceAppId: \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type: \"webapp/api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Application(\"example\",\n    app_roles=[azuread.ApplicationAppRoleArgs(\n        allowed_member_types=[\n            \"User\",\n            \"Application\",\n        ],\n        description=\"Admins can manage roles and perform all task actions\",\n        display_name=\"Admin\",\n        is_enabled=True,\n        value=\"Admin\",\n    )],\n    available_to_other_tenants=False,\n    homepage=\"https://homepage\",\n    identifier_uris=[\"https://uri\"],\n    oauth2_allow_implicit_flow=True,\n    oauth2_permissions=[\n        azuread.ApplicationOauth2PermissionArgs(\n            admin_consent_description=\"Allow the application to access example on behalf of the signed-in user.\",\n            admin_consent_display_name=\"Access example\",\n            is_enabled=True,\n            type=\"User\",\n            user_consent_description=\"Allow the application to access example on your behalf.\",\n            user_consent_display_name=\"Access example\",\n            value=\"user_impersonation\",\n        ),\n        azuread.ApplicationOauth2PermissionArgs(\n            admin_consent_description=\"Administer the example application\",\n            admin_consent_display_name=\"Administer\",\n            is_enabled=True,\n            type=\"Admin\",\n            value=\"administer\",\n        ),\n    ],\n    optional_claims=azuread.ApplicationOptionalClaimsArgs(\n        access_tokens=[\n            azuread.ApplicationOptionalClaimsAccessTokenArgs(\n                name=\"myclaim\",\n            ),\n            azuread.ApplicationOptionalClaimsAccessTokenArgs(\n                name=\"otherclaim\",\n            ),\n        ],\n        id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(\n            additional_properties=[\"emit_as_roles\"],\n            essential=True,\n            name=\"userclaim\",\n            source=\"user\",\n        )],\n    ),\n    owners=[\"00000004-0000-0000-c000-000000000000\"],\n    reply_urls=[\"https://replyurl\"],\n    required_resource_accesses=[\n        azuread.ApplicationRequiredResourceAccessArgs(\n            resource_accesses=[\n                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                    id=\"...\",\n                    type=\"Role\",\n                ),\n                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                    id=\"...\",\n                    type=\"Scope\",\n                ),\n                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                    id=\"...\",\n                    type=\"Scope\",\n                ),\n            ],\n            resource_app_id=\"00000003-0000-0000-c000-000000000000\",\n        ),\n        azuread.ApplicationRequiredResourceAccessArgs(\n            resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                id=\"...\",\n                type=\"Scope\",\n            )],\n            resource_app_id=\"00000002-0000-0000-c000-000000000000\",\n        ),\n    ],\n    type=\"webapp/api\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.Application(\"example\", new AzureAD.ApplicationArgs\n        {\n            AppRoles = \n            {\n                new AzureAD.Inputs.ApplicationAppRoleArgs\n                {\n                    AllowedMemberTypes = \n                    {\n                        \"User\",\n                        \"Application\",\n                    },\n                    Description = \"Admins can manage roles and perform all task actions\",\n                    DisplayName = \"Admin\",\n                    IsEnabled = true,\n                    Value = \"Admin\",\n                },\n            },\n            AvailableToOtherTenants = false,\n            Homepage = \"https://homepage\",\n            IdentifierUris = \n            {\n                \"https://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            Oauth2Permissions = \n            {\n                new AzureAD.Inputs.ApplicationOauth2PermissionArgs\n                {\n                    AdminConsentDescription = \"Allow the application to access example on behalf of the signed-in user.\",\n                    AdminConsentDisplayName = \"Access example\",\n                    IsEnabled = true,\n                    Type = \"User\",\n                    UserConsentDescription = \"Allow the application to access example on your behalf.\",\n                    UserConsentDisplayName = \"Access example\",\n                    Value = \"user_impersonation\",\n                },\n                new AzureAD.Inputs.ApplicationOauth2PermissionArgs\n                {\n                    AdminConsentDescription = \"Administer the example application\",\n                    AdminConsentDisplayName = \"Administer\",\n                    IsEnabled = true,\n                    Type = \"Admin\",\n                    Value = \"administer\",\n                },\n            },\n            OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs\n            {\n                AccessTokens = \n                {\n                    new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs\n                    {\n                        Name = \"myclaim\",\n                    },\n                    new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs\n                    {\n                        Name = \"otherclaim\",\n                    },\n                },\n                IdTokens = \n                {\n                    new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs\n                    {\n                        AdditionalProperties = \n                        {\n                            \"emit_as_roles\",\n                        },\n                        Essential = true,\n                        Name = \"userclaim\",\n                        Source = \"user\",\n                    },\n                },\n            },\n            Owners = \n            {\n                \"00000004-0000-0000-c000-000000000000\",\n            },\n            ReplyUrls = \n            {\n                \"https://replyurl\",\n            },\n            RequiredResourceAccesses = \n            {\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccesses = \n                    {\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Role\",\n                        },\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Scope\",\n                        },\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Scope\",\n                        },\n                    },\n                    ResourceAppId = \"00000003-0000-0000-c000-000000000000\",\n                },\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccesses = \n                    {\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Scope\",\n                        },\n                    },\n                    ResourceAppId = \"00000002-0000-0000-c000-000000000000\",\n                },\n            },\n            Type = \"webapp/api\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewApplication(ctx, \"example\", \u0026azuread.ApplicationArgs{\n\t\t\tAppRoles: azuread.ApplicationAppRoleArray{\n\t\t\t\t\u0026azuread.ApplicationAppRoleArgs{\n\t\t\t\t\tAllowedMemberTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"User\"),\n\t\t\t\t\t\tpulumi.String(\"Application\"),\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"Admins can manage roles and perform all task actions\"),\n\t\t\t\t\tDisplayName: pulumi.String(\"Admin\"),\n\t\t\t\t\tIsEnabled:   pulumi.Bool(true),\n\t\t\t\t\tValue:       pulumi.String(\"Admin\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAvailableToOtherTenants: pulumi.Bool(false),\n\t\t\tHomepage:                pulumi.String(\"https://homepage\"),\n\t\t\tIdentifierUris: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://uri\"),\n\t\t\t},\n\t\t\tOauth2AllowImplicitFlow: pulumi.Bool(true),\n\t\t\tOauth2Permissions: azuread.ApplicationOauth2PermissionArray{\n\t\t\t\t\u0026azuread.ApplicationOauth2PermissionArgs{\n\t\t\t\t\tAdminConsentDescription: pulumi.String(\"Allow the application to access example on behalf of the signed-in user.\"),\n\t\t\t\t\tAdminConsentDisplayName: pulumi.String(\"Access example\"),\n\t\t\t\t\tIsEnabled:               pulumi.Bool(true),\n\t\t\t\t\tType:                    pulumi.String(\"User\"),\n\t\t\t\t\tUserConsentDescription:  pulumi.String(\"Allow the application to access example on your behalf.\"),\n\t\t\t\t\tUserConsentDisplayName:  pulumi.String(\"Access example\"),\n\t\t\t\t\tValue:                   pulumi.String(\"user_impersonation\"),\n\t\t\t\t},\n\t\t\t\t\u0026azuread.ApplicationOauth2PermissionArgs{\n\t\t\t\t\tAdminConsentDescription: pulumi.String(\"Administer the example application\"),\n\t\t\t\t\tAdminConsentDisplayName: pulumi.String(\"Administer\"),\n\t\t\t\t\tIsEnabled:               pulumi.Bool(true),\n\t\t\t\t\tType:                    pulumi.String(\"Admin\"),\n\t\t\t\t\tValue:                   pulumi.String(\"administer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOptionalClaims: \u0026azuread.ApplicationOptionalClaimsArgs{\n\t\t\t\tAccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{\n\t\t\t\t\t\u0026azuread.ApplicationOptionalClaimsAccessTokenArgs{\n\t\t\t\t\t\tName: pulumi.String(\"myclaim\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026azuread.ApplicationOptionalClaimsAccessTokenArgs{\n\t\t\t\t\t\tName: pulumi.String(\"otherclaim\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tIdTokens: azuread.ApplicationOptionalClaimsIdTokenArray{\n\t\t\t\t\t\u0026azuread.ApplicationOptionalClaimsIdTokenArgs{\n\t\t\t\t\t\tAdditionalProperties: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"emit_as_roles\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEssential: pulumi.Bool(true),\n\t\t\t\t\t\tName:      pulumi.String(\"userclaim\"),\n\t\t\t\t\t\tSource:    pulumi.String(\"user\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"00000004-0000-0000-c000-000000000000\"),\n\t\t\t},\n\t\t\tReplyUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://replyurl\"),\n\t\t\t},\n\t\t\tRequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{\n\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessArgs{\n\t\t\t\t\tResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Role\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Scope\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Scope\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tResourceAppId: pulumi.String(\"00000003-0000-0000-c000-000000000000\"),\n\t\t\t\t},\n\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessArgs{\n\t\t\t\t\tResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Scope\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tResourceAppId: pulumi.String(\"00000002-0000-0000-c000-000000000000\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"webapp/api\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAzure Active Directory Applications can be imported using the `object id`, e.g.\n\n```sh\n $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "description": "Manages an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Application(\"example\", {\n    appRoles: [{\n        allowedMemberTypes: [\n            \"User\",\n            \"Application\",\n        ],\n        description: \"Admins can manage roles and perform all task actions\",\n        displayName: \"Admin\",\n        isEnabled: true,\n        value: \"Admin\",\n    }],\n    availableToOtherTenants: false,\n    displayName: \"example\",\n    homepage: \"https://homepage\",\n    identifierUris: [\"https://uri\"],\n    oauth2AllowImplicitFlow: true,\n    oauth2Permissions: [\n        {\n            adminConsentDescription: \"Allow the application to access example on behalf of the signed-in user.\",\n            adminConsentDisplayName: \"Access example\",\n            isEnabled: true,\n            type: \"User\",\n            userConsentDescription: \"Allow the application to access example on your behalf.\",\n            userConsentDisplayName: \"Access example\",\n            value: \"user_impersonation\",\n        },\n        {\n            adminConsentDescription: \"Administer the example application\",\n            adminConsentDisplayName: \"Administer\",\n            isEnabled: true,\n            type: \"Admin\",\n            value: \"administer\",\n        },\n    ],\n    optionalClaims: {\n        accessTokens: [\n            {\n                name: \"myclaim\",\n            },\n            {\n                name: \"otherclaim\",\n            },\n        ],\n        idTokens: [{\n            additionalProperties: [\"emit_as_roles\"],\n            essential: true,\n            name: \"userclaim\",\n            source: \"user\",\n        }],\n    },\n    owners: [\"00000004-0000-0000-c000-000000000000\"],\n    replyUrls: [\"https://replyurl\"],\n    requiredResourceAccesses: [\n        {\n            resourceAccesses: [\n                {\n                    id: \"...\",\n                    type: \"Role\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n                {\n                    id: \"...\",\n                    type: \"Scope\",\n                },\n            ],\n            resourceAppId: \"00000003-0000-0000-c000-000000000000\",\n        },\n        {\n            resourceAccesses: [{\n                id: \"...\",\n                type: \"Scope\",\n            }],\n            resourceAppId: \"00000002-0000-0000-c000-000000000000\",\n        },\n    ],\n    type: \"webapp/api\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Application(\"example\",\n    app_roles=[azuread.ApplicationAppRoleArgs(\n        allowed_member_types=[\n            \"User\",\n            \"Application\",\n        ],\n        description=\"Admins can manage roles and perform all task actions\",\n        display_name=\"Admin\",\n        is_enabled=True,\n        value=\"Admin\",\n    )],\n    available_to_other_tenants=False,\n    display_name=\"example\",\n    homepage=\"https://homepage\",\n    identifier_uris=[\"https://uri\"],\n    oauth2_allow_implicit_flow=True,\n    oauth2_permissions=[\n        azuread.ApplicationOauth2PermissionArgs(\n            admin_consent_description=\"Allow the application to access example on behalf of the signed-in user.\",\n            admin_consent_display_name=\"Access example\",\n            is_enabled=True,\n            type=\"User\",\n            user_consent_description=\"Allow the application to access example on your behalf.\",\n            user_consent_display_name=\"Access example\",\n            value=\"user_impersonation\",\n        ),\n        azuread.ApplicationOauth2PermissionArgs(\n            admin_consent_description=\"Administer the example application\",\n            admin_consent_display_name=\"Administer\",\n            is_enabled=True,\n            type=\"Admin\",\n            value=\"administer\",\n        ),\n    ],\n    optional_claims=azuread.ApplicationOptionalClaimsArgs(\n        access_tokens=[\n            azuread.ApplicationOptionalClaimsAccessTokenArgs(\n                name=\"myclaim\",\n            ),\n            azuread.ApplicationOptionalClaimsAccessTokenArgs(\n                name=\"otherclaim\",\n            ),\n        ],\n        id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(\n            additional_properties=[\"emit_as_roles\"],\n            essential=True,\n            name=\"userclaim\",\n            source=\"user\",\n        )],\n    ),\n    owners=[\"00000004-0000-0000-c000-000000000000\"],\n    reply_urls=[\"https://replyurl\"],\n    required_resource_accesses=[\n        azuread.ApplicationRequiredResourceAccessArgs(\n            resource_accesses=[\n                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                    id=\"...\",\n                    type=\"Role\",\n                ),\n                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                    id=\"...\",\n                    type=\"Scope\",\n                ),\n                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                    id=\"...\",\n                    type=\"Scope\",\n                ),\n            ],\n            resource_app_id=\"00000003-0000-0000-c000-000000000000\",\n        ),\n        azuread.ApplicationRequiredResourceAccessArgs(\n            resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(\n                id=\"...\",\n                type=\"Scope\",\n            )],\n            resource_app_id=\"00000002-0000-0000-c000-000000000000\",\n        ),\n    ],\n    type=\"webapp/api\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.Application(\"example\", new AzureAD.ApplicationArgs\n        {\n            AppRoles = \n            {\n                new AzureAD.Inputs.ApplicationAppRoleArgs\n                {\n                    AllowedMemberTypes = \n                    {\n                        \"User\",\n                        \"Application\",\n                    },\n                    Description = \"Admins can manage roles and perform all task actions\",\n                    DisplayName = \"Admin\",\n                    IsEnabled = true,\n                    Value = \"Admin\",\n                },\n            },\n            AvailableToOtherTenants = false,\n            DisplayName = \"example\",\n            Homepage = \"https://homepage\",\n            IdentifierUris = \n            {\n                \"https://uri\",\n            },\n            Oauth2AllowImplicitFlow = true,\n            Oauth2Permissions = \n            {\n                new AzureAD.Inputs.ApplicationOauth2PermissionArgs\n                {\n                    AdminConsentDescription = \"Allow the application to access example on behalf of the signed-in user.\",\n                    AdminConsentDisplayName = \"Access example\",\n                    IsEnabled = true,\n                    Type = \"User\",\n                    UserConsentDescription = \"Allow the application to access example on your behalf.\",\n                    UserConsentDisplayName = \"Access example\",\n                    Value = \"user_impersonation\",\n                },\n                new AzureAD.Inputs.ApplicationOauth2PermissionArgs\n                {\n                    AdminConsentDescription = \"Administer the example application\",\n                    AdminConsentDisplayName = \"Administer\",\n                    IsEnabled = true,\n                    Type = \"Admin\",\n                    Value = \"administer\",\n                },\n            },\n            OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs\n            {\n                AccessTokens = \n                {\n                    new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs\n                    {\n                        Name = \"myclaim\",\n                    },\n                    new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs\n                    {\n                        Name = \"otherclaim\",\n                    },\n                },\n                IdTokens = \n                {\n                    new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs\n                    {\n                        AdditionalProperties = \n                        {\n                            \"emit_as_roles\",\n                        },\n                        Essential = true,\n                        Name = \"userclaim\",\n                        Source = \"user\",\n                    },\n                },\n            },\n            Owners = \n            {\n                \"00000004-0000-0000-c000-000000000000\",\n            },\n            ReplyUrls = \n            {\n                \"https://replyurl\",\n            },\n            RequiredResourceAccesses = \n            {\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccesses = \n                    {\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Role\",\n                        },\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Scope\",\n                        },\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Scope\",\n                        },\n                    },\n                    ResourceAppId = \"00000003-0000-0000-c000-000000000000\",\n                },\n                new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs\n                {\n                    ResourceAccesses = \n                    {\n                        new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs\n                        {\n                            Id = \"...\",\n                            Type = \"Scope\",\n                        },\n                    },\n                    ResourceAppId = \"00000002-0000-0000-c000-000000000000\",\n                },\n            },\n            Type = \"webapp/api\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewApplication(ctx, \"example\", \u0026azuread.ApplicationArgs{\n\t\t\tAppRoles: azuread.ApplicationAppRoleArray{\n\t\t\t\t\u0026azuread.ApplicationAppRoleArgs{\n\t\t\t\t\tAllowedMemberTypes: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"User\"),\n\t\t\t\t\t\tpulumi.String(\"Application\"),\n\t\t\t\t\t},\n\t\t\t\t\tDescription: pulumi.String(\"Admins can manage roles and perform all task actions\"),\n\t\t\t\t\tDisplayName: pulumi.String(\"Admin\"),\n\t\t\t\t\tIsEnabled:   pulumi.Bool(true),\n\t\t\t\t\tValue:       pulumi.String(\"Admin\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tAvailableToOtherTenants: pulumi.Bool(false),\n\t\t\tDisplayName:             pulumi.String(\"example\"),\n\t\t\tHomepage:                pulumi.String(\"https://homepage\"),\n\t\t\tIdentifierUris: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://uri\"),\n\t\t\t},\n\t\t\tOauth2AllowImplicitFlow: pulumi.Bool(true),\n\t\t\tOauth2Permissions: azuread.ApplicationOauth2PermissionArray{\n\t\t\t\t\u0026azuread.ApplicationOauth2PermissionArgs{\n\t\t\t\t\tAdminConsentDescription: pulumi.String(\"Allow the application to access example on behalf of the signed-in user.\"),\n\t\t\t\t\tAdminConsentDisplayName: pulumi.String(\"Access example\"),\n\t\t\t\t\tIsEnabled:               pulumi.Bool(true),\n\t\t\t\t\tType:                    pulumi.String(\"User\"),\n\t\t\t\t\tUserConsentDescription:  pulumi.String(\"Allow the application to access example on your behalf.\"),\n\t\t\t\t\tUserConsentDisplayName:  pulumi.String(\"Access example\"),\n\t\t\t\t\tValue:                   pulumi.String(\"user_impersonation\"),\n\t\t\t\t},\n\t\t\t\t\u0026azuread.ApplicationOauth2PermissionArgs{\n\t\t\t\t\tAdminConsentDescription: pulumi.String(\"Administer the example application\"),\n\t\t\t\t\tAdminConsentDisplayName: pulumi.String(\"Administer\"),\n\t\t\t\t\tIsEnabled:               pulumi.Bool(true),\n\t\t\t\t\tType:                    pulumi.String(\"Admin\"),\n\t\t\t\t\tValue:                   pulumi.String(\"administer\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tOptionalClaims: \u0026azuread.ApplicationOptionalClaimsArgs{\n\t\t\t\tAccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{\n\t\t\t\t\t\u0026azuread.ApplicationOptionalClaimsAccessTokenArgs{\n\t\t\t\t\t\tName: pulumi.String(\"myclaim\"),\n\t\t\t\t\t},\n\t\t\t\t\t\u0026azuread.ApplicationOptionalClaimsAccessTokenArgs{\n\t\t\t\t\t\tName: pulumi.String(\"otherclaim\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tIdTokens: azuread.ApplicationOptionalClaimsIdTokenArray{\n\t\t\t\t\t\u0026azuread.ApplicationOptionalClaimsIdTokenArgs{\n\t\t\t\t\t\tAdditionalProperties: pulumi.StringArray{\n\t\t\t\t\t\t\tpulumi.String(\"emit_as_roles\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tEssential: pulumi.Bool(true),\n\t\t\t\t\t\tName:      pulumi.String(\"userclaim\"),\n\t\t\t\t\t\tSource:    pulumi.String(\"user\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"00000004-0000-0000-c000-000000000000\"),\n\t\t\t},\n\t\t\tReplyUrls: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"https://replyurl\"),\n\t\t\t},\n\t\t\tRequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{\n\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessArgs{\n\t\t\t\t\tResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Role\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Scope\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Scope\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tResourceAppId: pulumi.String(\"00000003-0000-0000-c000-000000000000\"),\n\t\t\t\t},\n\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessArgs{\n\t\t\t\t\tResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{\n\t\t\t\t\t\t\u0026azuread.ApplicationRequiredResourceAccessResourceAccessArgs{\n\t\t\t\t\t\t\tId:   pulumi.String(\"...\"),\n\t\t\t\t\t\t\tType: pulumi.String(\"Scope\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t\tResourceAppId: pulumi.String(\"00000002-0000-0000-c000-000000000000\"),\n\t\t\t\t},\n\t\t\t},\n\t\t\tType: pulumi.String(\"webapp/api\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAzure Active Directory Applications can be imported using the `object id`, e.g.\n\n```sh\n $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
                 "appRoles": {
                     "type": "array",
@@ -1364,6 +1436,10 @@
                 "availableToOtherTenants": {
                     "type": "boolean",
                     "description": "Is this Azure AD Application available to other tenants? Defaults to `false`.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name for the application.\n"
                 },
                 "groupMembershipClaims": {
                     "type": "string",
@@ -1386,7 +1462,8 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The display name for the application.\n"
+                    "description": "The name of the optional claim.\n",
+                    "deprecationMessage": "This property has been renamed to `display_name` and will be removed in version 2.0 of this provider."
                 },
                 "oauth2AllowImplicitFlow": {
                     "type": "boolean",
@@ -1438,12 +1515,14 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n"
+                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n",
+                    "deprecationMessage": "This property is deprecated and will be removed in version 2.0 of this provider."
                 }
             },
             "required": [
                 "appRoles",
                 "applicationId",
+                "displayName",
                 "homepage",
                 "identifierUris",
                 "name",
@@ -1464,6 +1543,10 @@
                 "availableToOtherTenants": {
                     "type": "boolean",
                     "description": "Is this Azure AD Application available to other tenants? Defaults to `false`.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name for the application.\n"
                 },
                 "groupMembershipClaims": {
                     "type": "string",
@@ -1486,7 +1569,8 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The display name for the application.\n"
+                    "description": "The name of the optional claim.\n",
+                    "deprecationMessage": "This property has been renamed to `display_name` and will be removed in version 2.0 of this provider."
                 },
                 "oauth2AllowImplicitFlow": {
                     "type": "boolean",
@@ -1534,7 +1618,8 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n"
+                    "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n",
+                    "deprecationMessage": "This property is deprecated and will be removed in version 2.0 of this provider."
                 }
             },
             "stateInputs": {
@@ -1554,6 +1639,10 @@
                     "availableToOtherTenants": {
                         "type": "boolean",
                         "description": "Is this Azure AD Application available to other tenants? Defaults to `false`.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name for the application.\n"
                     },
                     "groupMembershipClaims": {
                         "type": "string",
@@ -1576,7 +1665,8 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The display name for the application.\n"
+                        "description": "The name of the optional claim.\n",
+                        "deprecationMessage": "This property has been renamed to `display_name` and will be removed in version 2.0 of this provider."
                     },
                     "oauth2AllowImplicitFlow": {
                         "type": "boolean",
@@ -1628,7 +1718,8 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n"
+                        "description": "Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.\n",
+                        "deprecationMessage": "This property is deprecated and will be removed in version 2.0 of this provider."
                     }
                 },
                 "type": "object"
@@ -2111,11 +2202,15 @@
             }
         },
         "azuread:index/group:Group": {
-            "description": "Manages a Group within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Basic example*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Group(\"example\", {});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Group(\"example\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.Group(\"example\", new AzureAD.GroupArgs\n        {\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"example\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*A group with members*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = new azuread.User(\"exampleUser\", {\n    displayName: \"J Doe\",\n    password: \"notSecure123\",\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {members: [exampleUser.objectId]});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.User(\"exampleUser\",\n    display_name=\"J Doe\",\n    password=\"notSecure123\",\n    user_principal_name=\"jdoe@hashicorp.com\")\nexample_group = azuread.Group(\"exampleGroup\", members=[example_user.object_id])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleUser = new AzureAD.User(\"exampleUser\", new AzureAD.UserArgs\n        {\n            DisplayName = \"J Doe\",\n            Password = \"notSecure123\",\n            UserPrincipalName = \"jdoe@hashicorp.com\",\n        });\n        var exampleGroup = new AzureAD.Group(\"exampleGroup\", new AzureAD.GroupArgs\n        {\n            Members = \n            {\n                exampleUser.ObjectId,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := azuread.NewUser(ctx, \"exampleUser\", \u0026azuread.UserArgs{\n\t\t\tDisplayName:       pulumi.String(\"J Doe\"),\n\t\t\tPassword:          pulumi.String(\"notSecure123\"),\n\t\t\tUserPrincipalName: pulumi.String(\"jdoe@hashicorp.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\texampleUser.ObjectId,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAzure Active Directory Groups can be imported using the `object id`, e.g.\n\n```sh\n $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "description": "Manages a Group within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Basic example*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.Group(\"example\", {\n    displayName: \"A-AD-Group\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.Group(\"example\", display_name=\"A-AD-Group\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.Group(\"example\", new AzureAD.GroupArgs\n        {\n            DisplayName = \"A-AD-Group\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"A-AD-Group\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*A group with members*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = new azuread.User(\"exampleUser\", {\n    displayName: \"J Doe\",\n    password: \"notSecure123\",\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {\n    displayName: \"MyGroup\",\n    members: [exampleUser.objectId],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.User(\"exampleUser\",\n    display_name=\"J Doe\",\n    password=\"notSecure123\",\n    user_principal_name=\"jdoe@hashicorp.com\")\nexample_group = azuread.Group(\"exampleGroup\",\n    display_name=\"MyGroup\",\n    members=[example_user.object_id])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleUser = new AzureAD.User(\"exampleUser\", new AzureAD.UserArgs\n        {\n            DisplayName = \"J Doe\",\n            Password = \"notSecure123\",\n            UserPrincipalName = \"jdoe@hashicorp.com\",\n        });\n        var exampleGroup = new AzureAD.Group(\"exampleGroup\", new AzureAD.GroupArgs\n        {\n            DisplayName = \"MyGroup\",\n            Members = \n            {\n                exampleUser.ObjectId,\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := azuread.NewUser(ctx, \"exampleUser\", \u0026azuread.UserArgs{\n\t\t\tDisplayName:       pulumi.String(\"J Doe\"),\n\t\t\tPassword:          pulumi.String(\"notSecure123\"),\n\t\t\tUserPrincipalName: pulumi.String(\"jdoe@hashicorp.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"MyGroup\"),\n\t\t\tMembers: pulumi.StringArray{\n\t\t\t\texampleUser.ObjectId,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAzure Active Directory Groups can be imported using the `object id`, e.g.\n\n```sh\n $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string",
                     "description": "The description for the Group.  Changing this forces a new resource to be created.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
                 },
                 "members": {
                     "type": "array",
@@ -2126,7 +2221,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                    "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                 },
                 "objectId": {
                     "type": "string"
@@ -2144,6 +2239,7 @@
                 }
             },
             "required": [
+                "displayName",
                 "members",
                 "name",
                 "objectId",
@@ -2154,6 +2250,10 @@
                     "type": "string",
                     "description": "The description for the Group.  Changing this forces a new resource to be created.\n"
                 },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                },
                 "members": {
                     "type": "array",
                     "items": {
@@ -2163,7 +2263,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                    "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                 },
                 "owners": {
                     "type": "array",
@@ -2184,6 +2284,10 @@
                         "type": "string",
                         "description": "The description for the Group.  Changing this forces a new resource to be created.\n"
                     },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                    },
                     "members": {
                         "type": "array",
                         "items": {
@@ -2193,7 +2297,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
+                        "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                     },
                     "objectId": {
                         "type": "string"
@@ -2265,6 +2369,12 @@
                     "type": "boolean",
                     "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
                 },
+                "appRoles": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/ServicePrincipalAppRole:ServicePrincipalAppRole"
+                    }
+                },
                 "applicationId": {
                     "type": "string",
                     "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
@@ -2293,6 +2403,7 @@
                 }
             },
             "required": [
+                "appRoles",
                 "applicationId",
                 "displayName",
                 "oauth2Permissions",
@@ -2331,6 +2442,12 @@
                     "appRoleAssignmentRequired": {
                         "type": "boolean",
                         "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                    },
+                    "appRoles": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/ServicePrincipalAppRole:ServicePrincipalAppRole"
+                        }
                     },
                     "applicationId": {
                         "type": "string",
@@ -2896,7 +3013,7 @@
     },
     "functions": {
         "azuread:index/getApplication:getApplication": {
-            "description": "Use this data source to access information about an existing Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getApplication({\n    name: \"My First AzureAD Application\",\n});\nexport const azureAdObjectId = example.then(example =\u003e example.id);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_application(name=\"My First AzureAD Application\")\npulumi.export(\"azureAdObjectId\", example.id)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs\n        {\n            Name = \"My First AzureAD Application\",\n        }));\n        this.AzureAdObjectId = example.Apply(example =\u003e example.Id);\n    }\n\n    [Output(\"azureAdObjectId\")]\n    public Output\u003cstring\u003e AzureAdObjectId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"My First AzureAD Application\"\n\t\texample, err := azuread.LookupApplication(ctx, \u0026azuread.LookupApplicationArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"azureAdObjectId\", example.Id)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Use this data source to access information about an existing Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getApplication({\n    displayName: \"My First AzureAD Application\",\n});\nexport const azureAdObjectId = example.then(example =\u003e example.id);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_application(display_name=\"My First AzureAD Application\")\npulumi.export(\"azureAdObjectId\", example.id)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs\n        {\n            DisplayName = \"My First AzureAD Application\",\n        }));\n        this.AzureAdObjectId = example.Apply(example =\u003e example.Id);\n    }\n\n    [Output(\"azureAdObjectId\")]\n    public Output\u003cstring\u003e AzureAdObjectId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"My First AzureAD Application\"\n\t\texample, err := azuread.LookupApplication(ctx, \u0026azuread.LookupApplicationArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"azureAdObjectId\", example.Id)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getApplication.\n",
                 "properties": {
@@ -2904,9 +3021,14 @@
                         "type": "string",
                         "description": "Specifies the Application ID of the Azure Active Directory Application.\n"
                     },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Specifies the display name of the Application within Azure Active Directory.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "Specifies the name of the Application within Azure Active Directory.\n"
+                        "description": "The name of the optional claim.\n",
+                        "deprecationMessage": "This property has been renamed to `display_name` and will be removed in version 2.0 of this provider."
                     },
                     "oauth2Permissions": {
                         "type": "array",
@@ -2944,6 +3066,10 @@
                         "type": "boolean",
                         "description": "Is this Azure AD Application available to other tenants?\n"
                     },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
+                    },
                     "groupMembershipClaims": {
                         "type": "string",
                         "description": "The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.\n"
@@ -2968,7 +3094,8 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the optional claim.\n"
+                        "description": "The name of the optional claim.\n",
+                        "deprecationMessage": "This property has been renamed to `display_name` and will be removed in version 2.0 of this provider."
                     },
                     "oauth2AllowImplicitFlow": {
                         "type": "boolean",
@@ -3020,6 +3147,7 @@
                     "appRoles",
                     "applicationId",
                     "availableToOtherTenants",
+                    "displayName",
                     "groupMembershipClaims",
                     "homepage",
                     "identifierUris",
@@ -3116,17 +3244,21 @@
             }
         },
         "azuread:index/getGroup:getGroup": {
-            "description": "Gets information about an Azure Active Directory group.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### By Group Display Name)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroup({\n    name: \"A-AD-Group\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_group(name=\"A-AD-Group\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs\n        {\n            Name = \"A-AD-Group\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"A-AD-Group\"\n\t\t_, err := azuread.LookupGroup(ctx, \u0026azuread.LookupGroupArgs{\n\t\t\tName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Gets information about an Azure Active Directory group.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### By Group Display Name)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroup({\n    displayName: \"A-AD-Group\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_group(display_name=\"A-AD-Group\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs\n        {\n            DisplayName = \"A-AD-Group\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"A-AD-Group\"\n\t\t_, err := azuread.LookupGroup(ctx, \u0026azuread.LookupGroupArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroup.\n",
                 "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "The splay name of the Group within Azure Active Directory.\n"
+                    },
                     "name": {
                         "type": "string",
-                        "description": "The Name of the AD Group we want to lookup.\n"
+                        "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                     },
                     "objectId": {
                         "type": "string",
-                        "description": "Specifies the Object ID of the AD Group within Azure Active Directory.\n"
+                        "description": "Specifies the Object ID of the Group within Azure Active Directory.\n"
                     }
                 },
                 "type": "object"
@@ -3137,6 +3269,10 @@
                     "description": {
                         "type": "string",
                         "description": "The description of the AD Group.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The name of the Azure AD Group.\n"
                     },
                     "id": {
                         "type": "string",
@@ -3151,7 +3287,7 @@
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the Azure AD Group.\n"
+                        "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                     },
                     "objectId": {
                         "type": "string"
@@ -3167,6 +3303,7 @@
                 "type": "object",
                 "required": [
                     "description",
+                    "displayName",
                     "members",
                     "name",
                     "objectId",
@@ -3180,12 +3317,19 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getGroups.\n",
                 "properties": {
+                    "displayNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "names": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The Display Names of the Azure AD Groups.\n"
+                        "description": "The Display Names of the Azure AD Groups.\n",
+                        "deprecationMessage": "This property has been renamed to `display_names` and will be removed in v2.0 of this provider."
                     },
                     "objectIds": {
                         "type": "array",
@@ -3200,6 +3344,12 @@
             "outputs": {
                 "description": "A collection of values returned by getGroups.\n",
                 "properties": {
+                    "displayNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
@@ -3209,7 +3359,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The Display Names of the Azure AD Groups.\n"
+                        "description": "The Display Names of the Azure AD Groups.\n",
+                        "deprecationMessage": "This property has been renamed to `display_names` and will be removed in v2.0 of this provider."
                     },
                     "objectIds": {
                         "type": "array",
@@ -3221,6 +3372,7 @@
                 },
                 "type": "object",
                 "required": [
+                    "displayNames",
                     "names",
                     "objectIds",
                     "id"

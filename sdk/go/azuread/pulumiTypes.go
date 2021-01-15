@@ -582,7 +582,7 @@ type ApplicationOptionalClaimsIdToken struct {
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
-	// The display name for the application.
+	// The name of the optional claim.
 	Name string `pulumi:"name"`
 	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 	Source *string `pulumi:"source"`
@@ -604,7 +604,7 @@ type ApplicationOptionalClaimsIdTokenArgs struct {
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
-	// The display name for the application.
+	// The name of the optional claim.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -671,7 +671,7 @@ func (o ApplicationOptionalClaimsIdTokenOutput) Essential() pulumi.BoolPtrOutput
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
-// The display name for the application.
+// The name of the optional claim.
 func (o ApplicationOptionalClaimsIdTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -915,6 +915,142 @@ func (o ApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i pulu
 	}).(ApplicationRequiredResourceAccessResourceAccessOutput)
 }
 
+type ServicePrincipalAppRole struct {
+	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
+	Description        *string  `pulumi:"description"`
+	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+	DisplayName *string `pulumi:"displayName"`
+	// The unique identifier for one of the `OAuth2Permission`.
+	Id *string `pulumi:"id"`
+	// Is this permission enabled?
+	IsEnabled *bool `pulumi:"isEnabled"`
+	// The name of this permission.
+	Value *string `pulumi:"value"`
+}
+
+// ServicePrincipalAppRoleInput is an input type that accepts ServicePrincipalAppRoleArgs and ServicePrincipalAppRoleOutput values.
+// You can construct a concrete instance of `ServicePrincipalAppRoleInput` via:
+//
+//          ServicePrincipalAppRoleArgs{...}
+type ServicePrincipalAppRoleInput interface {
+	pulumi.Input
+
+	ToServicePrincipalAppRoleOutput() ServicePrincipalAppRoleOutput
+	ToServicePrincipalAppRoleOutputWithContext(context.Context) ServicePrincipalAppRoleOutput
+}
+
+type ServicePrincipalAppRoleArgs struct {
+	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
+	Description        pulumi.StringPtrInput   `pulumi:"description"`
+	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The unique identifier for one of the `OAuth2Permission`.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Is this permission enabled?
+	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The name of this permission.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (ServicePrincipalAppRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAppRole)(nil)).Elem()
+}
+
+func (i ServicePrincipalAppRoleArgs) ToServicePrincipalAppRoleOutput() ServicePrincipalAppRoleOutput {
+	return i.ToServicePrincipalAppRoleOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalAppRoleArgs) ToServicePrincipalAppRoleOutputWithContext(ctx context.Context) ServicePrincipalAppRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalAppRoleOutput)
+}
+
+// ServicePrincipalAppRoleArrayInput is an input type that accepts ServicePrincipalAppRoleArray and ServicePrincipalAppRoleArrayOutput values.
+// You can construct a concrete instance of `ServicePrincipalAppRoleArrayInput` via:
+//
+//          ServicePrincipalAppRoleArray{ ServicePrincipalAppRoleArgs{...} }
+type ServicePrincipalAppRoleArrayInput interface {
+	pulumi.Input
+
+	ToServicePrincipalAppRoleArrayOutput() ServicePrincipalAppRoleArrayOutput
+	ToServicePrincipalAppRoleArrayOutputWithContext(context.Context) ServicePrincipalAppRoleArrayOutput
+}
+
+type ServicePrincipalAppRoleArray []ServicePrincipalAppRoleInput
+
+func (ServicePrincipalAppRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalAppRole)(nil)).Elem()
+}
+
+func (i ServicePrincipalAppRoleArray) ToServicePrincipalAppRoleArrayOutput() ServicePrincipalAppRoleArrayOutput {
+	return i.ToServicePrincipalAppRoleArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalAppRoleArray) ToServicePrincipalAppRoleArrayOutputWithContext(ctx context.Context) ServicePrincipalAppRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalAppRoleArrayOutput)
+}
+
+type ServicePrincipalAppRoleOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalAppRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalAppRole)(nil)).Elem()
+}
+
+func (o ServicePrincipalAppRoleOutput) ToServicePrincipalAppRoleOutput() ServicePrincipalAppRoleOutput {
+	return o
+}
+
+func (o ServicePrincipalAppRoleOutput) ToServicePrincipalAppRoleOutputWithContext(ctx context.Context) ServicePrincipalAppRoleOutput {
+	return o
+}
+
+func (o ServicePrincipalAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ServicePrincipalAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
+}
+
+func (o ServicePrincipalAppRoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+func (o ServicePrincipalAppRoleOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for one of the `OAuth2Permission`.
+func (o ServicePrincipalAppRoleOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Is this permission enabled?
+func (o ServicePrincipalAppRoleOutput) IsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAppRole) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// The name of this permission.
+func (o ServicePrincipalAppRoleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type ServicePrincipalAppRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalAppRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalAppRole)(nil)).Elem()
+}
+
+func (o ServicePrincipalAppRoleArrayOutput) ToServicePrincipalAppRoleArrayOutput() ServicePrincipalAppRoleArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalAppRoleArrayOutput) ToServicePrincipalAppRoleArrayOutputWithContext(ctx context.Context) ServicePrincipalAppRoleArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) ServicePrincipalAppRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalAppRole {
+		return vs[0].([]ServicePrincipalAppRole)[vs[1].(int)]
+	}).(ServicePrincipalAppRoleOutput)
+}
+
 type ServicePrincipalOauth2Permission struct {
 	// The description of the admin consent.
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
@@ -1080,7 +1216,7 @@ type GetApplicationAppRoleType struct {
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description string `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Specifies the display name of the Application within Azure Active Directory.
 	DisplayName string `pulumi:"displayName"`
 	// The unique identifier of the `appRole`.
 	Id string `pulumi:"id"`
@@ -1106,7 +1242,7 @@ type GetApplicationAppRoleTypeArgs struct {
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Specifies the display name of the Application within Azure Active Directory.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The unique identifier of the `appRole`.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1177,7 +1313,7 @@ func (o GetApplicationAppRoleTypeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Display name for the permission that appears in the admin consent and app assignment experiences.
+// Specifies the display name of the Application within Azure Active Directory.
 func (o GetApplicationAppRoleTypeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -1437,7 +1573,7 @@ type GetApplicationOptionalClaimsAccessToken struct {
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
-	// Specifies the name of the Application within Azure Active Directory.
+	// The name of the optional claim.
 	Name string `pulumi:"name"`
 	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 	Source *string `pulumi:"source"`
@@ -1459,7 +1595,7 @@ type GetApplicationOptionalClaimsAccessTokenArgs struct {
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
-	// Specifies the name of the Application within Azure Active Directory.
+	// The name of the optional claim.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -1526,7 +1662,7 @@ func (o GetApplicationOptionalClaimsAccessTokenOutput) Essential() pulumi.BoolPt
 	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of the Application within Azure Active Directory.
+// The name of the optional claim.
 func (o GetApplicationOptionalClaimsAccessTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1561,7 +1697,7 @@ type GetApplicationOptionalClaimsIdToken struct {
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
-	// Specifies the name of the Application within Azure Active Directory.
+	// The name of the optional claim.
 	Name string `pulumi:"name"`
 	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 	Source *string `pulumi:"source"`
@@ -1583,7 +1719,7 @@ type GetApplicationOptionalClaimsIdTokenArgs struct {
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
-	// Specifies the name of the Application within Azure Active Directory.
+	// The name of the optional claim.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 	Source pulumi.StringPtrInput `pulumi:"source"`
@@ -1650,7 +1786,7 @@ func (o GetApplicationOptionalClaimsIdTokenOutput) Essential() pulumi.BoolPtrOut
 	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies the name of the Application within Azure Active Directory.
+// The name of the optional claim.
 func (o GetApplicationOptionalClaimsIdTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2522,6 +2658,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessResourceAccessOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessResourceAccessArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalAppRoleOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationAppRoleTypeOutput{})

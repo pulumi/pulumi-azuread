@@ -34,6 +34,7 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
+        "displayNames": args.displayNames,
         "names": args.names,
         "objectIds": args.objectIds,
     }, opts);
@@ -43,8 +44,11 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getGroups.
  */
 export interface GetGroupsArgs {
+    readonly displayNames?: string[];
     /**
      * The Display Names of the Azure AD Groups.
+     *
+     * @deprecated This property has been renamed to `display_names` and will be removed in v2.0 of this provider.
      */
     readonly names?: string[];
     /**
@@ -57,12 +61,15 @@ export interface GetGroupsArgs {
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
+    readonly displayNames: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
      * The Display Names of the Azure AD Groups.
+     *
+     * @deprecated This property has been renamed to `display_names` and will be removed in v2.0 of this provider.
      */
     readonly names: string[];
     /**

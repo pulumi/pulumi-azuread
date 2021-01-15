@@ -100,7 +100,7 @@ export interface ApplicationOptionalClaimsIdToken {
      */
     essential?: pulumi.Input<boolean>;
     /**
-     * The display name for the application.
+     * The name of the optional claim.
      */
     name: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface GetApplicationOptionalClaimsAccessToken {
      */
     essential?: boolean;
     /**
-     * Specifies the name of the Application within Azure Active Directory.
+     * The name of the optional claim.
      */
     name: string;
     /**
@@ -200,7 +200,7 @@ export interface GetApplicationOptionalClaimsIdToken {
      */
     essential?: boolean;
     /**
-     * Specifies the name of the Application within Azure Active Directory.
+     * The name of the optional claim.
      */
     name: string;
     /**
@@ -242,6 +242,27 @@ export interface GetServicePrincipalOauth2Permission {
      * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
      */
     value?: string;
+}
+
+export interface ServicePrincipalAppRole {
+    allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    description?: pulumi.Input<string>;
+    /**
+     * The Display Name of the Azure Active Directory Application associated with this Service Principal.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The unique identifier for one of the `OAuth2Permission`.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Is this permission enabled?
+     */
+    isEnabled?: pulumi.Input<boolean>;
+    /**
+     * The name of this permission.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface ServicePrincipalOauth2Permission {

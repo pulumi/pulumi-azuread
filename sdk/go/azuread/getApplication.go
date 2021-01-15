@@ -25,7 +25,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "My First AzureAD Application"
 // 		example, err := azuread.LookupApplication(ctx, &azuread.LookupApplicationArgs{
-// 			Name: &opt0,
+// 			DisplayName: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -48,7 +48,11 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 type LookupApplicationArgs struct {
 	// Specifies the Application ID of the Azure Active Directory Application.
 	ApplicationId *string `pulumi:"applicationId"`
-	// Specifies the name of the Application within Azure Active Directory.
+	// Specifies the display name of the Application within Azure Active Directory.
+	DisplayName *string `pulumi:"displayName"`
+	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name *string `pulumi:"name"`
 	// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
 	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
@@ -66,6 +70,8 @@ type LookupApplicationResult struct {
 	ApplicationId string `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants?
 	AvailableToOtherTenants bool `pulumi:"availableToOtherTenants"`
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	DisplayName string `pulumi:"displayName"`
 	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
 	GroupMembershipClaims string `pulumi:"groupMembershipClaims"`
 	Homepage              string `pulumi:"homepage"`
@@ -76,6 +82,8 @@ type LookupApplicationResult struct {
 	// The URL of the logout page.
 	LogoutUrl string `pulumi:"logoutUrl"`
 	// The name of the optional claim.
+	//
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
 	Name string `pulumi:"name"`
 	// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
 	Oauth2AllowImplicitFlow bool `pulumi:"oauth2AllowImplicitFlow"`

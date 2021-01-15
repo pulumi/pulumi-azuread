@@ -74,6 +74,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
      */
     public readonly appRoleAssignmentRequired!: pulumi.Output<boolean | undefined>;
+    public /*out*/ readonly appRoles!: pulumi.Output<outputs.ServicePrincipalAppRole[]>;
     /**
      * The ID of the Azure AD Application for which to create a Service Principal.
      */
@@ -108,6 +109,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
             inputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
+            inputs["appRoles"] = state ? state.appRoles : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
@@ -122,6 +124,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["appRoles"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
         }
@@ -144,6 +147,7 @@ export interface ServicePrincipalState {
      * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
      */
     readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
+    readonly appRoles?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalAppRole>[]>;
     /**
      * The ID of the Azure AD Application for which to create a Service Principal.
      */

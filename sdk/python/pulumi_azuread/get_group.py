@@ -19,10 +19,13 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, description=None, id=None, members=None, name=None, object_id=None, owners=None):
+    def __init__(__self__, description=None, display_name=None, id=None, members=None, name=None, object_id=None, owners=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -31,6 +34,10 @@ class GetGroupResult:
         pulumi.set(__self__, "members", members)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
+        if name is not None:
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
+            pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.")
+
         pulumi.set(__self__, "name", name)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
@@ -46,6 +53,14 @@ class GetGroupResult:
         The description of the AD Group.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The name of the Azure AD Group.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
@@ -66,9 +81,6 @@ class GetGroupResult:
     @property
     @pulumi.getter
     def name(self) -> str:
-        """
-        The name of the Azure AD Group.
-        """
         return pulumi.get(self, "name")
 
     @property
@@ -92,6 +104,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             yield self
         return GetGroupResult(
             description=self.description,
+            display_name=self.display_name,
             id=self.id,
             members=self.members,
             name=self.name,
@@ -99,7 +112,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             owners=self.owners)
 
 
-def get_group(name: Optional[str] = None,
+def get_group(display_name: Optional[str] = None,
+              name: Optional[str] = None,
               object_id: Optional[str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
@@ -114,14 +128,15 @@ def get_group(name: Optional[str] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_group(name="A-AD-Group")
+    example = azuread.get_group(display_name="A-AD-Group")
     ```
 
 
-    :param str name: The Name of the AD Group we want to lookup.
-    :param str object_id: Specifies the Object ID of the AD Group within Azure Active Directory.
+    :param str display_name: The splay name of the Group within Azure Active Directory.
+    :param str object_id: Specifies the Object ID of the Group within Azure Active Directory.
     """
     __args__ = dict()
+    __args__['displayName'] = display_name
     __args__['name'] = name
     __args__['objectId'] = object_id
     if opts is None:
@@ -132,6 +147,7 @@ def get_group(name: Optional[str] = None,
 
     return AwaitableGetGroupResult(
         description=__ret__.description,
+        display_name=__ret__.display_name,
         id=__ret__.id,
         members=__ret__.members,
         name=__ret__.name,

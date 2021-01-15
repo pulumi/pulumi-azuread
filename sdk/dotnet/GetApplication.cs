@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
         ///     {
         ///         var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs
         ///         {
-        ///             Name = "My First AzureAD Application",
+        ///             DisplayName = "My First AzureAD Application",
         ///         }));
         ///         this.AzureAdObjectId = example.Apply(example =&gt; example.Id);
         ///     }
@@ -56,7 +56,13 @@ namespace Pulumi.AzureAD
         public string? ApplicationId { get; set; }
 
         /// <summary>
-        /// Specifies the name of the Application within Azure Active Directory.
+        /// Specifies the display name of the Application within Azure Active Directory.
+        /// </summary>
+        [Input("displayName")]
+        public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// The name of the optional claim.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -106,6 +112,10 @@ namespace Pulumi.AzureAD
         /// Is this Azure AD Application available to other tenants?
         /// </summary>
         public readonly bool AvailableToOtherTenants;
+        /// <summary>
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// </summary>
+        public readonly string DisplayName;
         /// <summary>
         /// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
         /// </summary>
@@ -168,6 +178,8 @@ namespace Pulumi.AzureAD
 
             bool availableToOtherTenants,
 
+            string displayName,
+
             string groupMembershipClaims,
 
             string homepage,
@@ -199,6 +211,7 @@ namespace Pulumi.AzureAD
             AppRoles = appRoles;
             ApplicationId = applicationId;
             AvailableToOtherTenants = availableToOtherTenants;
+            DisplayName = displayName;
             GroupMembershipClaims = groupMembershipClaims;
             Homepage = homepage;
             Id = id;

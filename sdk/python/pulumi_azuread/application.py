@@ -19,6 +19,7 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
                  available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  group_membership_claims: Optional[pulumi.Input[str]] = None,
                  homepage: Optional[pulumi.Input[str]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -59,6 +60,7 @@ class Application(pulumi.CustomResource):
                 value="Admin",
             )],
             available_to_other_tenants=False,
+            display_name="example",
             homepage="https://homepage",
             identifier_uris=["https://uri"],
             oauth2_allow_implicit_flow=True,
@@ -139,11 +141,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`.
+        :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[str] homepage: The URL to the application's home page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logout_url: The URL of the logout page.
-        :param pulumi.Input[str] name: The display name for the application.
+        :param pulumi.Input[str] name: The name of the optional claim.
         :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
@@ -173,10 +176,14 @@ class Application(pulumi.CustomResource):
 
             __props__['app_roles'] = app_roles
             __props__['available_to_other_tenants'] = available_to_other_tenants
+            __props__['display_name'] = display_name
             __props__['group_membership_claims'] = group_membership_claims
             __props__['homepage'] = homepage
             __props__['identifier_uris'] = identifier_uris
             __props__['logout_url'] = logout_url
+            if name is not None and not opts.urn:
+                warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.")
             __props__['name'] = name
             __props__['oauth2_allow_implicit_flow'] = oauth2_allow_implicit_flow
             __props__['oauth2_permissions'] = oauth2_permissions
@@ -186,6 +193,9 @@ class Application(pulumi.CustomResource):
             __props__['public_client'] = public_client
             __props__['reply_urls'] = reply_urls
             __props__['required_resource_accesses'] = required_resource_accesses
+            if type is not None and not opts.urn:
+                warnings.warn("""This property is deprecated and will be removed in version 2.0 of this provider.""", DeprecationWarning)
+                pulumi.log.warn("type is deprecated: This property is deprecated and will be removed in version 2.0 of this provider.")
             __props__['type'] = type
             __props__['application_id'] = None
             __props__['object_id'] = None
@@ -202,6 +212,7 @@ class Application(pulumi.CustomResource):
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
             group_membership_claims: Optional[pulumi.Input[str]] = None,
             homepage: Optional[pulumi.Input[str]] = None,
             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -227,11 +238,12 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
         :param pulumi.Input[str] application_id: The Application ID.
         :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`.
+        :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[str] homepage: The URL to the application's home page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logout_url: The URL of the logout page.
-        :param pulumi.Input[str] name: The display name for the application.
+        :param pulumi.Input[str] name: The name of the optional claim.
         :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth2.0 implicit flow tokens? Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below.
         :param pulumi.Input[str] object_id: The Application's Object ID.
@@ -250,6 +262,7 @@ class Application(pulumi.CustomResource):
         __props__["app_roles"] = app_roles
         __props__["application_id"] = application_id
         __props__["available_to_other_tenants"] = available_to_other_tenants
+        __props__["display_name"] = display_name
         __props__["group_membership_claims"] = group_membership_claims
         __props__["homepage"] = homepage
         __props__["identifier_uris"] = identifier_uris
@@ -292,6 +305,14 @@ class Application(pulumi.CustomResource):
         return pulumi.get(self, "available_to_other_tenants")
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The display name for the application.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
     @pulumi.getter(name="groupMembershipClaims")
     def group_membership_claims(self) -> pulumi.Output[Optional[str]]:
         """
@@ -327,7 +348,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The display name for the application.
+        The name of the optional claim.
         """
         return pulumi.get(self, "name")
 

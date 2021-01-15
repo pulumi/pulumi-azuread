@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *         value: "Admin",
  *     }],
  *     availableToOtherTenants: false,
+ *     displayName: "example",
  *     homepage: "https://homepage",
  *     identifierUris: ["https://uri"],
  *     oauth2AllowImplicitFlow: true,
@@ -146,6 +147,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly availableToOtherTenants!: pulumi.Output<boolean | undefined>;
     /**
+     * The display name for the application.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     public readonly groupMembershipClaims!: pulumi.Output<string | undefined>;
@@ -162,7 +167,9 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly logoutUrl!: pulumi.Output<string | undefined>;
     /**
-     * The display name for the application.
+     * The name of the optional claim.
+     *
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -203,6 +210,8 @@ export class Application extends pulumi.CustomResource {
     public readonly requiredResourceAccesses!: pulumi.Output<outputs.ApplicationRequiredResourceAccess[] | undefined>;
     /**
      * Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+     *
+     * @deprecated This property is deprecated and will be removed in version 2.0 of this provider.
      */
     public readonly type!: pulumi.Output<string | undefined>;
 
@@ -221,6 +230,7 @@ export class Application extends pulumi.CustomResource {
             inputs["appRoles"] = state ? state.appRoles : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
             inputs["availableToOtherTenants"] = state ? state.availableToOtherTenants : undefined;
+            inputs["displayName"] = state ? state.displayName : undefined;
             inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
             inputs["homepage"] = state ? state.homepage : undefined;
             inputs["identifierUris"] = state ? state.identifierUris : undefined;
@@ -240,6 +250,7 @@ export class Application extends pulumi.CustomResource {
             const args = argsOrState as ApplicationArgs | undefined;
             inputs["appRoles"] = args ? args.appRoles : undefined;
             inputs["availableToOtherTenants"] = args ? args.availableToOtherTenants : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
             inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
             inputs["homepage"] = args ? args.homepage : undefined;
             inputs["identifierUris"] = args ? args.identifierUris : undefined;
@@ -285,6 +296,10 @@ export interface ApplicationState {
      */
     readonly availableToOtherTenants?: pulumi.Input<boolean>;
     /**
+     * The display name for the application.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     readonly groupMembershipClaims?: pulumi.Input<string>;
@@ -301,7 +316,9 @@ export interface ApplicationState {
      */
     readonly logoutUrl?: pulumi.Input<string>;
     /**
-     * The display name for the application.
+     * The name of the optional claim.
+     *
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -342,6 +359,8 @@ export interface ApplicationState {
     readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
      * Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+     *
+     * @deprecated This property is deprecated and will be removed in version 2.0 of this provider.
      */
     readonly type?: pulumi.Input<string>;
 }
@@ -359,6 +378,10 @@ export interface ApplicationArgs {
      */
     readonly availableToOtherTenants?: pulumi.Input<boolean>;
     /**
+     * The display name for the application.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     readonly groupMembershipClaims?: pulumi.Input<string>;
@@ -375,7 +398,9 @@ export interface ApplicationArgs {
      */
     readonly logoutUrl?: pulumi.Input<string>;
     /**
-     * The display name for the application.
+     * The name of the optional claim.
+     *
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -412,6 +437,8 @@ export interface ApplicationArgs {
     readonly requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
      * Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+     *
+     * @deprecated This property is deprecated and will be removed in version 2.0 of this provider.
      */
     readonly type?: pulumi.Input<string>;
 }

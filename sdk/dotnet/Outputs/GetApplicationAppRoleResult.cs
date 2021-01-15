@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Specifies the display name of the Application within Azure Active Directory.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

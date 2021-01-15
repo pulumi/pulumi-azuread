@@ -100,7 +100,7 @@ export interface ApplicationOptionalClaimsIdToken {
      */
     essential?: boolean;
     /**
-     * The display name for the application.
+     * The name of the optional claim.
      */
     name: string;
     /**
@@ -141,7 +141,7 @@ export interface GetApplicationAppRole {
      */
     description: string;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Specifies the display name of the Application within Azure Active Directory.
      */
     displayName: string;
     /**
@@ -208,7 +208,7 @@ export interface GetApplicationOptionalClaimsAccessToken {
      */
     essential?: boolean;
     /**
-     * Specifies the name of the Application within Azure Active Directory.
+     * The name of the optional claim.
      */
     name: string;
     /**
@@ -227,7 +227,7 @@ export interface GetApplicationOptionalClaimsIdToken {
      */
     essential?: boolean;
     /**
-     * Specifies the name of the Application within Azure Active Directory.
+     * The name of the optional claim.
      */
     name: string;
     /**
@@ -384,6 +384,27 @@ export interface GetUsersUser {
      * The User Principal Name of the Azure AD User.
      */
     userPrincipalName: string;
+}
+
+export interface ServicePrincipalAppRole {
+    allowedMemberTypes: string[];
+    description: string;
+    /**
+     * The Display Name of the Azure Active Directory Application associated with this Service Principal.
+     */
+    displayName: string;
+    /**
+     * The unique identifier for one of the `OAuth2Permission`.
+     */
+    id: string;
+    /**
+     * Is this permission enabled?
+     */
+    isEnabled: boolean;
+    /**
+     * The name of this permission.
+     */
+    value: string;
 }
 
 export interface ServicePrincipalOauth2Permission {

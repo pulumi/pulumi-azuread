@@ -16,6 +16,7 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -36,7 +37,7 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
-        example = azuread.Group("example")
+        example = azuread.Group("example", display_name="A-AD-Group")
         ```
 
         *A group with members*
@@ -49,7 +50,9 @@ class Group(pulumi.CustomResource):
             display_name="J Doe",
             password="notSecure123",
             user_principal_name="jdoe@hashicorp.com")
-        example_group = azuread.Group("exampleGroup", members=[example_user.object_id])
+        example_group = azuread.Group("exampleGroup",
+            display_name="MyGroup",
+            members=[example_user.object_id])
         ```
 
         ## Import
@@ -63,8 +66,8 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
+        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
@@ -86,7 +89,11 @@ class Group(pulumi.CustomResource):
             __props__ = dict()
 
             __props__['description'] = description
+            __props__['display_name'] = display_name
             __props__['members'] = members
+            if name is not None and not opts.urn:
+                warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
+                pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.")
             __props__['name'] = name
             __props__['owners'] = owners
             __props__['prevent_duplicate_names'] = prevent_duplicate_names
@@ -102,6 +109,7 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            display_name: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
@@ -115,8 +123,8 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
+        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        :param pulumi.Input[str] name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
@@ -125,6 +133,7 @@ class Group(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["description"] = description
+        __props__["display_name"] = display_name
         __props__["members"] = members
         __props__["name"] = name
         __props__["object_id"] = object_id
@@ -141,6 +150,14 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Output[str]:
+        """
+        The display name for the Group. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
         """
@@ -151,9 +168,6 @@ class Group(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The display name for the Group. Changing this forces a new resource to be created.
-        """
         return pulumi.get(self, "name")
 
     @property
