@@ -26,7 +26,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "A-AD-Group"
 // 		_, err := azuread.LookupGroup(ctx, &azuread.LookupGroupArgs{
-// 			Name: &opt0,
+// 			DisplayName: &opt0,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -46,9 +46,11 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupArgs struct {
-	// The Name of the AD Group we want to lookup.
+	// The splay name of the Group within Azure Active Directory.
+	DisplayName *string `pulumi:"displayName"`
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name *string `pulumi:"name"`
-	// Specifies the Object ID of the AD Group within Azure Active Directory.
+	// Specifies the Object ID of the Group within Azure Active Directory.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -56,11 +58,13 @@ type LookupGroupArgs struct {
 type LookupGroupResult struct {
 	// The description of the AD Group.
 	Description string `pulumi:"description"`
+	// The name of the Azure AD Group.
+	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Object IDs of the Azure AD Group members.
 	Members []string `pulumi:"members"`
-	// The name of the Azure AD Group.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name     string `pulumi:"name"`
 	ObjectId string `pulumi:"objectId"`
 	// The Object IDs of the Azure AD Group owners.

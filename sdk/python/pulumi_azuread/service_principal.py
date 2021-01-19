@@ -89,6 +89,7 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__['application_id'] = application_id
             __props__['oauth2_permissions'] = oauth2_permissions
             __props__['tags'] = tags
+            __props__['app_roles'] = None
             __props__['display_name'] = None
             __props__['object_id'] = None
         super(ServicePrincipal, __self__).__init__(
@@ -102,6 +103,7 @@ class ServicePrincipal(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+            app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
@@ -126,6 +128,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__ = dict()
 
         __props__["app_role_assignment_required"] = app_role_assignment_required
+        __props__["app_roles"] = app_roles
         __props__["application_id"] = application_id
         __props__["display_name"] = display_name
         __props__["oauth2_permissions"] = oauth2_permissions
@@ -140,6 +143,11 @@ class ServicePrincipal(pulumi.CustomResource):
         Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
         """
         return pulumi.get(self, "app_role_assignment_required")
+
+    @property
+    @pulumi.getter(name="appRoles")
+    def app_roles(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalAppRole']]:
+        return pulumi.get(self, "app_roles")
 
     @property
     @pulumi.getter(name="applicationId")

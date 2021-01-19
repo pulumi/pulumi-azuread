@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool? Essential;
         /// <summary>
-        /// Specifies the name of the Application within Azure Active Directory.
+        /// The name of the optional claim.
         /// </summary>
         public readonly string Name;
         /// <summary>

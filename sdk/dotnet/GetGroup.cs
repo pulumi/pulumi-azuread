@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD
         ///     {
         ///         var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs
         ///         {
-        ///             Name = "A-AD-Group",
+        ///             DisplayName = "A-AD-Group",
         ///         }));
         ///     }
         /// 
@@ -48,13 +48,16 @@ namespace Pulumi.AzureAD
     public sealed class GetGroupArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The Name of the AD Group we want to lookup.
+        /// The splay name of the Group within Azure Active Directory.
         /// </summary>
+        [Input("displayName")]
+        public string? DisplayName { get; set; }
+
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Specifies the Object ID of the AD Group within Azure Active Directory.
+        /// Specifies the Object ID of the Group within Azure Active Directory.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -73,6 +76,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Description;
         /// <summary>
+        /// The name of the Azure AD Group.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -80,9 +87,6 @@ namespace Pulumi.AzureAD
         /// The Object IDs of the Azure AD Group members.
         /// </summary>
         public readonly ImmutableArray<string> Members;
-        /// <summary>
-        /// The name of the Azure AD Group.
-        /// </summary>
         public readonly string Name;
         public readonly string ObjectId;
         /// <summary>
@@ -93,6 +97,8 @@ namespace Pulumi.AzureAD
         [OutputConstructor]
         private GetGroupResult(
             string description,
+
+            string displayName,
 
             string id,
 
@@ -105,6 +111,7 @@ namespace Pulumi.AzureAD
             ImmutableArray<string> owners)
         {
             Description = description;
+            DisplayName = displayName;
             Id = id;
             Members = members;
             Name = name;

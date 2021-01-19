@@ -47,7 +47,10 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
+	DisplayNames []string `pulumi:"displayNames"`
 	// The Display Names of the Azure AD Groups.
+	//
+	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.
 	Names []string `pulumi:"names"`
 	// The Object IDs of the Azure AD Groups.
 	ObjectIds []string `pulumi:"objectIds"`
@@ -55,9 +58,12 @@ type GetGroupsArgs struct {
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
+	DisplayNames []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The Display Names of the Azure AD Groups.
+	//
+	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.
 	Names []string `pulumi:"names"`
 	// The Object IDs of the Azure AD Groups.
 	ObjectIds []string `pulumi:"objectIds"`

@@ -28,7 +28,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewGroup(ctx, "example", nil)
+// 		_, err := azuread.NewGroup(ctx, "example", &azuread.GroupArgs{
+// 			DisplayName: pulumi.String("A-AD-Group"),
+// 		})
 // 		if err != nil {
 // 			return err
 // 		}
@@ -58,6 +60,7 @@ import (
 // 			return err
 // 		}
 // 		_, err = azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+// 			DisplayName: pulumi.String("MyGroup"),
 // 			Members: pulumi.StringArray{
 // 				exampleUser.ObjectId,
 // 			},
@@ -82,9 +85,11 @@ type Group struct {
 
 	// The description for the Group.  Changing this forces a new resource to be created.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The display name for the Group. Changing this forces a new resource to be created.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The display name for the Group. Changing this forces a new resource to be created.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name     pulumi.StringOutput `pulumi:"name"`
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
@@ -124,9 +129,11 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// The description for the Group.  Changing this forces a new resource to be created.
 	Description *string `pulumi:"description"`
+	// The display name for the Group. Changing this forces a new resource to be created.
+	DisplayName *string `pulumi:"displayName"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
-	// The display name for the Group. Changing this forces a new resource to be created.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name     *string `pulumi:"name"`
 	ObjectId *string `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
@@ -138,9 +145,11 @@ type groupState struct {
 type GroupState struct {
 	// The description for the Group.  Changing this forces a new resource to be created.
 	Description pulumi.StringPtrInput
+	// The display name for the Group. Changing this forces a new resource to be created.
+	DisplayName pulumi.StringPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
-	// The display name for the Group. Changing this forces a new resource to be created.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name     pulumi.StringPtrInput
 	ObjectId pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
@@ -156,9 +165,11 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// The description for the Group.  Changing this forces a new resource to be created.
 	Description *string `pulumi:"description"`
+	// The display name for the Group. Changing this forces a new resource to be created.
+	DisplayName *string `pulumi:"displayName"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
-	// The display name for the Group. Changing this forces a new resource to be created.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name *string `pulumi:"name"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
@@ -170,9 +181,11 @@ type groupArgs struct {
 type GroupArgs struct {
 	// The description for the Group.  Changing this forces a new resource to be created.
 	Description pulumi.StringPtrInput
+	// The display name for the Group. Changing this forces a new resource to be created.
+	DisplayName pulumi.StringPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
-	// The display name for the Group. Changing this forces a new resource to be created.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput

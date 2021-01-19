@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = pulumi.output(azuread.getGroup({
- *     name: "A-AD-Group",
+ *     displayName: "A-AD-Group",
  * }, { async: true }));
  * ```
  */
@@ -32,6 +32,7 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
+        "displayName": args.displayName,
         "name": args.name,
         "objectId": args.objectId,
     }, opts);
@@ -42,11 +43,15 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetGroupArgs {
     /**
-     * The Name of the AD Group we want to lookup.
+     * The splay name of the Group within Azure Active Directory.
+     */
+    readonly displayName?: string;
+    /**
+     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     readonly name?: string;
     /**
-     * Specifies the Object ID of the AD Group within Azure Active Directory.
+     * Specifies the Object ID of the Group within Azure Active Directory.
      */
     readonly objectId?: string;
 }
@@ -60,6 +65,10 @@ export interface GetGroupResult {
      */
     readonly description: string;
     /**
+     * The name of the Azure AD Group.
+     */
+    readonly displayName: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -68,7 +77,7 @@ export interface GetGroupResult {
      */
     readonly members: string[];
     /**
-     * The name of the Azure AD Group.
+     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     readonly name: string;
     readonly objectId: string;

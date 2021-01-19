@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD.Inputs
         public bool? Essential { get; set; }
 
         /// <summary>
-        /// Specifies the name of the Application within Azure Active Directory.
+        /// The name of the optional claim.
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;

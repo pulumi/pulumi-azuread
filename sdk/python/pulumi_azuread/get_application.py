@@ -21,7 +21,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, optional_claims=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
+    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, display_name=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, optional_claims=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         pulumi.set(__self__, "app_roles", app_roles)
@@ -31,6 +31,9 @@ class GetApplicationResult:
         if available_to_other_tenants and not isinstance(available_to_other_tenants, bool):
             raise TypeError("Expected argument 'available_to_other_tenants' to be a bool")
         pulumi.set(__self__, "available_to_other_tenants", available_to_other_tenants)
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if group_membership_claims and not isinstance(group_membership_claims, str):
             raise TypeError("Expected argument 'group_membership_claims' to be a str")
         pulumi.set(__self__, "group_membership_claims", group_membership_claims)
@@ -48,6 +51,10 @@ class GetApplicationResult:
         pulumi.set(__self__, "logout_url", logout_url)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
+        if name is not None:
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""", DeprecationWarning)
+            pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.")
+
         pulumi.set(__self__, "name", name)
         if oauth2_allow_implicit_flow and not isinstance(oauth2_allow_implicit_flow, bool):
             raise TypeError("Expected argument 'oauth2_allow_implicit_flow' to be a bool")
@@ -97,6 +104,14 @@ class GetApplicationResult:
         Is this Azure AD Application available to other tenants?
         """
         return pulumi.get(self, "available_to_other_tenants")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Display name for the permission that appears in the admin consent and app assignment experiences.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
@@ -217,6 +232,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             app_roles=self.app_roles,
             application_id=self.application_id,
             available_to_other_tenants=self.available_to_other_tenants,
+            display_name=self.display_name,
             group_membership_claims=self.group_membership_claims,
             homepage=self.homepage,
             id=self.id,
@@ -234,6 +250,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
 
 
 def get_application(application_id: Optional[str] = None,
+                    display_name: Optional[str] = None,
                     name: Optional[str] = None,
                     oauth2_permissions: Optional[Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']]] = None,
                     object_id: Optional[str] = None,
@@ -250,19 +267,21 @@ def get_application(application_id: Optional[str] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_application(name="My First AzureAD Application")
+    example = azuread.get_application(display_name="My First AzureAD Application")
     pulumi.export("azureAdObjectId", example.id)
     ```
 
 
     :param str application_id: Specifies the Application ID of the Azure Active Directory Application.
-    :param str name: Specifies the name of the Application within Azure Active Directory.
+    :param str display_name: Specifies the display name of the Application within Azure Active Directory.
+    :param str name: The name of the optional claim.
     :param Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
     :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
     :param pulumi.InputType['GetApplicationOptionalClaimsArgs'] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
+    __args__['displayName'] = display_name
     __args__['name'] = name
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
@@ -277,6 +296,7 @@ def get_application(application_id: Optional[str] = None,
         app_roles=__ret__.app_roles,
         application_id=__ret__.application_id,
         available_to_other_tenants=__ret__.available_to_other_tenants,
+        display_name=__ret__.display_name,
         group_membership_claims=__ret__.group_membership_claims,
         homepage=__ret__.homepage,
         id=__ret__.id,

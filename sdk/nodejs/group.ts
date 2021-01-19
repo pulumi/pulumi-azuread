@@ -17,7 +17,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = new azuread.Group("example", {});
+ * const example = new azuread.Group("example", {
+ *     displayName: "A-AD-Group",
+ * });
  * ```
  *
  * *A group with members*
@@ -31,7 +33,10 @@ import * as utilities from "./utilities";
  *     password: "notSecure123",
  *     userPrincipalName: "jdoe@hashicorp.com",
  * });
- * const exampleGroup = new azuread.Group("exampleGroup", {members: [exampleUser.objectId]});
+ * const exampleGroup = new azuread.Group("exampleGroup", {
+ *     displayName: "MyGroup",
+ *     members: [exampleUser.objectId],
+ * });
  * ```
  *
  * ## Import
@@ -75,11 +80,15 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The display name for the Group. Changing this forces a new resource to be created.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * The display name for the Group. Changing this forces a new resource to be created.
+     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly objectId!: pulumi.Output<string>;
@@ -105,6 +114,7 @@ export class Group extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
+            inputs["displayName"] = state ? state.displayName : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
@@ -113,6 +123,7 @@ export class Group extends pulumi.CustomResource {
         } else {
             const args = argsOrState as GroupArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["displayName"] = args ? args.displayName : undefined;
             inputs["members"] = args ? args.members : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["owners"] = args ? args.owners : undefined;
@@ -139,11 +150,15 @@ export interface GroupState {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The display name for the Group. Changing this forces a new resource to be created.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The display name for the Group. Changing this forces a new resource to be created.
+     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     readonly name?: pulumi.Input<string>;
     readonly objectId?: pulumi.Input<string>;
@@ -166,11 +181,15 @@ export interface GroupArgs {
      */
     readonly description?: pulumi.Input<string>;
     /**
+     * The display name for the Group. Changing this forces a new resource to be created.
+     */
+    readonly displayName?: pulumi.Input<string>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The display name for the Group. Changing this forces a new resource to be created.
+     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     readonly name?: pulumi.Input<string>;
     /**

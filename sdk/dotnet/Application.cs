@@ -42,6 +42,7 @@ namespace Pulumi.AzureAD
     ///                 },
     ///             },
     ///             AvailableToOtherTenants = false,
+    ///             DisplayName = "example",
     ///             Homepage = "https://homepage",
     ///             IdentifierUris = 
     ///             {
@@ -177,6 +178,12 @@ namespace Pulumi.AzureAD
         public Output<bool?> AvailableToOtherTenants { get; private set; } = null!;
 
         /// <summary>
+        /// The display name for the application.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
         /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Output("groupMembershipClaims")]
@@ -201,7 +208,7 @@ namespace Pulumi.AzureAD
         public Output<string?> LogoutUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The display name for the application.
+        /// The name of the optional claim.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -331,6 +338,12 @@ namespace Pulumi.AzureAD
         public Input<bool>? AvailableToOtherTenants { get; set; }
 
         /// <summary>
+        /// The display name for the application.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Input("groupMembershipClaims")]
@@ -361,7 +374,7 @@ namespace Pulumi.AzureAD
         public Input<string>? LogoutUrl { get; set; }
 
         /// <summary>
-        /// The display name for the application.
+        /// The name of the optional claim.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -476,6 +489,12 @@ namespace Pulumi.AzureAD
         public Input<bool>? AvailableToOtherTenants { get; set; }
 
         /// <summary>
+        /// The display name for the application.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Input("groupMembershipClaims")]
@@ -506,7 +525,7 @@ namespace Pulumi.AzureAD
         public Input<string>? LogoutUrl { get; set; }
 
         /// <summary>
-        /// The display name for the application.
+        /// The name of the optional claim.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

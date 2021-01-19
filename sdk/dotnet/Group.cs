@@ -28,6 +28,7 @@ namespace Pulumi.AzureAD
     ///     {
     ///         var example = new AzureAD.Group("example", new AzureAD.GroupArgs
     ///         {
+    ///             DisplayName = "A-AD-Group",
     ///         });
     ///     }
     /// 
@@ -52,6 +53,7 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleGroup = new AzureAD.Group("exampleGroup", new AzureAD.GroupArgs
     ///         {
+    ///             DisplayName = "MyGroup",
     ///             Members = 
     ///             {
     ///                 exampleUser.ObjectId,
@@ -79,14 +81,17 @@ namespace Pulumi.AzureAD
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The display name for the Group. Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
         /// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
 
-        /// <summary>
-        /// The display name for the Group. Changing this forces a new resource to be created.
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -157,6 +162,12 @@ namespace Pulumi.AzureAD
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The display name for the Group. Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
         [Input("members")]
         private InputList<string>? _members;
 
@@ -169,9 +180,6 @@ namespace Pulumi.AzureAD
             set => _members = value;
         }
 
-        /// <summary>
-        /// The display name for the Group. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
@@ -206,6 +214,12 @@ namespace Pulumi.AzureAD
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// The display name for the Group. Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
         [Input("members")]
         private InputList<string>? _members;
 
@@ -218,9 +232,6 @@ namespace Pulumi.AzureAD
             set => _members = value;
         }
 
-        /// <summary>
-        /// The display name for the Group. Changing this forces a new resource to be created.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

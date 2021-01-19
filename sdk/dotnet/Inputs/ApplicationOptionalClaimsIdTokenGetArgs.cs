@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool>? Essential { get; set; }
 
         /// <summary>
-        /// The display name for the application.
+        /// The name of the optional claim.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
