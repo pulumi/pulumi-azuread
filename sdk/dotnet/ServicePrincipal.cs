@@ -62,6 +62,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/servicePrincipal:ServicePrincipal")]
     public partial class ServicePrincipal : Pulumi.CustomResource
     {
         /// <summary>

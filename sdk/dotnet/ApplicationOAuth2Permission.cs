@@ -51,6 +51,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission test 00000000-0000-0000-0000-000000000000/scope/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission")]
     public partial class ApplicationOAuth2Permission : Pulumi.CustomResource
     {
         /// <summary>

@@ -49,6 +49,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/groupMember:GroupMember")]
     public partial class GroupMember : Pulumi.CustomResource
     {
         /// <summary>

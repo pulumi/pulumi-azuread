@@ -159,15 +159,15 @@ type ServicePrincipalCertificateInput interface {
 	ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput
 }
 
-func (ServicePrincipalCertificate) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalCertificate)(nil)).Elem()
+func (*ServicePrincipalCertificate) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalCertificate)(nil))
 }
 
-func (i ServicePrincipalCertificate) ToServicePrincipalCertificateOutput() ServicePrincipalCertificateOutput {
+func (i *ServicePrincipalCertificate) ToServicePrincipalCertificateOutput() ServicePrincipalCertificateOutput {
 	return i.ToServicePrincipalCertificateOutputWithContext(context.Background())
 }
 
-func (i ServicePrincipalCertificate) ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput {
+func (i *ServicePrincipalCertificate) ToServicePrincipalCertificateOutputWithContext(ctx context.Context) ServicePrincipalCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateOutput)
 }
 
@@ -176,7 +176,7 @@ type ServicePrincipalCertificateOutput struct {
 }
 
 func (ServicePrincipalCertificateOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalCertificateOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServicePrincipalCertificate)(nil))
 }
 
 func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutput() ServicePrincipalCertificateOutput {

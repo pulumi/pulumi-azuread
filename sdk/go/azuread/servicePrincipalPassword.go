@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -197,15 +197,15 @@ type ServicePrincipalPasswordInput interface {
 	ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput
 }
 
-func (ServicePrincipalPassword) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalPassword)(nil)).Elem()
+func (*ServicePrincipalPassword) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalPassword)(nil))
 }
 
-func (i ServicePrincipalPassword) ToServicePrincipalPasswordOutput() ServicePrincipalPasswordOutput {
+func (i *ServicePrincipalPassword) ToServicePrincipalPasswordOutput() ServicePrincipalPasswordOutput {
 	return i.ToServicePrincipalPasswordOutputWithContext(context.Background())
 }
 
-func (i ServicePrincipalPassword) ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput {
+func (i *ServicePrincipalPassword) ToServicePrincipalPasswordOutputWithContext(ctx context.Context) ServicePrincipalPasswordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordOutput)
 }
 
@@ -214,7 +214,7 @@ type ServicePrincipalPasswordOutput struct {
 }
 
 func (ServicePrincipalPasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalPasswordOutput)(nil)).Elem()
+	return reflect.TypeOf((*ServicePrincipalPassword)(nil))
 }
 
 func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutput() ServicePrincipalPasswordOutput {

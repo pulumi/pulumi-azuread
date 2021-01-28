@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -199,15 +199,15 @@ type ApplicationAppRoleInput interface {
 	ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput
 }
 
-func (ApplicationAppRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationAppRole)(nil)).Elem()
+func (*ApplicationAppRole) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppRole)(nil))
 }
 
-func (i ApplicationAppRole) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {
+func (i *ApplicationAppRole) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {
 	return i.ToApplicationAppRoleOutputWithContext(context.Background())
 }
 
-func (i ApplicationAppRole) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
+func (i *ApplicationAppRole) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleOutput)
 }
 
@@ -216,7 +216,7 @@ type ApplicationAppRoleOutput struct {
 }
 
 func (ApplicationAppRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationAppRoleOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationAppRole)(nil))
 }
 
 func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {

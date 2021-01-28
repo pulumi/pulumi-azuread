@@ -48,7 +48,7 @@ setup(name='pulumi_azuread',
       packages=find_packages(),
       package_data={
           'pulumi_azuread': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

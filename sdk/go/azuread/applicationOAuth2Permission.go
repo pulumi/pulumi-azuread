@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -228,15 +228,15 @@ type ApplicationOAuth2PermissionInput interface {
 	ToApplicationOAuth2PermissionOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionOutput
 }
 
-func (ApplicationOAuth2Permission) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationOAuth2Permission)(nil)).Elem()
+func (*ApplicationOAuth2Permission) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOAuth2Permission)(nil))
 }
 
-func (i ApplicationOAuth2Permission) ToApplicationOAuth2PermissionOutput() ApplicationOAuth2PermissionOutput {
+func (i *ApplicationOAuth2Permission) ToApplicationOAuth2PermissionOutput() ApplicationOAuth2PermissionOutput {
 	return i.ToApplicationOAuth2PermissionOutputWithContext(context.Background())
 }
 
-func (i ApplicationOAuth2Permission) ToApplicationOAuth2PermissionOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionOutput {
+func (i *ApplicationOAuth2Permission) ToApplicationOAuth2PermissionOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOAuth2PermissionOutput)
 }
 
@@ -245,7 +245,7 @@ type ApplicationOAuth2PermissionOutput struct {
 }
 
 func (ApplicationOAuth2PermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationOAuth2PermissionOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationOAuth2Permission)(nil))
 }
 
 func (o ApplicationOAuth2PermissionOutput) ToApplicationOAuth2PermissionOutput() ApplicationOAuth2PermissionOutput {

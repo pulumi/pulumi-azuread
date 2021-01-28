@@ -48,6 +48,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/applicationCertificate:ApplicationCertificate")]
     public partial class ApplicationCertificate : Pulumi.CustomResource
     {
         /// <summary>

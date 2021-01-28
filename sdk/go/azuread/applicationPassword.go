@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -191,15 +191,15 @@ type ApplicationPasswordInput interface {
 	ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput
 }
 
-func (ApplicationPassword) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationPassword)(nil)).Elem()
+func (*ApplicationPassword) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPassword)(nil))
 }
 
-func (i ApplicationPassword) ToApplicationPasswordOutput() ApplicationPasswordOutput {
+func (i *ApplicationPassword) ToApplicationPasswordOutput() ApplicationPasswordOutput {
 	return i.ToApplicationPasswordOutputWithContext(context.Background())
 }
 
-func (i ApplicationPassword) ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput {
+func (i *ApplicationPassword) ToApplicationPasswordOutputWithContext(ctx context.Context) ApplicationPasswordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordOutput)
 }
 
@@ -208,7 +208,7 @@ type ApplicationPasswordOutput struct {
 }
 
 func (ApplicationPasswordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationPasswordOutput)(nil)).Elem()
+	return reflect.TypeOf((*ApplicationPassword)(nil))
 }
 
 func (o ApplicationPasswordOutput) ToApplicationPasswordOutput() ApplicationPasswordOutput {

@@ -22,6 +22,7 @@ import (
 //
 // import (
 // 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -144,15 +145,15 @@ type GroupMemberInput interface {
 	ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput
 }
 
-func (GroupMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupMember)(nil)).Elem()
+func (*GroupMember) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupMember)(nil))
 }
 
-func (i GroupMember) ToGroupMemberOutput() GroupMemberOutput {
+func (i *GroupMember) ToGroupMemberOutput() GroupMemberOutput {
 	return i.ToGroupMemberOutputWithContext(context.Background())
 }
 
-func (i GroupMember) ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput {
+func (i *GroupMember) ToGroupMemberOutputWithContext(ctx context.Context) GroupMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMemberOutput)
 }
 
@@ -161,7 +162,7 @@ type GroupMemberOutput struct {
 }
 
 func (GroupMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GroupMemberOutput)(nil)).Elem()
+	return reflect.TypeOf((*GroupMember)(nil))
 }
 
 func (o GroupMemberOutput) ToGroupMemberOutput() GroupMemberOutput {
