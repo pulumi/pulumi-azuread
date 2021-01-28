@@ -51,6 +51,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/servicePrincipalPassword:ServicePrincipalPassword")]
     public partial class ServicePrincipalPassword : Pulumi.CustomResource
     {
         /// <summary>

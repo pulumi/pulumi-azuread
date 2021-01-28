@@ -52,6 +52,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate")]
     public partial class ServicePrincipalCertificate : Pulumi.CustomResource
     {
         /// <summary>

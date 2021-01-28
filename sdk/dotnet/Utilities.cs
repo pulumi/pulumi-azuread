@@ -77,4 +77,11 @@ namespace Pulumi.AzureAD
             }
         }
     }
+
+    internal sealed class AzureADResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    {
+        public AzureADResourceTypeAttribute(string type) : base(type, Utilities.Version)
+        {
+        }
+    }
 }

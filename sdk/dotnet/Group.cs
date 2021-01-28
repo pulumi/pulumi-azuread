@@ -72,6 +72,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/group:Group")]
     public partial class Group : Pulumi.CustomResource
     {
         /// <summary>

@@ -44,6 +44,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/user:User")]
     public partial class User : Pulumi.CustomResource
     {
         /// <summary>

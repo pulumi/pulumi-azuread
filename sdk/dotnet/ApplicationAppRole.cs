@@ -52,6 +52,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/applicationAppRole:ApplicationAppRole")]
     public partial class ApplicationAppRole : Pulumi.CustomResource
     {
         /// <summary>

@@ -47,6 +47,7 @@ namespace Pulumi.AzureAD
     ///  $ pulumi import azuread:index/applicationPassword:ApplicationPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111
     /// ```
     /// </summary>
+    [AzureADResourceType("azuread:index/applicationPassword:ApplicationPassword")]
     public partial class ApplicationPassword : Pulumi.CustomResource
     {
         /// <summary>
