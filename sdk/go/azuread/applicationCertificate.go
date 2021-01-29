@@ -27,6 +27,8 @@ type ApplicationCertificate struct {
 
 	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
 	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -37,7 +39,7 @@ type ApplicationCertificate struct {
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// The Certificate for this Service Principal.
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -78,6 +80,8 @@ func GetApplicationCertificate(ctx *pulumi.Context,
 type applicationCertificateState struct {
 	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	Encoding *string `pulumi:"encoding"`
 	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -88,13 +92,15 @@ type applicationCertificateState struct {
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
-	// The Certificate for this Service Principal.
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value *string `pulumi:"value"`
 }
 
 type ApplicationCertificateState struct {
 	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	Encoding pulumi.StringPtrInput
 	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -105,7 +111,7 @@ type ApplicationCertificateState struct {
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
-	// The Certificate for this Service Principal.
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value pulumi.StringPtrInput
 }
 
@@ -116,6 +122,8 @@ func (ApplicationCertificateState) ElementType() reflect.Type {
 type applicationCertificateArgs struct {
 	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	Encoding *string `pulumi:"encoding"`
 	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -126,7 +134,7 @@ type applicationCertificateArgs struct {
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
-	// The Certificate for this Service Principal.
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value string `pulumi:"value"`
 }
 
@@ -134,6 +142,8 @@ type applicationCertificateArgs struct {
 type ApplicationCertificateArgs struct {
 	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	Encoding pulumi.StringPtrInput
 	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
@@ -144,7 +154,7 @@ type ApplicationCertificateArgs struct {
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
-	// The Certificate for this Service Principal.
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value pulumi.StringInput
 }
 

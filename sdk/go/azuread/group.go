@@ -90,7 +90,8 @@ type Group struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
-	Name     pulumi.StringOutput `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The Object ID of the Group.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
@@ -134,7 +135,8 @@ type groupState struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
-	Name     *string `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The Object ID of the Group.
 	ObjectId *string `pulumi:"objectId"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
@@ -150,7 +152,8 @@ type GroupState struct {
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
-	Name     pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The Object ID of the Group.
 	ObjectId pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput

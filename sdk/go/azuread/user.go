@@ -71,17 +71,17 @@ type User struct {
 	ImmutableId pulumi.StringOutput `pulumi:"immutableId"`
 	// The user’s job title.
 	JobTitle pulumi.StringOutput `pulumi:"jobTitle"`
-	// The primary email address of the Azure AD User.
+	// The primary email address of the User.
 	Mail pulumi.StringOutput `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
 	// The primary cellular telephone number for the user.
 	Mobile pulumi.StringOutput `pulumi:"mobile"`
-	// The Object ID of the Azure AD User.
+	// The Object ID of the User.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// The on-premise SAM account name of the Azure AD User.
+	// The on-premise SAM account name of the User.
 	OnpremisesSamAccountName pulumi.StringOutput `pulumi:"onpremisesSamAccountName"`
-	// The on-premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the User.
 	OnpremisesUserPrincipalName pulumi.StringOutput `pulumi:"onpremisesUserPrincipalName"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringOutput `pulumi:"password"`
@@ -97,7 +97,7 @@ type User struct {
 	Surname pulumi.StringOutput `pulumi:"surname"`
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation pulumi.StringOutput `pulumi:"usageLocation"`
-	// The User Principal Name of the Azure AD User.
+	// The User Principal Name of the User.
 	UserPrincipalName pulumi.StringOutput `pulumi:"userPrincipalName"`
 }
 
@@ -159,17 +159,17 @@ type userState struct {
 	ImmutableId *string `pulumi:"immutableId"`
 	// The user’s job title.
 	JobTitle *string `pulumi:"jobTitle"`
-	// The primary email address of the Azure AD User.
+	// The primary email address of the User.
 	Mail *string `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname *string `pulumi:"mailNickname"`
 	// The primary cellular telephone number for the user.
 	Mobile *string `pulumi:"mobile"`
-	// The Object ID of the Azure AD User.
+	// The Object ID of the User.
 	ObjectId *string `pulumi:"objectId"`
-	// The on-premise SAM account name of the Azure AD User.
+	// The on-premise SAM account name of the User.
 	OnpremisesSamAccountName *string `pulumi:"onpremisesSamAccountName"`
-	// The on-premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the User.
 	OnpremisesUserPrincipalName *string `pulumi:"onpremisesUserPrincipalName"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password *string `pulumi:"password"`
@@ -185,7 +185,7 @@ type userState struct {
 	Surname *string `pulumi:"surname"`
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation *string `pulumi:"usageLocation"`
-	// The User Principal Name of the Azure AD User.
+	// The User Principal Name of the User.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
@@ -210,17 +210,17 @@ type UserState struct {
 	ImmutableId pulumi.StringPtrInput
 	// The user’s job title.
 	JobTitle pulumi.StringPtrInput
-	// The primary email address of the Azure AD User.
+	// The primary email address of the User.
 	Mail pulumi.StringPtrInput
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringPtrInput
 	// The primary cellular telephone number for the user.
 	Mobile pulumi.StringPtrInput
-	// The Object ID of the Azure AD User.
+	// The Object ID of the User.
 	ObjectId pulumi.StringPtrInput
-	// The on-premise SAM account name of the Azure AD User.
+	// The on-premise SAM account name of the User.
 	OnpremisesSamAccountName pulumi.StringPtrInput
-	// The on-premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the User.
 	OnpremisesUserPrincipalName pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringPtrInput
@@ -236,7 +236,7 @@ type UserState struct {
 	Surname pulumi.StringPtrInput
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation pulumi.StringPtrInput
-	// The User Principal Name of the Azure AD User.
+	// The User Principal Name of the User.
 	UserPrincipalName pulumi.StringPtrInput
 }
 
@@ -283,7 +283,7 @@ type userArgs struct {
 	Surname *string `pulumi:"surname"`
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation *string `pulumi:"usageLocation"`
-	// The User Principal Name of the Azure AD User.
+	// The User Principal Name of the User.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
 }
 
@@ -327,7 +327,7 @@ type UserArgs struct {
 	Surname pulumi.StringPtrInput
 	// The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
 	UsageLocation pulumi.StringPtrInput
-	// The User Principal Name of the Azure AD User.
+	// The User Principal Name of the User.
 	UserPrincipalName pulumi.StringInput
 }
 

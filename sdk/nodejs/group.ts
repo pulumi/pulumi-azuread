@@ -91,6 +91,9 @@ export class Group extends pulumi.CustomResource {
      * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The Object ID of the Group.
+     */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.
@@ -161,6 +164,9 @@ export interface GroupState {
      * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     readonly name?: pulumi.Input<string>;
+    /**
+     * The Object ID of the Group.
+     */
     readonly objectId?: pulumi.Input<string>;
     /**
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.

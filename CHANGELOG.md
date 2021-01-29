@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 * Upgrading pulumi-terraform-bridge to v2.18.1
+* Upgrade to v1.3.0 of the AzureAD Terraform Provider
 
 ---
 

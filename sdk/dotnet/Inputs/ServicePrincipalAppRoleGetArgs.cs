@@ -24,7 +24,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        /// The Display Name of the Application associated with this Service Principal.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

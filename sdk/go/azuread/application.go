@@ -141,7 +141,7 @@ type Application struct {
 
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles ApplicationAppRoleTypeArrayOutput `pulumi:"appRoles"`
-	// The Application ID.
+	// The Application ID (Client ID).
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrOutput `pulumi:"availableToOtherTenants"`
@@ -214,7 +214,7 @@ func GetApplication(ctx *pulumi.Context,
 type applicationState struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles []ApplicationAppRoleType `pulumi:"appRoles"`
-	// The Application ID.
+	// The Application ID (Client ID).
 	ApplicationId *string `pulumi:"applicationId"`
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants *bool `pulumi:"availableToOtherTenants"`
@@ -259,7 +259,7 @@ type applicationState struct {
 type ApplicationState struct {
 	// A collection of `appRole` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
 	AppRoles ApplicationAppRoleTypeArrayInput
-	// The Application ID.
+	// The Application ID (Client ID).
 	ApplicationId pulumi.StringPtrInput
 	// Is this Azure AD Application available to other tenants? Defaults to `false`.
 	AvailableToOtherTenants pulumi.BoolPtrInput

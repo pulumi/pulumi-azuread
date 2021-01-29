@@ -100,6 +100,6 @@ type LookupApplicationResult struct {
 	ReplyUrls []string `pulumi:"replyUrls"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []GetApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
-	// The type of the permission
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 	Type string `pulumi:"type"`
 }

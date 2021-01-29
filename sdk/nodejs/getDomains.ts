@@ -59,7 +59,7 @@ export interface GetDomainsArgs {
  */
 export interface GetDomainsResult {
     /**
-     * One or more `domain` blocks as defined below.
+     * A list of domains. Each `domain` object provides the attributes documented below.
      */
     readonly domains: outputs.GetDomainsDomain[];
     /**

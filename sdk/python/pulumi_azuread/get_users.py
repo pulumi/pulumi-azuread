@@ -81,7 +81,7 @@ class GetUsersResult:
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
-        An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+        A list of Azure AD Users. Each `user` object provides the attributes documented below.
         """
         return pulumi.get(self, "users")
 

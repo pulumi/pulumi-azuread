@@ -15,6 +15,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
@@ -30,21 +31,6 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication")
-        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
-        example_service_principal_certificate = azuread.ServicePrincipalCertificate("exampleServicePrincipalCertificate",
-            service_principal_id=example_service_principal.id,
-            type="AsymmetricX509Cert",
-            value=(lambda path: open(path).read())("cert.pem"),
-            end_date="2021-05-01T01:02:03Z")
-        ```
-
         ## Import
 
         Certificates can be imported using the `object id` of the Service Principal and the `key id` of the certificate, e.g.
@@ -55,13 +41,14 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
         :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] service_principal_id: The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
-        :param pulumi.Input[str] value: The Certificate for this Service Principal.
+        :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -80,6 +67,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
+            __props__['encoding'] = encoding
             __props__['end_date'] = end_date
             __props__['end_date_relative'] = end_date_relative
             __props__['key_id'] = key_id
@@ -101,6 +89,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            encoding: Optional[pulumi.Input[str]] = None,
             end_date: Optional[pulumi.Input[str]] = None,
             end_date_relative: Optional[pulumi.Input[str]] = None,
             key_id: Optional[pulumi.Input[str]] = None,
@@ -115,18 +104,20 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
         :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
         :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] service_principal_id: The ID of the Service Principal for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] start_date: The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
-        :param pulumi.Input[str] value: The Certificate for this Service Principal.
+        :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = dict()
 
+        __props__["encoding"] = encoding
         __props__["end_date"] = end_date
         __props__["end_date_relative"] = end_date_relative
         __props__["key_id"] = key_id
@@ -135,6 +126,14 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
         __props__["type"] = type
         __props__["value"] = value
         return ServicePrincipalCertificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        """
+        return pulumi.get(self, "encoding")
 
     @property
     @pulumi.getter(name="endDate")
@@ -188,7 +187,7 @@ class ServicePrincipalCertificate(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         """
-        The Certificate for this Service Principal.
+        The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
         return pulumi.get(self, "value")
 

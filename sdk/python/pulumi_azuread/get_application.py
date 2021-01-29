@@ -218,7 +218,7 @@ class GetApplicationResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the permission
+        Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         """
         return pulumi.get(self, "type")
 

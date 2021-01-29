@@ -96,6 +96,9 @@ namespace Pulumi.AzureAD
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// The Object ID of the Group.
+        /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
@@ -236,6 +239,9 @@ namespace Pulumi.AzureAD
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The Object ID of the Group.
+        /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 

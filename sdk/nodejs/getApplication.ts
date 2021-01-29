@@ -145,7 +145,7 @@ export interface GetApplicationResult {
      */
     readonly requiredResourceAccesses: outputs.GetApplicationRequiredResourceAccess[];
     /**
-     * The type of the permission
+     * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
      */
     readonly type: string;
 }

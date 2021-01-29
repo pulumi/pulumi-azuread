@@ -41,7 +41,7 @@ export interface ApplicationOauth2Permission {
      */
     adminConsentDisplayName?: pulumi.Input<string>;
     /**
-     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+     * The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
      */
     id?: pulumi.Input<string>;
     /**
@@ -141,15 +141,15 @@ export interface GetApplicationOauth2Permission {
      */
     adminConsentDisplayName?: string;
     /**
-     * The unique identifier of the `appRole`.
+     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
      */
     id?: string;
     /**
-     * Determines if the app role is enabled.
+     * Is this permission enabled?
      */
     isEnabled?: boolean;
     /**
-     * The type of the permission
+     * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
      */
     type?: string;
     /**
@@ -161,7 +161,7 @@ export interface GetApplicationOauth2Permission {
      */
     userConsentDisplayName?: string;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The name of this permission
      */
     value?: string;
 }
@@ -219,11 +219,11 @@ export interface GetServicePrincipalOauth2Permission {
      */
     adminConsentDisplayName?: string;
     /**
-     * The unique identifier of the `appRole`.
+     * The unique identifier for one of the `OAuth2Permission`
      */
     id?: string;
     /**
-     * Determines if the app role is enabled.
+     * Is this permission enabled?
      */
     isEnabled?: boolean;
     /**
@@ -239,7 +239,7 @@ export interface GetServicePrincipalOauth2Permission {
      */
     userConsentDisplayName?: string;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The name of this permission
      */
     value?: string;
 }
@@ -248,7 +248,7 @@ export interface ServicePrincipalAppRole {
     allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
     description?: pulumi.Input<string>;
     /**
-     * The Display Name of the Azure Active Directory Application associated with this Service Principal.
+     * The Display Name of the Application associated with this Service Principal.
      */
     displayName?: pulumi.Input<string>;
     /**

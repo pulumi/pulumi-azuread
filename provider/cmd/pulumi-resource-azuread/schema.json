@@ -212,7 +212,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.\n",
+                    "description": "The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -482,7 +482,7 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "The Display Name of the Azure Active Directory Application associated with this Service Principal.\n",
+                    "description": "The Display Name of the Application associated with this Service Principal.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -656,7 +656,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier of the `app_role`.\n",
+                    "description": "The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -665,7 +665,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Determines if the app role is enabled.\n",
+                    "description": "Is this permission enabled?\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -674,7 +674,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "description": "The name of this permission\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -719,7 +719,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier of the `app_role`.\n",
+                    "description": "The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -728,7 +728,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Determines if the app role is enabled.\n",
+                    "description": "Is this permission enabled?\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -737,7 +737,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the permission\n",
+                    "description": "Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -764,7 +764,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "description": "The name of this permission\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -949,7 +949,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier of the `app_role`.\n",
+                    "description": "The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -958,7 +958,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the permission\n",
+                    "description": "Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1073,7 +1073,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier of the `app_role`.\n",
+                    "description": "The unique identifier for one of the `OAuth2Permission`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1082,7 +1082,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Determines if the app role is enabled.\n",
+                    "description": "Is this permission enabled?\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1091,7 +1091,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "description": "The name of this permission\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1136,7 +1136,7 @@
                 },
                 "id": {
                     "type": "string",
-                    "description": "The unique identifier of the `app_role`.\n",
+                    "description": "The unique identifier for one of the `OAuth2Permission`\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1145,7 +1145,7 @@
                 },
                 "isEnabled": {
                     "type": "boolean",
-                    "description": "Determines if the app role is enabled.\n",
+                    "description": "Is this permission enabled?\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1181,7 +1181,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "Specifies the value of the roles claim that the application should expect in the authentication and access tokens.\n",
+                    "description": "The name of this permission\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1431,7 +1431,7 @@
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The Application ID.\n"
+                    "description": "The Application ID (Client ID).\n"
                 },
                 "availableToOtherTenants": {
                     "type": "boolean",
@@ -1634,7 +1634,7 @@
                     },
                     "applicationId": {
                         "type": "string",
-                        "description": "The Application ID.\n"
+                        "description": "The Application ID (Client ID).\n"
                     },
                     "availableToOtherTenants": {
                         "type": "boolean",
@@ -1845,11 +1845,15 @@
             }
         },
         "azuread:index/applicationCertificate:ApplicationCertificate": {
-            "description": "Manages a Certificate associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * from \"fs\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleApplicationCertificate = new azuread.ApplicationCertificate(\"exampleApplicationCertificate\", {\n    applicationObjectId: exampleApplication.id,\n    type: \"AsymmetricX509Cert\",\n    value: fs.readFileSync(\"cert.pem\"),\n    endDate: \"2021-05-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_application_certificate = azuread.ApplicationCertificate(\"exampleApplicationCertificate\",\n    application_object_id=example_application.id,\n    type=\"AsymmetricX509Cert\",\n    value=(lambda path: open(path).read())(\"cert.pem\"),\n    end_date=\"2021-05-01T01:02:03Z\")\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleApplicationCertificate = new AzureAD.ApplicationCertificate(\"exampleApplicationCertificate\", new AzureAD.ApplicationCertificateArgs\n        {\n            ApplicationObjectId = exampleApplication.Id,\n            Type = \"AsymmetricX509Cert\",\n            Value = File.ReadAllText(\"cert.pem\"),\n            EndDate = \"2021-05-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCertificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111\n```\n\n ",
+            "description": "Manages a Certificate associated with an Application within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n\n## Import\n\nCertificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111\n```\n\n ",
             "properties": {
                 "applicationObjectId": {
                     "type": "string",
                     "description": "The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "encoding": {
+                    "type": "string",
+                    "description": "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.\n"
                 },
                 "endDate": {
                     "type": "string",
@@ -1873,7 +1877,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Certificate for this Service Principal.\n"
+                    "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
                 }
             },
             "required": [
@@ -1888,6 +1892,10 @@
                     "type": "string",
                     "description": "The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.\n"
                 },
+                "encoding": {
+                    "type": "string",
+                    "description": "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.\n"
+                },
                 "endDate": {
                     "type": "string",
                     "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -1910,7 +1918,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Certificate for this Service Principal.\n"
+                    "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
                 }
             },
             "requiredInputs": [
@@ -1923,6 +1931,10 @@
                     "applicationObjectId": {
                         "type": "string",
                         "description": "The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "encoding": {
+                        "type": "string",
+                        "description": "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.\n"
                     },
                     "endDate": {
                         "type": "string",
@@ -1946,7 +1958,7 @@
                     },
                     "value": {
                         "type": "string",
-                        "description": "The Certificate for this Service Principal.\n"
+                        "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
                     }
                 },
                 "type": "object"
@@ -2224,7 +2236,8 @@
                     "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                 },
                 "objectId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The Object ID of the Group.\n"
                 },
                 "owners": {
                     "type": "array",
@@ -2300,7 +2313,8 @@
                         "deprecationMessage": "This property has been renamed to `display_name` and will be removed in v2.0 of this provider."
                     },
                     "objectId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The Object ID of the Group.\n"
                     },
                     "owners": {
                         "type": "array",
@@ -2367,7 +2381,7 @@
             "properties": {
                 "appRoleAssignmentRequired": {
                     "type": "boolean",
-                    "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                    "description": "Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.\n"
                 },
                 "appRoles": {
                     "type": "array",
@@ -2377,22 +2391,22 @@
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
+                    "description": "The App ID of the Application for which to create a Service Principal.\n"
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "The Display Name of the Azure Active Directory Application associated with this Service Principal.\n"
+                    "description": "The Display Name of the Application associated with this Service Principal.\n"
                 },
                 "oauth2Permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
                     },
-                    "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    "description": "A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.\n"
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The Service Principal's Object ID.\n"
+                    "description": "The Object ID of the Service Principal.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -2412,18 +2426,18 @@
             "inputProperties": {
                 "appRoleAssignmentRequired": {
                     "type": "boolean",
-                    "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                    "description": "Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.\n"
                 },
                 "applicationId": {
                     "type": "string",
-                    "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
+                    "description": "The App ID of the Application for which to create a Service Principal.\n"
                 },
                 "oauth2Permissions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
                     },
-                    "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                    "description": "A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -2441,7 +2455,7 @@
                 "properties": {
                     "appRoleAssignmentRequired": {
                         "type": "boolean",
-                        "description": "Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.\n"
+                        "description": "Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.\n"
                     },
                     "appRoles": {
                         "type": "array",
@@ -2451,22 +2465,22 @@
                     },
                     "applicationId": {
                         "type": "string",
-                        "description": "The ID of the Azure AD Application for which to create a Service Principal.\n"
+                        "description": "The App ID of the Application for which to create a Service Principal.\n"
                     },
                     "displayName": {
                         "type": "string",
-                        "description": "The Display Name of the Azure Active Directory Application associated with this Service Principal.\n"
+                        "description": "The Display Name of the Application associated with this Service Principal.\n"
                     },
                     "oauth2Permissions": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/azuread:index/ServicePrincipalOauth2Permission:ServicePrincipalOauth2Permission"
                         },
-                        "description": "A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.\n"
+                        "description": "A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.\n"
                     },
                     "objectId": {
                         "type": "string",
-                        "description": "The Service Principal's Object ID.\n"
+                        "description": "The Object ID of the Service Principal.\n"
                     },
                     "tags": {
                         "type": "array",
@@ -2480,8 +2494,12 @@
             }
         },
         "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate": {
-            "description": "Manages a Certificate associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\nimport * from \"fs\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {applicationId: exampleApplication.applicationId});\nconst exampleServicePrincipalCertificate = new azuread.ServicePrincipalCertificate(\"exampleServicePrincipalCertificate\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    type: \"AsymmetricX509Cert\",\n    value: fs.readFileSync(\"cert.pem\"),\n    endDate: \"2021-05-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_certificate = azuread.ServicePrincipalCertificate(\"exampleServicePrincipalCertificate\",\n    service_principal_id=example_service_principal.id,\n    type=\"AsymmetricX509Cert\",\n    value=(lambda path: open(path).read())(\"cert.pem\"),\n    end_date=\"2021-05-01T01:02:03Z\")\n```\n```csharp\nusing System.IO;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalCertificate = new AzureAD.ServicePrincipalCertificate(\"exampleServicePrincipalCertificate\", new AzureAD.ServicePrincipalCertificateArgs\n        {\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Type = \"AsymmetricX509Cert\",\n            Value = File.ReadAllText(\"cert.pem\"),\n            EndDate = \"2021-05-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nCertificates can be imported using the `object id` of the Service Principal and the `key id` of the certificate, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111\n```\n\n ",
+            "description": "Manages a Certificate associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n\n## Import\n\nCertificates can be imported using the `object id` of the Service Principal and the `key id` of the certificate, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111\n```\n\n ",
             "properties": {
+                "encoding": {
+                    "type": "string",
+                    "description": "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.\n"
+                },
                 "endDate": {
                     "type": "string",
                     "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -2508,7 +2526,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Certificate for this Service Principal.\n"
+                    "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
                 }
             },
             "required": [
@@ -2519,6 +2537,10 @@
                 "value"
             ],
             "inputProperties": {
+                "encoding": {
+                    "type": "string",
+                    "description": "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.\n"
+                },
                 "endDate": {
                     "type": "string",
                     "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -2545,7 +2567,7 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "The Certificate for this Service Principal.\n"
+                    "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
                 }
             },
             "requiredInputs": [
@@ -2555,6 +2577,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering ServicePrincipalCertificate resources.\n",
                 "properties": {
+                    "encoding": {
+                        "type": "string",
+                        "description": "Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.\n"
+                    },
                     "endDate": {
                         "type": "string",
                         "description": "The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
@@ -2581,7 +2607,7 @@
                     },
                     "value": {
                         "type": "string",
-                        "description": "The Certificate for this Service Principal.\n"
+                        "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
                     }
                 },
                 "type": "object"
@@ -2741,7 +2767,7 @@
                 },
                 "mail": {
                     "type": "string",
-                    "description": "The primary email address of the Azure AD User.\n"
+                    "description": "The primary email address of the User.\n"
                 },
                 "mailNickname": {
                     "type": "string",
@@ -2753,15 +2779,15 @@
                 },
                 "objectId": {
                     "type": "string",
-                    "description": "The Object ID of the Azure AD User.\n"
+                    "description": "The Object ID of the User.\n"
                 },
                 "onpremisesSamAccountName": {
                     "type": "string",
-                    "description": "The on-premise SAM account name of the Azure AD User.\n"
+                    "description": "The on-premise SAM account name of the User.\n"
                 },
                 "onpremisesUserPrincipalName": {
                     "type": "string",
-                    "description": "The on-premise user principal name of the Azure AD User.\n"
+                    "description": "The on-premise user principal name of the User.\n"
                 },
                 "password": {
                     "type": "string",
@@ -2793,7 +2819,7 @@
                 },
                 "userPrincipalName": {
                     "type": "string",
-                    "description": "The User Principal Name of the Azure AD User.\n"
+                    "description": "The User Principal Name of the User.\n"
                 }
             },
             "required": [
@@ -2899,7 +2925,7 @@
                 },
                 "userPrincipalName": {
                     "type": "string",
-                    "description": "The User Principal Name of the Azure AD User.\n"
+                    "description": "The User Principal Name of the User.\n"
                 }
             },
             "requiredInputs": [
@@ -2952,7 +2978,7 @@
                     },
                     "mail": {
                         "type": "string",
-                        "description": "The primary email address of the Azure AD User.\n"
+                        "description": "The primary email address of the User.\n"
                     },
                     "mailNickname": {
                         "type": "string",
@@ -2964,15 +2990,15 @@
                     },
                     "objectId": {
                         "type": "string",
-                        "description": "The Object ID of the Azure AD User.\n"
+                        "description": "The Object ID of the User.\n"
                     },
                     "onpremisesSamAccountName": {
                         "type": "string",
-                        "description": "The on-premise SAM account name of the Azure AD User.\n"
+                        "description": "The on-premise SAM account name of the User.\n"
                     },
                     "onpremisesUserPrincipalName": {
                         "type": "string",
-                        "description": "The on-premise user principal name of the Azure AD User.\n"
+                        "description": "The on-premise user principal name of the User.\n"
                     },
                     "password": {
                         "type": "string",
@@ -3004,7 +3030,7 @@
                     },
                     "userPrincipalName": {
                         "type": "string",
-                        "description": "The User Principal Name of the Azure AD User.\n"
+                        "description": "The User Principal Name of the User.\n"
                     }
                 },
                 "type": "object"
@@ -3139,7 +3165,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the permission\n"
+                        "description": "Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.\n"
                     }
                 },
                 "type": "object",
@@ -3220,7 +3246,7 @@
                         "items": {
                             "$ref": "#/types/azuread:index/getDomainsDomain:getDomainsDomain"
                         },
-                        "description": "One or more `domain` blocks as defined below.\n"
+                        "description": "A list of domains. Each `domain` object provides the attributes documented below.\n"
                     },
                     "id": {
                         "type": "string",
@@ -3659,7 +3685,7 @@
                         "items": {
                             "$ref": "#/types/azuread:index/getUsersUser:getUsersUser"
                         },
-                        "description": "An Array of Azure AD Users. Each `user` object consists of the fields documented below.\n"
+                        "description": "A list of Azure AD Users. Each `user` object provides the attributes documented below.\n"
                     }
                 },
                 "type": "object",

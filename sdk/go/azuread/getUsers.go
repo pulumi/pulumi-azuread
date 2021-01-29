@@ -69,6 +69,6 @@ type GetUsersResult struct {
 	ObjectIds []string `pulumi:"objectIds"`
 	// The User Principal Names of the Azure AD Users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
-	// An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+	// A list of Azure AD Users. Each `user` object provides the attributes documented below.
 	Users []GetUsersUser `pulumi:"users"`
 }

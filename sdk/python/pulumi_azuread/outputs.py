@@ -125,7 +125,7 @@ class ApplicationOauth2Permission(dict):
         """
         :param str admin_consent_description: Permission help text that appears in the admin consent and app assignment experiences.
         :param str admin_consent_display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        :param str id: The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
         :param bool is_enabled: Determines if the app role is enabled: Defaults to `true`.
         :param str type: Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
         :param str user_consent_description: Permission help text that appears in the end user consent experience.
@@ -169,7 +169,7 @@ class ApplicationOauth2Permission(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
         """
         return pulumi.get(self, "id")
 
@@ -429,7 +429,7 @@ class ServicePrincipalAppRole(dict):
                  is_enabled: Optional[bool] = None,
                  value: Optional[str] = None):
         """
-        :param str display_name: The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        :param str display_name: The Display Name of the Application associated with this Service Principal.
         :param str id: The unique identifier for one of the `OAuth2Permission`.
         :param bool is_enabled: Is this permission enabled?
         :param str value: The name of this permission.
@@ -461,7 +461,7 @@ class ServicePrincipalAppRole(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         """
-        The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        The Display Name of the Application associated with this Service Principal.
         """
         return pulumi.get(self, "display_name")
 
@@ -612,9 +612,9 @@ class GetApplicationAppRoleResult(dict):
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
         :param str display_name: Specifies the display name of the Application within Azure Active Directory.
-        :param str id: The unique identifier of the `app_role`.
-        :param bool is_enabled: Determines if the app role is enabled.
-        :param str value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        :param bool is_enabled: Is this permission enabled?
+        :param str value: The name of this permission
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
@@ -651,7 +651,7 @@ class GetApplicationAppRoleResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier of the `app_role`.
+        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         """
         return pulumi.get(self, "id")
 
@@ -659,7 +659,7 @@ class GetApplicationAppRoleResult(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Determines if the app role is enabled.
+        Is this permission enabled?
         """
         return pulumi.get(self, "is_enabled")
 
@@ -667,7 +667,7 @@ class GetApplicationAppRoleResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The name of this permission
         """
         return pulumi.get(self, "value")
 
@@ -686,12 +686,12 @@ class GetApplicationOauth2PermissionResult(dict):
         """
         :param str admin_consent_description: The description of the admin consent
         :param str admin_consent_display_name: The display name of the admin consent
-        :param str id: The unique identifier of the `app_role`.
-        :param bool is_enabled: Determines if the app role is enabled.
-        :param str type: The type of the permission
+        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        :param bool is_enabled: Is this permission enabled?
+        :param str type: Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         :param str user_consent_description: The description of the user consent
         :param str user_consent_display_name: The display name of the user consent
-        :param str value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param str value: The name of this permission
         """
         pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
@@ -722,7 +722,7 @@ class GetApplicationOauth2PermissionResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier of the `app_role`.
+        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         """
         return pulumi.get(self, "id")
 
@@ -730,7 +730,7 @@ class GetApplicationOauth2PermissionResult(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Determines if the app role is enabled.
+        Is this permission enabled?
         """
         return pulumi.get(self, "is_enabled")
 
@@ -738,7 +738,7 @@ class GetApplicationOauth2PermissionResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the permission
+        Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         """
         return pulumi.get(self, "type")
 
@@ -762,7 +762,7 @@ class GetApplicationOauth2PermissionResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The name of this permission
         """
         return pulumi.get(self, "value")
 
@@ -931,8 +931,8 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
                  id: str,
                  type: str):
         """
-        :param str id: The unique identifier of the `app_role`.
-        :param str type: The type of the permission
+        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        :param str type: Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "type", type)
@@ -941,7 +941,7 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier of the `app_role`.
+        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         """
         return pulumi.get(self, "id")
 
@@ -949,7 +949,7 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the permission
+        Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         """
         return pulumi.get(self, "type")
 
@@ -1029,9 +1029,9 @@ class GetServicePrincipalAppRoleResult(dict):
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
         :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
-        :param str id: The unique identifier of the `app_role`.
-        :param bool is_enabled: Determines if the app role is enabled.
-        :param str value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param str id: The unique identifier for one of the `OAuth2Permission`
+        :param bool is_enabled: Is this permission enabled?
+        :param str value: The name of this permission
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
@@ -1068,7 +1068,7 @@ class GetServicePrincipalAppRoleResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier of the `app_role`.
+        The unique identifier for one of the `OAuth2Permission`
         """
         return pulumi.get(self, "id")
 
@@ -1076,7 +1076,7 @@ class GetServicePrincipalAppRoleResult(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Determines if the app role is enabled.
+        Is this permission enabled?
         """
         return pulumi.get(self, "is_enabled")
 
@@ -1084,7 +1084,7 @@ class GetServicePrincipalAppRoleResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The name of this permission
         """
         return pulumi.get(self, "value")
 
@@ -1103,12 +1103,12 @@ class GetServicePrincipalOauth2PermissionResult(dict):
         """
         :param str admin_consent_description: The description of the admin consent
         :param str admin_consent_display_name: The display name of the admin consent
-        :param str id: The unique identifier of the `app_role`.
-        :param bool is_enabled: Determines if the app role is enabled.
+        :param str id: The unique identifier for one of the `OAuth2Permission`
+        :param bool is_enabled: Is this permission enabled?
         :param str type: The type of the permission
         :param str user_consent_description: The description of the user consent
         :param str user_consent_display_name: The display name of the user consent
-        :param str value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param str value: The name of this permission
         """
         pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
@@ -1139,7 +1139,7 @@ class GetServicePrincipalOauth2PermissionResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier of the `app_role`.
+        The unique identifier for one of the `OAuth2Permission`
         """
         return pulumi.get(self, "id")
 
@@ -1147,7 +1147,7 @@ class GetServicePrincipalOauth2PermissionResult(dict):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> bool:
         """
-        Determines if the app role is enabled.
+        Is this permission enabled?
         """
         return pulumi.get(self, "is_enabled")
 
@@ -1179,7 +1179,7 @@ class GetServicePrincipalOauth2PermissionResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The name of this permission
         """
         return pulumi.get(self, "value")
 

@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? AdminConsentDisplayName;
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        /// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
         /// </summary>
         public readonly string? Id;
         /// <summary>

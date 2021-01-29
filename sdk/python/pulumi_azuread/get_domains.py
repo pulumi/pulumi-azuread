@@ -41,7 +41,7 @@ class GetDomainsResult:
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         """
-        One or more `domain` blocks as defined below.
+        A list of domains. Each `domain` object provides the attributes documented below.
         """
         return pulumi.get(self, "domains")
 
