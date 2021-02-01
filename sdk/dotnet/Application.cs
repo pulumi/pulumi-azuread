@@ -167,7 +167,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ApplicationAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The Application ID.
+        /// The Application ID (Client ID).
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
@@ -478,7 +478,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The Application ID.
+        /// The Application ID (Client ID).
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }

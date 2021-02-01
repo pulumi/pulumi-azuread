@@ -100,7 +100,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly jobTitle!: pulumi.Output<string>;
     /**
-     * The primary email address of the Azure AD User.
+     * The primary email address of the User.
      */
     public /*out*/ readonly mail!: pulumi.Output<string>;
     /**
@@ -112,15 +112,15 @@ export class User extends pulumi.CustomResource {
      */
     public readonly mobile!: pulumi.Output<string>;
     /**
-     * The Object ID of the Azure AD User.
+     * The Object ID of the User.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
-     * The on-premise SAM account name of the Azure AD User.
+     * The on-premise SAM account name of the User.
      */
     public /*out*/ readonly onpremisesSamAccountName!: pulumi.Output<string>;
     /**
-     * The on-premise user principal name of the Azure AD User.
+     * The on-premise user principal name of the User.
      */
     public /*out*/ readonly onpremisesUserPrincipalName!: pulumi.Output<string>;
     /**
@@ -152,7 +152,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly usageLocation!: pulumi.Output<string>;
     /**
-     * The User Principal Name of the Azure AD User.
+     * The User Principal Name of the User.
      */
     public readonly userPrincipalName!: pulumi.Output<string>;
 
@@ -284,7 +284,7 @@ export interface UserState {
      */
     readonly jobTitle?: pulumi.Input<string>;
     /**
-     * The primary email address of the Azure AD User.
+     * The primary email address of the User.
      */
     readonly mail?: pulumi.Input<string>;
     /**
@@ -296,15 +296,15 @@ export interface UserState {
      */
     readonly mobile?: pulumi.Input<string>;
     /**
-     * The Object ID of the Azure AD User.
+     * The Object ID of the User.
      */
     readonly objectId?: pulumi.Input<string>;
     /**
-     * The on-premise SAM account name of the Azure AD User.
+     * The on-premise SAM account name of the User.
      */
     readonly onpremisesSamAccountName?: pulumi.Input<string>;
     /**
-     * The on-premise user principal name of the Azure AD User.
+     * The on-premise user principal name of the User.
      */
     readonly onpremisesUserPrincipalName?: pulumi.Input<string>;
     /**
@@ -336,7 +336,7 @@ export interface UserState {
      */
     readonly usageLocation?: pulumi.Input<string>;
     /**
-     * The User Principal Name of the Azure AD User.
+     * The User Principal Name of the User.
      */
     readonly userPrincipalName?: pulumi.Input<string>;
 }
@@ -422,7 +422,7 @@ export interface UserArgs {
      */
     readonly usageLocation?: pulumi.Input<string>;
     /**
-     * The User Principal Name of the Azure AD User.
+     * The User Principal Name of the User.
      */
     readonly userPrincipalName: pulumi.Input<string>;
 }

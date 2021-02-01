@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Outputs
         public readonly ImmutableArray<string> AllowedMemberTypes;
         public readonly string? Description;
         /// <summary>
-        /// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        /// The Display Name of the Application associated with this Service Principal.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>

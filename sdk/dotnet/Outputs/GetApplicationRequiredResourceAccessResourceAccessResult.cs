@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetApplicationRequiredResourceAccessResourceAccessResult
     {
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of the permission
+        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         /// </summary>
         public readonly string Type;
 

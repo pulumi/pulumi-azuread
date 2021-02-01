@@ -108,7 +108,7 @@ namespace Pulumi.AzureAD
         public Output<string> JobTitle { get; private set; } = null!;
 
         /// <summary>
-        /// The primary email address of the Azure AD User.
+        /// The primary email address of the User.
         /// </summary>
         [Output("mail")]
         public Output<string> Mail { get; private set; } = null!;
@@ -126,19 +126,19 @@ namespace Pulumi.AzureAD
         public Output<string> Mobile { get; private set; } = null!;
 
         /// <summary>
-        /// The Object ID of the Azure AD User.
+        /// The Object ID of the User.
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The on-premise SAM account name of the Azure AD User.
+        /// The on-premise SAM account name of the User.
         /// </summary>
         [Output("onpremisesSamAccountName")]
         public Output<string> OnpremisesSamAccountName { get; private set; } = null!;
 
         /// <summary>
-        /// The on-premise user principal name of the Azure AD User.
+        /// The on-premise user principal name of the User.
         /// </summary>
         [Output("onpremisesUserPrincipalName")]
         public Output<string> OnpremisesUserPrincipalName { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.AzureAD
         public Output<string> UsageLocation { get; private set; } = null!;
 
         /// <summary>
-        /// The User Principal Name of the Azure AD User.
+        /// The User Principal Name of the User.
         /// </summary>
         [Output("userPrincipalName")]
         public Output<string> UserPrincipalName { get; private set; } = null!;
@@ -352,7 +352,7 @@ namespace Pulumi.AzureAD
         public Input<string>? UsageLocation { get; set; }
 
         /// <summary>
-        /// The User Principal Name of the Azure AD User.
+        /// The User Principal Name of the User.
         /// </summary>
         [Input("userPrincipalName", required: true)]
         public Input<string> UserPrincipalName { get; set; } = null!;
@@ -425,7 +425,7 @@ namespace Pulumi.AzureAD
         public Input<string>? JobTitle { get; set; }
 
         /// <summary>
-        /// The primary email address of the Azure AD User.
+        /// The primary email address of the User.
         /// </summary>
         [Input("mail")]
         public Input<string>? Mail { get; set; }
@@ -443,19 +443,19 @@ namespace Pulumi.AzureAD
         public Input<string>? Mobile { get; set; }
 
         /// <summary>
-        /// The Object ID of the Azure AD User.
+        /// The Object ID of the User.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// The on-premise SAM account name of the Azure AD User.
+        /// The on-premise SAM account name of the User.
         /// </summary>
         [Input("onpremisesSamAccountName")]
         public Input<string>? OnpremisesSamAccountName { get; set; }
 
         /// <summary>
-        /// The on-premise user principal name of the Azure AD User.
+        /// The on-premise user principal name of the User.
         /// </summary>
         [Input("onpremisesUserPrincipalName")]
         public Input<string>? OnpremisesUserPrincipalName { get; set; }
@@ -503,7 +503,7 @@ namespace Pulumi.AzureAD
         public Input<string>? UsageLocation { get; set; }
 
         /// <summary>
-        /// The User Principal Name of the Azure AD User.
+        /// The User Principal Name of the User.
         /// </summary>
         [Input("userPrincipalName")]
         public Input<string>? UserPrincipalName { get; set; }

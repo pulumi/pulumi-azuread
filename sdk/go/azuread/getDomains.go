@@ -54,7 +54,7 @@ type GetDomainsArgs struct {
 
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
-	// One or more `domain` blocks as defined below.
+	// A list of domains. Each `domain` object provides the attributes documented below.
 	Domains []GetDomainsDomain `pulumi:"domains"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                string `pulumi:"id"`

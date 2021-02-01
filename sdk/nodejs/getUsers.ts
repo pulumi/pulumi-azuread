@@ -85,7 +85,7 @@ export interface GetUsersResult {
      */
     readonly userPrincipalNames: string[];
     /**
-     * An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+     * A list of Azure AD Users. Each `user` object provides the attributes documented below.
      */
     readonly users: outputs.GetUsersUser[];
 }

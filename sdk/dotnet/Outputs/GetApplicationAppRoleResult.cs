@@ -26,15 +26,15 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Determines if the app role is enabled.
+        /// Is this permission enabled?
         /// </summary>
         public readonly bool IsEnabled;
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The name of this permission
         /// </summary>
         public readonly string Value;
 

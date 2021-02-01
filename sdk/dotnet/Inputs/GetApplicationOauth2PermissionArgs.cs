@@ -25,19 +25,19 @@ namespace Pulumi.AzureAD.Inputs
         public string AdminConsentDisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the `app_role`.
+        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
 
         /// <summary>
-        /// Determines if the app role is enabled.
+        /// Is this permission enabled?
         /// </summary>
         [Input("isEnabled", required: true)]
         public bool IsEnabled { get; set; }
 
         /// <summary>
-        /// The type of the permission
+        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;
@@ -55,7 +55,7 @@ namespace Pulumi.AzureAD.Inputs
         public string UserConsentDisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The name of this permission
         /// </summary>
         [Input("value", required: true)]
         public string Value { get; set; } = null!;

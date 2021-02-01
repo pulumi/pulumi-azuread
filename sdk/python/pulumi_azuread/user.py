@@ -85,7 +85,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] street_address: The street address of the user's place of business.
         :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
-        :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
+        :param pulumi.Input[str] user_principal_name: The User Principal Name of the User.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
@@ -185,12 +185,12 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
         :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         :param pulumi.Input[str] job_title: The user’s job title.
-        :param pulumi.Input[str] mail: The primary email address of the Azure AD User.
+        :param pulumi.Input[str] mail: The primary email address of the User.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
         :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
-        :param pulumi.Input[str] object_id: The Object ID of the Azure AD User.
-        :param pulumi.Input[str] onpremises_sam_account_name: The on-premise SAM account name of the Azure AD User.
-        :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the Azure AD User.
+        :param pulumi.Input[str] object_id: The Object ID of the User.
+        :param pulumi.Input[str] onpremises_sam_account_name: The on-premise SAM account name of the User.
+        :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
         :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
@@ -198,7 +198,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] street_address: The street address of the user's place of business.
         :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
-        :param pulumi.Input[str] user_principal_name: The User Principal Name of the Azure AD User.
+        :param pulumi.Input[str] user_principal_name: The User Principal Name of the User.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -314,7 +314,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def mail(self) -> pulumi.Output[str]:
         """
-        The primary email address of the Azure AD User.
+        The primary email address of the User.
         """
         return pulumi.get(self, "mail")
 
@@ -338,7 +338,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
-        The Object ID of the Azure AD User.
+        The Object ID of the User.
         """
         return pulumi.get(self, "object_id")
 
@@ -346,7 +346,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> pulumi.Output[str]:
         """
-        The on-premise SAM account name of the Azure AD User.
+        The on-premise SAM account name of the User.
         """
         return pulumi.get(self, "onpremises_sam_account_name")
 
@@ -354,7 +354,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="onpremisesUserPrincipalName")
     def onpremises_user_principal_name(self) -> pulumi.Output[str]:
         """
-        The on-premise user principal name of the Azure AD User.
+        The on-premise user principal name of the User.
         """
         return pulumi.get(self, "onpremises_user_principal_name")
 
@@ -418,7 +418,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="userPrincipalName")
     def user_principal_name(self) -> pulumi.Output[str]:
         """
-        The User Principal Name of the Azure AD User.
+        The User Principal Name of the User.
         """
         return pulumi.get(self, "user_principal_name")
 

@@ -14,36 +14,6 @@ namespace Pulumi.AzureAD
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.IO;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///         });
-    ///         var exampleServicePrincipalCertificate = new AzureAD.ServicePrincipalCertificate("exampleServicePrincipalCertificate", new AzureAD.ServicePrincipalCertificateArgs
-    ///         {
-    ///             ServicePrincipalId = exampleServicePrincipal.Id,
-    ///             Type = "AsymmetricX509Cert",
-    ///             Value = File.ReadAllText("cert.pem"),
-    ///             EndDate = "2021-05-01T01:02:03Z",
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Certificates can be imported using the `object id` of the Service Principal and the `key id` of the certificate, e.g.
@@ -55,6 +25,12 @@ namespace Pulumi.AzureAD
     [AzureADResourceType("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate")]
     public partial class ServicePrincipalCertificate : Pulumi.CustomResource
     {
+        /// <summary>
+        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        /// </summary>
+        [Output("encoding")]
+        public Output<string?> Encoding { get; private set; } = null!;
+
         /// <summary>
         /// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
@@ -92,7 +68,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The Certificate for this Service Principal.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -144,6 +120,12 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalCertificateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        /// </summary>
+        [Input("encoding")]
+        public Input<string>? Encoding { get; set; }
+
+        /// <summary>
         /// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
@@ -180,7 +162,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The Certificate for this Service Principal.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
@@ -192,6 +174,12 @@ namespace Pulumi.AzureAD
 
     public sealed class ServicePrincipalCertificateState : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+        /// </summary>
+        [Input("encoding")]
+        public Input<string>? Encoding { get; set; }
+
         /// <summary>
         /// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
@@ -229,7 +217,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The Certificate for this Service Principal.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

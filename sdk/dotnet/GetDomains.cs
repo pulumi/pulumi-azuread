@@ -74,7 +74,7 @@ namespace Pulumi.AzureAD
     public sealed class GetDomainsResult
     {
         /// <summary>
-        /// One or more `domain` blocks as defined below.
+        /// A list of domains. Each `domain` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         /// <summary>

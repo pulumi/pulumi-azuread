@@ -66,7 +66,7 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipal : Pulumi.CustomResource
     {
         /// <summary>
-        /// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+        /// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         /// </summary>
         [Output("appRoleAssignmentRequired")]
         public Output<bool?> AppRoleAssignmentRequired { get; private set; } = null!;
@@ -75,25 +75,25 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ServicePrincipalAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Azure AD Application for which to create a Service Principal.
+        /// The App ID of the Application for which to create a Service Principal.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        /// The Display Name of the Application associated with this Service Principal.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
         /// </summary>
         [Output("oauth2Permissions")]
         public Output<ImmutableArray<Outputs.ServicePrincipalOauth2Permission>> Oauth2Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// The Service Principal's Object ID.
+        /// The Object ID of the Service Principal.
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
@@ -151,13 +151,13 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+        /// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
 
         /// <summary>
-        /// The ID of the Azure AD Application for which to create a Service Principal.
+        /// The App ID of the Application for which to create a Service Principal.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -166,7 +166,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ServicePrincipalOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
         /// </summary>
         public InputList<Inputs.ServicePrincipalOauth2PermissionArgs> Oauth2Permissions
         {
@@ -194,7 +194,7 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+        /// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
@@ -208,13 +208,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The ID of the Azure AD Application for which to create a Service Principal.
+        /// The App ID of the Application for which to create a Service Principal.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+        /// The Display Name of the Application associated with this Service Principal.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
         /// </summary>
         public InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs> Oauth2Permissions
         {
@@ -232,7 +232,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The Service Principal's Object ID.
+        /// The Object ID of the Service Principal.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }

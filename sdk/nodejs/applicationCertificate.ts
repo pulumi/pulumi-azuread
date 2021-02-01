@@ -9,22 +9,6 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- * import * from "fs";
- *
- * const exampleApplication = new azuread.Application("exampleApplication", {});
- * const exampleApplicationCertificate = new azuread.ApplicationCertificate("exampleApplicationCertificate", {
- *     applicationObjectId: exampleApplication.id,
- *     type: "AsymmetricX509Cert",
- *     value: fs.readFileSync("cert.pem"),
- *     endDate: "2021-05-01T01:02:03Z",
- * });
- * ```
- *
  * ## Import
  *
  * Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
@@ -66,6 +50,10 @@ export class ApplicationCertificate extends pulumi.CustomResource {
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
+     * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     */
+    public readonly encoding!: pulumi.Output<string | undefined>;
+    /**
      * The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     public readonly endDate!: pulumi.Output<string>;
@@ -86,7 +74,7 @@ export class ApplicationCertificate extends pulumi.CustomResource {
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * The Certificate for this Service Principal.
+     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -103,6 +91,7 @@ export class ApplicationCertificate extends pulumi.CustomResource {
         if (opts && opts.id) {
             const state = argsOrState as ApplicationCertificateState | undefined;
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
+            inputs["encoding"] = state ? state.encoding : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
             inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
@@ -118,6 +107,7 @@ export class ApplicationCertificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'value'");
             }
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
+            inputs["encoding"] = args ? args.encoding : undefined;
             inputs["endDate"] = args ? args.endDate : undefined;
             inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
             inputs["keyId"] = args ? args.keyId : undefined;
@@ -145,6 +135,10 @@ export interface ApplicationCertificateState {
      */
     readonly applicationObjectId?: pulumi.Input<string>;
     /**
+     * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     */
+    readonly encoding?: pulumi.Input<string>;
+    /**
      * The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     readonly endDate?: pulumi.Input<string>;
@@ -165,7 +159,7 @@ export interface ApplicationCertificateState {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * The Certificate for this Service Principal.
+     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
      */
     readonly value?: pulumi.Input<string>;
 }
@@ -179,6 +173,10 @@ export interface ApplicationCertificateArgs {
      */
     readonly applicationObjectId: pulumi.Input<string>;
     /**
+     * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     */
+    readonly encoding?: pulumi.Input<string>;
+    /**
      * The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     readonly endDate?: pulumi.Input<string>;
@@ -199,7 +197,7 @@ export interface ApplicationCertificateArgs {
      */
     readonly type?: pulumi.Input<string>;
     /**
-     * The Certificate for this Service Principal.
+     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
      */
     readonly value: pulumi.Input<string>;
 }

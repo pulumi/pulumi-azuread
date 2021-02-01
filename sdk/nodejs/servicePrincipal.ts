@@ -71,24 +71,24 @@ export class ServicePrincipal extends pulumi.CustomResource {
     }
 
     /**
-     * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+     * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
     public readonly appRoleAssignmentRequired!: pulumi.Output<boolean | undefined>;
     public /*out*/ readonly appRoles!: pulumi.Output<outputs.ServicePrincipalAppRole[]>;
     /**
-     * The ID of the Azure AD Application for which to create a Service Principal.
+     * The App ID of the Application for which to create a Service Principal.
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * The Display Name of the Azure Active Directory Application associated with this Service Principal.
+     * The Display Name of the Application associated with this Service Principal.
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
      */
     public readonly oauth2Permissions!: pulumi.Output<outputs.ServicePrincipalOauth2Permission[]>;
     /**
-     * The Service Principal's Object ID.
+     * The Object ID of the Service Principal.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
@@ -144,24 +144,24 @@ export class ServicePrincipal extends pulumi.CustomResource {
  */
 export interface ServicePrincipalState {
     /**
-     * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+     * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
     readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
     readonly appRoles?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalAppRole>[]>;
     /**
-     * The ID of the Azure AD Application for which to create a Service Principal.
+     * The App ID of the Application for which to create a Service Principal.
      */
     readonly applicationId?: pulumi.Input<string>;
     /**
-     * The Display Name of the Azure Active Directory Application associated with this Service Principal.
+     * The Display Name of the Application associated with this Service Principal.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
     /**
-     * The Service Principal's Object ID.
+     * The Object ID of the Service Principal.
      */
     readonly objectId?: pulumi.Input<string>;
     /**
@@ -175,15 +175,15 @@ export interface ServicePrincipalState {
  */
 export interface ServicePrincipalArgs {
     /**
-     * Does this Service Principal require an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application? Defaults to `false`.
+     * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
     readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
-     * The ID of the Azure AD Application for which to create a Service Principal.
+     * The App ID of the Application for which to create a Service Principal.
      */
     readonly applicationId: pulumi.Input<string>;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
      */
     readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
     /**

@@ -139,7 +139,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[]>;
     /**
-     * The Application ID.
+     * The Application ID (Client ID).
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
@@ -288,7 +288,7 @@ export interface ApplicationState {
      */
     readonly appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
-     * The Application ID.
+     * The Application ID (Client ID).
      */
     readonly applicationId?: pulumi.Input<string>;
     /**

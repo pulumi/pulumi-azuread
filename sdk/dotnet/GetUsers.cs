@@ -119,7 +119,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> UserPrincipalNames;
         /// <summary>
-        /// An Array of Azure AD Users. Each `user` object consists of the fields documented below.
+        /// A list of Azure AD Users. Each `user` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 

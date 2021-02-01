@@ -125,6 +125,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
         :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[str] object_id: The Object ID of the Group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
@@ -173,6 +174,9 @@ class Group(pulumi.CustomResource):
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
+        """
+        The Object ID of the Group.
+        """
         return pulumi.get(self, "object_id")
 
     @property

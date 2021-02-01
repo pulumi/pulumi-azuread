@@ -157,7 +157,7 @@ type ApplicationOauth2Permission struct {
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
 	Id *string `pulumi:"id"`
 	// Determines if the app role is enabled: Defaults to `true`.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -187,7 +187,7 @@ type ApplicationOauth2PermissionArgs struct {
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// Determines if the app role is enabled: Defaults to `true`.
 	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
@@ -262,7 +262,7 @@ func (o ApplicationOauth2PermissionOutput) AdminConsentDisplayName() pulumi.Stri
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
 func (o ApplicationOauth2PermissionOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
@@ -918,7 +918,7 @@ func (o ApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i pulu
 type ServicePrincipalAppRole struct {
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	Description        *string  `pulumi:"description"`
-	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+	// The Display Name of the Application associated with this Service Principal.
 	DisplayName *string `pulumi:"displayName"`
 	// The unique identifier for one of the `OAuth2Permission`.
 	Id *string `pulumi:"id"`
@@ -942,7 +942,7 @@ type ServicePrincipalAppRoleInput interface {
 type ServicePrincipalAppRoleArgs struct {
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	Description        pulumi.StringPtrInput   `pulumi:"description"`
-	// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+	// The Display Name of the Application associated with this Service Principal.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The unique identifier for one of the `OAuth2Permission`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
@@ -1011,7 +1011,7 @@ func (o ServicePrincipalAppRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The Display Name of the Azure Active Directory Application associated with this Service Principal.
+// The Display Name of the Application associated with this Service Principal.
 func (o ServicePrincipalAppRoleOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
@@ -1218,11 +1218,11 @@ type GetApplicationAppRoleType struct {
 	Description string `pulumi:"description"`
 	// Specifies the display name of the Application within Azure Active Directory.
 	DisplayName string `pulumi:"displayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id string `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled bool `pulumi:"isEnabled"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value string `pulumi:"value"`
 }
 
@@ -1244,11 +1244,11 @@ type GetApplicationAppRoleTypeArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Specifies the display name of the Application within Azure Active Directory.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1318,17 +1318,17 @@ func (o GetApplicationAppRoleTypeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 func (o GetApplicationAppRoleTypeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Determines if the app role is enabled.
+// Is this permission enabled?
 func (o GetApplicationAppRoleTypeOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationAppRoleType) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+// The name of this permission
 func (o GetApplicationAppRoleTypeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1358,17 +1358,17 @@ type GetApplicationOauth2Permission struct {
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
 	// The display name of the admin consent
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id string `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled bool `pulumi:"isEnabled"`
-	// The type of the permission
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 	Type string `pulumi:"type"`
 	// The description of the user consent
 	UserConsentDescription string `pulumi:"userConsentDescription"`
 	// The display name of the user consent
 	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value string `pulumi:"value"`
 }
 
@@ -1388,17 +1388,17 @@ type GetApplicationOauth2PermissionArgs struct {
 	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
 	// The display name of the admin consent
 	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// The type of the permission
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The description of the user consent
 	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
 	// The display name of the user consent
 	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1463,17 +1463,17 @@ func (o GetApplicationOauth2PermissionOutput) AdminConsentDisplayName() pulumi.S
 	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 func (o GetApplicationOauth2PermissionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Determines if the app role is enabled.
+// Is this permission enabled?
 func (o GetApplicationOauth2PermissionOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationOauth2Permission) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// The type of the permission
+// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 func (o GetApplicationOauth2PermissionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1488,7 +1488,7 @@ func (o GetApplicationOauth2PermissionOutput) UserConsentDisplayName() pulumi.St
 	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+// The name of this permission
 func (o GetApplicationOauth2PermissionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1925,9 +1925,9 @@ func (o GetApplicationRequiredResourceAccessArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetApplicationRequiredResourceAccessResourceAccess struct {
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id string `pulumi:"id"`
-	// The type of the permission
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 	Type string `pulumi:"type"`
 }
 
@@ -1943,9 +1943,9 @@ type GetApplicationRequiredResourceAccessResourceAccessInput interface {
 }
 
 type GetApplicationRequiredResourceAccessResourceAccessArgs struct {
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of the permission
+	// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -2000,12 +2000,12 @@ func (o GetApplicationRequiredResourceAccessResourceAccessOutput) ToGetApplicati
 	return o
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
 func (o GetApplicationRequiredResourceAccessResourceAccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccessResourceAccess) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of the permission
+// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
 func (o GetApplicationRequiredResourceAccessResourceAccessOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccessResourceAccess) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -2170,11 +2170,11 @@ type GetServicePrincipalAppRole struct {
 	Description string `pulumi:"description"`
 	// The Display Name of the Azure AD Application associated with this Service Principal.
 	DisplayName string `pulumi:"displayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission`
 	Id string `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled bool `pulumi:"isEnabled"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value string `pulumi:"value"`
 }
 
@@ -2196,11 +2196,11 @@ type GetServicePrincipalAppRoleArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// The Display Name of the Azure AD Application associated with this Service Principal.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission`
 	Id pulumi.StringInput `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2270,17 +2270,17 @@ func (o GetServicePrincipalAppRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission`
 func (o GetServicePrincipalAppRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Determines if the app role is enabled.
+// Is this permission enabled?
 func (o GetServicePrincipalAppRoleOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
 
-// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+// The name of this permission
 func (o GetServicePrincipalAppRoleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2310,9 +2310,9 @@ type GetServicePrincipalOauth2Permission struct {
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
 	// The display name of the admin consent
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission`
 	Id string `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled bool `pulumi:"isEnabled"`
 	// The type of the permission
 	Type string `pulumi:"type"`
@@ -2320,7 +2320,7 @@ type GetServicePrincipalOauth2Permission struct {
 	UserConsentDescription string `pulumi:"userConsentDescription"`
 	// The display name of the user consent
 	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value string `pulumi:"value"`
 }
 
@@ -2340,9 +2340,9 @@ type GetServicePrincipalOauth2PermissionArgs struct {
 	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
 	// The display name of the admin consent
 	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the `appRole`.
+	// The unique identifier for one of the `OAuth2Permission`
 	Id pulumi.StringInput `pulumi:"id"`
-	// Determines if the app role is enabled.
+	// Is this permission enabled?
 	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
 	// The type of the permission
 	Type pulumi.StringInput `pulumi:"type"`
@@ -2350,7 +2350,7 @@ type GetServicePrincipalOauth2PermissionArgs struct {
 	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
 	// The display name of the user consent
 	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The name of this permission
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2415,12 +2415,12 @@ func (o GetServicePrincipalOauth2PermissionOutput) AdminConsentDisplayName() pul
 	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the `appRole`.
+// The unique identifier for one of the `OAuth2Permission`
 func (o GetServicePrincipalOauth2PermissionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Determines if the app role is enabled.
+// Is this permission enabled?
 func (o GetServicePrincipalOauth2PermissionOutput) IsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) bool { return v.IsEnabled }).(pulumi.BoolOutput)
 }
@@ -2440,7 +2440,7 @@ func (o GetServicePrincipalOauth2PermissionOutput) UserConsentDisplayName() pulu
 	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+// The name of this permission
 func (o GetServicePrincipalOauth2PermissionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.Value }).(pulumi.StringOutput)
 }

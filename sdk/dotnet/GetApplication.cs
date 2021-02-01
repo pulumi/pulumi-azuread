@@ -166,7 +166,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> RequiredResourceAccesses;
         /// <summary>
-        /// The type of the permission
+        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
         /// </summary>
         public readonly string Type;
 
