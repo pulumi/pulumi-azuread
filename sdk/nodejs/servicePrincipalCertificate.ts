@@ -88,7 +88,8 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
     constructor(name: string, args: ServicePrincipalCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalCertificateArgs | ServicePrincipalCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServicePrincipalCertificateState | undefined;
             inputs["encoding"] = state ? state.encoding : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
@@ -100,10 +101,10 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ServicePrincipalCertificateArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["encoding"] = args ? args.encoding : undefined;
@@ -115,12 +116,8 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServicePrincipalCertificate.__pulumiType, name, inputs, opts);
     }

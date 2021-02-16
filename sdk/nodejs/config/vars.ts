@@ -6,21 +6,21 @@ import * as utilities from "../utilities";
 
 let __config = new pulumi.Config("azuread");
 
-export let clientCertificatePassword: string | undefined = __config.get("clientCertificatePassword") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") || "");
+export let clientCertificatePassword: string | undefined = __config.get("clientCertificatePassword");
 /**
  * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
  * Principal using a Client Certificate.
  */
-export let clientCertificatePath: string | undefined = __config.get("clientCertificatePath") || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH") || "");
+export let clientCertificatePath: string | undefined = __config.get("clientCertificatePath");
 /**
  * The Client ID which should be used for service principal authentication.
  */
-export let clientId: string | undefined = __config.get("clientId") || (utilities.getEnv("ARM_CLIENT_ID") || "");
+export let clientId: string | undefined = __config.get("clientId");
 /**
  * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
  * Certificate
  */
-export let clientSecret: string | undefined = __config.get("clientSecret") || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
+export let clientSecret: string | undefined = __config.get("clientSecret");
 /**
  * Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
  */
@@ -46,7 +46,7 @@ export let partnerId: string | undefined = __config.get("partnerId");
 /**
  * The Tenant ID which should be used. Works with all authentication methods except MSI.
  */
-export let tenantId: string | undefined = __config.get("tenantId") || (utilities.getEnv("ARM_TENANT_ID") || "");
+export let tenantId: string | undefined = __config.get("tenantId");
 /**
  * Allow Managed Service Identity to be used for Authentication.
  */

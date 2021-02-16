@@ -111,7 +111,8 @@ export class ApplicationOAuth2Permission extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationOAuth2PermissionArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationOAuth2PermissionArgs | ApplicationOAuth2PermissionState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationOAuth2PermissionState | undefined;
             inputs["adminConsentDescription"] = state ? state.adminConsentDescription : undefined;
             inputs["adminConsentDisplayName"] = state ? state.adminConsentDisplayName : undefined;
@@ -124,25 +125,25 @@ export class ApplicationOAuth2Permission extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationOAuth2PermissionArgs | undefined;
-            if ((!args || args.adminConsentDescription === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.adminConsentDescription === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'adminConsentDescription'");
             }
-            if ((!args || args.adminConsentDisplayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.adminConsentDisplayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'adminConsentDisplayName'");
             }
-            if ((!args || args.applicationObjectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationObjectId'");
             }
-            if ((!args || args.type === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.userConsentDescription === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userConsentDescription === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userConsentDescription'");
             }
-            if ((!args || args.userConsentDisplayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.userConsentDisplayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userConsentDisplayName'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["adminConsentDescription"] = args ? args.adminConsentDescription : undefined;
@@ -155,12 +156,8 @@ export class ApplicationOAuth2Permission extends pulumi.CustomResource {
             inputs["userConsentDisplayName"] = args ? args.userConsentDisplayName : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationOAuth2Permission.__pulumiType, name, inputs, opts);
     }

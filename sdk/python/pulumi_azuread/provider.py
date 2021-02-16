@@ -69,17 +69,9 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = dict()
 
-            if client_certificate_password is None:
-                client_certificate_password = (_utilities.get_env('ARM_CLIENT_CERTIFICATE_PASSWORD') or '')
             __props__['client_certificate_password'] = client_certificate_password
-            if client_certificate_path is None:
-                client_certificate_path = (_utilities.get_env('ARM_CLIENT_CERTIFICATE_PATH') or '')
             __props__['client_certificate_path'] = client_certificate_path
-            if client_id is None:
-                client_id = (_utilities.get_env('ARM_CLIENT_ID') or '')
             __props__['client_id'] = client_id
-            if client_secret is None:
-                client_secret = (_utilities.get_env('ARM_CLIENT_SECRET') or '')
             __props__['client_secret'] = client_secret
             __props__['disable_terraform_partner_id'] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
             if environment is None:
@@ -92,8 +84,6 @@ class Provider(pulumi.ProviderResource):
                 msi_endpoint = (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
             __props__['msi_endpoint'] = msi_endpoint
             __props__['partner_id'] = partner_id
-            if tenant_id is None:
-                tenant_id = (_utilities.get_env('ARM_TENANT_ID') or '')
             __props__['tenant_id'] = tenant_id
             if use_msi is None:
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)

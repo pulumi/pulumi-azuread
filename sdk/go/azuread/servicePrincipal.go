@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -196,6 +196,85 @@ func (i *ServicePrincipal) ToServicePrincipalOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalOutput)
 }
 
+func (i *ServicePrincipal) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return i.ToServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *ServicePrincipal) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPtrOutput)
+}
+
+type ServicePrincipalPtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput
+	ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput
+}
+
+type servicePrincipalPtrType ServicePrincipalArgs
+
+func (*servicePrincipalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipal)(nil))
+}
+
+func (i *servicePrincipalPtrType) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return i.ToServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalPtrType) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPtrOutput)
+}
+
+// ServicePrincipalArrayInput is an input type that accepts ServicePrincipalArray and ServicePrincipalArrayOutput values.
+// You can construct a concrete instance of `ServicePrincipalArrayInput` via:
+//
+//          ServicePrincipalArray{ ServicePrincipalArgs{...} }
+type ServicePrincipalArrayInput interface {
+	pulumi.Input
+
+	ToServicePrincipalArrayOutput() ServicePrincipalArrayOutput
+	ToServicePrincipalArrayOutputWithContext(context.Context) ServicePrincipalArrayOutput
+}
+
+type ServicePrincipalArray []ServicePrincipalInput
+
+func (ServicePrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServicePrincipal)(nil))
+}
+
+func (i ServicePrincipalArray) ToServicePrincipalArrayOutput() ServicePrincipalArrayOutput {
+	return i.ToServicePrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalArray) ToServicePrincipalArrayOutputWithContext(ctx context.Context) ServicePrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalArrayOutput)
+}
+
+// ServicePrincipalMapInput is an input type that accepts ServicePrincipalMap and ServicePrincipalMapOutput values.
+// You can construct a concrete instance of `ServicePrincipalMapInput` via:
+//
+//          ServicePrincipalMap{ "key": ServicePrincipalArgs{...} }
+type ServicePrincipalMapInput interface {
+	pulumi.Input
+
+	ToServicePrincipalMapOutput() ServicePrincipalMapOutput
+	ToServicePrincipalMapOutputWithContext(context.Context) ServicePrincipalMapOutput
+}
+
+type ServicePrincipalMap map[string]ServicePrincipalInput
+
+func (ServicePrincipalMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServicePrincipal)(nil))
+}
+
+func (i ServicePrincipalMap) ToServicePrincipalMapOutput() ServicePrincipalMapOutput {
+	return i.ToServicePrincipalMapOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalMap) ToServicePrincipalMapOutputWithContext(ctx context.Context) ServicePrincipalMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalMapOutput)
+}
+
 type ServicePrincipalOutput struct {
 	*pulumi.OutputState
 }
@@ -212,6 +291,75 @@ func (o ServicePrincipalOutput) ToServicePrincipalOutputWithContext(ctx context.
 	return o
 }
 
+func (o ServicePrincipalOutput) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return o.ToServicePrincipalPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalOutput) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return o.ApplyT(func(v ServicePrincipal) *ServicePrincipal {
+		return &v
+	}).(ServicePrincipalPtrOutput)
+}
+
+type ServicePrincipalPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePrincipalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipal)(nil))
+}
+
+func (o ServicePrincipalPtrOutput) ToServicePrincipalPtrOutput() ServicePrincipalPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalPtrOutput) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
+	return o
+}
+
+type ServicePrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipal)(nil))
+}
+
+func (o ServicePrincipalArrayOutput) ToServicePrincipalArrayOutput() ServicePrincipalArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalArrayOutput) ToServicePrincipalArrayOutputWithContext(ctx context.Context) ServicePrincipalArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalArrayOutput) Index(i pulumi.IntInput) ServicePrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipal {
+		return vs[0].([]ServicePrincipal)[vs[1].(int)]
+	}).(ServicePrincipalOutput)
+}
+
+type ServicePrincipalMapOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServicePrincipal)(nil))
+}
+
+func (o ServicePrincipalMapOutput) ToServicePrincipalMapOutput() ServicePrincipalMapOutput {
+	return o
+}
+
+func (o ServicePrincipalMapOutput) ToServicePrincipalMapOutputWithContext(ctx context.Context) ServicePrincipalMapOutput {
+	return o
+}
+
+func (o ServicePrincipalMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePrincipal {
+		return vs[0].(map[string]ServicePrincipal)[vs[1].(string)]
+	}).(ServicePrincipalOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServicePrincipalOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalPtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalMapOutput{})
 }

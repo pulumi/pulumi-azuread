@@ -100,7 +100,8 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
     constructor(name: string, args: ServicePrincipalPasswordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalPasswordArgs | ServicePrincipalPasswordState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServicePrincipalPasswordState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
@@ -111,10 +112,10 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ServicePrincipalPasswordArgs | undefined;
-            if ((!args || args.servicePrincipalId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["description"] = args ? args.description : undefined;
@@ -125,12 +126,8 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
             inputs["startDate"] = args ? args.startDate : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServicePrincipalPassword.__pulumiType, name, inputs, opts);
     }

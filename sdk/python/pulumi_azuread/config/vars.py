@@ -24,20 +24,20 @@ __all__ = [
 
 __config__ = pulumi.Config('azuread')
 
-client_certificate_password = __config__.get('clientCertificatePassword') or (_utilities.get_env('ARM_CLIENT_CERTIFICATE_PASSWORD') or '')
+client_certificate_password = __config__.get('clientCertificatePassword')
 
-client_certificate_path = __config__.get('clientCertificatePath') or (_utilities.get_env('ARM_CLIENT_CERTIFICATE_PATH') or '')
+client_certificate_path = __config__.get('clientCertificatePath')
 """
 The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
 Principal using a Client Certificate.
 """
 
-client_id = __config__.get('clientId') or (_utilities.get_env('ARM_CLIENT_ID') or '')
+client_id = __config__.get('clientId')
 """
 The Client ID which should be used for service principal authentication.
 """
 
-client_secret = __config__.get('clientSecret') or (_utilities.get_env('ARM_CLIENT_SECRET') or '')
+client_secret = __config__.get('clientSecret')
 """
 The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
 Certificate
@@ -70,7 +70,7 @@ partner_id = __config__.get('partnerId')
 A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 """
 
-tenant_id = __config__.get('tenantId') or (_utilities.get_env('ARM_TENANT_ID') or '')
+tenant_id = __config__.get('tenantId')
 """
 The Tenant ID which should be used. Works with all authentication methods except MSI.
 """

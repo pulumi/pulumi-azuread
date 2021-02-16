@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -240,6 +240,85 @@ func (i *ApplicationOAuth2Permission) ToApplicationOAuth2PermissionOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOAuth2PermissionOutput)
 }
 
+func (i *ApplicationOAuth2Permission) ToApplicationOAuth2PermissionPtrOutput() ApplicationOAuth2PermissionPtrOutput {
+	return i.ToApplicationOAuth2PermissionPtrOutputWithContext(context.Background())
+}
+
+func (i *ApplicationOAuth2Permission) ToApplicationOAuth2PermissionPtrOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOAuth2PermissionPtrOutput)
+}
+
+type ApplicationOAuth2PermissionPtrInput interface {
+	pulumi.Input
+
+	ToApplicationOAuth2PermissionPtrOutput() ApplicationOAuth2PermissionPtrOutput
+	ToApplicationOAuth2PermissionPtrOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionPtrOutput
+}
+
+type applicationOAuth2PermissionPtrType ApplicationOAuth2PermissionArgs
+
+func (*applicationOAuth2PermissionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationOAuth2Permission)(nil))
+}
+
+func (i *applicationOAuth2PermissionPtrType) ToApplicationOAuth2PermissionPtrOutput() ApplicationOAuth2PermissionPtrOutput {
+	return i.ToApplicationOAuth2PermissionPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationOAuth2PermissionPtrType) ToApplicationOAuth2PermissionPtrOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOAuth2PermissionPtrOutput)
+}
+
+// ApplicationOAuth2PermissionArrayInput is an input type that accepts ApplicationOAuth2PermissionArray and ApplicationOAuth2PermissionArrayOutput values.
+// You can construct a concrete instance of `ApplicationOAuth2PermissionArrayInput` via:
+//
+//          ApplicationOAuth2PermissionArray{ ApplicationOAuth2PermissionArgs{...} }
+type ApplicationOAuth2PermissionArrayInput interface {
+	pulumi.Input
+
+	ToApplicationOAuth2PermissionArrayOutput() ApplicationOAuth2PermissionArrayOutput
+	ToApplicationOAuth2PermissionArrayOutputWithContext(context.Context) ApplicationOAuth2PermissionArrayOutput
+}
+
+type ApplicationOAuth2PermissionArray []ApplicationOAuth2PermissionInput
+
+func (ApplicationOAuth2PermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApplicationOAuth2Permission)(nil))
+}
+
+func (i ApplicationOAuth2PermissionArray) ToApplicationOAuth2PermissionArrayOutput() ApplicationOAuth2PermissionArrayOutput {
+	return i.ToApplicationOAuth2PermissionArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationOAuth2PermissionArray) ToApplicationOAuth2PermissionArrayOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOAuth2PermissionArrayOutput)
+}
+
+// ApplicationOAuth2PermissionMapInput is an input type that accepts ApplicationOAuth2PermissionMap and ApplicationOAuth2PermissionMapOutput values.
+// You can construct a concrete instance of `ApplicationOAuth2PermissionMapInput` via:
+//
+//          ApplicationOAuth2PermissionMap{ "key": ApplicationOAuth2PermissionArgs{...} }
+type ApplicationOAuth2PermissionMapInput interface {
+	pulumi.Input
+
+	ToApplicationOAuth2PermissionMapOutput() ApplicationOAuth2PermissionMapOutput
+	ToApplicationOAuth2PermissionMapOutputWithContext(context.Context) ApplicationOAuth2PermissionMapOutput
+}
+
+type ApplicationOAuth2PermissionMap map[string]ApplicationOAuth2PermissionInput
+
+func (ApplicationOAuth2PermissionMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApplicationOAuth2Permission)(nil))
+}
+
+func (i ApplicationOAuth2PermissionMap) ToApplicationOAuth2PermissionMapOutput() ApplicationOAuth2PermissionMapOutput {
+	return i.ToApplicationOAuth2PermissionMapOutputWithContext(context.Background())
+}
+
+func (i ApplicationOAuth2PermissionMap) ToApplicationOAuth2PermissionMapOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOAuth2PermissionMapOutput)
+}
+
 type ApplicationOAuth2PermissionOutput struct {
 	*pulumi.OutputState
 }
@@ -256,6 +335,75 @@ func (o ApplicationOAuth2PermissionOutput) ToApplicationOAuth2PermissionOutputWi
 	return o
 }
 
+func (o ApplicationOAuth2PermissionOutput) ToApplicationOAuth2PermissionPtrOutput() ApplicationOAuth2PermissionPtrOutput {
+	return o.ToApplicationOAuth2PermissionPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationOAuth2PermissionOutput) ToApplicationOAuth2PermissionPtrOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionPtrOutput {
+	return o.ApplyT(func(v ApplicationOAuth2Permission) *ApplicationOAuth2Permission {
+		return &v
+	}).(ApplicationOAuth2PermissionPtrOutput)
+}
+
+type ApplicationOAuth2PermissionPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationOAuth2PermissionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationOAuth2Permission)(nil))
+}
+
+func (o ApplicationOAuth2PermissionPtrOutput) ToApplicationOAuth2PermissionPtrOutput() ApplicationOAuth2PermissionPtrOutput {
+	return o
+}
+
+func (o ApplicationOAuth2PermissionPtrOutput) ToApplicationOAuth2PermissionPtrOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionPtrOutput {
+	return o
+}
+
+type ApplicationOAuth2PermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOAuth2PermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOAuth2Permission)(nil))
+}
+
+func (o ApplicationOAuth2PermissionArrayOutput) ToApplicationOAuth2PermissionArrayOutput() ApplicationOAuth2PermissionArrayOutput {
+	return o
+}
+
+func (o ApplicationOAuth2PermissionArrayOutput) ToApplicationOAuth2PermissionArrayOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionArrayOutput {
+	return o
+}
+
+func (o ApplicationOAuth2PermissionArrayOutput) Index(i pulumi.IntInput) ApplicationOAuth2PermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOAuth2Permission {
+		return vs[0].([]ApplicationOAuth2Permission)[vs[1].(int)]
+	}).(ApplicationOAuth2PermissionOutput)
+}
+
+type ApplicationOAuth2PermissionMapOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOAuth2PermissionMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApplicationOAuth2Permission)(nil))
+}
+
+func (o ApplicationOAuth2PermissionMapOutput) ToApplicationOAuth2PermissionMapOutput() ApplicationOAuth2PermissionMapOutput {
+	return o
+}
+
+func (o ApplicationOAuth2PermissionMapOutput) ToApplicationOAuth2PermissionMapOutputWithContext(ctx context.Context) ApplicationOAuth2PermissionMapOutput {
+	return o
+}
+
+func (o ApplicationOAuth2PermissionMapOutput) MapIndex(k pulumi.StringInput) ApplicationOAuth2PermissionOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationOAuth2Permission {
+		return vs[0].(map[string]ApplicationOAuth2Permission)[vs[1].(string)]
+	}).(ApplicationOAuth2PermissionOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationOAuth2PermissionOutput{})
+	pulumi.RegisterOutputType(ApplicationOAuth2PermissionPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationOAuth2PermissionArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationOAuth2PermissionMapOutput{})
 }

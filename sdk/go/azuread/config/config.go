@@ -9,40 +9,24 @@ import (
 )
 
 func GetClientCertificatePassword(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "azuread:clientCertificatePassword")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string)
+	return config.Get(ctx, "azuread:clientCertificatePassword")
 }
 
 // The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
 // Principal using a Client Certificate.
 func GetClientCertificatePath(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "azuread:clientCertificatePath")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PATH").(string)
+	return config.Get(ctx, "azuread:clientCertificatePath")
 }
 
 // The Client ID which should be used for service principal authentication.
 func GetClientId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "azuread:clientId")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ARM_CLIENT_ID").(string)
+	return config.Get(ctx, "azuread:clientId")
 }
 
 // The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
 // Certificate
 func GetClientSecret(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "azuread:clientSecret")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ARM_CLIENT_SECRET").(string)
+	return config.Get(ctx, "azuread:clientSecret")
 }
 
 // Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
@@ -82,11 +66,7 @@ func GetPartnerId(ctx *pulumi.Context) string {
 
 // The Tenant ID which should be used. Works with all authentication methods except MSI.
 func GetTenantId(ctx *pulumi.Context) string {
-	v, err := config.Try(ctx, "azuread:tenantId")
-	if err == nil {
-		return v
-	}
-	return getEnvOrDefault("", nil, "ARM_TENANT_ID").(string)
+	return config.Get(ctx, "azuread:tenantId")
 }
 
 // Allow Managed Service Identity to be used for Authentication.

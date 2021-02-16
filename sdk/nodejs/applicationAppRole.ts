@@ -101,7 +101,8 @@ export class ApplicationAppRole extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationAppRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationAppRoleArgs | ApplicationAppRoleState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationAppRoleState | undefined;
             inputs["allowedMemberTypes"] = state ? state.allowedMemberTypes : undefined;
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
@@ -112,16 +113,16 @@ export class ApplicationAppRole extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationAppRoleArgs | undefined;
-            if ((!args || args.allowedMemberTypes === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.allowedMemberTypes === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'allowedMemberTypes'");
             }
-            if ((!args || args.applicationObjectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationObjectId'");
             }
-            if ((!args || args.description === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.displayName === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["allowedMemberTypes"] = args ? args.allowedMemberTypes : undefined;
@@ -132,12 +133,8 @@ export class ApplicationAppRole extends pulumi.CustomResource {
             inputs["roleId"] = args ? args.roleId : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationAppRole.__pulumiType, name, inputs, opts);
     }

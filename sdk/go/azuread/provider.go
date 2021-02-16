@@ -29,26 +29,11 @@ func NewProvider(ctx *pulumi.Context,
 	if args.MetadataHost == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataHost'")
 	}
-	if args.ClientCertificatePassword == nil {
-		args.ClientCertificatePassword = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PASSWORD").(string))
-	}
-	if args.ClientCertificatePath == nil {
-		args.ClientCertificatePath = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_CERTIFICATE_PATH").(string))
-	}
-	if args.ClientId == nil {
-		args.ClientId = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_ID").(string))
-	}
-	if args.ClientSecret == nil {
-		args.ClientSecret = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_CLIENT_SECRET").(string))
-	}
 	if args.Environment == nil {
 		args.Environment = pulumi.StringPtr(getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string))
 	}
 	if args.MsiEndpoint == nil {
 		args.MsiEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string))
-	}
-	if args.TenantId == nil {
-		args.TenantId = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_TENANT_ID").(string))
 	}
 	if args.UseMsi == nil {
 		args.UseMsi = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI").(bool))
@@ -141,6 +126,35 @@ func (i *Provider) ToProviderOutputWithContext(ctx context.Context) ProviderOutp
 	return pulumi.ToOutputWithContext(ctx, i).(ProviderOutput)
 }
 
+func (i *Provider) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *Provider) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
+type ProviderPtrInput interface {
+	pulumi.Input
+
+	ToProviderPtrOutput() ProviderPtrOutput
+	ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput
+}
+
+type providerPtrType ProviderArgs
+
+func (*providerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (i *providerPtrType) ToProviderPtrOutput() ProviderPtrOutput {
+	return i.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (i *providerPtrType) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ProviderPtrOutput)
+}
+
 type ProviderOutput struct {
 	*pulumi.OutputState
 }
@@ -157,6 +171,33 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+func (o ProviderOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o.ToProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ProviderOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o.ApplyT(func(v Provider) *Provider {
+		return &v
+	}).(ProviderPtrOutput)
+}
+
+type ProviderPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ProviderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Provider)(nil))
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutput() ProviderPtrOutput {
+	return o
+}
+
+func (o ProviderPtrOutput) ToProviderPtrOutputWithContext(ctx context.Context) ProviderPtrOutput {
+	return o
+}
+
 func init() {
 	pulumi.RegisterOutputType(ProviderOutput{})
+	pulumi.RegisterOutputType(ProviderPtrOutput{})
 }

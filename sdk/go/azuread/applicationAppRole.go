@@ -21,7 +21,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -211,6 +211,85 @@ func (i *ApplicationAppRole) ToApplicationAppRoleOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleOutput)
 }
 
+func (i *ApplicationAppRole) ToApplicationAppRolePtrOutput() ApplicationAppRolePtrOutput {
+	return i.ToApplicationAppRolePtrOutputWithContext(context.Background())
+}
+
+func (i *ApplicationAppRole) ToApplicationAppRolePtrOutputWithContext(ctx context.Context) ApplicationAppRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRolePtrOutput)
+}
+
+type ApplicationAppRolePtrInput interface {
+	pulumi.Input
+
+	ToApplicationAppRolePtrOutput() ApplicationAppRolePtrOutput
+	ToApplicationAppRolePtrOutputWithContext(ctx context.Context) ApplicationAppRolePtrOutput
+}
+
+type applicationAppRolePtrType ApplicationAppRoleArgs
+
+func (*applicationAppRolePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationAppRole)(nil))
+}
+
+func (i *applicationAppRolePtrType) ToApplicationAppRolePtrOutput() ApplicationAppRolePtrOutput {
+	return i.ToApplicationAppRolePtrOutputWithContext(context.Background())
+}
+
+func (i *applicationAppRolePtrType) ToApplicationAppRolePtrOutputWithContext(ctx context.Context) ApplicationAppRolePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRolePtrOutput)
+}
+
+// ApplicationAppRoleArrayInput is an input type that accepts ApplicationAppRoleArray and ApplicationAppRoleArrayOutput values.
+// You can construct a concrete instance of `ApplicationAppRoleArrayInput` via:
+//
+//          ApplicationAppRoleArray{ ApplicationAppRoleArgs{...} }
+type ApplicationAppRoleArrayInput interface {
+	pulumi.Input
+
+	ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput
+	ToApplicationAppRoleArrayOutputWithContext(context.Context) ApplicationAppRoleArrayOutput
+}
+
+type ApplicationAppRoleArray []ApplicationAppRoleInput
+
+func (ApplicationAppRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ApplicationAppRole)(nil))
+}
+
+func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput {
+	return i.ToApplicationAppRoleArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleArrayOutput)
+}
+
+// ApplicationAppRoleMapInput is an input type that accepts ApplicationAppRoleMap and ApplicationAppRoleMapOutput values.
+// You can construct a concrete instance of `ApplicationAppRoleMapInput` via:
+//
+//          ApplicationAppRoleMap{ "key": ApplicationAppRoleArgs{...} }
+type ApplicationAppRoleMapInput interface {
+	pulumi.Input
+
+	ToApplicationAppRoleMapOutput() ApplicationAppRoleMapOutput
+	ToApplicationAppRoleMapOutputWithContext(context.Context) ApplicationAppRoleMapOutput
+}
+
+type ApplicationAppRoleMap map[string]ApplicationAppRoleInput
+
+func (ApplicationAppRoleMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ApplicationAppRole)(nil))
+}
+
+func (i ApplicationAppRoleMap) ToApplicationAppRoleMapOutput() ApplicationAppRoleMapOutput {
+	return i.ToApplicationAppRoleMapOutputWithContext(context.Background())
+}
+
+func (i ApplicationAppRoleMap) ToApplicationAppRoleMapOutputWithContext(ctx context.Context) ApplicationAppRoleMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleMapOutput)
+}
+
 type ApplicationAppRoleOutput struct {
 	*pulumi.OutputState
 }
@@ -227,6 +306,75 @@ func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutputWithContext(ctx cont
 	return o
 }
 
+func (o ApplicationAppRoleOutput) ToApplicationAppRolePtrOutput() ApplicationAppRolePtrOutput {
+	return o.ToApplicationAppRolePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationAppRoleOutput) ToApplicationAppRolePtrOutputWithContext(ctx context.Context) ApplicationAppRolePtrOutput {
+	return o.ApplyT(func(v ApplicationAppRole) *ApplicationAppRole {
+		return &v
+	}).(ApplicationAppRolePtrOutput)
+}
+
+type ApplicationAppRolePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ApplicationAppRolePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationAppRole)(nil))
+}
+
+func (o ApplicationAppRolePtrOutput) ToApplicationAppRolePtrOutput() ApplicationAppRolePtrOutput {
+	return o
+}
+
+func (o ApplicationAppRolePtrOutput) ToApplicationAppRolePtrOutputWithContext(ctx context.Context) ApplicationAppRolePtrOutput {
+	return o
+}
+
+type ApplicationAppRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppRole)(nil))
+}
+
+func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput {
+	return o
+}
+
+func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
+	return o
+}
+
+func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppRole {
+		return vs[0].([]ApplicationAppRole)[vs[1].(int)]
+	}).(ApplicationAppRoleOutput)
+}
+
+type ApplicationAppRoleMapOutput struct{ *pulumi.OutputState }
+
+func (ApplicationAppRoleMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ApplicationAppRole)(nil))
+}
+
+func (o ApplicationAppRoleMapOutput) ToApplicationAppRoleMapOutput() ApplicationAppRoleMapOutput {
+	return o
+}
+
+func (o ApplicationAppRoleMapOutput) ToApplicationAppRoleMapOutputWithContext(ctx context.Context) ApplicationAppRoleMapOutput {
+	return o
+}
+
+func (o ApplicationAppRoleMapOutput) MapIndex(k pulumi.StringInput) ApplicationAppRoleOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationAppRole {
+		return vs[0].(map[string]ApplicationAppRole)[vs[1].(string)]
+	}).(ApplicationAppRoleOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ApplicationAppRoleOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRolePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRoleMapOutput{})
 }

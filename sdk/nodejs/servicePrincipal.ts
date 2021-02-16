@@ -106,7 +106,8 @@ export class ServicePrincipal extends pulumi.CustomResource {
     constructor(name: string, args: ServicePrincipalArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalArgs | ServicePrincipalState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
             inputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
             inputs["appRoles"] = state ? state.appRoles : undefined;
@@ -117,7 +118,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
-            if ((!args || args.applicationId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
             inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
@@ -128,12 +129,8 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["displayName"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ServicePrincipal.__pulumiType, name, inputs, opts);
     }

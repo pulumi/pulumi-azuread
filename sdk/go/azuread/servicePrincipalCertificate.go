@@ -181,6 +181,85 @@ func (i *ServicePrincipalCertificate) ToServicePrincipalCertificateOutputWithCon
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateOutput)
 }
 
+func (i *ServicePrincipalCertificate) ToServicePrincipalCertificatePtrOutput() ServicePrincipalCertificatePtrOutput {
+	return i.ToServicePrincipalCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *ServicePrincipalCertificate) ToServicePrincipalCertificatePtrOutputWithContext(ctx context.Context) ServicePrincipalCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificatePtrOutput)
+}
+
+type ServicePrincipalCertificatePtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCertificatePtrOutput() ServicePrincipalCertificatePtrOutput
+	ToServicePrincipalCertificatePtrOutputWithContext(ctx context.Context) ServicePrincipalCertificatePtrOutput
+}
+
+type servicePrincipalCertificatePtrType ServicePrincipalCertificateArgs
+
+func (*servicePrincipalCertificatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalCertificate)(nil))
+}
+
+func (i *servicePrincipalCertificatePtrType) ToServicePrincipalCertificatePtrOutput() ServicePrincipalCertificatePtrOutput {
+	return i.ToServicePrincipalCertificatePtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalCertificatePtrType) ToServicePrincipalCertificatePtrOutputWithContext(ctx context.Context) ServicePrincipalCertificatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificatePtrOutput)
+}
+
+// ServicePrincipalCertificateArrayInput is an input type that accepts ServicePrincipalCertificateArray and ServicePrincipalCertificateArrayOutput values.
+// You can construct a concrete instance of `ServicePrincipalCertificateArrayInput` via:
+//
+//          ServicePrincipalCertificateArray{ ServicePrincipalCertificateArgs{...} }
+type ServicePrincipalCertificateArrayInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCertificateArrayOutput() ServicePrincipalCertificateArrayOutput
+	ToServicePrincipalCertificateArrayOutputWithContext(context.Context) ServicePrincipalCertificateArrayOutput
+}
+
+type ServicePrincipalCertificateArray []ServicePrincipalCertificateInput
+
+func (ServicePrincipalCertificateArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServicePrincipalCertificate)(nil))
+}
+
+func (i ServicePrincipalCertificateArray) ToServicePrincipalCertificateArrayOutput() ServicePrincipalCertificateArrayOutput {
+	return i.ToServicePrincipalCertificateArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalCertificateArray) ToServicePrincipalCertificateArrayOutputWithContext(ctx context.Context) ServicePrincipalCertificateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateArrayOutput)
+}
+
+// ServicePrincipalCertificateMapInput is an input type that accepts ServicePrincipalCertificateMap and ServicePrincipalCertificateMapOutput values.
+// You can construct a concrete instance of `ServicePrincipalCertificateMapInput` via:
+//
+//          ServicePrincipalCertificateMap{ "key": ServicePrincipalCertificateArgs{...} }
+type ServicePrincipalCertificateMapInput interface {
+	pulumi.Input
+
+	ToServicePrincipalCertificateMapOutput() ServicePrincipalCertificateMapOutput
+	ToServicePrincipalCertificateMapOutputWithContext(context.Context) ServicePrincipalCertificateMapOutput
+}
+
+type ServicePrincipalCertificateMap map[string]ServicePrincipalCertificateInput
+
+func (ServicePrincipalCertificateMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServicePrincipalCertificate)(nil))
+}
+
+func (i ServicePrincipalCertificateMap) ToServicePrincipalCertificateMapOutput() ServicePrincipalCertificateMapOutput {
+	return i.ToServicePrincipalCertificateMapOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalCertificateMap) ToServicePrincipalCertificateMapOutputWithContext(ctx context.Context) ServicePrincipalCertificateMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalCertificateMapOutput)
+}
+
 type ServicePrincipalCertificateOutput struct {
 	*pulumi.OutputState
 }
@@ -197,6 +276,75 @@ func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutputWi
 	return o
 }
 
+func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificatePtrOutput() ServicePrincipalCertificatePtrOutput {
+	return o.ToServicePrincipalCertificatePtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificatePtrOutputWithContext(ctx context.Context) ServicePrincipalCertificatePtrOutput {
+	return o.ApplyT(func(v ServicePrincipalCertificate) *ServicePrincipalCertificate {
+		return &v
+	}).(ServicePrincipalCertificatePtrOutput)
+}
+
+type ServicePrincipalCertificatePtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePrincipalCertificatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalCertificate)(nil))
+}
+
+func (o ServicePrincipalCertificatePtrOutput) ToServicePrincipalCertificatePtrOutput() ServicePrincipalCertificatePtrOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificatePtrOutput) ToServicePrincipalCertificatePtrOutputWithContext(ctx context.Context) ServicePrincipalCertificatePtrOutput {
+	return o
+}
+
+type ServicePrincipalCertificateArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCertificateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalCertificate)(nil))
+}
+
+func (o ServicePrincipalCertificateArrayOutput) ToServicePrincipalCertificateArrayOutput() ServicePrincipalCertificateArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateArrayOutput) ToServicePrincipalCertificateArrayOutputWithContext(ctx context.Context) ServicePrincipalCertificateArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateArrayOutput) Index(i pulumi.IntInput) ServicePrincipalCertificateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalCertificate {
+		return vs[0].([]ServicePrincipalCertificate)[vs[1].(int)]
+	}).(ServicePrincipalCertificateOutput)
+}
+
+type ServicePrincipalCertificateMapOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalCertificateMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServicePrincipalCertificate)(nil))
+}
+
+func (o ServicePrincipalCertificateMapOutput) ToServicePrincipalCertificateMapOutput() ServicePrincipalCertificateMapOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateMapOutput) ToServicePrincipalCertificateMapOutputWithContext(ctx context.Context) ServicePrincipalCertificateMapOutput {
+	return o
+}
+
+func (o ServicePrincipalCertificateMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalCertificateOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePrincipalCertificate {
+		return vs[0].(map[string]ServicePrincipalCertificate)[vs[1].(string)]
+	}).(ServicePrincipalCertificateOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServicePrincipalCertificateOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificatePtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificateArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalCertificateMapOutput{})
 }

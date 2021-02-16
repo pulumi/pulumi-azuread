@@ -35,28 +35,25 @@ export class Provider extends pulumi.ProviderResource {
      */
     constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
+        opts = opts || {};
         {
-            if ((!args || args.metadataHost === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.metadataHost === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metadataHost'");
             }
-            inputs["clientCertificatePassword"] = (args ? args.clientCertificatePassword : undefined) || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") || "");
-            inputs["clientCertificatePath"] = (args ? args.clientCertificatePath : undefined) || (utilities.getEnv("ARM_CLIENT_CERTIFICATE_PATH") || "");
-            inputs["clientId"] = (args ? args.clientId : undefined) || (utilities.getEnv("ARM_CLIENT_ID") || "");
-            inputs["clientSecret"] = (args ? args.clientSecret : undefined) || (utilities.getEnv("ARM_CLIENT_SECRET") || "");
+            inputs["clientCertificatePassword"] = args ? args.clientCertificatePassword : undefined;
+            inputs["clientCertificatePath"] = args ? args.clientCertificatePath : undefined;
+            inputs["clientId"] = args ? args.clientId : undefined;
+            inputs["clientSecret"] = args ? args.clientSecret : undefined;
             inputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             inputs["environment"] = (args ? args.environment : undefined) || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             inputs["metadataHost"] = args ? args.metadataHost : undefined;
             inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
             inputs["partnerId"] = args ? args.partnerId : undefined;
-            inputs["tenantId"] = (args ? args.tenantId : undefined) || (utilities.getEnv("ARM_TENANT_ID") || "");
+            inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) || (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

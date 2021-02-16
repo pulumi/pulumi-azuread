@@ -78,40 +78,10 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
 		Config: map[string]*tfbridge.SchemaInfo{
-			"client_id": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"ARM_CLIENT_ID"},
-				},
-			},
 			"environment": {
 				Default: &tfbridge.DefaultInfo{
 					Value:   "public",
 					EnvVars: []string{"ARM_ENVIRONMENT"},
-				},
-			},
-			"tenant_id": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"ARM_TENANT_ID"},
-				},
-			},
-			"client_certificate_password": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"},
-				},
-			},
-			"client_certificate_path": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"ARM_CLIENT_CERTIFICATE_PATH"},
-				},
-			},
-			"client_secret": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"ARM_CLIENT_SECRET"},
 				},
 			},
 			"msi_endpoint": {
