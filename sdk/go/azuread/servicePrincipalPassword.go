@@ -23,7 +23,7 @@ import (
 // import (
 // 	"fmt"
 //
-// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread/"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -209,6 +209,85 @@ func (i *ServicePrincipalPassword) ToServicePrincipalPasswordOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordOutput)
 }
 
+func (i *ServicePrincipalPassword) ToServicePrincipalPasswordPtrOutput() ServicePrincipalPasswordPtrOutput {
+	return i.ToServicePrincipalPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *ServicePrincipalPassword) ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordPtrOutput)
+}
+
+type ServicePrincipalPasswordPtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalPasswordPtrOutput() ServicePrincipalPasswordPtrOutput
+	ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput
+}
+
+type servicePrincipalPasswordPtrType ServicePrincipalPasswordArgs
+
+func (*servicePrincipalPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalPassword)(nil))
+}
+
+func (i *servicePrincipalPasswordPtrType) ToServicePrincipalPasswordPtrOutput() ServicePrincipalPasswordPtrOutput {
+	return i.ToServicePrincipalPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalPasswordPtrType) ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordPtrOutput)
+}
+
+// ServicePrincipalPasswordArrayInput is an input type that accepts ServicePrincipalPasswordArray and ServicePrincipalPasswordArrayOutput values.
+// You can construct a concrete instance of `ServicePrincipalPasswordArrayInput` via:
+//
+//          ServicePrincipalPasswordArray{ ServicePrincipalPasswordArgs{...} }
+type ServicePrincipalPasswordArrayInput interface {
+	pulumi.Input
+
+	ToServicePrincipalPasswordArrayOutput() ServicePrincipalPasswordArrayOutput
+	ToServicePrincipalPasswordArrayOutputWithContext(context.Context) ServicePrincipalPasswordArrayOutput
+}
+
+type ServicePrincipalPasswordArray []ServicePrincipalPasswordInput
+
+func (ServicePrincipalPasswordArray) ElementType() reflect.Type {
+	return reflect.TypeOf(([]*ServicePrincipalPassword)(nil))
+}
+
+func (i ServicePrincipalPasswordArray) ToServicePrincipalPasswordArrayOutput() ServicePrincipalPasswordArrayOutput {
+	return i.ToServicePrincipalPasswordArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalPasswordArray) ToServicePrincipalPasswordArrayOutputWithContext(ctx context.Context) ServicePrincipalPasswordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordArrayOutput)
+}
+
+// ServicePrincipalPasswordMapInput is an input type that accepts ServicePrincipalPasswordMap and ServicePrincipalPasswordMapOutput values.
+// You can construct a concrete instance of `ServicePrincipalPasswordMapInput` via:
+//
+//          ServicePrincipalPasswordMap{ "key": ServicePrincipalPasswordArgs{...} }
+type ServicePrincipalPasswordMapInput interface {
+	pulumi.Input
+
+	ToServicePrincipalPasswordMapOutput() ServicePrincipalPasswordMapOutput
+	ToServicePrincipalPasswordMapOutputWithContext(context.Context) ServicePrincipalPasswordMapOutput
+}
+
+type ServicePrincipalPasswordMap map[string]ServicePrincipalPasswordInput
+
+func (ServicePrincipalPasswordMap) ElementType() reflect.Type {
+	return reflect.TypeOf((map[string]*ServicePrincipalPassword)(nil))
+}
+
+func (i ServicePrincipalPasswordMap) ToServicePrincipalPasswordMapOutput() ServicePrincipalPasswordMapOutput {
+	return i.ToServicePrincipalPasswordMapOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalPasswordMap) ToServicePrincipalPasswordMapOutputWithContext(ctx context.Context) ServicePrincipalPasswordMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordMapOutput)
+}
+
 type ServicePrincipalPasswordOutput struct {
 	*pulumi.OutputState
 }
@@ -225,6 +304,75 @@ func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutputWithCont
 	return o
 }
 
+func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordPtrOutput() ServicePrincipalPasswordPtrOutput {
+	return o.ToServicePrincipalPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalPassword) *ServicePrincipalPassword {
+		return &v
+	}).(ServicePrincipalPasswordPtrOutput)
+}
+
+type ServicePrincipalPasswordPtrOutput struct {
+	*pulumi.OutputState
+}
+
+func (ServicePrincipalPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalPassword)(nil))
+}
+
+func (o ServicePrincipalPasswordPtrOutput) ToServicePrincipalPasswordPtrOutput() ServicePrincipalPasswordPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalPasswordPtrOutput) ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput {
+	return o
+}
+
+type ServicePrincipalPasswordArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalPasswordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalPassword)(nil))
+}
+
+func (o ServicePrincipalPasswordArrayOutput) ToServicePrincipalPasswordArrayOutput() ServicePrincipalPasswordArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalPasswordArrayOutput) ToServicePrincipalPasswordArrayOutputWithContext(ctx context.Context) ServicePrincipalPasswordArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalPasswordArrayOutput) Index(i pulumi.IntInput) ServicePrincipalPasswordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalPassword {
+		return vs[0].([]ServicePrincipalPassword)[vs[1].(int)]
+	}).(ServicePrincipalPasswordOutput)
+}
+
+type ServicePrincipalPasswordMapOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalPasswordMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]ServicePrincipalPassword)(nil))
+}
+
+func (o ServicePrincipalPasswordMapOutput) ToServicePrincipalPasswordMapOutput() ServicePrincipalPasswordMapOutput {
+	return o
+}
+
+func (o ServicePrincipalPasswordMapOutput) ToServicePrincipalPasswordMapOutputWithContext(ctx context.Context) ServicePrincipalPasswordMapOutput {
+	return o
+}
+
+func (o ServicePrincipalPasswordMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalPasswordOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePrincipalPassword {
+		return vs[0].(map[string]ServicePrincipalPassword)[vs[1].(string)]
+	}).(ServicePrincipalPasswordOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(ServicePrincipalPasswordOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalPasswordPtrOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalPasswordArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalPasswordMapOutput{})
 }

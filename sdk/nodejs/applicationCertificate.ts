@@ -88,7 +88,8 @@ export class ApplicationCertificate extends pulumi.CustomResource {
     constructor(name: string, args: ApplicationCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationCertificateArgs | ApplicationCertificateState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as ApplicationCertificateState | undefined;
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             inputs["encoding"] = state ? state.encoding : undefined;
@@ -100,10 +101,10 @@ export class ApplicationCertificate extends pulumi.CustomResource {
             inputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationCertificateArgs | undefined;
-            if ((!args || args.applicationObjectId === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationObjectId'");
             }
-            if ((!args || args.value === undefined) && !(opts && opts.urn)) {
+            if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
@@ -115,12 +116,8 @@ export class ApplicationCertificate extends pulumi.CustomResource {
             inputs["type"] = args ? args.type : undefined;
             inputs["value"] = args ? args.value : undefined;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(ApplicationCertificate.__pulumiType, name, inputs, opts);
     }

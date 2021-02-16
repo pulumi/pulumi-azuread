@@ -114,13 +114,8 @@ namespace Pulumi.AzureAD
 
         public ProviderArgs()
         {
-            ClientCertificatePassword = Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") ?? "";
-            ClientCertificatePath = Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PATH") ?? "";
-            ClientId = Utilities.GetEnv("ARM_CLIENT_ID") ?? "";
-            ClientSecret = Utilities.GetEnv("ARM_CLIENT_SECRET") ?? "";
             Environment = Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
             MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
-            TenantId = Utilities.GetEnv("ARM_TENANT_ID") ?? "";
             UseMsi = Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
         }
     }

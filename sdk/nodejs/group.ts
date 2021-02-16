@@ -114,7 +114,8 @@ export class Group extends pulumi.CustomResource {
     constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
-        if (opts && opts.id) {
+        opts = opts || {};
+        if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
@@ -133,12 +134,8 @@ export class Group extends pulumi.CustomResource {
             inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
             inputs["objectId"] = undefined /*out*/;
         }
-        if (!opts) {
-            opts = {}
-        }
-
         if (!opts.version) {
-            opts.version = utilities.getVersion();
+            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
         super(Group.__pulumiType, name, inputs, opts);
     }

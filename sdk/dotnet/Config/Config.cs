@@ -8,24 +8,24 @@ namespace Pulumi.AzureAD
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("azuread");
-        public static string? ClientCertificatePassword { get; set; } = __config.Get("clientCertificatePassword") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PASSWORD") ?? "";
+        public static string? ClientCertificatePassword { get; set; } = __config.Get("clientCertificatePassword");
 
         /// <summary>
         /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
         /// Principal using a Client Certificate.
         /// </summary>
-        public static string? ClientCertificatePath { get; set; } = __config.Get("clientCertificatePath") ?? Utilities.GetEnv("ARM_CLIENT_CERTIFICATE_PATH") ?? "";
+        public static string? ClientCertificatePath { get; set; } = __config.Get("clientCertificatePath");
 
         /// <summary>
         /// The Client ID which should be used for service principal authentication.
         /// </summary>
-        public static string? ClientId { get; set; } = __config.Get("clientId") ?? Utilities.GetEnv("ARM_CLIENT_ID") ?? "";
+        public static string? ClientId { get; set; } = __config.Get("clientId");
 
         /// <summary>
         /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
         /// Certificate
         /// </summary>
-        public static string? ClientSecret { get; set; } = __config.Get("clientSecret") ?? Utilities.GetEnv("ARM_CLIENT_SECRET") ?? "";
+        public static string? ClientSecret { get; set; } = __config.Get("clientSecret");
 
         /// <summary>
         /// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
@@ -57,7 +57,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Tenant ID which should be used. Works with all authentication methods except MSI.
         /// </summary>
-        public static string? TenantId { get; set; } = __config.Get("tenantId") ?? Utilities.GetEnv("ARM_TENANT_ID") ?? "";
+        public static string? TenantId { get; set; } = __config.Get("tenantId");
 
         /// <summary>
         /// Allow Managed Service Identity to be used for Authentication.
