@@ -87,6 +87,8 @@ type Group struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name for the Group. Changing this forces a new resource to be created.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Whether the group is mail-enabled.
+	MailEnabled pulumi.BoolOutput `pulumi:"mailEnabled"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
@@ -97,6 +99,8 @@ type Group struct {
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
+	// Whether the group is a security group.
+	SecurityEnabled pulumi.BoolOutput `pulumi:"securityEnabled"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -132,6 +136,8 @@ type groupState struct {
 	Description *string `pulumi:"description"`
 	// The display name for the Group. Changing this forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
+	// Whether the group is mail-enabled.
+	MailEnabled *bool `pulumi:"mailEnabled"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
@@ -142,6 +148,8 @@ type groupState struct {
 	Owners []string `pulumi:"owners"`
 	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
+	// Whether the group is a security group.
+	SecurityEnabled *bool `pulumi:"securityEnabled"`
 }
 
 type GroupState struct {
@@ -149,6 +157,8 @@ type GroupState struct {
 	Description pulumi.StringPtrInput
 	// The display name for the Group. Changing this forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
+	// Whether the group is mail-enabled.
+	MailEnabled pulumi.BoolPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
@@ -159,6 +169,8 @@ type GroupState struct {
 	Owners pulumi.StringArrayInput
 	// If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrInput
+	// Whether the group is a security group.
+	SecurityEnabled pulumi.BoolPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {

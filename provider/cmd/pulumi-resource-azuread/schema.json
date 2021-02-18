@@ -2164,6 +2164,10 @@
                     "type": "string",
                     "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
                 },
+                "mailEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the group is mail-enabled.\n"
+                },
                 "members": {
                     "type": "array",
                     "items": {
@@ -2189,14 +2193,20 @@
                 "preventDuplicateNames": {
                     "type": "boolean",
                     "description": "If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.\n"
+                },
+                "securityEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the group is a security group.\n"
                 }
             },
             "required": [
                 "displayName",
+                "mailEnabled",
                 "members",
                 "name",
                 "objectId",
-                "owners"
+                "owners",
+                "securityEnabled"
             ],
             "inputProperties": {
                 "description": {
@@ -2241,6 +2251,10 @@
                         "type": "string",
                         "description": "The display name for the Group. Changing this forces a new resource to be created.\n"
                     },
+                    "mailEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group is mail-enabled.\n"
+                    },
                     "members": {
                         "type": "array",
                         "items": {
@@ -2266,6 +2280,10 @@
                     "preventDuplicateNames": {
                         "type": "boolean",
                         "description": "If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.\n"
+                    },
+                    "securityEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group is a security group.\n"
                     }
                 },
                 "type": "object"
@@ -2554,7 +2572,7 @@
             }
         },
         "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": {
-            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {applicationId: exampleApplication.applicationId});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    description: \"My managed password\",\n    value: `VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#`,\n    endDate: \"2099-01-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    service_principal_id=example_service_principal.id,\n    description=\"My managed password\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n    end_date=\"2099-01-01T01:02:03Z\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", new AzureAD.ServicePrincipalPasswordArgs\n        {\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Description = \"My managed password\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipalPassword(ctx, \"exampleServicePrincipalPassword\", \u0026azuread.ServicePrincipalPasswordArgs{\n\t\t\tServicePrincipalId: exampleServicePrincipal.ID(),\n\t\t\tDescription:        pulumi.String(\"My managed password\"),\n\t\t\tValue:              pulumi.String(fmt.Sprintf(\"%v%v%v\", \"VT=uSgbTanZhyz@\", \"%\", \"nL9Hpd+Tfay_MRV#\")),\n\t\t\tEndDate:            pulumi.String(\"2099-01-01T01:02:03Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPasswords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111\n```\n\n ",
+            "description": "Manages a Password associated with a Service Principal within Azure Active Directory.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {applicationId: exampleApplication.applicationId});\nconst exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", {\n    servicePrincipalId: exampleServicePrincipal.id,\n    description: \"My managed password\",\n    value: `VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#`,\n    endDate: \"2099-01-01T01:02:03Z\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application = azuread.Application(\"exampleApplication\")\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\", application_id=example_application.application_id)\nexample_service_principal_password = azuread.ServicePrincipalPassword(\"exampleServicePrincipalPassword\",\n    service_principal_id=example_service_principal.id,\n    description=\"My managed password\",\n    value=\"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n    end_date=\"2099-01-01T01:02:03Z\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n        });\n        var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword(\"exampleServicePrincipalPassword\", new AzureAD.ServicePrincipalPasswordArgs\n        {\n            ServicePrincipalId = exampleServicePrincipal.Id,\n            Description = \"My managed password\",\n            Value = \"VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#\",\n            EndDate = \"2099-01-01T01:02:03Z\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"fmt\"\n\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipalPassword(ctx, \"exampleServicePrincipalPassword\", \u0026azuread.ServicePrincipalPasswordArgs{\n\t\t\tServicePrincipalId: exampleServicePrincipal.ID(),\n\t\t\tDescription:        pulumi.String(\"My managed password\"),\n\t\t\tValue:              pulumi.String(fmt.Sprintf(\"%v%v%v\", \"VT=uSgbTanZhyz@\", \"%\", \"nL9Hpd+Tfay_MRV#\")),\n\t\t\tEndDate:            pulumi.String(\"2099-01-01T01:02:03Z\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nPasswords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111\n```\n\n ",
             "properties": {
                 "description": {
                     "type": "string",
@@ -3210,13 +3228,17 @@
             }
         },
         "azuread:index/getGroup:getGroup": {
-            "description": "Gets information about an Azure Active Directory group.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### By Group Display Name)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroup({\n    displayName: \"A-AD-Group\",\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_group(display_name=\"A-AD-Group\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs\n        {\n            DisplayName = \"A-AD-Group\",\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"A-AD-Group\"\n\t\t_, err := azuread.LookupGroup(ctx, \u0026azuread.LookupGroupArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Gets information about an Azure Active Directory group.\n\n\u003e **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### By Group Display Name)\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroup({\n    displayName: \"MyGroupName\",\n    securityEnabled: true,\n}, { async: true }));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_group(display_name=\"MyGroupName\",\n    security_enabled=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs\n        {\n            DisplayName = \"MyGroupName\",\n            SecurityEnabled = true,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v3/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v2/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"MyGroupName\"\n\t\topt1 := true\n\t\t_, err := azuread.LookupGroup(ctx, \u0026azuread.LookupGroupArgs{\n\t\t\tDisplayName:     \u0026opt0,\n\t\t\tSecurityEnabled: \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroup.\n",
                 "properties": {
                     "displayName": {
                         "type": "string",
-                        "description": "The splay name of the Group within Azure Active Directory.\n"
+                        "description": "The display name for the Group.\n"
+                    },
+                    "mailEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group is mail-enabled.\n"
                     },
                     "name": {
                         "type": "string",
@@ -3224,7 +3246,11 @@
                     },
                     "objectId": {
                         "type": "string",
-                        "description": "Specifies the Object ID of the Group within Azure Active Directory.\n"
+                        "description": "Specifies the Object ID of the Group.\n"
+                    },
+                    "securityEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group is a security group.\n"
                     }
                 },
                 "type": "object"
@@ -3234,22 +3260,26 @@
                 "properties": {
                     "description": {
                         "type": "string",
-                        "description": "The description of the AD Group.\n"
+                        "description": "The optional description of the Group.\n"
                     },
                     "displayName": {
                         "type": "string",
-                        "description": "The name of the Azure AD Group.\n"
+                        "description": "The display name for the Group.\n"
                     },
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "mailEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group is mail-enabled.\n"
                     },
                     "members": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The Object IDs of the Azure AD Group members.\n"
+                        "description": "The Object IDs of the Group members.\n"
                     },
                     "name": {
                         "type": "string",
@@ -3263,17 +3293,23 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The Object IDs of the Azure AD Group owners.\n"
+                        "description": "The Object IDs of the Group owners.\n"
+                    },
+                    "securityEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group is a security group.\n"
                     }
                 },
                 "type": "object",
                 "required": [
                     "description",
                     "displayName",
+                    "mailEnabled",
                     "members",
                     "name",
                     "objectId",
                     "owners",
+                    "securityEnabled",
                     "id"
                 ]
             }

@@ -18,7 +18,8 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const example = pulumi.output(azuread.getGroup({
- *     displayName: "A-AD-Group",
+ *     displayName: "MyGroupName",
+ *     securityEnabled: true,
  * }, { async: true }));
  * ```
  */
@@ -33,8 +34,10 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
     }
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "displayName": args.displayName,
+        "mailEnabled": args.mailEnabled,
         "name": args.name,
         "objectId": args.objectId,
+        "securityEnabled": args.securityEnabled,
     }, opts);
 }
 
@@ -43,17 +46,25 @@ export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetGroupArgs {
     /**
-     * The splay name of the Group within Azure Active Directory.
+     * The display name for the Group.
      */
     readonly displayName?: string;
+    /**
+     * Whether the group is mail-enabled.
+     */
+    readonly mailEnabled?: boolean;
     /**
      * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
      */
     readonly name?: string;
     /**
-     * Specifies the Object ID of the Group within Azure Active Directory.
+     * Specifies the Object ID of the Group.
      */
     readonly objectId?: string;
+    /**
+     * Whether the group is a security group.
+     */
+    readonly securityEnabled?: boolean;
 }
 
 /**
@@ -61,11 +72,11 @@ export interface GetGroupArgs {
  */
 export interface GetGroupResult {
     /**
-     * The description of the AD Group.
+     * The optional description of the Group.
      */
     readonly description: string;
     /**
-     * The name of the Azure AD Group.
+     * The display name for the Group.
      */
     readonly displayName: string;
     /**
@@ -73,7 +84,11 @@ export interface GetGroupResult {
      */
     readonly id: string;
     /**
-     * The Object IDs of the Azure AD Group members.
+     * Whether the group is mail-enabled.
+     */
+    readonly mailEnabled: boolean;
+    /**
+     * The Object IDs of the Group members.
      */
     readonly members: string[];
     /**
@@ -82,7 +97,11 @@ export interface GetGroupResult {
     readonly name: string;
     readonly objectId: string;
     /**
-     * The Object IDs of the Azure AD Group owners.
+     * The Object IDs of the Group owners.
      */
     readonly owners: string[];
+    /**
+     * Whether the group is a security group.
+     */
+    readonly securityEnabled: boolean;
 }

@@ -97,7 +97,9 @@ class Group(pulumi.CustomResource):
             __props__['name'] = name
             __props__['owners'] = owners
             __props__['prevent_duplicate_names'] = prevent_duplicate_names
+            __props__['mail_enabled'] = None
             __props__['object_id'] = None
+            __props__['security_enabled'] = None
         super(Group, __self__).__init__(
             'azuread:index/group:Group',
             resource_name,
@@ -110,11 +112,13 @@ class Group(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            mail_enabled: Optional[pulumi.Input[bool]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            prevent_duplicate_names: Optional[pulumi.Input[bool]] = None) -> 'Group':
+            prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+            security_enabled: Optional[pulumi.Input[bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -124,10 +128,12 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
         :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] mail_enabled: Whether the group is mail-enabled.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         :param pulumi.Input[str] object_id: The Object ID of the Group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        :param pulumi.Input[bool] security_enabled: Whether the group is a security group.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -135,11 +141,13 @@ class Group(pulumi.CustomResource):
 
         __props__["description"] = description
         __props__["display_name"] = display_name
+        __props__["mail_enabled"] = mail_enabled
         __props__["members"] = members
         __props__["name"] = name
         __props__["object_id"] = object_id
         __props__["owners"] = owners
         __props__["prevent_duplicate_names"] = prevent_duplicate_names
+        __props__["security_enabled"] = security_enabled
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -157,6 +165,14 @@ class Group(pulumi.CustomResource):
         The display name for the Group. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="mailEnabled")
+    def mail_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the group is mail-enabled.
+        """
+        return pulumi.get(self, "mail_enabled")
 
     @property
     @pulumi.getter
@@ -194,6 +210,14 @@ class Group(pulumi.CustomResource):
         If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
+
+    @property
+    @pulumi.getter(name="securityEnabled")
+    def security_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether the group is a security group.
+        """
+        return pulumi.get(self, "security_enabled")
 
     def translate_output_property(self, prop):
         return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
