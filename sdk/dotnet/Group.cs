@@ -88,6 +88,12 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
+        [Output("mailEnabled")]
+        public Output<bool> MailEnabled { get; private set; } = null!;
+
+        /// <summary>
         /// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
         /// </summary>
         [Output("members")]
@@ -113,6 +119,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("preventDuplicateNames")]
         public Output<bool?> PreventDuplicateNames { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the group is a security group.
+        /// </summary>
+        [Output("securityEnabled")]
+        public Output<bool> SecurityEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -224,6 +236,12 @@ namespace Pulumi.AzureAD
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
+        [Input("mailEnabled")]
+        public Input<bool>? MailEnabled { get; set; }
+
         [Input("members")]
         private InputList<string>? _members;
 
@@ -262,6 +280,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("preventDuplicateNames")]
         public Input<bool>? PreventDuplicateNames { get; set; }
+
+        /// <summary>
+        /// Whether the group is a security group.
+        /// </summary>
+        [Input("securityEnabled")]
+        public Input<bool>? SecurityEnabled { get; set; }
 
         public GroupState()
         {

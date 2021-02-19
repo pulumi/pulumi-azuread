@@ -84,6 +84,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * Whether the group is mail-enabled.
+     */
+    public /*out*/ readonly mailEnabled!: pulumi.Output<boolean>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     public readonly members!: pulumi.Output<string[]>;
@@ -103,6 +107,10 @@ export class Group extends pulumi.CustomResource {
      * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
      */
     public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the group is a security group.
+     */
+    public /*out*/ readonly securityEnabled!: pulumi.Output<boolean>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -119,11 +127,13 @@ export class Group extends pulumi.CustomResource {
             const state = argsOrState as GroupState | undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["mailEnabled"] = state ? state.mailEnabled : undefined;
             inputs["members"] = state ? state.members : undefined;
             inputs["name"] = state ? state.name : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["owners"] = state ? state.owners : undefined;
             inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            inputs["securityEnabled"] = state ? state.securityEnabled : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -132,7 +142,9 @@ export class Group extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["owners"] = args ? args.owners : undefined;
             inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
+            inputs["mailEnabled"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
+            inputs["securityEnabled"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -154,6 +166,10 @@ export interface GroupState {
      */
     readonly displayName?: pulumi.Input<string>;
     /**
+     * Whether the group is mail-enabled.
+     */
+    readonly mailEnabled?: pulumi.Input<boolean>;
+    /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
@@ -173,6 +189,10 @@ export interface GroupState {
      * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
      */
     readonly preventDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * Whether the group is a security group.
+     */
+    readonly securityEnabled?: pulumi.Input<boolean>;
 }
 
 /**

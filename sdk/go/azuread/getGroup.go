@@ -24,9 +24,11 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "A-AD-Group"
+// 		opt0 := "MyGroupName"
+// 		opt1 := true
 // 		_, err := azuread.LookupGroup(ctx, &azuread.LookupGroupArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName:     &opt0,
+// 			SecurityEnabled: &opt1,
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -46,27 +48,35 @@ func LookupGroup(ctx *pulumi.Context, args *LookupGroupArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getGroup.
 type LookupGroupArgs struct {
-	// The splay name of the Group within Azure Active Directory.
+	// The display name for the Group.
 	DisplayName *string `pulumi:"displayName"`
+	// Whether the group is mail-enabled.
+	MailEnabled *bool `pulumi:"mailEnabled"`
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name *string `pulumi:"name"`
-	// Specifies the Object ID of the Group within Azure Active Directory.
+	// Specifies the Object ID of the Group.
 	ObjectId *string `pulumi:"objectId"`
+	// Whether the group is a security group.
+	SecurityEnabled *bool `pulumi:"securityEnabled"`
 }
 
 // A collection of values returned by getGroup.
 type LookupGroupResult struct {
-	// The description of the AD Group.
+	// The optional description of the Group.
 	Description string `pulumi:"description"`
-	// The name of the Azure AD Group.
+	// The display name for the Group.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The Object IDs of the Azure AD Group members.
+	// Whether the group is mail-enabled.
+	MailEnabled bool `pulumi:"mailEnabled"`
+	// The Object IDs of the Group members.
 	Members []string `pulumi:"members"`
 	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
 	Name     string `pulumi:"name"`
 	ObjectId string `pulumi:"objectId"`
-	// The Object IDs of the Azure AD Group owners.
+	// The Object IDs of the Group owners.
 	Owners []string `pulumi:"owners"`
+	// Whether the group is a security group.
+	SecurityEnabled bool `pulumi:"securityEnabled"`
 }

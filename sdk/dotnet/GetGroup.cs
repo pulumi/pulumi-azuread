@@ -31,7 +31,8 @@ namespace Pulumi.AzureAD
         ///     {
         ///         var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs
         ///         {
-        ///             DisplayName = "A-AD-Group",
+        ///             DisplayName = "MyGroupName",
+        ///             SecurityEnabled = true,
         ///         }));
         ///     }
         /// 
@@ -48,19 +49,31 @@ namespace Pulumi.AzureAD
     public sealed class GetGroupArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The splay name of the Group within Azure Active Directory.
+        /// The display name for the Group.
         /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
+
+        /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
+        [Input("mailEnabled")]
+        public bool? MailEnabled { get; set; }
 
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Specifies the Object ID of the Group within Azure Active Directory.
+        /// Specifies the Object ID of the Group.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
+
+        /// <summary>
+        /// Whether the group is a security group.
+        /// </summary>
+        [Input("securityEnabled")]
+        public bool? SecurityEnabled { get; set; }
 
         public GetGroupArgs()
         {
@@ -72,11 +85,11 @@ namespace Pulumi.AzureAD
     public sealed class GetGroupResult
     {
         /// <summary>
-        /// The description of the AD Group.
+        /// The optional description of the Group.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The name of the Azure AD Group.
+        /// The display name for the Group.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -84,15 +97,23 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Object IDs of the Azure AD Group members.
+        /// Whether the group is mail-enabled.
+        /// </summary>
+        public readonly bool MailEnabled;
+        /// <summary>
+        /// The Object IDs of the Group members.
         /// </summary>
         public readonly ImmutableArray<string> Members;
         public readonly string Name;
         public readonly string ObjectId;
         /// <summary>
-        /// The Object IDs of the Azure AD Group owners.
+        /// The Object IDs of the Group owners.
         /// </summary>
         public readonly ImmutableArray<string> Owners;
+        /// <summary>
+        /// Whether the group is a security group.
+        /// </summary>
+        public readonly bool SecurityEnabled;
 
         [OutputConstructor]
         private GetGroupResult(
@@ -102,21 +123,27 @@ namespace Pulumi.AzureAD
 
             string id,
 
+            bool mailEnabled,
+
             ImmutableArray<string> members,
 
             string name,
 
             string objectId,
 
-            ImmutableArray<string> owners)
+            ImmutableArray<string> owners,
+
+            bool securityEnabled)
         {
             Description = description;
             DisplayName = displayName;
             Id = id;
+            MailEnabled = mailEnabled;
             Members = members;
             Name = name;
             ObjectId = objectId;
             Owners = owners;
+            SecurityEnabled = securityEnabled;
         }
     }
 }
