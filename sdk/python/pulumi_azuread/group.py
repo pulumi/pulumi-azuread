@@ -93,7 +93,7 @@ class Group(pulumi.CustomResource):
             __props__['members'] = members
             if name is not None and not opts.urn:
                 warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-                pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.")
+                pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""")
             __props__['name'] = name
             __props__['owners'] = owners
             __props__['prevent_duplicate_names'] = prevent_duplicate_names
