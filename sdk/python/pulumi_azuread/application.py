@@ -183,7 +183,7 @@ class Application(pulumi.CustomResource):
             __props__['logout_url'] = logout_url
             if name is not None and not opts.urn:
                 warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""", DeprecationWarning)
-                pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.")
+                pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""")
             __props__['name'] = name
             __props__['oauth2_allow_implicit_flow'] = oauth2_allow_implicit_flow
             __props__['oauth2_permissions'] = oauth2_permissions
@@ -195,7 +195,7 @@ class Application(pulumi.CustomResource):
             __props__['required_resource_accesses'] = required_resource_accesses
             if type is not None and not opts.urn:
                 warnings.warn("""This property is deprecated and will be removed in version 2.0 of this provider.""", DeprecationWarning)
-                pulumi.log.warn("type is deprecated: This property is deprecated and will be removed in version 2.0 of this provider.")
+                pulumi.log.warn("""type is deprecated: This property is deprecated and will be removed in version 2.0 of this provider.""")
             __props__['type'] = type
             __props__['application_id'] = None
             __props__['object_id'] = None

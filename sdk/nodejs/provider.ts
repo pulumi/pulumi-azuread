@@ -45,12 +45,12 @@ export class Provider extends pulumi.ProviderResource {
             inputs["clientId"] = args ? args.clientId : undefined;
             inputs["clientSecret"] = args ? args.clientSecret : undefined;
             inputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
-            inputs["environment"] = (args ? args.environment : undefined) || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
+            inputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             inputs["metadataHost"] = args ? args.metadataHost : undefined;
-            inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
+            inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
             inputs["partnerId"] = args ? args.partnerId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
-            inputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) || (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
+            inputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

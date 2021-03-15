@@ -30,7 +30,7 @@ class GetGroupsResult:
             raise TypeError("Expected argument 'names' to be a list")
         if names is not None:
             warnings.warn("""This property has been renamed to `display_names` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("names is deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.")
+            pulumi.log.warn("""names is deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.""")
 
         pulumi.set(__self__, "names", names)
         if object_ids and not isinstance(object_ids, list):

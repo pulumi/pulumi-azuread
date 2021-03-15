@@ -53,7 +53,7 @@ class GetApplicationResult:
             raise TypeError("Expected argument 'name' to be a str")
         if name is not None:
             warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.")
+            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""")
 
         pulumi.set(__self__, "name", name)
         if oauth2_allow_implicit_flow and not isinstance(oauth2_allow_implicit_flow, bool):
