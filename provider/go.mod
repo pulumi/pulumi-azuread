@@ -1,9 +1,9 @@
 module github.com/pulumi/pulumi-azuread/provider/v3
 
-go 1.15
+go 1.16
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v2 v2.21.0
+	github.com/pulumi/pulumi-terraform-bridge/v2 v2.22.1
 	github.com/pulumi/pulumi/sdk/v2 v2.22.1-0.20210310211618-1f16423ede4c
 	github.com/terraform-providers/terraform-provider-azuread/shim v0.0.0
 )
