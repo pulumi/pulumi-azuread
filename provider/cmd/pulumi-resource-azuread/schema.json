@@ -3681,7 +3681,7 @@
                 "azuread": "AzureAD"
             },
             "packageReferences": {
-                "Pulumi": "2.*",
+                "Pulumi": "3.*-*",
                 "System.Collections.Immutable": "1.6.0"
             }
         },
@@ -3691,7 +3691,7 @@
         },
         "nodejs": {
             "dependencies": {
-                "@pulumi/pulumi": "^2.15.0"
+                "@pulumi/pulumi": "^3.0.0-alpha.0"
             },
             "devDependencies": {
                 "@types/mime": "^2.0.0",
@@ -3706,7 +3706,7 @@
         "python": {
             "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/terraform-providers/terraform-provider-azuread)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-azuread` repo](https://github.com/pulumi/pulumi-azuread/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-providers/terraform-provider-azuread` repo](https://github.com/terraform-providers/terraform-provider-azuread/issues).",
             "requires": {
-                "pulumi": "\u003e=2.15.0,\u003c3.0.0"
+                "pulumi": "\u003e=3.0.0a1,\u003c4.0.0"
             }
         }
     }
