@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from . import _utilities, _tables
+=======
+from . import _utilities
+>>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ProviderArgs', 'Provider']
 
@@ -301,36 +305,30 @@ class Provider(pulumi.ProviderResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            __props__['client_certificate_password'] = client_certificate_password
-            __props__['client_certificate_path'] = client_certificate_path
-            __props__['client_id'] = client_id
-            __props__['client_secret'] = client_secret
-            __props__['disable_terraform_partner_id'] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
+            __props__.__dict__["client_certificate_password"] = client_certificate_password
+            __props__.__dict__["client_certificate_path"] = client_certificate_path
+            __props__.__dict__["client_id"] = client_id
+            __props__.__dict__["client_secret"] = client_secret
+            __props__.__dict__["disable_terraform_partner_id"] = pulumi.Output.from_input(disable_terraform_partner_id).apply(pulumi.runtime.to_json) if disable_terraform_partner_id is not None else None
             if environment is None:
                 environment = (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
-            __props__['environment'] = environment
+            __props__.__dict__["environment"] = environment
             if metadata_host is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata_host'")
-            __props__['metadata_host'] = metadata_host
+            __props__.__dict__["metadata_host"] = metadata_host
             if msi_endpoint is None:
                 msi_endpoint = (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
-            __props__['msi_endpoint'] = msi_endpoint
-            __props__['partner_id'] = partner_id
-            __props__['tenant_id'] = tenant_id
+            __props__.__dict__["msi_endpoint"] = msi_endpoint
+            __props__.__dict__["partner_id"] = partner_id
+            __props__.__dict__["tenant_id"] = tenant_id
             if use_msi is None:
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
-            __props__['use_msi'] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None
+            __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None
         super(Provider, __self__).__init__(
             'azuread',
             resource_name,
             __props__,
             opts)
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

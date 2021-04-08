@@ -6,7 +6,11 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+<<<<<<< HEAD
 from . import _utilities, _tables
+=======
+from . import _utilities
+>>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -81,6 +85,125 @@ class ServicePrincipalArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+<<<<<<< HEAD
+=======
+
+
+@pulumi.input_type
+class _ServicePrincipalState:
+    def __init__(__self__, *,
+                 app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+                 app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
+                 application_id: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Input properties used for looking up and filtering ServicePrincipal resources.
+        :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
+        :param pulumi.Input[str] display_name: The Display Name of the Application associated with this Service Principal.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        :param pulumi.Input[str] object_id: The Object ID of the Service Principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        """
+        if app_role_assignment_required is not None:
+            pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
+        if app_roles is not None:
+            pulumi.set(__self__, "app_roles", app_roles)
+        if application_id is not None:
+            pulumi.set(__self__, "application_id", application_id)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if oauth2_permissions is not None:
+            pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="appRoleAssignmentRequired")
+    def app_role_assignment_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        """
+        return pulumi.get(self, "app_role_assignment_required")
+
+    @app_role_assignment_required.setter
+    def app_role_assignment_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "app_role_assignment_required", value)
+
+    @property
+    @pulumi.getter(name="appRoles")
+    def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]:
+        return pulumi.get(self, "app_roles")
+
+    @app_roles.setter
+    def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]):
+        pulumi.set(self, "app_roles", value)
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The App ID of the Application for which to create a Service Principal.
+        """
+        return pulumi.get(self, "application_id")
+
+    @application_id.setter
+    def application_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Display Name of the Application associated with this Service Principal.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="oauth2Permissions")
+    def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]:
+        """
+        A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        """
+        return pulumi.get(self, "oauth2_permissions")
+
+    @oauth2_permissions.setter
+    def oauth2_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]):
+        pulumi.set(self, "oauth2_permissions", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Object ID of the Service Principal.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of tags to apply to the Service Principal.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+>>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ServicePrincipal(pulumi.CustomResource):
@@ -215,17 +338,17 @@ class ServicePrincipal(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ServicePrincipalArgs.__new__(ServicePrincipalArgs)
 
-            __props__['app_role_assignment_required'] = app_role_assignment_required
+            __props__.__dict__["app_role_assignment_required"] = app_role_assignment_required
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
-            __props__['application_id'] = application_id
-            __props__['oauth2_permissions'] = oauth2_permissions
-            __props__['tags'] = tags
-            __props__['app_roles'] = None
-            __props__['display_name'] = None
-            __props__['object_id'] = None
+            __props__.__dict__["application_id"] = application_id
+            __props__.__dict__["oauth2_permissions"] = oauth2_permissions
+            __props__.__dict__["tags"] = tags
+            __props__.__dict__["app_roles"] = None
+            __props__.__dict__["display_name"] = None
+            __props__.__dict__["object_id"] = None
         super(ServicePrincipal, __self__).__init__(
             'azuread:index/servicePrincipal:ServicePrincipal',
             resource_name,
@@ -259,15 +382,15 @@ class ServicePrincipal(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ServicePrincipalState.__new__(_ServicePrincipalState)
 
-        __props__["app_role_assignment_required"] = app_role_assignment_required
-        __props__["app_roles"] = app_roles
-        __props__["application_id"] = application_id
-        __props__["display_name"] = display_name
-        __props__["oauth2_permissions"] = oauth2_permissions
-        __props__["object_id"] = object_id
-        __props__["tags"] = tags
+        __props__.__dict__["app_role_assignment_required"] = app_role_assignment_required
+        __props__.__dict__["app_roles"] = app_roles
+        __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["oauth2_permissions"] = oauth2_permissions
+        __props__.__dict__["object_id"] = object_id
+        __props__.__dict__["tags"] = tags
         return ServicePrincipal(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -322,10 +445,4 @@ class ServicePrincipal(pulumi.CustomResource):
         A list of tags to apply to the Service Principal.
         """
         return pulumi.get(self, "tags")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
