@@ -5,13 +5,251 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from . import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from . import _utilities
 
-__all__ = ['ApplicationPassword']
+__all__ = ['ApplicationPasswordArgs', 'ApplicationPassword']
+
+@pulumi.input_type
+class ApplicationPasswordArgs:
+    def __init__(__self__, *,
+                 application_object_id: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 end_date_relative: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationPassword resource.
+        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The Password for this Application.
+        :param pulumi.Input[str] description: A description for the Password.
+        :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        pulumi.set(__self__, "application_object_id", application_object_id)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if end_date_relative is not None:
+            pulumi.set(__self__, "end_date_relative", end_date_relative)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @property
+    @pulumi.getter(name="applicationObjectId")
+    def application_object_id(self) -> pulumi.Input[str]:
+        """
+        The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_object_id")
+
+    @application_object_id.setter
+    def application_object_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_object_id", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The Password for this Application.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the Password.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="endDateRelative")
+    def end_date_relative(self) -> Optional[pulumi.Input[str]]:
+        """
+        A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date_relative")
+
+    @end_date_relative.setter
+    def end_date_relative(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date_relative", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_date", value)
+
+
+@pulumi.input_type
+class _ApplicationPasswordState:
+    def __init__(__self__, *,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 end_date_relative: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ApplicationPassword resources.
+        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] description: A description for the Password.
+        :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The Password for this Application.
+        """
+        if application_object_id is not None:
+            pulumi.set(__self__, "application_object_id", application_object_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if end_date_relative is not None:
+            pulumi.set(__self__, "end_date_relative", end_date_relative)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="applicationObjectId")
+    def application_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Object ID of the Application for which this password should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_object_id")
+
+    @application_object_id.setter
+    def application_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_object_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the Password.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="endDateRelative")
+    def end_date_relative(self) -> Optional[pulumi.Input[str]]:
+        """
+        A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date_relative")
+
+    @end_date_relative.setter
+    def end_date_relative(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date_relative", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A GUID used to uniquely identify this Password. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_date", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Password for this Application.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 class ApplicationPassword(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -62,6 +300,64 @@ class ApplicationPassword(pulumi.CustomResource):
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The Password for this Application.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationPasswordArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a Password associated with an Application within Azure Active Directory. Also can be referred to as Client secrets.
+
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication")
+        example_application_password = azuread.ApplicationPassword("exampleApplicationPassword",
+            application_object_id=example_application.id,
+            description="My managed password",
+            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+            end_date="2099-01-01T01:02:03Z")
+        ```
+
+        ## Import
+
+        Passwords can be imported using the `object id` of an Application and the `key id` of the password, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/applicationPassword:ApplicationPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationPasswordArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationPasswordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 end_date_relative: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
@@ -77,19 +373,19 @@ class ApplicationPassword(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationPasswordArgs.__new__(ApplicationPasswordArgs)
 
             if application_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_object_id'")
-            __props__['application_object_id'] = application_object_id
-            __props__['description'] = description
-            __props__['end_date'] = end_date
-            __props__['end_date_relative'] = end_date_relative
-            __props__['key_id'] = key_id
-            __props__['start_date'] = start_date
+            __props__.__dict__["application_object_id"] = application_object_id
+            __props__.__dict__["description"] = description
+            __props__.__dict__["end_date"] = end_date
+            __props__.__dict__["end_date_relative"] = end_date_relative
+            __props__.__dict__["key_id"] = key_id
+            __props__.__dict__["start_date"] = start_date
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
+            __props__.__dict__["value"] = value
         super(ApplicationPassword, __self__).__init__(
             'azuread:index/applicationPassword:ApplicationPassword',
             resource_name,
@@ -124,15 +420,15 @@ class ApplicationPassword(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApplicationPasswordState.__new__(_ApplicationPasswordState)
 
-        __props__["application_object_id"] = application_object_id
-        __props__["description"] = description
-        __props__["end_date"] = end_date
-        __props__["end_date_relative"] = end_date_relative
-        __props__["key_id"] = key_id
-        __props__["start_date"] = start_date
-        __props__["value"] = value
+        __props__.__dict__["application_object_id"] = application_object_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["end_date"] = end_date
+        __props__.__dict__["end_date_relative"] = end_date_relative
+        __props__.__dict__["key_id"] = key_id
+        __props__.__dict__["start_date"] = start_date
+        __props__.__dict__["value"] = value
         return ApplicationPassword(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -190,10 +486,4 @@ class ApplicationPassword(pulumi.CustomResource):
         The Password for this Application.
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

@@ -133,6 +133,8 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-beta.1
     - name: Run golangci
       run: make lint_provider
     - if: failure() && github.event_name == 'push'
@@ -169,6 +171,8 @@ jobs:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
       uses: pulumi/action-install-pulumi-cli@v1.0.1
+      with:
+        pulumi-version: 3.0.0-beta.1
     - name: Run golangci
       run: cd sdk/go/azuread && golangci-lint run -c ../../../.golangci.yml
     - if: failure() && github.event_name == 'push'

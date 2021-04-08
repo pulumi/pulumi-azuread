@@ -5,8 +5,8 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
-from . import _utilities, _tables
+from typing import Any, Mapping, Optional, Sequence, Union, overload
+from . import _utilities
 from . import outputs
 
 __all__ = [
@@ -34,6 +34,27 @@ __all__ = [
 
 @pulumi.output_type
 class ApplicationAppRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMemberTypes":
+            suggest = "allowed_member_types"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationAppRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationAppRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationAppRole.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_member_types: Sequence[str],
                  description: str,
@@ -107,12 +128,34 @@ class ApplicationAppRole(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApplicationOauth2Permission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminConsentDescription":
+            suggest = "admin_consent_description"
+        elif key == "adminConsentDisplayName":
+            suggest = "admin_consent_display_name"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "userConsentDescription":
+            suggest = "user_consent_description"
+        elif key == "userConsentDisplayName":
+            suggest = "user_consent_display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationOauth2Permission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationOauth2Permission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationOauth2Permission.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_consent_description: Optional[str] = None,
                  admin_consent_display_name: Optional[str] = None,
@@ -213,12 +256,28 @@ class ApplicationOauth2Permission(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApplicationOptionalClaims(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessTokens":
+            suggest = "access_tokens"
+        elif key == "idTokens":
+            suggest = "id_tokens"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationOptionalClaims. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationOptionalClaims.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationOptionalClaims.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  access_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']] = None,
                  id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None):
@@ -237,12 +296,26 @@ class ApplicationOptionalClaims(dict):
     def id_tokens(self) -> Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']]:
         return pulumi.get(self, "id_tokens")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApplicationOptionalClaimsAccessToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationOptionalClaimsAccessToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationOptionalClaimsAccessToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationOptionalClaimsAccessToken.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -293,13 +366,27 @@ class ApplicationOptionalClaimsAccessToken(dict):
         The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
         return pulumi.get(self, "source")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
 class ApplicationOptionalClaimsIdToken(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationOptionalClaimsIdToken. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationOptionalClaimsIdToken.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationOptionalClaimsIdToken.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -351,12 +438,28 @@ class ApplicationOptionalClaimsIdToken(dict):
         """
         return pulumi.get(self, "source")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ApplicationRequiredResourceAccess(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "resourceAccesses":
+            suggest = "resource_accesses"
+        elif key == "resourceAppId":
+            suggest = "resource_app_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationRequiredResourceAccess. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationRequiredResourceAccess.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationRequiredResourceAccess.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  resource_accesses: Sequence['outputs.ApplicationRequiredResourceAccessResourceAccess'],
                  resource_app_id: str):
@@ -382,9 +485,6 @@ class ApplicationRequiredResourceAccess(dict):
         The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
         """
         return pulumi.get(self, "resource_app_id")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
@@ -415,12 +515,30 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
         """
         return pulumi.get(self, "type")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePrincipalAppRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedMemberTypes":
+            suggest = "allowed_member_types"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalAppRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePrincipalAppRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePrincipalAppRole.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  allowed_member_types: Optional[Sequence[str]] = None,
                  description: Optional[str] = None,
@@ -489,12 +607,34 @@ class ServicePrincipalAppRole(dict):
         """
         return pulumi.get(self, "value")
 
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
 
 @pulumi.output_type
 class ServicePrincipalOauth2Permission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "adminConsentDescription":
+            suggest = "admin_consent_description"
+        elif key == "adminConsentDisplayName":
+            suggest = "admin_consent_display_name"
+        elif key == "isEnabled":
+            suggest = "is_enabled"
+        elif key == "userConsentDescription":
+            suggest = "user_consent_description"
+        elif key == "userConsentDisplayName":
+            suggest = "user_consent_display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalOauth2Permission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePrincipalOauth2Permission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePrincipalOauth2Permission.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  admin_consent_description: Optional[str] = None,
                  admin_consent_display_name: Optional[str] = None,
@@ -594,9 +734,6 @@ class ServicePrincipalOauth2Permission(dict):
         The name of this permission.
         """
         return pulumi.get(self, "value")
-
-    def _translate_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
 
 @pulumi.output_type
