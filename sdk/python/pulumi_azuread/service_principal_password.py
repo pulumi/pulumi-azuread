@@ -5,13 +5,131 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ServicePrincipalPassword']
+__all__ = ['ServicePrincipalPasswordArgs', 'ServicePrincipalPassword']
+
+@pulumi.input_type
+class ServicePrincipalPasswordArgs:
+    def __init__(__self__, *,
+                 service_principal_id: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 end_date_relative: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ServicePrincipalPassword resource.
+        :param pulumi.Input[str] service_principal_id: The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The Password for this Service Principal.
+        :param pulumi.Input[str] description: A description for the Password.
+        :param pulumi.Input[str] end_date: The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        pulumi.set(__self__, "service_principal_id", service_principal_id)
+        pulumi.set(__self__, "value", value)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if end_date is not None:
+            pulumi.set(__self__, "end_date", end_date)
+        if end_date_relative is not None:
+            pulumi.set(__self__, "end_date_relative", end_date_relative)
+        if key_id is not None:
+            pulumi.set(__self__, "key_id", key_id)
+        if start_date is not None:
+            pulumi.set(__self__, "start_date", start_date)
+
+    @property
+    @pulumi.getter(name="servicePrincipalId")
+    def service_principal_id(self) -> pulumi.Input[str]:
+        """
+        The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "service_principal_id")
+
+    @service_principal_id.setter
+    def service_principal_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_principal_id", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The Password for this Service Principal.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description for the Password.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="endDate")
+    def end_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date")
+
+    @end_date.setter
+    def end_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date", value)
+
+    @property
+    @pulumi.getter(name="endDateRelative")
+    def end_date_relative(self) -> Optional[pulumi.Input[str]]:
+        """
+        A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "end_date_relative")
+
+    @end_date_relative.setter
+    def end_date_relative(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_date_relative", value)
+
+    @property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_date", value)
 
 
 class ServicePrincipalPassword(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -63,6 +181,65 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         :param pulumi.Input[str] start_date: The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The Password for this Service Principal.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ServicePrincipalPasswordArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a Password associated with a Service Principal within Azure Active Directory.
+
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
+            service_principal_id=example_service_principal.id,
+            description="My managed password",
+            value="VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
+            end_date="2099-01-01T01:02:03Z")
+        ```
+
+        ## Import
+
+        Passwords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ServicePrincipalPasswordArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ServicePrincipalPasswordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 end_date: Optional[pulumi.Input[str]] = None,
+                 end_date_relative: Optional[pulumi.Input[str]] = None,
+                 key_id: Optional[pulumi.Input[str]] = None,
+                 service_principal_id: Optional[pulumi.Input[str]] = None,
+                 start_date: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

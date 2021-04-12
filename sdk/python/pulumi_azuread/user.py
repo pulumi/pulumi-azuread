@@ -5,13 +5,338 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['User']
+__all__ = ['UserArgs', 'User']
+
+@pulumi.input_type
+class UserArgs:
+    def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 user_principal_name: pulumi.Input[str],
+                 account_enabled: Optional[pulumi.Input[bool]] = None,
+                 city: Optional[pulumi.Input[str]] = None,
+                 company_name: Optional[pulumi.Input[str]] = None,
+                 country: Optional[pulumi.Input[str]] = None,
+                 department: Optional[pulumi.Input[str]] = None,
+                 force_password_change: Optional[pulumi.Input[bool]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None,
+                 immutable_id: Optional[pulumi.Input[str]] = None,
+                 job_title: Optional[pulumi.Input[str]] = None,
+                 mail_nickname: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
+                 physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 street_address: Optional[pulumi.Input[str]] = None,
+                 surname: Optional[pulumi.Input[str]] = None,
+                 usage_location: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a User resource.
+        :param pulumi.Input[str] display_name: The name to display in the address book for the user.
+        :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        :param pulumi.Input[str] user_principal_name: The User Principal Name of the User.
+        :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+        :param pulumi.Input[str] city: The city in which the user is located.
+        :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        :param pulumi.Input[str] country: The country/region in which the user is located; for example, “US” or “UK”.
+        :param pulumi.Input[str] department: The name for the department in which the user works.
+        :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+        :param pulumi.Input[str] given_name: The given name (first name) of the user.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] job_title: The user’s job title.
+        :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        :param pulumi.Input[str] state: The state or province in the user's address.
+        :param pulumi.Input[str] street_address: The street address of the user's place of business.
+        :param pulumi.Input[str] surname: The user's surname (family name or last name).
+        :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "user_principal_name", user_principal_name)
+        if account_enabled is not None:
+            pulumi.set(__self__, "account_enabled", account_enabled)
+        if city is not None:
+            pulumi.set(__self__, "city", city)
+        if company_name is not None:
+            pulumi.set(__self__, "company_name", company_name)
+        if country is not None:
+            pulumi.set(__self__, "country", country)
+        if department is not None:
+            pulumi.set(__self__, "department", department)
+        if force_password_change is not None:
+            pulumi.set(__self__, "force_password_change", force_password_change)
+        if given_name is not None:
+            pulumi.set(__self__, "given_name", given_name)
+        if immutable_id is not None:
+            pulumi.set(__self__, "immutable_id", immutable_id)
+        if job_title is not None:
+            pulumi.set(__self__, "job_title", job_title)
+        if mail_nickname is not None:
+            pulumi.set(__self__, "mail_nickname", mail_nickname)
+        if mobile is not None:
+            pulumi.set(__self__, "mobile", mobile)
+        if physical_delivery_office_name is not None:
+            pulumi.set(__self__, "physical_delivery_office_name", physical_delivery_office_name)
+        if postal_code is not None:
+            pulumi.set(__self__, "postal_code", postal_code)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if street_address is not None:
+            pulumi.set(__self__, "street_address", street_address)
+        if surname is not None:
+            pulumi.set(__self__, "surname", surname)
+        if usage_location is not None:
+            pulumi.set(__self__, "usage_location", usage_location)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The name to display in the address book for the user.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter(name="userPrincipalName")
+    def user_principal_name(self) -> pulumi.Input[str]:
+        """
+        The User Principal Name of the User.
+        """
+        return pulumi.get(self, "user_principal_name")
+
+    @user_principal_name.setter
+    def user_principal_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_principal_name", value)
+
+    @property
+    @pulumi.getter(name="accountEnabled")
+    def account_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
+        """
+        return pulumi.get(self, "account_enabled")
+
+    @account_enabled.setter
+    def account_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "account_enabled", value)
+
+    @property
+    @pulumi.getter
+    def city(self) -> Optional[pulumi.Input[str]]:
+        """
+        The city in which the user is located.
+        """
+        return pulumi.get(self, "city")
+
+    @city.setter
+    def city(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "city", value)
+
+    @property
+    @pulumi.getter(name="companyName")
+    def company_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+        """
+        return pulumi.get(self, "company_name")
+
+    @company_name.setter
+    def company_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "company_name", value)
+
+    @property
+    @pulumi.getter
+    def country(self) -> Optional[pulumi.Input[str]]:
+        """
+        The country/region in which the user is located; for example, “US” or “UK”.
+        """
+        return pulumi.get(self, "country")
+
+    @country.setter
+    def country(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "country", value)
+
+    @property
+    @pulumi.getter
+    def department(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name for the department in which the user works.
+        """
+        return pulumi.get(self, "department")
+
+    @department.setter
+    def department(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "department", value)
+
+    @property
+    @pulumi.getter(name="forcePasswordChange")
+    def force_password_change(self) -> Optional[pulumi.Input[bool]]:
+        """
+        `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
+        """
+        return pulumi.get(self, "force_password_change")
+
+    @force_password_change.setter
+    def force_password_change(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_password_change", value)
+
+    @property
+    @pulumi.getter(name="givenName")
+    def given_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The given name (first name) of the user.
+        """
+        return pulumi.get(self, "given_name")
+
+    @given_name.setter
+    def given_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "given_name", value)
+
+    @property
+    @pulumi.getter(name="immutableId")
+    def immutable_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        """
+        return pulumi.get(self, "immutable_id")
+
+    @immutable_id.setter
+    def immutable_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "immutable_id", value)
+
+    @property
+    @pulumi.getter(name="jobTitle")
+    def job_title(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user’s job title.
+        """
+        return pulumi.get(self, "job_title")
+
+    @job_title.setter
+    def job_title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_title", value)
+
+    @property
+    @pulumi.getter(name="mailNickname")
+    def mail_nickname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mail alias for the user. Defaults to the user name part of the User Principal Name.
+        """
+        return pulumi.get(self, "mail_nickname")
+
+    @mail_nickname.setter
+    def mail_nickname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mail_nickname", value)
+
+    @property
+    @pulumi.getter
+    def mobile(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile")
+
+    @mobile.setter
+    def mobile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mobile", value)
+
+    @property
+    @pulumi.getter(name="physicalDeliveryOfficeName")
+    def physical_delivery_office_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "physical_delivery_office_name")
+
+    @physical_delivery_office_name.setter
+    def physical_delivery_office_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "physical_delivery_office_name", value)
+
+    @property
+    @pulumi.getter(name="postalCode")
+    def postal_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+        """
+        return pulumi.get(self, "postal_code")
+
+    @postal_code.setter
+    def postal_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postal_code", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state or province in the user's address.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="streetAddress")
+    def street_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The street address of the user's place of business.
+        """
+        return pulumi.get(self, "street_address")
+
+    @street_address.setter
+    def street_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "street_address", value)
+
+    @property
+    @pulumi.getter
+    def surname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user's surname (family name or last name).
+        """
+        return pulumi.get(self, "surname")
+
+    @surname.setter
+    def surname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "surname", value)
+
+    @property
+    @pulumi.getter(name="usageLocation")
+    def usage_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+        """
+        return pulumi.get(self, "usage_location")
+
+    @usage_location.setter
+    def usage_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "usage_location", value)
 
 
 class User(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -87,6 +412,76 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the User.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: UserArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a User within Azure Active Directory.
+
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.ReadWrite.All` within the `Windows Azure Active Directory` API.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.User("example",
+            display_name="J. Doe",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!",
+            user_principal_name="jdoe@hashicorp.com")
+        ```
+
+        ## Import
+
+        Azure Active Directory Users can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param UserArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(UserArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 account_enabled: Optional[pulumi.Input[bool]] = None,
+                 city: Optional[pulumi.Input[str]] = None,
+                 company_name: Optional[pulumi.Input[str]] = None,
+                 country: Optional[pulumi.Input[str]] = None,
+                 department: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 force_password_change: Optional[pulumi.Input[bool]] = None,
+                 given_name: Optional[pulumi.Input[str]] = None,
+                 immutable_id: Optional[pulumi.Input[str]] = None,
+                 job_title: Optional[pulumi.Input[str]] = None,
+                 mail_nickname: Optional[pulumi.Input[str]] = None,
+                 mobile: Optional[pulumi.Input[str]] = None,
+                 password: Optional[pulumi.Input[str]] = None,
+                 physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
+                 postal_code: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 street_address: Optional[pulumi.Input[str]] = None,
+                 surname: Optional[pulumi.Input[str]] = None,
+                 usage_location: Optional[pulumi.Input[str]] = None,
+                 user_principal_name: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
