@@ -5,13 +5,51 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['GroupMember']
+__all__ = ['GroupMemberArgs', 'GroupMember']
+
+@pulumi.input_type
+class GroupMemberArgs:
+    def __init__(__self__, *,
+                 group_object_id: pulumi.Input[str],
+                 member_object_id: pulumi.Input[str]):
+        """
+        The set of arguments for constructing a GroupMember resource.
+        :param pulumi.Input[str] group_object_id: The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        """
+        pulumi.set(__self__, "group_object_id", group_object_id)
+        pulumi.set(__self__, "member_object_id", member_object_id)
+
+    @property
+    @pulumi.getter(name="groupObjectId")
+    def group_object_id(self) -> pulumi.Input[str]:
+        """
+        The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "group_object_id")
+
+    @group_object_id.setter
+    def group_object_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_object_id", value)
+
+    @property
+    @pulumi.getter(name="memberObjectId")
+    def member_object_id(self) -> pulumi.Input[str]:
+        """
+        The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "member_object_id")
+
+    @member_object_id.setter
+    def member_object_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "member_object_id", value)
 
 
 class GroupMember(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -51,6 +89,58 @@ class GroupMember(pulumi.CustomResource):
         :param pulumi.Input[str] group_object_id: The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
         :param pulumi.Input[str] member_object_id: The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: GroupMemberArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a single Group Membership within Azure Active Directory.
+
+        > **NOTE:** Do not use this resource at the same time as `azuread_group.members`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup")
+        example_group_member = azuread.GroupMember("exampleGroupMember",
+            group_object_id=example_group.id,
+            member_object_id=example_user.id)
+        ```
+
+        ## Import
+
+        Azure Active Directory Group Members can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupMemberArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupMemberArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 group_object_id: Optional[pulumi.Input[str]] = None,
+                 member_object_id: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

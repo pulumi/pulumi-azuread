@@ -5,13 +5,158 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['ApplicationOAuth2Permission']
+__all__ = ['ApplicationOAuth2PermissionArgs', 'ApplicationOAuth2Permission']
+
+@pulumi.input_type
+class ApplicationOAuth2PermissionArgs:
+    def __init__(__self__, *,
+                 admin_consent_description: pulumi.Input[str],
+                 admin_consent_display_name: pulumi.Input[str],
+                 application_object_id: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 user_consent_description: pulumi.Input[str],
+                 user_consent_display_name: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 permission_id: Optional[pulumi.Input[str]] = None):
+        """
+        The set of arguments for constructing a ApplicationOAuth2Permission resource.
+        :param pulumi.Input[str] admin_consent_description: Permission help text that appears in the admin consent and app assignment experiences.
+        :param pulumi.Input[str] admin_consent_display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
+        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] type: Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
+        :param pulumi.Input[str] user_consent_description: Permission help text that appears in the end user consent experience.
+        :param pulumi.Input[str] user_consent_display_name: Display name for the permission that appears in the end user consent experience.
+        :param pulumi.Input[str] value: The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
+        :param pulumi.Input[bool] is_enabled: Determines if the Permission is enabled. Defaults to `true`.
+        :param pulumi.Input[str] permission_id: Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        """
+        pulumi.set(__self__, "admin_consent_description", admin_consent_description)
+        pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
+        pulumi.set(__self__, "application_object_id", application_object_id)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "user_consent_description", user_consent_description)
+        pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
+        pulumi.set(__self__, "value", value)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if permission_id is not None:
+            pulumi.set(__self__, "permission_id", permission_id)
+
+    @property
+    @pulumi.getter(name="adminConsentDescription")
+    def admin_consent_description(self) -> pulumi.Input[str]:
+        """
+        Permission help text that appears in the admin consent and app assignment experiences.
+        """
+        return pulumi.get(self, "admin_consent_description")
+
+    @admin_consent_description.setter
+    def admin_consent_description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "admin_consent_description", value)
+
+    @property
+    @pulumi.getter(name="adminConsentDisplayName")
+    def admin_consent_display_name(self) -> pulumi.Input[str]:
+        """
+        Display name for the permission that appears in the admin consent and app assignment experiences.
+        """
+        return pulumi.get(self, "admin_consent_display_name")
+
+    @admin_consent_display_name.setter
+    def admin_consent_display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "admin_consent_display_name", value)
+
+    @property
+    @pulumi.getter(name="applicationObjectId")
+    def application_object_id(self) -> pulumi.Input[str]:
+        """
+        The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_object_id")
+
+    @application_object_id.setter
+    def application_object_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "application_object_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="userConsentDescription")
+    def user_consent_description(self) -> pulumi.Input[str]:
+        """
+        Permission help text that appears in the end user consent experience.
+        """
+        return pulumi.get(self, "user_consent_description")
+
+    @user_consent_description.setter
+    def user_consent_description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_consent_description", value)
+
+    @property
+    @pulumi.getter(name="userConsentDisplayName")
+    def user_consent_display_name(self) -> pulumi.Input[str]:
+        """
+        Display name for the permission that appears in the end user consent experience.
+        """
+        return pulumi.get(self, "user_consent_display_name")
+
+    @user_consent_display_name.setter
+    def user_consent_display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_consent_display_name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the Permission is enabled. Defaults to `true`.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="permissionId")
+    def permission_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "permission_id")
+
+    @permission_id.setter
+    def permission_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "permission_id", value)
 
 
 class ApplicationOAuth2Permission(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -70,6 +215,70 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
         :param pulumi.Input[str] user_consent_display_name: Display name for the permission that appears in the end user consent experience.
         :param pulumi.Input[str] value: The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: ApplicationOAuth2PermissionArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.
+
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication")
+        example_application_o_auth2_permission = azuread.ApplicationOAuth2Permission("exampleApplicationOAuth2Permission",
+            application_object_id=example_application.id,
+            admin_consent_description="Administer the application",
+            admin_consent_display_name="Administer",
+            is_enabled=True,
+            type="User",
+            user_consent_description="Administer the application",
+            user_consent_display_name="Administer",
+            value="administer")
+        ```
+
+        ## Import
+
+        OAuth2 Permissions can be imported using the `object id` of an Application and the `id` of the Permission, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission test 00000000-0000-0000-0000-000000000000/scope/11111111-1111-1111-1111-111111111111
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param ApplicationOAuth2PermissionArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationOAuth2PermissionArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 admin_consent_description: Optional[pulumi.Input[str]] = None,
+                 admin_consent_display_name: Optional[pulumi.Input[str]] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 permission_id: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 user_consent_description: Optional[pulumi.Input[str]] = None,
+                 user_consent_display_name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__

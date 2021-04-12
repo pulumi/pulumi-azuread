@@ -5,13 +5,116 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Group']
+__all__ = ['GroupArgs', 'Group']
+
+@pulumi.input_type
+class GroupArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 prevent_duplicate_names: Optional[pulumi.Input[bool]] = None):
+        """
+        The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
+        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if name is not None:
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""")
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if prevent_duplicate_names is not None:
+            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description for the Group.  Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name for the Group. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "owners", value)
+
+    @property
+    @pulumi.getter(name="preventDuplicateNames")
+    def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        """
+        return pulumi.get(self, "prevent_duplicate_names")
+
+    @prevent_duplicate_names.setter
+    def prevent_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_duplicate_names", value)
 
 
 class Group(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -71,6 +174,75 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: Optional[GroupArgs] = None,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Manages a Group within Azure Active Directory.
+
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Group("example", display_name="A-AD-Group")
+        ```
+
+        *A group with members*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.User("exampleUser",
+            display_name="J Doe",
+            password="notSecure123",
+            user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup",
+            display_name="MyGroup",
+            members=[example_user.object_id])
+        ```
+
+        ## Import
+
+        Azure Active Directory Groups can be imported using the `object id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
+        ```
+
+        :param str resource_name: The name of the resource.
+        :param GroupArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(GroupArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
