@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from . import _utilities, _tables
-=======
 from . import _utilities
->>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 from . import outputs
 from ._inputs import *
 
@@ -300,8 +296,6 @@ class ApplicationArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -620,7 +614,6 @@ class _ApplicationState:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
->>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class Application(pulumi.CustomResource):
@@ -645,9 +638,7 @@ class Application(pulumi.CustomResource):
                  reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages an Application within Azure Active Directory.
 
@@ -906,15 +897,7 @@ class Application(pulumi.CustomResource):
                  reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):

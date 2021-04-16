@@ -6,11 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-<<<<<<< HEAD
-from . import _utilities, _tables
-=======
 from . import _utilities
->>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 
 __all__ = ['ServicePrincipalPasswordArgs', 'ServicePrincipalPassword']
 
@@ -130,8 +126,6 @@ class ServicePrincipalPasswordArgs:
     @start_date.setter
     def start_date(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_date", value)
-<<<<<<< HEAD
-=======
 
 
 @pulumi.input_type
@@ -252,7 +246,6 @@ class _ServicePrincipalPasswordState:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
->>>>>>> 1e7e750 (Upgrade to Pulumi v3.0.0-beta.2)
 
 
 class ServicePrincipalPassword(pulumi.CustomResource):
@@ -267,9 +260,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  start_date: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a Password associated with a Service Principal within Azure Active Directory.
 
@@ -364,15 +355,7 @@ class ServicePrincipalPassword(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  start_date: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
