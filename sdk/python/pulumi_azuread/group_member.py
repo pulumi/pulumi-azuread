@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['GroupMemberArgs', 'GroupMember']
 
@@ -48,6 +48,46 @@ class GroupMemberArgs:
         pulumi.set(self, "member_object_id", value)
 
 
+@pulumi.input_type
+class _GroupMemberState:
+    def __init__(__self__, *,
+                 group_object_id: Optional[pulumi.Input[str]] = None,
+                 member_object_id: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering GroupMember resources.
+        :param pulumi.Input[str] group_object_id: The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        """
+        if group_object_id is not None:
+            pulumi.set(__self__, "group_object_id", group_object_id)
+        if member_object_id is not None:
+            pulumi.set(__self__, "member_object_id", member_object_id)
+
+    @property
+    @pulumi.getter(name="groupObjectId")
+    def group_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "group_object_id")
+
+    @group_object_id.setter
+    def group_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group_object_id", value)
+
+    @property
+    @pulumi.getter(name="memberObjectId")
+    def member_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "member_object_id")
+
+    @member_object_id.setter
+    def member_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "member_object_id", value)
+
+
 class GroupMember(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -55,9 +95,7 @@ class GroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_object_id: Optional[pulumi.Input[str]] = None,
                  member_object_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages a single Group Membership within Azure Active Directory.
 
@@ -138,15 +176,7 @@ class GroupMember(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  group_object_id: Optional[pulumi.Input[str]] = None,
                  member_object_id: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -156,14 +186,14 @@ class GroupMember(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = GroupMemberArgs.__new__(GroupMemberArgs)
 
             if group_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'group_object_id'")
-            __props__['group_object_id'] = group_object_id
+            __props__.__dict__["group_object_id"] = group_object_id
             if member_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'member_object_id'")
-            __props__['member_object_id'] = member_object_id
+            __props__.__dict__["member_object_id"] = member_object_id
         super(GroupMember, __self__).__init__(
             'azuread:index/groupMember:GroupMember',
             resource_name,
@@ -188,10 +218,10 @@ class GroupMember(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _GroupMemberState.__new__(_GroupMemberState)
 
-        __props__["group_object_id"] = group_object_id
-        __props__["member_object_id"] = member_object_id
+        __props__.__dict__["group_object_id"] = group_object_id
+        __props__.__dict__["member_object_id"] = member_object_id
         return GroupMember(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -209,10 +239,4 @@ class GroupMember(pulumi.CustomResource):
         The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 

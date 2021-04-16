@@ -17,9 +17,9 @@
 package main
 
 import (
-	azuread "github.com/pulumi/pulumi-azuread/provider/v3"
-	"github.com/pulumi/pulumi-azuread/provider/v3/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v2/pkg/tfbridge"
+	azuread "github.com/pulumi/pulumi-azuread/provider/v4"
+	"github.com/pulumi/pulumi-azuread/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 )
 
 func main() {

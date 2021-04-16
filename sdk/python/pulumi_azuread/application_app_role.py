@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['ApplicationAppRoleArgs', 'ApplicationAppRole']
 
@@ -126,6 +126,126 @@ class ApplicationAppRoleArgs:
         pulumi.set(self, "value", value)
 
 
+@pulumi.input_type
+class _ApplicationAppRoleState:
+    def __init__(__self__, *,
+                 allowed_member_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 application_object_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 is_enabled: Optional[pulumi.Input[bool]] = None,
+                 role_id: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering ApplicationAppRole resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] description: Permission help text that appears in the admin app assignment and consent experiences.
+        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
+        :param pulumi.Input[bool] is_enabled: Determines if the app role is enabled. Defaults to `true`.
+        :param pulumi.Input[str] role_id: Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        """
+        if allowed_member_types is not None:
+            pulumi.set(__self__, "allowed_member_types", allowed_member_types)
+        if application_object_id is not None:
+            pulumi.set(__self__, "application_object_id", application_object_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if is_enabled is not None:
+            pulumi.set(__self__, "is_enabled", is_enabled)
+        if role_id is not None:
+            pulumi.set(__self__, "role_id", role_id)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="allowedMemberTypes")
+    def allowed_member_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        """
+        return pulumi.get(self, "allowed_member_types")
+
+    @allowed_member_types.setter
+    def allowed_member_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_member_types", value)
+
+    @property
+    @pulumi.getter(name="applicationObjectId")
+    def application_object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "application_object_id")
+
+    @application_object_id.setter
+    def application_object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_object_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Permission help text that appears in the admin app assignment and consent experiences.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name for the permission that appears in the admin consent and app assignment experiences.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="isEnabled")
+    def is_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the app role is enabled. Defaults to `true`.
+        """
+        return pulumi.get(self, "is_enabled")
+
+    @is_enabled.setter
+    def is_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter(name="roleId")
+    def role_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        """
+        return pulumi.get(self, "role_id")
+
+    @role_id.setter
+    def role_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "role_id", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
 class ApplicationAppRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
@@ -138,9 +258,7 @@ class ApplicationAppRole(pulumi.CustomResource):
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
+                 __props__=None):
         """
         Manages an App Role associated with an Application within Azure Active Directory.
 
@@ -237,15 +355,7 @@ class ApplicationAppRole(pulumi.CustomResource):
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
-                 __props__=None,
-                 __name__=None,
-                 __opts__=None):
-        if __name__ is not None:
-            warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
-            resource_name = __name__
-        if __opts__ is not None:
-            warnings.warn("explicit use of __opts__ is deprecated, use 'opts' instead", DeprecationWarning)
-            opts = __opts__
+                 __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -255,23 +365,23 @@ class ApplicationAppRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = ApplicationAppRoleArgs.__new__(ApplicationAppRoleArgs)
 
             if allowed_member_types is None and not opts.urn:
                 raise TypeError("Missing required property 'allowed_member_types'")
-            __props__['allowed_member_types'] = allowed_member_types
+            __props__.__dict__["allowed_member_types"] = allowed_member_types
             if application_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_object_id'")
-            __props__['application_object_id'] = application_object_id
+            __props__.__dict__["application_object_id"] = application_object_id
             if description is None and not opts.urn:
                 raise TypeError("Missing required property 'description'")
-            __props__['description'] = description
+            __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
-            __props__['display_name'] = display_name
-            __props__['is_enabled'] = is_enabled
-            __props__['role_id'] = role_id
-            __props__['value'] = value
+            __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["is_enabled"] = is_enabled
+            __props__.__dict__["role_id"] = role_id
+            __props__.__dict__["value"] = value
         super(ApplicationAppRole, __self__).__init__(
             'azuread:index/applicationAppRole:ApplicationAppRole',
             resource_name,
@@ -306,15 +416,15 @@ class ApplicationAppRole(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _ApplicationAppRoleState.__new__(_ApplicationAppRoleState)
 
-        __props__["allowed_member_types"] = allowed_member_types
-        __props__["application_object_id"] = application_object_id
-        __props__["description"] = description
-        __props__["display_name"] = display_name
-        __props__["is_enabled"] = is_enabled
-        __props__["role_id"] = role_id
-        __props__["value"] = value
+        __props__.__dict__["allowed_member_types"] = allowed_member_types
+        __props__.__dict__["application_object_id"] = application_object_id
+        __props__.__dict__["description"] = description
+        __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["is_enabled"] = is_enabled
+        __props__.__dict__["role_id"] = role_id
+        __props__.__dict__["value"] = value
         return ApplicationAppRole(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -372,10 +482,4 @@ class ApplicationAppRole(pulumi.CustomResource):
         Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
