@@ -3,7 +3,7 @@
 [![NPM version](https://badge.fury.io/js/%40pulumi%2Fazuread.svg)](https://npmjs.com/package/@pulumi/azuread)
 [![NuGet version](https://badge.fury.io/nu/pulumi.azuread.svg)](https://badge.fury.io/nu/pulumi.azured)
 [![Python version](https://badge.fury.io/py/pulumi-azuread.svg)](https://pypi.org/project/pulumi-azuread)
-[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-azuread/sdk/v2/go)](https://pkg.go.dev/github.com/pulumi/pulumi-azuread/sdk/v2/go)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/pulumi/pulumi-azuread/sdk/v4/go)](https://pkg.go.dev/github.com/pulumi/pulumi-azuread/sdk/v2/go)
 [![License](https://img.shields.io/npm/l/%40pulumi%2Fpulumi.svg)](https://github.com/pulumi/pulumi-azuread/blob/master/LICENSE)
 
 # Microsoft Azure Active Directory Resource Provider
@@ -41,7 +41,7 @@ To use from Python, install using `pip`:
 
 To use from Go, use `go get` to grab the latest version of the library
 
-    $ go get github.com/pulumi/pulumi-azuread/sdk/v2/go/...
+    $ go get github.com/pulumi/pulumi-azuread/sdk/v4/go/...
 
 ### .NET
 
