@@ -38,7 +38,7 @@ import (
 // 			},
 // 			Description: pulumi.String("Admins can manage roles and perform all task actions"),
 // 			DisplayName: pulumi.String("Admin"),
-// 			IsEnabled:   pulumi.Bool(true),
+// 			Enabled:     pulumi.Bool(true),
 // 			Value:       pulumi.String("administer"),
 // 		})
 // 		if err != nil {
@@ -51,7 +51,7 @@ import (
 //
 // ## Import
 //
-// App Roles can be imported using the `object id` of an Application and the `id` of the App Role, e.g.
+// App Roles can be imported using the `object_id` of an Application and the `id` of the App Role, e.g.
 //
 // ```sh
 //  $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111
@@ -59,19 +59,21 @@ import (
 type ApplicationAppRole struct {
 	pulumi.CustomResourceState
 
-	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes pulumi.StringArrayOutput `pulumi:"allowedMemberTypes"`
 	// The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Determines if the app role is enabled. Defaults to `true`.
+	// Determines if the app role is enabled: Defaults to `true`.
+	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
-	// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value pulumi.StringPtrOutput `pulumi:"value"`
 }
 
@@ -116,36 +118,40 @@ func GetApplicationAppRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationAppRole resources.
 type applicationAppRoleState struct {
-	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description *string `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName *string `pulumi:"displayName"`
-	// Determines if the app role is enabled. Defaults to `true`.
+	// Determines if the app role is enabled: Defaults to `true`.
+	Enabled *bool `pulumi:"enabled"`
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
 	RoleId *string `pulumi:"roleId"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value *string `pulumi:"value"`
 }
 
 type ApplicationAppRoleState struct {
-	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes pulumi.StringArrayInput
 	// The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description pulumi.StringPtrInput
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringPtrInput
-	// Determines if the app role is enabled. Defaults to `true`.
+	// Determines if the app role is enabled: Defaults to `true`.
+	Enabled pulumi.BoolPtrInput
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled pulumi.BoolPtrInput
-	// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
 	RoleId pulumi.StringPtrInput
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value pulumi.StringPtrInput
 }
 
@@ -154,37 +160,41 @@ func (ApplicationAppRoleState) ElementType() reflect.Type {
 }
 
 type applicationAppRoleArgs struct {
-	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description string `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName string `pulumi:"displayName"`
-	// Determines if the app role is enabled. Defaults to `true`.
+	// Determines if the app role is enabled: Defaults to `true`.
+	Enabled *bool `pulumi:"enabled"`
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled *bool `pulumi:"isEnabled"`
-	// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
 	RoleId *string `pulumi:"roleId"`
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value *string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a ApplicationAppRole resource.
 type ApplicationAppRoleArgs struct {
-	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes pulumi.StringArrayInput
 	// The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description pulumi.StringInput
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringInput
-	// Determines if the app role is enabled. Defaults to `true`.
+	// Determines if the app role is enabled: Defaults to `true`.
+	Enabled pulumi.BoolPtrInput
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled pulumi.BoolPtrInput
-	// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
 	RoleId pulumi.StringPtrInput
-	// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value pulumi.StringPtrInput
 }
 

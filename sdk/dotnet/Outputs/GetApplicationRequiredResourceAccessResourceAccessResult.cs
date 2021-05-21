@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
+        /// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         /// </summary>
         public readonly string Type;
 

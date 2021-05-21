@@ -26,8 +26,8 @@ export let clientSecret: string | undefined = __config.get("clientSecret");
  */
 export let disableTerraformPartnerId: boolean | undefined = __config.getObject<boolean>("disableTerraformPartnerId");
 /**
- * The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
- * Defaults to `public`.
+ * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+ * `germany`, and `china`. Defaults to `global`.
  */
 export let environment: string | undefined = __config.get("environment") || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
 /**
@@ -38,7 +38,7 @@ export let metadataHost: string | undefined = __config.get("metadataHost");
  * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
  * automatically.
  */
-export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
+export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || utilities.getEnv("ARM_MSI_ENDPOINT");
 /**
  * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
  */
@@ -47,6 +47,14 @@ export let partnerId: string | undefined = __config.get("partnerId");
  * The Tenant ID which should be used. Works with all authentication methods except MSI.
  */
 export let tenantId: string | undefined = __config.get("tenantId");
+/**
+ * Allow Azure CLI to be used for Authentication.
+ */
+export let useCli: boolean | undefined = __config.getObject<boolean>("useCli");
+/**
+ * Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+ */
+export let useMicrosoftGraph: boolean | undefined = __config.getObject<boolean>("useMicrosoftGraph");
 /**
  * Allow Managed Service Identity to be used for Authentication.
  */

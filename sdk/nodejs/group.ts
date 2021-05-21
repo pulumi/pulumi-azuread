@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Manages a Group within Azure Active Directory.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+ * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
  *
  * ## Example Usage
  *
@@ -92,7 +92,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface GroupState {
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly name?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface GroupArgs {
      */
     readonly members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly name?: pulumi.Input<string>;
     /**

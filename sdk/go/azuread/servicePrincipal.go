@@ -28,7 +28,8 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			Homepage: pulumi.String("http://homepage"),
+// 			DisplayName: pulumi.String("example"),
+// 			Homepage:    pulumi.String("http://homepage"),
 // 			IdentifierUris: pulumi.StringArray{
 // 				pulumi.String("http://uri"),
 // 			},
@@ -69,13 +70,18 @@ type ServicePrincipal struct {
 	pulumi.CustomResourceState
 
 	// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-	AppRoleAssignmentRequired pulumi.BoolPtrOutput               `pulumi:"appRoleAssignmentRequired"`
-	AppRoles                  ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
+	AppRoleAssignmentRequired pulumi.BoolPtrOutput `pulumi:"appRoleAssignmentRequired"`
+	// A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+	AppRoles ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
 	// The App ID of the Application for which to create a Service Principal.
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// The Display Name of the Application associated with this Service Principal.
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayOutput `pulumi:"oauth2PermissionScopes"`
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions ServicePrincipalOauth2PermissionArrayOutput `pulumi:"oauth2Permissions"`
 	// The Object ID of the Service Principal.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
@@ -116,13 +122,18 @@ func GetServicePrincipal(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServicePrincipal resources.
 type servicePrincipalState struct {
 	// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-	AppRoleAssignmentRequired *bool                     `pulumi:"appRoleAssignmentRequired"`
-	AppRoles                  []ServicePrincipalAppRole `pulumi:"appRoles"`
+	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
+	// A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+	AppRoles []ServicePrincipalAppRole `pulumi:"appRoles"`
 	// The App ID of the Application for which to create a Service Principal.
 	ApplicationId *string `pulumi:"applicationId"`
-	// The Display Name of the Application associated with this Service Principal.
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName *string `pulumi:"displayName"`
-	// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes []ServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions []ServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
 	// The Object ID of the Service Principal.
 	ObjectId *string `pulumi:"objectId"`
@@ -133,12 +144,17 @@ type servicePrincipalState struct {
 type ServicePrincipalState struct {
 	// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
-	AppRoles                  ServicePrincipalAppRoleArrayInput
+	// A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+	AppRoles ServicePrincipalAppRoleArrayInput
 	// The App ID of the Application for which to create a Service Principal.
 	ApplicationId pulumi.StringPtrInput
-	// The Display Name of the Application associated with this Service Principal.
+	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName pulumi.StringPtrInput
-	// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayInput
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions ServicePrincipalOauth2PermissionArrayInput
 	// The Object ID of the Service Principal.
 	ObjectId pulumi.StringPtrInput
@@ -155,7 +171,11 @@ type servicePrincipalArgs struct {
 	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
 	// The App ID of the Application for which to create a Service Principal.
 	ApplicationId string `pulumi:"applicationId"`
-	// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes []ServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions []ServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
 	// A list of tags to apply to the Service Principal.
 	Tags []string `pulumi:"tags"`
@@ -167,7 +187,11 @@ type ServicePrincipalArgs struct {
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
 	// The App ID of the Application for which to create a Service Principal.
 	ApplicationId pulumi.StringInput
-	// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayInput
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions ServicePrincipalOauth2PermissionArrayInput
 	// A list of tags to apply to the Service Principal.
 	Tags pulumi.StringArrayInput

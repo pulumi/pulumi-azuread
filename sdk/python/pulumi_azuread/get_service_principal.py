@@ -21,7 +21,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, app_roles=None, application_id=None, display_name=None, id=None, oauth2_permissions=None, object_id=None):
+    def __init__(__self__, app_roles=None, application_id=None, display_name=None, id=None, oauth2_permission_scopes=None, oauth2_permissions=None, object_id=None):
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         pulumi.set(__self__, "app_roles", app_roles)
@@ -34,8 +34,15 @@ class GetServicePrincipalResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if oauth2_permission_scopes and not isinstance(oauth2_permission_scopes, list):
+            raise TypeError("Expected argument 'oauth2_permission_scopes' to be a list")
+        pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
         if oauth2_permissions and not isinstance(oauth2_permissions, list):
             raise TypeError("Expected argument 'oauth2_permissions' to be a list")
+        if oauth2_permissions is not None:
+            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
+            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
+
         pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
@@ -44,6 +51,9 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> Sequence['outputs.GetServicePrincipalAppRoleResult']:
+        """
+        A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        """
         return pulumi.get(self, "app_roles")
 
     @property
@@ -68,13 +78,27 @@ class GetServicePrincipalResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter(name="oauth2PermissionScopes")
+    def oauth2_permission_scopes(self) -> Sequence['outputs.GetServicePrincipalOauth2PermissionScopeResult']:
+        """
+        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        """
+        return pulumi.get(self, "oauth2_permission_scopes")
+
+    @property
     @pulumi.getter(name="oauth2Permissions")
     def oauth2_permissions(self) -> Sequence['outputs.GetServicePrincipalOauth2PermissionResult']:
+        """
+        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
+        """
         return pulumi.get(self, "oauth2_permissions")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The Object ID for the Service Principal.
+        """
         return pulumi.get(self, "object_id")
 
 
@@ -88,12 +112,14 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             application_id=self.application_id,
             display_name=self.display_name,
             id=self.id,
+            oauth2_permission_scopes=self.oauth2_permission_scopes,
             oauth2_permissions=self.oauth2_permissions,
             object_id=self.object_id)
 
 
 def get_service_principal(application_id: Optional[str] = None,
                           display_name: Optional[str] = None,
+                          oauth2_permission_scopes: Optional[Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionScopeArgs']]] = None,
                           oauth2_permissions: Optional[Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']]] = None,
                           object_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
@@ -131,12 +157,14 @@ def get_service_principal(application_id: Optional[str] = None,
 
     :param str application_id: The ID of the Azure AD Application.
     :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
-    :param Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+    :param Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionScopeArgs']] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+    :param Sequence[pulumi.InputType['GetServicePrincipalOauth2PermissionArgs']] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
     :param str object_id: The ID of the Azure AD Service Principal.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
     __args__['displayName'] = display_name
+    __args__['oauth2PermissionScopes'] = oauth2_permission_scopes
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
     if opts is None:
@@ -150,5 +178,6 @@ def get_service_principal(application_id: Optional[str] = None,
         application_id=__ret__.application_id,
         display_name=__ret__.display_name,
         id=__ret__.id,
+        oauth2_permission_scopes=__ret__.oauth2_permission_scopes,
         oauth2_permissions=__ret__.oauth2_permissions,
         object_id=__ret__.object_id)

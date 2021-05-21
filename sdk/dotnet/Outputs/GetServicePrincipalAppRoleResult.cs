@@ -26,6 +26,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Is this permission enabled?
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// The unique identifier for one of the `OAuth2Permission`
         /// </summary>
         public readonly string Id;
@@ -46,6 +50,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string displayName,
 
+            bool enabled,
+
             string id,
 
             bool isEnabled,
@@ -55,6 +61,7 @@ namespace Pulumi.AzureAD.Outputs
             AllowedMemberTypes = allowedMemberTypes;
             Description = description;
             DisplayName = displayName;
+            Enabled = enabled;
             Id = id;
             IsEnabled = isEnabled;
             Value = value;

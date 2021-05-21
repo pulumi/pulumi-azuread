@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.
  *
+ * > This resource is deprecated in favour of azuread.ApplicationOauth2PermissionScope and will be removed in version 2.0 of the provider.
+ *
  * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
  *
  * ## Example Usage
@@ -76,14 +78,20 @@ export class ApplicationOAuth2Permission extends pulumi.CustomResource {
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
     /**
      * Determines if the Permission is enabled. Defaults to `true`.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly isEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly permissionId!: pulumi.Output<string>;
+    public readonly scopeId!: pulumi.Output<string>;
     /**
      * Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
      */
@@ -117,8 +125,10 @@ export class ApplicationOAuth2Permission extends pulumi.CustomResource {
             inputs["adminConsentDescription"] = state ? state.adminConsentDescription : undefined;
             inputs["adminConsentDisplayName"] = state ? state.adminConsentDisplayName : undefined;
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
+            inputs["enabled"] = state ? state.enabled : undefined;
             inputs["isEnabled"] = state ? state.isEnabled : undefined;
             inputs["permissionId"] = state ? state.permissionId : undefined;
+            inputs["scopeId"] = state ? state.scopeId : undefined;
             inputs["type"] = state ? state.type : undefined;
             inputs["userConsentDescription"] = state ? state.userConsentDescription : undefined;
             inputs["userConsentDisplayName"] = state ? state.userConsentDisplayName : undefined;
@@ -149,8 +159,10 @@ export class ApplicationOAuth2Permission extends pulumi.CustomResource {
             inputs["adminConsentDescription"] = args ? args.adminConsentDescription : undefined;
             inputs["adminConsentDisplayName"] = args ? args.adminConsentDisplayName : undefined;
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
+            inputs["enabled"] = args ? args.enabled : undefined;
             inputs["isEnabled"] = args ? args.isEnabled : undefined;
             inputs["permissionId"] = args ? args.permissionId : undefined;
+            inputs["scopeId"] = args ? args.scopeId : undefined;
             inputs["type"] = args ? args.type : undefined;
             inputs["userConsentDescription"] = args ? args.userConsentDescription : undefined;
             inputs["userConsentDisplayName"] = args ? args.userConsentDisplayName : undefined;
@@ -179,14 +191,20 @@ export interface ApplicationOAuth2PermissionState {
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
     readonly applicationObjectId?: pulumi.Input<string>;
+    readonly enabled?: pulumi.Input<boolean>;
     /**
      * Determines if the Permission is enabled. Defaults to `true`.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly isEnabled?: pulumi.Input<boolean>;
     /**
      * Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly permissionId?: pulumi.Input<string>;
+    readonly scopeId?: pulumi.Input<string>;
     /**
      * Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
      */
@@ -221,14 +239,20 @@ export interface ApplicationOAuth2PermissionArgs {
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
     readonly applicationObjectId: pulumi.Input<string>;
+    readonly enabled?: pulumi.Input<boolean>;
     /**
      * Determines if the Permission is enabled. Defaults to `true`.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly isEnabled?: pulumi.Input<boolean>;
     /**
      * Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly permissionId?: pulumi.Input<string>;
+    readonly scopeId?: pulumi.Input<string>;
     /**
      * Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
      */

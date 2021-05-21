@@ -50,13 +50,13 @@ namespace Pulumi.AzureAD
     public sealed class GetApplicationArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specifies the Application ID of the Azure Active Directory Application.
+        /// Specifies the Application ID (also called Client ID).
         /// </summary>
         [Input("applicationId")]
         public string? ApplicationId { get; set; }
 
         /// <summary>
-        /// Specifies the display name of the Application within Azure Active Directory.
+        /// Specifies the display name of the application.
         /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
@@ -71,8 +71,9 @@ namespace Pulumi.AzureAD
         private List<Inputs.GetApplicationOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         /// </summary>
+        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
         public List<Inputs.GetApplicationOauth2PermissionArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetApplicationOauth2PermissionArgs>());
@@ -80,7 +81,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Specifies the Object ID of the Application within Azure Active Directory.
+        /// Specifies the Object ID of the application.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -90,6 +91,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("optionalClaims")]
         public Inputs.GetApplicationOptionalClaimsArgs? OptionalClaims { get; set; }
+
+        /// <summary>
+        /// A `web` block as documented below.
+        /// </summary>
+        [Input("web")]
+        public Inputs.GetApplicationWebArgs? Web { get; set; }
 
         public GetApplicationArgs()
         {
@@ -101,25 +108,36 @@ namespace Pulumi.AzureAD
     public sealed class GetApplicationResult
     {
         /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+        /// An `api` block as documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetApplicationApiResult> Apis;
+        /// <summary>
+        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationAppRoleResult> AppRoles;
         /// <summary>
-        /// the Application ID of the Azure Active Directory Application.
+        /// the Application ID (also called Client ID).
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// Is this Azure AD Application available to other tenants?
+        /// (**Deprecated**) Is this Azure AD Application available to other tenants?
         /// </summary>
         public readonly bool AvailableToOtherTenants;
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// The fallback application type as public client, such as an installed application running on a mobile device.
+        /// </summary>
+        public readonly bool FallbackPublicClientEnabled;
         /// <summary>
         /// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
         /// </summary>
         public readonly string GroupMembershipClaims;
+        /// <summary>
+        /// (**Deprecated**) The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
+        /// </summary>
         public readonly string Homepage;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -130,7 +148,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> IdentifierUris;
         /// <summary>
-        /// The URL of the logout page.
+        /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         /// </summary>
         public readonly string LogoutUrl;
         /// <summary>
@@ -138,15 +156,15 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
+        /// (**Deprecated**) Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
         /// </summary>
         public readonly bool Oauth2AllowImplicitFlow;
         /// <summary>
-        /// A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationOauth2PermissionResult> Oauth2Permissions;
         /// <summary>
-        /// the Object ID of the Azure Active Directory Application.
+        /// The application's Object ID.
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
@@ -154,11 +172,11 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly Outputs.GetApplicationOptionalClaimsResult? OptionalClaims;
         /// <summary>
-        /// A list of User Object IDs that are assigned ownership of the application registration.
+        /// A list of Object IDs for principals that are assigned ownership of the application.
         /// </summary>
         public readonly ImmutableArray<string> Owners;
         /// <summary>
-        /// A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
+        /// (**Deprecated**) A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
         /// </summary>
         public readonly ImmutableArray<string> ReplyUrls;
         /// <summary>
@@ -166,12 +184,22 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> RequiredResourceAccesses;
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
+        /// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        /// </summary>
+        public readonly string SignInAudience;
+        /// <summary>
+        /// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         /// </summary>
         public readonly string Type;
+        /// <summary>
+        /// A `web` block as documented below.
+        /// </summary>
+        public readonly Outputs.GetApplicationWebResult Web;
 
         [OutputConstructor]
         private GetApplicationResult(
+            ImmutableArray<Outputs.GetApplicationApiResult> apis,
+
             ImmutableArray<Outputs.GetApplicationAppRoleResult> appRoles,
 
             string applicationId,
@@ -179,6 +207,8 @@ namespace Pulumi.AzureAD
             bool availableToOtherTenants,
 
             string displayName,
+
+            bool fallbackPublicClientEnabled,
 
             string groupMembershipClaims,
 
@@ -206,12 +236,18 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> requiredResourceAccesses,
 
-            string type)
+            string signInAudience,
+
+            string type,
+
+            Outputs.GetApplicationWebResult web)
         {
+            Apis = apis;
             AppRoles = appRoles;
             ApplicationId = applicationId;
             AvailableToOtherTenants = availableToOtherTenants;
             DisplayName = displayName;
+            FallbackPublicClientEnabled = fallbackPublicClientEnabled;
             GroupMembershipClaims = groupMembershipClaims;
             Homepage = homepage;
             Id = id;
@@ -225,7 +261,9 @@ namespace Pulumi.AzureAD
             Owners = owners;
             ReplyUrls = replyUrls;
             RequiredResourceAccesses = requiredResourceAccesses;
+            SignInAudience = signInAudience;
             Type = type;
+            Web = web;
         }
     }
 }

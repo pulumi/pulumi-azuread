@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ApplicationRequiredResourceAccess
     {
         /// <summary>
-        /// A collection of `resource_access` blocks as documented below.
+        /// A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         /// </summary>
         public readonly ImmutableArray<Outputs.ApplicationRequiredResourceAccessResourceAccess> ResourceAccesses;
         /// <summary>
-        /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
+        /// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
         /// </summary>
         public readonly string ResourceAppId;
 

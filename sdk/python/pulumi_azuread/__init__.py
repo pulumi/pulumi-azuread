@@ -7,6 +7,7 @@ from .application import *
 from .application_app_role import *
 from .application_certificate import *
 from .application_o_auth2_permission import *
+from .application_oauth2_permission_scope import *
 from .application_password import *
 from .get_application import *
 from .get_client_config import *
@@ -51,6 +52,8 @@ def _register_module():
                 return ApplicationCertificate(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission":
                 return ApplicationOAuth2Permission(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "azuread:index/applicationOauth2PermissionScope:ApplicationOauth2PermissionScope":
+                return ApplicationOauth2PermissionScope(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "azuread:index/applicationPassword:ApplicationPassword":
                 return ApplicationPassword(name, pulumi.ResourceOptions(urn=urn))
             elif typ == "azuread:index/group:Group":
@@ -74,6 +77,7 @@ def _register_module():
     pulumi.runtime.register_resource_module("azuread", "index/applicationAppRole", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/applicationCertificate", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/applicationOAuth2Permission", _module_instance)
+    pulumi.runtime.register_resource_module("azuread", "index/applicationOauth2PermissionScope", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/applicationPassword", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/group", _module_instance)
     pulumi.runtime.register_resource_module("azuread", "index/groupMember", _module_instance)

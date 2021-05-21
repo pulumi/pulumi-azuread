@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<Inputs.ApplicationRequiredResourceAccessResourceAccessGetArgs>? _resourceAccesses;
 
         /// <summary>
-        /// A collection of `resource_access` blocks as documented below.
+        /// A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         /// </summary>
         public InputList<Inputs.ApplicationRequiredResourceAccessResourceAccessGetArgs> ResourceAccesses
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
+        /// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
         /// </summary>
         [Input("resourceAppId", required: true)]
         public Input<string> ResourceAppId { get; set; } = null!;

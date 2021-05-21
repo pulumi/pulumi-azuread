@@ -19,7 +19,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, city=None, company_name=None, country=None, department=None, display_name=None, given_name=None, id=None, immutable_id=None, job_title=None, mail=None, mail_nickname=None, mobile=None, object_id=None, onpremises_sam_account_name=None, onpremises_user_principal_name=None, physical_delivery_office_name=None, postal_code=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None):
+    def __init__(__self__, account_enabled=None, city=None, company_name=None, country=None, department=None, display_name=None, given_name=None, id=None, immutable_id=None, job_title=None, mail=None, mail_nickname=None, mobile=None, mobile_phone=None, object_id=None, office_location=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_user_principal_name=None, physical_delivery_office_name=None, postal_code=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -46,6 +46,10 @@ class GetUserResult:
         pulumi.set(__self__, "id", id)
         if immutable_id and not isinstance(immutable_id, str):
             raise TypeError("Expected argument 'immutable_id' to be a str")
+        if immutable_id is not None:
+            warnings.warn("""This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""immutable_id is deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "immutable_id", immutable_id)
         if job_title and not isinstance(job_title, str):
             raise TypeError("Expected argument 'job_title' to be a str")
@@ -58,10 +62,23 @@ class GetUserResult:
         pulumi.set(__self__, "mail_nickname", mail_nickname)
         if mobile and not isinstance(mobile, str):
             raise TypeError("Expected argument 'mobile' to be a str")
+        if mobile is not None:
+            warnings.warn("""This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""mobile is deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "mobile", mobile)
+        if mobile_phone and not isinstance(mobile_phone, str):
+            raise TypeError("Expected argument 'mobile_phone' to be a str")
+        pulumi.set(__self__, "mobile_phone", mobile_phone)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         pulumi.set(__self__, "object_id", object_id)
+        if office_location and not isinstance(office_location, str):
+            raise TypeError("Expected argument 'office_location' to be a str")
+        pulumi.set(__self__, "office_location", office_location)
+        if onpremises_immutable_id and not isinstance(onpremises_immutable_id, str):
+            raise TypeError("Expected argument 'onpremises_immutable_id' to be a str")
+        pulumi.set(__self__, "onpremises_immutable_id", onpremises_immutable_id)
         if onpremises_sam_account_name and not isinstance(onpremises_sam_account_name, str):
             raise TypeError("Expected argument 'onpremises_sam_account_name' to be a str")
         pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
@@ -70,6 +87,10 @@ class GetUserResult:
         pulumi.set(__self__, "onpremises_user_principal_name", onpremises_user_principal_name)
         if physical_delivery_office_name and not isinstance(physical_delivery_office_name, str):
             raise TypeError("Expected argument 'physical_delivery_office_name' to be a str")
+        if physical_delivery_office_name is not None:
+            warnings.warn("""This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""physical_delivery_office_name is deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "physical_delivery_office_name", physical_delivery_office_name)
         if postal_code and not isinstance(postal_code, str):
             raise TypeError("Expected argument 'postal_code' to be a str")
@@ -89,6 +110,9 @@ class GetUserResult:
         if user_principal_name and not isinstance(user_principal_name, str):
             raise TypeError("Expected argument 'user_principal_name' to be a str")
         pulumi.set(__self__, "user_principal_name", user_principal_name)
+        if user_type and not isinstance(user_type, str):
+            raise TypeError("Expected argument 'user_type' to be a str")
+        pulumi.set(__self__, "user_type", user_type)
 
     @property
     @pulumi.getter(name="accountEnabled")
@@ -158,7 +182,7 @@ class GetUserResult:
     @pulumi.getter(name="immutableId")
     def immutable_id(self) -> str:
         """
-        The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+        (**Deprecated**) The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         """
         return pulumi.get(self, "immutable_id")
 
@@ -190,14 +214,38 @@ class GetUserResult:
     @pulumi.getter
     def mobile(self) -> str:
         """
-        The primary cellular telephone number for the user.
+        (**Deprecated**) The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         """
         return pulumi.get(self, "mobile")
+
+    @property
+    @pulumi.getter(name="mobilePhone")
+    def mobile_phone(self) -> str:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile_phone")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
         return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="officeLocation")
+    def office_location(self) -> str:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "office_location")
+
+    @property
+    @pulumi.getter(name="onpremisesImmutableId")
+    def onpremises_immutable_id(self) -> str:
+        """
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+        """
+        return pulumi.get(self, "onpremises_immutable_id")
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
@@ -219,7 +267,7 @@ class GetUserResult:
     @pulumi.getter(name="physicalDeliveryOfficeName")
     def physical_delivery_office_name(self) -> str:
         """
-        The office location in the user's place of business.
+        (**Deprecated**) The office location in the user's place of business. Deprecated in favour of `office_location`.
         """
         return pulumi.get(self, "physical_delivery_office_name")
 
@@ -271,6 +319,14 @@ class GetUserResult:
         """
         return pulumi.get(self, "user_principal_name")
 
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> str:
+        """
+        The user type in the directory. One of `Guest` or `Member`.
+        """
+        return pulumi.get(self, "user_type")
+
 
 class AwaitableGetUserResult(GetUserResult):
     # pylint: disable=using-constant-test
@@ -291,7 +347,10 @@ class AwaitableGetUserResult(GetUserResult):
             mail=self.mail,
             mail_nickname=self.mail_nickname,
             mobile=self.mobile,
+            mobile_phone=self.mobile_phone,
             object_id=self.object_id,
+            office_location=self.office_location,
+            onpremises_immutable_id=self.onpremises_immutable_id,
             onpremises_sam_account_name=self.onpremises_sam_account_name,
             onpremises_user_principal_name=self.onpremises_user_principal_name,
             physical_delivery_office_name=self.physical_delivery_office_name,
@@ -300,7 +359,8 @@ class AwaitableGetUserResult(GetUserResult):
             street_address=self.street_address,
             surname=self.surname,
             usage_location=self.usage_location,
-            user_principal_name=self.user_principal_name)
+            user_principal_name=self.user_principal_name,
+            user_type=self.user_type)
 
 
 def get_user(mail_nickname: Optional[str] = None,
@@ -350,7 +410,10 @@ def get_user(mail_nickname: Optional[str] = None,
         mail=__ret__.mail,
         mail_nickname=__ret__.mail_nickname,
         mobile=__ret__.mobile,
+        mobile_phone=__ret__.mobile_phone,
         object_id=__ret__.object_id,
+        office_location=__ret__.office_location,
+        onpremises_immutable_id=__ret__.onpremises_immutable_id,
         onpremises_sam_account_name=__ret__.onpremises_sam_account_name,
         onpremises_user_principal_name=__ret__.onpremises_user_principal_name,
         physical_delivery_office_name=__ret__.physical_delivery_office_name,
@@ -359,4 +422,5 @@ def get_user(mail_nickname: Optional[str] = None,
         street_address=__ret__.street_address,
         surname=__ret__.surname,
         usage_location=__ret__.usage_location,
-        user_principal_name=__ret__.user_principal_name)
+        user_principal_name=__ret__.user_principal_name,
+        user_type=__ret__.user_type)

@@ -13,12 +13,22 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ServicePrincipalAppRole
     {
+        /// <summary>
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
+        /// <summary>
+        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The Display Name of the Application associated with this Service Principal.
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         public readonly string? DisplayName;
+        /// <summary>
+        /// Is this permission enabled?
+        /// </summary>
+        public readonly bool? Enabled;
         /// <summary>
         /// The unique identifier for one of the `OAuth2Permission`.
         /// </summary>
@@ -40,6 +50,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string? displayName,
 
+            bool? enabled,
+
             string? id,
 
             bool? isEnabled,
@@ -49,6 +61,7 @@ namespace Pulumi.AzureAD.Outputs
             AllowedMemberTypes = allowedMemberTypes;
             Description = description;
             DisplayName = displayName;
+            Enabled = enabled;
             Id = id;
             IsEnabled = isEnabled;
             Value = value;

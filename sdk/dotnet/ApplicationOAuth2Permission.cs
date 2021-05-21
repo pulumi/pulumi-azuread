@@ -12,6 +12,8 @@ namespace Pulumi.AzureAD
     /// <summary>
     /// Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.
     /// 
+    /// &gt; This resource is deprecated in favour of azuread.ApplicationOauth2PermissionScope and will be removed in version 2.0 of the provider.
+    /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     /// 
     /// ## Example Usage
@@ -72,6 +74,9 @@ namespace Pulumi.AzureAD
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
 
+        [Output("enabled")]
+        public Output<bool?> Enabled { get; private set; } = null!;
+
         /// <summary>
         /// Determines if the Permission is enabled. Defaults to `true`.
         /// </summary>
@@ -83,6 +88,9 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("permissionId")]
         public Output<string> PermissionId { get; private set; } = null!;
+
+        [Output("scopeId")]
+        public Output<string> ScopeId { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
@@ -172,6 +180,9 @@ namespace Pulumi.AzureAD
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
 
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
         /// <summary>
         /// Determines if the Permission is enabled. Defaults to `true`.
         /// </summary>
@@ -183,6 +194,9 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("permissionId")]
         public Input<string>? PermissionId { get; set; }
+
+        [Input("scopeId")]
+        public Input<string>? ScopeId { get; set; }
 
         /// <summary>
         /// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
@@ -233,6 +247,9 @@ namespace Pulumi.AzureAD
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
 
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
         /// <summary>
         /// Determines if the Permission is enabled. Defaults to `true`.
         /// </summary>
@@ -244,6 +261,9 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("permissionId")]
         public Input<string>? PermissionId { get; set; }
+
+        [Input("scopeId")]
+        public Input<string>? ScopeId { get; set; }
 
         /// <summary>
         /// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".

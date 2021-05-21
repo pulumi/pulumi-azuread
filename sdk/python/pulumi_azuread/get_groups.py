@@ -29,8 +29,8 @@ class GetGroupsResult:
         if names and not isinstance(names, list):
             raise TypeError("Expected argument 'names' to be a list")
         if names is not None:
-            warnings.warn("""This property has been renamed to `display_names` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("""names is deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.""")
+            warnings.warn("""This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""names is deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider""")
 
         pulumi.set(__self__, "names", names)
         if object_ids and not isinstance(object_ids, list):
@@ -40,6 +40,9 @@ class GetGroupsResult:
     @property
     @pulumi.getter(name="displayNames")
     def display_names(self) -> Sequence[str]:
+        """
+        The Display Names of the Azure AD Groups.
+        """
         return pulumi.get(self, "display_names")
 
     @property
@@ -53,9 +56,6 @@ class GetGroupsResult:
     @property
     @pulumi.getter
     def names(self) -> Sequence[str]:
-        """
-        The Display Names of the Azure AD Groups.
-        """
         return pulumi.get(self, "names")
 
     @property
@@ -94,14 +94,14 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    groups = azuread.get_groups(names=[
+    groups = azuread.get_groups(display_names=[
         "group-a",
         "group-b",
     ])
     ```
 
 
-    :param Sequence[str] names: The Display Names of the Azure AD Groups.
+    :param Sequence[str] display_names: The Display Names of the Azure AD Groups.
     :param Sequence[str] object_ids: The Object IDs of the Azure AD Groups.
     """
     __args__ = dict()

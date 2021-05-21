@@ -92,7 +92,9 @@ export class User extends pulumi.CustomResource {
      */
     public readonly givenName!: pulumi.Output<string>;
     /**
-     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+     *
+     * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly immutableId!: pulumi.Output<string>;
     /**
@@ -108,13 +110,27 @@ export class User extends pulumi.CustomResource {
      */
     public readonly mailNickname!: pulumi.Output<string>;
     /**
-     * The primary cellular telephone number for the user.
+     * The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+     *
+     * @deprecated This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly mobile!: pulumi.Output<string>;
+    /**
+     * The primary cellular telephone number for the user.
+     */
+    public readonly mobilePhone!: pulumi.Output<string>;
     /**
      * The Object ID of the User.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
+    /**
+     * The office location in the user's place of business.
+     */
+    public readonly officeLocation!: pulumi.Output<string>;
+    /**
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+     */
+    public readonly onpremisesImmutableId!: pulumi.Output<string>;
     /**
      * The on-premise SAM account name of the User.
      */
@@ -128,7 +144,9 @@ export class User extends pulumi.CustomResource {
      */
     public readonly password!: pulumi.Output<string>;
     /**
-     * The office location in the user's place of business.
+     * The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+     *
+     * @deprecated This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly physicalDeliveryOfficeName!: pulumi.Output<string>;
     /**
@@ -155,6 +173,10 @@ export class User extends pulumi.CustomResource {
      * The User Principal Name of the User.
      */
     public readonly userPrincipalName!: pulumi.Output<string>;
+    /**
+     * The user type in the directory. One of `Guest` or `Member`.
+     */
+    public /*out*/ readonly userType!: pulumi.Output<string>;
 
     /**
      * Create a User resource with the given unique name, arguments, and options.
@@ -182,7 +204,10 @@ export class User extends pulumi.CustomResource {
             inputs["mail"] = state ? state.mail : undefined;
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
             inputs["mobile"] = state ? state.mobile : undefined;
+            inputs["mobilePhone"] = state ? state.mobilePhone : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["officeLocation"] = state ? state.officeLocation : undefined;
+            inputs["onpremisesImmutableId"] = state ? state.onpremisesImmutableId : undefined;
             inputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
             inputs["onpremisesUserPrincipalName"] = state ? state.onpremisesUserPrincipalName : undefined;
             inputs["password"] = state ? state.password : undefined;
@@ -193,6 +218,7 @@ export class User extends pulumi.CustomResource {
             inputs["surname"] = state ? state.surname : undefined;
             inputs["usageLocation"] = state ? state.usageLocation : undefined;
             inputs["userPrincipalName"] = state ? state.userPrincipalName : undefined;
+            inputs["userType"] = state ? state.userType : undefined;
         } else {
             const args = argsOrState as UserArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -216,6 +242,9 @@ export class User extends pulumi.CustomResource {
             inputs["jobTitle"] = args ? args.jobTitle : undefined;
             inputs["mailNickname"] = args ? args.mailNickname : undefined;
             inputs["mobile"] = args ? args.mobile : undefined;
+            inputs["mobilePhone"] = args ? args.mobilePhone : undefined;
+            inputs["officeLocation"] = args ? args.officeLocation : undefined;
+            inputs["onpremisesImmutableId"] = args ? args.onpremisesImmutableId : undefined;
             inputs["password"] = args ? args.password : undefined;
             inputs["physicalDeliveryOfficeName"] = args ? args.physicalDeliveryOfficeName : undefined;
             inputs["postalCode"] = args ? args.postalCode : undefined;
@@ -228,6 +257,7 @@ export class User extends pulumi.CustomResource {
             inputs["objectId"] = undefined /*out*/;
             inputs["onpremisesSamAccountName"] = undefined /*out*/;
             inputs["onpremisesUserPrincipalName"] = undefined /*out*/;
+            inputs["userType"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -273,7 +303,9 @@ export interface UserState {
      */
     readonly givenName?: pulumi.Input<string>;
     /**
-     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+     *
+     * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly immutableId?: pulumi.Input<string>;
     /**
@@ -289,13 +321,27 @@ export interface UserState {
      */
     readonly mailNickname?: pulumi.Input<string>;
     /**
-     * The primary cellular telephone number for the user.
+     * The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+     *
+     * @deprecated This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly mobile?: pulumi.Input<string>;
+    /**
+     * The primary cellular telephone number for the user.
+     */
+    readonly mobilePhone?: pulumi.Input<string>;
     /**
      * The Object ID of the User.
      */
     readonly objectId?: pulumi.Input<string>;
+    /**
+     * The office location in the user's place of business.
+     */
+    readonly officeLocation?: pulumi.Input<string>;
+    /**
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+     */
+    readonly onpremisesImmutableId?: pulumi.Input<string>;
     /**
      * The on-premise SAM account name of the User.
      */
@@ -309,7 +355,9 @@ export interface UserState {
      */
     readonly password?: pulumi.Input<string>;
     /**
-     * The office location in the user's place of business.
+     * The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+     *
+     * @deprecated This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly physicalDeliveryOfficeName?: pulumi.Input<string>;
     /**
@@ -336,6 +384,10 @@ export interface UserState {
      * The User Principal Name of the User.
      */
     readonly userPrincipalName?: pulumi.Input<string>;
+    /**
+     * The user type in the directory. One of `Guest` or `Member`.
+     */
+    readonly userType?: pulumi.Input<string>;
 }
 
 /**
@@ -375,7 +427,9 @@ export interface UserArgs {
      */
     readonly givenName?: pulumi.Input<string>;
     /**
-     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+     *
+     * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly immutableId?: pulumi.Input<string>;
     /**
@@ -387,15 +441,31 @@ export interface UserArgs {
      */
     readonly mailNickname?: pulumi.Input<string>;
     /**
-     * The primary cellular telephone number for the user.
+     * The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+     *
+     * @deprecated This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly mobile?: pulumi.Input<string>;
+    /**
+     * The primary cellular telephone number for the user.
+     */
+    readonly mobilePhone?: pulumi.Input<string>;
+    /**
+     * The office location in the user's place of business.
+     */
+    readonly officeLocation?: pulumi.Input<string>;
+    /**
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+     */
+    readonly onpremisesImmutableId?: pulumi.Input<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
     readonly password: pulumi.Input<string>;
     /**
-     * The office location in the user's place of business.
+     * The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+     *
+     * @deprecated This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly physicalDeliveryOfficeName?: pulumi.Input<string>;
     /**

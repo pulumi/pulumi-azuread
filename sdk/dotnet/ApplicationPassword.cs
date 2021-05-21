@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// Manages a Password associated with an Application within Azure Active Directory. Also can be referred to as Client secrets.
+    /// Manages a password credential associated with an application within Azure Active Directory. These are also referred to as client secrets during authentication.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     /// 
@@ -29,10 +29,7 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleApplicationPassword = new AzureAD.ApplicationPassword("exampleApplicationPassword", new AzureAD.ApplicationPasswordArgs
     ///         {
-    ///             ApplicationObjectId = exampleApplication.Id,
-    ///             Description = "My managed password",
-    ///             Value = "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
-    ///             EndDate = "2099-01-01T01:02:03Z",
+    ///             ApplicationObjectId = exampleApplication.ObjectId,
     ///         });
     ///     }
     /// 
@@ -56,11 +53,14 @@ namespace Pulumi.AzureAD
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// A description for the Password.
-        /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// A display name for the password.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -144,11 +144,14 @@ namespace Pulumi.AzureAD
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
 
-        /// <summary>
-        /// A description for the Password.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A display name for the password.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -177,8 +180,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Password for this Application.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public ApplicationPasswordArgs()
         {
@@ -193,11 +196,14 @@ namespace Pulumi.AzureAD
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
 
-        /// <summary>
-        /// A description for the Password.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// A display name for the password.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.

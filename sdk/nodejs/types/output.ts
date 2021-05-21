@@ -4,40 +4,88 @@
 import * as pulumi from "@pulumi/pulumi";
 import { input as inputs, output as outputs } from "../types";
 
+export interface ApplicationApi {
+    /**
+     * One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+     */
+    oauth2PermissionScopes?: outputs.ApplicationApiOauth2PermissionScope[];
+}
+
+export interface ApplicationApiOauth2PermissionScope {
+    /**
+     * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
+     */
+    adminConsentDescription?: string;
+    /**
+     * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
+     */
+    adminConsentDisplayName?: string;
+    /**
+     * Determines if the app role is enabled: Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
+     */
+    id: string;
+    /**
+     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+     */
+    type?: string;
+    /**
+     * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+     */
+    userConsentDescription?: string;
+    /**
+     * Display name for the delegated permission that appears in the end user consent experience.
+     */
+    userConsentDisplayName?: string;
+    /**
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+     */
+    value?: string;
+}
+
 export interface ApplicationAppRole {
     /**
-     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      */
     allowedMemberTypes: string[];
     /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
     description: string;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     displayName: string;
     /**
-     * The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.
+     * Determines if the app role is enabled: Defaults to `true`.
+     */
+    enabled?: boolean;
+    /**
+     * The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
      */
     id: string;
     /**
      * Determines if the permission is enabled: defaults to `true`.
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     isEnabled?: boolean;
     /**
-     * The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
     value: string;
 }
 
 export interface ApplicationOauth2Permission {
     /**
-     * Permission help text that appears in the admin consent and app assignment experiences.
+     * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
     adminConsentDescription: string;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
     adminConsentDisplayName: string;
     /**
@@ -45,23 +93,23 @@ export interface ApplicationOauth2Permission {
      */
     id: string;
     /**
-     * Determines if the app role is enabled: Defaults to `true`.
+     * Determines if the permission is enabled: defaults to `true`.
      */
     isEnabled: boolean;
     /**
-     * Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not not be set.
+     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
      */
     type: string;
     /**
-     * Permission help text that appears in the end user consent experience.
+     * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
     userConsentDescription: string;
     /**
-     * Display name for the permission that appears in the end user consent experience.
+     * Display name for the delegated permission that appears in the end user consent experience.
      */
     userConsentDisplayName: string;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
     value: string;
 }
@@ -111,11 +159,11 @@ export interface ApplicationOptionalClaimsIdToken {
 
 export interface ApplicationRequiredResourceAccess {
     /**
-     * A collection of `resourceAccess` blocks as documented below.
+     * A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
      */
     resourceAccesses: outputs.ApplicationRequiredResourceAccessResourceAccess[];
     /**
-     * The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
+     * The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
      */
     resourceAppId: string;
 }
@@ -126,30 +174,107 @@ export interface ApplicationRequiredResourceAccessResourceAccess {
      */
     id: string;
     /**
-     * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */
     type: string;
 }
 
-export interface GetApplicationAppRole {
+export interface ApplicationWeb {
     /**
-     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+     * Home page or landing page of the application.
      */
-    allowedMemberTypes: string[];
+    homepageUrl?: string;
     /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
+     * An `implicitGrant` block as documented above.
      */
-    description: string;
+    implicitGrant?: outputs.ApplicationWebImplicitGrant;
     /**
-     * Specifies the display name of the Application within Azure Active Directory.
+     * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      */
-    displayName: string;
+    logoutUrl?: string;
+    /**
+     * A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     */
+    redirectUris?: string[];
+}
+
+export interface ApplicationWebImplicitGrant {
+    /**
+     * Whether this web application can request an access token using OAuth 2.0 implicit flow.
+     */
+    accessTokenIssuanceEnabled?: boolean;
+}
+
+export interface GetApplicationApi {
+    oauth2PermissionScopes: outputs.GetApplicationApiOauth2PermissionScope[];
+}
+
+export interface GetApplicationApiOauth2PermissionScope {
+    /**
+     * The description of the admin consent
+     */
+    adminConsentDescription: string;
+    /**
+     * The display name of the admin consent
+     */
+    adminConsentDisplayName: string;
+    /**
+     * (Optional) Determines if the permission scope is enabled.
+     */
+    enabled: boolean;
     /**
      * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
      */
     id: string;
     /**
      * Is this permission enabled?
+     *
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
+     */
+    isEnabled: boolean;
+    /**
+     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+     */
+    type: string;
+    /**
+     * The description of the user consent
+     */
+    userConsentDescription: string;
+    /**
+     * The display name of the user consent
+     */
+    userConsentDisplayName: string;
+    /**
+     * The name of this permission
+     */
+    value: string;
+}
+
+export interface GetApplicationAppRole {
+    /**
+     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+     */
+    allowedMemberTypes: string[];
+    /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     */
+    description: string;
+    /**
+     * Specifies the display name of the application.
+     */
+    displayName: string;
+    /**
+     * (Optional) Determines if the permission scope is enabled.
+     */
+    enabled: boolean;
+    /**
+     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+     */
+    id: string;
+    /**
+     * Is this permission enabled?
+     *
+     * @deprecated [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
      */
     isEnabled: boolean;
     /**
@@ -168,6 +293,10 @@ export interface GetApplicationOauth2Permission {
      */
     adminConsentDisplayName: string;
     /**
+     * (Optional) Determines if the permission scope is enabled.
+     */
+    enabled: boolean;
+    /**
      * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
      */
     id: string;
@@ -176,7 +305,7 @@ export interface GetApplicationOauth2Permission {
      */
     isEnabled: boolean;
     /**
-     * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
+     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */
     type: string;
     /**
@@ -238,11 +367,11 @@ export interface GetApplicationOptionalClaimsIdToken {
 
 export interface GetApplicationRequiredResourceAccess {
     /**
-     * A collection of `resourceAccess` blocks as documented below
+     * A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
      */
     resourceAccesses: outputs.GetApplicationRequiredResourceAccessResourceAccess[];
     /**
-     * The unique identifier for the resource that the application requires access to.
+     * The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
      */
     resourceAppId: string;
 }
@@ -253,9 +382,35 @@ export interface GetApplicationRequiredResourceAccessResourceAccess {
      */
     id: string;
     /**
-     * Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
+     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */
     type: string;
+}
+
+export interface GetApplicationWeb {
+    /**
+     * Home page or landing page of the application.
+     */
+    homepageUrl: string;
+    /**
+     * An `implicitGrant` block as documented above.
+     */
+    implicitGrants: outputs.GetApplicationWebImplicitGrant[];
+    /**
+     * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+     */
+    logoutUrl: string;
+    /**
+     * A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     */
+    redirectUris: string[];
+}
+
+export interface GetApplicationWebImplicitGrant {
+    /**
+     * Whether this web application can request an access token using OAuth 2.0 implicit flow.
+     */
+    accessTokenIssuanceEnabled: boolean;
 }
 
 export interface GetDomainsDomain {
@@ -295,11 +450,17 @@ export interface GetServicePrincipalAppRole {
      */
     displayName: string;
     /**
+     * Is this permission enabled?
+     */
+    enabled: boolean;
+    /**
      * The unique identifier for one of the `OAuth2Permission`
      */
     id: string;
     /**
      * Is this permission enabled?
+     *
+     * @deprecated [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
      */
     isEnabled: boolean;
     /**
@@ -343,6 +504,41 @@ export interface GetServicePrincipalOauth2Permission {
     value: string;
 }
 
+export interface GetServicePrincipalOauth2PermissionScope {
+    /**
+     * The description of the admin consent
+     */
+    adminConsentDescription: string;
+    /**
+     * The display name of the admin consent
+     */
+    adminConsentDisplayName: string;
+    /**
+     * Is this permission enabled?
+     */
+    enabled: boolean;
+    /**
+     * The unique identifier for one of the `OAuth2Permission`
+     */
+    id: string;
+    /**
+     * The type of the permission
+     */
+    type: string;
+    /**
+     * The description of the user consent
+     */
+    userConsentDescription: string;
+    /**
+     * The display name of the user consent
+     */
+    userConsentDisplayName: string;
+    /**
+     * The name of this permission
+     */
+    value: string;
+}
+
 export interface GetUsersUser {
     /**
      * `True` if the account is enabled; otherwise `False`.
@@ -353,7 +549,9 @@ export interface GetUsersUser {
      */
     displayName: string;
     /**
-     * The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+     * (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+     *
+     * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
     immutableId: string;
     /**
@@ -368,6 +566,10 @@ export interface GetUsersUser {
      * The Object ID of the Azure AD User.
      */
     objectId: string;
+    /**
+     * The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+     */
+    onpremisesImmutableId: string;
     /**
      * The on-premise SAM account name of the Azure AD User.
      */
@@ -387,18 +589,30 @@ export interface GetUsersUser {
 }
 
 export interface ServicePrincipalAppRole {
+    /**
+     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+     */
     allowedMemberTypes: string[];
+    /**
+     * Permission help text that appears in the admin app assignment and consent experiences.
+     */
     description: string;
     /**
-     * The Display Name of the Application associated with this Service Principal.
+     * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
     displayName: string;
+    /**
+     * Is this permission enabled?
+     */
+    enabled: boolean;
     /**
      * The unique identifier for one of the `OAuth2Permission`.
      */
     id: string;
     /**
      * Is this permission enabled?
+     *
+     * @deprecated [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
      */
     isEnabled: boolean;
     /**
@@ -424,6 +638,41 @@ export interface ServicePrincipalOauth2Permission {
      * Is this permission enabled?
      */
     isEnabled: boolean;
+    /**
+     * The type of the permission.
+     */
+    type: string;
+    /**
+     * The description of the user consent.
+     */
+    userConsentDescription: string;
+    /**
+     * The display name of the user consent.
+     */
+    userConsentDisplayName: string;
+    /**
+     * The name of this permission.
+     */
+    value: string;
+}
+
+export interface ServicePrincipalOauth2PermissionScope {
+    /**
+     * The description of the admin consent.
+     */
+    adminConsentDescription: string;
+    /**
+     * The display name of the admin consent.
+     */
+    adminConsentDisplayName: string;
+    /**
+     * Is this permission enabled?
+     */
+    enabled: boolean;
+    /**
+     * The unique identifier for one of the `OAuth2Permission`.
+     */
+    id: string;
     /**
      * The type of the permission.
      */

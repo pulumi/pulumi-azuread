@@ -36,7 +36,7 @@ namespace Pulumi.AzureAD
     ///             },
     ///             Description = "Admins can manage roles and perform all task actions",
     ///             DisplayName = "Admin",
-    ///             IsEnabled = true,
+    ///             Enabled = true,
     ///             Value = "administer",
     ///         });
     ///     }
@@ -46,7 +46,7 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Import
     /// 
-    /// App Roles can be imported using the `object id` of an Application and the `id` of the App Role, e.g.
+    /// App Roles can be imported using the `object_id` of an Application and the `id` of the App Role, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111
@@ -56,7 +56,7 @@ namespace Pulumi.AzureAD
     public partial class ApplicationAppRole : Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         /// </summary>
         [Output("allowedMemberTypes")]
         public Output<ImmutableArray<string>> AllowedMemberTypes { get; private set; } = null!;
@@ -68,31 +68,34 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Determines if the app role is enabled. Defaults to `true`.
+        /// Determines if the app role is enabled: Defaults to `true`.
         /// </summary>
+        [Output("enabled")]
+        public Output<bool?> Enabled { get; private set; } = null!;
+
         [Output("isEnabled")]
         public Output<bool?> IsEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        /// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         [Output("value")]
         public Output<string?> Value { get; private set; } = null!;
@@ -147,7 +150,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _allowedMemberTypes;
 
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         /// </summary>
         public InputList<string> AllowedMemberTypes
         {
@@ -162,31 +165,34 @@ namespace Pulumi.AzureAD
         public Input<string> ApplicationObjectId { get; set; } = null!;
 
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Determines if the app role is enabled. Defaults to `true`.
+        /// Determines if the app role is enabled: Defaults to `true`.
         /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        /// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
@@ -202,7 +208,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _allowedMemberTypes;
 
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         /// </summary>
         public InputList<string> AllowedMemberTypes
         {
@@ -217,31 +223,34 @@ namespace Pulumi.AzureAD
         public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Determines if the app role is enabled. Defaults to `true`.
+        /// Determines if the app role is enabled: Defaults to `true`.
         /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        /// The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
 
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

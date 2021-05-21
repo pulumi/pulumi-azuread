@@ -21,7 +21,10 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, app_roles=None, application_id=None, available_to_other_tenants=None, display_name=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, optional_claims=None, owners=None, reply_urls=None, required_resource_accesses=None, type=None):
+    def __init__(__self__, apis=None, app_roles=None, application_id=None, available_to_other_tenants=None, display_name=None, fallback_public_client_enabled=None, group_membership_claims=None, homepage=None, id=None, identifier_uris=None, logout_url=None, name=None, oauth2_allow_implicit_flow=None, oauth2_permissions=None, object_id=None, optional_claims=None, owners=None, reply_urls=None, required_resource_accesses=None, sign_in_audience=None, type=None, web=None):
+        if apis and not isinstance(apis, list):
+            raise TypeError("Expected argument 'apis' to be a list")
+        pulumi.set(__self__, "apis", apis)
         if app_roles and not isinstance(app_roles, list):
             raise TypeError("Expected argument 'app_roles' to be a list")
         pulumi.set(__self__, "app_roles", app_roles)
@@ -30,15 +33,26 @@ class GetApplicationResult:
         pulumi.set(__self__, "application_id", application_id)
         if available_to_other_tenants and not isinstance(available_to_other_tenants, bool):
             raise TypeError("Expected argument 'available_to_other_tenants' to be a bool")
+        if available_to_other_tenants is not None:
+            warnings.warn("""[NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""available_to_other_tenants is deprecated: [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "available_to_other_tenants", available_to_other_tenants)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if fallback_public_client_enabled and not isinstance(fallback_public_client_enabled, bool):
+            raise TypeError("Expected argument 'fallback_public_client_enabled' to be a bool")
+        pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
         if group_membership_claims and not isinstance(group_membership_claims, str):
             raise TypeError("Expected argument 'group_membership_claims' to be a str")
         pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if homepage and not isinstance(homepage, str):
             raise TypeError("Expected argument 'homepage' to be a str")
+        if homepage is not None:
+            warnings.warn("""[NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""homepage is deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "homepage", homepage)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
@@ -48,19 +62,31 @@ class GetApplicationResult:
         pulumi.set(__self__, "identifier_uris", identifier_uris)
         if logout_url and not isinstance(logout_url, str):
             raise TypeError("Expected argument 'logout_url' to be a str")
+        if logout_url is not None:
+            warnings.warn("""[NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""logout_url is deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "logout_url", logout_url)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of this provider.""")
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
 
         pulumi.set(__self__, "name", name)
         if oauth2_allow_implicit_flow and not isinstance(oauth2_allow_implicit_flow, bool):
             raise TypeError("Expected argument 'oauth2_allow_implicit_flow' to be a bool")
+        if oauth2_allow_implicit_flow is not None:
+            warnings.warn("""[NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""oauth2_allow_implicit_flow is deprecated: [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "oauth2_allow_implicit_flow", oauth2_allow_implicit_flow)
         if oauth2_permissions and not isinstance(oauth2_permissions, list):
             raise TypeError("Expected argument 'oauth2_permissions' to be a list")
+        if oauth2_permissions is not None:
+            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
+            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
+
         pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
@@ -73,19 +99,41 @@ class GetApplicationResult:
         pulumi.set(__self__, "owners", owners)
         if reply_urls and not isinstance(reply_urls, list):
             raise TypeError("Expected argument 'reply_urls' to be a list")
+        if reply_urls is not None:
+            warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""reply_urls is deprecated: [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "reply_urls", reply_urls)
         if required_resource_accesses and not isinstance(required_resource_accesses, list):
             raise TypeError("Expected argument 'required_resource_accesses' to be a list")
         pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
+        if sign_in_audience and not isinstance(sign_in_audience, str):
+            raise TypeError("Expected argument 'sign_in_audience' to be a str")
+        pulumi.set(__self__, "sign_in_audience", sign_in_audience)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
+        if type is not None:
+            warnings.warn("""[NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""type is deprecated: [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""")
+
         pulumi.set(__self__, "type", type)
+        if web and not isinstance(web, dict):
+            raise TypeError("Expected argument 'web' to be a dict")
+        pulumi.set(__self__, "web", web)
+
+    @property
+    @pulumi.getter
+    def apis(self) -> Sequence['outputs.GetApplicationApiResult']:
+        """
+        An `api` block as documented below.
+        """
+        return pulumi.get(self, "apis")
 
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> Sequence['outputs.GetApplicationAppRoleResult']:
         """
-        A collection of `app_role` blocks as documented below. For more information https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles
+        A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
 
@@ -93,7 +141,7 @@ class GetApplicationResult:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
         """
-        the Application ID of the Azure Active Directory Application.
+        the Application ID (also called Client ID).
         """
         return pulumi.get(self, "application_id")
 
@@ -101,7 +149,7 @@ class GetApplicationResult:
     @pulumi.getter(name="availableToOtherTenants")
     def available_to_other_tenants(self) -> bool:
         """
-        Is this Azure AD Application available to other tenants?
+        (**Deprecated**) Is this Azure AD Application available to other tenants?
         """
         return pulumi.get(self, "available_to_other_tenants")
 
@@ -109,9 +157,17 @@ class GetApplicationResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="fallbackPublicClientEnabled")
+    def fallback_public_client_enabled(self) -> bool:
+        """
+        The fallback application type as public client, such as an installed application running on a mobile device.
+        """
+        return pulumi.get(self, "fallback_public_client_enabled")
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
@@ -124,6 +180,9 @@ class GetApplicationResult:
     @property
     @pulumi.getter
     def homepage(self) -> str:
+        """
+        (**Deprecated**) The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
+        """
         return pulumi.get(self, "homepage")
 
     @property
@@ -146,7 +205,7 @@ class GetApplicationResult:
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> str:
         """
-        The URL of the logout page.
+        The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
         """
         return pulumi.get(self, "logout_url")
 
@@ -162,7 +221,7 @@ class GetApplicationResult:
     @pulumi.getter(name="oauth2AllowImplicitFlow")
     def oauth2_allow_implicit_flow(self) -> bool:
         """
-        Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
+        (**Deprecated**) Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
         """
         return pulumi.get(self, "oauth2_allow_implicit_flow")
 
@@ -170,7 +229,7 @@ class GetApplicationResult:
     @pulumi.getter(name="oauth2Permissions")
     def oauth2_permissions(self) -> Sequence['outputs.GetApplicationOauth2PermissionResult']:
         """
-        A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
         """
         return pulumi.get(self, "oauth2_permissions")
 
@@ -178,7 +237,7 @@ class GetApplicationResult:
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
         """
-        the Object ID of the Azure Active Directory Application.
+        The application's Object ID.
         """
         return pulumi.get(self, "object_id")
 
@@ -194,7 +253,7 @@ class GetApplicationResult:
     @pulumi.getter
     def owners(self) -> Sequence[str]:
         """
-        A list of User Object IDs that are assigned ownership of the application registration.
+        A list of Object IDs for principals that are assigned ownership of the application.
         """
         return pulumi.get(self, "owners")
 
@@ -202,7 +261,7 @@ class GetApplicationResult:
     @pulumi.getter(name="replyUrls")
     def reply_urls(self) -> Sequence[str]:
         """
-        A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to.
+        (**Deprecated**) A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
         """
         return pulumi.get(self, "reply_urls")
 
@@ -215,12 +274,28 @@ class GetApplicationResult:
         return pulumi.get(self, "required_resource_accesses")
 
     @property
+    @pulumi.getter(name="signInAudience")
+    def sign_in_audience(self) -> str:
+        """
+        The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        """
+        return pulumi.get(self, "sign_in_audience")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
-        Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
+        Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         """
         return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def web(self) -> 'outputs.GetApplicationWebResult':
+        """
+        A `web` block as documented below.
+        """
+        return pulumi.get(self, "web")
 
 
 class AwaitableGetApplicationResult(GetApplicationResult):
@@ -229,10 +304,12 @@ class AwaitableGetApplicationResult(GetApplicationResult):
         if False:
             yield self
         return GetApplicationResult(
+            apis=self.apis,
             app_roles=self.app_roles,
             application_id=self.application_id,
             available_to_other_tenants=self.available_to_other_tenants,
             display_name=self.display_name,
+            fallback_public_client_enabled=self.fallback_public_client_enabled,
             group_membership_claims=self.group_membership_claims,
             homepage=self.homepage,
             id=self.id,
@@ -246,7 +323,9 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             owners=self.owners,
             reply_urls=self.reply_urls,
             required_resource_accesses=self.required_resource_accesses,
-            type=self.type)
+            sign_in_audience=self.sign_in_audience,
+            type=self.type,
+            web=self.web)
 
 
 def get_application(application_id: Optional[str] = None,
@@ -255,6 +334,7 @@ def get_application(application_id: Optional[str] = None,
                     oauth2_permissions: Optional[Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']]] = None,
                     object_id: Optional[str] = None,
                     optional_claims: Optional[pulumi.InputType['GetApplicationOptionalClaimsArgs']] = None,
+                    web: Optional[pulumi.InputType['GetApplicationWebArgs']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationResult:
     """
     Use this data source to access information about an existing Application within Azure Active Directory.
@@ -272,12 +352,13 @@ def get_application(application_id: Optional[str] = None,
     ```
 
 
-    :param str application_id: Specifies the Application ID of the Azure Active Directory Application.
-    :param str display_name: Specifies the display name of the Application within Azure Active Directory.
+    :param str application_id: Specifies the Application ID (also called Client ID).
+    :param str display_name: Specifies the display name of the application.
     :param str name: The name of the optional claim.
-    :param Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
-    :param str object_id: Specifies the Object ID of the Application within Azure Active Directory.
+    :param Sequence[pulumi.InputType['GetApplicationOauth2PermissionArgs']] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+    :param str object_id: Specifies the Object ID of the application.
     :param pulumi.InputType['GetApplicationOptionalClaimsArgs'] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+    :param pulumi.InputType['GetApplicationWebArgs'] web: A `web` block as documented below.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -286,6 +367,7 @@ def get_application(application_id: Optional[str] = None,
     __args__['oauth2Permissions'] = oauth2_permissions
     __args__['objectId'] = object_id
     __args__['optionalClaims'] = optional_claims
+    __args__['web'] = web
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -293,10 +375,12 @@ def get_application(application_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult).value
 
     return AwaitableGetApplicationResult(
+        apis=__ret__.apis,
         app_roles=__ret__.app_roles,
         application_id=__ret__.application_id,
         available_to_other_tenants=__ret__.available_to_other_tenants,
         display_name=__ret__.display_name,
+        fallback_public_client_enabled=__ret__.fallback_public_client_enabled,
         group_membership_claims=__ret__.group_membership_claims,
         homepage=__ret__.homepage,
         id=__ret__.id,
@@ -310,4 +394,6 @@ def get_application(application_id: Optional[str] = None,
         owners=__ret__.owners,
         reply_urls=__ret__.reply_urls,
         required_resource_accesses=__ret__.required_resource_accesses,
-        type=__ret__.type)
+        sign_in_audience=__ret__.sign_in_audience,
+        type=__ret__.type,
+        web=__ret__.web)

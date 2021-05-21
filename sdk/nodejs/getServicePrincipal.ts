@@ -54,6 +54,7 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
         "applicationId": args.applicationId,
         "displayName": args.displayName,
+        "oauth2PermissionScopes": args.oauth2PermissionScopes,
         "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
     }, opts);
@@ -72,7 +73,13 @@ export interface GetServicePrincipalArgs {
      */
     readonly displayName?: string;
     /**
-     * A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
+     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+     */
+    readonly oauth2PermissionScopes?: inputs.GetServicePrincipalOauth2PermissionScope[];
+    /**
+     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+     *
+     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
      */
     readonly oauth2Permissions?: inputs.GetServicePrincipalOauth2Permission[];
     /**
@@ -85,6 +92,9 @@ export interface GetServicePrincipalArgs {
  * A collection of values returned by getServicePrincipal.
  */
 export interface GetServicePrincipalResult {
+    /**
+     * A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     */
     readonly appRoles: outputs.GetServicePrincipalAppRole[];
     readonly applicationId: string;
     /**
@@ -95,6 +105,18 @@ export interface GetServicePrincipalResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+     */
+    readonly oauth2PermissionScopes: outputs.GetServicePrincipalOauth2PermissionScope[];
+    /**
+     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+     *
+     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
+     */
     readonly oauth2Permissions: outputs.GetServicePrincipalOauth2Permission[];
+    /**
+     * The Object ID for the Service Principal.
+     */
     readonly objectId: string;
 }

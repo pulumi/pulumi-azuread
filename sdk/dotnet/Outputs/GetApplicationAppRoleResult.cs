@@ -14,17 +14,21 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetApplicationAppRoleResult
     {
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
         /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Specifies the display name of the Application within Azure Active Directory.
+        /// Specifies the display name of the application.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// (Optional) Determines if the permission scope is enabled.
+        /// </summary>
+        public readonly bool Enabled;
         /// <summary>
         /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
@@ -46,6 +50,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string displayName,
 
+            bool enabled,
+
             string id,
 
             bool isEnabled,
@@ -55,6 +61,7 @@ namespace Pulumi.AzureAD.Outputs
             AllowedMemberTypes = allowedMemberTypes;
             Description = description;
             DisplayName = displayName;
+            Enabled = enabled;
             Id = id;
             IsEnabled = isEnabled;
             Value = value;

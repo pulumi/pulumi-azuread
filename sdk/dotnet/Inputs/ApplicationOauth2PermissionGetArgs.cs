@@ -13,13 +13,13 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ApplicationOauth2PermissionGetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Permission help text that appears in the admin consent and app assignment experiences.
+        /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         [Input("adminConsentDescription")]
         public Input<string>? AdminConsentDescription { get; set; }
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         [Input("adminConsentDisplayName")]
         public Input<string>? AdminConsentDisplayName { get; set; }
@@ -31,31 +31,31 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
+        /// Determines if the permission is enabled: defaults to `true`.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
+        /// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Permission help text that appears in the end user consent experience.
+        /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         /// </summary>
         [Input("userConsentDescription")]
         public Input<string>? UserConsentDescription { get; set; }
 
         /// <summary>
-        /// Display name for the permission that appears in the end user consent experience.
+        /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         [Input("userConsentDisplayName")]
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

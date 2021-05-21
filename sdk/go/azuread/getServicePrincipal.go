@@ -96,7 +96,11 @@ type LookupServicePrincipalArgs struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// The Display Name of the Azure AD Application associated with this Service Principal.
 	DisplayName *string `pulumi:"displayName"`
-	// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2Permission` block as documented below.
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes []GetServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions []GetServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
 	// The ID of the Azure AD Service Principal.
 	ObjectId *string `pulumi:"objectId"`
@@ -104,12 +108,19 @@ type LookupServicePrincipalArgs struct {
 
 // A collection of values returned by getServicePrincipal.
 type LookupServicePrincipalResult struct {
+	// A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles      []GetServicePrincipalAppRole `pulumi:"appRoles"`
 	ApplicationId string                       `pulumi:"applicationId"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string                                `pulumi:"id"`
+	Id string `pulumi:"id"`
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	Oauth2PermissionScopes []GetServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
+	//
+	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
 	Oauth2Permissions []GetServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
-	ObjectId          string                                `pulumi:"objectId"`
+	// The Object ID for the Service Principal.
+	ObjectId string `pulumi:"objectId"`
 }

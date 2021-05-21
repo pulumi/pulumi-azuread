@@ -13,6 +13,8 @@ import (
 
 // Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.
 //
+// > This resource is deprecated in favour of ApplicationOauth2PermissionScope and will be removed in version 2.0 of the provider.
+//
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 //
 // ## Example Usage
@@ -64,11 +66,17 @@ type ApplicationOAuth2Permission struct {
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	AdminConsentDisplayName pulumi.StringOutput `pulumi:"adminConsentDisplayName"`
 	// The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
-	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
+	ApplicationObjectId pulumi.StringOutput  `pulumi:"applicationObjectId"`
+	Enabled             pulumi.BoolPtrOutput `pulumi:"enabled"`
 	// Determines if the Permission is enabled. Defaults to `true`.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
 	// Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
 	PermissionId pulumi.StringOutput `pulumi:"permissionId"`
+	ScopeId      pulumi.StringOutput `pulumi:"scopeId"`
 	// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Permission help text that appears in the end user consent experience.
@@ -135,10 +143,16 @@ type applicationOAuth2PermissionState struct {
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
 	// The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
+	Enabled             *bool   `pulumi:"enabled"`
 	// Determines if the Permission is enabled. Defaults to `true`.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
 	PermissionId *string `pulumi:"permissionId"`
+	ScopeId      *string `pulumi:"scopeId"`
 	// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
 	Type *string `pulumi:"type"`
 	// Permission help text that appears in the end user consent experience.
@@ -156,10 +170,16 @@ type ApplicationOAuth2PermissionState struct {
 	AdminConsentDisplayName pulumi.StringPtrInput
 	// The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
+	Enabled             pulumi.BoolPtrInput
 	// Determines if the Permission is enabled. Defaults to `true`.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled pulumi.BoolPtrInput
 	// Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
 	PermissionId pulumi.StringPtrInput
+	ScopeId      pulumi.StringPtrInput
 	// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
 	Type pulumi.StringPtrInput
 	// Permission help text that appears in the end user consent experience.
@@ -181,10 +201,16 @@ type applicationOAuth2PermissionArgs struct {
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
 	// The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
+	Enabled             *bool  `pulumi:"enabled"`
 	// Determines if the Permission is enabled. Defaults to `true`.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
 	PermissionId *string `pulumi:"permissionId"`
+	ScopeId      *string `pulumi:"scopeId"`
 	// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
 	Type string `pulumi:"type"`
 	// Permission help text that appears in the end user consent experience.
@@ -203,10 +229,16 @@ type ApplicationOAuth2PermissionArgs struct {
 	AdminConsentDisplayName pulumi.StringInput
 	// The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
+	Enabled             pulumi.BoolPtrInput
 	// Determines if the Permission is enabled. Defaults to `true`.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
 	IsEnabled pulumi.BoolPtrInput
 	// Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+	//
+	// Deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
 	PermissionId pulumi.StringPtrInput
+	ScopeId      pulumi.StringPtrInput
 	// Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
 	Type pulumi.StringInput
 	// Permission help text that appears in the end user consent experience.

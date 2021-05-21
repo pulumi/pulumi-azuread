@@ -9,6 +9,7 @@ export * from "./application";
 export * from "./applicationAppRole";
 export * from "./applicationCertificate";
 export * from "./applicationOAuth2Permission";
+export * from "./applicationOauth2PermissionScope";
 export * from "./applicationPassword";
 export * from "./getApplication";
 export * from "./getClientConfig";
@@ -40,6 +41,7 @@ import { Application } from "./application";
 import { ApplicationAppRole } from "./applicationAppRole";
 import { ApplicationCertificate } from "./applicationCertificate";
 import { ApplicationOAuth2Permission } from "./applicationOAuth2Permission";
+import { ApplicationOauth2PermissionScope } from "./applicationOauth2PermissionScope";
 import { ApplicationPassword } from "./applicationPassword";
 import { Group } from "./group";
 import { GroupMember } from "./groupMember";
@@ -60,6 +62,8 @@ const _module = {
                 return new ApplicationCertificate(name, <any>undefined, { urn })
             case "azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission":
                 return new ApplicationOAuth2Permission(name, <any>undefined, { urn })
+            case "azuread:index/applicationOauth2PermissionScope:ApplicationOauth2PermissionScope":
+                return new ApplicationOauth2PermissionScope(name, <any>undefined, { urn })
             case "azuread:index/applicationPassword:ApplicationPassword":
                 return new ApplicationPassword(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
@@ -83,6 +87,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationAppRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationOAuth2Permission", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationOauth2PermissionScope", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)

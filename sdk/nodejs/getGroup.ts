@@ -54,7 +54,7 @@ export interface GetGroupArgs {
      */
     readonly mailEnabled?: boolean;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.
      */
     readonly name?: string;
     /**
@@ -92,7 +92,7 @@ export interface GetGroupResult {
      */
     readonly members: string[];
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.
      */
     readonly name: string;
     readonly objectId: string;

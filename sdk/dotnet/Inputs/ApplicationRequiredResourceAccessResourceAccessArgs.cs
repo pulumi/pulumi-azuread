@@ -19,7 +19,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string> Id { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

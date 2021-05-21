@@ -24,7 +24,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		_, err := azuread.GetGroups(ctx, &azuread.GetGroupsArgs{
-// 			Names: []string{
+// 			DisplayNames: []string{
 // 				"group-a",
 // 				"group-b",
 // 			},
@@ -47,10 +47,9 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
-	DisplayNames []string `pulumi:"displayNames"`
 	// The Display Names of the Azure AD Groups.
-	//
-	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.
+	DisplayNames []string `pulumi:"displayNames"`
+	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
 	Names []string `pulumi:"names"`
 	// The Object IDs of the Azure AD Groups.
 	ObjectIds []string `pulumi:"objectIds"`
@@ -58,12 +57,11 @@ type GetGroupsArgs struct {
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
+	// The Display Names of the Azure AD Groups.
 	DisplayNames []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The Display Names of the Azure AD Groups.
-	//
-	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
 	Names []string `pulumi:"names"`
 	// The Object IDs of the Azure AD Groups.
 	ObjectIds []string `pulumi:"objectIds"`
