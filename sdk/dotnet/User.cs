@@ -96,7 +96,7 @@ namespace Pulumi.AzureAD
         public Output<string> GivenName { get; private set; } = null!;
 
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         /// </summary>
         [Output("immutableId")]
         public Output<string> ImmutableId { get; private set; } = null!;
@@ -120,16 +120,34 @@ namespace Pulumi.AzureAD
         public Output<string> MailNickname { get; private set; } = null!;
 
         /// <summary>
-        /// The primary cellular telephone number for the user.
+        /// The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         /// </summary>
         [Output("mobile")]
         public Output<string> Mobile { get; private set; } = null!;
+
+        /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        [Output("mobilePhone")]
+        public Output<string> MobilePhone { get; private set; } = null!;
 
         /// <summary>
         /// The Object ID of the User.
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        [Output("officeLocation")]
+        public Output<string> OfficeLocation { get; private set; } = null!;
+
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// </summary>
+        [Output("onpremisesImmutableId")]
+        public Output<string> OnpremisesImmutableId { get; private set; } = null!;
 
         /// <summary>
         /// The on-premise SAM account name of the User.
@@ -150,7 +168,7 @@ namespace Pulumi.AzureAD
         public Output<string> Password { get; private set; } = null!;
 
         /// <summary>
-        /// The office location in the user's place of business.
+        /// The office location in the user's place of business. Deprecated in favour of `office_location`.
         /// </summary>
         [Output("physicalDeliveryOfficeName")]
         public Output<string> PhysicalDeliveryOfficeName { get; private set; } = null!;
@@ -190,6 +208,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("userPrincipalName")]
         public Output<string> UserPrincipalName { get; private set; } = null!;
+
+        /// <summary>
+        /// The user type in the directory. One of `Guest` or `Member`.
+        /// </summary>
+        [Output("userType")]
+        public Output<string> UserType { get; private set; } = null!;
 
 
         /// <summary>
@@ -286,7 +310,7 @@ namespace Pulumi.AzureAD
         public Input<string>? GivenName { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         /// </summary>
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
@@ -304,10 +328,28 @@ namespace Pulumi.AzureAD
         public Input<string>? MailNickname { get; set; }
 
         /// <summary>
-        /// The primary cellular telephone number for the user.
+        /// The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         /// </summary>
         [Input("mobile")]
         public Input<string>? Mobile { get; set; }
+
+        /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        [Input("mobilePhone")]
+        public Input<string>? MobilePhone { get; set; }
+
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        [Input("officeLocation")]
+        public Input<string>? OfficeLocation { get; set; }
+
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// </summary>
+        [Input("onpremisesImmutableId")]
+        public Input<string>? OnpremisesImmutableId { get; set; }
 
         /// <summary>
         /// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
@@ -316,7 +358,7 @@ namespace Pulumi.AzureAD
         public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// The office location in the user's place of business.
+        /// The office location in the user's place of business. Deprecated in favour of `office_location`.
         /// </summary>
         [Input("physicalDeliveryOfficeName")]
         public Input<string>? PhysicalDeliveryOfficeName { get; set; }
@@ -413,7 +455,7 @@ namespace Pulumi.AzureAD
         public Input<string>? GivenName { get; set; }
 
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         /// </summary>
         [Input("immutableId")]
         public Input<string>? ImmutableId { get; set; }
@@ -437,16 +479,34 @@ namespace Pulumi.AzureAD
         public Input<string>? MailNickname { get; set; }
 
         /// <summary>
-        /// The primary cellular telephone number for the user.
+        /// The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         /// </summary>
         [Input("mobile")]
         public Input<string>? Mobile { get; set; }
+
+        /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        [Input("mobilePhone")]
+        public Input<string>? MobilePhone { get; set; }
 
         /// <summary>
         /// The Object ID of the User.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
+
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        [Input("officeLocation")]
+        public Input<string>? OfficeLocation { get; set; }
+
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        /// </summary>
+        [Input("onpremisesImmutableId")]
+        public Input<string>? OnpremisesImmutableId { get; set; }
 
         /// <summary>
         /// The on-premise SAM account name of the User.
@@ -467,7 +527,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Password { get; set; }
 
         /// <summary>
-        /// The office location in the user's place of business.
+        /// The office location in the user's place of business. Deprecated in favour of `office_location`.
         /// </summary>
         [Input("physicalDeliveryOfficeName")]
         public Input<string>? PhysicalDeliveryOfficeName { get; set; }
@@ -507,6 +567,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("userPrincipalName")]
         public Input<string>? UserPrincipalName { get; set; }
+
+        /// <summary>
+        /// The user type in the directory. One of `Guest` or `Member`.
+        /// </summary>
+        [Input("userType")]
+        public Input<string>? UserType { get; set; }
 
         public UserState()
         {

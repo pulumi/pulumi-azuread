@@ -20,8 +20,10 @@ class ApplicationOAuth2PermissionArgs:
                  user_consent_description: pulumi.Input[str],
                  user_consent_display_name: pulumi.Input[str],
                  value: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
-                 permission_id: Optional[pulumi.Input[str]] = None):
+                 permission_id: Optional[pulumi.Input[str]] = None,
+                 scope_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationOAuth2Permission resource.
         :param pulumi.Input[str] admin_consent_description: Permission help text that appears in the admin consent and app assignment experiences.
@@ -41,10 +43,20 @@ class ApplicationOAuth2PermissionArgs:
         pulumi.set(__self__, "user_consent_description", user_consent_description)
         pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
         pulumi.set(__self__, "value", value)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if is_enabled is not None:
+            warnings.warn("""[NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""is_enabled is deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""")
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if permission_id is not None:
+            warnings.warn("""[NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""permission_id is deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider""")
+        if permission_id is not None:
             pulumi.set(__self__, "permission_id", permission_id)
+        if scope_id is not None:
+            pulumi.set(__self__, "scope_id", scope_id)
 
     @property
     @pulumi.getter(name="adminConsentDescription")
@@ -131,6 +143,15 @@ class ApplicationOAuth2PermissionArgs:
         pulumi.set(self, "value", value)
 
     @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -154,6 +175,15 @@ class ApplicationOAuth2PermissionArgs:
     def permission_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "permission_id", value)
 
+    @property
+    @pulumi.getter(name="scopeId")
+    def scope_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scope_id")
+
+    @scope_id.setter
+    def scope_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_id", value)
+
 
 @pulumi.input_type
 class _ApplicationOAuth2PermissionState:
@@ -161,8 +191,10 @@ class _ApplicationOAuth2PermissionState:
                  admin_consent_description: Optional[pulumi.Input[str]] = None,
                  admin_consent_display_name: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  permission_id: Optional[pulumi.Input[str]] = None,
+                 scope_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_consent_description: Optional[pulumi.Input[str]] = None,
                  user_consent_display_name: Optional[pulumi.Input[str]] = None,
@@ -185,10 +217,20 @@ class _ApplicationOAuth2PermissionState:
             pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
         if application_object_id is not None:
             pulumi.set(__self__, "application_object_id", application_object_id)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if is_enabled is not None:
+            warnings.warn("""[NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""is_enabled is deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""")
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if permission_id is not None:
+            warnings.warn("""[NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""permission_id is deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider""")
+        if permission_id is not None:
             pulumi.set(__self__, "permission_id", permission_id)
+        if scope_id is not None:
+            pulumi.set(__self__, "scope_id", scope_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if user_consent_description is not None:
@@ -235,6 +277,15 @@ class _ApplicationOAuth2PermissionState:
         pulumi.set(self, "application_object_id", value)
 
     @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -257,6 +308,15 @@ class _ApplicationOAuth2PermissionState:
     @permission_id.setter
     def permission_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "permission_id", value)
+
+    @property
+    @pulumi.getter(name="scopeId")
+    def scope_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scope_id")
+
+    @scope_id.setter
+    def scope_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_id", value)
 
     @property
     @pulumi.getter
@@ -315,8 +375,10 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
                  admin_consent_description: Optional[pulumi.Input[str]] = None,
                  admin_consent_display_name: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  permission_id: Optional[pulumi.Input[str]] = None,
+                 scope_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_consent_description: Optional[pulumi.Input[str]] = None,
                  user_consent_display_name: Optional[pulumi.Input[str]] = None,
@@ -324,6 +386,8 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
                  __props__=None):
         """
         Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.
+
+        > This resource is deprecated in favour of ApplicationOauth2PermissionScope and will be removed in version 2.0 of the provider.
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
@@ -374,6 +438,8 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
         """
         Manages an OAuth2 Permission (also known as a Scope) associated with an Application within Azure Active Directory.
 
+        > This resource is deprecated in favour of ApplicationOauth2PermissionScope and will be removed in version 2.0 of the provider.
+
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
         ## Example Usage
@@ -420,8 +486,10 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
                  admin_consent_description: Optional[pulumi.Input[str]] = None,
                  admin_consent_display_name: Optional[pulumi.Input[str]] = None,
                  application_object_id: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  permission_id: Optional[pulumi.Input[str]] = None,
+                 scope_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  user_consent_description: Optional[pulumi.Input[str]] = None,
                  user_consent_display_name: Optional[pulumi.Input[str]] = None,
@@ -447,8 +515,16 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
             if application_object_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_object_id'")
             __props__.__dict__["application_object_id"] = application_object_id
+            __props__.__dict__["enabled"] = enabled
+            if is_enabled is not None and not opts.urn:
+                warnings.warn("""[NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""is_enabled is deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["is_enabled"] = is_enabled
+            if permission_id is not None and not opts.urn:
+                warnings.warn("""[NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""permission_id is deprecated: [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["permission_id"] = permission_id
+            __props__.__dict__["scope_id"] = scope_id
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
@@ -474,8 +550,10 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
             admin_consent_description: Optional[pulumi.Input[str]] = None,
             admin_consent_display_name: Optional[pulumi.Input[str]] = None,
             application_object_id: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
             is_enabled: Optional[pulumi.Input[bool]] = None,
             permission_id: Optional[pulumi.Input[str]] = None,
+            scope_id: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             user_consent_description: Optional[pulumi.Input[str]] = None,
             user_consent_display_name: Optional[pulumi.Input[str]] = None,
@@ -504,8 +582,10 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
         __props__.__dict__["admin_consent_description"] = admin_consent_description
         __props__.__dict__["admin_consent_display_name"] = admin_consent_display_name
         __props__.__dict__["application_object_id"] = application_object_id
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["is_enabled"] = is_enabled
         __props__.__dict__["permission_id"] = permission_id
+        __props__.__dict__["scope_id"] = scope_id
         __props__.__dict__["type"] = type
         __props__.__dict__["user_consent_description"] = user_consent_description
         __props__.__dict__["user_consent_display_name"] = user_consent_display_name
@@ -537,6 +617,11 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
         return pulumi.get(self, "application_object_id")
 
     @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "enabled")
+
+    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
@@ -551,6 +636,11 @@ class ApplicationOAuth2Permission(pulumi.CustomResource):
         Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "permission_id")
+
+    @property
+    @pulumi.getter(name="scopeId")
+    def scope_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "scope_id")
 
     @property
     @pulumi.getter

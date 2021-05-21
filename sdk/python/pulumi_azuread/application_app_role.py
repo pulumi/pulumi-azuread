@@ -17,23 +17,29 @@ class ApplicationAppRoleArgs:
                  application_object_id: pulumi.Input[str],
                  description: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationAppRole resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param pulumi.Input[bool] is_enabled: Determines if the app role is enabled. Defaults to `true`.
-        :param pulumi.Input[str] role_id: Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[bool] enabled: Determines if the app role is enabled: Defaults to `true`.
+        :param pulumi.Input[str] role_id: The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "application_object_id", application_object_id)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if is_enabled is not None:
+            warnings.warn("""[NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""is_enabled is deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""")
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if role_id is not None:
@@ -45,7 +51,7 @@ class ApplicationAppRoleArgs:
     @pulumi.getter(name="allowedMemberTypes")
     def allowed_member_types(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         """
         return pulumi.get(self, "allowed_member_types")
 
@@ -69,7 +75,7 @@ class ApplicationAppRoleArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        Permission help text that appears in the admin app assignment and consent experiences.
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         """
         return pulumi.get(self, "description")
 
@@ -81,7 +87,7 @@ class ApplicationAppRoleArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
 
@@ -90,11 +96,20 @@ class ApplicationAppRoleArgs:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the app role is enabled: Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines if the app role is enabled. Defaults to `true`.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -105,7 +120,7 @@ class ApplicationAppRoleArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "role_id")
 
@@ -117,7 +132,7 @@ class ApplicationAppRoleArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         return pulumi.get(self, "value")
 
@@ -133,18 +148,19 @@ class _ApplicationAppRoleState:
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationAppRole resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param pulumi.Input[bool] is_enabled: Determines if the app role is enabled. Defaults to `true`.
-        :param pulumi.Input[str] role_id: Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[bool] enabled: Determines if the app role is enabled: Defaults to `true`.
+        :param pulumi.Input[str] role_id: The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         if allowed_member_types is not None:
             pulumi.set(__self__, "allowed_member_types", allowed_member_types)
@@ -154,6 +170,11 @@ class _ApplicationAppRoleState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if is_enabled is not None:
+            warnings.warn("""[NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""is_enabled is deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""")
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
         if role_id is not None:
@@ -165,7 +186,7 @@ class _ApplicationAppRoleState:
     @pulumi.getter(name="allowedMemberTypes")
     def allowed_member_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         """
         return pulumi.get(self, "allowed_member_types")
 
@@ -189,7 +210,7 @@ class _ApplicationAppRoleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Permission help text that appears in the admin app assignment and consent experiences.
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         """
         return pulumi.get(self, "description")
 
@@ -201,7 +222,7 @@ class _ApplicationAppRoleState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
 
@@ -210,11 +231,20 @@ class _ApplicationAppRoleState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Determines if the app role is enabled: Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines if the app role is enabled. Defaults to `true`.
-        """
         return pulumi.get(self, "is_enabled")
 
     @is_enabled.setter
@@ -225,7 +255,7 @@ class _ApplicationAppRoleState:
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "role_id")
 
@@ -237,7 +267,7 @@ class _ApplicationAppRoleState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         return pulumi.get(self, "value")
 
@@ -255,6 +285,7 @@ class ApplicationAppRole(pulumi.CustomResource):
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
@@ -276,13 +307,13 @@ class ApplicationAppRole(pulumi.CustomResource):
             allowed_member_types=["User"],
             description="Admins can manage roles and perform all task actions",
             display_name="Admin",
-            is_enabled=True,
+            enabled=True,
             value="administer")
         ```
 
         ## Import
 
-        App Roles can be imported using the `object id` of an Application and the `id` of the App Role, e.g.
+        App Roles can be imported using the `object_id` of an Application and the `id` of the App Role, e.g.
 
         ```sh
          $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111
@@ -290,13 +321,13 @@ class ApplicationAppRole(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param pulumi.Input[bool] is_enabled: Determines if the app role is enabled. Defaults to `true`.
-        :param pulumi.Input[str] role_id: Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[bool] enabled: Determines if the app role is enabled: Defaults to `true`.
+        :param pulumi.Input[str] role_id: The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         ...
     @overload
@@ -321,13 +352,13 @@ class ApplicationAppRole(pulumi.CustomResource):
             allowed_member_types=["User"],
             description="Admins can manage roles and perform all task actions",
             display_name="Admin",
-            is_enabled=True,
+            enabled=True,
             value="administer")
         ```
 
         ## Import
 
-        App Roles can be imported using the `object id` of an Application and the `id` of the App Role, e.g.
+        App Roles can be imported using the `object_id` of an Application and the `id` of the App Role, e.g.
 
         ```sh
          $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111
@@ -352,6 +383,7 @@ class ApplicationAppRole(pulumi.CustomResource):
                  application_object_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
                  role_id: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
@@ -379,6 +411,10 @@ class ApplicationAppRole(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enabled"] = enabled
+            if is_enabled is not None and not opts.urn:
+                warnings.warn("""[NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""is_enabled is deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["is_enabled"] = is_enabled
             __props__.__dict__["role_id"] = role_id
             __props__.__dict__["value"] = value
@@ -396,6 +432,7 @@ class ApplicationAppRole(pulumi.CustomResource):
             application_object_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            enabled: Optional[pulumi.Input[bool]] = None,
             is_enabled: Optional[pulumi.Input[bool]] = None,
             role_id: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'ApplicationAppRole':
@@ -406,13 +443,13 @@ class ApplicationAppRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param pulumi.Input[bool] is_enabled: Determines if the app role is enabled. Defaults to `true`.
-        :param pulumi.Input[str] role_id: Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] value: Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[bool] enabled: Determines if the app role is enabled: Defaults to `true`.
+        :param pulumi.Input[str] role_id: The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -422,6 +459,7 @@ class ApplicationAppRole(pulumi.CustomResource):
         __props__.__dict__["application_object_id"] = application_object_id
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["is_enabled"] = is_enabled
         __props__.__dict__["role_id"] = role_id
         __props__.__dict__["value"] = value
@@ -431,7 +469,7 @@ class ApplicationAppRole(pulumi.CustomResource):
     @pulumi.getter(name="allowedMemberTypes")
     def allowed_member_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         """
         return pulumi.get(self, "allowed_member_types")
 
@@ -447,7 +485,7 @@ class ApplicationAppRole(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Permission help text that appears in the admin app assignment and consent experiences.
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         """
         return pulumi.get(self, "description")
 
@@ -455,23 +493,28 @@ class ApplicationAppRole(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Determines if the app role is enabled: Defaults to `true`.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Output[Optional[bool]]:
-        """
-        Determines if the app role is enabled. Defaults to `true`.
-        """
         return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[str]:
         """
-        Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "role_id")
 
@@ -479,7 +522,7 @@ class ApplicationAppRole(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         return pulumi.get(self, "value")
 

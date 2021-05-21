@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// Manages a Password associated with a Service Principal within Azure Active Directory.
+    /// Manages a password credential associated with a service principal within Azure Active Directory. See also the azuread.ApplicationPassword resource.
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     /// 
@@ -33,10 +33,7 @@ namespace Pulumi.AzureAD
     ///         });
     ///         var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new AzureAD.ServicePrincipalPasswordArgs
     ///         {
-    ///             ServicePrincipalId = exampleServicePrincipal.Id,
-    ///             Description = "My managed password",
-    ///             Value = "VT=uSgbTanZhyz@%nL9Hpd+Tfay_MRV#",
-    ///             EndDate = "2099-01-01T01:02:03Z",
+    ///             ServicePrincipalId = exampleServicePrincipal.ObjectId,
     ///         });
     ///     }
     /// 
@@ -55,10 +52,16 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipalPassword : Pulumi.CustomResource
     {
         /// <summary>
-        /// A description for the Password.
+        /// A description for the Password. Deprecated in favour of `display_name`.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The display name for the password.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -143,10 +146,16 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description for the Password.
+        /// A description for the Password. Deprecated in favour of `display_name`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The display name for the password.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
@@ -181,8 +190,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The Password for this Service Principal.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        [Input("value")]
+        public Input<string>? Value { get; set; }
 
         public ServicePrincipalPasswordArgs()
         {
@@ -192,10 +201,16 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description for the Password.
+        /// A description for the Password. Deprecated in favour of `display_name`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// The display name for the password.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
 
         /// <summary>
         /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.

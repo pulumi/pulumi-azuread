@@ -17,18 +17,25 @@ class ServicePrincipalArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
                  oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
         :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
         """
         pulumi.set(__self__, "application_id", application_id)
         if app_role_assignment_required is not None:
             pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
+        if oauth2_permission_scopes is not None:
+            pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
+        if oauth2_permissions is not None:
+            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
+            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
         if oauth2_permissions is not None:
             pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
         if tags is not None:
@@ -59,10 +66,22 @@ class ServicePrincipalArgs:
         pulumi.set(self, "app_role_assignment_required", value)
 
     @property
+    @pulumi.getter(name="oauth2PermissionScopes")
+    def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]:
+        """
+        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        """
+        return pulumi.get(self, "oauth2_permission_scopes")
+
+    @oauth2_permission_scopes.setter
+    def oauth2_permission_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]):
+        pulumi.set(self, "oauth2_permission_scopes", value)
+
+    @property
     @pulumi.getter(name="oauth2Permissions")
     def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]:
         """
-        A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         """
         return pulumi.get(self, "oauth2_permissions")
 
@@ -90,15 +109,18 @@ class _ServicePrincipalState:
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
                  oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]] app_roles: A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[str] display_name: The Display Name of the Application associated with this Service Principal.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         :param pulumi.Input[str] object_id: The Object ID of the Service Principal.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
         """
@@ -110,6 +132,11 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "application_id", application_id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if oauth2_permission_scopes is not None:
+            pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
+        if oauth2_permissions is not None:
+            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
+            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
         if oauth2_permissions is not None:
             pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
         if object_id is not None:
@@ -132,6 +159,9 @@ class _ServicePrincipalState:
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]:
+        """
+        A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        """
         return pulumi.get(self, "app_roles")
 
     @app_roles.setter
@@ -154,7 +184,7 @@ class _ServicePrincipalState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Display Name of the Application associated with this Service Principal.
+        Display name for the permission that appears in the admin consent and app assignment experiences.
         """
         return pulumi.get(self, "display_name")
 
@@ -163,10 +193,22 @@ class _ServicePrincipalState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="oauth2PermissionScopes")
+    def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]:
+        """
+        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        """
+        return pulumi.get(self, "oauth2_permission_scopes")
+
+    @oauth2_permission_scopes.setter
+    def oauth2_permission_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]):
+        pulumi.set(self, "oauth2_permission_scopes", value)
+
+    @property
     @pulumi.getter(name="oauth2Permissions")
     def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]:
         """
-        A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         """
         return pulumi.get(self, "oauth2_permissions")
 
@@ -206,6 +248,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
                  oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -221,6 +264,7 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example_application = azuread.Application("exampleApplication",
+            display_name="example",
             homepage="http://homepage",
             identifier_uris=["http://uri"],
             reply_urls=["http://replyurl"],
@@ -248,7 +292,8 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
         """
         ...
@@ -269,6 +314,7 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi_azuread as azuread
 
         example_application = azuread.Application("exampleApplication",
+            display_name="example",
             homepage="http://homepage",
             identifier_uris=["http://uri"],
             reply_urls=["http://replyurl"],
@@ -309,6 +355,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
                  oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -327,6 +374,10 @@ class ServicePrincipal(pulumi.CustomResource):
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
+            __props__.__dict__["oauth2_permission_scopes"] = oauth2_permission_scopes
+            if oauth2_permissions is not None and not opts.urn:
+                warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
+                pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
             __props__.__dict__["oauth2_permissions"] = oauth2_permissions
             __props__.__dict__["tags"] = tags
             __props__.__dict__["app_roles"] = None
@@ -346,6 +397,7 @@ class ServicePrincipal(pulumi.CustomResource):
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
             oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ServicePrincipal':
@@ -357,9 +409,11 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]] app_roles: A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[str] display_name: The Display Name of the Application associated with this Service Principal.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         :param pulumi.Input[str] object_id: The Object ID of the Service Principal.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
         """
@@ -371,6 +425,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["app_roles"] = app_roles
         __props__.__dict__["application_id"] = application_id
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["oauth2_permission_scopes"] = oauth2_permission_scopes
         __props__.__dict__["oauth2_permissions"] = oauth2_permissions
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["tags"] = tags
@@ -387,6 +442,9 @@ class ServicePrincipal(pulumi.CustomResource):
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalAppRole']]:
+        """
+        A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        """
         return pulumi.get(self, "app_roles")
 
     @property
@@ -401,15 +459,23 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The Display Name of the Application associated with this Service Principal.
+        Display name for the permission that appears in the admin consent and app assignment experiences.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="oauth2PermissionScopes")
+    def oauth2_permission_scopes(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalOauth2PermissionScope']]:
+        """
+        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        """
+        return pulumi.get(self, "oauth2_permission_scopes")
 
     @property
     @pulumi.getter(name="oauth2Permissions")
     def oauth2_permissions(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalOauth2Permission']]:
         """
-        A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         """
         return pulumi.get(self, "oauth2_permissions")
 

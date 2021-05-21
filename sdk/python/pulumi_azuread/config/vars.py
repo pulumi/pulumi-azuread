@@ -19,6 +19,8 @@ __all__ = [
     'msi_endpoint',
     'partner_id',
     'tenant_id',
+    'use_cli',
+    'use_microsoft_graph',
     'use_msi',
 ]
 
@@ -50,8 +52,8 @@ Disable the Terraform Partner ID which is used if a custom `partner_id` isn't sp
 
 environment = __config__.get('environment') or (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
 """
-The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-Defaults to `public`.
+The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+`germany`, and `china`. Defaults to `global`.
 """
 
 metadata_host = __config__.get('metadataHost')
@@ -59,7 +61,7 @@ metadata_host = __config__.get('metadataHost')
 The Hostname which should be used for the Azure Metadata Service.
 """
 
-msi_endpoint = __config__.get('msiEndpoint') or (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
+msi_endpoint = __config__.get('msiEndpoint') or _utilities.get_env('ARM_MSI_ENDPOINT')
 """
 The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
 automatically.
@@ -73,6 +75,16 @@ A GUID/UUID that is registered with Microsoft to facilitate partner resource usa
 tenant_id = __config__.get('tenantId')
 """
 The Tenant ID which should be used. Works with all authentication methods except MSI.
+"""
+
+use_cli = __config__.get('useCli')
+"""
+Allow Azure CLI to be used for Authentication.
+"""
+
+use_microsoft_graph = __config__.get('useMicrosoftGraph')
+"""
+Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
 """
 
 use_msi = __config__.get('useMsi') or (_utilities.get_env_bool('ARM_USE_MSI') or False)

@@ -21,14 +21,14 @@ import * as utilities from "./utilities";
  *     allowedMemberTypes: ["User"],
  *     description: "Admins can manage roles and perform all task actions",
  *     displayName: "Admin",
- *     isEnabled: true,
+ *     enabled: true,
  *     value: "administer",
  * });
  * ```
  *
  * ## Import
  *
- * App Roles can be imported using the `object id` of an Application and the `id` of the App Role, e.g.
+ * App Roles can be imported using the `object_id` of an Application and the `id` of the App Role, e.g.
  *
  * ```sh
  *  $ pulumi import azuread:index/applicationAppRole:ApplicationAppRole test 00000000-0000-0000-0000-000000000000/role/11111111-1111-1111-1111-111111111111
@@ -63,7 +63,7 @@ export class ApplicationAppRole extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      */
     public readonly allowedMemberTypes!: pulumi.Output<string[]>;
     /**
@@ -71,23 +71,27 @@ export class ApplicationAppRole extends pulumi.CustomResource {
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Determines if the app role is enabled. Defaults to `true`.
+     * Determines if the app role is enabled: Defaults to `true`.
+     */
+    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     public readonly isEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+     * The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
      */
     public readonly roleId!: pulumi.Output<string>;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
     public readonly value!: pulumi.Output<string | undefined>;
 
@@ -108,6 +112,7 @@ export class ApplicationAppRole extends pulumi.CustomResource {
             inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["enabled"] = state ? state.enabled : undefined;
             inputs["isEnabled"] = state ? state.isEnabled : undefined;
             inputs["roleId"] = state ? state.roleId : undefined;
             inputs["value"] = state ? state.value : undefined;
@@ -129,6 +134,7 @@ export class ApplicationAppRole extends pulumi.CustomResource {
             inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["enabled"] = args ? args.enabled : undefined;
             inputs["isEnabled"] = args ? args.isEnabled : undefined;
             inputs["roleId"] = args ? args.roleId : undefined;
             inputs["value"] = args ? args.value : undefined;
@@ -145,7 +151,7 @@ export class ApplicationAppRole extends pulumi.CustomResource {
  */
 export interface ApplicationAppRoleState {
     /**
-     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      */
     readonly allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -153,23 +159,27 @@ export interface ApplicationAppRoleState {
      */
     readonly applicationObjectId?: pulumi.Input<string>;
     /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
     readonly description?: pulumi.Input<string>;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     readonly displayName?: pulumi.Input<string>;
     /**
-     * Determines if the app role is enabled. Defaults to `true`.
+     * Determines if the app role is enabled: Defaults to `true`.
+     */
+    readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly isEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+     * The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
      */
     readonly roleId?: pulumi.Input<string>;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
     readonly value?: pulumi.Input<string>;
 }
@@ -179,7 +189,7 @@ export interface ApplicationAppRoleState {
  */
 export interface ApplicationAppRoleArgs {
     /**
-     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+     * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      */
     readonly allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -187,23 +197,27 @@ export interface ApplicationAppRoleArgs {
      */
     readonly applicationObjectId: pulumi.Input<string>;
     /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
     readonly description: pulumi.Input<string>;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     readonly displayName: pulumi.Input<string>;
     /**
-     * Determines if the app role is enabled. Defaults to `true`.
+     * Determines if the app role is enabled: Defaults to `true`.
+     */
+    readonly enabled?: pulumi.Input<boolean>;
+    /**
+     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly isEnabled?: pulumi.Input<boolean>;
     /**
-     * Specifies a custom UUID for the app role. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+     * The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
      */
     readonly roleId?: pulumi.Input<string>;
     /**
-     * Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
     readonly value?: pulumi.Input<string>;
 }

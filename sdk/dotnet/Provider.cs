@@ -75,8 +75,8 @@ namespace Pulumi.AzureAD
         public Input<bool>? DisableTerraformPartnerId { get; set; }
 
         /// <summary>
-        /// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-        /// Defaults to `public`.
+        /// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+        /// `germany`, and `china`. Defaults to `global`.
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }
@@ -107,6 +107,18 @@ namespace Pulumi.AzureAD
         public Input<string>? TenantId { get; set; }
 
         /// <summary>
+        /// Allow Azure CLI to be used for Authentication.
+        /// </summary>
+        [Input("useCli", json: true)]
+        public Input<bool>? UseCli { get; set; }
+
+        /// <summary>
+        /// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+        /// </summary>
+        [Input("useMicrosoftGraph", json: true)]
+        public Input<bool>? UseMicrosoftGraph { get; set; }
+
+        /// <summary>
         /// Allow Managed Service Identity to be used for Authentication.
         /// </summary>
         [Input("useMsi", json: true)]
@@ -115,7 +127,7 @@ namespace Pulumi.AzureAD
         public ProviderArgs()
         {
             Environment = Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
-            MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
+            MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT");
             UseMsi = Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
         }
     }

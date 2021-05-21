@@ -19,11 +19,11 @@ import (
 	"path/filepath"
 	"unicode"
 
+	"github.com/hashicorp/terraform-provider-azuread/shim"
 	"github.com/pulumi/pulumi-azuread/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-azuread/shim"
 )
 
 // all of the token components used below.
@@ -76,6 +76,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:    []string{"pulumi", "azuread"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
+		GitHubOrg:   "hashicorp",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"environment": {
@@ -86,7 +87,6 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"msi_endpoint": {
 				Default: &tfbridge.DefaultInfo{
-					Value:   "",
 					EnvVars: []string{"ARM_MSI_ENDPOINT"},
 				},
 			},
@@ -98,17 +98,18 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"azuread_application":                   {Tok: makeResource(mainMod, "Application")},
-			"azuread_application_password":          {Tok: makeResource(mainMod, "ApplicationPassword")},
-			"azuread_group":                         {Tok: makeResource(mainMod, "Group")},
-			"azuread_service_principal":             {Tok: makeResource(mainMod, "ServicePrincipal")},
-			"azuread_service_principal_password":    {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
-			"azuread_user":                          {Tok: makeResource(mainMod, "User")},
-			"azuread_group_member":                  {Tok: makeResource(mainMod, "GroupMember")},
-			"azuread_application_certificate":       {Tok: makeResource(mainMod, "ApplicationCertificate")},
-			"azuread_application_app_role":          {Tok: makeResource(mainMod, "ApplicationAppRole")},
-			"azuread_application_oauth2_permission": {Tok: makeResource(mainMod, "ApplicationOAuth2Permission")},
-			"azuread_service_principal_certificate": {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
+			"azuread_application":                         {Tok: makeResource(mainMod, "Application")},
+			"azuread_application_password":                {Tok: makeResource(mainMod, "ApplicationPassword")},
+			"azuread_group":                               {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal":                   {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_service_principal_password":          {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
+			"azuread_user":                                {Tok: makeResource(mainMod, "User")},
+			"azuread_group_member":                        {Tok: makeResource(mainMod, "GroupMember")},
+			"azuread_application_certificate":             {Tok: makeResource(mainMod, "ApplicationCertificate")},
+			"azuread_application_app_role":                {Tok: makeResource(mainMod, "ApplicationAppRole")},
+			"azuread_application_oauth2_permission":       {Tok: makeResource(mainMod, "ApplicationOAuth2Permission")},
+			"azuread_service_principal_certificate":       {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
+			"azuread_application_oauth2_permission_scope": {Tok: makeResource(mainMod, "ApplicationOauth2PermissionScope")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":       {Tok: makeDataSource(mainMod, "getApplication")},

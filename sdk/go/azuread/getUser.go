@@ -71,7 +71,9 @@ type LookupUserResult struct {
 	GivenName string `pulumi:"givenName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+	// (**Deprecated**) The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+	//
+	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
 	ImmutableId string `pulumi:"immutableId"`
 	// The user’s job title.
 	JobTitle string `pulumi:"jobTitle"`
@@ -79,14 +81,24 @@ type LookupUserResult struct {
 	Mail string `pulumi:"mail"`
 	// The email alias of the Azure AD User.
 	MailNickname string `pulumi:"mailNickname"`
+	// (**Deprecated**) The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+	//
+	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
+	Mobile string `pulumi:"mobile"`
 	// The primary cellular telephone number for the user.
-	Mobile   string `pulumi:"mobile"`
-	ObjectId string `pulumi:"objectId"`
+	MobilePhone string `pulumi:"mobilePhone"`
+	ObjectId    string `pulumi:"objectId"`
+	// The office location in the user's place of business.
+	OfficeLocation string `pulumi:"officeLocation"`
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+	OnpremisesImmutableId string `pulumi:"onpremisesImmutableId"`
 	// The on-premise SAM account name of the Azure AD User.
 	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
 	// The on-premise user principal name of the Azure AD User.
 	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
-	// The office location in the user's place of business.
+	// (**Deprecated**) The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+	//
+	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
 	PhysicalDeliveryOfficeName string `pulumi:"physicalDeliveryOfficeName"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode string `pulumi:"postalCode"`
@@ -100,4 +112,6 @@ type LookupUserResult struct {
 	UsageLocation string `pulumi:"usageLocation"`
 	// The User Principal Name of the Azure AD User.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
+	// The user type in the directory. One of `Guest` or `Member`.
+	UserType string `pulumi:"userType"`
 }

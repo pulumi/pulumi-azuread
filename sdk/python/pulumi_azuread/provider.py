@@ -23,6 +23,8 @@ class ProviderArgs:
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 use_cli: Optional[pulumi.Input[bool]] = None,
+                 use_microsoft_graph: Optional[pulumi.Input[bool]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -33,14 +35,19 @@ class ProviderArgs:
         :param pulumi.Input[str] client_secret: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
                Certificate
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
-        :param pulumi.Input[str] environment: The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-               Defaults to `public`.
+        :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+               `germany`, and `china`. Defaults to `global`.
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
                automatically.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except MSI.
+        :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication.
+        :param pulumi.Input[bool] use_microsoft_graph: Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
         :param pulumi.Input[bool] use_msi: Allow Managed Service Identity to be used for Authentication.
         """
+        if metadata_host is not None:
+            warnings.warn("""The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""", DeprecationWarning)
+            pulumi.log.warn("""metadata_host is deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""")
         pulumi.set(__self__, "metadata_host", metadata_host)
         if client_certificate_password is not None:
             pulumi.set(__self__, "client_certificate_password", client_certificate_password)
@@ -57,13 +64,17 @@ class ProviderArgs:
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
         if msi_endpoint is None:
-            msi_endpoint = (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
+            msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
         if msi_endpoint is not None:
             pulumi.set(__self__, "msi_endpoint", msi_endpoint)
         if partner_id is not None:
             pulumi.set(__self__, "partner_id", partner_id)
         if tenant_id is not None:
             pulumi.set(__self__, "tenant_id", tenant_id)
+        if use_cli is not None:
+            pulumi.set(__self__, "use_cli", use_cli)
+        if use_microsoft_graph is not None:
+            pulumi.set(__self__, "use_microsoft_graph", use_microsoft_graph)
         if use_msi is None:
             use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
         if use_msi is not None:
@@ -144,8 +155,8 @@ class ProviderArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-        Defaults to `public`.
+        The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+        `germany`, and `china`. Defaults to `global`.
         """
         return pulumi.get(self, "environment")
 
@@ -191,6 +202,30 @@ class ProviderArgs:
         pulumi.set(self, "tenant_id", value)
 
     @property
+    @pulumi.getter(name="useCli")
+    def use_cli(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow Azure CLI to be used for Authentication.
+        """
+        return pulumi.get(self, "use_cli")
+
+    @use_cli.setter
+    def use_cli(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_cli", value)
+
+    @property
+    @pulumi.getter(name="useMicrosoftGraph")
+    def use_microsoft_graph(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+        """
+        return pulumi.get(self, "use_microsoft_graph")
+
+    @use_microsoft_graph.setter
+    def use_microsoft_graph(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_microsoft_graph", value)
+
+    @property
     @pulumi.getter(name="useMsi")
     def use_msi(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -218,6 +253,8 @@ class Provider(pulumi.ProviderResource):
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 use_cli: Optional[pulumi.Input[bool]] = None,
+                 use_microsoft_graph: Optional[pulumi.Input[bool]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -234,13 +271,15 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_secret: The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
                Certificate
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
-        :param pulumi.Input[str] environment: The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-               Defaults to `public`.
+        :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+               `germany`, and `china`. Defaults to `global`.
         :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
                automatically.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except MSI.
+        :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication.
+        :param pulumi.Input[bool] use_microsoft_graph: Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
         :param pulumi.Input[bool] use_msi: Allow Managed Service Identity to be used for Authentication.
         """
         ...
@@ -280,6 +319,8 @@ class Provider(pulumi.ProviderResource):
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
+                 use_cli: Optional[pulumi.Input[bool]] = None,
+                 use_microsoft_graph: Optional[pulumi.Input[bool]] = None,
                  use_msi: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
@@ -303,12 +344,17 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["environment"] = environment
             if metadata_host is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata_host'")
+            if metadata_host is not None and not opts.urn:
+                warnings.warn("""The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""", DeprecationWarning)
+                pulumi.log.warn("""metadata_host is deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""")
             __props__.__dict__["metadata_host"] = metadata_host
             if msi_endpoint is None:
-                msi_endpoint = (_utilities.get_env('ARM_MSI_ENDPOINT') or '')
+                msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
             __props__.__dict__["msi_endpoint"] = msi_endpoint
             __props__.__dict__["partner_id"] = partner_id
             __props__.__dict__["tenant_id"] = tenant_id
+            __props__.__dict__["use_cli"] = pulumi.Output.from_input(use_cli).apply(pulumi.runtime.to_json) if use_cli is not None else None
+            __props__.__dict__["use_microsoft_graph"] = pulumi.Output.from_input(use_microsoft_graph).apply(pulumi.runtime.to_json) if use_microsoft_graph is not None else None
             if use_msi is None:
                 use_msi = (_utilities.get_env_bool('ARM_USE_MSI') or False)
             __props__.__dict__["use_msi"] = pulumi.Output.from_input(use_msi).apply(pulumi.runtime.to_json) if use_msi is not None else None

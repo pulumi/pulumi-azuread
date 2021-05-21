@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _allowedMemberTypes;
 
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         /// </summary>
         public InputList<string> AllowedMemberTypes
         {
@@ -25,19 +25,25 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.
+        /// Determines if the app role is enabled: Defaults to `true`.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -49,7 +55,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool>? IsEnabled { get; set; }
 
         /// <summary>
-        /// The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

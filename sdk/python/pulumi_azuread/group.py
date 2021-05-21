@@ -34,8 +34,8 @@ class GroupArgs:
         if members is not None:
             pulumi.set(__self__, "members", members)
         if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""")
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if owners is not None:
@@ -145,8 +145,8 @@ class _GroupState:
         if members is not None:
             pulumi.set(__self__, "members", members)
         if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""")
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if object_id is not None:
@@ -279,7 +279,7 @@ class Group(pulumi.CustomResource):
         """
         Manages a Group within Azure Active Directory.
 
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
 
         ## Example Usage
 
@@ -332,7 +332,7 @@ class Group(pulumi.CustomResource):
         """
         Manages a Group within Azure Active Directory.
 
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
 
         ## Example Usage
 
@@ -405,8 +405,8 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["members"] = members
             if name is not None and not opts.urn:
-                warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""")
+                warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["name"] = name
             __props__.__dict__["owners"] = owners
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names

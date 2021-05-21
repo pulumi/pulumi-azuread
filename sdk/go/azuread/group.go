@@ -12,7 +12,7 @@ import (
 
 // Manages a Group within Azure Active Directory.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Company Administrator` or `User Account Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
 //
 // ## Example Usage
 //
@@ -91,7 +91,7 @@ type Group struct {
 	MailEnabled pulumi.BoolOutput `pulumi:"mailEnabled"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The Object ID of the Group.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
@@ -140,7 +140,7 @@ type groupState struct {
 	MailEnabled *bool `pulumi:"mailEnabled"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
 	Name *string `pulumi:"name"`
 	// The Object ID of the Group.
 	ObjectId *string `pulumi:"objectId"`
@@ -161,7 +161,7 @@ type GroupState struct {
 	MailEnabled pulumi.BoolPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
 	Name pulumi.StringPtrInput
 	// The Object ID of the Group.
 	ObjectId pulumi.StringPtrInput
@@ -184,7 +184,7 @@ type groupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members []string `pulumi:"members"`
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
 	Name *string `pulumi:"name"`
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners []string `pulumi:"owners"`
@@ -200,7 +200,7 @@ type GroupArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
 	Members pulumi.StringArrayInput
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
 	Name pulumi.StringPtrInput
 	// A set of owners who own this Group. Supported Object types are Users or Service Principals.
 	Owners pulumi.StringArrayInput

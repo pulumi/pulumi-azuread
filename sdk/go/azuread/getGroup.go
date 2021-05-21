@@ -52,7 +52,7 @@ type LookupGroupArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Whether the group is mail-enabled.
 	MailEnabled *bool `pulumi:"mailEnabled"`
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.
 	Name *string `pulumi:"name"`
 	// Specifies the Object ID of the Group.
 	ObjectId *string `pulumi:"objectId"`
@@ -72,7 +72,7 @@ type LookupGroupResult struct {
 	MailEnabled bool `pulumi:"mailEnabled"`
 	// The Object IDs of the Group members.
 	Members []string `pulumi:"members"`
-	// Deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.
+	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.
 	Name     string `pulumi:"name"`
 	ObjectId string `pulumi:"objectId"`
 	// The Object IDs of the Group owners.

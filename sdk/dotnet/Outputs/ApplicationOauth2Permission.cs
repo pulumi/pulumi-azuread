@@ -14,11 +14,11 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ApplicationOauth2Permission
     {
         /// <summary>
-        /// Permission help text that appears in the admin consent and app assignment experiences.
+        /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         public readonly string? AdminConsentDescription;
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         public readonly string? AdminConsentDisplayName;
         /// <summary>
@@ -26,23 +26,23 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
+        /// Determines if the permission is enabled: defaults to `true`.
         /// </summary>
         public readonly bool? IsEnabled;
         /// <summary>
-        /// Type of an application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not not be set.
+        /// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// Permission help text that appears in the end user consent experience.
+        /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         /// </summary>
         public readonly string? UserConsentDescription;
         /// <summary>
-        /// Display name for the permission that appears in the end user consent experience.
+        /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         public readonly string? UserConsentDisplayName;
         /// <summary>
-        /// Specifies the value of the roles claim that the application should expect in the authentication and access tokens.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         public readonly string? Value;
 

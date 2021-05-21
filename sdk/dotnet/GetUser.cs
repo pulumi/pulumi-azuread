@@ -106,7 +106,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+        /// (**Deprecated**) The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         /// </summary>
         public readonly string ImmutableId;
         /// <summary>
@@ -122,10 +122,22 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string MailNickname;
         /// <summary>
-        /// The primary cellular telephone number for the user.
+        /// (**Deprecated**) The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         /// </summary>
         public readonly string Mobile;
+        /// <summary>
+        /// The primary cellular telephone number for the user.
+        /// </summary>
+        public readonly string MobilePhone;
         public readonly string ObjectId;
+        /// <summary>
+        /// The office location in the user's place of business.
+        /// </summary>
+        public readonly string OfficeLocation;
+        /// <summary>
+        /// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+        /// </summary>
+        public readonly string OnpremisesImmutableId;
         /// <summary>
         /// The on-premise SAM account name of the Azure AD User.
         /// </summary>
@@ -135,7 +147,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string OnpremisesUserPrincipalName;
         /// <summary>
-        /// The office location in the user's place of business.
+        /// (**Deprecated**) The office location in the user's place of business. Deprecated in favour of `office_location`.
         /// </summary>
         public readonly string PhysicalDeliveryOfficeName;
         /// <summary>
@@ -162,6 +174,10 @@ namespace Pulumi.AzureAD
         /// The User Principal Name of the Azure AD User.
         /// </summary>
         public readonly string UserPrincipalName;
+        /// <summary>
+        /// The user type in the directory. One of `Guest` or `Member`.
+        /// </summary>
+        public readonly string UserType;
 
         [OutputConstructor]
         private GetUserResult(
@@ -191,7 +207,13 @@ namespace Pulumi.AzureAD
 
             string mobile,
 
+            string mobilePhone,
+
             string objectId,
+
+            string officeLocation,
+
+            string onpremisesImmutableId,
 
             string onpremisesSamAccountName,
 
@@ -209,7 +231,9 @@ namespace Pulumi.AzureAD
 
             string usageLocation,
 
-            string userPrincipalName)
+            string userPrincipalName,
+
+            string userType)
         {
             AccountEnabled = accountEnabled;
             City = city;
@@ -224,7 +248,10 @@ namespace Pulumi.AzureAD
             Mail = mail;
             MailNickname = mailNickname;
             Mobile = mobile;
+            MobilePhone = mobilePhone;
             ObjectId = objectId;
+            OfficeLocation = officeLocation;
+            OnpremisesImmutableId = onpremisesImmutableId;
             OnpremisesSamAccountName = onpremisesSamAccountName;
             OnpremisesUserPrincipalName = onpremisesUserPrincipalName;
             PhysicalDeliveryOfficeName = physicalDeliveryOfficeName;
@@ -234,6 +261,7 @@ namespace Pulumi.AzureAD
             Surname = surname;
             UsageLocation = usageLocation;
             UserPrincipalName = userPrincipalName;
+            UserType = userType;
         }
     }
 }

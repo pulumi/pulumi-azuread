@@ -27,6 +27,9 @@ class UserArgs:
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[str]] = None,
+                 mobile_phone: Optional[pulumi.Input[str]] = None,
+                 office_location: Optional[pulumi.Input[str]] = None,
+                 onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
                  physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
                  postal_code: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
@@ -45,11 +48,14 @@ class UserArgs:
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
-        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
-        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
+        :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
+        :param pulumi.Input[str] office_location: The office location in the user's place of business.
+        :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business. Deprecated in favour of `office_location`.
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] state: The state or province in the user's address.
         :param pulumi.Input[str] street_address: The street address of the user's place of business.
@@ -74,13 +80,28 @@ class UserArgs:
         if given_name is not None:
             pulumi.set(__self__, "given_name", given_name)
         if immutable_id is not None:
+            warnings.warn("""This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""immutable_id is deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""")
+        if immutable_id is not None:
             pulumi.set(__self__, "immutable_id", immutable_id)
         if job_title is not None:
             pulumi.set(__self__, "job_title", job_title)
         if mail_nickname is not None:
             pulumi.set(__self__, "mail_nickname", mail_nickname)
         if mobile is not None:
+            warnings.warn("""This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""mobile is deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""")
+        if mobile is not None:
             pulumi.set(__self__, "mobile", mobile)
+        if mobile_phone is not None:
+            pulumi.set(__self__, "mobile_phone", mobile_phone)
+        if office_location is not None:
+            pulumi.set(__self__, "office_location", office_location)
+        if onpremises_immutable_id is not None:
+            pulumi.set(__self__, "onpremises_immutable_id", onpremises_immutable_id)
+        if physical_delivery_office_name is not None:
+            warnings.warn("""This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""physical_delivery_office_name is deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""")
         if physical_delivery_office_name is not None:
             pulumi.set(__self__, "physical_delivery_office_name", physical_delivery_office_name)
         if postal_code is not None:
@@ -218,7 +239,7 @@ class UserArgs:
     @pulumi.getter(name="immutableId")
     def immutable_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         """
         return pulumi.get(self, "immutable_id")
 
@@ -254,7 +275,7 @@ class UserArgs:
     @pulumi.getter
     def mobile(self) -> Optional[pulumi.Input[str]]:
         """
-        The primary cellular telephone number for the user.
+        The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         """
         return pulumi.get(self, "mobile")
 
@@ -263,10 +284,46 @@ class UserArgs:
         pulumi.set(self, "mobile", value)
 
     @property
+    @pulumi.getter(name="mobilePhone")
+    def mobile_phone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile_phone")
+
+    @mobile_phone.setter
+    def mobile_phone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mobile_phone", value)
+
+    @property
+    @pulumi.getter(name="officeLocation")
+    def office_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "office_location")
+
+    @office_location.setter
+    def office_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "office_location", value)
+
+    @property
+    @pulumi.getter(name="onpremisesImmutableId")
+    def onpremises_immutable_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        """
+        return pulumi.get(self, "onpremises_immutable_id")
+
+    @onpremises_immutable_id.setter
+    def onpremises_immutable_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_immutable_id", value)
+
+    @property
     @pulumi.getter(name="physicalDeliveryOfficeName")
     def physical_delivery_office_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The office location in the user's place of business.
+        The office location in the user's place of business. Deprecated in favour of `office_location`.
         """
         return pulumi.get(self, "physical_delivery_office_name")
 
@@ -351,7 +408,10 @@ class _UserState:
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[str]] = None,
+                 mobile_phone: Optional[pulumi.Input[str]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
+                 office_location: Optional[pulumi.Input[str]] = None,
+                 onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
                  onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
                  onpremises_user_principal_name: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -361,7 +421,8 @@ class _UserState:
                  street_address: Optional[pulumi.Input[str]] = None,
                  surname: Optional[pulumi.Input[str]] = None,
                  usage_location: Optional[pulumi.Input[str]] = None,
-                 user_principal_name: Optional[pulumi.Input[str]] = None):
+                 user_principal_name: Optional[pulumi.Input[str]] = None,
+                 user_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering User resources.
         :param pulumi.Input[bool] account_enabled: `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
@@ -372,22 +433,26 @@ class _UserState:
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The primary email address of the User.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
-        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
+        :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
         :param pulumi.Input[str] object_id: The Object ID of the User.
+        :param pulumi.Input[str] office_location: The office location in the user's place of business.
+        :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         :param pulumi.Input[str] onpremises_sam_account_name: The on-premise SAM account name of the User.
         :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
-        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business. Deprecated in favour of `office_location`.
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] state: The state or province in the user's address.
         :param pulumi.Input[str] street_address: The street address of the user's place of business.
         :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the User.
+        :param pulumi.Input[str] user_type: The user type in the directory. One of `Guest` or `Member`.
         """
         if account_enabled is not None:
             pulumi.set(__self__, "account_enabled", account_enabled)
@@ -406,6 +471,9 @@ class _UserState:
         if given_name is not None:
             pulumi.set(__self__, "given_name", given_name)
         if immutable_id is not None:
+            warnings.warn("""This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""immutable_id is deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""")
+        if immutable_id is not None:
             pulumi.set(__self__, "immutable_id", immutable_id)
         if job_title is not None:
             pulumi.set(__self__, "job_title", job_title)
@@ -414,15 +482,27 @@ class _UserState:
         if mail_nickname is not None:
             pulumi.set(__self__, "mail_nickname", mail_nickname)
         if mobile is not None:
+            warnings.warn("""This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""mobile is deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""")
+        if mobile is not None:
             pulumi.set(__self__, "mobile", mobile)
+        if mobile_phone is not None:
+            pulumi.set(__self__, "mobile_phone", mobile_phone)
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
+        if office_location is not None:
+            pulumi.set(__self__, "office_location", office_location)
+        if onpremises_immutable_id is not None:
+            pulumi.set(__self__, "onpremises_immutable_id", onpremises_immutable_id)
         if onpremises_sam_account_name is not None:
             pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
         if onpremises_user_principal_name is not None:
             pulumi.set(__self__, "onpremises_user_principal_name", onpremises_user_principal_name)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if physical_delivery_office_name is not None:
+            warnings.warn("""This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+            pulumi.log.warn("""physical_delivery_office_name is deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""")
         if physical_delivery_office_name is not None:
             pulumi.set(__self__, "physical_delivery_office_name", physical_delivery_office_name)
         if postal_code is not None:
@@ -437,6 +517,8 @@ class _UserState:
             pulumi.set(__self__, "usage_location", usage_location)
         if user_principal_name is not None:
             pulumi.set(__self__, "user_principal_name", user_principal_name)
+        if user_type is not None:
+            pulumi.set(__self__, "user_type", user_type)
 
     @property
     @pulumi.getter(name="accountEnabled")
@@ -538,7 +620,7 @@ class _UserState:
     @pulumi.getter(name="immutableId")
     def immutable_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         """
         return pulumi.get(self, "immutable_id")
 
@@ -586,13 +668,25 @@ class _UserState:
     @pulumi.getter
     def mobile(self) -> Optional[pulumi.Input[str]]:
         """
-        The primary cellular telephone number for the user.
+        The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         """
         return pulumi.get(self, "mobile")
 
     @mobile.setter
     def mobile(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mobile", value)
+
+    @property
+    @pulumi.getter(name="mobilePhone")
+    def mobile_phone(self) -> Optional[pulumi.Input[str]]:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile_phone")
+
+    @mobile_phone.setter
+    def mobile_phone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mobile_phone", value)
 
     @property
     @pulumi.getter(name="objectId")
@@ -605,6 +699,30 @@ class _UserState:
     @object_id.setter
     def object_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_id", value)
+
+    @property
+    @pulumi.getter(name="officeLocation")
+    def office_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "office_location")
+
+    @office_location.setter
+    def office_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "office_location", value)
+
+    @property
+    @pulumi.getter(name="onpremisesImmutableId")
+    def onpremises_immutable_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        """
+        return pulumi.get(self, "onpremises_immutable_id")
+
+    @onpremises_immutable_id.setter
+    def onpremises_immutable_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_immutable_id", value)
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
@@ -646,7 +764,7 @@ class _UserState:
     @pulumi.getter(name="physicalDeliveryOfficeName")
     def physical_delivery_office_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The office location in the user's place of business.
+        The office location in the user's place of business. Deprecated in favour of `office_location`.
         """
         return pulumi.get(self, "physical_delivery_office_name")
 
@@ -726,6 +844,18 @@ class _UserState:
     def user_principal_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "user_principal_name", value)
 
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user type in the directory. One of `Guest` or `Member`.
+        """
+        return pulumi.get(self, "user_type")
+
+    @user_type.setter
+    def user_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user_type", value)
+
 
 class User(pulumi.CustomResource):
     @overload
@@ -744,6 +874,9 @@ class User(pulumi.CustomResource):
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[str]] = None,
+                 mobile_phone: Optional[pulumi.Input[str]] = None,
+                 office_location: Optional[pulumi.Input[str]] = None,
+                 onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
                  postal_code: Optional[pulumi.Input[str]] = None,
@@ -789,12 +922,15 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
-        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
+        :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
+        :param pulumi.Input[str] office_location: The office location in the user's place of business.
+        :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
-        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business. Deprecated in favour of `office_location`.
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] state: The state or province in the user's address.
         :param pulumi.Input[str] street_address: The street address of the user's place of business.
@@ -861,6 +997,9 @@ class User(pulumi.CustomResource):
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  mobile: Optional[pulumi.Input[str]] = None,
+                 mobile_phone: Optional[pulumi.Input[str]] = None,
+                 office_location: Optional[pulumi.Input[str]] = None,
+                 onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
                  physical_delivery_office_name: Optional[pulumi.Input[str]] = None,
                  postal_code: Optional[pulumi.Input[str]] = None,
@@ -891,13 +1030,25 @@ class User(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["force_password_change"] = force_password_change
             __props__.__dict__["given_name"] = given_name
+            if immutable_id is not None and not opts.urn:
+                warnings.warn("""This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""immutable_id is deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["immutable_id"] = immutable_id
             __props__.__dict__["job_title"] = job_title
             __props__.__dict__["mail_nickname"] = mail_nickname
+            if mobile is not None and not opts.urn:
+                warnings.warn("""This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""mobile is deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["mobile"] = mobile
+            __props__.__dict__["mobile_phone"] = mobile_phone
+            __props__.__dict__["office_location"] = office_location
+            __props__.__dict__["onpremises_immutable_id"] = onpremises_immutable_id
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
             __props__.__dict__["password"] = password
+            if physical_delivery_office_name is not None and not opts.urn:
+                warnings.warn("""This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
+                pulumi.log.warn("""physical_delivery_office_name is deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider""")
             __props__.__dict__["physical_delivery_office_name"] = physical_delivery_office_name
             __props__.__dict__["postal_code"] = postal_code
             __props__.__dict__["state"] = state
@@ -911,6 +1062,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["object_id"] = None
             __props__.__dict__["onpremises_sam_account_name"] = None
             __props__.__dict__["onpremises_user_principal_name"] = None
+            __props__.__dict__["user_type"] = None
         super(User, __self__).__init__(
             'azuread:index/user:User',
             resource_name,
@@ -934,7 +1086,10 @@ class User(pulumi.CustomResource):
             mail: Optional[pulumi.Input[str]] = None,
             mail_nickname: Optional[pulumi.Input[str]] = None,
             mobile: Optional[pulumi.Input[str]] = None,
+            mobile_phone: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
+            office_location: Optional[pulumi.Input[str]] = None,
+            onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
             onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
             onpremises_user_principal_name: Optional[pulumi.Input[str]] = None,
             password: Optional[pulumi.Input[str]] = None,
@@ -944,7 +1099,8 @@ class User(pulumi.CustomResource):
             street_address: Optional[pulumi.Input[str]] = None,
             surname: Optional[pulumi.Input[str]] = None,
             usage_location: Optional[pulumi.Input[str]] = None,
-            user_principal_name: Optional[pulumi.Input[str]] = None) -> 'User':
+            user_principal_name: Optional[pulumi.Input[str]] = None,
+            user_type: Optional[pulumi.Input[str]] = None) -> 'User':
         """
         Get an existing User resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -960,22 +1116,26 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[bool] force_password_change: `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
-        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        :param pulumi.Input[str] immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The primary email address of the User.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the User Principal Name.
-        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user.
+        :param pulumi.Input[str] mobile: The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
+        :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
         :param pulumi.Input[str] object_id: The Object ID of the User.
+        :param pulumi.Input[str] office_location: The office location in the user's place of business.
+        :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
         :param pulumi.Input[str] onpremises_sam_account_name: The on-premise SAM account name of the User.
         :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the User.
         :param pulumi.Input[str] password: The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
-        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business.
+        :param pulumi.Input[str] physical_delivery_office_name: The office location in the user's place of business. Deprecated in favour of `office_location`.
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] state: The state or province in the user's address.
         :param pulumi.Input[str] street_address: The street address of the user's place of business.
         :param pulumi.Input[str] surname: The user's surname (family name or last name).
         :param pulumi.Input[str] usage_location: The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
         :param pulumi.Input[str] user_principal_name: The User Principal Name of the User.
+        :param pulumi.Input[str] user_type: The user type in the directory. One of `Guest` or `Member`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -994,7 +1154,10 @@ class User(pulumi.CustomResource):
         __props__.__dict__["mail"] = mail
         __props__.__dict__["mail_nickname"] = mail_nickname
         __props__.__dict__["mobile"] = mobile
+        __props__.__dict__["mobile_phone"] = mobile_phone
         __props__.__dict__["object_id"] = object_id
+        __props__.__dict__["office_location"] = office_location
+        __props__.__dict__["onpremises_immutable_id"] = onpremises_immutable_id
         __props__.__dict__["onpremises_sam_account_name"] = onpremises_sam_account_name
         __props__.__dict__["onpremises_user_principal_name"] = onpremises_user_principal_name
         __props__.__dict__["password"] = password
@@ -1005,6 +1168,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["surname"] = surname
         __props__.__dict__["usage_location"] = usage_location
         __props__.__dict__["user_principal_name"] = user_principal_name
+        __props__.__dict__["user_type"] = user_type
         return User(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1075,7 +1239,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="immutableId")
     def immutable_id(self) -> pulumi.Output[str]:
         """
-        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
         """
         return pulumi.get(self, "immutable_id")
 
@@ -1107,9 +1271,17 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def mobile(self) -> pulumi.Output[str]:
         """
-        The primary cellular telephone number for the user.
+        The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
         """
         return pulumi.get(self, "mobile")
+
+    @property
+    @pulumi.getter(name="mobilePhone")
+    def mobile_phone(self) -> pulumi.Output[str]:
+        """
+        The primary cellular telephone number for the user.
+        """
+        return pulumi.get(self, "mobile_phone")
 
     @property
     @pulumi.getter(name="objectId")
@@ -1118,6 +1290,22 @@ class User(pulumi.CustomResource):
         The Object ID of the User.
         """
         return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="officeLocation")
+    def office_location(self) -> pulumi.Output[str]:
+        """
+        The office location in the user's place of business.
+        """
+        return pulumi.get(self, "office_location")
+
+    @property
+    @pulumi.getter(name="onpremisesImmutableId")
+    def onpremises_immutable_id(self) -> pulumi.Output[str]:
+        """
+        The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+        """
+        return pulumi.get(self, "onpremises_immutable_id")
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
@@ -1147,7 +1335,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="physicalDeliveryOfficeName")
     def physical_delivery_office_name(self) -> pulumi.Output[str]:
         """
-        The office location in the user's place of business.
+        The office location in the user's place of business. Deprecated in favour of `office_location`.
         """
         return pulumi.get(self, "physical_delivery_office_name")
 
@@ -1198,4 +1386,12 @@ class User(pulumi.CustomResource):
         The User Principal Name of the User.
         """
         return pulumi.get(self, "user_principal_name")
+
+    @property
+    @pulumi.getter(name="userType")
+    def user_type(self) -> pulumi.Output[str]:
+        """
+        The user type in the directory. One of `Guest` or `Member`.
+        """
+        return pulumi.get(self, "user_type")
 

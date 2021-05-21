@@ -26,6 +26,7 @@ namespace Pulumi.AzureAD
     ///     {
     ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
     ///         {
+    ///             DisplayName = "example",
     ///             Homepage = "http://homepage",
     ///             IdentifierUris = 
     ///             {
@@ -71,6 +72,9 @@ namespace Pulumi.AzureAD
         [Output("appRoleAssignmentRequired")]
         public Output<bool?> AppRoleAssignmentRequired { get; private set; } = null!;
 
+        /// <summary>
+        /// A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// </summary>
         [Output("appRoles")]
         public Output<ImmutableArray<Outputs.ServicePrincipalAppRole>> AppRoles { get; private set; } = null!;
 
@@ -81,13 +85,19 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// The Display Name of the Application associated with this Service Principal.
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// </summary>
+        [Output("oauth2PermissionScopes")]
+        public Output<ImmutableArray<Outputs.ServicePrincipalOauth2PermissionScope>> Oauth2PermissionScopes { get; private set; } = null!;
+
+        /// <summary>
+        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         /// </summary>
         [Output("oauth2Permissions")]
         public Output<ImmutableArray<Outputs.ServicePrincipalOauth2Permission>> Oauth2Permissions { get; private set; } = null!;
@@ -162,12 +172,25 @@ namespace Pulumi.AzureAD
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
+        [Input("oauth2PermissionScopes")]
+        private InputList<Inputs.ServicePrincipalOauth2PermissionScopeArgs>? _oauth2PermissionScopes;
+
+        /// <summary>
+        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// </summary>
+        public InputList<Inputs.ServicePrincipalOauth2PermissionScopeArgs> Oauth2PermissionScopes
+        {
+            get => _oauth2PermissionScopes ?? (_oauth2PermissionScopes = new InputList<Inputs.ServicePrincipalOauth2PermissionScopeArgs>());
+            set => _oauth2PermissionScopes = value;
+        }
+
         [Input("oauth2Permissions")]
         private InputList<Inputs.ServicePrincipalOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         /// </summary>
+        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
         public InputList<Inputs.ServicePrincipalOauth2PermissionArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ServicePrincipalOauth2PermissionArgs>());
@@ -201,6 +224,10 @@ namespace Pulumi.AzureAD
 
         [Input("appRoles")]
         private InputList<Inputs.ServicePrincipalAppRoleGetArgs>? _appRoles;
+
+        /// <summary>
+        /// A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// </summary>
         public InputList<Inputs.ServicePrincipalAppRoleGetArgs> AppRoles
         {
             get => _appRoles ?? (_appRoles = new InputList<Inputs.ServicePrincipalAppRoleGetArgs>());
@@ -214,17 +241,30 @@ namespace Pulumi.AzureAD
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// The Display Name of the Application associated with this Service Principal.
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("oauth2PermissionScopes")]
+        private InputList<Inputs.ServicePrincipalOauth2PermissionScopeGetArgs>? _oauth2PermissionScopes;
+
+        /// <summary>
+        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// </summary>
+        public InputList<Inputs.ServicePrincipalOauth2PermissionScopeGetArgs> Oauth2PermissionScopes
+        {
+            get => _oauth2PermissionScopes ?? (_oauth2PermissionScopes = new InputList<Inputs.ServicePrincipalOauth2PermissionScopeGetArgs>());
+            set => _oauth2PermissionScopes = value;
+        }
 
         [Input("oauth2Permissions")]
         private InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission` block as documented below.
+        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         /// </summary>
+        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
         public InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs>());

@@ -47,9 +47,11 @@ export class Provider extends pulumi.ProviderResource {
             inputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             inputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             inputs["metadataHost"] = args ? args.metadataHost : undefined;
-            inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? (utilities.getEnv("ARM_MSI_ENDPOINT") || "");
+            inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
             inputs["partnerId"] = args ? args.partnerId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
+            inputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
+            inputs["useMicrosoftGraph"] = pulumi.output(args ? args.useMicrosoftGraph : undefined).apply(JSON.stringify);
             inputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
         }
         if (!opts.version) {
@@ -83,12 +85,14 @@ export interface ProviderArgs {
      */
     readonly disableTerraformPartnerId?: pulumi.Input<boolean>;
     /**
-     * The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-     * Defaults to `public`.
+     * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+     * `germany`, and `china`. Defaults to `global`.
      */
     readonly environment?: pulumi.Input<string>;
     /**
      * The Hostname which should be used for the Azure Metadata Service.
+     *
+     * @deprecated The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
      */
     readonly metadataHost: pulumi.Input<string>;
     /**
@@ -104,6 +108,14 @@ export interface ProviderArgs {
      * The Tenant ID which should be used. Works with all authentication methods except MSI.
      */
     readonly tenantId?: pulumi.Input<string>;
+    /**
+     * Allow Azure CLI to be used for Authentication.
+     */
+    readonly useCli?: pulumi.Input<boolean>;
+    /**
+     * Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+     */
+    readonly useMicrosoftGraph?: pulumi.Input<boolean>;
     /**
      * Allow Managed Service Identity to be used for Authentication.
      */

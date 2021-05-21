@@ -34,8 +34,8 @@ func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azuread:disableTerraformPartnerId")
 }
 
-// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-// Defaults to `public`.
+// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+// `germany`, and `china`. Defaults to `global`.
 func GetEnvironment(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:environment")
 	if err == nil {
@@ -45,6 +45,8 @@ func GetEnvironment(ctx *pulumi.Context) string {
 }
 
 // The Hostname which should be used for the Azure Metadata Service.
+//
+// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
 func GetMetadataHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:metadataHost")
 }
@@ -67,6 +69,16 @@ func GetPartnerId(ctx *pulumi.Context) string {
 // The Tenant ID which should be used. Works with all authentication methods except MSI.
 func GetTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:tenantId")
+}
+
+// Allow Azure CLI to be used for Authentication.
+func GetUseCli(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azuread:useCli")
+}
+
+// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+func GetUseMicrosoftGraph(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azuread:useMicrosoftGraph")
 }
 
 // Allow Managed Service Identity to be used for Authentication.

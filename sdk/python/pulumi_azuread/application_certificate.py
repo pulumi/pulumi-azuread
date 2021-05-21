@@ -295,7 +295,7 @@ class ApplicationCertificate(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Certificate associated with an Application within Azure Active Directory.
+        Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
@@ -325,7 +325,7 @@ class ApplicationCertificate(pulumi.CustomResource):
                  args: ApplicationCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Certificate associated with an Application within Azure Active Directory.
+        Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 

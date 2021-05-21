@@ -67,7 +67,9 @@ type User struct {
 	ForcePasswordChange pulumi.BoolPtrOutput `pulumi:"forcePasswordChange"`
 	// The given name (first name) of the user.
 	GivenName pulumi.StringOutput `pulumi:"givenName"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+	//
+	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
 	ImmutableId pulumi.StringOutput `pulumi:"immutableId"`
 	// The user’s job title.
 	JobTitle pulumi.StringOutput `pulumi:"jobTitle"`
@@ -75,17 +77,27 @@ type User struct {
 	Mail pulumi.StringOutput `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+	//
+	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
 	Mobile pulumi.StringOutput `pulumi:"mobile"`
+	// The primary cellular telephone number for the user.
+	MobilePhone pulumi.StringOutput `pulumi:"mobilePhone"`
 	// The Object ID of the User.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
+	// The office location in the user's place of business.
+	OfficeLocation pulumi.StringOutput `pulumi:"officeLocation"`
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	OnpremisesImmutableId pulumi.StringOutput `pulumi:"onpremisesImmutableId"`
 	// The on-premise SAM account name of the User.
 	OnpremisesSamAccountName pulumi.StringOutput `pulumi:"onpremisesSamAccountName"`
 	// The on-premise user principal name of the User.
 	OnpremisesUserPrincipalName pulumi.StringOutput `pulumi:"onpremisesUserPrincipalName"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The office location in the user's place of business.
+	// The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+	//
+	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
 	PhysicalDeliveryOfficeName pulumi.StringOutput `pulumi:"physicalDeliveryOfficeName"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode pulumi.StringOutput `pulumi:"postalCode"`
@@ -99,6 +111,8 @@ type User struct {
 	UsageLocation pulumi.StringOutput `pulumi:"usageLocation"`
 	// The User Principal Name of the User.
 	UserPrincipalName pulumi.StringOutput `pulumi:"userPrincipalName"`
+	// The user type in the directory. One of `Guest` or `Member`.
+	UserType pulumi.StringOutput `pulumi:"userType"`
 }
 
 // NewUser registers a new resource with the given unique name, arguments, and options.
@@ -155,7 +169,9 @@ type userState struct {
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
 	// The given name (first name) of the user.
 	GivenName *string `pulumi:"givenName"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+	//
+	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
 	ImmutableId *string `pulumi:"immutableId"`
 	// The user’s job title.
 	JobTitle *string `pulumi:"jobTitle"`
@@ -163,17 +179,27 @@ type userState struct {
 	Mail *string `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname *string `pulumi:"mailNickname"`
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+	//
+	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
 	Mobile *string `pulumi:"mobile"`
+	// The primary cellular telephone number for the user.
+	MobilePhone *string `pulumi:"mobilePhone"`
 	// The Object ID of the User.
 	ObjectId *string `pulumi:"objectId"`
+	// The office location in the user's place of business.
+	OfficeLocation *string `pulumi:"officeLocation"`
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	OnpremisesImmutableId *string `pulumi:"onpremisesImmutableId"`
 	// The on-premise SAM account name of the User.
 	OnpremisesSamAccountName *string `pulumi:"onpremisesSamAccountName"`
 	// The on-premise user principal name of the User.
 	OnpremisesUserPrincipalName *string `pulumi:"onpremisesUserPrincipalName"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password *string `pulumi:"password"`
-	// The office location in the user's place of business.
+	// The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+	//
+	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
 	PhysicalDeliveryOfficeName *string `pulumi:"physicalDeliveryOfficeName"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode *string `pulumi:"postalCode"`
@@ -187,6 +213,8 @@ type userState struct {
 	UsageLocation *string `pulumi:"usageLocation"`
 	// The User Principal Name of the User.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
+	// The user type in the directory. One of `Guest` or `Member`.
+	UserType *string `pulumi:"userType"`
 }
 
 type UserState struct {
@@ -206,7 +234,9 @@ type UserState struct {
 	ForcePasswordChange pulumi.BoolPtrInput
 	// The given name (first name) of the user.
 	GivenName pulumi.StringPtrInput
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+	//
+	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
 	ImmutableId pulumi.StringPtrInput
 	// The user’s job title.
 	JobTitle pulumi.StringPtrInput
@@ -214,17 +244,27 @@ type UserState struct {
 	Mail pulumi.StringPtrInput
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringPtrInput
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+	//
+	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
 	Mobile pulumi.StringPtrInput
+	// The primary cellular telephone number for the user.
+	MobilePhone pulumi.StringPtrInput
 	// The Object ID of the User.
 	ObjectId pulumi.StringPtrInput
+	// The office location in the user's place of business.
+	OfficeLocation pulumi.StringPtrInput
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	OnpremisesImmutableId pulumi.StringPtrInput
 	// The on-premise SAM account name of the User.
 	OnpremisesSamAccountName pulumi.StringPtrInput
 	// The on-premise user principal name of the User.
 	OnpremisesUserPrincipalName pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringPtrInput
-	// The office location in the user's place of business.
+	// The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+	//
+	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
 	PhysicalDeliveryOfficeName pulumi.StringPtrInput
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode pulumi.StringPtrInput
@@ -238,6 +278,8 @@ type UserState struct {
 	UsageLocation pulumi.StringPtrInput
 	// The User Principal Name of the User.
 	UserPrincipalName pulumi.StringPtrInput
+	// The user type in the directory. One of `Guest` or `Member`.
+	UserType pulumi.StringPtrInput
 }
 
 func (UserState) ElementType() reflect.Type {
@@ -261,17 +303,29 @@ type userArgs struct {
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
 	// The given name (first name) of the user.
 	GivenName *string `pulumi:"givenName"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+	//
+	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
 	ImmutableId *string `pulumi:"immutableId"`
 	// The user’s job title.
 	JobTitle *string `pulumi:"jobTitle"`
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname *string `pulumi:"mailNickname"`
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+	//
+	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
 	Mobile *string `pulumi:"mobile"`
+	// The primary cellular telephone number for the user.
+	MobilePhone *string `pulumi:"mobilePhone"`
+	// The office location in the user's place of business.
+	OfficeLocation *string `pulumi:"officeLocation"`
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	OnpremisesImmutableId *string `pulumi:"onpremisesImmutableId"`
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password string `pulumi:"password"`
-	// The office location in the user's place of business.
+	// The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+	//
+	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
 	PhysicalDeliveryOfficeName *string `pulumi:"physicalDeliveryOfficeName"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode *string `pulumi:"postalCode"`
@@ -305,17 +359,29 @@ type UserArgs struct {
 	ForcePasswordChange pulumi.BoolPtrInput
 	// The given name (first name) of the user.
 	GivenName pulumi.StringPtrInput
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+	//
+	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
 	ImmutableId pulumi.StringPtrInput
 	// The user’s job title.
 	JobTitle pulumi.StringPtrInput
 	// The mail alias for the user. Defaults to the user name part of the User Principal Name.
 	MailNickname pulumi.StringPtrInput
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+	//
+	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
 	Mobile pulumi.StringPtrInput
+	// The primary cellular telephone number for the user.
+	MobilePhone pulumi.StringPtrInput
+	// The office location in the user's place of business.
+	OfficeLocation pulumi.StringPtrInput
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
+	OnpremisesImmutableId pulumi.StringPtrInput
 	// The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
 	Password pulumi.StringInput
-	// The office location in the user's place of business.
+	// The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+	//
+	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
 	PhysicalDeliveryOfficeName pulumi.StringPtrInput
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode pulumi.StringPtrInput

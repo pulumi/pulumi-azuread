@@ -38,8 +38,8 @@ class GetGroupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in v2.0 of this provider.""")
+            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.""")
 
         pulumi.set(__self__, "name", name)
         if object_id and not isinstance(object_id, str):

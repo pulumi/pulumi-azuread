@@ -33,8 +33,8 @@ namespace Pulumi.AzureAD
         public static bool? DisableTerraformPartnerId { get; set; } = __config.GetBoolean("disableTerraformPartnerId");
 
         /// <summary>
-        /// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-        /// Defaults to `public`.
+        /// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+        /// `germany`, and `china`. Defaults to `global`.
         /// </summary>
         public static string? Environment { get; set; } = __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
 
@@ -47,7 +47,7 @@ namespace Pulumi.AzureAD
         /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
         /// automatically.
         /// </summary>
-        public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT") ?? "";
+        public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT");
 
         /// <summary>
         /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
@@ -58,6 +58,16 @@ namespace Pulumi.AzureAD
         /// The Tenant ID which should be used. Works with all authentication methods except MSI.
         /// </summary>
         public static string? TenantId { get; set; } = __config.Get("tenantId");
+
+        /// <summary>
+        /// Allow Azure CLI to be used for Authentication.
+        /// </summary>
+        public static bool? UseCli { get; set; } = __config.GetBoolean("useCli");
+
+        /// <summary>
+        /// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+        /// </summary>
+        public static bool? UseMicrosoftGraph { get; set; } = __config.GetBoolean("useMicrosoftGraph");
 
         /// <summary>
         /// Allow Managed Service Identity to be used for Authentication.

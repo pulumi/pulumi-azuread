@@ -25,6 +25,12 @@ namespace Pulumi.AzureAD.Inputs
         public string AdminConsentDisplayName { get; set; } = null!;
 
         /// <summary>
+        /// (Optional) Determines if the permission scope is enabled.
+        /// </summary>
+        [Input("enabled", required: true)]
+        public bool Enabled { get; set; }
+
+        /// <summary>
         /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
         /// </summary>
         [Input("id", required: true)]
@@ -37,7 +43,7 @@ namespace Pulumi.AzureAD.Inputs
         public bool IsEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether the id property references an `OAuth2Permission` or an `AppRole`.
+        /// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
         /// </summary>
         [Input("type", required: true)]
         public string Type { get; set; } = null!;

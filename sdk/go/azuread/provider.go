@@ -58,10 +58,12 @@ type providerArgs struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
 	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
-	// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-	// Defaults to `public`.
+	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+	// `germany`, and `china`. Defaults to `global`.
 	Environment *string `pulumi:"environment"`
 	// The Hostname which should be used for the Azure Metadata Service.
+	//
+	// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
 	MetadataHost string `pulumi:"metadataHost"`
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
 	// automatically.
@@ -70,6 +72,10 @@ type providerArgs struct {
 	PartnerId *string `pulumi:"partnerId"`
 	// The Tenant ID which should be used. Works with all authentication methods except MSI.
 	TenantId *string `pulumi:"tenantId"`
+	// Allow Azure CLI to be used for Authentication.
+	UseCli *bool `pulumi:"useCli"`
+	// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+	UseMicrosoftGraph *bool `pulumi:"useMicrosoftGraph"`
 	// Allow Managed Service Identity to be used for Authentication.
 	UseMsi *bool `pulumi:"useMsi"`
 }
@@ -87,10 +93,12 @@ type ProviderArgs struct {
 	ClientSecret pulumi.StringPtrInput
 	// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
 	DisableTerraformPartnerId pulumi.BoolPtrInput
-	// The Cloud Environment which should be used. Possible values are `public`, `usgovernment`, `german`, and `china`.
-	// Defaults to `public`.
+	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+	// `germany`, and `china`. Defaults to `global`.
 	Environment pulumi.StringPtrInput
 	// The Hostname which should be used for the Azure Metadata Service.
+	//
+	// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
 	MetadataHost pulumi.StringInput
 	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
 	// automatically.
@@ -99,6 +107,10 @@ type ProviderArgs struct {
 	PartnerId pulumi.StringPtrInput
 	// The Tenant ID which should be used. Works with all authentication methods except MSI.
 	TenantId pulumi.StringPtrInput
+	// Allow Azure CLI to be used for Authentication.
+	UseCli pulumi.BoolPtrInput
+	// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
+	UseMicrosoftGraph pulumi.BoolPtrInput
 	// Allow Managed Service Identity to be used for Authentication.
 	UseMsi pulumi.BoolPtrInput
 }

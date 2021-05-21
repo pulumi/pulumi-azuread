@@ -92,7 +92,9 @@ export interface GetUserResult {
      */
     readonly id: string;
     /**
-     * The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+     * (**Deprecated**) The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
+     *
+     * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly immutableId: string;
     /**
@@ -108,10 +110,24 @@ export interface GetUserResult {
      */
     readonly mailNickname: string;
     /**
-     * The primary cellular telephone number for the user.
+     * (**Deprecated**) The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
+     *
+     * @deprecated This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly mobile: string;
+    /**
+     * The primary cellular telephone number for the user.
+     */
+    readonly mobilePhone: string;
     readonly objectId: string;
+    /**
+     * The office location in the user's place of business.
+     */
+    readonly officeLocation: string;
+    /**
+     * The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+     */
+    readonly onpremisesImmutableId: string;
     /**
      * The on-premise SAM account name of the Azure AD User.
      */
@@ -121,7 +137,9 @@ export interface GetUserResult {
      */
     readonly onpremisesUserPrincipalName: string;
     /**
-     * The office location in the user's place of business.
+     * (**Deprecated**) The office location in the user's place of business. Deprecated in favour of `officeLocation`.
+     *
+     * @deprecated This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
      */
     readonly physicalDeliveryOfficeName: string;
     /**
@@ -148,4 +166,8 @@ export interface GetUserResult {
      * The User Principal Name of the Azure AD User.
      */
     readonly userPrincipalName: string;
+    /**
+     * The user type in the directory. One of `Guest` or `Member`.
+     */
+    readonly userType: string;
 }

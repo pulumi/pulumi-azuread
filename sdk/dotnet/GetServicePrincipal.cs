@@ -101,12 +101,25 @@ namespace Pulumi.AzureAD
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
+        [Input("oauth2PermissionScopes")]
+        private List<Inputs.GetServicePrincipalOauth2PermissionScopeArgs>? _oauth2PermissionScopes;
+
+        /// <summary>
+        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// </summary>
+        public List<Inputs.GetServicePrincipalOauth2PermissionScopeArgs> Oauth2PermissionScopes
+        {
+            get => _oauth2PermissionScopes ?? (_oauth2PermissionScopes = new List<Inputs.GetServicePrincipalOauth2PermissionScopeArgs>());
+            set => _oauth2PermissionScopes = value;
+        }
+
         [Input("oauth2Permissions")]
         private List<Inputs.GetServicePrincipalOauth2PermissionArgs>? _oauth2Permissions;
 
         /// <summary>
-        /// A collection of OAuth 2.0 permissions exposed by the associated application. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
         /// </summary>
+        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
         public List<Inputs.GetServicePrincipalOauth2PermissionArgs> Oauth2Permissions
         {
             get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetServicePrincipalOauth2PermissionArgs>());
@@ -128,6 +141,9 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetServicePrincipalResult
     {
+        /// <summary>
+        /// A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalAppRoleResult> AppRoles;
         public readonly string ApplicationId;
         /// <summary>
@@ -138,7 +154,17 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionScopeResult> Oauth2PermissionScopes;
+        /// <summary>
+        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionResult> Oauth2Permissions;
+        /// <summary>
+        /// The Object ID for the Service Principal.
+        /// </summary>
         public readonly string ObjectId;
 
         [OutputConstructor]
@@ -151,6 +177,8 @@ namespace Pulumi.AzureAD
 
             string id,
 
+            ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionScopeResult> oauth2PermissionScopes,
+
             ImmutableArray<Outputs.GetServicePrincipalOauth2PermissionResult> oauth2Permissions,
 
             string objectId)
@@ -159,6 +187,7 @@ namespace Pulumi.AzureAD
             ApplicationId = applicationId;
             DisplayName = displayName;
             Id = id;
+            Oauth2PermissionScopes = oauth2PermissionScopes;
             Oauth2Permissions = oauth2Permissions;
             ObjectId = objectId;
         }

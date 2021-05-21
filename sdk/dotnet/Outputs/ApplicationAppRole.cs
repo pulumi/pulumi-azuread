@@ -14,19 +14,23 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ApplicationAppRole
     {
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in daemon service scenarios) by setting to `Application`, or to both.
+        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The unique identifier of the permision. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationOAuth2Permission resource.
+        /// Determines if the app role is enabled: Defaults to `true`.
+        /// </summary>
+        public readonly bool? Enabled;
+        /// <summary>
+        /// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
         /// </summary>
         public readonly string? Id;
         /// <summary>
@@ -34,7 +38,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool? IsEnabled;
         /// <summary>
-        /// The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         public readonly string? Value;
 
@@ -46,6 +50,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string displayName,
 
+            bool? enabled,
+
             string? id,
 
             bool? isEnabled,
@@ -55,6 +61,7 @@ namespace Pulumi.AzureAD.Outputs
             AllowedMemberTypes = allowedMemberTypes;
             Description = description;
             DisplayName = displayName;
+            Enabled = enabled;
             Id = id;
             IsEnabled = isEnabled;
             Value = value;

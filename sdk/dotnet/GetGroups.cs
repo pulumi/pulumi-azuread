@@ -30,7 +30,7 @@ namespace Pulumi.AzureAD
         ///     {
         ///         var groups = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
-        ///             Names = 
+        ///             DisplayNames = 
         ///             {
         ///                 "group-a",
         ///                 "group-b",
@@ -52,6 +52,10 @@ namespace Pulumi.AzureAD
     {
         [Input("displayNames")]
         private List<string>? _displayNames;
+
+        /// <summary>
+        /// The Display Names of the Azure AD Groups.
+        /// </summary>
         public List<string> DisplayNames
         {
             get => _displayNames ?? (_displayNames = new List<string>());
@@ -60,11 +64,7 @@ namespace Pulumi.AzureAD
 
         [Input("names")]
         private List<string>? _names;
-
-        /// <summary>
-        /// The Display Names of the Azure AD Groups.
-        /// </summary>
-        [Obsolete(@"This property has been renamed to `display_names` and will be removed in v2.0 of this provider.")]
+        [Obsolete(@"This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider")]
         public List<string> Names
         {
             get => _names ?? (_names = new List<string>());
@@ -92,14 +92,14 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetGroupsResult
     {
+        /// <summary>
+        /// The Display Names of the Azure AD Groups.
+        /// </summary>
         public readonly ImmutableArray<string> DisplayNames;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The Display Names of the Azure AD Groups.
-        /// </summary>
         public readonly ImmutableArray<string> Names;
         /// <summary>
         /// The Object IDs of the Azure AD Groups.
