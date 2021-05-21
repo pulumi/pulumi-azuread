@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v1.5.0 of the AzureAD Terraform Provider
+_(none)_
 
 ---
+
+## 4.1.0 (2021-05-21)
+* Upgrade to v1.5.0 of the AzureAD Terraform Provider
 
 ## 4.0.0 (2021-04-19)
 * Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
