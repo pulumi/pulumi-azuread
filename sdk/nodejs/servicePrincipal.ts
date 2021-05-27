@@ -155,37 +155,37 @@ export interface ServicePrincipalState {
     /**
      * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
-    readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
+    appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
      * A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
-    readonly appRoles?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalAppRole>[]>;
+    appRoles?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalAppRole>[]>;
     /**
      * The App ID of the Application for which to create a Service Principal.
      */
-    readonly applicationId?: pulumi.Input<string>;
+    applicationId?: pulumi.Input<string>;
     /**
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
      */
-    readonly oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2PermissionScope>[]>;
+    oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2PermissionScope>[]>;
     /**
      * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
      *
      * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
      */
-    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
+    oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
     /**
      * The Object ID of the Service Principal.
      */
-    readonly objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string>;
     /**
      * A list of tags to apply to the Service Principal.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**
@@ -195,23 +195,23 @@ export interface ServicePrincipalArgs {
     /**
      * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
-    readonly appRoleAssignmentRequired?: pulumi.Input<boolean>;
+    appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
      * The App ID of the Application for which to create a Service Principal.
      */
-    readonly applicationId: pulumi.Input<string>;
+    applicationId: pulumi.Input<string>;
     /**
      * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
      */
-    readonly oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2PermissionScope>[]>;
+    oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2PermissionScope>[]>;
     /**
      * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
      *
      * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
      */
-    readonly oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
+    oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
     /**
      * A list of tags to apply to the Service Principal.
      */
-    readonly tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
 }

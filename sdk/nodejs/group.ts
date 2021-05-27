@@ -160,39 +160,39 @@ export interface GroupState {
     /**
      * The description for the Group.  Changing this forces a new resource to be created.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name for the Group. Changing this forces a new resource to be created.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Whether the group is mail-enabled.
      */
-    readonly mailEnabled?: pulumi.Input<boolean>;
+    mailEnabled?: pulumi.Input<boolean>;
     /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The Object ID of the Group.
      */
-    readonly objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string>;
     /**
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.
      */
-    readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
+    owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
      */
-    readonly preventDuplicateNames?: pulumi.Input<boolean>;
+    preventDuplicateNames?: pulumi.Input<boolean>;
     /**
      * Whether the group is a security group.
      */
-    readonly securityEnabled?: pulumi.Input<boolean>;
+    securityEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -202,25 +202,25 @@ export interface GroupArgs {
     /**
      * The description for the Group.  Changing this forces a new resource to be created.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The display name for the Group. Changing this forces a new resource to be created.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
      */
-    readonly members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A set of owners who own this Group. Supported Object types are Users or Service Principals.
      */
-    readonly owners?: pulumi.Input<pulumi.Input<string>[]>;
+    owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
      */
-    readonly preventDuplicateNames?: pulumi.Input<boolean>;
+    preventDuplicateNames?: pulumi.Input<boolean>;
 }

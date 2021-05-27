@@ -20,7 +20,7 @@ import * as utilities from "./utilities";
  * const example = pulumi.output(azuread.getGroup({
  *     displayName: "MyGroupName",
  *     securityEnabled: true,
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
@@ -48,23 +48,23 @@ export interface GetGroupArgs {
     /**
      * The display name for the Group.
      */
-    readonly displayName?: string;
+    displayName?: string;
     /**
      * Whether the group is mail-enabled.
      */
-    readonly mailEnabled?: boolean;
+    mailEnabled?: boolean;
     /**
      * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.
      */
-    readonly name?: string;
+    name?: string;
     /**
      * Specifies the Object ID of the Group.
      */
-    readonly objectId?: string;
+    objectId?: string;
     /**
      * Whether the group is a security group.
      */
-    readonly securityEnabled?: boolean;
+    securityEnabled?: boolean;
 }
 
 /**

@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *         "kat@hashicorp.com",
  *         "byte@hashicorp.com",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
@@ -48,19 +48,19 @@ export interface GetUsersArgs {
     /**
      * Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
      */
-    readonly ignoreMissing?: boolean;
+    ignoreMissing?: boolean;
     /**
      * The email aliases of the Azure AD Users.
      */
-    readonly mailNicknames?: string[];
+    mailNicknames?: string[];
     /**
      * The Object IDs of the Azure AD Users.
      */
-    readonly objectIds?: string[];
+    objectIds?: string[];
     /**
      * The User Principal Names of the Azure AD Users.
      */
-    readonly userPrincipalNames?: string[];
+    userPrincipalNames?: string[];
 }
 
 /**

@@ -273,121 +273,121 @@ export interface UserState {
     /**
      * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
      */
-    readonly accountEnabled?: pulumi.Input<boolean>;
+    accountEnabled?: pulumi.Input<boolean>;
     /**
      * The city in which the user is located.
      */
-    readonly city?: pulumi.Input<string>;
+    city?: pulumi.Input<string>;
     /**
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      */
-    readonly companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string>;
     /**
      * The country/region in which the user is located; for example, “US” or “UK”.
      */
-    readonly country?: pulumi.Input<string>;
+    country?: pulumi.Input<string>;
     /**
      * The name for the department in which the user works.
      */
-    readonly department?: pulumi.Input<string>;
+    department?: pulumi.Input<string>;
     /**
      * The name to display in the address book for the user.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
      */
-    readonly forcePasswordChange?: pulumi.Input<boolean>;
+    forcePasswordChange?: pulumi.Input<boolean>;
     /**
      * The given name (first name) of the user.
      */
-    readonly givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
      *
      * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly immutableId?: pulumi.Input<string>;
+    immutableId?: pulumi.Input<string>;
     /**
      * The user’s job title.
      */
-    readonly jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string>;
     /**
      * The primary email address of the User.
      */
-    readonly mail?: pulumi.Input<string>;
+    mail?: pulumi.Input<string>;
     /**
      * The mail alias for the user. Defaults to the user name part of the User Principal Name.
      */
-    readonly mailNickname?: pulumi.Input<string>;
+    mailNickname?: pulumi.Input<string>;
     /**
      * The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
      *
      * @deprecated This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * The primary cellular telephone number for the user.
      */
-    readonly mobilePhone?: pulumi.Input<string>;
+    mobilePhone?: pulumi.Input<string>;
     /**
      * The Object ID of the User.
      */
-    readonly objectId?: pulumi.Input<string>;
+    objectId?: pulumi.Input<string>;
     /**
      * The office location in the user's place of business.
      */
-    readonly officeLocation?: pulumi.Input<string>;
+    officeLocation?: pulumi.Input<string>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
      */
-    readonly onpremisesImmutableId?: pulumi.Input<string>;
+    onpremisesImmutableId?: pulumi.Input<string>;
     /**
      * The on-premise SAM account name of the User.
      */
-    readonly onpremisesSamAccountName?: pulumi.Input<string>;
+    onpremisesSamAccountName?: pulumi.Input<string>;
     /**
      * The on-premise user principal name of the User.
      */
-    readonly onpremisesUserPrincipalName?: pulumi.Input<string>;
+    onpremisesUserPrincipalName?: pulumi.Input<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
-    readonly password?: pulumi.Input<string>;
+    password?: pulumi.Input<string>;
     /**
      * The office location in the user's place of business. Deprecated in favour of `officeLocation`.
      *
      * @deprecated This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly physicalDeliveryOfficeName?: pulumi.Input<string>;
+    physicalDeliveryOfficeName?: pulumi.Input<string>;
     /**
      * The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
      */
-    readonly postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string>;
     /**
      * The state or province in the user's address.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The street address of the user's place of business.
      */
-    readonly streetAddress?: pulumi.Input<string>;
+    streetAddress?: pulumi.Input<string>;
     /**
      * The user's surname (family name or last name).
      */
-    readonly surname?: pulumi.Input<string>;
+    surname?: pulumi.Input<string>;
     /**
      * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
-    readonly usageLocation?: pulumi.Input<string>;
+    usageLocation?: pulumi.Input<string>;
     /**
      * The User Principal Name of the User.
      */
-    readonly userPrincipalName?: pulumi.Input<string>;
+    userPrincipalName?: pulumi.Input<string>;
     /**
      * The user type in the directory. One of `Guest` or `Member`.
      */
-    readonly userType?: pulumi.Input<string>;
+    userType?: pulumi.Input<string>;
 }
 
 /**
@@ -397,99 +397,99 @@ export interface UserArgs {
     /**
      * `true` if the account should be enabled, otherwise `false`. Defaults to `true`.
      */
-    readonly accountEnabled?: pulumi.Input<boolean>;
+    accountEnabled?: pulumi.Input<boolean>;
     /**
      * The city in which the user is located.
      */
-    readonly city?: pulumi.Input<string>;
+    city?: pulumi.Input<string>;
     /**
      * The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      */
-    readonly companyName?: pulumi.Input<string>;
+    companyName?: pulumi.Input<string>;
     /**
      * The country/region in which the user is located; for example, “US” or “UK”.
      */
-    readonly country?: pulumi.Input<string>;
+    country?: pulumi.Input<string>;
     /**
      * The name for the department in which the user works.
      */
-    readonly department?: pulumi.Input<string>;
+    department?: pulumi.Input<string>;
     /**
      * The name to display in the address book for the user.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * `true` if the User is forced to change the password during the next sign-in. Defaults to `false`.
      */
-    readonly forcePasswordChange?: pulumi.Input<boolean>;
+    forcePasswordChange?: pulumi.Input<boolean>;
     /**
      * The given name (first name) of the user.
      */
-    readonly givenName?: pulumi.Input<string>;
+    givenName?: pulumi.Input<string>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
      *
      * @deprecated This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly immutableId?: pulumi.Input<string>;
+    immutableId?: pulumi.Input<string>;
     /**
      * The user’s job title.
      */
-    readonly jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string>;
     /**
      * The mail alias for the user. Defaults to the user name part of the User Principal Name.
      */
-    readonly mailNickname?: pulumi.Input<string>;
+    mailNickname?: pulumi.Input<string>;
     /**
      * The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
      *
      * @deprecated This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly mobile?: pulumi.Input<string>;
+    mobile?: pulumi.Input<string>;
     /**
      * The primary cellular telephone number for the user.
      */
-    readonly mobilePhone?: pulumi.Input<string>;
+    mobilePhone?: pulumi.Input<string>;
     /**
      * The office location in the user's place of business.
      */
-    readonly officeLocation?: pulumi.Input<string>;
+    officeLocation?: pulumi.Input<string>;
     /**
      * The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's userPrincipalName (UPN) property when creating a new user account.
      */
-    readonly onpremisesImmutableId?: pulumi.Input<string>;
+    onpremisesImmutableId?: pulumi.Input<string>;
     /**
      * The password for the User. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters.
      */
-    readonly password: pulumi.Input<string>;
+    password: pulumi.Input<string>;
     /**
      * The office location in the user's place of business. Deprecated in favour of `officeLocation`.
      *
      * @deprecated This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly physicalDeliveryOfficeName?: pulumi.Input<string>;
+    physicalDeliveryOfficeName?: pulumi.Input<string>;
     /**
      * The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
      */
-    readonly postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string>;
     /**
      * The state or province in the user's address.
      */
-    readonly state?: pulumi.Input<string>;
+    state?: pulumi.Input<string>;
     /**
      * The street address of the user's place of business.
      */
-    readonly streetAddress?: pulumi.Input<string>;
+    streetAddress?: pulumi.Input<string>;
     /**
      * The user's surname (family name or last name).
      */
-    readonly surname?: pulumi.Input<string>;
+    surname?: pulumi.Input<string>;
     /**
      * The usage location of the User. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
      */
-    readonly usageLocation?: pulumi.Input<string>;
+    usageLocation?: pulumi.Input<string>;
     /**
      * The User Principal Name of the User.
      */
-    readonly userPrincipalName: pulumi.Input<string>;
+    userPrincipalName: pulumi.Input<string>;
 }

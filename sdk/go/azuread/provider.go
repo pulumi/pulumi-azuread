@@ -17,6 +17,30 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	ClientCertificatePassword pulumi.StringPtrOutput `pulumi:"clientCertificatePassword"`
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate.
+	ClientCertificatePath pulumi.StringPtrOutput `pulumi:"clientCertificatePath"`
+	// The Client ID which should be used for service principal authentication.
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+	// Certificate
+	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
+	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+	// `germany`, and `china`. Defaults to `global`.
+	Environment pulumi.StringPtrOutput `pulumi:"environment"`
+	// The Hostname which should be used for the Azure Metadata Service.
+	//
+	// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+	MetadataHost pulumi.StringOutput `pulumi:"metadataHost"`
+	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+	// automatically.
+	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	PartnerId pulumi.StringPtrOutput `pulumi:"partnerId"`
+	// The Tenant ID which should be used. Works with all authentication methods except MSI.
+	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

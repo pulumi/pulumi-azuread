@@ -18,7 +18,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(azuread.getUser({
  *     userPrincipalName: "user@hashicorp.com",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promise<GetUserResult> {
@@ -44,15 +44,15 @@ export interface GetUserArgs {
     /**
      * The email alias of the Azure AD User.
      */
-    readonly mailNickname?: string;
+    mailNickname?: string;
     /**
      * Specifies the Object ID of the User within Azure Active Directory.
      */
-    readonly objectId?: string;
+    objectId?: string;
     /**
      * The User Principal Name of the Azure AD User.
      */
-    readonly userPrincipalName?: string;
+    userPrincipalName?: string;
 }
 
 /**

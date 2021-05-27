@@ -25,6 +25,45 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    public readonly clientCertificatePassword!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+     * Principal using a Client Certificate.
+     */
+    public readonly clientCertificatePath!: pulumi.Output<string | undefined>;
+    /**
+     * The Client ID which should be used for service principal authentication.
+     */
+    public readonly clientId!: pulumi.Output<string | undefined>;
+    /**
+     * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+     * Certificate
+     */
+    public readonly clientSecret!: pulumi.Output<string | undefined>;
+    /**
+     * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+     * `germany`, and `china`. Defaults to `global`.
+     */
+    public readonly environment!: pulumi.Output<string | undefined>;
+    /**
+     * The Hostname which should be used for the Azure Metadata Service.
+     *
+     * @deprecated The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+     */
+    public readonly metadataHost!: pulumi.Output<string>;
+    /**
+     * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+     * automatically.
+     */
+    public readonly msiEndpoint!: pulumi.Output<string | undefined>;
+    /**
+     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+     */
+    public readonly partnerId!: pulumi.Output<string | undefined>;
+    /**
+     * The Tenant ID which should be used. Works with all authentication methods except MSI.
+     */
+    public readonly tenantId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -65,59 +104,59 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    readonly clientCertificatePassword?: pulumi.Input<string>;
+    clientCertificatePassword?: pulumi.Input<string>;
     /**
      * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
      * Principal using a Client Certificate.
      */
-    readonly clientCertificatePath?: pulumi.Input<string>;
+    clientCertificatePath?: pulumi.Input<string>;
     /**
      * The Client ID which should be used for service principal authentication.
      */
-    readonly clientId?: pulumi.Input<string>;
+    clientId?: pulumi.Input<string>;
     /**
      * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
      * Certificate
      */
-    readonly clientSecret?: pulumi.Input<string>;
+    clientSecret?: pulumi.Input<string>;
     /**
      * Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
      */
-    readonly disableTerraformPartnerId?: pulumi.Input<boolean>;
+    disableTerraformPartnerId?: pulumi.Input<boolean>;
     /**
      * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
      * `germany`, and `china`. Defaults to `global`.
      */
-    readonly environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string>;
     /**
      * The Hostname which should be used for the Azure Metadata Service.
      *
      * @deprecated The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
      */
-    readonly metadataHost: pulumi.Input<string>;
+    metadataHost: pulumi.Input<string>;
     /**
      * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
      * automatically.
      */
-    readonly msiEndpoint?: pulumi.Input<string>;
+    msiEndpoint?: pulumi.Input<string>;
     /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
      */
-    readonly partnerId?: pulumi.Input<string>;
+    partnerId?: pulumi.Input<string>;
     /**
      * The Tenant ID which should be used. Works with all authentication methods except MSI.
      */
-    readonly tenantId?: pulumi.Input<string>;
+    tenantId?: pulumi.Input<string>;
     /**
      * Allow Azure CLI to be used for Authentication.
      */
-    readonly useCli?: pulumi.Input<boolean>;
+    useCli?: pulumi.Input<boolean>;
     /**
      * Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
      */
-    readonly useMicrosoftGraph?: pulumi.Input<boolean>;
+    useMicrosoftGraph?: pulumi.Input<boolean>;
     /**
      * Allow Managed Service Identity to be used for Authentication.
      */
-    readonly useMsi?: pulumi.Input<boolean>;
+    useMsi?: pulumi.Input<boolean>;
 }

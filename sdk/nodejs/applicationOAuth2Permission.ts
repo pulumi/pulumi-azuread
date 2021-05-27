@@ -182,45 +182,45 @@ export interface ApplicationOAuth2PermissionState {
     /**
      * Permission help text that appears in the admin consent and app assignment experiences.
      */
-    readonly adminConsentDescription?: pulumi.Input<string>;
+    adminConsentDescription?: pulumi.Input<string>;
     /**
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
-    readonly adminConsentDisplayName?: pulumi.Input<string>;
+    adminConsentDisplayName?: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId?: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
+    applicationObjectId?: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Determines if the Permission is enabled. Defaults to `true`.
      *
      * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean>;
     /**
      * Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
      *
      * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly permissionId?: pulumi.Input<string>;
-    readonly scopeId?: pulumi.Input<string>;
+    permissionId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string>;
     /**
      * Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Permission help text that appears in the end user consent experience.
      */
-    readonly userConsentDescription?: pulumi.Input<string>;
+    userConsentDescription?: pulumi.Input<string>;
     /**
      * Display name for the permission that appears in the end user consent experience.
      */
-    readonly userConsentDisplayName?: pulumi.Input<string>;
+    userConsentDisplayName?: pulumi.Input<string>;
     /**
      * The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -230,43 +230,43 @@ export interface ApplicationOAuth2PermissionArgs {
     /**
      * Permission help text that appears in the admin consent and app assignment experiences.
      */
-    readonly adminConsentDescription: pulumi.Input<string>;
+    adminConsentDescription: pulumi.Input<string>;
     /**
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
-    readonly adminConsentDisplayName: pulumi.Input<string>;
+    adminConsentDisplayName: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId: pulumi.Input<string>;
-    readonly enabled?: pulumi.Input<boolean>;
+    applicationObjectId: pulumi.Input<string>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * Determines if the Permission is enabled. Defaults to `true`.
      *
      * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean>;
     /**
      * Specifies a custom UUID for the Permission. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
      *
      * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly permissionId?: pulumi.Input<string>;
-    readonly scopeId?: pulumi.Input<string>;
+    permissionId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string>;
     /**
      * Specifies whether this scope permission can be consented to by an end user, or whether it is a tenant-wide permission that must be consented to by an Administrator. Possible values are "User" or "Admin".
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * Permission help text that appears in the end user consent experience.
      */
-    readonly userConsentDescription: pulumi.Input<string>;
+    userConsentDescription: pulumi.Input<string>;
     /**
      * Display name for the permission that appears in the end user consent experience.
      */
-    readonly userConsentDisplayName: pulumi.Input<string>;
+    userConsentDisplayName: pulumi.Input<string>;
     /**
      * The value of the scope claim that the resource application should expect in the OAuth 2.0 access token.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

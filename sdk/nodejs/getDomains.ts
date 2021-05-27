@@ -43,15 +43,15 @@ export interface GetDomainsArgs {
     /**
      * Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
      */
-    readonly includeUnverified?: boolean;
+    includeUnverified?: boolean;
     /**
      * Set to `true` to only return the default domain.
      */
-    readonly onlyDefault?: boolean;
+    onlyDefault?: boolean;
     /**
      * Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
      */
-    readonly onlyInitial?: boolean;
+    onlyInitial?: boolean;
 }
 
 /**
