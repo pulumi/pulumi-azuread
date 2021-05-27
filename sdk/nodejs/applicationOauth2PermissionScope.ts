@@ -182,47 +182,47 @@ export interface ApplicationOauth2PermissionScopeState {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    readonly adminConsentDescription?: pulumi.Input<string>;
+    adminConsentDescription?: pulumi.Input<string>;
     /**
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    readonly adminConsentDisplayName?: pulumi.Input<string>;
+    adminConsentDisplayName?: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId?: pulumi.Input<string>;
+    applicationObjectId?: pulumi.Input<string>;
     /**
      * Determines if the permission scope is enabled. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean>;
     /**
      * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly permissionId?: pulumi.Input<string>;
+    permissionId?: pulumi.Input<string>;
     /**
      * Specifies a custom UUID for the permission scope. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
      */
-    readonly scopeId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
      */
-    readonly type?: pulumi.Input<string>;
+    type?: pulumi.Input<string>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    readonly userConsentDescription?: pulumi.Input<string>;
+    userConsentDescription?: pulumi.Input<string>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience.
      */
-    readonly userConsentDisplayName?: pulumi.Input<string>;
+    userConsentDisplayName?: pulumi.Input<string>;
     /**
      * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -232,45 +232,45 @@ export interface ApplicationOauth2PermissionScopeArgs {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    readonly adminConsentDescription: pulumi.Input<string>;
+    adminConsentDescription: pulumi.Input<string>;
     /**
      * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
-    readonly adminConsentDisplayName: pulumi.Input<string>;
+    adminConsentDisplayName: pulumi.Input<string>;
     /**
      * The Object ID of the Application for which this Permission should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId: pulumi.Input<string>;
+    applicationObjectId: pulumi.Input<string>;
     /**
      * Determines if the permission scope is enabled. Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean>;
     /**
      * @deprecated [NOTE] This attribute has been renamed to `scope_id` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly permissionId?: pulumi.Input<string>;
+    permissionId?: pulumi.Input<string>;
     /**
      * Specifies a custom UUID for the permission scope. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
      */
-    readonly scopeId?: pulumi.Input<string>;
+    scopeId?: pulumi.Input<string>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
      */
-    readonly type: pulumi.Input<string>;
+    type: pulumi.Input<string>;
     /**
      * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
-    readonly userConsentDescription: pulumi.Input<string>;
+    userConsentDescription: pulumi.Input<string>;
     /**
      * Display name for the delegated permission that appears in the end user consent experience.
      */
-    readonly userConsentDisplayName: pulumi.Input<string>;
+    userConsentDisplayName: pulumi.Input<string>;
     /**
      * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

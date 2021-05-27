@@ -21,7 +21,7 @@ import * as utilities from "./utilities";
  *         "group-a",
  *         "group-b",
  *     ],
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupsResult> {
@@ -47,15 +47,15 @@ export interface GetGroupsArgs {
     /**
      * The Display Names of the Azure AD Groups.
      */
-    readonly displayNames?: string[];
+    displayNames?: string[];
     /**
      * @deprecated This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
      */
-    readonly names?: string[];
+    names?: string[];
     /**
      * The Object IDs of the Azure AD Groups.
      */
-    readonly objectIds?: string[];
+    objectIds?: string[];
 }
 
 /**

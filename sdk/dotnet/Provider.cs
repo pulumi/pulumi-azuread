@@ -18,6 +18,62 @@ namespace Pulumi.AzureAD
     [AzureADResourceType("pulumi:providers:azuread")]
     public partial class Provider : Pulumi.ProviderResource
     {
+        [Output("clientCertificatePassword")]
+        public Output<string?> ClientCertificatePassword { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+        /// Principal using a Client Certificate.
+        /// </summary>
+        [Output("clientCertificatePath")]
+        public Output<string?> ClientCertificatePath { get; private set; } = null!;
+
+        /// <summary>
+        /// The Client ID which should be used for service principal authentication.
+        /// </summary>
+        [Output("clientId")]
+        public Output<string?> ClientId { get; private set; } = null!;
+
+        /// <summary>
+        /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+        /// Certificate
+        /// </summary>
+        [Output("clientSecret")]
+        public Output<string?> ClientSecret { get; private set; } = null!;
+
+        /// <summary>
+        /// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
+        /// `germany`, and `china`. Defaults to `global`.
+        /// </summary>
+        [Output("environment")]
+        public Output<string?> Environment { get; private set; } = null!;
+
+        /// <summary>
+        /// The Hostname which should be used for the Azure Metadata Service.
+        /// </summary>
+        [Output("metadataHost")]
+        public Output<string> MetadataHost { get; private set; } = null!;
+
+        /// <summary>
+        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
+        /// automatically.
+        /// </summary>
+        [Output("msiEndpoint")]
+        public Output<string?> MsiEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        /// </summary>
+        [Output("partnerId")]
+        public Output<string?> PartnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// The Tenant ID which should be used. Works with all authentication methods except MSI.
+        /// </summary>
+        [Output("tenantId")]
+        public Output<string?> TenantId { get; private set; } = null!;
+
+
         /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>

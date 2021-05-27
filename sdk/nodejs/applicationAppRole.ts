@@ -153,35 +153,35 @@ export interface ApplicationAppRoleState {
     /**
      * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      */
-    readonly allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId?: pulumi.Input<string>;
+    applicationObjectId?: pulumi.Input<string>;
     /**
      * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
-    readonly description?: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
-    readonly displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string>;
     /**
      * Determines if the app role is enabled: Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean>;
     /**
      * The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
      */
-    readonly roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -191,33 +191,33 @@ export interface ApplicationAppRoleArgs {
     /**
      * Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      */
-    readonly allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>;
+    allowedMemberTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The Object ID of the Application for which this App Role should be created. Changing this field forces a new resource to be created.
      */
-    readonly applicationObjectId: pulumi.Input<string>;
+    applicationObjectId: pulumi.Input<string>;
     /**
      * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      */
-    readonly description: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
-    readonly displayName: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Determines if the app role is enabled: Defaults to `true`.
      */
-    readonly enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean>;
     /**
      * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly isEnabled?: pulumi.Input<boolean>;
+    isEnabled?: pulumi.Input<boolean>;
     /**
      * The unique identifier for the app role. If omitted, a random UUID will be automatically generated. Must be a valid UUID. Changing this field forces a new resource to be created.
      */
-    readonly roleId?: pulumi.Input<string>;
+    roleId?: pulumi.Input<string>;
     /**
      * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }

@@ -49,35 +49,35 @@ export interface GetApplicationArgs {
     /**
      * Specifies the Application ID (also called Client ID).
      */
-    readonly applicationId?: string;
+    applicationId?: string;
     /**
      * Specifies the display name of the application.
      */
-    readonly displayName?: string;
+    displayName?: string;
     /**
      * The name of the optional claim.
      *
      * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
      */
-    readonly name?: string;
+    name?: string;
     /**
      * (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
      *
      * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
      */
-    readonly oauth2Permissions?: inputs.GetApplicationOauth2Permission[];
+    oauth2Permissions?: inputs.GetApplicationOauth2Permission[];
     /**
      * Specifies the Object ID of the application.
      */
-    readonly objectId?: string;
+    objectId?: string;
     /**
      * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
      */
-    readonly optionalClaims?: inputs.GetApplicationOptionalClaims;
+    optionalClaims?: inputs.GetApplicationOptionalClaims;
     /**
      * A `web` block as documented below.
      */
-    readonly web?: inputs.GetApplicationWeb;
+    web?: inputs.GetApplicationWeb;
 }
 
 /**

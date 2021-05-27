@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(azuread.getServicePrincipal({
  *     displayName: "my-awesome-application",
- * }, { async: true }));
+ * }));
  * ```
  * ### By Application ID)
  *
@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(azuread.getServicePrincipal({
  *     applicationId: "00000000-0000-0000-0000-000000000000",
- * }, { async: true }));
+ * }));
  * ```
  * ### By Object ID)
  *
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *
  * const example = pulumi.output(azuread.getServicePrincipal({
  *     objectId: "00000000-0000-0000-0000-000000000000",
- * }, { async: true }));
+ * }));
  * ```
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
@@ -67,25 +67,25 @@ export interface GetServicePrincipalArgs {
     /**
      * The ID of the Azure AD Application.
      */
-    readonly applicationId?: string;
+    applicationId?: string;
     /**
      * The Display Name of the Azure AD Application associated with this Service Principal.
      */
-    readonly displayName?: string;
+    displayName?: string;
     /**
      * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
      */
-    readonly oauth2PermissionScopes?: inputs.GetServicePrincipalOauth2PermissionScope[];
+    oauth2PermissionScopes?: inputs.GetServicePrincipalOauth2PermissionScope[];
     /**
      * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
      *
      * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
      */
-    readonly oauth2Permissions?: inputs.GetServicePrincipalOauth2Permission[];
+    oauth2Permissions?: inputs.GetServicePrincipalOauth2Permission[];
     /**
      * The ID of the Azure AD Service Principal.
      */
-    readonly objectId?: string;
+    objectId?: string;
 }
 
 /**
