@@ -46,14 +46,11 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
-     * The Hostname which should be used for the Azure Metadata Service.
-     *
-     * @deprecated The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+     * [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
      */
     public readonly metadataHost!: pulumi.Output<string>;
     /**
-     * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-     * automatically.
+     * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
      */
     public readonly msiEndpoint!: pulumi.Output<string | undefined>;
     /**
@@ -61,7 +58,7 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly partnerId!: pulumi.Output<string | undefined>;
     /**
-     * The Tenant ID which should be used. Works with all authentication methods except MSI.
+     * The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
      */
     public readonly tenantId!: pulumi.Output<string | undefined>;
 
@@ -129,14 +126,11 @@ export interface ProviderArgs {
      */
     environment?: pulumi.Input<string>;
     /**
-     * The Hostname which should be used for the Azure Metadata Service.
-     *
-     * @deprecated The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+     * [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
      */
     metadataHost: pulumi.Input<string>;
     /**
-     * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-     * automatically.
+     * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
      */
     msiEndpoint?: pulumi.Input<string>;
     /**
@@ -144,7 +138,7 @@ export interface ProviderArgs {
      */
     partnerId?: pulumi.Input<string>;
     /**
-     * The Tenant ID which should be used. Works with all authentication methods except MSI.
+     * The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
      */
     tenantId?: pulumi.Input<string>;
     /**
@@ -156,7 +150,7 @@ export interface ProviderArgs {
      */
     useMicrosoftGraph?: pulumi.Input<boolean>;
     /**
-     * Allow Managed Service Identity to be used for Authentication.
+     * Allow Managed Identity to be used for Authentication.
      */
     useMsi?: pulumi.Input<boolean>;
 }

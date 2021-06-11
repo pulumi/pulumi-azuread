@@ -39,13 +39,12 @@ namespace Pulumi.AzureAD
         public static string? Environment { get; set; } = __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
 
         /// <summary>
-        /// The Hostname which should be used for the Azure Metadata Service.
+        /// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
         public static string? MetadataHost { get; set; } = __config.Get("metadataHost");
 
         /// <summary>
-        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        /// automatically.
+        /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         /// </summary>
         public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT");
 
@@ -55,7 +54,7 @@ namespace Pulumi.AzureAD
         public static string? PartnerId { get; set; } = __config.Get("partnerId");
 
         /// <summary>
-        /// The Tenant ID which should be used. Works with all authentication methods except MSI.
+        /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         /// </summary>
         public static string? TenantId { get; set; } = __config.Get("tenantId");
 
@@ -70,7 +69,7 @@ namespace Pulumi.AzureAD
         public static bool? UseMicrosoftGraph { get; set; } = __config.GetBoolean("useMicrosoftGraph");
 
         /// <summary>
-        /// Allow Managed Service Identity to be used for Authentication.
+        /// Allow Managed Identity to be used for Authentication.
         /// </summary>
         public static bool? UseMsi { get; set; } = __config.GetBoolean("useMsi") ?? Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
 

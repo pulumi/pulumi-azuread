@@ -58,13 +58,12 @@ The cloud environment which should be used. Possible values are `global` (former
 
 metadata_host = __config__.get('metadataHost')
 """
-The Hostname which should be used for the Azure Metadata Service.
+[DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
 """
 
 msi_endpoint = __config__.get('msiEndpoint') or _utilities.get_env('ARM_MSI_ENDPOINT')
 """
-The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-automatically.
+The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
 """
 
 partner_id = __config__.get('partnerId')
@@ -74,7 +73,7 @@ A GUID/UUID that is registered with Microsoft to facilitate partner resource usa
 
 tenant_id = __config__.get('tenantId')
 """
-The Tenant ID which should be used. Works with all authentication methods except MSI.
+The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
 """
 
 use_cli = __config__.get('useCli')
@@ -89,6 +88,6 @@ Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory 
 
 use_msi = __config__.get('useMsi') or (_utilities.get_env_bool('ARM_USE_MSI') or False)
 """
-Allow Managed Service Identity to be used for Authentication.
+Allow Managed Identity to be used for Authentication.
 """
 

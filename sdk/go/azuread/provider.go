@@ -30,16 +30,13 @@ type Provider struct {
 	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
 	// `germany`, and `china`. Defaults to `global`.
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
-	// The Hostname which should be used for the Azure Metadata Service.
-	//
-	// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+	// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringOutput `pulumi:"metadataHost"`
-	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-	// automatically.
+	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId pulumi.StringPtrOutput `pulumi:"partnerId"`
-	// The Tenant ID which should be used. Works with all authentication methods except MSI.
+	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 }
 
@@ -85,22 +82,19 @@ type providerArgs struct {
 	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
 	// `germany`, and `china`. Defaults to `global`.
 	Environment *string `pulumi:"environment"`
-	// The Hostname which should be used for the Azure Metadata Service.
-	//
-	// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+	// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost string `pulumi:"metadataHost"`
-	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-	// automatically.
+	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId *string `pulumi:"partnerId"`
-	// The Tenant ID which should be used. Works with all authentication methods except MSI.
+	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
 	TenantId *string `pulumi:"tenantId"`
 	// Allow Azure CLI to be used for Authentication.
 	UseCli *bool `pulumi:"useCli"`
 	// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
 	UseMicrosoftGraph *bool `pulumi:"useMicrosoftGraph"`
-	// Allow Managed Service Identity to be used for Authentication.
+	// Allow Managed Identity to be used for Authentication.
 	UseMsi *bool `pulumi:"useMsi"`
 }
 
@@ -120,22 +114,19 @@ type ProviderArgs struct {
 	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
 	// `germany`, and `china`. Defaults to `global`.
 	Environment pulumi.StringPtrInput
-	// The Hostname which should be used for the Azure Metadata Service.
-	//
-	// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+	// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
 	MetadataHost pulumi.StringInput
-	// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-	// automatically.
+	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
 	MsiEndpoint pulumi.StringPtrInput
 	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
 	PartnerId pulumi.StringPtrInput
-	// The Tenant ID which should be used. Works with all authentication methods except MSI.
+	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
 	TenantId pulumi.StringPtrInput
 	// Allow Azure CLI to be used for Authentication.
 	UseCli pulumi.BoolPtrInput
 	// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
 	UseMicrosoftGraph pulumi.BoolPtrInput
-	// Allow Managed Service Identity to be used for Authentication.
+	// Allow Managed Identity to be used for Authentication.
 	UseMsi pulumi.BoolPtrInput
 }
 

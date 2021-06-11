@@ -49,14 +49,13 @@ namespace Pulumi.AzureAD
         public Output<string?> Environment { get; private set; } = null!;
 
         /// <summary>
-        /// The Hostname which should be used for the Azure Metadata Service.
+        /// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
         [Output("metadataHost")]
         public Output<string> MetadataHost { get; private set; } = null!;
 
         /// <summary>
-        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        /// automatically.
+        /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         /// </summary>
         [Output("msiEndpoint")]
         public Output<string?> MsiEndpoint { get; private set; } = null!;
@@ -68,7 +67,7 @@ namespace Pulumi.AzureAD
         public Output<string?> PartnerId { get; private set; } = null!;
 
         /// <summary>
-        /// The Tenant ID which should be used. Works with all authentication methods except MSI.
+        /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         /// </summary>
         [Output("tenantId")]
         public Output<string?> TenantId { get; private set; } = null!;
@@ -138,14 +137,13 @@ namespace Pulumi.AzureAD
         public Input<string>? Environment { get; set; }
 
         /// <summary>
-        /// The Hostname which should be used for the Azure Metadata Service.
+        /// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
         /// </summary>
         [Input("metadataHost", required: true)]
         public Input<string> MetadataHost { get; set; } = null!;
 
         /// <summary>
-        /// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        /// automatically.
+        /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         /// </summary>
         [Input("msiEndpoint")]
         public Input<string>? MsiEndpoint { get; set; }
@@ -157,7 +155,7 @@ namespace Pulumi.AzureAD
         public Input<string>? PartnerId { get; set; }
 
         /// <summary>
-        /// The Tenant ID which should be used. Works with all authentication methods except MSI.
+        /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         /// </summary>
         [Input("tenantId")]
         public Input<string>? TenantId { get; set; }
@@ -175,7 +173,7 @@ namespace Pulumi.AzureAD
         public Input<bool>? UseMicrosoftGraph { get; set; }
 
         /// <summary>
-        /// Allow Managed Service Identity to be used for Authentication.
+        /// Allow Managed Identity to be used for Authentication.
         /// </summary>
         [Input("useMsi", json: true)]
         public Input<bool>? UseMsi { get; set; }
