@@ -31,12 +31,11 @@ export let disableTerraformPartnerId: boolean | undefined = __config.getObject<b
  */
 export let environment: string | undefined = __config.get("environment") || (utilities.getEnv("ARM_ENVIRONMENT") || "public");
 /**
- * The Hostname which should be used for the Azure Metadata Service.
+ * [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
  */
 export let metadataHost: string | undefined = __config.get("metadataHost");
 /**
- * The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
- * automatically.
+ * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
  */
 export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || utilities.getEnv("ARM_MSI_ENDPOINT");
 /**
@@ -44,7 +43,7 @@ export let msiEndpoint: string | undefined = __config.get("msiEndpoint") || util
  */
 export let partnerId: string | undefined = __config.get("partnerId");
 /**
- * The Tenant ID which should be used. Works with all authentication methods except MSI.
+ * The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
  */
 export let tenantId: string | undefined = __config.get("tenantId");
 /**
@@ -56,6 +55,6 @@ export let useCli: boolean | undefined = __config.getObject<boolean>("useCli");
  */
 export let useMicrosoftGraph: boolean | undefined = __config.getObject<boolean>("useMicrosoftGraph");
 /**
- * Allow Managed Service Identity to be used for Authentication.
+ * Allow Managed Identity to be used for Authentication.
  */
 export let useMsi: boolean | undefined = __config.getObject<boolean>("useMsi") || (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false);

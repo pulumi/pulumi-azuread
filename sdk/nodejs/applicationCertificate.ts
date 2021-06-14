@@ -9,6 +9,67 @@ import * as utilities from "./utilities";
  *
  * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
  *
+ * ## Example Usage
+ * ### Using a certificate from Azure Key Vault
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azure from "@pulumi/azure";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {});
+ * const exampleCertificate = new azure.keyvault.Certificate("exampleCertificate", {
+ *     keyVaultId: azurerm_key_vault.example.id,
+ *     certificatePolicy: {
+ *         issuerParameters: {
+ *             name: "Self",
+ *         },
+ *         keyProperties: {
+ *             exportable: true,
+ *             keySize: 2048,
+ *             keyType: "RSA",
+ *             reuseKey: true,
+ *         },
+ *         lifetimeActions: [{
+ *             action: {
+ *                 actionType: "AutoRenew",
+ *             },
+ *             trigger: {
+ *                 daysBeforeExpiry: 30,
+ *             },
+ *         }],
+ *         secretProperties: {
+ *             contentType: "application/x-pkcs12",
+ *         },
+ *         x509CertificateProperties: {
+ *             extendedKeyUsages: ["1.3.6.1.5.5.7.3.2"],
+ *             keyUsages: [
+ *                 "dataEncipherment",
+ *                 "digitalSignature",
+ *                 "keyCertSign",
+ *                 "keyEncipherment",
+ *             ],
+ *             subjectAlternativeNames: {
+ *                 dnsNames: [
+ *                     "internal.contoso.com",
+ *                     "domain.hello.world",
+ *                 ],
+ *             },
+ *             subject: pulumi.interpolate`CN=${exampleApplication.name}`,
+ *             validityInMonths: 12,
+ *         },
+ *     },
+ * });
+ * const exampleApplicationCertificate = new azuread.ApplicationCertificate("exampleApplicationCertificate", {
+ *     applicationObjectId: exampleApplication.id,
+ *     type: "AsymmetricX509Cert",
+ *     encoding: "hex",
+ *     value: exampleCertificate.certificateData,
+ *     endDate: exampleCertificate.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].expires),
+ *     startDate: exampleCertificate.certificateAttributes.apply(certificateAttributes => certificateAttributes[0].notBefore),
+ * });
+ * ```
+ *
  * ## Import
  *
  * Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.

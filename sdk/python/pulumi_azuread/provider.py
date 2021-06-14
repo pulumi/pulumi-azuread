@@ -28,7 +28,7 @@ class ProviderArgs:
                  use_msi: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
-        :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
+        :param pulumi.Input[str] metadata_host: [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
         :param pulumi.Input[str] client_certificate_path: The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
                Principal using a Client Certificate.
         :param pulumi.Input[str] client_id: The Client ID which should be used for service principal authentication.
@@ -37,17 +37,13 @@ class ProviderArgs:
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
                `germany`, and `china`. Defaults to `global`.
-        :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-               automatically.
+        :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
-        :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except MSI.
+        :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication.
         :param pulumi.Input[bool] use_microsoft_graph: Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-        :param pulumi.Input[bool] use_msi: Allow Managed Service Identity to be used for Authentication.
+        :param pulumi.Input[bool] use_msi: Allow Managed Identity to be used for Authentication.
         """
-        if metadata_host is not None:
-            warnings.warn("""The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""", DeprecationWarning)
-            pulumi.log.warn("""metadata_host is deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""")
         pulumi.set(__self__, "metadata_host", metadata_host)
         if client_certificate_password is not None:
             pulumi.set(__self__, "client_certificate_password", client_certificate_password)
@@ -84,7 +80,7 @@ class ProviderArgs:
     @pulumi.getter(name="metadataHost")
     def metadata_host(self) -> pulumi.Input[str]:
         """
-        The Hostname which should be used for the Azure Metadata Service.
+        [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
         """
         return pulumi.get(self, "metadata_host")
 
@@ -168,8 +164,7 @@ class ProviderArgs:
     @pulumi.getter(name="msiEndpoint")
     def msi_endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        automatically.
+        The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         """
         return pulumi.get(self, "msi_endpoint")
 
@@ -193,7 +188,7 @@ class ProviderArgs:
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Tenant ID which should be used. Works with all authentication methods except MSI.
+        The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         """
         return pulumi.get(self, "tenant_id")
 
@@ -229,7 +224,7 @@ class ProviderArgs:
     @pulumi.getter(name="useMsi")
     def use_msi(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow Managed Service Identity to be used for Authentication.
+        Allow Managed Identity to be used for Authentication.
         """
         return pulumi.get(self, "use_msi")
 
@@ -273,14 +268,13 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
         :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
                `germany`, and `china`. Defaults to `global`.
-        :param pulumi.Input[str] metadata_host: The Hostname which should be used for the Azure Metadata Service.
-        :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-               automatically.
+        :param pulumi.Input[str] metadata_host: [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
+        :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
-        :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except MSI.
+        :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication.
         :param pulumi.Input[bool] use_microsoft_graph: Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-        :param pulumi.Input[bool] use_msi: Allow Managed Service Identity to be used for Authentication.
+        :param pulumi.Input[bool] use_msi: Allow Managed Identity to be used for Authentication.
         """
         ...
     @overload
@@ -344,9 +338,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["environment"] = environment
             if metadata_host is None and not opts.urn:
                 raise TypeError("Missing required property 'metadata_host'")
-            if metadata_host is not None and not opts.urn:
-                warnings.warn("""The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""", DeprecationWarning)
-                pulumi.log.warn("""metadata_host is deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0""")
             __props__.__dict__["metadata_host"] = metadata_host
             if msi_endpoint is None:
                 msi_endpoint = _utilities.get_env('ARM_MSI_ENDPOINT')
@@ -408,7 +399,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="metadataHost")
     def metadata_host(self) -> pulumi.Output[str]:
         """
-        The Hostname which should be used for the Azure Metadata Service.
+        [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
         """
         return pulumi.get(self, "metadata_host")
 
@@ -416,8 +407,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="msiEndpoint")
     def msi_endpoint(self) -> pulumi.Output[Optional[str]]:
         """
-        The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-        automatically.
+        The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
         """
         return pulumi.get(self, "msi_endpoint")
 
@@ -433,7 +423,7 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Tenant ID which should be used. Works with all authentication methods except MSI.
+        The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
         """
         return pulumi.get(self, "tenant_id")
 

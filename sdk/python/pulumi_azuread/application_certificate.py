@@ -299,6 +299,65 @@ class ApplicationCertificate(pulumi.CustomResource):
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 
+        ## Example Usage
+        ### Using a certificate from Azure Key Vault
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication")
+        example_certificate = azure.keyvault.Certificate("exampleCertificate",
+            key_vault_id=azurerm_key_vault["example"]["id"],
+            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
+                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
+                    name="Self",
+                ),
+                key_properties={
+                    "exportable": True,
+                    "key_size": 2048,
+                    "key_type": "RSA",
+                    "reuseKey": True,
+                },
+                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
+                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
+                        action_type="AutoRenew",
+                    ),
+                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
+                        days_before_expiry=30,
+                    ),
+                )],
+                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
+                    content_type="application/x-pkcs12",
+                ),
+                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
+                    extended_key_usages=["1.3.6.1.5.5.7.3.2"],
+                    key_usages=[
+                        "dataEncipherment",
+                        "digitalSignature",
+                        "keyCertSign",
+                        "keyEncipherment",
+                    ],
+                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
+                        dns_names=[
+                            "internal.contoso.com",
+                            "domain.hello.world",
+                        ],
+                    ),
+                    subject=example_application.name.apply(lambda name: f"CN={name}"),
+                    validity_in_months=12,
+                ),
+            ))
+        example_application_certificate = azuread.ApplicationCertificate("exampleApplicationCertificate",
+            application_object_id=example_application.id,
+            type="AsymmetricX509Cert",
+            encoding="hex",
+            value=example_certificate.certificate_data,
+            end_date=example_certificate.certificate_attributes[0].expires,
+            start_date=example_certificate.certificate_attributes[0].not_before)
+        ```
+
         ## Import
 
         Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
@@ -328,6 +387,65 @@ class ApplicationCertificate(pulumi.CustomResource):
         Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
 
         > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+
+        ## Example Usage
+        ### Using a certificate from Azure Key Vault
+
+        ```python
+        import pulumi
+        import pulumi_azure as azure
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication")
+        example_certificate = azure.keyvault.Certificate("exampleCertificate",
+            key_vault_id=azurerm_key_vault["example"]["id"],
+            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
+                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
+                    name="Self",
+                ),
+                key_properties={
+                    "exportable": True,
+                    "key_size": 2048,
+                    "key_type": "RSA",
+                    "reuseKey": True,
+                },
+                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
+                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
+                        action_type="AutoRenew",
+                    ),
+                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
+                        days_before_expiry=30,
+                    ),
+                )],
+                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
+                    content_type="application/x-pkcs12",
+                ),
+                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
+                    extended_key_usages=["1.3.6.1.5.5.7.3.2"],
+                    key_usages=[
+                        "dataEncipherment",
+                        "digitalSignature",
+                        "keyCertSign",
+                        "keyEncipherment",
+                    ],
+                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
+                        dns_names=[
+                            "internal.contoso.com",
+                            "domain.hello.world",
+                        ],
+                    ),
+                    subject=example_application.name.apply(lambda name: f"CN={name}"),
+                    validity_in_months=12,
+                ),
+            ))
+        example_application_certificate = azuread.ApplicationCertificate("exampleApplicationCertificate",
+            application_object_id=example_application.id,
+            type="AsymmetricX509Cert",
+            encoding="hex",
+            value=example_certificate.certificate_data,
+            end_date=example_certificate.certificate_attributes[0].expires,
+            start_date=example_certificate.certificate_attributes[0].not_before)
+        ```
 
         ## Import
 

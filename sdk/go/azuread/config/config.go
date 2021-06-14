@@ -44,15 +44,12 @@ func GetEnvironment(ctx *pulumi.Context) string {
 	return getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string)
 }
 
-// The Hostname which should be used for the Azure Metadata Service.
-//
-// Deprecated: The `metadata_host` provider attribute is deprecated and will be removed in version 2.0
+// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
 func GetMetadataHost(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:metadataHost")
 }
 
-// The path to a custom endpoint for Managed Service Identity - in most circumstances this should be detected
-// automatically.
+// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
 func GetMsiEndpoint(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:msiEndpoint")
 	if err == nil {
@@ -66,7 +63,7 @@ func GetPartnerId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:partnerId")
 }
 
-// The Tenant ID which should be used. Works with all authentication methods except MSI.
+// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
 func GetTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:tenantId")
 }
@@ -81,7 +78,7 @@ func GetUseMicrosoftGraph(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azuread:useMicrosoftGraph")
 }
 
-// Allow Managed Service Identity to be used for Authentication.
+// Allow Managed Identity to be used for Authentication.
 func GetUseMsi(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "azuread:useMsi")
 	if err == nil {

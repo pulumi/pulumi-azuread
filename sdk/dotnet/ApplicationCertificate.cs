@@ -14,6 +14,95 @@ namespace Pulumi.AzureAD
     /// 
     /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
     /// 
+    /// ## Example Usage
+    /// ### Using a certificate from Azure Key Vault
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using Azure = Pulumi.Azure;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
+    ///         {
+    ///         });
+    ///         var exampleCertificate = new Azure.KeyVault.Certificate("exampleCertificate", new Azure.KeyVault.CertificateArgs
+    ///         {
+    ///             KeyVaultId = azurerm_key_vault.Example.Id,
+    ///             CertificatePolicy = new Azure.KeyVault.Inputs.CertificateCertificatePolicyArgs
+    ///             {
+    ///                 IssuerParameters = new Azure.KeyVault.Inputs.CertificateCertificatePolicyIssuerParametersArgs
+    ///                 {
+    ///                     Name = "Self",
+    ///                 },
+    ///                 KeyProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyKeyPropertiesArgs
+    ///                 {
+    ///                     Exportable = true,
+    ///                     KeySize = 2048,
+    ///                     KeyType = "RSA",
+    ///                     ReuseKey = true,
+    ///                 },
+    ///                 LifetimeActions = 
+    ///                 {
+    ///                     new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionArgs
+    ///                     {
+    ///                         Action = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionActionArgs
+    ///                         {
+    ///                             ActionType = "AutoRenew",
+    ///                         },
+    ///                         Trigger = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs
+    ///                         {
+    ///                             DaysBeforeExpiry = 30,
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 SecretProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicySecretPropertiesArgs
+    ///                 {
+    ///                     ContentType = "application/x-pkcs12",
+    ///                 },
+    ///                 X509CertificateProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs
+    ///                 {
+    ///                     ExtendedKeyUsages = 
+    ///                     {
+    ///                         "1.3.6.1.5.5.7.3.2",
+    ///                     },
+    ///                     KeyUsages = 
+    ///                     {
+    ///                         "dataEncipherment",
+    ///                         "digitalSignature",
+    ///                         "keyCertSign",
+    ///                         "keyEncipherment",
+    ///                     },
+    ///                     SubjectAlternativeNames = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs
+    ///                     {
+    ///                         DnsNames = 
+    ///                         {
+    ///                             "internal.contoso.com",
+    ///                             "domain.hello.world",
+    ///                         },
+    ///                     },
+    ///                     Subject = exampleApplication.Name.Apply(name =&gt; $"CN={name}"),
+    ///                     ValidityInMonths = 12,
+    ///                 },
+    ///             },
+    ///         });
+    ///         var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("exampleApplicationCertificate", new AzureAD.ApplicationCertificateArgs
+    ///         {
+    ///             ApplicationObjectId = exampleApplication.Id,
+    ///             Type = "AsymmetricX509Cert",
+    ///             Encoding = "hex",
+    ///             Value = exampleCertificate.CertificateData,
+    ///             EndDate = exampleCertificate.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].Expires),
+    ///             StartDate = exampleCertificate.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].NotBefore),
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.

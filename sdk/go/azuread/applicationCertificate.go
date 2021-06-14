@@ -15,6 +15,97 @@ import (
 //
 // > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
 //
+// ## Example Usage
+// ### Using a certificate from Azure Key Vault
+//
+// ```go
+// package main
+//
+// import (
+// 	"fmt"
+//
+// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/keyvault"
+// 	"github.com/pulumi/pulumi-azuread/sdk/v4/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleCertificate, err := keyvault.NewCertificate(ctx, "exampleCertificate", &keyvault.CertificateArgs{
+// 			KeyVaultId: pulumi.Any(azurerm_key_vault.Example.Id),
+// 			CertificatePolicy: &keyvault.CertificateCertificatePolicyArgs{
+// 				IssuerParameters: &keyvault.CertificateCertificatePolicyIssuerParametersArgs{
+// 					Name: pulumi.String("Self"),
+// 				},
+// 				KeyProperties: &keyvault.CertificateCertificatePolicyKeyPropertiesArgs{
+// 					Exportable: pulumi.Bool(true),
+// 					KeySize:    pulumi.Int(2048),
+// 					KeyType:    pulumi.String("RSA"),
+// 					ReuseKey:   pulumi.Bool(true),
+// 				},
+// 				LifetimeActions: keyvault.CertificateCertificatePolicyLifetimeActionArray{
+// 					&keyvault.CertificateCertificatePolicyLifetimeActionArgs{
+// 						Action: &keyvault.CertificateCertificatePolicyLifetimeActionActionArgs{
+// 							ActionType: pulumi.String("AutoRenew"),
+// 						},
+// 						Trigger: &keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs{
+// 							DaysBeforeExpiry: pulumi.Int(30),
+// 						},
+// 					},
+// 				},
+// 				SecretProperties: &keyvault.CertificateCertificatePolicySecretPropertiesArgs{
+// 					ContentType: pulumi.String("application/x-pkcs12"),
+// 				},
+// 				X509CertificateProperties: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs{
+// 					ExtendedKeyUsages: pulumi.StringArray{
+// 						pulumi.String("1.3.6.1.5.5.7.3.2"),
+// 					},
+// 					KeyUsages: pulumi.StringArray{
+// 						pulumi.String("dataEncipherment"),
+// 						pulumi.String("digitalSignature"),
+// 						pulumi.String("keyCertSign"),
+// 						pulumi.String("keyEncipherment"),
+// 					},
+// 					SubjectAlternativeNames: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs{
+// 						DnsNames: pulumi.StringArray{
+// 							pulumi.String("internal.contoso.com"),
+// 							pulumi.String("domain.hello.world"),
+// 						},
+// 					},
+// 					Subject: exampleApplication.Name.ApplyT(func(name string) (string, error) {
+// 						return fmt.Sprintf("%v%v", "CN=", name), nil
+// 					}).(pulumi.StringOutput),
+// 					ValidityInMonths: pulumi.Int(12),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewApplicationCertificate(ctx, "exampleApplicationCertificate", &azuread.ApplicationCertificateArgs{
+// 			ApplicationObjectId: exampleApplication.ID(),
+// 			Type:                pulumi.String("AsymmetricX509Cert"),
+// 			Encoding:            pulumi.String("hex"),
+// 			Value:               exampleCertificate.CertificateData,
+// 			EndDate: exampleCertificate.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (string, error) {
+// 				return certificateAttributes[0].Expires, nil
+// 			}).(pulumi.StringOutput),
+// 			StartDate: exampleCertificate.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (string, error) {
+// 				return certificateAttributes[0].NotBefore, nil
+// 			}).(pulumi.StringOutput),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
