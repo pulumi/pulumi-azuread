@@ -4837,8 +4837,7 @@
                 "azuread": "AzureAD"
             },
             "packageReferences": {
-                "Pulumi": "3.*",
-                "System.Collections.Immutable": "1.6.0"
+                "Pulumi": "3.*"
             }
         },
         "go": {
