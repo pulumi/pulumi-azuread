@@ -9,4 +9,59 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD.Inputs
 {
+
+    public sealed class ServicePrincipalAppRoleArgs : Pulumi.ResourceArgs
+    {
+        [Input("allowedMemberTypes")]
+        private InputList<string>? _allowedMemberTypes;
+
+        /// <summary>
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        /// </summary>
+        public InputList<string> AllowedMemberTypes
+        {
+            get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
+            set => _allowedMemberTypes = value;
+        }
+
+        /// <summary>
+        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Is this permission enabled?
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
+        /// The unique identifier for one of the `OAuth2Permission`.
+        /// </summary>
+        [Input("id")]
+        public Input<string>? Id { get; set; }
+
+        /// <summary>
+        /// Is this permission enabled?
+        /// </summary>
+        [Input("isEnabled")]
+        public Input<bool>? IsEnabled { get; set; }
+
+        /// <summary>
+        /// The name of this permission.
+        /// </summary>
+        [Input("value")]
+        public Input<string>? Value { get; set; }
+
+        public ServicePrincipalAppRoleArgs()
+        {
+        }
+    }
 }
