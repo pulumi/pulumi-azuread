@@ -23,7 +23,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.GetUsers(ctx, &GetUsersArgs{
+// 		_, err := azuread.GetUsers(ctx, &azuread.GetUsersArgs{
 // 			UserPrincipalNames: []string{
 // 				"kat@hashicorp.com",
 // 				"byte@hashicorp.com",

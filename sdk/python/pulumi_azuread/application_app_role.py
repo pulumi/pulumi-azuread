@@ -8,10 +8,10 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['ApplicationAppRoleInitArgs', 'ApplicationAppRole']
+__all__ = ['ApplicationAppRoleArgs', 'ApplicationAppRole']
 
 @pulumi.input_type
-class ApplicationAppRoleInitArgs:
+class ApplicationAppRoleArgs:
     def __init__(__self__, *,
                  allowed_member_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  application_object_id: pulumi.Input[str],
@@ -333,7 +333,7 @@ class ApplicationAppRole(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ApplicationAppRoleInitArgs,
+                 args: ApplicationAppRoleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Manages an App Role associated with an Application within Azure Active Directory.
@@ -365,12 +365,12 @@ class ApplicationAppRole(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param ApplicationAppRoleInitArgs args: The arguments to use to populate this resource's properties.
+        :param ApplicationAppRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ApplicationAppRoleInitArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ApplicationAppRoleArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -397,7 +397,7 @@ class ApplicationAppRole(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ApplicationAppRoleInitArgs.__new__(ApplicationAppRoleInitArgs)
+            __props__ = ApplicationAppRoleArgs.__new__(ApplicationAppRoleArgs)
 
             if allowed_member_types is None and not opts.urn:
                 raise TypeError("Missing required property 'allowed_member_types'")
