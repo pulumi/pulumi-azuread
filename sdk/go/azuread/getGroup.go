@@ -26,7 +26,7 @@ import (
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "MyGroupName"
 // 		opt1 := true
-// 		_, err := azuread.LookupGroup(ctx, &azuread.LookupGroupArgs{
+// 		_, err := azuread.LookupGroup(ctx, &GetGroupArgs{
 // 			DisplayName:     &opt0,
 // 			SecurityEnabled: &opt1,
 // 		}, nil)
