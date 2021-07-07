@@ -39,9 +39,9 @@ import (
 // 				pulumi.String(current.ObjectId),
 // 			},
 // 			SignInAudience: pulumi.String("AzureADMultipleOrgs"),
-// 			Api: &ApplicationApiArgs{
-// 				Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
-// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 			Api: &azuread.ApplicationApiArgs{
+// 				Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
+// 					&azuread.ApplicationApiOauth2PermissionScopeArgs{
 // 						AdminConsentDescription: pulumi.String("Allow the application to access example on behalf of the signed-in user."),
 // 						AdminConsentDisplayName: pulumi.String("Access example"),
 // 						Enabled:                 pulumi.Bool(true),
@@ -51,7 +51,7 @@ import (
 // 						UserConsentDisplayName:  pulumi.String("Access example"),
 // 						Value:                   pulumi.String("user_impersonation"),
 // 					},
-// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 					&azuread.ApplicationApiOauth2PermissionScopeArgs{
 // 						AdminConsentDescription: pulumi.String("Administer the example application"),
 // 						AdminConsentDisplayName: pulumi.String("Administer"),
 // 						Enabled:                 pulumi.Bool(true),
@@ -61,8 +61,8 @@ import (
 // 					},
 // 				},
 // 			},
-// 			AppRoles: ApplicationAppRoleArray{
-// 				&ApplicationAppRoleArgs{
+// 			AppRoles: azuread.ApplicationAppRoleArray{
+// 				&azuread.ApplicationAppRoleArgs{
 // 					AllowedMemberTypes: pulumi.StringArray{
 // 						pulumi.String("User"),
 // 						pulumi.String("Application"),
@@ -73,17 +73,17 @@ import (
 // 					Value:       pulumi.String("admin"),
 // 				},
 // 			},
-// 			OptionalClaims: &ApplicationOptionalClaimsArgs{
-// 				AccessTokens: ApplicationOptionalClaimsAccessTokenArray{
-// 					&ApplicationOptionalClaimsAccessTokenArgs{
+// 			OptionalClaims: &azuread.ApplicationOptionalClaimsArgs{
+// 				AccessTokens: azuread.ApplicationOptionalClaimsAccessTokenArray{
+// 					&azuread.ApplicationOptionalClaimsAccessTokenArgs{
 // 						Name: pulumi.String("myclaim"),
 // 					},
-// 					&ApplicationOptionalClaimsAccessTokenArgs{
+// 					&azuread.ApplicationOptionalClaimsAccessTokenArgs{
 // 						Name: pulumi.String("otherclaim"),
 // 					},
 // 				},
-// 				IdTokens: ApplicationOptionalClaimsIdTokenArray{
-// 					&ApplicationOptionalClaimsIdTokenArgs{
+// 				IdTokens: azuread.ApplicationOptionalClaimsIdTokenArray{
+// 					&azuread.ApplicationOptionalClaimsIdTokenArgs{
 // 						Name:      pulumi.String("userclaim"),
 // 						Source:    pulumi.String("user"),
 // 						Essential: pulumi.Bool(true),
@@ -93,41 +93,41 @@ import (
 // 					},
 // 				},
 // 			},
-// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-// 				&ApplicationRequiredResourceAccessArgs{
+// 			RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+// 				&azuread.ApplicationRequiredResourceAccessArgs{
 // 					ResourceAppId: pulumi.String("00000003-0000-0000-c000-000000000000"),
-// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 // 							Id:   pulumi.String("..."),
 // 							Type: pulumi.String("Role"),
 // 						},
-// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 // 							Id:   pulumi.String("..."),
 // 							Type: pulumi.String("Scope"),
 // 						},
-// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 // 							Id:   pulumi.String("..."),
 // 							Type: pulumi.String("Scope"),
 // 						},
 // 					},
 // 				},
-// 				&ApplicationRequiredResourceAccessArgs{
+// 				&azuread.ApplicationRequiredResourceAccessArgs{
 // 					ResourceAppId: pulumi.String("00000002-0000-0000-c000-000000000000"),
-// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 					ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 // 							Id:   pulumi.String("..."),
 // 							Type: pulumi.String("Scope"),
 // 						},
 // 					},
 // 				},
 // 			},
-// 			Web: &ApplicationWebArgs{
+// 			Web: &azuread.ApplicationWebArgs{
 // 				HomepageUrl: pulumi.String("https://app.example.net"),
 // 				LogoutUrl:   pulumi.String("https://app.example.net/logout"),
 // 				RedirectUris: pulumi.StringArray{
 // 					pulumi.String("https://app.example.net/account"),
 // 				},
-// 				ImplicitGrant: &ApplicationWebImplicitGrantArgs{
+// 				ImplicitGrant: &azuread.ApplicationWebImplicitGrantArgs{
 // 					AccessTokenIssuanceEnabled: pulumi.Bool(true),
 // 				},
 // 			},
