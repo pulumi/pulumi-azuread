@@ -209,39 +209,39 @@ export interface GetApplicationOauth2Permission {
     /**
      * The description of the admin consent
      */
-    adminConsentDescription: string;
+    adminConsentDescription?: string;
     /**
      * The display name of the admin consent
      */
-    adminConsentDisplayName: string;
+    adminConsentDisplayName?: string;
     /**
      * (Optional) Determines if the permission scope is enabled.
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
      */
-    id: string;
+    id?: string;
     /**
      * Is this permission enabled?
      */
-    isEnabled: boolean;
+    isEnabled?: boolean;
     /**
      * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
      */
-    type: string;
+    type?: string;
     /**
      * The description of the user consent
      */
-    userConsentDescription: string;
+    userConsentDescription?: string;
     /**
      * The display name of the user consent
      */
-    userConsentDisplayName: string;
+    userConsentDisplayName?: string;
     /**
      * The name of this permission
      */
-    value: string;
+    value?: string;
 }
 
 export interface GetApplicationOptionalClaims {
@@ -291,96 +291,96 @@ export interface GetApplicationWeb {
     /**
      * Home page or landing page of the application.
      */
-    homepageUrl: string;
+    homepageUrl?: string;
     /**
      * An `implicitGrant` block as documented above.
      */
-    implicitGrants: inputs.GetApplicationWebImplicitGrant[];
+    implicitGrants?: inputs.GetApplicationWebImplicitGrant[];
     /**
      * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      */
-    logoutUrl: string;
+    logoutUrl?: string;
     /**
      * A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
      */
-    redirectUris: string[];
+    redirectUris?: string[];
 }
 
 export interface GetApplicationWebImplicitGrant {
     /**
      * Whether this web application can request an access token using OAuth 2.0 implicit flow.
      */
-    accessTokenIssuanceEnabled: boolean;
+    accessTokenIssuanceEnabled?: boolean;
 }
 
 export interface GetServicePrincipalOauth2Permission {
     /**
      * The description of the admin consent
      */
-    adminConsentDescription: string;
+    adminConsentDescription?: string;
     /**
      * The display name of the admin consent
      */
-    adminConsentDisplayName: string;
+    adminConsentDisplayName?: string;
     /**
      * The unique identifier for one of the `OAuth2Permission`
      */
-    id: string;
+    id?: string;
     /**
      * Is this permission enabled?
      */
-    isEnabled: boolean;
+    isEnabled?: boolean;
     /**
      * The type of the permission
      */
-    type: string;
+    type?: string;
     /**
      * The description of the user consent
      */
-    userConsentDescription: string;
+    userConsentDescription?: string;
     /**
      * The display name of the user consent
      */
-    userConsentDisplayName: string;
+    userConsentDisplayName?: string;
     /**
      * The name of this permission
      */
-    value: string;
+    value?: string;
 }
 
 export interface GetServicePrincipalOauth2PermissionScope {
     /**
      * The description of the admin consent
      */
-    adminConsentDescription: string;
+    adminConsentDescription?: string;
     /**
      * The display name of the admin consent
      */
-    adminConsentDisplayName: string;
+    adminConsentDisplayName?: string;
     /**
      * Is this permission enabled?
      */
-    enabled: boolean;
+    enabled?: boolean;
     /**
      * The unique identifier for one of the `OAuth2Permission`
      */
-    id: string;
+    id?: string;
     /**
      * The type of the permission
      */
-    type: string;
+    type?: string;
     /**
      * The description of the user consent
      */
-    userConsentDescription: string;
+    userConsentDescription?: string;
     /**
      * The display name of the user consent
      */
-    userConsentDisplayName: string;
+    userConsentDisplayName?: string;
     /**
      * The name of this permission
      */
-    value: string;
+    value?: string;
 }
 
 export interface ServicePrincipalAppRole {
