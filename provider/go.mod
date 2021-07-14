@@ -4,8 +4,8 @@ go 1.16
 
 require (
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.4.1-0.20210708205251-d54fe5563756
-	github.com/pulumi/pulumi/pkg/v3 v3.6.2-0.20210713163958-82c631bb2b5d // indirect
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.4.1-0.20210714215802-5020116ac4e6
+	github.com/pulumi/pulumi/pkg/v3 v3.7.1-0.20210714212650-083fc64ff547 // indirect
 	github.com/pulumi/pulumi/sdk/v3 v3.6.2-0.20210712183851-30278f8e4c08
 )
 
