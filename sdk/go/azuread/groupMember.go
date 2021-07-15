@@ -28,7 +28,7 @@ import (
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
 // 		opt0 := "jdoe@hashicorp.com"
-// 		exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+// 		exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
 // 			UserPrincipalName: &opt0,
 // 		}, nil)
 // 		if err != nil {
