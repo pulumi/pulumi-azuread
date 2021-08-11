@@ -55,8 +55,6 @@ The following configuration points are available:
 
 - `azuread:clientId` - The Client ID which should be used. This can also be sourced from the `ARM_CLIENT_ID` Environment 
    Variable.
-- `azuread:subscriptionId` - The Subscription ID which should be used. This can also be sourced from the `ARM_SUBSCRIPTION_ID` 
-   Environment Variable.
 - `azuread:tenantId` - The Tenant ID which should be used. This can also be sourced from the `ARM_TENANT_ID` Environment 
    Variable.
 - `azuread:clientSecret` - The Client Secret which should be used. This can also be sourced from the `ARM_CLIENT_SECRET` 
