@@ -8,7 +8,13 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to access information about existing Domains within Azure Active Directory.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
  *
@@ -17,7 +23,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const aadDomains = azuread.getDomains({});
- * export const domains = aadDomains.then(aadDomains => aadDomains.domains);
+ * export const domainNames = [aadDomains.then(aadDomains => aadDomains.domains)].map(__item => __item?.domainName);
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -30,9 +36,12 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("azuread:index/getDomains:getDomains", {
+        "adminManaged": args.adminManaged,
         "includeUnverified": args.includeUnverified,
         "onlyDefault": args.onlyDefault,
         "onlyInitial": args.onlyInitial,
+        "onlyRoot": args.onlyRoot,
+        "supportsServices": args.supportsServices,
     }, opts);
 }
 
@@ -40,6 +49,10 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getDomains.
  */
 export interface GetDomainsArgs {
+    /**
+     * Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+     */
+    adminManaged?: boolean;
     /**
      * Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
      */
@@ -52,6 +65,14 @@ export interface GetDomainsArgs {
      * Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
      */
     onlyInitial?: boolean;
+    /**
+     * Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+     */
+    onlyRoot?: boolean;
+    /**
+     * A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+     */
+    supportsServices?: string[];
 }
 
 /**
@@ -59,7 +80,11 @@ export interface GetDomainsArgs {
  */
 export interface GetDomainsResult {
     /**
-     * A list of domains. Each `domain` object provides the attributes documented below.
+     * Whether the DNS for the domain is managed by Microsoft 365.
+     */
+    readonly adminManaged?: boolean;
+    /**
+     * A list of tenant domains. Each `domain` object provides the attributes documented below.
      */
     readonly domains: outputs.GetDomainsDomain[];
     /**
@@ -69,4 +94,6 @@ export interface GetDomainsResult {
     readonly includeUnverified?: boolean;
     readonly onlyDefault?: boolean;
     readonly onlyInitial?: boolean;
+    readonly onlyRoot?: boolean;
+    readonly supportsServices?: string[];
 }

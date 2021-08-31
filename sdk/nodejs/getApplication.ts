@@ -8,7 +8,13 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to access information about an existing Application within Azure Active Directory.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
  *
@@ -19,7 +25,7 @@ import * as utilities from "./utilities";
  * const example = azuread.getApplication({
  *     displayName: "My First AzureAD Application",
  * });
- * export const azureAdObjectId = example.then(example => example.id);
+ * export const applicationObjectId = example.then(example => example.id);
  * ```
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
@@ -34,11 +40,7 @@ export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOp
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
         "applicationId": args.applicationId,
         "displayName": args.displayName,
-        "name": args.name,
-        "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
-        "optionalClaims": args.optionalClaims,
-        "web": args.web,
     }, opts);
 }
 
@@ -55,29 +57,9 @@ export interface GetApplicationArgs {
      */
     displayName?: string;
     /**
-     * The name of the optional claim.
-     *
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
-     */
-    name?: string;
-    /**
-     * (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-     */
-    oauth2Permissions?: inputs.GetApplicationOauth2Permission[];
-    /**
      * Specifies the Object ID of the application.
      */
     objectId?: string;
-    /**
-     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-     */
-    optionalClaims?: inputs.GetApplicationOptionalClaims;
-    /**
-     * A `web` block as documented below.
-     */
-    web?: inputs.GetApplicationWeb;
 }
 
 /**
@@ -89,19 +71,25 @@ export interface GetApplicationResult {
      */
     readonly apis: outputs.GetApplicationApi[];
     /**
+     * A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+     */
+    readonly appRoleIds: {[key: string]: string};
+    /**
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     readonly appRoles: outputs.GetApplicationAppRole[];
     /**
-     * the Application ID (also called Client ID).
+     * The Application ID (also called Client ID).
      */
     readonly applicationId: string;
     /**
-     * (**Deprecated**) Is this Azure AD Application available to other tenants?
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider
+     * Specifies whether this application supports device authentication without a user.
      */
-    readonly availableToOtherTenants: boolean;
+    readonly deviceOnlyAuthEnabled: boolean;
+    /**
+     * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+     */
+    readonly disabledByMicrosoft: string;
     /**
      * Display name for the app role that appears during app role assignment and in consent experiences.
      */
@@ -113,13 +101,7 @@ export interface GetApplicationResult {
     /**
      * The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
      */
-    readonly groupMembershipClaims: string;
-    /**
-     * (**Deprecated**) The URL to the application's home page. This property is deprecated and has been replaced by the `homepageUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
-     */
-    readonly homepage: string;
+    readonly groupMembershipClaims: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -129,47 +111,45 @@ export interface GetApplicationResult {
      */
     readonly identifierUris: string[];
     /**
-     * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-     *
-     * @deprecated [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
+     * CDN URL to the application's logo.
      */
-    readonly logoutUrl: string;
+    readonly logoUrl: string;
     /**
-     * The name of the optional claim.
-     *
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
+     * URL of the application's marketing page.
      */
-    readonly name: string;
+    readonly marketingUrl: string;
     /**
-     * (**Deprecated**) Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
-     *
-     * @deprecated [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider
+     * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
-    readonly oauth2AllowImplicitFlow: boolean;
+    readonly oauth2PermissionScopeIds: {[key: string]: string};
     /**
-     * (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
+     * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
      */
-    readonly oauth2Permissions: outputs.GetApplicationOauth2Permission[];
+    readonly oauth2PostResponseRequired: boolean;
     /**
-     * The application's Object ID.
+     * The application's object ID.
      */
     readonly objectId: string;
     /**
-     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     * An `optionalClaims` block as documented below.
      */
-    readonly optionalClaims?: outputs.GetApplicationOptionalClaims;
+    readonly optionalClaims: outputs.GetApplicationOptionalClaim[];
     /**
-     * A list of Object IDs for principals that are assigned ownership of the application.
+     * A list of object IDs of principals that are assigned ownership of the application.
      */
     readonly owners: string[];
     /**
-     * (**Deprecated**) A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirectUris` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider
+     * URL of the application's privacy statement.
      */
-    readonly replyUrls: string[];
+    readonly privacyStatementUrl: string;
+    /**
+     * A `publicClient` block as documented below.
+     */
+    readonly publicClients: outputs.GetApplicationPublicClient[];
+    /**
+     * The verified publisher domain for the application.
+     */
+    readonly publisherDomain: string;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
@@ -179,13 +159,19 @@ export interface GetApplicationResult {
      */
     readonly signInAudience: string;
     /**
-     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-     *
-     * @deprecated [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider
+     * A `singlePageApplication` block as documented below.
      */
-    readonly type: string;
+    readonly singlePageApplications: outputs.GetApplicationSinglePageApplication[];
+    /**
+     * URL of the application's support page.
+     */
+    readonly supportUrl: string;
+    /**
+     * URL of the application's terms of service statement.
+     */
+    readonly termsOfServiceUrl: string;
     /**
      * A `web` block as documented below.
      */
-    readonly web: outputs.GetApplicationWeb;
+    readonly webs: outputs.GetApplicationWeb[];
 }

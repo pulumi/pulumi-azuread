@@ -14,43 +14,64 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetDomainsDomainResult
     {
         /// <summary>
-        /// The authentication type of the domain (Managed or Federated).
+        /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        /// </summary>
+        public readonly bool AdminManaged;
+        /// <summary>
+        /// The authentication type of the domain. Possible values include `Managed` or `Federated`.
         /// </summary>
         public readonly string AuthenticationType;
+        /// <summary>
+        /// Whether this is the default domain that is used for user creation.
+        /// </summary>
+        public readonly bool Default;
         /// <summary>
         /// The name of the domain.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
-        /// `True` if this is the default domain that is used for user creation.
+        /// Whether this is the initial domain created by Azure Active Directory.
         /// </summary>
-        public readonly bool IsDefault;
+        public readonly bool Initial;
         /// <summary>
-        /// `True` if this is the initial domain created by Azure Active Directory.
+        /// Whether the domain is a verified root domain (not a subdomain).
         /// </summary>
-        public readonly bool IsInitial;
+        public readonly bool Root;
         /// <summary>
-        /// `True` if the domain has completed domain ownership verification.
+        /// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
         /// </summary>
-        public readonly bool IsVerified;
+        public readonly ImmutableArray<string> SupportedServices;
+        /// <summary>
+        /// Whether the domain has completed domain ownership verification.
+        /// </summary>
+        public readonly bool Verified;
 
         [OutputConstructor]
         private GetDomainsDomainResult(
+            bool adminManaged,
+
             string authenticationType,
+
+            bool @default,
 
             string domainName,
 
-            bool isDefault,
+            bool initial,
 
-            bool isInitial,
+            bool root,
 
-            bool isVerified)
+            ImmutableArray<string> supportedServices,
+
+            bool verified)
         {
+            AdminManaged = adminManaged;
             AuthenticationType = authenticationType;
+            Default = @default;
             DomainName = domainName;
-            IsDefault = isDefault;
-            IsInitial = isInitial;
-            IsVerified = isVerified;
+            Initial = initial;
+            Root = root;
+            SupportedServices = supportedServices;
+            Verified = verified;
         }
     }
 }

@@ -6,9 +6,15 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Manages a Service Principal associated with an Application within Azure Active Directory.
+ * Manages a service principal associated with an application within Azure Active Directory.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
  * ## Example Usage
  *
@@ -16,17 +22,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
+ * const current = azuread.getClientConfig({});
  * const exampleApplication = new azuread.Application("exampleApplication", {
  *     displayName: "example",
- *     homepage: "http://homepage",
- *     identifierUris: ["http://uri"],
- *     replyUrls: ["http://replyurl"],
- *     availableToOtherTenants: false,
- *     oauth2AllowImplicitFlow: true,
+ *     owners: [current.then(current => current.objectId)],
  * });
  * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
  *     applicationId: exampleApplication.applicationId,
  *     appRoleAssignmentRequired: false,
+ *     owners: [current.then(current => current.objectId)],
  *     tags: [
  *         "example",
  *         "tags",
@@ -37,7 +41,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Azure Active Directory Service Principals can be imported using the `object id`, e.g.
+ * Service principals can be imported using their object ID, e.g.
  *
  * ```sh
  *  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
@@ -72,39 +76,109 @@ export class ServicePrincipal extends pulumi.CustomResource {
     }
 
     /**
-     * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+     * Whether or not the service principal account is enabled. Defaults to `true`.
+     */
+    public readonly accountEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+     */
+    public readonly alternativeNames!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
     public readonly appRoleAssignmentRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+     */
+    public /*out*/ readonly appRoleIds!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     public /*out*/ readonly appRoles!: pulumi.Output<outputs.ServicePrincipalAppRole[]>;
     /**
-     * The App ID of the Application for which to create a Service Principal.
+     * The application ID (client ID) of the application for which to create a service principal.
      */
     public readonly applicationId!: pulumi.Output<string>;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * The tenant ID where the associated application is registered.
+     */
+    public /*out*/ readonly applicationTenantId!: pulumi.Output<string>;
+    /**
+     * A description of the service principal provided for internal end-users.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
-     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+     * Home page or landing page of the associated application.
      */
-    public readonly oauth2PermissionScopes!: pulumi.Output<outputs.ServicePrincipalOauth2PermissionScope[]>;
+    public /*out*/ readonly homepageUrl!: pulumi.Output<string>;
     /**
-     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
+     * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
      */
-    public readonly oauth2Permissions!: pulumi.Output<outputs.ServicePrincipalOauth2Permission[]>;
+    public readonly loginUrl!: pulumi.Output<string | undefined>;
     /**
-     * The Object ID of the Service Principal.
+     * The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+     */
+    public /*out*/ readonly logoutUrl!: pulumi.Output<string>;
+    /**
+     * A free text field to capture information about the service principal, typically used for operational purposes.
+     */
+    public readonly notes!: pulumi.Output<string | undefined>;
+    /**
+     * A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+     */
+    public readonly notificationEmailAddresses!: pulumi.Output<string[] | undefined>;
+    /**
+     * A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+     */
+    public /*out*/ readonly oauth2PermissionScopeIds!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
+     */
+    public /*out*/ readonly oauth2PermissionScopes!: pulumi.Output<outputs.ServicePrincipalOauth2PermissionScope[]>;
+    /**
+     * The object ID of the service principal.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
-     * A list of tags to apply to the Service Principal.
+     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     */
+    public readonly owners!: pulumi.Output<string[] | undefined>;
+    /**
+     * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+     */
+    public readonly preferredSingleSignOnMode!: pulumi.Output<string | undefined>;
+    /**
+     * A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+     */
+    public /*out*/ readonly redirectUris!: pulumi.Output<string[]>;
+    /**
+     * The URL where the service exposes SAML metadata for federation.
+     */
+    public /*out*/ readonly samlMetadataUrl!: pulumi.Output<string>;
+    /**
+     * A list of identifier URI(s), copied over from the associated application.
+     */
+    public /*out*/ readonly servicePrincipalNames!: pulumi.Output<string[]>;
+    /**
+     * The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+     */
+    public /*out*/ readonly signInAudience!: pulumi.Output<string>;
+    /**
+     * A set of tags to apply to the service principal.
      */
     public readonly tags!: pulumi.Output<string[] | undefined>;
+    /**
+     * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+     */
+    public /*out*/ readonly type!: pulumi.Output<string>;
+    /**
+     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     */
+    public readonly useExisting!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ServicePrincipal resource with the given unique name, arguments, and options.
@@ -119,27 +193,63 @@ export class ServicePrincipal extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
+            inputs["accountEnabled"] = state ? state.accountEnabled : undefined;
+            inputs["alternativeNames"] = state ? state.alternativeNames : undefined;
             inputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
+            inputs["appRoleIds"] = state ? state.appRoleIds : undefined;
             inputs["appRoles"] = state ? state.appRoles : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
+            inputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
+            inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["homepageUrl"] = state ? state.homepageUrl : undefined;
+            inputs["loginUrl"] = state ? state.loginUrl : undefined;
+            inputs["logoutUrl"] = state ? state.logoutUrl : undefined;
+            inputs["notes"] = state ? state.notes : undefined;
+            inputs["notificationEmailAddresses"] = state ? state.notificationEmailAddresses : undefined;
+            inputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
             inputs["oauth2PermissionScopes"] = state ? state.oauth2PermissionScopes : undefined;
-            inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["owners"] = state ? state.owners : undefined;
+            inputs["preferredSingleSignOnMode"] = state ? state.preferredSingleSignOnMode : undefined;
+            inputs["redirectUris"] = state ? state.redirectUris : undefined;
+            inputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
+            inputs["servicePrincipalNames"] = state ? state.servicePrincipalNames : undefined;
+            inputs["signInAudience"] = state ? state.signInAudience : undefined;
             inputs["tags"] = state ? state.tags : undefined;
+            inputs["type"] = state ? state.type : undefined;
+            inputs["useExisting"] = state ? state.useExisting : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
+            inputs["accountEnabled"] = args ? args.accountEnabled : undefined;
+            inputs["alternativeNames"] = args ? args.alternativeNames : undefined;
             inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
-            inputs["oauth2PermissionScopes"] = args ? args.oauth2PermissionScopes : undefined;
-            inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
+            inputs["description"] = args ? args.description : undefined;
+            inputs["loginUrl"] = args ? args.loginUrl : undefined;
+            inputs["notes"] = args ? args.notes : undefined;
+            inputs["notificationEmailAddresses"] = args ? args.notificationEmailAddresses : undefined;
+            inputs["owners"] = args ? args.owners : undefined;
+            inputs["preferredSingleSignOnMode"] = args ? args.preferredSingleSignOnMode : undefined;
             inputs["tags"] = args ? args.tags : undefined;
+            inputs["useExisting"] = args ? args.useExisting : undefined;
+            inputs["appRoleIds"] = undefined /*out*/;
             inputs["appRoles"] = undefined /*out*/;
+            inputs["applicationTenantId"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
+            inputs["homepageUrl"] = undefined /*out*/;
+            inputs["logoutUrl"] = undefined /*out*/;
+            inputs["oauth2PermissionScopeIds"] = undefined /*out*/;
+            inputs["oauth2PermissionScopes"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
+            inputs["redirectUris"] = undefined /*out*/;
+            inputs["samlMetadataUrl"] = undefined /*out*/;
+            inputs["servicePrincipalNames"] = undefined /*out*/;
+            inputs["signInAudience"] = undefined /*out*/;
+            inputs["type"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -153,39 +263,109 @@ export class ServicePrincipal extends pulumi.CustomResource {
  */
 export interface ServicePrincipalState {
     /**
-     * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+     * Whether or not the service principal account is enabled. Defaults to `true`.
+     */
+    accountEnabled?: pulumi.Input<boolean>;
+    /**
+     * A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+     */
+    alternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
     appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
-     * A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+     */
+    appRoleIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalAppRole>[]>;
     /**
-     * The App ID of the Application for which to create a Service Principal.
+     * The application ID (client ID) of the application for which to create a service principal.
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * The tenant ID where the associated application is registered.
+     */
+    applicationTenantId?: pulumi.Input<string>;
+    /**
+     * A description of the service principal provided for internal end-users.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+     * Home page or landing page of the associated application.
+     */
+    homepageUrl?: pulumi.Input<string>;
+    /**
+     * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+     */
+    loginUrl?: pulumi.Input<string>;
+    /**
+     * The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+     */
+    logoutUrl?: pulumi.Input<string>;
+    /**
+     * A free text field to capture information about the service principal, typically used for operational purposes.
+     */
+    notes?: pulumi.Input<string>;
+    /**
+     * A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+     */
+    notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+     */
+    oauth2PermissionScopeIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
      */
     oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2PermissionScope>[]>;
     /**
-     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-     */
-    oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
-    /**
-     * The Object ID of the Service Principal.
+     * The object ID of the service principal.
      */
     objectId?: pulumi.Input<string>;
     /**
-     * A list of tags to apply to the Service Principal.
+     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     */
+    owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+     */
+    preferredSingleSignOnMode?: pulumi.Input<string>;
+    /**
+     * A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+     */
+    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The URL where the service exposes SAML metadata for federation.
+     */
+    samlMetadataUrl?: pulumi.Input<string>;
+    /**
+     * A list of identifier URI(s), copied over from the associated application.
+     */
+    servicePrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+     */
+    signInAudience?: pulumi.Input<string>;
+    /**
+     * A set of tags to apply to the service principal.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     */
+    useExisting?: pulumi.Input<boolean>;
 }
 
 /**
@@ -193,25 +373,51 @@ export interface ServicePrincipalState {
  */
 export interface ServicePrincipalArgs {
     /**
-     * Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+     * Whether or not the service principal account is enabled. Defaults to `true`.
+     */
+    accountEnabled?: pulumi.Input<boolean>;
+    /**
+     * A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+     */
+    alternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
      */
     appRoleAssignmentRequired?: pulumi.Input<boolean>;
     /**
-     * The App ID of the Application for which to create a Service Principal.
+     * The application ID (client ID) of the application for which to create a service principal.
      */
     applicationId: pulumi.Input<string>;
     /**
-     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+     * A description of the service principal provided for internal end-users.
      */
-    oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2PermissionScope>[]>;
+    description?: pulumi.Input<string>;
     /**
-     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
+     * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
      */
-    oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalOauth2Permission>[]>;
+    loginUrl?: pulumi.Input<string>;
     /**
-     * A list of tags to apply to the Service Principal.
+     * A free text field to capture information about the service principal, typically used for operational purposes.
+     */
+    notes?: pulumi.Input<string>;
+    /**
+     * A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+     */
+    notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     */
+    owners?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+     */
+    preferredSingleSignOnMode?: pulumi.Input<string>;
+    /**
+     * A set of tags to apply to the service principal.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     */
+    useExisting?: pulumi.Input<boolean>;
 }

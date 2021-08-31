@@ -10,9 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// Manages a Service Principal associated with an Application within Azure Active Directory.
+    /// Manages a service principal associated with an application within Azure Active Directory.
     /// 
-    /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
     /// 
     /// ## Example Usage
     /// 
@@ -24,25 +30,23 @@ namespace Pulumi.AzureAD
     /// {
     ///     public MyStack()
     ///     {
+    ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
     ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
     ///         {
     ///             DisplayName = "example",
-    ///             Homepage = "http://homepage",
-    ///             IdentifierUris = 
+    ///             Owners = 
     ///             {
-    ///                 "http://uri",
+    ///                 current.Apply(current =&gt; current.ObjectId),
     ///             },
-    ///             ReplyUrls = 
-    ///             {
-    ///                 "http://replyurl",
-    ///             },
-    ///             AvailableToOtherTenants = false,
-    ///             Oauth2AllowImplicitFlow = true,
     ///         });
     ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
     ///         {
     ///             ApplicationId = exampleApplication.ApplicationId,
     ///             AppRoleAssignmentRequired = false,
+    ///             Owners = 
+    ///             {
+    ///                 current.Apply(current =&gt; current.ObjectId),
+    ///             },
     ///             Tags = 
     ///             {
     ///                 "example",
@@ -57,7 +61,7 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Import
     /// 
-    /// Azure Active Directory Service Principals can be imported using the `object id`, e.g.
+    /// Service principals can be imported using their object ID, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
@@ -67,52 +71,160 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipal : Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        /// Whether or not the service principal account is enabled. Defaults to `true`.
+        /// </summary>
+        [Output("accountEnabled")]
+        public Output<bool?> AccountEnabled { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        /// </summary>
+        [Output("alternativeNames")]
+        public Output<ImmutableArray<string>> AlternativeNames { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         /// </summary>
         [Output("appRoleAssignmentRequired")]
         public Output<bool?> AppRoleAssignmentRequired { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+        /// </summary>
+        [Output("appRoleIds")]
+        public Output<ImmutableDictionary<string, string>> AppRoleIds { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         [Output("appRoles")]
         public Output<ImmutableArray<Outputs.ServicePrincipalAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The App ID of the Application for which to create a Service Principal.
+        /// The application ID (client ID) of the application for which to create a service principal.
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// The tenant ID where the associated application is registered.
+        /// </summary>
+        [Output("applicationTenantId")]
+        public Output<string> ApplicationTenantId { get; private set; } = null!;
+
+        /// <summary>
+        /// A description of the service principal provided for internal end-users.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// Home page or landing page of the associated application.
+        /// </summary>
+        [Output("homepageUrl")]
+        public Output<string> HomepageUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        /// </summary>
+        [Output("loginUrl")]
+        public Output<string?> LoginUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        /// </summary>
+        [Output("logoutUrl")]
+        public Output<string> LogoutUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A free text field to capture information about the service principal, typically used for operational purposes.
+        /// </summary>
+        [Output("notes")]
+        public Output<string?> Notes { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        /// </summary>
+        [Output("notificationEmailAddresses")]
+        public Output<ImmutableArray<string>> NotificationEmailAddresses { get; private set; } = null!;
+
+        /// <summary>
+        /// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+        /// </summary>
+        [Output("oauth2PermissionScopeIds")]
+        public Output<ImmutableDictionary<string, string>> Oauth2PermissionScopeIds { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         /// </summary>
         [Output("oauth2PermissionScopes")]
         public Output<ImmutableArray<Outputs.ServicePrincipalOauth2PermissionScope>> Oauth2PermissionScopes { get; private set; } = null!;
 
         /// <summary>
-        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        /// </summary>
-        [Output("oauth2Permissions")]
-        public Output<ImmutableArray<Outputs.ServicePrincipalOauth2Permission>> Oauth2Permissions { get; private set; } = null!;
-
-        /// <summary>
-        /// The Object ID of the Service Principal.
+        /// The object ID of the service principal.
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// A list of tags to apply to the Service Principal.
+        /// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        /// </summary>
+        [Output("owners")]
+        public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
+
+        /// <summary>
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        /// </summary>
+        [Output("preferredSingleSignOnMode")]
+        public Output<string?> PreferredSingleSignOnMode { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+        /// </summary>
+        [Output("redirectUris")]
+        public Output<ImmutableArray<string>> RedirectUris { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL where the service exposes SAML metadata for federation.
+        /// </summary>
+        [Output("samlMetadataUrl")]
+        public Output<string> SamlMetadataUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of identifier URI(s), copied over from the associated application.
+        /// </summary>
+        [Output("servicePrincipalNames")]
+        public Output<ImmutableArray<string>> ServicePrincipalNames { get; private set; } = null!;
+
+        /// <summary>
+        /// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        /// </summary>
+        [Output("signInAudience")]
+        public Output<string> SignInAudience { get; private set; } = null!;
+
+        /// <summary>
+        /// A set of tags to apply to the service principal.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        /// </summary>
+        [Output("type")]
+        public Output<string> Type { get; private set; } = null!;
+
+        /// <summary>
+        /// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+        /// </summary>
+        [Output("useExisting")]
+        public Output<bool?> UseExisting { get; private set; } = null!;
 
 
         /// <summary>
@@ -161,53 +273,100 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        /// Whether or not the service principal account is enabled. Defaults to `true`.
+        /// </summary>
+        [Input("accountEnabled")]
+        public Input<bool>? AccountEnabled { get; set; }
+
+        [Input("alternativeNames")]
+        private InputList<string>? _alternativeNames;
+
+        /// <summary>
+        /// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        /// </summary>
+        public InputList<string> AlternativeNames
+        {
+            get => _alternativeNames ?? (_alternativeNames = new InputList<string>());
+            set => _alternativeNames = value;
+        }
+
+        /// <summary>
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
 
         /// <summary>
-        /// The App ID of the Application for which to create a Service Principal.
+        /// The application ID (client ID) of the application for which to create a service principal.
         /// </summary>
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
 
-        [Input("oauth2PermissionScopes")]
-        private InputList<Inputs.ServicePrincipalOauth2PermissionScopeArgs>? _oauth2PermissionScopes;
+        /// <summary>
+        /// A description of the service principal provided for internal end-users.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         /// </summary>
-        public InputList<Inputs.ServicePrincipalOauth2PermissionScopeArgs> Oauth2PermissionScopes
-        {
-            get => _oauth2PermissionScopes ?? (_oauth2PermissionScopes = new InputList<Inputs.ServicePrincipalOauth2PermissionScopeArgs>());
-            set => _oauth2PermissionScopes = value;
-        }
-
-        [Input("oauth2Permissions")]
-        private InputList<Inputs.ServicePrincipalOauth2PermissionArgs>? _oauth2Permissions;
+        [Input("loginUrl")]
+        public Input<string>? LoginUrl { get; set; }
 
         /// <summary>
-        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
+        /// A free text field to capture information about the service principal, typically used for operational purposes.
         /// </summary>
-        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
-        public InputList<Inputs.ServicePrincipalOauth2PermissionArgs> Oauth2Permissions
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
+
+        [Input("notificationEmailAddresses")]
+        private InputList<string>? _notificationEmailAddresses;
+
+        /// <summary>
+        /// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        /// </summary>
+        public InputList<string> NotificationEmailAddresses
         {
-            get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ServicePrincipalOauth2PermissionArgs>());
-            set => _oauth2Permissions = value;
+            get => _notificationEmailAddresses ?? (_notificationEmailAddresses = new InputList<string>());
+            set => _notificationEmailAddresses = value;
         }
+
+        [Input("owners")]
+        private InputList<string>? _owners;
+
+        /// <summary>
+        /// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        /// </summary>
+        public InputList<string> Owners
+        {
+            get => _owners ?? (_owners = new InputList<string>());
+            set => _owners = value;
+        }
+
+        /// <summary>
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        /// </summary>
+        [Input("preferredSingleSignOnMode")]
+        public Input<string>? PreferredSingleSignOnMode { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags to apply to the Service Principal.
+        /// A set of tags to apply to the service principal.
         /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+        /// </summary>
+        [Input("useExisting")]
+        public Input<bool>? UseExisting { get; set; }
 
         public ServicePrincipalArgs()
         {
@@ -217,16 +376,46 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        /// Whether or not the service principal account is enabled. Defaults to `true`.
+        /// </summary>
+        [Input("accountEnabled")]
+        public Input<bool>? AccountEnabled { get; set; }
+
+        [Input("alternativeNames")]
+        private InputList<string>? _alternativeNames;
+
+        /// <summary>
+        /// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        /// </summary>
+        public InputList<string> AlternativeNames
+        {
+            get => _alternativeNames ?? (_alternativeNames = new InputList<string>());
+            set => _alternativeNames = value;
+        }
+
+        /// <summary>
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         /// </summary>
         [Input("appRoleAssignmentRequired")]
         public Input<bool>? AppRoleAssignmentRequired { get; set; }
+
+        [Input("appRoleIds")]
+        private InputMap<string>? _appRoleIds;
+
+        /// <summary>
+        /// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+        /// </summary>
+        public InputMap<string> AppRoleIds
+        {
+            get => _appRoleIds ?? (_appRoleIds = new InputMap<string>());
+            set => _appRoleIds = value;
+        }
 
         [Input("appRoles")]
         private InputList<Inputs.ServicePrincipalAppRoleGetArgs>? _appRoles;
 
         /// <summary>
-        /// A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public InputList<Inputs.ServicePrincipalAppRoleGetArgs> AppRoles
         {
@@ -235,22 +424,82 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The App ID of the Application for which to create a Service Principal.
+        /// The application ID (client ID) of the application for which to create a service principal.
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// The tenant ID where the associated application is registered.
+        /// </summary>
+        [Input("applicationTenantId")]
+        public Input<string>? ApplicationTenantId { get; set; }
+
+        /// <summary>
+        /// A description of the service principal provided for internal end-users.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Home page or landing page of the associated application.
+        /// </summary>
+        [Input("homepageUrl")]
+        public Input<string>? HomepageUrl { get; set; }
+
+        /// <summary>
+        /// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        /// </summary>
+        [Input("loginUrl")]
+        public Input<string>? LoginUrl { get; set; }
+
+        /// <summary>
+        /// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        /// </summary>
+        [Input("logoutUrl")]
+        public Input<string>? LogoutUrl { get; set; }
+
+        /// <summary>
+        /// A free text field to capture information about the service principal, typically used for operational purposes.
+        /// </summary>
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
+
+        [Input("notificationEmailAddresses")]
+        private InputList<string>? _notificationEmailAddresses;
+
+        /// <summary>
+        /// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        /// </summary>
+        public InputList<string> NotificationEmailAddresses
+        {
+            get => _notificationEmailAddresses ?? (_notificationEmailAddresses = new InputList<string>());
+            set => _notificationEmailAddresses = value;
+        }
+
+        [Input("oauth2PermissionScopeIds")]
+        private InputMap<string>? _oauth2PermissionScopeIds;
+
+        /// <summary>
+        /// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+        /// </summary>
+        public InputMap<string> Oauth2PermissionScopeIds
+        {
+            get => _oauth2PermissionScopeIds ?? (_oauth2PermissionScopeIds = new InputMap<string>());
+            set => _oauth2PermissionScopeIds = value;
+        }
 
         [Input("oauth2PermissionScopes")]
         private InputList<Inputs.ServicePrincipalOauth2PermissionScopeGetArgs>? _oauth2PermissionScopes;
 
         /// <summary>
-        /// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        /// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         /// </summary>
         public InputList<Inputs.ServicePrincipalOauth2PermissionScopeGetArgs> Oauth2PermissionScopes
         {
@@ -258,36 +507,89 @@ namespace Pulumi.AzureAD
             set => _oauth2PermissionScopes = value;
         }
 
-        [Input("oauth2Permissions")]
-        private InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs>? _oauth2Permissions;
-
         /// <summary>
-        /// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        /// </summary>
-        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
-        public InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs> Oauth2Permissions
-        {
-            get => _oauth2Permissions ?? (_oauth2Permissions = new InputList<Inputs.ServicePrincipalOauth2PermissionGetArgs>());
-            set => _oauth2Permissions = value;
-        }
-
-        /// <summary>
-        /// The Object ID of the Service Principal.
+        /// The object ID of the service principal.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
+
+        [Input("owners")]
+        private InputList<string>? _owners;
+
+        /// <summary>
+        /// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        /// </summary>
+        public InputList<string> Owners
+        {
+            get => _owners ?? (_owners = new InputList<string>());
+            set => _owners = value;
+        }
+
+        /// <summary>
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        /// </summary>
+        [Input("preferredSingleSignOnMode")]
+        public Input<string>? PreferredSingleSignOnMode { get; set; }
+
+        [Input("redirectUris")]
+        private InputList<string>? _redirectUris;
+
+        /// <summary>
+        /// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+        /// </summary>
+        public InputList<string> RedirectUris
+        {
+            get => _redirectUris ?? (_redirectUris = new InputList<string>());
+            set => _redirectUris = value;
+        }
+
+        /// <summary>
+        /// The URL where the service exposes SAML metadata for federation.
+        /// </summary>
+        [Input("samlMetadataUrl")]
+        public Input<string>? SamlMetadataUrl { get; set; }
+
+        [Input("servicePrincipalNames")]
+        private InputList<string>? _servicePrincipalNames;
+
+        /// <summary>
+        /// A list of identifier URI(s), copied over from the associated application.
+        /// </summary>
+        public InputList<string> ServicePrincipalNames
+        {
+            get => _servicePrincipalNames ?? (_servicePrincipalNames = new InputList<string>());
+            set => _servicePrincipalNames = value;
+        }
+
+        /// <summary>
+        /// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        /// </summary>
+        [Input("signInAudience")]
+        public Input<string>? SignInAudience { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A list of tags to apply to the Service Principal.
+        /// A set of tags to apply to the service principal.
         /// </summary>
         public InputList<string> Tags
         {
             get => _tags ?? (_tags = new InputList<string>());
             set => _tags = value;
         }
+
+        /// <summary>
+        /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
+        /// <summary>
+        /// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+        /// </summary>
+        [Input("useExisting")]
+        public Input<bool>? UseExisting { get; set; }
 
         public ServicePrincipalState()
         {

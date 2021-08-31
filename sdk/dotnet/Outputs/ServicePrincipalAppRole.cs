@@ -14,31 +14,27 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ServicePrincipalAppRole
     {
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
         /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// A description of the service principal provided for internal end-users.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         public readonly string? DisplayName;
         /// <summary>
-        /// Is this permission enabled?
+        /// Specifies whether the permission scope is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission`.
+        /// The unique identifier of the delegated permission.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// Is this permission enabled?
-        /// </summary>
-        public readonly bool? IsEnabled;
-        /// <summary>
-        /// The name of this permission.
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         public readonly string? Value;
 
@@ -54,8 +50,6 @@ namespace Pulumi.AzureAD.Outputs
 
             string? id,
 
-            bool? isEnabled,
-
             string? value)
         {
             AllowedMemberTypes = allowedMemberTypes;
@@ -63,7 +57,6 @@ namespace Pulumi.AzureAD.Outputs
             DisplayName = displayName;
             Enabled = enabled;
             Id = id;
-            IsEnabled = isEnabled;
             Value = value;
         }
     }

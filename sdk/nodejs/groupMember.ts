@@ -5,9 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages a single Group Membership within Azure Active Directory.
+ * Manages a single group membership within Azure Active Directory.
  *
- * > **NOTE:** Do not use this resource at the same time as `azuread_group.members`.
+ * > **Warning** Do not use this resource at the same time as the `members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  *
  * ## Example Usage
  *
@@ -18,7 +26,10 @@ import * as utilities from "./utilities";
  * const exampleUser = azuread.getUser({
  *     userPrincipalName: "jdoe@hashicorp.com",
  * });
- * const exampleGroup = new azuread.Group("exampleGroup", {});
+ * const exampleGroup = new azuread.Group("exampleGroup", {
+ *     displayName: "my_group",
+ *     securityEnabled: true,
+ * });
  * const exampleGroupMember = new azuread.GroupMember("exampleGroupMember", {
  *     groupObjectId: exampleGroup.id,
  *     memberObjectId: exampleUser.then(exampleUser => exampleUser.id),
@@ -27,11 +38,13 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * Azure Active Directory Group Members can be imported using the `object id`, e.g.
+ * Group members can be imported using the object ID of the group and the object ID of the member, e.g.
  *
  * ```sh
  *  $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
  * ```
+ *
+ *  -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
  */
 export class GroupMember extends pulumi.CustomResource {
     /**
@@ -62,11 +75,11 @@ export class GroupMember extends pulumi.CustomResource {
     }
 
     /**
-     * The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+     * The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
      */
     public readonly groupObjectId!: pulumi.Output<string>;
     /**
-     * The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
     public readonly memberObjectId!: pulumi.Output<string>;
 
@@ -108,11 +121,11 @@ export class GroupMember extends pulumi.CustomResource {
  */
 export interface GroupMemberState {
     /**
-     * The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+     * The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
      */
     groupObjectId?: pulumi.Input<string>;
     /**
-     * The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
     memberObjectId?: pulumi.Input<string>;
 }
@@ -122,11 +135,11 @@ export interface GroupMemberState {
  */
 export interface GroupMemberArgs {
     /**
-     * The Object ID of the Azure AD Group you want to add the Member to.  Changing this forces a new resource to be created.
+     * The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
      */
     groupObjectId: pulumi.Input<string>;
     /**
-     * The Object ID of the Azure AD Object you want to add as a Member to the Group. Supported Object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
     memberObjectId: pulumi.Input<string>;
 }

@@ -7,12 +7,19 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
+// Gets information about an existing service principal associated with an application within Azure Active Directory.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
 //
 // ## Example Usage
-// ### By Application Display Name)
+//
+// *Look up by application display name*
 //
 // ```go
 // package main
@@ -35,7 +42,8 @@ import (
 // 	})
 // }
 // ```
-// ### By Application ID)
+//
+// *Look up by application ID (client ID)*
 //
 // ```go
 // package main
@@ -58,7 +66,8 @@ import (
 // 	})
 // }
 // ```
-// ### By Object ID)
+//
+// *Look up by service principal object ID*
 //
 // ```go
 // package main
@@ -92,35 +101,64 @@ func LookupServicePrincipal(ctx *pulumi.Context, args *LookupServicePrincipalArg
 
 // A collection of arguments for invoking getServicePrincipal.
 type LookupServicePrincipalArgs struct {
-	// The ID of the Azure AD Application.
+	// The application ID (client ID) of the application associated with this service principal.
 	ApplicationId *string `pulumi:"applicationId"`
-	// The Display Name of the Azure AD Application associated with this Service Principal.
+	// The display name of the application associated with this service principal.
 	DisplayName *string `pulumi:"displayName"`
-	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
-	Oauth2PermissionScopes []GetServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
-	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-	//
-	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-	Oauth2Permissions []GetServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
-	// The ID of the Azure AD Service Principal.
+	// The object ID of the service principal.
 	ObjectId *string `pulumi:"objectId"`
 }
 
 // A collection of values returned by getServicePrincipal.
 type LookupServicePrincipalResult struct {
-	// A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles      []GetServicePrincipalAppRole `pulumi:"appRoles"`
-	ApplicationId string                       `pulumi:"applicationId"`
+	// - Whether or not the service principal account is enabled.
+	AccountEnabled bool `pulumi:"accountEnabled"`
+	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+	AlternativeNames []string `pulumi:"alternativeNames"`
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+	AppRoleAssignmentRequired bool `pulumi:"appRoleAssignmentRequired"`
+	// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+	AppRoleIds map[string]string `pulumi:"appRoleIds"`
+	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+	AppRoles []GetServicePrincipalAppRole `pulumi:"appRoles"`
+	// The application ID (client ID) of the application associated with this service principal.
+	ApplicationId string `pulumi:"applicationId"`
+	// The tenant ID where the associated application is registered.
+	ApplicationTenantId string `pulumi:"applicationTenantId"`
+	// Permission help text that appears in the admin app assignment and consent experiences.
+	Description string `pulumi:"description"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName string `pulumi:"displayName"`
+	// Home page or landing page of the associated application.
+	HomepageUrl string `pulumi:"homepageUrl"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps.
+	LoginUrl string `pulumi:"loginUrl"`
+	// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	LogoutUrl string `pulumi:"logoutUrl"`
+	// A free text field to capture information about the service principal, typically used for operational purposes.
+	Notes string `pulumi:"notes"`
+	// A list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+	NotificationEmailAddresses []string `pulumi:"notificationEmailAddresses"`
+	// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+	Oauth2PermissionScopeIds map[string]string `pulumi:"oauth2PermissionScopeIds"`
+	// A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
 	Oauth2PermissionScopes []GetServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
-	// (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-	//
-	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-	Oauth2Permissions []GetServicePrincipalOauth2Permission `pulumi:"oauth2Permissions"`
-	// The Object ID for the Service Principal.
+	// The object ID of the service principal.
 	ObjectId string `pulumi:"objectId"`
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+	PreferredSingleSignOnMode string `pulumi:"preferredSingleSignOnMode"`
+	// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+	RedirectUris []string `pulumi:"redirectUris"`
+	// The URL where the service exposes SAML metadata for federation.
+	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
+	// A list of identifier URI(s), copied over from the associated application.
+	ServicePrincipalNames []string `pulumi:"servicePrincipalNames"`
+	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	SignInAudience string `pulumi:"signInAudience"`
+	// A list of tags applied to the service principal.
+	Tags []string `pulumi:"tags"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	Type string `pulumi:"type"`
 }

@@ -10,112 +10,21 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
-    /// 
-    /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-    /// 
-    /// ## Example Usage
-    /// ### Using a certificate from Azure Key Vault
-    /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using Azure = Pulumi.Azure;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///         });
-    ///         var exampleCertificate = new Azure.KeyVault.Certificate("exampleCertificate", new Azure.KeyVault.CertificateArgs
-    ///         {
-    ///             KeyVaultId = azurerm_key_vault.Example.Id,
-    ///             CertificatePolicy = new Azure.KeyVault.Inputs.CertificateCertificatePolicyArgs
-    ///             {
-    ///                 IssuerParameters = new Azure.KeyVault.Inputs.CertificateCertificatePolicyIssuerParametersArgs
-    ///                 {
-    ///                     Name = "Self",
-    ///                 },
-    ///                 KeyProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyKeyPropertiesArgs
-    ///                 {
-    ///                     Exportable = true,
-    ///                     KeySize = 2048,
-    ///                     KeyType = "RSA",
-    ///                     ReuseKey = true,
-    ///                 },
-    ///                 LifetimeActions = 
-    ///                 {
-    ///                     new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionArgs
-    ///                     {
-    ///                         Action = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionActionArgs
-    ///                         {
-    ///                             ActionType = "AutoRenew",
-    ///                         },
-    ///                         Trigger = new Azure.KeyVault.Inputs.CertificateCertificatePolicyLifetimeActionTriggerArgs
-    ///                         {
-    ///                             DaysBeforeExpiry = 30,
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 SecretProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicySecretPropertiesArgs
-    ///                 {
-    ///                     ContentType = "application/x-pkcs12",
-    ///                 },
-    ///                 X509CertificateProperties = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesArgs
-    ///                 {
-    ///                     ExtendedKeyUsages = 
-    ///                     {
-    ///                         "1.3.6.1.5.5.7.3.2",
-    ///                     },
-    ///                     KeyUsages = 
-    ///                     {
-    ///                         "dataEncipherment",
-    ///                         "digitalSignature",
-    ///                         "keyCertSign",
-    ///                         "keyEncipherment",
-    ///                     },
-    ///                     SubjectAlternativeNames = new Azure.KeyVault.Inputs.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs
-    ///                     {
-    ///                         DnsNames = 
-    ///                         {
-    ///                             "internal.contoso.com",
-    ///                             "domain.hello.world",
-    ///                         },
-    ///                     },
-    ///                     Subject = exampleApplication.Name.Apply(name =&gt; $"CN={name}"),
-    ///                     ValidityInMonths = 12,
-    ///                 },
-    ///             },
-    ///         });
-    ///         var exampleApplicationCertificate = new AzureAD.ApplicationCertificate("exampleApplicationCertificate", new AzureAD.ApplicationCertificateArgs
-    ///         {
-    ///             ApplicationObjectId = exampleApplication.Id,
-    ///             Type = "AsymmetricX509Cert",
-    ///             Encoding = "hex",
-    ///             Value = exampleCertificate.CertificateData,
-    ///             EndDate = exampleCertificate.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].Expires),
-    ///             StartDate = exampleCertificate.CertificateAttributes.Apply(certificateAttributes =&gt; certificateAttributes[0].NotBefore),
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
-    /// 
     /// ## Import
     /// 
-    /// Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
+    /// Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
     /// 
     /// ```sh
     ///  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
     /// ```
+    /// 
+    ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
     /// </summary>
     [AzureADResourceType("azuread:index/applicationCertificate:ApplicationCertificate")]
     public partial class ApplicationCertificate : Pulumi.CustomResource
     {
         /// <summary>
-        /// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
@@ -127,25 +36,25 @@ namespace Pulumi.AzureAD
         public Output<string?> Encoding { get; private set; } = null!;
 
         /// <summary>
-        /// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("endDate")]
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("endDateRelative")]
         public Output<string?> EndDateRelative { get; private set; } = null!;
 
         /// <summary>
-        /// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
@@ -209,7 +118,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationCertificateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
@@ -221,25 +130,25 @@ namespace Pulumi.AzureAD
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
         /// <summary>
-        /// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
@@ -264,7 +173,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationCertificateState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
@@ -276,25 +185,25 @@ namespace Pulumi.AzureAD
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
         /// <summary>
-        /// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }

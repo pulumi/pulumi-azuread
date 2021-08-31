@@ -57,7 +57,7 @@ class GetUsersResult:
     @pulumi.getter(name="mailNicknames")
     def mail_nicknames(self) -> Sequence[str]:
         """
-        The email aliases of the Azure AD Users.
+        The email aliases of the users.
         """
         return pulumi.get(self, "mail_nicknames")
 
@@ -65,7 +65,7 @@ class GetUsersResult:
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence[str]:
         """
-        The Object IDs of the Azure AD Users.
+        The object IDs of the users.
         """
         return pulumi.get(self, "object_ids")
 
@@ -73,7 +73,7 @@ class GetUsersResult:
     @pulumi.getter(name="userPrincipalNames")
     def user_principal_names(self) -> Sequence[str]:
         """
-        The User Principal Names of the Azure AD Users.
+        The user principal names (UPNs) of the users.
         """
         return pulumi.get(self, "user_principal_names")
 
@@ -81,7 +81,7 @@ class GetUsersResult:
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
         """
-        A list of Azure AD Users. Each `user` object provides the attributes documented below.
+        A list of users. Each `user` object provides the attributes documented below.
         """
         return pulumi.get(self, "users")
 
@@ -106,9 +106,15 @@ def get_users(ignore_missing: Optional[bool] = None,
               user_principal_names: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Gets Object IDs or UPNs for multiple Azure Active Directory users.
+    Gets object IDs or user principal names for multiple Azure Active Directory users.
 
-    > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
 
@@ -124,9 +130,9 @@ def get_users(ignore_missing: Optional[bool] = None,
 
 
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
-    :param Sequence[str] mail_nicknames: The email aliases of the Azure AD Users.
-    :param Sequence[str] object_ids: The Object IDs of the Azure AD Users.
-    :param Sequence[str] user_principal_names: The User Principal Names of the Azure AD Users.
+    :param Sequence[str] mail_nicknames: The email aliases of the users.
+    :param Sequence[str] object_ids: The object IDs of the users.
+    :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
     """
     __args__ = dict()
     __args__['ignoreMissing'] = ignore_missing

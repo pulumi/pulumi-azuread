@@ -37,22 +37,16 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
+        /// Determines if the app role is enabled. Defaults to `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
+        /// The unique identifier of the app role. Must be a valid UUID.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
-
-        /// <summary>
-        /// Determines if the permission is enabled: defaults to `true`.
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.

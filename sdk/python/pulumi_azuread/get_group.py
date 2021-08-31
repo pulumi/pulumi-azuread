@@ -19,7 +19,13 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, description=None, display_name=None, id=None, mail_enabled=None, members=None, name=None, object_id=None, owners=None, security_enabled=None):
+    def __init__(__self__, assignable_to_role=None, behaviors=None, description=None, display_name=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None):
+        if assignable_to_role and not isinstance(assignable_to_role, bool):
+            raise TypeError("Expected argument 'assignable_to_role' to be a bool")
+        pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+        if behaviors and not isinstance(behaviors, list):
+            raise TypeError("Expected argument 'behaviors' to be a list")
+        pulumi.set(__self__, "behaviors", behaviors)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -29,34 +35,82 @@ class GetGroupResult:
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if mail and not isinstance(mail, str):
+            raise TypeError("Expected argument 'mail' to be a str")
+        pulumi.set(__self__, "mail", mail)
         if mail_enabled and not isinstance(mail_enabled, bool):
             raise TypeError("Expected argument 'mail_enabled' to be a bool")
         pulumi.set(__self__, "mail_enabled", mail_enabled)
+        if mail_nickname and not isinstance(mail_nickname, str):
+            raise TypeError("Expected argument 'mail_nickname' to be a str")
+        pulumi.set(__self__, "mail_nickname", mail_nickname)
         if members and not isinstance(members, list):
             raise TypeError("Expected argument 'members' to be a list")
         pulumi.set(__self__, "members", members)
-        if name and not isinstance(name, str):
-            raise TypeError("Expected argument 'name' to be a str")
-        if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider.""")
-
-        pulumi.set(__self__, "name", name)
         if object_id and not isinstance(object_id, str):
             raise TypeError("Expected argument 'object_id' to be a str")
         pulumi.set(__self__, "object_id", object_id)
+        if onpremises_domain_name and not isinstance(onpremises_domain_name, str):
+            raise TypeError("Expected argument 'onpremises_domain_name' to be a str")
+        pulumi.set(__self__, "onpremises_domain_name", onpremises_domain_name)
+        if onpremises_netbios_name and not isinstance(onpremises_netbios_name, str):
+            raise TypeError("Expected argument 'onpremises_netbios_name' to be a str")
+        pulumi.set(__self__, "onpremises_netbios_name", onpremises_netbios_name)
+        if onpremises_sam_account_name and not isinstance(onpremises_sam_account_name, str):
+            raise TypeError("Expected argument 'onpremises_sam_account_name' to be a str")
+        pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
+        if onpremises_security_identifier and not isinstance(onpremises_security_identifier, str):
+            raise TypeError("Expected argument 'onpremises_security_identifier' to be a str")
+        pulumi.set(__self__, "onpremises_security_identifier", onpremises_security_identifier)
+        if onpremises_sync_enabled and not isinstance(onpremises_sync_enabled, bool):
+            raise TypeError("Expected argument 'onpremises_sync_enabled' to be a bool")
+        pulumi.set(__self__, "onpremises_sync_enabled", onpremises_sync_enabled)
         if owners and not isinstance(owners, list):
             raise TypeError("Expected argument 'owners' to be a list")
         pulumi.set(__self__, "owners", owners)
+        if preferred_language and not isinstance(preferred_language, str):
+            raise TypeError("Expected argument 'preferred_language' to be a str")
+        pulumi.set(__self__, "preferred_language", preferred_language)
+        if provisioning_options and not isinstance(provisioning_options, list):
+            raise TypeError("Expected argument 'provisioning_options' to be a list")
+        pulumi.set(__self__, "provisioning_options", provisioning_options)
+        if proxy_addresses and not isinstance(proxy_addresses, list):
+            raise TypeError("Expected argument 'proxy_addresses' to be a list")
+        pulumi.set(__self__, "proxy_addresses", proxy_addresses)
         if security_enabled and not isinstance(security_enabled, bool):
             raise TypeError("Expected argument 'security_enabled' to be a bool")
         pulumi.set(__self__, "security_enabled", security_enabled)
+        if theme and not isinstance(theme, str):
+            raise TypeError("Expected argument 'theme' to be a str")
+        pulumi.set(__self__, "theme", theme)
+        if types and not isinstance(types, list):
+            raise TypeError("Expected argument 'types' to be a list")
+        pulumi.set(__self__, "types", types)
+        if visibility and not isinstance(visibility, str):
+            raise TypeError("Expected argument 'visibility' to be a str")
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="assignableToRole")
+    def assignable_to_role(self) -> bool:
+        """
+        Indicates whether this group can be assigned to an Azure Active Directory role.
+        """
+        return pulumi.get(self, "assignable_to_role")
+
+    @property
+    @pulumi.getter
+    def behaviors(self) -> Sequence[str]:
+        """
+        A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
+        """
+        return pulumi.get(self, "behaviors")
 
     @property
     @pulumi.getter
     def description(self) -> str:
         """
-        The optional description of the Group.
+        The optional description of the group.
         """
         return pulumi.get(self, "description")
 
@@ -64,7 +118,7 @@ class GetGroupResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The display name for the Group.
+        The display name for the group.
         """
         return pulumi.get(self, "display_name")
 
@@ -77,6 +131,14 @@ class GetGroupResult:
         return pulumi.get(self, "id")
 
     @property
+    @pulumi.getter
+    def mail(self) -> str:
+        """
+        The SMTP address for the group.
+        """
+        return pulumi.get(self, "mail")
+
+    @property
     @pulumi.getter(name="mailEnabled")
     def mail_enabled(self) -> bool:
         """
@@ -85,30 +147,100 @@ class GetGroupResult:
         return pulumi.get(self, "mail_enabled")
 
     @property
+    @pulumi.getter(name="mailNickname")
+    def mail_nickname(self) -> str:
+        """
+        The mail alias for the group, unique in the organisation.
+        """
+        return pulumi.get(self, "mail_nickname")
+
+    @property
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        The Object IDs of the Group members.
+        List of object IDs of the group members.
         """
         return pulumi.get(self, "members")
 
     @property
-    @pulumi.getter
-    def name(self) -> str:
-        return pulumi.get(self, "name")
-
-    @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The object ID of the group.
+        """
         return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="onpremisesDomainName")
+    def onpremises_domain_name(self) -> str:
+        """
+        The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_domain_name")
+
+    @property
+    @pulumi.getter(name="onpremisesNetbiosName")
+    def onpremises_netbios_name(self) -> str:
+        """
+        The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_netbios_name")
+
+    @property
+    @pulumi.getter(name="onpremisesSamAccountName")
+    def onpremises_sam_account_name(self) -> str:
+        """
+        The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_sam_account_name")
+
+    @property
+    @pulumi.getter(name="onpremisesSecurityIdentifier")
+    def onpremises_security_identifier(self) -> str:
+        """
+        The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_security_identifier")
+
+    @property
+    @pulumi.getter(name="onpremisesSyncEnabled")
+    def onpremises_sync_enabled(self) -> bool:
+        """
+        Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        """
+        return pulumi.get(self, "onpremises_sync_enabled")
 
     @property
     @pulumi.getter
     def owners(self) -> Sequence[str]:
         """
-        The Object IDs of the Group owners.
+        List of object IDs of the group owners.
         """
         return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter(name="preferredLanguage")
+    def preferred_language(self) -> str:
+        """
+        The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        """
+        return pulumi.get(self, "preferred_language")
+
+    @property
+    @pulumi.getter(name="provisioningOptions")
+    def provisioning_options(self) -> Sequence[str]:
+        """
+        A list of provisioning options for a Microsoft 365 group, such as `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details.
+        """
+        return pulumi.get(self, "provisioning_options")
+
+    @property
+    @pulumi.getter(name="proxyAddresses")
+    def proxy_addresses(self) -> Sequence[str]:
+        """
+        List of email addresses for the group that direct to the same group mailbox.
+        """
+        return pulumi.get(self, "proxy_addresses")
 
     @property
     @pulumi.getter(name="securityEnabled")
@@ -118,6 +250,30 @@ class GetGroupResult:
         """
         return pulumi.get(self, "security_enabled")
 
+    @property
+    @pulumi.getter
+    def theme(self) -> str:
+        """
+        The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
+        """
+        return pulumi.get(self, "theme")
+
+    @property
+    @pulumi.getter
+    def types(self) -> Sequence[str]:
+        """
+        A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+        """
+        return pulumi.get(self, "types")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        """
+        The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
+        """
+        return pulumi.get(self, "visibility")
+
 
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
@@ -125,27 +281,46 @@ class AwaitableGetGroupResult(GetGroupResult):
         if False:
             yield self
         return GetGroupResult(
+            assignable_to_role=self.assignable_to_role,
+            behaviors=self.behaviors,
             description=self.description,
             display_name=self.display_name,
             id=self.id,
+            mail=self.mail,
             mail_enabled=self.mail_enabled,
+            mail_nickname=self.mail_nickname,
             members=self.members,
-            name=self.name,
             object_id=self.object_id,
+            onpremises_domain_name=self.onpremises_domain_name,
+            onpremises_netbios_name=self.onpremises_netbios_name,
+            onpremises_sam_account_name=self.onpremises_sam_account_name,
+            onpremises_security_identifier=self.onpremises_security_identifier,
+            onpremises_sync_enabled=self.onpremises_sync_enabled,
             owners=self.owners,
-            security_enabled=self.security_enabled)
+            preferred_language=self.preferred_language,
+            provisioning_options=self.provisioning_options,
+            proxy_addresses=self.proxy_addresses,
+            security_enabled=self.security_enabled,
+            theme=self.theme,
+            types=self.types,
+            visibility=self.visibility)
 
 
 def get_group(display_name: Optional[str] = None,
               mail_enabled: Optional[bool] = None,
-              name: Optional[str] = None,
               object_id: Optional[str] = None,
               security_enabled: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
     Gets information about an Azure Active Directory group.
 
-    > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
     ### By Group Display Name)
@@ -159,15 +334,14 @@ def get_group(display_name: Optional[str] = None,
     ```
 
 
-    :param str display_name: The display name for the Group.
+    :param str display_name: The display name for the group.
     :param bool mail_enabled: Whether the group is mail-enabled.
-    :param str object_id: Specifies the Object ID of the Group.
+    :param str object_id: Specifies the object ID of the group.
     :param bool security_enabled: Whether the group is a security group.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
     __args__['mailEnabled'] = mail_enabled
-    __args__['name'] = name
     __args__['objectId'] = object_id
     __args__['securityEnabled'] = security_enabled
     if opts is None:
@@ -177,12 +351,26 @@ def get_group(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getGroup:getGroup', __args__, opts=opts, typ=GetGroupResult).value
 
     return AwaitableGetGroupResult(
+        assignable_to_role=__ret__.assignable_to_role,
+        behaviors=__ret__.behaviors,
         description=__ret__.description,
         display_name=__ret__.display_name,
         id=__ret__.id,
+        mail=__ret__.mail,
         mail_enabled=__ret__.mail_enabled,
+        mail_nickname=__ret__.mail_nickname,
         members=__ret__.members,
-        name=__ret__.name,
         object_id=__ret__.object_id,
+        onpremises_domain_name=__ret__.onpremises_domain_name,
+        onpremises_netbios_name=__ret__.onpremises_netbios_name,
+        onpremises_sam_account_name=__ret__.onpremises_sam_account_name,
+        onpremises_security_identifier=__ret__.onpremises_security_identifier,
+        onpremises_sync_enabled=__ret__.onpremises_sync_enabled,
         owners=__ret__.owners,
-        security_enabled=__ret__.security_enabled)
+        preferred_language=__ret__.preferred_language,
+        provisioning_options=__ret__.provisioning_options,
+        proxy_addresses=__ret__.proxy_addresses,
+        security_enabled=__ret__.security_enabled,
+        theme=__ret__.theme,
+        types=__ret__.types,
+        visibility=__ret__.visibility)

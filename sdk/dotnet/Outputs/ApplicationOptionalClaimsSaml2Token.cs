@@ -11,10 +11,10 @@ namespace Pulumi.AzureAD.Outputs
 {
 
     [OutputType]
-    public sealed class GetApplicationOptionalClaimsIdTokenResult
+    public sealed class ApplicationOptionalClaimsSaml2Token
     {
         /// <summary>
-        /// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         /// </summary>
         public readonly ImmutableArray<string> AdditionalProperties;
         /// <summary>
@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD.Outputs
         public readonly string? Source;
 
         [OutputConstructor]
-        private GetApplicationOptionalClaimsIdTokenResult(
+        private ApplicationOptionalClaimsSaml2Token(
             ImmutableArray<string> additionalProperties,
 
             bool? essential,

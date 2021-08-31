@@ -14,7 +14,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Gets information about an Azure Active Directory user.
         /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -47,19 +53,19 @@ namespace Pulumi.AzureAD
     public sealed class GetUserArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The email alias of the Azure AD User.
+        /// The email alias of the user.
         /// </summary>
         [Input("mailNickname")]
         public string? MailNickname { get; set; }
 
         /// <summary>
-        /// Specifies the Object ID of the User within Azure Active Directory.
+        /// The object ID of the user.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
         /// <summary>
-        /// The User Principal Name of the Azure AD User.
+        /// The user principal name (UPN) of the user.
         /// </summary>
         [Input("userPrincipalName")]
         public string? UserPrincipalName { get; set; }
@@ -74,9 +80,17 @@ namespace Pulumi.AzureAD
     public sealed class GetUserResult
     {
         /// <summary>
-        /// `True` if the account is enabled; otherwise `False`.
+        /// Whether or not the account is enabled.
         /// </summary>
         public readonly bool AccountEnabled;
+        /// <summary>
+        /// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`.
+        /// </summary>
+        public readonly string AgeGroup;
+        /// <summary>
+        /// A list of telephone numbers for the user.
+        /// </summary>
+        public readonly ImmutableArray<string> BusinessPhones;
         /// <summary>
         /// The city in which the user is located.
         /// </summary>
@@ -86,17 +100,37 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string CompanyName;
         /// <summary>
-        /// The country/region in which the user is located; for example, “US” or “UK”.
+        /// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
+        /// </summary>
+        public readonly string ConsentProvidedForMinor;
+        /// <summary>
+        /// The country/region in which the user is located, e.g. `US` or `UK`.
         /// </summary>
         public readonly string Country;
+        /// <summary>
+        /// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+        /// </summary>
+        public readonly string CreationType;
         /// <summary>
         /// The name for the department in which the user works.
         /// </summary>
         public readonly string Department;
         /// <summary>
-        /// The Display Name of the Azure AD User.
+        /// The display name of the user.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// The employee identifier assigned to the user by the organisation.
+        /// </summary>
+        public readonly string EmployeeId;
+        /// <summary>
+        /// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+        /// </summary>
+        public readonly string ExternalUserState;
+        /// <summary>
+        /// The fax number of the user.
+        /// </summary>
+        public readonly string FaxNumber;
         /// <summary>
         /// The given name (first name) of the user.
         /// </summary>
@@ -106,54 +140,81 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// (**Deprecated**) The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
+        /// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
         /// </summary>
-        public readonly string ImmutableId;
+        public readonly ImmutableArray<string> ImAddresses;
         /// <summary>
         /// The user’s job title.
         /// </summary>
         public readonly string JobTitle;
         /// <summary>
-        /// The primary email address of the Azure AD User.
+        /// The SMTP address for the user.
         /// </summary>
         public readonly string Mail;
         /// <summary>
-        /// The email alias of the Azure AD User.
+        /// The email alias of the user.
         /// </summary>
         public readonly string MailNickname;
-        /// <summary>
-        /// (**Deprecated**) The primary cellular telephone number for the user. Deprecated in favour of `mobile_phone`.
-        /// </summary>
-        public readonly string Mobile;
         /// <summary>
         /// The primary cellular telephone number for the user.
         /// </summary>
         public readonly string MobilePhone;
+        /// <summary>
+        /// The object ID of the user.
+        /// </summary>
         public readonly string ObjectId;
         /// <summary>
         /// The office location in the user's place of business.
         /// </summary>
         public readonly string OfficeLocation;
         /// <summary>
+        /// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesDistinguishedName;
+        /// <summary>
+        /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesDomainName;
+        /// <summary>
         /// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
         /// </summary>
         public readonly string OnpremisesImmutableId;
         /// <summary>
-        /// The on-premise SAM account name of the Azure AD User.
+        /// The on-premise SAM account name of the user.
         /// </summary>
         public readonly string OnpremisesSamAccountName;
         /// <summary>
-        /// The on-premise user principal name of the Azure AD User.
+        /// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesSecurityIdentifier;
+        /// <summary>
+        /// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// </summary>
+        public readonly bool OnpremisesSyncEnabled;
+        /// <summary>
+        /// The on-premise user principal name of the user.
         /// </summary>
         public readonly string OnpremisesUserPrincipalName;
         /// <summary>
-        /// (**Deprecated**) The office location in the user's place of business. Deprecated in favour of `office_location`.
+        /// A list of additional email addresses for the user.
         /// </summary>
-        public readonly string PhysicalDeliveryOfficeName;
+        public readonly ImmutableArray<string> OtherMails;
         /// <summary>
         /// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         /// </summary>
         public readonly string PostalCode;
+        /// <summary>
+        /// The user's preferred language, in ISO 639-1 notation.
+        /// </summary>
+        public readonly string PreferredLanguage;
+        /// <summary>
+        /// List of email addresses for the user that direct to the same mailbox.
+        /// </summary>
+        public readonly ImmutableArray<string> ProxyAddresses;
+        /// <summary>
+        /// Whether or not the Outlook global address list should include this user.
+        /// </summary>
+        public readonly bool ShowInAddressList;
         /// <summary>
         /// The state or province in the user's address.
         /// </summary>
@@ -167,15 +228,15 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Surname;
         /// <summary>
-        /// The usage location of the Azure AD User.
+        /// The usage location of the user.
         /// </summary>
         public readonly string UsageLocation;
         /// <summary>
-        /// The User Principal Name of the Azure AD User.
+        /// The user principal name (UPN) of the user.
         /// </summary>
         public readonly string UserPrincipalName;
         /// <summary>
-        /// The user type in the directory. One of `Guest` or `Member`.
+        /// The user type in the directory. Possible values are `Guest` or `Member`.
         /// </summary>
         public readonly string UserType;
 
@@ -183,21 +244,35 @@ namespace Pulumi.AzureAD
         private GetUserResult(
             bool accountEnabled,
 
+            string ageGroup,
+
+            ImmutableArray<string> businessPhones,
+
             string city,
 
             string companyName,
 
+            string consentProvidedForMinor,
+
             string country,
+
+            string creationType,
 
             string department,
 
             string displayName,
 
+            string employeeId,
+
+            string externalUserState,
+
+            string faxNumber,
+
             string givenName,
 
             string id,
 
-            string immutableId,
+            ImmutableArray<string> imAddresses,
 
             string jobTitle,
 
@@ -205,23 +280,35 @@ namespace Pulumi.AzureAD
 
             string mailNickname,
 
-            string mobile,
-
             string mobilePhone,
 
             string objectId,
 
             string officeLocation,
 
+            string onpremisesDistinguishedName,
+
+            string onpremisesDomainName,
+
             string onpremisesImmutableId,
 
             string onpremisesSamAccountName,
 
+            string onpremisesSecurityIdentifier,
+
+            bool onpremisesSyncEnabled,
+
             string onpremisesUserPrincipalName,
 
-            string physicalDeliveryOfficeName,
+            ImmutableArray<string> otherMails,
 
             string postalCode,
+
+            string preferredLanguage,
+
+            ImmutableArray<string> proxyAddresses,
+
+            bool showInAddressList,
 
             string state,
 
@@ -236,26 +323,39 @@ namespace Pulumi.AzureAD
             string userType)
         {
             AccountEnabled = accountEnabled;
+            AgeGroup = ageGroup;
+            BusinessPhones = businessPhones;
             City = city;
             CompanyName = companyName;
+            ConsentProvidedForMinor = consentProvidedForMinor;
             Country = country;
+            CreationType = creationType;
             Department = department;
             DisplayName = displayName;
+            EmployeeId = employeeId;
+            ExternalUserState = externalUserState;
+            FaxNumber = faxNumber;
             GivenName = givenName;
             Id = id;
-            ImmutableId = immutableId;
+            ImAddresses = imAddresses;
             JobTitle = jobTitle;
             Mail = mail;
             MailNickname = mailNickname;
-            Mobile = mobile;
             MobilePhone = mobilePhone;
             ObjectId = objectId;
             OfficeLocation = officeLocation;
+            OnpremisesDistinguishedName = onpremisesDistinguishedName;
+            OnpremisesDomainName = onpremisesDomainName;
             OnpremisesImmutableId = onpremisesImmutableId;
             OnpremisesSamAccountName = onpremisesSamAccountName;
+            OnpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
+            OnpremisesSyncEnabled = onpremisesSyncEnabled;
             OnpremisesUserPrincipalName = onpremisesUserPrincipalName;
-            PhysicalDeliveryOfficeName = physicalDeliveryOfficeName;
+            OtherMails = otherMails;
             PostalCode = postalCode;
+            PreferredLanguage = preferredLanguage;
+            ProxyAddresses = proxyAddresses;
+            ShowInAddressList = showInAddressList;
             State = state;
             StreetAddress = streetAddress;
             Surname = surname;

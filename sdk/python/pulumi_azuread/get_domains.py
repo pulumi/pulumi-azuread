@@ -20,7 +20,10 @@ class GetDomainsResult:
     """
     A collection of values returned by getDomains.
     """
-    def __init__(__self__, domains=None, id=None, include_unverified=None, only_default=None, only_initial=None):
+    def __init__(__self__, admin_managed=None, domains=None, id=None, include_unverified=None, only_default=None, only_initial=None, only_root=None, supports_services=None):
+        if admin_managed and not isinstance(admin_managed, bool):
+            raise TypeError("Expected argument 'admin_managed' to be a bool")
+        pulumi.set(__self__, "admin_managed", admin_managed)
         if domains and not isinstance(domains, list):
             raise TypeError("Expected argument 'domains' to be a list")
         pulumi.set(__self__, "domains", domains)
@@ -36,12 +39,26 @@ class GetDomainsResult:
         if only_initial and not isinstance(only_initial, bool):
             raise TypeError("Expected argument 'only_initial' to be a bool")
         pulumi.set(__self__, "only_initial", only_initial)
+        if only_root and not isinstance(only_root, bool):
+            raise TypeError("Expected argument 'only_root' to be a bool")
+        pulumi.set(__self__, "only_root", only_root)
+        if supports_services and not isinstance(supports_services, list):
+            raise TypeError("Expected argument 'supports_services' to be a list")
+        pulumi.set(__self__, "supports_services", supports_services)
+
+    @property
+    @pulumi.getter(name="adminManaged")
+    def admin_managed(self) -> Optional[bool]:
+        """
+        Whether the DNS for the domain is managed by Microsoft 365.
+        """
+        return pulumi.get(self, "admin_managed")
 
     @property
     @pulumi.getter
     def domains(self) -> Sequence['outputs.GetDomainsDomainResult']:
         """
-        A list of domains. Each `domain` object provides the attributes documented below.
+        A list of tenant domains. Each `domain` object provides the attributes documented below.
         """
         return pulumi.get(self, "domains")
 
@@ -68,6 +85,16 @@ class GetDomainsResult:
     def only_initial(self) -> Optional[bool]:
         return pulumi.get(self, "only_initial")
 
+    @property
+    @pulumi.getter(name="onlyRoot")
+    def only_root(self) -> Optional[bool]:
+        return pulumi.get(self, "only_root")
+
+    @property
+    @pulumi.getter(name="supportsServices")
+    def supports_services(self) -> Optional[Sequence[str]]:
+        return pulumi.get(self, "supports_services")
+
 
 class AwaitableGetDomainsResult(GetDomainsResult):
     # pylint: disable=using-constant-test
@@ -75,41 +102,49 @@ class AwaitableGetDomainsResult(GetDomainsResult):
         if False:
             yield self
         return GetDomainsResult(
+            admin_managed=self.admin_managed,
             domains=self.domains,
             id=self.id,
             include_unverified=self.include_unverified,
             only_default=self.only_default,
-            only_initial=self.only_initial)
+            only_initial=self.only_initial,
+            only_root=self.only_root,
+            supports_services=self.supports_services)
 
 
-def get_domains(include_unverified: Optional[bool] = None,
+def get_domains(admin_managed: Optional[bool] = None,
+                include_unverified: Optional[bool] = None,
                 only_default: Optional[bool] = None,
                 only_initial: Optional[bool] = None,
+                only_root: Optional[bool] = None,
+                supports_services: Optional[Sequence[str]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
     Use this data source to access information about existing Domains within Azure Active Directory.
 
-    > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+    ## API Permissions
 
-    ## Example Usage
+    The following API permissions are required in order to use this data source.
 
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
+    When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
 
-    aad_domains = azuread.get_domains()
-    pulumi.export("domains", aad_domains.domains)
-    ```
+    When authenticated with a user principal, this data source does not require any additional roles.
 
 
+    :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
     :param bool include_unverified: Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
     :param bool only_default: Set to `true` to only return the default domain.
     :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+    :param bool only_root: Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+    :param Sequence[str] supports_services: A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
     """
     __args__ = dict()
+    __args__['adminManaged'] = admin_managed
     __args__['includeUnverified'] = include_unverified
     __args__['onlyDefault'] = only_default
     __args__['onlyInitial'] = only_initial
+    __args__['onlyRoot'] = only_root
+    __args__['supportsServices'] = supports_services
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -117,8 +152,11 @@ def get_domains(include_unverified: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
+        admin_managed=__ret__.admin_managed,
         domains=__ret__.domains,
         id=__ret__.id,
         include_unverified=__ret__.include_unverified,
         only_default=__ret__.only_default,
-        only_initial=__ret__.only_initial)
+        only_initial=__ret__.only_initial,
+        only_root=__ret__.only_root,
+        supports_services=__ret__.supports_services)

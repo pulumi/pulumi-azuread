@@ -7,9 +7,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets Object IDs or UPNs for multiple Azure Active Directory users.
+// Gets object IDs or user principal names for multiple Azure Active Directory users.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
 //
 // ## Example Usage
 //
@@ -49,11 +55,11 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 type GetUsersArgs struct {
 	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
 	IgnoreMissing *bool `pulumi:"ignoreMissing"`
-	// The email aliases of the Azure AD Users.
+	// The email aliases of the users.
 	MailNicknames []string `pulumi:"mailNicknames"`
-	// The Object IDs of the Azure AD Users.
+	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
-	// The User Principal Names of the Azure AD Users.
+	// The user principal names (UPNs) of the users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
 
@@ -62,12 +68,12 @@ type GetUsersResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	IgnoreMissing *bool  `pulumi:"ignoreMissing"`
-	// The email aliases of the Azure AD Users.
+	// The email aliases of the users.
 	MailNicknames []string `pulumi:"mailNicknames"`
-	// The Object IDs of the Azure AD Users.
+	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
-	// The User Principal Names of the Azure AD Users.
+	// The user principal names (UPNs) of the users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
-	// A list of Azure AD Users. Each `user` object provides the attributes documented below.
+	// A list of users. Each `user` object provides the attributes documented below.
 	Users []GetUsersUser `pulumi:"users"`
 }

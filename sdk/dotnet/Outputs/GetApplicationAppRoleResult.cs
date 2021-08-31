@@ -14,7 +14,7 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetApplicationAppRoleResult
     {
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
         /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
         /// <summary>
@@ -26,19 +26,15 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (Optional) Determines if the permission scope is enabled.
+        /// Determines if the app role is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Is this permission enabled?
-        /// </summary>
-        public readonly bool IsEnabled;
-        /// <summary>
-        /// The name of this permission
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         public readonly string Value;
 
@@ -54,8 +50,6 @@ namespace Pulumi.AzureAD.Outputs
 
             string id,
 
-            bool isEnabled,
-
             string value)
         {
             AllowedMemberTypes = allowedMemberTypes;
@@ -63,7 +57,6 @@ namespace Pulumi.AzureAD.Outputs
             DisplayName = displayName;
             Enabled = enabled;
             Id = id;
-            IsEnabled = isEnabled;
             Value = value;
         }
     }

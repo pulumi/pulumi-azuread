@@ -18,6 +18,12 @@ namespace Pulumi.AzureAD.Inputs
         [Input("accessTokenIssuanceEnabled")]
         public Input<bool>? AccessTokenIssuanceEnabled { get; set; }
 
+        /// <summary>
+        /// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+        /// </summary>
+        [Input("idTokenIssuanceEnabled")]
+        public Input<bool>? IdTokenIssuanceEnabled { get; set; }
+
         public ApplicationWebImplicitGrantArgs()
         {
         }

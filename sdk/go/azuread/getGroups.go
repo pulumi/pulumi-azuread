@@ -9,7 +9,13 @@ import (
 
 // Gets Object IDs or Display Names for multiple Azure Active Directory groups.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
 //
 // ## Example Usage
 //
@@ -47,22 +53,18 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
-	// The Display Names of the Azure AD Groups.
+	// The display names of the groups.
 	DisplayNames []string `pulumi:"displayNames"`
-	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
-	Names []string `pulumi:"names"`
-	// The Object IDs of the Azure AD Groups.
+	// The object IDs of the groups.
 	ObjectIds []string `pulumi:"objectIds"`
 }
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
-	// The Display Names of the Azure AD Groups.
+	// The display names of the groups.
 	DisplayNames []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// Deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
-	Names []string `pulumi:"names"`
-	// The Object IDs of the Azure AD Groups.
+	// The object IDs of the groups.
 	ObjectIds []string `pulumi:"objectIds"`
 }

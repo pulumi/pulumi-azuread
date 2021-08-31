@@ -8,6 +8,10 @@ import * as utilities from "./utilities";
 /**
  * Use this data source to access the configuration of the AzureAD provider.
  *
+ * ## API Permissions
+ *
+ * No additional roles are required to use this data source.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -15,7 +19,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const current = azuread.getClientConfig({});
- * export const accountId = current.then(current => current.clientId);
+ * export const objectId = current.then(current => current.objectId);
  * ```
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
@@ -34,11 +38,20 @@ export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientC
  * A collection of values returned by getClientConfig.
  */
 export interface GetClientConfigResult {
+    /**
+     * The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
+     */
     readonly clientId: string;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The object ID of the authenticated principal.
+     */
     readonly objectId: string;
+    /**
+     * The tenant ID of the authenticated principal.
+     */
     readonly tenantId: string;
 }

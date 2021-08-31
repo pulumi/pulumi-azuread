@@ -22,15 +22,15 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? AdminConsentDisplayName;
         /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
+        /// Determines if the permission scope is enabled. Defaults to `true`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
+        /// The unique identifier of the delegated permission. Must be a valid UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+        /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? UserConsentDisplayName;
         /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         public readonly string? Value;
 

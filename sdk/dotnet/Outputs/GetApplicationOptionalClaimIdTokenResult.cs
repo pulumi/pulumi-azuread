@@ -11,7 +11,7 @@ namespace Pulumi.AzureAD.Outputs
 {
 
     [OutputType]
-    public sealed class GetApplicationOptionalClaimsAccessTokenResult
+    public sealed class GetApplicationOptionalClaimIdTokenResult
     {
         /// <summary>
         /// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD.Outputs
         public readonly string? Source;
 
         [OutputConstructor]
-        private GetApplicationOptionalClaimsAccessTokenResult(
+        private GetApplicationOptionalClaimIdTokenResult(
             ImmutableArray<string> additionalProperties,
 
             bool? essential,

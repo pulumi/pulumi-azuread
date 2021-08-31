@@ -8,7 +8,13 @@ import * as utilities from "./utilities";
 /**
  * Gets Object IDs or Display Names for multiple Azure Active Directory groups.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
  *
@@ -35,7 +41,6 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
     }
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
         "displayNames": args.displayNames,
-        "names": args.names,
         "objectIds": args.objectIds,
     }, opts);
 }
@@ -45,15 +50,11 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
  */
 export interface GetGroupsArgs {
     /**
-     * The Display Names of the Azure AD Groups.
+     * The display names of the groups.
      */
     displayNames?: string[];
     /**
-     * @deprecated This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
-     */
-    names?: string[];
-    /**
-     * The Object IDs of the Azure AD Groups.
+     * The object IDs of the groups.
      */
     objectIds?: string[];
 }
@@ -63,7 +64,7 @@ export interface GetGroupsArgs {
  */
 export interface GetGroupsResult {
     /**
-     * The Display Names of the Azure AD Groups.
+     * The display names of the groups.
      */
     readonly displayNames: string[];
     /**
@@ -71,11 +72,7 @@ export interface GetGroupsResult {
      */
     readonly id: string;
     /**
-     * @deprecated This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider
-     */
-    readonly names: string[];
-    /**
-     * The Object IDs of the Azure AD Groups.
+     * The object IDs of the groups.
      */
     readonly objectIds: string[];
 }

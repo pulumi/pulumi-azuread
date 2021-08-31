@@ -26,17 +26,13 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Determines if the app role is enabled: Defaults to `true`.
+        /// Determines if the app role is enabled. Defaults to `true`.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
+        /// The unique identifier of the app role. Must be a valid UUID.
         /// </summary>
-        public readonly string? Id;
-        /// <summary>
-        /// Determines if the permission is enabled: defaults to `true`.
-        /// </summary>
-        public readonly bool? IsEnabled;
+        public readonly string Id;
         /// <summary>
         /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
@@ -52,9 +48,7 @@ namespace Pulumi.AzureAD.Outputs
 
             bool? enabled,
 
-            string? id,
-
-            bool? isEnabled,
+            string id,
 
             string? value)
         {
@@ -63,7 +57,6 @@ namespace Pulumi.AzureAD.Outputs
             DisplayName = displayName;
             Enabled = enabled;
             Id = id;
-            IsEnabled = isEnabled;
             Value = value;
         }
     }

@@ -22,16 +22,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "azuread:index/application:Application":
 		r = &Application{}
-	case "azuread:index/applicationAppRole:ApplicationAppRole":
-		r = &ApplicationAppRole{}
 	case "azuread:index/applicationCertificate:ApplicationCertificate":
 		r = &ApplicationCertificate{}
-	case "azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission":
-		r = &ApplicationOAuth2Permission{}
-	case "azuread:index/applicationOauth2PermissionScope:ApplicationOauth2PermissionScope":
-		r = &ApplicationOauth2PermissionScope{}
 	case "azuread:index/applicationPassword:ApplicationPassword":
 		r = &ApplicationPassword{}
+	case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
+		r = &ApplicationPreAuthorized{}
 	case "azuread:index/group:Group":
 		r = &Group{}
 	case "azuread:index/groupMember:GroupMember":
@@ -82,27 +78,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
-		"index/applicationAppRole",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"azuread",
 		"index/applicationCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
-		"index/applicationOAuth2Permission",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"azuread",
-		"index/applicationOauth2PermissionScope",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"azuread",
 		"index/applicationPassword",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationPreAuthorized",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -6,12 +6,19 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Gets information about an existing Service Principal associated with an Application within Azure Active Directory.
+ * Gets information about an existing service principal associated with an application within Azure Active Directory.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
- * ### By Application Display Name)
+ *
+ * *Look up by application display name*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -21,7 +28,8 @@ import * as utilities from "./utilities";
  *     displayName: "my-awesome-application",
  * }));
  * ```
- * ### By Application ID)
+ *
+ * *Look up by application ID (client ID)*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -31,7 +39,8 @@ import * as utilities from "./utilities";
  *     applicationId: "00000000-0000-0000-0000-000000000000",
  * }));
  * ```
- * ### By Object ID)
+ *
+ * *Look up by service principal object ID*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -54,8 +63,6 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
         "applicationId": args.applicationId,
         "displayName": args.displayName,
-        "oauth2PermissionScopes": args.oauth2PermissionScopes,
-        "oauth2Permissions": args.oauth2Permissions,
         "objectId": args.objectId,
     }, opts);
 }
@@ -65,25 +72,15 @@ export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulum
  */
 export interface GetServicePrincipalArgs {
     /**
-     * The ID of the Azure AD Application.
+     * The application ID (client ID) of the application associated with this service principal.
      */
     applicationId?: string;
     /**
-     * The Display Name of the Azure AD Application associated with this Service Principal.
+     * The display name of the application associated with this service principal.
      */
     displayName?: string;
     /**
-     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
-     */
-    oauth2PermissionScopes?: inputs.GetServicePrincipalOauth2PermissionScope[];
-    /**
-     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-     */
-    oauth2Permissions?: inputs.GetServicePrincipalOauth2Permission[];
-    /**
-     * The ID of the Azure AD Service Principal.
+     * The object ID of the service principal.
      */
     objectId?: string;
 }
@@ -93,30 +90,103 @@ export interface GetServicePrincipalArgs {
  */
 export interface GetServicePrincipalResult {
     /**
-     * A collection of `appRoles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+     * - Whether or not the service principal account is enabled.
+     */
+    readonly accountEnabled: boolean;
+    /**
+     * A list of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+     */
+    readonly alternativeNames: string[];
+    /**
+     * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+     */
+    readonly appRoleAssignmentRequired: boolean;
+    /**
+     * A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+     */
+    readonly appRoleIds: {[key: string]: string};
+    /**
+     * A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     readonly appRoles: outputs.GetServicePrincipalAppRole[];
+    /**
+     * The application ID (client ID) of the application associated with this service principal.
+     */
     readonly applicationId: string;
+    /**
+     * The tenant ID where the associated application is registered.
+     */
+    readonly applicationTenantId: string;
+    /**
+     * Permission help text that appears in the admin app assignment and consent experiences.
+     */
+    readonly description: string;
     /**
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
     readonly displayName: string;
     /**
+     * Home page or landing page of the associated application.
+     */
+    readonly homepageUrl: string;
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     /**
-     * A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+     * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps.
+     */
+    readonly loginUrl: string;
+    /**
+     * The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+     */
+    readonly logoutUrl: string;
+    /**
+     * A free text field to capture information about the service principal, typically used for operational purposes.
+     */
+    readonly notes: string;
+    /**
+     * A list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+     */
+    readonly notificationEmailAddresses: string[];
+    /**
+     * A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+     */
+    readonly oauth2PermissionScopeIds: {[key: string]: string};
+    /**
+     * A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
      */
     readonly oauth2PermissionScopes: outputs.GetServicePrincipalOauth2PermissionScope[];
     /**
-     * (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2Permissions` block as documented below. Deprecated in favour of `oauth2PermissionScopes`.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-     */
-    readonly oauth2Permissions: outputs.GetServicePrincipalOauth2Permission[];
-    /**
-     * The Object ID for the Service Principal.
+     * The object ID of the service principal.
      */
     readonly objectId: string;
+    /**
+     * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+     */
+    readonly preferredSingleSignOnMode: string;
+    /**
+     * A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+     */
+    readonly redirectUris: string[];
+    /**
+     * The URL where the service exposes SAML metadata for federation.
+     */
+    readonly samlMetadataUrl: string;
+    /**
+     * A list of identifier URI(s), copied over from the associated application.
+     */
+    readonly servicePrincipalNames: string[];
+    /**
+     * The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+     */
+    readonly signInAudience: string;
+    /**
+     * A list of tags applied to the service principal.
+     */
+    readonly tags: string[];
+    /**
+     * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+     */
+    readonly type: string;
 }

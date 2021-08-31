@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _additionalProperties;
 
         /// <summary>
-        /// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         /// </summary>
         public InputList<string> AdditionalProperties
         {

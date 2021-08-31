@@ -6,9 +6,15 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Gets Object IDs or UPNs for multiple Azure Active Directory users.
+ * Gets object IDs or user principal names for multiple Azure Active Directory users.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
  *
  * ## Example Usage
  *
@@ -50,15 +56,15 @@ export interface GetUsersArgs {
      */
     ignoreMissing?: boolean;
     /**
-     * The email aliases of the Azure AD Users.
+     * The email aliases of the users.
      */
     mailNicknames?: string[];
     /**
-     * The Object IDs of the Azure AD Users.
+     * The object IDs of the users.
      */
     objectIds?: string[];
     /**
-     * The User Principal Names of the Azure AD Users.
+     * The user principal names (UPNs) of the users.
      */
     userPrincipalNames?: string[];
 }
@@ -73,19 +79,19 @@ export interface GetUsersResult {
     readonly id: string;
     readonly ignoreMissing?: boolean;
     /**
-     * The email aliases of the Azure AD Users.
+     * The email aliases of the users.
      */
     readonly mailNicknames: string[];
     /**
-     * The Object IDs of the Azure AD Users.
+     * The object IDs of the users.
      */
     readonly objectIds: string[];
     /**
-     * The User Principal Names of the Azure AD Users.
+     * The user principal names (UPNs) of the users.
      */
     readonly userPrincipalNames: string[];
     /**
-     * A list of Azure AD Users. Each `user` object provides the attributes documented below.
+     * A list of users. Each `user` object provides the attributes documented below.
      */
     readonly users: outputs.GetUsersUser[];
 }

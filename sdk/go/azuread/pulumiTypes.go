@@ -11,8 +11,14 @@ import (
 )
 
 type ApplicationApi struct {
-	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications []string `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+	MappedClaimsEnabled *bool `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 	Oauth2PermissionScopes []ApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+	RequestedAccessTokenVersion *int `pulumi:"requestedAccessTokenVersion"`
 }
 
 // ApplicationApiInput is an input type that accepts ApplicationApiArgs and ApplicationApiOutput values.
@@ -27,8 +33,14 @@ type ApplicationApiInput interface {
 }
 
 type ApplicationApiArgs struct {
-	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications pulumi.StringArrayInput `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+	MappedClaimsEnabled pulumi.BoolPtrInput `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 	Oauth2PermissionScopes ApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+	RequestedAccessTokenVersion pulumi.IntPtrInput `pulumi:"requestedAccessTokenVersion"`
 }
 
 func (ApplicationApiArgs) ElementType() reflect.Type {
@@ -108,9 +120,24 @@ func (o ApplicationApiOutput) ToApplicationApiPtrOutputWithContext(ctx context.C
 	}).(ApplicationApiPtrOutput)
 }
 
-// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+func (o ApplicationApiOutput) KnownClientApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationApi) []string { return v.KnownClientApplications }).(pulumi.StringArrayOutput)
+}
+
+// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+func (o ApplicationApiOutput) MappedClaimsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationApi) *bool { return v.MappedClaimsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 func (o ApplicationApiOutput) Oauth2PermissionScopes() ApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v ApplicationApi) []ApplicationApiOauth2PermissionScope { return v.Oauth2PermissionScopes }).(ApplicationApiOauth2PermissionScopeArrayOutput)
+}
+
+// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+func (o ApplicationApiOutput) RequestedAccessTokenVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationApi) *int { return v.RequestedAccessTokenVersion }).(pulumi.IntPtrOutput)
 }
 
 type ApplicationApiPtrOutput struct{ *pulumi.OutputState }
@@ -131,7 +158,27 @@ func (o ApplicationApiPtrOutput) Elem() ApplicationApiOutput {
 	return o.ApplyT(func(v *ApplicationApi) ApplicationApi { return *v }).(ApplicationApiOutput)
 }
 
-// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+func (o ApplicationApiPtrOutput) KnownClientApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationApi) []string {
+		if v == nil {
+			return nil
+		}
+		return v.KnownClientApplications
+	}).(pulumi.StringArrayOutput)
+}
+
+// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+func (o ApplicationApiPtrOutput) MappedClaimsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationApi) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MappedClaimsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 func (o ApplicationApiPtrOutput) Oauth2PermissionScopes() ApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v *ApplicationApi) []ApplicationApiOauth2PermissionScope {
 		if v == nil {
@@ -141,22 +188,32 @@ func (o ApplicationApiPtrOutput) Oauth2PermissionScopes() ApplicationApiOauth2Pe
 	}).(ApplicationApiOauth2PermissionScopeArrayOutput)
 }
 
+// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+func (o ApplicationApiPtrOutput) RequestedAccessTokenVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationApi) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RequestedAccessTokenVersion
+	}).(pulumi.IntPtrOutput)
+}
+
 type ApplicationApiOauth2PermissionScope struct {
 	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
 	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	// Determines if the app role is enabled: Defaults to `true`.
+	// Determines if the permission scope is enabled. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
+	// The unique identifier of the delegated permission. Must be a valid UUID.
 	Id string `pulumi:"id"`
-	// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 	Type *string `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value *string `pulumi:"value"`
 }
 
@@ -176,17 +233,17 @@ type ApplicationApiOauth2PermissionScopeArgs struct {
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
 	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	// Determines if the app role is enabled: Defaults to `true`.
+	// Determines if the permission scope is enabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
+	// The unique identifier of the delegated permission. Must be a valid UUID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -251,17 +308,17 @@ func (o ApplicationApiOauth2PermissionScopeOutput) AdminConsentDisplayName() pul
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Determines if the app role is enabled: Defaults to `true`.
+// Determines if the permission scope is enabled. Defaults to `true`.
 func (o ApplicationApiOauth2PermissionScopeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
+// The unique identifier of the delegated permission. Must be a valid UUID.
 func (o ApplicationApiOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 func (o ApplicationApiOauth2PermissionScopeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -276,7 +333,7 @@ func (o ApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulu
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o ApplicationApiOauth2PermissionScopeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -301,326 +358,155 @@ func (o ApplicationApiOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInput)
 	}).(ApplicationApiOauth2PermissionScopeOutput)
 }
 
-type ApplicationAppRoleType struct {
+type ApplicationAppRole struct {
 	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description string `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName string `pulumi:"displayName"`
-	// Determines if the app role is enabled: Defaults to `true`.
+	// Determines if the app role is enabled. Defaults to `true`.
 	Enabled *bool `pulumi:"enabled"`
-	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-	Id *string `pulumi:"id"`
-	// Determines if the permission is enabled: defaults to `true`.
-	//
-	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-	IsEnabled *bool `pulumi:"isEnabled"`
+	// The unique identifier of the app role. Must be a valid UUID.
+	Id string `pulumi:"id"`
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value *string `pulumi:"value"`
 }
 
-// ApplicationAppRoleTypeInput is an input type that accepts ApplicationAppRoleTypeArgs and ApplicationAppRoleTypeOutput values.
-// You can construct a concrete instance of `ApplicationAppRoleTypeInput` via:
+// ApplicationAppRoleInput is an input type that accepts ApplicationAppRoleArgs and ApplicationAppRoleOutput values.
+// You can construct a concrete instance of `ApplicationAppRoleInput` via:
 //
-//          ApplicationAppRoleTypeArgs{...}
-type ApplicationAppRoleTypeInput interface {
+//          ApplicationAppRoleArgs{...}
+type ApplicationAppRoleInput interface {
 	pulumi.Input
 
-	ToApplicationAppRoleTypeOutput() ApplicationAppRoleTypeOutput
-	ToApplicationAppRoleTypeOutputWithContext(context.Context) ApplicationAppRoleTypeOutput
+	ToApplicationAppRoleOutput() ApplicationAppRoleOutput
+	ToApplicationAppRoleOutputWithContext(context.Context) ApplicationAppRoleOutput
 }
 
-type ApplicationAppRoleTypeArgs struct {
+type ApplicationAppRoleArgs struct {
 	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Determines if the app role is enabled: Defaults to `true`.
+	// Determines if the app role is enabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Determines if the permission is enabled: defaults to `true`.
-	//
-	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
+	// The unique identifier of the app role. Must be a valid UUID.
+	Id pulumi.StringInput `pulumi:"id"`
 	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
-func (ApplicationAppRoleTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationAppRoleType)(nil)).Elem()
+func (ApplicationAppRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppRole)(nil)).Elem()
 }
 
-func (i ApplicationAppRoleTypeArgs) ToApplicationAppRoleTypeOutput() ApplicationAppRoleTypeOutput {
-	return i.ToApplicationAppRoleTypeOutputWithContext(context.Background())
+func (i ApplicationAppRoleArgs) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {
+	return i.ToApplicationAppRoleOutputWithContext(context.Background())
 }
 
-func (i ApplicationAppRoleTypeArgs) ToApplicationAppRoleTypeOutputWithContext(ctx context.Context) ApplicationAppRoleTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleTypeOutput)
+func (i ApplicationAppRoleArgs) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleOutput)
 }
 
-// ApplicationAppRoleTypeArrayInput is an input type that accepts ApplicationAppRoleTypeArray and ApplicationAppRoleTypeArrayOutput values.
-// You can construct a concrete instance of `ApplicationAppRoleTypeArrayInput` via:
+// ApplicationAppRoleArrayInput is an input type that accepts ApplicationAppRoleArray and ApplicationAppRoleArrayOutput values.
+// You can construct a concrete instance of `ApplicationAppRoleArrayInput` via:
 //
-//          ApplicationAppRoleTypeArray{ ApplicationAppRoleTypeArgs{...} }
-type ApplicationAppRoleTypeArrayInput interface {
+//          ApplicationAppRoleArray{ ApplicationAppRoleArgs{...} }
+type ApplicationAppRoleArrayInput interface {
 	pulumi.Input
 
-	ToApplicationAppRoleTypeArrayOutput() ApplicationAppRoleTypeArrayOutput
-	ToApplicationAppRoleTypeArrayOutputWithContext(context.Context) ApplicationAppRoleTypeArrayOutput
+	ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput
+	ToApplicationAppRoleArrayOutputWithContext(context.Context) ApplicationAppRoleArrayOutput
 }
 
-type ApplicationAppRoleTypeArray []ApplicationAppRoleTypeInput
+type ApplicationAppRoleArray []ApplicationAppRoleInput
 
-func (ApplicationAppRoleTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationAppRoleType)(nil)).Elem()
+func (ApplicationAppRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppRole)(nil)).Elem()
 }
 
-func (i ApplicationAppRoleTypeArray) ToApplicationAppRoleTypeArrayOutput() ApplicationAppRoleTypeArrayOutput {
-	return i.ToApplicationAppRoleTypeArrayOutputWithContext(context.Background())
+func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput {
+	return i.ToApplicationAppRoleArrayOutputWithContext(context.Background())
 }
 
-func (i ApplicationAppRoleTypeArray) ToApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) ApplicationAppRoleTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleTypeArrayOutput)
+func (i ApplicationAppRoleArray) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationAppRoleArrayOutput)
 }
 
-type ApplicationAppRoleTypeOutput struct{ *pulumi.OutputState }
+type ApplicationAppRoleOutput struct{ *pulumi.OutputState }
 
-func (ApplicationAppRoleTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationAppRoleType)(nil)).Elem()
+func (ApplicationAppRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationAppRole)(nil)).Elem()
 }
 
-func (o ApplicationAppRoleTypeOutput) ToApplicationAppRoleTypeOutput() ApplicationAppRoleTypeOutput {
+func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutput() ApplicationAppRoleOutput {
 	return o
 }
 
-func (o ApplicationAppRoleTypeOutput) ToApplicationAppRoleTypeOutputWithContext(ctx context.Context) ApplicationAppRoleTypeOutput {
+func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutputWithContext(ctx context.Context) ApplicationAppRoleOutput {
 	return o
 }
 
 // Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
-func (o ApplicationAppRoleTypeOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
+func (o ApplicationAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
 // Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
-func (o ApplicationAppRoleTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.Description }).(pulumi.StringOutput)
+func (o ApplicationAppRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Display name for the app role that appears during app role assignment and in consent experiences.
-func (o ApplicationAppRoleTypeOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o ApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Determines if the app role is enabled: Defaults to `true`.
-func (o ApplicationAppRoleTypeOutput) Enabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+// Determines if the app role is enabled. Defaults to `true`.
+func (o ApplicationAppRoleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationAppRole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-func (o ApplicationAppRoleTypeOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Determines if the permission is enabled: defaults to `true`.
-//
-// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-func (o ApplicationAppRoleTypeOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
+// The unique identifier of the app role. Must be a valid UUID.
+func (o ApplicationAppRoleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-func (o ApplicationAppRoleTypeOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationAppRoleType) *string { return v.Value }).(pulumi.StringPtrOutput)
+func (o ApplicationAppRoleOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-type ApplicationAppRoleTypeArrayOutput struct{ *pulumi.OutputState }
+type ApplicationAppRoleArrayOutput struct{ *pulumi.OutputState }
 
-func (ApplicationAppRoleTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationAppRoleType)(nil)).Elem()
+func (ApplicationAppRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationAppRole)(nil)).Elem()
 }
 
-func (o ApplicationAppRoleTypeArrayOutput) ToApplicationAppRoleTypeArrayOutput() ApplicationAppRoleTypeArrayOutput {
+func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutput() ApplicationAppRoleArrayOutput {
 	return o
 }
 
-func (o ApplicationAppRoleTypeArrayOutput) ToApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) ApplicationAppRoleTypeArrayOutput {
+func (o ApplicationAppRoleArrayOutput) ToApplicationAppRoleArrayOutputWithContext(ctx context.Context) ApplicationAppRoleArrayOutput {
 	return o
 }
 
-func (o ApplicationAppRoleTypeArrayOutput) Index(i pulumi.IntInput) ApplicationAppRoleTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppRoleType {
-		return vs[0].([]ApplicationAppRoleType)[vs[1].(int)]
-	}).(ApplicationAppRoleTypeOutput)
-}
-
-type ApplicationOauth2Permission struct {
-	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
-	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-	Id *string `pulumi:"id"`
-	// Determines if the permission is enabled: defaults to `true`.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-	Type *string `pulumi:"type"`
-	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-	UserConsentDescription *string `pulumi:"userConsentDescription"`
-	// Display name for the delegated permission that appears in the end user consent experience.
-	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-	Value *string `pulumi:"value"`
-}
-
-// ApplicationOauth2PermissionInput is an input type that accepts ApplicationOauth2PermissionArgs and ApplicationOauth2PermissionOutput values.
-// You can construct a concrete instance of `ApplicationOauth2PermissionInput` via:
-//
-//          ApplicationOauth2PermissionArgs{...}
-type ApplicationOauth2PermissionInput interface {
-	pulumi.Input
-
-	ToApplicationOauth2PermissionOutput() ApplicationOauth2PermissionOutput
-	ToApplicationOauth2PermissionOutputWithContext(context.Context) ApplicationOauth2PermissionOutput
-}
-
-type ApplicationOauth2PermissionArgs struct {
-	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
-	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Determines if the permission is enabled: defaults to `true`.
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
-	// Display name for the delegated permission that appears in the end user consent experience.
-	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ApplicationOauth2PermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationOauth2Permission)(nil)).Elem()
-}
-
-func (i ApplicationOauth2PermissionArgs) ToApplicationOauth2PermissionOutput() ApplicationOauth2PermissionOutput {
-	return i.ToApplicationOauth2PermissionOutputWithContext(context.Background())
-}
-
-func (i ApplicationOauth2PermissionArgs) ToApplicationOauth2PermissionOutputWithContext(ctx context.Context) ApplicationOauth2PermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOauth2PermissionOutput)
-}
-
-// ApplicationOauth2PermissionArrayInput is an input type that accepts ApplicationOauth2PermissionArray and ApplicationOauth2PermissionArrayOutput values.
-// You can construct a concrete instance of `ApplicationOauth2PermissionArrayInput` via:
-//
-//          ApplicationOauth2PermissionArray{ ApplicationOauth2PermissionArgs{...} }
-type ApplicationOauth2PermissionArrayInput interface {
-	pulumi.Input
-
-	ToApplicationOauth2PermissionArrayOutput() ApplicationOauth2PermissionArrayOutput
-	ToApplicationOauth2PermissionArrayOutputWithContext(context.Context) ApplicationOauth2PermissionArrayOutput
-}
-
-type ApplicationOauth2PermissionArray []ApplicationOauth2PermissionInput
-
-func (ApplicationOauth2PermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationOauth2Permission)(nil)).Elem()
-}
-
-func (i ApplicationOauth2PermissionArray) ToApplicationOauth2PermissionArrayOutput() ApplicationOauth2PermissionArrayOutput {
-	return i.ToApplicationOauth2PermissionArrayOutputWithContext(context.Background())
-}
-
-func (i ApplicationOauth2PermissionArray) ToApplicationOauth2PermissionArrayOutputWithContext(ctx context.Context) ApplicationOauth2PermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOauth2PermissionArrayOutput)
-}
-
-type ApplicationOauth2PermissionOutput struct{ *pulumi.OutputState }
-
-func (ApplicationOauth2PermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationOauth2Permission)(nil)).Elem()
-}
-
-func (o ApplicationOauth2PermissionOutput) ToApplicationOauth2PermissionOutput() ApplicationOauth2PermissionOutput {
-	return o
-}
-
-func (o ApplicationOauth2PermissionOutput) ToApplicationOauth2PermissionOutputWithContext(ctx context.Context) ApplicationOauth2PermissionOutput {
-	return o
-}
-
-// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-func (o ApplicationOauth2PermissionOutput) AdminConsentDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.AdminConsentDescription }).(pulumi.StringPtrOutput)
-}
-
-// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-func (o ApplicationOauth2PermissionOutput) AdminConsentDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-func (o ApplicationOauth2PermissionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Determines if the permission is enabled: defaults to `true`.
-func (o ApplicationOauth2PermissionOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-func (o ApplicationOauth2PermissionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-func (o ApplicationOauth2PermissionOutput) UserConsentDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
-}
-
-// Display name for the delegated permission that appears in the end user consent experience.
-func (o ApplicationOauth2PermissionOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-func (o ApplicationOauth2PermissionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApplicationOauth2Permission) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ApplicationOauth2PermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (ApplicationOauth2PermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationOauth2Permission)(nil)).Elem()
-}
-
-func (o ApplicationOauth2PermissionArrayOutput) ToApplicationOauth2PermissionArrayOutput() ApplicationOauth2PermissionArrayOutput {
-	return o
-}
-
-func (o ApplicationOauth2PermissionArrayOutput) ToApplicationOauth2PermissionArrayOutputWithContext(ctx context.Context) ApplicationOauth2PermissionArrayOutput {
-	return o
-}
-
-func (o ApplicationOauth2PermissionArrayOutput) Index(i pulumi.IntInput) ApplicationOauth2PermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOauth2Permission {
-		return vs[0].([]ApplicationOauth2Permission)[vs[1].(int)]
-	}).(ApplicationOauth2PermissionOutput)
+func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationAppRole {
+		return vs[0].([]ApplicationAppRole)[vs[1].(int)]
+	}).(ApplicationAppRoleOutput)
 }
 
 type ApplicationOptionalClaims struct {
+	// One or more `accessToken` blocks as documented below.
 	AccessTokens []ApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
-	IdTokens     []ApplicationOptionalClaimsIdToken     `pulumi:"idTokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens []ApplicationOptionalClaimsIdToken `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens []ApplicationOptionalClaimsSaml2Token `pulumi:"saml2Tokens"`
 }
 
 // ApplicationOptionalClaimsInput is an input type that accepts ApplicationOptionalClaimsArgs and ApplicationOptionalClaimsOutput values.
@@ -635,8 +521,12 @@ type ApplicationOptionalClaimsInput interface {
 }
 
 type ApplicationOptionalClaimsArgs struct {
+	// One or more `accessToken` blocks as documented below.
 	AccessTokens ApplicationOptionalClaimsAccessTokenArrayInput `pulumi:"accessTokens"`
-	IdTokens     ApplicationOptionalClaimsIdTokenArrayInput     `pulumi:"idTokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens ApplicationOptionalClaimsIdTokenArrayInput `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens ApplicationOptionalClaimsSaml2TokenArrayInput `pulumi:"saml2Tokens"`
 }
 
 func (ApplicationOptionalClaimsArgs) ElementType() reflect.Type {
@@ -715,12 +605,20 @@ func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutputWit
 		return &v
 	}).(ApplicationOptionalClaimsPtrOutput)
 }
+
+// One or more `accessToken` blocks as documented below.
 func (o ApplicationOptionalClaimsOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(ApplicationOptionalClaimsAccessTokenArrayOutput)
 }
 
+// One or more `idToken` blocks as documented below.
 func (o ApplicationOptionalClaimsOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken { return v.IdTokens }).(ApplicationOptionalClaimsIdTokenArrayOutput)
+}
+
+// One or more `saml2Token` blocks as documented below.
+func (o ApplicationOptionalClaimsOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsSaml2Token { return v.Saml2Tokens }).(ApplicationOptionalClaimsSaml2TokenArrayOutput)
 }
 
 type ApplicationOptionalClaimsPtrOutput struct{ *pulumi.OutputState }
@@ -741,6 +639,7 @@ func (o ApplicationOptionalClaimsPtrOutput) Elem() ApplicationOptionalClaimsOutp
 	return o.ApplyT(func(v *ApplicationOptionalClaims) ApplicationOptionalClaims { return *v }).(ApplicationOptionalClaimsOutput)
 }
 
+// One or more `accessToken` blocks as documented below.
 func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
 	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken {
 		if v == nil {
@@ -750,6 +649,7 @@ func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalCl
 	}).(ApplicationOptionalClaimsAccessTokenArrayOutput)
 }
 
+// One or more `idToken` blocks as documented below.
 func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
 	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken {
 		if v == nil {
@@ -759,8 +659,18 @@ func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaims
 	}).(ApplicationOptionalClaimsIdTokenArrayOutput)
 }
 
+// One or more `saml2Token` blocks as documented below.
+func (o ApplicationOptionalClaimsPtrOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsSaml2Token {
+		if v == nil {
+			return nil
+		}
+		return v.Saml2Tokens
+	}).(ApplicationOptionalClaimsSaml2TokenArrayOutput)
+}
+
 type ApplicationOptionalClaimsAccessToken struct {
-	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
@@ -782,7 +692,7 @@ type ApplicationOptionalClaimsAccessTokenInput interface {
 }
 
 type ApplicationOptionalClaimsAccessTokenArgs struct {
-	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
@@ -843,7 +753,7 @@ func (o ApplicationOptionalClaimsAccessTokenOutput) ToApplicationOptionalClaimsA
 	return o
 }
 
-// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o ApplicationOptionalClaimsAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
@@ -884,7 +794,7 @@ func (o ApplicationOptionalClaimsAccessTokenArrayOutput) Index(i pulumi.IntInput
 }
 
 type ApplicationOptionalClaimsIdToken struct {
-	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential *bool `pulumi:"essential"`
@@ -906,7 +816,7 @@ type ApplicationOptionalClaimsIdTokenInput interface {
 }
 
 type ApplicationOptionalClaimsIdTokenArgs struct {
-	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 	Essential pulumi.BoolPtrInput `pulumi:"essential"`
@@ -967,7 +877,7 @@ func (o ApplicationOptionalClaimsIdTokenOutput) ToApplicationOptionalClaimsIdTok
 	return o
 }
 
-// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o ApplicationOptionalClaimsIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
@@ -1005,6 +915,261 @@ func (o ApplicationOptionalClaimsIdTokenArrayOutput) Index(i pulumi.IntInput) Ap
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOptionalClaimsIdToken {
 		return vs[0].([]ApplicationOptionalClaimsIdToken)[vs[1].(int)]
 	}).(ApplicationOptionalClaimsIdTokenOutput)
+}
+
+type ApplicationOptionalClaimsSaml2Token struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties []string `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
+}
+
+// ApplicationOptionalClaimsSaml2TokenInput is an input type that accepts ApplicationOptionalClaimsSaml2TokenArgs and ApplicationOptionalClaimsSaml2TokenOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsSaml2TokenInput` via:
+//
+//          ApplicationOptionalClaimsSaml2TokenArgs{...}
+type ApplicationOptionalClaimsSaml2TokenInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsSaml2TokenOutput() ApplicationOptionalClaimsSaml2TokenOutput
+	ToApplicationOptionalClaimsSaml2TokenOutputWithContext(context.Context) ApplicationOptionalClaimsSaml2TokenOutput
+}
+
+type ApplicationOptionalClaimsSaml2TokenArgs struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (ApplicationOptionalClaimsSaml2TokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsSaml2Token)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsSaml2TokenArgs) ToApplicationOptionalClaimsSaml2TokenOutput() ApplicationOptionalClaimsSaml2TokenOutput {
+	return i.ToApplicationOptionalClaimsSaml2TokenOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsSaml2TokenArgs) ToApplicationOptionalClaimsSaml2TokenOutputWithContext(ctx context.Context) ApplicationOptionalClaimsSaml2TokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsSaml2TokenOutput)
+}
+
+// ApplicationOptionalClaimsSaml2TokenArrayInput is an input type that accepts ApplicationOptionalClaimsSaml2TokenArray and ApplicationOptionalClaimsSaml2TokenArrayOutput values.
+// You can construct a concrete instance of `ApplicationOptionalClaimsSaml2TokenArrayInput` via:
+//
+//          ApplicationOptionalClaimsSaml2TokenArray{ ApplicationOptionalClaimsSaml2TokenArgs{...} }
+type ApplicationOptionalClaimsSaml2TokenArrayInput interface {
+	pulumi.Input
+
+	ToApplicationOptionalClaimsSaml2TokenArrayOutput() ApplicationOptionalClaimsSaml2TokenArrayOutput
+	ToApplicationOptionalClaimsSaml2TokenArrayOutputWithContext(context.Context) ApplicationOptionalClaimsSaml2TokenArrayOutput
+}
+
+type ApplicationOptionalClaimsSaml2TokenArray []ApplicationOptionalClaimsSaml2TokenInput
+
+func (ApplicationOptionalClaimsSaml2TokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOptionalClaimsSaml2Token)(nil)).Elem()
+}
+
+func (i ApplicationOptionalClaimsSaml2TokenArray) ToApplicationOptionalClaimsSaml2TokenArrayOutput() ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return i.ToApplicationOptionalClaimsSaml2TokenArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationOptionalClaimsSaml2TokenArray) ToApplicationOptionalClaimsSaml2TokenArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationOptionalClaimsSaml2TokenArrayOutput)
+}
+
+type ApplicationOptionalClaimsSaml2TokenOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsSaml2TokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationOptionalClaimsSaml2Token)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsSaml2TokenOutput) ToApplicationOptionalClaimsSaml2TokenOutput() ApplicationOptionalClaimsSaml2TokenOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsSaml2TokenOutput) ToApplicationOptionalClaimsSaml2TokenOutputWithContext(ctx context.Context) ApplicationOptionalClaimsSaml2TokenOutput {
+	return o
+}
+
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+func (o ApplicationOptionalClaimsSaml2TokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+}
+
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+func (o ApplicationOptionalClaimsSaml2TokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the optional claim.
+func (o ApplicationOptionalClaimsSaml2TokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+func (o ApplicationOptionalClaimsSaml2TokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationOptionalClaimsSaml2TokenArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationOptionalClaimsSaml2TokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationOptionalClaimsSaml2Token)(nil)).Elem()
+}
+
+func (o ApplicationOptionalClaimsSaml2TokenArrayOutput) ToApplicationOptionalClaimsSaml2TokenArrayOutput() ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsSaml2TokenArrayOutput) ToApplicationOptionalClaimsSaml2TokenArrayOutputWithContext(ctx context.Context) ApplicationOptionalClaimsSaml2TokenArrayOutput {
+	return o
+}
+
+func (o ApplicationOptionalClaimsSaml2TokenArrayOutput) Index(i pulumi.IntInput) ApplicationOptionalClaimsSaml2TokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationOptionalClaimsSaml2Token {
+		return vs[0].([]ApplicationOptionalClaimsSaml2Token)[vs[1].(int)]
+	}).(ApplicationOptionalClaimsSaml2TokenOutput)
+}
+
+type ApplicationPublicClient struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris []string `pulumi:"redirectUris"`
+}
+
+// ApplicationPublicClientInput is an input type that accepts ApplicationPublicClientArgs and ApplicationPublicClientOutput values.
+// You can construct a concrete instance of `ApplicationPublicClientInput` via:
+//
+//          ApplicationPublicClientArgs{...}
+type ApplicationPublicClientInput interface {
+	pulumi.Input
+
+	ToApplicationPublicClientOutput() ApplicationPublicClientOutput
+	ToApplicationPublicClientOutputWithContext(context.Context) ApplicationPublicClientOutput
+}
+
+type ApplicationPublicClientArgs struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+}
+
+func (ApplicationPublicClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPublicClient)(nil)).Elem()
+}
+
+func (i ApplicationPublicClientArgs) ToApplicationPublicClientOutput() ApplicationPublicClientOutput {
+	return i.ToApplicationPublicClientOutputWithContext(context.Background())
+}
+
+func (i ApplicationPublicClientArgs) ToApplicationPublicClientOutputWithContext(ctx context.Context) ApplicationPublicClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPublicClientOutput)
+}
+
+func (i ApplicationPublicClientArgs) ToApplicationPublicClientPtrOutput() ApplicationPublicClientPtrOutput {
+	return i.ToApplicationPublicClientPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationPublicClientArgs) ToApplicationPublicClientPtrOutputWithContext(ctx context.Context) ApplicationPublicClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPublicClientOutput).ToApplicationPublicClientPtrOutputWithContext(ctx)
+}
+
+// ApplicationPublicClientPtrInput is an input type that accepts ApplicationPublicClientArgs, ApplicationPublicClientPtr and ApplicationPublicClientPtrOutput values.
+// You can construct a concrete instance of `ApplicationPublicClientPtrInput` via:
+//
+//          ApplicationPublicClientArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationPublicClientPtrInput interface {
+	pulumi.Input
+
+	ToApplicationPublicClientPtrOutput() ApplicationPublicClientPtrOutput
+	ToApplicationPublicClientPtrOutputWithContext(context.Context) ApplicationPublicClientPtrOutput
+}
+
+type applicationPublicClientPtrType ApplicationPublicClientArgs
+
+func ApplicationPublicClientPtr(v *ApplicationPublicClientArgs) ApplicationPublicClientPtrInput {
+	return (*applicationPublicClientPtrType)(v)
+}
+
+func (*applicationPublicClientPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPublicClient)(nil)).Elem()
+}
+
+func (i *applicationPublicClientPtrType) ToApplicationPublicClientPtrOutput() ApplicationPublicClientPtrOutput {
+	return i.ToApplicationPublicClientPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationPublicClientPtrType) ToApplicationPublicClientPtrOutputWithContext(ctx context.Context) ApplicationPublicClientPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPublicClientPtrOutput)
+}
+
+type ApplicationPublicClientOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPublicClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationPublicClient)(nil)).Elem()
+}
+
+func (o ApplicationPublicClientOutput) ToApplicationPublicClientOutput() ApplicationPublicClientOutput {
+	return o
+}
+
+func (o ApplicationPublicClientOutput) ToApplicationPublicClientOutputWithContext(ctx context.Context) ApplicationPublicClientOutput {
+	return o
+}
+
+func (o ApplicationPublicClientOutput) ToApplicationPublicClientPtrOutput() ApplicationPublicClientPtrOutput {
+	return o.ToApplicationPublicClientPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationPublicClientOutput) ToApplicationPublicClientPtrOutputWithContext(ctx context.Context) ApplicationPublicClientPtrOutput {
+	return o.ApplyT(func(v ApplicationPublicClient) *ApplicationPublicClient {
+		return &v
+	}).(ApplicationPublicClientPtrOutput)
+}
+
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+func (o ApplicationPublicClientOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationPublicClient) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationPublicClientPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationPublicClientPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationPublicClient)(nil)).Elem()
+}
+
+func (o ApplicationPublicClientPtrOutput) ToApplicationPublicClientPtrOutput() ApplicationPublicClientPtrOutput {
+	return o
+}
+
+func (o ApplicationPublicClientPtrOutput) ToApplicationPublicClientPtrOutputWithContext(ctx context.Context) ApplicationPublicClientPtrOutput {
+	return o
+}
+
+func (o ApplicationPublicClientPtrOutput) Elem() ApplicationPublicClientOutput {
+	return o.ApplyT(func(v *ApplicationPublicClient) ApplicationPublicClient { return *v }).(ApplicationPublicClientOutput)
+}
+
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+func (o ApplicationPublicClientPtrOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationPublicClient) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUris
+	}).(pulumi.StringArrayOutput)
 }
 
 type ApplicationRequiredResourceAccess struct {
@@ -1116,9 +1281,9 @@ func (o ApplicationRequiredResourceAccessArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type ApplicationRequiredResourceAccessResourceAccess struct {
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id string `pulumi:"id"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type string `pulumi:"type"`
 }
 
@@ -1134,9 +1299,9 @@ type ApplicationRequiredResourceAccessResourceAccessInput interface {
 }
 
 type ApplicationRequiredResourceAccessResourceAccessArgs struct {
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1191,12 +1356,12 @@ func (o ApplicationRequiredResourceAccessResourceAccessOutput) ToApplicationRequ
 	return o
 }
 
-// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o ApplicationRequiredResourceAccessResourceAccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccessResourceAccess) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 func (o ApplicationRequiredResourceAccessResourceAccessOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccessResourceAccess) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1221,6 +1386,137 @@ func (o ApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i pulu
 	}).(ApplicationRequiredResourceAccessResourceAccessOutput)
 }
 
+type ApplicationSinglePageApplication struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris []string `pulumi:"redirectUris"`
+}
+
+// ApplicationSinglePageApplicationInput is an input type that accepts ApplicationSinglePageApplicationArgs and ApplicationSinglePageApplicationOutput values.
+// You can construct a concrete instance of `ApplicationSinglePageApplicationInput` via:
+//
+//          ApplicationSinglePageApplicationArgs{...}
+type ApplicationSinglePageApplicationInput interface {
+	pulumi.Input
+
+	ToApplicationSinglePageApplicationOutput() ApplicationSinglePageApplicationOutput
+	ToApplicationSinglePageApplicationOutputWithContext(context.Context) ApplicationSinglePageApplicationOutput
+}
+
+type ApplicationSinglePageApplicationArgs struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+}
+
+func (ApplicationSinglePageApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (i ApplicationSinglePageApplicationArgs) ToApplicationSinglePageApplicationOutput() ApplicationSinglePageApplicationOutput {
+	return i.ToApplicationSinglePageApplicationOutputWithContext(context.Background())
+}
+
+func (i ApplicationSinglePageApplicationArgs) ToApplicationSinglePageApplicationOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSinglePageApplicationOutput)
+}
+
+func (i ApplicationSinglePageApplicationArgs) ToApplicationSinglePageApplicationPtrOutput() ApplicationSinglePageApplicationPtrOutput {
+	return i.ToApplicationSinglePageApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationSinglePageApplicationArgs) ToApplicationSinglePageApplicationPtrOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSinglePageApplicationOutput).ToApplicationSinglePageApplicationPtrOutputWithContext(ctx)
+}
+
+// ApplicationSinglePageApplicationPtrInput is an input type that accepts ApplicationSinglePageApplicationArgs, ApplicationSinglePageApplicationPtr and ApplicationSinglePageApplicationPtrOutput values.
+// You can construct a concrete instance of `ApplicationSinglePageApplicationPtrInput` via:
+//
+//          ApplicationSinglePageApplicationArgs{...}
+//
+//  or:
+//
+//          nil
+type ApplicationSinglePageApplicationPtrInput interface {
+	pulumi.Input
+
+	ToApplicationSinglePageApplicationPtrOutput() ApplicationSinglePageApplicationPtrOutput
+	ToApplicationSinglePageApplicationPtrOutputWithContext(context.Context) ApplicationSinglePageApplicationPtrOutput
+}
+
+type applicationSinglePageApplicationPtrType ApplicationSinglePageApplicationArgs
+
+func ApplicationSinglePageApplicationPtr(v *ApplicationSinglePageApplicationArgs) ApplicationSinglePageApplicationPtrInput {
+	return (*applicationSinglePageApplicationPtrType)(v)
+}
+
+func (*applicationSinglePageApplicationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (i *applicationSinglePageApplicationPtrType) ToApplicationSinglePageApplicationPtrOutput() ApplicationSinglePageApplicationPtrOutput {
+	return i.ToApplicationSinglePageApplicationPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationSinglePageApplicationPtrType) ToApplicationSinglePageApplicationPtrOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationSinglePageApplicationPtrOutput)
+}
+
+type ApplicationSinglePageApplicationOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSinglePageApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicationOutput() ApplicationSinglePageApplicationOutput {
+	return o
+}
+
+func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicationOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationOutput {
+	return o
+}
+
+func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicationPtrOutput() ApplicationSinglePageApplicationPtrOutput {
+	return o.ToApplicationSinglePageApplicationPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicationPtrOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationPtrOutput {
+	return o.ApplyT(func(v ApplicationSinglePageApplication) *ApplicationSinglePageApplication {
+		return &v
+	}).(ApplicationSinglePageApplicationPtrOutput)
+}
+
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+func (o ApplicationSinglePageApplicationOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationSinglePageApplication) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationSinglePageApplicationPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationSinglePageApplicationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (o ApplicationSinglePageApplicationPtrOutput) ToApplicationSinglePageApplicationPtrOutput() ApplicationSinglePageApplicationPtrOutput {
+	return o
+}
+
+func (o ApplicationSinglePageApplicationPtrOutput) ToApplicationSinglePageApplicationPtrOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationPtrOutput {
+	return o
+}
+
+func (o ApplicationSinglePageApplicationPtrOutput) Elem() ApplicationSinglePageApplicationOutput {
+	return o.ApplyT(func(v *ApplicationSinglePageApplication) ApplicationSinglePageApplication { return *v }).(ApplicationSinglePageApplicationOutput)
+}
+
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+func (o ApplicationSinglePageApplicationPtrOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationSinglePageApplication) []string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUris
+	}).(pulumi.StringArrayOutput)
+}
+
 type ApplicationWeb struct {
 	// Home page or landing page of the application.
 	HomepageUrl *string `pulumi:"homepageUrl"`
@@ -1228,7 +1524,7 @@ type ApplicationWeb struct {
 	ImplicitGrant *ApplicationWebImplicitGrant `pulumi:"implicitGrant"`
 	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -1250,7 +1546,7 @@ type ApplicationWebArgs struct {
 	ImplicitGrant ApplicationWebImplicitGrantPtrInput `pulumi:"implicitGrant"`
 	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 	LogoutUrl pulumi.StringPtrInput `pulumi:"logoutUrl"`
-	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -1346,7 +1642,7 @@ func (o ApplicationWebOutput) LogoutUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationWeb) *string { return v.LogoutUrl }).(pulumi.StringPtrOutput)
 }
 
-// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 func (o ApplicationWebOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationWeb) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -1399,7 +1695,7 @@ func (o ApplicationWebPtrOutput) LogoutUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 func (o ApplicationWebPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationWeb) []string {
 		if v == nil {
@@ -1412,6 +1708,8 @@ func (o ApplicationWebPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 type ApplicationWebImplicitGrant struct {
 	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled *bool `pulumi:"accessTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled *bool `pulumi:"idTokenIssuanceEnabled"`
 }
 
 // ApplicationWebImplicitGrantInput is an input type that accepts ApplicationWebImplicitGrantArgs and ApplicationWebImplicitGrantOutput values.
@@ -1428,6 +1726,8 @@ type ApplicationWebImplicitGrantInput interface {
 type ApplicationWebImplicitGrantArgs struct {
 	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled pulumi.BoolPtrInput `pulumi:"accessTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled pulumi.BoolPtrInput `pulumi:"idTokenIssuanceEnabled"`
 }
 
 func (ApplicationWebImplicitGrantArgs) ElementType() reflect.Type {
@@ -1512,6 +1812,11 @@ func (o ApplicationWebImplicitGrantOutput) AccessTokenIssuanceEnabled() pulumi.B
 	return o.ApplyT(func(v ApplicationWebImplicitGrant) *bool { return v.AccessTokenIssuanceEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+func (o ApplicationWebImplicitGrantOutput) IdTokenIssuanceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationWebImplicitGrant) *bool { return v.IdTokenIssuanceEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type ApplicationWebImplicitGrantPtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationWebImplicitGrantPtrOutput) ElementType() reflect.Type {
@@ -1540,22 +1845,28 @@ func (o ApplicationWebImplicitGrantPtrOutput) AccessTokenIssuanceEnabled() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationWebImplicitGrant) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IdTokenIssuanceEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ServicePrincipalAppRole struct {
-	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// A description of the service principal provided for internal end-users.
 	Description *string `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName *string `pulumi:"displayName"`
-	// Is this permission enabled?
+	// Specifies whether the permission scope is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`.
+	// The unique identifier of the delegated permission.
 	Id *string `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The name of this permission.
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value *string `pulumi:"value"`
 }
 
@@ -1571,21 +1882,17 @@ type ServicePrincipalAppRoleInput interface {
 }
 
 type ServicePrincipalAppRoleArgs struct {
-	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
-	// Permission help text that appears in the admin app assignment and consent experiences.
+	// A description of the service principal provided for internal end-users.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Display name for the permission that appears in the admin consent and app assignment experiences.
+	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Is this permission enabled?
+	// Specifies whether the permission scope is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`.
+	// The unique identifier of the delegated permission.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// The name of this permission.
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1640,39 +1947,32 @@ func (o ServicePrincipalAppRoleOutput) ToServicePrincipalAppRoleOutputWithContex
 	return o
 }
 
-// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 func (o ServicePrincipalAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
-// Permission help text that appears in the admin app assignment and consent experiences.
+// A description of the service principal provided for internal end-users.
 func (o ServicePrincipalAppRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Display name for the permission that appears in the admin consent and app assignment experiences.
+// Display name for the app role that appears during app role assignment and in consent experiences.
 func (o ServicePrincipalAppRoleOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Is this permission enabled?
+// Specifies whether the permission scope is enabled.
 func (o ServicePrincipalAppRoleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission`.
+// The unique identifier of the delegated permission.
 func (o ServicePrincipalAppRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Is this permission enabled?
-//
-// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-func (o ServicePrincipalAppRoleOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalAppRole) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The name of this permission.
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o ServicePrincipalAppRoleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1697,182 +1997,22 @@ func (o ServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) ServicePrin
 	}).(ServicePrincipalAppRoleOutput)
 }
 
-type ServicePrincipalOauth2Permission struct {
-	// The description of the admin consent.
-	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent.
-	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier for one of the `OAuth2Permission`.
-	Id *string `pulumi:"id"`
-	// Is this permission enabled?
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The type of the permission.
-	Type *string `pulumi:"type"`
-	// The description of the user consent.
-	UserConsentDescription *string `pulumi:"userConsentDescription"`
-	// The display name of the user consent.
-	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	// The name of this permission.
-	Value *string `pulumi:"value"`
-}
-
-// ServicePrincipalOauth2PermissionInput is an input type that accepts ServicePrincipalOauth2PermissionArgs and ServicePrincipalOauth2PermissionOutput values.
-// You can construct a concrete instance of `ServicePrincipalOauth2PermissionInput` via:
-//
-//          ServicePrincipalOauth2PermissionArgs{...}
-type ServicePrincipalOauth2PermissionInput interface {
-	pulumi.Input
-
-	ToServicePrincipalOauth2PermissionOutput() ServicePrincipalOauth2PermissionOutput
-	ToServicePrincipalOauth2PermissionOutputWithContext(context.Context) ServicePrincipalOauth2PermissionOutput
-}
-
-type ServicePrincipalOauth2PermissionArgs struct {
-	// The description of the admin consent.
-	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent.
-	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier for one of the `OAuth2Permission`.
-	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Is this permission enabled?
-	IsEnabled pulumi.BoolPtrInput `pulumi:"isEnabled"`
-	// The type of the permission.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The description of the user consent.
-	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent.
-	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	// The name of this permission.
-	Value pulumi.StringPtrInput `pulumi:"value"`
-}
-
-func (ServicePrincipalOauth2PermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (i ServicePrincipalOauth2PermissionArgs) ToServicePrincipalOauth2PermissionOutput() ServicePrincipalOauth2PermissionOutput {
-	return i.ToServicePrincipalOauth2PermissionOutputWithContext(context.Background())
-}
-
-func (i ServicePrincipalOauth2PermissionArgs) ToServicePrincipalOauth2PermissionOutputWithContext(ctx context.Context) ServicePrincipalOauth2PermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalOauth2PermissionOutput)
-}
-
-// ServicePrincipalOauth2PermissionArrayInput is an input type that accepts ServicePrincipalOauth2PermissionArray and ServicePrincipalOauth2PermissionArrayOutput values.
-// You can construct a concrete instance of `ServicePrincipalOauth2PermissionArrayInput` via:
-//
-//          ServicePrincipalOauth2PermissionArray{ ServicePrincipalOauth2PermissionArgs{...} }
-type ServicePrincipalOauth2PermissionArrayInput interface {
-	pulumi.Input
-
-	ToServicePrincipalOauth2PermissionArrayOutput() ServicePrincipalOauth2PermissionArrayOutput
-	ToServicePrincipalOauth2PermissionArrayOutputWithContext(context.Context) ServicePrincipalOauth2PermissionArrayOutput
-}
-
-type ServicePrincipalOauth2PermissionArray []ServicePrincipalOauth2PermissionInput
-
-func (ServicePrincipalOauth2PermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (i ServicePrincipalOauth2PermissionArray) ToServicePrincipalOauth2PermissionArrayOutput() ServicePrincipalOauth2PermissionArrayOutput {
-	return i.ToServicePrincipalOauth2PermissionArrayOutputWithContext(context.Background())
-}
-
-func (i ServicePrincipalOauth2PermissionArray) ToServicePrincipalOauth2PermissionArrayOutputWithContext(ctx context.Context) ServicePrincipalOauth2PermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalOauth2PermissionArrayOutput)
-}
-
-type ServicePrincipalOauth2PermissionOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalOauth2PermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (o ServicePrincipalOauth2PermissionOutput) ToServicePrincipalOauth2PermissionOutput() ServicePrincipalOauth2PermissionOutput {
-	return o
-}
-
-func (o ServicePrincipalOauth2PermissionOutput) ToServicePrincipalOauth2PermissionOutputWithContext(ctx context.Context) ServicePrincipalOauth2PermissionOutput {
-	return o
-}
-
-// The description of the admin consent.
-func (o ServicePrincipalOauth2PermissionOutput) AdminConsentDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.AdminConsentDescription }).(pulumi.StringPtrOutput)
-}
-
-// The display name of the admin consent.
-func (o ServicePrincipalOauth2PermissionOutput) AdminConsentDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The unique identifier for one of the `OAuth2Permission`.
-func (o ServicePrincipalOauth2PermissionOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.Id }).(pulumi.StringPtrOutput)
-}
-
-// Is this permission enabled?
-func (o ServicePrincipalOauth2PermissionOutput) IsEnabled() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *bool { return v.IsEnabled }).(pulumi.BoolPtrOutput)
-}
-
-// The type of the permission.
-func (o ServicePrincipalOauth2PermissionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.Type }).(pulumi.StringPtrOutput)
-}
-
-// The description of the user consent.
-func (o ServicePrincipalOauth2PermissionOutput) UserConsentDescription() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
-}
-
-// The display name of the user consent.
-func (o ServicePrincipalOauth2PermissionOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
-}
-
-// The name of this permission.
-func (o ServicePrincipalOauth2PermissionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalOauth2Permission) *string { return v.Value }).(pulumi.StringPtrOutput)
-}
-
-type ServicePrincipalOauth2PermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalOauth2PermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (o ServicePrincipalOauth2PermissionArrayOutput) ToServicePrincipalOauth2PermissionArrayOutput() ServicePrincipalOauth2PermissionArrayOutput {
-	return o
-}
-
-func (o ServicePrincipalOauth2PermissionArrayOutput) ToServicePrincipalOauth2PermissionArrayOutputWithContext(ctx context.Context) ServicePrincipalOauth2PermissionArrayOutput {
-	return o
-}
-
-func (o ServicePrincipalOauth2PermissionArrayOutput) Index(i pulumi.IntInput) ServicePrincipalOauth2PermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalOauth2Permission {
-		return vs[0].([]ServicePrincipalOauth2Permission)[vs[1].(int)]
-	}).(ServicePrincipalOauth2PermissionOutput)
-}
-
 type ServicePrincipalOauth2PermissionScope struct {
-	// The description of the admin consent.
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent.
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	// Is this permission enabled?
+	// Specifies whether the permission scope is enabled.
 	Enabled *bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`.
+	// The unique identifier of the delegated permission.
 	Id *string `pulumi:"id"`
-	// The type of the permission.
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type *string `pulumi:"type"`
-	// The description of the user consent.
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
-	// The display name of the user consent.
+	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	// The name of this permission.
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value *string `pulumi:"value"`
 }
 
@@ -1888,21 +2028,21 @@ type ServicePrincipalOauth2PermissionScopeInput interface {
 }
 
 type ServicePrincipalOauth2PermissionScopeArgs struct {
-	// The description of the admin consent.
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent.
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	// Is this permission enabled?
+	// Specifies whether the permission scope is enabled.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`.
+	// The unique identifier of the delegated permission.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The type of the permission.
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The description of the user consent.
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent.
+	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	// The name of this permission.
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -1957,42 +2097,42 @@ func (o ServicePrincipalOauth2PermissionScopeOutput) ToServicePrincipalOauth2Per
 	return o
 }
 
-// The description of the admin consent.
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o ServicePrincipalOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.AdminConsentDescription }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the admin consent.
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o ServicePrincipalOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Is this permission enabled?
+// Specifies whether the permission scope is enabled.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission`.
+// The unique identifier of the delegated permission.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The type of the permission.
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The description of the user consent.
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o ServicePrincipalOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the user consent.
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o ServicePrincipalOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The name of this permission.
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2018,7 +2158,13 @@ func (o ServicePrincipalOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetApplicationApi struct {
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications []string `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key.
+	MappedClaimsEnabled    bool                                     `pulumi:"mappedClaimsEnabled"`
 	Oauth2PermissionScopes []GetApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Possible values are `1` or `2`.
+	RequestedAccessTokenVersion int `pulumi:"requestedAccessTokenVersion"`
 }
 
 // GetApplicationApiInput is an input type that accepts GetApplicationApiArgs and GetApplicationApiOutput values.
@@ -2033,7 +2179,13 @@ type GetApplicationApiInput interface {
 }
 
 type GetApplicationApiArgs struct {
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications pulumi.StringArrayInput `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key.
+	MappedClaimsEnabled    pulumi.BoolInput                                 `pulumi:"mappedClaimsEnabled"`
 	Oauth2PermissionScopes GetApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Possible values are `1` or `2`.
+	RequestedAccessTokenVersion pulumi.IntInput `pulumi:"requestedAccessTokenVersion"`
 }
 
 func (GetApplicationApiArgs) ElementType() reflect.Type {
@@ -2087,8 +2239,23 @@ func (o GetApplicationApiOutput) ToGetApplicationApiOutputWithContext(ctx contex
 	return o
 }
 
+// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+func (o GetApplicationApiOutput) KnownClientApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationApi) []string { return v.KnownClientApplications }).(pulumi.StringArrayOutput)
+}
+
+// Allows an application to use claims mapping without specifying a custom signing key.
+func (o GetApplicationApiOutput) MappedClaimsEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationApi) bool { return v.MappedClaimsEnabled }).(pulumi.BoolOutput)
+}
+
 func (o GetApplicationApiOutput) Oauth2PermissionScopes() GetApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v GetApplicationApi) []GetApplicationApiOauth2PermissionScope { return v.Oauth2PermissionScopes }).(GetApplicationApiOauth2PermissionScopeArrayOutput)
+}
+
+// The access token version expected by this resource. Possible values are `1` or `2`.
+func (o GetApplicationApiOutput) RequestedAccessTokenVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationApi) int { return v.RequestedAccessTokenVersion }).(pulumi.IntOutput)
 }
 
 type GetApplicationApiArrayOutput struct{ *pulumi.OutputState }
@@ -2112,25 +2279,21 @@ func (o GetApplicationApiArrayOutput) Index(i pulumi.IntInput) GetApplicationApi
 }
 
 type GetApplicationApiOauth2PermissionScope struct {
-	// The description of the admin consent
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	// (Optional) Determines if the permission scope is enabled.
+	// Determines if the app role is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id string `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type string `pulumi:"type"`
-	// The description of the user consent
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription string `pulumi:"userConsentDescription"`
-	// The display name of the user consent
+	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
-	// The name of this permission
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value string `pulumi:"value"`
 }
 
@@ -2146,25 +2309,21 @@ type GetApplicationApiOauth2PermissionScopeInput interface {
 }
 
 type GetApplicationApiOauth2PermissionScopeArgs struct {
-	// The description of the admin consent
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	// (Optional) Determines if the permission scope is enabled.
+	// Determines if the app role is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The description of the user consent
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent
+	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	// The name of this permission
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2219,49 +2378,42 @@ func (o GetApplicationApiOauth2PermissionScopeOutput) ToGetApplicationApiOauth2P
 	return o
 }
 
-// The description of the admin consent
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetApplicationApiOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.AdminConsentDescription }).(pulumi.StringOutput)
 }
 
-// The display name of the admin consent
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetApplicationApiOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// (Optional) Determines if the permission scope is enabled.
+// Determines if the app role is enabled.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Is this permission enabled?
-//
-// Deprecated: [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-func (o GetApplicationApiOauth2PermissionScopeOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) bool { return v.IsEnabled }).(pulumi.BoolOutput)
-}
-
-// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The description of the user consent
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o GetApplicationApiOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.UserConsentDescription }).(pulumi.StringOutput)
 }
 
-// The display name of the user consent
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o GetApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// The name of this permission
+// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2286,388 +2438,264 @@ func (o GetApplicationApiOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInp
 	}).(GetApplicationApiOauth2PermissionScopeOutput)
 }
 
-type GetApplicationAppRoleType struct {
-	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+type GetApplicationAppRole struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description string `pulumi:"description"`
 	// Specifies the display name of the application.
 	DisplayName string `pulumi:"displayName"`
-	// (Optional) Determines if the permission scope is enabled.
+	// Determines if the app role is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id string `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The name of this permission
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value string `pulumi:"value"`
 }
 
-// GetApplicationAppRoleTypeInput is an input type that accepts GetApplicationAppRoleTypeArgs and GetApplicationAppRoleTypeOutput values.
-// You can construct a concrete instance of `GetApplicationAppRoleTypeInput` via:
+// GetApplicationAppRoleInput is an input type that accepts GetApplicationAppRoleArgs and GetApplicationAppRoleOutput values.
+// You can construct a concrete instance of `GetApplicationAppRoleInput` via:
 //
-//          GetApplicationAppRoleTypeArgs{...}
-type GetApplicationAppRoleTypeInput interface {
+//          GetApplicationAppRoleArgs{...}
+type GetApplicationAppRoleInput interface {
 	pulumi.Input
 
-	ToGetApplicationAppRoleTypeOutput() GetApplicationAppRoleTypeOutput
-	ToGetApplicationAppRoleTypeOutputWithContext(context.Context) GetApplicationAppRoleTypeOutput
+	ToGetApplicationAppRoleOutput() GetApplicationAppRoleOutput
+	ToGetApplicationAppRoleOutputWithContext(context.Context) GetApplicationAppRoleOutput
 }
 
-type GetApplicationAppRoleTypeArgs struct {
-	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+type GetApplicationAppRoleArgs struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Specifies the display name of the application.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// (Optional) Determines if the permission scope is enabled.
+	// Determines if the app role is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// The name of this permission
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
-func (GetApplicationAppRoleTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationAppRoleType)(nil)).Elem()
+func (GetApplicationAppRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAppRole)(nil)).Elem()
 }
 
-func (i GetApplicationAppRoleTypeArgs) ToGetApplicationAppRoleTypeOutput() GetApplicationAppRoleTypeOutput {
-	return i.ToGetApplicationAppRoleTypeOutputWithContext(context.Background())
+func (i GetApplicationAppRoleArgs) ToGetApplicationAppRoleOutput() GetApplicationAppRoleOutput {
+	return i.ToGetApplicationAppRoleOutputWithContext(context.Background())
 }
 
-func (i GetApplicationAppRoleTypeArgs) ToGetApplicationAppRoleTypeOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleTypeOutput)
+func (i GetApplicationAppRoleArgs) ToGetApplicationAppRoleOutputWithContext(ctx context.Context) GetApplicationAppRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleOutput)
 }
 
-// GetApplicationAppRoleTypeArrayInput is an input type that accepts GetApplicationAppRoleTypeArray and GetApplicationAppRoleTypeArrayOutput values.
-// You can construct a concrete instance of `GetApplicationAppRoleTypeArrayInput` via:
+// GetApplicationAppRoleArrayInput is an input type that accepts GetApplicationAppRoleArray and GetApplicationAppRoleArrayOutput values.
+// You can construct a concrete instance of `GetApplicationAppRoleArrayInput` via:
 //
-//          GetApplicationAppRoleTypeArray{ GetApplicationAppRoleTypeArgs{...} }
-type GetApplicationAppRoleTypeArrayInput interface {
+//          GetApplicationAppRoleArray{ GetApplicationAppRoleArgs{...} }
+type GetApplicationAppRoleArrayInput interface {
 	pulumi.Input
 
-	ToGetApplicationAppRoleTypeArrayOutput() GetApplicationAppRoleTypeArrayOutput
-	ToGetApplicationAppRoleTypeArrayOutputWithContext(context.Context) GetApplicationAppRoleTypeArrayOutput
+	ToGetApplicationAppRoleArrayOutput() GetApplicationAppRoleArrayOutput
+	ToGetApplicationAppRoleArrayOutputWithContext(context.Context) GetApplicationAppRoleArrayOutput
 }
 
-type GetApplicationAppRoleTypeArray []GetApplicationAppRoleTypeInput
+type GetApplicationAppRoleArray []GetApplicationAppRoleInput
 
-func (GetApplicationAppRoleTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationAppRoleType)(nil)).Elem()
+func (GetApplicationAppRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAppRole)(nil)).Elem()
 }
 
-func (i GetApplicationAppRoleTypeArray) ToGetApplicationAppRoleTypeArrayOutput() GetApplicationAppRoleTypeArrayOutput {
-	return i.ToGetApplicationAppRoleTypeArrayOutputWithContext(context.Background())
+func (i GetApplicationAppRoleArray) ToGetApplicationAppRoleArrayOutput() GetApplicationAppRoleArrayOutput {
+	return i.ToGetApplicationAppRoleArrayOutputWithContext(context.Background())
 }
 
-func (i GetApplicationAppRoleTypeArray) ToGetApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleTypeArrayOutput)
+func (i GetApplicationAppRoleArray) ToGetApplicationAppRoleArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationAppRoleArrayOutput)
 }
 
-type GetApplicationAppRoleTypeOutput struct{ *pulumi.OutputState }
+type GetApplicationAppRoleOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationAppRoleTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationAppRoleType)(nil)).Elem()
+func (GetApplicationAppRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationAppRole)(nil)).Elem()
 }
 
-func (o GetApplicationAppRoleTypeOutput) ToGetApplicationAppRoleTypeOutput() GetApplicationAppRoleTypeOutput {
+func (o GetApplicationAppRoleOutput) ToGetApplicationAppRoleOutput() GetApplicationAppRoleOutput {
 	return o
 }
 
-func (o GetApplicationAppRoleTypeOutput) ToGetApplicationAppRoleTypeOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeOutput {
+func (o GetApplicationAppRoleOutput) ToGetApplicationAppRoleOutputWithContext(ctx context.Context) GetApplicationAppRoleOutput {
 	return o
 }
 
-// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
-func (o GetApplicationAppRoleTypeOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
+// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
+func (o GetApplicationAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
 // Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
-func (o GetApplicationAppRoleTypeOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Description }).(pulumi.StringOutput)
+func (o GetApplicationAppRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
 // Specifies the display name of the application.
-func (o GetApplicationAppRoleTypeOutput) DisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.DisplayName }).(pulumi.StringOutput)
+func (o GetApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (Optional) Determines if the permission scope is enabled.
-func (o GetApplicationAppRoleTypeOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) bool { return v.Enabled }).(pulumi.BoolOutput)
+// Determines if the app role is enabled.
+func (o GetApplicationAppRoleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationAppRole) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-func (o GetApplicationAppRoleTypeOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Id }).(pulumi.StringOutput)
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+func (o GetApplicationAppRoleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Is this permission enabled?
-//
-// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-func (o GetApplicationAppRoleTypeOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) bool { return v.IsEnabled }).(pulumi.BoolOutput)
+// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+func (o GetApplicationAppRoleOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Value }).(pulumi.StringOutput)
 }
 
-// The name of this permission
-func (o GetApplicationAppRoleTypeOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationAppRoleType) string { return v.Value }).(pulumi.StringOutput)
+type GetApplicationAppRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationAppRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationAppRole)(nil)).Elem()
 }
 
-type GetApplicationAppRoleTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationAppRoleTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationAppRoleType)(nil)).Elem()
-}
-
-func (o GetApplicationAppRoleTypeArrayOutput) ToGetApplicationAppRoleTypeArrayOutput() GetApplicationAppRoleTypeArrayOutput {
+func (o GetApplicationAppRoleArrayOutput) ToGetApplicationAppRoleArrayOutput() GetApplicationAppRoleArrayOutput {
 	return o
 }
 
-func (o GetApplicationAppRoleTypeArrayOutput) ToGetApplicationAppRoleTypeArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleTypeArrayOutput {
+func (o GetApplicationAppRoleArrayOutput) ToGetApplicationAppRoleArrayOutputWithContext(ctx context.Context) GetApplicationAppRoleArrayOutput {
 	return o
 }
 
-func (o GetApplicationAppRoleTypeArrayOutput) Index(i pulumi.IntInput) GetApplicationAppRoleTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAppRoleType {
-		return vs[0].([]GetApplicationAppRoleType)[vs[1].(int)]
-	}).(GetApplicationAppRoleTypeOutput)
+func (o GetApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) GetApplicationAppRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAppRole {
+		return vs[0].([]GetApplicationAppRole)[vs[1].(int)]
+	}).(GetApplicationAppRoleOutput)
 }
 
-type GetApplicationOauth2Permission struct {
-	// The description of the admin consent
-	AdminConsentDescription string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
-	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	// (Optional) Determines if the permission scope is enabled.
-	Enabled bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-	Id string `pulumi:"id"`
-	// Is this permission enabled?
-	IsEnabled bool `pulumi:"isEnabled"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-	Type string `pulumi:"type"`
-	// The description of the user consent
-	UserConsentDescription string `pulumi:"userConsentDescription"`
-	// The display name of the user consent
-	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
-	// The name of this permission
-	Value string `pulumi:"value"`
+type GetApplicationOptionalClaim struct {
+	// One or more `accessToken` blocks as documented below.
+	AccessTokens []GetApplicationOptionalClaimAccessToken `pulumi:"accessTokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens []GetApplicationOptionalClaimIdToken `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens []GetApplicationOptionalClaimSaml2Token `pulumi:"saml2Tokens"`
 }
 
-// GetApplicationOauth2PermissionInput is an input type that accepts GetApplicationOauth2PermissionArgs and GetApplicationOauth2PermissionOutput values.
-// You can construct a concrete instance of `GetApplicationOauth2PermissionInput` via:
+// GetApplicationOptionalClaimInput is an input type that accepts GetApplicationOptionalClaimArgs and GetApplicationOptionalClaimOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimInput` via:
 //
-//          GetApplicationOauth2PermissionArgs{...}
-type GetApplicationOauth2PermissionInput interface {
+//          GetApplicationOptionalClaimArgs{...}
+type GetApplicationOptionalClaimInput interface {
 	pulumi.Input
 
-	ToGetApplicationOauth2PermissionOutput() GetApplicationOauth2PermissionOutput
-	ToGetApplicationOauth2PermissionOutputWithContext(context.Context) GetApplicationOauth2PermissionOutput
+	ToGetApplicationOptionalClaimOutput() GetApplicationOptionalClaimOutput
+	ToGetApplicationOptionalClaimOutputWithContext(context.Context) GetApplicationOptionalClaimOutput
 }
 
-type GetApplicationOauth2PermissionArgs struct {
-	// The description of the admin consent
-	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
-	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	// (Optional) Determines if the permission scope is enabled.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-	Id pulumi.StringInput `pulumi:"id"`
-	// Is this permission enabled?
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The description of the user consent
-	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent
-	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	// The name of this permission
-	Value pulumi.StringInput `pulumi:"value"`
+type GetApplicationOptionalClaimArgs struct {
+	// One or more `accessToken` blocks as documented below.
+	AccessTokens GetApplicationOptionalClaimAccessTokenArrayInput `pulumi:"accessTokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens GetApplicationOptionalClaimIdTokenArrayInput `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens GetApplicationOptionalClaimSaml2TokenArrayInput `pulumi:"saml2Tokens"`
 }
 
-func (GetApplicationOauth2PermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOauth2Permission)(nil)).Elem()
+func (GetApplicationOptionalClaimArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaim)(nil)).Elem()
 }
 
-func (i GetApplicationOauth2PermissionArgs) ToGetApplicationOauth2PermissionOutput() GetApplicationOauth2PermissionOutput {
-	return i.ToGetApplicationOauth2PermissionOutputWithContext(context.Background())
+func (i GetApplicationOptionalClaimArgs) ToGetApplicationOptionalClaimOutput() GetApplicationOptionalClaimOutput {
+	return i.ToGetApplicationOptionalClaimOutputWithContext(context.Background())
 }
 
-func (i GetApplicationOauth2PermissionArgs) ToGetApplicationOauth2PermissionOutputWithContext(ctx context.Context) GetApplicationOauth2PermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOauth2PermissionOutput)
+func (i GetApplicationOptionalClaimArgs) ToGetApplicationOptionalClaimOutputWithContext(ctx context.Context) GetApplicationOptionalClaimOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimOutput)
 }
 
-// GetApplicationOauth2PermissionArrayInput is an input type that accepts GetApplicationOauth2PermissionArray and GetApplicationOauth2PermissionArrayOutput values.
-// You can construct a concrete instance of `GetApplicationOauth2PermissionArrayInput` via:
+// GetApplicationOptionalClaimArrayInput is an input type that accepts GetApplicationOptionalClaimArray and GetApplicationOptionalClaimArrayOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimArrayInput` via:
 //
-//          GetApplicationOauth2PermissionArray{ GetApplicationOauth2PermissionArgs{...} }
-type GetApplicationOauth2PermissionArrayInput interface {
+//          GetApplicationOptionalClaimArray{ GetApplicationOptionalClaimArgs{...} }
+type GetApplicationOptionalClaimArrayInput interface {
 	pulumi.Input
 
-	ToGetApplicationOauth2PermissionArrayOutput() GetApplicationOauth2PermissionArrayOutput
-	ToGetApplicationOauth2PermissionArrayOutputWithContext(context.Context) GetApplicationOauth2PermissionArrayOutput
+	ToGetApplicationOptionalClaimArrayOutput() GetApplicationOptionalClaimArrayOutput
+	ToGetApplicationOptionalClaimArrayOutputWithContext(context.Context) GetApplicationOptionalClaimArrayOutput
 }
 
-type GetApplicationOauth2PermissionArray []GetApplicationOauth2PermissionInput
+type GetApplicationOptionalClaimArray []GetApplicationOptionalClaimInput
 
-func (GetApplicationOauth2PermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationOauth2Permission)(nil)).Elem()
+func (GetApplicationOptionalClaimArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaim)(nil)).Elem()
 }
 
-func (i GetApplicationOauth2PermissionArray) ToGetApplicationOauth2PermissionArrayOutput() GetApplicationOauth2PermissionArrayOutput {
-	return i.ToGetApplicationOauth2PermissionArrayOutputWithContext(context.Background())
+func (i GetApplicationOptionalClaimArray) ToGetApplicationOptionalClaimArrayOutput() GetApplicationOptionalClaimArrayOutput {
+	return i.ToGetApplicationOptionalClaimArrayOutputWithContext(context.Background())
 }
 
-func (i GetApplicationOauth2PermissionArray) ToGetApplicationOauth2PermissionArrayOutputWithContext(ctx context.Context) GetApplicationOauth2PermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOauth2PermissionArrayOutput)
+func (i GetApplicationOptionalClaimArray) ToGetApplicationOptionalClaimArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimArrayOutput)
 }
 
-type GetApplicationOauth2PermissionOutput struct{ *pulumi.OutputState }
+type GetApplicationOptionalClaimOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationOauth2PermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOauth2Permission)(nil)).Elem()
+func (GetApplicationOptionalClaimOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaim)(nil)).Elem()
 }
 
-func (o GetApplicationOauth2PermissionOutput) ToGetApplicationOauth2PermissionOutput() GetApplicationOauth2PermissionOutput {
+func (o GetApplicationOptionalClaimOutput) ToGetApplicationOptionalClaimOutput() GetApplicationOptionalClaimOutput {
 	return o
 }
 
-func (o GetApplicationOauth2PermissionOutput) ToGetApplicationOauth2PermissionOutputWithContext(ctx context.Context) GetApplicationOauth2PermissionOutput {
+func (o GetApplicationOptionalClaimOutput) ToGetApplicationOptionalClaimOutputWithContext(ctx context.Context) GetApplicationOptionalClaimOutput {
 	return o
 }
 
-// The description of the admin consent
-func (o GetApplicationOauth2PermissionOutput) AdminConsentDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.AdminConsentDescription }).(pulumi.StringOutput)
+// One or more `accessToken` blocks as documented below.
+func (o GetApplicationOptionalClaimOutput) AccessTokens() GetApplicationOptionalClaimAccessTokenArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaim) []GetApplicationOptionalClaimAccessToken { return v.AccessTokens }).(GetApplicationOptionalClaimAccessTokenArrayOutput)
 }
 
-// The display name of the admin consent
-func (o GetApplicationOauth2PermissionOutput) AdminConsentDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
+// One or more `idToken` blocks as documented below.
+func (o GetApplicationOptionalClaimOutput) IdTokens() GetApplicationOptionalClaimIdTokenArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaim) []GetApplicationOptionalClaimIdToken { return v.IdTokens }).(GetApplicationOptionalClaimIdTokenArrayOutput)
 }
 
-// (Optional) Determines if the permission scope is enabled.
-func (o GetApplicationOauth2PermissionOutput) Enabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) bool { return v.Enabled }).(pulumi.BoolOutput)
+// One or more `saml2Token` blocks as documented below.
+func (o GetApplicationOptionalClaimOutput) Saml2Tokens() GetApplicationOptionalClaimSaml2TokenArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaim) []GetApplicationOptionalClaimSaml2Token { return v.Saml2Tokens }).(GetApplicationOptionalClaimSaml2TokenArrayOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-func (o GetApplicationOauth2PermissionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.Id }).(pulumi.StringOutput)
+type GetApplicationOptionalClaimArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaim)(nil)).Elem()
 }
 
-// Is this permission enabled?
-func (o GetApplicationOauth2PermissionOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) bool { return v.IsEnabled }).(pulumi.BoolOutput)
-}
-
-// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-func (o GetApplicationOauth2PermissionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The description of the user consent
-func (o GetApplicationOauth2PermissionOutput) UserConsentDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.UserConsentDescription }).(pulumi.StringOutput)
-}
-
-// The display name of the user consent
-func (o GetApplicationOauth2PermissionOutput) UserConsentDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
-}
-
-// The name of this permission
-func (o GetApplicationOauth2PermissionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOauth2Permission) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetApplicationOauth2PermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationOauth2PermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationOauth2Permission)(nil)).Elem()
-}
-
-func (o GetApplicationOauth2PermissionArrayOutput) ToGetApplicationOauth2PermissionArrayOutput() GetApplicationOauth2PermissionArrayOutput {
+func (o GetApplicationOptionalClaimArrayOutput) ToGetApplicationOptionalClaimArrayOutput() GetApplicationOptionalClaimArrayOutput {
 	return o
 }
 
-func (o GetApplicationOauth2PermissionArrayOutput) ToGetApplicationOauth2PermissionArrayOutputWithContext(ctx context.Context) GetApplicationOauth2PermissionArrayOutput {
+func (o GetApplicationOptionalClaimArrayOutput) ToGetApplicationOptionalClaimArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimArrayOutput {
 	return o
 }
 
-func (o GetApplicationOauth2PermissionArrayOutput) Index(i pulumi.IntInput) GetApplicationOauth2PermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOauth2Permission {
-		return vs[0].([]GetApplicationOauth2Permission)[vs[1].(int)]
-	}).(GetApplicationOauth2PermissionOutput)
+func (o GetApplicationOptionalClaimArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaim {
+		return vs[0].([]GetApplicationOptionalClaim)[vs[1].(int)]
+	}).(GetApplicationOptionalClaimOutput)
 }
 
-type GetApplicationOptionalClaims struct {
-	AccessTokens []GetApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
-	IdTokens     []GetApplicationOptionalClaimsIdToken     `pulumi:"idTokens"`
-}
-
-// GetApplicationOptionalClaimsInput is an input type that accepts GetApplicationOptionalClaimsArgs and GetApplicationOptionalClaimsOutput values.
-// You can construct a concrete instance of `GetApplicationOptionalClaimsInput` via:
-//
-//          GetApplicationOptionalClaimsArgs{...}
-type GetApplicationOptionalClaimsInput interface {
-	pulumi.Input
-
-	ToGetApplicationOptionalClaimsOutput() GetApplicationOptionalClaimsOutput
-	ToGetApplicationOptionalClaimsOutputWithContext(context.Context) GetApplicationOptionalClaimsOutput
-}
-
-type GetApplicationOptionalClaimsArgs struct {
-	AccessTokens GetApplicationOptionalClaimsAccessTokenArrayInput `pulumi:"accessTokens"`
-	IdTokens     GetApplicationOptionalClaimsIdTokenArrayInput     `pulumi:"idTokens"`
-}
-
-func (GetApplicationOptionalClaimsArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOptionalClaims)(nil)).Elem()
-}
-
-func (i GetApplicationOptionalClaimsArgs) ToGetApplicationOptionalClaimsOutput() GetApplicationOptionalClaimsOutput {
-	return i.ToGetApplicationOptionalClaimsOutputWithContext(context.Background())
-}
-
-func (i GetApplicationOptionalClaimsArgs) ToGetApplicationOptionalClaimsOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsOutput)
-}
-
-type GetApplicationOptionalClaimsOutput struct{ *pulumi.OutputState }
-
-func (GetApplicationOptionalClaimsOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOptionalClaims)(nil)).Elem()
-}
-
-func (o GetApplicationOptionalClaimsOutput) ToGetApplicationOptionalClaimsOutput() GetApplicationOptionalClaimsOutput {
-	return o
-}
-
-func (o GetApplicationOptionalClaimsOutput) ToGetApplicationOptionalClaimsOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsOutput {
-	return o
-}
-
-func (o GetApplicationOptionalClaimsOutput) AccessTokens() GetApplicationOptionalClaimsAccessTokenArrayOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaims) []GetApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(GetApplicationOptionalClaimsAccessTokenArrayOutput)
-}
-
-func (o GetApplicationOptionalClaimsOutput) IdTokens() GetApplicationOptionalClaimsIdTokenArrayOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaims) []GetApplicationOptionalClaimsIdToken { return v.IdTokens }).(GetApplicationOptionalClaimsIdTokenArrayOutput)
-}
-
-type GetApplicationOptionalClaimsAccessToken struct {
+type GetApplicationOptionalClaimAccessToken struct {
 	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
@@ -2678,18 +2706,18 @@ type GetApplicationOptionalClaimsAccessToken struct {
 	Source *string `pulumi:"source"`
 }
 
-// GetApplicationOptionalClaimsAccessTokenInput is an input type that accepts GetApplicationOptionalClaimsAccessTokenArgs and GetApplicationOptionalClaimsAccessTokenOutput values.
-// You can construct a concrete instance of `GetApplicationOptionalClaimsAccessTokenInput` via:
+// GetApplicationOptionalClaimAccessTokenInput is an input type that accepts GetApplicationOptionalClaimAccessTokenArgs and GetApplicationOptionalClaimAccessTokenOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimAccessTokenInput` via:
 //
-//          GetApplicationOptionalClaimsAccessTokenArgs{...}
-type GetApplicationOptionalClaimsAccessTokenInput interface {
+//          GetApplicationOptionalClaimAccessTokenArgs{...}
+type GetApplicationOptionalClaimAccessTokenInput interface {
 	pulumi.Input
 
-	ToGetApplicationOptionalClaimsAccessTokenOutput() GetApplicationOptionalClaimsAccessTokenOutput
-	ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(context.Context) GetApplicationOptionalClaimsAccessTokenOutput
+	ToGetApplicationOptionalClaimAccessTokenOutput() GetApplicationOptionalClaimAccessTokenOutput
+	ToGetApplicationOptionalClaimAccessTokenOutputWithContext(context.Context) GetApplicationOptionalClaimAccessTokenOutput
 }
 
-type GetApplicationOptionalClaimsAccessTokenArgs struct {
+type GetApplicationOptionalClaimAccessTokenArgs struct {
 	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
@@ -2700,98 +2728,98 @@ type GetApplicationOptionalClaimsAccessTokenArgs struct {
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
-func (GetApplicationOptionalClaimsAccessTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+func (GetApplicationOptionalClaimAccessTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimAccessToken)(nil)).Elem()
 }
 
-func (i GetApplicationOptionalClaimsAccessTokenArgs) ToGetApplicationOptionalClaimsAccessTokenOutput() GetApplicationOptionalClaimsAccessTokenOutput {
-	return i.ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(context.Background())
+func (i GetApplicationOptionalClaimAccessTokenArgs) ToGetApplicationOptionalClaimAccessTokenOutput() GetApplicationOptionalClaimAccessTokenOutput {
+	return i.ToGetApplicationOptionalClaimAccessTokenOutputWithContext(context.Background())
 }
 
-func (i GetApplicationOptionalClaimsAccessTokenArgs) ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsAccessTokenOutput)
+func (i GetApplicationOptionalClaimAccessTokenArgs) ToGetApplicationOptionalClaimAccessTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimAccessTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimAccessTokenOutput)
 }
 
-// GetApplicationOptionalClaimsAccessTokenArrayInput is an input type that accepts GetApplicationOptionalClaimsAccessTokenArray and GetApplicationOptionalClaimsAccessTokenArrayOutput values.
-// You can construct a concrete instance of `GetApplicationOptionalClaimsAccessTokenArrayInput` via:
+// GetApplicationOptionalClaimAccessTokenArrayInput is an input type that accepts GetApplicationOptionalClaimAccessTokenArray and GetApplicationOptionalClaimAccessTokenArrayOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimAccessTokenArrayInput` via:
 //
-//          GetApplicationOptionalClaimsAccessTokenArray{ GetApplicationOptionalClaimsAccessTokenArgs{...} }
-type GetApplicationOptionalClaimsAccessTokenArrayInput interface {
+//          GetApplicationOptionalClaimAccessTokenArray{ GetApplicationOptionalClaimAccessTokenArgs{...} }
+type GetApplicationOptionalClaimAccessTokenArrayInput interface {
 	pulumi.Input
 
-	ToGetApplicationOptionalClaimsAccessTokenArrayOutput() GetApplicationOptionalClaimsAccessTokenArrayOutput
-	ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimsAccessTokenArrayOutput
+	ToGetApplicationOptionalClaimAccessTokenArrayOutput() GetApplicationOptionalClaimAccessTokenArrayOutput
+	ToGetApplicationOptionalClaimAccessTokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimAccessTokenArrayOutput
 }
 
-type GetApplicationOptionalClaimsAccessTokenArray []GetApplicationOptionalClaimsAccessTokenInput
+type GetApplicationOptionalClaimAccessTokenArray []GetApplicationOptionalClaimAccessTokenInput
 
-func (GetApplicationOptionalClaimsAccessTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+func (GetApplicationOptionalClaimAccessTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimAccessToken)(nil)).Elem()
 }
 
-func (i GetApplicationOptionalClaimsAccessTokenArray) ToGetApplicationOptionalClaimsAccessTokenArrayOutput() GetApplicationOptionalClaimsAccessTokenArrayOutput {
-	return i.ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(context.Background())
+func (i GetApplicationOptionalClaimAccessTokenArray) ToGetApplicationOptionalClaimAccessTokenArrayOutput() GetApplicationOptionalClaimAccessTokenArrayOutput {
+	return i.ToGetApplicationOptionalClaimAccessTokenArrayOutputWithContext(context.Background())
 }
 
-func (i GetApplicationOptionalClaimsAccessTokenArray) ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsAccessTokenArrayOutput)
+func (i GetApplicationOptionalClaimAccessTokenArray) ToGetApplicationOptionalClaimAccessTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimAccessTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimAccessTokenArrayOutput)
 }
 
-type GetApplicationOptionalClaimsAccessTokenOutput struct{ *pulumi.OutputState }
+type GetApplicationOptionalClaimAccessTokenOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationOptionalClaimsAccessTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+func (GetApplicationOptionalClaimAccessTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimAccessToken)(nil)).Elem()
 }
 
-func (o GetApplicationOptionalClaimsAccessTokenOutput) ToGetApplicationOptionalClaimsAccessTokenOutput() GetApplicationOptionalClaimsAccessTokenOutput {
+func (o GetApplicationOptionalClaimAccessTokenOutput) ToGetApplicationOptionalClaimAccessTokenOutput() GetApplicationOptionalClaimAccessTokenOutput {
 	return o
 }
 
-func (o GetApplicationOptionalClaimsAccessTokenOutput) ToGetApplicationOptionalClaimsAccessTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenOutput {
+func (o GetApplicationOptionalClaimAccessTokenOutput) ToGetApplicationOptionalClaimAccessTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimAccessTokenOutput {
 	return o
 }
 
 // List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
-func (o GetApplicationOptionalClaimsAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+func (o GetApplicationOptionalClaimAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
 // Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
-func (o GetApplicationOptionalClaimsAccessTokenOutput) Essential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+func (o GetApplicationOptionalClaimAccessTokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the optional claim.
-func (o GetApplicationOptionalClaimsAccessTokenOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) string { return v.Name }).(pulumi.StringOutput)
+func (o GetApplicationOptionalClaimAccessTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
-func (o GetApplicationOptionalClaimsAccessTokenOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsAccessToken) *string { return v.Source }).(pulumi.StringPtrOutput)
+func (o GetApplicationOptionalClaimAccessTokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-type GetApplicationOptionalClaimsAccessTokenArrayOutput struct{ *pulumi.OutputState }
+type GetApplicationOptionalClaimAccessTokenArrayOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationOptionalClaimsAccessTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationOptionalClaimsAccessToken)(nil)).Elem()
+func (GetApplicationOptionalClaimAccessTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimAccessToken)(nil)).Elem()
 }
 
-func (o GetApplicationOptionalClaimsAccessTokenArrayOutput) ToGetApplicationOptionalClaimsAccessTokenArrayOutput() GetApplicationOptionalClaimsAccessTokenArrayOutput {
+func (o GetApplicationOptionalClaimAccessTokenArrayOutput) ToGetApplicationOptionalClaimAccessTokenArrayOutput() GetApplicationOptionalClaimAccessTokenArrayOutput {
 	return o
 }
 
-func (o GetApplicationOptionalClaimsAccessTokenArrayOutput) ToGetApplicationOptionalClaimsAccessTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsAccessTokenArrayOutput {
+func (o GetApplicationOptionalClaimAccessTokenArrayOutput) ToGetApplicationOptionalClaimAccessTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimAccessTokenArrayOutput {
 	return o
 }
 
-func (o GetApplicationOptionalClaimsAccessTokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimsAccessTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimsAccessToken {
-		return vs[0].([]GetApplicationOptionalClaimsAccessToken)[vs[1].(int)]
-	}).(GetApplicationOptionalClaimsAccessTokenOutput)
+func (o GetApplicationOptionalClaimAccessTokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimAccessTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimAccessToken {
+		return vs[0].([]GetApplicationOptionalClaimAccessToken)[vs[1].(int)]
+	}).(GetApplicationOptionalClaimAccessTokenOutput)
 }
 
-type GetApplicationOptionalClaimsIdToken struct {
+type GetApplicationOptionalClaimIdToken struct {
 	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
@@ -2802,18 +2830,18 @@ type GetApplicationOptionalClaimsIdToken struct {
 	Source *string `pulumi:"source"`
 }
 
-// GetApplicationOptionalClaimsIdTokenInput is an input type that accepts GetApplicationOptionalClaimsIdTokenArgs and GetApplicationOptionalClaimsIdTokenOutput values.
-// You can construct a concrete instance of `GetApplicationOptionalClaimsIdTokenInput` via:
+// GetApplicationOptionalClaimIdTokenInput is an input type that accepts GetApplicationOptionalClaimIdTokenArgs and GetApplicationOptionalClaimIdTokenOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimIdTokenInput` via:
 //
-//          GetApplicationOptionalClaimsIdTokenArgs{...}
-type GetApplicationOptionalClaimsIdTokenInput interface {
+//          GetApplicationOptionalClaimIdTokenArgs{...}
+type GetApplicationOptionalClaimIdTokenInput interface {
 	pulumi.Input
 
-	ToGetApplicationOptionalClaimsIdTokenOutput() GetApplicationOptionalClaimsIdTokenOutput
-	ToGetApplicationOptionalClaimsIdTokenOutputWithContext(context.Context) GetApplicationOptionalClaimsIdTokenOutput
+	ToGetApplicationOptionalClaimIdTokenOutput() GetApplicationOptionalClaimIdTokenOutput
+	ToGetApplicationOptionalClaimIdTokenOutputWithContext(context.Context) GetApplicationOptionalClaimIdTokenOutput
 }
 
-type GetApplicationOptionalClaimsIdTokenArgs struct {
+type GetApplicationOptionalClaimIdTokenArgs struct {
 	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
 	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
@@ -2824,95 +2852,316 @@ type GetApplicationOptionalClaimsIdTokenArgs struct {
 	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
-func (GetApplicationOptionalClaimsIdTokenArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+func (GetApplicationOptionalClaimIdTokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimIdToken)(nil)).Elem()
 }
 
-func (i GetApplicationOptionalClaimsIdTokenArgs) ToGetApplicationOptionalClaimsIdTokenOutput() GetApplicationOptionalClaimsIdTokenOutput {
-	return i.ToGetApplicationOptionalClaimsIdTokenOutputWithContext(context.Background())
+func (i GetApplicationOptionalClaimIdTokenArgs) ToGetApplicationOptionalClaimIdTokenOutput() GetApplicationOptionalClaimIdTokenOutput {
+	return i.ToGetApplicationOptionalClaimIdTokenOutputWithContext(context.Background())
 }
 
-func (i GetApplicationOptionalClaimsIdTokenArgs) ToGetApplicationOptionalClaimsIdTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsIdTokenOutput)
+func (i GetApplicationOptionalClaimIdTokenArgs) ToGetApplicationOptionalClaimIdTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimIdTokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimIdTokenOutput)
 }
 
-// GetApplicationOptionalClaimsIdTokenArrayInput is an input type that accepts GetApplicationOptionalClaimsIdTokenArray and GetApplicationOptionalClaimsIdTokenArrayOutput values.
-// You can construct a concrete instance of `GetApplicationOptionalClaimsIdTokenArrayInput` via:
+// GetApplicationOptionalClaimIdTokenArrayInput is an input type that accepts GetApplicationOptionalClaimIdTokenArray and GetApplicationOptionalClaimIdTokenArrayOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimIdTokenArrayInput` via:
 //
-//          GetApplicationOptionalClaimsIdTokenArray{ GetApplicationOptionalClaimsIdTokenArgs{...} }
-type GetApplicationOptionalClaimsIdTokenArrayInput interface {
+//          GetApplicationOptionalClaimIdTokenArray{ GetApplicationOptionalClaimIdTokenArgs{...} }
+type GetApplicationOptionalClaimIdTokenArrayInput interface {
 	pulumi.Input
 
-	ToGetApplicationOptionalClaimsIdTokenArrayOutput() GetApplicationOptionalClaimsIdTokenArrayOutput
-	ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimsIdTokenArrayOutput
+	ToGetApplicationOptionalClaimIdTokenArrayOutput() GetApplicationOptionalClaimIdTokenArrayOutput
+	ToGetApplicationOptionalClaimIdTokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimIdTokenArrayOutput
 }
 
-type GetApplicationOptionalClaimsIdTokenArray []GetApplicationOptionalClaimsIdTokenInput
+type GetApplicationOptionalClaimIdTokenArray []GetApplicationOptionalClaimIdTokenInput
 
-func (GetApplicationOptionalClaimsIdTokenArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+func (GetApplicationOptionalClaimIdTokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimIdToken)(nil)).Elem()
 }
 
-func (i GetApplicationOptionalClaimsIdTokenArray) ToGetApplicationOptionalClaimsIdTokenArrayOutput() GetApplicationOptionalClaimsIdTokenArrayOutput {
-	return i.ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(context.Background())
+func (i GetApplicationOptionalClaimIdTokenArray) ToGetApplicationOptionalClaimIdTokenArrayOutput() GetApplicationOptionalClaimIdTokenArrayOutput {
+	return i.ToGetApplicationOptionalClaimIdTokenArrayOutputWithContext(context.Background())
 }
 
-func (i GetApplicationOptionalClaimsIdTokenArray) ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimsIdTokenArrayOutput)
+func (i GetApplicationOptionalClaimIdTokenArray) ToGetApplicationOptionalClaimIdTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimIdTokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimIdTokenArrayOutput)
 }
 
-type GetApplicationOptionalClaimsIdTokenOutput struct{ *pulumi.OutputState }
+type GetApplicationOptionalClaimIdTokenOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationOptionalClaimsIdTokenOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+func (GetApplicationOptionalClaimIdTokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimIdToken)(nil)).Elem()
 }
 
-func (o GetApplicationOptionalClaimsIdTokenOutput) ToGetApplicationOptionalClaimsIdTokenOutput() GetApplicationOptionalClaimsIdTokenOutput {
+func (o GetApplicationOptionalClaimIdTokenOutput) ToGetApplicationOptionalClaimIdTokenOutput() GetApplicationOptionalClaimIdTokenOutput {
 	return o
 }
 
-func (o GetApplicationOptionalClaimsIdTokenOutput) ToGetApplicationOptionalClaimsIdTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenOutput {
+func (o GetApplicationOptionalClaimIdTokenOutput) ToGetApplicationOptionalClaimIdTokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimIdTokenOutput {
 	return o
 }
 
 // List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
-func (o GetApplicationOptionalClaimsIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+func (o GetApplicationOptionalClaimIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
 // Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
-func (o GetApplicationOptionalClaimsIdTokenOutput) Essential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+func (o GetApplicationOptionalClaimIdTokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
 // The name of the optional claim.
-func (o GetApplicationOptionalClaimsIdTokenOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) string { return v.Name }).(pulumi.StringOutput)
+func (o GetApplicationOptionalClaimIdTokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
-func (o GetApplicationOptionalClaimsIdTokenOutput) Source() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetApplicationOptionalClaimsIdToken) *string { return v.Source }).(pulumi.StringPtrOutput)
+func (o GetApplicationOptionalClaimIdTokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-type GetApplicationOptionalClaimsIdTokenArrayOutput struct{ *pulumi.OutputState }
+type GetApplicationOptionalClaimIdTokenArrayOutput struct{ *pulumi.OutputState }
 
-func (GetApplicationOptionalClaimsIdTokenArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetApplicationOptionalClaimsIdToken)(nil)).Elem()
+func (GetApplicationOptionalClaimIdTokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimIdToken)(nil)).Elem()
 }
 
-func (o GetApplicationOptionalClaimsIdTokenArrayOutput) ToGetApplicationOptionalClaimsIdTokenArrayOutput() GetApplicationOptionalClaimsIdTokenArrayOutput {
+func (o GetApplicationOptionalClaimIdTokenArrayOutput) ToGetApplicationOptionalClaimIdTokenArrayOutput() GetApplicationOptionalClaimIdTokenArrayOutput {
 	return o
 }
 
-func (o GetApplicationOptionalClaimsIdTokenArrayOutput) ToGetApplicationOptionalClaimsIdTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimsIdTokenArrayOutput {
+func (o GetApplicationOptionalClaimIdTokenArrayOutput) ToGetApplicationOptionalClaimIdTokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimIdTokenArrayOutput {
 	return o
 }
 
-func (o GetApplicationOptionalClaimsIdTokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimsIdTokenOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimsIdToken {
-		return vs[0].([]GetApplicationOptionalClaimsIdToken)[vs[1].(int)]
-	}).(GetApplicationOptionalClaimsIdTokenOutput)
+func (o GetApplicationOptionalClaimIdTokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimIdTokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimIdToken {
+		return vs[0].([]GetApplicationOptionalClaimIdToken)[vs[1].(int)]
+	}).(GetApplicationOptionalClaimIdTokenOutput)
+}
+
+type GetApplicationOptionalClaimSaml2Token struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties []string `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
+}
+
+// GetApplicationOptionalClaimSaml2TokenInput is an input type that accepts GetApplicationOptionalClaimSaml2TokenArgs and GetApplicationOptionalClaimSaml2TokenOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimSaml2TokenInput` via:
+//
+//          GetApplicationOptionalClaimSaml2TokenArgs{...}
+type GetApplicationOptionalClaimSaml2TokenInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimSaml2TokenOutput() GetApplicationOptionalClaimSaml2TokenOutput
+	ToGetApplicationOptionalClaimSaml2TokenOutputWithContext(context.Context) GetApplicationOptionalClaimSaml2TokenOutput
+}
+
+type GetApplicationOptionalClaimSaml2TokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
+}
+
+func (GetApplicationOptionalClaimSaml2TokenArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimSaml2Token)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimSaml2TokenArgs) ToGetApplicationOptionalClaimSaml2TokenOutput() GetApplicationOptionalClaimSaml2TokenOutput {
+	return i.ToGetApplicationOptionalClaimSaml2TokenOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimSaml2TokenArgs) ToGetApplicationOptionalClaimSaml2TokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimSaml2TokenOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimSaml2TokenOutput)
+}
+
+// GetApplicationOptionalClaimSaml2TokenArrayInput is an input type that accepts GetApplicationOptionalClaimSaml2TokenArray and GetApplicationOptionalClaimSaml2TokenArrayOutput values.
+// You can construct a concrete instance of `GetApplicationOptionalClaimSaml2TokenArrayInput` via:
+//
+//          GetApplicationOptionalClaimSaml2TokenArray{ GetApplicationOptionalClaimSaml2TokenArgs{...} }
+type GetApplicationOptionalClaimSaml2TokenArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationOptionalClaimSaml2TokenArrayOutput() GetApplicationOptionalClaimSaml2TokenArrayOutput
+	ToGetApplicationOptionalClaimSaml2TokenArrayOutputWithContext(context.Context) GetApplicationOptionalClaimSaml2TokenArrayOutput
+}
+
+type GetApplicationOptionalClaimSaml2TokenArray []GetApplicationOptionalClaimSaml2TokenInput
+
+func (GetApplicationOptionalClaimSaml2TokenArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimSaml2Token)(nil)).Elem()
+}
+
+func (i GetApplicationOptionalClaimSaml2TokenArray) ToGetApplicationOptionalClaimSaml2TokenArrayOutput() GetApplicationOptionalClaimSaml2TokenArrayOutput {
+	return i.ToGetApplicationOptionalClaimSaml2TokenArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationOptionalClaimSaml2TokenArray) ToGetApplicationOptionalClaimSaml2TokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimSaml2TokenArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationOptionalClaimSaml2TokenArrayOutput)
+}
+
+type GetApplicationOptionalClaimSaml2TokenOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimSaml2TokenOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationOptionalClaimSaml2Token)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimSaml2TokenOutput) ToGetApplicationOptionalClaimSaml2TokenOutput() GetApplicationOptionalClaimSaml2TokenOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimSaml2TokenOutput) ToGetApplicationOptionalClaimSaml2TokenOutputWithContext(ctx context.Context) GetApplicationOptionalClaimSaml2TokenOutput {
+	return o
+}
+
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+func (o GetApplicationOptionalClaimSaml2TokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
+}
+
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+func (o GetApplicationOptionalClaimSaml2TokenOutput) Essential() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the optional claim.
+func (o GetApplicationOptionalClaimSaml2TokenOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+func (o GetApplicationOptionalClaimSaml2TokenOutput) Source() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) *string { return v.Source }).(pulumi.StringPtrOutput)
+}
+
+type GetApplicationOptionalClaimSaml2TokenArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationOptionalClaimSaml2TokenArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationOptionalClaimSaml2Token)(nil)).Elem()
+}
+
+func (o GetApplicationOptionalClaimSaml2TokenArrayOutput) ToGetApplicationOptionalClaimSaml2TokenArrayOutput() GetApplicationOptionalClaimSaml2TokenArrayOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimSaml2TokenArrayOutput) ToGetApplicationOptionalClaimSaml2TokenArrayOutputWithContext(ctx context.Context) GetApplicationOptionalClaimSaml2TokenArrayOutput {
+	return o
+}
+
+func (o GetApplicationOptionalClaimSaml2TokenArrayOutput) Index(i pulumi.IntInput) GetApplicationOptionalClaimSaml2TokenOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationOptionalClaimSaml2Token {
+		return vs[0].([]GetApplicationOptionalClaimSaml2Token)[vs[1].(int)]
+	}).(GetApplicationOptionalClaimSaml2TokenOutput)
+}
+
+type GetApplicationPublicClient struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris []string `pulumi:"redirectUris"`
+}
+
+// GetApplicationPublicClientInput is an input type that accepts GetApplicationPublicClientArgs and GetApplicationPublicClientOutput values.
+// You can construct a concrete instance of `GetApplicationPublicClientInput` via:
+//
+//          GetApplicationPublicClientArgs{...}
+type GetApplicationPublicClientInput interface {
+	pulumi.Input
+
+	ToGetApplicationPublicClientOutput() GetApplicationPublicClientOutput
+	ToGetApplicationPublicClientOutputWithContext(context.Context) GetApplicationPublicClientOutput
+}
+
+type GetApplicationPublicClientArgs struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+}
+
+func (GetApplicationPublicClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationPublicClient)(nil)).Elem()
+}
+
+func (i GetApplicationPublicClientArgs) ToGetApplicationPublicClientOutput() GetApplicationPublicClientOutput {
+	return i.ToGetApplicationPublicClientOutputWithContext(context.Background())
+}
+
+func (i GetApplicationPublicClientArgs) ToGetApplicationPublicClientOutputWithContext(ctx context.Context) GetApplicationPublicClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationPublicClientOutput)
+}
+
+// GetApplicationPublicClientArrayInput is an input type that accepts GetApplicationPublicClientArray and GetApplicationPublicClientArrayOutput values.
+// You can construct a concrete instance of `GetApplicationPublicClientArrayInput` via:
+//
+//          GetApplicationPublicClientArray{ GetApplicationPublicClientArgs{...} }
+type GetApplicationPublicClientArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationPublicClientArrayOutput() GetApplicationPublicClientArrayOutput
+	ToGetApplicationPublicClientArrayOutputWithContext(context.Context) GetApplicationPublicClientArrayOutput
+}
+
+type GetApplicationPublicClientArray []GetApplicationPublicClientInput
+
+func (GetApplicationPublicClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationPublicClient)(nil)).Elem()
+}
+
+func (i GetApplicationPublicClientArray) ToGetApplicationPublicClientArrayOutput() GetApplicationPublicClientArrayOutput {
+	return i.ToGetApplicationPublicClientArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationPublicClientArray) ToGetApplicationPublicClientArrayOutputWithContext(ctx context.Context) GetApplicationPublicClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationPublicClientArrayOutput)
+}
+
+type GetApplicationPublicClientOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationPublicClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationPublicClient)(nil)).Elem()
+}
+
+func (o GetApplicationPublicClientOutput) ToGetApplicationPublicClientOutput() GetApplicationPublicClientOutput {
+	return o
+}
+
+func (o GetApplicationPublicClientOutput) ToGetApplicationPublicClientOutputWithContext(ctx context.Context) GetApplicationPublicClientOutput {
+	return o
+}
+
+// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+func (o GetApplicationPublicClientOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationPublicClient) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+type GetApplicationPublicClientArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationPublicClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationPublicClient)(nil)).Elem()
+}
+
+func (o GetApplicationPublicClientArrayOutput) ToGetApplicationPublicClientArrayOutput() GetApplicationPublicClientArrayOutput {
+	return o
+}
+
+func (o GetApplicationPublicClientArrayOutput) ToGetApplicationPublicClientArrayOutputWithContext(ctx context.Context) GetApplicationPublicClientArrayOutput {
+	return o
+}
+
+func (o GetApplicationPublicClientArrayOutput) Index(i pulumi.IntInput) GetApplicationPublicClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationPublicClient {
+		return vs[0].([]GetApplicationPublicClient)[vs[1].(int)]
+	}).(GetApplicationPublicClientOutput)
 }
 
 type GetApplicationRequiredResourceAccess struct {
@@ -3024,9 +3273,9 @@ func (o GetApplicationRequiredResourceAccessArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetApplicationRequiredResourceAccessResourceAccess struct {
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id string `pulumi:"id"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type string `pulumi:"type"`
 }
 
@@ -3042,9 +3291,9 @@ type GetApplicationRequiredResourceAccessResourceAccessInput interface {
 }
 
 type GetApplicationRequiredResourceAccessResourceAccessArgs struct {
-	// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3099,12 +3348,12 @@ func (o GetApplicationRequiredResourceAccessResourceAccessOutput) ToGetApplicati
 	return o
 }
 
-// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o GetApplicationRequiredResourceAccessResourceAccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccessResourceAccess) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 func (o GetApplicationRequiredResourceAccessResourceAccessOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccessResourceAccess) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3127,6 +3376,103 @@ func (o GetApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationRequiredResourceAccessResourceAccess {
 		return vs[0].([]GetApplicationRequiredResourceAccessResourceAccess)[vs[1].(int)]
 	}).(GetApplicationRequiredResourceAccessResourceAccessOutput)
+}
+
+type GetApplicationSinglePageApplication struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris []string `pulumi:"redirectUris"`
+}
+
+// GetApplicationSinglePageApplicationInput is an input type that accepts GetApplicationSinglePageApplicationArgs and GetApplicationSinglePageApplicationOutput values.
+// You can construct a concrete instance of `GetApplicationSinglePageApplicationInput` via:
+//
+//          GetApplicationSinglePageApplicationArgs{...}
+type GetApplicationSinglePageApplicationInput interface {
+	pulumi.Input
+
+	ToGetApplicationSinglePageApplicationOutput() GetApplicationSinglePageApplicationOutput
+	ToGetApplicationSinglePageApplicationOutputWithContext(context.Context) GetApplicationSinglePageApplicationOutput
+}
+
+type GetApplicationSinglePageApplicationArgs struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
+}
+
+func (GetApplicationSinglePageApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (i GetApplicationSinglePageApplicationArgs) ToGetApplicationSinglePageApplicationOutput() GetApplicationSinglePageApplicationOutput {
+	return i.ToGetApplicationSinglePageApplicationOutputWithContext(context.Background())
+}
+
+func (i GetApplicationSinglePageApplicationArgs) ToGetApplicationSinglePageApplicationOutputWithContext(ctx context.Context) GetApplicationSinglePageApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationSinglePageApplicationOutput)
+}
+
+// GetApplicationSinglePageApplicationArrayInput is an input type that accepts GetApplicationSinglePageApplicationArray and GetApplicationSinglePageApplicationArrayOutput values.
+// You can construct a concrete instance of `GetApplicationSinglePageApplicationArrayInput` via:
+//
+//          GetApplicationSinglePageApplicationArray{ GetApplicationSinglePageApplicationArgs{...} }
+type GetApplicationSinglePageApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationSinglePageApplicationArrayOutput() GetApplicationSinglePageApplicationArrayOutput
+	ToGetApplicationSinglePageApplicationArrayOutputWithContext(context.Context) GetApplicationSinglePageApplicationArrayOutput
+}
+
+type GetApplicationSinglePageApplicationArray []GetApplicationSinglePageApplicationInput
+
+func (GetApplicationSinglePageApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (i GetApplicationSinglePageApplicationArray) ToGetApplicationSinglePageApplicationArrayOutput() GetApplicationSinglePageApplicationArrayOutput {
+	return i.ToGetApplicationSinglePageApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationSinglePageApplicationArray) ToGetApplicationSinglePageApplicationArrayOutputWithContext(ctx context.Context) GetApplicationSinglePageApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationSinglePageApplicationArrayOutput)
+}
+
+type GetApplicationSinglePageApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationSinglePageApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (o GetApplicationSinglePageApplicationOutput) ToGetApplicationSinglePageApplicationOutput() GetApplicationSinglePageApplicationOutput {
+	return o
+}
+
+func (o GetApplicationSinglePageApplicationOutput) ToGetApplicationSinglePageApplicationOutputWithContext(ctx context.Context) GetApplicationSinglePageApplicationOutput {
+	return o
+}
+
+// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+func (o GetApplicationSinglePageApplicationOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationSinglePageApplication) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+type GetApplicationSinglePageApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationSinglePageApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationSinglePageApplication)(nil)).Elem()
+}
+
+func (o GetApplicationSinglePageApplicationArrayOutput) ToGetApplicationSinglePageApplicationArrayOutput() GetApplicationSinglePageApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationSinglePageApplicationArrayOutput) ToGetApplicationSinglePageApplicationArrayOutputWithContext(ctx context.Context) GetApplicationSinglePageApplicationArrayOutput {
+	return o
+}
+
+func (o GetApplicationSinglePageApplicationArrayOutput) Index(i pulumi.IntInput) GetApplicationSinglePageApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationSinglePageApplication {
+		return vs[0].([]GetApplicationSinglePageApplication)[vs[1].(int)]
+	}).(GetApplicationSinglePageApplicationOutput)
 }
 
 type GetApplicationWeb struct {
@@ -3174,6 +3520,31 @@ func (i GetApplicationWebArgs) ToGetApplicationWebOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationWebOutput)
 }
 
+// GetApplicationWebArrayInput is an input type that accepts GetApplicationWebArray and GetApplicationWebArrayOutput values.
+// You can construct a concrete instance of `GetApplicationWebArrayInput` via:
+//
+//          GetApplicationWebArray{ GetApplicationWebArgs{...} }
+type GetApplicationWebArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationWebArrayOutput() GetApplicationWebArrayOutput
+	ToGetApplicationWebArrayOutputWithContext(context.Context) GetApplicationWebArrayOutput
+}
+
+type GetApplicationWebArray []GetApplicationWebInput
+
+func (GetApplicationWebArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationWeb)(nil)).Elem()
+}
+
+func (i GetApplicationWebArray) ToGetApplicationWebArrayOutput() GetApplicationWebArrayOutput {
+	return i.ToGetApplicationWebArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationWebArray) ToGetApplicationWebArrayOutputWithContext(ctx context.Context) GetApplicationWebArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationWebArrayOutput)
+}
+
 type GetApplicationWebOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationWebOutput) ElementType() reflect.Type {
@@ -3208,9 +3579,31 @@ func (o GetApplicationWebOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationWeb) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
 
+type GetApplicationWebArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationWebArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationWeb)(nil)).Elem()
+}
+
+func (o GetApplicationWebArrayOutput) ToGetApplicationWebArrayOutput() GetApplicationWebArrayOutput {
+	return o
+}
+
+func (o GetApplicationWebArrayOutput) ToGetApplicationWebArrayOutputWithContext(ctx context.Context) GetApplicationWebArrayOutput {
+	return o
+}
+
+func (o GetApplicationWebArrayOutput) Index(i pulumi.IntInput) GetApplicationWebOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationWeb {
+		return vs[0].([]GetApplicationWeb)[vs[1].(int)]
+	}).(GetApplicationWebOutput)
+}
+
 type GetApplicationWebImplicitGrant struct {
 	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled bool `pulumi:"accessTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled bool `pulumi:"idTokenIssuanceEnabled"`
 }
 
 // GetApplicationWebImplicitGrantInput is an input type that accepts GetApplicationWebImplicitGrantArgs and GetApplicationWebImplicitGrantOutput values.
@@ -3227,6 +3620,8 @@ type GetApplicationWebImplicitGrantInput interface {
 type GetApplicationWebImplicitGrantArgs struct {
 	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled pulumi.BoolInput `pulumi:"accessTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled pulumi.BoolInput `pulumi:"idTokenIssuanceEnabled"`
 }
 
 func (GetApplicationWebImplicitGrantArgs) ElementType() reflect.Type {
@@ -3285,6 +3680,11 @@ func (o GetApplicationWebImplicitGrantOutput) AccessTokenIssuanceEnabled() pulum
 	return o.ApplyT(func(v GetApplicationWebImplicitGrant) bool { return v.AccessTokenIssuanceEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+func (o GetApplicationWebImplicitGrantOutput) IdTokenIssuanceEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationWebImplicitGrant) bool { return v.IdTokenIssuanceEnabled }).(pulumi.BoolOutput)
+}
+
 type GetApplicationWebImplicitGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (GetApplicationWebImplicitGrantArrayOutput) ElementType() reflect.Type {
@@ -3306,16 +3706,22 @@ func (o GetApplicationWebImplicitGrantArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetDomainsDomain struct {
-	// The authentication type of the domain (Managed or Federated).
+	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+	AdminManaged bool `pulumi:"adminManaged"`
+	// The authentication type of the domain. Possible values include `Managed` or `Federated`.
 	AuthenticationType string `pulumi:"authenticationType"`
+	// Whether this is the default domain that is used for user creation.
+	Default bool `pulumi:"default"`
 	// The name of the domain.
 	DomainName string `pulumi:"domainName"`
-	// `True` if this is the default domain that is used for user creation.
-	IsDefault bool `pulumi:"isDefault"`
-	// `True` if this is the initial domain created by Azure Active Directory.
-	IsInitial bool `pulumi:"isInitial"`
-	// `True` if the domain has completed domain ownership verification.
-	IsVerified bool `pulumi:"isVerified"`
+	// Whether this is the initial domain created by Azure Active Directory.
+	Initial bool `pulumi:"initial"`
+	// Whether the domain is a verified root domain (not a subdomain).
+	Root bool `pulumi:"root"`
+	// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	SupportedServices []string `pulumi:"supportedServices"`
+	// Whether the domain has completed domain ownership verification.
+	Verified bool `pulumi:"verified"`
 }
 
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
@@ -3330,16 +3736,22 @@ type GetDomainsDomainInput interface {
 }
 
 type GetDomainsDomainArgs struct {
-	// The authentication type of the domain (Managed or Federated).
+	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+	AdminManaged pulumi.BoolInput `pulumi:"adminManaged"`
+	// The authentication type of the domain. Possible values include `Managed` or `Federated`.
 	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// Whether this is the default domain that is used for user creation.
+	Default pulumi.BoolInput `pulumi:"default"`
 	// The name of the domain.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// `True` if this is the default domain that is used for user creation.
-	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
-	// `True` if this is the initial domain created by Azure Active Directory.
-	IsInitial pulumi.BoolInput `pulumi:"isInitial"`
-	// `True` if the domain has completed domain ownership verification.
-	IsVerified pulumi.BoolInput `pulumi:"isVerified"`
+	// Whether this is the initial domain created by Azure Active Directory.
+	Initial pulumi.BoolInput `pulumi:"initial"`
+	// Whether the domain is a verified root domain (not a subdomain).
+	Root pulumi.BoolInput `pulumi:"root"`
+	// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	SupportedServices pulumi.StringArrayInput `pulumi:"supportedServices"`
+	// Whether the domain has completed domain ownership verification.
+	Verified pulumi.BoolInput `pulumi:"verified"`
 }
 
 func (GetDomainsDomainArgs) ElementType() reflect.Type {
@@ -3393,9 +3805,19 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 	return o
 }
 
-// The authentication type of the domain (Managed or Federated).
+// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+func (o GetDomainsDomainOutput) AdminManaged() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.AdminManaged }).(pulumi.BoolOutput)
+}
+
+// The authentication type of the domain. Possible values include `Managed` or `Federated`.
 func (o GetDomainsDomainOutput) AuthenticationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.AuthenticationType }).(pulumi.StringOutput)
+}
+
+// Whether this is the default domain that is used for user creation.
+func (o GetDomainsDomainOutput) Default() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
 // The name of the domain.
@@ -3403,19 +3825,24 @@ func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// `True` if this is the default domain that is used for user creation.
-func (o GetDomainsDomainOutput) IsDefault() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDomainsDomain) bool { return v.IsDefault }).(pulumi.BoolOutput)
+// Whether this is the initial domain created by Azure Active Directory.
+func (o GetDomainsDomainOutput) Initial() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Initial }).(pulumi.BoolOutput)
 }
 
-// `True` if this is the initial domain created by Azure Active Directory.
-func (o GetDomainsDomainOutput) IsInitial() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDomainsDomain) bool { return v.IsInitial }).(pulumi.BoolOutput)
+// Whether the domain is a verified root domain (not a subdomain).
+func (o GetDomainsDomainOutput) Root() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Root }).(pulumi.BoolOutput)
 }
 
-// `True` if the domain has completed domain ownership verification.
-func (o GetDomainsDomainOutput) IsVerified() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetDomainsDomain) bool { return v.IsVerified }).(pulumi.BoolOutput)
+// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+func (o GetDomainsDomainOutput) SupportedServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsDomain) []string { return v.SupportedServices }).(pulumi.StringArrayOutput)
+}
+
+// Whether the domain has completed domain ownership verification.
+func (o GetDomainsDomainOutput) Verified() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Verified }).(pulumi.BoolOutput)
 }
 
 type GetDomainsDomainArrayOutput struct{ *pulumi.OutputState }
@@ -3443,17 +3870,13 @@ type GetServicePrincipalAppRole struct {
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description string `pulumi:"description"`
-	// The Display Name of the Azure AD Application associated with this Service Principal.
+	// The display name of the application associated with this service principal.
 	DisplayName string `pulumi:"displayName"`
-	// Is this permission enabled?
+	// Determines if the permission scope is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
 	Id string `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The name of this permission
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value string `pulumi:"value"`
 }
 
@@ -3473,17 +3896,13 @@ type GetServicePrincipalAppRoleArgs struct {
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The Display Name of the Azure AD Application associated with this Service Principal.
+	// The display name of the application associated with this service principal.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Is this permission enabled?
+	// Determines if the permission scope is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Is this permission enabled?
-	//
-	// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// The name of this permission
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3548,29 +3967,22 @@ func (o GetServicePrincipalAppRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The Display Name of the Azure AD Application associated with this Service Principal.
+// The display name of the application associated with this service principal.
 func (o GetServicePrincipalAppRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Is this permission enabled?
+// Determines if the permission scope is enabled.
 func (o GetServicePrincipalAppRoleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission`
+// The unique identifier of the delegated permission. Must be a valid UUID.
 func (o GetServicePrincipalAppRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Is this permission enabled?
-//
-// Deprecated: [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-func (o GetServicePrincipalAppRoleOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServicePrincipalAppRole) bool { return v.IsEnabled }).(pulumi.BoolOutput)
-}
-
-// The name of this permission
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o GetServicePrincipalAppRoleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3595,182 +4007,22 @@ func (o GetServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) GetServi
 	}).(GetServicePrincipalAppRoleOutput)
 }
 
-type GetServicePrincipalOauth2Permission struct {
-	// The description of the admin consent
-	AdminConsentDescription string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
-	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	// The unique identifier for one of the `OAuth2Permission`
-	Id string `pulumi:"id"`
-	// Is this permission enabled?
-	IsEnabled bool `pulumi:"isEnabled"`
-	// The type of the permission
-	Type string `pulumi:"type"`
-	// The description of the user consent
-	UserConsentDescription string `pulumi:"userConsentDescription"`
-	// The display name of the user consent
-	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
-	// The name of this permission
-	Value string `pulumi:"value"`
-}
-
-// GetServicePrincipalOauth2PermissionInput is an input type that accepts GetServicePrincipalOauth2PermissionArgs and GetServicePrincipalOauth2PermissionOutput values.
-// You can construct a concrete instance of `GetServicePrincipalOauth2PermissionInput` via:
-//
-//          GetServicePrincipalOauth2PermissionArgs{...}
-type GetServicePrincipalOauth2PermissionInput interface {
-	pulumi.Input
-
-	ToGetServicePrincipalOauth2PermissionOutput() GetServicePrincipalOauth2PermissionOutput
-	ToGetServicePrincipalOauth2PermissionOutputWithContext(context.Context) GetServicePrincipalOauth2PermissionOutput
-}
-
-type GetServicePrincipalOauth2PermissionArgs struct {
-	// The description of the admin consent
-	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
-	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	// The unique identifier for one of the `OAuth2Permission`
-	Id pulumi.StringInput `pulumi:"id"`
-	// Is this permission enabled?
-	IsEnabled pulumi.BoolInput `pulumi:"isEnabled"`
-	// The type of the permission
-	Type pulumi.StringInput `pulumi:"type"`
-	// The description of the user consent
-	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent
-	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	// The name of this permission
-	Value pulumi.StringInput `pulumi:"value"`
-}
-
-func (GetServicePrincipalOauth2PermissionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (i GetServicePrincipalOauth2PermissionArgs) ToGetServicePrincipalOauth2PermissionOutput() GetServicePrincipalOauth2PermissionOutput {
-	return i.ToGetServicePrincipalOauth2PermissionOutputWithContext(context.Background())
-}
-
-func (i GetServicePrincipalOauth2PermissionArgs) ToGetServicePrincipalOauth2PermissionOutputWithContext(ctx context.Context) GetServicePrincipalOauth2PermissionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalOauth2PermissionOutput)
-}
-
-// GetServicePrincipalOauth2PermissionArrayInput is an input type that accepts GetServicePrincipalOauth2PermissionArray and GetServicePrincipalOauth2PermissionArrayOutput values.
-// You can construct a concrete instance of `GetServicePrincipalOauth2PermissionArrayInput` via:
-//
-//          GetServicePrincipalOauth2PermissionArray{ GetServicePrincipalOauth2PermissionArgs{...} }
-type GetServicePrincipalOauth2PermissionArrayInput interface {
-	pulumi.Input
-
-	ToGetServicePrincipalOauth2PermissionArrayOutput() GetServicePrincipalOauth2PermissionArrayOutput
-	ToGetServicePrincipalOauth2PermissionArrayOutputWithContext(context.Context) GetServicePrincipalOauth2PermissionArrayOutput
-}
-
-type GetServicePrincipalOauth2PermissionArray []GetServicePrincipalOauth2PermissionInput
-
-func (GetServicePrincipalOauth2PermissionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (i GetServicePrincipalOauth2PermissionArray) ToGetServicePrincipalOauth2PermissionArrayOutput() GetServicePrincipalOauth2PermissionArrayOutput {
-	return i.ToGetServicePrincipalOauth2PermissionArrayOutputWithContext(context.Background())
-}
-
-func (i GetServicePrincipalOauth2PermissionArray) ToGetServicePrincipalOauth2PermissionArrayOutputWithContext(ctx context.Context) GetServicePrincipalOauth2PermissionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalOauth2PermissionArrayOutput)
-}
-
-type GetServicePrincipalOauth2PermissionOutput struct{ *pulumi.OutputState }
-
-func (GetServicePrincipalOauth2PermissionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (o GetServicePrincipalOauth2PermissionOutput) ToGetServicePrincipalOauth2PermissionOutput() GetServicePrincipalOauth2PermissionOutput {
-	return o
-}
-
-func (o GetServicePrincipalOauth2PermissionOutput) ToGetServicePrincipalOauth2PermissionOutputWithContext(ctx context.Context) GetServicePrincipalOauth2PermissionOutput {
-	return o
-}
-
-// The description of the admin consent
-func (o GetServicePrincipalOauth2PermissionOutput) AdminConsentDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.AdminConsentDescription }).(pulumi.StringOutput)
-}
-
-// The display name of the admin consent
-func (o GetServicePrincipalOauth2PermissionOutput) AdminConsentDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
-}
-
-// The unique identifier for one of the `OAuth2Permission`
-func (o GetServicePrincipalOauth2PermissionOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Is this permission enabled?
-func (o GetServicePrincipalOauth2PermissionOutput) IsEnabled() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) bool { return v.IsEnabled }).(pulumi.BoolOutput)
-}
-
-// The type of the permission
-func (o GetServicePrincipalOauth2PermissionOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// The description of the user consent
-func (o GetServicePrincipalOauth2PermissionOutput) UserConsentDescription() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.UserConsentDescription }).(pulumi.StringOutput)
-}
-
-// The display name of the user consent
-func (o GetServicePrincipalOauth2PermissionOutput) UserConsentDisplayName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
-}
-
-// The name of this permission
-func (o GetServicePrincipalOauth2PermissionOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetServicePrincipalOauth2Permission) string { return v.Value }).(pulumi.StringOutput)
-}
-
-type GetServicePrincipalOauth2PermissionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetServicePrincipalOauth2PermissionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetServicePrincipalOauth2Permission)(nil)).Elem()
-}
-
-func (o GetServicePrincipalOauth2PermissionArrayOutput) ToGetServicePrincipalOauth2PermissionArrayOutput() GetServicePrincipalOauth2PermissionArrayOutput {
-	return o
-}
-
-func (o GetServicePrincipalOauth2PermissionArrayOutput) ToGetServicePrincipalOauth2PermissionArrayOutputWithContext(ctx context.Context) GetServicePrincipalOauth2PermissionArrayOutput {
-	return o
-}
-
-func (o GetServicePrincipalOauth2PermissionArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalOauth2PermissionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalOauth2Permission {
-		return vs[0].([]GetServicePrincipalOauth2Permission)[vs[1].(int)]
-	}).(GetServicePrincipalOauth2PermissionOutput)
-}
-
 type GetServicePrincipalOauth2PermissionScope struct {
-	// The description of the admin consent
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	// Is this permission enabled?
+	// Determines if the permission scope is enabled.
 	Enabled bool `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
 	Id string `pulumi:"id"`
-	// The type of the permission
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type string `pulumi:"type"`
-	// The description of the user consent
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription string `pulumi:"userConsentDescription"`
-	// The display name of the user consent
+	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
-	// The name of this permission
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value string `pulumi:"value"`
 }
 
@@ -3786,21 +4038,21 @@ type GetServicePrincipalOauth2PermissionScopeInput interface {
 }
 
 type GetServicePrincipalOauth2PermissionScopeArgs struct {
-	// The description of the admin consent
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
-	// The display name of the admin consent
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	// Is this permission enabled?
+	// Determines if the permission scope is enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The unique identifier for one of the `OAuth2Permission`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of the permission
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type pulumi.StringInput `pulumi:"type"`
-	// The description of the user consent
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
-	// The display name of the user consent
+	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	// The name of this permission
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3855,42 +4107,42 @@ func (o GetServicePrincipalOauth2PermissionScopeOutput) ToGetServicePrincipalOau
 	return o
 }
 
-// The description of the admin consent
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.AdminConsentDescription }).(pulumi.StringOutput)
 }
 
-// The display name of the admin consent
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// Is this permission enabled?
+// Determines if the permission scope is enabled.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The unique identifier for one of the `OAuth2Permission`
+// The unique identifier of the delegated permission. Must be a valid UUID.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of the permission
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The description of the user consent
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.UserConsentDescription }).(pulumi.StringOutput)
 }
 
-// The display name of the user consent
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
 }
 
-// The name of this permission
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3916,29 +4168,25 @@ func (o GetServicePrincipalOauth2PermissionScopeArrayOutput) Index(i pulumi.IntI
 }
 
 type GetUsersUser struct {
-	// `True` if the account is enabled; otherwise `False`.
+	// Whether or not the account is enabled.
 	AccountEnabled bool `pulumi:"accountEnabled"`
-	// The Display Name of the Azure AD User.
+	// The display name of the user.
 	DisplayName string `pulumi:"displayName"`
-	// (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
-	//
-	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
-	ImmutableId string `pulumi:"immutableId"`
-	// The primary email address of the Azure AD User.
+	// The primary email address of the user.
 	Mail string `pulumi:"mail"`
-	// The email alias of the Azure AD User.
+	// The email alias of the user.
 	MailNickname string `pulumi:"mailNickname"`
-	// The Object ID of the Azure AD User.
+	// The object ID of the user.
 	ObjectId string `pulumi:"objectId"`
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
 	OnpremisesImmutableId string `pulumi:"onpremisesImmutableId"`
-	// The on-premise SAM account name of the Azure AD User.
+	// The on-premise SAM account name of the user.
 	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
-	// The on-premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the user.
 	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
-	// The usage location of the Azure AD User.
+	// The usage location of the user.
 	UsageLocation string `pulumi:"usageLocation"`
-	// The User Principal Name of the Azure AD User.
+	// The user principal name (UPN) of the user.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
 }
 
@@ -3954,29 +4202,25 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	// `True` if the account is enabled; otherwise `False`.
+	// Whether or not the account is enabled.
 	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
-	// The Display Name of the Azure AD User.
+	// The display name of the user.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
-	//
-	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
-	ImmutableId pulumi.StringInput `pulumi:"immutableId"`
-	// The primary email address of the Azure AD User.
+	// The primary email address of the user.
 	Mail pulumi.StringInput `pulumi:"mail"`
-	// The email alias of the Azure AD User.
+	// The email alias of the user.
 	MailNickname pulumi.StringInput `pulumi:"mailNickname"`
-	// The Object ID of the Azure AD User.
+	// The object ID of the user.
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
 	OnpremisesImmutableId pulumi.StringInput `pulumi:"onpremisesImmutableId"`
-	// The on-premise SAM account name of the Azure AD User.
+	// The on-premise SAM account name of the user.
 	OnpremisesSamAccountName pulumi.StringInput `pulumi:"onpremisesSamAccountName"`
-	// The on-premise user principal name of the Azure AD User.
+	// The on-premise user principal name of the user.
 	OnpremisesUserPrincipalName pulumi.StringInput `pulumi:"onpremisesUserPrincipalName"`
-	// The usage location of the Azure AD User.
+	// The usage location of the user.
 	UsageLocation pulumi.StringInput `pulumi:"usageLocation"`
-	// The User Principal Name of the Azure AD User.
+	// The user principal name (UPN) of the user.
 	UserPrincipalName pulumi.StringInput `pulumi:"userPrincipalName"`
 }
 
@@ -4031,34 +4275,27 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
-// `True` if the account is enabled; otherwise `False`.
+// Whether or not the account is enabled.
 func (o GetUsersUserOutput) AccountEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
 }
 
-// The Display Name of the Azure AD User.
+// The display name of the user.
 func (o GetUsersUserOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
-//
-// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
-func (o GetUsersUserOutput) ImmutableId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetUsersUser) string { return v.ImmutableId }).(pulumi.StringOutput)
-}
-
-// The primary email address of the Azure AD User.
+// The primary email address of the user.
 func (o GetUsersUserOutput) Mail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Mail }).(pulumi.StringOutput)
 }
 
-// The email alias of the Azure AD User.
+// The email alias of the user.
 func (o GetUsersUserOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.MailNickname }).(pulumi.StringOutput)
 }
 
-// The Object ID of the Azure AD User.
+// The object ID of the user.
 func (o GetUsersUserOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.ObjectId }).(pulumi.StringOutput)
 }
@@ -4068,22 +4305,22 @@ func (o GetUsersUserOutput) OnpremisesImmutableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesImmutableId }).(pulumi.StringOutput)
 }
 
-// The on-premise SAM account name of the Azure AD User.
+// The on-premise SAM account name of the user.
 func (o GetUsersUserOutput) OnpremisesSamAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
 }
 
-// The on-premise user principal name of the Azure AD User.
+// The on-premise user principal name of the user.
 func (o GetUsersUserOutput) OnpremisesUserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesUserPrincipalName }).(pulumi.StringOutput)
 }
 
-// The usage location of the Azure AD User.
+// The usage location of the user.
 func (o GetUsersUserOutput) UsageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UsageLocation }).(pulumi.StringOutput)
 }
 
-// The User Principal Name of the Azure AD User.
+// The user principal name (UPN) of the user.
 func (o GetUsersUserOutput) UserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UserPrincipalName }).(pulumi.StringOutput)
 }
@@ -4113,56 +4350,62 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationApiPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationApiOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(ApplicationApiOauth2PermissionScopeArrayOutput{})
-	pulumi.RegisterOutputType(ApplicationAppRoleTypeOutput{})
-	pulumi.RegisterOutputType(ApplicationAppRoleTypeArrayOutput{})
-	pulumi.RegisterOutputType(ApplicationOauth2PermissionOutput{})
-	pulumi.RegisterOutputType(ApplicationOauth2PermissionArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRoleOutput{})
+	pulumi.RegisterOutputType(ApplicationAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsIdTokenOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsIdTokenArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsSaml2TokenOutput{})
+	pulumi.RegisterOutputType(ApplicationOptionalClaimsSaml2TokenArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationPublicClientOutput{})
+	pulumi.RegisterOutputType(ApplicationPublicClientPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessResourceAccessOutput{})
 	pulumi.RegisterOutputType(ApplicationRequiredResourceAccessResourceAccessArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationSinglePageApplicationOutput{})
+	pulumi.RegisterOutputType(ApplicationSinglePageApplicationPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationWebOutput{})
 	pulumi.RegisterOutputType(ApplicationWebPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantPtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleArrayOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOauth2PermissionScopeArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationAppRoleTypeOutput{})
-	pulumi.RegisterOutputType(GetApplicationAppRoleTypeArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationOauth2PermissionOutput{})
-	pulumi.RegisterOutputType(GetApplicationOauth2PermissionArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationOptionalClaimsOutput{})
-	pulumi.RegisterOutputType(GetApplicationOptionalClaimsAccessTokenOutput{})
-	pulumi.RegisterOutputType(GetApplicationOptionalClaimsAccessTokenArrayOutput{})
-	pulumi.RegisterOutputType(GetApplicationOptionalClaimsIdTokenOutput{})
-	pulumi.RegisterOutputType(GetApplicationOptionalClaimsIdTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationAppRoleOutput{})
+	pulumi.RegisterOutputType(GetApplicationAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimAccessTokenOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimAccessTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimIdTokenOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimIdTokenArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimSaml2TokenOutput{})
+	pulumi.RegisterOutputType(GetApplicationOptionalClaimSaml2TokenArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationPublicClientOutput{})
+	pulumi.RegisterOutputType(GetApplicationPublicClientArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessResourceAccessOutput{})
 	pulumi.RegisterOutputType(GetApplicationRequiredResourceAccessResourceAccessArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationSinglePageApplicationOutput{})
+	pulumi.RegisterOutputType(GetApplicationSinglePageApplicationArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebOutput{})
+	pulumi.RegisterOutputType(GetApplicationWebArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
-	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionOutput{})
-	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})

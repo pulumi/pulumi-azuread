@@ -10,17 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class GetApplicationOptionalClaimsIdTokenArgs : Pulumi.InvokeArgs
+    public sealed class ApplicationOptionalClaimsSaml2TokenArgs : Pulumi.ResourceArgs
     {
         [Input("additionalProperties")]
-        private List<string>? _additionalProperties;
+        private InputList<string>? _additionalProperties;
 
         /// <summary>
-        /// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         /// </summary>
-        public List<string> AdditionalProperties
+        public InputList<string> AdditionalProperties
         {
-            get => _additionalProperties ?? (_additionalProperties = new List<string>());
+            get => _additionalProperties ?? (_additionalProperties = new InputList<string>());
             set => _additionalProperties = value;
         }
 
@@ -28,21 +28,21 @@ namespace Pulumi.AzureAD.Inputs
         /// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         /// </summary>
         [Input("essential")]
-        public bool? Essential { get; set; }
+        public Input<bool>? Essential { get; set; }
 
         /// <summary>
         /// The name of the optional claim.
         /// </summary>
         [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         /// </summary>
         [Input("source")]
-        public string? Source { get; set; }
+        public Input<string>? Source { get; set; }
 
-        public GetApplicationOptionalClaimsIdTokenArgs()
+        public ApplicationOptionalClaimsSaml2TokenArgs()
         {
         }
     }

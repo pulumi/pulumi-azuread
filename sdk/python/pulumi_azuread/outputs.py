@@ -13,31 +13,33 @@ __all__ = [
     'ApplicationApi',
     'ApplicationApiOauth2PermissionScope',
     'ApplicationAppRole',
-    'ApplicationOauth2Permission',
     'ApplicationOptionalClaims',
     'ApplicationOptionalClaimsAccessToken',
     'ApplicationOptionalClaimsIdToken',
+    'ApplicationOptionalClaimsSaml2Token',
+    'ApplicationPublicClient',
     'ApplicationRequiredResourceAccess',
     'ApplicationRequiredResourceAccessResourceAccess',
+    'ApplicationSinglePageApplication',
     'ApplicationWeb',
     'ApplicationWebImplicitGrant',
     'ServicePrincipalAppRole',
-    'ServicePrincipalOauth2Permission',
     'ServicePrincipalOauth2PermissionScope',
     'GetApplicationApiResult',
     'GetApplicationApiOauth2PermissionScopeResult',
     'GetApplicationAppRoleResult',
-    'GetApplicationOauth2PermissionResult',
-    'GetApplicationOptionalClaimsResult',
-    'GetApplicationOptionalClaimsAccessTokenResult',
-    'GetApplicationOptionalClaimsIdTokenResult',
+    'GetApplicationOptionalClaimResult',
+    'GetApplicationOptionalClaimAccessTokenResult',
+    'GetApplicationOptionalClaimIdTokenResult',
+    'GetApplicationOptionalClaimSaml2TokenResult',
+    'GetApplicationPublicClientResult',
     'GetApplicationRequiredResourceAccessResult',
     'GetApplicationRequiredResourceAccessResourceAccessResult',
+    'GetApplicationSinglePageApplicationResult',
     'GetApplicationWebResult',
     'GetApplicationWebImplicitGrantResult',
     'GetDomainsDomainResult',
     'GetServicePrincipalAppRoleResult',
-    'GetServicePrincipalOauth2PermissionResult',
     'GetServicePrincipalOauth2PermissionScopeResult',
     'GetUsersUserResult',
 ]
@@ -47,8 +49,14 @@ class ApplicationApi(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "oauth2PermissionScopes":
+        if key == "knownClientApplications":
+            suggest = "known_client_applications"
+        elif key == "mappedClaimsEnabled":
+            suggest = "mapped_claims_enabled"
+        elif key == "oauth2PermissionScopes":
             suggest = "oauth2_permission_scopes"
+        elif key == "requestedAccessTokenVersion":
+            suggest = "requested_access_token_version"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApplicationApi. Access the value via the '{suggest}' property getter instead.")
@@ -62,20 +70,56 @@ class ApplicationApi(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 oauth2_permission_scopes: Optional[Sequence['outputs.ApplicationApiOauth2PermissionScope']] = None):
+                 known_client_applications: Optional[Sequence[str]] = None,
+                 mapped_claims_enabled: Optional[bool] = None,
+                 oauth2_permission_scopes: Optional[Sequence['outputs.ApplicationApiOauth2PermissionScope']] = None,
+                 requested_access_token_version: Optional[int] = None):
         """
-        :param Sequence['ApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+        :param Sequence[str] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        :param bool mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+        :param Sequence['ApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        :param int requested_access_token_version: The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
         """
+        if known_client_applications is not None:
+            pulumi.set(__self__, "known_client_applications", known_client_applications)
+        if mapped_claims_enabled is not None:
+            pulumi.set(__self__, "mapped_claims_enabled", mapped_claims_enabled)
         if oauth2_permission_scopes is not None:
             pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
+        if requested_access_token_version is not None:
+            pulumi.set(__self__, "requested_access_token_version", requested_access_token_version)
+
+    @property
+    @pulumi.getter(name="knownClientApplications")
+    def known_client_applications(self) -> Optional[Sequence[str]]:
+        """
+        A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        """
+        return pulumi.get(self, "known_client_applications")
+
+    @property
+    @pulumi.getter(name="mappedClaimsEnabled")
+    def mapped_claims_enabled(self) -> Optional[bool]:
+        """
+        Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+        """
+        return pulumi.get(self, "mapped_claims_enabled")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopes")
     def oauth2_permission_scopes(self) -> Optional[Sequence['outputs.ApplicationApiOauth2PermissionScope']]:
         """
-        One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+        One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         """
         return pulumi.get(self, "oauth2_permission_scopes")
+
+    @property
+    @pulumi.getter(name="requestedAccessTokenVersion")
+    def requested_access_token_version(self) -> Optional[int]:
+        """
+        The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `sign_in_audience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+        """
+        return pulumi.get(self, "requested_access_token_version")
 
 
 @pulumi.output_type
@@ -113,14 +157,14 @@ class ApplicationApiOauth2PermissionScope(dict):
                  user_consent_display_name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str id: The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
+        :param str id: The unique identifier of the delegated permission. Must be a valid UUID.
         :param str admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         :param str admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-        :param bool enabled: Determines if the app role is enabled: Defaults to `true`.
-        :param str type: The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+        :param bool enabled: Determines if the permission scope is enabled. Defaults to `true`.
+        :param str type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
-        :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         pulumi.set(__self__, "id", id)
         if admin_consent_description is not None:
@@ -142,7 +186,7 @@ class ApplicationApiOauth2PermissionScope(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
+        The unique identifier of the delegated permission. Must be a valid UUID.
         """
         return pulumi.get(self, "id")
 
@@ -166,7 +210,7 @@ class ApplicationApiOauth2PermissionScope(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Determines if the app role is enabled: Defaults to `true`.
+        Determines if the permission scope is enabled. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
 
@@ -174,7 +218,7 @@ class ApplicationApiOauth2PermissionScope(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         """
         return pulumi.get(self, "type")
 
@@ -198,7 +242,7 @@ class ApplicationApiOauth2PermissionScope(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
 
@@ -212,8 +256,6 @@ class ApplicationAppRole(dict):
             suggest = "allowed_member_types"
         elif key == "displayName":
             suggest = "display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApplicationAppRole. Access the value via the '{suggest}' property getter instead.")
@@ -230,28 +272,23 @@ class ApplicationAppRole(dict):
                  allowed_member_types: Sequence[str],
                  description: str,
                  display_name: str,
+                 id: str,
                  enabled: Optional[bool] = None,
-                 id: Optional[str] = None,
-                 is_enabled: Optional[bool] = None,
                  value: Optional[str] = None):
         """
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param str description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param str display_name: Display name for the app role that appears during app role assignment and in consent experiences.
-        :param bool enabled: Determines if the app role is enabled: Defaults to `true`.
-        :param str id: The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-        :param bool is_enabled: Determines if the permission is enabled: defaults to `true`.
+        :param str id: The unique identifier of the app role. Must be a valid UUID.
+        :param bool enabled: Determines if the app role is enabled. Defaults to `true`.
         :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "id", id)
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -281,155 +318,19 @@ class ApplicationAppRole(dict):
 
     @property
     @pulumi.getter
+    def id(self) -> str:
+        """
+        The unique identifier of the app role. Must be a valid UUID.
+        """
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Determines if the app role is enabled: Defaults to `true`.
+        Determines if the app role is enabled. Defaults to `true`.
         """
         return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
-        """
-        Determines if the permission is enabled: defaults to `true`.
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class ApplicationOauth2Permission(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminConsentDescription":
-            suggest = "admin_consent_description"
-        elif key == "adminConsentDisplayName":
-            suggest = "admin_consent_display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "userConsentDescription":
-            suggest = "user_consent_description"
-        elif key == "userConsentDisplayName":
-            suggest = "user_consent_display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ApplicationOauth2Permission. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ApplicationOauth2Permission.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ApplicationOauth2Permission.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 admin_consent_description: Optional[str] = None,
-                 admin_consent_display_name: Optional[str] = None,
-                 id: Optional[str] = None,
-                 is_enabled: Optional[bool] = None,
-                 type: Optional[str] = None,
-                 user_consent_description: Optional[str] = None,
-                 user_consent_display_name: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-        :param str admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-        :param str id: The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-        :param bool is_enabled: Determines if the permission is enabled: defaults to `true`.
-        :param str type: The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-        :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
-        :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-        """
-        if admin_consent_description is not None:
-            pulumi.set(__self__, "admin_consent_description", admin_consent_description)
-        if admin_consent_display_name is not None:
-            pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if user_consent_description is not None:
-            pulumi.set(__self__, "user_consent_description", user_consent_description)
-        if user_consent_display_name is not None:
-            pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter(name="adminConsentDescription")
-    def admin_consent_description(self) -> Optional[str]:
-        """
-        Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-        """
-        return pulumi.get(self, "admin_consent_description")
-
-    @property
-    @pulumi.getter(name="adminConsentDisplayName")
-    def admin_consent_display_name(self) -> Optional[str]:
-        """
-        Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-        """
-        return pulumi.get(self, "admin_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the ApplicationAppRole resource.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
-        """
-        Determines if the permission is enabled: defaults to `true`.
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="userConsentDescription")
-    def user_consent_description(self) -> Optional[str]:
-        """
-        Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        """
-        return pulumi.get(self, "user_consent_description")
-
-    @property
-    @pulumi.getter(name="userConsentDisplayName")
-    def user_consent_display_name(self) -> Optional[str]:
-        """
-        Display name for the delegated permission that appears in the end user consent experience.
-        """
-        return pulumi.get(self, "user_consent_display_name")
 
     @property
     @pulumi.getter
@@ -449,6 +350,8 @@ class ApplicationOptionalClaims(dict):
             suggest = "access_tokens"
         elif key == "idTokens":
             suggest = "id_tokens"
+        elif key == "saml2Tokens":
+            suggest = "saml2_tokens"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApplicationOptionalClaims. Access the value via the '{suggest}' property getter instead.")
@@ -463,21 +366,43 @@ class ApplicationOptionalClaims(dict):
 
     def __init__(__self__, *,
                  access_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']] = None,
-                 id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None):
+                 id_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']] = None,
+                 saml2_tokens: Optional[Sequence['outputs.ApplicationOptionalClaimsSaml2Token']] = None):
+        """
+        :param Sequence['ApplicationOptionalClaimsAccessTokenArgs'] access_tokens: One or more `access_token` blocks as documented below.
+        :param Sequence['ApplicationOptionalClaimsIdTokenArgs'] id_tokens: One or more `id_token` blocks as documented below.
+        :param Sequence['ApplicationOptionalClaimsSaml2TokenArgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
+        """
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
             pulumi.set(__self__, "id_tokens", id_tokens)
+        if saml2_tokens is not None:
+            pulumi.set(__self__, "saml2_tokens", saml2_tokens)
 
     @property
     @pulumi.getter(name="accessTokens")
     def access_tokens(self) -> Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']]:
+        """
+        One or more `access_token` blocks as documented below.
+        """
         return pulumi.get(self, "access_tokens")
 
     @property
     @pulumi.getter(name="idTokens")
     def id_tokens(self) -> Optional[Sequence['outputs.ApplicationOptionalClaimsIdToken']]:
+        """
+        One or more `id_token` blocks as documented below.
+        """
         return pulumi.get(self, "id_tokens")
+
+    @property
+    @pulumi.getter(name="saml2Tokens")
+    def saml2_tokens(self) -> Optional[Sequence['outputs.ApplicationOptionalClaimsSaml2Token']]:
+        """
+        One or more `saml2_token` blocks as documented below.
+        """
+        return pulumi.get(self, "saml2_tokens")
 
 
 @pulumi.output_type
@@ -506,7 +431,7 @@ class ApplicationOptionalClaimsAccessToken(dict):
                  source: Optional[str] = None):
         """
         :param str name: The name of the optional claim.
-        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -530,7 +455,7 @@ class ApplicationOptionalClaimsAccessToken(dict):
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Sequence[str]]:
         """
-        List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
         return pulumi.get(self, "additional_properties")
 
@@ -577,7 +502,7 @@ class ApplicationOptionalClaimsIdToken(dict):
                  source: Optional[str] = None):
         """
         :param str name: The name of the optional claim.
-        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
         :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
@@ -601,7 +526,7 @@ class ApplicationOptionalClaimsIdToken(dict):
     @pulumi.getter(name="additionalProperties")
     def additional_properties(self) -> Optional[Sequence[str]]:
         """
-        List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
         """
         return pulumi.get(self, "additional_properties")
 
@@ -620,6 +545,113 @@ class ApplicationOptionalClaimsIdToken(dict):
         The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
         return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class ApplicationOptionalClaimsSaml2Token(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalProperties":
+            suggest = "additional_properties"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationOptionalClaimsSaml2Token. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationOptionalClaimsSaml2Token.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationOptionalClaimsSaml2Token.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 additional_properties: Optional[Sequence[str]] = None,
+                 essential: Optional[bool] = None,
+                 source: Optional[str] = None):
+        """
+        :param str name: The name of the optional claim.
+        :param Sequence[str] additional_properties: List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+        pulumi.set(__self__, "name", name)
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
+        if essential is not None:
+            pulumi.set(__self__, "essential", essential)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the optional claim.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[Sequence[str]]:
+        """
+        List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @property
+    @pulumi.getter
+    def essential(self) -> Optional[bool]:
+        """
+        Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        """
+        return pulumi.get(self, "essential")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class ApplicationPublicClient(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectUris":
+            suggest = "redirect_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationPublicClient. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationPublicClient.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationPublicClient.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Optional[Sequence[str]]:
+        """
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        return pulumi.get(self, "redirect_uris")
 
 
 @pulumi.output_type
@@ -676,8 +708,8 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
                  id: str,
                  type: str):
         """
-        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        :param str type: Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+        :param str type: Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "type", type)
@@ -686,7 +718,7 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         """
         return pulumi.get(self, "id")
 
@@ -694,9 +726,45 @@ class ApplicationRequiredResourceAccessResourceAccess(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class ApplicationSinglePageApplication(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "redirectUris":
+            suggest = "redirect_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ApplicationSinglePageApplication. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ApplicationSinglePageApplication.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ApplicationSinglePageApplication.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 redirect_uris: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Optional[Sequence[str]]:
+        """
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        return pulumi.get(self, "redirect_uris")
 
 
 @pulumi.output_type
@@ -733,7 +801,7 @@ class ApplicationWeb(dict):
         :param str homepage_url: Home page or landing page of the application.
         :param 'ApplicationWebImplicitGrantArgs' implicit_grant: An `implicit_grant` block as documented above.
         :param str logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-        :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         """
         if homepage_url is not None:
             pulumi.set(__self__, "homepage_url", homepage_url)
@@ -772,7 +840,7 @@ class ApplicationWeb(dict):
     @pulumi.getter(name="redirectUris")
     def redirect_uris(self) -> Optional[Sequence[str]]:
         """
-        A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         """
         return pulumi.get(self, "redirect_uris")
 
@@ -784,6 +852,8 @@ class ApplicationWebImplicitGrant(dict):
         suggest = None
         if key == "accessTokenIssuanceEnabled":
             suggest = "access_token_issuance_enabled"
+        elif key == "idTokenIssuanceEnabled":
+            suggest = "id_token_issuance_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ApplicationWebImplicitGrant. Access the value via the '{suggest}' property getter instead.")
@@ -797,12 +867,16 @@ class ApplicationWebImplicitGrant(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 access_token_issuance_enabled: Optional[bool] = None):
+                 access_token_issuance_enabled: Optional[bool] = None,
+                 id_token_issuance_enabled: Optional[bool] = None):
         """
         :param bool access_token_issuance_enabled: Whether this web application can request an access token using OAuth 2.0 implicit flow.
+        :param bool id_token_issuance_enabled: Whether this web application can request an ID token using OAuth 2.0 implicit flow.
         """
         if access_token_issuance_enabled is not None:
             pulumi.set(__self__, "access_token_issuance_enabled", access_token_issuance_enabled)
+        if id_token_issuance_enabled is not None:
+            pulumi.set(__self__, "id_token_issuance_enabled", id_token_issuance_enabled)
 
     @property
     @pulumi.getter(name="accessTokenIssuanceEnabled")
@@ -811,6 +885,14 @@ class ApplicationWebImplicitGrant(dict):
         Whether this web application can request an access token using OAuth 2.0 implicit flow.
         """
         return pulumi.get(self, "access_token_issuance_enabled")
+
+    @property
+    @pulumi.getter(name="idTokenIssuanceEnabled")
+    def id_token_issuance_enabled(self) -> Optional[bool]:
+        """
+        Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+        """
+        return pulumi.get(self, "id_token_issuance_enabled")
 
 
 @pulumi.output_type
@@ -822,8 +904,6 @@ class ServicePrincipalAppRole(dict):
             suggest = "allowed_member_types"
         elif key == "displayName":
             suggest = "display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalAppRole. Access the value via the '{suggest}' property getter instead.")
@@ -842,16 +922,14 @@ class ServicePrincipalAppRole(dict):
                  display_name: Optional[str] = None,
                  enabled: Optional[bool] = None,
                  id: Optional[str] = None,
-                 is_enabled: Optional[bool] = None,
                  value: Optional[str] = None):
         """
-        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
-        :param str description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param str display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param bool enabled: Is this permission enabled?
-        :param str id: The unique identifier for one of the `OAuth2Permission`.
-        :param bool is_enabled: Is this permission enabled?
-        :param str value: The name of this permission.
+        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        :param str description: A description of the service principal provided for internal end-users.
+        :param str display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param bool enabled: Specifies whether the permission scope is enabled.
+        :param str id: The unique identifier of the delegated permission.
+        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         if allowed_member_types is not None:
             pulumi.set(__self__, "allowed_member_types", allowed_member_types)
@@ -863,8 +941,6 @@ class ServicePrincipalAppRole(dict):
             pulumi.set(__self__, "enabled", enabled)
         if id is not None:
             pulumi.set(__self__, "id", id)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
@@ -872,7 +948,7 @@ class ServicePrincipalAppRole(dict):
     @pulumi.getter(name="allowedMemberTypes")
     def allowed_member_types(self) -> Optional[Sequence[str]]:
         """
-        Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
         """
         return pulumi.get(self, "allowed_member_types")
 
@@ -880,7 +956,7 @@ class ServicePrincipalAppRole(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        Permission help text that appears in the admin app assignment and consent experiences.
+        A description of the service principal provided for internal end-users.
         """
         return pulumi.get(self, "description")
 
@@ -888,7 +964,7 @@ class ServicePrincipalAppRole(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[str]:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
 
@@ -896,7 +972,7 @@ class ServicePrincipalAppRole(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Is this permission enabled?
+        Specifies whether the permission scope is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -904,151 +980,15 @@ class ServicePrincipalAppRole(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The unique identifier for one of the `OAuth2Permission`.
+        The unique identifier of the delegated permission.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The name of this permission.
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class ServicePrincipalOauth2Permission(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "adminConsentDescription":
-            suggest = "admin_consent_description"
-        elif key == "adminConsentDisplayName":
-            suggest = "admin_consent_display_name"
-        elif key == "isEnabled":
-            suggest = "is_enabled"
-        elif key == "userConsentDescription":
-            suggest = "user_consent_description"
-        elif key == "userConsentDisplayName":
-            suggest = "user_consent_display_name"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalOauth2Permission. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ServicePrincipalOauth2Permission.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ServicePrincipalOauth2Permission.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 admin_consent_description: Optional[str] = None,
-                 admin_consent_display_name: Optional[str] = None,
-                 id: Optional[str] = None,
-                 is_enabled: Optional[bool] = None,
-                 type: Optional[str] = None,
-                 user_consent_description: Optional[str] = None,
-                 user_consent_display_name: Optional[str] = None,
-                 value: Optional[str] = None):
-        """
-        :param str admin_consent_description: The description of the admin consent.
-        :param str admin_consent_display_name: The display name of the admin consent.
-        :param str id: The unique identifier for one of the `OAuth2Permission`.
-        :param bool is_enabled: Is this permission enabled?
-        :param str type: The type of the permission.
-        :param str user_consent_description: The description of the user consent.
-        :param str user_consent_display_name: The display name of the user consent.
-        :param str value: The name of this permission.
-        """
-        if admin_consent_description is not None:
-            pulumi.set(__self__, "admin_consent_description", admin_consent_description)
-        if admin_consent_display_name is not None:
-            pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
-        if is_enabled is not None:
-            pulumi.set(__self__, "is_enabled", is_enabled)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-        if user_consent_description is not None:
-            pulumi.set(__self__, "user_consent_description", user_consent_description)
-        if user_consent_display_name is not None:
-            pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter(name="adminConsentDescription")
-    def admin_consent_description(self) -> Optional[str]:
-        """
-        The description of the admin consent.
-        """
-        return pulumi.get(self, "admin_consent_description")
-
-    @property
-    @pulumi.getter(name="adminConsentDisplayName")
-    def admin_consent_display_name(self) -> Optional[str]:
-        """
-        The display name of the admin consent.
-        """
-        return pulumi.get(self, "admin_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[str]:
-        """
-        The unique identifier for one of the `OAuth2Permission`.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> Optional[bool]:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[str]:
-        """
-        The type of the permission.
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="userConsentDescription")
-    def user_consent_description(self) -> Optional[str]:
-        """
-        The description of the user consent.
-        """
-        return pulumi.get(self, "user_consent_description")
-
-    @property
-    @pulumi.getter(name="userConsentDisplayName")
-    def user_consent_display_name(self) -> Optional[str]:
-        """
-        The display name of the user consent.
-        """
-        return pulumi.get(self, "user_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[str]:
-        """
-        The name of this permission.
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
 
@@ -1088,14 +1028,14 @@ class ServicePrincipalOauth2PermissionScope(dict):
                  user_consent_display_name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str admin_consent_description: The description of the admin consent.
-        :param str admin_consent_display_name: The display name of the admin consent.
-        :param bool enabled: Is this permission enabled?
-        :param str id: The unique identifier for one of the `OAuth2Permission`.
-        :param str type: The type of the permission.
-        :param str user_consent_description: The description of the user consent.
-        :param str user_consent_display_name: The display name of the user consent.
-        :param str value: The name of this permission.
+        :param str admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
+        :param str admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
+        :param bool enabled: Specifies whether the permission scope is enabled.
+        :param str id: The unique identifier of the delegated permission.
+        :param str type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+        :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         if admin_consent_description is not None:
             pulumi.set(__self__, "admin_consent_description", admin_consent_description)
@@ -1118,7 +1058,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter(name="adminConsentDescription")
     def admin_consent_description(self) -> Optional[str]:
         """
-        The description of the admin consent.
+        Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_description")
 
@@ -1126,7 +1066,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter(name="adminConsentDisplayName")
     def admin_consent_display_name(self) -> Optional[str]:
         """
-        The display name of the admin consent.
+        Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_display_name")
 
@@ -1134,7 +1074,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
         """
-        Is this permission enabled?
+        Specifies whether the permission scope is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1142,7 +1082,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter
     def id(self) -> Optional[str]:
         """
-        The unique identifier for one of the `OAuth2Permission`.
+        The unique identifier of the delegated permission.
         """
         return pulumi.get(self, "id")
 
@@ -1150,7 +1090,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of the permission.
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         """
         return pulumi.get(self, "type")
 
@@ -1158,7 +1098,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter(name="userConsentDescription")
     def user_consent_description(self) -> Optional[str]:
         """
-        The description of the user consent.
+        Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         """
         return pulumi.get(self, "user_consent_description")
 
@@ -1166,7 +1106,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter(name="userConsentDisplayName")
     def user_consent_display_name(self) -> Optional[str]:
         """
-        The display name of the user consent.
+        Display name for the delegated permission that appears in the end user consent experience.
         """
         return pulumi.get(self, "user_consent_display_name")
 
@@ -1174,7 +1114,7 @@ class ServicePrincipalOauth2PermissionScope(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        The name of this permission.
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
 
@@ -1182,13 +1122,48 @@ class ServicePrincipalOauth2PermissionScope(dict):
 @pulumi.output_type
 class GetApplicationApiResult(dict):
     def __init__(__self__, *,
-                 oauth2_permission_scopes: Sequence['outputs.GetApplicationApiOauth2PermissionScopeResult']):
+                 known_client_applications: Sequence[str],
+                 mapped_claims_enabled: bool,
+                 oauth2_permission_scopes: Sequence['outputs.GetApplicationApiOauth2PermissionScopeResult'],
+                 requested_access_token_version: int):
+        """
+        :param Sequence[str] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        :param bool mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key.
+        :param int requested_access_token_version: The access token version expected by this resource. Possible values are `1` or `2`.
+        """
+        pulumi.set(__self__, "known_client_applications", known_client_applications)
+        pulumi.set(__self__, "mapped_claims_enabled", mapped_claims_enabled)
         pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
+        pulumi.set(__self__, "requested_access_token_version", requested_access_token_version)
+
+    @property
+    @pulumi.getter(name="knownClientApplications")
+    def known_client_applications(self) -> Sequence[str]:
+        """
+        A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        """
+        return pulumi.get(self, "known_client_applications")
+
+    @property
+    @pulumi.getter(name="mappedClaimsEnabled")
+    def mapped_claims_enabled(self) -> bool:
+        """
+        Allows an application to use claims mapping without specifying a custom signing key.
+        """
+        return pulumi.get(self, "mapped_claims_enabled")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopes")
     def oauth2_permission_scopes(self) -> Sequence['outputs.GetApplicationApiOauth2PermissionScopeResult']:
         return pulumi.get(self, "oauth2_permission_scopes")
+
+    @property
+    @pulumi.getter(name="requestedAccessTokenVersion")
+    def requested_access_token_version(self) -> int:
+        """
+        The access token version expected by this resource. Possible values are `1` or `2`.
+        """
+        return pulumi.get(self, "requested_access_token_version")
 
 
 @pulumi.output_type
@@ -1198,27 +1173,24 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
                  admin_consent_display_name: str,
                  enabled: bool,
                  id: str,
-                 is_enabled: bool,
                  type: str,
                  user_consent_description: str,
                  user_consent_display_name: str,
                  value: str):
         """
-        :param str admin_consent_description: The description of the admin consent
-        :param str admin_consent_display_name: The display name of the admin consent
-        :param bool enabled: (Optional) Determines if the permission scope is enabled.
-        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        :param bool is_enabled: Is this permission enabled?
-        :param str type: Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-        :param str user_consent_description: The description of the user consent
-        :param str user_consent_display_name: The display name of the user consent
-        :param str value: The name of this permission
+        :param str admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
+        :param str admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
+        :param bool enabled: Determines if the app role is enabled.
+        :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+        :param str type: Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
+        :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+        :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+        :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "user_consent_description", user_consent_description)
         pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
@@ -1228,7 +1200,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="adminConsentDescription")
     def admin_consent_description(self) -> str:
         """
-        The description of the admin consent
+        Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_description")
 
@@ -1236,7 +1208,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="adminConsentDisplayName")
     def admin_consent_display_name(self) -> str:
         """
-        The display name of the admin consent
+        Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_display_name")
 
@@ -1244,7 +1216,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        (Optional) Determines if the permission scope is enabled.
+        Determines if the app role is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1252,23 +1224,15 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> bool:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter
     def type(self) -> str:
         """
-        Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
         return pulumi.get(self, "type")
 
@@ -1276,7 +1240,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="userConsentDescription")
     def user_consent_description(self) -> str:
         """
-        The description of the user consent
+        Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         """
         return pulumi.get(self, "user_consent_description")
 
@@ -1284,7 +1248,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="userConsentDisplayName")
     def user_consent_display_name(self) -> str:
         """
-        The display name of the user consent
+        Display name for the delegated permission that appears in the end user consent experience.
         """
         return pulumi.get(self, "user_consent_display_name")
 
@@ -1292,7 +1256,7 @@ class GetApplicationApiOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The name of this permission
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         return pulumi.get(self, "value")
 
@@ -1305,30 +1269,27 @@ class GetApplicationAppRoleResult(dict):
                  display_name: str,
                  enabled: bool,
                  id: str,
-                 is_enabled: bool,
                  value: str):
         """
-        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
         :param str description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param str display_name: Specifies the display name of the application.
-        :param bool enabled: (Optional) Determines if the permission scope is enabled.
-        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        :param bool is_enabled: Is this permission enabled?
-        :param str value: The name of this permission
+        :param bool enabled: Determines if the app role is enabled.
+        :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+        :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter(name="allowedMemberTypes")
     def allowed_member_types(self) -> Sequence[str]:
         """
-        Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
         """
         return pulumi.get(self, "allowed_member_types")
 
@@ -1352,7 +1313,7 @@ class GetApplicationAppRoleResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        (Optional) Determines if the permission scope is enabled.
+        Determines if the app role is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1360,156 +1321,64 @@ class GetApplicationAppRoleResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> bool:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter
     def value(self) -> str:
         """
-        The name of this permission
+        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         return pulumi.get(self, "value")
 
 
 @pulumi.output_type
-class GetApplicationOauth2PermissionResult(dict):
+class GetApplicationOptionalClaimResult(dict):
     def __init__(__self__, *,
-                 admin_consent_description: str,
-                 admin_consent_display_name: str,
-                 enabled: bool,
-                 id: str,
-                 is_enabled: bool,
-                 type: str,
-                 user_consent_description: str,
-                 user_consent_display_name: str,
-                 value: str):
+                 access_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimAccessTokenResult']] = None,
+                 id_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimIdTokenResult']] = None,
+                 saml2_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimSaml2TokenResult']] = None):
         """
-        :param str admin_consent_description: The description of the admin consent
-        :param str admin_consent_display_name: The display name of the admin consent
-        :param bool enabled: (Optional) Determines if the permission scope is enabled.
-        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        :param bool is_enabled: Is this permission enabled?
-        :param str type: Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-        :param str user_consent_description: The description of the user consent
-        :param str user_consent_display_name: The display name of the user consent
-        :param str value: The name of this permission
+        :param Sequence['GetApplicationOptionalClaimAccessTokenArgs'] access_tokens: One or more `access_token` blocks as documented below.
+        :param Sequence['GetApplicationOptionalClaimIdTokenArgs'] id_tokens: One or more `id_token` blocks as documented below.
+        :param Sequence['GetApplicationOptionalClaimSaml2TokenArgs'] saml2_tokens: One or more `saml2_token` blocks as documented below.
         """
-        pulumi.set(__self__, "admin_consent_description", admin_consent_description)
-        pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
-        pulumi.set(__self__, "enabled", enabled)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_enabled", is_enabled)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user_consent_description", user_consent_description)
-        pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter(name="adminConsentDescription")
-    def admin_consent_description(self) -> str:
-        """
-        The description of the admin consent
-        """
-        return pulumi.get(self, "admin_consent_description")
-
-    @property
-    @pulumi.getter(name="adminConsentDisplayName")
-    def admin_consent_display_name(self) -> str:
-        """
-        The display name of the admin consent
-        """
-        return pulumi.get(self, "admin_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> bool:
-        """
-        (Optional) Determines if the permission scope is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> bool:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="userConsentDescription")
-    def user_consent_description(self) -> str:
-        """
-        The description of the user consent
-        """
-        return pulumi.get(self, "user_consent_description")
-
-    @property
-    @pulumi.getter(name="userConsentDisplayName")
-    def user_consent_display_name(self) -> str:
-        """
-        The display name of the user consent
-        """
-        return pulumi.get(self, "user_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        The name of this permission
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetApplicationOptionalClaimsResult(dict):
-    def __init__(__self__, *,
-                 access_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimsAccessTokenResult']] = None,
-                 id_tokens: Optional[Sequence['outputs.GetApplicationOptionalClaimsIdTokenResult']] = None):
         if access_tokens is not None:
             pulumi.set(__self__, "access_tokens", access_tokens)
         if id_tokens is not None:
             pulumi.set(__self__, "id_tokens", id_tokens)
+        if saml2_tokens is not None:
+            pulumi.set(__self__, "saml2_tokens", saml2_tokens)
 
     @property
     @pulumi.getter(name="accessTokens")
-    def access_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimsAccessTokenResult']]:
+    def access_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimAccessTokenResult']]:
+        """
+        One or more `access_token` blocks as documented below.
+        """
         return pulumi.get(self, "access_tokens")
 
     @property
     @pulumi.getter(name="idTokens")
-    def id_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimsIdTokenResult']]:
+    def id_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimIdTokenResult']]:
+        """
+        One or more `id_token` blocks as documented below.
+        """
         return pulumi.get(self, "id_tokens")
 
+    @property
+    @pulumi.getter(name="saml2Tokens")
+    def saml2_tokens(self) -> Optional[Sequence['outputs.GetApplicationOptionalClaimSaml2TokenResult']]:
+        """
+        One or more `saml2_token` blocks as documented below.
+        """
+        return pulumi.get(self, "saml2_tokens")
+
 
 @pulumi.output_type
-class GetApplicationOptionalClaimsAccessTokenResult(dict):
+class GetApplicationOptionalClaimAccessTokenResult(dict):
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -1563,7 +1432,7 @@ class GetApplicationOptionalClaimsAccessTokenResult(dict):
 
 
 @pulumi.output_type
-class GetApplicationOptionalClaimsIdTokenResult(dict):
+class GetApplicationOptionalClaimIdTokenResult(dict):
     def __init__(__self__, *,
                  name: str,
                  additional_properties: Optional[Sequence[str]] = None,
@@ -1614,6 +1483,78 @@ class GetApplicationOptionalClaimsIdTokenResult(dict):
         The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
         """
         return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class GetApplicationOptionalClaimSaml2TokenResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 additional_properties: Optional[Sequence[str]] = None,
+                 essential: Optional[bool] = None,
+                 source: Optional[str] = None):
+        """
+        :param str name: The name of the optional claim.
+        :param Sequence[str] additional_properties: List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        :param bool essential: Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        :param str source: The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+        pulumi.set(__self__, "name", name)
+        if additional_properties is not None:
+            pulumi.set(__self__, "additional_properties", additional_properties)
+        if essential is not None:
+            pulumi.set(__self__, "essential", essential)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the optional claim.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="additionalProperties")
+    def additional_properties(self) -> Optional[Sequence[str]]:
+        """
+        List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        """
+        return pulumi.get(self, "additional_properties")
+
+    @property
+    @pulumi.getter
+    def essential(self) -> Optional[bool]:
+        """
+        Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        """
+        return pulumi.get(self, "essential")
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[str]:
+        """
+        The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        """
+        return pulumi.get(self, "source")
+
+
+@pulumi.output_type
+class GetApplicationPublicClientResult(dict):
+    def __init__(__self__, *,
+                 redirect_uris: Sequence[str]):
+        """
+        :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        pulumi.set(__self__, "redirect_uris", redirect_uris)
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Sequence[str]:
+        """
+        A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        return pulumi.get(self, "redirect_uris")
 
 
 @pulumi.output_type
@@ -1651,8 +1592,8 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
                  id: str,
                  type: str):
         """
-        :param str id: The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-        :param str type: Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        :param str id: The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+        :param str type: Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "type", type)
@@ -1661,7 +1602,7 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         """
         return pulumi.get(self, "id")
 
@@ -1669,9 +1610,27 @@ class GetApplicationRequiredResourceAccessResourceAccessResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetApplicationSinglePageApplicationResult(dict):
+    def __init__(__self__, *,
+                 redirect_uris: Sequence[str]):
+        """
+        :param Sequence[str] redirect_uris: A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        pulumi.set(__self__, "redirect_uris", redirect_uris)
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Sequence[str]:
+        """
+        A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        """
+        return pulumi.get(self, "redirect_uris")
 
 
 @pulumi.output_type
@@ -1728,11 +1687,14 @@ class GetApplicationWebResult(dict):
 @pulumi.output_type
 class GetApplicationWebImplicitGrantResult(dict):
     def __init__(__self__, *,
-                 access_token_issuance_enabled: bool):
+                 access_token_issuance_enabled: bool,
+                 id_token_issuance_enabled: bool):
         """
         :param bool access_token_issuance_enabled: Whether this web application can request an access token using OAuth 2.0 implicit flow.
+        :param bool id_token_issuance_enabled: Whether this web application can request an ID token using OAuth 2.0 implicit flow.
         """
         pulumi.set(__self__, "access_token_issuance_enabled", access_token_issuance_enabled)
+        pulumi.set(__self__, "id_token_issuance_enabled", id_token_issuance_enabled)
 
     @property
     @pulumi.getter(name="accessTokenIssuanceEnabled")
@@ -1742,35 +1704,68 @@ class GetApplicationWebImplicitGrantResult(dict):
         """
         return pulumi.get(self, "access_token_issuance_enabled")
 
+    @property
+    @pulumi.getter(name="idTokenIssuanceEnabled")
+    def id_token_issuance_enabled(self) -> bool:
+        """
+        Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+        """
+        return pulumi.get(self, "id_token_issuance_enabled")
+
 
 @pulumi.output_type
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
+                 admin_managed: bool,
                  authentication_type: str,
+                 default: bool,
                  domain_name: str,
-                 is_default: bool,
-                 is_initial: bool,
-                 is_verified: bool):
+                 initial: bool,
+                 root: bool,
+                 supported_services: Sequence[str],
+                 verified: bool):
         """
-        :param str authentication_type: The authentication type of the domain (Managed or Federated).
+        :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        :param str authentication_type: The authentication type of the domain. Possible values include `Managed` or `Federated`.
+        :param bool default: Whether this is the default domain that is used for user creation.
         :param str domain_name: The name of the domain.
-        :param bool is_default: `True` if this is the default domain that is used for user creation.
-        :param bool is_initial: `True` if this is the initial domain created by Azure Active Directory.
-        :param bool is_verified: `True` if the domain has completed domain ownership verification.
+        :param bool initial: Whether this is the initial domain created by Azure Active Directory.
+        :param bool root: Whether the domain is a verified root domain (not a subdomain).
+        :param Sequence[str] supported_services: A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+        :param bool verified: Whether the domain has completed domain ownership verification.
         """
+        pulumi.set(__self__, "admin_managed", admin_managed)
         pulumi.set(__self__, "authentication_type", authentication_type)
+        pulumi.set(__self__, "default", default)
         pulumi.set(__self__, "domain_name", domain_name)
-        pulumi.set(__self__, "is_default", is_default)
-        pulumi.set(__self__, "is_initial", is_initial)
-        pulumi.set(__self__, "is_verified", is_verified)
+        pulumi.set(__self__, "initial", initial)
+        pulumi.set(__self__, "root", root)
+        pulumi.set(__self__, "supported_services", supported_services)
+        pulumi.set(__self__, "verified", verified)
+
+    @property
+    @pulumi.getter(name="adminManaged")
+    def admin_managed(self) -> bool:
+        """
+        Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        """
+        return pulumi.get(self, "admin_managed")
 
     @property
     @pulumi.getter(name="authenticationType")
     def authentication_type(self) -> str:
         """
-        The authentication type of the domain (Managed or Federated).
+        The authentication type of the domain. Possible values include `Managed` or `Federated`.
         """
         return pulumi.get(self, "authentication_type")
+
+    @property
+    @pulumi.getter
+    def default(self) -> bool:
+        """
+        Whether this is the default domain that is used for user creation.
+        """
+        return pulumi.get(self, "default")
 
     @property
     @pulumi.getter(name="domainName")
@@ -1781,28 +1776,36 @@ class GetDomainsDomainResult(dict):
         return pulumi.get(self, "domain_name")
 
     @property
-    @pulumi.getter(name="isDefault")
-    def is_default(self) -> bool:
+    @pulumi.getter
+    def initial(self) -> bool:
         """
-        `True` if this is the default domain that is used for user creation.
+        Whether this is the initial domain created by Azure Active Directory.
         """
-        return pulumi.get(self, "is_default")
+        return pulumi.get(self, "initial")
 
     @property
-    @pulumi.getter(name="isInitial")
-    def is_initial(self) -> bool:
+    @pulumi.getter
+    def root(self) -> bool:
         """
-        `True` if this is the initial domain created by Azure Active Directory.
+        Whether the domain is a verified root domain (not a subdomain).
         """
-        return pulumi.get(self, "is_initial")
+        return pulumi.get(self, "root")
 
     @property
-    @pulumi.getter(name="isVerified")
-    def is_verified(self) -> bool:
+    @pulumi.getter(name="supportedServices")
+    def supported_services(self) -> Sequence[str]:
         """
-        `True` if the domain has completed domain ownership verification.
+        A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
         """
-        return pulumi.get(self, "is_verified")
+        return pulumi.get(self, "supported_services")
+
+    @property
+    @pulumi.getter
+    def verified(self) -> bool:
+        """
+        Whether the domain has completed domain ownership verification.
+        """
+        return pulumi.get(self, "verified")
 
 
 @pulumi.output_type
@@ -1813,23 +1816,20 @@ class GetServicePrincipalAppRoleResult(dict):
                  display_name: str,
                  enabled: bool,
                  id: str,
-                 is_enabled: bool,
                  value: str):
         """
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
         :param str description: Permission help text that appears in the admin app assignment and consent experiences.
-        :param str display_name: The Display Name of the Azure AD Application associated with this Service Principal.
-        :param bool enabled: Is this permission enabled?
-        :param str id: The unique identifier for one of the `OAuth2Permission`
-        :param bool is_enabled: Is this permission enabled?
-        :param str value: The name of this permission
+        :param str display_name: The display name of the application associated with this service principal.
+        :param bool enabled: Determines if the permission scope is enabled.
+        :param str id: The unique identifier of the delegated permission. Must be a valid UUID.
+        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_enabled", is_enabled)
         pulumi.set(__self__, "value", value)
 
     @property
@@ -1852,7 +1852,7 @@ class GetServicePrincipalAppRoleResult(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The Display Name of the Azure AD Application associated with this Service Principal.
+        The display name of the application associated with this service principal.
         """
         return pulumi.get(self, "display_name")
 
@@ -1860,7 +1860,7 @@ class GetServicePrincipalAppRoleResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Is this permission enabled?
+        Determines if the permission scope is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -1868,118 +1868,15 @@ class GetServicePrincipalAppRoleResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for one of the `OAuth2Permission`
+        The unique identifier of the delegated permission. Must be a valid UUID.
         """
         return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> bool:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
 
     @property
     @pulumi.getter
     def value(self) -> str:
         """
-        The name of this permission
-        """
-        return pulumi.get(self, "value")
-
-
-@pulumi.output_type
-class GetServicePrincipalOauth2PermissionResult(dict):
-    def __init__(__self__, *,
-                 admin_consent_description: str,
-                 admin_consent_display_name: str,
-                 id: str,
-                 is_enabled: bool,
-                 type: str,
-                 user_consent_description: str,
-                 user_consent_display_name: str,
-                 value: str):
-        """
-        :param str admin_consent_description: The description of the admin consent
-        :param str admin_consent_display_name: The display name of the admin consent
-        :param str id: The unique identifier for one of the `OAuth2Permission`
-        :param bool is_enabled: Is this permission enabled?
-        :param str type: The type of the permission
-        :param str user_consent_description: The description of the user consent
-        :param str user_consent_display_name: The display name of the user consent
-        :param str value: The name of this permission
-        """
-        pulumi.set(__self__, "admin_consent_description", admin_consent_description)
-        pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "is_enabled", is_enabled)
-        pulumi.set(__self__, "type", type)
-        pulumi.set(__self__, "user_consent_description", user_consent_description)
-        pulumi.set(__self__, "user_consent_display_name", user_consent_display_name)
-        pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter(name="adminConsentDescription")
-    def admin_consent_description(self) -> str:
-        """
-        The description of the admin consent
-        """
-        return pulumi.get(self, "admin_consent_description")
-
-    @property
-    @pulumi.getter(name="adminConsentDisplayName")
-    def admin_consent_display_name(self) -> str:
-        """
-        The display name of the admin consent
-        """
-        return pulumi.get(self, "admin_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def id(self) -> str:
-        """
-        The unique identifier for one of the `OAuth2Permission`
-        """
-        return pulumi.get(self, "id")
-
-    @property
-    @pulumi.getter(name="isEnabled")
-    def is_enabled(self) -> bool:
-        """
-        Is this permission enabled?
-        """
-        return pulumi.get(self, "is_enabled")
-
-    @property
-    @pulumi.getter
-    def type(self) -> str:
-        """
-        The type of the permission
-        """
-        return pulumi.get(self, "type")
-
-    @property
-    @pulumi.getter(name="userConsentDescription")
-    def user_consent_description(self) -> str:
-        """
-        The description of the user consent
-        """
-        return pulumi.get(self, "user_consent_description")
-
-    @property
-    @pulumi.getter(name="userConsentDisplayName")
-    def user_consent_display_name(self) -> str:
-        """
-        The display name of the user consent
-        """
-        return pulumi.get(self, "user_consent_display_name")
-
-    @property
-    @pulumi.getter
-    def value(self) -> str:
-        """
-        The name of this permission
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
 
@@ -1996,14 +1893,14 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
                  user_consent_display_name: str,
                  value: str):
         """
-        :param str admin_consent_description: The description of the admin consent
-        :param str admin_consent_display_name: The display name of the admin consent
-        :param bool enabled: Is this permission enabled?
-        :param str id: The unique identifier for one of the `OAuth2Permission`
-        :param str type: The type of the permission
-        :param str user_consent_description: The description of the user consent
-        :param str user_consent_display_name: The display name of the user consent
-        :param str value: The name of this permission
+        :param str admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
+        :param str admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
+        :param bool enabled: Determines if the permission scope is enabled.
+        :param str id: The unique identifier of the delegated permission. Must be a valid UUID.
+        :param str type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+        :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
+        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         pulumi.set(__self__, "admin_consent_description", admin_consent_description)
         pulumi.set(__self__, "admin_consent_display_name", admin_consent_display_name)
@@ -2018,7 +1915,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="adminConsentDescription")
     def admin_consent_description(self) -> str:
         """
-        The description of the admin consent
+        Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_description")
 
@@ -2026,7 +1923,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="adminConsentDisplayName")
     def admin_consent_display_name(self) -> str:
         """
-        The display name of the admin consent
+        Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         """
         return pulumi.get(self, "admin_consent_display_name")
 
@@ -2034,7 +1931,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Is this permission enabled?
+        Determines if the permission scope is enabled.
         """
         return pulumi.get(self, "enabled")
 
@@ -2042,7 +1939,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def id(self) -> str:
         """
-        The unique identifier for one of the `OAuth2Permission`
+        The unique identifier of the delegated permission. Must be a valid UUID.
         """
         return pulumi.get(self, "id")
 
@@ -2050,7 +1947,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the permission
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         """
         return pulumi.get(self, "type")
 
@@ -2058,7 +1955,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="userConsentDescription")
     def user_consent_description(self) -> str:
         """
-        The description of the user consent
+        Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         """
         return pulumi.get(self, "user_consent_description")
 
@@ -2066,7 +1963,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter(name="userConsentDisplayName")
     def user_consent_display_name(self) -> str:
         """
-        The display name of the user consent
+        Display name for the delegated permission that appears in the end user consent experience.
         """
         return pulumi.get(self, "user_consent_display_name")
 
@@ -2074,7 +1971,7 @@ class GetServicePrincipalOauth2PermissionScopeResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The name of this permission
+        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
 
@@ -2084,7 +1981,6 @@ class GetUsersUserResult(dict):
     def __init__(__self__, *,
                  account_enabled: bool,
                  display_name: str,
-                 immutable_id: str,
                  mail: str,
                  mail_nickname: str,
                  object_id: str,
@@ -2094,21 +1990,19 @@ class GetUsersUserResult(dict):
                  usage_location: str,
                  user_principal_name: str):
         """
-        :param bool account_enabled: `True` if the account is enabled; otherwise `False`.
-        :param str display_name: The Display Name of the Azure AD User.
-        :param str immutable_id: (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
-        :param str mail: The primary email address of the Azure AD User.
-        :param str mail_nickname: The email alias of the Azure AD User.
-        :param str object_id: The Object ID of the Azure AD User.
+        :param bool account_enabled: Whether or not the account is enabled.
+        :param str display_name: The display name of the user.
+        :param str mail: The primary email address of the user.
+        :param str mail_nickname: The email alias of the user.
+        :param str object_id: The object ID of the user.
         :param str onpremises_immutable_id: The value used to associate an on-premises Active Directory user account with their Azure AD user object.
-        :param str onpremises_sam_account_name: The on-premise SAM account name of the Azure AD User.
-        :param str onpremises_user_principal_name: The on-premise user principal name of the Azure AD User.
-        :param str usage_location: The usage location of the Azure AD User.
-        :param str user_principal_name: The User Principal Name of the Azure AD User.
+        :param str onpremises_sam_account_name: The on-premise SAM account name of the user.
+        :param str onpremises_user_principal_name: The on-premise user principal name of the user.
+        :param str usage_location: The usage location of the user.
+        :param str user_principal_name: The user principal name (UPN) of the user.
         """
         pulumi.set(__self__, "account_enabled", account_enabled)
         pulumi.set(__self__, "display_name", display_name)
-        pulumi.set(__self__, "immutable_id", immutable_id)
         pulumi.set(__self__, "mail", mail)
         pulumi.set(__self__, "mail_nickname", mail_nickname)
         pulumi.set(__self__, "object_id", object_id)
@@ -2122,7 +2016,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
         """
-        `True` if the account is enabled; otherwise `False`.
+        Whether or not the account is enabled.
         """
         return pulumi.get(self, "account_enabled")
 
@@ -2130,23 +2024,15 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        The Display Name of the Azure AD User.
+        The display name of the user.
         """
         return pulumi.get(self, "display_name")
-
-    @property
-    @pulumi.getter(name="immutableId")
-    def immutable_id(self) -> str:
-        """
-        (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
-        """
-        return pulumi.get(self, "immutable_id")
 
     @property
     @pulumi.getter
     def mail(self) -> str:
         """
-        The primary email address of the Azure AD User.
+        The primary email address of the user.
         """
         return pulumi.get(self, "mail")
 
@@ -2154,7 +2040,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="mailNickname")
     def mail_nickname(self) -> str:
         """
-        The email alias of the Azure AD User.
+        The email alias of the user.
         """
         return pulumi.get(self, "mail_nickname")
 
@@ -2162,7 +2048,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
         """
-        The Object ID of the Azure AD User.
+        The object ID of the user.
         """
         return pulumi.get(self, "object_id")
 
@@ -2178,7 +2064,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> str:
         """
-        The on-premise SAM account name of the Azure AD User.
+        The on-premise SAM account name of the user.
         """
         return pulumi.get(self, "onpremises_sam_account_name")
 
@@ -2186,7 +2072,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="onpremisesUserPrincipalName")
     def onpremises_user_principal_name(self) -> str:
         """
-        The on-premise user principal name of the Azure AD User.
+        The on-premise user principal name of the user.
         """
         return pulumi.get(self, "onpremises_user_principal_name")
 
@@ -2194,7 +2080,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="usageLocation")
     def usage_location(self) -> str:
         """
-        The usage location of the Azure AD User.
+        The usage location of the user.
         """
         return pulumi.get(self, "usage_location")
 
@@ -2202,7 +2088,7 @@ class GetUsersUserResult(dict):
     @pulumi.getter(name="userPrincipalName")
     def user_principal_name(self) -> str:
         """
-        The User Principal Name of the Azure AD User.
+        The user principal name (UPN) of the user.
         """
         return pulumi.get(self, "user_principal_name")
 

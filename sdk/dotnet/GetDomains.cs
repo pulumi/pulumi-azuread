@@ -14,13 +14,20 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Use this data source to access information about existing Domains within Azure Active Directory.
         /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -29,11 +36,14 @@ namespace Pulumi.AzureAD
         ///     public MyStack()
         ///     {
         ///         var aadDomains = Output.Create(AzureAD.GetDomains.InvokeAsync());
-        ///         this.Domains = aadDomains.Apply(aadDomains =&gt; aadDomains.Domains);
+        ///         this.DomainNames = 
+        ///         {
+        ///             aadDomains.Apply(aadDomains =&gt; aadDomains.Domains),
+        ///         }.Select(__item =&gt; __item?.DomainName).ToList();
         ///     }
         /// 
-        ///     [Output("domains")]
-        ///     public Output&lt;string&gt; Domains { get; set; }
+        ///     [Output("domainNames")]
+        ///     public Output&lt;string&gt; DomainNames { get; set; }
         /// }
         /// ```
         /// {{% /example %}}
@@ -46,6 +56,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetDomainsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        /// </summary>
+        [Input("adminManaged")]
+        public bool? AdminManaged { get; set; }
+
         /// <summary>
         /// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
         /// </summary>
@@ -64,6 +80,24 @@ namespace Pulumi.AzureAD
         [Input("onlyInitial")]
         public bool? OnlyInitial { get; set; }
 
+        /// <summary>
+        /// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+        /// </summary>
+        [Input("onlyRoot")]
+        public bool? OnlyRoot { get; set; }
+
+        [Input("supportsServices")]
+        private List<string>? _supportsServices;
+
+        /// <summary>
+        /// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+        /// </summary>
+        public List<string> SupportsServices
+        {
+            get => _supportsServices ?? (_supportsServices = new List<string>());
+            set => _supportsServices = value;
+        }
+
         public GetDomainsArgs()
         {
         }
@@ -74,7 +108,11 @@ namespace Pulumi.AzureAD
     public sealed class GetDomainsResult
     {
         /// <summary>
-        /// A list of domains. Each `domain` object provides the attributes documented below.
+        /// Whether the DNS for the domain is managed by Microsoft 365.
+        /// </summary>
+        public readonly bool? AdminManaged;
+        /// <summary>
+        /// A list of tenant domains. Each `domain` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         /// <summary>
@@ -84,9 +122,13 @@ namespace Pulumi.AzureAD
         public readonly bool? IncludeUnverified;
         public readonly bool? OnlyDefault;
         public readonly bool? OnlyInitial;
+        public readonly bool? OnlyRoot;
+        public readonly ImmutableArray<string> SupportsServices;
 
         [OutputConstructor]
         private GetDomainsResult(
+            bool? adminManaged,
+
             ImmutableArray<Outputs.GetDomainsDomainResult> domains,
 
             string id,
@@ -95,13 +137,20 @@ namespace Pulumi.AzureAD
 
             bool? onlyDefault,
 
-            bool? onlyInitial)
+            bool? onlyInitial,
+
+            bool? onlyRoot,
+
+            ImmutableArray<string> supportsServices)
         {
+            AdminManaged = adminManaged;
             Domains = domains;
             Id = id;
             IncludeUnverified = includeUnverified;
             OnlyDefault = onlyDefault;
             OnlyInitial = onlyInitial;
+            OnlyRoot = onlyRoot;
+            SupportsServices = supportsServices;
         }
     }
 }

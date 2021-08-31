@@ -14,35 +14,35 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class ServicePrincipalOauth2PermissionScope
     {
         /// <summary>
-        /// The description of the admin consent.
+        /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         public readonly string? AdminConsentDescription;
         /// <summary>
-        /// The display name of the admin consent.
+        /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         public readonly string? AdminConsentDisplayName;
         /// <summary>
-        /// Is this permission enabled?
+        /// Specifies whether the permission scope is enabled.
         /// </summary>
         public readonly bool? Enabled;
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission`.
+        /// The unique identifier of the delegated permission.
         /// </summary>
         public readonly string? Id;
         /// <summary>
-        /// The type of the permission.
+        /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         /// </summary>
         public readonly string? Type;
         /// <summary>
-        /// The description of the user consent.
+        /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         /// </summary>
         public readonly string? UserConsentDescription;
         /// <summary>
-        /// The display name of the user consent.
+        /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         public readonly string? UserConsentDisplayName;
         /// <summary>
-        /// The name of this permission.
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         public readonly string? Value;
 

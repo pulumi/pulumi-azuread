@@ -14,39 +14,35 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetApplicationApiOauth2PermissionScopeResult
     {
         /// <summary>
-        /// The description of the admin consent
+        /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         public readonly string AdminConsentDescription;
         /// <summary>
-        /// The display name of the admin consent
+        /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         public readonly string AdminConsentDisplayName;
         /// <summary>
-        /// (Optional) Determines if the permission scope is enabled.
+        /// Determines if the app role is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+        /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Is this permission enabled?
-        /// </summary>
-        public readonly bool IsEnabled;
-        /// <summary>
-        /// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The description of the user consent
+        /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         /// </summary>
         public readonly string UserConsentDescription;
         /// <summary>
-        /// The display name of the user consent
+        /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         public readonly string UserConsentDisplayName;
         /// <summary>
-        /// The name of this permission
+        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         /// </summary>
         public readonly string Value;
 
@@ -60,8 +56,6 @@ namespace Pulumi.AzureAD.Outputs
 
             string id,
 
-            bool isEnabled,
-
             string type,
 
             string userConsentDescription,
@@ -74,7 +68,6 @@ namespace Pulumi.AzureAD.Outputs
             AdminConsentDisplayName = adminConsentDisplayName;
             Enabled = enabled;
             Id = id;
-            IsEnabled = isEnabled;
             Type = type;
             UserConsentDescription = userConsentDescription;
             UserConsentDisplayName = userConsentDisplayName;

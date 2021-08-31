@@ -15,128 +15,106 @@ __all__ = ['ApplicationArgs', 'Application']
 @pulumi.input_type
 class ApplicationArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
-                 available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
+                 device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 group_membership_claims: Optional[pulumi.Input[str]] = None,
-                 homepage: Optional[pulumi.Input[str]] = None,
+                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logout_url: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 oauth2_allow_implicit_flow: Optional[pulumi.Input[bool]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]]] = None,
+                 marketing_url: Optional[pulumi.Input[str]] = None,
+                 oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-                 public_client: Optional[pulumi.Input[bool]] = None,
-                 reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 privacy_statement_url: Optional[pulumi.Input[str]] = None,
+                 public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
+                 support_url: Optional[pulumi.Input[str]] = None,
+                 terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
         """
         The set of arguments for constructing a Application resource.
-        :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this Application.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
         :param pulumi.Input[str] display_name: The display name for the application.
-        :param pulumi.Input[bool] fallback_public_client_enabled: The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
-        :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-        :param pulumi.Input[str] homepage: The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-        :param pulumi.Input[str] logout_url: The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
-        :param pulumi.Input[str] name: The name of the optional claim.
-        :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
-        :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
-        :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
+        :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
-        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
-        :param pulumi.Input[str] type: The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-        :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this Application.
+        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+        :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
+        :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
         """
+        pulumi.set(__self__, "display_name", display_name)
         if api is not None:
             pulumi.set(__self__, "api", api)
         if app_roles is not None:
             pulumi.set(__self__, "app_roles", app_roles)
-        if available_to_other_tenants is not None:
-            warnings.warn("""[NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""available_to_other_tenants is deprecated: [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""")
-        if available_to_other_tenants is not None:
-            pulumi.set(__self__, "available_to_other_tenants", available_to_other_tenants)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
+        if device_only_auth_enabled is not None:
+            pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
         if fallback_public_client_enabled is not None:
             pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
         if group_membership_claims is not None:
-            warnings.warn("""[NOTE] This attribute will become a list in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""group_membership_claims is deprecated: [NOTE] This attribute will become a list in version 2.0 of the AzureAD provider""")
-        if group_membership_claims is not None:
             pulumi.set(__self__, "group_membership_claims", group_membership_claims)
-        if homepage is not None:
-            warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""homepage is deprecated: [NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider""")
-        if homepage is not None:
-            pulumi.set(__self__, "homepage", homepage)
         if identifier_uris is not None:
             pulumi.set(__self__, "identifier_uris", identifier_uris)
-        if logout_url is not None:
-            warnings.warn("""[NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""logout_url is deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""")
-        if logout_url is not None:
-            pulumi.set(__self__, "logout_url", logout_url)
-        if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if oauth2_allow_implicit_flow is not None:
-            warnings.warn("""[NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""oauth2_allow_implicit_flow is deprecated: [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""")
-        if oauth2_allow_implicit_flow is not None:
-            pulumi.set(__self__, "oauth2_allow_implicit_flow", oauth2_allow_implicit_flow)
-        if oauth2_permissions is not None:
-            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
-        if oauth2_permissions is not None:
-            pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
+        if marketing_url is not None:
+            pulumi.set(__self__, "marketing_url", marketing_url)
+        if oauth2_post_response_required is not None:
+            pulumi.set(__self__, "oauth2_post_response_required", oauth2_post_response_required)
         if optional_claims is not None:
             pulumi.set(__self__, "optional_claims", optional_claims)
         if owners is not None:
             pulumi.set(__self__, "owners", owners)
         if prevent_duplicate_names is not None:
             pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
-        if public_client is not None:
-            warnings.warn("""[NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""public_client is deprecated: [NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider""")
+        if privacy_statement_url is not None:
+            pulumi.set(__self__, "privacy_statement_url", privacy_statement_url)
         if public_client is not None:
             pulumi.set(__self__, "public_client", public_client)
-        if reply_urls is not None:
-            warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""reply_urls is deprecated: [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""")
-        if reply_urls is not None:
-            pulumi.set(__self__, "reply_urls", reply_urls)
         if required_resource_accesses is not None:
             pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
         if sign_in_audience is not None:
             pulumi.set(__self__, "sign_in_audience", sign_in_audience)
-        if type is not None:
-            warnings.warn("""[NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""type is deprecated: [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""")
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        if single_page_application is not None:
+            pulumi.set(__self__, "single_page_application", single_page_application)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+        if terms_of_service_url is not None:
+            pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
         if web is not None:
             pulumi.set(__self__, "web", web)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name for the application.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
     def api(self) -> Optional[pulumi.Input['ApplicationApiArgs']]:
         """
-        An `api` block as documented below, which configures API related settings for this Application.
+        An `api` block as documented below, which configures API related settings for this application.
         """
         return pulumi.get(self, "api")
 
@@ -157,34 +135,22 @@ class ApplicationArgs:
         pulumi.set(self, "app_roles", value)
 
     @property
-    @pulumi.getter(name="availableToOtherTenants")
-    def available_to_other_tenants(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="deviceOnlyAuthEnabled")
+    def device_only_auth_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
+        Specifies whether this application supports device authentication without a user. Defaults to `false`.
         """
-        return pulumi.get(self, "available_to_other_tenants")
+        return pulumi.get(self, "device_only_auth_enabled")
 
-    @available_to_other_tenants.setter
-    def available_to_other_tenants(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "available_to_other_tenants", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The display name for the application.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
+    @device_only_auth_enabled.setter
+    def device_only_auth_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "device_only_auth_enabled", value)
 
     @property
     @pulumi.getter(name="fallbackPublicClientEnabled")
     def fallback_public_client_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
+        Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         """
         return pulumi.get(self, "fallback_public_client_enabled")
 
@@ -194,33 +160,21 @@ class ApplicationArgs:
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
-    def group_membership_claims(self) -> Optional[pulumi.Input[str]]:
+    def group_membership_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
     @group_membership_claims.setter
-    def group_membership_claims(self, value: Optional[pulumi.Input[str]]):
+    def group_membership_claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "group_membership_claims", value)
-
-    @property
-    @pulumi.getter
-    def homepage(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        """
-        return pulumi.get(self, "homepage")
-
-    @homepage.setter
-    def homepage(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "homepage", value)
 
     @property
     @pulumi.getter(name="identifierUris")
     def identifier_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         """
         return pulumi.get(self, "identifier_uris")
 
@@ -229,58 +183,34 @@ class ApplicationArgs:
         pulumi.set(self, "identifier_uris", value)
 
     @property
-    @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="marketingUrl")
+    def marketing_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
+        URL of the application's marketing page.
         """
-        return pulumi.get(self, "logout_url")
+        return pulumi.get(self, "marketing_url")
 
-    @logout_url.setter
-    def logout_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "logout_url", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the optional claim.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @marketing_url.setter
+    def marketing_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "marketing_url", value)
 
     @property
-    @pulumi.getter(name="oauth2AllowImplicitFlow")
-    def oauth2_allow_implicit_flow(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="oauth2PostResponseRequired")
+    def oauth2_post_response_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
+        Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         """
-        return pulumi.get(self, "oauth2_allow_implicit_flow")
+        return pulumi.get(self, "oauth2_post_response_required")
 
-    @oauth2_allow_implicit_flow.setter
-    def oauth2_allow_implicit_flow(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "oauth2_allow_implicit_flow", value)
-
-    @property
-    @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]]]:
-        """
-        A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
-        """
-        return pulumi.get(self, "oauth2_permissions")
-
-    @oauth2_permissions.setter
-    def oauth2_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]]]):
-        pulumi.set(self, "oauth2_permissions", value)
+    @oauth2_post_response_required.setter
+    def oauth2_post_response_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "oauth2_post_response_required", value)
 
     @property
     @pulumi.getter(name="optionalClaims")
     def optional_claims(self) -> Optional[pulumi.Input['ApplicationOptionalClaimsArgs']]:
         """
-        A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        An `optional_claims` block as documented below.
         """
         return pulumi.get(self, "optional_claims")
 
@@ -291,6 +221,9 @@ class ApplicationArgs:
     @property
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        """
         return pulumi.get(self, "owners")
 
     @owners.setter
@@ -301,7 +234,7 @@ class ApplicationArgs:
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+        If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
@@ -310,28 +243,28 @@ class ApplicationArgs:
         pulumi.set(self, "prevent_duplicate_names", value)
 
     @property
-    @pulumi.getter(name="publicClient")
-    def public_client(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="privacyStatementUrl")
+    def privacy_statement_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
+        URL of the application's privacy statement.
+        """
+        return pulumi.get(self, "privacy_statement_url")
+
+    @privacy_statement_url.setter
+    def privacy_statement_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privacy_statement_url", value)
+
+    @property
+    @pulumi.getter(name="publicClient")
+    def public_client(self) -> Optional[pulumi.Input['ApplicationPublicClientArgs']]:
+        """
+        A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         """
         return pulumi.get(self, "public_client")
 
     @public_client.setter
-    def public_client(self, value: Optional[pulumi.Input[bool]]):
+    def public_client(self, value: Optional[pulumi.Input['ApplicationPublicClientArgs']]):
         pulumi.set(self, "public_client", value)
-
-    @property
-    @pulumi.getter(name="replyUrls")
-    def reply_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
-        """
-        return pulumi.get(self, "reply_urls")
-
-    @reply_urls.setter
-    def reply_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "reply_urls", value)
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
@@ -349,7 +282,7 @@ class ApplicationArgs:
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
         """
-        The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
+        The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         """
         return pulumi.get(self, "sign_in_audience")
 
@@ -358,22 +291,46 @@ class ApplicationArgs:
         pulumi.set(self, "sign_in_audience", value)
 
     @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="singlePageApplication")
+    def single_page_application(self) -> Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]:
         """
-        The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+        A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "single_page_application")
 
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
+    @single_page_application.setter
+    def single_page_application(self, value: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]):
+        pulumi.set(self, "single_page_application", value)
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the application's support page.
+        """
+        return pulumi.get(self, "support_url")
+
+    @support_url.setter
+    def support_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_url", value)
+
+    @property
+    @pulumi.getter(name="termsOfServiceUrl")
+    def terms_of_service_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the application's terms of service statement.
+        """
+        return pulumi.get(self, "terms_of_service_url")
+
+    @terms_of_service_url.setter
+    def terms_of_service_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "terms_of_service_url", value)
 
     @property
     @pulumi.getter
     def web(self) -> Optional[pulumi.Input['ApplicationWebArgs']]:
         """
-        A `web` block as documented below, which configures web related settings for this Application.
+        A `web` block as documented below, which configures web related settings for this application.
         """
         return pulumi.get(self, "web")
 
@@ -386,100 +343,90 @@ class ApplicationArgs:
 class _ApplicationState:
     def __init__(__self__, *,
                  api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
+                 app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
+                 device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
+                 disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 group_membership_claims: Optional[pulumi.Input[str]] = None,
-                 homepage: Optional[pulumi.Input[str]] = None,
+                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logout_url: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 oauth2_allow_implicit_flow: Optional[pulumi.Input[bool]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]]] = None,
+                 logo_url: Optional[pulumi.Input[str]] = None,
+                 marketing_url: Optional[pulumi.Input[str]] = None,
+                 oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
                  optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-                 public_client: Optional[pulumi.Input[bool]] = None,
-                 reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 privacy_statement_url: Optional[pulumi.Input[str]] = None,
+                 public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
+                 publisher_domain: Optional[pulumi.Input[str]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
+                 support_url: Optional[pulumi.Input[str]] = None,
+                 terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
         """
         Input properties used for looking up and filtering Application resources.
-        :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this Application.
+        :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The Application ID (Also called Client ID).
-        :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
+        :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
+        :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
-        :param pulumi.Input[bool] fallback_public_client_enabled: The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
-        :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-        :param pulumi.Input[str] homepage: The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-        :param pulumi.Input[str] logout_url: The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
-        :param pulumi.Input[str] name: The name of the optional claim.
-        :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
-        :param pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
-        :param pulumi.Input[str] object_id: The application's Object ID.
-        :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
-        :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] logo_url: CDN URL to the application's logo.
+        :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+        :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        :param pulumi.Input[str] object_id: The application's object ID.
+        :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
+        :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
-        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
-        :param pulumi.Input[str] type: The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-        :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this Application.
+        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+        :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
+        :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
         """
         if api is not None:
             pulumi.set(__self__, "api", api)
+        if app_role_ids is not None:
+            pulumi.set(__self__, "app_role_ids", app_role_ids)
         if app_roles is not None:
             pulumi.set(__self__, "app_roles", app_roles)
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
-        if available_to_other_tenants is not None:
-            warnings.warn("""[NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""available_to_other_tenants is deprecated: [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""")
-        if available_to_other_tenants is not None:
-            pulumi.set(__self__, "available_to_other_tenants", available_to_other_tenants)
+        if device_only_auth_enabled is not None:
+            pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
+        if disabled_by_microsoft is not None:
+            pulumi.set(__self__, "disabled_by_microsoft", disabled_by_microsoft)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if fallback_public_client_enabled is not None:
             pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
         if group_membership_claims is not None:
-            warnings.warn("""[NOTE] This attribute will become a list in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""group_membership_claims is deprecated: [NOTE] This attribute will become a list in version 2.0 of the AzureAD provider""")
-        if group_membership_claims is not None:
             pulumi.set(__self__, "group_membership_claims", group_membership_claims)
-        if homepage is not None:
-            warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""homepage is deprecated: [NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider""")
-        if homepage is not None:
-            pulumi.set(__self__, "homepage", homepage)
         if identifier_uris is not None:
             pulumi.set(__self__, "identifier_uris", identifier_uris)
-        if logout_url is not None:
-            warnings.warn("""[NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""logout_url is deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""")
-        if logout_url is not None:
-            pulumi.set(__self__, "logout_url", logout_url)
-        if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if oauth2_allow_implicit_flow is not None:
-            warnings.warn("""[NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""oauth2_allow_implicit_flow is deprecated: [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""")
-        if oauth2_allow_implicit_flow is not None:
-            pulumi.set(__self__, "oauth2_allow_implicit_flow", oauth2_allow_implicit_flow)
-        if oauth2_permissions is not None:
-            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
-        if oauth2_permissions is not None:
-            pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
+        if logo_url is not None:
+            pulumi.set(__self__, "logo_url", logo_url)
+        if marketing_url is not None:
+            pulumi.set(__self__, "marketing_url", marketing_url)
+        if oauth2_permission_scope_ids is not None:
+            pulumi.set(__self__, "oauth2_permission_scope_ids", oauth2_permission_scope_ids)
+        if oauth2_post_response_required is not None:
+            pulumi.set(__self__, "oauth2_post_response_required", oauth2_post_response_required)
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
         if optional_claims is not None:
@@ -488,25 +435,22 @@ class _ApplicationState:
             pulumi.set(__self__, "owners", owners)
         if prevent_duplicate_names is not None:
             pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
-        if public_client is not None:
-            warnings.warn("""[NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""public_client is deprecated: [NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider""")
+        if privacy_statement_url is not None:
+            pulumi.set(__self__, "privacy_statement_url", privacy_statement_url)
         if public_client is not None:
             pulumi.set(__self__, "public_client", public_client)
-        if reply_urls is not None:
-            warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""reply_urls is deprecated: [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""")
-        if reply_urls is not None:
-            pulumi.set(__self__, "reply_urls", reply_urls)
+        if publisher_domain is not None:
+            pulumi.set(__self__, "publisher_domain", publisher_domain)
         if required_resource_accesses is not None:
             pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
         if sign_in_audience is not None:
             pulumi.set(__self__, "sign_in_audience", sign_in_audience)
-        if type is not None:
-            warnings.warn("""[NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""type is deprecated: [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""")
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        if single_page_application is not None:
+            pulumi.set(__self__, "single_page_application", single_page_application)
+        if support_url is not None:
+            pulumi.set(__self__, "support_url", support_url)
+        if terms_of_service_url is not None:
+            pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
         if web is not None:
             pulumi.set(__self__, "web", web)
 
@@ -514,13 +458,25 @@ class _ApplicationState:
     @pulumi.getter
     def api(self) -> Optional[pulumi.Input['ApplicationApiArgs']]:
         """
-        An `api` block as documented below, which configures API related settings for this Application.
+        An `api` block as documented below, which configures API related settings for this application.
         """
         return pulumi.get(self, "api")
 
     @api.setter
     def api(self, value: Optional[pulumi.Input['ApplicationApiArgs']]):
         pulumi.set(self, "api", value)
+
+    @property
+    @pulumi.getter(name="appRoleIds")
+    def app_role_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        """
+        return pulumi.get(self, "app_role_ids")
+
+    @app_role_ids.setter
+    def app_role_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "app_role_ids", value)
 
     @property
     @pulumi.getter(name="appRoles")
@@ -538,7 +494,7 @@ class _ApplicationState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Application ID (Also called Client ID).
+        The Application ID (also called Client ID).
         """
         return pulumi.get(self, "application_id")
 
@@ -547,16 +503,28 @@ class _ApplicationState:
         pulumi.set(self, "application_id", value)
 
     @property
-    @pulumi.getter(name="availableToOtherTenants")
-    def available_to_other_tenants(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="deviceOnlyAuthEnabled")
+    def device_only_auth_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
+        Specifies whether this application supports device authentication without a user. Defaults to `false`.
         """
-        return pulumi.get(self, "available_to_other_tenants")
+        return pulumi.get(self, "device_only_auth_enabled")
 
-    @available_to_other_tenants.setter
-    def available_to_other_tenants(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "available_to_other_tenants", value)
+    @device_only_auth_enabled.setter
+    def device_only_auth_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "device_only_auth_enabled", value)
+
+    @property
+    @pulumi.getter(name="disabledByMicrosoft")
+    def disabled_by_microsoft(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        """
+        return pulumi.get(self, "disabled_by_microsoft")
+
+    @disabled_by_microsoft.setter
+    def disabled_by_microsoft(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disabled_by_microsoft", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -574,7 +542,7 @@ class _ApplicationState:
     @pulumi.getter(name="fallbackPublicClientEnabled")
     def fallback_public_client_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
+        Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         """
         return pulumi.get(self, "fallback_public_client_enabled")
 
@@ -584,33 +552,21 @@ class _ApplicationState:
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
-    def group_membership_claims(self) -> Optional[pulumi.Input[str]]:
+    def group_membership_claims(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
     @group_membership_claims.setter
-    def group_membership_claims(self, value: Optional[pulumi.Input[str]]):
+    def group_membership_claims(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "group_membership_claims", value)
-
-    @property
-    @pulumi.getter
-    def homepage(self) -> Optional[pulumi.Input[str]]:
-        """
-        The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        """
-        return pulumi.get(self, "homepage")
-
-    @homepage.setter
-    def homepage(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "homepage", value)
 
     @property
     @pulumi.getter(name="identifierUris")
     def identifier_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         """
         return pulumi.get(self, "identifier_uris")
 
@@ -619,58 +575,58 @@ class _ApplicationState:
         pulumi.set(self, "identifier_uris", value)
 
     @property
-    @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
+        CDN URL to the application's logo.
         """
-        return pulumi.get(self, "logout_url")
+        return pulumi.get(self, "logo_url")
 
-    @logout_url.setter
-    def logout_url(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "logout_url", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the optional claim.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
+    @logo_url.setter
+    def logo_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_url", value)
 
     @property
-    @pulumi.getter(name="oauth2AllowImplicitFlow")
-    def oauth2_allow_implicit_flow(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="marketingUrl")
+    def marketing_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
+        URL of the application's marketing page.
         """
-        return pulumi.get(self, "oauth2_allow_implicit_flow")
+        return pulumi.get(self, "marketing_url")
 
-    @oauth2_allow_implicit_flow.setter
-    def oauth2_allow_implicit_flow(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "oauth2_allow_implicit_flow", value)
+    @marketing_url.setter
+    def marketing_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "marketing_url", value)
 
     @property
-    @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]]]:
+    @pulumi.getter(name="oauth2PermissionScopeIds")
+    def oauth2_permission_scope_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
+        A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         """
-        return pulumi.get(self, "oauth2_permissions")
+        return pulumi.get(self, "oauth2_permission_scope_ids")
 
-    @oauth2_permissions.setter
-    def oauth2_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationOauth2PermissionArgs']]]]):
-        pulumi.set(self, "oauth2_permissions", value)
+    @oauth2_permission_scope_ids.setter
+    def oauth2_permission_scope_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "oauth2_permission_scope_ids", value)
+
+    @property
+    @pulumi.getter(name="oauth2PostResponseRequired")
+    def oauth2_post_response_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        """
+        return pulumi.get(self, "oauth2_post_response_required")
+
+    @oauth2_post_response_required.setter
+    def oauth2_post_response_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "oauth2_post_response_required", value)
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The application's Object ID.
+        The application's object ID.
         """
         return pulumi.get(self, "object_id")
 
@@ -682,7 +638,7 @@ class _ApplicationState:
     @pulumi.getter(name="optionalClaims")
     def optional_claims(self) -> Optional[pulumi.Input['ApplicationOptionalClaimsArgs']]:
         """
-        A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        An `optional_claims` block as documented below.
         """
         return pulumi.get(self, "optional_claims")
 
@@ -693,6 +649,9 @@ class _ApplicationState:
     @property
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        """
         return pulumi.get(self, "owners")
 
     @owners.setter
@@ -703,7 +662,7 @@ class _ApplicationState:
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+        If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
@@ -712,28 +671,40 @@ class _ApplicationState:
         pulumi.set(self, "prevent_duplicate_names", value)
 
     @property
-    @pulumi.getter(name="publicClient")
-    def public_client(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="privacyStatementUrl")
+    def privacy_statement_url(self) -> Optional[pulumi.Input[str]]:
         """
-        Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
+        URL of the application's privacy statement.
+        """
+        return pulumi.get(self, "privacy_statement_url")
+
+    @privacy_statement_url.setter
+    def privacy_statement_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "privacy_statement_url", value)
+
+    @property
+    @pulumi.getter(name="publicClient")
+    def public_client(self) -> Optional[pulumi.Input['ApplicationPublicClientArgs']]:
+        """
+        A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         """
         return pulumi.get(self, "public_client")
 
     @public_client.setter
-    def public_client(self, value: Optional[pulumi.Input[bool]]):
+    def public_client(self, value: Optional[pulumi.Input['ApplicationPublicClientArgs']]):
         pulumi.set(self, "public_client", value)
 
     @property
-    @pulumi.getter(name="replyUrls")
-    def reply_urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="publisherDomain")
+    def publisher_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        The verified publisher domain for the application.
         """
-        return pulumi.get(self, "reply_urls")
+        return pulumi.get(self, "publisher_domain")
 
-    @reply_urls.setter
-    def reply_urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "reply_urls", value)
+    @publisher_domain.setter
+    def publisher_domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "publisher_domain", value)
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
@@ -751,7 +722,7 @@ class _ApplicationState:
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
         """
-        The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
+        The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         """
         return pulumi.get(self, "sign_in_audience")
 
@@ -760,22 +731,46 @@ class _ApplicationState:
         pulumi.set(self, "sign_in_audience", value)
 
     @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="singlePageApplication")
+    def single_page_application(self) -> Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]:
         """
-        The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+        A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "single_page_application")
 
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
+    @single_page_application.setter
+    def single_page_application(self, value: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']]):
+        pulumi.set(self, "single_page_application", value)
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the application's support page.
+        """
+        return pulumi.get(self, "support_url")
+
+    @support_url.setter
+    def support_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "support_url", value)
+
+    @property
+    @pulumi.getter(name="termsOfServiceUrl")
+    def terms_of_service_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL of the application's terms of service statement.
+        """
+        return pulumi.get(self, "terms_of_service_url")
+
+    @terms_of_service_url.setter
+    def terms_of_service_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "terms_of_service_url", value)
 
     @property
     @pulumi.getter
     def web(self) -> Optional[pulumi.Input['ApplicationWebArgs']]:
         """
-        A `web` block as documented below, which configures web related settings for this Application.
+        A `web` block as documented below, which configures web related settings for this application.
         """
         return pulumi.get(self, "web")
 
@@ -791,130 +786,29 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
-                 available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
+                 device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 group_membership_claims: Optional[pulumi.Input[str]] = None,
-                 homepage: Optional[pulumi.Input[str]] = None,
+                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logout_url: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 oauth2_allow_implicit_flow: Optional[pulumi.Input[bool]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]]] = None,
+                 marketing_url: Optional[pulumi.Input[str]] = None,
+                 oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-                 public_client: Optional[pulumi.Input[bool]] = None,
-                 reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 privacy_statement_url: Optional[pulumi.Input[str]] = None,
+                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+                 support_url: Optional[pulumi.Input[str]] = None,
+                 terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
                  __props__=None):
         """
-        Manages an Application within Azure Active Directory.
-
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.Application("example",
-            display_name="example",
-            identifier_uris=["api://example-app"],
-            owners=[current.object_id],
-            sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
-                oauth2_permission_scopes=[
-                    {
-                        "admin_consent_description": "Allow the application to access example on behalf of the signed-in user.",
-                        "admin_consent_display_name": "Access example",
-                        "enabled": True,
-                        "id": "96183846-204b-4b43-82e1-5d2222eb4b9b",
-                        "type": "User",
-                        "user_consent_description": "Allow the application to access example on your behalf.",
-                        "user_consent_display_name": "Access example",
-                        "value": "user_impersonation",
-                    },
-                    {
-                        "admin_consent_description": "Administer the example application",
-                        "admin_consent_display_name": "Administer",
-                        "enabled": True,
-                        "id": "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-                        "type": "Admin",
-                        "value": "administer",
-                    },
-                ],
-            ),
-            app_roles=[azuread.ApplicationAppRoleArgs(
-                allowed_member_types=[
-                    "User",
-                    "Application",
-                ],
-                description="Admins can manage roles and perform all task actions",
-                display_name="Admin",
-                is_enabled=True,
-                value="admin",
-            )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
-                access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="myclaim",
-                    ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="otherclaim",
-                    ),
-                ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                    name="userclaim",
-                    source="user",
-                    essential=True,
-                    additional_properties=["emit_as_roles"],
-                )],
-            ),
-            required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000003-0000-0000-c000-000000000000",
-                    resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="...",
-                            type="Role",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="...",
-                            type="Scope",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="...",
-                            type="Scope",
-                        ),
-                    ],
-                ),
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000002-0000-0000-c000-000000000000",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id="...",
-                        type="Scope",
-                    )],
-                ),
-            ],
-            web=azuread.ApplicationWebArgs(
-                homepage_url="https://app.example.net",
-                logout_url="https://app.example.net/logout",
-                redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
-                    access_token_issuance_enabled=True,
-                ),
-            ))
-        ```
-
         ## Import
 
-        Azure Active Directory Applications can be imported using the `object id`, e.g.
+        Applications can be imported using their object ID, e.g.
 
         ```sh
          $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
@@ -922,137 +816,37 @@ class Application(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this Application.
+        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
+        :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] display_name: The display name for the application.
-        :param pulumi.Input[bool] fallback_public_client_enabled: The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
-        :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-        :param pulumi.Input[str] homepage: The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-        :param pulumi.Input[str] logout_url: The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
-        :param pulumi.Input[str] name: The name of the optional claim.
-        :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
-        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
-        :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
+        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
-        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
-        :param pulumi.Input[str] type: The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this Application.
+        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
+        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[ApplicationArgs] = None,
+                 args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an Application within Azure Active Directory.
-
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        current = azuread.get_client_config()
-        example = azuread.Application("example",
-            display_name="example",
-            identifier_uris=["api://example-app"],
-            owners=[current.object_id],
-            sign_in_audience="AzureADMultipleOrgs",
-            api=azuread.ApplicationApiArgs(
-                oauth2_permission_scopes=[
-                    {
-                        "admin_consent_description": "Allow the application to access example on behalf of the signed-in user.",
-                        "admin_consent_display_name": "Access example",
-                        "enabled": True,
-                        "id": "96183846-204b-4b43-82e1-5d2222eb4b9b",
-                        "type": "User",
-                        "user_consent_description": "Allow the application to access example on your behalf.",
-                        "user_consent_display_name": "Access example",
-                        "value": "user_impersonation",
-                    },
-                    {
-                        "admin_consent_description": "Administer the example application",
-                        "admin_consent_display_name": "Administer",
-                        "enabled": True,
-                        "id": "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-                        "type": "Admin",
-                        "value": "administer",
-                    },
-                ],
-            ),
-            app_roles=[azuread.ApplicationAppRoleArgs(
-                allowed_member_types=[
-                    "User",
-                    "Application",
-                ],
-                description="Admins can manage roles and perform all task actions",
-                display_name="Admin",
-                is_enabled=True,
-                value="admin",
-            )],
-            optional_claims=azuread.ApplicationOptionalClaimsArgs(
-                access_tokens=[
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="myclaim",
-                    ),
-                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
-                        name="otherclaim",
-                    ),
-                ],
-                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
-                    name="userclaim",
-                    source="user",
-                    essential=True,
-                    additional_properties=["emit_as_roles"],
-                )],
-            ),
-            required_resource_accesses=[
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000003-0000-0000-c000-000000000000",
-                    resource_accesses=[
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="...",
-                            type="Role",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="...",
-                            type="Scope",
-                        ),
-                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                            id="...",
-                            type="Scope",
-                        ),
-                    ],
-                ),
-                azuread.ApplicationRequiredResourceAccessArgs(
-                    resource_app_id="00000002-0000-0000-c000-000000000000",
-                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id="...",
-                        type="Scope",
-                    )],
-                ),
-            ],
-            web=azuread.ApplicationWebArgs(
-                homepage_url="https://app.example.net",
-                logout_url="https://app.example.net/logout",
-                redirect_uris=["https://app.example.net/account"],
-                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
-                    access_token_issuance_enabled=True,
-                ),
-            ))
-        ```
-
         ## Import
 
-        Azure Active Directory Applications can be imported using the `object id`, e.g.
+        Applications can be imported using their object ID, e.g.
 
         ```sh
          $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
@@ -1075,24 +869,23 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
-                 available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
+                 device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-                 group_membership_claims: Optional[pulumi.Input[str]] = None,
-                 homepage: Optional[pulumi.Input[str]] = None,
+                 group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 logout_url: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 oauth2_allow_implicit_flow: Optional[pulumi.Input[bool]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]]] = None,
+                 marketing_url: Optional[pulumi.Input[str]] = None,
+                 oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-                 public_client: Optional[pulumi.Input[bool]] = None,
-                 reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 privacy_statement_url: Optional[pulumi.Input[str]] = None,
+                 public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None,
+                 single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+                 support_url: Optional[pulumi.Input[str]] = None,
+                 terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -1108,57 +901,33 @@ class Application(pulumi.CustomResource):
 
             __props__.__dict__["api"] = api
             __props__.__dict__["app_roles"] = app_roles
-            if available_to_other_tenants is not None and not opts.urn:
-                warnings.warn("""[NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""available_to_other_tenants is deprecated: [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["available_to_other_tenants"] = available_to_other_tenants
+            __props__.__dict__["device_only_auth_enabled"] = device_only_auth_enabled
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["fallback_public_client_enabled"] = fallback_public_client_enabled
-            if group_membership_claims is not None and not opts.urn:
-                warnings.warn("""[NOTE] This attribute will become a list in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""group_membership_claims is deprecated: [NOTE] This attribute will become a list in version 2.0 of the AzureAD provider""")
             __props__.__dict__["group_membership_claims"] = group_membership_claims
-            if homepage is not None and not opts.urn:
-                warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""homepage is deprecated: [NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["homepage"] = homepage
             __props__.__dict__["identifier_uris"] = identifier_uris
-            if logout_url is not None and not opts.urn:
-                warnings.warn("""[NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""logout_url is deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["logout_url"] = logout_url
-            if name is not None and not opts.urn:
-                warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["name"] = name
-            if oauth2_allow_implicit_flow is not None and not opts.urn:
-                warnings.warn("""[NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""oauth2_allow_implicit_flow is deprecated: [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["oauth2_allow_implicit_flow"] = oauth2_allow_implicit_flow
-            if oauth2_permissions is not None and not opts.urn:
-                warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-                pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
-            __props__.__dict__["oauth2_permissions"] = oauth2_permissions
+            __props__.__dict__["marketing_url"] = marketing_url
+            __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
             __props__.__dict__["optional_claims"] = optional_claims
             __props__.__dict__["owners"] = owners
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
-            if public_client is not None and not opts.urn:
-                warnings.warn("""[NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""public_client is deprecated: [NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider""")
+            __props__.__dict__["privacy_statement_url"] = privacy_statement_url
             __props__.__dict__["public_client"] = public_client
-            if reply_urls is not None and not opts.urn:
-                warnings.warn("""[NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""reply_urls is deprecated: [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["reply_urls"] = reply_urls
             __props__.__dict__["required_resource_accesses"] = required_resource_accesses
             __props__.__dict__["sign_in_audience"] = sign_in_audience
-            if type is not None and not opts.urn:
-                warnings.warn("""[NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""type is deprecated: [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["type"] = type
+            __props__.__dict__["single_page_application"] = single_page_application
+            __props__.__dict__["support_url"] = support_url
+            __props__.__dict__["terms_of_service_url"] = terms_of_service_url
             __props__.__dict__["web"] = web
+            __props__.__dict__["app_role_ids"] = None
             __props__.__dict__["application_id"] = None
+            __props__.__dict__["disabled_by_microsoft"] = None
+            __props__.__dict__["logo_url"] = None
+            __props__.__dict__["oauth2_permission_scope_ids"] = None
             __props__.__dict__["object_id"] = None
+            __props__.__dict__["publisher_domain"] = None
         super(Application, __self__).__init__(
             'azuread:index/application:Application',
             resource_name,
@@ -1170,27 +939,31 @@ class Application(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
+            app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
-            available_to_other_tenants: Optional[pulumi.Input[bool]] = None,
+            device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
+            disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
-            group_membership_claims: Optional[pulumi.Input[str]] = None,
-            homepage: Optional[pulumi.Input[str]] = None,
+            group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            logout_url: Optional[pulumi.Input[str]] = None,
-            name: Optional[pulumi.Input[str]] = None,
-            oauth2_allow_implicit_flow: Optional[pulumi.Input[bool]] = None,
-            oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]]] = None,
+            logo_url: Optional[pulumi.Input[str]] = None,
+            marketing_url: Optional[pulumi.Input[str]] = None,
+            oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-            public_client: Optional[pulumi.Input[bool]] = None,
-            reply_urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            privacy_statement_url: Optional[pulumi.Input[str]] = None,
+            public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
+            publisher_domain: Optional[pulumi.Input[str]] = None,
             required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
             sign_in_audience: Optional[pulumi.Input[str]] = None,
-            type: Optional[pulumi.Input[str]] = None,
+            single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
+            support_url: Optional[pulumi.Input[str]] = None,
+            terms_of_service_url: Optional[pulumi.Input[str]] = None,
             web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None) -> 'Application':
         """
         Get an existing Application resource's state with the given name, id, and optional extra
@@ -1199,69 +972,86 @@ class Application(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this Application.
+        :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The Application ID (Also called Client ID).
-        :param pulumi.Input[bool] available_to_other_tenants: Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
+        :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
+        :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
-        :param pulumi.Input[bool] fallback_public_client_enabled: The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
-        :param pulumi.Input[str] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-        :param pulumi.Input[str] homepage: The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-        :param pulumi.Input[str] logout_url: The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
-        :param pulumi.Input[str] name: The name of the optional claim.
-        :param pulumi.Input[bool] oauth2_allow_implicit_flow: Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationOauth2PermissionArgs']]]] oauth2_permissions: A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
-        :param pulumi.Input[str] object_id: The application's Object ID.
-        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
-        :param pulumi.Input[bool] public_client: Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] reply_urls: A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] logo_url: CDN URL to the application's logo.
+        :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+        :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        :param pulumi.Input[str] object_id: The application's object ID.
+        :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
+        :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+        :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
-        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
-        :param pulumi.Input[str] type: The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this Application.
+        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+        :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
+        :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
+        :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ApplicationState.__new__(_ApplicationState)
 
         __props__.__dict__["api"] = api
+        __props__.__dict__["app_role_ids"] = app_role_ids
         __props__.__dict__["app_roles"] = app_roles
         __props__.__dict__["application_id"] = application_id
-        __props__.__dict__["available_to_other_tenants"] = available_to_other_tenants
+        __props__.__dict__["device_only_auth_enabled"] = device_only_auth_enabled
+        __props__.__dict__["disabled_by_microsoft"] = disabled_by_microsoft
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["fallback_public_client_enabled"] = fallback_public_client_enabled
         __props__.__dict__["group_membership_claims"] = group_membership_claims
-        __props__.__dict__["homepage"] = homepage
         __props__.__dict__["identifier_uris"] = identifier_uris
-        __props__.__dict__["logout_url"] = logout_url
-        __props__.__dict__["name"] = name
-        __props__.__dict__["oauth2_allow_implicit_flow"] = oauth2_allow_implicit_flow
-        __props__.__dict__["oauth2_permissions"] = oauth2_permissions
+        __props__.__dict__["logo_url"] = logo_url
+        __props__.__dict__["marketing_url"] = marketing_url
+        __props__.__dict__["oauth2_permission_scope_ids"] = oauth2_permission_scope_ids
+        __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["optional_claims"] = optional_claims
         __props__.__dict__["owners"] = owners
         __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
+        __props__.__dict__["privacy_statement_url"] = privacy_statement_url
         __props__.__dict__["public_client"] = public_client
-        __props__.__dict__["reply_urls"] = reply_urls
+        __props__.__dict__["publisher_domain"] = publisher_domain
         __props__.__dict__["required_resource_accesses"] = required_resource_accesses
         __props__.__dict__["sign_in_audience"] = sign_in_audience
-        __props__.__dict__["type"] = type
+        __props__.__dict__["single_page_application"] = single_page_application
+        __props__.__dict__["support_url"] = support_url
+        __props__.__dict__["terms_of_service_url"] = terms_of_service_url
         __props__.__dict__["web"] = web
         return Application(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
-    def api(self) -> pulumi.Output['outputs.ApplicationApi']:
+    def api(self) -> pulumi.Output[Optional['outputs.ApplicationApi']]:
         """
-        An `api` block as documented below, which configures API related settings for this Application.
+        An `api` block as documented below, which configures API related settings for this application.
         """
         return pulumi.get(self, "api")
 
     @property
+    @pulumi.getter(name="appRoleIds")
+    def app_role_ids(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        """
+        return pulumi.get(self, "app_role_ids")
+
+    @property
     @pulumi.getter(name="appRoles")
-    def app_roles(self) -> pulumi.Output[Sequence['outputs.ApplicationAppRole']]:
+    def app_roles(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationAppRole']]]:
         """
         A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
@@ -1271,17 +1061,25 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        The Application ID (Also called Client ID).
+        The Application ID (also called Client ID).
         """
         return pulumi.get(self, "application_id")
 
     @property
-    @pulumi.getter(name="availableToOtherTenants")
-    def available_to_other_tenants(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="deviceOnlyAuthEnabled")
+    def device_only_auth_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `sign_in_audience` property.
+        Specifies whether this application supports device authentication without a user. Defaults to `false`.
         """
-        return pulumi.get(self, "available_to_other_tenants")
+        return pulumi.get(self, "device_only_auth_enabled")
+
+    @property
+    @pulumi.getter(name="disabledByMicrosoft")
+    def disabled_by_microsoft(self) -> pulumi.Output[str]:
+        """
+        Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        """
+        return pulumi.get(self, "disabled_by_microsoft")
 
     @property
     @pulumi.getter(name="displayName")
@@ -1293,73 +1091,65 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="fallbackPublicClientEnabled")
-    def fallback_public_client_enabled(self) -> pulumi.Output[bool]:
+    def fallback_public_client_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
+        Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         """
         return pulumi.get(self, "fallback_public_client_enabled")
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
-    def group_membership_claims(self) -> pulumi.Output[Optional[str]]:
+    def group_membership_claims(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         """
         return pulumi.get(self, "group_membership_claims")
 
     @property
-    @pulumi.getter
-    def homepage(self) -> pulumi.Output[str]:
-        """
-        The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        """
-        return pulumi.get(self, "homepage")
-
-    @property
     @pulumi.getter(name="identifierUris")
-    def identifier_uris(self) -> pulumi.Output[Sequence[str]]:
+    def identifier_uris(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         """
         return pulumi.get(self, "identifier_uris")
 
     @property
-    @pulumi.getter(name="logoutUrl")
-    def logout_url(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="logoUrl")
+    def logo_url(self) -> pulumi.Output[str]:
         """
-        The URL of the logout page. This property is deprecated and has been replaced by the `logout_url` property in the `web` block.
+        CDN URL to the application's logo.
         """
-        return pulumi.get(self, "logout_url")
+        return pulumi.get(self, "logo_url")
 
     @property
-    @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
+    @pulumi.getter(name="marketingUrl")
+    def marketing_url(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of the optional claim.
+        URL of the application's marketing page.
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "marketing_url")
 
     @property
-    @pulumi.getter(name="oauth2AllowImplicitFlow")
-    def oauth2_allow_implicit_flow(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="oauth2PermissionScopeIds")
+    def oauth2_permission_scope_ids(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `access_token_issuance_enabled` property in the `implicit_grant` block.
+        A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         """
-        return pulumi.get(self, "oauth2_allow_implicit_flow")
+        return pulumi.get(self, "oauth2_permission_scope_ids")
 
     @property
-    @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> pulumi.Output[Sequence['outputs.ApplicationOauth2Permission']]:
+    @pulumi.getter(name="oauth2PostResponseRequired")
+    def oauth2_post_response_required(self) -> pulumi.Output[Optional[bool]]:
         """
-        A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2_permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2_permission_scope` block in the `api` block.
+        Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         """
-        return pulumi.get(self, "oauth2_permissions")
+        return pulumi.get(self, "oauth2_post_response_required")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
-        The application's Object ID.
+        The application's object ID.
         """
         return pulumi.get(self, "object_id")
 
@@ -1367,38 +1157,49 @@ class Application(pulumi.CustomResource):
     @pulumi.getter(name="optionalClaims")
     def optional_claims(self) -> pulumi.Output[Optional['outputs.ApplicationOptionalClaims']]:
         """
-        A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        An `optional_claims` block as documented below.
         """
         return pulumi.get(self, "optional_claims")
 
     @property
     @pulumi.getter
-    def owners(self) -> pulumi.Output[Sequence[str]]:
+    def owners(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        """
         return pulumi.get(self, "owners")
 
     @property
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> pulumi.Output[Optional[bool]]:
         """
-        If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+        If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
     @property
-    @pulumi.getter(name="publicClient")
-    def public_client(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="privacyStatementUrl")
+    def privacy_statement_url(self) -> pulumi.Output[Optional[str]]:
         """
-        Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallback_public_client_enabled` property.
+        URL of the application's privacy statement.
+        """
+        return pulumi.get(self, "privacy_statement_url")
+
+    @property
+    @pulumi.getter(name="publicClient")
+    def public_client(self) -> pulumi.Output[Optional['outputs.ApplicationPublicClient']]:
+        """
+        A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         """
         return pulumi.get(self, "public_client")
 
     @property
-    @pulumi.getter(name="replyUrls")
-    def reply_urls(self) -> pulumi.Output[Sequence[str]]:
+    @pulumi.getter(name="publisherDomain")
+    def publisher_domain(self) -> pulumi.Output[str]:
         """
-        A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        The verified publisher domain for the application.
         """
-        return pulumi.get(self, "reply_urls")
+        return pulumi.get(self, "publisher_domain")
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
@@ -1410,25 +1211,41 @@ class Application(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="signInAudience")
-    def sign_in_audience(self) -> pulumi.Output[str]:
+    def sign_in_audience(self) -> pulumi.Output[Optional[str]]:
         """
-        The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
+        The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         """
         return pulumi.get(self, "sign_in_audience")
 
     @property
-    @pulumi.getter
-    def type(self) -> pulumi.Output[Optional[str]]:
+    @pulumi.getter(name="singlePageApplication")
+    def single_page_application(self) -> pulumi.Output[Optional['outputs.ApplicationSinglePageApplication']]:
         """
-        The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifier_uris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+        A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         """
-        return pulumi.get(self, "type")
+        return pulumi.get(self, "single_page_application")
+
+    @property
+    @pulumi.getter(name="supportUrl")
+    def support_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        URL of the application's support page.
+        """
+        return pulumi.get(self, "support_url")
+
+    @property
+    @pulumi.getter(name="termsOfServiceUrl")
+    def terms_of_service_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        URL of the application's terms of service statement.
+        """
+        return pulumi.get(self, "terms_of_service_url")
 
     @property
     @pulumi.getter
-    def web(self) -> pulumi.Output['outputs.ApplicationWeb']:
+    def web(self) -> pulumi.Output[Optional['outputs.ApplicationWeb']]:
         """
-        A `web` block as documented below, which configures web related settings for this Application.
+        A `web` block as documented below, which configures web related settings for this application.
         """
         return pulumi.get(self, "web")
 

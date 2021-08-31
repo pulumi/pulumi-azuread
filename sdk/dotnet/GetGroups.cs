@@ -14,7 +14,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
         /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -54,7 +60,7 @@ namespace Pulumi.AzureAD
         private List<string>? _displayNames;
 
         /// <summary>
-        /// The Display Names of the Azure AD Groups.
+        /// The display names of the groups.
         /// </summary>
         public List<string> DisplayNames
         {
@@ -62,20 +68,11 @@ namespace Pulumi.AzureAD
             set => _displayNames = value;
         }
 
-        [Input("names")]
-        private List<string>? _names;
-        [Obsolete(@"This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider")]
-        public List<string> Names
-        {
-            get => _names ?? (_names = new List<string>());
-            set => _names = value;
-        }
-
         [Input("objectIds")]
         private List<string>? _objectIds;
 
         /// <summary>
-        /// The Object IDs of the Azure AD Groups.
+        /// The object IDs of the groups.
         /// </summary>
         public List<string> ObjectIds
         {
@@ -93,16 +90,15 @@ namespace Pulumi.AzureAD
     public sealed class GetGroupsResult
     {
         /// <summary>
-        /// The Display Names of the Azure AD Groups.
+        /// The display names of the groups.
         /// </summary>
         public readonly ImmutableArray<string> DisplayNames;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        public readonly ImmutableArray<string> Names;
         /// <summary>
-        /// The Object IDs of the Azure AD Groups.
+        /// The object IDs of the groups.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
 
@@ -112,13 +108,10 @@ namespace Pulumi.AzureAD
 
             string id,
 
-            ImmutableArray<string> names,
-
             ImmutableArray<string> objectIds)
         {
             DisplayNames = displayNames;
             Id = id;
-            Names = names;
             ObjectIds = objectIds;
         }
     }

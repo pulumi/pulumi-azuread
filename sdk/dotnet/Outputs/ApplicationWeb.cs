@@ -26,7 +26,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? LogoutUrl;
         /// <summary>
-        /// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
 

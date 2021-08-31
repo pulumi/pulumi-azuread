@@ -13,12 +13,34 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationApiResult
     {
+        /// <summary>
+        /// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+        /// </summary>
+        public readonly ImmutableArray<string> KnownClientApplications;
+        /// <summary>
+        /// Allows an application to use claims mapping without specifying a custom signing key.
+        /// </summary>
+        public readonly bool MappedClaimsEnabled;
         public readonly ImmutableArray<Outputs.GetApplicationApiOauth2PermissionScopeResult> Oauth2PermissionScopes;
+        /// <summary>
+        /// The access token version expected by this resource. Possible values are `1` or `2`.
+        /// </summary>
+        public readonly int RequestedAccessTokenVersion;
 
         [OutputConstructor]
-        private GetApplicationApiResult(ImmutableArray<Outputs.GetApplicationApiOauth2PermissionScopeResult> oauth2PermissionScopes)
+        private GetApplicationApiResult(
+            ImmutableArray<string> knownClientApplications,
+
+            bool mappedClaimsEnabled,
+
+            ImmutableArray<Outputs.GetApplicationApiOauth2PermissionScopeResult> oauth2PermissionScopes,
+
+            int requestedAccessTokenVersion)
         {
+            KnownClientApplications = knownClientApplications;
+            MappedClaimsEnabled = mappedClaimsEnabled;
             Oauth2PermissionScopes = oauth2PermissionScopes;
+            RequestedAccessTokenVersion = requestedAccessTokenVersion;
         }
     }
 }

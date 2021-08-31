@@ -13,180 +13,118 @@ __all__ = ['GroupArgs', 'Group']
 @pulumi.input_type
 class GroupArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
+                 assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 prevent_duplicate_names: Optional[pulumi.Input[bool]] = None):
-        """
-        The set of arguments for constructing a Group resource.
-        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if members is not None:
-            pulumi.set(__self__, "members", members)
-        if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if owners is not None:
-            pulumi.set(__self__, "owners", owners)
-        if prevent_duplicate_names is not None:
-            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        The description for the Group.  Changing this forces a new resource to be created.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The display name for the Group. Changing this forces a new resource to be created.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        """
-        return pulumi.get(self, "members")
-
-    @members.setter
-    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "members", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A set of owners who own this Group. Supported Object types are Users or Service Principals.
-        """
-        return pulumi.get(self, "owners")
-
-    @owners.setter
-    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "owners", value)
-
-    @property
-    @pulumi.getter(name="preventDuplicateNames")
-    def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
-        """
-        If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
-        """
-        return pulumi.get(self, "prevent_duplicate_names")
-
-    @prevent_duplicate_names.setter
-    def prevent_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "prevent_duplicate_names", value)
-
-
-@pulumi.input_type
-class _GroupState:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
+                 mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 object_id: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-                 security_enabled: Optional[pulumi.Input[bool]] = None):
+                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_enabled: Optional[pulumi.Input[bool]] = None,
+                 theme: Optional[pulumi.Input[str]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering Group resources.
-        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] mail_enabled: Whether the group is mail-enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        :param pulumi.Input[str] object_id: The Object ID of the Group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
-        :param pulumi.Input[bool] security_enabled: Whether the group is a security group.
+        The set of arguments for constructing a Group resource.
+        :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] description: The description for the group.
+        :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+        :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+        :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
+        pulumi.set(__self__, "display_name", display_name)
+        if assignable_to_role is not None:
+            pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+        if behaviors is not None:
+            pulumi.set(__self__, "behaviors", behaviors)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if mail_enabled is not None:
             pulumi.set(__self__, "mail_enabled", mail_enabled)
+        if mail_nickname is not None:
+            pulumi.set(__self__, "mail_nickname", mail_nickname)
         if members is not None:
             pulumi.set(__self__, "members", members)
-        if name is not None:
-            warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if object_id is not None:
-            pulumi.set(__self__, "object_id", object_id)
         if owners is not None:
             pulumi.set(__self__, "owners", owners)
         if prevent_duplicate_names is not None:
             pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+        if provisioning_options is not None:
+            pulumi.set(__self__, "provisioning_options", provisioning_options)
         if security_enabled is not None:
             pulumi.set(__self__, "security_enabled", security_enabled)
+        if theme is not None:
+            pulumi.set(__self__, "theme", theme)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name for the group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="assignableToRole")
+    def assignable_to_role(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "assignable_to_role")
+
+    @assignable_to_role.setter
+    def assignable_to_role(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assignable_to_role", value)
+
+    @property
+    @pulumi.getter
+    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "behaviors")
+
+    @behaviors.setter
+    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "behaviors", value)
 
     @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description for the Group.  Changing this forces a new resource to be created.
+        The description for the group.
         """
         return pulumi.get(self, "description")
 
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The display name for the Group. Changing this forces a new resource to be created.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="mailEnabled")
     def mail_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the group is mail-enabled.
+        Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         """
         return pulumi.get(self, "mail_enabled")
 
@@ -195,10 +133,22 @@ class _GroupState:
         pulumi.set(self, "mail_enabled", value)
 
     @property
+    @pulumi.getter(name="mailNickname")
+    def mail_nickname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "mail_nickname")
+
+    @mail_nickname.setter
+    def mail_nickname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mail_nickname", value)
+
+    @property
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
         """
         return pulumi.get(self, "members")
 
@@ -208,30 +158,9 @@ class _GroupState:
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="objectId")
-    def object_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Object ID of the Group.
-        """
-        return pulumi.get(self, "object_id")
-
-    @object_id.setter
-    def object_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "object_id", value)
-
-    @property
-    @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        A set of owners who own this group. Supported object types are Users or Service Principals
         """
         return pulumi.get(self, "owners")
 
@@ -243,7 +172,7 @@ class _GroupState:
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
         """
-        If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
@@ -252,10 +181,22 @@ class _GroupState:
         pulumi.set(self, "prevent_duplicate_names", value)
 
     @property
+    @pulumi.getter(name="provisioningOptions")
+    def provisioning_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "provisioning_options")
+
+    @provisioning_options.setter
+    def provisioning_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "provisioning_options", value)
+
+    @property
     @pulumi.getter(name="securityEnabled")
     def security_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the group is a security group.
+        Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         """
         return pulumi.get(self, "security_enabled")
 
@@ -263,53 +204,453 @@ class _GroupState:
     def security_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "security_enabled", value)
 
+    @property
+    @pulumi.getter
+    def theme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        """
+        return pulumi.get(self, "theme")
+
+    @theme.setter
+    def theme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "theme", value)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "types", value)
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visibility", value)
+
+
+@pulumi.input_type
+class _GroupState:
+    def __init__(__self__, *,
+                 assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 mail: Optional[pulumi.Input[str]] = None,
+                 mail_enabled: Optional[pulumi.Input[bool]] = None,
+                 mail_nickname: Optional[pulumi.Input[str]] = None,
+                 members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None,
+                 onpremises_domain_name: Optional[pulumi.Input[str]] = None,
+                 onpremises_netbios_name: Optional[pulumi.Input[str]] = None,
+                 onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
+                 onpremises_security_identifier: Optional[pulumi.Input[str]] = None,
+                 onpremises_sync_enabled: Optional[pulumi.Input[bool]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_language: Optional[pulumi.Input[str]] = None,
+                 prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 proxy_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_enabled: Optional[pulumi.Input[bool]] = None,
+                 theme: Optional[pulumi.Input[str]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] description: The description for the group.
+        :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[str] mail: The SMTP address for the group.
+        :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+        :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[str] object_id: The object ID of the group.
+        :param pulumi.Input[str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_netbios_name: The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_sam_account_name: The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_security_identifier: The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[bool] onpremises_sync_enabled: Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[str] preferred_language: The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_addresses: List of email addresses for the group that direct to the same group mailbox.
+        :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+        :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        """
+        if assignable_to_role is not None:
+            pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+        if behaviors is not None:
+            pulumi.set(__self__, "behaviors", behaviors)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if mail is not None:
+            pulumi.set(__self__, "mail", mail)
+        if mail_enabled is not None:
+            pulumi.set(__self__, "mail_enabled", mail_enabled)
+        if mail_nickname is not None:
+            pulumi.set(__self__, "mail_nickname", mail_nickname)
+        if members is not None:
+            pulumi.set(__self__, "members", members)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+        if onpremises_domain_name is not None:
+            pulumi.set(__self__, "onpremises_domain_name", onpremises_domain_name)
+        if onpremises_netbios_name is not None:
+            pulumi.set(__self__, "onpremises_netbios_name", onpremises_netbios_name)
+        if onpremises_sam_account_name is not None:
+            pulumi.set(__self__, "onpremises_sam_account_name", onpremises_sam_account_name)
+        if onpremises_security_identifier is not None:
+            pulumi.set(__self__, "onpremises_security_identifier", onpremises_security_identifier)
+        if onpremises_sync_enabled is not None:
+            pulumi.set(__self__, "onpremises_sync_enabled", onpremises_sync_enabled)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if preferred_language is not None:
+            pulumi.set(__self__, "preferred_language", preferred_language)
+        if prevent_duplicate_names is not None:
+            pulumi.set(__self__, "prevent_duplicate_names", prevent_duplicate_names)
+        if provisioning_options is not None:
+            pulumi.set(__self__, "provisioning_options", provisioning_options)
+        if proxy_addresses is not None:
+            pulumi.set(__self__, "proxy_addresses", proxy_addresses)
+        if security_enabled is not None:
+            pulumi.set(__self__, "security_enabled", security_enabled)
+        if theme is not None:
+            pulumi.set(__self__, "theme", theme)
+        if types is not None:
+            pulumi.set(__self__, "types", types)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="assignableToRole")
+    def assignable_to_role(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "assignable_to_role")
+
+    @assignable_to_role.setter
+    def assignable_to_role(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "assignable_to_role", value)
+
+    @property
+    @pulumi.getter
+    def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "behaviors")
+
+    @behaviors.setter
+    def behaviors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "behaviors", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description for the group.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name for the group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def mail(self) -> Optional[pulumi.Input[str]]:
+        """
+        The SMTP address for the group.
+        """
+        return pulumi.get(self, "mail")
+
+    @mail.setter
+    def mail(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mail", value)
+
+    @property
+    @pulumi.getter(name="mailEnabled")
+    def mail_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+        """
+        return pulumi.get(self, "mail_enabled")
+
+    @mail_enabled.setter
+    def mail_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "mail_enabled", value)
+
+    @property
+    @pulumi.getter(name="mailNickname")
+    def mail_nickname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "mail_nickname")
+
+    @mail_nickname.setter
+    def mail_nickname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mail_nickname", value)
+
+    @property
+    @pulumi.getter
+    def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        """
+        return pulumi.get(self, "members")
+
+    @members.setter
+    def members(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "members", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object ID of the group.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+    @property
+    @pulumi.getter(name="onpremisesDomainName")
+    def onpremises_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_domain_name")
+
+    @onpremises_domain_name.setter
+    def onpremises_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_domain_name", value)
+
+    @property
+    @pulumi.getter(name="onpremisesNetbiosName")
+    def onpremises_netbios_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_netbios_name")
+
+    @onpremises_netbios_name.setter
+    def onpremises_netbios_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_netbios_name", value)
+
+    @property
+    @pulumi.getter(name="onpremisesSamAccountName")
+    def onpremises_sam_account_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_sam_account_name")
+
+    @onpremises_sam_account_name.setter
+    def onpremises_sam_account_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_sam_account_name", value)
+
+    @property
+    @pulumi.getter(name="onpremisesSecurityIdentifier")
+    def onpremises_security_identifier(self) -> Optional[pulumi.Input[str]]:
+        """
+        The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_security_identifier")
+
+    @onpremises_security_identifier.setter
+    def onpremises_security_identifier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_security_identifier", value)
+
+    @property
+    @pulumi.getter(name="onpremisesSyncEnabled")
+    def onpremises_sync_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        """
+        return pulumi.get(self, "onpremises_sync_enabled")
+
+    @onpremises_sync_enabled.setter
+    def onpremises_sync_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "onpremises_sync_enabled", value)
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of owners who own this group. Supported object types are Users or Service Principals
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "owners", value)
+
+    @property
+    @pulumi.getter(name="preferredLanguage")
+    def preferred_language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        """
+        return pulumi.get(self, "preferred_language")
+
+    @preferred_language.setter
+    def preferred_language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_language", value)
+
+    @property
+    @pulumi.getter(name="preventDuplicateNames")
+    def prevent_duplicate_names(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+        """
+        return pulumi.get(self, "prevent_duplicate_names")
+
+    @prevent_duplicate_names.setter
+    def prevent_duplicate_names(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "prevent_duplicate_names", value)
+
+    @property
+    @pulumi.getter(name="provisioningOptions")
+    def provisioning_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "provisioning_options")
+
+    @provisioning_options.setter
+    def provisioning_options(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "provisioning_options", value)
+
+    @property
+    @pulumi.getter(name="proxyAddresses")
+    def proxy_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of email addresses for the group that direct to the same group mailbox.
+        """
+        return pulumi.get(self, "proxy_addresses")
+
+    @proxy_addresses.setter
+    def proxy_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "proxy_addresses", value)
+
+    @property
+    @pulumi.getter(name="securityEnabled")
+    def security_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+        """
+        return pulumi.get(self, "security_enabled")
+
+    @security_enabled.setter
+    def security_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "security_enabled", value)
+
+    @property
+    @pulumi.getter
+    def theme(self) -> Optional[pulumi.Input[str]]:
+        """
+        The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        """
+        return pulumi.get(self, "theme")
+
+    @theme.setter
+    def theme(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "theme", value)
+
+    @property
+    @pulumi.getter
+    def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "types")
+
+    @types.setter
+    def types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "types", value)
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[str]]:
+        """
+        The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "visibility", value)
+
 
 class Group(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 mail_enabled: Optional[pulumi.Input[bool]] = None,
+                 mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_enabled: Optional[pulumi.Input[bool]] = None,
+                 theme: Optional[pulumi.Input[str]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Group within Azure Active Directory.
+        Manages a group within Azure Active Directory.
 
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+        ## API Permissions
 
-        ## Example Usage
+        The following API permissions are required in order to use this resource.
 
-        *Basic example*
+        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
 
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Group("example", display_name="A-AD-Group")
-        ```
-
-        *A group with members*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.User("exampleUser",
-            display_name="J Doe",
-            password="notSecure123",
-            user_principal_name="jdoe@hashicorp.com")
-        example_group = azuread.Group("exampleGroup",
-            display_name="MyGroup",
-            members=[example_user.object_id])
-        ```
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
         ## Import
 
-        Azure Active Directory Groups can be imported using the `object id`, e.g.
+        Groups can be imported using their object ID, e.g.
 
         ```sh
          $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
@@ -317,52 +658,41 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] description: The description for the group.
+        :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+        :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+        :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         ...
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: Optional[GroupArgs] = None,
+                 args: GroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Group within Azure Active Directory.
+        Manages a group within Azure Active Directory.
 
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+        ## API Permissions
 
-        ## Example Usage
+        The following API permissions are required in order to use this resource.
 
-        *Basic example*
+        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
 
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.Group("example", display_name="A-AD-Group")
-        ```
-
-        *A group with members*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.User("exampleUser",
-            display_name="J Doe",
-            password="notSecure123",
-            user_principal_name="jdoe@hashicorp.com")
-        example_group = azuread.Group("exampleGroup",
-            display_name="MyGroup",
-            members=[example_user.object_id])
-        ```
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
         ## Import
 
-        Azure Active Directory Groups can be imported using the `object id`, e.g.
+        Groups can be imported using their object ID, e.g.
 
         ```sh
          $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
@@ -383,12 +713,20 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 mail_enabled: Optional[pulumi.Input[bool]] = None,
+                 mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
+                 provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 security_enabled: Optional[pulumi.Input[bool]] = None,
+                 theme: Optional[pulumi.Input[str]] = None,
+                 types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 visibility: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -401,18 +739,31 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["assignable_to_role"] = assignable_to_role
+            __props__.__dict__["behaviors"] = behaviors
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["mail_enabled"] = mail_enabled
+            __props__.__dict__["mail_nickname"] = mail_nickname
             __props__.__dict__["members"] = members
-            if name is not None and not opts.urn:
-                warnings.warn("""This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""", DeprecationWarning)
-                pulumi.log.warn("""name is deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider""")
-            __props__.__dict__["name"] = name
             __props__.__dict__["owners"] = owners
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
-            __props__.__dict__["mail_enabled"] = None
+            __props__.__dict__["provisioning_options"] = provisioning_options
+            __props__.__dict__["security_enabled"] = security_enabled
+            __props__.__dict__["theme"] = theme
+            __props__.__dict__["types"] = types
+            __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["mail"] = None
             __props__.__dict__["object_id"] = None
-            __props__.__dict__["security_enabled"] = None
+            __props__.__dict__["onpremises_domain_name"] = None
+            __props__.__dict__["onpremises_netbios_name"] = None
+            __props__.__dict__["onpremises_sam_account_name"] = None
+            __props__.__dict__["onpremises_security_identifier"] = None
+            __props__.__dict__["onpremises_sync_enabled"] = None
+            __props__.__dict__["preferred_language"] = None
+            __props__.__dict__["proxy_addresses"] = None
         super(Group, __self__).__init__(
             'azuread:index/group:Group',
             resource_name,
@@ -423,15 +774,29 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            assignable_to_role: Optional[pulumi.Input[bool]] = None,
+            behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            mail: Optional[pulumi.Input[str]] = None,
             mail_enabled: Optional[pulumi.Input[bool]] = None,
+            mail_nickname: Optional[pulumi.Input[str]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            name: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
+            onpremises_domain_name: Optional[pulumi.Input[str]] = None,
+            onpremises_netbios_name: Optional[pulumi.Input[str]] = None,
+            onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
+            onpremises_security_identifier: Optional[pulumi.Input[str]] = None,
+            onpremises_sync_enabled: Optional[pulumi.Input[bool]] = None,
             owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            preferred_language: Optional[pulumi.Input[str]] = None,
             prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
-            security_enabled: Optional[pulumi.Input[bool]] = None) -> 'Group':
+            provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            proxy_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            security_enabled: Optional[pulumi.Input[bool]] = None,
+            theme: Optional[pulumi.Input[str]] = None,
+            types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            visibility: Optional[pulumi.Input[str]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -439,35 +804,80 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description for the Group.  Changing this forces a new resource to be created.
-        :param pulumi.Input[str] display_name: The display name for the Group. Changing this forces a new resource to be created.
-        :param pulumi.Input[bool] mail_enabled: Whether the group is mail-enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
-        :param pulumi.Input[str] object_id: The Object ID of the Group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this Group. Supported Object types are Users or Service Principals.
-        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
-        :param pulumi.Input[bool] security_enabled: Whether the group is a security group.
+        :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] description: The description for the group.
+        :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[str] mail: The SMTP address for the group.
+        :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+        :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[str] object_id: The object ID of the group.
+        :param pulumi.Input[str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_netbios_name: The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_sam_account_name: The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_security_identifier: The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[bool] onpremises_sync_enabled: Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
+        :param pulumi.Input[str] preferred_language: The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_addresses: List of email addresses for the group that direct to the same group mailbox.
+        :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+        :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["assignable_to_role"] = assignable_to_role
+        __props__.__dict__["behaviors"] = behaviors
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["mail"] = mail
         __props__.__dict__["mail_enabled"] = mail_enabled
+        __props__.__dict__["mail_nickname"] = mail_nickname
         __props__.__dict__["members"] = members
-        __props__.__dict__["name"] = name
         __props__.__dict__["object_id"] = object_id
+        __props__.__dict__["onpremises_domain_name"] = onpremises_domain_name
+        __props__.__dict__["onpremises_netbios_name"] = onpremises_netbios_name
+        __props__.__dict__["onpremises_sam_account_name"] = onpremises_sam_account_name
+        __props__.__dict__["onpremises_security_identifier"] = onpremises_security_identifier
+        __props__.__dict__["onpremises_sync_enabled"] = onpremises_sync_enabled
         __props__.__dict__["owners"] = owners
+        __props__.__dict__["preferred_language"] = preferred_language
         __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
+        __props__.__dict__["provisioning_options"] = provisioning_options
+        __props__.__dict__["proxy_addresses"] = proxy_addresses
         __props__.__dict__["security_enabled"] = security_enabled
+        __props__.__dict__["theme"] = theme
+        __props__.__dict__["types"] = types
+        __props__.__dict__["visibility"] = visibility
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="assignableToRole")
+    def assignable_to_role(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "assignable_to_role")
+
+    @property
+    @pulumi.getter
+    def behaviors(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "behaviors")
 
     @property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description for the Group.  Changing this forces a new resource to be created.
+        The description for the group.
         """
         return pulumi.get(self, "description")
 
@@ -475,60 +885,159 @@ class Group(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name for the Group. Changing this forces a new resource to be created.
+        The display name for the group.
         """
         return pulumi.get(self, "display_name")
 
     @property
-    @pulumi.getter(name="mailEnabled")
-    def mail_enabled(self) -> pulumi.Output[bool]:
+    @pulumi.getter
+    def mail(self) -> pulumi.Output[str]:
         """
-        Whether the group is mail-enabled.
+        The SMTP address for the group.
+        """
+        return pulumi.get(self, "mail")
+
+    @property
+    @pulumi.getter(name="mailEnabled")
+    def mail_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         """
         return pulumi.get(self, "mail_enabled")
+
+    @property
+    @pulumi.getter(name="mailNickname")
+    def mail_nickname(self) -> pulumi.Output[str]:
+        """
+        The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "mail_nickname")
 
     @property
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
         """
         return pulumi.get(self, "members")
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
-        The Object ID of the Group.
+        The object ID of the group.
         """
         return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="onpremisesDomainName")
+    def onpremises_domain_name(self) -> pulumi.Output[str]:
+        """
+        The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_domain_name")
+
+    @property
+    @pulumi.getter(name="onpremisesNetbiosName")
+    def onpremises_netbios_name(self) -> pulumi.Output[str]:
+        """
+        The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_netbios_name")
+
+    @property
+    @pulumi.getter(name="onpremisesSamAccountName")
+    def onpremises_sam_account_name(self) -> pulumi.Output[str]:
+        """
+        The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_sam_account_name")
+
+    @property
+    @pulumi.getter(name="onpremisesSecurityIdentifier")
+    def onpremises_security_identifier(self) -> pulumi.Output[str]:
+        """
+        The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "onpremises_security_identifier")
+
+    @property
+    @pulumi.getter(name="onpremisesSyncEnabled")
+    def onpremises_sync_enabled(self) -> pulumi.Output[bool]:
+        """
+        Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        """
+        return pulumi.get(self, "onpremises_sync_enabled")
 
     @property
     @pulumi.getter
     def owners(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of owners who own this Group. Supported Object types are Users or Service Principals.
+        A set of owners who own this group. Supported object types are Users or Service Principals
         """
         return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter(name="preferredLanguage")
+    def preferred_language(self) -> pulumi.Output[str]:
+        """
+        The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        """
+        return pulumi.get(self, "preferred_language")
 
     @property
     @pulumi.getter(name="preventDuplicateNames")
     def prevent_duplicate_names(self) -> pulumi.Output[Optional[bool]]:
         """
-        If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+        If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         """
         return pulumi.get(self, "prevent_duplicate_names")
 
     @property
-    @pulumi.getter(name="securityEnabled")
-    def security_enabled(self) -> pulumi.Output[bool]:
+    @pulumi.getter(name="provisioningOptions")
+    def provisioning_options(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        Whether the group is a security group.
+        A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "provisioning_options")
+
+    @property
+    @pulumi.getter(name="proxyAddresses")
+    def proxy_addresses(self) -> pulumi.Output[Sequence[str]]:
+        """
+        List of email addresses for the group that direct to the same group mailbox.
+        """
+        return pulumi.get(self, "proxy_addresses")
+
+    @property
+    @pulumi.getter(name="securityEnabled")
+    def security_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         """
         return pulumi.get(self, "security_enabled")
+
+    @property
+    @pulumi.getter
+    def theme(self) -> pulumi.Output[Optional[str]]:
+        """
+        The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+        """
+        return pulumi.get(self, "theme")
+
+    @property
+    @pulumi.getter
+    def types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "types")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> pulumi.Output[str]:
+        """
+        The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        """
+        return pulumi.get(self, "visibility")
 

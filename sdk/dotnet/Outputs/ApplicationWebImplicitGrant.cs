@@ -17,11 +17,19 @@ namespace Pulumi.AzureAD.Outputs
         /// Whether this web application can request an access token using OAuth 2.0 implicit flow.
         /// </summary>
         public readonly bool? AccessTokenIssuanceEnabled;
+        /// <summary>
+        /// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+        /// </summary>
+        public readonly bool? IdTokenIssuanceEnabled;
 
         [OutputConstructor]
-        private ApplicationWebImplicitGrant(bool? accessTokenIssuanceEnabled)
+        private ApplicationWebImplicitGrant(
+            bool? accessTokenIssuanceEnabled,
+
+            bool? idTokenIssuanceEnabled)
         {
             AccessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
+            IdTokenIssuanceEnabled = idTokenIssuanceEnabled;
         }
     }
 }
