@@ -16,36 +16,61 @@ __all__ = ['ServicePrincipalArgs', 'ServicePrincipal']
 class ServicePrincipalArgs:
     def __init__(__self__, *,
                  application_id: pulumi.Input[str],
+                 account_enabled: Optional[pulumi.Input[bool]] = None,
+                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
-                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 description: Optional[pulumi.Input[str]] = None,
+                 login_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
+                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_existing: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ServicePrincipal resource.
-        :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal.
+        :param pulumi.Input[bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
+        :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
         pulumi.set(__self__, "application_id", application_id)
+        if account_enabled is not None:
+            pulumi.set(__self__, "account_enabled", account_enabled)
+        if alternative_names is not None:
+            pulumi.set(__self__, "alternative_names", alternative_names)
         if app_role_assignment_required is not None:
             pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
-        if oauth2_permission_scopes is not None:
-            pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
-        if oauth2_permissions is not None:
-            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
-        if oauth2_permissions is not None:
-            pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if login_url is not None:
+            pulumi.set(__self__, "login_url", login_url)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
+        if notification_email_addresses is not None:
+            pulumi.set(__self__, "notification_email_addresses", notification_email_addresses)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if preferred_single_sign_on_mode is not None:
+            pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if use_existing is not None:
+            pulumi.set(__self__, "use_existing", use_existing)
 
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Input[str]:
         """
-        The App ID of the Application for which to create a Service Principal.
+        The application ID (client ID) of the application for which to create a service principal.
         """
         return pulumi.get(self, "application_id")
 
@@ -54,10 +79,34 @@ class ServicePrincipalArgs:
         pulumi.set(self, "application_id", value)
 
     @property
+    @pulumi.getter(name="accountEnabled")
+    def account_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the service principal account is enabled. Defaults to `true`.
+        """
+        return pulumi.get(self, "account_enabled")
+
+    @account_enabled.setter
+    def account_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "account_enabled", value)
+
+    @property
+    @pulumi.getter(name="alternativeNames")
+    def alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        """
+        return pulumi.get(self, "alternative_names")
+
+    @alternative_names.setter
+    def alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alternative_names", value)
+
+    @property
     @pulumi.getter(name="appRoleAssignmentRequired")
     def app_role_assignment_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         """
         return pulumi.get(self, "app_role_assignment_required")
 
@@ -66,34 +115,82 @@ class ServicePrincipalArgs:
         pulumi.set(self, "app_role_assignment_required", value)
 
     @property
-    @pulumi.getter(name="oauth2PermissionScopes")
-    def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]:
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        A description of the service principal provided for internal end-users.
         """
-        return pulumi.get(self, "oauth2_permission_scopes")
+        return pulumi.get(self, "description")
 
-    @oauth2_permission_scopes.setter
-    def oauth2_permission_scopes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]):
-        pulumi.set(self, "oauth2_permission_scopes", value)
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]:
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> Optional[pulumi.Input[str]]:
         """
-        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
+        The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         """
-        return pulumi.get(self, "oauth2_permissions")
+        return pulumi.get(self, "login_url")
 
-    @oauth2_permissions.setter
-    def oauth2_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]):
-        pulumi.set(self, "oauth2_permissions", value)
+    @login_url.setter
+    def login_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "login_url", value)
+
+    @property
+    @pulumi.getter
+    def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free text field to capture information about the service principal, typically used for operational purposes.
+        """
+        return pulumi.get(self, "notes")
+
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notes", value)
+
+    @property
+    @pulumi.getter(name="notificationEmailAddresses")
+    def notification_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        """
+        return pulumi.get(self, "notification_email_addresses")
+
+    @notification_email_addresses.setter
+    def notification_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_email_addresses", value)
+
+    @property
+    @pulumi.getter
+    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "owners", value)
+
+    @property
+    @pulumi.getter(name="preferredSingleSignOnMode")
+    def preferred_single_sign_on_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        """
+        return pulumi.get(self, "preferred_single_sign_on_mode")
+
+    @preferred_single_sign_on_mode.setter
+    def preferred_single_sign_on_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_single_sign_on_mode", value)
 
     @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tags to apply to the Service Principal.
+        A set of tags to apply to the service principal.
         """
         return pulumi.get(self, "tags")
 
@@ -101,54 +198,159 @@ class ServicePrincipalArgs:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter(name="useExisting")
+    def use_existing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+        """
+        return pulumi.get(self, "use_existing")
+
+    @use_existing.setter
+    def use_existing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_existing", value)
+
 
 @pulumi.input_type
 class _ServicePrincipalState:
     def __init__(__self__, *,
+                 account_enabled: Optional[pulumi.Input[bool]] = None,
+                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+                 app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 application_tenant_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 homepage_url: Optional[pulumi.Input[str]] = None,
+                 login_url: Optional[pulumi.Input[str]] = None,
+                 logout_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
+                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+                 redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 saml_metadata_url: Optional[pulumi.Input[str]] = None,
+                 service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 sign_in_audience: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 use_existing: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipal resources.
-        :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]] app_roles: A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        :param pulumi.Input[str] object_id: The Object ID of the Service Principal.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        :param pulumi.Input[bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]] app_roles: A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal.
+        :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
+        :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
+        :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
+        :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]] oauth2_permission_scopes: A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
+        :param pulumi.Input[str] object_id: The object ID of the service principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+        :param pulumi.Input[str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
+        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
+        if account_enabled is not None:
+            pulumi.set(__self__, "account_enabled", account_enabled)
+        if alternative_names is not None:
+            pulumi.set(__self__, "alternative_names", alternative_names)
         if app_role_assignment_required is not None:
             pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
+        if app_role_ids is not None:
+            pulumi.set(__self__, "app_role_ids", app_role_ids)
         if app_roles is not None:
             pulumi.set(__self__, "app_roles", app_roles)
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
+        if application_tenant_id is not None:
+            pulumi.set(__self__, "application_tenant_id", application_tenant_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if homepage_url is not None:
+            pulumi.set(__self__, "homepage_url", homepage_url)
+        if login_url is not None:
+            pulumi.set(__self__, "login_url", login_url)
+        if logout_url is not None:
+            pulumi.set(__self__, "logout_url", logout_url)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
+        if notification_email_addresses is not None:
+            pulumi.set(__self__, "notification_email_addresses", notification_email_addresses)
+        if oauth2_permission_scope_ids is not None:
+            pulumi.set(__self__, "oauth2_permission_scope_ids", oauth2_permission_scope_ids)
         if oauth2_permission_scopes is not None:
             pulumi.set(__self__, "oauth2_permission_scopes", oauth2_permission_scopes)
-        if oauth2_permissions is not None:
-            warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-            pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
-        if oauth2_permissions is not None:
-            pulumi.set(__self__, "oauth2_permissions", oauth2_permissions)
         if object_id is not None:
             pulumi.set(__self__, "object_id", object_id)
+        if owners is not None:
+            pulumi.set(__self__, "owners", owners)
+        if preferred_single_sign_on_mode is not None:
+            pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
+        if redirect_uris is not None:
+            pulumi.set(__self__, "redirect_uris", redirect_uris)
+        if saml_metadata_url is not None:
+            pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+        if service_principal_names is not None:
+            pulumi.set(__self__, "service_principal_names", service_principal_names)
+        if sign_in_audience is not None:
+            pulumi.set(__self__, "sign_in_audience", sign_in_audience)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if use_existing is not None:
+            pulumi.set(__self__, "use_existing", use_existing)
+
+    @property
+    @pulumi.getter(name="accountEnabled")
+    def account_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the service principal account is enabled. Defaults to `true`.
+        """
+        return pulumi.get(self, "account_enabled")
+
+    @account_enabled.setter
+    def account_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "account_enabled", value)
+
+    @property
+    @pulumi.getter(name="alternativeNames")
+    def alternative_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        """
+        return pulumi.get(self, "alternative_names")
+
+    @alternative_names.setter
+    def alternative_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alternative_names", value)
 
     @property
     @pulumi.getter(name="appRoleAssignmentRequired")
     def app_role_assignment_required(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         """
         return pulumi.get(self, "app_role_assignment_required")
 
@@ -157,10 +359,22 @@ class _ServicePrincipalState:
         pulumi.set(self, "app_role_assignment_required", value)
 
     @property
+    @pulumi.getter(name="appRoleIds")
+    def app_role_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+        """
+        return pulumi.get(self, "app_role_ids")
+
+    @app_role_ids.setter
+    def app_role_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "app_role_ids", value)
+
+    @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalAppRoleArgs']]]]:
         """
-        A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
 
@@ -172,7 +386,7 @@ class _ServicePrincipalState:
     @pulumi.getter(name="applicationId")
     def application_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The App ID of the Application for which to create a Service Principal.
+        The application ID (client ID) of the application for which to create a service principal.
         """
         return pulumi.get(self, "application_id")
 
@@ -181,10 +395,34 @@ class _ServicePrincipalState:
         pulumi.set(self, "application_id", value)
 
     @property
+    @pulumi.getter(name="applicationTenantId")
+    def application_tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The tenant ID where the associated application is registered.
+        """
+        return pulumi.get(self, "application_tenant_id")
+
+    @application_tenant_id.setter
+    def application_tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "application_tenant_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        A description of the service principal provided for internal end-users.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
 
@@ -193,10 +431,82 @@ class _ServicePrincipalState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="homepageUrl")
+    def homepage_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Home page or landing page of the associated application.
+        """
+        return pulumi.get(self, "homepage_url")
+
+    @homepage_url.setter
+    def homepage_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "homepage_url", value)
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        """
+        return pulumi.get(self, "login_url")
+
+    @login_url.setter
+    def login_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "login_url", value)
+
+    @property
+    @pulumi.getter(name="logoutUrl")
+    def logout_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        """
+        return pulumi.get(self, "logout_url")
+
+    @logout_url.setter
+    def logout_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logout_url", value)
+
+    @property
+    @pulumi.getter
+    def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        A free text field to capture information about the service principal, typically used for operational purposes.
+        """
+        return pulumi.get(self, "notes")
+
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notes", value)
+
+    @property
+    @pulumi.getter(name="notificationEmailAddresses")
+    def notification_email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        """
+        return pulumi.get(self, "notification_email_addresses")
+
+    @notification_email_addresses.setter
+    def notification_email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "notification_email_addresses", value)
+
+    @property
+    @pulumi.getter(name="oauth2PermissionScopeIds")
+    def oauth2_permission_scope_ids(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+        """
+        return pulumi.get(self, "oauth2_permission_scope_ids")
+
+    @oauth2_permission_scope_ids.setter
+    def oauth2_permission_scope_ids(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "oauth2_permission_scope_ids", value)
+
+    @property
     @pulumi.getter(name="oauth2PermissionScopes")
     def oauth2_permission_scopes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionScopeArgs']]]]:
         """
-        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         """
         return pulumi.get(self, "oauth2_permission_scopes")
 
@@ -205,22 +515,10 @@ class _ServicePrincipalState:
         pulumi.set(self, "oauth2_permission_scopes", value)
 
     @property
-    @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]:
-        """
-        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        """
-        return pulumi.get(self, "oauth2_permissions")
-
-    @oauth2_permissions.setter
-    def oauth2_permissions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalOauth2PermissionArgs']]]]):
-        pulumi.set(self, "oauth2_permissions", value)
-
-    @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Object ID of the Service Principal.
+        The object ID of the service principal.
         """
         return pulumi.get(self, "object_id")
 
@@ -230,9 +528,81 @@ class _ServicePrincipalState:
 
     @property
     @pulumi.getter
+    def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        """
+        return pulumi.get(self, "owners")
+
+    @owners.setter
+    def owners(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "owners", value)
+
+    @property
+    @pulumi.getter(name="preferredSingleSignOnMode")
+    def preferred_single_sign_on_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        """
+        return pulumi.get(self, "preferred_single_sign_on_mode")
+
+    @preferred_single_sign_on_mode.setter
+    def preferred_single_sign_on_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "preferred_single_sign_on_mode", value)
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+        """
+        return pulumi.get(self, "redirect_uris")
+
+    @redirect_uris.setter
+    def redirect_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "redirect_uris", value)
+
+    @property
+    @pulumi.getter(name="samlMetadataUrl")
+    def saml_metadata_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The URL where the service exposes SAML metadata for federation.
+        """
+        return pulumi.get(self, "saml_metadata_url")
+
+    @saml_metadata_url.setter
+    def saml_metadata_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "saml_metadata_url", value)
+
+    @property
+    @pulumi.getter(name="servicePrincipalNames")
+    def service_principal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of identifier URI(s), copied over from the associated application.
+        """
+        return pulumi.get(self, "service_principal_names")
+
+    @service_principal_names.setter
+    def service_principal_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "service_principal_names", value)
+
+    @property
+    @pulumi.getter(name="signInAudience")
+    def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        """
+        return pulumi.get(self, "sign_in_audience")
+
+    @sign_in_audience.setter
+    def sign_in_audience(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sign_in_audience", value)
+
+    @property
+    @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of tags to apply to the Service Principal.
+        A set of tags to apply to the service principal.
         """
         return pulumi.get(self, "tags")
 
@@ -240,22 +610,59 @@ class _ServicePrincipalState:
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="useExisting")
+    def use_existing(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+        """
+        return pulumi.get(self, "use_existing")
+
+    @use_existing.setter
+    def use_existing(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_existing", value)
+
 
 class ServicePrincipal(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_enabled: Optional[pulumi.Input[bool]] = None,
+                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 login_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
+                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Manages a Service Principal associated with an Application within Azure Active Directory.
+        Manages a service principal associated with an application within Azure Active Directory.
 
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
         ## Example Usage
 
@@ -263,16 +670,14 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
+        current = azuread.get_client_config()
         example_application = azuread.Application("exampleApplication",
             display_name="example",
-            homepage="http://homepage",
-            identifier_uris=["http://uri"],
-            reply_urls=["http://replyurl"],
-            available_to_other_tenants=False,
-            oauth2_allow_implicit_flow=True)
+            owners=[current.object_id])
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
             application_id=example_application.application_id,
             app_role_assignment_required=False,
+            owners=[current.object_id],
             tags=[
                 "example",
                 "tags",
@@ -282,7 +687,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         ## Import
 
-        Azure Active Directory Service Principals can be imported using the `object id`, e.g.
+        Service principals can be imported using their object ID, e.g.
 
         ```sh
          $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
@@ -290,11 +695,18 @@ class ServicePrincipal(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        :param pulumi.Input[bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal.
+        :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
+        :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
         ...
     @overload
@@ -303,9 +715,15 @@ class ServicePrincipal(pulumi.CustomResource):
                  args: ServicePrincipalArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Service Principal associated with an Application within Azure Active Directory.
+        Manages a service principal associated with an application within Azure Active Directory.
 
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API. Please see The Granting a Service Principal permission to manage AAD for the required steps.
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
         ## Example Usage
 
@@ -313,16 +731,14 @@ class ServicePrincipal(pulumi.CustomResource):
         import pulumi
         import pulumi_azuread as azuread
 
+        current = azuread.get_client_config()
         example_application = azuread.Application("exampleApplication",
             display_name="example",
-            homepage="http://homepage",
-            identifier_uris=["http://uri"],
-            reply_urls=["http://replyurl"],
-            available_to_other_tenants=False,
-            oauth2_allow_implicit_flow=True)
+            owners=[current.object_id])
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
             application_id=example_application.application_id,
             app_role_assignment_required=False,
+            owners=[current.object_id],
             tags=[
                 "example",
                 "tags",
@@ -332,7 +748,7 @@ class ServicePrincipal(pulumi.CustomResource):
 
         ## Import
 
-        Azure Active Directory Service Principals can be imported using the `object id`, e.g.
+        Service principals can be imported using their object ID, e.g.
 
         ```sh
          $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
@@ -353,11 +769,18 @@ class ServicePrincipal(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 account_enabled: Optional[pulumi.Input[bool]] = None,
+                 alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
-                 oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
-                 oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
+                 login_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
+                 notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -370,19 +793,34 @@ class ServicePrincipal(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServicePrincipalArgs.__new__(ServicePrincipalArgs)
 
+            __props__.__dict__["account_enabled"] = account_enabled
+            __props__.__dict__["alternative_names"] = alternative_names
             __props__.__dict__["app_role_assignment_required"] = app_role_assignment_required
             if application_id is None and not opts.urn:
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
-            __props__.__dict__["oauth2_permission_scopes"] = oauth2_permission_scopes
-            if oauth2_permissions is not None and not opts.urn:
-                warnings.warn("""[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""", DeprecationWarning)
-                pulumi.log.warn("""oauth2_permissions is deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.""")
-            __props__.__dict__["oauth2_permissions"] = oauth2_permissions
+            __props__.__dict__["description"] = description
+            __props__.__dict__["login_url"] = login_url
+            __props__.__dict__["notes"] = notes
+            __props__.__dict__["notification_email_addresses"] = notification_email_addresses
+            __props__.__dict__["owners"] = owners
+            __props__.__dict__["preferred_single_sign_on_mode"] = preferred_single_sign_on_mode
             __props__.__dict__["tags"] = tags
+            __props__.__dict__["use_existing"] = use_existing
+            __props__.__dict__["app_role_ids"] = None
             __props__.__dict__["app_roles"] = None
+            __props__.__dict__["application_tenant_id"] = None
             __props__.__dict__["display_name"] = None
+            __props__.__dict__["homepage_url"] = None
+            __props__.__dict__["logout_url"] = None
+            __props__.__dict__["oauth2_permission_scope_ids"] = None
+            __props__.__dict__["oauth2_permission_scopes"] = None
             __props__.__dict__["object_id"] = None
+            __props__.__dict__["redirect_uris"] = None
+            __props__.__dict__["saml_metadata_url"] = None
+            __props__.__dict__["service_principal_names"] = None
+            __props__.__dict__["sign_in_audience"] = None
+            __props__.__dict__["type"] = None
         super(ServicePrincipal, __self__).__init__(
             'azuread:index/servicePrincipal:ServicePrincipal',
             resource_name,
@@ -393,14 +831,32 @@ class ServicePrincipal(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            account_enabled: Optional[pulumi.Input[bool]] = None,
+            alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
+            app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
+            application_tenant_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            homepage_url: Optional[pulumi.Input[str]] = None,
+            login_url: Optional[pulumi.Input[str]] = None,
+            logout_url: Optional[pulumi.Input[str]] = None,
+            notes: Optional[pulumi.Input[str]] = None,
+            notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             oauth2_permission_scopes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]]] = None,
-            oauth2_permissions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'ServicePrincipal':
+            owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+            redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            saml_metadata_url: Optional[pulumi.Input[str]] = None,
+            service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            sign_in_audience: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            use_existing: Optional[pulumi.Input[bool]] = None) -> 'ServicePrincipal':
         """
         Get an existing ServicePrincipal resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -408,42 +864,102 @@ class ServicePrincipal(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] app_role_assignment_required: Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]] app_roles: A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] application_id: The App ID of the Application for which to create a Service Principal.
-        :param pulumi.Input[str] display_name: Display name for the permission that appears in the admin consent and app assignment experiences.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]] oauth2_permission_scopes: A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionArgs']]]] oauth2_permissions: (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        :param pulumi.Input[str] object_id: The Object ID of the Service Principal.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A list of tags to apply to the Service Principal.
+        :param pulumi.Input[bool] account_enabled: Whether or not the service principal account is enabled. Defaults to `true`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalAppRoleArgs']]]] app_roles: A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal.
+        :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
+        :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
+        :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
+        :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalOauth2PermissionScopeArgs']]]] oauth2_permission_scopes: A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
+        :param pulumi.Input[str] object_id: The object ID of the service principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+        :param pulumi.Input[str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
+        :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _ServicePrincipalState.__new__(_ServicePrincipalState)
 
+        __props__.__dict__["account_enabled"] = account_enabled
+        __props__.__dict__["alternative_names"] = alternative_names
         __props__.__dict__["app_role_assignment_required"] = app_role_assignment_required
+        __props__.__dict__["app_role_ids"] = app_role_ids
         __props__.__dict__["app_roles"] = app_roles
         __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["application_tenant_id"] = application_tenant_id
+        __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["homepage_url"] = homepage_url
+        __props__.__dict__["login_url"] = login_url
+        __props__.__dict__["logout_url"] = logout_url
+        __props__.__dict__["notes"] = notes
+        __props__.__dict__["notification_email_addresses"] = notification_email_addresses
+        __props__.__dict__["oauth2_permission_scope_ids"] = oauth2_permission_scope_ids
         __props__.__dict__["oauth2_permission_scopes"] = oauth2_permission_scopes
-        __props__.__dict__["oauth2_permissions"] = oauth2_permissions
         __props__.__dict__["object_id"] = object_id
+        __props__.__dict__["owners"] = owners
+        __props__.__dict__["preferred_single_sign_on_mode"] = preferred_single_sign_on_mode
+        __props__.__dict__["redirect_uris"] = redirect_uris
+        __props__.__dict__["saml_metadata_url"] = saml_metadata_url
+        __props__.__dict__["service_principal_names"] = service_principal_names
+        __props__.__dict__["sign_in_audience"] = sign_in_audience
         __props__.__dict__["tags"] = tags
+        __props__.__dict__["type"] = type
+        __props__.__dict__["use_existing"] = use_existing
         return ServicePrincipal(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accountEnabled")
+    def account_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether or not the service principal account is enabled. Defaults to `true`.
+        """
+        return pulumi.get(self, "account_enabled")
+
+    @property
+    @pulumi.getter(name="alternativeNames")
+    def alternative_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+        """
+        return pulumi.get(self, "alternative_names")
 
     @property
     @pulumi.getter(name="appRoleAssignmentRequired")
     def app_role_assignment_required(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether this Service Principal requires an AppRoleAssignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+        Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         """
         return pulumi.get(self, "app_role_assignment_required")
+
+    @property
+    @pulumi.getter(name="appRoleIds")
+    def app_role_ids(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+        """
+        return pulumi.get(self, "app_role_ids")
 
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalAppRole']]:
         """
-        A collection of `app_roles` blocks as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         """
         return pulumi.get(self, "app_roles")
 
@@ -451,47 +967,167 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[str]:
         """
-        The App ID of the Application for which to create a Service Principal.
+        The application ID (client ID) of the application for which to create a service principal.
         """
         return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="applicationTenantId")
+    def application_tenant_id(self) -> pulumi.Output[str]:
+        """
+        The tenant ID where the associated application is registered.
+        """
+        return pulumi.get(self, "application_tenant_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        A description of the service principal provided for internal end-users.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
+        Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="homepageUrl")
+    def homepage_url(self) -> pulumi.Output[str]:
+        """
+        Home page or landing page of the associated application.
+        """
+        return pulumi.get(self, "homepage_url")
+
+    @property
+    @pulumi.getter(name="loginUrl")
+    def login_url(self) -> pulumi.Output[Optional[str]]:
+        """
+        The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+        """
+        return pulumi.get(self, "login_url")
+
+    @property
+    @pulumi.getter(name="logoutUrl")
+    def logout_url(self) -> pulumi.Output[str]:
+        """
+        The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        """
+        return pulumi.get(self, "logout_url")
+
+    @property
+    @pulumi.getter
+    def notes(self) -> pulumi.Output[Optional[str]]:
+        """
+        A free text field to capture information about the service principal, typically used for operational purposes.
+        """
+        return pulumi.get(self, "notes")
+
+    @property
+    @pulumi.getter(name="notificationEmailAddresses")
+    def notification_email_addresses(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+        """
+        return pulumi.get(self, "notification_email_addresses")
+
+    @property
+    @pulumi.getter(name="oauth2PermissionScopeIds")
+    def oauth2_permission_scope_ids(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+        """
+        return pulumi.get(self, "oauth2_permission_scope_ids")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopes")
     def oauth2_permission_scopes(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalOauth2PermissionScope']]:
         """
-        A collection of OAuth 2.0 delegated permissions exposed by the associated Application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
+        A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
         """
         return pulumi.get(self, "oauth2_permission_scopes")
-
-    @property
-    @pulumi.getter(name="oauth2Permissions")
-    def oauth2_permissions(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalOauth2Permission']]:
-        """
-        (**Deprecated**) A collection of OAuth 2.0 permissions exposed by the associated Application. Each permission is covered by an `oauth2_permissions` block as documented below. Deprecated in favour of `oauth2_permission_scopes`.
-        """
-        return pulumi.get(self, "oauth2_permissions")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
-        The Object ID of the Service Principal.
+        The object ID of the service principal.
         """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter
+    def owners(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+        """
+        return pulumi.get(self, "owners")
+
+    @property
+    @pulumi.getter(name="preferredSingleSignOnMode")
+    def preferred_single_sign_on_mode(self) -> pulumi.Output[Optional[str]]:
+        """
+        The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        """
+        return pulumi.get(self, "preferred_single_sign_on_mode")
+
+    @property
+    @pulumi.getter(name="redirectUris")
+    def redirect_uris(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+        """
+        return pulumi.get(self, "redirect_uris")
+
+    @property
+    @pulumi.getter(name="samlMetadataUrl")
+    def saml_metadata_url(self) -> pulumi.Output[str]:
+        """
+        The URL where the service exposes SAML metadata for federation.
+        """
+        return pulumi.get(self, "saml_metadata_url")
+
+    @property
+    @pulumi.getter(name="servicePrincipalNames")
+    def service_principal_names(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A list of identifier URI(s), copied over from the associated application.
+        """
+        return pulumi.get(self, "service_principal_names")
+
+    @property
+    @pulumi.getter(name="signInAudience")
+    def sign_in_audience(self) -> pulumi.Output[str]:
+        """
+        The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        """
+        return pulumi.get(self, "sign_in_audience")
+
+    @property
+    @pulumi.getter
     def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A list of tags to apply to the Service Principal.
+        A set of tags to apply to the service principal.
         """
         return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[str]:
+        """
+        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="useExisting")
+    def use_existing(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+        """
+        return pulumi.get(self, "use_existing")
 

@@ -12,51 +12,21 @@ namespace Pulumi.AzureAD
     /// <summary>
     /// Manages a password credential associated with a service principal within Azure Active Directory. See also the azuread.ApplicationPassword resource.
     /// 
-    /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+    /// ## API Permissions
     /// 
-    /// ## Example Usage
+    /// The following API permissions are required in order to use this resource.
     /// 
-    /// ```csharp
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
     /// 
-    /// class MyStack : Stack
-    /// {
-    ///     public MyStack()
-    ///     {
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///         });
-    ///         var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new AzureAD.ServicePrincipalPasswordArgs
-    ///         {
-    ///             ServicePrincipalId = exampleServicePrincipal.ObjectId,
-    ///         });
-    ///     }
-    /// 
-    /// }
-    /// ```
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
     /// 
     /// ## Import
     /// 
-    /// Passwords can be imported using the `object id` of a Service Principal and the `key id` of the password, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/servicePrincipalPassword:ServicePrincipalPassword test 00000000-0000-0000-0000-000000000000/password/11111111-1111-1111-1111-111111111111
-    /// ```
+    /// This resource does not support importing.
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalPassword:ServicePrincipalPassword")]
     public partial class ServicePrincipalPassword : Pulumi.CustomResource
     {
-        /// <summary>
-        /// A description for the Password. Deprecated in favour of `display_name`.
-        /// </summary>
-        [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
-
         /// <summary>
         /// The display name for the password.
         /// </summary>
@@ -64,37 +34,37 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         /// </summary>
         [Output("endDate")]
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+        /// Arbitrary map of values that, when changed, will trigger rotation of the password
         /// </summary>
-        [Output("endDateRelative")]
-        public Output<string?> EndDateRelative { get; private set; } = null!;
+        [Output("keepers")]
+        public Output<ImmutableDictionary<string, string>?> Keepers { get; private set; } = null!;
 
         /// <summary>
-        /// A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this password credential.
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// The Password for this Service Principal.
+        /// The password for this service principal, which is generated by Azure Active Directory.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -145,53 +115,23 @@ namespace Pulumi.AzureAD
 
     public sealed class ServicePrincipalPasswordArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A description for the Password. Deprecated in favour of `display_name`.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("keepers")]
+        private InputMap<string>? _keepers;
 
         /// <summary>
-        /// The display name for the password.
+        /// Arbitrary map of values that, when changed, will trigger rotation of the password
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        public InputMap<string> Keepers
+        {
+            get => _keepers ?? (_keepers = new InputMap<string>());
+            set => _keepers = value;
+        }
 
         /// <summary>
-        /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-        /// </summary>
-        [Input("endDate")]
-        public Input<string>? EndDate { get; set; }
-
-        /// <summary>
-        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
-        /// </summary>
-        [Input("endDateRelative")]
-        public Input<string>? EndDateRelative { get; set; }
-
-        /// <summary>
-        /// A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-        /// </summary>
-        [Input("keyId")]
-        public Input<string>? KeyId { get; set; }
-
-        /// <summary>
-        /// The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
-
-        /// <summary>
-        /// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-        /// </summary>
-        [Input("startDate")]
-        public Input<string>? StartDate { get; set; }
-
-        /// <summary>
-        /// The Password for this Service Principal.
-        /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
 
         public ServicePrincipalPasswordArgs()
         {
@@ -201,49 +141,49 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A description for the Password. Deprecated in favour of `display_name`.
-        /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
-
-        /// <summary>
         /// The display name for the password.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The End Date which the Password is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
-        /// <summary>
-        /// A relative duration for which the Password is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
-        /// </summary>
-        [Input("endDateRelative")]
-        public Input<string>? EndDateRelative { get; set; }
+        [Input("keepers")]
+        private InputMap<string>? _keepers;
 
         /// <summary>
-        /// A GUID used to uniquely identify this Key. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        /// Arbitrary map of values that, when changed, will trigger rotation of the password
+        /// </summary>
+        public InputMap<string> Keepers
+        {
+            get => _keepers ?? (_keepers = new InputMap<string>());
+            set => _keepers = value;
+        }
+
+        /// <summary>
+        /// A UUID used to uniquely identify this password credential.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The ID of the Service Principal for which this password should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
 
         /// <summary>
-        /// The Start Date which the Password is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The Password for this Service Principal.
+        /// The password for this service principal, which is generated by Azure Active Directory.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

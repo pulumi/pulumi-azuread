@@ -14,27 +14,23 @@ namespace Pulumi.AzureAD.Outputs
     public sealed class GetUsersUserResult
     {
         /// <summary>
-        /// `True` if the account is enabled; otherwise `False`.
+        /// Whether or not the account is enabled.
         /// </summary>
         public readonly bool AccountEnabled;
         /// <summary>
-        /// The Display Name of the Azure AD User.
+        /// The display name of the user.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// (**Deprecated**) The value used to associate an on-premises Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremises_immutable_id`.
-        /// </summary>
-        public readonly string ImmutableId;
-        /// <summary>
-        /// The primary email address of the Azure AD User.
+        /// The primary email address of the user.
         /// </summary>
         public readonly string Mail;
         /// <summary>
-        /// The email alias of the Azure AD User.
+        /// The email alias of the user.
         /// </summary>
         public readonly string MailNickname;
         /// <summary>
-        /// The Object ID of the Azure AD User.
+        /// The object ID of the user.
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
@@ -42,19 +38,19 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string OnpremisesImmutableId;
         /// <summary>
-        /// The on-premise SAM account name of the Azure AD User.
+        /// The on-premise SAM account name of the user.
         /// </summary>
         public readonly string OnpremisesSamAccountName;
         /// <summary>
-        /// The on-premise user principal name of the Azure AD User.
+        /// The on-premise user principal name of the user.
         /// </summary>
         public readonly string OnpremisesUserPrincipalName;
         /// <summary>
-        /// The usage location of the Azure AD User.
+        /// The usage location of the user.
         /// </summary>
         public readonly string UsageLocation;
         /// <summary>
-        /// The User Principal Name of the Azure AD User.
+        /// The user principal name (UPN) of the user.
         /// </summary>
         public readonly string UserPrincipalName;
 
@@ -63,8 +59,6 @@ namespace Pulumi.AzureAD.Outputs
             bool accountEnabled,
 
             string displayName,
-
-            string immutableId,
 
             string mail,
 
@@ -84,7 +78,6 @@ namespace Pulumi.AzureAD.Outputs
         {
             AccountEnabled = accountEnabled;
             DisplayName = displayName;
-            ImmutableId = immutableId;
             Mail = mail;
             MailNickname = mailNickname;
             ObjectId = objectId;

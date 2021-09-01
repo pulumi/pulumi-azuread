@@ -36,6 +36,9 @@ class GetClientConfigResult:
     @property
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
+        """
+        The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
+        """
         return pulumi.get(self, "client_id")
 
     @property
@@ -49,11 +52,17 @@ class GetClientConfigResult:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The object ID of the authenticated principal.
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> str:
+        """
+        The tenant ID of the authenticated principal.
+        """
         return pulumi.get(self, "tenant_id")
 
 
@@ -73,6 +82,10 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     """
     Use this data source to access the configuration of the AzureAD provider.
 
+    ## API Permissions
+
+    No additional roles are required to use this data source.
+
     ## Example Usage
 
     ```python
@@ -80,7 +93,7 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     import pulumi_azuread as azuread
 
     current = azuread.get_client_config()
-    pulumi.export("accountId", current.client_id)
+    pulumi.export("objectId", current.object_id)
     ```
     """
     __args__ = dict()

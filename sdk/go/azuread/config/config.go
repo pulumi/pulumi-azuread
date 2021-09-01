@@ -8,34 +8,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
 
+// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
+func GetClientCertificate(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:clientCertificate")
+}
+
+// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+// Certificate
 func GetClientCertificatePassword(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientCertificatePassword")
 }
 
 // The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-// Principal using a Client Certificate.
+// Principal using a Client Certificate
 func GetClientCertificatePath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientCertificatePath")
 }
 
-// The Client ID which should be used for service principal authentication.
+// The Client ID which should be used for service principal authentication
 func GetClientId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientId")
 }
 
-// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
-// Certificate
+// The application password to use when authenticating as a Service Principal using a Client Secret
 func GetClientSecret(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:clientSecret")
 }
 
-// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azuread:disableTerraformPartnerId")
 }
 
 // The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-// `germany`, and `china`. Defaults to `global`.
+// `germany`, and `china`. Defaults to `global`
 func GetEnvironment(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:environment")
 	if err == nil {
@@ -44,12 +50,7 @@ func GetEnvironment(ctx *pulumi.Context) string {
 	return getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string)
 }
 
-// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-func GetMetadataHost(ctx *pulumi.Context) string {
-	return config.Get(ctx, "azuread:metadataHost")
-}
-
-// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 func GetMsiEndpoint(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:msiEndpoint")
 	if err == nil {
@@ -58,27 +59,22 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 	return getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string)
 }
 
-// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
 func GetPartnerId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:partnerId")
 }
 
-// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 func GetTenantId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:tenantId")
 }
 
-// Allow Azure CLI to be used for Authentication.
+// Allow Azure CLI to be used for Authentication
 func GetUseCli(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azuread:useCli")
 }
 
-// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-func GetUseMicrosoftGraph(ctx *pulumi.Context) bool {
-	return config.GetBool(ctx, "azuread:useMicrosoftGraph")
-}
-
-// Allow Managed Identity to be used for Authentication.
+// Allow Managed Identity to be used for Authentication
 func GetUseMsi(ctx *pulumi.Context) bool {
 	v, err := config.TryBool(ctx, "azuread:useMsi")
 	if err == nil {

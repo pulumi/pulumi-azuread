@@ -6,12 +6,11 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .application import *
-from .application_app_role import *
 from .application_certificate import *
-from .application_o_auth2_permission import *
-from .application_oauth2_permission_scope import *
 from .application_password import *
+from .application_pre_authorized import *
 from .get_application import *
+from .get_application_published_app_ids import *
 from .get_client_config import *
 from .get_domains import *
 from .get_group import *
@@ -48,14 +47,6 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
-  "mod": "index/applicationAppRole",
-  "fqn": "pulumi_azuread",
-  "classes": {
-   "azuread:index/applicationAppRole:ApplicationAppRole": "ApplicationAppRole"
-  }
- },
- {
-  "pkg": "azuread",
   "mod": "index/applicationCertificate",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -64,26 +55,18 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
-  "mod": "index/applicationOAuth2Permission",
-  "fqn": "pulumi_azuread",
-  "classes": {
-   "azuread:index/applicationOAuth2Permission:ApplicationOAuth2Permission": "ApplicationOAuth2Permission"
-  }
- },
- {
-  "pkg": "azuread",
-  "mod": "index/applicationOauth2PermissionScope",
-  "fqn": "pulumi_azuread",
-  "classes": {
-   "azuread:index/applicationOauth2PermissionScope:ApplicationOauth2PermissionScope": "ApplicationOauth2PermissionScope"
-  }
- },
- {
-  "pkg": "azuread",
   "mod": "index/applicationPassword",
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/applicationPassword:ApplicationPassword": "ApplicationPassword"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationPreAuthorized",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized": "ApplicationPreAuthorized"
   }
  },
  {

@@ -23,13 +23,13 @@ class ApplicationCertificateArgs:
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationCertificate resource.
-        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] start_date: The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         """
         pulumi.set(__self__, "application_object_id", application_object_id)
@@ -51,7 +51,7 @@ class ApplicationCertificateArgs:
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Input[str]:
         """
-        The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_object_id")
 
@@ -87,7 +87,7 @@ class ApplicationCertificateArgs:
     @pulumi.getter(name="endDate")
     def end_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "end_date")
 
@@ -99,7 +99,7 @@ class ApplicationCertificateArgs:
     @pulumi.getter(name="endDateRelative")
     def end_date_relative(self) -> Optional[pulumi.Input[str]]:
         """
-        A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "end_date_relative")
 
@@ -111,7 +111,7 @@ class ApplicationCertificateArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "key_id")
 
@@ -123,7 +123,7 @@ class ApplicationCertificateArgs:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "start_date")
 
@@ -157,12 +157,12 @@ class _ApplicationCertificateState:
                  value: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationCertificate resources.
-        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] start_date: The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
@@ -187,7 +187,7 @@ class _ApplicationCertificateState:
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_object_id")
 
@@ -211,7 +211,7 @@ class _ApplicationCertificateState:
     @pulumi.getter(name="endDate")
     def end_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "end_date")
 
@@ -223,7 +223,7 @@ class _ApplicationCertificateState:
     @pulumi.getter(name="endDateRelative")
     def end_date_relative(self) -> Optional[pulumi.Input[str]]:
         """
-        A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "end_date_relative")
 
@@ -235,7 +235,7 @@ class _ApplicationCertificateState:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "key_id")
 
@@ -247,7 +247,7 @@ class _ApplicationCertificateState:
     @pulumi.getter(name="startDate")
     def start_date(self) -> Optional[pulumi.Input[str]]:
         """
-        The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "start_date")
 
@@ -295,85 +295,24 @@ class ApplicationCertificate(pulumi.CustomResource):
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
-
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-
-        ## Example Usage
-        ### Using a certificate from Azure Key Vault
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication")
-        example_certificate = azure.keyvault.Certificate("exampleCertificate",
-            key_vault_id=azurerm_key_vault["example"]["id"],
-            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
-                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
-                    name="Self",
-                ),
-                key_properties={
-                    "exportable": True,
-                    "key_size": 2048,
-                    "key_type": "RSA",
-                    "reuseKey": True,
-                },
-                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
-                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
-                        action_type="AutoRenew",
-                    ),
-                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
-                        days_before_expiry=30,
-                    ),
-                )],
-                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
-                    content_type="application/x-pkcs12",
-                ),
-                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
-                    extended_key_usages=["1.3.6.1.5.5.7.3.2"],
-                    key_usages=[
-                        "dataEncipherment",
-                        "digitalSignature",
-                        "keyCertSign",
-                        "keyEncipherment",
-                    ],
-                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
-                        dns_names=[
-                            "internal.contoso.com",
-                            "domain.hello.world",
-                        ],
-                    ),
-                    subject=example_application.name.apply(lambda name: f"CN={name}"),
-                    validity_in_months=12,
-                ),
-            ))
-        example_application_certificate = azuread.ApplicationCertificate("exampleApplicationCertificate",
-            application_object_id=example_application.id,
-            type="AsymmetricX509Cert",
-            encoding="hex",
-            value=example_certificate.certificate_data,
-            end_date=example_certificate.certificate_attributes[0].expires,
-            start_date=example_certificate.certificate_attributes[0].not_before)
-        ```
-
         ## Import
 
-        Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
+        Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
 
         ```sh
          $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
 
+         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] start_date: The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
@@ -384,76 +323,15 @@ class ApplicationCertificate(pulumi.CustomResource):
                  args: ApplicationCertificateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
-
-        > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-
-        ## Example Usage
-        ### Using a certificate from Azure Key Vault
-
-        ```python
-        import pulumi
-        import pulumi_azure as azure
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication")
-        example_certificate = azure.keyvault.Certificate("exampleCertificate",
-            key_vault_id=azurerm_key_vault["example"]["id"],
-            certificate_policy=azure.keyvault.CertificateCertificatePolicyArgs(
-                issuer_parameters=azure.keyvault.CertificateCertificatePolicyIssuerParametersArgs(
-                    name="Self",
-                ),
-                key_properties={
-                    "exportable": True,
-                    "key_size": 2048,
-                    "key_type": "RSA",
-                    "reuseKey": True,
-                },
-                lifetime_actions=[azure.keyvault.CertificateCertificatePolicyLifetimeActionArgs(
-                    action=azure.keyvault.CertificateCertificatePolicyLifetimeActionActionArgs(
-                        action_type="AutoRenew",
-                    ),
-                    trigger=azure.keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs(
-                        days_before_expiry=30,
-                    ),
-                )],
-                secret_properties=azure.keyvault.CertificateCertificatePolicySecretPropertiesArgs(
-                    content_type="application/x-pkcs12",
-                ),
-                x509_certificate_properties=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs(
-                    extended_key_usages=["1.3.6.1.5.5.7.3.2"],
-                    key_usages=[
-                        "dataEncipherment",
-                        "digitalSignature",
-                        "keyCertSign",
-                        "keyEncipherment",
-                    ],
-                    subject_alternative_names=azure.keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs(
-                        dns_names=[
-                            "internal.contoso.com",
-                            "domain.hello.world",
-                        ],
-                    ),
-                    subject=example_application.name.apply(lambda name: f"CN={name}"),
-                    validity_in_months=12,
-                ),
-            ))
-        example_application_certificate = azuread.ApplicationCertificate("exampleApplicationCertificate",
-            application_object_id=example_application.id,
-            type="AsymmetricX509Cert",
-            encoding="hex",
-            value=example_certificate.certificate_data,
-            end_date=example_certificate.certificate_attributes[0].expires,
-            start_date=example_certificate.certificate_attributes[0].not_before)
-        ```
-
         ## Import
 
-        Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
+        Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
 
         ```sh
          $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
         ```
+
+         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 
         :param str resource_name: The name of the resource.
         :param ApplicationCertificateArgs args: The arguments to use to populate this resource's properties.
@@ -527,12 +405,12 @@ class ApplicationCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] encoding: Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        :param pulumi.Input[str] end_date: The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] end_date_relative: A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] key_id: A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[str] start_date: The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date: The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] end_date_relative: A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] key_id: A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        :param pulumi.Input[str] start_date: The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] type: The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
         :param pulumi.Input[str] value: The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         """
@@ -554,7 +432,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Output[str]:
         """
-        The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_object_id")
 
@@ -570,7 +448,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     @pulumi.getter(name="endDate")
     def end_date(self) -> pulumi.Output[str]:
         """
-        The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "end_date")
 
@@ -578,7 +456,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     @pulumi.getter(name="endDateRelative")
     def end_date_relative(self) -> pulumi.Output[Optional[str]]:
         """
-        A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "end_date_relative")
 
@@ -586,7 +464,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     @pulumi.getter(name="keyId")
     def key_id(self) -> pulumi.Output[str]:
         """
-        A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+        A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "key_id")
 
@@ -594,7 +472,7 @@ class ApplicationCertificate(pulumi.CustomResource):
     @pulumi.getter(name="startDate")
     def start_date(self) -> pulumi.Output[str]:
         """
-        The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "start_date")
 

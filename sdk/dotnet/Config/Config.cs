@@ -8,68 +8,66 @@ namespace Pulumi.AzureAD
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("azuread");
-        public static string? ClientCertificatePassword { get; set; } = __config.Get("clientCertificatePassword");
-
         /// <summary>
-        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-        /// Principal using a Client Certificate.
+        /// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
         /// </summary>
-        public static string? ClientCertificatePath { get; set; } = __config.Get("clientCertificatePath");
-
-        /// <summary>
-        /// The Client ID which should be used for service principal authentication.
-        /// </summary>
-        public static string? ClientId { get; set; } = __config.Get("clientId");
+        public static string? ClientCertificate { get; set; } = __config.Get("clientCertificate");
 
         /// <summary>
         /// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
         /// Certificate
         /// </summary>
+        public static string? ClientCertificatePassword { get; set; } = __config.Get("clientCertificatePassword");
+
+        /// <summary>
+        /// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+        /// Principal using a Client Certificate
+        /// </summary>
+        public static string? ClientCertificatePath { get; set; } = __config.Get("clientCertificatePath");
+
+        /// <summary>
+        /// The Client ID which should be used for service principal authentication
+        /// </summary>
+        public static string? ClientId { get; set; } = __config.Get("clientId");
+
+        /// <summary>
+        /// The application password to use when authenticating as a Service Principal using a Client Secret
+        /// </summary>
         public static string? ClientSecret { get; set; } = __config.Get("clientSecret");
 
         /// <summary>
-        /// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+        /// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         /// </summary>
         public static bool? DisableTerraformPartnerId { get; set; } = __config.GetBoolean("disableTerraformPartnerId");
 
         /// <summary>
         /// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-        /// `germany`, and `china`. Defaults to `global`.
+        /// `germany`, and `china`. Defaults to `global`
         /// </summary>
         public static string? Environment { get; set; } = __config.Get("environment") ?? Utilities.GetEnv("ARM_ENVIRONMENT") ?? "public";
 
         /// <summary>
-        /// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-        /// </summary>
-        public static string? MetadataHost { get; set; } = __config.Get("metadataHost");
-
-        /// <summary>
-        /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+        /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
         /// </summary>
         public static string? MsiEndpoint { get; set; } = __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT");
 
         /// <summary>
-        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+        /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         /// </summary>
         public static string? PartnerId { get; set; } = __config.Get("partnerId");
 
         /// <summary>
-        /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+        /// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
         /// </summary>
         public static string? TenantId { get; set; } = __config.Get("tenantId");
 
         /// <summary>
-        /// Allow Azure CLI to be used for Authentication.
+        /// Allow Azure CLI to be used for Authentication
         /// </summary>
         public static bool? UseCli { get; set; } = __config.GetBoolean("useCli");
 
         /// <summary>
-        /// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-        /// </summary>
-        public static bool? UseMicrosoftGraph { get; set; } = __config.GetBoolean("useMicrosoftGraph");
-
-        /// <summary>
-        /// Allow Managed Identity to be used for Authentication.
+        /// Allow Managed Identity to be used for Authentication
         /// </summary>
         public static bool? UseMsi { get; set; } = __config.GetBoolean("useMsi") ?? Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
 

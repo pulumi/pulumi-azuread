@@ -6,110 +6,9 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Manages an Application within Azure Active Directory.
- *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write owned by applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getClientConfig({});
- * const example = new azuread.Application("example", {
- *     displayName: "example",
- *     identifierUris: ["api://example-app"],
- *     owners: [current.then(current => current.objectId)],
- *     signInAudience: "AzureADMultipleOrgs",
- *     api: {
- *         oauth2PermissionScopes: [
- *             {
- *                 adminConsentDescription: "Allow the application to access example on behalf of the signed-in user.",
- *                 adminConsentDisplayName: "Access example",
- *                 enabled: true,
- *                 id: "96183846-204b-4b43-82e1-5d2222eb4b9b",
- *                 type: "User",
- *                 userConsentDescription: "Allow the application to access example on your behalf.",
- *                 userConsentDisplayName: "Access example",
- *                 value: "user_impersonation",
- *             },
- *             {
- *                 adminConsentDescription: "Administer the example application",
- *                 adminConsentDisplayName: "Administer",
- *                 enabled: true,
- *                 id: "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
- *                 type: "Admin",
- *                 value: "administer",
- *             },
- *         ],
- *     },
- *     appRoles: [{
- *         allowedMemberTypes: [
- *             "User",
- *             "Application",
- *         ],
- *         description: "Admins can manage roles and perform all task actions",
- *         displayName: "Admin",
- *         isEnabled: true,
- *         value: "admin",
- *     }],
- *     optionalClaims: {
- *         accessTokens: [
- *             {
- *                 name: "myclaim",
- *             },
- *             {
- *                 name: "otherclaim",
- *             },
- *         ],
- *         idTokens: [{
- *             name: "userclaim",
- *             source: "user",
- *             essential: true,
- *             additionalProperties: ["emit_as_roles"],
- *         }],
- *     },
- *     requiredResourceAccesses: [
- *         {
- *             resourceAppId: "00000003-0000-0000-c000-000000000000",
- *             resourceAccesses: [
- *                 {
- *                     id: "...",
- *                     type: "Role",
- *                 },
- *                 {
- *                     id: "...",
- *                     type: "Scope",
- *                 },
- *                 {
- *                     id: "...",
- *                     type: "Scope",
- *                 },
- *             ],
- *         },
- *         {
- *             resourceAppId: "00000002-0000-0000-c000-000000000000",
- *             resourceAccesses: [{
- *                 id: "...",
- *                 type: "Scope",
- *             }],
- *         },
- *     ],
- *     web: {
- *         homepageUrl: "https://app.example.net",
- *         logoutUrl: "https://app.example.net/logout",
- *         redirectUris: ["https://app.example.net/account"],
- *         implicitGrant: {
- *             accessTokenIssuanceEnabled: true,
- *         },
- *     },
- * });
- * ```
- *
  * ## Import
  *
- * Azure Active Directory Applications can be imported using the `object id`, e.g.
+ * Applications can be imported using their object ID, e.g.
  *
  * ```sh
  *  $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
@@ -144,114 +43,113 @@ export class Application extends pulumi.CustomResource {
     }
 
     /**
-     * An `api` block as documented below, which configures API related settings for this Application.
+     * An `api` block as documented below, which configures API related settings for this application.
      */
-    public readonly api!: pulumi.Output<outputs.ApplicationApi>;
+    public readonly api!: pulumi.Output<outputs.ApplicationApi | undefined>;
+    /**
+     * A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+     */
+    public /*out*/ readonly appRoleIds!: pulumi.Output<{[key: string]: string}>;
     /**
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
-    public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[]>;
+    public readonly appRoles!: pulumi.Output<outputs.ApplicationAppRole[] | undefined>;
     /**
-     * The Application ID (Also called Client ID).
+     * The Application ID (also called Client ID).
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
-     * Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `signInAudience` property.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider
+     * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
-    public readonly availableToOtherTenants!: pulumi.Output<boolean>;
+    public readonly deviceOnlyAuthEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+     */
+    public /*out*/ readonly disabledByMicrosoft!: pulumi.Output<string>;
     /**
      * The display name for the application.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
+     * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
-    public readonly fallbackPublicClientEnabled!: pulumi.Output<boolean>;
+    public readonly fallbackPublicClientEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-     *
-     * @deprecated [NOTE] This attribute will become a list in version 2.0 of the AzureAD provider
+     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    public readonly groupMembershipClaims!: pulumi.Output<string | undefined>;
+    public readonly groupMembershipClaims!: pulumi.Output<string[] | undefined>;
     /**
-     * The URL to the application's home page. This property is deprecated and has been replaced by the `homepageUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider
+     * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
-    public readonly homepage!: pulumi.Output<string>;
+    public readonly identifierUris!: pulumi.Output<string[] | undefined>;
     /**
-     * The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+     * CDN URL to the application's logo.
      */
-    public readonly identifierUris!: pulumi.Output<string[]>;
+    public /*out*/ readonly logoUrl!: pulumi.Output<string>;
     /**
-     * The URL of the logout page. This property is deprecated and has been replaced by the `logoutUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
+     * URL of the application's marketing page.
      */
-    public readonly logoutUrl!: pulumi.Output<string>;
+    public readonly marketingUrl!: pulumi.Output<string | undefined>;
     /**
-     * The name of the optional claim.
-     *
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
+     * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
-    public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly oauth2PermissionScopeIds!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `accessTokenIssuanceEnabled` property in the `implicitGrant` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider
+     * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
-    public readonly oauth2AllowImplicitFlow!: pulumi.Output<boolean>;
+    public readonly oauth2PostResponseRequired!: pulumi.Output<boolean | undefined>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2PermissionScope` block in the `api` block.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-     */
-    public readonly oauth2Permissions!: pulumi.Output<outputs.ApplicationOauth2Permission[]>;
-    /**
-     * The application's Object ID.
+     * The application's object ID.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
-     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     * An `optionalClaims` block as documented below.
      */
     public readonly optionalClaims!: pulumi.Output<outputs.ApplicationOptionalClaims | undefined>;
-    public readonly owners!: pulumi.Output<string[]>;
     /**
-     * If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     */
+    public readonly owners!: pulumi.Output<string[] | undefined>;
+    /**
+     * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
     public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
     /**
-     * Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallbackPublicClientEnabled` property.
-     *
-     * @deprecated [NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider
+     * URL of the application's privacy statement.
      */
-    public readonly publicClient!: pulumi.Output<boolean>;
+    public readonly privacyStatementUrl!: pulumi.Output<string | undefined>;
     /**
-     * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirectUris` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider
+     * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      */
-    public readonly replyUrls!: pulumi.Output<string[]>;
+    public readonly publicClient!: pulumi.Output<outputs.ApplicationPublicClient | undefined>;
+    /**
+     * The verified publisher domain for the application.
+     */
+    public /*out*/ readonly publisherDomain!: pulumi.Output<string>;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
     public readonly requiredResourceAccesses!: pulumi.Output<outputs.ApplicationRequiredResourceAccess[] | undefined>;
     /**
-     * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
+     * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
-    public readonly signInAudience!: pulumi.Output<string>;
+    public readonly signInAudience!: pulumi.Output<string | undefined>;
     /**
-     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-     *
-     * @deprecated [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider
+     * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    public readonly singlePageApplication!: pulumi.Output<outputs.ApplicationSinglePageApplication | undefined>;
     /**
-     * A `web` block as documented below, which configures web related settings for this Application.
+     * URL of the application's support page.
      */
-    public readonly web!: pulumi.Output<outputs.ApplicationWeb>;
+    public readonly supportUrl!: pulumi.Output<string | undefined>;
+    /**
+     * URL of the application's terms of service statement.
+     */
+    public readonly termsOfServiceUrl!: pulumi.Output<string | undefined>;
+    /**
+     * A `web` block as documented below, which configures web related settings for this application.
+     */
+    public readonly web!: pulumi.Output<outputs.ApplicationWeb | undefined>;
 
     /**
      * Create a Application resource with the given unique name, arguments, and options.
@@ -260,60 +158,71 @@ export class Application extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
             inputs["api"] = state ? state.api : undefined;
+            inputs["appRoleIds"] = state ? state.appRoleIds : undefined;
             inputs["appRoles"] = state ? state.appRoles : undefined;
             inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["availableToOtherTenants"] = state ? state.availableToOtherTenants : undefined;
+            inputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
+            inputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["fallbackPublicClientEnabled"] = state ? state.fallbackPublicClientEnabled : undefined;
             inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
-            inputs["homepage"] = state ? state.homepage : undefined;
             inputs["identifierUris"] = state ? state.identifierUris : undefined;
-            inputs["logoutUrl"] = state ? state.logoutUrl : undefined;
-            inputs["name"] = state ? state.name : undefined;
-            inputs["oauth2AllowImplicitFlow"] = state ? state.oauth2AllowImplicitFlow : undefined;
-            inputs["oauth2Permissions"] = state ? state.oauth2Permissions : undefined;
+            inputs["logoUrl"] = state ? state.logoUrl : undefined;
+            inputs["marketingUrl"] = state ? state.marketingUrl : undefined;
+            inputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
+            inputs["oauth2PostResponseRequired"] = state ? state.oauth2PostResponseRequired : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["optionalClaims"] = state ? state.optionalClaims : undefined;
             inputs["owners"] = state ? state.owners : undefined;
             inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            inputs["privacyStatementUrl"] = state ? state.privacyStatementUrl : undefined;
             inputs["publicClient"] = state ? state.publicClient : undefined;
-            inputs["replyUrls"] = state ? state.replyUrls : undefined;
+            inputs["publisherDomain"] = state ? state.publisherDomain : undefined;
             inputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
             inputs["signInAudience"] = state ? state.signInAudience : undefined;
-            inputs["type"] = state ? state.type : undefined;
+            inputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
+            inputs["supportUrl"] = state ? state.supportUrl : undefined;
+            inputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
             inputs["web"] = state ? state.web : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             inputs["api"] = args ? args.api : undefined;
             inputs["appRoles"] = args ? args.appRoles : undefined;
-            inputs["availableToOtherTenants"] = args ? args.availableToOtherTenants : undefined;
+            inputs["deviceOnlyAuthEnabled"] = args ? args.deviceOnlyAuthEnabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
             inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
-            inputs["homepage"] = args ? args.homepage : undefined;
             inputs["identifierUris"] = args ? args.identifierUris : undefined;
-            inputs["logoutUrl"] = args ? args.logoutUrl : undefined;
-            inputs["name"] = args ? args.name : undefined;
-            inputs["oauth2AllowImplicitFlow"] = args ? args.oauth2AllowImplicitFlow : undefined;
-            inputs["oauth2Permissions"] = args ? args.oauth2Permissions : undefined;
+            inputs["marketingUrl"] = args ? args.marketingUrl : undefined;
+            inputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
             inputs["optionalClaims"] = args ? args.optionalClaims : undefined;
             inputs["owners"] = args ? args.owners : undefined;
             inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
+            inputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
             inputs["publicClient"] = args ? args.publicClient : undefined;
-            inputs["replyUrls"] = args ? args.replyUrls : undefined;
             inputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
             inputs["signInAudience"] = args ? args.signInAudience : undefined;
-            inputs["type"] = args ? args.type : undefined;
+            inputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
+            inputs["supportUrl"] = args ? args.supportUrl : undefined;
+            inputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
             inputs["web"] = args ? args.web : undefined;
+            inputs["appRoleIds"] = undefined /*out*/;
             inputs["applicationId"] = undefined /*out*/;
+            inputs["disabledByMicrosoft"] = undefined /*out*/;
+            inputs["logoUrl"] = undefined /*out*/;
+            inputs["oauth2PermissionScopeIds"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
+            inputs["publisherDomain"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -327,112 +236,111 @@ export class Application extends pulumi.CustomResource {
  */
 export interface ApplicationState {
     /**
-     * An `api` block as documented below, which configures API related settings for this Application.
+     * An `api` block as documented below, which configures API related settings for this application.
      */
     api?: pulumi.Input<inputs.ApplicationApi>;
+    /**
+     * A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+     */
+    appRoleIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
-     * The Application ID (Also called Client ID).
+     * The Application ID (also called Client ID).
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `signInAudience` property.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider
+     * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
-    availableToOtherTenants?: pulumi.Input<boolean>;
+    deviceOnlyAuthEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+     */
+    disabledByMicrosoft?: pulumi.Input<string>;
     /**
      * The display name for the application.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
+     * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
     fallbackPublicClientEnabled?: pulumi.Input<boolean>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-     *
-     * @deprecated [NOTE] This attribute will become a list in version 2.0 of the AzureAD provider
+     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    groupMembershipClaims?: pulumi.Input<string>;
+    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URL to the application's home page. This property is deprecated and has been replaced by the `homepageUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider
-     */
-    homepage?: pulumi.Input<string>;
-    /**
-     * The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+     * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
     identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URL of the logout page. This property is deprecated and has been replaced by the `logoutUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
+     * CDN URL to the application's logo.
      */
-    logoutUrl?: pulumi.Input<string>;
+    logoUrl?: pulumi.Input<string>;
     /**
-     * The name of the optional claim.
-     *
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
+     * URL of the application's marketing page.
      */
-    name?: pulumi.Input<string>;
+    marketingUrl?: pulumi.Input<string>;
     /**
-     * Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `accessTokenIssuanceEnabled` property in the `implicitGrant` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider
+     * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
-    oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
+    oauth2PermissionScopeIds?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2PermissionScope` block in the `api` block.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
+     * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
-    oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
+    oauth2PostResponseRequired?: pulumi.Input<boolean>;
     /**
-     * The application's Object ID.
+     * The application's object ID.
      */
     objectId?: pulumi.Input<string>;
     /**
-     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     * An `optionalClaims` block as documented below.
      */
     optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
+    /**
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+     * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
     preventDuplicateNames?: pulumi.Input<boolean>;
     /**
-     * Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallbackPublicClientEnabled` property.
-     *
-     * @deprecated [NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider
+     * URL of the application's privacy statement.
      */
-    publicClient?: pulumi.Input<boolean>;
+    privacyStatementUrl?: pulumi.Input<string>;
     /**
-     * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirectUris` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider
+     * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      */
-    replyUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    publicClient?: pulumi.Input<inputs.ApplicationPublicClient>;
+    /**
+     * The verified publisher domain for the application.
+     */
+    publisherDomain?: pulumi.Input<string>;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
     requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
-     * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
+     * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
     signInAudience?: pulumi.Input<string>;
     /**
-     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-     *
-     * @deprecated [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider
+     * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      */
-    type?: pulumi.Input<string>;
+    singlePageApplication?: pulumi.Input<inputs.ApplicationSinglePageApplication>;
     /**
-     * A `web` block as documented below, which configures web related settings for this Application.
+     * URL of the application's support page.
+     */
+    supportUrl?: pulumi.Input<string>;
+    /**
+     * URL of the application's terms of service statement.
+     */
+    termsOfServiceUrl?: pulumi.Input<string>;
+    /**
+     * A `web` block as documented below, which configures web related settings for this application.
      */
     web?: pulumi.Input<inputs.ApplicationWeb>;
 }
@@ -442,7 +350,7 @@ export interface ApplicationState {
  */
 export interface ApplicationArgs {
     /**
-     * An `api` block as documented below, which configures API related settings for this Application.
+     * An `api` block as documented below, which configures API related settings for this application.
      */
     api?: pulumi.Input<inputs.ApplicationApi>;
     /**
@@ -450,96 +358,75 @@ export interface ApplicationArgs {
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
-     * Is this Azure AD Application available to other tenants? Defaults to `false`. This property is deprecated and has been replaced by the `signInAudience` property.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider
+     * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
-    availableToOtherTenants?: pulumi.Input<boolean>;
+    deviceOnlyAuthEnabled?: pulumi.Input<boolean>;
     /**
      * The display name for the application.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
-     * The fallback application type as public client, such as an installed application running on a mobile device. Defaults to `false`.
+     * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
     fallbackPublicClientEnabled?: pulumi.Input<boolean>;
     /**
-     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Defaults to `SecurityGroup`. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
-     *
-     * @deprecated [NOTE] This attribute will become a list in version 2.0 of the AzureAD provider
+     * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
-    groupMembershipClaims?: pulumi.Input<string>;
+    groupMembershipClaims?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URL to the application's home page. This property is deprecated and has been replaced by the `homepageUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `homepage_url` in the `web` block in version 2.0 of the AzureAD provider
-     */
-    homepage?: pulumi.Input<string>;
-    /**
-     * The user-defined URI(s) that uniquely identify an application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+     * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
     identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The URL of the logout page. This property is deprecated and has been replaced by the `logoutUrl` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
+     * URL of the application's marketing page.
      */
-    logoutUrl?: pulumi.Input<string>;
+    marketingUrl?: pulumi.Input<string>;
     /**
-     * The name of the optional claim.
-     *
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
+     * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
-    name?: pulumi.Input<string>;
+    oauth2PostResponseRequired?: pulumi.Input<boolean>;
     /**
-     * Does this Azure AD Application allow OAuth 2.0 implicit flow tokens? Defaults to `false`. This property is deprecated and has been replaced by the `accessTokenIssuanceEnabled` property in the `implicitGrant` block.
-     *
-     * @deprecated [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider
-     */
-    oauth2AllowImplicitFlow?: pulumi.Input<boolean>;
-    /**
-     * A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by `oauth2Permissions` blocks as documented below. This block is deprecated and has been replaced by the `oauth2PermissionScope` block in the `api` block.
-     *
-     * @deprecated [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scope` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-     */
-    oauth2Permissions?: pulumi.Input<pulumi.Input<inputs.ApplicationOauth2Permission>[]>;
-    /**
-     * A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+     * An `optionalClaims` block as documented below.
      */
     optionalClaims?: pulumi.Input<inputs.ApplicationOptionalClaims>;
+    /**
+     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If `true`, will return an error when an existing Application is found with the same name. Defaults to `false`.
+     * If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
      */
     preventDuplicateNames?: pulumi.Input<boolean>;
     /**
-     * Is this Azure AD Application a public client? Defaults to `false`. This property is deprecated and has been replaced by the `fallbackPublicClientEnabled` property.
-     *
-     * @deprecated [NOTE] This legacy attribute will be renamed to `fallback_public_client_enabled` in version 2.0 of the AzureAD provider
+     * URL of the application's privacy statement.
      */
-    publicClient?: pulumi.Input<boolean>;
+    privacyStatementUrl?: pulumi.Input<string>;
     /**
-     * A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirectUris` property in the `web` block.
-     *
-     * @deprecated [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider
+     * A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
      */
-    replyUrls?: pulumi.Input<pulumi.Input<string>[]>;
+    publicClient?: pulumi.Input<inputs.ApplicationPublicClient>;
     /**
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
     requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
-     * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg` or `AzureADMultipleOrgs`. Defaults to `AzureADMyOrg`.
+     * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
     signInAudience?: pulumi.Input<string>;
     /**
-     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-     *
-     * @deprecated [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider
+     * A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
      */
-    type?: pulumi.Input<string>;
+    singlePageApplication?: pulumi.Input<inputs.ApplicationSinglePageApplication>;
     /**
-     * A `web` block as documented below, which configures web related settings for this Application.
+     * URL of the application's support page.
+     */
+    supportUrl?: pulumi.Input<string>;
+    /**
+     * URL of the application's terms of service statement.
+     */
+    termsOfServiceUrl?: pulumi.Input<string>;
+    /**
+     * A `web` block as documented below, which configures web related settings for this application.
      */
     web?: pulumi.Input<inputs.ApplicationWeb>;
 }

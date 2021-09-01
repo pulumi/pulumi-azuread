@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _allowedMemberTypes;
 
         /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
         /// </summary>
         public InputList<string> AllowedMemberTypes
         {
@@ -25,37 +25,31 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
-        /// Permission help text that appears in the admin app assignment and consent experiences.
+        /// A description of the service principal provided for internal end-users.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Display name for the permission that appears in the admin consent and app assignment experiences.
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Is this permission enabled?
+        /// Specifies whether the permission scope is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission`.
+        /// The unique identifier of the delegated permission.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Is this permission enabled?
-        /// </summary>
-        [Input("isEnabled")]
-        public Input<bool>? IsEnabled { get; set; }
-
-        /// <summary>
-        /// The name of this permission.
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

@@ -14,7 +14,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Use this data source to access information about an existing Application within Azure Active Directory.
         /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -32,11 +38,11 @@ namespace Pulumi.AzureAD
         ///         {
         ///             DisplayName = "My First AzureAD Application",
         ///         }));
-        ///         this.AzureAdObjectId = example.Apply(example =&gt; example.Id);
+        ///         this.ApplicationObjectId = example.Apply(example =&gt; example.Id);
         ///     }
         /// 
-        ///     [Output("azureAdObjectId")]
-        ///     public Output&lt;string&gt; AzureAdObjectId { get; set; }
+        ///     [Output("applicationObjectId")]
+        ///     public Output&lt;string&gt; ApplicationObjectId { get; set; }
         /// }
         /// ```
         /// {{% /example %}}
@@ -62,41 +68,10 @@ namespace Pulumi.AzureAD
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// The name of the optional claim.
-        /// </summary>
-        [Input("name")]
-        public string? Name { get; set; }
-
-        [Input("oauth2Permissions")]
-        private List<Inputs.GetApplicationOauth2PermissionArgs>? _oauth2Permissions;
-
-        /// <summary>
-        /// (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
-        /// </summary>
-        [Obsolete(@"[NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.")]
-        public List<Inputs.GetApplicationOauth2PermissionArgs> Oauth2Permissions
-        {
-            get => _oauth2Permissions ?? (_oauth2Permissions = new List<Inputs.GetApplicationOauth2PermissionArgs>());
-            set => _oauth2Permissions = value;
-        }
-
-        /// <summary>
         /// Specifies the Object ID of the application.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
-
-        /// <summary>
-        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-        /// </summary>
-        [Input("optionalClaims")]
-        public Inputs.GetApplicationOptionalClaimsArgs? OptionalClaims { get; set; }
-
-        /// <summary>
-        /// A `web` block as documented below.
-        /// </summary>
-        [Input("web")]
-        public Inputs.GetApplicationWebArgs? Web { get; set; }
 
         public GetApplicationArgs()
         {
@@ -112,17 +87,25 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationApiResult> Apis;
         /// <summary>
+        /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> AppRoleIds;
+        /// <summary>
         /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationAppRoleResult> AppRoles;
         /// <summary>
-        /// the Application ID (also called Client ID).
+        /// The Application ID (also called Client ID).
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// (**Deprecated**) Is this Azure AD Application available to other tenants?
+        /// Specifies whether this application supports device authentication without a user.
         /// </summary>
-        public readonly bool AvailableToOtherTenants;
+        public readonly bool DeviceOnlyAuthEnabled;
+        /// <summary>
+        /// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        /// </summary>
+        public readonly string DisabledByMicrosoft;
         /// <summary>
         /// Display name for the app role that appears during app role assignment and in consent experiences.
         /// </summary>
@@ -134,11 +117,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
         /// </summary>
-        public readonly string GroupMembershipClaims;
-        /// <summary>
-        /// (**Deprecated**) The URL to the application's home page. This property is deprecated and has been replaced by the `homepage_url` property in the `web` block.
-        /// </summary>
-        public readonly string Homepage;
+        public readonly ImmutableArray<string> GroupMembershipClaims;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -148,37 +127,45 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<string> IdentifierUris;
         /// <summary>
-        /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+        /// CDN URL to the application's logo.
         /// </summary>
-        public readonly string LogoutUrl;
+        public readonly string LogoUrl;
         /// <summary>
-        /// The name of the optional claim.
+        /// URL of the application's marketing page.
         /// </summary>
-        public readonly string Name;
+        public readonly string MarketingUrl;
         /// <summary>
-        /// (**Deprecated**) Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
+        /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         /// </summary>
-        public readonly bool Oauth2AllowImplicitFlow;
+        public readonly ImmutableDictionary<string, string> Oauth2PermissionScopeIds;
         /// <summary>
-        /// (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2_permission` block as documented below.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetApplicationOauth2PermissionResult> Oauth2Permissions;
+        public readonly bool Oauth2PostResponseRequired;
         /// <summary>
-        /// The application's Object ID.
+        /// The application's object ID.
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// A collection of `access_token` or `id_token` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
+        /// An `optional_claims` block as documented below.
         /// </summary>
-        public readonly Outputs.GetApplicationOptionalClaimsResult? OptionalClaims;
+        public readonly ImmutableArray<Outputs.GetApplicationOptionalClaimResult> OptionalClaims;
         /// <summary>
-        /// A list of Object IDs for principals that are assigned ownership of the application.
+        /// A list of object IDs of principals that are assigned ownership of the application.
         /// </summary>
         public readonly ImmutableArray<string> Owners;
         /// <summary>
-        /// (**Deprecated**) A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirect_uris` property in the `web` block.
+        /// URL of the application's privacy statement.
         /// </summary>
-        public readonly ImmutableArray<string> ReplyUrls;
+        public readonly string PrivacyStatementUrl;
+        /// <summary>
+        /// A `public_client` block as documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetApplicationPublicClientResult> PublicClients;
+        /// <summary>
+        /// The verified publisher domain for the application.
+        /// </summary>
+        public readonly string PublisherDomain;
         /// <summary>
         /// A collection of `required_resource_access` blocks as documented below.
         /// </summary>
@@ -188,82 +175,105 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string SignInAudience;
         /// <summary>
-        /// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+        /// A `single_page_application` block as documented below.
         /// </summary>
-        public readonly string Type;
+        public readonly ImmutableArray<Outputs.GetApplicationSinglePageApplicationResult> SinglePageApplications;
+        /// <summary>
+        /// URL of the application's support page.
+        /// </summary>
+        public readonly string SupportUrl;
+        /// <summary>
+        /// URL of the application's terms of service statement.
+        /// </summary>
+        public readonly string TermsOfServiceUrl;
         /// <summary>
         /// A `web` block as documented below.
         /// </summary>
-        public readonly Outputs.GetApplicationWebResult Web;
+        public readonly ImmutableArray<Outputs.GetApplicationWebResult> Webs;
 
         [OutputConstructor]
         private GetApplicationResult(
             ImmutableArray<Outputs.GetApplicationApiResult> apis,
 
+            ImmutableDictionary<string, string> appRoleIds,
+
             ImmutableArray<Outputs.GetApplicationAppRoleResult> appRoles,
 
             string applicationId,
 
-            bool availableToOtherTenants,
+            bool deviceOnlyAuthEnabled,
+
+            string disabledByMicrosoft,
 
             string displayName,
 
             bool fallbackPublicClientEnabled,
 
-            string groupMembershipClaims,
-
-            string homepage,
+            ImmutableArray<string> groupMembershipClaims,
 
             string id,
 
             ImmutableArray<string> identifierUris,
 
-            string logoutUrl,
+            string logoUrl,
 
-            string name,
+            string marketingUrl,
 
-            bool oauth2AllowImplicitFlow,
+            ImmutableDictionary<string, string> oauth2PermissionScopeIds,
 
-            ImmutableArray<Outputs.GetApplicationOauth2PermissionResult> oauth2Permissions,
+            bool oauth2PostResponseRequired,
 
             string objectId,
 
-            Outputs.GetApplicationOptionalClaimsResult? optionalClaims,
+            ImmutableArray<Outputs.GetApplicationOptionalClaimResult> optionalClaims,
 
             ImmutableArray<string> owners,
 
-            ImmutableArray<string> replyUrls,
+            string privacyStatementUrl,
+
+            ImmutableArray<Outputs.GetApplicationPublicClientResult> publicClients,
+
+            string publisherDomain,
 
             ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> requiredResourceAccesses,
 
             string signInAudience,
 
-            string type,
+            ImmutableArray<Outputs.GetApplicationSinglePageApplicationResult> singlePageApplications,
 
-            Outputs.GetApplicationWebResult web)
+            string supportUrl,
+
+            string termsOfServiceUrl,
+
+            ImmutableArray<Outputs.GetApplicationWebResult> webs)
         {
             Apis = apis;
+            AppRoleIds = appRoleIds;
             AppRoles = appRoles;
             ApplicationId = applicationId;
-            AvailableToOtherTenants = availableToOtherTenants;
+            DeviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
+            DisabledByMicrosoft = disabledByMicrosoft;
             DisplayName = displayName;
             FallbackPublicClientEnabled = fallbackPublicClientEnabled;
             GroupMembershipClaims = groupMembershipClaims;
-            Homepage = homepage;
             Id = id;
             IdentifierUris = identifierUris;
-            LogoutUrl = logoutUrl;
-            Name = name;
-            Oauth2AllowImplicitFlow = oauth2AllowImplicitFlow;
-            Oauth2Permissions = oauth2Permissions;
+            LogoUrl = logoUrl;
+            MarketingUrl = marketingUrl;
+            Oauth2PermissionScopeIds = oauth2PermissionScopeIds;
+            Oauth2PostResponseRequired = oauth2PostResponseRequired;
             ObjectId = objectId;
             OptionalClaims = optionalClaims;
             Owners = owners;
-            ReplyUrls = replyUrls;
+            PrivacyStatementUrl = privacyStatementUrl;
+            PublicClients = publicClients;
+            PublisherDomain = publisherDomain;
             RequiredResourceAccesses = requiredResourceAccesses;
             SignInAudience = signInAudience;
-            Type = type;
-            Web = web;
+            SinglePageApplications = singlePageApplications;
+            SupportUrl = supportUrl;
+            TermsOfServiceUrl = termsOfServiceUrl;
+            Webs = webs;
         }
     }
 }

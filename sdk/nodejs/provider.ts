@@ -25,40 +25,43 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
-    public readonly clientCertificatePassword!: pulumi.Output<string | undefined>;
     /**
-     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-     * Principal using a Client Certificate.
+     * Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
      */
-    public readonly clientCertificatePath!: pulumi.Output<string | undefined>;
-    /**
-     * The Client ID which should be used for service principal authentication.
-     */
-    public readonly clientId!: pulumi.Output<string | undefined>;
+    public readonly clientCertificate!: pulumi.Output<string | undefined>;
     /**
      * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
      * Certificate
      */
+    public readonly clientCertificatePassword!: pulumi.Output<string | undefined>;
+    /**
+     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+     * Principal using a Client Certificate
+     */
+    public readonly clientCertificatePath!: pulumi.Output<string | undefined>;
+    /**
+     * The Client ID which should be used for service principal authentication
+     */
+    public readonly clientId!: pulumi.Output<string | undefined>;
+    /**
+     * The application password to use when authenticating as a Service Principal using a Client Secret
+     */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     /**
      * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-     * `germany`, and `china`. Defaults to `global`.
+     * `germany`, and `china`. Defaults to `global`
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
-     * [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-     */
-    public readonly metadataHost!: pulumi.Output<string>;
-    /**
-     * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+     * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */
     public readonly msiEndpoint!: pulumi.Output<string | undefined>;
     /**
-     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */
     public readonly partnerId!: pulumi.Output<string | undefined>;
     /**
-     * The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+     * The Tenant ID which should be used. Works with all authentication methods except Managed Identity
      */
     public readonly tenantId!: pulumi.Output<string | undefined>;
 
@@ -69,25 +72,21 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.metadataHost === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'metadataHost'");
-            }
+            inputs["clientCertificate"] = args ? args.clientCertificate : undefined;
             inputs["clientCertificatePassword"] = args ? args.clientCertificatePassword : undefined;
             inputs["clientCertificatePath"] = args ? args.clientCertificatePath : undefined;
             inputs["clientId"] = args ? args.clientId : undefined;
             inputs["clientSecret"] = args ? args.clientSecret : undefined;
             inputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             inputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
-            inputs["metadataHost"] = args ? args.metadataHost : undefined;
             inputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
             inputs["partnerId"] = args ? args.partnerId : undefined;
             inputs["tenantId"] = args ? args.tenantId : undefined;
             inputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
-            inputs["useMicrosoftGraph"] = pulumi.output(args ? args.useMicrosoftGraph : undefined).apply(JSON.stringify);
             inputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
         }
         if (!opts.version) {
@@ -101,56 +100,55 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
-    clientCertificatePassword?: pulumi.Input<string>;
     /**
-     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-     * Principal using a Client Certificate.
+     * Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
      */
-    clientCertificatePath?: pulumi.Input<string>;
-    /**
-     * The Client ID which should be used for service principal authentication.
-     */
-    clientId?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string>;
     /**
      * The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
      * Certificate
      */
+    clientCertificatePassword?: pulumi.Input<string>;
+    /**
+     * The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+     * Principal using a Client Certificate
+     */
+    clientCertificatePath?: pulumi.Input<string>;
+    /**
+     * The Client ID which should be used for service principal authentication
+     */
+    clientId?: pulumi.Input<string>;
+    /**
+     * The application password to use when authenticating as a Service Principal using a Client Secret
+     */
     clientSecret?: pulumi.Input<string>;
     /**
-     * Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+     * Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
      */
     disableTerraformPartnerId?: pulumi.Input<boolean>;
     /**
      * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-     * `germany`, and `china`. Defaults to `global`.
+     * `germany`, and `china`. Defaults to `global`
      */
     environment?: pulumi.Input<string>;
     /**
-     * [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-     */
-    metadataHost: pulumi.Input<string>;
-    /**
-     * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+     * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */
     msiEndpoint?: pulumi.Input<string>;
     /**
-     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+     * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */
     partnerId?: pulumi.Input<string>;
     /**
-     * The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+     * The Tenant ID which should be used. Works with all authentication methods except Managed Identity
      */
     tenantId?: pulumi.Input<string>;
     /**
-     * Allow Azure CLI to be used for Authentication.
+     * Allow Azure CLI to be used for Authentication
      */
     useCli?: pulumi.Input<boolean>;
     /**
-     * Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-     */
-    useMicrosoftGraph?: pulumi.Input<boolean>;
-    /**
-     * Allow Managed Identity to be used for Authentication.
+     * Allow Managed Identity to be used for Authentication
      */
     useMsi?: pulumi.Input<boolean>;
 }

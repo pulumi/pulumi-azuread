@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,25 +17,26 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
-	ClientCertificatePassword pulumi.StringPtrOutput `pulumi:"clientCertificatePassword"`
-	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-	// Principal using a Client Certificate.
-	ClientCertificatePath pulumi.StringPtrOutput `pulumi:"clientCertificatePath"`
-	// The Client ID which should be used for service principal authentication.
-	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
+	ClientCertificate pulumi.StringPtrOutput `pulumi:"clientCertificate"`
 	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
 	// Certificate
+	ClientCertificatePassword pulumi.StringPtrOutput `pulumi:"clientCertificatePassword"`
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate
+	ClientCertificatePath pulumi.StringPtrOutput `pulumi:"clientCertificatePath"`
+	// The Client ID which should be used for service principal authentication
+	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
+	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
 	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-	// `germany`, and `china`. Defaults to `global`.
+	// `germany`, and `china`. Defaults to `global`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
-	// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-	MetadataHost pulumi.StringOutput `pulumi:"metadataHost"`
-	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
-	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
 	PartnerId pulumi.StringPtrOutput `pulumi:"partnerId"`
-	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 	TenantId pulumi.StringPtrOutput `pulumi:"tenantId"`
 }
 
@@ -44,12 +44,9 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.MetadataHost == nil {
-		return nil, errors.New("invalid value for required argument 'MetadataHost'")
-	}
 	if args.Environment == nil {
 		args.Environment = pulumi.StringPtr(getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string))
 	}
@@ -68,65 +65,63 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
-	ClientCertificatePassword *string `pulumi:"clientCertificatePassword"`
-	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-	// Principal using a Client Certificate.
-	ClientCertificatePath *string `pulumi:"clientCertificatePath"`
-	// The Client ID which should be used for service principal authentication.
-	ClientId *string `pulumi:"clientId"`
+	// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
+	ClientCertificate *string `pulumi:"clientCertificate"`
 	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
 	// Certificate
+	ClientCertificatePassword *string `pulumi:"clientCertificatePassword"`
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate
+	ClientCertificatePath *string `pulumi:"clientCertificatePath"`
+	// The Client ID which should be used for service principal authentication
+	ClientId *string `pulumi:"clientId"`
+	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret *string `pulumi:"clientSecret"`
-	// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
 	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-	// `germany`, and `china`. Defaults to `global`.
+	// `germany`, and `china`. Defaults to `global`
 	Environment *string `pulumi:"environment"`
-	// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-	MetadataHost string `pulumi:"metadataHost"`
-	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
-	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
 	PartnerId *string `pulumi:"partnerId"`
-	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 	TenantId *string `pulumi:"tenantId"`
-	// Allow Azure CLI to be used for Authentication.
+	// Allow Azure CLI to be used for Authentication
 	UseCli *bool `pulumi:"useCli"`
-	// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-	UseMicrosoftGraph *bool `pulumi:"useMicrosoftGraph"`
-	// Allow Managed Identity to be used for Authentication.
+	// Allow Managed Identity to be used for Authentication
 	UseMsi *bool `pulumi:"useMsi"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
-	ClientCertificatePassword pulumi.StringPtrInput
-	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
-	// Principal using a Client Certificate.
-	ClientCertificatePath pulumi.StringPtrInput
-	// The Client ID which should be used for service principal authentication.
-	ClientId pulumi.StringPtrInput
+	// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
+	ClientCertificate pulumi.StringPtrInput
 	// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
 	// Certificate
+	ClientCertificatePassword pulumi.StringPtrInput
+	// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+	// Principal using a Client Certificate
+	ClientCertificatePath pulumi.StringPtrInput
+	// The Client ID which should be used for service principal authentication
+	ClientId pulumi.StringPtrInput
+	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrInput
-	// Disable the Terraform Partner ID which is used if a custom `partner_id` isn't specified.
+	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId pulumi.BoolPtrInput
 	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-	// `germany`, and `china`. Defaults to `global`.
+	// `germany`, and `china`. Defaults to `global`
 	Environment pulumi.StringPtrInput
-	// [DEPRECATED] The Hostname which should be used for the Azure Metadata Service.
-	MetadataHost pulumi.StringInput
-	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically.
+	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrInput
-	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution.
+	// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
 	PartnerId pulumi.StringPtrInput
-	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity.
+	// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 	TenantId pulumi.StringPtrInput
-	// Allow Azure CLI to be used for Authentication.
+	// Allow Azure CLI to be used for Authentication
 	UseCli pulumi.BoolPtrInput
-	// Beta: Use the Microsoft Graph API, instead of the legacy Azure Active Directory Graph API, where supported.
-	UseMicrosoftGraph pulumi.BoolPtrInput
-	// Allow Managed Identity to be used for Authentication.
+	// Allow Managed Identity to be used for Authentication
 	UseMsi pulumi.BoolPtrInput
 }
 

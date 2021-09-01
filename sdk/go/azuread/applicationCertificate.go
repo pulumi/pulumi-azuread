@@ -11,122 +11,29 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a certificate associated with an Application within Azure Active Directory. These are also referred to as client certificates during authentication.
-//
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
-//
-// ## Example Usage
-// ### Using a certificate from Azure Key Vault
-//
-// ```go
-// package main
-//
-// import (
-// 	"fmt"
-//
-// 	"github.com/pulumi/pulumi-azure/sdk/v4/go/azure/keyvault"
-// 	"github.com/pulumi/pulumi-azuread/sdk/v4/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleCertificate, err := keyvault.NewCertificate(ctx, "exampleCertificate", &keyvault.CertificateArgs{
-// 			KeyVaultId: pulumi.Any(azurerm_key_vault.Example.Id),
-// 			CertificatePolicy: &keyvault.CertificateCertificatePolicyArgs{
-// 				IssuerParameters: &keyvault.CertificateCertificatePolicyIssuerParametersArgs{
-// 					Name: pulumi.String("Self"),
-// 				},
-// 				KeyProperties: &keyvault.CertificateCertificatePolicyKeyPropertiesArgs{
-// 					Exportable: pulumi.Bool(true),
-// 					KeySize:    pulumi.Int(2048),
-// 					KeyType:    pulumi.String("RSA"),
-// 					ReuseKey:   pulumi.Bool(true),
-// 				},
-// 				LifetimeActions: keyvault.CertificateCertificatePolicyLifetimeActionArray{
-// 					&keyvault.CertificateCertificatePolicyLifetimeActionArgs{
-// 						Action: &keyvault.CertificateCertificatePolicyLifetimeActionActionArgs{
-// 							ActionType: pulumi.String("AutoRenew"),
-// 						},
-// 						Trigger: &keyvault.CertificateCertificatePolicyLifetimeActionTriggerArgs{
-// 							DaysBeforeExpiry: pulumi.Int(30),
-// 						},
-// 					},
-// 				},
-// 				SecretProperties: &keyvault.CertificateCertificatePolicySecretPropertiesArgs{
-// 					ContentType: pulumi.String("application/x-pkcs12"),
-// 				},
-// 				X509CertificateProperties: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesArgs{
-// 					ExtendedKeyUsages: pulumi.StringArray{
-// 						pulumi.String("1.3.6.1.5.5.7.3.2"),
-// 					},
-// 					KeyUsages: pulumi.StringArray{
-// 						pulumi.String("dataEncipherment"),
-// 						pulumi.String("digitalSignature"),
-// 						pulumi.String("keyCertSign"),
-// 						pulumi.String("keyEncipherment"),
-// 					},
-// 					SubjectAlternativeNames: &keyvault.CertificateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNamesArgs{
-// 						DnsNames: pulumi.StringArray{
-// 							pulumi.String("internal.contoso.com"),
-// 							pulumi.String("domain.hello.world"),
-// 						},
-// 					},
-// 					Subject: exampleApplication.Name.ApplyT(func(name string) (string, error) {
-// 						return fmt.Sprintf("%v%v", "CN=", name), nil
-// 					}).(pulumi.StringOutput),
-// 					ValidityInMonths: pulumi.Int(12),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewApplicationCertificate(ctx, "exampleApplicationCertificate", &azuread.ApplicationCertificateArgs{
-// 			ApplicationObjectId: exampleApplication.ID(),
-// 			Type:                pulumi.String("AsymmetricX509Cert"),
-// 			Encoding:            pulumi.String("hex"),
-// 			Value:               exampleCertificate.CertificateData,
-// 			EndDate: exampleCertificate.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (string, error) {
-// 				return certificateAttributes[0].Expires, nil
-// 			}).(pulumi.StringOutput),
-// 			StartDate: exampleCertificate.CertificateAttributes.ApplyT(func(certificateAttributes []keyvault.CertificateCertificateAttribute) (string, error) {
-// 				return certificateAttributes[0].NotBefore, nil
-// 			}).(pulumi.StringOutput),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
-// ```
-//
 // ## Import
 //
-// Certificates can be imported using the `object id` of an Application and the `key id` of the certificate, e.g.
+// Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
 //
 // ```sh
 //  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
 // ```
+//
+//  -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 type ApplicationCertificate struct {
 	pulumi.CustomResourceState
 
-	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
-	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
-	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
-	// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -169,17 +76,17 @@ func GetApplicationCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationCertificate resources.
 type applicationCertificateState struct {
-	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	Encoding *string `pulumi:"encoding"`
-	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
-	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	EndDateRelative *string `pulumi:"endDateRelative"`
-	// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
@@ -188,17 +95,17 @@ type applicationCertificateState struct {
 }
 
 type ApplicationCertificateState struct {
-	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	Encoding pulumi.StringPtrInput
-	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
-	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	EndDateRelative pulumi.StringPtrInput
-	// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
@@ -211,17 +118,17 @@ func (ApplicationCertificateState) ElementType() reflect.Type {
 }
 
 type applicationCertificateArgs struct {
-	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	Encoding *string `pulumi:"encoding"`
-	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
-	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	EndDateRelative *string `pulumi:"endDateRelative"`
-	// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
@@ -231,17 +138,17 @@ type applicationCertificateArgs struct {
 
 // The set of arguments for constructing a ApplicationCertificate resource.
 type ApplicationCertificateArgs struct {
-	// The Object ID of the Application for which this Certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	Encoding pulumi.StringPtrInput
-	// The End Date which the Certificate is valid until, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
-	// A relative duration for which the Certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
 	EndDateRelative pulumi.StringPtrInput
-	// A GUID used to uniquely identify this Certificate. If not specified a GUID will be created. Changing this field forces a new resource to be created.
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The Start Date which the Certificate is valid from, formatted as a RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput

@@ -12,9 +12,15 @@ namespace Pulumi.AzureAD
     public static class GetUsers
     {
         /// <summary>
-        /// Gets Object IDs or UPNs for multiple Azure Active Directory users.
+        /// Gets object IDs or user principal names for multiple Azure Active Directory users.
         /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -60,7 +66,7 @@ namespace Pulumi.AzureAD
         private List<string>? _mailNicknames;
 
         /// <summary>
-        /// The email aliases of the Azure AD Users.
+        /// The email aliases of the users.
         /// </summary>
         public List<string> MailNicknames
         {
@@ -72,7 +78,7 @@ namespace Pulumi.AzureAD
         private List<string>? _objectIds;
 
         /// <summary>
-        /// The Object IDs of the Azure AD Users.
+        /// The object IDs of the users.
         /// </summary>
         public List<string> ObjectIds
         {
@@ -84,7 +90,7 @@ namespace Pulumi.AzureAD
         private List<string>? _userPrincipalNames;
 
         /// <summary>
-        /// The User Principal Names of the Azure AD Users.
+        /// The user principal names (UPNs) of the users.
         /// </summary>
         public List<string> UserPrincipalNames
         {
@@ -107,19 +113,19 @@ namespace Pulumi.AzureAD
         public readonly string Id;
         public readonly bool? IgnoreMissing;
         /// <summary>
-        /// The email aliases of the Azure AD Users.
+        /// The email aliases of the users.
         /// </summary>
         public readonly ImmutableArray<string> MailNicknames;
         /// <summary>
-        /// The Object IDs of the Azure AD Users.
+        /// The object IDs of the users.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
         /// <summary>
-        /// The User Principal Names of the Azure AD Users.
+        /// The user principal names (UPNs) of the users.
         /// </summary>
         public readonly ImmutableArray<string> UserPrincipalNames;
         /// <summary>
-        /// A list of Azure AD Users. Each `user` object provides the attributes documented below.
+        /// A list of users. Each `user` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 

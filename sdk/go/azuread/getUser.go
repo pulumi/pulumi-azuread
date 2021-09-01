@@ -9,7 +9,13 @@ import (
 
 // Gets information about an Azure Active Directory user.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
 //
 // ## Example Usage
 //
@@ -45,73 +51,94 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
-	// The email alias of the Azure AD User.
+	// The email alias of the user.
 	MailNickname *string `pulumi:"mailNickname"`
-	// Specifies the Object ID of the User within Azure Active Directory.
+	// The object ID of the user.
 	ObjectId *string `pulumi:"objectId"`
-	// The User Principal Name of the Azure AD User.
+	// The user principal name (UPN) of the user.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
 // A collection of values returned by getUser.
 type LookupUserResult struct {
-	// `True` if the account is enabled; otherwise `False`.
+	// Whether or not the account is enabled.
 	AccountEnabled bool `pulumi:"accountEnabled"`
+	// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`.
+	AgeGroup string `pulumi:"ageGroup"`
+	// A list of telephone numbers for the user.
+	BusinessPhones []string `pulumi:"businessPhones"`
 	// The city in which the user is located.
 	City string `pulumi:"city"`
 	// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
 	CompanyName string `pulumi:"companyName"`
-	// The country/region in which the user is located; for example, “US” or “UK”.
+	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
+	ConsentProvidedForMinor string `pulumi:"consentProvidedForMinor"`
+	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country string `pulumi:"country"`
+	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+	CreationType string `pulumi:"creationType"`
 	// The name for the department in which the user works.
 	Department string `pulumi:"department"`
-	// The Display Name of the Azure AD User.
+	// The display name of the user.
 	DisplayName string `pulumi:"displayName"`
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId string `pulumi:"employeeId"`
+	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+	ExternalUserState string `pulumi:"externalUserState"`
+	// The fax number of the user.
+	FaxNumber string `pulumi:"faxNumber"`
 	// The given name (first name) of the user.
 	GivenName string `pulumi:"givenName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
-	// (**Deprecated**) The value used to associate an on-premise Active Directory user account with their Azure AD user object. Deprecated in favour of `onpremisesImmutableId`.
-	//
-	// Deprecated: This property has been renamed to `onpremises_immutable_id` and will be removed in version 2.0 of the AzureAD provider
-	ImmutableId string `pulumi:"immutableId"`
+	// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
+	ImAddresses []string `pulumi:"imAddresses"`
 	// The user’s job title.
 	JobTitle string `pulumi:"jobTitle"`
-	// The primary email address of the Azure AD User.
+	// The SMTP address for the user.
 	Mail string `pulumi:"mail"`
-	// The email alias of the Azure AD User.
+	// The email alias of the user.
 	MailNickname string `pulumi:"mailNickname"`
-	// (**Deprecated**) The primary cellular telephone number for the user. Deprecated in favour of `mobilePhone`.
-	//
-	// Deprecated: This property has been renamed to `mobile_phone` and will be removed in version 2.0 of the AzureAD provider
-	Mobile string `pulumi:"mobile"`
 	// The primary cellular telephone number for the user.
 	MobilePhone string `pulumi:"mobilePhone"`
-	ObjectId    string `pulumi:"objectId"`
+	// The object ID of the user.
+	ObjectId string `pulumi:"objectId"`
 	// The office location in the user's place of business.
 	OfficeLocation string `pulumi:"officeLocation"`
+	// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+	OnpremisesDistinguishedName string `pulumi:"onpremisesDistinguishedName"`
+	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	OnpremisesDomainName string `pulumi:"onpremisesDomainName"`
 	// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
 	OnpremisesImmutableId string `pulumi:"onpremisesImmutableId"`
-	// The on-premise SAM account name of the Azure AD User.
+	// The on-premise SAM account name of the user.
 	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
-	// The on-premise user principal name of the Azure AD User.
+	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	OnpremisesSecurityIdentifier string `pulumi:"onpremisesSecurityIdentifier"`
+	// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	OnpremisesSyncEnabled bool `pulumi:"onpremisesSyncEnabled"`
+	// The on-premise user principal name of the user.
 	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
-	// (**Deprecated**) The office location in the user's place of business. Deprecated in favour of `officeLocation`.
-	//
-	// Deprecated: This property has been renamed to `office_location` and will be removed in version 2.0 of the AzureAD provider
-	PhysicalDeliveryOfficeName string `pulumi:"physicalDeliveryOfficeName"`
+	// A list of additional email addresses for the user.
+	OtherMails []string `pulumi:"otherMails"`
 	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
 	PostalCode string `pulumi:"postalCode"`
+	// The user's preferred language, in ISO 639-1 notation.
+	PreferredLanguage string `pulumi:"preferredLanguage"`
+	// List of email addresses for the user that direct to the same mailbox.
+	ProxyAddresses []string `pulumi:"proxyAddresses"`
+	// Whether or not the Outlook global address list should include this user.
+	ShowInAddressList bool `pulumi:"showInAddressList"`
 	// The state or province in the user's address.
 	State string `pulumi:"state"`
 	// The street address of the user's place of business.
 	StreetAddress string `pulumi:"streetAddress"`
 	// The user's surname (family name or last name).
 	Surname string `pulumi:"surname"`
-	// The usage location of the Azure AD User.
+	// The usage location of the user.
 	UsageLocation string `pulumi:"usageLocation"`
-	// The User Principal Name of the Azure AD User.
+	// The user principal name (UPN) of the user.
 	UserPrincipalName string `pulumi:"userPrincipalName"`
-	// The user type in the directory. One of `Guest` or `Member`.
+	// The user type in the directory. Possible values are `Guest` or `Member`.
 	UserType string `pulumi:"userType"`
 }

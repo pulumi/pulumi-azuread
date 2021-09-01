@@ -14,6 +14,10 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Use this data source to access the configuration of the AzureAD provider.
         /// 
+        /// ## API Permissions
+        /// 
+        /// No additional roles are required to use this data source.
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -27,11 +31,11 @@ namespace Pulumi.AzureAD
         ///     public MyStack()
         ///     {
         ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
-        ///         this.AccountId = current.Apply(current =&gt; current.ClientId);
+        ///         this.ObjectId = current.Apply(current =&gt; current.ObjectId);
         ///     }
         /// 
-        ///     [Output("accountId")]
-        ///     public Output&lt;string&gt; AccountId { get; set; }
+        ///     [Output("objectId")]
+        ///     public Output&lt;string&gt; ObjectId { get; set; }
         /// }
         /// ```
         /// {{% /example %}}
@@ -45,12 +49,21 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetClientConfigResult
     {
+        /// <summary>
+        /// The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
+        /// </summary>
         public readonly string ClientId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The object ID of the authenticated principal.
+        /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// The tenant ID of the authenticated principal.
+        /// </summary>
         public readonly string TenantId;
 
         [OutputConstructor]

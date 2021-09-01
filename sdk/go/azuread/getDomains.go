@@ -9,29 +9,13 @@ import (
 
 // Use this data source to access information about existing Domains within Azure Active Directory.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Directory.Read.All` within the `Windows Azure Active Directory` API.
+// ## API Permissions
 //
-// ## Example Usage
+// The following API permissions are required in order to use this data source.
 //
-// ```go
-// package main
+// When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
 //
-// import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v4/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-// )
-//
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		aadDomains, err := azuread.GetDomains(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("domains", aadDomains.Domains)
-// 		return nil
-// 	})
-// }
-// ```
+// When authenticated with a user principal, this data source does not require any additional roles.
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult
 	err := ctx.Invoke("azuread:index/getDomains:getDomains", args, &rv, opts...)
@@ -43,21 +27,31 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDomains.
 type GetDomainsArgs struct {
+	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+	AdminManaged *bool `pulumi:"adminManaged"`
 	// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
 	IncludeUnverified *bool `pulumi:"includeUnverified"`
 	// Set to `true` to only return the default domain.
 	OnlyDefault *bool `pulumi:"onlyDefault"`
 	// Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
 	OnlyInitial *bool `pulumi:"onlyInitial"`
+	// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+	OnlyRoot *bool `pulumi:"onlyRoot"`
+	// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	SupportsServices []string `pulumi:"supportsServices"`
 }
 
 // A collection of values returned by getDomains.
 type GetDomainsResult struct {
-	// A list of domains. Each `domain` object provides the attributes documented below.
+	// Whether the DNS for the domain is managed by Microsoft 365.
+	AdminManaged *bool `pulumi:"adminManaged"`
+	// A list of tenant domains. Each `domain` object provides the attributes documented below.
 	Domains []GetDomainsDomain `pulumi:"domains"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                string `pulumi:"id"`
-	IncludeUnverified *bool  `pulumi:"includeUnverified"`
-	OnlyDefault       *bool  `pulumi:"onlyDefault"`
-	OnlyInitial       *bool  `pulumi:"onlyInitial"`
+	Id                string   `pulumi:"id"`
+	IncludeUnverified *bool    `pulumi:"includeUnverified"`
+	OnlyDefault       *bool    `pulumi:"onlyDefault"`
+	OnlyInitial       *bool    `pulumi:"onlyInitial"`
+	OnlyRoot          *bool    `pulumi:"onlyRoot"`
+	SupportsServices  []string `pulumi:"supportsServices"`
 }

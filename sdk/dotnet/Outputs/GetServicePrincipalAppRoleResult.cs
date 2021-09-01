@@ -22,23 +22,19 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The Display Name of the Azure AD Application associated with this Service Principal.
+        /// The display name of the application associated with this service principal.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Is this permission enabled?
+        /// Determines if the permission scope is enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission`
+        /// The unique identifier of the delegated permission. Must be a valid UUID.
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Is this permission enabled?
-        /// </summary>
-        public readonly bool IsEnabled;
-        /// <summary>
-        /// The name of this permission
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         public readonly string Value;
 
@@ -54,8 +50,6 @@ namespace Pulumi.AzureAD.Outputs
 
             string id,
 
-            bool isEnabled,
-
             string value)
         {
             AllowedMemberTypes = allowedMemberTypes;
@@ -63,7 +57,6 @@ namespace Pulumi.AzureAD.Outputs
             DisplayName = displayName;
             Enabled = enabled;
             Id = id;
-            IsEnabled = isEnabled;
             Value = value;
         }
     }

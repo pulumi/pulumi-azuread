@@ -14,7 +14,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Gets information about an Azure Active Directory group.
         /// 
-        /// &gt; **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
         /// {{% examples %}}
         /// ## Example Usage
@@ -49,7 +55,7 @@ namespace Pulumi.AzureAD
     public sealed class GetGroupArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The display name for the Group.
+        /// The display name for the group.
         /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
@@ -60,11 +66,8 @@ namespace Pulumi.AzureAD
         [Input("mailEnabled")]
         public bool? MailEnabled { get; set; }
 
-        [Input("name")]
-        public string? Name { get; set; }
-
         /// <summary>
-        /// Specifies the Object ID of the Group.
+        /// Specifies the object ID of the group.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -85,11 +88,19 @@ namespace Pulumi.AzureAD
     public sealed class GetGroupResult
     {
         /// <summary>
-        /// The optional description of the Group.
+        /// Indicates whether this group can be assigned to an Azure Active Directory role.
+        /// </summary>
+        public readonly bool AssignableToRole;
+        /// <summary>
+        /// A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
+        /// </summary>
+        public readonly ImmutableArray<string> Behaviors;
+        /// <summary>
+        /// The optional description of the group.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The display name for the Group.
+        /// The display name for the group.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -97,53 +108,149 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// The SMTP address for the group.
+        /// </summary>
+        public readonly string Mail;
+        /// <summary>
         /// Whether the group is mail-enabled.
         /// </summary>
         public readonly bool MailEnabled;
         /// <summary>
-        /// The Object IDs of the Group members.
+        /// The mail alias for the group, unique in the organisation.
+        /// </summary>
+        public readonly string MailNickname;
+        /// <summary>
+        /// List of object IDs of the group members.
         /// </summary>
         public readonly ImmutableArray<string> Members;
-        public readonly string Name;
+        /// <summary>
+        /// The object ID of the group.
+        /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// The Object IDs of the Group owners.
+        /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesDomainName;
+        /// <summary>
+        /// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesNetbiosName;
+        /// <summary>
+        /// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesSamAccountName;
+        /// <summary>
+        /// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly string OnpremisesSecurityIdentifier;
+        /// <summary>
+        /// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// </summary>
+        public readonly bool OnpremisesSyncEnabled;
+        /// <summary>
+        /// List of object IDs of the group owners.
         /// </summary>
         public readonly ImmutableArray<string> Owners;
+        /// <summary>
+        /// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        /// </summary>
+        public readonly string PreferredLanguage;
+        /// <summary>
+        /// A list of provisioning options for a Microsoft 365 group, such as `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details.
+        /// </summary>
+        public readonly ImmutableArray<string> ProvisioningOptions;
+        /// <summary>
+        /// List of email addresses for the group that direct to the same group mailbox.
+        /// </summary>
+        public readonly ImmutableArray<string> ProxyAddresses;
         /// <summary>
         /// Whether the group is a security group.
         /// </summary>
         public readonly bool SecurityEnabled;
+        /// <summary>
+        /// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
+        /// </summary>
+        public readonly string Theme;
+        /// <summary>
+        /// A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+        /// </summary>
+        public readonly ImmutableArray<string> Types;
+        /// <summary>
+        /// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
+        /// </summary>
+        public readonly string Visibility;
 
         [OutputConstructor]
         private GetGroupResult(
+            bool assignableToRole,
+
+            ImmutableArray<string> behaviors,
+
             string description,
 
             string displayName,
 
             string id,
 
+            string mail,
+
             bool mailEnabled,
+
+            string mailNickname,
 
             ImmutableArray<string> members,
 
-            string name,
-
             string objectId,
+
+            string onpremisesDomainName,
+
+            string onpremisesNetbiosName,
+
+            string onpremisesSamAccountName,
+
+            string onpremisesSecurityIdentifier,
+
+            bool onpremisesSyncEnabled,
 
             ImmutableArray<string> owners,
 
-            bool securityEnabled)
+            string preferredLanguage,
+
+            ImmutableArray<string> provisioningOptions,
+
+            ImmutableArray<string> proxyAddresses,
+
+            bool securityEnabled,
+
+            string theme,
+
+            ImmutableArray<string> types,
+
+            string visibility)
         {
+            AssignableToRole = assignableToRole;
+            Behaviors = behaviors;
             Description = description;
             DisplayName = displayName;
             Id = id;
+            Mail = mail;
             MailEnabled = mailEnabled;
+            MailNickname = mailNickname;
             Members = members;
-            Name = name;
             ObjectId = objectId;
+            OnpremisesDomainName = onpremisesDomainName;
+            OnpremisesNetbiosName = onpremisesNetbiosName;
+            OnpremisesSamAccountName = onpremisesSamAccountName;
+            OnpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
+            OnpremisesSyncEnabled = onpremisesSyncEnabled;
             Owners = owners;
+            PreferredLanguage = preferredLanguage;
+            ProvisioningOptions = provisioningOptions;
+            ProxyAddresses = proxyAddresses;
             SecurityEnabled = securityEnabled;
+            Theme = theme;
+            Types = types;
+            Visibility = visibility;
         }
     }
 }

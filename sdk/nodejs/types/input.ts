@@ -6,9 +6,21 @@ import { input as inputs, output as outputs } from "../types";
 
 export interface ApplicationApi {
     /**
-     * One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this Application.
+     * A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+     */
+    knownClientApplications?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+     */
+    mappedClaimsEnabled?: pulumi.Input<boolean>;
+    /**
+     * One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      */
     oauth2PermissionScopes?: pulumi.Input<pulumi.Input<inputs.ApplicationApiOauth2PermissionScope>[]>;
+    /**
+     * The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+     */
+    requestedAccessTokenVersion?: pulumi.Input<number>;
 }
 
 export interface ApplicationApiOauth2PermissionScope {
@@ -21,15 +33,15 @@ export interface ApplicationApiOauth2PermissionScope {
      */
     adminConsentDisplayName?: pulumi.Input<string>;
     /**
-     * Determines if the app role is enabled: Defaults to `true`.
+     * Determines if the permission scope is enabled. Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
+     * The unique identifier of the delegated permission. Must be a valid UUID.
      */
     id: pulumi.Input<string>;
     /**
-     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
+     * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -41,7 +53,7 @@ export interface ApplicationApiOauth2PermissionScope {
      */
     userConsentDisplayName?: pulumi.Input<string>;
     /**
-     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
     value?: pulumi.Input<string>;
 }
@@ -60,54 +72,13 @@ export interface ApplicationAppRole {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Determines if the app role is enabled: Defaults to `true`.
+     * Determines if the app role is enabled. Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
+     * The unique identifier of the app role. Must be a valid UUID.
      */
-    id?: pulumi.Input<string>;
-    /**
-     * Determines if the permission is enabled: defaults to `true`.
-     *
-     * @deprecated [NOTE] This attribute has been renamed to `enabled` and will be removed in version 2.0 of the AzureAD provider
-     */
-    isEnabled?: pulumi.Input<boolean>;
-    /**
-     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface ApplicationOauth2Permission {
-    /**
-     * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-     */
-    adminConsentDescription?: pulumi.Input<string>;
-    /**
-     * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-     */
-    adminConsentDisplayName?: pulumi.Input<string>;
-    /**
-     * The unique identifier of the app role. This attribute is computed and cannot be specified manually in this block. If you need to specify a custom `id`, it's recommended to use the azuread.ApplicationAppRole resource.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Determines if the permission is enabled: defaults to `true`.
-     */
-    isEnabled?: pulumi.Input<boolean>;
-    /**
-     * The type of the application: `webapp/api` or `native`. Defaults to `webapp/api`. For `native` apps type `identifierUris` property can not be set. **This legacy property is deprecated and will be removed in version 2.0 of the provider**.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-     */
-    userConsentDescription?: pulumi.Input<string>;
-    /**
-     * Display name for the delegated permission that appears in the end user consent experience.
-     */
-    userConsentDisplayName?: pulumi.Input<string>;
+    id: pulumi.Input<string>;
     /**
      * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      */
@@ -115,13 +86,23 @@ export interface ApplicationOauth2Permission {
 }
 
 export interface ApplicationOptionalClaims {
+    /**
+     * One or more `accessToken` blocks as documented below.
+     */
     accessTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsAccessToken>[]>;
+    /**
+     * One or more `idToken` blocks as documented below.
+     */
     idTokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsIdToken>[]>;
+    /**
+     * One or more `saml2Token` blocks as documented below.
+     */
+    saml2Tokens?: pulumi.Input<pulumi.Input<inputs.ApplicationOptionalClaimsSaml2Token>[]>;
 }
 
 export interface ApplicationOptionalClaimsAccessToken {
     /**
-     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
      */
     additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -140,7 +121,7 @@ export interface ApplicationOptionalClaimsAccessToken {
 
 export interface ApplicationOptionalClaimsIdToken {
     /**
-     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
      */
     additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -157,6 +138,32 @@ export interface ApplicationOptionalClaimsIdToken {
     source?: pulumi.Input<string>;
 }
 
+export interface ApplicationOptionalClaimsSaml2Token {
+    /**
+     * List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+     */
+    additionalProperties?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+     */
+    essential?: pulumi.Input<boolean>;
+    /**
+     * The name of the optional claim.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+     */
+    source?: pulumi.Input<string>;
+}
+
+export interface ApplicationPublicClient {
+    /**
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     */
+    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface ApplicationRequiredResourceAccess {
     /**
      * A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
@@ -170,13 +177,20 @@ export interface ApplicationRequiredResourceAccess {
 
 export interface ApplicationRequiredResourceAccessResourceAccess {
     /**
-     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
+     * The unique identifier for an app role or OAuth2 permission scope published by the resource application.
      */
     id: pulumi.Input<string>;
     /**
-     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
+     * Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
      */
     type: pulumi.Input<string>;
+}
+
+export interface ApplicationSinglePageApplication {
+    /**
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     */
+    redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface ApplicationWeb {
@@ -193,7 +207,7 @@ export interface ApplicationWeb {
      */
     logoutUrl?: pulumi.Input<string>;
     /**
-     * A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
      */
     redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -203,285 +217,70 @@ export interface ApplicationWebImplicitGrant {
      * Whether this web application can request an access token using OAuth 2.0 implicit flow.
      */
     accessTokenIssuanceEnabled?: pulumi.Input<boolean>;
-}
-
-export interface GetApplicationOauth2Permission {
     /**
-     * The description of the admin consent
+     * Whether this web application can request an ID token using OAuth 2.0 implicit flow.
      */
-    adminConsentDescription?: string;
-    /**
-     * The display name of the admin consent
-     */
-    adminConsentDisplayName?: string;
-    /**
-     * (Optional) Determines if the permission scope is enabled.
-     */
-    enabled?: boolean;
-    /**
-     * The unique identifier for one of the `OAuth2Permission` or `AppRole` instances that the resource application exposes.
-     */
-    id?: string;
-    /**
-     * Is this permission enabled?
-     */
-    isEnabled?: boolean;
-    /**
-     * Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-     */
-    type?: string;
-    /**
-     * The description of the user consent
-     */
-    userConsentDescription?: string;
-    /**
-     * The display name of the user consent
-     */
-    userConsentDisplayName?: string;
-    /**
-     * The name of this permission
-     */
-    value?: string;
-}
-
-export interface GetApplicationOptionalClaims {
-    accessTokens?: inputs.GetApplicationOptionalClaimsAccessToken[];
-    idTokens?: inputs.GetApplicationOptionalClaimsIdToken[];
-}
-
-export interface GetApplicationOptionalClaimsAccessToken {
-    /**
-     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
-     */
-    additionalProperties?: string[];
-    /**
-     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
-     */
-    essential?: boolean;
-    /**
-     * The name of the optional claim.
-     */
-    name: string;
-    /**
-     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
-     */
-    source?: string;
-}
-
-export interface GetApplicationOptionalClaimsIdToken {
-    /**
-     * List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
-     */
-    additionalProperties?: string[];
-    /**
-     * Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
-     */
-    essential?: boolean;
-    /**
-     * The name of the optional claim.
-     */
-    name: string;
-    /**
-     * The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
-     */
-    source?: string;
-}
-
-export interface GetApplicationWeb {
-    /**
-     * Home page or landing page of the application.
-     */
-    homepageUrl?: string;
-    /**
-     * An `implicitGrant` block as documented above.
-     */
-    implicitGrants?: inputs.GetApplicationWebImplicitGrant[];
-    /**
-     * The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-     */
-    logoutUrl?: string;
-    /**
-     * A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-     */
-    redirectUris?: string[];
-}
-
-export interface GetApplicationWebImplicitGrant {
-    /**
-     * Whether this web application can request an access token using OAuth 2.0 implicit flow.
-     */
-    accessTokenIssuanceEnabled?: boolean;
-}
-
-export interface GetServicePrincipalOauth2Permission {
-    /**
-     * The description of the admin consent
-     */
-    adminConsentDescription?: string;
-    /**
-     * The display name of the admin consent
-     */
-    adminConsentDisplayName?: string;
-    /**
-     * The unique identifier for one of the `OAuth2Permission`
-     */
-    id?: string;
-    /**
-     * Is this permission enabled?
-     */
-    isEnabled?: boolean;
-    /**
-     * The type of the permission
-     */
-    type?: string;
-    /**
-     * The description of the user consent
-     */
-    userConsentDescription?: string;
-    /**
-     * The display name of the user consent
-     */
-    userConsentDisplayName?: string;
-    /**
-     * The name of this permission
-     */
-    value?: string;
-}
-
-export interface GetServicePrincipalOauth2PermissionScope {
-    /**
-     * The description of the admin consent
-     */
-    adminConsentDescription?: string;
-    /**
-     * The display name of the admin consent
-     */
-    adminConsentDisplayName?: string;
-    /**
-     * Is this permission enabled?
-     */
-    enabled?: boolean;
-    /**
-     * The unique identifier for one of the `OAuth2Permission`
-     */
-    id?: string;
-    /**
-     * The type of the permission
-     */
-    type?: string;
-    /**
-     * The description of the user consent
-     */
-    userConsentDescription?: string;
-    /**
-     * The display name of the user consent
-     */
-    userConsentDisplayName?: string;
-    /**
-     * The name of this permission
-     */
-    value?: string;
+    idTokenIssuanceEnabled?: pulumi.Input<boolean>;
 }
 
 export interface ServicePrincipalAppRole {
     /**
-     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
+     * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
      */
     allowedMemberTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Permission help text that appears in the admin app assignment and consent experiences.
+     * A description of the service principal provided for internal end-users.
      */
     description?: pulumi.Input<string>;
     /**
-     * Display name for the permission that appears in the admin consent and app assignment experiences.
+     * Display name for the app role that appears during app role assignment and in consent experiences.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Is this permission enabled?
+     * Specifies whether the permission scope is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The unique identifier for one of the `OAuth2Permission`.
+     * The unique identifier of the delegated permission.
      */
     id?: pulumi.Input<string>;
     /**
-     * Is this permission enabled?
-     *
-     * @deprecated [NOTE] This attribute will be renamed to `enabled` in version 2.0 of the AzureAD provider
-     */
-    isEnabled?: pulumi.Input<boolean>;
-    /**
-     * The name of this permission.
-     */
-    value?: pulumi.Input<string>;
-}
-
-export interface ServicePrincipalOauth2Permission {
-    /**
-     * The description of the admin consent.
-     */
-    adminConsentDescription?: pulumi.Input<string>;
-    /**
-     * The display name of the admin consent.
-     */
-    adminConsentDisplayName?: pulumi.Input<string>;
-    /**
-     * The unique identifier for one of the `OAuth2Permission`.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Is this permission enabled?
-     */
-    isEnabled?: pulumi.Input<boolean>;
-    /**
-     * The type of the permission.
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * The description of the user consent.
-     */
-    userConsentDescription?: pulumi.Input<string>;
-    /**
-     * The display name of the user consent.
-     */
-    userConsentDisplayName?: pulumi.Input<string>;
-    /**
-     * The name of this permission.
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
     value?: pulumi.Input<string>;
 }
 
 export interface ServicePrincipalOauth2PermissionScope {
     /**
-     * The description of the admin consent.
+     * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      */
     adminConsentDescription?: pulumi.Input<string>;
     /**
-     * The display name of the admin consent.
+     * Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      */
     adminConsentDisplayName?: pulumi.Input<string>;
     /**
-     * Is this permission enabled?
+     * Specifies whether the permission scope is enabled.
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The unique identifier for one of the `OAuth2Permission`.
+     * The unique identifier of the delegated permission.
      */
     id?: pulumi.Input<string>;
     /**
-     * The type of the permission.
+     * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      */
     type?: pulumi.Input<string>;
     /**
-     * The description of the user consent.
+     * Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      */
     userConsentDescription?: pulumi.Input<string>;
     /**
-     * The display name of the user consent.
+     * Display name for the delegated permission that appears in the end user consent experience.
      */
     userConsentDisplayName?: pulumi.Input<string>;
     /**
-     * The name of this permission.
+     * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      */
     value?: pulumi.Input<string>;
 }

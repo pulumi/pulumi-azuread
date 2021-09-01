@@ -9,7 +9,13 @@ import (
 
 // Use this data source to access information about an existing Application within Azure Active Directory.
 //
-// > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to both `Read and write all (or owned by) applications` and `Sign in and read user profile` within the `Windows Azure Active Directory` API.
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
 //
 // ## Example Usage
 //
@@ -30,7 +36,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		ctx.Export("azureAdObjectId", example.Id)
+// 		ctx.Export("applicationObjectId", example.Id)
 // 		return nil
 // 	})
 // }
@@ -50,82 +56,64 @@ type LookupApplicationArgs struct {
 	ApplicationId *string `pulumi:"applicationId"`
 	// Specifies the display name of the application.
 	DisplayName *string `pulumi:"displayName"`
-	// The name of the optional claim.
-	//
-	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
-	Name *string `pulumi:"name"`
-	// (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
-	//
-	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
 	// Specifies the Object ID of the application.
 	ObjectId *string `pulumi:"objectId"`
-	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-	OptionalClaims *GetApplicationOptionalClaims `pulumi:"optionalClaims"`
-	// A `web` block as documented below.
-	Web *GetApplicationWeb `pulumi:"web"`
 }
 
 // A collection of values returned by getApplication.
 type LookupApplicationResult struct {
 	// An `api` block as documented below.
 	Apis []GetApplicationApi `pulumi:"apis"`
+	// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+	AppRoleIds map[string]string `pulumi:"appRoleIds"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles []GetApplicationAppRoleType `pulumi:"appRoles"`
-	// the Application ID (also called Client ID).
+	AppRoles []GetApplicationAppRole `pulumi:"appRoles"`
+	// The Application ID (also called Client ID).
 	ApplicationId string `pulumi:"applicationId"`
-	// (**Deprecated**) Is this Azure AD Application available to other tenants?
-	//
-	// Deprecated: [NOTE] This attribute will be replaced by a new property `sign_in_audience` in version 2.0 of the AzureAD provider
-	AvailableToOtherTenants bool `pulumi:"availableToOtherTenants"`
+	// Specifies whether this application supports device authentication without a user.
+	DeviceOnlyAuthEnabled bool `pulumi:"deviceOnlyAuthEnabled"`
+	// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+	DisabledByMicrosoft string `pulumi:"disabledByMicrosoft"`
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName string `pulumi:"displayName"`
 	// The fallback application type as public client, such as an installed application running on a mobile device.
 	FallbackPublicClientEnabled bool `pulumi:"fallbackPublicClientEnabled"`
 	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
-	GroupMembershipClaims string `pulumi:"groupMembershipClaims"`
-	// (**Deprecated**) The URL to the application's home page. This property is deprecated and has been replaced by the `homepageUrl` property in the `web` block.
-	//
-	// Deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
-	Homepage string `pulumi:"homepage"`
+	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
-	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-	//
-	// Deprecated: [NOTE] This attribute will be moved into the `web` block in version 2.0 of the AzureAD provider
-	LogoutUrl string `pulumi:"logoutUrl"`
-	// The name of the optional claim.
-	//
-	// Deprecated: This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
-	Name string `pulumi:"name"`
-	// (**Deprecated**) Does this Azure AD Application allow OAuth2.0 implicit flow tokens?
-	//
-	// Deprecated: [NOTE] This attribute will be moved to the `implicit_grant` block and renamed to `access_token_issuance_enabled` in version 2.0 of the AzureAD provider
-	Oauth2AllowImplicitFlow bool `pulumi:"oauth2AllowImplicitFlow"`
-	// (**Deprecated**) A collection of OAuth 2.0 permission scopes that the web API (resource) app exposes to client apps. Each permission is covered by a `oauth2Permission` block as documented below.
-	//
-	// Deprecated: [NOTE] The `oauth2_permissions` block has been renamed to `oauth2_permission_scopes` and moved to the `api` block. `oauth2_permissions` will be removed in version 2.0 of the AzureAD provider.
-	Oauth2Permissions []GetApplicationOauth2Permission `pulumi:"oauth2Permissions"`
-	// The application's Object ID.
+	// CDN URL to the application's logo.
+	LogoUrl string `pulumi:"logoUrl"`
+	// URL of the application's marketing page.
+	MarketingUrl string `pulumi:"marketingUrl"`
+	// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+	Oauth2PermissionScopeIds map[string]string `pulumi:"oauth2PermissionScopeIds"`
+	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
+	Oauth2PostResponseRequired bool `pulumi:"oauth2PostResponseRequired"`
+	// The application's object ID.
 	ObjectId string `pulumi:"objectId"`
-	// A collection of `accessToken` or `idToken` blocks as documented below which list the optional claims configured for each token type. For more information see https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-optional-claims
-	OptionalClaims *GetApplicationOptionalClaims `pulumi:"optionalClaims"`
-	// A list of Object IDs for principals that are assigned ownership of the application.
+	// An `optionalClaims` block as documented below.
+	OptionalClaims []GetApplicationOptionalClaim `pulumi:"optionalClaims"`
+	// A list of object IDs of principals that are assigned ownership of the application.
 	Owners []string `pulumi:"owners"`
-	// (**Deprecated**) A list of URLs that user tokens are sent to for sign in, or the redirect URIs that OAuth 2.0 authorization codes and access tokens are sent to. This property is deprecated and has been replaced by the `redirectUris` property in the `web` block.
-	//
-	// Deprecated: [NOTE] This attribute will be replaced by a new attribute `redirect_uris` in the `web` block in version 2.0 of the AzureAD provider
-	ReplyUrls []string `pulumi:"replyUrls"`
+	// URL of the application's privacy statement.
+	PrivacyStatementUrl string `pulumi:"privacyStatementUrl"`
+	// A `publicClient` block as documented below.
+	PublicClients []GetApplicationPublicClient `pulumi:"publicClients"`
+	// The verified publisher domain for the application.
+	PublisherDomain string `pulumi:"publisherDomain"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []GetApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
 	// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 	SignInAudience string `pulumi:"signInAudience"`
-	// Specifies whether the `id` property references an `OAuth2Permission` or an `AppRole`. Possible values are `Scope` or `Role`.
-	//
-	// Deprecated: [NOTE] This legacy property is deprecated and will be removed in version 2.0 of the AzureAD provider
-	Type string `pulumi:"type"`
+	// A `singlePageApplication` block as documented below.
+	SinglePageApplications []GetApplicationSinglePageApplication `pulumi:"singlePageApplications"`
+	// URL of the application's support page.
+	SupportUrl string `pulumi:"supportUrl"`
+	// URL of the application's terms of service statement.
+	TermsOfServiceUrl string `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below.
-	Web GetApplicationWeb `pulumi:"web"`
+	Webs []GetApplicationWeb `pulumi:"webs"`
 }

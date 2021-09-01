@@ -5,9 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages a Group within Azure Active Directory.
+ * Manages a group within Azure Active Directory.
  *
- * > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read and write all groups` within the `Windows Azure Active Directory` API. In addition it must also have either the `Groups Administrator` or `User Administrator` Azure Active Directory roles assigned in order to be able to delete groups. You can assign one of the required Azure Active Directory Roles with the **AzureAD PowerShell Module**, which is available for Windows PowerShell or in the Azure Cloud Shell. Please refer to [this documentation](https://docs.microsoft.com/en-us/powershell/module/azuread/add-azureaddirectoryrolemember) for more details.
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  *
  * ## Example Usage
  *
@@ -17,31 +23,64 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
+ * const current = azuread.getClientConfig({});
  * const example = new azuread.Group("example", {
- *     displayName: "A-AD-Group",
+ *     displayName: "example",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
  * });
  * ```
  *
- * *A group with members*
+ * *Microsoft 365 group*
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
+ * const current = azuread.getClientConfig({});
+ * const groupOwner = new azuread.User("groupOwner", {
+ *     userPrincipalName: "example-group-owner@hashicorp.com",
+ *     displayName: "Group Owner",
+ *     mailNickname: "example-group-owner",
+ *     password: "SecretP@sswd99!",
+ * });
+ * const example = new azuread.Group("example", {
+ *     displayName: "example",
+ *     mailEnabled: true,
+ *     mailNickname: "ExampleGroup",
+ *     securityEnabled: true,
+ *     types: ["Unified"],
+ *     owners: [
+ *         current.then(current => current.objectId),
+ *         groupOwner.objectId,
+ *     ],
+ * });
+ * ```
+ *
+ * *Group with members*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
  * const exampleUser = new azuread.User("exampleUser", {
  *     displayName: "J Doe",
+ *     owners: [current.then(current => current.objectId)],
  *     password: "notSecure123",
  *     userPrincipalName: "jdoe@hashicorp.com",
  * });
  * const exampleGroup = new azuread.Group("exampleGroup", {
  *     displayName: "MyGroup",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
  *     members: [exampleUser.objectId],
  * });
  * ```
  *
  * ## Import
  *
- * Azure Active Directory Groups can be imported using the `object id`, e.g.
+ * Groups can be imported using their object ID, e.g.
  *
  * ```sh
  *  $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
@@ -76,41 +115,97 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * The description for the Group.  Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     */
+    public readonly assignableToRole!: pulumi.Output<boolean | undefined>;
+    /**
+     * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+     */
+    public readonly behaviors!: pulumi.Output<string[] | undefined>;
+    /**
+     * The description for the group.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The display name for the Group. Changing this forces a new resource to be created.
+     * The display name for the group.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Whether the group is mail-enabled.
+     * The SMTP address for the group.
      */
-    public /*out*/ readonly mailEnabled!: pulumi.Output<boolean>;
+    public /*out*/ readonly mail!: pulumi.Output<string>;
     /**
-     * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+     * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+     */
+    public readonly mailEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+     */
+    public readonly mailNickname!: pulumi.Output<string>;
+    /**
+     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
      */
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
-     */
-    public readonly name!: pulumi.Output<string>;
-    /**
-     * The Object ID of the Group.
+     * The object ID of the group.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
-     * A set of owners who own this Group. Supported Object types are Users or Service Principals.
+     * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    public /*out*/ readonly onpremisesDomainName!: pulumi.Output<string>;
+    /**
+     * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    public /*out*/ readonly onpremisesNetbiosName!: pulumi.Output<string>;
+    /**
+     * The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    public /*out*/ readonly onpremisesSamAccountName!: pulumi.Output<string>;
+    /**
+     * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    public /*out*/ readonly onpremisesSecurityIdentifier!: pulumi.Output<string>;
+    /**
+     * Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+     */
+    public /*out*/ readonly onpremisesSyncEnabled!: pulumi.Output<boolean>;
+    /**
+     * A set of owners who own this group. Supported object types are Users or Service Principals
      */
     public readonly owners!: pulumi.Output<string[]>;
     /**
-     * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+     * The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+     */
+    public /*out*/ readonly preferredLanguage!: pulumi.Output<string>;
+    /**
+     * If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
      */
     public readonly preventDuplicateNames!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether the group is a security group.
+     * A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
      */
-    public /*out*/ readonly securityEnabled!: pulumi.Output<boolean>;
+    public readonly provisioningOptions!: pulumi.Output<string[] | undefined>;
+    /**
+     * List of email addresses for the group that direct to the same group mailbox.
+     */
+    public /*out*/ readonly proxyAddresses!: pulumi.Output<string[]>;
+    /**
+     * Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+     */
+    public readonly securityEnabled!: pulumi.Output<boolean | undefined>;
+    /**
+     * The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+     */
+    public readonly theme!: pulumi.Output<string | undefined>;
+    /**
+     * A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+     */
+    public readonly types!: pulumi.Output<string[] | undefined>;
+    /**
+     * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+     */
+    public readonly visibility!: pulumi.Output<string>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -119,32 +214,63 @@ export class Group extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            inputs["assignableToRole"] = state ? state.assignableToRole : undefined;
+            inputs["behaviors"] = state ? state.behaviors : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["mail"] = state ? state.mail : undefined;
             inputs["mailEnabled"] = state ? state.mailEnabled : undefined;
+            inputs["mailNickname"] = state ? state.mailNickname : undefined;
             inputs["members"] = state ? state.members : undefined;
-            inputs["name"] = state ? state.name : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
+            inputs["onpremisesDomainName"] = state ? state.onpremisesDomainName : undefined;
+            inputs["onpremisesNetbiosName"] = state ? state.onpremisesNetbiosName : undefined;
+            inputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
+            inputs["onpremisesSecurityIdentifier"] = state ? state.onpremisesSecurityIdentifier : undefined;
+            inputs["onpremisesSyncEnabled"] = state ? state.onpremisesSyncEnabled : undefined;
             inputs["owners"] = state ? state.owners : undefined;
+            inputs["preferredLanguage"] = state ? state.preferredLanguage : undefined;
             inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            inputs["provisioningOptions"] = state ? state.provisioningOptions : undefined;
+            inputs["proxyAddresses"] = state ? state.proxyAddresses : undefined;
             inputs["securityEnabled"] = state ? state.securityEnabled : undefined;
+            inputs["theme"] = state ? state.theme : undefined;
+            inputs["types"] = state ? state.types : undefined;
+            inputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
+            inputs["assignableToRole"] = args ? args.assignableToRole : undefined;
+            inputs["behaviors"] = args ? args.behaviors : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["mailEnabled"] = args ? args.mailEnabled : undefined;
+            inputs["mailNickname"] = args ? args.mailNickname : undefined;
             inputs["members"] = args ? args.members : undefined;
-            inputs["name"] = args ? args.name : undefined;
             inputs["owners"] = args ? args.owners : undefined;
             inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
-            inputs["mailEnabled"] = undefined /*out*/;
+            inputs["provisioningOptions"] = args ? args.provisioningOptions : undefined;
+            inputs["securityEnabled"] = args ? args.securityEnabled : undefined;
+            inputs["theme"] = args ? args.theme : undefined;
+            inputs["types"] = args ? args.types : undefined;
+            inputs["visibility"] = args ? args.visibility : undefined;
+            inputs["mail"] = undefined /*out*/;
             inputs["objectId"] = undefined /*out*/;
-            inputs["securityEnabled"] = undefined /*out*/;
+            inputs["onpremisesDomainName"] = undefined /*out*/;
+            inputs["onpremisesNetbiosName"] = undefined /*out*/;
+            inputs["onpremisesSamAccountName"] = undefined /*out*/;
+            inputs["onpremisesSecurityIdentifier"] = undefined /*out*/;
+            inputs["onpremisesSyncEnabled"] = undefined /*out*/;
+            inputs["preferredLanguage"] = undefined /*out*/;
+            inputs["proxyAddresses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -158,41 +284,97 @@ export class Group extends pulumi.CustomResource {
  */
 export interface GroupState {
     /**
-     * The description for the Group.  Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     */
+    assignableToRole?: pulumi.Input<boolean>;
+    /**
+     * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+     */
+    behaviors?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description for the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name for the Group. Changing this forces a new resource to be created.
+     * The display name for the group.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Whether the group is mail-enabled.
+     * The SMTP address for the group.
+     */
+    mail?: pulumi.Input<string>;
+    /**
+     * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      */
     mailEnabled?: pulumi.Input<boolean>;
     /**
-     * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+     * The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+     */
+    mailNickname?: pulumi.Input<string>;
+    /**
+     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The Object ID of the Group.
+     * The object ID of the group.
      */
     objectId?: pulumi.Input<string>;
     /**
-     * A set of owners who own this Group. Supported Object types are Users or Service Principals.
+     * The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    onpremisesDomainName?: pulumi.Input<string>;
+    /**
+     * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    onpremisesNetbiosName?: pulumi.Input<string>;
+    /**
+     * The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    onpremisesSamAccountName?: pulumi.Input<string>;
+    /**
+     * The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+     */
+    onpremisesSecurityIdentifier?: pulumi.Input<string>;
+    /**
+     * Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+     */
+    onpremisesSyncEnabled?: pulumi.Input<boolean>;
+    /**
+     * A set of owners who own this group. Supported object types are Users or Service Principals
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+     * The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+     */
+    preferredLanguage?: pulumi.Input<string>;
+    /**
+     * If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
      */
     preventDuplicateNames?: pulumi.Input<boolean>;
     /**
-     * Whether the group is a security group.
+     * A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+     */
+    provisioningOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * List of email addresses for the group that direct to the same group mailbox.
+     */
+    proxyAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
      */
     securityEnabled?: pulumi.Input<boolean>;
+    /**
+     * The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+     */
+    theme?: pulumi.Input<string>;
+    /**
+     * A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+     */
+    types?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+     */
+    visibility?: pulumi.Input<string>;
 }
 
 /**
@@ -200,27 +382,59 @@ export interface GroupState {
  */
 export interface GroupArgs {
     /**
-     * The description for the Group.  Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     */
+    assignableToRole?: pulumi.Input<boolean>;
+    /**
+     * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+     */
+    behaviors?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The description for the group.
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name for the Group. Changing this forces a new resource to be created.
+     * The display name for the group.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
-     * A set of members who should be present in this Group. Supported Object types are Users, Groups or Service Principals.
+     * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+     */
+    mailEnabled?: pulumi.Input<boolean>;
+    /**
+     * The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+     */
+    mailNickname?: pulumi.Input<string>;
+    /**
+     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * @deprecated This property has been renamed to `display_name` and will be removed in version 2.0 of the AzureAD provider
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * A set of owners who own this Group. Supported Object types are Users or Service Principals.
+     * A set of owners who own this group. Supported object types are Users or Service Principals
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * If `true`, will return an error when an existing Group is found with the same name. Defaults to `false`.
+     * If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
      */
     preventDuplicateNames?: pulumi.Input<boolean>;
+    /**
+     * A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+     */
+    provisioningOptions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+     */
+    securityEnabled?: pulumi.Input<boolean>;
+    /**
+     * The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+     */
+    theme?: pulumi.Input<string>;
+    /**
+     * A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+     */
+    types?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+     */
+    visibility?: pulumi.Input<string>;
 }

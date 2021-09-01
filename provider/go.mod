@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-azuread/provider/v4
+module github.com/pulumi/pulumi-azuread/provider/v5
 
 go 1.16
 

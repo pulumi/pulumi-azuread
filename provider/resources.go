@@ -20,7 +20,7 @@ import (
 	"unicode"
 
 	"github.com/hashicorp/terraform-provider-azuread/shim"
-	"github.com/pulumi/pulumi-azuread/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
@@ -98,28 +98,27 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"azuread_application":                         {Tok: makeResource(mainMod, "Application")},
-			"azuread_application_password":                {Tok: makeResource(mainMod, "ApplicationPassword")},
-			"azuread_group":                               {Tok: makeResource(mainMod, "Group")},
-			"azuread_service_principal":                   {Tok: makeResource(mainMod, "ServicePrincipal")},
-			"azuread_service_principal_password":          {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
-			"azuread_user":                                {Tok: makeResource(mainMod, "User")},
-			"azuread_group_member":                        {Tok: makeResource(mainMod, "GroupMember")},
-			"azuread_application_certificate":             {Tok: makeResource(mainMod, "ApplicationCertificate")},
-			"azuread_application_app_role":                {Tok: makeResource(mainMod, "ApplicationAppRole")},
-			"azuread_application_oauth2_permission":       {Tok: makeResource(mainMod, "ApplicationOAuth2Permission")},
-			"azuread_service_principal_certificate":       {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
-			"azuread_application_oauth2_permission_scope": {Tok: makeResource(mainMod, "ApplicationOauth2PermissionScope")},
+			"azuread_application":                   {Tok: makeResource(mainMod, "Application")},
+			"azuread_application_password":          {Tok: makeResource(mainMod, "ApplicationPassword")},
+			"azuread_group":                         {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal":             {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_service_principal_password":    {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
+			"azuread_user":                          {Tok: makeResource(mainMod, "User")},
+			"azuread_group_member":                  {Tok: makeResource(mainMod, "GroupMember")},
+			"azuread_application_certificate":       {Tok: makeResource(mainMod, "ApplicationCertificate")},
+			"azuread_service_principal_certificate": {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
+			"azuread_application_pre_authorized":    {Tok: makeResource(mainMod, "ApplicationPreAuthorized")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"azuread_application":       {Tok: makeDataSource(mainMod, "getApplication")},
-			"azuread_domains":           {Tok: makeDataSource(mainMod, "getDomains")},
-			"azuread_group":             {Tok: makeDataSource(mainMod, "getGroup")},
-			"azuread_service_principal": {Tok: makeDataSource(mainMod, "getServicePrincipal")},
-			"azuread_user":              {Tok: makeDataSource(mainMod, "getUser")},
-			"azuread_groups":            {Tok: makeDataSource(mainMod, "getGroups")},
-			"azuread_users":             {Tok: makeDataSource(mainMod, "getUsers")},
-			"azuread_client_config":     {Tok: makeDataSource(mainMod, "getClientConfig")},
+			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},
+			"azuread_domains":                       {Tok: makeDataSource(mainMod, "getDomains")},
+			"azuread_group":                         {Tok: makeDataSource(mainMod, "getGroup")},
+			"azuread_service_principal":             {Tok: makeDataSource(mainMod, "getServicePrincipal")},
+			"azuread_user":                          {Tok: makeDataSource(mainMod, "getUser")},
+			"azuread_groups":                        {Tok: makeDataSource(mainMod, "getGroups")},
+			"azuread_users":                         {Tok: makeDataSource(mainMod, "getUsers")},
+			"azuread_client_config":                 {Tok: makeDataSource(mainMod, "getClientConfig")},
+			"azuread_application_published_app_ids": {Tok: makeDataSource(mainMod, "getApplicationPublishedAppIds")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

@@ -19,20 +19,13 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, display_names=None, id=None, names=None, object_ids=None):
+    def __init__(__self__, display_names=None, id=None, object_ids=None):
         if display_names and not isinstance(display_names, list):
             raise TypeError("Expected argument 'display_names' to be a list")
         pulumi.set(__self__, "display_names", display_names)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
-        if names and not isinstance(names, list):
-            raise TypeError("Expected argument 'names' to be a list")
-        if names is not None:
-            warnings.warn("""This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider""", DeprecationWarning)
-            pulumi.log.warn("""names is deprecated: This property has been renamed to `display_names` and will be removed in v2.0 of the AzureAD provider""")
-
-        pulumi.set(__self__, "names", names)
         if object_ids and not isinstance(object_ids, list):
             raise TypeError("Expected argument 'object_ids' to be a list")
         pulumi.set(__self__, "object_ids", object_ids)
@@ -41,7 +34,7 @@ class GetGroupsResult:
     @pulumi.getter(name="displayNames")
     def display_names(self) -> Sequence[str]:
         """
-        The Display Names of the Azure AD Groups.
+        The display names of the groups.
         """
         return pulumi.get(self, "display_names")
 
@@ -54,15 +47,10 @@ class GetGroupsResult:
         return pulumi.get(self, "id")
 
     @property
-    @pulumi.getter
-    def names(self) -> Sequence[str]:
-        return pulumi.get(self, "names")
-
-    @property
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence[str]:
         """
-        The Object IDs of the Azure AD Groups.
+        The object IDs of the groups.
         """
         return pulumi.get(self, "object_ids")
 
@@ -75,18 +63,22 @@ class AwaitableGetGroupsResult(GetGroupsResult):
         return GetGroupsResult(
             display_names=self.display_names,
             id=self.id,
-            names=self.names,
             object_ids=self.object_ids)
 
 
 def get_groups(display_names: Optional[Sequence[str]] = None,
-               names: Optional[Sequence[str]] = None,
                object_ids: Optional[Sequence[str]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
     Gets Object IDs or Display Names for multiple Azure Active Directory groups.
 
-    > **NOTE:** If you're authenticating using a Service Principal then it must have permissions to `Read directory data` within the `Windows Azure Active Directory` API.
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
 
     ## Example Usage
 
@@ -101,12 +93,11 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     ```
 
 
-    :param Sequence[str] display_names: The Display Names of the Azure AD Groups.
-    :param Sequence[str] object_ids: The Object IDs of the Azure AD Groups.
+    :param Sequence[str] display_names: The display names of the groups.
+    :param Sequence[str] object_ids: The object IDs of the groups.
     """
     __args__ = dict()
     __args__['displayNames'] = display_names
-    __args__['names'] = names
     __args__['objectIds'] = object_ids
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -117,5 +108,4 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     return AwaitableGetGroupsResult(
         display_names=__ret__.display_names,
         id=__ret__.id,
-        names=__ret__.names,
         object_ids=__ret__.object_ids)

@@ -13,49 +13,49 @@ namespace Pulumi.AzureAD.Inputs
     public sealed class ServicePrincipalOauth2PermissionScopeArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the admin consent.
+        /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         [Input("adminConsentDescription")]
         public Input<string>? AdminConsentDescription { get; set; }
 
         /// <summary>
-        /// The display name of the admin consent.
+        /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         /// </summary>
         [Input("adminConsentDisplayName")]
         public Input<string>? AdminConsentDisplayName { get; set; }
 
         /// <summary>
-        /// Is this permission enabled?
+        /// Specifies whether the permission scope is enabled.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The unique identifier for one of the `OAuth2Permission`.
+        /// The unique identifier of the delegated permission.
         /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// The type of the permission.
+        /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The description of the user consent.
+        /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         /// </summary>
         [Input("userConsentDescription")]
         public Input<string>? UserConsentDescription { get; set; }
 
         /// <summary>
-        /// The display name of the user consent.
+        /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         [Input("userConsentDisplayName")]
         public Input<string>? UserConsentDisplayName { get; set; }
 
         /// <summary>
-        /// The name of this permission.
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
