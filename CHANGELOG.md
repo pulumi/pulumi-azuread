@@ -2,14 +2,17 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 5.0.0 (2021-09-01)
 * Upgrade to v2.0.0 of the AzureAD Terraform Provider
   Please Note:
   * `azuread.ApplicationOAuth2Permission`, `azuread.ApplicationOAuth2PermissionScope` and `azuread.ApplicationAppRole` have been removed.  
   * A number of deprecated properties on resources have been removed. 
   * You can check the full list in the [upstream CHANGELOG](https://github.com/hashicorp/terraform-provider-azuread/blob/main/CHANGELOG.md#200-august-26-2021)
 * (breaking) Bring Go `*State` types for resource get methods into agreement with other languages.
-
----
 
 ## 4.3.0 (2021-06-28)
 * Upgrade to v1.6.0 of the AzureAD Terraform Provider
