@@ -19,7 +19,7 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, display_names=None, id=None, object_ids=None):
+    def __init__(__self__, display_names=None, id=None, object_ids=None, return_all=None):
         if display_names and not isinstance(display_names, list):
             raise TypeError("Expected argument 'display_names' to be a list")
         pulumi.set(__self__, "display_names", display_names)
@@ -29,6 +29,9 @@ class GetGroupsResult:
         if object_ids and not isinstance(object_ids, list):
             raise TypeError("Expected argument 'object_ids' to be a list")
         pulumi.set(__self__, "object_ids", object_ids)
+        if return_all and not isinstance(return_all, bool):
+            raise TypeError("Expected argument 'return_all' to be a bool")
+        pulumi.set(__self__, "return_all", return_all)
 
     @property
     @pulumi.getter(name="displayNames")
@@ -54,6 +57,11 @@ class GetGroupsResult:
         """
         return pulumi.get(self, "object_ids")
 
+    @property
+    @pulumi.getter(name="returnAll")
+    def return_all(self) -> Optional[bool]:
+        return pulumi.get(self, "return_all")
+
 
 class AwaitableGetGroupsResult(GetGroupsResult):
     # pylint: disable=using-constant-test
@@ -63,11 +71,13 @@ class AwaitableGetGroupsResult(GetGroupsResult):
         return GetGroupsResult(
             display_names=self.display_names,
             id=self.id,
-            object_ids=self.object_ids)
+            object_ids=self.object_ids,
+            return_all=self.return_all)
 
 
 def get_groups(display_names: Optional[Sequence[str]] = None,
                object_ids: Optional[Sequence[str]] = None,
+               return_all: Optional[bool] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
     Gets Object IDs or Display Names for multiple Azure Active Directory groups.
@@ -82,6 +92,7 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
+    *Look up by group name*
     ```python
     import pulumi
     import pulumi_azuread as azuread
@@ -92,13 +103,23 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     ])
     ```
 
+    *Look up all groups*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    all_groups = azuread.get_groups(return_all=True)
+    ```
+
 
     :param Sequence[str] display_names: The display names of the groups.
     :param Sequence[str] object_ids: The object IDs of the groups.
+    :param bool return_all: A flag to denote if all groups should be fetched and returned.
     """
     __args__ = dict()
     __args__['displayNames'] = display_names
     __args__['objectIds'] = object_ids
+    __args__['returnAll'] = return_all
     if opts is None:
         opts = pulumi.InvokeOptions()
     if opts.version is None:
@@ -108,4 +129,5 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     return AwaitableGetGroupsResult(
         display_names=__ret__.display_names,
         id=__ret__.id,
-        object_ids=__ret__.object_ids)
+        object_ids=__ret__.object_ids,
+        return_all=__ret__.return_all)

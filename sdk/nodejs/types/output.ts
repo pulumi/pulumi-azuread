@@ -579,6 +579,21 @@ export interface GetUsersUser {
     userPrincipalName: string;
 }
 
+export interface InvitationMessage {
+    /**
+     * Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+     */
+    additionalRecipients?: string;
+    /**
+     * Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+     */
+    body?: string;
+    /**
+     * The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+     */
+    language?: string;
+}
+
 export interface ServicePrincipalAppRole {
     /**
      * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.

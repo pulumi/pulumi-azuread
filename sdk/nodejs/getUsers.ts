@@ -43,6 +43,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
         "ignoreMissing": args.ignoreMissing,
         "mailNicknames": args.mailNicknames,
         "objectIds": args.objectIds,
+        "returnAll": args.returnAll,
         "userPrincipalNames": args.userPrincipalNames,
     }, opts);
 }
@@ -63,6 +64,10 @@ export interface GetUsersArgs {
      * The object IDs of the users.
      */
     objectIds?: string[];
+    /**
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+     */
+    returnAll?: boolean;
     /**
      * The user principal names (UPNs) of the users.
      */
@@ -86,6 +91,7 @@ export interface GetUsersResult {
      * The object IDs of the users.
      */
     readonly objectIds: string[];
+    readonly returnAll?: boolean;
     /**
      * The user principal names (UPNs) of the users.
      */

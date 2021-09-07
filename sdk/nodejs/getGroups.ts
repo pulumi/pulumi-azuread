@@ -18,6 +18,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * *Look up by group name*
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -27,6 +28,16 @@ import * as utilities from "./utilities";
  *         "group-a",
  *         "group-b",
  *     ],
+ * }));
+ * ```
+ *
+ * *Look up all groups*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const allGroups = pulumi.output(azuread.getGroups({
+ *     returnAll: true,
  * }));
  * ```
  */
@@ -42,6 +53,7 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
         "displayNames": args.displayNames,
         "objectIds": args.objectIds,
+        "returnAll": args.returnAll,
     }, opts);
 }
 
@@ -57,6 +69,10 @@ export interface GetGroupsArgs {
      * The object IDs of the groups.
      */
     objectIds?: string[];
+    /**
+     * A flag to denote if all groups should be fetched and returned.
+     */
+    returnAll?: boolean;
 }
 
 /**
@@ -75,4 +91,5 @@ export interface GetGroupsResult {
      * The object IDs of the groups.
      */
     readonly objectIds: string[];
+    readonly returnAll?: boolean;
 }

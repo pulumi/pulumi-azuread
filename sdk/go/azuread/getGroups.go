@@ -19,6 +19,7 @@ import (
 //
 // ## Example Usage
 //
+// *Look up by group name*
 // ```go
 // package main
 //
@@ -42,6 +43,29 @@ import (
 // 	})
 // }
 // ```
+//
+// *Look up all groups*
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := true
+// 		_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+// 			ReturnAll: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	var rv GetGroupsResult
 	err := ctx.Invoke("azuread:index/getGroups:getGroups", args, &rv, opts...)
@@ -57,6 +81,8 @@ type GetGroupsArgs struct {
 	DisplayNames []string `pulumi:"displayNames"`
 	// The object IDs of the groups.
 	ObjectIds []string `pulumi:"objectIds"`
+	// A flag to denote if all groups should be fetched and returned.
+	ReturnAll *bool `pulumi:"returnAll"`
 }
 
 // A collection of values returned by getGroups.
@@ -67,4 +93,5 @@ type GetGroupsResult struct {
 	Id string `pulumi:"id"`
 	// The object IDs of the groups.
 	ObjectIds []string `pulumi:"objectIds"`
+	ReturnAll *bool    `pulumi:"returnAll"`
 }

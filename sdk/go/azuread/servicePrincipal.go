@@ -19,6 +19,8 @@ import (
 //
 // When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
 //
+// It is not currently possible to manage service principals whilst having only the `Application.ReadWrite.OwnedBy` role granted.
+//
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 //
 // ## Example Usage

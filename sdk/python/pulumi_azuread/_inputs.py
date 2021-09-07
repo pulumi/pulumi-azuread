@@ -22,6 +22,7 @@ __all__ = [
     'ApplicationSinglePageApplicationArgs',
     'ApplicationWebArgs',
     'ApplicationWebImplicitGrantArgs',
+    'InvitationMessageArgs',
     'ServicePrincipalAppRoleArgs',
     'ServicePrincipalOauth2PermissionScopeArgs',
 ]
@@ -823,6 +824,61 @@ class ApplicationWebImplicitGrantArgs:
     @id_token_issuance_enabled.setter
     def id_token_issuance_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "id_token_issuance_enabled", value)
+
+
+@pulumi.input_type
+class InvitationMessageArgs:
+    def __init__(__self__, *,
+                 additional_recipients: Optional[pulumi.Input[str]] = None,
+                 body: Optional[pulumi.Input[str]] = None,
+                 language: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] additional_recipients: Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+        :param pulumi.Input[str] body: Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        :param pulumi.Input[str] language: The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        """
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[pulumi.Input[str]]:
+        """
+        Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+        """
+        return pulumi.get(self, "additional_recipients")
+
+    @additional_recipients.setter
+    def additional_recipients(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "additional_recipients", value)
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        """
+        return pulumi.get(self, "body")
+
+    @body.setter
+    def body(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "body", value)
+
+    @property
+    @pulumi.getter
+    def language(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        """
+        return pulumi.get(self, "language")
+
+    @language.setter
+    def language(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language", value)
 
 
 @pulumi.input_type

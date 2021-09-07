@@ -32,6 +32,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Group{}
 	case "azuread:index/groupMember:GroupMember":
 		r = &GroupMember{}
+	case "azuread:index/invitation:Invitation":
+		r = &Invitation{}
 	case "azuread:index/servicePrincipal:ServicePrincipal":
 		r = &ServicePrincipal{}
 	case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
@@ -99,6 +101,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/groupMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/invitation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

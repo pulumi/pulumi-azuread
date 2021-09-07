@@ -59,6 +59,8 @@ type GetUsersArgs struct {
 	MailNicknames []string `pulumi:"mailNicknames"`
 	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
+	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+	ReturnAll *bool `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
@@ -72,6 +74,7 @@ type GetUsersResult struct {
 	MailNicknames []string `pulumi:"mailNicknames"`
 	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
+	ReturnAll *bool    `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 	// A list of users. Each `user` object provides the attributes documented below.
