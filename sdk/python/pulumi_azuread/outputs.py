@@ -23,6 +23,7 @@ __all__ = [
     'ApplicationSinglePageApplication',
     'ApplicationWeb',
     'ApplicationWebImplicitGrant',
+    'InvitationMessage',
     'ServicePrincipalAppRole',
     'ServicePrincipalOauth2PermissionScope',
     'GetApplicationApiResult',
@@ -893,6 +894,66 @@ class ApplicationWebImplicitGrant(dict):
         Whether this web application can request an ID token using OAuth 2.0 implicit flow.
         """
         return pulumi.get(self, "id_token_issuance_enabled")
+
+
+@pulumi.output_type
+class InvitationMessage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "additionalRecipients":
+            suggest = "additional_recipients"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InvitationMessage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InvitationMessage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InvitationMessage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 additional_recipients: Optional[str] = None,
+                 body: Optional[str] = None,
+                 language: Optional[str] = None):
+        """
+        :param str additional_recipients: Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+        :param str body: Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        :param str language: The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        """
+        if additional_recipients is not None:
+            pulumi.set(__self__, "additional_recipients", additional_recipients)
+        if body is not None:
+            pulumi.set(__self__, "body", body)
+        if language is not None:
+            pulumi.set(__self__, "language", language)
+
+    @property
+    @pulumi.getter(name="additionalRecipients")
+    def additional_recipients(self) -> Optional[str]:
+        """
+        Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+        """
+        return pulumi.get(self, "additional_recipients")
+
+    @property
+    @pulumi.getter
+    def body(self) -> Optional[str]:
+        """
+        Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+        """
+        return pulumi.get(self, "body")
+
+    @property
+    @pulumi.getter
+    def language(self) -> Optional[str]:
+        """
+        The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+        """
+        return pulumi.get(self, "language")
 
 
 @pulumi.output_type

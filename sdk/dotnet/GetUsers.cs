@@ -86,6 +86,12 @@ namespace Pulumi.AzureAD
             set => _objectIds = value;
         }
 
+        /// <summary>
+        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+        /// </summary>
+        [Input("returnAll")]
+        public bool? ReturnAll { get; set; }
+
         [Input("userPrincipalNames")]
         private List<string>? _userPrincipalNames;
 
@@ -120,6 +126,7 @@ namespace Pulumi.AzureAD
         /// The object IDs of the users.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
+        public readonly bool? ReturnAll;
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// </summary>
@@ -139,6 +146,8 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<string> objectIds,
 
+            bool? returnAll,
+
             ImmutableArray<string> userPrincipalNames,
 
             ImmutableArray<Outputs.GetUsersUserResult> users)
@@ -147,6 +156,7 @@ namespace Pulumi.AzureAD
             IgnoreMissing = ignoreMissing;
             MailNicknames = mailNicknames;
             ObjectIds = objectIds;
+            ReturnAll = returnAll;
             UserPrincipalNames = userPrincipalNames;
             Users = users;
         }

@@ -108,6 +108,7 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_application_certificate":       {Tok: makeResource(mainMod, "ApplicationCertificate")},
 			"azuread_service_principal_certificate": {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
 			"azuread_application_pre_authorized":    {Tok: makeResource(mainMod, "ApplicationPreAuthorized")},
+			"azuread_invitation":                    {Tok: makeResource(mainMod, "Invitation")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},

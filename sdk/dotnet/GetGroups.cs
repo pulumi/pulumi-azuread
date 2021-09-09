@@ -26,6 +26,7 @@ namespace Pulumi.AzureAD
         /// ## Example Usage
         /// {{% example %}}
         /// 
+        /// *Look up by group name*
         /// ```csharp
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
@@ -41,6 +42,24 @@ namespace Pulumi.AzureAD
         ///                 "group-a",
         ///                 "group-b",
         ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up all groups*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var allGroups = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             ReturnAll = true,
         ///         }));
         ///     }
         /// 
@@ -80,6 +99,12 @@ namespace Pulumi.AzureAD
             set => _objectIds = value;
         }
 
+        /// <summary>
+        /// A flag to denote if all groups should be fetched and returned.
+        /// </summary>
+        [Input("returnAll")]
+        public bool? ReturnAll { get; set; }
+
         public GetGroupsArgs()
         {
         }
@@ -101,6 +126,7 @@ namespace Pulumi.AzureAD
         /// The object IDs of the groups.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
+        public readonly bool? ReturnAll;
 
         [OutputConstructor]
         private GetGroupsResult(
@@ -108,11 +134,14 @@ namespace Pulumi.AzureAD
 
             string id,
 
-            ImmutableArray<string> objectIds)
+            ImmutableArray<string> objectIds,
+
+            bool? returnAll)
         {
             DisplayNames = displayNames;
             Id = id;
             ObjectIds = objectIds;
+            ReturnAll = returnAll;
         }
     }
 }

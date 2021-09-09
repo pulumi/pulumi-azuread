@@ -1855,6 +1855,175 @@ func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type InvitationMessage struct {
+	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+	AdditionalRecipients *string `pulumi:"additionalRecipients"`
+	// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+	Body *string `pulumi:"body"`
+	// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+	Language *string `pulumi:"language"`
+}
+
+// InvitationMessageInput is an input type that accepts InvitationMessageArgs and InvitationMessageOutput values.
+// You can construct a concrete instance of `InvitationMessageInput` via:
+//
+//          InvitationMessageArgs{...}
+type InvitationMessageInput interface {
+	pulumi.Input
+
+	ToInvitationMessageOutput() InvitationMessageOutput
+	ToInvitationMessageOutputWithContext(context.Context) InvitationMessageOutput
+}
+
+type InvitationMessageArgs struct {
+	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+	AdditionalRecipients pulumi.StringPtrInput `pulumi:"additionalRecipients"`
+	// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+	Language pulumi.StringPtrInput `pulumi:"language"`
+}
+
+func (InvitationMessageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvitationMessage)(nil)).Elem()
+}
+
+func (i InvitationMessageArgs) ToInvitationMessageOutput() InvitationMessageOutput {
+	return i.ToInvitationMessageOutputWithContext(context.Background())
+}
+
+func (i InvitationMessageArgs) ToInvitationMessageOutputWithContext(ctx context.Context) InvitationMessageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InvitationMessageOutput)
+}
+
+func (i InvitationMessageArgs) ToInvitationMessagePtrOutput() InvitationMessagePtrOutput {
+	return i.ToInvitationMessagePtrOutputWithContext(context.Background())
+}
+
+func (i InvitationMessageArgs) ToInvitationMessagePtrOutputWithContext(ctx context.Context) InvitationMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InvitationMessageOutput).ToInvitationMessagePtrOutputWithContext(ctx)
+}
+
+// InvitationMessagePtrInput is an input type that accepts InvitationMessageArgs, InvitationMessagePtr and InvitationMessagePtrOutput values.
+// You can construct a concrete instance of `InvitationMessagePtrInput` via:
+//
+//          InvitationMessageArgs{...}
+//
+//  or:
+//
+//          nil
+type InvitationMessagePtrInput interface {
+	pulumi.Input
+
+	ToInvitationMessagePtrOutput() InvitationMessagePtrOutput
+	ToInvitationMessagePtrOutputWithContext(context.Context) InvitationMessagePtrOutput
+}
+
+type invitationMessagePtrType InvitationMessageArgs
+
+func InvitationMessagePtr(v *InvitationMessageArgs) InvitationMessagePtrInput {
+	return (*invitationMessagePtrType)(v)
+}
+
+func (*invitationMessagePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InvitationMessage)(nil)).Elem()
+}
+
+func (i *invitationMessagePtrType) ToInvitationMessagePtrOutput() InvitationMessagePtrOutput {
+	return i.ToInvitationMessagePtrOutputWithContext(context.Background())
+}
+
+func (i *invitationMessagePtrType) ToInvitationMessagePtrOutputWithContext(ctx context.Context) InvitationMessagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InvitationMessagePtrOutput)
+}
+
+type InvitationMessageOutput struct{ *pulumi.OutputState }
+
+func (InvitationMessageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InvitationMessage)(nil)).Elem()
+}
+
+func (o InvitationMessageOutput) ToInvitationMessageOutput() InvitationMessageOutput {
+	return o
+}
+
+func (o InvitationMessageOutput) ToInvitationMessageOutputWithContext(ctx context.Context) InvitationMessageOutput {
+	return o
+}
+
+func (o InvitationMessageOutput) ToInvitationMessagePtrOutput() InvitationMessagePtrOutput {
+	return o.ToInvitationMessagePtrOutputWithContext(context.Background())
+}
+
+func (o InvitationMessageOutput) ToInvitationMessagePtrOutputWithContext(ctx context.Context) InvitationMessagePtrOutput {
+	return o.ApplyT(func(v InvitationMessage) *InvitationMessage {
+		return &v
+	}).(InvitationMessagePtrOutput)
+}
+
+// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+func (o InvitationMessageOutput) AdditionalRecipients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvitationMessage) *string { return v.AdditionalRecipients }).(pulumi.StringPtrOutput)
+}
+
+// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+func (o InvitationMessageOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvitationMessage) *string { return v.Body }).(pulumi.StringPtrOutput)
+}
+
+// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+func (o InvitationMessageOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InvitationMessage) *string { return v.Language }).(pulumi.StringPtrOutput)
+}
+
+type InvitationMessagePtrOutput struct{ *pulumi.OutputState }
+
+func (InvitationMessagePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InvitationMessage)(nil)).Elem()
+}
+
+func (o InvitationMessagePtrOutput) ToInvitationMessagePtrOutput() InvitationMessagePtrOutput {
+	return o
+}
+
+func (o InvitationMessagePtrOutput) ToInvitationMessagePtrOutputWithContext(ctx context.Context) InvitationMessagePtrOutput {
+	return o
+}
+
+func (o InvitationMessagePtrOutput) Elem() InvitationMessageOutput {
+	return o.ApplyT(func(v *InvitationMessage) InvitationMessage { return *v }).(InvitationMessageOutput)
+}
+
+// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
+func (o InvitationMessagePtrOutput) AdditionalRecipients() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvitationMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AdditionalRecipients
+	}).(pulumi.StringPtrOutput)
+}
+
+// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+func (o InvitationMessagePtrOutput) Body() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvitationMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Body
+	}).(pulumi.StringPtrOutput)
+}
+
+// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+func (o InvitationMessagePtrOutput) Language() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InvitationMessage) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Language
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServicePrincipalAppRole struct {
 	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
@@ -4372,6 +4541,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationWebPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantPtrOutput{})
+	pulumi.RegisterOutputType(InvitationMessageOutput{})
+	pulumi.RegisterOutputType(InvitationMessagePtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeOutput{})

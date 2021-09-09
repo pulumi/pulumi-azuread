@@ -20,7 +20,7 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, id=None, ignore_missing=None, mail_nicknames=None, object_ids=None, user_principal_names=None, users=None):
+    def __init__(__self__, id=None, ignore_missing=None, mail_nicknames=None, object_ids=None, return_all=None, user_principal_names=None, users=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -33,6 +33,9 @@ class GetUsersResult:
         if object_ids and not isinstance(object_ids, list):
             raise TypeError("Expected argument 'object_ids' to be a list")
         pulumi.set(__self__, "object_ids", object_ids)
+        if return_all and not isinstance(return_all, bool):
+            raise TypeError("Expected argument 'return_all' to be a bool")
+        pulumi.set(__self__, "return_all", return_all)
         if user_principal_names and not isinstance(user_principal_names, list):
             raise TypeError("Expected argument 'user_principal_names' to be a list")
         pulumi.set(__self__, "user_principal_names", user_principal_names)
@@ -70,6 +73,11 @@ class GetUsersResult:
         return pulumi.get(self, "object_ids")
 
     @property
+    @pulumi.getter(name="returnAll")
+    def return_all(self) -> Optional[bool]:
+        return pulumi.get(self, "return_all")
+
+    @property
     @pulumi.getter(name="userPrincipalNames")
     def user_principal_names(self) -> Sequence[str]:
         """
@@ -96,6 +104,7 @@ class AwaitableGetUsersResult(GetUsersResult):
             ignore_missing=self.ignore_missing,
             mail_nicknames=self.mail_nicknames,
             object_ids=self.object_ids,
+            return_all=self.return_all,
             user_principal_names=self.user_principal_names,
             users=self.users)
 
@@ -103,6 +112,7 @@ class AwaitableGetUsersResult(GetUsersResult):
 def get_users(ignore_missing: Optional[bool] = None,
               mail_nicknames: Optional[Sequence[str]] = None,
               object_ids: Optional[Sequence[str]] = None,
+              return_all: Optional[bool] = None,
               user_principal_names: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
@@ -132,12 +142,14 @@ def get_users(ignore_missing: Optional[bool] = None,
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
     :param Sequence[str] mail_nicknames: The email aliases of the users.
     :param Sequence[str] object_ids: The object IDs of the users.
+    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
     :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
     """
     __args__ = dict()
     __args__['ignoreMissing'] = ignore_missing
     __args__['mailNicknames'] = mail_nicknames
     __args__['objectIds'] = object_ids
+    __args__['returnAll'] = return_all
     __args__['userPrincipalNames'] = user_principal_names
     if opts is None:
         opts = pulumi.InvokeOptions()
@@ -150,5 +162,6 @@ def get_users(ignore_missing: Optional[bool] = None,
         ignore_missing=__ret__.ignore_missing,
         mail_nicknames=__ret__.mail_nicknames,
         object_ids=__ret__.object_ids,
+        return_all=__ret__.return_all,
         user_principal_names=__ret__.user_principal_names,
         users=__ret__.users)

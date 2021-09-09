@@ -20,6 +20,7 @@ export * from "./getUser";
 export * from "./getUsers";
 export * from "./group";
 export * from "./groupMember";
+export * from "./invitation";
 export * from "./provider";
 export * from "./servicePrincipal";
 export * from "./servicePrincipalCertificate";
@@ -42,6 +43,7 @@ import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
 import { Group } from "./group";
 import { GroupMember } from "./groupMember";
+import { Invitation } from "./invitation";
 import { ServicePrincipal } from "./servicePrincipal";
 import { ServicePrincipalCertificate } from "./servicePrincipalCertificate";
 import { ServicePrincipalPassword } from "./servicePrincipalPassword";
@@ -63,6 +65,8 @@ const _module = {
                 return new Group(name, <any>undefined, { urn })
             case "azuread:index/groupMember:GroupMember":
                 return new GroupMember(name, <any>undefined, { urn })
+            case "azuread:index/invitation:Invitation":
+                return new Invitation(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipal:ServicePrincipal":
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
@@ -82,6 +86,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _m
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)

@@ -20,6 +20,7 @@ from .get_user import *
 from .get_users import *
 from .group import *
 from .group_member import *
+from .invitation import *
 from .provider import *
 from .service_principal import *
 from .service_principal_certificate import *
@@ -83,6 +84,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/groupMember:GroupMember": "GroupMember"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/invitation",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/invitation:Invitation": "Invitation"
   }
  },
  {
