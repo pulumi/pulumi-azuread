@@ -111,7 +111,7 @@ type LookupServicePrincipalArgs struct {
 
 // A collection of values returned by getServicePrincipal.
 type LookupServicePrincipalResult struct {
-	// - Whether or not the service principal account is enabled.
+	// Whether or not the service principal account is enabled.
 	AccountEnabled bool `pulumi:"accountEnabled"`
 	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
 	AlternativeNames []string `pulumi:"alternativeNames"`
@@ -153,6 +153,8 @@ type LookupServicePrincipalResult struct {
 	RedirectUris []string `pulumi:"redirectUris"`
 	// The URL where the service exposes SAML metadata for federation.
 	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
+	// A `samlSingleSignOn` block as documented below.
+	SamlSingleSignOns []GetServicePrincipalSamlSingleSignOn `pulumi:"samlSingleSignOns"`
 	// A list of identifier URI(s), copied over from the associated application.
 	ServicePrincipalNames []string `pulumi:"servicePrincipalNames"`
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.

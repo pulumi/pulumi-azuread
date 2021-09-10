@@ -9,18 +9,22 @@ export * from "./application";
 export * from "./applicationCertificate";
 export * from "./applicationPassword";
 export * from "./applicationPreAuthorized";
+export * from "./conditionalAccessPolicy";
 export * from "./getApplication";
 export * from "./getApplicationPublishedAppIds";
+export * from "./getApplicationTemplate";
 export * from "./getClientConfig";
 export * from "./getDomains";
 export * from "./getGroup";
 export * from "./getGroups";
 export * from "./getServicePrincipal";
+export * from "./getServicePrincipals";
 export * from "./getUser";
 export * from "./getUsers";
 export * from "./group";
 export * from "./groupMember";
 export * from "./invitation";
+export * from "./namedLocation";
 export * from "./provider";
 export * from "./servicePrincipal";
 export * from "./servicePrincipalCertificate";
@@ -41,9 +45,11 @@ import { Application } from "./application";
 import { ApplicationCertificate } from "./applicationCertificate";
 import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
+import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
 import { Group } from "./group";
 import { GroupMember } from "./groupMember";
 import { Invitation } from "./invitation";
+import { NamedLocation } from "./namedLocation";
 import { ServicePrincipal } from "./servicePrincipal";
 import { ServicePrincipalCertificate } from "./servicePrincipalCertificate";
 import { ServicePrincipalPassword } from "./servicePrincipalPassword";
@@ -61,12 +67,16 @@ const _module = {
                 return new ApplicationPassword(name, <any>undefined, { urn })
             case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
                 return new ApplicationPreAuthorized(name, <any>undefined, { urn })
+            case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
+                return new ConditionalAccessPolicy(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "azuread:index/groupMember:GroupMember":
                 return new GroupMember(name, <any>undefined, { urn })
             case "azuread:index/invitation:Invitation":
                 return new Invitation(name, <any>undefined, { urn })
+            case "azuread:index/namedLocation:NamedLocation":
+                return new NamedLocation(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipal:ServicePrincipal":
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
@@ -84,9 +94,11 @@ pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/namedLocation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)

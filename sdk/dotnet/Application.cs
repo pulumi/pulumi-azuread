@@ -172,6 +172,12 @@ namespace Pulumi.AzureAD
         public Output<string?> SupportUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("templateId")]
+        public Output<string> TemplateId { get; private set; } = null!;
+
+        /// <summary>
         /// URL of the application's terms of service statement.
         /// </summary>
         [Output("termsOfServiceUrl")]
@@ -366,6 +372,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
+
+        /// <summary>
+        /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
 
         /// <summary>
         /// URL of the application's terms of service statement.
@@ -577,6 +589,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
+
+        /// <summary>
+        /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
 
         /// <summary>
         /// URL of the application's terms of service statement.

@@ -223,6 +223,140 @@ export interface ApplicationWebImplicitGrant {
     idTokenIssuanceEnabled?: boolean;
 }
 
+export interface ConditionalAccessPolicyConditions {
+    /**
+     * An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+     */
+    applications?: outputs.ConditionalAccessPolicyConditionsApplications;
+    /**
+     * A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+     */
+    clientAppTypes?: string[];
+    /**
+     * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+     */
+    locations?: outputs.ConditionalAccessPolicyConditionsLocations;
+    /**
+     * A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+     */
+    platforms?: outputs.ConditionalAccessPolicyConditionsPlatforms;
+    /**
+     * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     */
+    signInRiskLevels?: string[];
+    /**
+     * A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     */
+    userRiskLevels?: string[];
+    /**
+     * A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+     */
+    users?: outputs.ConditionalAccessPolicyConditionsUsers;
+}
+
+export interface ConditionalAccessPolicyConditionsApplications {
+    /**
+     * A list of application IDs explicitly excluded from the policy.
+     */
+    excludedApplications?: string[];
+    /**
+     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+     */
+    includedApplications: string[];
+    /**
+     * A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+     */
+    includedUserActions?: string[];
+}
+
+export interface ConditionalAccessPolicyConditionsLocations {
+    /**
+     * A list of location IDs excluded from scope of policy.
+     */
+    excludedLocations?: string[];
+    /**
+     * A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+     */
+    includedLocations: string[];
+}
+
+export interface ConditionalAccessPolicyConditionsPlatforms {
+    /**
+     * A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+     */
+    excludedPlatforms?: string[];
+    /**
+     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+     */
+    includedPlatforms: string[];
+}
+
+export interface ConditionalAccessPolicyConditionsUsers {
+    /**
+     * A list of group IDs excluded from scope of policy.
+     */
+    excludedGroups?: string[];
+    /**
+     * A list of role IDs excluded from scope of policy.
+     */
+    excludedRoles?: string[];
+    /**
+     * A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+     */
+    excludedUsers?: string[];
+    /**
+     * A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+     */
+    includedGroups?: string[];
+    /**
+     * A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+     */
+    includedRoles?: string[];
+    /**
+     * A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+     */
+    includedUsers?: string[];
+}
+
+export interface ConditionalAccessPolicyGrantControls {
+    /**
+     * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+     */
+    builtInControls: string[];
+    /**
+     * List of custom controls IDs required by the policy.
+     */
+    customAuthenticationFactors?: string[];
+    /**
+     * Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+     */
+    operator: string;
+    /**
+     * List of terms of use IDs required by the policy.
+     */
+    termsOfUses?: string[];
+}
+
+export interface ConditionalAccessPolicySessionControls {
+    /**
+     * Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     */
+    applicationEnforcedRestrictionsEnabled?: boolean;
+    /**
+     * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+     */
+    cloudAppSecurityPolicy?: string;
+    /**
+     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+     */
+    signInFrequency?: number;
+    /**
+     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
+     * ---
+     */
+    signInFrequencyPeriod?: string;
+}
+
 export interface GetApplicationApi {
     /**
      * A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
@@ -536,6 +670,60 @@ export interface GetServicePrincipalOauth2PermissionScope {
     value: string;
 }
 
+export interface GetServicePrincipalSamlSingleSignOn {
+    /**
+     * The relative URI the service provider would redirect to after completion of the single sign-on flow.
+     */
+    relayState: string;
+}
+
+export interface GetServicePrincipalsServicePrincipal {
+    /**
+     * Whether or not the service principal account is enabled.
+     */
+    accountEnabled: boolean;
+    /**
+     * Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+     */
+    appRoleAssignmentRequired: boolean;
+    /**
+     * The application ID (client ID) of the application associated with this service principal.
+     */
+    applicationId: string;
+    /**
+     * The tenant ID where the associated application is registered.
+     */
+    applicationTenantId: string;
+    /**
+     * The display name of the application associated with this service principal.
+     */
+    displayName: string;
+    /**
+     * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+     */
+    preferredSingleSignOnMode: string;
+    /**
+     * The URL where the service exposes SAML metadata for federation.
+     */
+    samlMetadataUrl: string;
+    /**
+     * A list of identifier URI(s), copied over from the associated application.
+     */
+    servicePrincipalNames: string[];
+    /**
+     * The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+     */
+    signInAudience: string;
+    /**
+     * A list of tags applied to the service principal.
+     */
+    tags: string[];
+    /**
+     * Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+     */
+    type: string;
+}
+
 export interface GetUsersUser {
     /**
      * Whether or not the account is enabled.
@@ -592,6 +780,28 @@ export interface InvitationMessage {
      * The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
      */
     language?: string;
+}
+
+export interface NamedLocationCountry {
+    /**
+     * List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     */
+    countriesAndRegions: string[];
+    /**
+     * Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+     */
+    includeUnknownCountriesAndRegions?: boolean;
+}
+
+export interface NamedLocationIp {
+    /**
+     * List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+     */
+    ipRanges: string[];
+    /**
+     * Whether the named location is trusted. Defaults to `false`.
+     */
+    trusted?: boolean;
 }
 
 export interface ServicePrincipalAppRole {
@@ -656,3 +866,9 @@ export interface ServicePrincipalOauth2PermissionScope {
     value: string;
 }
 
+export interface ServicePrincipalSamlSingleSignOn {
+    /**
+     * The relative URI the service provider would redirect to after completion of the single sign-on flow.
+     */
+    relayState?: string;
+}

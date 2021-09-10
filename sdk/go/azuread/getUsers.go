@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets object IDs or user principal names for multiple Azure Active Directory users.
+// Gets basic information for multiple Azure Active Directory users.
 //
 // ## API Permissions
 //

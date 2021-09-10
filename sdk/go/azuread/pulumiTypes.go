@@ -1855,6 +1855,1338 @@ func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.Bo
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ConditionalAccessPolicyConditions struct {
+	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+	Applications *ConditionalAccessPolicyConditionsApplications `pulumi:"applications"`
+	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+	ClientAppTypes []string `pulumi:"clientAppTypes"`
+	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
+	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+	Platforms *ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
+	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	SignInRiskLevels []string `pulumi:"signInRiskLevels"`
+	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	UserRiskLevels []string `pulumi:"userRiskLevels"`
+	// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+	Users *ConditionalAccessPolicyConditionsUsers `pulumi:"users"`
+}
+
+// ConditionalAccessPolicyConditionsInput is an input type that accepts ConditionalAccessPolicyConditionsArgs and ConditionalAccessPolicyConditionsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsInput` via:
+//
+//          ConditionalAccessPolicyConditionsArgs{...}
+type ConditionalAccessPolicyConditionsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsOutput() ConditionalAccessPolicyConditionsOutput
+	ToConditionalAccessPolicyConditionsOutputWithContext(context.Context) ConditionalAccessPolicyConditionsOutput
+}
+
+type ConditionalAccessPolicyConditionsArgs struct {
+	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+	Applications ConditionalAccessPolicyConditionsApplicationsPtrInput `pulumi:"applications"`
+	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+	ClientAppTypes pulumi.StringArrayInput `pulumi:"clientAppTypes"`
+	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
+	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+	Platforms ConditionalAccessPolicyConditionsPlatformsPtrInput `pulumi:"platforms"`
+	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	SignInRiskLevels pulumi.StringArrayInput `pulumi:"signInRiskLevels"`
+	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	UserRiskLevels pulumi.StringArrayInput `pulumi:"userRiskLevels"`
+	// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+	Users ConditionalAccessPolicyConditionsUsersPtrInput `pulumi:"users"`
+}
+
+func (ConditionalAccessPolicyConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditions)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditionsOutput() ConditionalAccessPolicyConditionsOutput {
+	return i.ToConditionalAccessPolicyConditionsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditionsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsOutput).ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsArgs, ConditionalAccessPolicyConditionsPtr and ConditionalAccessPolicyConditionsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsPtrInput` via:
+//
+//          ConditionalAccessPolicyConditionsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicyConditionsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput
+	ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsPtrOutput
+}
+
+type conditionalAccessPolicyConditionsPtrType ConditionalAccessPolicyConditionsArgs
+
+func ConditionalAccessPolicyConditionsPtr(v *ConditionalAccessPolicyConditionsArgs) ConditionalAccessPolicyConditionsPtrInput {
+	return (*conditionalAccessPolicyConditionsPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditions)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsPtrType) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsPtrType) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditions)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsOutput() ConditionalAccessPolicyConditionsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditions {
+		return &v
+	}).(ConditionalAccessPolicyConditionsPtrOutput)
+}
+
+// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsOutput) Applications() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsApplications {
+		return v.Applications
+	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
+}
+
+// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+func (o ConditionalAccessPolicyConditionsOutput) ClientAppTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.ClientAppTypes }).(pulumi.StringArrayOutput)
+}
+
+// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
+		return v.Locations
+	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
+}
+
+// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
+		return v.Platforms
+	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
+}
+
+// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsOutput) SignInRiskLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.SignInRiskLevels }).(pulumi.StringArrayOutput)
+}
+
+// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsOutput) UserRiskLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.UserRiskLevels }).(pulumi.StringArrayOutput)
+}
+
+// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsOutput) Users() ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsUsers { return v.Users }).(ConditionalAccessPolicyConditionsUsersPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditions)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsPtrOutput) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsPtrOutput) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsPtrOutput) Elem() ConditionalAccessPolicyConditionsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditions { return *v }).(ConditionalAccessPolicyConditionsOutput)
+}
+
+// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsPtrOutput) Applications() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsApplications {
+		if v == nil {
+			return nil
+		}
+		return v.Applications
+	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
+}
+
+// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+func (o ConditionalAccessPolicyConditionsPtrOutput) ClientAppTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientAppTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
+		if v == nil {
+			return nil
+		}
+		return v.Locations
+	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
+}
+
+// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
+		if v == nil {
+			return nil
+		}
+		return v.Platforms
+	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
+}
+
+// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPtrOutput) SignInRiskLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SignInRiskLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPtrOutput) UserRiskLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserRiskLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsUsers {
+		if v == nil {
+			return nil
+		}
+		return v.Users
+	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsApplications struct {
+	// A list of application IDs explicitly excluded from the policy.
+	ExcludedApplications []string `pulumi:"excludedApplications"`
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+	IncludedApplications []string `pulumi:"includedApplications"`
+	// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+	IncludedUserActions []string `pulumi:"includedUserActions"`
+}
+
+// ConditionalAccessPolicyConditionsApplicationsInput is an input type that accepts ConditionalAccessPolicyConditionsApplicationsArgs and ConditionalAccessPolicyConditionsApplicationsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsApplicationsInput` via:
+//
+//          ConditionalAccessPolicyConditionsApplicationsArgs{...}
+type ConditionalAccessPolicyConditionsApplicationsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsApplicationsOutput() ConditionalAccessPolicyConditionsApplicationsOutput
+	ToConditionalAccessPolicyConditionsApplicationsOutputWithContext(context.Context) ConditionalAccessPolicyConditionsApplicationsOutput
+}
+
+type ConditionalAccessPolicyConditionsApplicationsArgs struct {
+	// A list of application IDs explicitly excluded from the policy.
+	ExcludedApplications pulumi.StringArrayInput `pulumi:"excludedApplications"`
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+	IncludedApplications pulumi.StringArrayInput `pulumi:"includedApplications"`
+	// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+	IncludedUserActions pulumi.StringArrayInput `pulumi:"includedUserActions"`
+}
+
+func (ConditionalAccessPolicyConditionsApplicationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsApplications)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPolicyConditionsApplicationsOutput() ConditionalAccessPolicyConditionsApplicationsOutput {
+	return i.ToConditionalAccessPolicyConditionsApplicationsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPolicyConditionsApplicationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsApplicationsOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsApplicationsOutput).ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsApplicationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsApplicationsArgs, ConditionalAccessPolicyConditionsApplicationsPtr and ConditionalAccessPolicyConditionsApplicationsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsApplicationsPtrInput` via:
+//
+//          ConditionalAccessPolicyConditionsApplicationsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicyConditionsApplicationsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput
+	ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput
+}
+
+type conditionalAccessPolicyConditionsApplicationsPtrType ConditionalAccessPolicyConditionsApplicationsArgs
+
+func ConditionalAccessPolicyConditionsApplicationsPtr(v *ConditionalAccessPolicyConditionsApplicationsArgs) ConditionalAccessPolicyConditionsApplicationsPtrInput {
+	return (*conditionalAccessPolicyConditionsApplicationsPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsApplicationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsApplications)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsApplicationsPtrType) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsApplicationsPtrType) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsApplicationsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsApplicationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsApplications)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsOutput() ConditionalAccessPolicyConditionsApplicationsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) *ConditionalAccessPolicyConditionsApplications {
+		return &v
+	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
+}
+
+// A list of application IDs explicitly excluded from the policy.
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) ExcludedApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.ExcludedApplications }).(pulumi.StringArrayOutput)
+}
+
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedApplications }).(pulumi.StringArrayOutput)
+}
+
+// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedUserActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedUserActions }).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsApplicationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsApplicationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsApplications)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) Elem() ConditionalAccessPolicyConditionsApplicationsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) ConditionalAccessPolicyConditionsApplications {
+		return *v
+	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
+}
+
+// A list of application IDs explicitly excluded from the policy.
+func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedApplications
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplications() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedApplications
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedUserActions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsLocations struct {
+	// A list of location IDs excluded from scope of policy.
+	ExcludedLocations []string `pulumi:"excludedLocations"`
+	// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+	IncludedLocations []string `pulumi:"includedLocations"`
+}
+
+// ConditionalAccessPolicyConditionsLocationsInput is an input type that accepts ConditionalAccessPolicyConditionsLocationsArgs and ConditionalAccessPolicyConditionsLocationsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsLocationsInput` via:
+//
+//          ConditionalAccessPolicyConditionsLocationsArgs{...}
+type ConditionalAccessPolicyConditionsLocationsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsLocationsOutput() ConditionalAccessPolicyConditionsLocationsOutput
+	ToConditionalAccessPolicyConditionsLocationsOutputWithContext(context.Context) ConditionalAccessPolicyConditionsLocationsOutput
+}
+
+type ConditionalAccessPolicyConditionsLocationsArgs struct {
+	// A list of location IDs excluded from scope of policy.
+	ExcludedLocations pulumi.StringArrayInput `pulumi:"excludedLocations"`
+	// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+	IncludedLocations pulumi.StringArrayInput `pulumi:"includedLocations"`
+}
+
+func (ConditionalAccessPolicyConditionsLocationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsLocations)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolicyConditionsLocationsOutput() ConditionalAccessPolicyConditionsLocationsOutput {
+	return i.ToConditionalAccessPolicyConditionsLocationsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolicyConditionsLocationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsLocationsOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsLocationsOutput).ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsLocationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsLocationsArgs, ConditionalAccessPolicyConditionsLocationsPtr and ConditionalAccessPolicyConditionsLocationsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsLocationsPtrInput` via:
+//
+//          ConditionalAccessPolicyConditionsLocationsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicyConditionsLocationsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput
+	ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput
+}
+
+type conditionalAccessPolicyConditionsLocationsPtrType ConditionalAccessPolicyConditionsLocationsArgs
+
+func ConditionalAccessPolicyConditionsLocationsPtr(v *ConditionalAccessPolicyConditionsLocationsArgs) ConditionalAccessPolicyConditionsLocationsPtrInput {
+	return (*conditionalAccessPolicyConditionsLocationsPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsLocationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsLocations)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsLocationsPtrType) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsLocationsPtrType) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsLocationsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsLocationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsLocations)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsOutput() ConditionalAccessPolicyConditionsLocationsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) *ConditionalAccessPolicyConditionsLocations {
+		return &v
+	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
+}
+
+// A list of location IDs excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsLocationsOutput) ExcludedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.ExcludedLocations }).(pulumi.StringArrayOutput)
+}
+
+// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+func (o ConditionalAccessPolicyConditionsLocationsOutput) IncludedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.IncludedLocations }).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsLocationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsLocationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsLocations)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) Elem() ConditionalAccessPolicyConditionsLocationsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) ConditionalAccessPolicyConditionsLocations {
+		return *v
+	}).(ConditionalAccessPolicyConditionsLocationsOutput)
+}
+
+// A list of location IDs excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ExcludedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedLocations
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) IncludedLocations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedLocations
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsPlatforms struct {
+	// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	ExcludedPlatforms []string `pulumi:"excludedPlatforms"`
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	IncludedPlatforms []string `pulumi:"includedPlatforms"`
+}
+
+// ConditionalAccessPolicyConditionsPlatformsInput is an input type that accepts ConditionalAccessPolicyConditionsPlatformsArgs and ConditionalAccessPolicyConditionsPlatformsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsPlatformsInput` via:
+//
+//          ConditionalAccessPolicyConditionsPlatformsArgs{...}
+type ConditionalAccessPolicyConditionsPlatformsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsPlatformsOutput() ConditionalAccessPolicyConditionsPlatformsOutput
+	ToConditionalAccessPolicyConditionsPlatformsOutputWithContext(context.Context) ConditionalAccessPolicyConditionsPlatformsOutput
+}
+
+type ConditionalAccessPolicyConditionsPlatformsArgs struct {
+	// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	ExcludedPlatforms pulumi.StringArrayInput `pulumi:"excludedPlatforms"`
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	IncludedPlatforms pulumi.StringArrayInput `pulumi:"includedPlatforms"`
+}
+
+func (ConditionalAccessPolicyConditionsPlatformsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsPlatforms)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolicyConditionsPlatformsOutput() ConditionalAccessPolicyConditionsPlatformsOutput {
+	return i.ToConditionalAccessPolicyConditionsPlatformsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolicyConditionsPlatformsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPlatformsOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPlatformsOutput).ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsPlatformsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsPlatformsArgs, ConditionalAccessPolicyConditionsPlatformsPtr and ConditionalAccessPolicyConditionsPlatformsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsPlatformsPtrInput` via:
+//
+//          ConditionalAccessPolicyConditionsPlatformsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicyConditionsPlatformsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput
+	ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput
+}
+
+type conditionalAccessPolicyConditionsPlatformsPtrType ConditionalAccessPolicyConditionsPlatformsArgs
+
+func ConditionalAccessPolicyConditionsPlatformsPtr(v *ConditionalAccessPolicyConditionsPlatformsArgs) ConditionalAccessPolicyConditionsPlatformsPtrInput {
+	return (*conditionalAccessPolicyConditionsPlatformsPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsPlatformsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsPlatforms)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsPlatformsPtrType) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsPlatformsPtrType) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsPlatformsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsPlatformsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsPlatforms)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsOutput() ConditionalAccessPolicyConditionsPlatformsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) *ConditionalAccessPolicyConditionsPlatforms {
+		return &v
+	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
+}
+
+// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPlatformsOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.ExcludedPlatforms }).(pulumi.StringArrayOutput)
+}
+
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPlatformsOutput) IncludedPlatforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.IncludedPlatforms }).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsPlatformsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsPlatformsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsPlatforms)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) Elem() ConditionalAccessPolicyConditionsPlatformsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) ConditionalAccessPolicyConditionsPlatforms {
+		return *v
+	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
+}
+
+// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedPlatforms
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedPlatforms
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsers struct {
+	// A list of group IDs excluded from scope of policy.
+	ExcludedGroups []string `pulumi:"excludedGroups"`
+	// A list of role IDs excluded from scope of policy.
+	ExcludedRoles []string `pulumi:"excludedRoles"`
+	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+	ExcludedUsers []string `pulumi:"excludedUsers"`
+	// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+	IncludedGroups []string `pulumi:"includedGroups"`
+	// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+	IncludedRoles []string `pulumi:"includedRoles"`
+	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+	IncludedUsers []string `pulumi:"includedUsers"`
+}
+
+// ConditionalAccessPolicyConditionsUsersInput is an input type that accepts ConditionalAccessPolicyConditionsUsersArgs and ConditionalAccessPolicyConditionsUsersOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersInput` via:
+//
+//          ConditionalAccessPolicyConditionsUsersArgs{...}
+type ConditionalAccessPolicyConditionsUsersInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersOutput() ConditionalAccessPolicyConditionsUsersOutput
+	ToConditionalAccessPolicyConditionsUsersOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersOutput
+}
+
+type ConditionalAccessPolicyConditionsUsersArgs struct {
+	// A list of group IDs excluded from scope of policy.
+	ExcludedGroups pulumi.StringArrayInput `pulumi:"excludedGroups"`
+	// A list of role IDs excluded from scope of policy.
+	ExcludedRoles pulumi.StringArrayInput `pulumi:"excludedRoles"`
+	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
+	// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+	IncludedGroups pulumi.StringArrayInput `pulumi:"includedGroups"`
+	// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+	IncludedRoles pulumi.StringArrayInput `pulumi:"includedRoles"`
+	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+	IncludedUsers pulumi.StringArrayInput `pulumi:"includedUsers"`
+}
+
+func (ConditionalAccessPolicyConditionsUsersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsers)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyConditionsUsersOutput() ConditionalAccessPolicyConditionsUsersOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyConditionsUsersOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersOutput).ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsUsersPtrInput is an input type that accepts ConditionalAccessPolicyConditionsUsersArgs, ConditionalAccessPolicyConditionsUsersPtr and ConditionalAccessPolicyConditionsUsersPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersPtrInput` via:
+//
+//          ConditionalAccessPolicyConditionsUsersArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicyConditionsUsersPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput
+	ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput
+}
+
+type conditionalAccessPolicyConditionsUsersPtrType ConditionalAccessPolicyConditionsUsersArgs
+
+func ConditionalAccessPolicyConditionsUsersPtr(v *ConditionalAccessPolicyConditionsUsersArgs) ConditionalAccessPolicyConditionsUsersPtrInput {
+	return (*conditionalAccessPolicyConditionsUsersPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsUsersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsUsers)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsUsersPtrType) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsUsersPtrType) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsUsers)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersOutput() ConditionalAccessPolicyConditionsUsersOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) *ConditionalAccessPolicyConditionsUsers {
+		return &v
+	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
+}
+
+// A list of group IDs excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedGroups }).(pulumi.StringArrayOutput)
+}
+
+// A list of role IDs excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedRoles }).(pulumi.StringArrayOutput)
+}
+
+// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedUsers }).(pulumi.StringArrayOutput)
+}
+
+// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedGroups }).(pulumi.StringArrayOutput)
+}
+
+// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedRoles }).(pulumi.StringArrayOutput)
+}
+
+// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedUsers }).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsUsersPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsUsersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsUsers)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) Elem() ConditionalAccessPolicyConditionsUsersOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) ConditionalAccessPolicyConditionsUsers { return *v }).(ConditionalAccessPolicyConditionsUsersOutput)
+}
+
+// A list of group IDs excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of role IDs excluded from scope of policy.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedRoles
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedUsers
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedRoles
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedUsers
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyGrantControls struct {
+	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+	BuiltInControls []string `pulumi:"builtInControls"`
+	// List of custom controls IDs required by the policy.
+	CustomAuthenticationFactors []string `pulumi:"customAuthenticationFactors"`
+	// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+	Operator string `pulumi:"operator"`
+	// List of terms of use IDs required by the policy.
+	TermsOfUses []string `pulumi:"termsOfUses"`
+}
+
+// ConditionalAccessPolicyGrantControlsInput is an input type that accepts ConditionalAccessPolicyGrantControlsArgs and ConditionalAccessPolicyGrantControlsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyGrantControlsInput` via:
+//
+//          ConditionalAccessPolicyGrantControlsArgs{...}
+type ConditionalAccessPolicyGrantControlsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyGrantControlsOutput() ConditionalAccessPolicyGrantControlsOutput
+	ToConditionalAccessPolicyGrantControlsOutputWithContext(context.Context) ConditionalAccessPolicyGrantControlsOutput
+}
+
+type ConditionalAccessPolicyGrantControlsArgs struct {
+	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+	BuiltInControls pulumi.StringArrayInput `pulumi:"builtInControls"`
+	// List of custom controls IDs required by the policy.
+	CustomAuthenticationFactors pulumi.StringArrayInput `pulumi:"customAuthenticationFactors"`
+	// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of terms of use IDs required by the policy.
+	TermsOfUses pulumi.StringArrayInput `pulumi:"termsOfUses"`
+}
+
+func (ConditionalAccessPolicyGrantControlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyGrantControls)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrantControlsOutput() ConditionalAccessPolicyGrantControlsOutput {
+	return i.ToConditionalAccessPolicyGrantControlsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrantControlsOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyGrantControlsOutput)
+}
+
+func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
+	return i.ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyGrantControlsOutput).ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyGrantControlsPtrInput is an input type that accepts ConditionalAccessPolicyGrantControlsArgs, ConditionalAccessPolicyGrantControlsPtr and ConditionalAccessPolicyGrantControlsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyGrantControlsPtrInput` via:
+//
+//          ConditionalAccessPolicyGrantControlsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicyGrantControlsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput
+	ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Context) ConditionalAccessPolicyGrantControlsPtrOutput
+}
+
+type conditionalAccessPolicyGrantControlsPtrType ConditionalAccessPolicyGrantControlsArgs
+
+func ConditionalAccessPolicyGrantControlsPtr(v *ConditionalAccessPolicyGrantControlsArgs) ConditionalAccessPolicyGrantControlsPtrInput {
+	return (*conditionalAccessPolicyGrantControlsPtrType)(v)
+}
+
+func (*conditionalAccessPolicyGrantControlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyGrantControls)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyGrantControlsPtrType) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
+	return i.ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyGrantControlsPtrType) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyGrantControlsPtrOutput)
+}
+
+type ConditionalAccessPolicyGrantControlsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyGrantControlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyGrantControls)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsOutput() ConditionalAccessPolicyGrantControlsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
+	return o.ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) *ConditionalAccessPolicyGrantControls {
+		return &v
+	}).(ConditionalAccessPolicyGrantControlsPtrOutput)
+}
+
+// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyGrantControlsOutput) BuiltInControls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.BuiltInControls }).(pulumi.StringArrayOutput)
+}
+
+// List of custom controls IDs required by the policy.
+func (o ConditionalAccessPolicyGrantControlsOutput) CustomAuthenticationFactors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.CustomAuthenticationFactors }).(pulumi.StringArrayOutput)
+}
+
+// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+func (o ConditionalAccessPolicyGrantControlsOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// List of terms of use IDs required by the policy.
+func (o ConditionalAccessPolicyGrantControlsOutput) TermsOfUses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.TermsOfUses }).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyGrantControlsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyGrantControlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyGrantControls)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) Elem() ConditionalAccessPolicyGrantControlsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) ConditionalAccessPolicyGrantControls { return *v }).(ConditionalAccessPolicyGrantControlsOutput)
+}
+
+// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) BuiltInControls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BuiltInControls
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of custom controls IDs required by the policy.
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) CustomAuthenticationFactors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomAuthenticationFactors
+	}).(pulumi.StringArrayOutput)
+}
+
+// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) Operator() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Operator
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of terms of use IDs required by the policy.
+func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
+		if v == nil {
+			return nil
+		}
+		return v.TermsOfUses
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicySessionControls struct {
+	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+	ApplicationEnforcedRestrictionsEnabled *bool `pulumi:"applicationEnforcedRestrictionsEnabled"`
+	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+	CloudAppSecurityPolicy *string `pulumi:"cloudAppSecurityPolicy"`
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+	SignInFrequency *int `pulumi:"signInFrequency"`
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
+	// ---
+	SignInFrequencyPeriod *string `pulumi:"signInFrequencyPeriod"`
+}
+
+// ConditionalAccessPolicySessionControlsInput is an input type that accepts ConditionalAccessPolicySessionControlsArgs and ConditionalAccessPolicySessionControlsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicySessionControlsInput` via:
+//
+//          ConditionalAccessPolicySessionControlsArgs{...}
+type ConditionalAccessPolicySessionControlsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicySessionControlsOutput() ConditionalAccessPolicySessionControlsOutput
+	ToConditionalAccessPolicySessionControlsOutputWithContext(context.Context) ConditionalAccessPolicySessionControlsOutput
+}
+
+type ConditionalAccessPolicySessionControlsArgs struct {
+	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput `pulumi:"applicationEnforcedRestrictionsEnabled"`
+	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+	CloudAppSecurityPolicy pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+	SignInFrequency pulumi.IntPtrInput `pulumi:"signInFrequency"`
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
+	// ---
+	SignInFrequencyPeriod pulumi.StringPtrInput `pulumi:"signInFrequencyPeriod"`
+}
+
+func (ConditionalAccessPolicySessionControlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicySessionControls)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicySessionControlsArgs) ToConditionalAccessPolicySessionControlsOutput() ConditionalAccessPolicySessionControlsOutput {
+	return i.ToConditionalAccessPolicySessionControlsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicySessionControlsArgs) ToConditionalAccessPolicySessionControlsOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicySessionControlsOutput)
+}
+
+func (i ConditionalAccessPolicySessionControlsArgs) ToConditionalAccessPolicySessionControlsPtrOutput() ConditionalAccessPolicySessionControlsPtrOutput {
+	return i.ToConditionalAccessPolicySessionControlsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicySessionControlsArgs) ToConditionalAccessPolicySessionControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicySessionControlsOutput).ToConditionalAccessPolicySessionControlsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicySessionControlsPtrInput is an input type that accepts ConditionalAccessPolicySessionControlsArgs, ConditionalAccessPolicySessionControlsPtr and ConditionalAccessPolicySessionControlsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicySessionControlsPtrInput` via:
+//
+//          ConditionalAccessPolicySessionControlsArgs{...}
+//
+//  or:
+//
+//          nil
+type ConditionalAccessPolicySessionControlsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicySessionControlsPtrOutput() ConditionalAccessPolicySessionControlsPtrOutput
+	ToConditionalAccessPolicySessionControlsPtrOutputWithContext(context.Context) ConditionalAccessPolicySessionControlsPtrOutput
+}
+
+type conditionalAccessPolicySessionControlsPtrType ConditionalAccessPolicySessionControlsArgs
+
+func ConditionalAccessPolicySessionControlsPtr(v *ConditionalAccessPolicySessionControlsArgs) ConditionalAccessPolicySessionControlsPtrInput {
+	return (*conditionalAccessPolicySessionControlsPtrType)(v)
+}
+
+func (*conditionalAccessPolicySessionControlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicySessionControls)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicySessionControlsPtrType) ToConditionalAccessPolicySessionControlsPtrOutput() ConditionalAccessPolicySessionControlsPtrOutput {
+	return i.ToConditionalAccessPolicySessionControlsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicySessionControlsPtrType) ToConditionalAccessPolicySessionControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicySessionControlsPtrOutput)
+}
+
+type ConditionalAccessPolicySessionControlsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicySessionControlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicySessionControls)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicySessionControlsOutput() ConditionalAccessPolicySessionControlsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicySessionControlsOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicySessionControlsPtrOutput() ConditionalAccessPolicySessionControlsPtrOutput {
+	return o.ToConditionalAccessPolicySessionControlsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicySessionControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *ConditionalAccessPolicySessionControls {
+		return &v
+	}).(ConditionalAccessPolicySessionControlsPtrOutput)
+}
+
+// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+func (o ConditionalAccessPolicySessionControlsOutput) ApplicationEnforcedRestrictionsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *bool { return v.ApplicationEnforcedRestrictionsEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+func (o ConditionalAccessPolicySessionControlsOutput) CloudAppSecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.CloudAppSecurityPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *int { return v.SignInFrequency }).(pulumi.IntPtrOutput)
+}
+
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
+// ---
+func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.SignInFrequencyPeriod }).(pulumi.StringPtrOutput)
+}
+
+type ConditionalAccessPolicySessionControlsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicySessionControlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicySessionControls)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicySessionControlsPtrOutput) ToConditionalAccessPolicySessionControlsPtrOutput() ConditionalAccessPolicySessionControlsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicySessionControlsPtrOutput) ToConditionalAccessPolicySessionControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicySessionControlsPtrOutput) Elem() ConditionalAccessPolicySessionControlsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) ConditionalAccessPolicySessionControls { return *v }).(ConditionalAccessPolicySessionControlsOutput)
+}
+
+// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) ApplicationEnforcedRestrictionsEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationEnforcedRestrictionsEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CloudAppSecurityPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *int {
+		if v == nil {
+			return nil
+		}
+		return v.SignInFrequency
+	}).(pulumi.IntPtrOutput)
+}
+
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
+// ---
+func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SignInFrequencyPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
 type InvitationMessage struct {
 	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 	AdditionalRecipients *string `pulumi:"additionalRecipients"`
@@ -2022,6 +3354,306 @@ func (o InvitationMessagePtrOutput) Language() pulumi.StringPtrOutput {
 		}
 		return v.Language
 	}).(pulumi.StringPtrOutput)
+}
+
+type NamedLocationCountry struct {
+	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+	CountriesAndRegions []string `pulumi:"countriesAndRegions"`
+	// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+	IncludeUnknownCountriesAndRegions *bool `pulumi:"includeUnknownCountriesAndRegions"`
+}
+
+// NamedLocationCountryInput is an input type that accepts NamedLocationCountryArgs and NamedLocationCountryOutput values.
+// You can construct a concrete instance of `NamedLocationCountryInput` via:
+//
+//          NamedLocationCountryArgs{...}
+type NamedLocationCountryInput interface {
+	pulumi.Input
+
+	ToNamedLocationCountryOutput() NamedLocationCountryOutput
+	ToNamedLocationCountryOutputWithContext(context.Context) NamedLocationCountryOutput
+}
+
+type NamedLocationCountryArgs struct {
+	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+	CountriesAndRegions pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
+	// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+	IncludeUnknownCountriesAndRegions pulumi.BoolPtrInput `pulumi:"includeUnknownCountriesAndRegions"`
+}
+
+func (NamedLocationCountryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedLocationCountry)(nil)).Elem()
+}
+
+func (i NamedLocationCountryArgs) ToNamedLocationCountryOutput() NamedLocationCountryOutput {
+	return i.ToNamedLocationCountryOutputWithContext(context.Background())
+}
+
+func (i NamedLocationCountryArgs) ToNamedLocationCountryOutputWithContext(ctx context.Context) NamedLocationCountryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationCountryOutput)
+}
+
+func (i NamedLocationCountryArgs) ToNamedLocationCountryPtrOutput() NamedLocationCountryPtrOutput {
+	return i.ToNamedLocationCountryPtrOutputWithContext(context.Background())
+}
+
+func (i NamedLocationCountryArgs) ToNamedLocationCountryPtrOutputWithContext(ctx context.Context) NamedLocationCountryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationCountryOutput).ToNamedLocationCountryPtrOutputWithContext(ctx)
+}
+
+// NamedLocationCountryPtrInput is an input type that accepts NamedLocationCountryArgs, NamedLocationCountryPtr and NamedLocationCountryPtrOutput values.
+// You can construct a concrete instance of `NamedLocationCountryPtrInput` via:
+//
+//          NamedLocationCountryArgs{...}
+//
+//  or:
+//
+//          nil
+type NamedLocationCountryPtrInput interface {
+	pulumi.Input
+
+	ToNamedLocationCountryPtrOutput() NamedLocationCountryPtrOutput
+	ToNamedLocationCountryPtrOutputWithContext(context.Context) NamedLocationCountryPtrOutput
+}
+
+type namedLocationCountryPtrType NamedLocationCountryArgs
+
+func NamedLocationCountryPtr(v *NamedLocationCountryArgs) NamedLocationCountryPtrInput {
+	return (*namedLocationCountryPtrType)(v)
+}
+
+func (*namedLocationCountryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedLocationCountry)(nil)).Elem()
+}
+
+func (i *namedLocationCountryPtrType) ToNamedLocationCountryPtrOutput() NamedLocationCountryPtrOutput {
+	return i.ToNamedLocationCountryPtrOutputWithContext(context.Background())
+}
+
+func (i *namedLocationCountryPtrType) ToNamedLocationCountryPtrOutputWithContext(ctx context.Context) NamedLocationCountryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationCountryPtrOutput)
+}
+
+type NamedLocationCountryOutput struct{ *pulumi.OutputState }
+
+func (NamedLocationCountryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedLocationCountry)(nil)).Elem()
+}
+
+func (o NamedLocationCountryOutput) ToNamedLocationCountryOutput() NamedLocationCountryOutput {
+	return o
+}
+
+func (o NamedLocationCountryOutput) ToNamedLocationCountryOutputWithContext(ctx context.Context) NamedLocationCountryOutput {
+	return o
+}
+
+func (o NamedLocationCountryOutput) ToNamedLocationCountryPtrOutput() NamedLocationCountryPtrOutput {
+	return o.ToNamedLocationCountryPtrOutputWithContext(context.Background())
+}
+
+func (o NamedLocationCountryOutput) ToNamedLocationCountryPtrOutputWithContext(ctx context.Context) NamedLocationCountryPtrOutput {
+	return o.ApplyT(func(v NamedLocationCountry) *NamedLocationCountry {
+		return &v
+	}).(NamedLocationCountryPtrOutput)
+}
+
+// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+func (o NamedLocationCountryOutput) CountriesAndRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamedLocationCountry) []string { return v.CountriesAndRegions }).(pulumi.StringArrayOutput)
+}
+
+// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+func (o NamedLocationCountryOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NamedLocationCountry) *bool { return v.IncludeUnknownCountriesAndRegions }).(pulumi.BoolPtrOutput)
+}
+
+type NamedLocationCountryPtrOutput struct{ *pulumi.OutputState }
+
+func (NamedLocationCountryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedLocationCountry)(nil)).Elem()
+}
+
+func (o NamedLocationCountryPtrOutput) ToNamedLocationCountryPtrOutput() NamedLocationCountryPtrOutput {
+	return o
+}
+
+func (o NamedLocationCountryPtrOutput) ToNamedLocationCountryPtrOutputWithContext(ctx context.Context) NamedLocationCountryPtrOutput {
+	return o
+}
+
+func (o NamedLocationCountryPtrOutput) Elem() NamedLocationCountryOutput {
+	return o.ApplyT(func(v *NamedLocationCountry) NamedLocationCountry { return *v }).(NamedLocationCountryOutput)
+}
+
+// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+func (o NamedLocationCountryPtrOutput) CountriesAndRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NamedLocationCountry) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CountriesAndRegions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+func (o NamedLocationCountryPtrOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NamedLocationCountry) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeUnknownCountriesAndRegions
+	}).(pulumi.BoolPtrOutput)
+}
+
+type NamedLocationIp struct {
+	// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+	IpRanges []string `pulumi:"ipRanges"`
+	// Whether the named location is trusted. Defaults to `false`.
+	Trusted *bool `pulumi:"trusted"`
+}
+
+// NamedLocationIpInput is an input type that accepts NamedLocationIpArgs and NamedLocationIpOutput values.
+// You can construct a concrete instance of `NamedLocationIpInput` via:
+//
+//          NamedLocationIpArgs{...}
+type NamedLocationIpInput interface {
+	pulumi.Input
+
+	ToNamedLocationIpOutput() NamedLocationIpOutput
+	ToNamedLocationIpOutputWithContext(context.Context) NamedLocationIpOutput
+}
+
+type NamedLocationIpArgs struct {
+	// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	// Whether the named location is trusted. Defaults to `false`.
+	Trusted pulumi.BoolPtrInput `pulumi:"trusted"`
+}
+
+func (NamedLocationIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedLocationIp)(nil)).Elem()
+}
+
+func (i NamedLocationIpArgs) ToNamedLocationIpOutput() NamedLocationIpOutput {
+	return i.ToNamedLocationIpOutputWithContext(context.Background())
+}
+
+func (i NamedLocationIpArgs) ToNamedLocationIpOutputWithContext(ctx context.Context) NamedLocationIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationIpOutput)
+}
+
+func (i NamedLocationIpArgs) ToNamedLocationIpPtrOutput() NamedLocationIpPtrOutput {
+	return i.ToNamedLocationIpPtrOutputWithContext(context.Background())
+}
+
+func (i NamedLocationIpArgs) ToNamedLocationIpPtrOutputWithContext(ctx context.Context) NamedLocationIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationIpOutput).ToNamedLocationIpPtrOutputWithContext(ctx)
+}
+
+// NamedLocationIpPtrInput is an input type that accepts NamedLocationIpArgs, NamedLocationIpPtr and NamedLocationIpPtrOutput values.
+// You can construct a concrete instance of `NamedLocationIpPtrInput` via:
+//
+//          NamedLocationIpArgs{...}
+//
+//  or:
+//
+//          nil
+type NamedLocationIpPtrInput interface {
+	pulumi.Input
+
+	ToNamedLocationIpPtrOutput() NamedLocationIpPtrOutput
+	ToNamedLocationIpPtrOutputWithContext(context.Context) NamedLocationIpPtrOutput
+}
+
+type namedLocationIpPtrType NamedLocationIpArgs
+
+func NamedLocationIpPtr(v *NamedLocationIpArgs) NamedLocationIpPtrInput {
+	return (*namedLocationIpPtrType)(v)
+}
+
+func (*namedLocationIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedLocationIp)(nil)).Elem()
+}
+
+func (i *namedLocationIpPtrType) ToNamedLocationIpPtrOutput() NamedLocationIpPtrOutput {
+	return i.ToNamedLocationIpPtrOutputWithContext(context.Background())
+}
+
+func (i *namedLocationIpPtrType) ToNamedLocationIpPtrOutputWithContext(ctx context.Context) NamedLocationIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationIpPtrOutput)
+}
+
+type NamedLocationIpOutput struct{ *pulumi.OutputState }
+
+func (NamedLocationIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NamedLocationIp)(nil)).Elem()
+}
+
+func (o NamedLocationIpOutput) ToNamedLocationIpOutput() NamedLocationIpOutput {
+	return o
+}
+
+func (o NamedLocationIpOutput) ToNamedLocationIpOutputWithContext(ctx context.Context) NamedLocationIpOutput {
+	return o
+}
+
+func (o NamedLocationIpOutput) ToNamedLocationIpPtrOutput() NamedLocationIpPtrOutput {
+	return o.ToNamedLocationIpPtrOutputWithContext(context.Background())
+}
+
+func (o NamedLocationIpOutput) ToNamedLocationIpPtrOutputWithContext(ctx context.Context) NamedLocationIpPtrOutput {
+	return o.ApplyT(func(v NamedLocationIp) *NamedLocationIp {
+		return &v
+	}).(NamedLocationIpPtrOutput)
+}
+
+// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+func (o NamedLocationIpOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NamedLocationIp) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+// Whether the named location is trusted. Defaults to `false`.
+func (o NamedLocationIpOutput) Trusted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NamedLocationIp) *bool { return v.Trusted }).(pulumi.BoolPtrOutput)
+}
+
+type NamedLocationIpPtrOutput struct{ *pulumi.OutputState }
+
+func (NamedLocationIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NamedLocationIp)(nil)).Elem()
+}
+
+func (o NamedLocationIpPtrOutput) ToNamedLocationIpPtrOutput() NamedLocationIpPtrOutput {
+	return o
+}
+
+func (o NamedLocationIpPtrOutput) ToNamedLocationIpPtrOutputWithContext(ctx context.Context) NamedLocationIpPtrOutput {
+	return o
+}
+
+func (o NamedLocationIpPtrOutput) Elem() NamedLocationIpOutput {
+	return o.ApplyT(func(v *NamedLocationIp) NamedLocationIp { return *v }).(NamedLocationIpOutput)
+}
+
+// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+func (o NamedLocationIpPtrOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NamedLocationIp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IpRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+// Whether the named location is trusted. Defaults to `false`.
+func (o NamedLocationIpPtrOutput) Trusted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NamedLocationIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Trusted
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ServicePrincipalAppRole struct {
@@ -2324,6 +3956,137 @@ func (o ServicePrincipalOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalOauth2PermissionScope {
 		return vs[0].([]ServicePrincipalOauth2PermissionScope)[vs[1].(int)]
 	}).(ServicePrincipalOauth2PermissionScopeOutput)
+}
+
+type ServicePrincipalSamlSingleSignOn struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+	RelayState *string `pulumi:"relayState"`
+}
+
+// ServicePrincipalSamlSingleSignOnInput is an input type that accepts ServicePrincipalSamlSingleSignOnArgs and ServicePrincipalSamlSingleSignOnOutput values.
+// You can construct a concrete instance of `ServicePrincipalSamlSingleSignOnInput` via:
+//
+//          ServicePrincipalSamlSingleSignOnArgs{...}
+type ServicePrincipalSamlSingleSignOnInput interface {
+	pulumi.Input
+
+	ToServicePrincipalSamlSingleSignOnOutput() ServicePrincipalSamlSingleSignOnOutput
+	ToServicePrincipalSamlSingleSignOnOutputWithContext(context.Context) ServicePrincipalSamlSingleSignOnOutput
+}
+
+type ServicePrincipalSamlSingleSignOnArgs struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+	RelayState pulumi.StringPtrInput `pulumi:"relayState"`
+}
+
+func (ServicePrincipalSamlSingleSignOnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (i ServicePrincipalSamlSingleSignOnArgs) ToServicePrincipalSamlSingleSignOnOutput() ServicePrincipalSamlSingleSignOnOutput {
+	return i.ToServicePrincipalSamlSingleSignOnOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalSamlSingleSignOnArgs) ToServicePrincipalSamlSingleSignOnOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSamlSingleSignOnOutput)
+}
+
+func (i ServicePrincipalSamlSingleSignOnArgs) ToServicePrincipalSamlSingleSignOnPtrOutput() ServicePrincipalSamlSingleSignOnPtrOutput {
+	return i.ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalSamlSingleSignOnArgs) ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSamlSingleSignOnOutput).ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(ctx)
+}
+
+// ServicePrincipalSamlSingleSignOnPtrInput is an input type that accepts ServicePrincipalSamlSingleSignOnArgs, ServicePrincipalSamlSingleSignOnPtr and ServicePrincipalSamlSingleSignOnPtrOutput values.
+// You can construct a concrete instance of `ServicePrincipalSamlSingleSignOnPtrInput` via:
+//
+//          ServicePrincipalSamlSingleSignOnArgs{...}
+//
+//  or:
+//
+//          nil
+type ServicePrincipalSamlSingleSignOnPtrInput interface {
+	pulumi.Input
+
+	ToServicePrincipalSamlSingleSignOnPtrOutput() ServicePrincipalSamlSingleSignOnPtrOutput
+	ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(context.Context) ServicePrincipalSamlSingleSignOnPtrOutput
+}
+
+type servicePrincipalSamlSingleSignOnPtrType ServicePrincipalSamlSingleSignOnArgs
+
+func ServicePrincipalSamlSingleSignOnPtr(v *ServicePrincipalSamlSingleSignOnArgs) ServicePrincipalSamlSingleSignOnPtrInput {
+	return (*servicePrincipalSamlSingleSignOnPtrType)(v)
+}
+
+func (*servicePrincipalSamlSingleSignOnPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (i *servicePrincipalSamlSingleSignOnPtrType) ToServicePrincipalSamlSingleSignOnPtrOutput() ServicePrincipalSamlSingleSignOnPtrOutput {
+	return i.ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(context.Background())
+}
+
+func (i *servicePrincipalSamlSingleSignOnPtrType) ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalSamlSingleSignOnPtrOutput)
+}
+
+type ServicePrincipalSamlSingleSignOnOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalSamlSingleSignOnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSignOnOutput() ServicePrincipalSamlSingleSignOnOutput {
+	return o
+}
+
+func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSignOnOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnOutput {
+	return o
+}
+
+func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSignOnPtrOutput() ServicePrincipalSamlSingleSignOnPtrOutput {
+	return o.ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(context.Background())
+}
+
+func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSamlSingleSignOn) *ServicePrincipalSamlSingleSignOn {
+		return &v
+	}).(ServicePrincipalSamlSingleSignOnPtrOutput)
+}
+
+// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+func (o ServicePrincipalSamlSingleSignOnOutput) RelayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalSamlSingleSignOn) *string { return v.RelayState }).(pulumi.StringPtrOutput)
+}
+
+type ServicePrincipalSamlSingleSignOnPtrOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalSamlSingleSignOnPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (o ServicePrincipalSamlSingleSignOnPtrOutput) ToServicePrincipalSamlSingleSignOnPtrOutput() ServicePrincipalSamlSingleSignOnPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalSamlSingleSignOnPtrOutput) ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnPtrOutput {
+	return o
+}
+
+func (o ServicePrincipalSamlSingleSignOnPtrOutput) Elem() ServicePrincipalSamlSingleSignOnOutput {
+	return o.ApplyT(func(v *ServicePrincipalSamlSingleSignOn) ServicePrincipalSamlSingleSignOn { return *v }).(ServicePrincipalSamlSingleSignOnOutput)
+}
+
+// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+func (o ServicePrincipalSamlSingleSignOnPtrOutput) RelayState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalSamlSingleSignOn) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RelayState
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetApplicationApi struct {
@@ -4336,6 +6099,290 @@ func (o GetServicePrincipalOauth2PermissionScopeArrayOutput) Index(i pulumi.IntI
 	}).(GetServicePrincipalOauth2PermissionScopeOutput)
 }
 
+type GetServicePrincipalSamlSingleSignOn struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+	RelayState string `pulumi:"relayState"`
+}
+
+// GetServicePrincipalSamlSingleSignOnInput is an input type that accepts GetServicePrincipalSamlSingleSignOnArgs and GetServicePrincipalSamlSingleSignOnOutput values.
+// You can construct a concrete instance of `GetServicePrincipalSamlSingleSignOnInput` via:
+//
+//          GetServicePrincipalSamlSingleSignOnArgs{...}
+type GetServicePrincipalSamlSingleSignOnInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalSamlSingleSignOnOutput() GetServicePrincipalSamlSingleSignOnOutput
+	ToGetServicePrincipalSamlSingleSignOnOutputWithContext(context.Context) GetServicePrincipalSamlSingleSignOnOutput
+}
+
+type GetServicePrincipalSamlSingleSignOnArgs struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+	RelayState pulumi.StringInput `pulumi:"relayState"`
+}
+
+func (GetServicePrincipalSamlSingleSignOnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (i GetServicePrincipalSamlSingleSignOnArgs) ToGetServicePrincipalSamlSingleSignOnOutput() GetServicePrincipalSamlSingleSignOnOutput {
+	return i.ToGetServicePrincipalSamlSingleSignOnOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalSamlSingleSignOnArgs) ToGetServicePrincipalSamlSingleSignOnOutputWithContext(ctx context.Context) GetServicePrincipalSamlSingleSignOnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalSamlSingleSignOnOutput)
+}
+
+// GetServicePrincipalSamlSingleSignOnArrayInput is an input type that accepts GetServicePrincipalSamlSingleSignOnArray and GetServicePrincipalSamlSingleSignOnArrayOutput values.
+// You can construct a concrete instance of `GetServicePrincipalSamlSingleSignOnArrayInput` via:
+//
+//          GetServicePrincipalSamlSingleSignOnArray{ GetServicePrincipalSamlSingleSignOnArgs{...} }
+type GetServicePrincipalSamlSingleSignOnArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalSamlSingleSignOnArrayOutput() GetServicePrincipalSamlSingleSignOnArrayOutput
+	ToGetServicePrincipalSamlSingleSignOnArrayOutputWithContext(context.Context) GetServicePrincipalSamlSingleSignOnArrayOutput
+}
+
+type GetServicePrincipalSamlSingleSignOnArray []GetServicePrincipalSamlSingleSignOnInput
+
+func (GetServicePrincipalSamlSingleSignOnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (i GetServicePrincipalSamlSingleSignOnArray) ToGetServicePrincipalSamlSingleSignOnArrayOutput() GetServicePrincipalSamlSingleSignOnArrayOutput {
+	return i.ToGetServicePrincipalSamlSingleSignOnArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalSamlSingleSignOnArray) ToGetServicePrincipalSamlSingleSignOnArrayOutputWithContext(ctx context.Context) GetServicePrincipalSamlSingleSignOnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalSamlSingleSignOnArrayOutput)
+}
+
+type GetServicePrincipalSamlSingleSignOnOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalSamlSingleSignOnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (o GetServicePrincipalSamlSingleSignOnOutput) ToGetServicePrincipalSamlSingleSignOnOutput() GetServicePrincipalSamlSingleSignOnOutput {
+	return o
+}
+
+func (o GetServicePrincipalSamlSingleSignOnOutput) ToGetServicePrincipalSamlSingleSignOnOutputWithContext(ctx context.Context) GetServicePrincipalSamlSingleSignOnOutput {
+	return o
+}
+
+// The relative URI the service provider would redirect to after completion of the single sign-on flow.
+func (o GetServicePrincipalSamlSingleSignOnOutput) RelayState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalSamlSingleSignOn) string { return v.RelayState }).(pulumi.StringOutput)
+}
+
+type GetServicePrincipalSamlSingleSignOnArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalSamlSingleSignOnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalSamlSingleSignOn)(nil)).Elem()
+}
+
+func (o GetServicePrincipalSamlSingleSignOnArrayOutput) ToGetServicePrincipalSamlSingleSignOnArrayOutput() GetServicePrincipalSamlSingleSignOnArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalSamlSingleSignOnArrayOutput) ToGetServicePrincipalSamlSingleSignOnArrayOutputWithContext(ctx context.Context) GetServicePrincipalSamlSingleSignOnArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalSamlSingleSignOnArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalSamlSingleSignOnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalSamlSingleSignOn {
+		return vs[0].([]GetServicePrincipalSamlSingleSignOn)[vs[1].(int)]
+	}).(GetServicePrincipalSamlSingleSignOnOutput)
+}
+
+type GetServicePrincipalsServicePrincipal struct {
+	// Whether or not the service principal account is enabled.
+	AccountEnabled bool `pulumi:"accountEnabled"`
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+	AppRoleAssignmentRequired bool `pulumi:"appRoleAssignmentRequired"`
+	// The application ID (client ID) of the application associated with this service principal.
+	ApplicationId string `pulumi:"applicationId"`
+	// The tenant ID where the associated application is registered.
+	ApplicationTenantId string `pulumi:"applicationTenantId"`
+	// The display name of the application associated with this service principal.
+	DisplayName string `pulumi:"displayName"`
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+	PreferredSingleSignOnMode string `pulumi:"preferredSingleSignOnMode"`
+	// The URL where the service exposes SAML metadata for federation.
+	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
+	// A list of identifier URI(s), copied over from the associated application.
+	ServicePrincipalNames []string `pulumi:"servicePrincipalNames"`
+	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	SignInAudience string `pulumi:"signInAudience"`
+	// A list of tags applied to the service principal.
+	Tags []string `pulumi:"tags"`
+	// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+	Type string `pulumi:"type"`
+}
+
+// GetServicePrincipalsServicePrincipalInput is an input type that accepts GetServicePrincipalsServicePrincipalArgs and GetServicePrincipalsServicePrincipalOutput values.
+// You can construct a concrete instance of `GetServicePrincipalsServicePrincipalInput` via:
+//
+//          GetServicePrincipalsServicePrincipalArgs{...}
+type GetServicePrincipalsServicePrincipalInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalsServicePrincipalOutput() GetServicePrincipalsServicePrincipalOutput
+	ToGetServicePrincipalsServicePrincipalOutputWithContext(context.Context) GetServicePrincipalsServicePrincipalOutput
+}
+
+type GetServicePrincipalsServicePrincipalArgs struct {
+	// Whether or not the service principal account is enabled.
+	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+	AppRoleAssignmentRequired pulumi.BoolInput `pulumi:"appRoleAssignmentRequired"`
+	// The application ID (client ID) of the application associated with this service principal.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The tenant ID where the associated application is registered.
+	ApplicationTenantId pulumi.StringInput `pulumi:"applicationTenantId"`
+	// The display name of the application associated with this service principal.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+	PreferredSingleSignOnMode pulumi.StringInput `pulumi:"preferredSingleSignOnMode"`
+	// The URL where the service exposes SAML metadata for federation.
+	SamlMetadataUrl pulumi.StringInput `pulumi:"samlMetadataUrl"`
+	// A list of identifier URI(s), copied over from the associated application.
+	ServicePrincipalNames pulumi.StringArrayInput `pulumi:"servicePrincipalNames"`
+	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	SignInAudience pulumi.StringInput `pulumi:"signInAudience"`
+	// A list of tags applied to the service principal.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetServicePrincipalsServicePrincipalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (i GetServicePrincipalsServicePrincipalArgs) ToGetServicePrincipalsServicePrincipalOutput() GetServicePrincipalsServicePrincipalOutput {
+	return i.ToGetServicePrincipalsServicePrincipalOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalsServicePrincipalArgs) ToGetServicePrincipalsServicePrincipalOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsServicePrincipalOutput)
+}
+
+// GetServicePrincipalsServicePrincipalArrayInput is an input type that accepts GetServicePrincipalsServicePrincipalArray and GetServicePrincipalsServicePrincipalArrayOutput values.
+// You can construct a concrete instance of `GetServicePrincipalsServicePrincipalArrayInput` via:
+//
+//          GetServicePrincipalsServicePrincipalArray{ GetServicePrincipalsServicePrincipalArgs{...} }
+type GetServicePrincipalsServicePrincipalArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalsServicePrincipalArrayOutput() GetServicePrincipalsServicePrincipalArrayOutput
+	ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(context.Context) GetServicePrincipalsServicePrincipalArrayOutput
+}
+
+type GetServicePrincipalsServicePrincipalArray []GetServicePrincipalsServicePrincipalInput
+
+func (GetServicePrincipalsServicePrincipalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (i GetServicePrincipalsServicePrincipalArray) ToGetServicePrincipalsServicePrincipalArrayOutput() GetServicePrincipalsServicePrincipalArrayOutput {
+	return i.ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalsServicePrincipalArray) ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalsServicePrincipalArrayOutput)
+}
+
+type GetServicePrincipalsServicePrincipalOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsServicePrincipalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsServicePrincipalOutput) ToGetServicePrincipalsServicePrincipalOutput() GetServicePrincipalsServicePrincipalOutput {
+	return o
+}
+
+func (o GetServicePrincipalsServicePrincipalOutput) ToGetServicePrincipalsServicePrincipalOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalOutput {
+	return o
+}
+
+// Whether or not the service principal account is enabled.
+func (o GetServicePrincipalsServicePrincipalOutput) AccountEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+func (o GetServicePrincipalsServicePrincipalOutput) AppRoleAssignmentRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.AppRoleAssignmentRequired }).(pulumi.BoolOutput)
+}
+
+// The application ID (client ID) of the application associated with this service principal.
+func (o GetServicePrincipalsServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The tenant ID where the associated application is registered.
+func (o GetServicePrincipalsServicePrincipalOutput) ApplicationTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationTenantId }).(pulumi.StringOutput)
+}
+
+// The display name of the application associated with this service principal.
+func (o GetServicePrincipalsServicePrincipalOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+func (o GetServicePrincipalsServicePrincipalOutput) PreferredSingleSignOnMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.PreferredSingleSignOnMode }).(pulumi.StringOutput)
+}
+
+// The URL where the service exposes SAML metadata for federation.
+func (o GetServicePrincipalsServicePrincipalOutput) SamlMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+// A list of identifier URI(s), copied over from the associated application.
+func (o GetServicePrincipalsServicePrincipalOutput) ServicePrincipalNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) []string { return v.ServicePrincipalNames }).(pulumi.StringArrayOutput)
+}
+
+// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+func (o GetServicePrincipalsServicePrincipalOutput) SignInAudience() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.SignInAudience }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to the service principal.
+func (o GetServicePrincipalsServicePrincipalOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+func (o GetServicePrincipalsServicePrincipalOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetServicePrincipalsServicePrincipalArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsServicePrincipalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalsServicePrincipal)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsServicePrincipalArrayOutput) ToGetServicePrincipalsServicePrincipalArrayOutput() GetServicePrincipalsServicePrincipalArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalsServicePrincipalArrayOutput) ToGetServicePrincipalsServicePrincipalArrayOutputWithContext(ctx context.Context) GetServicePrincipalsServicePrincipalArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalsServicePrincipalArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalsServicePrincipalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalsServicePrincipal {
+		return vs[0].([]GetServicePrincipalsServicePrincipal)[vs[1].(int)]
+	}).(GetServicePrincipalsServicePrincipalOutput)
+}
+
 type GetUsersUser struct {
 	// Whether or not the account is enabled.
 	AccountEnabled bool `pulumi:"accountEnabled"`
@@ -4541,12 +6588,32 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationWebPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsLocationsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsLocationsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPlatformsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPlatformsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsPtrOutput{})
 	pulumi.RegisterOutputType(InvitationMessageOutput{})
 	pulumi.RegisterOutputType(InvitationMessagePtrOutput{})
+	pulumi.RegisterOutputType(NamedLocationCountryOutput{})
+	pulumi.RegisterOutputType(NamedLocationCountryPtrOutput{})
+	pulumi.RegisterOutputType(NamedLocationIpOutput{})
+	pulumi.RegisterOutputType(NamedLocationIpPtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalSamlSingleSignOnOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalSamlSingleSignOnPtrOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOauth2PermissionScopeOutput{})
@@ -4579,6 +6646,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalSamlSingleSignOnOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalSamlSingleSignOnArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalsServicePrincipalOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalsServicePrincipalArrayOutput{})
 	pulumi.RegisterOutputType(GetUsersUserOutput{})
 	pulumi.RegisterOutputType(GetUsersUserArrayOutput{})
 }

@@ -9,18 +9,22 @@ from .application import *
 from .application_certificate import *
 from .application_password import *
 from .application_pre_authorized import *
+from .conditional_access_policy import *
 from .get_application import *
 from .get_application_published_app_ids import *
+from .get_application_template import *
 from .get_client_config import *
 from .get_domains import *
 from .get_group import *
 from .get_groups import *
 from .get_service_principal import *
+from .get_service_principals import *
 from .get_user import *
 from .get_users import *
 from .group import *
 from .group_member import *
 from .invitation import *
+from .named_location import *
 from .provider import *
 from .service_principal import *
 from .service_principal_certificate import *
@@ -72,6 +76,14 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/conditionalAccessPolicy",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy": "ConditionalAccessPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/group",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -92,6 +104,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/invitation:Invitation": "Invitation"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/namedLocation",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/namedLocation:NamedLocation": "NamedLocation"
   }
  },
  {

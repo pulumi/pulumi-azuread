@@ -25,6 +25,7 @@ class ServicePrincipalArgs:
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+                 saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_existing: Optional[pulumi.Input[bool]] = None):
         """
@@ -39,6 +40,7 @@ class ServicePrincipalArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input['ServicePrincipalSamlSingleSignOnArgs'] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
         :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
@@ -61,6 +63,8 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "owners", owners)
         if preferred_single_sign_on_mode is not None:
             pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
+        if saml_single_sign_on is not None:
+            pulumi.set(__self__, "saml_single_sign_on", saml_single_sign_on)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if use_existing is not None:
@@ -187,6 +191,18 @@ class ServicePrincipalArgs:
         pulumi.set(self, "preferred_single_sign_on_mode", value)
 
     @property
+    @pulumi.getter(name="samlSingleSignOn")
+    def saml_single_sign_on(self) -> Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]:
+        """
+        A `saml_single_sign_on` block as documented below.
+        """
+        return pulumi.get(self, "saml_single_sign_on")
+
+    @saml_single_sign_on.setter
+    def saml_single_sign_on(self, value: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]):
+        pulumi.set(self, "saml_single_sign_on", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -235,6 +251,7 @@ class _ServicePrincipalState:
                  preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
                  redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  saml_metadata_url: Optional[pulumi.Input[str]] = None,
+                 saml_single_sign_on: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']] = None,
                  service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -263,6 +280,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
         :param pulumi.Input[str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
+        :param pulumi.Input['ServicePrincipalSamlSingleSignOnArgs'] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
@@ -311,6 +329,8 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
         if saml_metadata_url is not None:
             pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+        if saml_single_sign_on is not None:
+            pulumi.set(__self__, "saml_single_sign_on", saml_single_sign_on)
         if service_principal_names is not None:
             pulumi.set(__self__, "service_principal_names", service_principal_names)
         if sign_in_audience is not None:
@@ -575,6 +595,18 @@ class _ServicePrincipalState:
         pulumi.set(self, "saml_metadata_url", value)
 
     @property
+    @pulumi.getter(name="samlSingleSignOn")
+    def saml_single_sign_on(self) -> Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]:
+        """
+        A `saml_single_sign_on` block as documented below.
+        """
+        return pulumi.get(self, "saml_single_sign_on")
+
+    @saml_single_sign_on.setter
+    def saml_single_sign_on(self, value: Optional[pulumi.Input['ServicePrincipalSamlSingleSignOnArgs']]):
+        pulumi.set(self, "saml_single_sign_on", value)
+
+    @property
     @pulumi.getter(name="servicePrincipalNames")
     def service_principal_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -650,6 +682,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+                 saml_single_sign_on: Optional[pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -668,6 +701,8 @@ class ServicePrincipal(pulumi.CustomResource):
 
         ## Example Usage
 
+        *Create a service principal for an application*
+
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -685,6 +720,33 @@ class ServicePrincipal(pulumi.CustomResource):
                 "tags",
                 "here",
             ])
+        ```
+
+        *Manage a service principal for a first-party Microsoft application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        ```
+
+        *Create a service principal for an application created from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id)
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
         ```
 
         ## Import
@@ -707,6 +769,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
         :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
@@ -731,6 +794,8 @@ class ServicePrincipal(pulumi.CustomResource):
 
         ## Example Usage
 
+        *Create a service principal for an application*
+
         ```python
         import pulumi
         import pulumi_azuread as azuread
@@ -748,6 +813,33 @@ class ServicePrincipal(pulumi.CustomResource):
                 "tags",
                 "here",
             ])
+        ```
+
+        *Manage a service principal for a first-party Microsoft application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        ```
+
+        *Create a service principal for an application created from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id)
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
         ```
 
         ## Import
@@ -783,6 +875,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
+                 saml_single_sign_on: Optional[pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  use_existing: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -809,6 +902,7 @@ class ServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["notification_email_addresses"] = notification_email_addresses
             __props__.__dict__["owners"] = owners
             __props__.__dict__["preferred_single_sign_on_mode"] = preferred_single_sign_on_mode
+            __props__.__dict__["saml_single_sign_on"] = saml_single_sign_on
             __props__.__dict__["tags"] = tags
             __props__.__dict__["use_existing"] = use_existing
             __props__.__dict__["app_role_ids"] = None
@@ -856,6 +950,7 @@ class ServicePrincipal(pulumi.CustomResource):
             preferred_single_sign_on_mode: Optional[pulumi.Input[str]] = None,
             redirect_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             saml_metadata_url: Optional[pulumi.Input[str]] = None,
+            saml_single_sign_on: Optional[pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']]] = None,
             service_principal_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             sign_in_audience: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -889,6 +984,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] redirect_uris: A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
         :param pulumi.Input[str] saml_metadata_url: The URL where the service exposes SAML metadata for federation.
+        :param pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
@@ -920,6 +1016,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["preferred_single_sign_on_mode"] = preferred_single_sign_on_mode
         __props__.__dict__["redirect_uris"] = redirect_uris
         __props__.__dict__["saml_metadata_url"] = saml_metadata_url
+        __props__.__dict__["saml_single_sign_on"] = saml_single_sign_on
         __props__.__dict__["service_principal_names"] = service_principal_names
         __props__.__dict__["sign_in_audience"] = sign_in_audience
         __props__.__dict__["tags"] = tags
@@ -1094,6 +1191,14 @@ class ServicePrincipal(pulumi.CustomResource):
         The URL where the service exposes SAML metadata for federation.
         """
         return pulumi.get(self, "saml_metadata_url")
+
+    @property
+    @pulumi.getter(name="samlSingleSignOn")
+    def saml_single_sign_on(self) -> pulumi.Output[Optional['outputs.ServicePrincipalSamlSingleSignOn']]:
+        """
+        A `saml_single_sign_on` block as documented below.
+        """
+        return pulumi.get(self, "saml_single_sign_on")
 
     @property
     @pulumi.getter(name="servicePrincipalNames")

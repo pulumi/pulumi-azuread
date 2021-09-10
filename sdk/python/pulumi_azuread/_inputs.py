@@ -22,9 +22,19 @@ __all__ = [
     'ApplicationSinglePageApplicationArgs',
     'ApplicationWebArgs',
     'ApplicationWebImplicitGrantArgs',
+    'ConditionalAccessPolicyConditionsArgs',
+    'ConditionalAccessPolicyConditionsApplicationsArgs',
+    'ConditionalAccessPolicyConditionsLocationsArgs',
+    'ConditionalAccessPolicyConditionsPlatformsArgs',
+    'ConditionalAccessPolicyConditionsUsersArgs',
+    'ConditionalAccessPolicyGrantControlsArgs',
+    'ConditionalAccessPolicySessionControlsArgs',
     'InvitationMessageArgs',
+    'NamedLocationCountryArgs',
+    'NamedLocationIpArgs',
     'ServicePrincipalAppRoleArgs',
     'ServicePrincipalOauth2PermissionScopeArgs',
+    'ServicePrincipalSamlSingleSignOnArgs',
 ]
 
 @pulumi.input_type
@@ -827,6 +837,500 @@ class ApplicationWebImplicitGrantArgs:
 
 
 @pulumi.input_type
+class ConditionalAccessPolicyConditionsArgs:
+    def __init__(__self__, *,
+                 applications: Optional[pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs']] = None,
+                 client_app_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 locations: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']] = None,
+                 platforms: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']] = None,
+                 sign_in_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 user_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 users: Optional[pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']] = None):
+        """
+        :param pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'] applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sign_in_risk_levels: A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        """
+        if applications is not None:
+            pulumi.set(__self__, "applications", applications)
+        if client_app_types is not None:
+            pulumi.set(__self__, "client_app_types", client_app_types)
+        if locations is not None:
+            pulumi.set(__self__, "locations", locations)
+        if platforms is not None:
+            pulumi.set(__self__, "platforms", platforms)
+        if sign_in_risk_levels is not None:
+            pulumi.set(__self__, "sign_in_risk_levels", sign_in_risk_levels)
+        if user_risk_levels is not None:
+            pulumi.set(__self__, "user_risk_levels", user_risk_levels)
+        if users is not None:
+            pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter
+    def applications(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs']]:
+        """
+        An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+        """
+        return pulumi.get(self, "applications")
+
+    @applications.setter
+    def applications(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs']]):
+        pulumi.set(self, "applications", value)
+
+    @property
+    @pulumi.getter(name="clientAppTypes")
+    def client_app_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+        """
+        return pulumi.get(self, "client_app_types")
+
+    @client_app_types.setter
+    def client_app_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "client_app_types", value)
+
+    @property
+    @pulumi.getter
+    def locations(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']]:
+        """
+        A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        """
+        return pulumi.get(self, "locations")
+
+    @locations.setter
+    def locations(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']]):
+        pulumi.set(self, "locations", value)
+
+    @property
+    @pulumi.getter
+    def platforms(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']]:
+        """
+        A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        """
+        return pulumi.get(self, "platforms")
+
+    @platforms.setter
+    def platforms(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']]):
+        pulumi.set(self, "platforms", value)
+
+    @property
+    @pulumi.getter(name="signInRiskLevels")
+    def sign_in_risk_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "sign_in_risk_levels")
+
+    @sign_in_risk_levels.setter
+    def sign_in_risk_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "sign_in_risk_levels", value)
+
+    @property
+    @pulumi.getter(name="userRiskLevels")
+    def user_risk_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "user_risk_levels")
+
+    @user_risk_levels.setter
+    def user_risk_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "user_risk_levels", value)
+
+    @property
+    @pulumi.getter
+    def users(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']]:
+        """
+        A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        """
+        return pulumi.get(self, "users")
+
+    @users.setter
+    def users(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']]):
+        pulumi.set(self, "users", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsApplicationsArgs:
+    def __init__(__self__, *,
+                 included_applications: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 excluded_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_user_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_applications: A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_applications: A list of application IDs explicitly excluded from the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_user_actions: A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+        """
+        pulumi.set(__self__, "included_applications", included_applications)
+        if excluded_applications is not None:
+            pulumi.set(__self__, "excluded_applications", excluded_applications)
+        if included_user_actions is not None:
+            pulumi.set(__self__, "included_user_actions", included_user_actions)
+
+    @property
+    @pulumi.getter(name="includedApplications")
+    def included_applications(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`.
+        """
+        return pulumi.get(self, "included_applications")
+
+    @included_applications.setter
+    def included_applications(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "included_applications", value)
+
+    @property
+    @pulumi.getter(name="excludedApplications")
+    def excluded_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of application IDs explicitly excluded from the policy.
+        """
+        return pulumi.get(self, "excluded_applications")
+
+    @excluded_applications.setter
+    def excluded_applications(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_applications", value)
+
+    @property
+    @pulumi.getter(name="includedUserActions")
+    def included_user_actions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+        """
+        return pulumi.get(self, "included_user_actions")
+
+    @included_user_actions.setter
+    def included_user_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_user_actions", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsLocationsArgs:
+    def __init__(__self__, *,
+                 included_locations: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 excluded_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_locations: A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_locations: A list of location IDs excluded from scope of policy.
+        """
+        pulumi.set(__self__, "included_locations", included_locations)
+        if excluded_locations is not None:
+            pulumi.set(__self__, "excluded_locations", excluded_locations)
+
+    @property
+    @pulumi.getter(name="includedLocations")
+    def included_locations(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
+        """
+        return pulumi.get(self, "included_locations")
+
+    @included_locations.setter
+    def included_locations(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "included_locations", value)
+
+    @property
+    @pulumi.getter(name="excludedLocations")
+    def excluded_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of location IDs excluded from scope of policy.
+        """
+        return pulumi.get(self, "excluded_locations")
+
+    @excluded_locations.setter
+    def excluded_locations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_locations", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsPlatformsArgs:
+    def __init__(__self__, *,
+                 included_platforms: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 excluded_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        """
+        pulumi.set(__self__, "included_platforms", included_platforms)
+        if excluded_platforms is not None:
+            pulumi.set(__self__, "excluded_platforms", excluded_platforms)
+
+    @property
+    @pulumi.getter(name="includedPlatforms")
+    def included_platforms(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "included_platforms")
+
+    @included_platforms.setter
+    def included_platforms(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "included_platforms", value)
+
+    @property
+    @pulumi.getter(name="excludedPlatforms")
+    def excluded_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "excluded_platforms")
+
+    @excluded_platforms.setter
+    def excluded_platforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_platforms", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsUsersArgs:
+    def __init__(__self__, *,
+                 excluded_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 excluded_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_roles: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_users: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_groups: A list of group IDs excluded from scope of policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_roles: A list of role IDs excluded from scope of policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_groups: A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_roles: A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+        """
+        if excluded_groups is not None:
+            pulumi.set(__self__, "excluded_groups", excluded_groups)
+        if excluded_roles is not None:
+            pulumi.set(__self__, "excluded_roles", excluded_roles)
+        if excluded_users is not None:
+            pulumi.set(__self__, "excluded_users", excluded_users)
+        if included_groups is not None:
+            pulumi.set(__self__, "included_groups", included_groups)
+        if included_roles is not None:
+            pulumi.set(__self__, "included_roles", included_roles)
+        if included_users is not None:
+            pulumi.set(__self__, "included_users", included_users)
+
+    @property
+    @pulumi.getter(name="excludedGroups")
+    def excluded_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of group IDs excluded from scope of policy.
+        """
+        return pulumi.get(self, "excluded_groups")
+
+    @excluded_groups.setter
+    def excluded_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_groups", value)
+
+    @property
+    @pulumi.getter(name="excludedRoles")
+    def excluded_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of role IDs excluded from scope of policy.
+        """
+        return pulumi.get(self, "excluded_roles")
+
+    @excluded_roles.setter
+    def excluded_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_roles", value)
+
+    @property
+    @pulumi.getter(name="excludedUsers")
+    def excluded_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+        """
+        return pulumi.get(self, "excluded_users")
+
+    @excluded_users.setter
+    def excluded_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_users", value)
+
+    @property
+    @pulumi.getter(name="includedGroups")
+    def included_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+        """
+        return pulumi.get(self, "included_groups")
+
+    @included_groups.setter
+    def included_groups(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_groups", value)
+
+    @property
+    @pulumi.getter(name="includedRoles")
+    def included_roles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+        """
+        return pulumi.get(self, "included_roles")
+
+    @included_roles.setter
+    def included_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_roles", value)
+
+    @property
+    @pulumi.getter(name="includedUsers")
+    def included_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+        """
+        return pulumi.get(self, "included_users")
+
+    @included_users.setter
+    def included_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_users", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyGrantControlsArgs:
+    def __init__(__self__, *,
+                 built_in_controls: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 operator: pulumi.Input[str],
+                 custom_authentication_factors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 terms_of_uses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+        :param pulumi.Input[str] operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_authentication_factors: List of custom controls IDs required by the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] terms_of_uses: List of terms of use IDs required by the policy.
+        """
+        pulumi.set(__self__, "built_in_controls", built_in_controls)
+        pulumi.set(__self__, "operator", operator)
+        if custom_authentication_factors is not None:
+            pulumi.set(__self__, "custom_authentication_factors", custom_authentication_factors)
+        if terms_of_uses is not None:
+            pulumi.set(__self__, "terms_of_uses", terms_of_uses)
+
+    @property
+    @pulumi.getter(name="builtInControls")
+    def built_in_controls(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "built_in_controls")
+
+    @built_in_controls.setter
+    def built_in_controls(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "built_in_controls", value)
+
+    @property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input[str]:
+        """
+        Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input[str]):
+        pulumi.set(self, "operator", value)
+
+    @property
+    @pulumi.getter(name="customAuthenticationFactors")
+    def custom_authentication_factors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of custom controls IDs required by the policy.
+        """
+        return pulumi.get(self, "custom_authentication_factors")
+
+    @custom_authentication_factors.setter
+    def custom_authentication_factors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "custom_authentication_factors", value)
+
+    @property
+    @pulumi.getter(name="termsOfUses")
+    def terms_of_uses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        List of terms of use IDs required by the policy.
+        """
+        return pulumi.get(self, "terms_of_uses")
+
+    @terms_of_uses.setter
+    def terms_of_uses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "terms_of_uses", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicySessionControlsArgs:
+    def __init__(__self__, *,
+                 application_enforced_restrictions_enabled: Optional[pulumi.Input[bool]] = None,
+                 cloud_app_security_policy: Optional[pulumi.Input[str]] = None,
+                 sign_in_frequency: Optional[pulumi.Input[int]] = None,
+                 sign_in_frequency_period: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] application_enforced_restrictions_enabled: Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        :param pulumi.Input[str] cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+        :param pulumi.Input[int] sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        :param pulumi.Input[str] sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+               ---
+        """
+        if application_enforced_restrictions_enabled is not None:
+            pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
+        if cloud_app_security_policy is not None:
+            pulumi.set(__self__, "cloud_app_security_policy", cloud_app_security_policy)
+        if sign_in_frequency is not None:
+            pulumi.set(__self__, "sign_in_frequency", sign_in_frequency)
+        if sign_in_frequency_period is not None:
+            pulumi.set(__self__, "sign_in_frequency_period", sign_in_frequency_period)
+
+    @property
+    @pulumi.getter(name="applicationEnforcedRestrictionsEnabled")
+    def application_enforced_restrictions_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        """
+        return pulumi.get(self, "application_enforced_restrictions_enabled")
+
+    @application_enforced_restrictions_enabled.setter
+    def application_enforced_restrictions_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "application_enforced_restrictions_enabled", value)
+
+    @property
+    @pulumi.getter(name="cloudAppSecurityPolicy")
+    def cloud_app_security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+        """
+        return pulumi.get(self, "cloud_app_security_policy")
+
+    @cloud_app_security_policy.setter
+    def cloud_app_security_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_app_security_policy", value)
+
+    @property
+    @pulumi.getter(name="signInFrequency")
+    def sign_in_frequency(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        """
+        return pulumi.get(self, "sign_in_frequency")
+
+    @sign_in_frequency.setter
+    def sign_in_frequency(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sign_in_frequency", value)
+
+    @property
+    @pulumi.getter(name="signInFrequencyPeriod")
+    def sign_in_frequency_period(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
+        ---
+        """
+        return pulumi.get(self, "sign_in_frequency_period")
+
+    @sign_in_frequency_period.setter
+    def sign_in_frequency_period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "sign_in_frequency_period", value)
+
+
+@pulumi.input_type
 class InvitationMessageArgs:
     def __init__(__self__, *,
                  additional_recipients: Optional[pulumi.Input[str]] = None,
@@ -879,6 +1383,82 @@ class InvitationMessageArgs:
     @language.setter
     def language(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "language", value)
+
+
+@pulumi.input_type
+class NamedLocationCountryArgs:
+    def __init__(__self__, *,
+                 countries_and_regions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 include_unknown_countries_and_regions: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] countries_and_regions: List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        :param pulumi.Input[bool] include_unknown_countries_and_regions: Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        """
+        pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        if include_unknown_countries_and_regions is not None:
+            pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
+
+    @property
+    @pulumi.getter(name="countriesAndRegions")
+    def countries_and_regions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        """
+        return pulumi.get(self, "countries_and_regions")
+
+    @countries_and_regions.setter
+    def countries_and_regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "countries_and_regions", value)
+
+    @property
+    @pulumi.getter(name="includeUnknownCountriesAndRegions")
+    def include_unknown_countries_and_regions(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        """
+        return pulumi.get(self, "include_unknown_countries_and_regions")
+
+    @include_unknown_countries_and_regions.setter
+    def include_unknown_countries_and_regions(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "include_unknown_countries_and_regions", value)
+
+
+@pulumi.input_type
+class NamedLocationIpArgs:
+    def __init__(__self__, *,
+                 ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 trusted: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        :param pulumi.Input[bool] trusted: Whether the named location is trusted. Defaults to `false`.
+        """
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        if trusted is not None:
+            pulumi.set(__self__, "trusted", trusted)
+
+    @property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        """
+        return pulumi.get(self, "ip_ranges")
+
+    @ip_ranges.setter
+    def ip_ranges(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "ip_ranges", value)
+
+    @property
+    @pulumi.getter
+    def trusted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the named location is trusted. Defaults to `false`.
+        """
+        return pulumi.get(self, "trusted")
+
+    @trusted.setter
+    def trusted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "trusted", value)
 
 
 @pulumi.input_type
@@ -1117,5 +1697,28 @@ class ServicePrincipalOauth2PermissionScopeArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ServicePrincipalSamlSingleSignOnArgs:
+    def __init__(__self__, *,
+                 relay_state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] relay_state: The relative URI the service provider would redirect to after completion of the single sign-on flow.
+        """
+        if relay_state is not None:
+            pulumi.set(__self__, "relay_state", relay_state)
+
+    @property
+    @pulumi.getter(name="relayState")
+    def relay_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The relative URI the service provider would redirect to after completion of the single sign-on flow.
+        """
+        return pulumi.get(self, "relay_state")
+
+    @relay_state.setter
+    def relay_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "relay_state", value)
 
 

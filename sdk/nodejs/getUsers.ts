@@ -6,7 +6,7 @@ import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
- * Gets object IDs or user principal names for multiple Azure Active Directory users.
+ * Gets basic information for multiple Azure Active Directory users.
  *
  * ## API Permissions
  *

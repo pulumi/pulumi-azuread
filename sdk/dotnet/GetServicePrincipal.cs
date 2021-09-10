@@ -120,7 +120,7 @@ namespace Pulumi.AzureAD
     public sealed class GetServicePrincipalResult
     {
         /// <summary>
-        /// - Whether or not the service principal account is enabled.
+        /// Whether or not the service principal account is enabled.
         /// </summary>
         public readonly bool AccountEnabled;
         /// <summary>
@@ -204,6 +204,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string SamlMetadataUrl;
         /// <summary>
+        /// A `saml_single_sign_on` block as documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServicePrincipalSamlSingleSignOnResult> SamlSingleSignOns;
+        /// <summary>
         /// A list of identifier URI(s), copied over from the associated application.
         /// </summary>
         public readonly ImmutableArray<string> ServicePrincipalNames;
@@ -264,6 +268,8 @@ namespace Pulumi.AzureAD
 
             string samlMetadataUrl,
 
+            ImmutableArray<Outputs.GetServicePrincipalSamlSingleSignOnResult> samlSingleSignOns,
+
             ImmutableArray<string> servicePrincipalNames,
 
             string signInAudience,
@@ -293,6 +299,7 @@ namespace Pulumi.AzureAD
             PreferredSingleSignOnMode = preferredSingleSignOnMode;
             RedirectUris = redirectUris;
             SamlMetadataUrl = samlMetadataUrl;
+            SamlSingleSignOns = samlSingleSignOns;
             ServicePrincipalNames = servicePrincipalNames;
             SignInAudience = signInAudience;
             Tags = tags;

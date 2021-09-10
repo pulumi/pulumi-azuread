@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * *Create a service principal for an application*
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
@@ -38,6 +40,38 @@ import * as utilities from "./utilities";
  *         "tags",
  *         "here",
  *     ],
+ * });
+ * ```
+ *
+ * *Manage a service principal for a first-party Microsoft application*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const wellKnown = azuread.getApplicationPublishedAppIds({});
+ * const msgraph = new azuread.ServicePrincipal("msgraph", {
+ *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
+ *     useExisting: true,
+ * });
+ * ```
+ *
+ * *Create a service principal for an application created from a gallery template*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplicationTemplate = azuread.getApplicationTemplate({
+ *     displayName: "Marketo",
+ * });
+ * const exampleApplication = new azuread.Application("exampleApplication", {
+ *     displayName: "example",
+ *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
+ * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
+ *     applicationId: exampleApplication.applicationId,
+ *     useExisting: true,
  * });
  * ```
  *
@@ -162,6 +196,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly samlMetadataUrl!: pulumi.Output<string>;
     /**
+     * A `samlSingleSignOn` block as documented below.
+     */
+    public readonly samlSingleSignOn!: pulumi.Output<outputs.ServicePrincipalSamlSingleSignOn | undefined>;
+    /**
      * A list of identifier URI(s), copied over from the associated application.
      */
     public /*out*/ readonly servicePrincipalNames!: pulumi.Output<string[]>;
@@ -216,6 +254,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["preferredSingleSignOnMode"] = state ? state.preferredSingleSignOnMode : undefined;
             inputs["redirectUris"] = state ? state.redirectUris : undefined;
             inputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
+            inputs["samlSingleSignOn"] = state ? state.samlSingleSignOn : undefined;
             inputs["servicePrincipalNames"] = state ? state.servicePrincipalNames : undefined;
             inputs["signInAudience"] = state ? state.signInAudience : undefined;
             inputs["tags"] = state ? state.tags : undefined;
@@ -236,6 +275,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["notificationEmailAddresses"] = args ? args.notificationEmailAddresses : undefined;
             inputs["owners"] = args ? args.owners : undefined;
             inputs["preferredSingleSignOnMode"] = args ? args.preferredSingleSignOnMode : undefined;
+            inputs["samlSingleSignOn"] = args ? args.samlSingleSignOn : undefined;
             inputs["tags"] = args ? args.tags : undefined;
             inputs["useExisting"] = args ? args.useExisting : undefined;
             inputs["appRoleIds"] = undefined /*out*/;
@@ -349,6 +389,10 @@ export interface ServicePrincipalState {
      */
     samlMetadataUrl?: pulumi.Input<string>;
     /**
+     * A `samlSingleSignOn` block as documented below.
+     */
+    samlSingleSignOn?: pulumi.Input<inputs.ServicePrincipalSamlSingleSignOn>;
+    /**
      * A list of identifier URI(s), copied over from the associated application.
      */
     servicePrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
@@ -414,6 +458,10 @@ export interface ServicePrincipalArgs {
      * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
      */
     preferredSingleSignOnMode?: pulumi.Input<string>;
+    /**
+     * A `samlSingleSignOn` block as documented below.
+     */
+    samlSingleSignOn?: pulumi.Input<inputs.ServicePrincipalSamlSingleSignOn>;
     /**
      * A set of tags to apply to the service principal.
      */

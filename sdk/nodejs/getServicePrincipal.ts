@@ -90,7 +90,7 @@ export interface GetServicePrincipalArgs {
  */
 export interface GetServicePrincipalResult {
     /**
-     * - Whether or not the service principal account is enabled.
+     * Whether or not the service principal account is enabled.
      */
     readonly accountEnabled: boolean;
     /**
@@ -173,6 +173,10 @@ export interface GetServicePrincipalResult {
      * The URL where the service exposes SAML metadata for federation.
      */
     readonly samlMetadataUrl: string;
+    /**
+     * A `samlSingleSignOn` block as documented below.
+     */
+    readonly samlSingleSignOns: outputs.GetServicePrincipalSamlSingleSignOn[];
     /**
      * A list of identifier URI(s), copied over from the associated application.
      */

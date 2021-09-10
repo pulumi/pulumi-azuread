@@ -33,6 +33,7 @@ class ApplicationArgs:
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
         """
@@ -55,6 +56,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
         """
@@ -93,6 +95,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "single_page_application", single_page_application)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+        if template_id is not None:
+            pulumi.set(__self__, "template_id", template_id)
         if terms_of_service_url is not None:
             pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
         if web is not None:
@@ -315,6 +319,18 @@ class ApplicationArgs:
         pulumi.set(self, "support_url", value)
 
     @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "template_id")
+
+    @template_id.setter
+    def template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_id", value)
+
+    @property
     @pulumi.getter(name="termsOfServiceUrl")
     def terms_of_service_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -367,6 +383,7 @@ class _ApplicationState:
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
         """
@@ -396,6 +413,7 @@ class _ApplicationState:
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
         """
@@ -449,6 +467,8 @@ class _ApplicationState:
             pulumi.set(__self__, "single_page_application", single_page_application)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+        if template_id is not None:
+            pulumi.set(__self__, "template_id", template_id)
         if terms_of_service_url is not None:
             pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
         if web is not None:
@@ -755,6 +775,18 @@ class _ApplicationState:
         pulumi.set(self, "support_url", value)
 
     @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "template_id")
+
+    @template_id.setter
+    def template_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "template_id", value)
+
+    @property
     @pulumi.getter(name="termsOfServiceUrl")
     def terms_of_service_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -802,6 +834,7 @@ class Application(pulumi.CustomResource):
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
                  __props__=None):
@@ -834,6 +867,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
         """
@@ -885,6 +919,7 @@ class Application(pulumi.CustomResource):
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
                  __props__=None):
@@ -919,6 +954,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["sign_in_audience"] = sign_in_audience
             __props__.__dict__["single_page_application"] = single_page_application
             __props__.__dict__["support_url"] = support_url
+            __props__.__dict__["template_id"] = template_id
             __props__.__dict__["terms_of_service_url"] = terms_of_service_url
             __props__.__dict__["web"] = web
             __props__.__dict__["app_role_ids"] = None
@@ -963,6 +999,7 @@ class Application(pulumi.CustomResource):
             sign_in_audience: Optional[pulumi.Input[str]] = None,
             single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
+            template_id: Optional[pulumi.Input[str]] = None,
             terms_of_service_url: Optional[pulumi.Input[str]] = None,
             web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None) -> 'Application':
         """
@@ -997,6 +1034,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
         """
@@ -1029,6 +1067,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["sign_in_audience"] = sign_in_audience
         __props__.__dict__["single_page_application"] = single_page_application
         __props__.__dict__["support_url"] = support_url
+        __props__.__dict__["template_id"] = template_id
         __props__.__dict__["terms_of_service_url"] = terms_of_service_url
         __props__.__dict__["web"] = web
         return Application(resource_name, opts=opts, __props__=__props__)
@@ -1232,6 +1271,14 @@ class Application(pulumi.CustomResource):
         URL of the application's support page.
         """
         return pulumi.get(self, "support_url")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> pulumi.Output[str]:
+        """
+        Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "template_id")
 
     @property
     @pulumi.getter(name="termsOfServiceUrl")
