@@ -28,12 +28,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationPassword{}
 	case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
 		r = &ApplicationPreAuthorized{}
+	case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
+		r = &ConditionalAccessPolicy{}
 	case "azuread:index/group:Group":
 		r = &Group{}
 	case "azuread:index/groupMember:GroupMember":
 		r = &GroupMember{}
 	case "azuread:index/invitation:Invitation":
 		r = &Invitation{}
+	case "azuread:index/namedLocation:NamedLocation":
+		r = &NamedLocation{}
 	case "azuread:index/servicePrincipal:ServicePrincipal":
 		r = &ServicePrincipal{}
 	case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
@@ -95,6 +99,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/conditionalAccessPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/group",
 		&module{version},
 	)
@@ -106,6 +115,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/invitation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/namedLocation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

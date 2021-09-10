@@ -109,6 +109,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_service_principal_certificate": {Tok: makeResource(mainMod, "ServicePrincipalCertificate")},
 			"azuread_application_pre_authorized":    {Tok: makeResource(mainMod, "ApplicationPreAuthorized")},
 			"azuread_invitation":                    {Tok: makeResource(mainMod, "Invitation")},
+			"azuread_conditional_access_policy":     {Tok: makeResource(mainMod, "ConditionalAccessPolicy")},
+			"azuread_named_location":                {Tok: makeResource(mainMod, "NamedLocation")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},
@@ -120,6 +122,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_users":                         {Tok: makeDataSource(mainMod, "getUsers")},
 			"azuread_client_config":                 {Tok: makeDataSource(mainMod, "getClientConfig")},
 			"azuread_application_published_app_ids": {Tok: makeDataSource(mainMod, "getApplicationPublishedAppIds")},
+			"azuread_application_template":          {Tok: makeDataSource(mainMod, "getApplicationTemplate")},
+			"azuread_service_principals":            {Tok: makeDataSource(mainMod, "getServicePrincipals")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

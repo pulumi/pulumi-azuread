@@ -114,6 +114,18 @@ namespace Pulumi.AzureAD
         public Output<string?> Department { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the users password is exempt from expiring. Defaults to `false`.
+        /// </summary>
+        [Output("disablePasswordExpiration")]
+        public Output<bool?> DisablePasswordExpiration { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        /// </summary>
+        [Output("disableStrongPassword")]
+        public Output<bool?> DisableStrongPassword { get; private set; } = null!;
+
+        /// <summary>
         /// The name to display in the address book for the user.
         /// </summary>
         [Output("displayName")]
@@ -406,6 +418,18 @@ namespace Pulumi.AzureAD
         public Input<string>? Department { get; set; }
 
         /// <summary>
+        /// Whether the users password is exempt from expiring. Defaults to `false`.
+        /// </summary>
+        [Input("disablePasswordExpiration")]
+        public Input<bool>? DisablePasswordExpiration { get; set; }
+
+        /// <summary>
+        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        /// </summary>
+        [Input("disableStrongPassword")]
+        public Input<bool>? DisableStrongPassword { get; set; }
+
+        /// <summary>
         /// The name to display in the address book for the user.
         /// </summary>
         [Input("displayName", required: true)]
@@ -609,6 +633,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("department")]
         public Input<string>? Department { get; set; }
+
+        /// <summary>
+        /// Whether the users password is exempt from expiring. Defaults to `false`.
+        /// </summary>
+        [Input("disablePasswordExpiration")]
+        public Input<bool>? DisablePasswordExpiration { get; set; }
+
+        /// <summary>
+        /// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        /// </summary>
+        [Input("disableStrongPassword")]
+        public Input<bool>? DisableStrongPassword { get; set; }
 
         /// <summary>
         /// The name to display in the address book for the user.

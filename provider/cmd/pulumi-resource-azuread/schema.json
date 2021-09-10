@@ -620,6 +620,363 @@
             },
             "type": "object"
         },
+        "azuread:index/ConditionalAccessPolicyConditions:ConditionalAccessPolicyConditions": {
+            "properties": {
+                "applications": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsApplications:ConditionalAccessPolicyConditionsApplications",
+                    "description": "An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "clientAppTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "locations": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsLocations:ConditionalAccessPolicyConditionsLocations",
+                    "description": "A `locations` block as documented below, which specifies locations included in and excluded from the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "platforms": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsPlatforms:ConditionalAccessPolicyConditionsPlatforms",
+                    "description": "A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signInRiskLevels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "userRiskLevels": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "users": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditionsUsers:ConditionalAccessPolicyConditionsUsers",
+                    "description": "A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:index/ConditionalAccessPolicyConditionsApplications:ConditionalAccessPolicyConditionsApplications": {
+            "properties": {
+                "excludedApplications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of application IDs explicitly excluded from the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedApplications": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedUserActions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "includedApplications"
+            ]
+        },
+        "azuread:index/ConditionalAccessPolicyConditionsLocations:ConditionalAccessPolicyConditionsLocations": {
+            "properties": {
+                "excludedLocations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of location IDs excluded from scope of policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedLocations": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "includedLocations"
+            ]
+        },
+        "azuread:index/ConditionalAccessPolicyConditionsPlatforms:ConditionalAccessPolicyConditionsPlatforms": {
+            "properties": {
+                "excludedPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedPlatforms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "includedPlatforms"
+            ]
+        },
+        "azuread:index/ConditionalAccessPolicyConditionsUsers:ConditionalAccessPolicyConditionsUsers": {
+            "properties": {
+                "excludedGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of group IDs excluded from scope of policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludedRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of role IDs excluded from scope of policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "excludedUsers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of group IDs in scope of policy unless explicitly excluded, or `All`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedRoles": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of role IDs in scope of policy unless explicitly excluded, or `All`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includedUsers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:index/ConditionalAccessPolicyGrantControls:ConditionalAccessPolicyGrantControls": {
+            "properties": {
+                "builtInControls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "customAuthenticationFactors": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of custom controls IDs required by the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "termsOfUses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of terms of use IDs required by the policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "builtInControls",
+                "operator"
+            ]
+        },
+        "azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls": {
+            "properties": {
+                "applicationEnforcedRestrictionsEnabled": {
+                    "type": "boolean",
+                    "description": "Whether or not application enforced restrictions are enabled. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "cloudAppSecurityPolicy": {
+                    "type": "string",
+                    "description": "Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signInFrequency": {
+                    "type": "integer",
+                    "description": "Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signInFrequencyPeriod": {
+                    "type": "string",
+                    "description": "The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.\n---\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "azuread:index/InvitationMessage:InvitationMessage": {
             "properties": {
                 "additionalRecipients": {
@@ -651,6 +1008,64 @@
                 }
             },
             "type": "object"
+        },
+        "azuread:index/NamedLocationCountry:NamedLocationCountry": {
+            "properties": {
+                "countriesAndRegions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of countries and/or regions in two-letter format specified by ISO 3166-2.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "includeUnknownCountriesAndRegions": {
+                    "type": "boolean",
+                    "description": "Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "countriesAndRegions"
+            ]
+        },
+        "azuread:index/NamedLocationIp:NamedLocationIp": {
+            "properties": {
+                "ipRanges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "trusted": {
+                    "type": "boolean",
+                    "description": "Whether the named location is trusted. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipRanges"
+            ]
         },
         "azuread:index/ServicePrincipalAppRole:ServicePrincipalAppRole": {
             "properties": {
@@ -816,6 +1231,20 @@
                     ]
                 }
             }
+        },
+        "azuread:index/ServicePrincipalSamlSingleSignOn:ServicePrincipalSamlSingleSignOn": {
+            "properties": {
+                "relayState": {
+                    "type": "string",
+                    "description": "The relative URI the service provider would redirect to after completion of the single sign-on flow.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "azuread:index/getApplicationApi:getApplicationApi": {
             "properties": {
@@ -1707,6 +2136,156 @@
                 }
             }
         },
+        "azuread:index/getServicePrincipalSamlSingleSignOn:getServicePrincipalSamlSingleSignOn": {
+            "properties": {
+                "relayState": {
+                    "type": "string",
+                    "description": "The relative URI the service provider would redirect to after completion of the single sign-on flow.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "relayState"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "azuread:index/getServicePrincipalsServicePrincipal:getServicePrincipalsServicePrincipal": {
+            "properties": {
+                "accountEnabled": {
+                    "type": "boolean",
+                    "description": "Whether or not the service principal account is enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "appRoleAssignmentRequired": {
+                    "type": "boolean",
+                    "description": "Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "applicationId": {
+                    "type": "string",
+                    "description": "The application ID (client ID) of the application associated with this service principal.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "applicationTenantId": {
+                    "type": "string",
+                    "description": "The tenant ID where the associated application is registered.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the application associated with this service principal.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "preferredSingleSignOnMode": {
+                    "type": "string",
+                    "description": "The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "samlMetadataUrl": {
+                    "type": "string",
+                    "description": "The URL where the service exposes SAML metadata for federation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "servicePrincipalNames": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of identifier URI(s), copied over from the associated application.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "signInAudience": {
+                    "type": "string",
+                    "description": "The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of tags applied to the service principal.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "type": {
+                    "type": "string",
+                    "description": "Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "accountEnabled",
+                "appRoleAssignmentRequired",
+                "applicationId",
+                "applicationTenantId",
+                "displayName",
+                "preferredSingleSignOnMode",
+                "samlMetadataUrl",
+                "servicePrincipalNames",
+                "signInAudience",
+                "tags",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "azuread:index/getUsersUser:getUsersUser": {
             "properties": {
                 "accountEnabled": {
@@ -2065,6 +2644,10 @@
                     "type": "string",
                     "description": "URL of the application's support page.\n"
                 },
+                "templateId": {
+                    "type": "string",
+                    "description": "Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.\n"
+                },
                 "termsOfServiceUrl": {
                     "type": "string",
                     "description": "URL of the application's terms of service statement.\n"
@@ -2082,7 +2665,8 @@
                 "logoUrl",
                 "oauth2PermissionScopeIds",
                 "objectId",
-                "publisherDomain"
+                "publisherDomain",
+                "templateId"
             ],
             "inputProperties": {
                 "api": {
@@ -2171,6 +2755,10 @@
                 "supportUrl": {
                     "type": "string",
                     "description": "URL of the application's support page.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.\n"
                 },
                 "termsOfServiceUrl": {
                     "type": "string",
@@ -2307,6 +2895,10 @@
                     "supportUrl": {
                         "type": "string",
                         "description": "URL of the application's support page.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.\n"
                     },
                     "termsOfServiceUrl": {
                         "type": "string",
@@ -2624,6 +3216,91 @@
                             "type": "string"
                         },
                         "description": "A set of permission scope IDs required by the authorized application.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy": {
+            "description": "Manages a Conditional Access Policy within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.ConditionalAccessPolicy(\"example\", {\n    conditions: {\n        applications: {\n            excludedApplications: [\"00000004-0000-0ff1-ce00-000000000000\"],\n            includedApplications: [\"All\"],\n        },\n        clientAppTypes: [\"all\"],\n        locations: {\n            excludedLocations: [\"AllTrusted\"],\n            includedLocations: [\"All\"],\n        },\n        platforms: {\n            excludedPlatforms: [\"iOS\"],\n            includedPlatforms: [\"android\"],\n        },\n        signInRiskLevels: [\"medium\"],\n        userRiskLevels: [\"medium\"],\n        users: {\n            excludedUsers: [\"GuestsOrExternalUsers\"],\n            includedUsers: [\"All\"],\n        },\n    },\n    displayName: \"example policy\",\n    grantControls: {\n        builtInControls: [\"mfa\"],\n        operator: \"OR\",\n    },\n    sessionControls: {\n        applicationEnforcedRestrictions: [{\n            enabled: true,\n        }],\n        cloudAppSecurity: [{\n            cloudAppSecurityType: \"monitorOnly\",\n            enabled: true,\n        }],\n        signInFrequency: [{\n            enabled: true,\n            type: \"hours\",\n            value: 10,\n        }],\n    },\n    state: \"disabled\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.ConditionalAccessPolicy(\"example\",\n    conditions=azuread.ConditionalAccessPolicyConditionsArgs(\n        applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(\n            excluded_applications=[\"00000004-0000-0ff1-ce00-000000000000\"],\n            included_applications=[\"All\"],\n        ),\n        client_app_types=[\"all\"],\n        locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(\n            excluded_locations=[\"AllTrusted\"],\n            included_locations=[\"All\"],\n        ),\n        platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(\n            excluded_platforms=[\"iOS\"],\n            included_platforms=[\"android\"],\n        ),\n        sign_in_risk_levels=[\"medium\"],\n        user_risk_levels=[\"medium\"],\n        users=azuread.ConditionalAccessPolicyConditionsUsersArgs(\n            excluded_users=[\"GuestsOrExternalUsers\"],\n            included_users=[\"All\"],\n        ),\n    ),\n    display_name=\"example policy\",\n    grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(\n        built_in_controls=[\"mfa\"],\n        operator=\"OR\",\n    ),\n    session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(\n        application_enforced_restrictions=[{\n            \"enabled\": True,\n        }],\n        cloud_app_security=[{\n            \"cloudAppSecurityType\": \"monitorOnly\",\n            \"enabled\": True,\n        }],\n        sign_in_frequency=[{\n            \"enabled\": True,\n            \"type\": \"hours\",\n            \"value\": 10,\n        }],\n    ),\n    state=\"disabled\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.ConditionalAccessPolicy(\"example\", new AzureAD.ConditionalAccessPolicyArgs\n        {\n            Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs\n            {\n                Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs\n                {\n                    ExcludedApplications = \n                    {\n                        \"00000004-0000-0ff1-ce00-000000000000\",\n                    },\n                    IncludedApplications = \n                    {\n                        \"All\",\n                    },\n                },\n                ClientAppTypes = \n                {\n                    \"all\",\n                },\n                Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs\n                {\n                    ExcludedLocations = \n                    {\n                        \"AllTrusted\",\n                    },\n                    IncludedLocations = \n                    {\n                        \"All\",\n                    },\n                },\n                Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs\n                {\n                    ExcludedPlatforms = \n                    {\n                        \"iOS\",\n                    },\n                    IncludedPlatforms = \n                    {\n                        \"android\",\n                    },\n                },\n                SignInRiskLevels = \n                {\n                    \"medium\",\n                },\n                UserRiskLevels = \n                {\n                    \"medium\",\n                },\n                Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs\n                {\n                    ExcludedUsers = \n                    {\n                        \"GuestsOrExternalUsers\",\n                    },\n                    IncludedUsers = \n                    {\n                        \"All\",\n                    },\n                },\n            },\n            DisplayName = \"example policy\",\n            GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs\n            {\n                BuiltInControls = \n                {\n                    \"mfa\",\n                },\n                Operator = \"OR\",\n            },\n            SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs\n            {\n                ApplicationEnforcedRestrictions = \n                {\n                    \n                    {\n                        { \"enabled\", true },\n                    },\n                },\n                CloudAppSecurity = \n                {\n                    \n                    {\n                        { \"cloudAppSecurityType\", \"monitorOnly\" },\n                        { \"enabled\", true },\n                    },\n                },\n                SignInFrequency = \n                {\n                    \n                    {\n                        { \"enabled\", true },\n                        { \"type\", \"hours\" },\n                        { \"value\", 10 },\n                    },\n                },\n            },\n            State = \"disabled\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewConditionalAccessPolicy(ctx, \"example\", \u0026azuread.ConditionalAccessPolicyArgs{\n\t\t\tConditions: \u0026ConditionalAccessPolicyConditionsArgs{\n\t\t\t\tApplications: \u0026ConditionalAccessPolicyConditionsApplicationsArgs{\n\t\t\t\t\tExcludedApplications: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"00000004-0000-0ff1-ce00-000000000000\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedApplications: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"All\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tClientAppTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"all\"),\n\t\t\t\t},\n\t\t\t\tLocations: \u0026ConditionalAccessPolicyConditionsLocationsArgs{\n\t\t\t\t\tExcludedLocations: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"AllTrusted\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedLocations: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"All\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPlatforms: \u0026ConditionalAccessPolicyConditionsPlatformsArgs{\n\t\t\t\t\tExcludedPlatforms: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"iOS\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedPlatforms: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"android\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSignInRiskLevels: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"medium\"),\n\t\t\t\t},\n\t\t\t\tUserRiskLevels: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"medium\"),\n\t\t\t\t},\n\t\t\t\tUsers: \u0026ConditionalAccessPolicyConditionsUsersArgs{\n\t\t\t\t\tExcludedUsers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GuestsOrExternalUsers\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedUsers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"All\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tDisplayName: pulumi.String(\"example policy\"),\n\t\t\tGrantControls: \u0026ConditionalAccessPolicyGrantControlsArgs{\n\t\t\t\tBuiltInControls: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"mfa\"),\n\t\t\t\t},\n\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t},\n\t\t\tSessionControls: \u0026ConditionalAccessPolicySessionControlsArgs{\n\t\t\t\tApplicationEnforcedRestrictions: []map[string]interface{}{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"enabled\": true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tCloudAppSecurity: []map[string]interface{}{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"cloudAppSecurityType\": \"monitorOnly\",\n\t\t\t\t\t\t\"enabled\":              true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSignInFrequency: pulumi.Int{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"enabled\": true,\n\t\t\t\t\t\t\"type\":    \"hours\",\n\t\t\t\t\t\t\"value\":   10,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tState: pulumi.String(\"disabled\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nConditional Access Policies can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "conditions": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditions:ConditionalAccessPolicyConditions",
+                    "description": "A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The friendly name for this Conditional Access Policy.\n"
+                },
+                "grantControls": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyGrantControls:ConditionalAccessPolicyGrantControls",
+                    "description": "A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.\n"
+                },
+                "sessionControls": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls",
+                    "description": "A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`\n"
+                }
+            },
+            "required": [
+                "conditions",
+                "displayName",
+                "grantControls",
+                "state"
+            ],
+            "inputProperties": {
+                "conditions": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditions:ConditionalAccessPolicyConditions",
+                    "description": "A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The friendly name for this Conditional Access Policy.\n"
+                },
+                "grantControls": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicyGrantControls:ConditionalAccessPolicyGrantControls",
+                    "description": "A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.\n"
+                },
+                "sessionControls": {
+                    "$ref": "#/types/azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls",
+                    "description": "A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`\n"
+                }
+            },
+            "requiredInputs": [
+                "conditions",
+                "displayName",
+                "grantControls",
+                "state"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ConditionalAccessPolicy resources.\n",
+                "properties": {
+                    "conditions": {
+                        "$ref": "#/types/azuread:index/ConditionalAccessPolicyConditions:ConditionalAccessPolicyConditions",
+                        "description": "A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The friendly name for this Conditional Access Policy.\n"
+                    },
+                    "grantControls": {
+                        "$ref": "#/types/azuread:index/ConditionalAccessPolicyGrantControls:ConditionalAccessPolicyGrantControls",
+                        "description": "A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.\n"
+                    },
+                    "sessionControls": {
+                        "$ref": "#/types/azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls",
+                        "description": "A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`\n"
                     }
                 },
                 "type": "object"
@@ -3096,8 +3773,63 @@
                 "type": "object"
             }
         },
+        "azuread:index/namedLocation:NamedLocation": {
+            "description": "Manages a Named Location within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example_ip = new azuread.NamedLocation(\"example-ip\", {\n    displayName: \"IP Named Location\",\n    ip: {\n        ipRanges: [\n            \"1.1.1.1/32\",\n            \"2.2.2.2/32\",\n        ],\n        trusted: true,\n    },\n});\nconst example_country = new azuread.NamedLocation(\"example-country\", {\n    country: {\n        countriesAndRegions: [\n            \"GB\",\n            \"US\",\n        ],\n        includeUnknownCountriesAndRegions: false,\n    },\n    displayName: \"Country Named Location\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_ip = azuread.NamedLocation(\"example-ip\",\n    display_name=\"IP Named Location\",\n    ip=azuread.NamedLocationIpArgs(\n        ip_ranges=[\n            \"1.1.1.1/32\",\n            \"2.2.2.2/32\",\n        ],\n        trusted=True,\n    ))\nexample_country = azuread.NamedLocation(\"example-country\",\n    country=azuread.NamedLocationCountryArgs(\n        countries_and_regions=[\n            \"GB\",\n            \"US\",\n        ],\n        include_unknown_countries_and_regions=False,\n    ),\n    display_name=\"Country Named Location\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example_ip = new AzureAD.NamedLocation(\"example-ip\", new AzureAD.NamedLocationArgs\n        {\n            DisplayName = \"IP Named Location\",\n            Ip = new AzureAD.Inputs.NamedLocationIpArgs\n            {\n                IpRanges = \n                {\n                    \"1.1.1.1/32\",\n                    \"2.2.2.2/32\",\n                },\n                Trusted = true,\n            },\n        });\n        var example_country = new AzureAD.NamedLocation(\"example-country\", new AzureAD.NamedLocationArgs\n        {\n            Country = new AzureAD.Inputs.NamedLocationCountryArgs\n            {\n                CountriesAndRegions = \n                {\n                    \"GB\",\n                    \"US\",\n                },\n                IncludeUnknownCountriesAndRegions = false,\n            },\n            DisplayName = \"Country Named Location\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewNamedLocation(ctx, \"example_ip\", \u0026azuread.NamedLocationArgs{\n\t\t\tDisplayName: pulumi.String(\"IP Named Location\"),\n\t\t\tIp: \u0026NamedLocationIpArgs{\n\t\t\t\tIpRanges: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"1.1.1.1/32\"),\n\t\t\t\t\tpulumi.String(\"2.2.2.2/32\"),\n\t\t\t\t},\n\t\t\t\tTrusted: pulumi.Bool(true),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewNamedLocation(ctx, \"example_country\", \u0026azuread.NamedLocationArgs{\n\t\t\tCountry: \u0026NamedLocationCountryArgs{\n\t\t\t\tCountriesAndRegions: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"GB\"),\n\t\t\t\t\tpulumi.String(\"US\"),\n\t\t\t\t},\n\t\t\t\tIncludeUnknownCountriesAndRegions: pulumi.Bool(false),\n\t\t\t},\n\t\t\tDisplayName: pulumi.String(\"Country Named Location\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nNamed Locations can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/namedLocation:NamedLocation my_location 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "country": {
+                    "$ref": "#/types/azuread:index/NamedLocationCountry:NamedLocationCountry",
+                    "description": "A `country` block as documented below, which configures a country-based named location.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The friendly name for this named location.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/azuread:index/NamedLocationIp:NamedLocationIp",
+                    "description": "An `ip` block as documented below, which configures an IP-based named location.\n"
+                }
+            },
+            "required": [
+                "displayName"
+            ],
+            "inputProperties": {
+                "country": {
+                    "$ref": "#/types/azuread:index/NamedLocationCountry:NamedLocationCountry",
+                    "description": "A `country` block as documented below, which configures a country-based named location.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The friendly name for this named location.\n"
+                },
+                "ip": {
+                    "$ref": "#/types/azuread:index/NamedLocationIp:NamedLocationIp",
+                    "description": "An `ip` block as documented below, which configures an IP-based named location.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NamedLocation resources.\n",
+                "properties": {
+                    "country": {
+                        "$ref": "#/types/azuread:index/NamedLocationCountry:NamedLocationCountry",
+                        "description": "A `country` block as documented below, which configures a country-based named location.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The friendly name for this named location.\n"
+                    },
+                    "ip": {
+                        "$ref": "#/types/azuread:index/NamedLocationIp:NamedLocationIp",
+                        "description": "An `ip` block as documented below, which configures an IP-based named location.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/servicePrincipal:ServicePrincipal": {
-            "description": "Manages a service principal associated with an application within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`\n\nIt is not currently possible to manage service principals whilst having only the `Application.ReadWrite.OwnedBy` role granted.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    appRoleAssignmentRequired: false,\n    owners: [current.then(current =\u003e current.objectId)],\n    tags: [\n        \"example\",\n        \"tags\",\n        \"here\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    owners=[current.object_id])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    app_role_assignment_required=False,\n    owners=[current.object_id],\n    tags=[\n        \"example\",\n        \"tags\",\n        \"here\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            AppRoleAssignmentRequired = false,\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n            Tags = \n            {\n                \"example\",\n                \"tags\",\n                \"here\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId:             exampleApplication.ApplicationId,\n\t\t\tAppRoleAssignmentRequired: pulumi.Bool(false),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example\"),\n\t\t\t\tpulumi.String(\"tags\"),\n\t\t\t\tpulumi.String(\"here\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nService principals can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "description": "Manages a service principal associated with an application within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`\n\nIt is not currently possible to manage service principals whilst having only the `Application.ReadWrite.OwnedBy` role granted.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Create a service principal for an application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    appRoleAssignmentRequired: false,\n    owners: [current.then(current =\u003e current.objectId)],\n    tags: [\n        \"example\",\n        \"tags\",\n        \"here\",\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    owners=[current.object_id])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    app_role_assignment_required=False,\n    owners=[current.object_id],\n    tags=[\n        \"example\",\n        \"tags\",\n        \"here\",\n    ])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            AppRoleAssignmentRequired = false,\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n            Tags = \n            {\n                \"example\",\n                \"tags\",\n                \"here\",\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId:             exampleApplication.ApplicationId,\n\t\t\tAppRoleAssignmentRequired: pulumi.Bool(false),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tTags: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"example\"),\n\t\t\t\tpulumi.String(\"tags\"),\n\t\t\t\tpulumi.String(\"here\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Manage a service principal for a first-party Microsoft application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst wellKnown = azuread.getApplicationPublishedAppIds({});\nconst msgraph = new azuread.ServicePrincipal(\"msgraph\", {\n    applicationId: wellKnown.then(wellKnown =\u003e wellKnown.result?.MicrosoftGraph),\n    useExisting: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nwell_known = azuread.get_application_published_app_ids()\nmsgraph = azuread.ServicePrincipal(\"msgraph\",\n    application_id=well_known.result[\"MicrosoftGraph\"],\n    use_existing=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());\n        var msgraph = new AzureAD.ServicePrincipal(\"msgraph\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = wellKnown.Apply(wellKnown =\u003e wellKnown.Result?.MicrosoftGraph),\n            UseExisting = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"msgraph\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),\n\t\t\tUseExisting:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Create a service principal for an application created from a gallery template*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplicationTemplate = azuread.getApplicationTemplate({\n    displayName: \"Marketo\",\n});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    templateId: exampleApplicationTemplate.then(exampleApplicationTemplate =\u003e exampleApplicationTemplate.templateId),\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    useExisting: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application_template = azuread.get_application_template(display_name=\"Marketo\")\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    template_id=example_application_template.template_id)\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    use_existing=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplicationTemplate = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs\n        {\n            DisplayName = \"Marketo\",\n        }));\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            TemplateId = exampleApplicationTemplate.Apply(exampleApplicationTemplate =\u003e exampleApplicationTemplate.TemplateId),\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            UseExisting = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"Marketo\"\n\t\texampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, \u0026GetApplicationTemplateArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tTemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t\tUseExisting:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nService principals can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
                 "accountEnabled": {
                     "type": "boolean",
@@ -3207,6 +3939,10 @@
                     "type": "string",
                     "description": "The URL where the service exposes SAML metadata for federation.\n"
                 },
+                "samlSingleSignOn": {
+                    "$ref": "#/types/azuread:index/ServicePrincipalSamlSingleSignOn:ServicePrincipalSamlSingleSignOn",
+                    "description": "A `saml_single_sign_on` block as documented below.\n"
+                },
                 "servicePrincipalNames": {
                     "type": "array",
                     "items": {
@@ -3300,6 +4036,10 @@
                 "preferredSingleSignOnMode": {
                     "type": "string",
                     "description": "The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.\n"
+                },
+                "samlSingleSignOn": {
+                    "$ref": "#/types/azuread:index/ServicePrincipalSamlSingleSignOn:ServicePrincipalSamlSingleSignOn",
+                    "description": "A `saml_single_sign_on` block as documented below.\n"
                 },
                 "tags": {
                     "type": "array",
@@ -3426,6 +4166,10 @@
                     "samlMetadataUrl": {
                         "type": "string",
                         "description": "The URL where the service exposes SAML metadata for federation.\n"
+                    },
+                    "samlSingleSignOn": {
+                        "$ref": "#/types/azuread:index/ServicePrincipalSamlSingleSignOn:ServicePrincipalSamlSingleSignOn",
+                        "description": "A `saml_single_sign_on` block as documented below.\n"
                     },
                     "servicePrincipalNames": {
                         "type": "array",
@@ -3720,6 +4464,14 @@
                     "type": "string",
                     "description": "The name for the department in which the user works.\n"
                 },
+                "disablePasswordExpiration": {
+                    "type": "boolean",
+                    "description": "Whether the users password is exempt from expiring. Defaults to `false`.\n"
+                },
+                "disableStrongPassword": {
+                    "type": "boolean",
+                    "description": "Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "The name to display in the address book for the user.\n"
@@ -3916,6 +4668,14 @@
                     "type": "string",
                     "description": "The name for the department in which the user works.\n"
                 },
+                "disablePasswordExpiration": {
+                    "type": "boolean",
+                    "description": "Whether the users password is exempt from expiring. Defaults to `false`.\n"
+                },
+                "disableStrongPassword": {
+                    "type": "boolean",
+                    "description": "Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.\n"
+                },
                 "displayName": {
                     "type": "string",
                     "description": "The name to display in the address book for the user.\n"
@@ -4053,6 +4813,14 @@
                     "department": {
                         "type": "string",
                         "description": "The name for the department in which the user works.\n"
+                    },
+                    "disablePasswordExpiration": {
+                        "type": "boolean",
+                        "description": "Whether the users password is exempt from expiring. Defaults to `false`.\n"
+                    },
+                    "disableStrongPassword": {
+                        "type": "boolean",
+                        "description": "Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.\n"
                     },
                     "displayName": {
                         "type": "string",
@@ -4421,6 +5189,85 @@
                 ]
             }
         },
+        "azuread:index/getApplicationTemplate:getApplicationTemplate": {
+            "description": "Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).\n\n## API Permissions\n\nThis data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getApplicationTemplate({\n    displayName: \"Marketo\",\n});\nexport const applicationTemplateId = example.then(example =\u003e example.templateId);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_application_template(display_name=\"Marketo\")\npulumi.export(\"applicationTemplateId\", example.template_id)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs\n        {\n            DisplayName = \"Marketo\",\n        }));\n        this.ApplicationTemplateId = example.Apply(example =\u003e example.TemplateId);\n    }\n\n    [Output(\"applicationTemplateId\")]\n    public Output\u003cstring\u003e ApplicationTemplateId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"Marketo\"\n\t\texample, err := azuread.GetApplicationTemplate(ctx, \u0026GetApplicationTemplateArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"applicationTemplateId\", example.TemplateId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getApplicationTemplate.\n",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "Specifies the display name of the templated application.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "Specifies the ID of the templated application.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getApplicationTemplate.\n",
+                "properties": {
+                    "categories": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of categories for this templated application.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name for the templated application.\n"
+                    },
+                    "homepageUrl": {
+                        "type": "string",
+                        "description": "Home page URL of the templated application.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "logoUrl": {
+                        "type": "string",
+                        "description": "URL to retrieve the logo for this templated application.\n"
+                    },
+                    "publisher": {
+                        "type": "string",
+                        "description": "Name of the publisher for this templated application.\n"
+                    },
+                    "supportedProvisioningTypes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of provisioning modes supported by this templated application.\n"
+                    },
+                    "supportedSingleSignOnModes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of single sign on modes supported by this templated application.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "The ID of the templated application.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "categories",
+                    "displayName",
+                    "homepageUrl",
+                    "logoUrl",
+                    "publisher",
+                    "supportedProvisioningTypes",
+                    "supportedSingleSignOnModes",
+                    "templateId",
+                    "id"
+                ]
+            }
+        },
         "azuread:index/getClientConfig:getClientConfig": {
             "description": "Use this data source to access the configuration of the AzureAD provider.\n\n## API Permissions\n\nNo additional roles are required to use this data source.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nexport const objectId = current.then(current =\u003e current.objectId);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\npulumi.export(\"objectId\", current.object_id)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        this.ObjectId = current.Apply(current =\u003e current.ObjectId);\n    }\n\n    [Output(\"objectId\")]\n    public Output\u003cstring\u003e ObjectId { get; set; }\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"objectId\", current.ObjectId)\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "outputs": {
@@ -4781,7 +5628,7 @@
                 "properties": {
                     "accountEnabled": {
                         "type": "boolean",
-                        "description": "- Whether or not the service principal account is enabled.\n"
+                        "description": "Whether or not the service principal account is enabled.\n"
                     },
                     "alternativeNames": {
                         "type": "array",
@@ -4884,6 +5731,13 @@
                         "type": "string",
                         "description": "The URL where the service exposes SAML metadata for federation.\n"
                     },
+                    "samlSingleSignOns": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/getServicePrincipalSamlSingleSignOn:getServicePrincipalSamlSingleSignOn"
+                        },
+                        "description": "A `saml_single_sign_on` block as documented below.\n"
+                    },
                     "servicePrincipalNames": {
                         "type": "array",
                         "items": {
@@ -4929,10 +5783,100 @@
                     "preferredSingleSignOnMode",
                     "redirectUris",
                     "samlMetadataUrl",
+                    "samlSingleSignOns",
                     "servicePrincipalNames",
                     "signInAudience",
                     "tags",
                     "type",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getServicePrincipals:getServicePrincipals": {
+            "description": "Gets basic information for multiple Azure Active Directory service principals.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Look up by application display names*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getServicePrincipals({\n    displayNames: [\n        \"example-app\",\n        \"another-app\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(display_names=[\n    \"example-app\",\n    \"another-app\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs\n        {\n            DisplayNames = \n            {\n                \"example-app\",\n                \"another-app\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026GetServicePrincipalsArgs{\n\t\t\tDisplayNames: []string{\n\t\t\t\t\"example-app\",\n\t\t\t\t\"another-app\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Look up by application IDs (client IDs*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getServicePrincipals({\n    applicationIds: [\n        \"11111111-0000-0000-0000-000000000000\",\n        \"22222222-0000-0000-0000-000000000000\",\n        \"33333333-0000-0000-0000-000000000000\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(application_ids=[\n    \"11111111-0000-0000-0000-000000000000\",\n    \"22222222-0000-0000-0000-000000000000\",\n    \"33333333-0000-0000-0000-000000000000\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs\n        {\n            ApplicationIds = \n            {\n                \"11111111-0000-0000-0000-000000000000\",\n                \"22222222-0000-0000-0000-000000000000\",\n                \"33333333-0000-0000-0000-000000000000\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026GetServicePrincipalsArgs{\n\t\t\tApplicationIds: []string{\n\t\t\t\t\"11111111-0000-0000-0000-000000000000\",\n\t\t\t\t\"22222222-0000-0000-0000-000000000000\",\n\t\t\t\t\"33333333-0000-0000-0000-000000000000\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Look up by service principal object IDs*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getServicePrincipals({\n    objectIds: [\n        \"00000000-0000-0000-0000-000000000000\",\n        \"00000000-0000-0000-0000-111111111111\",\n        \"00000000-0000-0000-0000-222222222222\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_service_principals(object_ids=[\n    \"00000000-0000-0000-0000-000000000000\",\n    \"00000000-0000-0000-0000-111111111111\",\n    \"00000000-0000-0000-0000-222222222222\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs\n        {\n            ObjectIds = \n            {\n                \"00000000-0000-0000-0000-000000000000\",\n                \"00000000-0000-0000-0000-111111111111\",\n                \"00000000-0000-0000-0000-222222222222\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetServicePrincipals(ctx, \u0026GetServicePrincipalsArgs{\n\t\t\tObjectIds: []string{\n\t\t\t\t\"00000000-0000-0000-0000-000000000000\",\n\t\t\t\t\"00000000-0000-0000-0000-111111111111\",\n\t\t\t\t\"00000000-0000-0000-0000-222222222222\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServicePrincipals.\n",
+                "properties": {
+                    "applicationIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of application IDs (client IDs) of the applications associated with the service principals.\n"
+                    },
+                    "displayNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of display names of the applications associated with the service principals.\n"
+                    },
+                    "ignoreMissing": {
+                        "type": "boolean",
+                        "description": "Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.\n"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The object IDs of the service principals.\n"
+                    },
+                    "returnAll": {
+                        "type": "boolean",
+                        "description": "When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServicePrincipals.\n",
+                "properties": {
+                    "applicationIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of application IDs (client IDs) of the applications associated with the service principals.\n"
+                    },
+                    "displayNames": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of display names of the applications associated with the service principals.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ignoreMissing": {
+                        "type": "boolean"
+                    },
+                    "objectIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The object IDs of the service principals.\n"
+                    },
+                    "returnAll": {
+                        "type": "boolean"
+                    },
+                    "servicePrincipals": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/getServicePrincipalsServicePrincipal:getServicePrincipalsServicePrincipal"
+                        },
+                        "description": "A list of service principals. Each `service_principal` object provides the attributes documented below.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "applicationIds",
+                    "displayNames",
+                    "objectIds",
+                    "servicePrincipals",
                     "id"
                 ]
             }
@@ -5179,7 +6123,7 @@
             }
         },
         "azuread:index/getUsers:getUsers": {
-            "description": "Gets object IDs or user principal names for multiple Azure Active Directory users.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst users = pulumi.output(azuread.getUsers({\n    userPrincipalNames: [\n        \"kat@hashicorp.com\",\n        \"byte@hashicorp.com\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nusers = azuread.get_users(user_principal_names=[\n    \"kat@hashicorp.com\",\n    \"byte@hashicorp.com\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var users = Output.Create(AzureAD.GetUsers.InvokeAsync(new AzureAD.GetUsersArgs\n        {\n            UserPrincipalNames = \n            {\n                \"kat@hashicorp.com\",\n                \"byte@hashicorp.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetUsers(ctx, \u0026GetUsersArgs{\n\t\t\tUserPrincipalNames: []string{\n\t\t\t\t\"kat@hashicorp.com\",\n\t\t\t\t\"byte@hashicorp.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Gets basic information for multiple Azure Active Directory users.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst users = pulumi.output(azuread.getUsers({\n    userPrincipalNames: [\n        \"kat@hashicorp.com\",\n        \"byte@hashicorp.com\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nusers = azuread.get_users(user_principal_names=[\n    \"kat@hashicorp.com\",\n    \"byte@hashicorp.com\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var users = Output.Create(AzureAD.GetUsers.InvokeAsync(new AzureAD.GetUsersArgs\n        {\n            UserPrincipalNames = \n            {\n                \"kat@hashicorp.com\",\n                \"byte@hashicorp.com\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetUsers(ctx, \u0026GetUsersArgs{\n\t\t\tUserPrincipalNames: []string{\n\t\t\t\t\"kat@hashicorp.com\",\n\t\t\t\t\"byte@hashicorp.com\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getUsers.\n",
                 "properties": {

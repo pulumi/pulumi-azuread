@@ -24,6 +24,8 @@ namespace Pulumi.AzureAD
     /// 
     /// ## Example Usage
     /// 
+    /// *Create a service principal for an application*
+    /// 
     /// ```csharp
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
@@ -55,6 +57,56 @@ namespace Pulumi.AzureAD
     ///                 "tags",
     ///                 "here",
     ///             },
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// *Manage a service principal for a first-party Microsoft application*
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
+    ///         var msgraph = new AzureAD.ServicePrincipal("msgraph", new AzureAD.ServicePrincipalArgs
+    ///         {
+    ///             ApplicationId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
+    ///             UseExisting = true,
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// *Create a service principal for an application created from a gallery template*
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var exampleApplicationTemplate = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs
+    ///         {
+    ///             DisplayName = "Marketo",
+    ///         }));
+    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
+    ///         {
+    ///             DisplayName = "example",
+    ///             TemplateId = exampleApplicationTemplate.Apply(exampleApplicationTemplate =&gt; exampleApplicationTemplate.TemplateId),
+    ///         });
+    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
+    ///         {
+    ///             ApplicationId = exampleApplication.ApplicationId,
+    ///             UseExisting = true,
     ///         });
     ///     }
     /// 
@@ -197,6 +249,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("samlMetadataUrl")]
         public Output<string> SamlMetadataUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// A `saml_single_sign_on` block as documented below.
+        /// </summary>
+        [Output("samlSingleSignOn")]
+        public Output<Outputs.ServicePrincipalSamlSingleSignOn?> SamlSingleSignOn { get; private set; } = null!;
 
         /// <summary>
         /// A list of identifier URI(s), copied over from the associated application.
@@ -351,6 +409,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("preferredSingleSignOnMode")]
         public Input<string>? PreferredSingleSignOnMode { get; set; }
+
+        /// <summary>
+        /// A `saml_single_sign_on` block as documented below.
+        /// </summary>
+        [Input("samlSingleSignOn")]
+        public Input<Inputs.ServicePrincipalSamlSingleSignOnArgs>? SamlSingleSignOn { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -550,6 +614,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("samlMetadataUrl")]
         public Input<string>? SamlMetadataUrl { get; set; }
+
+        /// <summary>
+        /// A `saml_single_sign_on` block as documented below.
+        /// </summary>
+        [Input("samlSingleSignOn")]
+        public Input<Inputs.ServicePrincipalSamlSingleSignOnGetArgs>? SamlSingleSignOn { get; set; }
 
         [Input("servicePrincipalNames")]
         private InputList<string>? _servicePrincipalNames;

@@ -23,6 +23,8 @@ class UserArgs:
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
+                 disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+                 disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
                  force_password_change: Optional[pulumi.Input[bool]] = None,
@@ -54,6 +56,8 @@ class UserArgs:
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] fax_number: The fax number of the user.
         :param pulumi.Input[bool] force_password_change: Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
@@ -92,6 +96,10 @@ class UserArgs:
             pulumi.set(__self__, "country", country)
         if department is not None:
             pulumi.set(__self__, "department", department)
+        if disable_password_expiration is not None:
+            pulumi.set(__self__, "disable_password_expiration", disable_password_expiration)
+        if disable_strong_password is not None:
+            pulumi.set(__self__, "disable_strong_password", disable_strong_password)
         if employee_id is not None:
             pulumi.set(__self__, "employee_id", employee_id)
         if fax_number is not None:
@@ -250,6 +258,30 @@ class UserArgs:
     @department.setter
     def department(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "department", value)
+
+    @property
+    @pulumi.getter(name="disablePasswordExpiration")
+    def disable_password_expiration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the users password is exempt from expiring. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_password_expiration")
+
+    @disable_password_expiration.setter
+    def disable_password_expiration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_password_expiration", value)
+
+    @property
+    @pulumi.getter(name="disableStrongPassword")
+    def disable_strong_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_strong_password")
+
+    @disable_strong_password.setter
+    def disable_strong_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_strong_password", value)
 
     @property
     @pulumi.getter(name="employeeId")
@@ -493,6 +525,8 @@ class _UserState:
                  country: Optional[pulumi.Input[str]] = None,
                  creation_type: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
+                 disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+                 disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  external_user_state: Optional[pulumi.Input[str]] = None,
@@ -537,6 +571,8 @@ class _UserState:
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] external_user_state: For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
@@ -590,6 +626,10 @@ class _UserState:
             pulumi.set(__self__, "creation_type", creation_type)
         if department is not None:
             pulumi.set(__self__, "department", department)
+        if disable_password_expiration is not None:
+            pulumi.set(__self__, "disable_password_expiration", disable_password_expiration)
+        if disable_strong_password is not None:
+            pulumi.set(__self__, "disable_strong_password", disable_strong_password)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if employee_id is not None:
@@ -774,6 +814,30 @@ class _UserState:
     @department.setter
     def department(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "department", value)
+
+    @property
+    @pulumi.getter(name="disablePasswordExpiration")
+    def disable_password_expiration(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the users password is exempt from expiring. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_password_expiration")
+
+    @disable_password_expiration.setter
+    def disable_password_expiration(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_password_expiration", value)
+
+    @property
+    @pulumi.getter(name="disableStrongPassword")
+    def disable_strong_password(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_strong_password")
+
+    @disable_strong_password.setter
+    def disable_strong_password(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_strong_password", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -1173,6 +1237,8 @@ class User(pulumi.CustomResource):
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
+                 disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+                 disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
@@ -1237,6 +1303,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] fax_number: The fax number of the user.
@@ -1320,6 +1388,8 @@ class User(pulumi.CustomResource):
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
+                 disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+                 disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
@@ -1361,6 +1431,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["consent_provided_for_minor"] = consent_provided_for_minor
             __props__.__dict__["country"] = country
             __props__.__dict__["department"] = department
+            __props__.__dict__["disable_password_expiration"] = disable_password_expiration
+            __props__.__dict__["disable_strong_password"] = disable_strong_password
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -1419,6 +1491,8 @@ class User(pulumi.CustomResource):
             country: Optional[pulumi.Input[str]] = None,
             creation_type: Optional[pulumi.Input[str]] = None,
             department: Optional[pulumi.Input[str]] = None,
+            disable_password_expiration: Optional[pulumi.Input[bool]] = None,
+            disable_strong_password: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             employee_id: Optional[pulumi.Input[str]] = None,
             external_user_state: Optional[pulumi.Input[str]] = None,
@@ -1468,6 +1542,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
         :param pulumi.Input[str] external_user_state: For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
@@ -1515,6 +1591,8 @@ class User(pulumi.CustomResource):
         __props__.__dict__["country"] = country
         __props__.__dict__["creation_type"] = creation_type
         __props__.__dict__["department"] = department
+        __props__.__dict__["disable_password_expiration"] = disable_password_expiration
+        __props__.__dict__["disable_strong_password"] = disable_strong_password
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["employee_id"] = employee_id
         __props__.__dict__["external_user_state"] = external_user_state
@@ -1628,6 +1706,22 @@ class User(pulumi.CustomResource):
         The name for the department in which the user works.
         """
         return pulumi.get(self, "department")
+
+    @property
+    @pulumi.getter(name="disablePasswordExpiration")
+    def disable_password_expiration(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the users password is exempt from expiring. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_password_expiration")
+
+    @property
+    @pulumi.getter(name="disableStrongPassword")
+    def disable_strong_password(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_strong_password")
 
     @property
     @pulumi.getter(name="displayName")

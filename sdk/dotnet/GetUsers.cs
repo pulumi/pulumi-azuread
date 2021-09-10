@@ -12,7 +12,7 @@ namespace Pulumi.AzureAD
     public static class GetUsers
     {
         /// <summary>
-        /// Gets object IDs or user principal names for multiple Azure Active Directory users.
+        /// Gets basic information for multiple Azure Active Directory users.
         /// 
         /// ## API Permissions
         /// 

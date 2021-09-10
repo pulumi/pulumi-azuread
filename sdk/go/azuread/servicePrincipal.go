@@ -25,6 +25,8 @@ import (
 //
 // ## Example Usage
 //
+// *Create a service principal for an application*
+//
 // ```go
 // package main
 //
@@ -59,6 +61,72 @@ import (
 // 				pulumi.String("tags"),
 // 				pulumi.String("here"),
 // 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// *Manage a service principal for a first-party Microsoft application*
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 			UseExisting:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// *Create a service principal for an application created from a gallery template*
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "Marketo"
+// 		exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+// 			DisplayName: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 			UseExisting:   pulumi.Bool(true),
 // 		})
 // 		if err != nil {
 // 			return err
@@ -120,6 +188,8 @@ type ServicePrincipal struct {
 	RedirectUris pulumi.StringArrayOutput `pulumi:"redirectUris"`
 	// The URL where the service exposes SAML metadata for federation.
 	SamlMetadataUrl pulumi.StringOutput `pulumi:"samlMetadataUrl"`
+	// A `samlSingleSignOn` block as documented below.
+	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrOutput `pulumi:"samlSingleSignOn"`
 	// A list of identifier URI(s), copied over from the associated application.
 	ServicePrincipalNames pulumi.StringArrayOutput `pulumi:"servicePrincipalNames"`
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
@@ -206,6 +276,8 @@ type servicePrincipalState struct {
 	RedirectUris []string `pulumi:"redirectUris"`
 	// The URL where the service exposes SAML metadata for federation.
 	SamlMetadataUrl *string `pulumi:"samlMetadataUrl"`
+	// A `samlSingleSignOn` block as documented below.
+	SamlSingleSignOn *ServicePrincipalSamlSingleSignOn `pulumi:"samlSingleSignOn"`
 	// A list of identifier URI(s), copied over from the associated application.
 	ServicePrincipalNames []string `pulumi:"servicePrincipalNames"`
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
@@ -261,6 +333,8 @@ type ServicePrincipalState struct {
 	RedirectUris pulumi.StringArrayInput
 	// The URL where the service exposes SAML metadata for federation.
 	SamlMetadataUrl pulumi.StringPtrInput
+	// A `samlSingleSignOn` block as documented below.
+	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrInput
 	// A list of identifier URI(s), copied over from the associated application.
 	ServicePrincipalNames pulumi.StringArrayInput
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
@@ -298,6 +372,8 @@ type servicePrincipalArgs struct {
 	Owners []string `pulumi:"owners"`
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode *string `pulumi:"preferredSingleSignOnMode"`
+	// A `samlSingleSignOn` block as documented below.
+	SamlSingleSignOn *ServicePrincipalSamlSingleSignOn `pulumi:"samlSingleSignOn"`
 	// A set of tags to apply to the service principal.
 	Tags []string `pulumi:"tags"`
 	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
@@ -326,6 +402,8 @@ type ServicePrincipalArgs struct {
 	Owners pulumi.StringArrayInput
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode pulumi.StringPtrInput
+	// A `samlSingleSignOn` block as documented below.
+	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrInput
 	// A set of tags to apply to the service principal.
 	Tags pulumi.StringArrayInput
 	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.

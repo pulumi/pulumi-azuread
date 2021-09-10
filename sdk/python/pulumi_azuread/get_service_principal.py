@@ -20,7 +20,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, description=None, display_name=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
+    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, description=None, display_name=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -84,6 +84,9 @@ class GetServicePrincipalResult:
         if saml_metadata_url and not isinstance(saml_metadata_url, str):
             raise TypeError("Expected argument 'saml_metadata_url' to be a str")
         pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
+        if saml_single_sign_ons and not isinstance(saml_single_sign_ons, list):
+            raise TypeError("Expected argument 'saml_single_sign_ons' to be a list")
+        pulumi.set(__self__, "saml_single_sign_ons", saml_single_sign_ons)
         if service_principal_names and not isinstance(service_principal_names, list):
             raise TypeError("Expected argument 'service_principal_names' to be a list")
         pulumi.set(__self__, "service_principal_names", service_principal_names)
@@ -101,7 +104,7 @@ class GetServicePrincipalResult:
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
         """
-        - Whether or not the service principal account is enabled.
+        Whether or not the service principal account is enabled.
         """
         return pulumi.get(self, "account_enabled")
 
@@ -266,6 +269,14 @@ class GetServicePrincipalResult:
         return pulumi.get(self, "saml_metadata_url")
 
     @property
+    @pulumi.getter(name="samlSingleSignOns")
+    def saml_single_sign_ons(self) -> Sequence['outputs.GetServicePrincipalSamlSingleSignOnResult']:
+        """
+        A `saml_single_sign_on` block as documented below.
+        """
+        return pulumi.get(self, "saml_single_sign_ons")
+
+    @property
     @pulumi.getter(name="servicePrincipalNames")
     def service_principal_names(self) -> Sequence[str]:
         """
@@ -325,6 +336,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             preferred_single_sign_on_mode=self.preferred_single_sign_on_mode,
             redirect_uris=self.redirect_uris,
             saml_metadata_url=self.saml_metadata_url,
+            saml_single_sign_ons=self.saml_single_sign_ons,
             service_principal_names=self.service_principal_names,
             sign_in_audience=self.sign_in_audience,
             tags=self.tags,
@@ -412,6 +424,7 @@ def get_service_principal(application_id: Optional[str] = None,
         preferred_single_sign_on_mode=__ret__.preferred_single_sign_on_mode,
         redirect_uris=__ret__.redirect_uris,
         saml_metadata_url=__ret__.saml_metadata_url,
+        saml_single_sign_ons=__ret__.saml_single_sign_ons,
         service_principal_names=__ret__.service_principal_names,
         sign_in_audience=__ret__.sign_in_audience,
         tags=__ret__.tags,

@@ -106,6 +106,14 @@ export class User extends pulumi.CustomResource {
      */
     public readonly department!: pulumi.Output<string | undefined>;
     /**
+     * Whether the users password is exempt from expiring. Defaults to `false`.
+     */
+    public readonly disablePasswordExpiration!: pulumi.Output<boolean | undefined>;
+    /**
+     * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+     */
+    public readonly disableStrongPassword!: pulumi.Output<boolean | undefined>;
+    /**
      * The name to display in the address book for the user.
      */
     public readonly displayName!: pulumi.Output<string>;
@@ -257,6 +265,8 @@ export class User extends pulumi.CustomResource {
             inputs["country"] = state ? state.country : undefined;
             inputs["creationType"] = state ? state.creationType : undefined;
             inputs["department"] = state ? state.department : undefined;
+            inputs["disablePasswordExpiration"] = state ? state.disablePasswordExpiration : undefined;
+            inputs["disableStrongPassword"] = state ? state.disableStrongPassword : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["employeeId"] = state ? state.employeeId : undefined;
             inputs["externalUserState"] = state ? state.externalUserState : undefined;
@@ -305,6 +315,8 @@ export class User extends pulumi.CustomResource {
             inputs["consentProvidedForMinor"] = args ? args.consentProvidedForMinor : undefined;
             inputs["country"] = args ? args.country : undefined;
             inputs["department"] = args ? args.department : undefined;
+            inputs["disablePasswordExpiration"] = args ? args.disablePasswordExpiration : undefined;
+            inputs["disableStrongPassword"] = args ? args.disableStrongPassword : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["employeeId"] = args ? args.employeeId : undefined;
             inputs["faxNumber"] = args ? args.faxNumber : undefined;
@@ -391,6 +403,14 @@ export interface UserState {
      * The name for the department in which the user works.
      */
     department?: pulumi.Input<string>;
+    /**
+     * Whether the users password is exempt from expiring. Defaults to `false`.
+     */
+    disablePasswordExpiration?: pulumi.Input<boolean>;
+    /**
+     * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+     */
+    disableStrongPassword?: pulumi.Input<boolean>;
     /**
      * The name to display in the address book for the user.
      */
@@ -557,6 +577,14 @@ export interface UserArgs {
      * The name for the department in which the user works.
      */
     department?: pulumi.Input<string>;
+    /**
+     * Whether the users password is exempt from expiring. Defaults to `false`.
+     */
+    disablePasswordExpiration?: pulumi.Input<boolean>;
+    /**
+     * Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+     */
+    disableStrongPassword?: pulumi.Input<boolean>;
     /**
      * The name to display in the address book for the user.
      */

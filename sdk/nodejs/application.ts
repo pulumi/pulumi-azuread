@@ -143,6 +143,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly supportUrl!: pulumi.Output<string | undefined>;
     /**
+     * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     */
+    public readonly templateId!: pulumi.Output<string>;
+    /**
      * URL of the application's terms of service statement.
      */
     public readonly termsOfServiceUrl!: pulumi.Output<string | undefined>;
@@ -189,6 +193,7 @@ export class Application extends pulumi.CustomResource {
             inputs["signInAudience"] = state ? state.signInAudience : undefined;
             inputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
             inputs["supportUrl"] = state ? state.supportUrl : undefined;
+            inputs["templateId"] = state ? state.templateId : undefined;
             inputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
             inputs["web"] = state ? state.web : undefined;
         } else {
@@ -214,6 +219,7 @@ export class Application extends pulumi.CustomResource {
             inputs["signInAudience"] = args ? args.signInAudience : undefined;
             inputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
             inputs["supportUrl"] = args ? args.supportUrl : undefined;
+            inputs["templateId"] = args ? args.templateId : undefined;
             inputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
             inputs["web"] = args ? args.web : undefined;
             inputs["appRoleIds"] = undefined /*out*/;
@@ -336,6 +342,10 @@ export interface ApplicationState {
      */
     supportUrl?: pulumi.Input<string>;
     /**
+     * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     */
+    templateId?: pulumi.Input<string>;
+    /**
      * URL of the application's terms of service statement.
      */
     termsOfServiceUrl?: pulumi.Input<string>;
@@ -421,6 +431,10 @@ export interface ApplicationArgs {
      * URL of the application's support page.
      */
     supportUrl?: pulumi.Input<string>;
+    /**
+     * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+     */
+    templateId?: pulumi.Input<string>;
     /**
      * URL of the application's terms of service statement.
      */

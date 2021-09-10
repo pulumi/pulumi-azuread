@@ -116,7 +116,7 @@ def get_users(ignore_missing: Optional[bool] = None,
               user_principal_names: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Gets object IDs or user principal names for multiple Azure Active Directory users.
+    Gets basic information for multiple Azure Active Directory users.
 
     ## API Permissions
 

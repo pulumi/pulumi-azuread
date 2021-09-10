@@ -71,6 +71,8 @@ type Application struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrOutput `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
+	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrOutput `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below, which configures web related settings for this application.
@@ -159,6 +161,8 @@ type applicationState struct {
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
+	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl *string `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below, which configures web related settings for this application.
@@ -216,6 +220,8 @@ type ApplicationState struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
+	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrInput
 	// A `web` block as documented below, which configures web related settings for this application.
@@ -263,6 +269,8 @@ type applicationArgs struct {
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
+	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl *string `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below, which configures web related settings for this application.
@@ -307,6 +315,8 @@ type ApplicationArgs struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
+	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrInput
 	// A `web` block as documented below, which configures web related settings for this application.
