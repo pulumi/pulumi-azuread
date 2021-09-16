@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -135,4 +138,83 @@ type GetServicePrincipalsResult struct {
 	ReturnAll *bool    `pulumi:"returnAll"`
 	// A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
 	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
+}
+
+func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOutputArgs, opts ...pulumi.InvokeOption) GetServicePrincipalsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetServicePrincipalsResult, error) {
+			args := v.(GetServicePrincipalsArgs)
+			r, err := GetServicePrincipals(ctx, &args, opts...)
+			return *r, err
+		}).(GetServicePrincipalsResultOutput)
+}
+
+// A collection of arguments for invoking getServicePrincipals.
+type GetServicePrincipalsOutputArgs struct {
+	// A list of application IDs (client IDs) of the applications associated with the service principals.
+	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
+	// A list of display names of the applications associated with the service principals.
+	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
+	// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
+	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
+	// The object IDs of the service principals.
+	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
+	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
+	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
+}
+
+func (GetServicePrincipalsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServicePrincipals.
+type GetServicePrincipalsResultOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalsResult)(nil)).Elem()
+}
+
+func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutput() GetServicePrincipalsResultOutput {
+	return o
+}
+
+func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWithContext(ctx context.Context) GetServicePrincipalsResultOutput {
+	return o
+}
+
+// A list of application IDs (client IDs) of the applications associated with the service principals.
+func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
+}
+
+// A list of display names of the applications associated with the service principals.
+func (o GetServicePrincipalsResultOutput) DisplayNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.DisplayNames }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetServicePrincipalsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetServicePrincipalsResultOutput) IgnoreMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) *bool { return v.IgnoreMissing }).(pulumi.BoolPtrOutput)
+}
+
+// The object IDs of the service principals.
+func (o GetServicePrincipalsResultOutput) ObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ObjectIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetServicePrincipalsResultOutput) ReturnAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) *bool { return v.ReturnAll }).(pulumi.BoolPtrOutput)
+}
+
+// A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
+func (o GetServicePrincipalsResultOutput) ServicePrincipals() GetServicePrincipalsServicePrincipalArrayOutput {
+	return o.ApplyT(func(v GetServicePrincipalsResult) []GetServicePrincipalsServicePrincipal { return v.ServicePrincipals }).(GetServicePrincipalsServicePrincipalArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetServicePrincipalsResultOutput{})
 }

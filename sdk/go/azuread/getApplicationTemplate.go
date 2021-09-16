@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -74,4 +77,89 @@ type GetApplicationTemplateResult struct {
 	SupportedSingleSignOnModes []string `pulumi:"supportedSingleSignOnModes"`
 	// The ID of the templated application.
 	TemplateId string `pulumi:"templateId"`
+}
+
+func GetApplicationTemplateOutput(ctx *pulumi.Context, args GetApplicationTemplateOutputArgs, opts ...pulumi.InvokeOption) GetApplicationTemplateResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetApplicationTemplateResult, error) {
+			args := v.(GetApplicationTemplateArgs)
+			r, err := GetApplicationTemplate(ctx, &args, opts...)
+			return *r, err
+		}).(GetApplicationTemplateResultOutput)
+}
+
+// A collection of arguments for invoking getApplicationTemplate.
+type GetApplicationTemplateOutputArgs struct {
+	// Specifies the display name of the templated application.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Specifies the ID of the templated application.
+	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+}
+
+func (GetApplicationTemplateOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationTemplateArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getApplicationTemplate.
+type GetApplicationTemplateResultOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationTemplateResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationTemplateResult)(nil)).Elem()
+}
+
+func (o GetApplicationTemplateResultOutput) ToGetApplicationTemplateResultOutput() GetApplicationTemplateResultOutput {
+	return o
+}
+
+func (o GetApplicationTemplateResultOutput) ToGetApplicationTemplateResultOutputWithContext(ctx context.Context) GetApplicationTemplateResultOutput {
+	return o
+}
+
+// List of categories for this templated application.
+func (o GetApplicationTemplateResultOutput) Categories() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) []string { return v.Categories }).(pulumi.StringArrayOutput)
+}
+
+// The display name for the templated application.
+func (o GetApplicationTemplateResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Home page URL of the templated application.
+func (o GetApplicationTemplateResultOutput) HomepageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.HomepageUrl }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetApplicationTemplateResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// URL to retrieve the logo for this templated application.
+func (o GetApplicationTemplateResultOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+// Name of the publisher for this templated application.
+func (o GetApplicationTemplateResultOutput) Publisher() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.Publisher }).(pulumi.StringOutput)
+}
+
+// List of provisioning modes supported by this templated application.
+func (o GetApplicationTemplateResultOutput) SupportedProvisioningTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) []string { return v.SupportedProvisioningTypes }).(pulumi.StringArrayOutput)
+}
+
+// List of single sign on modes supported by this templated application.
+func (o GetApplicationTemplateResultOutput) SupportedSingleSignOnModes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) []string { return v.SupportedSingleSignOnModes }).(pulumi.StringArrayOutput)
+}
+
+// The ID of the templated application.
+func (o GetApplicationTemplateResultOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetApplicationTemplateResultOutput{})
 }

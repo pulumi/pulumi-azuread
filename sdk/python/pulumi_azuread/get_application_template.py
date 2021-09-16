@@ -12,6 +12,7 @@ __all__ = [
     'GetApplicationTemplateResult',
     'AwaitableGetApplicationTemplateResult',
     'get_application_template',
+    'get_application_template_output',
 ]
 
 @pulumi.output_type
@@ -181,3 +182,31 @@ def get_application_template(display_name: Optional[str] = None,
         supported_provisioning_types=__ret__.supported_provisioning_types,
         supported_single_sign_on_modes=__ret__.supported_single_sign_on_modes,
         template_id=__ret__.template_id)
+
+
+@_utilities.lift_output_func(get_application_template)
+def get_application_template_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                    template_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationTemplateResult]:
+    """
+    Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
+
+    ## API Permissions
+
+    This data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application_template(display_name="Marketo")
+    pulumi.export("applicationTemplateId", example.template_id)
+    ```
+
+
+    :param str display_name: Specifies the display name of the templated application.
+    :param str template_id: Specifies the ID of the templated application.
+    """
+    ...

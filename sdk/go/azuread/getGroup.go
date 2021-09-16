@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -112,4 +115,163 @@ type LookupGroupResult struct {
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
 	Visibility string `pulumi:"visibility"`
+}
+
+func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupGroupResult, error) {
+			args := v.(LookupGroupArgs)
+			r, err := LookupGroup(ctx, &args, opts...)
+			return *r, err
+		}).(LookupGroupResultOutput)
+}
+
+// A collection of arguments for invoking getGroup.
+type LookupGroupOutputArgs struct {
+	// The display name for the group.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Whether the group is mail-enabled.
+	MailEnabled pulumi.BoolPtrInput `pulumi:"mailEnabled"`
+	// Specifies the object ID of the group.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Whether the group is a security group.
+	SecurityEnabled pulumi.BoolPtrInput `pulumi:"securityEnabled"`
+}
+
+func (LookupGroupOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGroup.
+type LookupGroupResultOutput struct{ *pulumi.OutputState }
+
+func (LookupGroupResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupGroupResult)(nil)).Elem()
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOutput {
+	return o
+}
+
+func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
+	return o
+}
+
+// Indicates whether this group can be assigned to an Azure Active Directory role.
+func (o LookupGroupResultOutput) AssignableToRole() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.AssignableToRole }).(pulumi.BoolOutput)
+}
+
+// A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
+func (o LookupGroupResultOutput) Behaviors() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.Behaviors }).(pulumi.StringArrayOutput)
+}
+
+// The optional description of the group.
+func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name for the group.
+func (o LookupGroupResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupGroupResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The SMTP address for the group.
+func (o LookupGroupResultOutput) Mail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Mail }).(pulumi.StringOutput)
+}
+
+// Whether the group is mail-enabled.
+func (o LookupGroupResultOutput) MailEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.MailEnabled }).(pulumi.BoolOutput)
+}
+
+// The mail alias for the group, unique in the organisation.
+func (o LookupGroupResultOutput) MailNickname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.MailNickname }).(pulumi.StringOutput)
+}
+
+// List of object IDs of the group members.
+func (o LookupGroupResultOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// The object ID of the group.
+func (o LookupGroupResultOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupGroupResultOutput) OnpremisesDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesDomainName }).(pulumi.StringOutput)
+}
+
+// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupGroupResultOutput) OnpremisesNetbiosName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesNetbiosName }).(pulumi.StringOutput)
+}
+
+// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupGroupResultOutput) OnpremisesSamAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
+}
+
+// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupGroupResultOutput) OnpremisesSecurityIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesSecurityIdentifier }).(pulumi.StringOutput)
+}
+
+// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+func (o LookupGroupResultOutput) OnpremisesSyncEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.OnpremisesSyncEnabled }).(pulumi.BoolOutput)
+}
+
+// List of object IDs of the group owners.
+func (o LookupGroupResultOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+func (o LookupGroupResultOutput) PreferredLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.PreferredLanguage }).(pulumi.StringOutput)
+}
+
+// A list of provisioning options for a Microsoft 365 group, such as `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details.
+func (o LookupGroupResultOutput) ProvisioningOptions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.ProvisioningOptions }).(pulumi.StringArrayOutput)
+}
+
+// List of email addresses for the group that direct to the same group mailbox.
+func (o LookupGroupResultOutput) ProxyAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.ProxyAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Whether the group is a security group.
+func (o LookupGroupResultOutput) SecurityEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.SecurityEnabled }).(pulumi.BoolOutput)
+}
+
+// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
+func (o LookupGroupResultOutput) Theme() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Theme }).(pulumi.StringOutput)
+}
+
+// A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+func (o LookupGroupResultOutput) Types() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []string { return v.Types }).(pulumi.StringArrayOutput)
+}
+
+// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
+func (o LookupGroupResultOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupGroupResultOutput{})
 }

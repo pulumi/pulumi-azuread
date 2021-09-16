@@ -13,6 +13,7 @@ __all__ = [
     'GetUsersResult',
     'AwaitableGetUsersResult',
     'get_users',
+    'get_users_output',
 ]
 
 @pulumi.output_type
@@ -165,3 +166,43 @@ def get_users(ignore_missing: Optional[bool] = None,
         return_all=__ret__.return_all,
         user_principal_names=__ret__.user_principal_names,
         users=__ret__.users)
+
+
+@_utilities.lift_output_func(get_users)
+def get_users_output(ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
+                     mail_nicknames: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     return_all: Optional[pulumi.Input[Optional[bool]]] = None,
+                     user_principal_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
+    """
+    Gets basic information for multiple Azure Active Directory users.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    users = azuread.get_users(user_principal_names=[
+        "kat@hashicorp.com",
+        "byte@hashicorp.com",
+    ])
+    ```
+
+
+    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+    :param Sequence[str] mail_nicknames: The email aliases of the users.
+    :param Sequence[str] object_ids: The object IDs of the users.
+    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+    :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
+    """
+    ...

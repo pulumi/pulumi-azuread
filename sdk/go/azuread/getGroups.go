@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -94,4 +97,65 @@ type GetGroupsResult struct {
 	// The object IDs of the groups.
 	ObjectIds []string `pulumi:"objectIds"`
 	ReturnAll *bool    `pulumi:"returnAll"`
+}
+
+func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetGroupsResult, error) {
+			args := v.(GetGroupsArgs)
+			r, err := GetGroups(ctx, &args, opts...)
+			return *r, err
+		}).(GetGroupsResultOutput)
+}
+
+// A collection of arguments for invoking getGroups.
+type GetGroupsOutputArgs struct {
+	// The display names of the groups.
+	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
+	// The object IDs of the groups.
+	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
+	// A flag to denote if all groups should be fetched and returned.
+	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
+}
+
+func (GetGroupsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getGroups.
+type GetGroupsResultOutput struct{ *pulumi.OutputState }
+
+func (GetGroupsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupsResult)(nil)).Elem()
+}
+
+func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
+	return o
+}
+
+func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
+	return o
+}
+
+// The display names of the groups.
+func (o GetGroupsResultOutput) DisplayNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupsResult) []string { return v.DisplayNames }).(pulumi.StringArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The object IDs of the groups.
+func (o GetGroupsResultOutput) ObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGroupsResult) []string { return v.ObjectIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetGroupsResultOutput) ReturnAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGroupsResult) *bool { return v.ReturnAll }).(pulumi.BoolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetGroupsResultOutput{})
 }

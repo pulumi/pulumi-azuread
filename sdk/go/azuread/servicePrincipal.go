@@ -476,7 +476,7 @@ type ServicePrincipalArrayInput interface {
 type ServicePrincipalArray []ServicePrincipalInput
 
 func (ServicePrincipalArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServicePrincipal)(nil))
+	return reflect.TypeOf((*[]*ServicePrincipal)(nil)).Elem()
 }
 
 func (i ServicePrincipalArray) ToServicePrincipalArrayOutput() ServicePrincipalArrayOutput {
@@ -501,7 +501,7 @@ type ServicePrincipalMapInput interface {
 type ServicePrincipalMap map[string]ServicePrincipalInput
 
 func (ServicePrincipalMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServicePrincipal)(nil))
+	return reflect.TypeOf((*map[string]*ServicePrincipal)(nil)).Elem()
 }
 
 func (i ServicePrincipalMap) ToServicePrincipalMapOutput() ServicePrincipalMapOutput {
@@ -512,9 +512,7 @@ func (i ServicePrincipalMap) ToServicePrincipalMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalMapOutput)
 }
 
-type ServicePrincipalOutput struct {
-	*pulumi.OutputState
-}
+type ServicePrincipalOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePrincipal)(nil))
@@ -533,14 +531,12 @@ func (o ServicePrincipalOutput) ToServicePrincipalPtrOutput() ServicePrincipalPt
 }
 
 func (o ServicePrincipalOutput) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
-	return o.ApplyT(func(v ServicePrincipal) *ServicePrincipal {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipal) *ServicePrincipal {
 		return &v
 	}).(ServicePrincipalPtrOutput)
 }
 
-type ServicePrincipalPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServicePrincipalPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServicePrincipal)(nil))
@@ -552,6 +548,16 @@ func (o ServicePrincipalPtrOutput) ToServicePrincipalPtrOutput() ServicePrincipa
 
 func (o ServicePrincipalPtrOutput) ToServicePrincipalPtrOutputWithContext(ctx context.Context) ServicePrincipalPtrOutput {
 	return o
+}
+
+func (o ServicePrincipalPtrOutput) Elem() ServicePrincipalOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipal {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipal
+		return ret
+	}).(ServicePrincipalOutput)
 }
 
 type ServicePrincipalArrayOutput struct{ *pulumi.OutputState }

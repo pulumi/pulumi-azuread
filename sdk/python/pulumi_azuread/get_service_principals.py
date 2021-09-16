@@ -13,6 +13,7 @@ __all__ = [
     'GetServicePrincipalsResult',
     'AwaitableGetServicePrincipalsResult',
     'get_service_principals',
+    'get_service_principals_output',
 ]
 
 @pulumi.output_type
@@ -193,3 +194,71 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
         object_ids=__ret__.object_ids,
         return_all=__ret__.return_all,
         service_principals=__ret__.service_principals)
+
+
+@_utilities.lift_output_func(get_service_principals)
+def get_service_principals_output(application_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                                  return_all: Optional[pulumi.Input[Optional[bool]]] = None,
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalsResult]:
+    """
+    Gets basic information for multiple Azure Active Directory service principals.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by application display names*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(display_names=[
+        "example-app",
+        "another-app",
+    ])
+    ```
+
+    *Look up by application IDs (client IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(application_ids=[
+        "11111111-0000-0000-0000-000000000000",
+        "22222222-0000-0000-0000-000000000000",
+        "33333333-0000-0000-0000-000000000000",
+    ])
+    ```
+
+    *Look up by service principal object IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principals(object_ids=[
+        "00000000-0000-0000-0000-000000000000",
+        "00000000-0000-0000-0000-111111111111",
+        "00000000-0000-0000-0000-222222222222",
+    ])
+    ```
+
+
+    :param Sequence[str] application_ids: A list of application IDs (client IDs) of the applications associated with the service principals.
+    :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
+    :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
+    :param Sequence[str] object_ids: The object IDs of the service principals.
+    :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+    """
+    ...

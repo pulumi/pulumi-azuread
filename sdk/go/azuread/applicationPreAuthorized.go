@@ -175,7 +175,7 @@ type ApplicationPreAuthorizedArrayInput interface {
 type ApplicationPreAuthorizedArray []ApplicationPreAuthorizedInput
 
 func (ApplicationPreAuthorizedArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApplicationPreAuthorized)(nil))
+	return reflect.TypeOf((*[]*ApplicationPreAuthorized)(nil)).Elem()
 }
 
 func (i ApplicationPreAuthorizedArray) ToApplicationPreAuthorizedArrayOutput() ApplicationPreAuthorizedArrayOutput {
@@ -200,7 +200,7 @@ type ApplicationPreAuthorizedMapInput interface {
 type ApplicationPreAuthorizedMap map[string]ApplicationPreAuthorizedInput
 
 func (ApplicationPreAuthorizedMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApplicationPreAuthorized)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationPreAuthorized)(nil)).Elem()
 }
 
 func (i ApplicationPreAuthorizedMap) ToApplicationPreAuthorizedMapOutput() ApplicationPreAuthorizedMapOutput {
@@ -211,9 +211,7 @@ func (i ApplicationPreAuthorizedMap) ToApplicationPreAuthorizedMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPreAuthorizedMapOutput)
 }
 
-type ApplicationPreAuthorizedOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationPreAuthorizedOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPreAuthorizedOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationPreAuthorized)(nil))
@@ -232,14 +230,12 @@ func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedPtrOutput() Ap
 }
 
 func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedPtrOutputWithContext(ctx context.Context) ApplicationPreAuthorizedPtrOutput {
-	return o.ApplyT(func(v ApplicationPreAuthorized) *ApplicationPreAuthorized {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPreAuthorized) *ApplicationPreAuthorized {
 		return &v
 	}).(ApplicationPreAuthorizedPtrOutput)
 }
 
-type ApplicationPreAuthorizedPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationPreAuthorizedPtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPreAuthorizedPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApplicationPreAuthorized)(nil))
@@ -251,6 +247,16 @@ func (o ApplicationPreAuthorizedPtrOutput) ToApplicationPreAuthorizedPtrOutput()
 
 func (o ApplicationPreAuthorizedPtrOutput) ToApplicationPreAuthorizedPtrOutputWithContext(ctx context.Context) ApplicationPreAuthorizedPtrOutput {
 	return o
+}
+
+func (o ApplicationPreAuthorizedPtrOutput) Elem() ApplicationPreAuthorizedOutput {
+	return o.ApplyT(func(v *ApplicationPreAuthorized) ApplicationPreAuthorized {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPreAuthorized
+		return ret
+	}).(ApplicationPreAuthorizedOutput)
 }
 
 type ApplicationPreAuthorizedArrayOutput struct{ *pulumi.OutputState }

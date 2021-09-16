@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,4 +57,87 @@ type GetDomainsResult struct {
 	OnlyInitial       *bool    `pulumi:"onlyInitial"`
 	OnlyRoot          *bool    `pulumi:"onlyRoot"`
 	SupportsServices  []string `pulumi:"supportsServices"`
+}
+
+func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pulumi.InvokeOption) GetDomainsResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetDomainsResult, error) {
+			args := v.(GetDomainsArgs)
+			r, err := GetDomains(ctx, &args, opts...)
+			return *r, err
+		}).(GetDomainsResultOutput)
+}
+
+// A collection of arguments for invoking getDomains.
+type GetDomainsOutputArgs struct {
+	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+	AdminManaged pulumi.BoolPtrInput `pulumi:"adminManaged"`
+	// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
+	IncludeUnverified pulumi.BoolPtrInput `pulumi:"includeUnverified"`
+	// Set to `true` to only return the default domain.
+	OnlyDefault pulumi.BoolPtrInput `pulumi:"onlyDefault"`
+	// Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+	OnlyInitial pulumi.BoolPtrInput `pulumi:"onlyInitial"`
+	// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+	OnlyRoot pulumi.BoolPtrInput `pulumi:"onlyRoot"`
+	// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	SupportsServices pulumi.StringArrayInput `pulumi:"supportsServices"`
+}
+
+func (GetDomainsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getDomains.
+type GetDomainsResultOutput struct{ *pulumi.OutputState }
+
+func (GetDomainsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDomainsResult)(nil)).Elem()
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutput() GetDomainsResultOutput {
+	return o
+}
+
+func (o GetDomainsResultOutput) ToGetDomainsResultOutputWithContext(ctx context.Context) GetDomainsResultOutput {
+	return o
+}
+
+// Whether the DNS for the domain is managed by Microsoft 365.
+func (o GetDomainsResultOutput) AdminManaged() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.AdminManaged }).(pulumi.BoolPtrOutput)
+}
+
+// A list of tenant domains. Each `domain` object provides the attributes documented below.
+func (o GetDomainsResultOutput) Domains() GetDomainsDomainArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []GetDomainsDomain { return v.Domains }).(GetDomainsDomainArrayOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetDomainsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDomainsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetDomainsResultOutput) IncludeUnverified() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.IncludeUnverified }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) OnlyDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.OnlyDefault }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) OnlyInitial() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.OnlyInitial }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) OnlyRoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetDomainsResult) *bool { return v.OnlyRoot }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetDomainsResultOutput) SupportsServices() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDomainsResult) []string { return v.SupportsServices }).(pulumi.StringArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetDomainsResultOutput{})
 }

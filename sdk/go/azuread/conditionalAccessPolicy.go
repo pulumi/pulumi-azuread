@@ -299,7 +299,7 @@ type ConditionalAccessPolicyArrayInput interface {
 type ConditionalAccessPolicyArray []ConditionalAccessPolicyInput
 
 func (ConditionalAccessPolicyArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ConditionalAccessPolicy)(nil))
+	return reflect.TypeOf((*[]*ConditionalAccessPolicy)(nil)).Elem()
 }
 
 func (i ConditionalAccessPolicyArray) ToConditionalAccessPolicyArrayOutput() ConditionalAccessPolicyArrayOutput {
@@ -324,7 +324,7 @@ type ConditionalAccessPolicyMapInput interface {
 type ConditionalAccessPolicyMap map[string]ConditionalAccessPolicyInput
 
 func (ConditionalAccessPolicyMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ConditionalAccessPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ConditionalAccessPolicy)(nil)).Elem()
 }
 
 func (i ConditionalAccessPolicyMap) ToConditionalAccessPolicyMapOutput() ConditionalAccessPolicyMapOutput {
@@ -335,9 +335,7 @@ func (i ConditionalAccessPolicyMap) ToConditionalAccessPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyMapOutput)
 }
 
-type ConditionalAccessPolicyOutput struct {
-	*pulumi.OutputState
-}
+type ConditionalAccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ConditionalAccessPolicy)(nil))
@@ -356,14 +354,12 @@ func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyPtrOutput() Cond
 }
 
 func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicy) *ConditionalAccessPolicy {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicy) *ConditionalAccessPolicy {
 		return &v
 	}).(ConditionalAccessPolicyPtrOutput)
 }
 
-type ConditionalAccessPolicyPtrOutput struct {
-	*pulumi.OutputState
-}
+type ConditionalAccessPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ConditionalAccessPolicy)(nil))
@@ -375,6 +371,16 @@ func (o ConditionalAccessPolicyPtrOutput) ToConditionalAccessPolicyPtrOutput() C
 
 func (o ConditionalAccessPolicyPtrOutput) ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput {
 	return o
+}
+
+func (o ConditionalAccessPolicyPtrOutput) Elem() ConditionalAccessPolicyOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicy
+		return ret
+	}).(ConditionalAccessPolicyOutput)
 }
 
 type ConditionalAccessPolicyArrayOutput struct{ *pulumi.OutputState }

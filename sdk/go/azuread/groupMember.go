@@ -212,7 +212,7 @@ type GroupMemberArrayInput interface {
 type GroupMemberArray []GroupMemberInput
 
 func (GroupMemberArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*GroupMember)(nil))
+	return reflect.TypeOf((*[]*GroupMember)(nil)).Elem()
 }
 
 func (i GroupMemberArray) ToGroupMemberArrayOutput() GroupMemberArrayOutput {
@@ -237,7 +237,7 @@ type GroupMemberMapInput interface {
 type GroupMemberMap map[string]GroupMemberInput
 
 func (GroupMemberMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*GroupMember)(nil))
+	return reflect.TypeOf((*map[string]*GroupMember)(nil)).Elem()
 }
 
 func (i GroupMemberMap) ToGroupMemberMapOutput() GroupMemberMapOutput {
@@ -248,9 +248,7 @@ func (i GroupMemberMap) ToGroupMemberMapOutputWithContext(ctx context.Context) G
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMemberMapOutput)
 }
 
-type GroupMemberOutput struct {
-	*pulumi.OutputState
-}
+type GroupMemberOutput struct{ *pulumi.OutputState }
 
 func (GroupMemberOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*GroupMember)(nil))
@@ -269,14 +267,12 @@ func (o GroupMemberOutput) ToGroupMemberPtrOutput() GroupMemberPtrOutput {
 }
 
 func (o GroupMemberOutput) ToGroupMemberPtrOutputWithContext(ctx context.Context) GroupMemberPtrOutput {
-	return o.ApplyT(func(v GroupMember) *GroupMember {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupMember) *GroupMember {
 		return &v
 	}).(GroupMemberPtrOutput)
 }
 
-type GroupMemberPtrOutput struct {
-	*pulumi.OutputState
-}
+type GroupMemberPtrOutput struct{ *pulumi.OutputState }
 
 func (GroupMemberPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**GroupMember)(nil))
@@ -288,6 +284,16 @@ func (o GroupMemberPtrOutput) ToGroupMemberPtrOutput() GroupMemberPtrOutput {
 
 func (o GroupMemberPtrOutput) ToGroupMemberPtrOutputWithContext(ctx context.Context) GroupMemberPtrOutput {
 	return o
+}
+
+func (o GroupMemberPtrOutput) Elem() GroupMemberOutput {
+	return o.ApplyT(func(v *GroupMember) GroupMember {
+		if v != nil {
+			return *v
+		}
+		var ret GroupMember
+		return ret
+	}).(GroupMemberOutput)
 }
 
 type GroupMemberArrayOutput struct{ *pulumi.OutputState }

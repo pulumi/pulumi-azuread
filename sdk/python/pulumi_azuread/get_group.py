@@ -12,6 +12,7 @@ __all__ = [
     'GetGroupResult',
     'AwaitableGetGroupResult',
     'get_group',
+    'get_group_output',
 ]
 
 @pulumi.output_type
@@ -374,3 +375,40 @@ def get_group(display_name: Optional[str] = None,
         theme=__ret__.theme,
         types=__ret__.types,
         visibility=__ret__.visibility)
+
+
+@_utilities.lift_output_func(get_group)
+def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                     mail_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                     object_id: Optional[pulumi.Input[Optional[str]]] = None,
+                     security_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
+    """
+    Gets information about an Azure Active Directory group.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+    ### By Group Display Name)
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_group(display_name="MyGroupName",
+        security_enabled=True)
+    ```
+
+
+    :param str display_name: The display name for the group.
+    :param bool mail_enabled: Whether the group is mail-enabled.
+    :param str object_id: Specifies the object ID of the group.
+    :param bool security_enabled: Whether the group is a security group.
+    """
+    ...

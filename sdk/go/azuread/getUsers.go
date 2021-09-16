@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -79,4 +82,83 @@ type GetUsersResult struct {
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 	// A list of users. Each `user` object provides the attributes documented below.
 	Users []GetUsersUser `pulumi:"users"`
+}
+
+func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi.InvokeOption) GetUsersResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (GetUsersResult, error) {
+			args := v.(GetUsersArgs)
+			r, err := GetUsers(ctx, &args, opts...)
+			return *r, err
+		}).(GetUsersResultOutput)
+}
+
+// A collection of arguments for invoking getUsers.
+type GetUsersOutputArgs struct {
+	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
+	// The email aliases of the users.
+	MailNicknames pulumi.StringArrayInput `pulumi:"mailNicknames"`
+	// The object IDs of the users.
+	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
+	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
+	// The user principal names (UPNs) of the users.
+	UserPrincipalNames pulumi.StringArrayInput `pulumi:"userPrincipalNames"`
+}
+
+func (GetUsersOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUsers.
+type GetUsersResultOutput struct{ *pulumi.OutputState }
+
+func (GetUsersResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetUsersResult)(nil)).Elem()
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
+	return o
+}
+
+func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
+	return o
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o GetUsersResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetUsersResultOutput) IgnoreMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.IgnoreMissing }).(pulumi.BoolPtrOutput)
+}
+
+// The email aliases of the users.
+func (o GetUsersResultOutput) MailNicknames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.MailNicknames }).(pulumi.StringArrayOutput)
+}
+
+// The object IDs of the users.
+func (o GetUsersResultOutput) ObjectIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.ObjectIds }).(pulumi.StringArrayOutput)
+}
+
+func (o GetUsersResultOutput) ReturnAll() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetUsersResult) *bool { return v.ReturnAll }).(pulumi.BoolPtrOutput)
+}
+
+// The user principal names (UPNs) of the users.
+func (o GetUsersResultOutput) UserPrincipalNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.UserPrincipalNames }).(pulumi.StringArrayOutput)
+}
+
+// A list of users. Each `user` object provides the attributes documented below.
+func (o GetUsersResultOutput) Users() GetUsersUserArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []GetUsersUser { return v.Users }).(GetUsersUserArrayOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GetUsersResultOutput{})
 }

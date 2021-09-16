@@ -13,6 +13,7 @@ __all__ = [
     'GetApplicationResult',
     'AwaitableGetApplicationResult',
     'get_application',
+    'get_application_output',
 ]
 
 @pulumi.output_type
@@ -423,3 +424,37 @@ def get_application(application_id: Optional[str] = None,
         support_url=__ret__.support_url,
         terms_of_service_url=__ret__.terms_of_service_url,
         webs=__ret__.webs)
+
+
+@_utilities.lift_output_func(get_application)
+def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                           object_id: Optional[pulumi.Input[Optional[str]]] = None,
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
+    """
+    Use this data source to access information about an existing Application within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application(display_name="My First AzureAD Application")
+    pulumi.export("applicationObjectId", example.id)
+    ```
+
+
+    :param str application_id: Specifies the Application ID (also called Client ID).
+    :param str display_name: Specifies the display name of the application.
+    :param str object_id: Specifies the Object ID of the application.
+    """
+    ...
