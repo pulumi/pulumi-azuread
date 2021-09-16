@@ -52,11 +52,11 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clientSecret')
 
     @property
-    def disable_terraform_partner_id(self) -> Optional[str]:
+    def disable_terraform_partner_id(self) -> Optional[bool]:
         """
         Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
         """
-        return __config__.get('disableTerraformPartnerId')
+        return __config__.get_bool('disableTerraformPartnerId')
 
     @property
     def environment(self) -> str:
@@ -88,16 +88,16 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('tenantId')
 
     @property
-    def use_cli(self) -> Optional[str]:
+    def use_cli(self) -> Optional[bool]:
         """
         Allow Azure CLI to be used for Authentication
         """
-        return __config__.get('useCli')
+        return __config__.get_bool('useCli')
 
     @property
-    def use_msi(self) -> Optional[str]:
+    def use_msi(self) -> bool:
         """
         Allow Managed Identity to be used for Authentication
         """
-        return __config__.get('useMsi') or (_utilities.get_env_bool('ARM_USE_MSI') or False)
+        return __config__.get_bool('useMsi') or (_utilities.get_env_bool('ARM_USE_MSI') or False)
 

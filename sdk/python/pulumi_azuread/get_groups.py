@@ -12,6 +12,7 @@ __all__ = [
     'GetGroupsResult',
     'AwaitableGetGroupsResult',
     'get_groups',
+    'get_groups_output',
 ]
 
 @pulumi.output_type
@@ -131,3 +132,48 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
         id=__ret__.id,
         object_ids=__ret__.object_ids,
         return_all=__ret__.return_all)
+
+
+@_utilities.lift_output_func(get_groups)
+def get_groups_output(display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                      return_all: Optional[pulumi.Input[Optional[bool]]] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
+    """
+    Gets Object IDs or Display Names for multiple Azure Active Directory groups.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by group name*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    groups = azuread.get_groups(display_names=[
+        "group-a",
+        "group-b",
+    ])
+    ```
+
+    *Look up all groups*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    all_groups = azuread.get_groups(return_all=True)
+    ```
+
+
+    :param Sequence[str] display_names: The display names of the groups.
+    :param Sequence[str] object_ids: The object IDs of the groups.
+    :param bool return_all: A flag to denote if all groups should be fetched and returned.
+    """
+    ...

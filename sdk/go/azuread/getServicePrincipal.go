@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -163,4 +166,178 @@ type LookupServicePrincipalResult struct {
 	Tags []string `pulumi:"tags"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type string `pulumi:"type"`
+}
+
+func LookupServicePrincipalOutput(ctx *pulumi.Context, args LookupServicePrincipalOutputArgs, opts ...pulumi.InvokeOption) LookupServicePrincipalResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupServicePrincipalResult, error) {
+			args := v.(LookupServicePrincipalArgs)
+			r, err := LookupServicePrincipal(ctx, &args, opts...)
+			return *r, err
+		}).(LookupServicePrincipalResultOutput)
+}
+
+// A collection of arguments for invoking getServicePrincipal.
+type LookupServicePrincipalOutputArgs struct {
+	// The application ID (client ID) of the application associated with this service principal.
+	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
+	// The display name of the application associated with this service principal.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The object ID of the service principal.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+}
+
+func (LookupServicePrincipalOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServicePrincipalArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getServicePrincipal.
+type LookupServicePrincipalResultOutput struct{ *pulumi.OutputState }
+
+func (LookupServicePrincipalResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupServicePrincipalResult)(nil)).Elem()
+}
+
+func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutput() LookupServicePrincipalResultOutput {
+	return o
+}
+
+func (o LookupServicePrincipalResultOutput) ToLookupServicePrincipalResultOutputWithContext(ctx context.Context) LookupServicePrincipalResultOutput {
+	return o
+}
+
+// Whether or not the service principal account is enabled.
+func (o LookupServicePrincipalResultOutput) AccountEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
+}
+
+// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+func (o LookupServicePrincipalResultOutput) AlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []string { return v.AlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+func (o LookupServicePrincipalResultOutput) AppRoleAssignmentRequired() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) bool { return v.AppRoleAssignmentRequired }).(pulumi.BoolOutput)
+}
+
+// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+func (o LookupServicePrincipalResultOutput) AppRoleIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) map[string]string { return v.AppRoleIds }).(pulumi.StringMapOutput)
+}
+
+// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+func (o LookupServicePrincipalResultOutput) AppRoles() GetServicePrincipalAppRoleArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalAppRole { return v.AppRoles }).(GetServicePrincipalAppRoleArrayOutput)
+}
+
+// The application ID (client ID) of the application associated with this service principal.
+func (o LookupServicePrincipalResultOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The tenant ID where the associated application is registered.
+func (o LookupServicePrincipalResultOutput) ApplicationTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ApplicationTenantId }).(pulumi.StringOutput)
+}
+
+// Permission help text that appears in the admin app assignment and consent experiences.
+func (o LookupServicePrincipalResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Display name for the permission that appears in the admin consent and app assignment experiences.
+func (o LookupServicePrincipalResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Home page or landing page of the associated application.
+func (o LookupServicePrincipalResultOutput) HomepageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.HomepageUrl }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupServicePrincipalResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps.
+func (o LookupServicePrincipalResultOutput) LoginUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.LoginUrl }).(pulumi.StringOutput)
+}
+
+// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+func (o LookupServicePrincipalResultOutput) LogoutUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.LogoutUrl }).(pulumi.StringOutput)
+}
+
+// A free text field to capture information about the service principal, typically used for operational purposes.
+func (o LookupServicePrincipalResultOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Notes }).(pulumi.StringOutput)
+}
+
+// A list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+func (o LookupServicePrincipalResultOutput) NotificationEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []string { return v.NotificationEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+func (o LookupServicePrincipalResultOutput) Oauth2PermissionScopeIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) map[string]string { return v.Oauth2PermissionScopeIds }).(pulumi.StringMapOutput)
+}
+
+// A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2PermissionScopes` block as documented below.
+func (o LookupServicePrincipalResultOutput) Oauth2PermissionScopes() GetServicePrincipalOauth2PermissionScopeArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalOauth2PermissionScope {
+		return v.Oauth2PermissionScopes
+	}).(GetServicePrincipalOauth2PermissionScopeArrayOutput)
+}
+
+// The object ID of the service principal.
+func (o LookupServicePrincipalResultOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+func (o LookupServicePrincipalResultOutput) PreferredSingleSignOnMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.PreferredSingleSignOnMode }).(pulumi.StringOutput)
+}
+
+// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+func (o LookupServicePrincipalResultOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+// The URL where the service exposes SAML metadata for federation.
+func (o LookupServicePrincipalResultOutput) SamlMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+// A `samlSingleSignOn` block as documented below.
+func (o LookupServicePrincipalResultOutput) SamlSingleSignOns() GetServicePrincipalSamlSingleSignOnArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalSamlSingleSignOn { return v.SamlSingleSignOns }).(GetServicePrincipalSamlSingleSignOnArrayOutput)
+}
+
+// A list of identifier URI(s), copied over from the associated application.
+func (o LookupServicePrincipalResultOutput) ServicePrincipalNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []string { return v.ServicePrincipalNames }).(pulumi.StringArrayOutput)
+}
+
+// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+func (o LookupServicePrincipalResultOutput) SignInAudience() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.SignInAudience }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to the service principal.
+func (o LookupServicePrincipalResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+func (o LookupServicePrincipalResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupServicePrincipalResultOutput{})
 }

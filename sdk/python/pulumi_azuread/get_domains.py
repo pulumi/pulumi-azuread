@@ -13,6 +13,7 @@ __all__ = [
     'GetDomainsResult',
     'AwaitableGetDomainsResult',
     'get_domains',
+    'get_domains_output',
 ]
 
 @pulumi.output_type
@@ -130,6 +131,16 @@ def get_domains(admin_managed: Optional[bool] = None,
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    aad_domains = azuread.get_domains()
+    pulumi.export("domainNames", [__item.domain_name for __item in [aad_domains.domains]])
+    ```
+
 
     :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
     :param bool include_unverified: Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
@@ -160,3 +171,43 @@ def get_domains(admin_managed: Optional[bool] = None,
         only_initial=__ret__.only_initial,
         only_root=__ret__.only_root,
         supports_services=__ret__.supports_services)
+
+
+@_utilities.lift_output_func(get_domains)
+def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = None,
+                       include_unverified: Optional[pulumi.Input[Optional[bool]]] = None,
+                       only_default: Optional[pulumi.Input[Optional[bool]]] = None,
+                       only_initial: Optional[pulumi.Input[Optional[bool]]] = None,
+                       only_root: Optional[pulumi.Input[Optional[bool]]] = None,
+                       supports_services: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainsResult]:
+    """
+    Use this data source to access information about existing Domains within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    aad_domains = azuread.get_domains()
+    pulumi.export("domainNames", [__item.domain_name for __item in [aad_domains.domains]])
+    ```
+
+
+    :param bool admin_managed: Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+    :param bool include_unverified: Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
+    :param bool only_default: Set to `true` to only return the default domain.
+    :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+    :param bool only_root: Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+    :param Sequence[str] supports_services: A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+    """
+    ...

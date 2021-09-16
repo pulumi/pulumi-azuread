@@ -220,7 +220,7 @@ type NamedLocationArrayInput interface {
 type NamedLocationArray []NamedLocationInput
 
 func (NamedLocationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*NamedLocation)(nil))
+	return reflect.TypeOf((*[]*NamedLocation)(nil)).Elem()
 }
 
 func (i NamedLocationArray) ToNamedLocationArrayOutput() NamedLocationArrayOutput {
@@ -245,7 +245,7 @@ type NamedLocationMapInput interface {
 type NamedLocationMap map[string]NamedLocationInput
 
 func (NamedLocationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*NamedLocation)(nil))
+	return reflect.TypeOf((*map[string]*NamedLocation)(nil)).Elem()
 }
 
 func (i NamedLocationMap) ToNamedLocationMapOutput() NamedLocationMapOutput {
@@ -256,9 +256,7 @@ func (i NamedLocationMap) ToNamedLocationMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationMapOutput)
 }
 
-type NamedLocationOutput struct {
-	*pulumi.OutputState
-}
+type NamedLocationOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*NamedLocation)(nil))
@@ -277,14 +275,12 @@ func (o NamedLocationOutput) ToNamedLocationPtrOutput() NamedLocationPtrOutput {
 }
 
 func (o NamedLocationOutput) ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput {
-	return o.ApplyT(func(v NamedLocation) *NamedLocation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamedLocation) *NamedLocation {
 		return &v
 	}).(NamedLocationPtrOutput)
 }
 
-type NamedLocationPtrOutput struct {
-	*pulumi.OutputState
-}
+type NamedLocationPtrOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**NamedLocation)(nil))
@@ -296,6 +292,16 @@ func (o NamedLocationPtrOutput) ToNamedLocationPtrOutput() NamedLocationPtrOutpu
 
 func (o NamedLocationPtrOutput) ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput {
 	return o
+}
+
+func (o NamedLocationPtrOutput) Elem() NamedLocationOutput {
+	return o.ApplyT(func(v *NamedLocation) NamedLocation {
+		if v != nil {
+			return *v
+		}
+		var ret NamedLocation
+		return ret
+	}).(NamedLocationOutput)
 }
 
 type NamedLocationArrayOutput struct{ *pulumi.OutputState }

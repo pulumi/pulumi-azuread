@@ -115,7 +115,7 @@ func (o ApplicationApiOutput) ToApplicationApiPtrOutput() ApplicationApiPtrOutpu
 }
 
 func (o ApplicationApiOutput) ToApplicationApiPtrOutputWithContext(ctx context.Context) ApplicationApiPtrOutput {
-	return o.ApplyT(func(v ApplicationApi) *ApplicationApi {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationApi) *ApplicationApi {
 		return &v
 	}).(ApplicationApiPtrOutput)
 }
@@ -155,7 +155,13 @@ func (o ApplicationApiPtrOutput) ToApplicationApiPtrOutputWithContext(ctx contex
 }
 
 func (o ApplicationApiPtrOutput) Elem() ApplicationApiOutput {
-	return o.ApplyT(func(v *ApplicationApi) ApplicationApi { return *v }).(ApplicationApiOutput)
+	return o.ApplyT(func(v *ApplicationApi) ApplicationApi {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationApi
+		return ret
+	}).(ApplicationApiOutput)
 }
 
 // A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
@@ -601,7 +607,7 @@ func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutput() 
 }
 
 func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutputWithContext(ctx context.Context) ApplicationOptionalClaimsPtrOutput {
-	return o.ApplyT(func(v ApplicationOptionalClaims) *ApplicationOptionalClaims {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationOptionalClaims) *ApplicationOptionalClaims {
 		return &v
 	}).(ApplicationOptionalClaimsPtrOutput)
 }
@@ -636,7 +642,13 @@ func (o ApplicationOptionalClaimsPtrOutput) ToApplicationOptionalClaimsPtrOutput
 }
 
 func (o ApplicationOptionalClaimsPtrOutput) Elem() ApplicationOptionalClaimsOutput {
-	return o.ApplyT(func(v *ApplicationOptionalClaims) ApplicationOptionalClaims { return *v }).(ApplicationOptionalClaimsOutput)
+	return o.ApplyT(func(v *ApplicationOptionalClaims) ApplicationOptionalClaims {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationOptionalClaims
+		return ret
+	}).(ApplicationOptionalClaimsOutput)
 }
 
 // One or more `accessToken` blocks as documented below.
@@ -1134,7 +1146,7 @@ func (o ApplicationPublicClientOutput) ToApplicationPublicClientPtrOutput() Appl
 }
 
 func (o ApplicationPublicClientOutput) ToApplicationPublicClientPtrOutputWithContext(ctx context.Context) ApplicationPublicClientPtrOutput {
-	return o.ApplyT(func(v ApplicationPublicClient) *ApplicationPublicClient {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPublicClient) *ApplicationPublicClient {
 		return &v
 	}).(ApplicationPublicClientPtrOutput)
 }
@@ -1159,7 +1171,13 @@ func (o ApplicationPublicClientPtrOutput) ToApplicationPublicClientPtrOutputWith
 }
 
 func (o ApplicationPublicClientPtrOutput) Elem() ApplicationPublicClientOutput {
-	return o.ApplyT(func(v *ApplicationPublicClient) ApplicationPublicClient { return *v }).(ApplicationPublicClientOutput)
+	return o.ApplyT(func(v *ApplicationPublicClient) ApplicationPublicClient {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPublicClient
+		return ret
+	}).(ApplicationPublicClientOutput)
 }
 
 // A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
@@ -1479,7 +1497,7 @@ func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicati
 }
 
 func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicationPtrOutputWithContext(ctx context.Context) ApplicationSinglePageApplicationPtrOutput {
-	return o.ApplyT(func(v ApplicationSinglePageApplication) *ApplicationSinglePageApplication {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationSinglePageApplication) *ApplicationSinglePageApplication {
 		return &v
 	}).(ApplicationSinglePageApplicationPtrOutput)
 }
@@ -1504,7 +1522,13 @@ func (o ApplicationSinglePageApplicationPtrOutput) ToApplicationSinglePageApplic
 }
 
 func (o ApplicationSinglePageApplicationPtrOutput) Elem() ApplicationSinglePageApplicationOutput {
-	return o.ApplyT(func(v *ApplicationSinglePageApplication) ApplicationSinglePageApplication { return *v }).(ApplicationSinglePageApplicationOutput)
+	return o.ApplyT(func(v *ApplicationSinglePageApplication) ApplicationSinglePageApplication {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationSinglePageApplication
+		return ret
+	}).(ApplicationSinglePageApplicationOutput)
 }
 
 // A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
@@ -1622,7 +1646,7 @@ func (o ApplicationWebOutput) ToApplicationWebPtrOutput() ApplicationWebPtrOutpu
 }
 
 func (o ApplicationWebOutput) ToApplicationWebPtrOutputWithContext(ctx context.Context) ApplicationWebPtrOutput {
-	return o.ApplyT(func(v ApplicationWeb) *ApplicationWeb {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationWeb) *ApplicationWeb {
 		return &v
 	}).(ApplicationWebPtrOutput)
 }
@@ -1662,7 +1686,13 @@ func (o ApplicationWebPtrOutput) ToApplicationWebPtrOutputWithContext(ctx contex
 }
 
 func (o ApplicationWebPtrOutput) Elem() ApplicationWebOutput {
-	return o.ApplyT(func(v *ApplicationWeb) ApplicationWeb { return *v }).(ApplicationWebOutput)
+	return o.ApplyT(func(v *ApplicationWeb) ApplicationWeb {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationWeb
+		return ret
+	}).(ApplicationWebOutput)
 }
 
 // Home page or landing page of the application.
@@ -1802,7 +1832,7 @@ func (o ApplicationWebImplicitGrantOutput) ToApplicationWebImplicitGrantPtrOutpu
 }
 
 func (o ApplicationWebImplicitGrantOutput) ToApplicationWebImplicitGrantPtrOutputWithContext(ctx context.Context) ApplicationWebImplicitGrantPtrOutput {
-	return o.ApplyT(func(v ApplicationWebImplicitGrant) *ApplicationWebImplicitGrant {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationWebImplicitGrant) *ApplicationWebImplicitGrant {
 		return &v
 	}).(ApplicationWebImplicitGrantPtrOutput)
 }
@@ -1832,7 +1862,13 @@ func (o ApplicationWebImplicitGrantPtrOutput) ToApplicationWebImplicitGrantPtrOu
 }
 
 func (o ApplicationWebImplicitGrantPtrOutput) Elem() ApplicationWebImplicitGrantOutput {
-	return o.ApplyT(func(v *ApplicationWebImplicitGrant) ApplicationWebImplicitGrant { return *v }).(ApplicationWebImplicitGrantOutput)
+	return o.ApplyT(func(v *ApplicationWebImplicitGrant) ApplicationWebImplicitGrant {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationWebImplicitGrant
+		return ret
+	}).(ApplicationWebImplicitGrantOutput)
 }
 
 // Whether this web application can request an access token using OAuth 2.0 implicit flow.
@@ -1972,7 +2008,7 @@ func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyCondit
 }
 
 func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditions {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditions {
 		return &v
 	}).(ConditionalAccessPolicyConditionsPtrOutput)
 }
@@ -2033,7 +2069,13 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) ToConditionalAccessPolicyCon
 }
 
 func (o ConditionalAccessPolicyConditionsPtrOutput) Elem() ConditionalAccessPolicyConditionsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditions { return *v }).(ConditionalAccessPolicyConditionsOutput)
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditions {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditions
+		return ret
+	}).(ConditionalAccessPolicyConditionsOutput)
 }
 
 // An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
@@ -2207,7 +2249,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccess
 }
 
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) *ConditionalAccessPolicyConditionsApplications {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsApplications) *ConditionalAccessPolicyConditionsApplications {
 		return &v
 	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
 }
@@ -2243,7 +2285,11 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ToConditionalAcc
 
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) Elem() ConditionalAccessPolicyConditionsApplicationsOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) ConditionalAccessPolicyConditionsApplications {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditionsApplications
+		return ret
 	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
@@ -2374,7 +2420,7 @@ func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPol
 }
 
 func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) *ConditionalAccessPolicyConditionsLocations {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsLocations) *ConditionalAccessPolicyConditionsLocations {
 		return &v
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
@@ -2405,7 +2451,11 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ToConditionalAccess
 
 func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) Elem() ConditionalAccessPolicyConditionsLocationsOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) ConditionalAccessPolicyConditionsLocations {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditionsLocations
+		return ret
 	}).(ConditionalAccessPolicyConditionsLocationsOutput)
 }
 
@@ -2526,7 +2576,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPol
 }
 
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) *ConditionalAccessPolicyConditionsPlatforms {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsPlatforms) *ConditionalAccessPolicyConditionsPlatforms {
 		return &v
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
@@ -2557,7 +2607,11 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ToConditionalAccess
 
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) Elem() ConditionalAccessPolicyConditionsPlatformsOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) ConditionalAccessPolicyConditionsPlatforms {
-		return *v
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditionsPlatforms
+		return ret
 	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
 }
 
@@ -2694,7 +2748,7 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyC
 }
 
 func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) *ConditionalAccessPolicyConditionsUsers {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsUsers) *ConditionalAccessPolicyConditionsUsers {
 		return &v
 	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
 }
@@ -2744,7 +2798,13 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ToConditionalAccessPoli
 }
 
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) Elem() ConditionalAccessPolicyConditionsUsersOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) ConditionalAccessPolicyConditionsUsers { return *v }).(ConditionalAccessPolicyConditionsUsersOutput)
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) ConditionalAccessPolicyConditionsUsers {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditionsUsers
+		return ret
+	}).(ConditionalAccessPolicyConditionsUsersOutput)
 }
 
 // A list of group IDs excluded from scope of policy.
@@ -2912,7 +2972,7 @@ func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGra
 }
 
 func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) *ConditionalAccessPolicyGrantControls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyGrantControls) *ConditionalAccessPolicyGrantControls {
 		return &v
 	}).(ConditionalAccessPolicyGrantControlsPtrOutput)
 }
@@ -2952,7 +3012,13 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) ToConditionalAccessPolicy
 }
 
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) Elem() ConditionalAccessPolicyGrantControlsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) ConditionalAccessPolicyGrantControls { return *v }).(ConditionalAccessPolicyGrantControlsOutput)
+	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) ConditionalAccessPolicyGrantControls {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyGrantControls
+		return ret
+	}).(ConditionalAccessPolicyGrantControlsOutput)
 }
 
 // List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
@@ -3102,7 +3168,7 @@ func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicyS
 }
 
 func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicySessionControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicySessionControlsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *ConditionalAccessPolicySessionControls {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicySessionControls) *ConditionalAccessPolicySessionControls {
 		return &v
 	}).(ConditionalAccessPolicySessionControlsPtrOutput)
 }
@@ -3143,7 +3209,13 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) ToConditionalAccessPoli
 }
 
 func (o ConditionalAccessPolicySessionControlsPtrOutput) Elem() ConditionalAccessPolicySessionControlsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) ConditionalAccessPolicySessionControls { return *v }).(ConditionalAccessPolicySessionControlsOutput)
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) ConditionalAccessPolicySessionControls {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicySessionControls
+		return ret
+	}).(ConditionalAccessPolicySessionControlsOutput)
 }
 
 // Whether or not application enforced restrictions are enabled. Defaults to `false`.
@@ -3288,7 +3360,7 @@ func (o InvitationMessageOutput) ToInvitationMessagePtrOutput() InvitationMessag
 }
 
 func (o InvitationMessageOutput) ToInvitationMessagePtrOutputWithContext(ctx context.Context) InvitationMessagePtrOutput {
-	return o.ApplyT(func(v InvitationMessage) *InvitationMessage {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InvitationMessage) *InvitationMessage {
 		return &v
 	}).(InvitationMessagePtrOutput)
 }
@@ -3323,7 +3395,13 @@ func (o InvitationMessagePtrOutput) ToInvitationMessagePtrOutputWithContext(ctx 
 }
 
 func (o InvitationMessagePtrOutput) Elem() InvitationMessageOutput {
-	return o.ApplyT(func(v *InvitationMessage) InvitationMessage { return *v }).(InvitationMessageOutput)
+	return o.ApplyT(func(v *InvitationMessage) InvitationMessage {
+		if v != nil {
+			return *v
+		}
+		var ret InvitationMessage
+		return ret
+	}).(InvitationMessageOutput)
 }
 
 // Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
@@ -3453,7 +3531,7 @@ func (o NamedLocationCountryOutput) ToNamedLocationCountryPtrOutput() NamedLocat
 }
 
 func (o NamedLocationCountryOutput) ToNamedLocationCountryPtrOutputWithContext(ctx context.Context) NamedLocationCountryPtrOutput {
-	return o.ApplyT(func(v NamedLocationCountry) *NamedLocationCountry {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamedLocationCountry) *NamedLocationCountry {
 		return &v
 	}).(NamedLocationCountryPtrOutput)
 }
@@ -3483,7 +3561,13 @@ func (o NamedLocationCountryPtrOutput) ToNamedLocationCountryPtrOutputWithContex
 }
 
 func (o NamedLocationCountryPtrOutput) Elem() NamedLocationCountryOutput {
-	return o.ApplyT(func(v *NamedLocationCountry) NamedLocationCountry { return *v }).(NamedLocationCountryOutput)
+	return o.ApplyT(func(v *NamedLocationCountry) NamedLocationCountry {
+		if v != nil {
+			return *v
+		}
+		var ret NamedLocationCountry
+		return ret
+	}).(NamedLocationCountryOutput)
 }
 
 // List of countries and/or regions in two-letter format specified by ISO 3166-2.
@@ -3603,7 +3687,7 @@ func (o NamedLocationIpOutput) ToNamedLocationIpPtrOutput() NamedLocationIpPtrOu
 }
 
 func (o NamedLocationIpOutput) ToNamedLocationIpPtrOutputWithContext(ctx context.Context) NamedLocationIpPtrOutput {
-	return o.ApplyT(func(v NamedLocationIp) *NamedLocationIp {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamedLocationIp) *NamedLocationIp {
 		return &v
 	}).(NamedLocationIpPtrOutput)
 }
@@ -3633,7 +3717,13 @@ func (o NamedLocationIpPtrOutput) ToNamedLocationIpPtrOutputWithContext(ctx cont
 }
 
 func (o NamedLocationIpPtrOutput) Elem() NamedLocationIpOutput {
-	return o.ApplyT(func(v *NamedLocationIp) NamedLocationIp { return *v }).(NamedLocationIpOutput)
+	return o.ApplyT(func(v *NamedLocationIp) NamedLocationIp {
+		if v != nil {
+			return *v
+		}
+		var ret NamedLocationIp
+		return ret
+	}).(NamedLocationIpOutput)
 }
 
 // List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
@@ -4051,7 +4141,7 @@ func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSign
 }
 
 func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSignOnPtrOutputWithContext(ctx context.Context) ServicePrincipalSamlSingleSignOnPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalSamlSingleSignOn) *ServicePrincipalSamlSingleSignOn {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipalSamlSingleSignOn) *ServicePrincipalSamlSingleSignOn {
 		return &v
 	}).(ServicePrincipalSamlSingleSignOnPtrOutput)
 }
@@ -4076,7 +4166,13 @@ func (o ServicePrincipalSamlSingleSignOnPtrOutput) ToServicePrincipalSamlSingleS
 }
 
 func (o ServicePrincipalSamlSingleSignOnPtrOutput) Elem() ServicePrincipalSamlSingleSignOnOutput {
-	return o.ApplyT(func(v *ServicePrincipalSamlSingleSignOn) ServicePrincipalSamlSingleSignOn { return *v }).(ServicePrincipalSamlSingleSignOnOutput)
+	return o.ApplyT(func(v *ServicePrincipalSamlSingleSignOn) ServicePrincipalSamlSingleSignOn {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalSamlSingleSignOn
+		return ret
+	}).(ServicePrincipalSamlSingleSignOnOutput)
 }
 
 // The relative URI the service provider would redirect to after completion of the single sign-on flow.

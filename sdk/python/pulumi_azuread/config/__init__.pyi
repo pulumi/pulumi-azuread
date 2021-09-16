@@ -35,7 +35,7 @@ clientSecret: Optional[str]
 The application password to use when authenticating as a Service Principal using a Client Secret
 """
 
-disableTerraformPartnerId: Optional[str]
+disableTerraformPartnerId: Optional[bool]
 """
 Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 """
@@ -61,12 +61,12 @@ tenantId: Optional[str]
 The Tenant ID which should be used. Works with all authentication methods except Managed Identity
 """
 
-useCli: Optional[str]
+useCli: Optional[bool]
 """
 Allow Azure CLI to be used for Authentication
 """
 
-useMsi: Optional[str]
+useMsi: bool
 """
 Allow Managed Identity to be used for Authentication
 """

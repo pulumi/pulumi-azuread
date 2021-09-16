@@ -4,6 +4,9 @@
 package azuread
 
 import (
+	"context"
+	"reflect"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -141,4 +144,246 @@ type LookupUserResult struct {
 	UserPrincipalName string `pulumi:"userPrincipalName"`
 	// The user type in the directory. Possible values are `Guest` or `Member`.
 	UserType string `pulumi:"userType"`
+}
+
+func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pulumi.InvokeOption) LookupUserResultOutput {
+	return pulumi.ToOutputWithContext(context.Background(), args).
+		ApplyT(func(v interface{}) (LookupUserResult, error) {
+			args := v.(LookupUserArgs)
+			r, err := LookupUser(ctx, &args, opts...)
+			return *r, err
+		}).(LookupUserResultOutput)
+}
+
+// A collection of arguments for invoking getUser.
+type LookupUserOutputArgs struct {
+	// The email alias of the user.
+	MailNickname pulumi.StringPtrInput `pulumi:"mailNickname"`
+	// The object ID of the user.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// The user principal name (UPN) of the user.
+	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
+}
+
+func (LookupUserOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserArgs)(nil)).Elem()
+}
+
+// A collection of values returned by getUser.
+type LookupUserResultOutput struct{ *pulumi.OutputState }
+
+func (LookupUserResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupUserResult)(nil)).Elem()
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutput() LookupUserResultOutput {
+	return o
+}
+
+func (o LookupUserResultOutput) ToLookupUserResultOutputWithContext(ctx context.Context) LookupUserResultOutput {
+	return o
+}
+
+// Whether or not the account is enabled.
+func (o LookupUserResultOutput) AccountEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
+}
+
+// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`.
+func (o LookupUserResultOutput) AgeGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.AgeGroup }).(pulumi.StringOutput)
+}
+
+// A list of telephone numbers for the user.
+func (o LookupUserResultOutput) BusinessPhones() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.BusinessPhones }).(pulumi.StringArrayOutput)
+}
+
+// The city in which the user is located.
+func (o LookupUserResultOutput) City() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.City }).(pulumi.StringOutput)
+}
+
+// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+func (o LookupUserResultOutput) CompanyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.CompanyName }).(pulumi.StringOutput)
+}
+
+// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
+func (o LookupUserResultOutput) ConsentProvidedForMinor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ConsentProvidedForMinor }).(pulumi.StringOutput)
+}
+
+// The country/region in which the user is located, e.g. `US` or `UK`.
+func (o LookupUserResultOutput) Country() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Country }).(pulumi.StringOutput)
+}
+
+// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+func (o LookupUserResultOutput) CreationType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.CreationType }).(pulumi.StringOutput)
+}
+
+// The name for the department in which the user works.
+func (o LookupUserResultOutput) Department() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Department }).(pulumi.StringOutput)
+}
+
+// The display name of the user.
+func (o LookupUserResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The employee identifier assigned to the user by the organisation.
+func (o LookupUserResultOutput) EmployeeId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.EmployeeId }).(pulumi.StringOutput)
+}
+
+// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+func (o LookupUserResultOutput) ExternalUserState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ExternalUserState }).(pulumi.StringOutput)
+}
+
+// The fax number of the user.
+func (o LookupUserResultOutput) FaxNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.FaxNumber }).(pulumi.StringOutput)
+}
+
+// The given name (first name) of the user.
+func (o LookupUserResultOutput) GivenName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.GivenName }).(pulumi.StringOutput)
+}
+
+// The provider-assigned unique ID for this managed resource.
+func (o LookupUserResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
+func (o LookupUserResultOutput) ImAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.ImAddresses }).(pulumi.StringArrayOutput)
+}
+
+// The user’s job title.
+func (o LookupUserResultOutput) JobTitle() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.JobTitle }).(pulumi.StringOutput)
+}
+
+// The SMTP address for the user.
+func (o LookupUserResultOutput) Mail() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Mail }).(pulumi.StringOutput)
+}
+
+// The email alias of the user.
+func (o LookupUserResultOutput) MailNickname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.MailNickname }).(pulumi.StringOutput)
+}
+
+// The primary cellular telephone number for the user.
+func (o LookupUserResultOutput) MobilePhone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.MobilePhone }).(pulumi.StringOutput)
+}
+
+// The object ID of the user.
+func (o LookupUserResultOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The office location in the user's place of business.
+func (o LookupUserResultOutput) OfficeLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OfficeLocation }).(pulumi.StringOutput)
+}
+
+// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupUserResultOutput) OnpremisesDistinguishedName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OnpremisesDistinguishedName }).(pulumi.StringOutput)
+}
+
+// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupUserResultOutput) OnpremisesDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OnpremisesDomainName }).(pulumi.StringOutput)
+}
+
+// The value used to associate an on-premise Active Directory user account with their Azure AD user object.
+func (o LookupUserResultOutput) OnpremisesImmutableId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OnpremisesImmutableId }).(pulumi.StringOutput)
+}
+
+// The on-premise SAM account name of the user.
+func (o LookupUserResultOutput) OnpremisesSamAccountName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
+}
+
+// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+func (o LookupUserResultOutput) OnpremisesSecurityIdentifier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OnpremisesSecurityIdentifier }).(pulumi.StringOutput)
+}
+
+// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+func (o LookupUserResultOutput) OnpremisesSyncEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.OnpremisesSyncEnabled }).(pulumi.BoolOutput)
+}
+
+// The on-premise user principal name of the user.
+func (o LookupUserResultOutput) OnpremisesUserPrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.OnpremisesUserPrincipalName }).(pulumi.StringOutput)
+}
+
+// A list of additional email addresses for the user.
+func (o LookupUserResultOutput) OtherMails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.OtherMails }).(pulumi.StringArrayOutput)
+}
+
+// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+func (o LookupUserResultOutput) PostalCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.PostalCode }).(pulumi.StringOutput)
+}
+
+// The user's preferred language, in ISO 639-1 notation.
+func (o LookupUserResultOutput) PreferredLanguage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.PreferredLanguage }).(pulumi.StringOutput)
+}
+
+// List of email addresses for the user that direct to the same mailbox.
+func (o LookupUserResultOutput) ProxyAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupUserResult) []string { return v.ProxyAddresses }).(pulumi.StringArrayOutput)
+}
+
+// Whether or not the Outlook global address list should include this user.
+func (o LookupUserResultOutput) ShowInAddressList() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupUserResult) bool { return v.ShowInAddressList }).(pulumi.BoolOutput)
+}
+
+// The state or province in the user's address.
+func (o LookupUserResultOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// The street address of the user's place of business.
+func (o LookupUserResultOutput) StreetAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.StreetAddress }).(pulumi.StringOutput)
+}
+
+// The user's surname (family name or last name).
+func (o LookupUserResultOutput) Surname() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Surname }).(pulumi.StringOutput)
+}
+
+// The usage location of the user.
+func (o LookupUserResultOutput) UsageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.UsageLocation }).(pulumi.StringOutput)
+}
+
+// The user principal name (UPN) of the user.
+func (o LookupUserResultOutput) UserPrincipalName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.UserPrincipalName }).(pulumi.StringOutput)
+}
+
+// The user type in the directory. Possible values are `Guest` or `Member`.
+func (o LookupUserResultOutput) UserType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.UserType }).(pulumi.StringOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(LookupUserResultOutput{})
 }

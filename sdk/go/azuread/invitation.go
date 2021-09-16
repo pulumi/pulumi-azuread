@@ -290,7 +290,7 @@ type InvitationArrayInput interface {
 type InvitationArray []InvitationInput
 
 func (InvitationArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Invitation)(nil))
+	return reflect.TypeOf((*[]*Invitation)(nil)).Elem()
 }
 
 func (i InvitationArray) ToInvitationArrayOutput() InvitationArrayOutput {
@@ -315,7 +315,7 @@ type InvitationMapInput interface {
 type InvitationMap map[string]InvitationInput
 
 func (InvitationMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Invitation)(nil))
+	return reflect.TypeOf((*map[string]*Invitation)(nil)).Elem()
 }
 
 func (i InvitationMap) ToInvitationMapOutput() InvitationMapOutput {
@@ -326,9 +326,7 @@ func (i InvitationMap) ToInvitationMapOutputWithContext(ctx context.Context) Inv
 	return pulumi.ToOutputWithContext(ctx, i).(InvitationMapOutput)
 }
 
-type InvitationOutput struct {
-	*pulumi.OutputState
-}
+type InvitationOutput struct{ *pulumi.OutputState }
 
 func (InvitationOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Invitation)(nil))
@@ -347,14 +345,12 @@ func (o InvitationOutput) ToInvitationPtrOutput() InvitationPtrOutput {
 }
 
 func (o InvitationOutput) ToInvitationPtrOutputWithContext(ctx context.Context) InvitationPtrOutput {
-	return o.ApplyT(func(v Invitation) *Invitation {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Invitation) *Invitation {
 		return &v
 	}).(InvitationPtrOutput)
 }
 
-type InvitationPtrOutput struct {
-	*pulumi.OutputState
-}
+type InvitationPtrOutput struct{ *pulumi.OutputState }
 
 func (InvitationPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Invitation)(nil))
@@ -366,6 +362,16 @@ func (o InvitationPtrOutput) ToInvitationPtrOutput() InvitationPtrOutput {
 
 func (o InvitationPtrOutput) ToInvitationPtrOutputWithContext(ctx context.Context) InvitationPtrOutput {
 	return o
+}
+
+func (o InvitationPtrOutput) Elem() InvitationOutput {
+	return o.ApplyT(func(v *Invitation) Invitation {
+		if v != nil {
+			return *v
+		}
+		var ret Invitation
+		return ret
+	}).(InvitationOutput)
 }
 
 type InvitationArrayOutput struct{ *pulumi.OutputState }

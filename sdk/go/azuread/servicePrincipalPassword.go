@@ -193,7 +193,7 @@ type ServicePrincipalPasswordArrayInput interface {
 type ServicePrincipalPasswordArray []ServicePrincipalPasswordInput
 
 func (ServicePrincipalPasswordArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ServicePrincipalPassword)(nil))
+	return reflect.TypeOf((*[]*ServicePrincipalPassword)(nil)).Elem()
 }
 
 func (i ServicePrincipalPasswordArray) ToServicePrincipalPasswordArrayOutput() ServicePrincipalPasswordArrayOutput {
@@ -218,7 +218,7 @@ type ServicePrincipalPasswordMapInput interface {
 type ServicePrincipalPasswordMap map[string]ServicePrincipalPasswordInput
 
 func (ServicePrincipalPasswordMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ServicePrincipalPassword)(nil))
+	return reflect.TypeOf((*map[string]*ServicePrincipalPassword)(nil)).Elem()
 }
 
 func (i ServicePrincipalPasswordMap) ToServicePrincipalPasswordMapOutput() ServicePrincipalPasswordMapOutput {
@@ -229,9 +229,7 @@ func (i ServicePrincipalPasswordMap) ToServicePrincipalPasswordMapOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalPasswordMapOutput)
 }
 
-type ServicePrincipalPasswordOutput struct {
-	*pulumi.OutputState
-}
+type ServicePrincipalPasswordOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalPasswordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ServicePrincipalPassword)(nil))
@@ -250,14 +248,12 @@ func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordPtrOutput() Se
 }
 
 func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput {
-	return o.ApplyT(func(v ServicePrincipalPassword) *ServicePrincipalPassword {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipalPassword) *ServicePrincipalPassword {
 		return &v
 	}).(ServicePrincipalPasswordPtrOutput)
 }
 
-type ServicePrincipalPasswordPtrOutput struct {
-	*pulumi.OutputState
-}
+type ServicePrincipalPasswordPtrOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalPasswordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ServicePrincipalPassword)(nil))
@@ -269,6 +265,16 @@ func (o ServicePrincipalPasswordPtrOutput) ToServicePrincipalPasswordPtrOutput()
 
 func (o ServicePrincipalPasswordPtrOutput) ToServicePrincipalPasswordPtrOutputWithContext(ctx context.Context) ServicePrincipalPasswordPtrOutput {
 	return o
+}
+
+func (o ServicePrincipalPasswordPtrOutput) Elem() ServicePrincipalPasswordOutput {
+	return o.ApplyT(func(v *ServicePrincipalPassword) ServicePrincipalPassword {
+		if v != nil {
+			return *v
+		}
+		var ret ServicePrincipalPassword
+		return ret
+	}).(ServicePrincipalPasswordOutput)
 }
 
 type ServicePrincipalPasswordArrayOutput struct{ *pulumi.OutputState }

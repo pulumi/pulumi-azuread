@@ -341,7 +341,7 @@ type GroupArrayInput interface {
 type GroupArray []GroupInput
 
 func (GroupArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*Group)(nil))
+	return reflect.TypeOf((*[]*Group)(nil)).Elem()
 }
 
 func (i GroupArray) ToGroupArrayOutput() GroupArrayOutput {
@@ -366,7 +366,7 @@ type GroupMapInput interface {
 type GroupMap map[string]GroupInput
 
 func (GroupMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*Group)(nil))
+	return reflect.TypeOf((*map[string]*Group)(nil)).Elem()
 }
 
 func (i GroupMap) ToGroupMapOutput() GroupMapOutput {
@@ -377,9 +377,7 @@ func (i GroupMap) ToGroupMapOutputWithContext(ctx context.Context) GroupMapOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(GroupMapOutput)
 }
 
-type GroupOutput struct {
-	*pulumi.OutputState
-}
+type GroupOutput struct{ *pulumi.OutputState }
 
 func (GroupOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*Group)(nil))
@@ -398,14 +396,12 @@ func (o GroupOutput) ToGroupPtrOutput() GroupPtrOutput {
 }
 
 func (o GroupOutput) ToGroupPtrOutputWithContext(ctx context.Context) GroupPtrOutput {
-	return o.ApplyT(func(v Group) *Group {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Group) *Group {
 		return &v
 	}).(GroupPtrOutput)
 }
 
-type GroupPtrOutput struct {
-	*pulumi.OutputState
-}
+type GroupPtrOutput struct{ *pulumi.OutputState }
 
 func (GroupPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**Group)(nil))
@@ -417,6 +413,16 @@ func (o GroupPtrOutput) ToGroupPtrOutput() GroupPtrOutput {
 
 func (o GroupPtrOutput) ToGroupPtrOutputWithContext(ctx context.Context) GroupPtrOutput {
 	return o
+}
+
+func (o GroupPtrOutput) Elem() GroupOutput {
+	return o.ApplyT(func(v *Group) Group {
+		if v != nil {
+			return *v
+		}
+		var ret Group
+		return ret
+	}).(GroupOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

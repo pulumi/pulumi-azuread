@@ -13,6 +13,7 @@ __all__ = [
     'GetServicePrincipalResult',
     'AwaitableGetServicePrincipalResult',
     'get_service_principal',
+    'get_service_principal_output',
 ]
 
 @pulumi.output_type
@@ -429,3 +430,56 @@ def get_service_principal(application_id: Optional[str] = None,
         sign_in_audience=__ret__.sign_in_audience,
         tags=__ret__.tags,
         type=__ret__.type)
+
+
+@_utilities.lift_output_func(get_service_principal)
+def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 display_name: Optional[pulumi.Input[Optional[str]]] = None,
+                                 object_id: Optional[pulumi.Input[Optional[str]]] = None,
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
+    """
+    Gets information about an existing service principal associated with an application within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by application display name*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(display_name="my-awesome-application")
+    ```
+
+    *Look up by application ID (client ID)*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(application_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by service principal object ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+
+    :param str application_id: The application ID (client ID) of the application associated with this service principal.
+    :param str display_name: The display name of the application associated with this service principal.
+    :param str object_id: The object ID of the service principal.
+    """
+    ...

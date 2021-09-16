@@ -205,7 +205,7 @@ type ApplicationPasswordArrayInput interface {
 type ApplicationPasswordArray []ApplicationPasswordInput
 
 func (ApplicationPasswordArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*ApplicationPassword)(nil))
+	return reflect.TypeOf((*[]*ApplicationPassword)(nil)).Elem()
 }
 
 func (i ApplicationPasswordArray) ToApplicationPasswordArrayOutput() ApplicationPasswordArrayOutput {
@@ -230,7 +230,7 @@ type ApplicationPasswordMapInput interface {
 type ApplicationPasswordMap map[string]ApplicationPasswordInput
 
 func (ApplicationPasswordMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*ApplicationPassword)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationPassword)(nil)).Elem()
 }
 
 func (i ApplicationPasswordMap) ToApplicationPasswordMapOutput() ApplicationPasswordMapOutput {
@@ -241,9 +241,7 @@ func (i ApplicationPasswordMap) ToApplicationPasswordMapOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationPasswordMapOutput)
 }
 
-type ApplicationPasswordOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationPasswordOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPasswordOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*ApplicationPassword)(nil))
@@ -262,14 +260,12 @@ func (o ApplicationPasswordOutput) ToApplicationPasswordPtrOutput() ApplicationP
 }
 
 func (o ApplicationPasswordOutput) ToApplicationPasswordPtrOutputWithContext(ctx context.Context) ApplicationPasswordPtrOutput {
-	return o.ApplyT(func(v ApplicationPassword) *ApplicationPassword {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationPassword) *ApplicationPassword {
 		return &v
 	}).(ApplicationPasswordPtrOutput)
 }
 
-type ApplicationPasswordPtrOutput struct {
-	*pulumi.OutputState
-}
+type ApplicationPasswordPtrOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPasswordPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**ApplicationPassword)(nil))
@@ -281,6 +277,16 @@ func (o ApplicationPasswordPtrOutput) ToApplicationPasswordPtrOutput() Applicati
 
 func (o ApplicationPasswordPtrOutput) ToApplicationPasswordPtrOutputWithContext(ctx context.Context) ApplicationPasswordPtrOutput {
 	return o
+}
+
+func (o ApplicationPasswordPtrOutput) Elem() ApplicationPasswordOutput {
+	return o.ApplyT(func(v *ApplicationPassword) ApplicationPassword {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationPassword
+		return ret
+	}).(ApplicationPasswordOutput)
 }
 
 type ApplicationPasswordArrayOutput struct{ *pulumi.OutputState }
