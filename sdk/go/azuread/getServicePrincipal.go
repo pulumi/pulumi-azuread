@@ -132,6 +132,8 @@ type LookupServicePrincipalResult struct {
 	Description string `pulumi:"description"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
 	DisplayName string `pulumi:"displayName"`
+	// A `features` block as described below.
+	Features []GetServicePrincipalFeature `pulumi:"features"`
 	// Home page or landing page of the associated application.
 	HomepageUrl string `pulumi:"homepageUrl"`
 	// The provider-assigned unique ID for this managed resource.
@@ -249,6 +251,11 @@ func (o LookupServicePrincipalResultOutput) Description() pulumi.StringOutput {
 // Display name for the permission that appears in the admin consent and app assignment experiences.
 func (o LookupServicePrincipalResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A `features` block as described below.
+func (o LookupServicePrincipalResultOutput) Features() GetServicePrincipalFeatureArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalFeature { return v.Features }).(GetServicePrincipalFeatureArrayOutput)
 }
 
 // Home page or landing page of the associated application.

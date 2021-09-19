@@ -18,16 +18,15 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly bool? ApplicationEnforcedRestrictionsEnabled;
         /// <summary>
-        /// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+        /// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         /// </summary>
         public readonly string? CloudAppSecurityPolicy;
         /// <summary>
-        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         /// </summary>
         public readonly int? SignInFrequency;
         /// <summary>
-        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
-        /// ---
+        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         /// </summary>
         public readonly string? SignInFrequencyPeriod;
 

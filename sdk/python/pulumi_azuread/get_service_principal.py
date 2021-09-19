@@ -21,7 +21,7 @@ class GetServicePrincipalResult:
     """
     A collection of values returned by getServicePrincipal.
     """
-    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, description=None, display_name=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
+    def __init__(__self__, account_enabled=None, alternative_names=None, app_role_assignment_required=None, app_role_ids=None, app_roles=None, application_id=None, application_tenant_id=None, description=None, display_name=None, features=None, homepage_url=None, id=None, login_url=None, logout_url=None, notes=None, notification_email_addresses=None, oauth2_permission_scope_ids=None, oauth2_permission_scopes=None, object_id=None, preferred_single_sign_on_mode=None, redirect_uris=None, saml_metadata_url=None, saml_single_sign_ons=None, service_principal_names=None, sign_in_audience=None, tags=None, type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -49,6 +49,9 @@ class GetServicePrincipalResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if features and not isinstance(features, list):
+            raise TypeError("Expected argument 'features' to be a list")
+        pulumi.set(__self__, "features", features)
         if homepage_url and not isinstance(homepage_url, str):
             raise TypeError("Expected argument 'homepage_url' to be a str")
         pulumi.set(__self__, "homepage_url", homepage_url)
@@ -172,6 +175,14 @@ class GetServicePrincipalResult:
         Display name for the permission that appears in the admin consent and app assignment experiences.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def features(self) -> Sequence['outputs.GetServicePrincipalFeatureResult']:
+        """
+        A `features` block as described below.
+        """
+        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter(name="homepageUrl")
@@ -325,6 +336,7 @@ class AwaitableGetServicePrincipalResult(GetServicePrincipalResult):
             application_tenant_id=self.application_tenant_id,
             description=self.description,
             display_name=self.display_name,
+            features=self.features,
             homepage_url=self.homepage_url,
             id=self.id,
             login_url=self.login_url,
@@ -413,6 +425,7 @@ def get_service_principal(application_id: Optional[str] = None,
         application_tenant_id=__ret__.application_tenant_id,
         description=__ret__.description,
         display_name=__ret__.display_name,
+        features=__ret__.features,
         homepage_url=__ret__.homepage_url,
         id=__ret__.id,
         login_url=__ret__.login_url,

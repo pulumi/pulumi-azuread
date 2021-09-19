@@ -20,6 +20,7 @@ class ServicePrincipalArgs:
                  alternative_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
                  login_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -35,13 +36,14 @@ class ServicePrincipalArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] alternative_names: A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]] features: A `features` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input['ServicePrincipalSamlSingleSignOnArgs'] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
         pulumi.set(__self__, "application_id", application_id)
@@ -53,6 +55,8 @@ class ServicePrincipalArgs:
             pulumi.set(__self__, "app_role_assignment_required", app_role_assignment_required)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if login_url is not None:
             pulumi.set(__self__, "login_url", login_url)
         if notes is not None:
@@ -131,6 +135,18 @@ class ServicePrincipalArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
+        """
+        A `features` block as described below. Cannot be used together with the `tags` property.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]):
+        pulumi.set(self, "features", value)
+
+    @property
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> Optional[pulumi.Input[str]]:
         """
@@ -206,7 +222,7 @@ class ServicePrincipalArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of tags to apply to the service principal.
+        A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         """
         return pulumi.get(self, "tags")
 
@@ -239,6 +255,7 @@ class _ServicePrincipalState:
                  application_tenant_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]] = None,
                  homepage_url: Optional[pulumi.Input[str]] = None,
                  login_url: Optional[pulumi.Input[str]] = None,
                  logout_url: Optional[pulumi.Input[str]] = None,
@@ -268,6 +285,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
         :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]] features: A `features` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
@@ -283,7 +301,7 @@ class _ServicePrincipalState:
         :param pulumi.Input['ServicePrincipalSamlSingleSignOnArgs'] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         :param pulumi.Input[str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
@@ -305,6 +323,8 @@ class _ServicePrincipalState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
         if homepage_url is not None:
             pulumi.set(__self__, "homepage_url", homepage_url)
         if login_url is not None:
@@ -449,6 +469,18 @@ class _ServicePrincipalState:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]:
+        """
+        A `features` block as described below. Cannot be used together with the `tags` property.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]]]):
+        pulumi.set(self, "features", value)
 
     @property
     @pulumi.getter(name="homepageUrl")
@@ -634,7 +666,7 @@ class _ServicePrincipalState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of tags to apply to the service principal.
+        A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         """
         return pulumi.get(self, "tags")
 
@@ -677,6 +709,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]]] = None,
                  login_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -714,12 +747,27 @@ class ServicePrincipal(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
             application_id=example_application.application_id,
             app_role_assignment_required=False,
+            owners=[current.object_id])
+        ```
+
+        *Create a service principal for an enterprise application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            owners=[current.object_id])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            app_role_assignment_required=False,
             owners=[current.object_id],
-            tags=[
-                "example",
-                "tags",
-                "here",
-            ])
+            features=[azuread.ServicePrincipalFeatureArgs(
+                enterprise_application=True,
+                gallery_application=True,
+            )])
         ```
 
         *Manage a service principal for a first-party Microsoft application*
@@ -764,13 +812,14 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[bool] app_role_assignment_required: Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
         :param pulumi.Input[str] application_id: The application ID (client ID) of the application for which to create a service principal.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]] features: A `features` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
         :param pulumi.Input[str] preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
         ...
@@ -807,12 +856,27 @@ class ServicePrincipal(pulumi.CustomResource):
         example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
             application_id=example_application.application_id,
             app_role_assignment_required=False,
+            owners=[current.object_id])
+        ```
+
+        *Create a service principal for an enterprise application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            owners=[current.object_id])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            app_role_assignment_required=False,
             owners=[current.object_id],
-            tags=[
-                "example",
-                "tags",
-                "here",
-            ])
+            features=[azuread.ServicePrincipalFeatureArgs(
+                enterprise_application=True,
+                gallery_application=True,
+            )])
         ```
 
         *Manage a service principal for a first-party Microsoft application*
@@ -870,6 +934,7 @@ class ServicePrincipal(pulumi.CustomResource):
                  app_role_assignment_required: Optional[pulumi.Input[bool]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]]] = None,
                  login_url: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
                  notification_email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -897,6 +962,7 @@ class ServicePrincipal(pulumi.CustomResource):
                 raise TypeError("Missing required property 'application_id'")
             __props__.__dict__["application_id"] = application_id
             __props__.__dict__["description"] = description
+            __props__.__dict__["features"] = features
             __props__.__dict__["login_url"] = login_url
             __props__.__dict__["notes"] = notes
             __props__.__dict__["notification_email_addresses"] = notification_email_addresses
@@ -938,6 +1004,7 @@ class ServicePrincipal(pulumi.CustomResource):
             application_tenant_id: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            features: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]]] = None,
             homepage_url: Optional[pulumi.Input[str]] = None,
             login_url: Optional[pulumi.Input[str]] = None,
             logout_url: Optional[pulumi.Input[str]] = None,
@@ -972,6 +1039,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[str] application_tenant_id: The tenant ID where the associated application is registered.
         :param pulumi.Input[str] description: A description of the service principal provided for internal end-users.
         :param pulumi.Input[str] display_name: Display name for the app role that appears during app role assignment and in consent experiences.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]] features: A `features` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
@@ -987,7 +1055,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ServicePrincipalSamlSingleSignOnArgs']] saml_single_sign_on: A `saml_single_sign_on` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_names: A list of identifier URI(s), copied over from the associated application.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         :param pulumi.Input[str] type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
         :param pulumi.Input[bool] use_existing: When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
         """
@@ -1004,6 +1072,7 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["application_tenant_id"] = application_tenant_id
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["features"] = features
         __props__.__dict__["homepage_url"] = homepage_url
         __props__.__dict__["login_url"] = login_url
         __props__.__dict__["logout_url"] = logout_url
@@ -1095,6 +1164,14 @@ class ServicePrincipal(pulumi.CustomResource):
         Display name for the app role that appears during app role assignment and in consent experiences.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def features(self) -> pulumi.Output[Sequence['outputs.ServicePrincipalFeature']]:
+        """
+        A `features` block as described below. Cannot be used together with the `tags` property.
+        """
+        return pulumi.get(self, "features")
 
     @property
     @pulumi.getter(name="homepageUrl")
@@ -1218,9 +1295,9 @@ class ServicePrincipal(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def tags(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of tags to apply to the service principal.
+        A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         """
         return pulumi.get(self, "tags")
 

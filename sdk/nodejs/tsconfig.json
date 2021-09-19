@@ -20,6 +20,8 @@
         "conditionalAccessPolicy.ts",
         "config/index.ts",
         "config/vars.ts",
+        "directoryRole.ts",
+        "directoryRoleMember.ts",
         "getApplication.ts",
         "getApplicationPublishedAppIds.ts",
         "getApplicationTemplate.ts",

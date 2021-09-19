@@ -159,7 +159,7 @@ export interface ApplicationOptionalClaimsSaml2Token {
 
 export interface ApplicationPublicClient {
     /**
-     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
      */
     redirectUris?: string[];
 }
@@ -188,7 +188,7 @@ export interface ApplicationRequiredResourceAccessResourceAccess {
 
 export interface ApplicationSinglePageApplication {
     /**
-     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
      */
     redirectUris?: string[];
 }
@@ -207,7 +207,7 @@ export interface ApplicationWeb {
      */
     logoutUrl?: string;
     /**
-     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
      */
     redirectUris?: string[];
 }
@@ -227,19 +227,19 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
      */
-    applications?: outputs.ConditionalAccessPolicyConditionsApplications;
+    applications: outputs.ConditionalAccessPolicyConditionsApplications;
     /**
      * A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      */
-    clientAppTypes?: string[];
+    clientAppTypes: string[];
     /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      */
-    locations?: outputs.ConditionalAccessPolicyConditionsLocations;
+    locations: outputs.ConditionalAccessPolicyConditionsLocations;
     /**
      * A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
      */
-    platforms?: outputs.ConditionalAccessPolicyConditionsPlatforms;
+    platforms: outputs.ConditionalAccessPolicyConditionsPlatforms;
     /**
      * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
@@ -251,7 +251,7 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
      */
-    users?: outputs.ConditionalAccessPolicyConditionsUsers;
+    users: outputs.ConditionalAccessPolicyConditionsUsers;
 }
 
 export interface ConditionalAccessPolicyConditionsApplications {
@@ -282,11 +282,11 @@ export interface ConditionalAccessPolicyConditionsLocations {
 
 export interface ConditionalAccessPolicyConditionsPlatforms {
     /**
-     * A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+     * A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
     excludedPlatforms?: string[];
     /**
-     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
     includedPlatforms: string[];
 }
@@ -320,7 +320,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
 
 export interface ConditionalAccessPolicyGrantControls {
     /**
-     * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+     * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      */
     builtInControls: string[];
     /**
@@ -343,16 +343,15 @@ export interface ConditionalAccessPolicySessionControls {
      */
     applicationEnforcedRestrictionsEnabled?: boolean;
     /**
-     * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+     * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
      */
     cloudAppSecurityPolicy?: string;
     /**
-     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
      */
     signInFrequency?: number;
     /**
-     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
-     * ---
+     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
      */
     signInFrequencyPeriod?: string;
 }
@@ -635,6 +634,25 @@ export interface GetServicePrincipalAppRole {
     value: string;
 }
 
+export interface GetServicePrincipalFeature {
+    /**
+     * Whether this service principal represents a custom SAML application.
+     */
+    customSingleSignOnApp: boolean;
+    /**
+     * Whether this service principal represents an Enterprise Application.
+     */
+    enterpriseApplication: boolean;
+    /**
+     * Whether this service principal represents a gallery application.
+     */
+    galleryApplication: boolean;
+    /**
+     * Whether this app is visible to users in My Apps and Office 365 Launcher.
+     */
+    visibleToUsers: boolean;
+}
+
 export interface GetServicePrincipalOauth2PermissionScope {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -831,6 +849,25 @@ export interface ServicePrincipalAppRole {
     value: string;
 }
 
+export interface ServicePrincipalFeature {
+    /**
+     * Whether this service principal represents a custom SAML application. Defaults to `false`.
+     */
+    customSingleSignOnApp?: boolean;
+    /**
+     * Whether this service principal represents an Enterprise Application. Defaults to `false`.
+     */
+    enterpriseApplication?: boolean;
+    /**
+     * Whether this service principal represents a gallery application. Defaults to `false`.
+     */
+    galleryApplication?: boolean;
+    /**
+     * Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+     */
+    visibleToUsers?: boolean;
+}
+
 export interface ServicePrincipalOauth2PermissionScope {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -872,3 +909,4 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: string;
 }
+

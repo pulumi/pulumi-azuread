@@ -156,6 +156,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// A `features` block as described below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetServicePrincipalFeatureResult> Features;
+        /// <summary>
         /// Home page or landing page of the associated application.
         /// </summary>
         public readonly string HomepageUrl;
@@ -244,6 +248,8 @@ namespace Pulumi.AzureAD
 
             string displayName,
 
+            ImmutableArray<Outputs.GetServicePrincipalFeatureResult> features,
+
             string homepageUrl,
 
             string id,
@@ -287,6 +293,7 @@ namespace Pulumi.AzureAD
             ApplicationTenantId = applicationTenantId;
             Description = description;
             DisplayName = displayName;
+            Features = features;
             HomepageUrl = homepageUrl;
             Id = id;
             LoginUrl = loginUrl;

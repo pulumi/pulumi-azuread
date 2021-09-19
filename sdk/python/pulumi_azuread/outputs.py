@@ -34,6 +34,7 @@ __all__ = [
     'NamedLocationCountry',
     'NamedLocationIp',
     'ServicePrincipalAppRole',
+    'ServicePrincipalFeature',
     'ServicePrincipalOauth2PermissionScope',
     'ServicePrincipalSamlSingleSignOn',
     'GetApplicationApiResult',
@@ -51,6 +52,7 @@ __all__ = [
     'GetApplicationWebImplicitGrantResult',
     'GetDomainsDomainResult',
     'GetServicePrincipalAppRoleResult',
+    'GetServicePrincipalFeatureResult',
     'GetServicePrincipalOauth2PermissionScopeResult',
     'GetServicePrincipalSamlSingleSignOnResult',
     'GetServicePrincipalsServicePrincipalResult',
@@ -653,7 +655,7 @@ class ApplicationPublicClient(dict):
     def __init__(__self__, *,
                  redirect_uris: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
         """
         if redirect_uris is not None:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
@@ -662,7 +664,7 @@ class ApplicationPublicClient(dict):
     @pulumi.getter(name="redirectUris")
     def redirect_uris(self) -> Optional[Sequence[str]]:
         """
-        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
         """
         return pulumi.get(self, "redirect_uris")
 
@@ -766,7 +768,7 @@ class ApplicationSinglePageApplication(dict):
     def __init__(__self__, *,
                  redirect_uris: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
         """
         if redirect_uris is not None:
             pulumi.set(__self__, "redirect_uris", redirect_uris)
@@ -775,7 +777,7 @@ class ApplicationSinglePageApplication(dict):
     @pulumi.getter(name="redirectUris")
     def redirect_uris(self) -> Optional[Sequence[str]]:
         """
-        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
         """
         return pulumi.get(self, "redirect_uris")
 
@@ -814,7 +816,7 @@ class ApplicationWeb(dict):
         :param str homepage_url: Home page or landing page of the application.
         :param 'ApplicationWebImplicitGrantArgs' implicit_grant: An `implicit_grant` block as documented above.
         :param str logout_url: The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        :param Sequence[str] redirect_uris: A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
         """
         if homepage_url is not None:
             pulumi.set(__self__, "homepage_url", homepage_url)
@@ -853,7 +855,7 @@ class ApplicationWeb(dict):
     @pulumi.getter(name="redirectUris")
     def redirect_uris(self) -> Optional[Sequence[str]]:
         """
-        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
         """
         return pulumi.get(self, "redirect_uris")
 
@@ -932,40 +934,35 @@ class ConditionalAccessPolicyConditions(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 applications: Optional['outputs.ConditionalAccessPolicyConditionsApplications'] = None,
-                 client_app_types: Optional[Sequence[str]] = None,
-                 locations: Optional['outputs.ConditionalAccessPolicyConditionsLocations'] = None,
-                 platforms: Optional['outputs.ConditionalAccessPolicyConditionsPlatforms'] = None,
+                 applications: 'outputs.ConditionalAccessPolicyConditionsApplications',
+                 client_app_types: Sequence[str],
+                 locations: 'outputs.ConditionalAccessPolicyConditionsLocations',
+                 platforms: 'outputs.ConditionalAccessPolicyConditionsPlatforms',
+                 users: 'outputs.ConditionalAccessPolicyConditionsUsers',
                  sign_in_risk_levels: Optional[Sequence[str]] = None,
-                 user_risk_levels: Optional[Sequence[str]] = None,
-                 users: Optional['outputs.ConditionalAccessPolicyConditionsUsers'] = None):
+                 user_risk_levels: Optional[Sequence[str]] = None):
         """
         :param 'ConditionalAccessPolicyConditionsApplicationsArgs' applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         :param Sequence[str] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
         :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsPlatformsArgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsUsersArgs' users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         :param Sequence[str] sign_in_risk_levels: A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param Sequence[str] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
-        :param 'ConditionalAccessPolicyConditionsUsersArgs' users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         """
-        if applications is not None:
-            pulumi.set(__self__, "applications", applications)
-        if client_app_types is not None:
-            pulumi.set(__self__, "client_app_types", client_app_types)
-        if locations is not None:
-            pulumi.set(__self__, "locations", locations)
-        if platforms is not None:
-            pulumi.set(__self__, "platforms", platforms)
+        pulumi.set(__self__, "applications", applications)
+        pulumi.set(__self__, "client_app_types", client_app_types)
+        pulumi.set(__self__, "locations", locations)
+        pulumi.set(__self__, "platforms", platforms)
+        pulumi.set(__self__, "users", users)
         if sign_in_risk_levels is not None:
             pulumi.set(__self__, "sign_in_risk_levels", sign_in_risk_levels)
         if user_risk_levels is not None:
             pulumi.set(__self__, "user_risk_levels", user_risk_levels)
-        if users is not None:
-            pulumi.set(__self__, "users", users)
 
     @property
     @pulumi.getter
-    def applications(self) -> Optional['outputs.ConditionalAccessPolicyConditionsApplications']:
+    def applications(self) -> 'outputs.ConditionalAccessPolicyConditionsApplications':
         """
         An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         """
@@ -973,7 +970,7 @@ class ConditionalAccessPolicyConditions(dict):
 
     @property
     @pulumi.getter(name="clientAppTypes")
-    def client_app_types(self) -> Optional[Sequence[str]]:
+    def client_app_types(self) -> Sequence[str]:
         """
         A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
         """
@@ -981,7 +978,7 @@ class ConditionalAccessPolicyConditions(dict):
 
     @property
     @pulumi.getter
-    def locations(self) -> Optional['outputs.ConditionalAccessPolicyConditionsLocations']:
+    def locations(self) -> 'outputs.ConditionalAccessPolicyConditionsLocations':
         """
         A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         """
@@ -989,11 +986,19 @@ class ConditionalAccessPolicyConditions(dict):
 
     @property
     @pulumi.getter
-    def platforms(self) -> Optional['outputs.ConditionalAccessPolicyConditionsPlatforms']:
+    def platforms(self) -> 'outputs.ConditionalAccessPolicyConditionsPlatforms':
         """
         A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         """
         return pulumi.get(self, "platforms")
+
+    @property
+    @pulumi.getter
+    def users(self) -> 'outputs.ConditionalAccessPolicyConditionsUsers':
+        """
+        A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        """
+        return pulumi.get(self, "users")
 
     @property
     @pulumi.getter(name="signInRiskLevels")
@@ -1010,14 +1015,6 @@ class ConditionalAccessPolicyConditions(dict):
         A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
         return pulumi.get(self, "user_risk_levels")
-
-    @property
-    @pulumi.getter
-    def users(self) -> Optional['outputs.ConditionalAccessPolicyConditionsUsers']:
-        """
-        A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-        """
-        return pulumi.get(self, "users")
 
 
 @pulumi.output_type
@@ -1157,8 +1154,8 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
                  included_platforms: Sequence[str],
                  excluded_platforms: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
-        :param Sequence[str] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        :param Sequence[str] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        :param Sequence[str] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         pulumi.set(__self__, "included_platforms", included_platforms)
         if excluded_platforms is not None:
@@ -1168,7 +1165,7 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
     @pulumi.getter(name="includedPlatforms")
     def included_platforms(self) -> Sequence[str]:
         """
-        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         return pulumi.get(self, "included_platforms")
 
@@ -1176,7 +1173,7 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
     @pulumi.getter(name="excludedPlatforms")
     def excluded_platforms(self) -> Optional[Sequence[str]]:
         """
-        A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+        A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         return pulumi.get(self, "excluded_platforms")
 
@@ -1316,7 +1313,7 @@ class ConditionalAccessPolicyGrantControls(dict):
                  custom_authentication_factors: Optional[Sequence[str]] = None,
                  terms_of_uses: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+        :param Sequence[str] built_in_controls: List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         :param str operator: Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
         :param Sequence[str] custom_authentication_factors: List of custom controls IDs required by the policy.
         :param Sequence[str] terms_of_uses: List of terms of use IDs required by the policy.
@@ -1332,7 +1329,7 @@ class ConditionalAccessPolicyGrantControls(dict):
     @pulumi.getter(name="builtInControls")
     def built_in_controls(self) -> Sequence[str]:
         """
-        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+        List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
         """
         return pulumi.get(self, "built_in_controls")
 
@@ -1393,10 +1390,9 @@ class ConditionalAccessPolicySessionControls(dict):
                  sign_in_frequency_period: Optional[str] = None):
         """
         :param bool application_enforced_restrictions_enabled: Whether or not application enforced restrictions are enabled. Defaults to `false`.
-        :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
-        :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
-        :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
-               ---
+        :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+        :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
         if application_enforced_restrictions_enabled is not None:
             pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
@@ -1419,7 +1415,7 @@ class ConditionalAccessPolicySessionControls(dict):
     @pulumi.getter(name="cloudAppSecurityPolicy")
     def cloud_app_security_policy(self) -> Optional[str]:
         """
-        Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+        Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         """
         return pulumi.get(self, "cloud_app_security_policy")
 
@@ -1427,7 +1423,7 @@ class ConditionalAccessPolicySessionControls(dict):
     @pulumi.getter(name="signInFrequency")
     def sign_in_frequency(self) -> Optional[int]:
         """
-        Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified.
+        Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
         return pulumi.get(self, "sign_in_frequency")
 
@@ -1435,8 +1431,7 @@ class ConditionalAccessPolicySessionControls(dict):
     @pulumi.getter(name="signInFrequencyPeriod")
     def sign_in_frequency_period(self) -> Optional[str]:
         """
-        The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
-        ---
+        The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
         return pulumi.get(self, "sign_in_frequency_period")
 
@@ -1693,6 +1688,84 @@ class ServicePrincipalAppRole(dict):
         The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServicePrincipalFeature(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "customSingleSignOnApp":
+            suggest = "custom_single_sign_on_app"
+        elif key == "enterpriseApplication":
+            suggest = "enterprise_application"
+        elif key == "galleryApplication":
+            suggest = "gallery_application"
+        elif key == "visibleToUsers":
+            suggest = "visible_to_users"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServicePrincipalFeature. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServicePrincipalFeature.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServicePrincipalFeature.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 custom_single_sign_on_app: Optional[bool] = None,
+                 enterprise_application: Optional[bool] = None,
+                 gallery_application: Optional[bool] = None,
+                 visible_to_users: Optional[bool] = None):
+        """
+        :param bool custom_single_sign_on_app: Whether this service principal represents a custom SAML application. Defaults to `false`.
+        :param bool enterprise_application: Whether this service principal represents an Enterprise Application. Defaults to `false`.
+        :param bool gallery_application: Whether this service principal represents a gallery application. Defaults to `false`.
+        :param bool visible_to_users: Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+        """
+        if custom_single_sign_on_app is not None:
+            pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
+        if enterprise_application is not None:
+            pulumi.set(__self__, "enterprise_application", enterprise_application)
+        if gallery_application is not None:
+            pulumi.set(__self__, "gallery_application", gallery_application)
+        if visible_to_users is not None:
+            pulumi.set(__self__, "visible_to_users", visible_to_users)
+
+    @property
+    @pulumi.getter(name="customSingleSignOnApp")
+    def custom_single_sign_on_app(self) -> Optional[bool]:
+        """
+        Whether this service principal represents a custom SAML application. Defaults to `false`.
+        """
+        return pulumi.get(self, "custom_single_sign_on_app")
+
+    @property
+    @pulumi.getter(name="enterpriseApplication")
+    def enterprise_application(self) -> Optional[bool]:
+        """
+        Whether this service principal represents an Enterprise Application. Defaults to `false`.
+        """
+        return pulumi.get(self, "enterprise_application")
+
+    @property
+    @pulumi.getter(name="galleryApplication")
+    def gallery_application(self) -> Optional[bool]:
+        """
+        Whether this service principal represents a gallery application. Defaults to `false`.
+        """
+        return pulumi.get(self, "gallery_application")
+
+    @property
+    @pulumi.getter(name="visibleToUsers")
+    def visible_to_users(self) -> Optional[bool]:
+        """
+        Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+        """
+        return pulumi.get(self, "visible_to_users")
 
 
 @pulumi.output_type
@@ -2617,6 +2690,57 @@ class GetServicePrincipalAppRoleResult(dict):
         The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServicePrincipalFeatureResult(dict):
+    def __init__(__self__, *,
+                 custom_single_sign_on_app: bool,
+                 enterprise_application: bool,
+                 gallery_application: bool,
+                 visible_to_users: bool):
+        """
+        :param bool custom_single_sign_on_app: Whether this service principal represents a custom SAML application.
+        :param bool enterprise_application: Whether this service principal represents an Enterprise Application.
+        :param bool gallery_application: Whether this service principal represents a gallery application.
+        :param bool visible_to_users: Whether this app is visible to users in My Apps and Office 365 Launcher.
+        """
+        pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
+        pulumi.set(__self__, "enterprise_application", enterprise_application)
+        pulumi.set(__self__, "gallery_application", gallery_application)
+        pulumi.set(__self__, "visible_to_users", visible_to_users)
+
+    @property
+    @pulumi.getter(name="customSingleSignOnApp")
+    def custom_single_sign_on_app(self) -> bool:
+        """
+        Whether this service principal represents a custom SAML application.
+        """
+        return pulumi.get(self, "custom_single_sign_on_app")
+
+    @property
+    @pulumi.getter(name="enterpriseApplication")
+    def enterprise_application(self) -> bool:
+        """
+        Whether this service principal represents an Enterprise Application.
+        """
+        return pulumi.get(self, "enterprise_application")
+
+    @property
+    @pulumi.getter(name="galleryApplication")
+    def gallery_application(self) -> bool:
+        """
+        Whether this service principal represents a gallery application.
+        """
+        return pulumi.get(self, "gallery_application")
+
+    @property
+    @pulumi.getter(name="visibleToUsers")
+    def visible_to_users(self) -> bool:
+        """
+        Whether this app is visible to users in My Apps and Office 365 Launcher.
+        """
+        return pulumi.get(self, "visible_to_users")
 
 
 @pulumi.output_type

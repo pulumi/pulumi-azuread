@@ -10,6 +10,8 @@ export * from "./applicationCertificate";
 export * from "./applicationPassword";
 export * from "./applicationPreAuthorized";
 export * from "./conditionalAccessPolicy";
+export * from "./directoryRole";
+export * from "./directoryRoleMember";
 export * from "./getApplication";
 export * from "./getApplicationPublishedAppIds";
 export * from "./getApplicationTemplate";
@@ -46,6 +48,8 @@ import { ApplicationCertificate } from "./applicationCertificate";
 import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
 import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
+import { DirectoryRole } from "./directoryRole";
+import { DirectoryRoleMember } from "./directoryRoleMember";
 import { Group } from "./group";
 import { GroupMember } from "./groupMember";
 import { Invitation } from "./invitation";
@@ -69,6 +73,10 @@ const _module = {
                 return new ApplicationPreAuthorized(name, <any>undefined, { urn })
             case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
                 return new ConditionalAccessPolicy(name, <any>undefined, { urn })
+            case "azuread:index/directoryRole:DirectoryRole":
+                return new DirectoryRole(name, <any>undefined, { urn })
+            case "azuread:index/directoryRoleMember:DirectoryRoleMember":
+                return new DirectoryRoleMember(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "azuread:index/groupMember:GroupMember":
@@ -95,6 +103,8 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate",
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/directoryRole", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)

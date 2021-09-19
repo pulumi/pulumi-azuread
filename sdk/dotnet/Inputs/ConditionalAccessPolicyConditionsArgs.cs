@@ -15,10 +15,10 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         /// </summary>
-        [Input("applications")]
-        public Input<Inputs.ConditionalAccessPolicyConditionsApplicationsArgs>? Applications { get; set; }
+        [Input("applications", required: true)]
+        public Input<Inputs.ConditionalAccessPolicyConditionsApplicationsArgs> Applications { get; set; } = null!;
 
-        [Input("clientAppTypes")]
+        [Input("clientAppTypes", required: true)]
         private InputList<string>? _clientAppTypes;
 
         /// <summary>
@@ -33,14 +33,14 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
-        [Input("locations")]
-        public Input<Inputs.ConditionalAccessPolicyConditionsLocationsArgs>? Locations { get; set; }
+        [Input("locations", required: true)]
+        public Input<Inputs.ConditionalAccessPolicyConditionsLocationsArgs> Locations { get; set; } = null!;
 
         /// <summary>
         /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         /// </summary>
-        [Input("platforms")]
-        public Input<Inputs.ConditionalAccessPolicyConditionsPlatformsArgs>? Platforms { get; set; }
+        [Input("platforms", required: true)]
+        public Input<Inputs.ConditionalAccessPolicyConditionsPlatformsArgs> Platforms { get; set; } = null!;
 
         [Input("signInRiskLevels")]
         private InputList<string>? _signInRiskLevels;
@@ -69,8 +69,8 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         /// </summary>
-        [Input("users")]
-        public Input<Inputs.ConditionalAccessPolicyConditionsUsersArgs>? Users { get; set; }
+        [Input("users", required: true)]
+        public Input<Inputs.ConditionalAccessPolicyConditionsUsersArgs> Users { get; set; } = null!;
 
         public ConditionalAccessPolicyConditionsArgs()
         {

@@ -22,6 +22,7 @@ class ApplicationArgs:
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
@@ -45,6 +46,7 @@ class ApplicationArgs:
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
@@ -73,6 +75,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if identifier_uris is not None:
             pulumi.set(__self__, "identifier_uris", identifier_uris)
+        if logo_image is not None:
+            pulumi.set(__self__, "logo_image", logo_image)
         if marketing_url is not None:
             pulumi.set(__self__, "marketing_url", marketing_url)
         if oauth2_post_response_required is not None:
@@ -185,6 +189,18 @@ class ApplicationArgs:
     @identifier_uris.setter
     def identifier_uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "identifier_uris", value)
+
+    @property
+    @pulumi.getter(name="logoImage")
+    def logo_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        """
+        return pulumi.get(self, "logo_image")
+
+    @logo_image.setter
+    def logo_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_image", value)
 
     @property
     @pulumi.getter(name="marketingUrl")
@@ -368,6 +384,7 @@ class _ApplicationState:
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logo_image: Optional[pulumi.Input[str]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -398,7 +415,8 @@ class _ApplicationState:
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-        :param pulumi.Input[str] logo_url: CDN URL to the application's logo.
+        :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        :param pulumi.Input[str] logo_url: CDN URL to the application's logo, as uploaded with the `logo_image` property.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -437,6 +455,8 @@ class _ApplicationState:
             pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if identifier_uris is not None:
             pulumi.set(__self__, "identifier_uris", identifier_uris)
+        if logo_image is not None:
+            pulumi.set(__self__, "logo_image", logo_image)
         if logo_url is not None:
             pulumi.set(__self__, "logo_url", logo_url)
         if marketing_url is not None:
@@ -595,10 +615,22 @@ class _ApplicationState:
         pulumi.set(self, "identifier_uris", value)
 
     @property
+    @pulumi.getter(name="logoImage")
+    def logo_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        """
+        return pulumi.get(self, "logo_image")
+
+    @logo_image.setter
+    def logo_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "logo_image", value)
+
+    @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> Optional[pulumi.Input[str]]:
         """
-        CDN URL to the application's logo.
+        CDN URL to the application's logo, as uploaded with the `logo_image` property.
         """
         return pulumi.get(self, "logo_url")
 
@@ -823,6 +855,7 @@ class Application(pulumi.CustomResource):
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
@@ -856,6 +889,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
@@ -908,6 +942,7 @@ class Application(pulumi.CustomResource):
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
@@ -943,6 +978,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["fallback_public_client_enabled"] = fallback_public_client_enabled
             __props__.__dict__["group_membership_claims"] = group_membership_claims
             __props__.__dict__["identifier_uris"] = identifier_uris
+            __props__.__dict__["logo_image"] = logo_image
             __props__.__dict__["marketing_url"] = marketing_url
             __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
             __props__.__dict__["optional_claims"] = optional_claims
@@ -984,6 +1020,7 @@ class Application(pulumi.CustomResource):
             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            logo_image: Optional[pulumi.Input[str]] = None,
             logo_url: Optional[pulumi.Input[str]] = None,
             marketing_url: Optional[pulumi.Input[str]] = None,
             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1019,7 +1056,8 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
-        :param pulumi.Input[str] logo_url: CDN URL to the application's logo.
+        :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        :param pulumi.Input[str] logo_url: CDN URL to the application's logo, as uploaded with the `logo_image` property.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -1052,6 +1090,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["fallback_public_client_enabled"] = fallback_public_client_enabled
         __props__.__dict__["group_membership_claims"] = group_membership_claims
         __props__.__dict__["identifier_uris"] = identifier_uris
+        __props__.__dict__["logo_image"] = logo_image
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["marketing_url"] = marketing_url
         __props__.__dict__["oauth2_permission_scope_ids"] = oauth2_permission_scope_ids
@@ -1153,10 +1192,18 @@ class Application(pulumi.CustomResource):
         return pulumi.get(self, "identifier_uris")
 
     @property
+    @pulumi.getter(name="logoImage")
+    def logo_image(self) -> pulumi.Output[Optional[str]]:
+        """
+        A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        """
+        return pulumi.get(self, "logo_image")
+
+    @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> pulumi.Output[str]:
         """
-        CDN URL to the application's logo.
+        CDN URL to the application's logo, as uploaded with the `logo_image` property.
         """
         return pulumi.get(self, "logo_url")
 

@@ -126,6 +126,10 @@ export interface GetServicePrincipalResult {
      */
     readonly displayName: string;
     /**
+     * A `features` block as described below.
+     */
+    readonly features: outputs.GetServicePrincipalFeature[];
+    /**
      * Home page or landing page of the associated application.
      */
     readonly homepageUrl: string;
