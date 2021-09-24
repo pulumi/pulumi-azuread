@@ -113,6 +113,7 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_named_location":                {Tok: makeResource(mainMod, "NamedLocation")},
 			"azuread_directory_role":                {Tok: makeResource(mainMod, "DirectoryRole")},
 			"azuread_directory_role_member":         {Tok: makeResource(mainMod, "DirectoryRoleMember")},
+			"azuread_app_role_assignment":           {Tok: makeResource(mainMod, "AppRoleAssignment")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},

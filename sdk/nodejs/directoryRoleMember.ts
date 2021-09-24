@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Security administrator"});
  * const exampleDirectoryRoleMember = new azuread.DirectoryRoleMember("exampleDirectoryRoleMember", {
- *     directoryRoleObjectId: exampleDirectoryRole.objectId,
+ *     roleObjectId: exampleDirectoryRole.objectId,
  *     memberObjectId: exampleUser.then(exampleUser => exampleUser.objectId),
  * });
  * ```
@@ -39,7 +39,7 @@ import * as utilities from "./utilities";
  *  $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
  * ```
  *
- *  -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+ *  -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
  */
 export class DirectoryRoleMember extends pulumi.CustomResource {
     /**
@@ -70,11 +70,11 @@ export class DirectoryRoleMember extends pulumi.CustomResource {
     }
 
     /**
-     * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
     public readonly memberObjectId!: pulumi.Output<string | undefined>;
     /**
-     * The object ID of the directory role
+     * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      */
     public readonly roleObjectId!: pulumi.Output<string | undefined>;
 
@@ -110,11 +110,11 @@ export class DirectoryRoleMember extends pulumi.CustomResource {
  */
 export interface DirectoryRoleMemberState {
     /**
-     * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
     memberObjectId?: pulumi.Input<string>;
     /**
-     * The object ID of the directory role
+     * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      */
     roleObjectId?: pulumi.Input<string>;
 }
@@ -124,11 +124,11 @@ export interface DirectoryRoleMemberState {
  */
 export interface DirectoryRoleMemberArgs {
     /**
-     * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      */
     memberObjectId?: pulumi.Input<string>;
     /**
-     * The object ID of the directory role
+     * The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
      */
     roleObjectId?: pulumi.Input<string>;
 }

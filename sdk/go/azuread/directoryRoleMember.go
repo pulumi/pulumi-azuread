@@ -20,6 +20,43 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "jdoe@hashicorp.com"
+// 		exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
+// 			UserPrincipalName: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "exampleDirectoryRole", &azuread.DirectoryRoleArgs{
+// 			DisplayName: pulumi.String("Security administrator"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewDirectoryRoleMember(ctx, "exampleDirectoryRoleMember", &azuread.DirectoryRoleMemberArgs{
+// 			RoleObjectId:   exampleDirectoryRole.ObjectId,
+// 			MemberObjectId: pulumi.String(exampleUser.ObjectId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
@@ -28,13 +65,13 @@ import (
 //  $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
 // ```
 //
-//  -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+//  -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 type DirectoryRoleMember struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	MemberObjectId pulumi.StringPtrOutput `pulumi:"memberObjectId"`
-	// The object ID of the directory role
+	// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
 	RoleObjectId pulumi.StringPtrOutput `pulumi:"roleObjectId"`
 }
 
@@ -67,16 +104,16 @@ func GetDirectoryRoleMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DirectoryRoleMember resources.
 type directoryRoleMemberState struct {
-	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	MemberObjectId *string `pulumi:"memberObjectId"`
-	// The object ID of the directory role
+	// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
 	RoleObjectId *string `pulumi:"roleObjectId"`
 }
 
 type DirectoryRoleMemberState struct {
-	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	MemberObjectId pulumi.StringPtrInput
-	// The object ID of the directory role
+	// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
 	RoleObjectId pulumi.StringPtrInput
 }
 
@@ -85,17 +122,17 @@ func (DirectoryRoleMemberState) ElementType() reflect.Type {
 }
 
 type directoryRoleMemberArgs struct {
-	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	MemberObjectId *string `pulumi:"memberObjectId"`
-	// The object ID of the directory role
+	// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
 	RoleObjectId *string `pulumi:"roleObjectId"`
 }
 
 // The set of arguments for constructing a DirectoryRoleMember resource.
 type DirectoryRoleMemberArgs struct {
-	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	MemberObjectId pulumi.StringPtrInput
-	// The object ID of the directory role
+	// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
 	RoleObjectId pulumi.StringPtrInput
 }
 

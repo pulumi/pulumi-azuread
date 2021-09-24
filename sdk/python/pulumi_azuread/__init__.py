@@ -5,6 +5,7 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .app_role_assignment import *
 from .application import *
 from .application_certificate import *
 from .application_password import *
@@ -45,6 +46,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "azuread",
+  "mod": "index/appRoleAssignment",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/appRoleAssignment:AppRoleAssignment": "AppRoleAssignment"
+  }
+ },
  {
   "pkg": "azuread",
   "mod": "index/application",

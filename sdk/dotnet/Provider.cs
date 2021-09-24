@@ -51,8 +51,8 @@ namespace Pulumi.AzureAD
         public Output<string?> ClientSecret { get; private set; } = null!;
 
         /// <summary>
-        /// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-        /// `germany`, and `china`. Defaults to `global`
+        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+        /// `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         /// </summary>
         [Output("environment")]
         public Output<string?> Environment { get; private set; } = null!;
@@ -142,8 +142,8 @@ namespace Pulumi.AzureAD
         public Input<bool>? DisableTerraformPartnerId { get; set; }
 
         /// <summary>
-        /// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-        /// `germany`, and `china`. Defaults to `global`
+        /// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+        /// `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         /// </summary>
         [Input("environment")]
         public Input<string>? Environment { get; set; }

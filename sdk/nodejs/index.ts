@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./appRoleAssignment";
 export * from "./application";
 export * from "./applicationCertificate";
 export * from "./applicationPassword";
@@ -43,6 +44,7 @@ export {
 };
 
 // Import resources to register:
+import { AppRoleAssignment } from "./appRoleAssignment";
 import { Application } from "./application";
 import { ApplicationCertificate } from "./applicationCertificate";
 import { ApplicationPassword } from "./applicationPassword";
@@ -63,6 +65,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "azuread:index/appRoleAssignment:AppRoleAssignment":
+                return new AppRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/application:Application":
                 return new Application(name, <any>undefined, { urn })
             case "azuread:index/applicationCertificate:ApplicationCertificate":
@@ -98,6 +102,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("azuread", "index/appRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)

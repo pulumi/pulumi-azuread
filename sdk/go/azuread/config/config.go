@@ -40,8 +40,8 @@ func GetDisableTerraformPartnerId(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "azuread:disableTerraformPartnerId")
 }
 
-// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-// `germany`, and `china`. Defaults to `global`
+// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+// `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
 func GetEnvironment(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:environment")
 	if err == nil {

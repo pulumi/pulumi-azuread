@@ -29,8 +29,8 @@ type Provider struct {
 	ClientId pulumi.StringPtrOutput `pulumi:"clientId"`
 	// The application password to use when authenticating as a Service Principal using a Client Secret
 	ClientSecret pulumi.StringPtrOutput `pulumi:"clientSecret"`
-	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-	// `germany`, and `china`. Defaults to `global`
+	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+	// `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
 	Environment pulumi.StringPtrOutput `pulumi:"environment"`
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrOutput `pulumi:"msiEndpoint"`
@@ -79,8 +79,8 @@ type providerArgs struct {
 	ClientSecret *string `pulumi:"clientSecret"`
 	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId *bool `pulumi:"disableTerraformPartnerId"`
-	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-	// `germany`, and `china`. Defaults to `global`
+	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+	// `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
 	Environment *string `pulumi:"environment"`
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint *string `pulumi:"msiEndpoint"`
@@ -110,8 +110,8 @@ type ProviderArgs struct {
 	ClientSecret pulumi.StringPtrInput
 	// Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
 	DisableTerraformPartnerId pulumi.BoolPtrInput
-	// The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-	// `germany`, and `china`. Defaults to `global`
+	// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+	// `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
 	Environment pulumi.StringPtrInput
 	// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 	MsiEndpoint pulumi.StringPtrInput

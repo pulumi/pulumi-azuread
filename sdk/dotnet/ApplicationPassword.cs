@@ -42,16 +42,16 @@ namespace Pulumi.AzureAD
         public Output<string?> EndDateRelative { get; private set; } = null!;
 
         /// <summary>
-        /// Arbitrary map of values that, when changed, will trigger rotation of the password
-        /// </summary>
-        [Output("keepers")]
-        public Output<ImmutableDictionary<string, string>?> Keepers { get; private set; } = null!;
-
-        /// <summary>
         /// A UUID used to uniquely identify this password credential.
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("rotateWhenChanged")]
+        public Output<ImmutableDictionary<string, string>?> RotateWhenChanged { get; private set; } = null!;
 
         /// <summary>
         /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
@@ -135,16 +135,16 @@ namespace Pulumi.AzureAD
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
-        [Input("keepers")]
-        private InputMap<string>? _keepers;
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
 
         /// <summary>
-        /// Arbitrary map of values that, when changed, will trigger rotation of the password
+        /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         /// </summary>
-        public InputMap<string> Keepers
+        public InputMap<string> RotateWhenChanged
         {
-            get => _keepers ?? (_keepers = new InputMap<string>());
-            set => _keepers = value;
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
         }
 
         /// <summary>
@@ -184,23 +184,23 @@ namespace Pulumi.AzureAD
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
-        [Input("keepers")]
-        private InputMap<string>? _keepers;
-
-        /// <summary>
-        /// Arbitrary map of values that, when changed, will trigger rotation of the password
-        /// </summary>
-        public InputMap<string> Keepers
-        {
-            get => _keepers ?? (_keepers = new InputMap<string>());
-            set => _keepers = value;
-        }
-
         /// <summary>
         /// A UUID used to uniquely identify this password credential.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
+
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
+        }
 
         /// <summary>
         /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.

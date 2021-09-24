@@ -17,8 +17,8 @@ class DirectoryRoleMemberArgs:
                  role_object_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DirectoryRoleMember resource.
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         if member_object_id is not None:
             pulumi.set(__self__, "member_object_id", member_object_id)
@@ -29,7 +29,7 @@ class DirectoryRoleMemberArgs:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+        The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -41,7 +41,7 @@ class DirectoryRoleMemberArgs:
     @pulumi.getter(name="roleObjectId")
     def role_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the directory role
+        The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_object_id")
 
@@ -57,8 +57,8 @@ class _DirectoryRoleMemberState:
                  role_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRoleMember resources.
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         if member_object_id is not None:
             pulumi.set(__self__, "member_object_id", member_object_id)
@@ -69,7 +69,7 @@ class _DirectoryRoleMemberState:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+        The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -81,7 +81,7 @@ class _DirectoryRoleMemberState:
     @pulumi.getter(name="roleObjectId")
     def role_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the directory role
+        The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_object_id")
 
@@ -109,6 +109,19 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
+        example_directory_role_member = azuread.DirectoryRoleMember("exampleDirectoryRoleMember",
+            role_object_id=example_directory_role.object_id,
+            member_object_id=example_user.object_id)
+        ```
+
         ## Import
 
         Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
@@ -117,12 +130,12 @@ class DirectoryRoleMember(pulumi.CustomResource):
          $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+         -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -141,6 +154,19 @@ class DirectoryRoleMember(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
+        example_directory_role_member = azuread.DirectoryRoleMember("exampleDirectoryRoleMember",
+            role_object_id=example_directory_role.object_id,
+            member_object_id=example_user.object_id)
+        ```
+
         ## Import
 
         Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
@@ -149,7 +175,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
          $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
         ```
 
-         -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+         -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 
         :param str resource_name: The name of the resource.
         :param DirectoryRoleMemberArgs args: The arguments to use to populate this resource's properties.
@@ -201,8 +227,8 @@ class DirectoryRoleMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -216,7 +242,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The object ID of the principal you want to add as a member to the directory role. Supported object types are Users or Service Principals. Changing this forces a new resource to be created.
+        The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -224,7 +250,7 @@ class DirectoryRoleMember(pulumi.CustomResource):
     @pulumi.getter(name="roleObjectId")
     def role_object_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The object ID of the directory role
+        The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "role_object_id")
 

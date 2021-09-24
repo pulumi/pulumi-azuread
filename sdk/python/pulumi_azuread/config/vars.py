@@ -61,8 +61,8 @@ class _ExportableConfig(types.ModuleType):
     @property
     def environment(self) -> str:
         """
-        The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-        `germany`, and `china`. Defaults to `global`
+        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+        `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         """
         return __config__.get('environment') or (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
 

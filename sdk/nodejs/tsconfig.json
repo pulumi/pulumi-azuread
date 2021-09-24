@@ -13,6 +13,7 @@
         "strict": true
     },
     "files": [
+        "appRoleAssignment.ts",
         "application.ts",
         "applicationCertificate.ts",
         "applicationPassword.ts",
