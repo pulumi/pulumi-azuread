@@ -51,11 +51,46 @@ namespace Pulumi.AzureAD
     ///             {
     ///                 current.Apply(current =&gt; current.ObjectId),
     ///             },
-    ///             Tags = 
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// *Create a service principal for an enterprise application*
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
+    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
+    ///         {
+    ///             DisplayName = "example",
+    ///             Owners = 
     ///             {
-    ///                 "example",
-    ///                 "tags",
-    ///                 "here",
+    ///                 current.Apply(current =&gt; current.ObjectId),
+    ///             },
+    ///         });
+    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
+    ///         {
+    ///             ApplicationId = exampleApplication.ApplicationId,
+    ///             AppRoleAssignmentRequired = false,
+    ///             Owners = 
+    ///             {
+    ///                 current.Apply(current =&gt; current.ObjectId),
+    ///             },
+    ///             Features = 
+    ///             {
+    ///                 new AzureAD.Inputs.ServicePrincipalFeatureArgs
+    ///                 {
+    ///                     EnterpriseApplication = true,
+    ///                     GalleryApplication = true,
+    ///                 },
     ///             },
     ///         });
     ///     }
@@ -179,6 +214,12 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// A `features` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        [Output("features")]
+        public Output<ImmutableArray<Outputs.ServicePrincipalFeature>> Features { get; private set; } = null!;
+
+        /// <summary>
         /// Home page or landing page of the associated application.
         /// </summary>
         [Output("homepageUrl")]
@@ -269,7 +310,7 @@ namespace Pulumi.AzureAD
         public Output<string> SignInAudience { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the service principal.
+        /// A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -368,6 +409,18 @@ namespace Pulumi.AzureAD
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("features")]
+        private InputList<Inputs.ServicePrincipalFeatureArgs>? _features;
+
+        /// <summary>
+        /// A `features` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        public InputList<Inputs.ServicePrincipalFeatureArgs> Features
+        {
+            get => _features ?? (_features = new InputList<Inputs.ServicePrincipalFeatureArgs>());
+            set => _features = value;
+        }
+
         /// <summary>
         /// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
         /// </summary>
@@ -420,7 +473,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal.
+        /// A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         /// </summary>
         public InputList<string> Tags
         {
@@ -512,6 +565,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        [Input("features")]
+        private InputList<Inputs.ServicePrincipalFeatureGetArgs>? _features;
+
+        /// <summary>
+        /// A `features` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        public InputList<Inputs.ServicePrincipalFeatureGetArgs> Features
+        {
+            get => _features ?? (_features = new InputList<Inputs.ServicePrincipalFeatureGetArgs>());
+            set => _features = value;
+        }
 
         /// <summary>
         /// Home page or landing page of the associated application.
@@ -643,7 +708,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal.
+        /// A set of tags to apply to the service principal. Cannot be used together with the `features` block.
         /// </summary>
         public InputList<string> Tags
         {

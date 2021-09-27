@@ -17,7 +17,7 @@ class ApplicationPasswordArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
-                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  start_date: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationPassword resource.
@@ -25,7 +25,7 @@ class ApplicationPasswordArgs:
         :param pulumi.Input[str] display_name: A display name for the password.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger rotation of the password
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         """
         pulumi.set(__self__, "application_object_id", application_object_id)
@@ -35,8 +35,8 @@ class ApplicationPasswordArgs:
             pulumi.set(__self__, "end_date", end_date)
         if end_date_relative is not None:
             pulumi.set(__self__, "end_date_relative", end_date_relative)
-        if keepers is not None:
-            pulumi.set(__self__, "keepers", keepers)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if start_date is not None:
             pulumi.set(__self__, "start_date", start_date)
 
@@ -89,16 +89,16 @@ class ApplicationPasswordArgs:
         pulumi.set(self, "end_date_relative", value)
 
     @property
-    @pulumi.getter
-    def keepers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Arbitrary map of values that, when changed, will trigger rotation of the password
+        A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
-        return pulumi.get(self, "keepers")
+        return pulumi.get(self, "rotate_when_changed")
 
-    @keepers.setter
-    def keepers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "keepers", value)
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
 
     @property
     @pulumi.getter(name="startDate")
@@ -120,8 +120,8 @@ class _ApplicationPasswordState:
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
-                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  key_id: Optional[pulumi.Input[str]] = None,
+                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  start_date: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
@@ -130,8 +130,8 @@ class _ApplicationPasswordState:
         :param pulumi.Input[str] display_name: A display name for the password.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger rotation of the password
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this password credential.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The password for this application, which is generated by Azure Active Directory.
         """
@@ -143,10 +143,10 @@ class _ApplicationPasswordState:
             pulumi.set(__self__, "end_date", end_date)
         if end_date_relative is not None:
             pulumi.set(__self__, "end_date_relative", end_date_relative)
-        if keepers is not None:
-            pulumi.set(__self__, "keepers", keepers)
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if start_date is not None:
             pulumi.set(__self__, "start_date", start_date)
         if value is not None:
@@ -201,18 +201,6 @@ class _ApplicationPasswordState:
         pulumi.set(self, "end_date_relative", value)
 
     @property
-    @pulumi.getter
-    def keepers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Arbitrary map of values that, when changed, will trigger rotation of the password
-        """
-        return pulumi.get(self, "keepers")
-
-    @keepers.setter
-    def keepers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "keepers", value)
-
-    @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -223,6 +211,18 @@ class _ApplicationPasswordState:
     @key_id.setter
     def key_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "key_id", value)
+
+    @property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
 
     @property
     @pulumi.getter(name="startDate")
@@ -258,7 +258,7 @@ class ApplicationPassword(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
-                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  start_date: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -272,7 +272,7 @@ class ApplicationPassword(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A display name for the password.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger rotation of the password
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         """
         ...
@@ -305,7 +305,7 @@ class ApplicationPassword(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  end_date: Optional[pulumi.Input[str]] = None,
                  end_date_relative: Optional[pulumi.Input[str]] = None,
-                 keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  start_date: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -325,7 +325,7 @@ class ApplicationPassword(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["end_date"] = end_date
             __props__.__dict__["end_date_relative"] = end_date_relative
-            __props__.__dict__["keepers"] = keepers
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             __props__.__dict__["start_date"] = start_date
             __props__.__dict__["key_id"] = None
             __props__.__dict__["value"] = None
@@ -343,8 +343,8 @@ class ApplicationPassword(pulumi.CustomResource):
             display_name: Optional[pulumi.Input[str]] = None,
             end_date: Optional[pulumi.Input[str]] = None,
             end_date_relative: Optional[pulumi.Input[str]] = None,
-            keepers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             key_id: Optional[pulumi.Input[str]] = None,
+            rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             start_date: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'ApplicationPassword':
         """
@@ -358,8 +358,8 @@ class ApplicationPassword(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A display name for the password.
         :param pulumi.Input[str] end_date: The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         :param pulumi.Input[str] end_date_relative: A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] keepers: Arbitrary map of values that, when changed, will trigger rotation of the password
         :param pulumi.Input[str] key_id: A UUID used to uniquely identify this password credential.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[str] start_date: The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         :param pulumi.Input[str] value: The password for this application, which is generated by Azure Active Directory.
         """
@@ -371,8 +371,8 @@ class ApplicationPassword(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["end_date"] = end_date
         __props__.__dict__["end_date_relative"] = end_date_relative
-        __props__.__dict__["keepers"] = keepers
         __props__.__dict__["key_id"] = key_id
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["start_date"] = start_date
         __props__.__dict__["value"] = value
         return ApplicationPassword(resource_name, opts=opts, __props__=__props__)
@@ -410,20 +410,20 @@ class ApplicationPassword(pulumi.CustomResource):
         return pulumi.get(self, "end_date_relative")
 
     @property
-    @pulumi.getter
-    def keepers(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
-        """
-        Arbitrary map of values that, when changed, will trigger rotation of the password
-        """
-        return pulumi.get(self, "keepers")
-
-    @property
     @pulumi.getter(name="keyId")
     def key_id(self) -> pulumi.Output[str]:
         """
         A UUID used to uniquely identify this password credential.
         """
         return pulumi.get(self, "key_id")
+
+    @property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @property
     @pulumi.getter(name="startDate")

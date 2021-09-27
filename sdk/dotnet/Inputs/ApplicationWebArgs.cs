@@ -34,7 +34,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _redirectUris;
 
         /// <summary>
-        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
         /// </summary>
         public InputList<string> RedirectUris
         {

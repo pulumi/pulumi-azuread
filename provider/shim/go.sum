@@ -355,6 +355,10 @@ github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210902175314-1589287d
 github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210902175314-1589287d1d51/go.mod h1:vJZLw+HxYJtZ5KV7rKVtrjlLEB8TMGCoW4VEhOgZxuM=
 github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210910002716-dab434f9d844 h1:0iYET/PyGFImk2O0yKQ4geludtjis/5TGCSuuzAXEuU=
 github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210910002716-dab434f9d844/go.mod h1:g7u3v3/afIfEcjY55xkVmJs4KLFwTaLXNVm9omNY3Co=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210916233227-a693d2758b9b h1:4cCaVMDjZAR2jA2GxteMC3nXlWQiPHOYOzQ7uTFtcdE=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210916233227-a693d2758b9b/go.mod h1:X8MEfR4VdkMH0oad4ShQEt6w2Ool0033blLv5Q2qiS0=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210923093115-21384dc55b26 h1:vO8G6xx9ggHZQ6/WvMa8PYTQQp5sViKBpPwmJr0daxE=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210923093115-21384dc55b26/go.mod h1:obHUA4y+ckvj+fpcMOaOZBjp4CEwMmIH80mWKHnDyQ8=
 github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
 github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d h1:kJCB4vdITiW1eC1vq2e6IsrXKrZit1bv/TDYFGMp4BQ=
 github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
@@ -410,6 +414,10 @@ github.com/manicminer/hamilton v0.27.0 h1:IRyrikO0lh9IAzI3XD2FjnoR7l24GGdhHt+2MX
 github.com/manicminer/hamilton v0.27.0/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
 github.com/manicminer/hamilton v0.28.1 h1:i+ZDEZOqa17DFhFji9vCA44Lk3FkOFV/jcfNvO1vx34=
 github.com/manicminer/hamilton v0.28.1/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
+github.com/manicminer/hamilton v0.29.0 h1:SmKNUMbuk7Crp9mJUWJTNRKnsFzdIxyIhlvvJ0HjCGk=
+github.com/manicminer/hamilton v0.29.0/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
+github.com/manicminer/hamilton v0.30.0 h1:n7og9/Xh4d/JX0XG0uG1rv2vlkIkz8jwynCWoQszZvA=
+github.com/manicminer/hamilton v0.30.0/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
 github.com/mattn/go-colorable v0.1.4 h1:snbPLB8fVfU9iwbbo30TPtbLRzwWu6aJS6Xh4eaaviA=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=

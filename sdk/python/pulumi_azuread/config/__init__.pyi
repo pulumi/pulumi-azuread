@@ -42,8 +42,8 @@ Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't s
 
 environment: str
 """
-The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-`germany`, and `china`. Defaults to `global`
+The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+`usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
 """
 
 msiEndpoint: Optional[str]

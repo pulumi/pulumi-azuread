@@ -54,13 +54,13 @@ export class ApplicationPassword extends pulumi.CustomResource {
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
-     * Arbitrary map of values that, when changed, will trigger rotation of the password
-     */
-    public readonly keepers!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
      * A UUID used to uniquely identify this password credential.
      */
     public /*out*/ readonly keyId!: pulumi.Output<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    public readonly rotateWhenChanged!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
      */
@@ -87,8 +87,8 @@ export class ApplicationPassword extends pulumi.CustomResource {
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
             inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
-            inputs["keepers"] = state ? state.keepers : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
+            inputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
             inputs["startDate"] = state ? state.startDate : undefined;
             inputs["value"] = state ? state.value : undefined;
         } else {
@@ -100,7 +100,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["endDate"] = args ? args.endDate : undefined;
             inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
-            inputs["keepers"] = args ? args.keepers : undefined;
+            inputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
             inputs["startDate"] = args ? args.startDate : undefined;
             inputs["keyId"] = undefined /*out*/;
             inputs["value"] = undefined /*out*/;
@@ -133,13 +133,13 @@ export interface ApplicationPasswordState {
      */
     endDateRelative?: pulumi.Input<string>;
     /**
-     * Arbitrary map of values that, when changed, will trigger rotation of the password
-     */
-    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * A UUID used to uniquely identify this password credential.
      */
     keyId?: pulumi.Input<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
      */
@@ -171,9 +171,9 @@ export interface ApplicationPasswordArgs {
      */
     endDateRelative?: pulumi.Input<string>;
     /**
-     * Arbitrary map of values that, when changed, will trigger rotation of the password
+     * A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
-    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
      */

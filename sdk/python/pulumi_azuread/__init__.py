@@ -5,11 +5,14 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .app_role_assignment import *
 from .application import *
 from .application_certificate import *
 from .application_password import *
 from .application_pre_authorized import *
 from .conditional_access_policy import *
+from .directory_role import *
+from .directory_role_member import *
 from .get_application import *
 from .get_application_published_app_ids import *
 from .get_application_template import *
@@ -43,6 +46,14 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "azuread",
+  "mod": "index/appRoleAssignment",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/appRoleAssignment:AppRoleAssignment": "AppRoleAssignment"
+  }
+ },
  {
   "pkg": "azuread",
   "mod": "index/application",
@@ -81,6 +92,22 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy": "ConditionalAccessPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/directoryRole",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/directoryRole:DirectoryRole": "DirectoryRole"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/directoryRoleMember",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/directoryRoleMember:DirectoryRoleMember": "DirectoryRoleMember"
   }
  },
  {

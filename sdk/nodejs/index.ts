@@ -5,11 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./appRoleAssignment";
 export * from "./application";
 export * from "./applicationCertificate";
 export * from "./applicationPassword";
 export * from "./applicationPreAuthorized";
 export * from "./conditionalAccessPolicy";
+export * from "./directoryRole";
+export * from "./directoryRoleMember";
 export * from "./getApplication";
 export * from "./getApplicationPublishedAppIds";
 export * from "./getApplicationTemplate";
@@ -41,11 +44,14 @@ export {
 };
 
 // Import resources to register:
+import { AppRoleAssignment } from "./appRoleAssignment";
 import { Application } from "./application";
 import { ApplicationCertificate } from "./applicationCertificate";
 import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
 import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
+import { DirectoryRole } from "./directoryRole";
+import { DirectoryRoleMember } from "./directoryRoleMember";
 import { Group } from "./group";
 import { GroupMember } from "./groupMember";
 import { Invitation } from "./invitation";
@@ -59,6 +65,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "azuread:index/appRoleAssignment:AppRoleAssignment":
+                return new AppRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/application:Application":
                 return new Application(name, <any>undefined, { urn })
             case "azuread:index/applicationCertificate:ApplicationCertificate":
@@ -69,6 +77,10 @@ const _module = {
                 return new ApplicationPreAuthorized(name, <any>undefined, { urn })
             case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
                 return new ConditionalAccessPolicy(name, <any>undefined, { urn })
+            case "azuread:index/directoryRole:DirectoryRole":
+                return new DirectoryRole(name, <any>undefined, { urn })
+            case "azuread:index/directoryRoleMember:DirectoryRoleMember":
+                return new DirectoryRoleMember(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
                 return new Group(name, <any>undefined, { urn })
             case "azuread:index/groupMember:GroupMember":
@@ -90,11 +102,14 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("azuread", "index/appRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/directoryRole", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)

@@ -56,13 +56,13 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
      */
     public /*out*/ readonly endDate!: pulumi.Output<string>;
     /**
-     * Arbitrary map of values that, when changed, will trigger rotation of the password
-     */
-    public readonly keepers!: pulumi.Output<{[key: string]: string} | undefined>;
-    /**
      * A UUID used to uniquely identify this password credential.
      */
     public /*out*/ readonly keyId!: pulumi.Output<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    public readonly rotateWhenChanged!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      */
@@ -91,8 +91,8 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
             const state = argsOrState as ServicePrincipalPasswordState | undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["endDate"] = state ? state.endDate : undefined;
-            inputs["keepers"] = state ? state.keepers : undefined;
             inputs["keyId"] = state ? state.keyId : undefined;
+            inputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
             inputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
             inputs["startDate"] = state ? state.startDate : undefined;
             inputs["value"] = state ? state.value : undefined;
@@ -101,7 +101,7 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
             if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            inputs["keepers"] = args ? args.keepers : undefined;
+            inputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
             inputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
             inputs["displayName"] = undefined /*out*/;
             inputs["endDate"] = undefined /*out*/;
@@ -129,13 +129,13 @@ export interface ServicePrincipalPasswordState {
      */
     endDate?: pulumi.Input<string>;
     /**
-     * Arbitrary map of values that, when changed, will trigger rotation of the password
-     */
-    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
-    /**
      * A UUID used to uniquely identify this password credential.
      */
     keyId?: pulumi.Input<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      */
@@ -155,9 +155,9 @@ export interface ServicePrincipalPasswordState {
  */
 export interface ServicePrincipalPasswordArgs {
     /**
-     * Arbitrary map of values that, when changed, will trigger rotation of the password
+     * A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
-    keepers?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
      */

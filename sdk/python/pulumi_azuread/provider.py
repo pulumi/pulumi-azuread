@@ -35,8 +35,8 @@ class ProviderArgs:
         :param pulumi.Input[str] client_id: The Client ID which should be used for service principal authentication
         :param pulumi.Input[str] client_secret: The application password to use when authenticating as a Service Principal using a Client Secret
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
-        :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-               `germany`, and `china`. Defaults to `global`
+        :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+               `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity
@@ -152,8 +152,8 @@ class ProviderArgs:
     @pulumi.getter
     def environment(self) -> Optional[pulumi.Input[str]]:
         """
-        The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-        `germany`, and `china`. Defaults to `global`
+        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+        `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         """
         return pulumi.get(self, "environment")
 
@@ -256,8 +256,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[str] client_id: The Client ID which should be used for service principal authentication
         :param pulumi.Input[str] client_secret: The application password to use when authenticating as a Service Principal using a Client Secret
         :param pulumi.Input[bool] disable_terraform_partner_id: Disable the Terraform Partner ID, which is used if a custom `partner_id` isn't specified
-        :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-               `germany`, and `china`. Defaults to `global`
+        :param pulumi.Input[str] environment: The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+               `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         :param pulumi.Input[str] msi_endpoint: The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity
@@ -385,8 +385,8 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter
     def environment(self) -> pulumi.Output[Optional[str]]:
         """
-        The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-        `germany`, and `china`. Defaults to `global`
+        The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+        `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
         """
         return pulumi.get(self, "environment")
 

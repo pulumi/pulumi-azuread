@@ -41,7 +41,9 @@ type Application struct {
 	GroupMembershipClaims pulumi.StringArrayOutput `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayOutput `pulumi:"identifierUris"`
-	// CDN URL to the application's logo.
+	// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+	LogoImage pulumi.StringPtrOutput `pulumi:"logoImage"`
+	// CDN URL to the application's logo, as uploaded with the `logoImage` property.
 	LogoUrl pulumi.StringOutput `pulumi:"logoUrl"`
 	// URL of the application's marketing page.
 	MarketingUrl pulumi.StringPtrOutput `pulumi:"marketingUrl"`
@@ -131,7 +133,9 @@ type applicationState struct {
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
-	// CDN URL to the application's logo.
+	// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+	LogoImage *string `pulumi:"logoImage"`
+	// CDN URL to the application's logo, as uploaded with the `logoImage` property.
 	LogoUrl *string `pulumi:"logoUrl"`
 	// URL of the application's marketing page.
 	MarketingUrl *string `pulumi:"marketingUrl"`
@@ -190,7 +194,9 @@ type ApplicationState struct {
 	GroupMembershipClaims pulumi.StringArrayInput
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
-	// CDN URL to the application's logo.
+	// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+	LogoImage pulumi.StringPtrInput
+	// CDN URL to the application's logo, as uploaded with the `logoImage` property.
 	LogoUrl pulumi.StringPtrInput
 	// URL of the application's marketing page.
 	MarketingUrl pulumi.StringPtrInput
@@ -247,6 +253,8 @@ type applicationArgs struct {
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris []string `pulumi:"identifierUris"`
+	// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+	LogoImage *string `pulumi:"logoImage"`
 	// URL of the application's marketing page.
 	MarketingUrl *string `pulumi:"marketingUrl"`
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -293,6 +301,8 @@ type ApplicationArgs struct {
 	GroupMembershipClaims pulumi.StringArrayInput
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 	IdentifierUris pulumi.StringArrayInput
+	// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+	LogoImage pulumi.StringPtrInput
 	// URL of the application's marketing page.
 	MarketingUrl pulumi.StringPtrInput
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.

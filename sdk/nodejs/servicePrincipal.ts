@@ -35,11 +35,28 @@ import * as utilities from "./utilities";
  *     applicationId: exampleApplication.applicationId,
  *     appRoleAssignmentRequired: false,
  *     owners: [current.then(current => current.objectId)],
- *     tags: [
- *         "example",
- *         "tags",
- *         "here",
- *     ],
+ * });
+ * ```
+ *
+ * *Create a service principal for an enterprise application*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const exampleApplication = new azuread.Application("exampleApplication", {
+ *     displayName: "example",
+ *     owners: [current.then(current => current.objectId)],
+ * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
+ *     applicationId: exampleApplication.applicationId,
+ *     appRoleAssignmentRequired: false,
+ *     owners: [current.then(current => current.objectId)],
+ *     features: [{
+ *         enterpriseApplication: true,
+ *         galleryApplication: true,
+ *     }],
  * });
  * ```
  *
@@ -148,6 +165,10 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
+     * A `features` block as described below. Cannot be used together with the `tags` property.
+     */
+    public readonly features!: pulumi.Output<outputs.ServicePrincipalFeature[]>;
+    /**
      * Home page or landing page of the associated application.
      */
     public /*out*/ readonly homepageUrl!: pulumi.Output<string>;
@@ -208,9 +229,9 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly signInAudience!: pulumi.Output<string>;
     /**
-     * A set of tags to apply to the service principal.
+     * A set of tags to apply to the service principal. Cannot be used together with the `features` block.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    public readonly tags!: pulumi.Output<string[]>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      */
@@ -242,6 +263,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["features"] = state ? state.features : undefined;
             inputs["homepageUrl"] = state ? state.homepageUrl : undefined;
             inputs["loginUrl"] = state ? state.loginUrl : undefined;
             inputs["logoutUrl"] = state ? state.logoutUrl : undefined;
@@ -270,6 +292,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["features"] = args ? args.features : undefined;
             inputs["loginUrl"] = args ? args.loginUrl : undefined;
             inputs["notes"] = args ? args.notes : undefined;
             inputs["notificationEmailAddresses"] = args ? args.notificationEmailAddresses : undefined;
@@ -341,6 +364,10 @@ export interface ServicePrincipalState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * A `features` block as described below. Cannot be used together with the `tags` property.
+     */
+    features?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeature>[]>;
+    /**
      * Home page or landing page of the associated application.
      */
     homepageUrl?: pulumi.Input<string>;
@@ -401,7 +428,7 @@ export interface ServicePrincipalState {
      */
     signInAudience?: pulumi.Input<string>;
     /**
-     * A set of tags to apply to the service principal.
+     * A set of tags to apply to the service principal. Cannot be used together with the `features` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -439,6 +466,10 @@ export interface ServicePrincipalArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * A `features` block as described below. Cannot be used together with the `tags` property.
+     */
+    features?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeature>[]>;
+    /**
      * The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
      */
     loginUrl?: pulumi.Input<string>;
@@ -463,7 +494,7 @@ export interface ServicePrincipalArgs {
      */
     samlSingleSignOn?: pulumi.Input<inputs.ServicePrincipalSamlSingleSignOn>;
     /**
-     * A set of tags to apply to the service principal.
+     * A set of tags to apply to the service principal. Cannot be used together with the `features` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -31,10 +31,10 @@ type ServicePrincipalPassword struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
-	// Arbitrary map of values that, when changed, will trigger rotation of the password
-	Keepers pulumi.StringMapOutput `pulumi:"keepers"`
 	// A UUID used to uniquely identify this password credential.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
+	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
@@ -79,10 +79,10 @@ type servicePrincipalPasswordState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	EndDate *string `pulumi:"endDate"`
-	// Arbitrary map of values that, when changed, will trigger rotation of the password
-	Keepers map[string]string `pulumi:"keepers"`
 	// A UUID used to uniquely identify this password credential.
 	KeyId *string `pulumi:"keyId"`
+	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
@@ -96,10 +96,10 @@ type ServicePrincipalPasswordState struct {
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	EndDate pulumi.StringPtrInput
-	// Arbitrary map of values that, when changed, will trigger rotation of the password
-	Keepers pulumi.StringMapInput
 	// A UUID used to uniquely identify this password credential.
 	KeyId pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
 	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
@@ -113,16 +113,16 @@ func (ServicePrincipalPasswordState) ElementType() reflect.Type {
 }
 
 type servicePrincipalPasswordArgs struct {
-	// Arbitrary map of values that, when changed, will trigger rotation of the password
-	Keepers map[string]string `pulumi:"keepers"`
+	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
 // The set of arguments for constructing a ServicePrincipalPassword resource.
 type ServicePrincipalPasswordArgs struct {
-	// Arbitrary map of values that, when changed, will trigger rotation of the password
-	Keepers pulumi.StringMapInput
+	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
 }

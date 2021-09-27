@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         /// </summary>
-        public readonly Outputs.ConditionalAccessPolicyConditionsApplications? Applications;
+        public readonly Outputs.ConditionalAccessPolicyConditionsApplications Applications;
         /// <summary>
         /// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
         /// </summary>
@@ -24,11 +24,11 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
-        public readonly Outputs.ConditionalAccessPolicyConditionsLocations? Locations;
+        public readonly Outputs.ConditionalAccessPolicyConditionsLocations Locations;
         /// <summary>
         /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         /// </summary>
-        public readonly Outputs.ConditionalAccessPolicyConditionsPlatforms? Platforms;
+        public readonly Outputs.ConditionalAccessPolicyConditionsPlatforms Platforms;
         /// <summary>
         /// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         /// </summary>
@@ -40,23 +40,23 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         /// </summary>
-        public readonly Outputs.ConditionalAccessPolicyConditionsUsers? Users;
+        public readonly Outputs.ConditionalAccessPolicyConditionsUsers Users;
 
         [OutputConstructor]
         private ConditionalAccessPolicyConditions(
-            Outputs.ConditionalAccessPolicyConditionsApplications? applications,
+            Outputs.ConditionalAccessPolicyConditionsApplications applications,
 
             ImmutableArray<string> clientAppTypes,
 
-            Outputs.ConditionalAccessPolicyConditionsLocations? locations,
+            Outputs.ConditionalAccessPolicyConditionsLocations locations,
 
-            Outputs.ConditionalAccessPolicyConditionsPlatforms? platforms,
+            Outputs.ConditionalAccessPolicyConditionsPlatforms platforms,
 
             ImmutableArray<string> signInRiskLevels,
 
             ImmutableArray<string> userRiskLevels,
 
-            Outputs.ConditionalAccessPolicyConditionsUsers? users)
+            Outputs.ConditionalAccessPolicyConditionsUsers users)
         {
             Applications = applications;
             ClientAppTypes = clientAppTypes;

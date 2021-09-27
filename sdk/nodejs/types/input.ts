@@ -159,7 +159,7 @@ export interface ApplicationOptionalClaimsSaml2Token {
 
 export interface ApplicationPublicClient {
     /**
-     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
      */
     redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -188,7 +188,7 @@ export interface ApplicationRequiredResourceAccessResourceAccess {
 
 export interface ApplicationSinglePageApplication {
     /**
-     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
      */
     redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -207,7 +207,7 @@ export interface ApplicationWeb {
      */
     logoutUrl?: pulumi.Input<string>;
     /**
-     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+     * A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
      */
     redirectUris?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -227,19 +227,19 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
      */
-    applications?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsApplications>;
+    applications: pulumi.Input<inputs.ConditionalAccessPolicyConditionsApplications>;
     /**
      * A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      */
-    clientAppTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    clientAppTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      */
-    locations?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsLocations>;
+    locations: pulumi.Input<inputs.ConditionalAccessPolicyConditionsLocations>;
     /**
      * A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
      */
-    platforms?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsPlatforms>;
+    platforms: pulumi.Input<inputs.ConditionalAccessPolicyConditionsPlatforms>;
     /**
      * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
@@ -251,7 +251,7 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
      */
-    users?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsers>;
+    users: pulumi.Input<inputs.ConditionalAccessPolicyConditionsUsers>;
 }
 
 export interface ConditionalAccessPolicyConditionsApplications {
@@ -282,11 +282,11 @@ export interface ConditionalAccessPolicyConditionsLocations {
 
 export interface ConditionalAccessPolicyConditionsPlatforms {
     /**
-     * A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+     * A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
     excludedPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
     includedPlatforms: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -320,7 +320,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
 
 export interface ConditionalAccessPolicyGrantControls {
     /**
-     * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+     * List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      */
     builtInControls: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -343,16 +343,15 @@ export interface ConditionalAccessPolicySessionControls {
      */
     applicationEnforcedRestrictionsEnabled?: pulumi.Input<boolean>;
     /**
-     * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+     * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
      */
     cloudAppSecurityPolicy?: pulumi.Input<string>;
     /**
-     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+     * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
      */
     signInFrequency?: pulumi.Input<number>;
     /**
-     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
-     * ---
+     * The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
      */
     signInFrequencyPeriod?: pulumi.Input<string>;
 }
@@ -421,6 +420,25 @@ export interface ServicePrincipalAppRole {
     value?: pulumi.Input<string>;
 }
 
+export interface ServicePrincipalFeature {
+    /**
+     * Whether this service principal represents a custom SAML application. Defaults to `false`.
+     */
+    customSingleSignOnApp?: pulumi.Input<boolean>;
+    /**
+     * Whether this service principal represents an Enterprise Application. Defaults to `false`.
+     */
+    enterpriseApplication?: pulumi.Input<boolean>;
+    /**
+     * Whether this service principal represents a gallery application. Defaults to `false`.
+     */
+    galleryApplication?: pulumi.Input<boolean>;
+    /**
+     * Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+     */
+    visibleToUsers?: pulumi.Input<boolean>;
+}
+
 export interface ServicePrincipalOauth2PermissionScope {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -462,3 +480,4 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: pulumi.Input<string>;
 }
+

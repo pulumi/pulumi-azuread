@@ -82,7 +82,13 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> IdentifierUris { get; private set; } = null!;
 
         /// <summary>
-        /// CDN URL to the application's logo.
+        /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        /// </summary>
+        [Output("logoImage")]
+        public Output<string?> LogoImage { get; private set; } = null!;
+
+        /// <summary>
+        /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
         /// </summary>
         [Output("logoUrl")]
         public Output<string> LogoUrl { get; private set; } = null!;
@@ -296,6 +302,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        /// </summary>
+        [Input("logoImage")]
+        public Input<string>? LogoImage { get; set; }
+
+        /// <summary>
         /// URL of the application's marketing page.
         /// </summary>
         [Input("marketingUrl")]
@@ -483,7 +495,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// CDN URL to the application's logo.
+        /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        /// </summary>
+        [Input("logoImage")]
+        public Input<string>? LogoImage { get; set; }
+
+        /// <summary>
+        /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }

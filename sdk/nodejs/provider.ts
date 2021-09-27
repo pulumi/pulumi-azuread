@@ -48,8 +48,8 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly clientSecret!: pulumi.Output<string | undefined>;
     /**
-     * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-     * `germany`, and `china`. Defaults to `global`
+     * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+     * `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
@@ -127,8 +127,8 @@ export interface ProviderArgs {
      */
     disableTerraformPartnerId?: pulumi.Input<boolean>;
     /**
-     * The cloud environment which should be used. Possible values are `global` (formerly `public`), `usgovernment`, `dod`,
-     * `germany`, and `china`. Defaults to `global`
+     * The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+     * `usgovernment`), `usgovernmentl5` (also `dod`), `germany` (also `german`), and `china`. Defaults to `global`
      */
     environment?: pulumi.Input<string>;
     /**

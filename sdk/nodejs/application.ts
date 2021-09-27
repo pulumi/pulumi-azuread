@@ -83,7 +83,11 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly identifierUris!: pulumi.Output<string[] | undefined>;
     /**
-     * CDN URL to the application's logo.
+     * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+     */
+    public readonly logoImage!: pulumi.Output<string | undefined>;
+    /**
+     * CDN URL to the application's logo, as uploaded with the `logoImage` property.
      */
     public /*out*/ readonly logoUrl!: pulumi.Output<string>;
     /**
@@ -178,6 +182,7 @@ export class Application extends pulumi.CustomResource {
             inputs["fallbackPublicClientEnabled"] = state ? state.fallbackPublicClientEnabled : undefined;
             inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
             inputs["identifierUris"] = state ? state.identifierUris : undefined;
+            inputs["logoImage"] = state ? state.logoImage : undefined;
             inputs["logoUrl"] = state ? state.logoUrl : undefined;
             inputs["marketingUrl"] = state ? state.marketingUrl : undefined;
             inputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
@@ -208,6 +213,7 @@ export class Application extends pulumi.CustomResource {
             inputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
             inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
             inputs["identifierUris"] = args ? args.identifierUris : undefined;
+            inputs["logoImage"] = args ? args.logoImage : undefined;
             inputs["marketingUrl"] = args ? args.marketingUrl : undefined;
             inputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
             inputs["optionalClaims"] = args ? args.optionalClaims : undefined;
@@ -282,7 +288,11 @@ export interface ApplicationState {
      */
     identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * CDN URL to the application's logo.
+     * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+     */
+    logoImage?: pulumi.Input<string>;
+    /**
+     * CDN URL to the application's logo, as uploaded with the `logoImage` property.
      */
     logoUrl?: pulumi.Input<string>;
     /**
@@ -387,6 +397,10 @@ export interface ApplicationArgs {
      * A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      */
     identifierUris?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+     */
+    logoImage?: pulumi.Input<string>;
     /**
      * URL of the application's marketing page.
      */

@@ -1054,7 +1054,7 @@ func (o ApplicationOptionalClaimsSaml2TokenArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ApplicationPublicClient struct {
-	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -1070,7 +1070,7 @@ type ApplicationPublicClientInput interface {
 }
 
 type ApplicationPublicClientArgs struct {
-	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -1151,7 +1151,7 @@ func (o ApplicationPublicClientOutput) ToApplicationPublicClientPtrOutputWithCon
 	}).(ApplicationPublicClientPtrOutput)
 }
 
-// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 func (o ApplicationPublicClientOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationPublicClient) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -1180,7 +1180,7 @@ func (o ApplicationPublicClientPtrOutput) Elem() ApplicationPublicClientOutput {
 	}).(ApplicationPublicClientOutput)
 }
 
-// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 func (o ApplicationPublicClientPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationPublicClient) []string {
 		if v == nil {
@@ -1405,7 +1405,7 @@ func (o ApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i pulu
 }
 
 type ApplicationSinglePageApplication struct {
-	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -1421,7 +1421,7 @@ type ApplicationSinglePageApplicationInput interface {
 }
 
 type ApplicationSinglePageApplicationArgs struct {
-	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -1502,7 +1502,7 @@ func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicati
 	}).(ApplicationSinglePageApplicationPtrOutput)
 }
 
-// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 func (o ApplicationSinglePageApplicationOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationSinglePageApplication) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -1531,7 +1531,7 @@ func (o ApplicationSinglePageApplicationPtrOutput) Elem() ApplicationSinglePageA
 	}).(ApplicationSinglePageApplicationOutput)
 }
 
-// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 func (o ApplicationSinglePageApplicationPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSinglePageApplication) []string {
 		if v == nil {
@@ -1548,7 +1548,7 @@ type ApplicationWeb struct {
 	ImplicitGrant *ApplicationWebImplicitGrant `pulumi:"implicitGrant"`
 	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -1570,7 +1570,7 @@ type ApplicationWebArgs struct {
 	ImplicitGrant ApplicationWebImplicitGrantPtrInput `pulumi:"implicitGrant"`
 	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 	LogoutUrl pulumi.StringPtrInput `pulumi:"logoutUrl"`
-	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -1666,7 +1666,7 @@ func (o ApplicationWebOutput) LogoutUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationWeb) *string { return v.LogoutUrl }).(pulumi.StringPtrOutput)
 }
 
-// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
 func (o ApplicationWebOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationWeb) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -1725,7 +1725,7 @@ func (o ApplicationWebPtrOutput) LogoutUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
 func (o ApplicationWebPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationWeb) []string {
 		if v == nil {
@@ -1893,19 +1893,19 @@ func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.Bo
 
 type ConditionalAccessPolicyConditions struct {
 	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
-	Applications *ConditionalAccessPolicyConditionsApplications `pulumi:"applications"`
+	Applications ConditionalAccessPolicyConditionsApplications `pulumi:"applications"`
 	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 	ClientAppTypes []string `pulumi:"clientAppTypes"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
+	Locations ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-	Platforms *ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
+	Platforms ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
 	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	SignInRiskLevels []string `pulumi:"signInRiskLevels"`
 	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	UserRiskLevels []string `pulumi:"userRiskLevels"`
 	// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-	Users *ConditionalAccessPolicyConditionsUsers `pulumi:"users"`
+	Users ConditionalAccessPolicyConditionsUsers `pulumi:"users"`
 }
 
 // ConditionalAccessPolicyConditionsInput is an input type that accepts ConditionalAccessPolicyConditionsArgs and ConditionalAccessPolicyConditionsOutput values.
@@ -1921,19 +1921,19 @@ type ConditionalAccessPolicyConditionsInput interface {
 
 type ConditionalAccessPolicyConditionsArgs struct {
 	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
-	Applications ConditionalAccessPolicyConditionsApplicationsPtrInput `pulumi:"applications"`
+	Applications ConditionalAccessPolicyConditionsApplicationsInput `pulumi:"applications"`
 	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 	ClientAppTypes pulumi.StringArrayInput `pulumi:"clientAppTypes"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
+	Locations ConditionalAccessPolicyConditionsLocationsInput `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-	Platforms ConditionalAccessPolicyConditionsPlatformsPtrInput `pulumi:"platforms"`
+	Platforms ConditionalAccessPolicyConditionsPlatformsInput `pulumi:"platforms"`
 	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	SignInRiskLevels pulumi.StringArrayInput `pulumi:"signInRiskLevels"`
 	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	UserRiskLevels pulumi.StringArrayInput `pulumi:"userRiskLevels"`
 	// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-	Users ConditionalAccessPolicyConditionsUsersPtrInput `pulumi:"users"`
+	Users ConditionalAccessPolicyConditionsUsersInput `pulumi:"users"`
 }
 
 func (ConditionalAccessPolicyConditionsArgs) ElementType() reflect.Type {
@@ -2014,10 +2014,10 @@ func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyCondit
 }
 
 // An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsOutput) Applications() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsApplications {
+func (o ConditionalAccessPolicyConditionsOutput) Applications() ConditionalAccessPolicyConditionsApplicationsOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsApplications {
 		return v.Applications
-	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
+	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
 // A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
@@ -2026,17 +2026,17 @@ func (o ConditionalAccessPolicyConditionsOutput) ClientAppTypes() pulumi.StringA
 }
 
 // A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
+func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsLocations {
 		return v.Locations
-	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
+	}).(ConditionalAccessPolicyConditionsLocationsOutput)
 }
 
 // A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
+func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsPlatforms {
 		return v.Platforms
-	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
+	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
 }
 
 // A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2050,8 +2050,8 @@ func (o ConditionalAccessPolicyConditionsOutput) UserRiskLevels() pulumi.StringA
 }
 
 // A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsOutput) Users() ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsUsers { return v.Users }).(ConditionalAccessPolicyConditionsUsersPtrOutput)
+func (o ConditionalAccessPolicyConditionsOutput) Users() ConditionalAccessPolicyConditionsUsersOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsUsers { return v.Users }).(ConditionalAccessPolicyConditionsUsersOutput)
 }
 
 type ConditionalAccessPolicyConditionsPtrOutput struct{ *pulumi.OutputState }
@@ -2084,7 +2084,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Applications() ConditionalAc
 		if v == nil {
 			return nil
 		}
-		return v.Applications
+		return &v.Applications
 	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
 }
 
@@ -2104,7 +2104,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAcces
 		if v == nil {
 			return nil
 		}
-		return v.Locations
+		return &v.Locations
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
@@ -2114,7 +2114,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAcces
 		if v == nil {
 			return nil
 		}
-		return v.Platforms
+		return &v.Platforms
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
@@ -2144,7 +2144,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPol
 		if v == nil {
 			return nil
 		}
-		return v.Users
+		return &v.Users
 	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
 }
 
@@ -2480,9 +2480,9 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) IncludedLocations()
 }
 
 type ConditionalAccessPolicyConditionsPlatforms struct {
-	// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	ExcludedPlatforms []string `pulumi:"excludedPlatforms"`
-	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	IncludedPlatforms []string `pulumi:"includedPlatforms"`
 }
 
@@ -2498,9 +2498,9 @@ type ConditionalAccessPolicyConditionsPlatformsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsPlatformsArgs struct {
-	// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	ExcludedPlatforms pulumi.StringArrayInput `pulumi:"excludedPlatforms"`
-	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	IncludedPlatforms pulumi.StringArrayInput `pulumi:"includedPlatforms"`
 }
 
@@ -2581,12 +2581,12 @@ func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPol
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
-// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.ExcludedPlatforms }).(pulumi.StringArrayOutput)
 }
 
-// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.IncludedPlatforms }).(pulumi.StringArrayOutput)
 }
@@ -2615,7 +2615,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) Elem() ConditionalA
 	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
 }
 
-// A list of platforms explicitly excluded from the policy. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
 		if v == nil {
@@ -2625,7 +2625,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms()
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `android`, `iOS`, `windows`, `windowsPhone`, `macOS`, `all`, `unknownFutureValue`.
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
 		if v == nil {
@@ -2868,7 +2868,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.
 }
 
 type ConditionalAccessPolicyGrantControls struct {
-	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 	BuiltInControls []string `pulumi:"builtInControls"`
 	// List of custom controls IDs required by the policy.
 	CustomAuthenticationFactors []string `pulumi:"customAuthenticationFactors"`
@@ -2890,7 +2890,7 @@ type ConditionalAccessPolicyGrantControlsInput interface {
 }
 
 type ConditionalAccessPolicyGrantControlsArgs struct {
-	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 	BuiltInControls pulumi.StringArrayInput `pulumi:"builtInControls"`
 	// List of custom controls IDs required by the policy.
 	CustomAuthenticationFactors pulumi.StringArrayInput `pulumi:"customAuthenticationFactors"`
@@ -2977,7 +2977,7 @@ func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGra
 	}).(ConditionalAccessPolicyGrantControlsPtrOutput)
 }
 
-// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyGrantControlsOutput) BuiltInControls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.BuiltInControls }).(pulumi.StringArrayOutput)
 }
@@ -3021,7 +3021,7 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) Elem() ConditionalAccessP
 	}).(ConditionalAccessPolicyGrantControlsOutput)
 }
 
-// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `compliantDevice`, `domainJoinedDevice`, `approvedApplication`, `compliantApplication`, `passwordChange`, `unknownFutureValue`.
+// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) BuiltInControls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
 		if v == nil {
@@ -3064,12 +3064,11 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.Stri
 type ConditionalAccessPolicySessionControls struct {
 	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
 	ApplicationEnforcedRestrictionsEnabled *bool `pulumi:"applicationEnforcedRestrictionsEnabled"`
-	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy *string `pulumi:"cloudAppSecurityPolicy"`
-	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 	SignInFrequency *int `pulumi:"signInFrequency"`
-	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
-	// ---
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 	SignInFrequencyPeriod *string `pulumi:"signInFrequencyPeriod"`
 }
 
@@ -3087,12 +3086,11 @@ type ConditionalAccessPolicySessionControlsInput interface {
 type ConditionalAccessPolicySessionControlsArgs struct {
 	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
 	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput `pulumi:"applicationEnforcedRestrictionsEnabled"`
-	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
-	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 	SignInFrequency pulumi.IntPtrInput `pulumi:"signInFrequency"`
-	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
-	// ---
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 	SignInFrequencyPeriod pulumi.StringPtrInput `pulumi:"signInFrequencyPeriod"`
 }
 
@@ -3178,18 +3176,17 @@ func (o ConditionalAccessPolicySessionControlsOutput) ApplicationEnforcedRestric
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *bool { return v.ApplicationEnforcedRestrictionsEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 func (o ConditionalAccessPolicySessionControlsOutput) CloudAppSecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.CloudAppSecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
-// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *int { return v.SignInFrequency }).(pulumi.IntPtrOutput)
 }
 
-// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
-// ---
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.SignInFrequencyPeriod }).(pulumi.StringPtrOutput)
 }
@@ -3228,7 +3225,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) ApplicationEnforcedRest
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `mcasConfigured`, `monitorOnly`, `blockDownloads` or `unknownFutureValue`.
+// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
 		if v == nil {
@@ -3238,7 +3235,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified.
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *int {
 		if v == nil {
@@ -3248,8 +3245,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
-// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified.
-// ---
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
 		if v == nil {
@@ -3886,6 +3882,130 @@ func (o ServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) ServicePrin
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalAppRole {
 		return vs[0].([]ServicePrincipalAppRole)[vs[1].(int)]
 	}).(ServicePrincipalAppRoleOutput)
+}
+
+type ServicePrincipalFeature struct {
+	// Whether this service principal represents a custom SAML application. Defaults to `false`.
+	CustomSingleSignOnApp *bool `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application. Defaults to `false`.
+	EnterpriseApplication *bool `pulumi:"enterpriseApplication"`
+	// Whether this service principal represents a gallery application. Defaults to `false`.
+	GalleryApplication *bool `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+	VisibleToUsers *bool `pulumi:"visibleToUsers"`
+}
+
+// ServicePrincipalFeatureInput is an input type that accepts ServicePrincipalFeatureArgs and ServicePrincipalFeatureOutput values.
+// You can construct a concrete instance of `ServicePrincipalFeatureInput` via:
+//
+//          ServicePrincipalFeatureArgs{...}
+type ServicePrincipalFeatureInput interface {
+	pulumi.Input
+
+	ToServicePrincipalFeatureOutput() ServicePrincipalFeatureOutput
+	ToServicePrincipalFeatureOutputWithContext(context.Context) ServicePrincipalFeatureOutput
+}
+
+type ServicePrincipalFeatureArgs struct {
+	// Whether this service principal represents a custom SAML application. Defaults to `false`.
+	CustomSingleSignOnApp pulumi.BoolPtrInput `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application. Defaults to `false`.
+	EnterpriseApplication pulumi.BoolPtrInput `pulumi:"enterpriseApplication"`
+	// Whether this service principal represents a gallery application. Defaults to `false`.
+	GalleryApplication pulumi.BoolPtrInput `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+	VisibleToUsers pulumi.BoolPtrInput `pulumi:"visibleToUsers"`
+}
+
+func (ServicePrincipalFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalFeature)(nil)).Elem()
+}
+
+func (i ServicePrincipalFeatureArgs) ToServicePrincipalFeatureOutput() ServicePrincipalFeatureOutput {
+	return i.ToServicePrincipalFeatureOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalFeatureArgs) ToServicePrincipalFeatureOutputWithContext(ctx context.Context) ServicePrincipalFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalFeatureOutput)
+}
+
+// ServicePrincipalFeatureArrayInput is an input type that accepts ServicePrincipalFeatureArray and ServicePrincipalFeatureArrayOutput values.
+// You can construct a concrete instance of `ServicePrincipalFeatureArrayInput` via:
+//
+//          ServicePrincipalFeatureArray{ ServicePrincipalFeatureArgs{...} }
+type ServicePrincipalFeatureArrayInput interface {
+	pulumi.Input
+
+	ToServicePrincipalFeatureArrayOutput() ServicePrincipalFeatureArrayOutput
+	ToServicePrincipalFeatureArrayOutputWithContext(context.Context) ServicePrincipalFeatureArrayOutput
+}
+
+type ServicePrincipalFeatureArray []ServicePrincipalFeatureInput
+
+func (ServicePrincipalFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalFeature)(nil)).Elem()
+}
+
+func (i ServicePrincipalFeatureArray) ToServicePrincipalFeatureArrayOutput() ServicePrincipalFeatureArrayOutput {
+	return i.ToServicePrincipalFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalFeatureArray) ToServicePrincipalFeatureArrayOutputWithContext(ctx context.Context) ServicePrincipalFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalFeatureArrayOutput)
+}
+
+type ServicePrincipalFeatureOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalFeature)(nil)).Elem()
+}
+
+func (o ServicePrincipalFeatureOutput) ToServicePrincipalFeatureOutput() ServicePrincipalFeatureOutput {
+	return o
+}
+
+func (o ServicePrincipalFeatureOutput) ToServicePrincipalFeatureOutputWithContext(ctx context.Context) ServicePrincipalFeatureOutput {
+	return o
+}
+
+// Whether this service principal represents a custom SAML application. Defaults to `false`.
+func (o ServicePrincipalFeatureOutput) CustomSingleSignOnApp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.CustomSingleSignOnApp }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this service principal represents an Enterprise Application. Defaults to `false`.
+func (o ServicePrincipalFeatureOutput) EnterpriseApplication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.EnterpriseApplication }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this service principal represents a gallery application. Defaults to `false`.
+func (o ServicePrincipalFeatureOutput) GalleryApplication() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.GalleryApplication }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
+func (o ServicePrincipalFeatureOutput) VisibleToUsers() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.VisibleToUsers }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePrincipalFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalFeature)(nil)).Elem()
+}
+
+func (o ServicePrincipalFeatureArrayOutput) ToServicePrincipalFeatureArrayOutput() ServicePrincipalFeatureArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalFeatureArrayOutput) ToServicePrincipalFeatureArrayOutputWithContext(ctx context.Context) ServicePrincipalFeatureArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalFeatureArrayOutput) Index(i pulumi.IntInput) ServicePrincipalFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalFeature {
+		return vs[0].([]ServicePrincipalFeature)[vs[1].(int)]
+	}).(ServicePrincipalFeatureOutput)
 }
 
 type ServicePrincipalOauth2PermissionScope struct {
@@ -6035,6 +6155,130 @@ func (o GetServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) GetServi
 	}).(GetServicePrincipalAppRoleOutput)
 }
 
+type GetServicePrincipalFeature struct {
+	// Whether this service principal represents a custom SAML application.
+	CustomSingleSignOnApp bool `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application.
+	EnterpriseApplication bool `pulumi:"enterpriseApplication"`
+	// Whether this service principal represents a gallery application.
+	GalleryApplication bool `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	VisibleToUsers bool `pulumi:"visibleToUsers"`
+}
+
+// GetServicePrincipalFeatureInput is an input type that accepts GetServicePrincipalFeatureArgs and GetServicePrincipalFeatureOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFeatureInput` via:
+//
+//          GetServicePrincipalFeatureArgs{...}
+type GetServicePrincipalFeatureInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFeatureOutput() GetServicePrincipalFeatureOutput
+	ToGetServicePrincipalFeatureOutputWithContext(context.Context) GetServicePrincipalFeatureOutput
+}
+
+type GetServicePrincipalFeatureArgs struct {
+	// Whether this service principal represents a custom SAML application.
+	CustomSingleSignOnApp pulumi.BoolInput `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application.
+	EnterpriseApplication pulumi.BoolInput `pulumi:"enterpriseApplication"`
+	// Whether this service principal represents a gallery application.
+	GalleryApplication pulumi.BoolInput `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	VisibleToUsers pulumi.BoolInput `pulumi:"visibleToUsers"`
+}
+
+func (GetServicePrincipalFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFeature)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFeatureArgs) ToGetServicePrincipalFeatureOutput() GetServicePrincipalFeatureOutput {
+	return i.ToGetServicePrincipalFeatureOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFeatureArgs) ToGetServicePrincipalFeatureOutputWithContext(ctx context.Context) GetServicePrincipalFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFeatureOutput)
+}
+
+// GetServicePrincipalFeatureArrayInput is an input type that accepts GetServicePrincipalFeatureArray and GetServicePrincipalFeatureArrayOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFeatureArrayInput` via:
+//
+//          GetServicePrincipalFeatureArray{ GetServicePrincipalFeatureArgs{...} }
+type GetServicePrincipalFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFeatureArrayOutput() GetServicePrincipalFeatureArrayOutput
+	ToGetServicePrincipalFeatureArrayOutputWithContext(context.Context) GetServicePrincipalFeatureArrayOutput
+}
+
+type GetServicePrincipalFeatureArray []GetServicePrincipalFeatureInput
+
+func (GetServicePrincipalFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalFeature)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFeatureArray) ToGetServicePrincipalFeatureArrayOutput() GetServicePrincipalFeatureArrayOutput {
+	return i.ToGetServicePrincipalFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFeatureArray) ToGetServicePrincipalFeatureArrayOutputWithContext(ctx context.Context) GetServicePrincipalFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFeatureArrayOutput)
+}
+
+type GetServicePrincipalFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFeature)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFeatureOutput) ToGetServicePrincipalFeatureOutput() GetServicePrincipalFeatureOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureOutput) ToGetServicePrincipalFeatureOutputWithContext(ctx context.Context) GetServicePrincipalFeatureOutput {
+	return o
+}
+
+// Whether this service principal represents a custom SAML application.
+func (o GetServicePrincipalFeatureOutput) CustomSingleSignOnApp() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.CustomSingleSignOnApp }).(pulumi.BoolOutput)
+}
+
+// Whether this service principal represents an Enterprise Application.
+func (o GetServicePrincipalFeatureOutput) EnterpriseApplication() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.EnterpriseApplication }).(pulumi.BoolOutput)
+}
+
+// Whether this service principal represents a gallery application.
+func (o GetServicePrincipalFeatureOutput) GalleryApplication() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.GalleryApplication }).(pulumi.BoolOutput)
+}
+
+// Whether this app is visible to users in My Apps and Office 365 Launcher.
+func (o GetServicePrincipalFeatureOutput) VisibleToUsers() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.VisibleToUsers }).(pulumi.BoolOutput)
+}
+
+type GetServicePrincipalFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalFeature)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFeatureArrayOutput) ToGetServicePrincipalFeatureArrayOutput() GetServicePrincipalFeatureArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureArrayOutput) ToGetServicePrincipalFeatureArrayOutputWithContext(ctx context.Context) GetServicePrincipalFeatureArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalFeature {
+		return vs[0].([]GetServicePrincipalFeature)[vs[1].(int)]
+	}).(GetServicePrincipalFeatureOutput)
+}
+
 type GetServicePrincipalOauth2PermissionScope struct {
 	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
@@ -6706,6 +6950,8 @@ func init() {
 	pulumi.RegisterOutputType(NamedLocationIpPtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalFeatureOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalFeatureArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalSamlSingleSignOnOutput{})
@@ -6740,6 +6986,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFeatureOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFeatureArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalSamlSingleSignOnOutput{})

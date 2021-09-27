@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azuread:index/appRoleAssignment:AppRoleAssignment":
+		r = &AppRoleAssignment{}
 	case "azuread:index/application:Application":
 		r = &Application{}
 	case "azuread:index/applicationCertificate:ApplicationCertificate":
@@ -30,6 +32,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationPreAuthorized{}
 	case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
 		r = &ConditionalAccessPolicy{}
+	case "azuread:index/directoryRole:DirectoryRole":
+		r = &DirectoryRole{}
+	case "azuread:index/directoryRoleMember:DirectoryRoleMember":
+		r = &DirectoryRoleMember{}
 	case "azuread:index/group:Group":
 		r = &Group{}
 	case "azuread:index/groupMember:GroupMember":
@@ -79,6 +85,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/appRoleAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/application",
 		&module{version},
 	)
@@ -100,6 +111,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/conditionalAccessPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/directoryRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/directoryRoleMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
