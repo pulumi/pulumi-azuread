@@ -359,6 +359,8 @@ github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210916233227-a693d275
 github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210916233227-a693d2758b9b/go.mod h1:X8MEfR4VdkMH0oad4ShQEt6w2Ool0033blLv5Q2qiS0=
 github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210923093115-21384dc55b26 h1:vO8G6xx9ggHZQ6/WvMa8PYTQQp5sViKBpPwmJr0daxE=
 github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210923093115-21384dc55b26/go.mod h1:obHUA4y+ckvj+fpcMOaOZBjp4CEwMmIH80mWKHnDyQ8=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210930204822-3e75dd77d192 h1:rqNDhx3Q1/dXZWCvqLX+aGP3vRLZIldvLCmZ0IHOhO4=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20210930204822-3e75dd77d192/go.mod h1:wicQ95kvIps7XGAFldNpANYeHQN+obopFIWLBQSbMSw=
 github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
 github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d h1:kJCB4vdITiW1eC1vq2e6IsrXKrZit1bv/TDYFGMp4BQ=
 github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
@@ -418,6 +420,8 @@ github.com/manicminer/hamilton v0.29.0 h1:SmKNUMbuk7Crp9mJUWJTNRKnsFzdIxyIhlvvJ0
 github.com/manicminer/hamilton v0.29.0/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
 github.com/manicminer/hamilton v0.30.0 h1:n7og9/Xh4d/JX0XG0uG1rv2vlkIkz8jwynCWoQszZvA=
 github.com/manicminer/hamilton v0.30.0/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
+github.com/manicminer/hamilton v0.31.1 h1:uDM9q4bE2mJGieH42M17A6Q1avSxZP9UKwpD6ctX+LI=
+github.com/manicminer/hamilton v0.31.1/go.mod h1:QryxpD/4+cdKuXNi0UjLDvgxYdP0LLmYz7dYU7DAX4U=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
 github.com/mattn/go-colorable v0.1.4 h1:snbPLB8fVfU9iwbbo30TPtbLRzwWu6aJS6Xh4eaaviA=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=

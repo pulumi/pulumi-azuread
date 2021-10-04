@@ -20,7 +20,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, age_group=None, business_phones=None, city=None, company_name=None, consent_provided_for_minor=None, country=None, creation_type=None, department=None, display_name=None, employee_id=None, external_user_state=None, fax_number=None, given_name=None, id=None, im_addresses=None, job_title=None, mail=None, mail_nickname=None, mobile_phone=None, object_id=None, office_location=None, onpremises_distinguished_name=None, onpremises_domain_name=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, onpremises_user_principal_name=None, other_mails=None, postal_code=None, preferred_language=None, proxy_addresses=None, show_in_address_list=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
+    def __init__(__self__, account_enabled=None, age_group=None, business_phones=None, city=None, company_name=None, consent_provided_for_minor=None, cost_center=None, country=None, creation_type=None, department=None, display_name=None, division=None, employee_id=None, employee_type=None, external_user_state=None, fax_number=None, given_name=None, id=None, im_addresses=None, job_title=None, mail=None, mail_nickname=None, mobile_phone=None, object_id=None, office_location=None, onpremises_distinguished_name=None, onpremises_domain_name=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, onpremises_user_principal_name=None, other_mails=None, postal_code=None, preferred_language=None, proxy_addresses=None, show_in_address_list=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -39,6 +39,9 @@ class GetUserResult:
         if consent_provided_for_minor and not isinstance(consent_provided_for_minor, str):
             raise TypeError("Expected argument 'consent_provided_for_minor' to be a str")
         pulumi.set(__self__, "consent_provided_for_minor", consent_provided_for_minor)
+        if cost_center and not isinstance(cost_center, str):
+            raise TypeError("Expected argument 'cost_center' to be a str")
+        pulumi.set(__self__, "cost_center", cost_center)
         if country and not isinstance(country, str):
             raise TypeError("Expected argument 'country' to be a str")
         pulumi.set(__self__, "country", country)
@@ -51,9 +54,15 @@ class GetUserResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if division and not isinstance(division, str):
+            raise TypeError("Expected argument 'division' to be a str")
+        pulumi.set(__self__, "division", division)
         if employee_id and not isinstance(employee_id, str):
             raise TypeError("Expected argument 'employee_id' to be a str")
         pulumi.set(__self__, "employee_id", employee_id)
+        if employee_type and not isinstance(employee_type, str):
+            raise TypeError("Expected argument 'employee_type' to be a str")
+        pulumi.set(__self__, "employee_type", employee_type)
         if external_user_state and not isinstance(external_user_state, str):
             raise TypeError("Expected argument 'external_user_state' to be a str")
         pulumi.set(__self__, "external_user_state", external_user_state)
@@ -191,6 +200,14 @@ class GetUserResult:
         return pulumi.get(self, "consent_provided_for_minor")
 
     @property
+    @pulumi.getter(name="costCenter")
+    def cost_center(self) -> str:
+        """
+        The cost center associated with the user.
+        """
+        return pulumi.get(self, "cost_center")
+
+    @property
     @pulumi.getter
     def country(self) -> str:
         """
@@ -223,12 +240,28 @@ class GetUserResult:
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter
+    def division(self) -> str:
+        """
+        The name of the division in which the user works.
+        """
+        return pulumi.get(self, "division")
+
+    @property
     @pulumi.getter(name="employeeId")
     def employee_id(self) -> str:
         """
         The employee identifier assigned to the user by the organisation.
         """
         return pulumi.get(self, "employee_id")
+
+    @property
+    @pulumi.getter(name="employeeType")
+    def employee_type(self) -> str:
+        """
+        Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        """
+        return pulumi.get(self, "employee_type")
 
     @property
     @pulumi.getter(name="externalUserState")
@@ -475,11 +508,14 @@ class AwaitableGetUserResult(GetUserResult):
             city=self.city,
             company_name=self.company_name,
             consent_provided_for_minor=self.consent_provided_for_minor,
+            cost_center=self.cost_center,
             country=self.country,
             creation_type=self.creation_type,
             department=self.department,
             display_name=self.display_name,
+            division=self.division,
             employee_id=self.employee_id,
+            employee_type=self.employee_type,
             external_user_state=self.external_user_state,
             fax_number=self.fax_number,
             given_name=self.given_name,
@@ -557,11 +593,14 @@ def get_user(mail_nickname: Optional[str] = None,
         city=__ret__.city,
         company_name=__ret__.company_name,
         consent_provided_for_minor=__ret__.consent_provided_for_minor,
+        cost_center=__ret__.cost_center,
         country=__ret__.country,
         creation_type=__ret__.creation_type,
         department=__ret__.department,
         display_name=__ret__.display_name,
+        division=__ret__.division,
         employee_id=__ret__.employee_id,
+        employee_type=__ret__.employee_type,
         external_user_state=__ret__.external_user_state,
         fax_number=__ret__.fax_number,
         given_name=__ret__.given_name,

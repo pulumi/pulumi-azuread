@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var groups = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             DisplayNames = 
         ///             {
@@ -57,9 +57,48 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var allGroups = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             ReturnAll = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up all mail-enabled groups*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             MailEnabled = true,
+        ///             ReturnAll = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up all security-enabled groups that are not mail-enabled*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             MailEnabled = false,
+        ///             ReturnAll = true,
+        ///             SecurityEnabled = true,
         ///         }));
         ///     }
         /// 
@@ -87,6 +126,12 @@ namespace Pulumi.AzureAD
             set => _displayNames = value;
         }
 
+        /// <summary>
+        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// </summary>
+        [Input("mailEnabled")]
+        public bool? MailEnabled { get; set; }
+
         [Input("objectIds")]
         private List<string>? _objectIds;
 
@@ -105,6 +150,12 @@ namespace Pulumi.AzureAD
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
 
+        /// <summary>
+        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// </summary>
+        [Input("securityEnabled")]
+        public bool? SecurityEnabled { get; set; }
+
         public GetGroupsArgs()
         {
         }
@@ -122,11 +173,13 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool MailEnabled;
         /// <summary>
         /// The object IDs of the groups.
         /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
         public readonly bool? ReturnAll;
+        public readonly bool SecurityEnabled;
 
         [OutputConstructor]
         private GetGroupsResult(
@@ -134,14 +187,20 @@ namespace Pulumi.AzureAD
 
             string id,
 
+            bool mailEnabled,
+
             ImmutableArray<string> objectIds,
 
-            bool? returnAll)
+            bool? returnAll,
+
+            bool securityEnabled)
         {
             DisplayNames = displayNames;
             Id = id;
+            MailEnabled = mailEnabled;
             ObjectIds = objectIds;
             ReturnAll = returnAll;
+            SecurityEnabled = securityEnabled;
         }
     }
 }

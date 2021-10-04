@@ -71,6 +71,8 @@ type User struct {
 	CompanyName pulumi.StringPtrOutput `pulumi:"companyName"`
 	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
 	ConsentProvidedForMinor pulumi.StringPtrOutput `pulumi:"consentProvidedForMinor"`
+	// The cost center associated with the user.
+	CostCenter pulumi.StringPtrOutput `pulumi:"costCenter"`
 	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country pulumi.StringPtrOutput `pulumi:"country"`
 	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
@@ -83,8 +85,12 @@ type User struct {
 	DisableStrongPassword pulumi.BoolPtrOutput `pulumi:"disableStrongPassword"`
 	// The name to display in the address book for the user.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// The name of the division in which the user works.
+	Division pulumi.StringPtrOutput `pulumi:"division"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringPtrOutput `pulumi:"employeeId"`
+	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+	EmployeeType pulumi.StringPtrOutput `pulumi:"employeeType"`
 	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
 	ExternalUserState pulumi.StringOutput `pulumi:"externalUserState"`
 	// The fax number of the user.
@@ -196,6 +202,8 @@ type userState struct {
 	CompanyName *string `pulumi:"companyName"`
 	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
 	ConsentProvidedForMinor *string `pulumi:"consentProvidedForMinor"`
+	// The cost center associated with the user.
+	CostCenter *string `pulumi:"costCenter"`
 	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country *string `pulumi:"country"`
 	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
@@ -208,8 +216,12 @@ type userState struct {
 	DisableStrongPassword *bool `pulumi:"disableStrongPassword"`
 	// The name to display in the address book for the user.
 	DisplayName *string `pulumi:"displayName"`
+	// The name of the division in which the user works.
+	Division *string `pulumi:"division"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId *string `pulumi:"employeeId"`
+	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+	EmployeeType *string `pulumi:"employeeType"`
 	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
 	ExternalUserState *string `pulumi:"externalUserState"`
 	// The fax number of the user.
@@ -287,6 +299,8 @@ type UserState struct {
 	CompanyName pulumi.StringPtrInput
 	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
 	ConsentProvidedForMinor pulumi.StringPtrInput
+	// The cost center associated with the user.
+	CostCenter pulumi.StringPtrInput
 	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country pulumi.StringPtrInput
 	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
@@ -299,8 +313,12 @@ type UserState struct {
 	DisableStrongPassword pulumi.BoolPtrInput
 	// The name to display in the address book for the user.
 	DisplayName pulumi.StringPtrInput
+	// The name of the division in which the user works.
+	Division pulumi.StringPtrInput
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringPtrInput
+	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+	EmployeeType pulumi.StringPtrInput
 	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
 	ExternalUserState pulumi.StringPtrInput
 	// The fax number of the user.
@@ -380,6 +398,8 @@ type userArgs struct {
 	CompanyName *string `pulumi:"companyName"`
 	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
 	ConsentProvidedForMinor *string `pulumi:"consentProvidedForMinor"`
+	// The cost center associated with the user.
+	CostCenter *string `pulumi:"costCenter"`
 	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country *string `pulumi:"country"`
 	// The name for the department in which the user works.
@@ -390,8 +410,12 @@ type userArgs struct {
 	DisableStrongPassword *bool `pulumi:"disableStrongPassword"`
 	// The name to display in the address book for the user.
 	DisplayName string `pulumi:"displayName"`
+	// The name of the division in which the user works.
+	Division *string `pulumi:"division"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId *string `pulumi:"employeeId"`
+	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+	EmployeeType *string `pulumi:"employeeType"`
 	// The fax number of the user.
 	FaxNumber *string `pulumi:"faxNumber"`
 	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
@@ -446,6 +470,8 @@ type UserArgs struct {
 	CompanyName pulumi.StringPtrInput
 	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
 	ConsentProvidedForMinor pulumi.StringPtrInput
+	// The cost center associated with the user.
+	CostCenter pulumi.StringPtrInput
 	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country pulumi.StringPtrInput
 	// The name for the department in which the user works.
@@ -456,8 +482,12 @@ type UserArgs struct {
 	DisableStrongPassword pulumi.BoolPtrInput
 	// The name to display in the address book for the user.
 	DisplayName pulumi.StringInput
+	// The name of the division in which the user works.
+	Division pulumi.StringPtrInput
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId pulumi.StringPtrInput
+	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+	EmployeeType pulumi.StringPtrInput
 	// The fax number of the user.
 	FaxNumber pulumi.StringPtrInput
 	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.

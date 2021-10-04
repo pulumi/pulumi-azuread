@@ -94,6 +94,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly consentProvidedForMinor!: pulumi.Output<string | undefined>;
     /**
+     * The cost center associated with the user.
+     */
+    public readonly costCenter!: pulumi.Output<string | undefined>;
+    /**
      * The country/region in which the user is located, e.g. `US` or `UK`.
      */
     public readonly country!: pulumi.Output<string | undefined>;
@@ -118,9 +122,17 @@ export class User extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * The name of the division in which the user works.
+     */
+    public readonly division!: pulumi.Output<string | undefined>;
+    /**
      * The employee identifier assigned to the user by the organisation.
      */
     public readonly employeeId!: pulumi.Output<string | undefined>;
+    /**
+     * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+     */
+    public readonly employeeType!: pulumi.Output<string | undefined>;
     /**
      * For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      */
@@ -262,13 +274,16 @@ export class User extends pulumi.CustomResource {
             inputs["city"] = state ? state.city : undefined;
             inputs["companyName"] = state ? state.companyName : undefined;
             inputs["consentProvidedForMinor"] = state ? state.consentProvidedForMinor : undefined;
+            inputs["costCenter"] = state ? state.costCenter : undefined;
             inputs["country"] = state ? state.country : undefined;
             inputs["creationType"] = state ? state.creationType : undefined;
             inputs["department"] = state ? state.department : undefined;
             inputs["disablePasswordExpiration"] = state ? state.disablePasswordExpiration : undefined;
             inputs["disableStrongPassword"] = state ? state.disableStrongPassword : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["division"] = state ? state.division : undefined;
             inputs["employeeId"] = state ? state.employeeId : undefined;
+            inputs["employeeType"] = state ? state.employeeType : undefined;
             inputs["externalUserState"] = state ? state.externalUserState : undefined;
             inputs["faxNumber"] = state ? state.faxNumber : undefined;
             inputs["forcePasswordChange"] = state ? state.forcePasswordChange : undefined;
@@ -313,12 +328,15 @@ export class User extends pulumi.CustomResource {
             inputs["city"] = args ? args.city : undefined;
             inputs["companyName"] = args ? args.companyName : undefined;
             inputs["consentProvidedForMinor"] = args ? args.consentProvidedForMinor : undefined;
+            inputs["costCenter"] = args ? args.costCenter : undefined;
             inputs["country"] = args ? args.country : undefined;
             inputs["department"] = args ? args.department : undefined;
             inputs["disablePasswordExpiration"] = args ? args.disablePasswordExpiration : undefined;
             inputs["disableStrongPassword"] = args ? args.disableStrongPassword : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["division"] = args ? args.division : undefined;
             inputs["employeeId"] = args ? args.employeeId : undefined;
+            inputs["employeeType"] = args ? args.employeeType : undefined;
             inputs["faxNumber"] = args ? args.faxNumber : undefined;
             inputs["forcePasswordChange"] = args ? args.forcePasswordChange : undefined;
             inputs["givenName"] = args ? args.givenName : undefined;
@@ -392,6 +410,10 @@ export interface UserState {
      */
     consentProvidedForMinor?: pulumi.Input<string>;
     /**
+     * The cost center associated with the user.
+     */
+    costCenter?: pulumi.Input<string>;
+    /**
      * The country/region in which the user is located, e.g. `US` or `UK`.
      */
     country?: pulumi.Input<string>;
@@ -416,9 +438,17 @@ export interface UserState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * The name of the division in which the user works.
+     */
+    division?: pulumi.Input<string>;
+    /**
      * The employee identifier assigned to the user by the organisation.
      */
     employeeId?: pulumi.Input<string>;
+    /**
+     * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+     */
+    employeeType?: pulumi.Input<string>;
     /**
      * For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      */
@@ -570,6 +600,10 @@ export interface UserArgs {
      */
     consentProvidedForMinor?: pulumi.Input<string>;
     /**
+     * The cost center associated with the user.
+     */
+    costCenter?: pulumi.Input<string>;
+    /**
      * The country/region in which the user is located, e.g. `US` or `UK`.
      */
     country?: pulumi.Input<string>;
@@ -590,9 +624,17 @@ export interface UserArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * The name of the division in which the user works.
+     */
+    division?: pulumi.Input<string>;
+    /**
      * The employee identifier assigned to the user by the organisation.
      */
     employeeId?: pulumi.Input<string>;
+    /**
+     * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+     */
+    employeeType?: pulumi.Input<string>;
     /**
      * The fax number of the user.
      */

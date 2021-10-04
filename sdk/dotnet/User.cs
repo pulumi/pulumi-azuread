@@ -96,6 +96,12 @@ namespace Pulumi.AzureAD
         public Output<string?> ConsentProvidedForMinor { get; private set; } = null!;
 
         /// <summary>
+        /// The cost center associated with the user.
+        /// </summary>
+        [Output("costCenter")]
+        public Output<string?> CostCenter { get; private set; } = null!;
+
+        /// <summary>
         /// The country/region in which the user is located, e.g. `US` or `UK`.
         /// </summary>
         [Output("country")]
@@ -132,10 +138,22 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// The name of the division in which the user works.
+        /// </summary>
+        [Output("division")]
+        public Output<string?> Division { get; private set; } = null!;
+
+        /// <summary>
         /// The employee identifier assigned to the user by the organisation.
         /// </summary>
         [Output("employeeId")]
         public Output<string?> EmployeeId { get; private set; } = null!;
+
+        /// <summary>
+        /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        /// </summary>
+        [Output("employeeType")]
+        public Output<string?> EmployeeType { get; private set; } = null!;
 
         /// <summary>
         /// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
@@ -406,6 +424,12 @@ namespace Pulumi.AzureAD
         public Input<string>? ConsentProvidedForMinor { get; set; }
 
         /// <summary>
+        /// The cost center associated with the user.
+        /// </summary>
+        [Input("costCenter")]
+        public Input<string>? CostCenter { get; set; }
+
+        /// <summary>
         /// The country/region in which the user is located, e.g. `US` or `UK`.
         /// </summary>
         [Input("country")]
@@ -436,10 +460,22 @@ namespace Pulumi.AzureAD
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// The name of the division in which the user works.
+        /// </summary>
+        [Input("division")]
+        public Input<string>? Division { get; set; }
+
+        /// <summary>
         /// The employee identifier assigned to the user by the organisation.
         /// </summary>
         [Input("employeeId")]
         public Input<string>? EmployeeId { get; set; }
+
+        /// <summary>
+        /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        /// </summary>
+        [Input("employeeType")]
+        public Input<string>? EmployeeType { get; set; }
 
         /// <summary>
         /// The fax number of the user.
@@ -617,6 +653,12 @@ namespace Pulumi.AzureAD
         public Input<string>? ConsentProvidedForMinor { get; set; }
 
         /// <summary>
+        /// The cost center associated with the user.
+        /// </summary>
+        [Input("costCenter")]
+        public Input<string>? CostCenter { get; set; }
+
+        /// <summary>
         /// The country/region in which the user is located, e.g. `US` or `UK`.
         /// </summary>
         [Input("country")]
@@ -653,10 +695,22 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// The name of the division in which the user works.
+        /// </summary>
+        [Input("division")]
+        public Input<string>? Division { get; set; }
+
+        /// <summary>
         /// The employee identifier assigned to the user by the organisation.
         /// </summary>
         [Input("employeeId")]
         public Input<string>? EmployeeId { get; set; }
+
+        /// <summary>
+        /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        /// </summary>
+        [Input("employeeType")]
+        public Input<string>? EmployeeType { get; set; }
 
         /// <summary>
         /// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.

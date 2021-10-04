@@ -76,6 +76,8 @@ type LookupUserResult struct {
 	CompanyName string `pulumi:"companyName"`
 	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
 	ConsentProvidedForMinor string `pulumi:"consentProvidedForMinor"`
+	// The cost center associated with the user.
+	CostCenter string `pulumi:"costCenter"`
 	// The country/region in which the user is located, e.g. `US` or `UK`.
 	Country string `pulumi:"country"`
 	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
@@ -84,8 +86,12 @@ type LookupUserResult struct {
 	Department string `pulumi:"department"`
 	// The display name of the user.
 	DisplayName string `pulumi:"displayName"`
+	// The name of the division in which the user works.
+	Division string `pulumi:"division"`
 	// The employee identifier assigned to the user by the organisation.
 	EmployeeId string `pulumi:"employeeId"`
+	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+	EmployeeType string `pulumi:"employeeType"`
 	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
 	ExternalUserState string `pulumi:"externalUserState"`
 	// The fax number of the user.
@@ -214,6 +220,11 @@ func (o LookupUserResultOutput) ConsentProvidedForMinor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.ConsentProvidedForMinor }).(pulumi.StringOutput)
 }
 
+// The cost center associated with the user.
+func (o LookupUserResultOutput) CostCenter() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.CostCenter }).(pulumi.StringOutput)
+}
+
 // The country/region in which the user is located, e.g. `US` or `UK`.
 func (o LookupUserResultOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.Country }).(pulumi.StringOutput)
@@ -234,9 +245,19 @@ func (o LookupUserResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The name of the division in which the user works.
+func (o LookupUserResultOutput) Division() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.Division }).(pulumi.StringOutput)
+}
+
 // The employee identifier assigned to the user by the organisation.
 func (o LookupUserResultOutput) EmployeeId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.EmployeeId }).(pulumi.StringOutput)
+}
+
+// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+func (o LookupUserResultOutput) EmployeeType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.EmployeeType }).(pulumi.StringOutput)
 }
 
 // For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
