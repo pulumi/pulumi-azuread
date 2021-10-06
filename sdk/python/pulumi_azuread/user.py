@@ -21,11 +21,14 @@ class UserArgs:
                  city: Optional[pulumi.Input[str]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+                 cost_center: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  disable_password_expiration: Optional[pulumi.Input[bool]] = None,
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
+                 division: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
+                 employee_type: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
                  force_password_change: Optional[pulumi.Input[bool]] = None,
                  given_name: Optional[pulumi.Input[str]] = None,
@@ -54,11 +57,14 @@ class UserArgs:
         :param pulumi.Input[str] city: The city in which the user is located.
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[str] cost_center: The cost center associated with the user.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+        :param pulumi.Input[str] division: The name of the division in which the user works.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
+        :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] fax_number: The fax number of the user.
         :param pulumi.Input[bool] force_password_change: Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
@@ -92,6 +98,8 @@ class UserArgs:
             pulumi.set(__self__, "company_name", company_name)
         if consent_provided_for_minor is not None:
             pulumi.set(__self__, "consent_provided_for_minor", consent_provided_for_minor)
+        if cost_center is not None:
+            pulumi.set(__self__, "cost_center", cost_center)
         if country is not None:
             pulumi.set(__self__, "country", country)
         if department is not None:
@@ -100,8 +108,12 @@ class UserArgs:
             pulumi.set(__self__, "disable_password_expiration", disable_password_expiration)
         if disable_strong_password is not None:
             pulumi.set(__self__, "disable_strong_password", disable_strong_password)
+        if division is not None:
+            pulumi.set(__self__, "division", division)
         if employee_id is not None:
             pulumi.set(__self__, "employee_id", employee_id)
+        if employee_type is not None:
+            pulumi.set(__self__, "employee_type", employee_type)
         if fax_number is not None:
             pulumi.set(__self__, "fax_number", fax_number)
         if force_password_change is not None:
@@ -236,6 +248,18 @@ class UserArgs:
         pulumi.set(self, "consent_provided_for_minor", value)
 
     @property
+    @pulumi.getter(name="costCenter")
+    def cost_center(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cost center associated with the user.
+        """
+        return pulumi.get(self, "cost_center")
+
+    @cost_center.setter
+    def cost_center(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cost_center", value)
+
+    @property
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[str]]:
         """
@@ -284,6 +308,18 @@ class UserArgs:
         pulumi.set(self, "disable_strong_password", value)
 
     @property
+    @pulumi.getter
+    def division(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the division in which the user works.
+        """
+        return pulumi.get(self, "division")
+
+    @division.setter
+    def division(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "division", value)
+
+    @property
     @pulumi.getter(name="employeeId")
     def employee_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -294,6 +330,18 @@ class UserArgs:
     @employee_id.setter
     def employee_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "employee_id", value)
+
+    @property
+    @pulumi.getter(name="employeeType")
+    def employee_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        """
+        return pulumi.get(self, "employee_type")
+
+    @employee_type.setter
+    def employee_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "employee_type", value)
 
     @property
     @pulumi.getter(name="faxNumber")
@@ -522,13 +570,16 @@ class _UserState:
                  city: Optional[pulumi.Input[str]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+                 cost_center: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  creation_type: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  disable_password_expiration: Optional[pulumi.Input[bool]] = None,
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 division: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
+                 employee_type: Optional[pulumi.Input[str]] = None,
                  external_user_state: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
                  force_password_change: Optional[pulumi.Input[bool]] = None,
@@ -568,13 +619,16 @@ class _UserState:
         :param pulumi.Input[str] city: The city in which the user is located.
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[str] cost_center: The cost center associated with the user.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
+        :param pulumi.Input[str] division: The name of the division in which the user works.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
+        :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] external_user_state: For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
         :param pulumi.Input[str] fax_number: The fax number of the user.
         :param pulumi.Input[bool] force_password_change: Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
@@ -620,6 +674,8 @@ class _UserState:
             pulumi.set(__self__, "company_name", company_name)
         if consent_provided_for_minor is not None:
             pulumi.set(__self__, "consent_provided_for_minor", consent_provided_for_minor)
+        if cost_center is not None:
+            pulumi.set(__self__, "cost_center", cost_center)
         if country is not None:
             pulumi.set(__self__, "country", country)
         if creation_type is not None:
@@ -632,8 +688,12 @@ class _UserState:
             pulumi.set(__self__, "disable_strong_password", disable_strong_password)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if division is not None:
+            pulumi.set(__self__, "division", division)
         if employee_id is not None:
             pulumi.set(__self__, "employee_id", employee_id)
+        if employee_type is not None:
+            pulumi.set(__self__, "employee_type", employee_type)
         if external_user_state is not None:
             pulumi.set(__self__, "external_user_state", external_user_state)
         if fax_number is not None:
@@ -780,6 +840,18 @@ class _UserState:
         pulumi.set(self, "consent_provided_for_minor", value)
 
     @property
+    @pulumi.getter(name="costCenter")
+    def cost_center(self) -> Optional[pulumi.Input[str]]:
+        """
+        The cost center associated with the user.
+        """
+        return pulumi.get(self, "cost_center")
+
+    @cost_center.setter
+    def cost_center(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cost_center", value)
+
+    @property
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[str]]:
         """
@@ -852,6 +924,18 @@ class _UserState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter
+    def division(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the division in which the user works.
+        """
+        return pulumi.get(self, "division")
+
+    @division.setter
+    def division(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "division", value)
+
+    @property
     @pulumi.getter(name="employeeId")
     def employee_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -862,6 +946,18 @@ class _UserState:
     @employee_id.setter
     def employee_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "employee_id", value)
+
+    @property
+    @pulumi.getter(name="employeeType")
+    def employee_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        """
+        return pulumi.get(self, "employee_type")
+
+    @employee_type.setter
+    def employee_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "employee_type", value)
 
     @property
     @pulumi.getter(name="externalUserState")
@@ -1235,12 +1331,15 @@ class User(pulumi.CustomResource):
                  city: Optional[pulumi.Input[str]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+                 cost_center: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  disable_password_expiration: Optional[pulumi.Input[bool]] = None,
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 division: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
+                 employee_type: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
                  force_password_change: Optional[pulumi.Input[bool]] = None,
                  given_name: Optional[pulumi.Input[str]] = None,
@@ -1301,12 +1400,15 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] city: The city in which the user is located.
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[str] cost_center: The cost center associated with the user.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
+        :param pulumi.Input[str] division: The name of the division in which the user works.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
+        :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] fax_number: The fax number of the user.
         :param pulumi.Input[bool] force_password_change: Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
         :param pulumi.Input[str] given_name: The given name (first name) of the user.
@@ -1386,12 +1488,15 @@ class User(pulumi.CustomResource):
                  city: Optional[pulumi.Input[str]] = None,
                  company_name: Optional[pulumi.Input[str]] = None,
                  consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+                 cost_center: Optional[pulumi.Input[str]] = None,
                  country: Optional[pulumi.Input[str]] = None,
                  department: Optional[pulumi.Input[str]] = None,
                  disable_password_expiration: Optional[pulumi.Input[bool]] = None,
                  disable_strong_password: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 division: Optional[pulumi.Input[str]] = None,
                  employee_id: Optional[pulumi.Input[str]] = None,
+                 employee_type: Optional[pulumi.Input[str]] = None,
                  fax_number: Optional[pulumi.Input[str]] = None,
                  force_password_change: Optional[pulumi.Input[bool]] = None,
                  given_name: Optional[pulumi.Input[str]] = None,
@@ -1429,6 +1534,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["city"] = city
             __props__.__dict__["company_name"] = company_name
             __props__.__dict__["consent_provided_for_minor"] = consent_provided_for_minor
+            __props__.__dict__["cost_center"] = cost_center
             __props__.__dict__["country"] = country
             __props__.__dict__["department"] = department
             __props__.__dict__["disable_password_expiration"] = disable_password_expiration
@@ -1436,7 +1542,9 @@ class User(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["division"] = division
             __props__.__dict__["employee_id"] = employee_id
+            __props__.__dict__["employee_type"] = employee_type
             __props__.__dict__["fax_number"] = fax_number
             __props__.__dict__["force_password_change"] = force_password_change
             __props__.__dict__["given_name"] = given_name
@@ -1488,13 +1596,16 @@ class User(pulumi.CustomResource):
             city: Optional[pulumi.Input[str]] = None,
             company_name: Optional[pulumi.Input[str]] = None,
             consent_provided_for_minor: Optional[pulumi.Input[str]] = None,
+            cost_center: Optional[pulumi.Input[str]] = None,
             country: Optional[pulumi.Input[str]] = None,
             creation_type: Optional[pulumi.Input[str]] = None,
             department: Optional[pulumi.Input[str]] = None,
             disable_password_expiration: Optional[pulumi.Input[bool]] = None,
             disable_strong_password: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            division: Optional[pulumi.Input[str]] = None,
             employee_id: Optional[pulumi.Input[str]] = None,
+            employee_type: Optional[pulumi.Input[str]] = None,
             external_user_state: Optional[pulumi.Input[str]] = None,
             fax_number: Optional[pulumi.Input[str]] = None,
             force_password_change: Optional[pulumi.Input[bool]] = None,
@@ -1539,13 +1650,16 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] city: The city in which the user is located.
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+        :param pulumi.Input[str] cost_center: The cost center associated with the user.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
+        :param pulumi.Input[str] division: The name of the division in which the user works.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
+        :param pulumi.Input[str] employee_type: Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
         :param pulumi.Input[str] external_user_state: For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
         :param pulumi.Input[str] fax_number: The fax number of the user.
         :param pulumi.Input[bool] force_password_change: Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
@@ -1588,13 +1702,16 @@ class User(pulumi.CustomResource):
         __props__.__dict__["city"] = city
         __props__.__dict__["company_name"] = company_name
         __props__.__dict__["consent_provided_for_minor"] = consent_provided_for_minor
+        __props__.__dict__["cost_center"] = cost_center
         __props__.__dict__["country"] = country
         __props__.__dict__["creation_type"] = creation_type
         __props__.__dict__["department"] = department
         __props__.__dict__["disable_password_expiration"] = disable_password_expiration
         __props__.__dict__["disable_strong_password"] = disable_strong_password
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["division"] = division
         __props__.__dict__["employee_id"] = employee_id
+        __props__.__dict__["employee_type"] = employee_type
         __props__.__dict__["external_user_state"] = external_user_state
         __props__.__dict__["fax_number"] = fax_number
         __props__.__dict__["force_password_change"] = force_password_change
@@ -1684,6 +1801,14 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "consent_provided_for_minor")
 
     @property
+    @pulumi.getter(name="costCenter")
+    def cost_center(self) -> pulumi.Output[Optional[str]]:
+        """
+        The cost center associated with the user.
+        """
+        return pulumi.get(self, "cost_center")
+
+    @property
     @pulumi.getter
     def country(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1732,12 +1857,28 @@ class User(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter
+    def division(self) -> pulumi.Output[Optional[str]]:
+        """
+        The name of the division in which the user works.
+        """
+        return pulumi.get(self, "division")
+
+    @property
     @pulumi.getter(name="employeeId")
     def employee_id(self) -> pulumi.Output[Optional[str]]:
         """
         The employee identifier assigned to the user by the organisation.
         """
         return pulumi.get(self, "employee_id")
+
+    @property
+    @pulumi.getter(name="employeeType")
+    def employee_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        """
+        return pulumi.get(self, "employee_type")
 
     @property
     @pulumi.getter(name="externalUserState")

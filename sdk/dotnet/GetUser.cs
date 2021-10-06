@@ -104,6 +104,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string ConsentProvidedForMinor;
         /// <summary>
+        /// The cost center associated with the user.
+        /// </summary>
+        public readonly string CostCenter;
+        /// <summary>
         /// The country/region in which the user is located, e.g. `US` or `UK`.
         /// </summary>
         public readonly string Country;
@@ -120,9 +124,17 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// The name of the division in which the user works.
+        /// </summary>
+        public readonly string Division;
+        /// <summary>
         /// The employee identifier assigned to the user by the organisation.
         /// </summary>
         public readonly string EmployeeId;
+        /// <summary>
+        /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+        /// </summary>
+        public readonly string EmployeeType;
         /// <summary>
         /// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
         /// </summary>
@@ -254,6 +266,8 @@ namespace Pulumi.AzureAD
 
             string consentProvidedForMinor,
 
+            string costCenter,
+
             string country,
 
             string creationType,
@@ -262,7 +276,11 @@ namespace Pulumi.AzureAD
 
             string displayName,
 
+            string division,
+
             string employeeId,
+
+            string employeeType,
 
             string externalUserState,
 
@@ -328,11 +346,14 @@ namespace Pulumi.AzureAD
             City = city;
             CompanyName = companyName;
             ConsentProvidedForMinor = consentProvidedForMinor;
+            CostCenter = costCenter;
             Country = country;
             CreationType = creationType;
             Department = department;
             DisplayName = displayName;
+            Division = division;
             EmployeeId = employeeId;
+            EmployeeType = employeeType;
             ExternalUserState = externalUserState;
             FaxNumber = faxNumber;
             GivenName = givenName;

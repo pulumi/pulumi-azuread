@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const groups = pulumi.output(azuread.getGroups({
+ * const example = pulumi.output(azuread.getGroups({
  *     displayNames: [
  *         "group-a",
  *         "group-b",
@@ -35,8 +35,31 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const allGroups = pulumi.output(azuread.getGroups({
+ * const example = pulumi.output(azuread.getGroups({
  *     returnAll: true,
+ * }));
+ * ```
+ *
+ * *Look up all mail-enabled groups*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = pulumi.output(azuread.getGroups({
+ *     mailEnabled: true,
+ *     returnAll: true,
+ * }));
+ * ```
+ *
+ * *Look up all security-enabled groups that are not mail-enabled*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = pulumi.output(azuread.getGroups({
+ *     mailEnabled: false,
+ *     returnAll: true,
+ *     securityEnabled: true,
  * }));
  * ```
  */
@@ -51,8 +74,10 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
     }
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
         "displayNames": args.displayNames,
+        "mailEnabled": args.mailEnabled,
         "objectIds": args.objectIds,
         "returnAll": args.returnAll,
+        "securityEnabled": args.securityEnabled,
     }, opts);
 }
 
@@ -65,6 +90,10 @@ export interface GetGroupsArgs {
      */
     displayNames?: string[];
     /**
+     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     */
+    mailEnabled?: boolean;
+    /**
      * The object IDs of the groups.
      */
     objectIds?: string[];
@@ -72,6 +101,10 @@ export interface GetGroupsArgs {
      * A flag to denote if all groups should be fetched and returned.
      */
     returnAll?: boolean;
+    /**
+     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     */
+    securityEnabled?: boolean;
 }
 
 /**
@@ -86,9 +119,11 @@ export interface GetGroupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly mailEnabled: boolean;
     /**
      * The object IDs of the groups.
      */
     readonly objectIds: string[];
     readonly returnAll?: boolean;
+    readonly securityEnabled: boolean;
 }

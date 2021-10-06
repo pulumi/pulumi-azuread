@@ -4769,6 +4769,10 @@
                     "type": "string",
                     "description": "Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.\n"
                 },
+                "costCenter": {
+                    "type": "string",
+                    "description": "The cost center associated with the user.\n"
+                },
                 "country": {
                     "type": "string",
                     "description": "The country/region in which the user is located, e.g. `US` or `UK`.\n"
@@ -4793,9 +4797,17 @@
                     "type": "string",
                     "description": "The name to display in the address book for the user.\n"
                 },
+                "division": {
+                    "type": "string",
+                    "description": "The name of the division in which the user works.\n"
+                },
                 "employeeId": {
                     "type": "string",
                     "description": "The employee identifier assigned to the user by the organisation.\n"
+                },
+                "employeeType": {
+                    "type": "string",
+                    "description": "Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.\n"
                 },
                 "externalUserState": {
                     "type": "string",
@@ -4977,6 +4989,10 @@
                     "type": "string",
                     "description": "Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.\n"
                 },
+                "costCenter": {
+                    "type": "string",
+                    "description": "The cost center associated with the user.\n"
+                },
                 "country": {
                     "type": "string",
                     "description": "The country/region in which the user is located, e.g. `US` or `UK`.\n"
@@ -4997,9 +5013,17 @@
                     "type": "string",
                     "description": "The name to display in the address book for the user.\n"
                 },
+                "division": {
+                    "type": "string",
+                    "description": "The name of the division in which the user works.\n"
+                },
                 "employeeId": {
                     "type": "string",
                     "description": "The employee identifier assigned to the user by the organisation.\n"
+                },
+                "employeeType": {
+                    "type": "string",
+                    "description": "Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.\n"
                 },
                 "faxNumber": {
                     "type": "string",
@@ -5119,6 +5143,10 @@
                         "type": "string",
                         "description": "Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.\n"
                     },
+                    "costCenter": {
+                        "type": "string",
+                        "description": "The cost center associated with the user.\n"
+                    },
                     "country": {
                         "type": "string",
                         "description": "The country/region in which the user is located, e.g. `US` or `UK`.\n"
@@ -5143,9 +5171,17 @@
                         "type": "string",
                         "description": "The name to display in the address book for the user.\n"
                     },
+                    "division": {
+                        "type": "string",
+                        "description": "The name of the division in which the user works.\n"
+                    },
                     "employeeId": {
                         "type": "string",
                         "description": "The employee identifier assigned to the user by the organisation.\n"
+                    },
+                    "employeeType": {
+                        "type": "string",
+                        "description": "Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.\n"
                     },
                     "externalUserState": {
                         "type": "string",
@@ -5862,7 +5898,7 @@
             }
         },
         "azuread:index/getGroups:getGroups": {
-            "description": "Gets Object IDs or Display Names for multiple Azure Active Directory groups.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Look up by group name*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst groups = pulumi.output(azuread.getGroups({\n    displayNames: [\n        \"group-a\",\n        \"group-b\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ngroups = azuread.get_groups(display_names=[\n    \"group-a\",\n    \"group-b\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var groups = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs\n        {\n            DisplayNames = \n            {\n                \"group-a\",\n                \"group-b\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetGroups(ctx, \u0026GetGroupsArgs{\n\t\t\tDisplayNames: []string{\n\t\t\t\t\"group-a\",\n\t\t\t\t\"group-b\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Look up all groups*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst allGroups = pulumi.output(azuread.getGroups({\n    returnAll: true,\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nall_groups = azuread.get_groups(return_all=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var allGroups = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs\n        {\n            ReturnAll = true,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := true\n\t\t_, err := azuread.GetGroups(ctx, \u0026GetGroupsArgs{\n\t\t\tReturnAll: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
+            "description": "Gets Object IDs or Display Names for multiple Azure Active Directory groups.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Look up by group name*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroups({\n    displayNames: [\n        \"group-a\",\n        \"group-b\",\n    ],\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_groups(display_names=[\n    \"group-a\",\n    \"group-b\",\n])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs\n        {\n            DisplayNames = \n            {\n                \"group-a\",\n                \"group-b\",\n            },\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.GetGroups(ctx, \u0026GetGroupsArgs{\n\t\t\tDisplayNames: []string{\n\t\t\t\t\"group-a\",\n\t\t\t\t\"group-b\",\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Look up all groups*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroups({\n    returnAll: true,\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_groups(return_all=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs\n        {\n            ReturnAll = true,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := true\n\t\t_, err := azuread.GetGroups(ctx, \u0026GetGroupsArgs{\n\t\t\tReturnAll: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Look up all mail-enabled groups*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroups({\n    mailEnabled: true,\n    returnAll: true,\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_groups(mail_enabled=True,\n    return_all=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs\n        {\n            MailEnabled = true,\n            ReturnAll = true,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := true\n\t\topt1 := true\n\t\t_, err := azuread.GetGroups(ctx, \u0026GetGroupsArgs{\n\t\t\tMailEnabled: \u0026opt0,\n\t\t\tReturnAll:   \u0026opt1,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Look up all security-enabled groups that are not mail-enabled*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = pulumi.output(azuread.getGroups({\n    mailEnabled: false,\n    returnAll: true,\n    securityEnabled: true,\n}));\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_groups(mail_enabled=False,\n    return_all=True,\n    security_enabled=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs\n        {\n            MailEnabled = false,\n            ReturnAll = true,\n            SecurityEnabled = true,\n        }));\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := false\n\t\topt1 := true\n\t\topt2 := true\n\t\t_, err := azuread.GetGroups(ctx, \u0026GetGroupsArgs{\n\t\t\tMailEnabled:     \u0026opt0,\n\t\t\tReturnAll:       \u0026opt1,\n\t\t\tSecurityEnabled: \u0026opt2,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
                 "description": "A collection of arguments for invoking getGroups.\n",
                 "properties": {
@@ -5872,6 +5908,10 @@
                             "type": "string"
                         },
                         "description": "The display names of the groups.\n"
+                    },
+                    "mailEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.\n"
                     },
                     "objectIds": {
                         "type": "array",
@@ -5883,6 +5923,10 @@
                     "returnAll": {
                         "type": "boolean",
                         "description": "A flag to denote if all groups should be fetched and returned.\n"
+                    },
+                    "securityEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.\n"
                     }
                 },
                 "type": "object"
@@ -5901,6 +5945,9 @@
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
                     },
+                    "mailEnabled": {
+                        "type": "boolean"
+                    },
                     "objectIds": {
                         "type": "array",
                         "items": {
@@ -5910,12 +5957,17 @@
                     },
                     "returnAll": {
                         "type": "boolean"
+                    },
+                    "securityEnabled": {
+                        "type": "boolean"
                     }
                 },
                 "type": "object",
                 "required": [
                     "displayNames",
+                    "mailEnabled",
                     "objectIds",
+                    "securityEnabled",
                     "id"
                 ]
             }
@@ -6256,6 +6308,10 @@
                         "type": "string",
                         "description": "Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.\n"
                     },
+                    "costCenter": {
+                        "type": "string",
+                        "description": "The cost center associated with the user.\n"
+                    },
                     "country": {
                         "type": "string",
                         "description": "The country/region in which the user is located, e.g. `US` or `UK`.\n"
@@ -6272,9 +6328,17 @@
                         "type": "string",
                         "description": "The display name of the user.\n"
                     },
+                    "division": {
+                        "type": "string",
+                        "description": "The name of the division in which the user works.\n"
+                    },
                     "employeeId": {
                         "type": "string",
                         "description": "The employee identifier assigned to the user by the organisation.\n"
+                    },
+                    "employeeType": {
+                        "type": "string",
+                        "description": "Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.\n"
                     },
                     "externalUserState": {
                         "type": "string",
@@ -6410,11 +6474,14 @@
                     "city",
                     "companyName",
                     "consentProvidedForMinor",
+                    "costCenter",
                     "country",
                     "creationType",
                     "department",
                     "displayName",
+                    "division",
                     "employeeId",
+                    "employeeType",
                     "externalUserState",
                     "faxNumber",
                     "givenName",

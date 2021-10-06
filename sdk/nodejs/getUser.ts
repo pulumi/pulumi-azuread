@@ -89,6 +89,10 @@ export interface GetUserResult {
      */
     readonly consentProvidedForMinor: string;
     /**
+     * The cost center associated with the user.
+     */
+    readonly costCenter: string;
+    /**
      * The country/region in which the user is located, e.g. `US` or `UK`.
      */
     readonly country: string;
@@ -105,9 +109,17 @@ export interface GetUserResult {
      */
     readonly displayName: string;
     /**
+     * The name of the division in which the user works.
+     */
+    readonly division: string;
+    /**
      * The employee identifier assigned to the user by the organisation.
      */
     readonly employeeId: string;
+    /**
+     * Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
+     */
+    readonly employeeType: string;
     /**
      * For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      */
