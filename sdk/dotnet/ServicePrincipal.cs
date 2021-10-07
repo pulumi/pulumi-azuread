@@ -232,7 +232,7 @@ namespace Pulumi.AzureAD
         public Output<string?> LoginUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        /// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         /// </summary>
         [Output("logoutUrl")]
         public Output<string> LogoutUrl { get; private set; } = null!;
@@ -591,7 +591,7 @@ namespace Pulumi.AzureAD
         public Input<string>? LoginUrl { get; set; }
 
         /// <summary>
-        /// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        /// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         /// </summary>
         [Input("logoutUrl")]
         public Input<string>? LogoutUrl { get; set; }

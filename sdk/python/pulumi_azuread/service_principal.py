@@ -288,7 +288,7 @@ class _ServicePrincipalState:
         :param pulumi.Input[Sequence[pulumi.Input['ServicePrincipalFeatureArgs']]] features: A `features` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
-        :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
@@ -510,7 +510,7 @@ class _ServicePrincipalState:
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         """
         return pulumi.get(self, "logout_url")
 
@@ -1042,7 +1042,7 @@ class ServicePrincipal(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServicePrincipalFeatureArgs']]]] features: A `features` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[str] homepage_url: Home page or landing page of the associated application.
         :param pulumi.Input[str] login_url: The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
-        :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        :param pulumi.Input[str] logout_url: The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         :param pulumi.Input[str] notes: A free text field to capture information about the service principal, typically used for operational purposes.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] notification_email_addresses: A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
@@ -1193,7 +1193,7 @@ class ServicePrincipal(pulumi.CustomResource):
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> pulumi.Output[str]:
         """
-        The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+        The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
         """
         return pulumi.get(self, "logout_url")
 

@@ -110,7 +110,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly department!: pulumi.Output<string | undefined>;
     /**
-     * Whether the users password is exempt from expiring. Defaults to `false`.
+     * Whether the user's password is exempt from expiring. Defaults to `false`.
      */
     public readonly disablePasswordExpiration!: pulumi.Output<boolean | undefined>;
     /**
@@ -426,7 +426,7 @@ export interface UserState {
      */
     department?: pulumi.Input<string>;
     /**
-     * Whether the users password is exempt from expiring. Defaults to `false`.
+     * Whether the user's password is exempt from expiring. Defaults to `false`.
      */
     disablePasswordExpiration?: pulumi.Input<boolean>;
     /**
@@ -612,7 +612,7 @@ export interface UserArgs {
      */
     department?: pulumi.Input<string>;
     /**
-     * Whether the users password is exempt from expiring. Defaults to `false`.
+     * Whether the user's password is exempt from expiring. Defaults to `false`.
      */
     disablePasswordExpiration?: pulumi.Input<boolean>;
     /**

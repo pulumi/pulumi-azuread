@@ -120,7 +120,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Department { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the users password is exempt from expiring. Defaults to `false`.
+        /// Whether the user's password is exempt from expiring. Defaults to `false`.
         /// </summary>
         [Output("disablePasswordExpiration")]
         public Output<bool?> DisablePasswordExpiration { get; private set; } = null!;
@@ -442,7 +442,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// Whether the users password is exempt from expiring. Defaults to `false`.
+        /// Whether the user's password is exempt from expiring. Defaults to `false`.
         /// </summary>
         [Input("disablePasswordExpiration")]
         public Input<bool>? DisablePasswordExpiration { get; set; }
@@ -677,7 +677,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// Whether the users password is exempt from expiring. Defaults to `false`.
+        /// Whether the user's password is exempt from expiring. Defaults to `false`.
         /// </summary>
         [Input("disablePasswordExpiration")]
         public Input<bool>? DisablePasswordExpiration { get; set; }

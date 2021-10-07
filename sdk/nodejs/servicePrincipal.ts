@@ -177,7 +177,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public readonly loginUrl!: pulumi.Output<string | undefined>;
     /**
-     * The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+     * The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
      */
     public /*out*/ readonly logoutUrl!: pulumi.Output<string>;
     /**
@@ -376,7 +376,7 @@ export interface ServicePrincipalState {
      */
     loginUrl?: pulumi.Input<string>;
     /**
-     * The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+     * The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
      */
     logoutUrl?: pulumi.Input<string>;
     /**

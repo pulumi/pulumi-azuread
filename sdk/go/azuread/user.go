@@ -79,7 +79,7 @@ type User struct {
 	CreationType pulumi.StringOutput `pulumi:"creationType"`
 	// The name for the department in which the user works.
 	Department pulumi.StringPtrOutput `pulumi:"department"`
-	// Whether the users password is exempt from expiring. Defaults to `false`.
+	// Whether the user's password is exempt from expiring. Defaults to `false`.
 	DisablePasswordExpiration pulumi.BoolPtrOutput `pulumi:"disablePasswordExpiration"`
 	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
 	DisableStrongPassword pulumi.BoolPtrOutput `pulumi:"disableStrongPassword"`
@@ -210,7 +210,7 @@ type userState struct {
 	CreationType *string `pulumi:"creationType"`
 	// The name for the department in which the user works.
 	Department *string `pulumi:"department"`
-	// Whether the users password is exempt from expiring. Defaults to `false`.
+	// Whether the user's password is exempt from expiring. Defaults to `false`.
 	DisablePasswordExpiration *bool `pulumi:"disablePasswordExpiration"`
 	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
 	DisableStrongPassword *bool `pulumi:"disableStrongPassword"`
@@ -307,7 +307,7 @@ type UserState struct {
 	CreationType pulumi.StringPtrInput
 	// The name for the department in which the user works.
 	Department pulumi.StringPtrInput
-	// Whether the users password is exempt from expiring. Defaults to `false`.
+	// Whether the user's password is exempt from expiring. Defaults to `false`.
 	DisablePasswordExpiration pulumi.BoolPtrInput
 	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
 	DisableStrongPassword pulumi.BoolPtrInput
@@ -404,7 +404,7 @@ type userArgs struct {
 	Country *string `pulumi:"country"`
 	// The name for the department in which the user works.
 	Department *string `pulumi:"department"`
-	// Whether the users password is exempt from expiring. Defaults to `false`.
+	// Whether the user's password is exempt from expiring. Defaults to `false`.
 	DisablePasswordExpiration *bool `pulumi:"disablePasswordExpiration"`
 	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
 	DisableStrongPassword *bool `pulumi:"disableStrongPassword"`
@@ -476,7 +476,7 @@ type UserArgs struct {
 	Country pulumi.StringPtrInput
 	// The name for the department in which the user works.
 	Department pulumi.StringPtrInput
-	// Whether the users password is exempt from expiring. Defaults to `false`.
+	// Whether the user's password is exempt from expiring. Defaults to `false`.
 	DisablePasswordExpiration pulumi.BoolPtrInput
 	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
 	DisableStrongPassword pulumi.BoolPtrInput
