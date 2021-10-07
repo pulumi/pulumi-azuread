@@ -2,9 +2,12 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade to v2.6.0 of the AzureAD Terraform Provider
+_(none)_
 
 ---
+
+## 5.5.0 (2021-10-07)
+* Upgrade to v2.6.0 of the AzureAD Terraform Provider
 
 ## 5.4.0 (2021-10-06)
 * Upgrade to v2.5.0 of the AzureAD Terraform Provider
