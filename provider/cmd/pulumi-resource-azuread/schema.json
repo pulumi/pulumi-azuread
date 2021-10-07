@@ -4187,7 +4187,7 @@
                 },
                 "logoutUrl": {
                     "type": "string",
-                    "description": "The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.\n"
+                    "description": "The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.\n"
                 },
                 "notes": {
                     "type": "string",
@@ -4431,7 +4431,7 @@
                     },
                     "logoutUrl": {
                         "type": "string",
-                        "description": "The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.\n"
+                        "description": "The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.\n"
                     },
                     "notes": {
                         "type": "string",
@@ -4787,7 +4787,7 @@
                 },
                 "disablePasswordExpiration": {
                     "type": "boolean",
-                    "description": "Whether the users password is exempt from expiring. Defaults to `false`.\n"
+                    "description": "Whether the user's password is exempt from expiring. Defaults to `false`.\n"
                 },
                 "disableStrongPassword": {
                     "type": "boolean",
@@ -5003,7 +5003,7 @@
                 },
                 "disablePasswordExpiration": {
                     "type": "boolean",
-                    "description": "Whether the users password is exempt from expiring. Defaults to `false`.\n"
+                    "description": "Whether the user's password is exempt from expiring. Defaults to `false`.\n"
                 },
                 "disableStrongPassword": {
                     "type": "boolean",
@@ -5161,7 +5161,7 @@
                     },
                     "disablePasswordExpiration": {
                         "type": "boolean",
-                        "description": "Whether the users password is exempt from expiring. Defaults to `false`.\n"
+                        "description": "Whether the user's password is exempt from expiring. Defaults to `false`.\n"
                     },
                     "disableStrongPassword": {
                         "type": "boolean",

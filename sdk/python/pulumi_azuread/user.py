@@ -60,7 +60,7 @@ class UserArgs:
         :param pulumi.Input[str] cost_center: The cost center associated with the user.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
-        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] division: The name of the division in which the user works.
         :param pulumi.Input[str] employee_id: The employee identifier assigned to the user by the organisation.
@@ -287,7 +287,7 @@ class UserArgs:
     @pulumi.getter(name="disablePasswordExpiration")
     def disable_password_expiration(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the users password is exempt from expiring. Defaults to `false`.
+        Whether the user's password is exempt from expiring. Defaults to `false`.
         """
         return pulumi.get(self, "disable_password_expiration")
 
@@ -623,7 +623,7 @@ class _UserState:
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
-        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] division: The name of the division in which the user works.
@@ -891,7 +891,7 @@ class _UserState:
     @pulumi.getter(name="disablePasswordExpiration")
     def disable_password_expiration(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the users password is exempt from expiring. Defaults to `false`.
+        Whether the user's password is exempt from expiring. Defaults to `false`.
         """
         return pulumi.get(self, "disable_password_expiration")
 
@@ -1403,7 +1403,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] cost_center: The cost center associated with the user.
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
-        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] division: The name of the division in which the user works.
@@ -1654,7 +1654,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
-        :param pulumi.Input[bool] disable_password_expiration: Whether the users password is exempt from expiring. Defaults to `false`.
+        :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
         :param pulumi.Input[str] display_name: The name to display in the address book for the user.
         :param pulumi.Input[str] division: The name of the division in which the user works.
@@ -1836,7 +1836,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter(name="disablePasswordExpiration")
     def disable_password_expiration(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the users password is exempt from expiring. Defaults to `false`.
+        Whether the user's password is exempt from expiring. Defaults to `false`.
         """
         return pulumi.get(self, "disable_password_expiration")
 

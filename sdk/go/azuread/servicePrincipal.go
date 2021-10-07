@@ -211,7 +211,7 @@ type ServicePrincipal struct {
 	HomepageUrl pulumi.StringOutput `pulumi:"homepageUrl"`
 	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
 	LoginUrl pulumi.StringPtrOutput `pulumi:"loginUrl"`
-	// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
 	LogoutUrl pulumi.StringOutput `pulumi:"logoutUrl"`
 	// A free text field to capture information about the service principal, typically used for operational purposes.
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
@@ -301,7 +301,7 @@ type servicePrincipalState struct {
 	HomepageUrl *string `pulumi:"homepageUrl"`
 	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
 	LoginUrl *string `pulumi:"loginUrl"`
-	// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
 	LogoutUrl *string `pulumi:"logoutUrl"`
 	// A free text field to capture information about the service principal, typically used for operational purposes.
 	Notes *string `pulumi:"notes"`
@@ -360,7 +360,7 @@ type ServicePrincipalState struct {
 	HomepageUrl pulumi.StringPtrInput
 	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
 	LoginUrl pulumi.StringPtrInput
-	// The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
 	LogoutUrl pulumi.StringPtrInput
 	// A free text field to capture information about the service principal, typically used for operational purposes.
 	Notes pulumi.StringPtrInput
