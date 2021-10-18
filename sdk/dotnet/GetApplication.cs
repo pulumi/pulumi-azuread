@@ -115,6 +115,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly bool FallbackPublicClientEnabled;
         /// <summary>
+        /// A `features` block as described below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetApplicationFeatureTagResult> FeatureTags;
+        /// <summary>
         /// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
         /// </summary>
         public readonly ImmutableArray<string> GroupMembershipClaims;
@@ -183,6 +187,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string SupportUrl;
         /// <summary>
+        /// A list of tags applied to the application.
+        /// </summary>
+        public readonly ImmutableArray<string> Tags;
+        /// <summary>
         /// URL of the application's terms of service statement.
         /// </summary>
         public readonly string TermsOfServiceUrl;
@@ -208,6 +216,8 @@ namespace Pulumi.AzureAD
             string displayName,
 
             bool fallbackPublicClientEnabled,
+
+            ImmutableArray<Outputs.GetApplicationFeatureTagResult> featureTags,
 
             ImmutableArray<string> groupMembershipClaims,
 
@@ -243,6 +253,8 @@ namespace Pulumi.AzureAD
 
             string supportUrl,
 
+            ImmutableArray<string> tags,
+
             string termsOfServiceUrl,
 
             ImmutableArray<Outputs.GetApplicationWebResult> webs)
@@ -255,6 +267,7 @@ namespace Pulumi.AzureAD
             DisabledByMicrosoft = disabledByMicrosoft;
             DisplayName = displayName;
             FallbackPublicClientEnabled = fallbackPublicClientEnabled;
+            FeatureTags = featureTags;
             GroupMembershipClaims = groupMembershipClaims;
             Id = id;
             IdentifierUris = identifierUris;
@@ -272,6 +285,7 @@ namespace Pulumi.AzureAD
             SignInAudience = signInAudience;
             SinglePageApplications = singlePageApplications;
             SupportUrl = supportUrl;
+            Tags = tags;
             TermsOfServiceUrl = termsOfServiceUrl;
             Webs = webs;
         }

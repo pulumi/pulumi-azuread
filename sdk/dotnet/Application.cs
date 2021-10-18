@@ -70,6 +70,12 @@ namespace Pulumi.AzureAD
         public Output<bool?> FallbackPublicClientEnabled { get; private set; } = null!;
 
         /// <summary>
+        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        [Output("featureTags")]
+        public Output<ImmutableArray<Outputs.ApplicationFeatureTag>> FeatureTags { get; private set; } = null!;
+
+        /// <summary>
         /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         /// </summary>
         [Output("groupMembershipClaims")]
@@ -178,6 +184,12 @@ namespace Pulumi.AzureAD
         public Output<string?> SupportUrl { get; private set; } = null!;
 
         /// <summary>
+        /// A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         /// </summary>
         [Output("templateId")]
@@ -276,6 +288,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("fallbackPublicClientEnabled")]
         public Input<bool>? FallbackPublicClientEnabled { get; set; }
+
+        [Input("featureTags")]
+        private InputList<Inputs.ApplicationFeatureTagArgs>? _featureTags;
+
+        /// <summary>
+        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        public InputList<Inputs.ApplicationFeatureTagArgs> FeatureTags
+        {
+            get => _featureTags ?? (_featureTags = new InputList<Inputs.ApplicationFeatureTagArgs>());
+            set => _featureTags = value;
+        }
 
         [Input("groupMembershipClaims")]
         private InputList<string>? _groupMembershipClaims;
@@ -385,6 +409,18 @@ namespace Pulumi.AzureAD
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
 
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
+
         /// <summary>
         /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         /// </summary>
@@ -469,6 +505,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("fallbackPublicClientEnabled")]
         public Input<bool>? FallbackPublicClientEnabled { get; set; }
+
+        [Input("featureTags")]
+        private InputList<Inputs.ApplicationFeatureTagGetArgs>? _featureTags;
+
+        /// <summary>
+        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        public InputList<Inputs.ApplicationFeatureTagGetArgs> FeatureTags
+        {
+            get => _featureTags ?? (_featureTags = new InputList<Inputs.ApplicationFeatureTagGetArgs>());
+            set => _featureTags = value;
+        }
 
         [Input("groupMembershipClaims")]
         private InputList<string>? _groupMembershipClaims;
@@ -607,6 +655,18 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
+
+        [Input("tags")]
+        private InputList<string>? _tags;
+
+        /// <summary>
+        /// A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        /// </summary>
+        public InputList<string> Tags
+        {
+            get => _tags ?? (_tags = new InputList<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.

@@ -85,6 +85,25 @@ export interface ApplicationAppRole {
     value?: string;
 }
 
+export interface ApplicationFeatureTag {
+    /**
+     * Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+     */
+    customSingleSignOn?: boolean;
+    /**
+     * Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+     */
+    enterprise?: boolean;
+    /**
+     * Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+     */
+    gallery?: boolean;
+    /**
+     * Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+     */
+    hide?: boolean;
+}
+
 export interface ApplicationOptionalClaims {
     /**
      * One or more `accessToken` blocks as documented below.
@@ -434,6 +453,25 @@ export interface GetApplicationAppRole {
     value: string;
 }
 
+export interface GetApplicationFeatureTag {
+    /**
+     * Whether this application represents a custom SAML application for linked service principals.
+     */
+    customSingleSignOn?: boolean;
+    /**
+     * Whether this application represents an Enterprise Application for linked service principals.
+     */
+    enterprise?: boolean;
+    /**
+     * Whether this application represents a gallery application for linked service principals.
+     */
+    gallery?: boolean;
+    /**
+     * Whether this app is visible to users in My Apps and Office 365 Launcher.
+     */
+    hide?: boolean;
+}
+
 export interface GetApplicationOptionalClaim {
     /**
      * One or more `accessToken` blocks as documented below.
@@ -653,6 +691,13 @@ export interface GetServicePrincipalFeature {
     visibleToUsers: boolean;
 }
 
+export interface GetServicePrincipalFeatureTag {
+    customSingleSignOn: boolean;
+    enterprise: boolean;
+    gallery: boolean;
+    hide: boolean;
+}
+
 export interface GetServicePrincipalOauth2PermissionScope {
     /**
      * Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -850,22 +895,29 @@ export interface ServicePrincipalAppRole {
 }
 
 export interface ServicePrincipalFeature {
-    /**
-     * Whether this service principal represents a custom SAML application. Defaults to `false`.
-     */
     customSingleSignOnApp?: boolean;
-    /**
-     * Whether this service principal represents an Enterprise Application. Defaults to `false`.
-     */
     enterpriseApplication?: boolean;
-    /**
-     * Whether this service principal represents a gallery application. Defaults to `false`.
-     */
     galleryApplication?: boolean;
-    /**
-     * Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
-     */
     visibleToUsers?: boolean;
+}
+
+export interface ServicePrincipalFeatureTag {
+    /**
+     * Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+     */
+    customSingleSignOn?: boolean;
+    /**
+     * Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+     */
+    enterprise?: boolean;
+    /**
+     * Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+     */
+    gallery?: boolean;
+    /**
+     * Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+     */
+    hide?: boolean;
 }
 
 export interface ServicePrincipalOauth2PermissionScope {

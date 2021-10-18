@@ -53,9 +53,9 @@ import * as utilities from "./utilities";
  *     applicationId: exampleApplication.applicationId,
  *     appRoleAssignmentRequired: false,
  *     owners: [current.then(current => current.objectId)],
- *     features: [{
- *         enterpriseApplication: true,
- *         galleryApplication: true,
+ *     featureTags: [{
+ *         enterprise: true,
+ *         gallery: true,
  *     }],
  * });
  * ```
@@ -165,7 +165,13 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
-     * A `features` block as described below. Cannot be used together with the `tags` property.
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     */
+    public readonly featureTags!: pulumi.Output<outputs.ServicePrincipalFeatureTag[]>;
+    /**
+     * Block of features to configure for this service principal using tags
+     *
+     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
      */
     public readonly features!: pulumi.Output<outputs.ServicePrincipalFeature[]>;
     /**
@@ -229,7 +235,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly signInAudience!: pulumi.Output<string>;
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `features` block.
+     * A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
@@ -263,6 +269,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["featureTags"] = state ? state.featureTags : undefined;
             inputs["features"] = state ? state.features : undefined;
             inputs["homepageUrl"] = state ? state.homepageUrl : undefined;
             inputs["loginUrl"] = state ? state.loginUrl : undefined;
@@ -292,6 +299,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
             inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
             inputs["applicationId"] = args ? args.applicationId : undefined;
             inputs["description"] = args ? args.description : undefined;
+            inputs["featureTags"] = args ? args.featureTags : undefined;
             inputs["features"] = args ? args.features : undefined;
             inputs["loginUrl"] = args ? args.loginUrl : undefined;
             inputs["notes"] = args ? args.notes : undefined;
@@ -364,7 +372,13 @@ export interface ServicePrincipalState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * A `features` block as described below. Cannot be used together with the `tags` property.
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     */
+    featureTags?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeatureTag>[]>;
+    /**
+     * Block of features to configure for this service principal using tags
+     *
+     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
      */
     features?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeature>[]>;
     /**
@@ -428,7 +442,7 @@ export interface ServicePrincipalState {
      */
     signInAudience?: pulumi.Input<string>;
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `features` block.
+     * A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -466,7 +480,13 @@ export interface ServicePrincipalArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A `features` block as described below. Cannot be used together with the `tags` property.
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     */
+    featureTags?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeatureTag>[]>;
+    /**
+     * Block of features to configure for this service principal using tags
+     *
+     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
      */
     features?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeature>[]>;
     /**
@@ -494,7 +514,7 @@ export interface ServicePrincipalArgs {
      */
     samlSingleSignOn?: pulumi.Input<inputs.ServicePrincipalSamlSingleSignOn>;
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `features` block.
+     * A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

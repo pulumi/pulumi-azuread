@@ -99,6 +99,10 @@ export interface GetApplicationResult {
      */
     readonly fallbackPublicClientEnabled: boolean;
     /**
+     * A `features` block as described below.
+     */
+    readonly featureTags: outputs.GetApplicationFeatureTag[];
+    /**
      * The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
      */
     readonly groupMembershipClaims: string[];
@@ -166,6 +170,10 @@ export interface GetApplicationResult {
      * URL of the application's support page.
      */
     readonly supportUrl: string;
+    /**
+     * A list of tags applied to the application.
+     */
+    readonly tags: string[];
     /**
      * URL of the application's terms of service statement.
      */

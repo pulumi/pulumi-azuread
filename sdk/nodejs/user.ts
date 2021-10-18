@@ -166,6 +166,10 @@ export class User extends pulumi.CustomResource {
      */
     public readonly mailNickname!: pulumi.Output<string>;
     /**
+     * The object ID of the user's manager.
+     */
+    public readonly managerId!: pulumi.Output<string | undefined>;
+    /**
      * The primary cellular telephone number for the user.
      */
     public readonly mobilePhone!: pulumi.Output<string | undefined>;
@@ -292,6 +296,7 @@ export class User extends pulumi.CustomResource {
             inputs["jobTitle"] = state ? state.jobTitle : undefined;
             inputs["mail"] = state ? state.mail : undefined;
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
+            inputs["managerId"] = state ? state.managerId : undefined;
             inputs["mobilePhone"] = state ? state.mobilePhone : undefined;
             inputs["objectId"] = state ? state.objectId : undefined;
             inputs["officeLocation"] = state ? state.officeLocation : undefined;
@@ -343,6 +348,7 @@ export class User extends pulumi.CustomResource {
             inputs["jobTitle"] = args ? args.jobTitle : undefined;
             inputs["mail"] = args ? args.mail : undefined;
             inputs["mailNickname"] = args ? args.mailNickname : undefined;
+            inputs["managerId"] = args ? args.managerId : undefined;
             inputs["mobilePhone"] = args ? args.mobilePhone : undefined;
             inputs["officeLocation"] = args ? args.officeLocation : undefined;
             inputs["onpremisesImmutableId"] = args ? args.onpremisesImmutableId : undefined;
@@ -481,6 +487,10 @@ export interface UserState {
      * The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
      */
     mailNickname?: pulumi.Input<string>;
+    /**
+     * The object ID of the user's manager.
+     */
+    managerId?: pulumi.Input<string>;
     /**
      * The primary cellular telephone number for the user.
      */
@@ -659,6 +669,10 @@ export interface UserArgs {
      * The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
      */
     mailNickname?: pulumi.Input<string>;
+    /**
+     * The object ID of the user's manager.
+     */
+    managerId?: pulumi.Input<string>;
     /**
      * The primary cellular telephone number for the user.
      */

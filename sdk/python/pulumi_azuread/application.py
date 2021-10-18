@@ -20,6 +20,7 @@ class ApplicationArgs:
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
@@ -34,6 +35,7 @@ class ApplicationArgs:
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
@@ -44,6 +46,7 @@ class ApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -58,6 +61,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
@@ -71,6 +75,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
         if fallback_public_client_enabled is not None:
             pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
+        if feature_tags is not None:
+            pulumi.set(__self__, "feature_tags", feature_tags)
         if group_membership_claims is not None:
             pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if identifier_uris is not None:
@@ -99,6 +105,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "single_page_application", single_page_application)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template_id is not None:
             pulumi.set(__self__, "template_id", template_id)
         if terms_of_service_url is not None:
@@ -165,6 +173,18 @@ class ApplicationArgs:
     @fallback_public_client_enabled.setter
     def fallback_public_client_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "fallback_public_client_enabled", value)
+
+    @property
+    @pulumi.getter(name="featureTags")
+    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]:
+        """
+        A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        """
+        return pulumi.get(self, "feature_tags")
+
+    @feature_tags.setter
+    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]):
+        pulumi.set(self, "feature_tags", value)
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
@@ -335,6 +355,18 @@ class ApplicationArgs:
         pulumi.set(self, "support_url", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -382,6 +414,7 @@ class _ApplicationState:
                  disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
@@ -400,6 +433,7 @@ class _ApplicationState:
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input['ApplicationWebArgs']] = None):
@@ -413,6 +447,7 @@ class _ApplicationState:
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -431,6 +466,7 @@ class _ApplicationState:
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
@@ -451,6 +487,8 @@ class _ApplicationState:
             pulumi.set(__self__, "display_name", display_name)
         if fallback_public_client_enabled is not None:
             pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
+        if feature_tags is not None:
+            pulumi.set(__self__, "feature_tags", feature_tags)
         if group_membership_claims is not None:
             pulumi.set(__self__, "group_membership_claims", group_membership_claims)
         if identifier_uris is not None:
@@ -487,6 +525,8 @@ class _ApplicationState:
             pulumi.set(__self__, "single_page_application", single_page_application)
         if support_url is not None:
             pulumi.set(__self__, "support_url", support_url)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if template_id is not None:
             pulumi.set(__self__, "template_id", template_id)
         if terms_of_service_url is not None:
@@ -589,6 +629,18 @@ class _ApplicationState:
     @fallback_public_client_enabled.setter
     def fallback_public_client_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "fallback_public_client_enabled", value)
+
+    @property
+    @pulumi.getter(name="featureTags")
+    def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]:
+        """
+        A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        """
+        return pulumi.get(self, "feature_tags")
+
+    @feature_tags.setter
+    def feature_tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]):
+        pulumi.set(self, "feature_tags", value)
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
@@ -807,6 +859,18 @@ class _ApplicationState:
         pulumi.set(self, "support_url", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -853,6 +917,7 @@ class Application(pulumi.CustomResource):
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
@@ -867,6 +932,7 @@ class Application(pulumi.CustomResource):
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
@@ -887,6 +953,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -901,6 +968,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
@@ -940,6 +1008,7 @@ class Application(pulumi.CustomResource):
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+                 feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
                  group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
@@ -954,6 +1023,7 @@ class Application(pulumi.CustomResource):
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  template_id: Optional[pulumi.Input[str]] = None,
                  terms_of_service_url: Optional[pulumi.Input[str]] = None,
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
@@ -976,6 +1046,7 @@ class Application(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["fallback_public_client_enabled"] = fallback_public_client_enabled
+            __props__.__dict__["feature_tags"] = feature_tags
             __props__.__dict__["group_membership_claims"] = group_membership_claims
             __props__.__dict__["identifier_uris"] = identifier_uris
             __props__.__dict__["logo_image"] = logo_image
@@ -990,6 +1061,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["sign_in_audience"] = sign_in_audience
             __props__.__dict__["single_page_application"] = single_page_application
             __props__.__dict__["support_url"] = support_url
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["template_id"] = template_id
             __props__.__dict__["terms_of_service_url"] = terms_of_service_url
             __props__.__dict__["web"] = web
@@ -1018,6 +1090,7 @@ class Application(pulumi.CustomResource):
             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
+            feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]]] = None,
             group_membership_claims: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             logo_image: Optional[pulumi.Input[str]] = None,
@@ -1036,6 +1109,7 @@ class Application(pulumi.CustomResource):
             sign_in_audience: Optional[pulumi.Input[str]] = None,
             single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             template_id: Optional[pulumi.Input[str]] = None,
             terms_of_service_url: Optional[pulumi.Input[str]] = None,
             web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None) -> 'Application':
@@ -1054,6 +1128,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -1072,6 +1147,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
@@ -1088,6 +1164,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["disabled_by_microsoft"] = disabled_by_microsoft
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["fallback_public_client_enabled"] = fallback_public_client_enabled
+        __props__.__dict__["feature_tags"] = feature_tags
         __props__.__dict__["group_membership_claims"] = group_membership_claims
         __props__.__dict__["identifier_uris"] = identifier_uris
         __props__.__dict__["logo_image"] = logo_image
@@ -1106,6 +1183,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["sign_in_audience"] = sign_in_audience
         __props__.__dict__["single_page_application"] = single_page_application
         __props__.__dict__["support_url"] = support_url
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["template_id"] = template_id
         __props__.__dict__["terms_of_service_url"] = terms_of_service_url
         __props__.__dict__["web"] = web
@@ -1174,6 +1252,14 @@ class Application(pulumi.CustomResource):
         Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         """
         return pulumi.get(self, "fallback_public_client_enabled")
+
+    @property
+    @pulumi.getter(name="featureTags")
+    def feature_tags(self) -> pulumi.Output[Sequence['outputs.ApplicationFeatureTag']]:
+        """
+        A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        """
+        return pulumi.get(self, "feature_tags")
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
@@ -1318,6 +1404,14 @@ class Application(pulumi.CustomResource):
         URL of the application's support page.
         """
         return pulumi.get(self, "support_url")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Sequence[str]]:
+        """
+        A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="templateId")

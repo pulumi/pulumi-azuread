@@ -85,6 +85,25 @@ export interface ApplicationAppRole {
     value?: pulumi.Input<string>;
 }
 
+export interface ApplicationFeatureTag {
+    /**
+     * Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+     */
+    customSingleSignOn?: pulumi.Input<boolean>;
+    /**
+     * Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+     */
+    enterprise?: pulumi.Input<boolean>;
+    /**
+     * Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+     */
+    gallery?: pulumi.Input<boolean>;
+    /**
+     * Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+     */
+    hide?: pulumi.Input<boolean>;
+}
+
 export interface ApplicationOptionalClaims {
     /**
      * One or more `accessToken` blocks as documented below.
@@ -421,22 +440,29 @@ export interface ServicePrincipalAppRole {
 }
 
 export interface ServicePrincipalFeature {
-    /**
-     * Whether this service principal represents a custom SAML application. Defaults to `false`.
-     */
     customSingleSignOnApp?: pulumi.Input<boolean>;
-    /**
-     * Whether this service principal represents an Enterprise Application. Defaults to `false`.
-     */
     enterpriseApplication?: pulumi.Input<boolean>;
-    /**
-     * Whether this service principal represents a gallery application. Defaults to `false`.
-     */
     galleryApplication?: pulumi.Input<boolean>;
-    /**
-     * Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
-     */
     visibleToUsers?: pulumi.Input<boolean>;
+}
+
+export interface ServicePrincipalFeatureTag {
+    /**
+     * Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+     */
+    customSingleSignOn?: pulumi.Input<boolean>;
+    /**
+     * Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+     */
+    enterprise?: pulumi.Input<boolean>;
+    /**
+     * Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+     */
+    gallery?: pulumi.Input<boolean>;
+    /**
+     * Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+     */
+    hide?: pulumi.Input<boolean>;
 }
 
 export interface ServicePrincipalOauth2PermissionScope {
@@ -480,4 +506,3 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: pulumi.Input<string>;
 }
-

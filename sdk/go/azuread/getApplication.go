@@ -81,6 +81,8 @@ type LookupApplicationResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The fallback application type as public client, such as an installed application running on a mobile device.
 	FallbackPublicClientEnabled bool `pulumi:"fallbackPublicClientEnabled"`
+	// A `features` block as described below.
+	FeatureTags []GetApplicationFeatureTag `pulumi:"featureTags"`
 	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// The provider-assigned unique ID for this managed resource.
@@ -115,6 +117,8 @@ type LookupApplicationResult struct {
 	SinglePageApplications []GetApplicationSinglePageApplication `pulumi:"singlePageApplications"`
 	// URL of the application's support page.
 	SupportUrl string `pulumi:"supportUrl"`
+	// A list of tags applied to the application.
+	Tags []string `pulumi:"tags"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl string `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below.
@@ -197,6 +201,11 @@ func (o LookupApplicationResultOutput) DisplayName() pulumi.StringOutput {
 // The fallback application type as public client, such as an installed application running on a mobile device.
 func (o LookupApplicationResultOutput) FallbackPublicClientEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationResult) bool { return v.FallbackPublicClientEnabled }).(pulumi.BoolOutput)
+}
+
+// A `features` block as described below.
+func (o LookupApplicationResultOutput) FeatureTags() GetApplicationFeatureTagArrayOutput {
+	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationFeatureTag { return v.FeatureTags }).(GetApplicationFeatureTagArrayOutput)
 }
 
 // The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
@@ -284,6 +293,11 @@ func (o LookupApplicationResultOutput) SinglePageApplications() GetApplicationSi
 // URL of the application's support page.
 func (o LookupApplicationResultOutput) SupportUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.SupportUrl }).(pulumi.StringOutput)
+}
+
+// A list of tags applied to the application.
+func (o LookupApplicationResultOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupApplicationResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
 // URL of the application's terms of service statement.

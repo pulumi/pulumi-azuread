@@ -84,12 +84,12 @@ namespace Pulumi.AzureAD
     ///             {
     ///                 current.Apply(current =&gt; current.ObjectId),
     ///             },
-    ///             Features = 
+    ///             FeatureTags = 
     ///             {
-    ///                 new AzureAD.Inputs.ServicePrincipalFeatureArgs
+    ///                 new AzureAD.Inputs.ServicePrincipalFeatureTagArgs
     ///                 {
-    ///                     EnterpriseApplication = true,
-    ///                     GalleryApplication = true,
+    ///                     Enterprise = true,
+    ///                     Gallery = true,
     ///                 },
     ///             },
     ///         });
@@ -214,7 +214,13 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A `features` block as described below. Cannot be used together with the `tags` property.
+        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        [Output("featureTags")]
+        public Output<ImmutableArray<Outputs.ServicePrincipalFeatureTag>> FeatureTags { get; private set; } = null!;
+
+        /// <summary>
+        /// Block of features to configure for this service principal using tags
         /// </summary>
         [Output("features")]
         public Output<ImmutableArray<Outputs.ServicePrincipalFeature>> Features { get; private set; } = null!;
@@ -310,7 +316,7 @@ namespace Pulumi.AzureAD
         public Output<string> SignInAudience { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the service principal. Cannot be used together with the `features` block.
+        /// A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -409,12 +415,25 @@ namespace Pulumi.AzureAD
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("featureTags")]
+        private InputList<Inputs.ServicePrincipalFeatureTagArgs>? _featureTags;
+
+        /// <summary>
+        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        public InputList<Inputs.ServicePrincipalFeatureTagArgs> FeatureTags
+        {
+            get => _featureTags ?? (_featureTags = new InputList<Inputs.ServicePrincipalFeatureTagArgs>());
+            set => _featureTags = value;
+        }
+
         [Input("features")]
         private InputList<Inputs.ServicePrincipalFeatureArgs>? _features;
 
         /// <summary>
-        /// A `features` block as described below. Cannot be used together with the `tags` property.
+        /// Block of features to configure for this service principal using tags
         /// </summary>
+        [Obsolete(@"This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider")]
         public InputList<Inputs.ServicePrincipalFeatureArgs> Features
         {
             get => _features ?? (_features = new InputList<Inputs.ServicePrincipalFeatureArgs>());
@@ -473,7 +492,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal. Cannot be used together with the `features` block.
+        /// A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
         /// </summary>
         public InputList<string> Tags
         {
@@ -566,12 +585,25 @@ namespace Pulumi.AzureAD
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        [Input("featureTags")]
+        private InputList<Inputs.ServicePrincipalFeatureTagGetArgs>? _featureTags;
+
+        /// <summary>
+        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+        /// </summary>
+        public InputList<Inputs.ServicePrincipalFeatureTagGetArgs> FeatureTags
+        {
+            get => _featureTags ?? (_featureTags = new InputList<Inputs.ServicePrincipalFeatureTagGetArgs>());
+            set => _featureTags = value;
+        }
+
         [Input("features")]
         private InputList<Inputs.ServicePrincipalFeatureGetArgs>? _features;
 
         /// <summary>
-        /// A `features` block as described below. Cannot be used together with the `tags` property.
+        /// Block of features to configure for this service principal using tags
         /// </summary>
+        [Obsolete(@"This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider")]
         public InputList<Inputs.ServicePrincipalFeatureGetArgs> Features
         {
             get => _features ?? (_features = new InputList<Inputs.ServicePrincipalFeatureGetArgs>());
@@ -708,7 +740,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal. Cannot be used together with the `features` block.
+        /// A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
         /// </summary>
         public InputList<string> Tags
         {
