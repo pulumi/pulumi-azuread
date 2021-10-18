@@ -12,6 +12,7 @@ __all__ = [
     'ApplicationApiArgs',
     'ApplicationApiOauth2PermissionScopeArgs',
     'ApplicationAppRoleArgs',
+    'ApplicationFeatureTagArgs',
     'ApplicationOptionalClaimsArgs',
     'ApplicationOptionalClaimsAccessTokenArgs',
     'ApplicationOptionalClaimsIdTokenArgs',
@@ -34,6 +35,7 @@ __all__ = [
     'NamedLocationIpArgs',
     'ServicePrincipalAppRoleArgs',
     'ServicePrincipalFeatureArgs',
+    'ServicePrincipalFeatureTagArgs',
     'ServicePrincipalOauth2PermissionScopeArgs',
     'ServicePrincipalSamlSingleSignOnArgs',
 ]
@@ -340,6 +342,77 @@ class ApplicationAppRoleArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ApplicationFeatureTagArgs:
+    def __init__(__self__, *,
+                 custom_single_sign_on: Optional[pulumi.Input[bool]] = None,
+                 enterprise: Optional[pulumi.Input[bool]] = None,
+                 gallery: Optional[pulumi.Input[bool]] = None,
+                 hide: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] custom_single_sign_on: Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        :param pulumi.Input[bool] enterprise: Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        :param pulumi.Input[bool] gallery: Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        :param pulumi.Input[bool] hide: Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        """
+        if custom_single_sign_on is not None:
+            pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
+        if enterprise is not None:
+            pulumi.set(__self__, "enterprise", enterprise)
+        if gallery is not None:
+            pulumi.set(__self__, "gallery", gallery)
+        if hide is not None:
+            pulumi.set(__self__, "hide", hide)
+
+    @property
+    @pulumi.getter(name="customSingleSignOn")
+    def custom_single_sign_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "custom_single_sign_on")
+
+    @custom_single_sign_on.setter
+    def custom_single_sign_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "custom_single_sign_on", value)
+
+    @property
+    @pulumi.getter
+    def enterprise(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "enterprise")
+
+    @enterprise.setter
+    def enterprise(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enterprise", value)
+
+    @property
+    @pulumi.getter
+    def gallery(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "gallery")
+
+    @gallery.setter
+    def gallery(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gallery", value)
+
+    @property
+    @pulumi.getter
+    def hide(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "hide")
+
+    @hide.setter
+    def hide(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide", value)
 
 
 @pulumi.input_type
@@ -1565,12 +1638,6 @@ class ServicePrincipalFeatureArgs:
                  enterprise_application: Optional[pulumi.Input[bool]] = None,
                  gallery_application: Optional[pulumi.Input[bool]] = None,
                  visible_to_users: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[bool] custom_single_sign_on_app: Whether this service principal represents a custom SAML application. Defaults to `false`.
-        :param pulumi.Input[bool] enterprise_application: Whether this service principal represents an Enterprise Application. Defaults to `false`.
-        :param pulumi.Input[bool] gallery_application: Whether this service principal represents a gallery application. Defaults to `false`.
-        :param pulumi.Input[bool] visible_to_users: Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
-        """
         if custom_single_sign_on_app is not None:
             pulumi.set(__self__, "custom_single_sign_on_app", custom_single_sign_on_app)
         if enterprise_application is not None:
@@ -1583,9 +1650,6 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="customSingleSignOnApp")
     def custom_single_sign_on_app(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this service principal represents a custom SAML application. Defaults to `false`.
-        """
         return pulumi.get(self, "custom_single_sign_on_app")
 
     @custom_single_sign_on_app.setter
@@ -1595,9 +1659,6 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="enterpriseApplication")
     def enterprise_application(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this service principal represents an Enterprise Application. Defaults to `false`.
-        """
         return pulumi.get(self, "enterprise_application")
 
     @enterprise_application.setter
@@ -1607,9 +1668,6 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="galleryApplication")
     def gallery_application(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this service principal represents a gallery application. Defaults to `false`.
-        """
         return pulumi.get(self, "gallery_application")
 
     @gallery_application.setter
@@ -1619,14 +1677,82 @@ class ServicePrincipalFeatureArgs:
     @property
     @pulumi.getter(name="visibleToUsers")
     def visible_to_users(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
-        """
         return pulumi.get(self, "visible_to_users")
 
     @visible_to_users.setter
     def visible_to_users(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "visible_to_users", value)
+
+
+@pulumi.input_type
+class ServicePrincipalFeatureTagArgs:
+    def __init__(__self__, *,
+                 custom_single_sign_on: Optional[pulumi.Input[bool]] = None,
+                 enterprise: Optional[pulumi.Input[bool]] = None,
+                 gallery: Optional[pulumi.Input[bool]] = None,
+                 hide: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] custom_single_sign_on: Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        :param pulumi.Input[bool] enterprise: Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        :param pulumi.Input[bool] gallery: Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        :param pulumi.Input[bool] hide: Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        """
+        if custom_single_sign_on is not None:
+            pulumi.set(__self__, "custom_single_sign_on", custom_single_sign_on)
+        if enterprise is not None:
+            pulumi.set(__self__, "enterprise", enterprise)
+        if gallery is not None:
+            pulumi.set(__self__, "gallery", gallery)
+        if hide is not None:
+            pulumi.set(__self__, "hide", hide)
+
+    @property
+    @pulumi.getter(name="customSingleSignOn")
+    def custom_single_sign_on(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "custom_single_sign_on")
+
+    @custom_single_sign_on.setter
+    def custom_single_sign_on(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "custom_single_sign_on", value)
+
+    @property
+    @pulumi.getter
+    def enterprise(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "enterprise")
+
+    @enterprise.setter
+    def enterprise(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enterprise", value)
+
+    @property
+    @pulumi.getter
+    def gallery(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "gallery")
+
+    @gallery.setter
+    def gallery(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "gallery", value)
+
+    @property
+    @pulumi.getter
+    def hide(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+        """
+        return pulumi.get(self, "hide")
+
+    @hide.setter
+    def hide(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide", value)
 
 
 @pulumi.input_type

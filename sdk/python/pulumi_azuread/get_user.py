@@ -20,7 +20,7 @@ class GetUserResult:
     """
     A collection of values returned by getUser.
     """
-    def __init__(__self__, account_enabled=None, age_group=None, business_phones=None, city=None, company_name=None, consent_provided_for_minor=None, cost_center=None, country=None, creation_type=None, department=None, display_name=None, division=None, employee_id=None, employee_type=None, external_user_state=None, fax_number=None, given_name=None, id=None, im_addresses=None, job_title=None, mail=None, mail_nickname=None, mobile_phone=None, object_id=None, office_location=None, onpremises_distinguished_name=None, onpremises_domain_name=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, onpremises_user_principal_name=None, other_mails=None, postal_code=None, preferred_language=None, proxy_addresses=None, show_in_address_list=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
+    def __init__(__self__, account_enabled=None, age_group=None, business_phones=None, city=None, company_name=None, consent_provided_for_minor=None, cost_center=None, country=None, creation_type=None, department=None, display_name=None, division=None, employee_id=None, employee_type=None, external_user_state=None, fax_number=None, given_name=None, id=None, im_addresses=None, job_title=None, mail=None, mail_nickname=None, manager_id=None, mobile_phone=None, object_id=None, office_location=None, onpremises_distinguished_name=None, onpremises_domain_name=None, onpremises_immutable_id=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, onpremises_user_principal_name=None, other_mails=None, postal_code=None, preferred_language=None, proxy_addresses=None, show_in_address_list=None, state=None, street_address=None, surname=None, usage_location=None, user_principal_name=None, user_type=None):
         if account_enabled and not isinstance(account_enabled, bool):
             raise TypeError("Expected argument 'account_enabled' to be a bool")
         pulumi.set(__self__, "account_enabled", account_enabled)
@@ -87,6 +87,9 @@ class GetUserResult:
         if mail_nickname and not isinstance(mail_nickname, str):
             raise TypeError("Expected argument 'mail_nickname' to be a str")
         pulumi.set(__self__, "mail_nickname", mail_nickname)
+        if manager_id and not isinstance(manager_id, str):
+            raise TypeError("Expected argument 'manager_id' to be a str")
+        pulumi.set(__self__, "manager_id", manager_id)
         if mobile_phone and not isinstance(mobile_phone, str):
             raise TypeError("Expected argument 'mobile_phone' to be a str")
         pulumi.set(__self__, "mobile_phone", mobile_phone)
@@ -328,6 +331,14 @@ class GetUserResult:
         return pulumi.get(self, "mail_nickname")
 
     @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> str:
+        """
+        The object ID of the user's manager.
+        """
+        return pulumi.get(self, "manager_id")
+
+    @property
     @pulumi.getter(name="mobilePhone")
     def mobile_phone(self) -> str:
         """
@@ -524,6 +535,7 @@ class AwaitableGetUserResult(GetUserResult):
             job_title=self.job_title,
             mail=self.mail,
             mail_nickname=self.mail_nickname,
+            manager_id=self.manager_id,
             mobile_phone=self.mobile_phone,
             object_id=self.object_id,
             office_location=self.office_location,
@@ -609,6 +621,7 @@ def get_user(mail_nickname: Optional[str] = None,
         job_title=__ret__.job_title,
         mail=__ret__.mail,
         mail_nickname=__ret__.mail_nickname,
+        manager_id=__ret__.manager_id,
         mobile_phone=__ret__.mobile_phone,
         object_id=__ret__.object_id,
         office_location=__ret__.office_location,

@@ -37,6 +37,8 @@ type Application struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled pulumi.BoolPtrOutput `pulumi:"fallbackPublicClientEnabled"`
+	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	FeatureTags ApplicationFeatureTagArrayOutput `pulumi:"featureTags"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayOutput `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -73,6 +75,8 @@ type Application struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrOutput `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
+	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
@@ -129,6 +133,8 @@ type applicationState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled *bool `pulumi:"fallbackPublicClientEnabled"`
+	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	FeatureTags []ApplicationFeatureTag `pulumi:"featureTags"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -165,6 +171,8 @@ type applicationState struct {
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
+	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
@@ -190,6 +198,8 @@ type ApplicationState struct {
 	DisplayName pulumi.StringPtrInput
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled pulumi.BoolPtrInput
+	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	FeatureTags ApplicationFeatureTagArrayInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayInput
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -226,6 +236,8 @@ type ApplicationState struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
+	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
@@ -249,6 +261,8 @@ type applicationArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled *bool `pulumi:"fallbackPublicClientEnabled"`
+	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	FeatureTags []ApplicationFeatureTag `pulumi:"featureTags"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -277,6 +291,8 @@ type applicationArgs struct {
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
+	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
@@ -297,6 +313,8 @@ type ApplicationArgs struct {
 	DisplayName pulumi.StringInput
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled pulumi.BoolPtrInput
+	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	FeatureTags ApplicationFeatureTagArrayInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayInput
 	// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
@@ -325,6 +343,8 @@ type ApplicationArgs struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
+	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.

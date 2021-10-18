@@ -155,6 +155,7 @@ namespace Pulumi.AzureAD
         /// Display name for the permission that appears in the admin consent and app assignment experiences.
         /// </summary>
         public readonly string DisplayName;
+        public readonly ImmutableArray<Outputs.GetServicePrincipalFeatureTagResult> FeatureTags;
         /// <summary>
         /// A `features` block as described below.
         /// </summary>
@@ -248,6 +249,8 @@ namespace Pulumi.AzureAD
 
             string displayName,
 
+            ImmutableArray<Outputs.GetServicePrincipalFeatureTagResult> featureTags,
+
             ImmutableArray<Outputs.GetServicePrincipalFeatureResult> features,
 
             string homepageUrl,
@@ -293,6 +296,7 @@ namespace Pulumi.AzureAD
             ApplicationTenantId = applicationTenantId;
             Description = description;
             DisplayName = displayName;
+            FeatureTags = featureTags;
             Features = features;
             HomepageUrl = homepageUrl;
             Id = id;

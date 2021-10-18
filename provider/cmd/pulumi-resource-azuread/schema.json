@@ -280,6 +280,47 @@
                 "id"
             ]
         },
+        "azuread:index/ApplicationFeatureTag:ApplicationFeatureTag": {
+            "properties": {
+                "customSingleSignOn": {
+                    "type": "boolean",
+                    "description": "Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enterprise": {
+                    "type": "boolean",
+                    "description": "Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gallery": {
+                    "type": "boolean",
+                    "description": "Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hide": {
+                    "type": "boolean",
+                    "description": "Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
         "azuread:index/ApplicationOptionalClaims:ApplicationOptionalClaims": {
             "properties": {
                 "accessTokens": {
@@ -1152,7 +1193,6 @@
             "properties": {
                 "customSingleSignOnApp": {
                     "type": "boolean",
-                    "description": "Whether this service principal represents a custom SAML application. Defaults to `false`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1161,7 +1201,6 @@
                 },
                 "enterpriseApplication": {
                     "type": "boolean",
-                    "description": "Whether this service principal represents an Enterprise Application. Defaults to `false`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1170,7 +1209,6 @@
                 },
                 "galleryApplication": {
                     "type": "boolean",
-                    "description": "Whether this service principal represents a gallery application. Defaults to `false`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1179,7 +1217,47 @@
                 },
                 "visibleToUsers": {
                     "type": "boolean",
-                    "description": "Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:index/ServicePrincipalFeatureTag:ServicePrincipalFeatureTag": {
+            "properties": {
+                "customSingleSignOn": {
+                    "type": "boolean",
+                    "description": "Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enterprise": {
+                    "type": "boolean",
+                    "description": "Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gallery": {
+                    "type": "boolean",
+                    "description": "Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hide": {
+                    "type": "boolean",
+                    "description": "Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1517,6 +1595,47 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "azuread:index/getApplicationFeatureTag:getApplicationFeatureTag": {
+            "properties": {
+                "customSingleSignOn": {
+                    "type": "boolean",
+                    "description": "Whether this application represents a custom SAML application for linked service principals.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enterprise": {
+                    "type": "boolean",
+                    "description": "Whether this application represents an Enterprise Application for linked service principals.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gallery": {
+                    "type": "boolean",
+                    "description": "Whether this application represents a gallery application for linked service principals.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hide": {
+                    "type": "boolean",
+                    "description": "Whether this app is visible to users in My Apps and Office 365 Launcher.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
         },
         "azuread:index/getApplicationOptionalClaim:getApplicationOptionalClaim": {
             "properties": {
@@ -2144,6 +2263,54 @@
                 }
             }
         },
+        "azuread:index/getServicePrincipalFeatureTag:getServicePrincipalFeatureTag": {
+            "properties": {
+                "customSingleSignOn": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enterprise": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "gallery": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "hide": {
+                    "type": "boolean",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "customSingleSignOn",
+                "enterprise",
+                "gallery",
+                "hide"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "azuread:index/getServicePrincipalOauth2PermissionScope:getServicePrincipalOauth2PermissionScope": {
             "properties": {
                 "adminConsentDescription": {
@@ -2747,6 +2914,13 @@
                     "type": "boolean",
                     "description": "Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.\n"
                 },
+                "featureTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/ApplicationFeatureTag:ApplicationFeatureTag"
+                    },
+                    "description": "A `feature_tags` block as described below. Cannot be used together with the `tags` property.\n"
+                },
                 "groupMembershipClaims": {
                     "type": "array",
                     "items": {
@@ -2834,6 +3008,13 @@
                     "type": "string",
                     "description": "URL of the application's support page.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.\n"
+                },
                 "templateId": {
                     "type": "string",
                     "description": "Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.\n"
@@ -2852,10 +3033,12 @@
                 "applicationId",
                 "disabledByMicrosoft",
                 "displayName",
+                "featureTags",
                 "logoUrl",
                 "oauth2PermissionScopeIds",
                 "objectId",
                 "publisherDomain",
+                "tags",
                 "templateId"
             ],
             "inputProperties": {
@@ -2881,6 +3064,13 @@
                 "fallbackPublicClientEnabled": {
                     "type": "boolean",
                     "description": "Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.\n"
+                },
+                "featureTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/ApplicationFeatureTag:ApplicationFeatureTag"
+                    },
+                    "description": "A `feature_tags` block as described below. Cannot be used together with the `tags` property.\n"
                 },
                 "groupMembershipClaims": {
                     "type": "array",
@@ -2950,6 +3140,13 @@
                     "type": "string",
                     "description": "URL of the application's support page.\n"
                 },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.\n"
+                },
                 "templateId": {
                     "type": "string",
                     "description": "Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.\n"
@@ -3006,6 +3203,13 @@
                     "fallbackPublicClientEnabled": {
                         "type": "boolean",
                         "description": "Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.\n"
+                    },
+                    "featureTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/ApplicationFeatureTag:ApplicationFeatureTag"
+                        },
+                        "description": "A `feature_tags` block as described below. Cannot be used together with the `tags` property.\n"
                     },
                     "groupMembershipClaims": {
                         "type": "array",
@@ -3093,6 +3297,13 @@
                     "supportUrl": {
                         "type": "string",
                         "description": "URL of the application's support page.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.\n"
                     },
                     "templateId": {
                         "type": "string",
@@ -4123,7 +4334,7 @@
             }
         },
         "azuread:index/servicePrincipal:ServicePrincipal": {
-            "description": "Manages a service principal associated with an application within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`\n\nIt is not currently possible to manage service principals whilst having only the `Application.ReadWrite.OwnedBy` role granted.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Create a service principal for an application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    appRoleAssignmentRequired: false,\n    owners: [current.then(current =\u003e current.objectId)],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    owners=[current.object_id])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    app_role_assignment_required=False,\n    owners=[current.object_id])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            AppRoleAssignmentRequired = false,\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId:             exampleApplication.ApplicationId,\n\t\t\tAppRoleAssignmentRequired: pulumi.Bool(false),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Create a service principal for an enterprise application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    appRoleAssignmentRequired: false,\n    owners: [current.then(current =\u003e current.objectId)],\n    features: [{\n        enterpriseApplication: true,\n        galleryApplication: true,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    owners=[current.object_id])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    app_role_assignment_required=False,\n    owners=[current.object_id],\n    features=[azuread.ServicePrincipalFeatureArgs(\n        enterprise_application=True,\n        gallery_application=True,\n    )])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            AppRoleAssignmentRequired = false,\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n            Features = \n            {\n                new AzureAD.Inputs.ServicePrincipalFeatureArgs\n                {\n                    EnterpriseApplication = true,\n                    GalleryApplication = true,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId:             exampleApplication.ApplicationId,\n\t\t\tAppRoleAssignmentRequired: pulumi.Bool(false),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tFeatures: ServicePrincipalFeatureArray{\n\t\t\t\t\u0026ServicePrincipalFeatureArgs{\n\t\t\t\t\tEnterpriseApplication: pulumi.Bool(true),\n\t\t\t\t\tGalleryApplication:    pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Manage a service principal for a first-party Microsoft application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst wellKnown = azuread.getApplicationPublishedAppIds({});\nconst msgraph = new azuread.ServicePrincipal(\"msgraph\", {\n    applicationId: wellKnown.then(wellKnown =\u003e wellKnown.result?.MicrosoftGraph),\n    useExisting: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nwell_known = azuread.get_application_published_app_ids()\nmsgraph = azuread.ServicePrincipal(\"msgraph\",\n    application_id=well_known.result[\"MicrosoftGraph\"],\n    use_existing=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());\n        var msgraph = new AzureAD.ServicePrincipal(\"msgraph\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = wellKnown.Apply(wellKnown =\u003e wellKnown.Result?.MicrosoftGraph),\n            UseExisting = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"msgraph\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),\n\t\t\tUseExisting:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Create a service principal for an application created from a gallery template*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplicationTemplate = azuread.getApplicationTemplate({\n    displayName: \"Marketo\",\n});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    templateId: exampleApplicationTemplate.then(exampleApplicationTemplate =\u003e exampleApplicationTemplate.templateId),\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    useExisting: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application_template = azuread.get_application_template(display_name=\"Marketo\")\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    template_id=example_application_template.template_id)\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    use_existing=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplicationTemplate = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs\n        {\n            DisplayName = \"Marketo\",\n        }));\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            TemplateId = exampleApplicationTemplate.Apply(exampleApplicationTemplate =\u003e exampleApplicationTemplate.TemplateId),\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            UseExisting = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"Marketo\"\n\t\texampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, \u0026GetApplicationTemplateArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tTemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t\tUseExisting:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nService principals can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "description": "Manages a service principal associated with an application within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`\n\nIt is not currently possible to manage service principals whilst having only the `Application.ReadWrite.OwnedBy` role granted.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Create a service principal for an application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    appRoleAssignmentRequired: false,\n    owners: [current.then(current =\u003e current.objectId)],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    owners=[current.object_id])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    app_role_assignment_required=False,\n    owners=[current.object_id])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            AppRoleAssignmentRequired = false,\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId:             exampleApplication.ApplicationId,\n\t\t\tAppRoleAssignmentRequired: pulumi.Bool(false),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Create a service principal for an enterprise application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    appRoleAssignmentRequired: false,\n    owners: [current.then(current =\u003e current.objectId)],\n    featureTags: [{\n        enterprise: true,\n        gallery: true,\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    owners=[current.object_id])\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    app_role_assignment_required=False,\n    owners=[current.object_id],\n    feature_tags=[azuread.ServicePrincipalFeatureTagArgs(\n        enterprise=True,\n        gallery=True,\n    )])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            AppRoleAssignmentRequired = false,\n            Owners = \n            {\n                current.Apply(current =\u003e current.ObjectId),\n            },\n            FeatureTags = \n            {\n                new AzureAD.Inputs.ServicePrincipalFeatureTagArgs\n                {\n                    Enterprise = true,\n                    Gallery = true,\n                },\n            },\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId:             exampleApplication.ApplicationId,\n\t\t\tAppRoleAssignmentRequired: pulumi.Bool(false),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\tpulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tFeatureTags: ServicePrincipalFeatureTagArray{\n\t\t\t\t\u0026ServicePrincipalFeatureTagArgs{\n\t\t\t\t\tEnterprise: pulumi.Bool(true),\n\t\t\t\t\tGallery:    pulumi.Bool(true),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Manage a service principal for a first-party Microsoft application*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst wellKnown = azuread.getApplicationPublishedAppIds({});\nconst msgraph = new azuread.ServicePrincipal(\"msgraph\", {\n    applicationId: wellKnown.then(wellKnown =\u003e wellKnown.result?.MicrosoftGraph),\n    useExisting: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nwell_known = azuread.get_application_published_app_ids()\nmsgraph = azuread.ServicePrincipal(\"msgraph\",\n    application_id=well_known.result[\"MicrosoftGraph\"],\n    use_existing=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());\n        var msgraph = new AzureAD.ServicePrincipal(\"msgraph\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = wellKnown.Apply(wellKnown =\u003e wellKnown.Result?.MicrosoftGraph),\n            UseExisting = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\twellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"msgraph\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),\n\t\t\tUseExisting:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n*Create a service principal for an application created from a gallery template*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleApplicationTemplate = azuread.getApplicationTemplate({\n    displayName: \"Marketo\",\n});\nconst exampleApplication = new azuread.Application(\"exampleApplication\", {\n    displayName: \"example\",\n    templateId: exampleApplicationTemplate.then(exampleApplicationTemplate =\u003e exampleApplicationTemplate.templateId),\n});\nconst exampleServicePrincipal = new azuread.ServicePrincipal(\"exampleServicePrincipal\", {\n    applicationId: exampleApplication.applicationId,\n    useExisting: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_application_template = azuread.get_application_template(display_name=\"Marketo\")\nexample_application = azuread.Application(\"exampleApplication\",\n    display_name=\"example\",\n    template_id=example_application_template.template_id)\nexample_service_principal = azuread.ServicePrincipal(\"exampleServicePrincipal\",\n    application_id=example_application.application_id,\n    use_existing=True)\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var exampleApplicationTemplate = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs\n        {\n            DisplayName = \"Marketo\",\n        }));\n        var exampleApplication = new AzureAD.Application(\"exampleApplication\", new AzureAD.ApplicationArgs\n        {\n            DisplayName = \"example\",\n            TemplateId = exampleApplicationTemplate.Apply(exampleApplicationTemplate =\u003e exampleApplicationTemplate.TemplateId),\n        });\n        var exampleServicePrincipal = new AzureAD.ServicePrincipal(\"exampleServicePrincipal\", new AzureAD.ServicePrincipalArgs\n        {\n            ApplicationId = exampleApplication.ApplicationId,\n            UseExisting = true,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\topt0 := \"Marketo\"\n\t\texampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, \u0026GetApplicationTemplateArgs{\n\t\t\tDisplayName: \u0026opt0,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleApplication, err := azuread.NewApplication(ctx, \"exampleApplication\", \u0026azuread.ApplicationArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tTemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewServicePrincipal(ctx, \"exampleServicePrincipal\", \u0026azuread.ServicePrincipalArgs{\n\t\t\tApplicationId: exampleApplication.ApplicationId,\n\t\t\tUseExisting:   pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nService principals can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
                 "accountEnabled": {
                     "type": "boolean",
@@ -4170,12 +4381,20 @@
                     "type": "string",
                     "description": "Display name for the app role that appears during app role assignment and in consent experiences.\n"
                 },
+                "featureTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/ServicePrincipalFeatureTag:ServicePrincipalFeatureTag"
+                    },
+                    "description": "A `feature_tags` block as described below. Cannot be used together with the `tags` property.\n"
+                },
                 "features": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/ServicePrincipalFeature:ServicePrincipalFeature"
                     },
-                    "description": "A `features` block as described below. Cannot be used together with the `tags` property.\n"
+                    "description": "Block of features to configure for this service principal using tags\n",
+                    "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                 },
                 "homepageUrl": {
                     "type": "string",
@@ -4260,7 +4479,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of tags to apply to the service principal. Cannot be used together with the `features` block.\n"
+                    "description": "A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.\n"
                 },
                 "type": {
                     "type": "string",
@@ -4277,6 +4496,7 @@
                 "applicationId",
                 "applicationTenantId",
                 "displayName",
+                "featureTags",
                 "features",
                 "homepageUrl",
                 "logoutUrl",
@@ -4314,12 +4534,20 @@
                     "type": "string",
                     "description": "A description of the service principal provided for internal end-users.\n"
                 },
+                "featureTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/ServicePrincipalFeatureTag:ServicePrincipalFeatureTag"
+                    },
+                    "description": "A `feature_tags` block as described below. Cannot be used together with the `tags` property.\n"
+                },
                 "features": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/azuread:index/ServicePrincipalFeature:ServicePrincipalFeature"
                     },
-                    "description": "A `features` block as described below. Cannot be used together with the `tags` property.\n"
+                    "description": "Block of features to configure for this service principal using tags\n",
+                    "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                 },
                 "loginUrl": {
                     "type": "string",
@@ -4356,7 +4584,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of tags to apply to the service principal. Cannot be used together with the `features` block.\n"
+                    "description": "A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.\n"
                 },
                 "useExisting": {
                     "type": "boolean",
@@ -4414,12 +4642,20 @@
                         "type": "string",
                         "description": "Display name for the app role that appears during app role assignment and in consent experiences.\n"
                     },
+                    "featureTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/ServicePrincipalFeatureTag:ServicePrincipalFeatureTag"
+                        },
+                        "description": "A `feature_tags` block as described below. Cannot be used together with the `tags` property.\n"
+                    },
                     "features": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/azuread:index/ServicePrincipalFeature:ServicePrincipalFeature"
                         },
-                        "description": "A `features` block as described below. Cannot be used together with the `tags` property.\n"
+                        "description": "Block of features to configure for this service principal using tags\n",
+                        "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                     },
                     "homepageUrl": {
                         "type": "string",
@@ -4504,7 +4740,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of tags to apply to the service principal. Cannot be used together with the `features` block.\n"
+                        "description": "A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.\n"
                     },
                     "type": {
                         "type": "string",
@@ -4844,6 +5080,10 @@
                     "type": "string",
                     "description": "The mail alias for the user. Defaults to the user name part of the user principal name (UPN).\n"
                 },
+                "managerId": {
+                    "type": "string",
+                    "description": "The object ID of the user's manager.\n"
+                },
                 "mobilePhone": {
                     "type": "string",
                     "description": "The primary cellular telephone number for the user.\n"
@@ -5049,6 +5289,10 @@
                     "type": "string",
                     "description": "The mail alias for the user. Defaults to the user name part of the user principal name (UPN).\n"
                 },
+                "managerId": {
+                    "type": "string",
+                    "description": "The object ID of the user's manager.\n"
+                },
                 "mobilePhone": {
                     "type": "string",
                     "description": "The primary cellular telephone number for the user.\n"
@@ -5218,6 +5462,10 @@
                         "type": "string",
                         "description": "The mail alias for the user. Defaults to the user name part of the user principal name (UPN).\n"
                     },
+                    "managerId": {
+                        "type": "string",
+                        "description": "The object ID of the user's manager.\n"
+                    },
                     "mobilePhone": {
                         "type": "string",
                         "description": "The primary cellular telephone number for the user.\n"
@@ -5382,6 +5630,13 @@
                         "type": "boolean",
                         "description": "The fallback application type as public client, such as an installed application running on a mobile device.\n"
                     },
+                    "featureTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/getApplicationFeatureTag:getApplicationFeatureTag"
+                        },
+                        "description": "A `features` block as described below.\n"
+                    },
                     "groupMembershipClaims": {
                         "type": "array",
                         "items": {
@@ -5474,6 +5729,13 @@
                         "type": "string",
                         "description": "URL of the application's support page.\n"
                     },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of tags applied to the application.\n"
+                    },
                     "termsOfServiceUrl": {
                         "type": "string",
                         "description": "URL of the application's terms of service statement.\n"
@@ -5496,6 +5758,7 @@
                     "disabledByMicrosoft",
                     "displayName",
                     "fallbackPublicClientEnabled",
+                    "featureTags",
                     "groupMembershipClaims",
                     "identifierUris",
                     "logoUrl",
@@ -5512,6 +5775,7 @@
                     "signInAudience",
                     "singlePageApplications",
                     "supportUrl",
+                    "tags",
                     "termsOfServiceUrl",
                     "webs",
                     "id"
@@ -6040,12 +6304,19 @@
                         "type": "string",
                         "description": "Display name for the permission that appears in the admin consent and app assignment experiences.\n"
                     },
+                    "featureTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/getServicePrincipalFeatureTag:getServicePrincipalFeatureTag"
+                        }
+                    },
                     "features": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/azuread:index/getServicePrincipalFeature:getServicePrincipalFeature"
                         },
-                        "description": "A `features` block as described below.\n"
+                        "description": "A `features` block as described below.\n",
+                        "deprecationMessage": "This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider"
                     },
                     "homepageUrl": {
                         "type": "string",
@@ -6148,6 +6419,7 @@
                     "applicationTenantId",
                     "description",
                     "displayName",
+                    "featureTags",
                     "features",
                     "homepageUrl",
                     "loginUrl",
@@ -6375,6 +6647,10 @@
                         "type": "string",
                         "description": "The email alias of the user.\n"
                     },
+                    "managerId": {
+                        "type": "string",
+                        "description": "The object ID of the user's manager.\n"
+                    },
                     "mobilePhone": {
                         "type": "string",
                         "description": "The primary cellular telephone number for the user.\n"
@@ -6489,6 +6765,7 @@
                     "jobTitle",
                     "mail",
                     "mailNickname",
+                    "managerId",
                     "mobilePhone",
                     "objectId",
                     "officeLocation",

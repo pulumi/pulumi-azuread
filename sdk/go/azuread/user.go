@@ -107,6 +107,8 @@ type User struct {
 	Mail pulumi.StringOutput `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
+	// The object ID of the user's manager.
+	ManagerId pulumi.StringPtrOutput `pulumi:"managerId"`
 	// The primary cellular telephone number for the user.
 	MobilePhone pulumi.StringPtrOutput `pulumi:"mobilePhone"`
 	// The object ID of the user.
@@ -238,6 +240,8 @@ type userState struct {
 	Mail *string `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
 	MailNickname *string `pulumi:"mailNickname"`
+	// The object ID of the user's manager.
+	ManagerId *string `pulumi:"managerId"`
 	// The primary cellular telephone number for the user.
 	MobilePhone *string `pulumi:"mobilePhone"`
 	// The object ID of the user.
@@ -335,6 +339,8 @@ type UserState struct {
 	Mail pulumi.StringPtrInput
 	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
 	MailNickname pulumi.StringPtrInput
+	// The object ID of the user's manager.
+	ManagerId pulumi.StringPtrInput
 	// The primary cellular telephone number for the user.
 	MobilePhone pulumi.StringPtrInput
 	// The object ID of the user.
@@ -428,6 +434,8 @@ type userArgs struct {
 	Mail *string `pulumi:"mail"`
 	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
 	MailNickname *string `pulumi:"mailNickname"`
+	// The object ID of the user's manager.
+	ManagerId *string `pulumi:"managerId"`
 	// The primary cellular telephone number for the user.
 	MobilePhone *string `pulumi:"mobilePhone"`
 	// The office location in the user's place of business.
@@ -500,6 +508,8 @@ type UserArgs struct {
 	Mail pulumi.StringPtrInput
 	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
 	MailNickname pulumi.StringPtrInput
+	// The object ID of the user's manager.
+	ManagerId pulumi.StringPtrInput
 	// The primary cellular telephone number for the user.
 	MobilePhone pulumi.StringPtrInput
 	// The office location in the user's place of business.

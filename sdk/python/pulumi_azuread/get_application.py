@@ -21,7 +21,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, sign_in_audience=None, single_page_applications=None, support_url=None, terms_of_service_url=None, webs=None):
+    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -46,6 +46,9 @@ class GetApplicationResult:
         if fallback_public_client_enabled and not isinstance(fallback_public_client_enabled, bool):
             raise TypeError("Expected argument 'fallback_public_client_enabled' to be a bool")
         pulumi.set(__self__, "fallback_public_client_enabled", fallback_public_client_enabled)
+        if feature_tags and not isinstance(feature_tags, list):
+            raise TypeError("Expected argument 'feature_tags' to be a list")
+        pulumi.set(__self__, "feature_tags", feature_tags)
         if group_membership_claims and not isinstance(group_membership_claims, list):
             raise TypeError("Expected argument 'group_membership_claims' to be a list")
         pulumi.set(__self__, "group_membership_claims", group_membership_claims)
@@ -97,6 +100,9 @@ class GetApplicationResult:
         if support_url and not isinstance(support_url, str):
             raise TypeError("Expected argument 'support_url' to be a str")
         pulumi.set(__self__, "support_url", support_url)
+        if tags and not isinstance(tags, list):
+            raise TypeError("Expected argument 'tags' to be a list")
+        pulumi.set(__self__, "tags", tags)
         if terms_of_service_url and not isinstance(terms_of_service_url, str):
             raise TypeError("Expected argument 'terms_of_service_url' to be a str")
         pulumi.set(__self__, "terms_of_service_url", terms_of_service_url)
@@ -167,6 +173,14 @@ class GetApplicationResult:
         The fallback application type as public client, such as an installed application running on a mobile device.
         """
         return pulumi.get(self, "fallback_public_client_enabled")
+
+    @property
+    @pulumi.getter(name="featureTags")
+    def feature_tags(self) -> Sequence['outputs.GetApplicationFeatureTagResult']:
+        """
+        A `features` block as described below.
+        """
+        return pulumi.get(self, "feature_tags")
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
@@ -305,6 +319,14 @@ class GetApplicationResult:
         return pulumi.get(self, "support_url")
 
     @property
+    @pulumi.getter
+    def tags(self) -> Sequence[str]:
+        """
+        A list of tags applied to the application.
+        """
+        return pulumi.get(self, "tags")
+
+    @property
     @pulumi.getter(name="termsOfServiceUrl")
     def terms_of_service_url(self) -> str:
         """
@@ -335,6 +357,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             disabled_by_microsoft=self.disabled_by_microsoft,
             display_name=self.display_name,
             fallback_public_client_enabled=self.fallback_public_client_enabled,
+            feature_tags=self.feature_tags,
             group_membership_claims=self.group_membership_claims,
             id=self.id,
             identifier_uris=self.identifier_uris,
@@ -352,6 +375,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             sign_in_audience=self.sign_in_audience,
             single_page_applications=self.single_page_applications,
             support_url=self.support_url,
+            tags=self.tags,
             terms_of_service_url=self.terms_of_service_url,
             webs=self.webs)
 
@@ -405,6 +429,7 @@ def get_application(application_id: Optional[str] = None,
         disabled_by_microsoft=__ret__.disabled_by_microsoft,
         display_name=__ret__.display_name,
         fallback_public_client_enabled=__ret__.fallback_public_client_enabled,
+        feature_tags=__ret__.feature_tags,
         group_membership_claims=__ret__.group_membership_claims,
         id=__ret__.id,
         identifier_uris=__ret__.identifier_uris,
@@ -422,6 +447,7 @@ def get_application(application_id: Optional[str] = None,
         sign_in_audience=__ret__.sign_in_audience,
         single_page_applications=__ret__.single_page_applications,
         support_url=__ret__.support_url,
+        tags=__ret__.tags,
         terms_of_service_url=__ret__.terms_of_service_url,
         webs=__ret__.webs)
 

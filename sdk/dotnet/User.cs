@@ -204,6 +204,12 @@ namespace Pulumi.AzureAD
         public Output<string> MailNickname { get; private set; } = null!;
 
         /// <summary>
+        /// The object ID of the user's manager.
+        /// </summary>
+        [Output("managerId")]
+        public Output<string?> ManagerId { get; private set; } = null!;
+
+        /// <summary>
         /// The primary cellular telephone number for the user.
         /// </summary>
         [Output("mobilePhone")]
@@ -514,6 +520,12 @@ namespace Pulumi.AzureAD
         public Input<string>? MailNickname { get; set; }
 
         /// <summary>
+        /// The object ID of the user's manager.
+        /// </summary>
+        [Input("managerId")]
+        public Input<string>? ManagerId { get; set; }
+
+        /// <summary>
         /// The primary cellular telephone number for the user.
         /// </summary>
         [Input("mobilePhone")]
@@ -765,6 +777,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("mailNickname")]
         public Input<string>? MailNickname { get; set; }
+
+        /// <summary>
+        /// The object ID of the user's manager.
+        /// </summary>
+        [Input("managerId")]
+        public Input<string>? ManagerId { get; set; }
 
         /// <summary>
         /// The primary cellular telephone number for the user.

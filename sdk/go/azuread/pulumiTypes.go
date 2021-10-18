@@ -506,6 +506,130 @@ func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRo
 	}).(ApplicationAppRoleOutput)
 }
 
+type ApplicationFeatureTag struct {
+	// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+	CustomSingleSignOn *bool `pulumi:"customSingleSignOn"`
+	// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise *bool `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery *bool `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide *bool `pulumi:"hide"`
+}
+
+// ApplicationFeatureTagInput is an input type that accepts ApplicationFeatureTagArgs and ApplicationFeatureTagOutput values.
+// You can construct a concrete instance of `ApplicationFeatureTagInput` via:
+//
+//          ApplicationFeatureTagArgs{...}
+type ApplicationFeatureTagInput interface {
+	pulumi.Input
+
+	ToApplicationFeatureTagOutput() ApplicationFeatureTagOutput
+	ToApplicationFeatureTagOutputWithContext(context.Context) ApplicationFeatureTagOutput
+}
+
+type ApplicationFeatureTagArgs struct {
+	// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+	CustomSingleSignOn pulumi.BoolPtrInput `pulumi:"customSingleSignOn"`
+	// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise pulumi.BoolPtrInput `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery pulumi.BoolPtrInput `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide pulumi.BoolPtrInput `pulumi:"hide"`
+}
+
+func (ApplicationFeatureTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationFeatureTag)(nil)).Elem()
+}
+
+func (i ApplicationFeatureTagArgs) ToApplicationFeatureTagOutput() ApplicationFeatureTagOutput {
+	return i.ToApplicationFeatureTagOutputWithContext(context.Background())
+}
+
+func (i ApplicationFeatureTagArgs) ToApplicationFeatureTagOutputWithContext(ctx context.Context) ApplicationFeatureTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFeatureTagOutput)
+}
+
+// ApplicationFeatureTagArrayInput is an input type that accepts ApplicationFeatureTagArray and ApplicationFeatureTagArrayOutput values.
+// You can construct a concrete instance of `ApplicationFeatureTagArrayInput` via:
+//
+//          ApplicationFeatureTagArray{ ApplicationFeatureTagArgs{...} }
+type ApplicationFeatureTagArrayInput interface {
+	pulumi.Input
+
+	ToApplicationFeatureTagArrayOutput() ApplicationFeatureTagArrayOutput
+	ToApplicationFeatureTagArrayOutputWithContext(context.Context) ApplicationFeatureTagArrayOutput
+}
+
+type ApplicationFeatureTagArray []ApplicationFeatureTagInput
+
+func (ApplicationFeatureTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationFeatureTag)(nil)).Elem()
+}
+
+func (i ApplicationFeatureTagArray) ToApplicationFeatureTagArrayOutput() ApplicationFeatureTagArrayOutput {
+	return i.ToApplicationFeatureTagArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationFeatureTagArray) ToApplicationFeatureTagArrayOutputWithContext(ctx context.Context) ApplicationFeatureTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFeatureTagArrayOutput)
+}
+
+type ApplicationFeatureTagOutput struct{ *pulumi.OutputState }
+
+func (ApplicationFeatureTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationFeatureTag)(nil)).Elem()
+}
+
+func (o ApplicationFeatureTagOutput) ToApplicationFeatureTagOutput() ApplicationFeatureTagOutput {
+	return o
+}
+
+func (o ApplicationFeatureTagOutput) ToApplicationFeatureTagOutputWithContext(ctx context.Context) ApplicationFeatureTagOutput {
+	return o
+}
+
+// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+func (o ApplicationFeatureTagOutput) CustomSingleSignOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.CustomSingleSignOn }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+func (o ApplicationFeatureTagOutput) Enterprise() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.Enterprise }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+func (o ApplicationFeatureTagOutput) Gallery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.Gallery }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+func (o ApplicationFeatureTagOutput) Hide() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.Hide }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationFeatureTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationFeatureTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationFeatureTag)(nil)).Elem()
+}
+
+func (o ApplicationFeatureTagArrayOutput) ToApplicationFeatureTagArrayOutput() ApplicationFeatureTagArrayOutput {
+	return o
+}
+
+func (o ApplicationFeatureTagArrayOutput) ToApplicationFeatureTagArrayOutputWithContext(ctx context.Context) ApplicationFeatureTagArrayOutput {
+	return o
+}
+
+func (o ApplicationFeatureTagArrayOutput) Index(i pulumi.IntInput) ApplicationFeatureTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationFeatureTag {
+		return vs[0].([]ApplicationFeatureTag)[vs[1].(int)]
+	}).(ApplicationFeatureTagOutput)
+}
+
 type ApplicationOptionalClaims struct {
 	// One or more `accessToken` blocks as documented below.
 	AccessTokens []ApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
@@ -3885,14 +4009,10 @@ func (o ServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) ServicePrin
 }
 
 type ServicePrincipalFeature struct {
-	// Whether this service principal represents a custom SAML application. Defaults to `false`.
 	CustomSingleSignOnApp *bool `pulumi:"customSingleSignOnApp"`
-	// Whether this service principal represents an Enterprise Application. Defaults to `false`.
 	EnterpriseApplication *bool `pulumi:"enterpriseApplication"`
-	// Whether this service principal represents a gallery application. Defaults to `false`.
-	GalleryApplication *bool `pulumi:"galleryApplication"`
-	// Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
-	VisibleToUsers *bool `pulumi:"visibleToUsers"`
+	GalleryApplication    *bool `pulumi:"galleryApplication"`
+	VisibleToUsers        *bool `pulumi:"visibleToUsers"`
 }
 
 // ServicePrincipalFeatureInput is an input type that accepts ServicePrincipalFeatureArgs and ServicePrincipalFeatureOutput values.
@@ -3907,14 +4027,10 @@ type ServicePrincipalFeatureInput interface {
 }
 
 type ServicePrincipalFeatureArgs struct {
-	// Whether this service principal represents a custom SAML application. Defaults to `false`.
 	CustomSingleSignOnApp pulumi.BoolPtrInput `pulumi:"customSingleSignOnApp"`
-	// Whether this service principal represents an Enterprise Application. Defaults to `false`.
 	EnterpriseApplication pulumi.BoolPtrInput `pulumi:"enterpriseApplication"`
-	// Whether this service principal represents a gallery application. Defaults to `false`.
-	GalleryApplication pulumi.BoolPtrInput `pulumi:"galleryApplication"`
-	// Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
-	VisibleToUsers pulumi.BoolPtrInput `pulumi:"visibleToUsers"`
+	GalleryApplication    pulumi.BoolPtrInput `pulumi:"galleryApplication"`
+	VisibleToUsers        pulumi.BoolPtrInput `pulumi:"visibleToUsers"`
 }
 
 func (ServicePrincipalFeatureArgs) ElementType() reflect.Type {
@@ -3968,22 +4084,18 @@ func (o ServicePrincipalFeatureOutput) ToServicePrincipalFeatureOutputWithContex
 	return o
 }
 
-// Whether this service principal represents a custom SAML application. Defaults to `false`.
 func (o ServicePrincipalFeatureOutput) CustomSingleSignOnApp() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.CustomSingleSignOnApp }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this service principal represents an Enterprise Application. Defaults to `false`.
 func (o ServicePrincipalFeatureOutput) EnterpriseApplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.EnterpriseApplication }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this service principal represents a gallery application. Defaults to `false`.
 func (o ServicePrincipalFeatureOutput) GalleryApplication() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.GalleryApplication }).(pulumi.BoolPtrOutput)
 }
 
-// Whether this app is visible to users in My Apps and Office 365 Launcher. Defaults to `true`.
 func (o ServicePrincipalFeatureOutput) VisibleToUsers() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeature) *bool { return v.VisibleToUsers }).(pulumi.BoolPtrOutput)
 }
@@ -4006,6 +4118,130 @@ func (o ServicePrincipalFeatureArrayOutput) Index(i pulumi.IntInput) ServicePrin
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalFeature {
 		return vs[0].([]ServicePrincipalFeature)[vs[1].(int)]
 	}).(ServicePrincipalFeatureOutput)
+}
+
+type ServicePrincipalFeatureTag struct {
+	// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+	CustomSingleSignOn *bool `pulumi:"customSingleSignOn"`
+	// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise *bool `pulumi:"enterprise"`
+	// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery *bool `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide *bool `pulumi:"hide"`
+}
+
+// ServicePrincipalFeatureTagInput is an input type that accepts ServicePrincipalFeatureTagArgs and ServicePrincipalFeatureTagOutput values.
+// You can construct a concrete instance of `ServicePrincipalFeatureTagInput` via:
+//
+//          ServicePrincipalFeatureTagArgs{...}
+type ServicePrincipalFeatureTagInput interface {
+	pulumi.Input
+
+	ToServicePrincipalFeatureTagOutput() ServicePrincipalFeatureTagOutput
+	ToServicePrincipalFeatureTagOutputWithContext(context.Context) ServicePrincipalFeatureTagOutput
+}
+
+type ServicePrincipalFeatureTagArgs struct {
+	// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+	CustomSingleSignOn pulumi.BoolPtrInput `pulumi:"customSingleSignOn"`
+	// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise pulumi.BoolPtrInput `pulumi:"enterprise"`
+	// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery pulumi.BoolPtrInput `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide pulumi.BoolPtrInput `pulumi:"hide"`
+}
+
+func (ServicePrincipalFeatureTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (i ServicePrincipalFeatureTagArgs) ToServicePrincipalFeatureTagOutput() ServicePrincipalFeatureTagOutput {
+	return i.ToServicePrincipalFeatureTagOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalFeatureTagArgs) ToServicePrincipalFeatureTagOutputWithContext(ctx context.Context) ServicePrincipalFeatureTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalFeatureTagOutput)
+}
+
+// ServicePrincipalFeatureTagArrayInput is an input type that accepts ServicePrincipalFeatureTagArray and ServicePrincipalFeatureTagArrayOutput values.
+// You can construct a concrete instance of `ServicePrincipalFeatureTagArrayInput` via:
+//
+//          ServicePrincipalFeatureTagArray{ ServicePrincipalFeatureTagArgs{...} }
+type ServicePrincipalFeatureTagArrayInput interface {
+	pulumi.Input
+
+	ToServicePrincipalFeatureTagArrayOutput() ServicePrincipalFeatureTagArrayOutput
+	ToServicePrincipalFeatureTagArrayOutputWithContext(context.Context) ServicePrincipalFeatureTagArrayOutput
+}
+
+type ServicePrincipalFeatureTagArray []ServicePrincipalFeatureTagInput
+
+func (ServicePrincipalFeatureTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (i ServicePrincipalFeatureTagArray) ToServicePrincipalFeatureTagArrayOutput() ServicePrincipalFeatureTagArrayOutput {
+	return i.ToServicePrincipalFeatureTagArrayOutputWithContext(context.Background())
+}
+
+func (i ServicePrincipalFeatureTagArray) ToServicePrincipalFeatureTagArrayOutputWithContext(ctx context.Context) ServicePrincipalFeatureTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalFeatureTagArrayOutput)
+}
+
+type ServicePrincipalFeatureTagOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalFeatureTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (o ServicePrincipalFeatureTagOutput) ToServicePrincipalFeatureTagOutput() ServicePrincipalFeatureTagOutput {
+	return o
+}
+
+func (o ServicePrincipalFeatureTagOutput) ToServicePrincipalFeatureTagOutputWithContext(ctx context.Context) ServicePrincipalFeatureTagOutput {
+	return o
+}
+
+// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
+func (o ServicePrincipalFeatureTagOutput) CustomSingleSignOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.CustomSingleSignOn }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+func (o ServicePrincipalFeatureTagOutput) Enterprise() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.Enterprise }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+func (o ServicePrincipalFeatureTagOutput) Gallery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.Gallery }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+func (o ServicePrincipalFeatureTagOutput) Hide() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.Hide }).(pulumi.BoolPtrOutput)
+}
+
+type ServicePrincipalFeatureTagArrayOutput struct{ *pulumi.OutputState }
+
+func (ServicePrincipalFeatureTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (o ServicePrincipalFeatureTagArrayOutput) ToServicePrincipalFeatureTagArrayOutput() ServicePrincipalFeatureTagArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalFeatureTagArrayOutput) ToServicePrincipalFeatureTagArrayOutputWithContext(ctx context.Context) ServicePrincipalFeatureTagArrayOutput {
+	return o
+}
+
+func (o ServicePrincipalFeatureTagArrayOutput) Index(i pulumi.IntInput) ServicePrincipalFeatureTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalFeatureTag {
+		return vs[0].([]ServicePrincipalFeatureTag)[vs[1].(int)]
+	}).(ServicePrincipalFeatureTagOutput)
 }
 
 type ServicePrincipalOauth2PermissionScope struct {
@@ -4726,6 +4962,130 @@ func (o GetApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) GetApplicatio
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationAppRole {
 		return vs[0].([]GetApplicationAppRole)[vs[1].(int)]
 	}).(GetApplicationAppRoleOutput)
+}
+
+type GetApplicationFeatureTag struct {
+	// Whether this application represents a custom SAML application for linked service principals.
+	CustomSingleSignOn *bool `pulumi:"customSingleSignOn"`
+	// Whether this application represents an Enterprise Application for linked service principals.
+	Enterprise *bool `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals.
+	Gallery *bool `pulumi:"gallery"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	Hide *bool `pulumi:"hide"`
+}
+
+// GetApplicationFeatureTagInput is an input type that accepts GetApplicationFeatureTagArgs and GetApplicationFeatureTagOutput values.
+// You can construct a concrete instance of `GetApplicationFeatureTagInput` via:
+//
+//          GetApplicationFeatureTagArgs{...}
+type GetApplicationFeatureTagInput interface {
+	pulumi.Input
+
+	ToGetApplicationFeatureTagOutput() GetApplicationFeatureTagOutput
+	ToGetApplicationFeatureTagOutputWithContext(context.Context) GetApplicationFeatureTagOutput
+}
+
+type GetApplicationFeatureTagArgs struct {
+	// Whether this application represents a custom SAML application for linked service principals.
+	CustomSingleSignOn pulumi.BoolPtrInput `pulumi:"customSingleSignOn"`
+	// Whether this application represents an Enterprise Application for linked service principals.
+	Enterprise pulumi.BoolPtrInput `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals.
+	Gallery pulumi.BoolPtrInput `pulumi:"gallery"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	Hide pulumi.BoolPtrInput `pulumi:"hide"`
+}
+
+func (GetApplicationFeatureTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationFeatureTag)(nil)).Elem()
+}
+
+func (i GetApplicationFeatureTagArgs) ToGetApplicationFeatureTagOutput() GetApplicationFeatureTagOutput {
+	return i.ToGetApplicationFeatureTagOutputWithContext(context.Background())
+}
+
+func (i GetApplicationFeatureTagArgs) ToGetApplicationFeatureTagOutputWithContext(ctx context.Context) GetApplicationFeatureTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationFeatureTagOutput)
+}
+
+// GetApplicationFeatureTagArrayInput is an input type that accepts GetApplicationFeatureTagArray and GetApplicationFeatureTagArrayOutput values.
+// You can construct a concrete instance of `GetApplicationFeatureTagArrayInput` via:
+//
+//          GetApplicationFeatureTagArray{ GetApplicationFeatureTagArgs{...} }
+type GetApplicationFeatureTagArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationFeatureTagArrayOutput() GetApplicationFeatureTagArrayOutput
+	ToGetApplicationFeatureTagArrayOutputWithContext(context.Context) GetApplicationFeatureTagArrayOutput
+}
+
+type GetApplicationFeatureTagArray []GetApplicationFeatureTagInput
+
+func (GetApplicationFeatureTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationFeatureTag)(nil)).Elem()
+}
+
+func (i GetApplicationFeatureTagArray) ToGetApplicationFeatureTagArrayOutput() GetApplicationFeatureTagArrayOutput {
+	return i.ToGetApplicationFeatureTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationFeatureTagArray) ToGetApplicationFeatureTagArrayOutputWithContext(ctx context.Context) GetApplicationFeatureTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationFeatureTagArrayOutput)
+}
+
+type GetApplicationFeatureTagOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationFeatureTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationFeatureTag)(nil)).Elem()
+}
+
+func (o GetApplicationFeatureTagOutput) ToGetApplicationFeatureTagOutput() GetApplicationFeatureTagOutput {
+	return o
+}
+
+func (o GetApplicationFeatureTagOutput) ToGetApplicationFeatureTagOutputWithContext(ctx context.Context) GetApplicationFeatureTagOutput {
+	return o
+}
+
+// Whether this application represents a custom SAML application for linked service principals.
+func (o GetApplicationFeatureTagOutput) CustomSingleSignOn() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.CustomSingleSignOn }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this application represents an Enterprise Application for linked service principals.
+func (o GetApplicationFeatureTagOutput) Enterprise() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.Enterprise }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this application represents a gallery application for linked service principals.
+func (o GetApplicationFeatureTagOutput) Gallery() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.Gallery }).(pulumi.BoolPtrOutput)
+}
+
+// Whether this app is visible to users in My Apps and Office 365 Launcher.
+func (o GetApplicationFeatureTagOutput) Hide() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.Hide }).(pulumi.BoolPtrOutput)
+}
+
+type GetApplicationFeatureTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationFeatureTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationFeatureTag)(nil)).Elem()
+}
+
+func (o GetApplicationFeatureTagArrayOutput) ToGetApplicationFeatureTagArrayOutput() GetApplicationFeatureTagArrayOutput {
+	return o
+}
+
+func (o GetApplicationFeatureTagArrayOutput) ToGetApplicationFeatureTagArrayOutputWithContext(ctx context.Context) GetApplicationFeatureTagArrayOutput {
+	return o
+}
+
+func (o GetApplicationFeatureTagArrayOutput) Index(i pulumi.IntInput) GetApplicationFeatureTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationFeatureTag {
+		return vs[0].([]GetApplicationFeatureTag)[vs[1].(int)]
+	}).(GetApplicationFeatureTagOutput)
 }
 
 type GetApplicationOptionalClaim struct {
@@ -6279,6 +6639,118 @@ func (o GetServicePrincipalFeatureArrayOutput) Index(i pulumi.IntInput) GetServi
 	}).(GetServicePrincipalFeatureOutput)
 }
 
+type GetServicePrincipalFeatureTag struct {
+	CustomSingleSignOn bool `pulumi:"customSingleSignOn"`
+	Enterprise         bool `pulumi:"enterprise"`
+	Gallery            bool `pulumi:"gallery"`
+	Hide               bool `pulumi:"hide"`
+}
+
+// GetServicePrincipalFeatureTagInput is an input type that accepts GetServicePrincipalFeatureTagArgs and GetServicePrincipalFeatureTagOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFeatureTagInput` via:
+//
+//          GetServicePrincipalFeatureTagArgs{...}
+type GetServicePrincipalFeatureTagInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFeatureTagOutput() GetServicePrincipalFeatureTagOutput
+	ToGetServicePrincipalFeatureTagOutputWithContext(context.Context) GetServicePrincipalFeatureTagOutput
+}
+
+type GetServicePrincipalFeatureTagArgs struct {
+	CustomSingleSignOn pulumi.BoolInput `pulumi:"customSingleSignOn"`
+	Enterprise         pulumi.BoolInput `pulumi:"enterprise"`
+	Gallery            pulumi.BoolInput `pulumi:"gallery"`
+	Hide               pulumi.BoolInput `pulumi:"hide"`
+}
+
+func (GetServicePrincipalFeatureTagArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFeatureTagArgs) ToGetServicePrincipalFeatureTagOutput() GetServicePrincipalFeatureTagOutput {
+	return i.ToGetServicePrincipalFeatureTagOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFeatureTagArgs) ToGetServicePrincipalFeatureTagOutputWithContext(ctx context.Context) GetServicePrincipalFeatureTagOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFeatureTagOutput)
+}
+
+// GetServicePrincipalFeatureTagArrayInput is an input type that accepts GetServicePrincipalFeatureTagArray and GetServicePrincipalFeatureTagArrayOutput values.
+// You can construct a concrete instance of `GetServicePrincipalFeatureTagArrayInput` via:
+//
+//          GetServicePrincipalFeatureTagArray{ GetServicePrincipalFeatureTagArgs{...} }
+type GetServicePrincipalFeatureTagArrayInput interface {
+	pulumi.Input
+
+	ToGetServicePrincipalFeatureTagArrayOutput() GetServicePrincipalFeatureTagArrayOutput
+	ToGetServicePrincipalFeatureTagArrayOutputWithContext(context.Context) GetServicePrincipalFeatureTagArrayOutput
+}
+
+type GetServicePrincipalFeatureTagArray []GetServicePrincipalFeatureTagInput
+
+func (GetServicePrincipalFeatureTagArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (i GetServicePrincipalFeatureTagArray) ToGetServicePrincipalFeatureTagArrayOutput() GetServicePrincipalFeatureTagArrayOutput {
+	return i.ToGetServicePrincipalFeatureTagArrayOutputWithContext(context.Background())
+}
+
+func (i GetServicePrincipalFeatureTagArray) ToGetServicePrincipalFeatureTagArrayOutputWithContext(ctx context.Context) GetServicePrincipalFeatureTagArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServicePrincipalFeatureTagArrayOutput)
+}
+
+type GetServicePrincipalFeatureTagOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFeatureTagOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFeatureTagOutput) ToGetServicePrincipalFeatureTagOutput() GetServicePrincipalFeatureTagOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureTagOutput) ToGetServicePrincipalFeatureTagOutputWithContext(ctx context.Context) GetServicePrincipalFeatureTagOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureTagOutput) CustomSingleSignOn() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.CustomSingleSignOn }).(pulumi.BoolOutput)
+}
+
+func (o GetServicePrincipalFeatureTagOutput) Enterprise() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.Enterprise }).(pulumi.BoolOutput)
+}
+
+func (o GetServicePrincipalFeatureTagOutput) Gallery() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.Gallery }).(pulumi.BoolOutput)
+}
+
+func (o GetServicePrincipalFeatureTagOutput) Hide() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServicePrincipalFeatureTag) bool { return v.Hide }).(pulumi.BoolOutput)
+}
+
+type GetServicePrincipalFeatureTagArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServicePrincipalFeatureTagArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServicePrincipalFeatureTag)(nil)).Elem()
+}
+
+func (o GetServicePrincipalFeatureTagArrayOutput) ToGetServicePrincipalFeatureTagArrayOutput() GetServicePrincipalFeatureTagArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureTagArrayOutput) ToGetServicePrincipalFeatureTagArrayOutputWithContext(ctx context.Context) GetServicePrincipalFeatureTagArrayOutput {
+	return o
+}
+
+func (o GetServicePrincipalFeatureTagArrayOutput) Index(i pulumi.IntInput) GetServicePrincipalFeatureTagOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServicePrincipalFeatureTag {
+		return vs[0].([]GetServicePrincipalFeatureTag)[vs[1].(int)]
+	}).(GetServicePrincipalFeatureTagOutput)
+}
+
 type GetServicePrincipalOauth2PermissionScope struct {
 	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
@@ -6908,6 +7380,8 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationApiOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationAppRoleOutput{})
 	pulumi.RegisterOutputType(ApplicationAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationFeatureTagOutput{})
+	pulumi.RegisterOutputType(ApplicationFeatureTagArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationOptionalClaimsAccessTokenOutput{})
@@ -6952,6 +7426,8 @@ func init() {
 	pulumi.RegisterOutputType(ServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalFeatureOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalFeatureArrayOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalFeatureTagOutput{})
+	pulumi.RegisterOutputType(ServicePrincipalFeatureTagArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalSamlSingleSignOnOutput{})
@@ -6962,6 +7438,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationApiOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationAppRoleOutput{})
 	pulumi.RegisterOutputType(GetApplicationAppRoleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationFeatureTagOutput{})
+	pulumi.RegisterOutputType(GetApplicationFeatureTagArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationOptionalClaimOutput{})
 	pulumi.RegisterOutputType(GetApplicationOptionalClaimArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationOptionalClaimAccessTokenOutput{})
@@ -6988,6 +7466,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalFeatureOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFeatureTagOutput{})
+	pulumi.RegisterOutputType(GetServicePrincipalFeatureTagArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalSamlSingleSignOnOutput{})

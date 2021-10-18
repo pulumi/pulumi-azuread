@@ -75,6 +75,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly fallbackPublicClientEnabled!: pulumi.Output<boolean | undefined>;
     /**
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     */
+    public readonly featureTags!: pulumi.Output<outputs.ApplicationFeatureTag[]>;
+    /**
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
     public readonly groupMembershipClaims!: pulumi.Output<string[] | undefined>;
@@ -147,6 +151,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly supportUrl!: pulumi.Output<string | undefined>;
     /**
+     * A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+     */
+    public readonly tags!: pulumi.Output<string[]>;
+    /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      */
     public readonly templateId!: pulumi.Output<string>;
@@ -180,6 +188,7 @@ export class Application extends pulumi.CustomResource {
             inputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["fallbackPublicClientEnabled"] = state ? state.fallbackPublicClientEnabled : undefined;
+            inputs["featureTags"] = state ? state.featureTags : undefined;
             inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
             inputs["identifierUris"] = state ? state.identifierUris : undefined;
             inputs["logoImage"] = state ? state.logoImage : undefined;
@@ -198,6 +207,7 @@ export class Application extends pulumi.CustomResource {
             inputs["signInAudience"] = state ? state.signInAudience : undefined;
             inputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
             inputs["supportUrl"] = state ? state.supportUrl : undefined;
+            inputs["tags"] = state ? state.tags : undefined;
             inputs["templateId"] = state ? state.templateId : undefined;
             inputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
             inputs["web"] = state ? state.web : undefined;
@@ -211,6 +221,7 @@ export class Application extends pulumi.CustomResource {
             inputs["deviceOnlyAuthEnabled"] = args ? args.deviceOnlyAuthEnabled : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
+            inputs["featureTags"] = args ? args.featureTags : undefined;
             inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
             inputs["identifierUris"] = args ? args.identifierUris : undefined;
             inputs["logoImage"] = args ? args.logoImage : undefined;
@@ -225,6 +236,7 @@ export class Application extends pulumi.CustomResource {
             inputs["signInAudience"] = args ? args.signInAudience : undefined;
             inputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
             inputs["supportUrl"] = args ? args.supportUrl : undefined;
+            inputs["tags"] = args ? args.tags : undefined;
             inputs["templateId"] = args ? args.templateId : undefined;
             inputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
             inputs["web"] = args ? args.web : undefined;
@@ -279,6 +291,10 @@ export interface ApplicationState {
      * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
     fallbackPublicClientEnabled?: pulumi.Input<boolean>;
+    /**
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     */
+    featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[]>;
     /**
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
@@ -352,6 +368,10 @@ export interface ApplicationState {
      */
     supportUrl?: pulumi.Input<string>;
     /**
+     * A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      */
     templateId?: pulumi.Input<string>;
@@ -389,6 +409,10 @@ export interface ApplicationArgs {
      * Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
      */
     fallbackPublicClientEnabled?: pulumi.Input<boolean>;
+    /**
+     * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     */
+    featureTags?: pulumi.Input<pulumi.Input<inputs.ApplicationFeatureTag>[]>;
     /**
      * Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
      */
@@ -445,6 +469,10 @@ export interface ApplicationArgs {
      * URL of the application's support page.
      */
     supportUrl?: pulumi.Input<string>;
+    /**
+     * A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
      */

@@ -108,6 +108,8 @@ type LookupUserResult struct {
 	Mail string `pulumi:"mail"`
 	// The email alias of the user.
 	MailNickname string `pulumi:"mailNickname"`
+	// The object ID of the user's manager.
+	ManagerId string `pulumi:"managerId"`
 	// The primary cellular telephone number for the user.
 	MobilePhone string `pulumi:"mobilePhone"`
 	// The object ID of the user.
@@ -298,6 +300,11 @@ func (o LookupUserResultOutput) Mail() pulumi.StringOutput {
 // The email alias of the user.
 func (o LookupUserResultOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUserResult) string { return v.MailNickname }).(pulumi.StringOutput)
+}
+
+// The object ID of the user's manager.
+func (o LookupUserResultOutput) ManagerId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupUserResult) string { return v.ManagerId }).(pulumi.StringOutput)
 }
 
 // The primary cellular telephone number for the user.

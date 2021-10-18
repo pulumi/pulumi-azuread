@@ -168,6 +168,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string MailNickname;
         /// <summary>
+        /// The object ID of the user's manager.
+        /// </summary>
+        public readonly string ManagerId;
+        /// <summary>
         /// The primary cellular telephone number for the user.
         /// </summary>
         public readonly string MobilePhone;
@@ -298,6 +302,8 @@ namespace Pulumi.AzureAD
 
             string mailNickname,
 
+            string managerId,
+
             string mobilePhone,
 
             string objectId,
@@ -362,6 +368,7 @@ namespace Pulumi.AzureAD
             JobTitle = jobTitle;
             Mail = mail;
             MailNickname = mailNickname;
+            ManagerId = managerId;
             MobilePhone = mobilePhone;
             ObjectId = objectId;
             OfficeLocation = officeLocation;

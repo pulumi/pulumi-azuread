@@ -153,6 +153,10 @@ export interface GetUserResult {
      */
     readonly mailNickname: string;
     /**
+     * The object ID of the user's manager.
+     */
+    readonly managerId: string;
+    /**
      * The primary cellular telephone number for the user.
      */
     readonly mobilePhone: string;

@@ -35,6 +35,7 @@ class UserArgs:
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
+                 manager_id: Optional[pulumi.Input[str]] = None,
                  mobile_phone: Optional[pulumi.Input[str]] = None,
                  office_location: Optional[pulumi.Input[str]] = None,
                  onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
@@ -71,6 +72,7 @@ class UserArgs:
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The SMTP address for the user. This property cannot be unset once specified.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+        :param pulumi.Input[str] manager_id: The object ID of the user's manager.
         :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
         :param pulumi.Input[str] office_location: The office location in the user's place of business.
         :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
@@ -126,6 +128,8 @@ class UserArgs:
             pulumi.set(__self__, "mail", mail)
         if mail_nickname is not None:
             pulumi.set(__self__, "mail_nickname", mail_nickname)
+        if manager_id is not None:
+            pulumi.set(__self__, "manager_id", manager_id)
         if mobile_phone is not None:
             pulumi.set(__self__, "mobile_phone", mobile_phone)
         if office_location is not None:
@@ -416,6 +420,18 @@ class UserArgs:
         pulumi.set(self, "mail_nickname", value)
 
     @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object ID of the user's manager.
+        """
+        return pulumi.get(self, "manager_id")
+
+    @manager_id.setter
+    def manager_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "manager_id", value)
+
+    @property
     @pulumi.getter(name="mobilePhone")
     def mobile_phone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -588,6 +604,7 @@ class _UserState:
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
+                 manager_id: Optional[pulumi.Input[str]] = None,
                  mobile_phone: Optional[pulumi.Input[str]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
                  office_location: Optional[pulumi.Input[str]] = None,
@@ -637,6 +654,7 @@ class _UserState:
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The SMTP address for the user. This property cannot be unset once specified.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+        :param pulumi.Input[str] manager_id: The object ID of the user's manager.
         :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
         :param pulumi.Input[str] object_id: The object ID of the user.
         :param pulumi.Input[str] office_location: The office location in the user's place of business.
@@ -710,6 +728,8 @@ class _UserState:
             pulumi.set(__self__, "mail", mail)
         if mail_nickname is not None:
             pulumi.set(__self__, "mail_nickname", mail_nickname)
+        if manager_id is not None:
+            pulumi.set(__self__, "manager_id", manager_id)
         if mobile_phone is not None:
             pulumi.set(__self__, "mobile_phone", mobile_phone)
         if object_id is not None:
@@ -1056,6 +1076,18 @@ class _UserState:
         pulumi.set(self, "mail_nickname", value)
 
     @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The object ID of the user's manager.
+        """
+        return pulumi.get(self, "manager_id")
+
+    @manager_id.setter
+    def manager_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "manager_id", value)
+
+    @property
     @pulumi.getter(name="mobilePhone")
     def mobile_phone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1346,6 +1378,7 @@ class User(pulumi.CustomResource):
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
+                 manager_id: Optional[pulumi.Input[str]] = None,
                  mobile_phone: Optional[pulumi.Input[str]] = None,
                  office_location: Optional[pulumi.Input[str]] = None,
                  onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
@@ -1415,6 +1448,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The SMTP address for the user. This property cannot be unset once specified.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+        :param pulumi.Input[str] manager_id: The object ID of the user's manager.
         :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
         :param pulumi.Input[str] office_location: The office location in the user's place of business.
         :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
@@ -1503,6 +1537,7 @@ class User(pulumi.CustomResource):
                  job_title: Optional[pulumi.Input[str]] = None,
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
+                 manager_id: Optional[pulumi.Input[str]] = None,
                  mobile_phone: Optional[pulumi.Input[str]] = None,
                  office_location: Optional[pulumi.Input[str]] = None,
                  onpremises_immutable_id: Optional[pulumi.Input[str]] = None,
@@ -1551,6 +1586,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["job_title"] = job_title
             __props__.__dict__["mail"] = mail
             __props__.__dict__["mail_nickname"] = mail_nickname
+            __props__.__dict__["manager_id"] = manager_id
             __props__.__dict__["mobile_phone"] = mobile_phone
             __props__.__dict__["office_location"] = office_location
             __props__.__dict__["onpremises_immutable_id"] = onpremises_immutable_id
@@ -1614,6 +1650,7 @@ class User(pulumi.CustomResource):
             job_title: Optional[pulumi.Input[str]] = None,
             mail: Optional[pulumi.Input[str]] = None,
             mail_nickname: Optional[pulumi.Input[str]] = None,
+            manager_id: Optional[pulumi.Input[str]] = None,
             mobile_phone: Optional[pulumi.Input[str]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             office_location: Optional[pulumi.Input[str]] = None,
@@ -1668,6 +1705,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] job_title: The user’s job title.
         :param pulumi.Input[str] mail: The SMTP address for the user. This property cannot be unset once specified.
         :param pulumi.Input[str] mail_nickname: The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+        :param pulumi.Input[str] manager_id: The object ID of the user's manager.
         :param pulumi.Input[str] mobile_phone: The primary cellular telephone number for the user.
         :param pulumi.Input[str] object_id: The object ID of the user.
         :param pulumi.Input[str] office_location: The office location in the user's place of business.
@@ -1720,6 +1758,7 @@ class User(pulumi.CustomResource):
         __props__.__dict__["job_title"] = job_title
         __props__.__dict__["mail"] = mail
         __props__.__dict__["mail_nickname"] = mail_nickname
+        __props__.__dict__["manager_id"] = manager_id
         __props__.__dict__["mobile_phone"] = mobile_phone
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["office_location"] = office_location
@@ -1943,6 +1982,14 @@ class User(pulumi.CustomResource):
         The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
         """
         return pulumi.get(self, "mail_nickname")
+
+    @property
+    @pulumi.getter(name="managerId")
+    def manager_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        The object ID of the user's manager.
+        """
+        return pulumi.get(self, "manager_id")
 
     @property
     @pulumi.getter(name="mobilePhone")

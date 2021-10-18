@@ -125,8 +125,11 @@ export interface GetServicePrincipalResult {
      * Display name for the permission that appears in the admin consent and app assignment experiences.
      */
     readonly displayName: string;
+    readonly featureTags: outputs.GetServicePrincipalFeatureTag[];
     /**
      * A `features` block as described below.
+     *
+     * @deprecated This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
      */
     readonly features: outputs.GetServicePrincipalFeature[];
     /**

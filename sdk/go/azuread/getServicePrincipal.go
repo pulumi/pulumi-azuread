@@ -131,8 +131,11 @@ type LookupServicePrincipalResult struct {
 	// Permission help text that appears in the admin app assignment and consent experiences.
 	Description string `pulumi:"description"`
 	// Display name for the permission that appears in the admin consent and app assignment experiences.
-	DisplayName string `pulumi:"displayName"`
+	DisplayName string                          `pulumi:"displayName"`
+	FeatureTags []GetServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// A `features` block as described below.
+	//
+	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 	Features []GetServicePrincipalFeature `pulumi:"features"`
 	// Home page or landing page of the associated application.
 	HomepageUrl string `pulumi:"homepageUrl"`
@@ -253,7 +256,13 @@ func (o LookupServicePrincipalResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+func (o LookupServicePrincipalResultOutput) FeatureTags() GetServicePrincipalFeatureTagArrayOutput {
+	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalFeatureTag { return v.FeatureTags }).(GetServicePrincipalFeatureTagArrayOutput)
+}
+
 // A `features` block as described below.
+//
+// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 func (o LookupServicePrincipalResultOutput) Features() GetServicePrincipalFeatureArrayOutput {
 	return o.ApplyT(func(v LookupServicePrincipalResult) []GetServicePrincipalFeature { return v.Features }).(GetServicePrincipalFeatureArrayOutput)
 }
