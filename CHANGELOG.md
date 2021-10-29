@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v2.8.0 of the AzureAD Terraform Provider
 
 ---
 
@@ -193,5 +193,4 @@ _(none)_
 * Add TypeScript type guards for each resource class
 
 ## 0.18.0 (2019-05-02)
-* Initial release of the Azure AD provider based on v0.3.1 of the AzureAD Terraform provider
-
+* Initial release
