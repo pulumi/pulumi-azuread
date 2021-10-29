@@ -239,8 +239,8 @@ github.com/hashicorp/terraform-json v0.8.0 h1:XObQ3PgqU52YLQKEaJ08QtUshAfN3yu4u8
 github.com/hashicorp/terraform-json v0.8.0/go.mod h1:3defM4kkMfttwiE7VakJDwCd4R+umhSQnvJwORXbprE=
 github.com/hashicorp/terraform-plugin-go v0.1.0 h1:kyXZ0nkHxiRev/q18N40IbRRk4AV0zE/MDJkDM3u8dY=
 github.com/hashicorp/terraform-plugin-go v0.1.0/go.mod h1:10V6F3taeDWVAoLlkmArKttR3IULlRWFAGtQIQTIDr4=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20211015012905-c4794af598d0 h1:HXZNXJHSOaAmVrJvBHUl75mT4TgbguC/4fF7/3SmlpM=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20211015012905-c4794af598d0/go.mod h1:fU5GlvPGKC0emsWF4EaR+w2AMiz+lMGHrb18F9L1xVE=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20211028212922-934f1654736d h1:Fnp5b0ovFRGx0NL3QMMSMK22rP30Uz3A2NDQTgC6raA=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20211028212922-934f1654736d/go.mod h1:fU5GlvPGKC0emsWF4EaR+w2AMiz+lMGHrb18F9L1xVE=
 github.com/hashicorp/yamux v0.0.0-20180604194846-3520598351bb/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
 github.com/hashicorp/yamux v0.0.0-20181012175058-2f1d1f20f75d/go.mod h1:+NfK9FKeTrX5uv1uIXGdwYDTeHna2qgaIlx54MXqjAM=
 github.com/hashicorp/yamux v0.0.0-20210316155119-a95892c5f864 h1:Y4V+SFe7d3iH+9pJCoeWIOS5/xBJIFsltS7E+KJSsJY=
