@@ -424,6 +424,10 @@ func (o ConditionalAccessPolicyMapOutput) MapIndex(k pulumi.StringInput) Conditi
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyInput)(nil)).Elem(), &ConditionalAccessPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyPtrInput)(nil)).Elem(), &ConditionalAccessPolicy{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyArrayInput)(nil)).Elem(), ConditionalAccessPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyMapInput)(nil)).Elem(), ConditionalAccessPolicyMap{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyArrayOutput{})

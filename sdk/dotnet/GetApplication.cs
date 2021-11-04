@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -50,6 +51,46 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to access information about an existing Application within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs
+        ///         {
+        ///             DisplayName = "My First AzureAD Application",
+        ///         }));
+        ///         this.ApplicationObjectId = example.Apply(example =&gt; example.Id);
+        ///     }
+        /// 
+        ///     [Output("applicationObjectId")]
+        ///     public Output&lt;string&gt; ApplicationObjectId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithVersion());
     }
 
 
@@ -74,6 +115,31 @@ namespace Pulumi.AzureAD
         public string? ObjectId { get; set; }
 
         public GetApplicationArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specifies the Application ID (also called Client ID).
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// Specifies the display name of the application.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Specifies the Object ID of the application.
+        /// </summary>
+        [Input("objectId")]
+        public Input<string>? ObjectId { get; set; }
+
+        public GetApplicationInvokeArgs()
         {
         }
     }

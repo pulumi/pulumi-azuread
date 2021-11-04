@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -47,6 +48,43 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetUserResult> InvokeAsync(GetUserArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUserResult>("azuread:index/getUser:getUser", args ?? new GetUserArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about an Azure Active Directory user.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
+        ///         {
+        ///             UserPrincipalName = "user@hashicorp.com",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUserResult> Invoke(GetUserInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUserResult>("azuread:index/getUser:getUser", args ?? new GetUserInvokeArgs(), options.WithVersion());
     }
 
 
@@ -71,6 +109,31 @@ namespace Pulumi.AzureAD
         public string? UserPrincipalName { get; set; }
 
         public GetUserArgs()
+        {
+        }
+    }
+
+    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The email alias of the user.
+        /// </summary>
+        [Input("mailNickname")]
+        public Input<string>? MailNickname { get; set; }
+
+        /// <summary>
+        /// The object ID of the user.
+        /// </summary>
+        [Input("objectId")]
+        public Input<string>? ObjectId { get; set; }
+
+        /// <summary>
+        /// The user principal name (UPN) of the user.
+        /// </summary>
+        [Input("userPrincipalName")]
+        public Input<string>? UserPrincipalName { get; set; }
+
+        public GetUserInvokeArgs()
         {
         }
     }

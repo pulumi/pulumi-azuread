@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -87,6 +88,83 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetServicePrincipalResult> InvokeAsync(GetServicePrincipalArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalResult>("azuread:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets information about an existing service principal associated with an application within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// *Look up by application display name*
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
+        ///         {
+        ///             DisplayName = "my-awesome-application",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up by application ID (client ID)*
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
+        ///         {
+        ///             ApplicationId = "00000000-0000-0000-0000-000000000000",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up by service principal object ID*
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
+        ///         {
+        ///             ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServicePrincipalResult> Invoke(GetServicePrincipalInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServicePrincipalResult>("azuread:index/getServicePrincipal:getServicePrincipal", args ?? new GetServicePrincipalInvokeArgs(), options.WithVersion());
     }
 
 
@@ -111,6 +189,31 @@ namespace Pulumi.AzureAD
         public string? ObjectId { get; set; }
 
         public GetServicePrincipalArgs()
+        {
+        }
+    }
+
+    public sealed class GetServicePrincipalInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// The application ID (client ID) of the application associated with this service principal.
+        /// </summary>
+        [Input("applicationId")]
+        public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// The display name of the application associated with this service principal.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The object ID of the service principal.
+        /// </summary>
+        [Input("objectId")]
+        public Input<string>? ObjectId { get; set; }
+
+        public GetServicePrincipalInvokeArgs()
         {
         }
     }

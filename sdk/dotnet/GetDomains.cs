@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -51,6 +52,47 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("azuread:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to access information about existing Domains within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var aadDomains = Output.Create(AzureAD.GetDomains.InvokeAsync());
+        ///         this.DomainNames = 
+        ///         {
+        ///             aadDomains.Apply(aadDomains =&gt; aadDomains.Domains),
+        ///         }.Select(__item =&gt; __item?.DomainName).ToList();
+        ///     }
+        /// 
+        ///     [Output("domainNames")]
+        ///     public Output&lt;string&gt; DomainNames { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("azuread:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -99,6 +141,55 @@ namespace Pulumi.AzureAD
         }
 
         public GetDomainsArgs()
+        {
+        }
+    }
+
+    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+        /// </summary>
+        [Input("adminManaged")]
+        public Input<bool>? AdminManaged { get; set; }
+
+        /// <summary>
+        /// Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
+        /// </summary>
+        [Input("includeUnverified")]
+        public Input<bool>? IncludeUnverified { get; set; }
+
+        /// <summary>
+        /// Set to `true` to only return the default domain.
+        /// </summary>
+        [Input("onlyDefault")]
+        public Input<bool>? OnlyDefault { get; set; }
+
+        /// <summary>
+        /// Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+        /// </summary>
+        [Input("onlyInitial")]
+        public Input<bool>? OnlyInitial { get; set; }
+
+        /// <summary>
+        /// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+        /// </summary>
+        [Input("onlyRoot")]
+        public Input<bool>? OnlyRoot { get; set; }
+
+        [Input("supportsServices")]
+        private InputList<string>? _supportsServices;
+
+        /// <summary>
+        /// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+        /// </summary>
+        public InputList<string> SupportsServices
+        {
+            get => _supportsServices ?? (_supportsServices = new InputList<string>());
+            set => _supportsServices = value;
+        }
+
+        public GetDomainsInvokeArgs()
         {
         }
     }

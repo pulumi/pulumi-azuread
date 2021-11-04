@@ -101,3 +101,33 @@ export interface GetUsersResult {
      */
     readonly users: outputs.GetUsersUser[];
 }
+
+export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
+    return pulumi.output(args).apply(a => getUsers(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUsers.
+ */
+export interface GetUsersOutputArgs {
+    /**
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+     */
+    ignoreMissing?: pulumi.Input<boolean>;
+    /**
+     * The email aliases of the users.
+     */
+    mailNicknames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The object IDs of the users.
+     */
+    objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+     */
+    returnAll?: pulumi.Input<boolean>;
+    /**
+     * The user principal names (UPNs) of the users.
+     */
+    userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
+}

@@ -201,3 +201,25 @@ export interface GetServicePrincipalResult {
      */
     readonly type: string;
 }
+
+export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
+    return pulumi.output(args).apply(a => getServicePrincipal(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServicePrincipal.
+ */
+export interface GetServicePrincipalOutputArgs {
+    /**
+     * The application ID (client ID) of the application associated with this service principal.
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * The display name of the application associated with this service principal.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * The object ID of the service principal.
+     */
+    objectId?: pulumi.Input<string>;
+}

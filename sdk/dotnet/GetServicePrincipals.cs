@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -101,6 +102,97 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetServicePrincipalsResult> InvokeAsync(GetServicePrincipalsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServicePrincipalsResult>("azuread:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets basic information for multiple Azure Active Directory service principals.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// *Look up by application display names*
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         {
+        ///             DisplayNames = 
+        ///             {
+        ///                 "example-app",
+        ///                 "another-app",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up by application IDs (client IDs*
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         {
+        ///             ApplicationIds = 
+        ///             {
+        ///                 "11111111-0000-0000-0000-000000000000",
+        ///                 "22222222-0000-0000-0000-000000000000",
+        ///                 "33333333-0000-0000-0000-000000000000",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up by service principal object IDs*
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         {
+        ///             ObjectIds = 
+        ///             {
+        ///                 "00000000-0000-0000-0000-000000000000",
+        ///                 "00000000-0000-0000-0000-111111111111",
+        ///                 "00000000-0000-0000-0000-222222222222",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetServicePrincipalsResult> Invoke(GetServicePrincipalsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetServicePrincipalsResult>("azuread:index/getServicePrincipals:getServicePrincipals", args ?? new GetServicePrincipalsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -155,6 +247,61 @@ namespace Pulumi.AzureAD
         public bool? ReturnAll { get; set; }
 
         public GetServicePrincipalsArgs()
+        {
+        }
+    }
+
+    public sealed class GetServicePrincipalsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("applicationIds")]
+        private InputList<string>? _applicationIds;
+
+        /// <summary>
+        /// A list of application IDs (client IDs) of the applications associated with the service principals.
+        /// </summary>
+        public InputList<string> ApplicationIds
+        {
+            get => _applicationIds ?? (_applicationIds = new InputList<string>());
+            set => _applicationIds = value;
+        }
+
+        [Input("displayNames")]
+        private InputList<string>? _displayNames;
+
+        /// <summary>
+        /// A list of display names of the applications associated with the service principals.
+        /// </summary>
+        public InputList<string> DisplayNames
+        {
+            get => _displayNames ?? (_displayNames = new InputList<string>());
+            set => _displayNames = value;
+        }
+
+        /// <summary>
+        /// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
+        /// </summary>
+        [Input("ignoreMissing")]
+        public Input<bool>? IgnoreMissing { get; set; }
+
+        [Input("objectIds")]
+        private InputList<string>? _objectIds;
+
+        /// <summary>
+        /// The object IDs of the service principals.
+        /// </summary>
+        public InputList<string> ObjectIds
+        {
+            get => _objectIds ?? (_objectIds = new InputList<string>());
+            set => _objectIds = value;
+        }
+
+        /// <summary>
+        /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+        /// </summary>
+        [Input("returnAll")]
+        public Input<bool>? ReturnAll { get; set; }
+
+        public GetServicePrincipalsInvokeArgs()
         {
         }
     }

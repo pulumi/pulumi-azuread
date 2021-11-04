@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -46,6 +47,42 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetApplicationTemplateResult> InvokeAsync(GetApplicationTemplateArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
+        /// 
+        /// ## API Permissions
+        /// 
+        /// This data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs
+        ///         {
+        ///             DisplayName = "Marketo",
+        ///         }));
+        ///         this.ApplicationTemplateId = example.Apply(example =&gt; example.TemplateId);
+        ///     }
+        /// 
+        ///     [Output("applicationTemplateId")]
+        ///     public Output&lt;string&gt; ApplicationTemplateId { get; set; }
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetApplicationTemplateResult> Invoke(GetApplicationTemplateInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetApplicationTemplateResult>("azuread:index/getApplicationTemplate:getApplicationTemplate", args ?? new GetApplicationTemplateInvokeArgs(), options.WithVersion());
     }
 
 
@@ -64,6 +101,25 @@ namespace Pulumi.AzureAD
         public string? TemplateId { get; set; }
 
         public GetApplicationTemplateArgs()
+        {
+        }
+    }
+
+    public sealed class GetApplicationTemplateInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Specifies the display name of the templated application.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Specifies the ID of the templated application.
+        /// </summary>
+        [Input("templateId")]
+        public Input<string>? TemplateId { get; set; }
+
+        public GetApplicationTemplateInvokeArgs()
         {
         }
     }

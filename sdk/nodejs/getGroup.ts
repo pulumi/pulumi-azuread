@@ -164,3 +164,29 @@ export interface GetGroupResult {
      */
     readonly visibility: string;
 }
+
+export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
+    return pulumi.output(args).apply(a => getGroup(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroup.
+ */
+export interface GetGroupOutputArgs {
+    /**
+     * The display name for the group.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Whether the group is mail-enabled.
+     */
+    mailEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the object ID of the group.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * Whether the group is a security group.
+     */
+    securityEnabled?: pulumi.Input<boolean>;
+}
