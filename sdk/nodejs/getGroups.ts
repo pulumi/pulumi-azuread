@@ -127,3 +127,33 @@ export interface GetGroupsResult {
     readonly returnAll?: boolean;
     readonly securityEnabled: boolean;
 }
+
+export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupsResult> {
+    return pulumi.output(args).apply(a => getGroups(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getGroups.
+ */
+export interface GetGroupsOutputArgs {
+    /**
+     * The display names of the groups.
+     */
+    displayNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     */
+    mailEnabled?: pulumi.Input<boolean>;
+    /**
+     * The object IDs of the groups.
+     */
+    objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A flag to denote if all groups should be fetched and returned.
+     */
+    returnAll?: pulumi.Input<boolean>;
+    /**
+     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     */
+    securityEnabled?: pulumi.Input<boolean>;
+}

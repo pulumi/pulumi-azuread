@@ -93,3 +93,21 @@ export interface GetApplicationTemplateResult {
      */
     readonly templateId: string;
 }
+
+export function getApplicationTemplateOutput(args?: GetApplicationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationTemplateResult> {
+    return pulumi.output(args).apply(a => getApplicationTemplate(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplicationTemplate.
+ */
+export interface GetApplicationTemplateOutputArgs {
+    /**
+     * Specifies the display name of the templated application.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Specifies the ID of the templated application.
+     */
+    templateId?: pulumi.Input<string>;
+}

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -109,6 +110,105 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets Object IDs or Display Names for multiple Azure Active Directory groups.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// *Look up by group name*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             DisplayNames = 
+        ///             {
+        ///                 "group-a",
+        ///                 "group-b",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up all groups*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             ReturnAll = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up all mail-enabled groups*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             MailEnabled = true,
+        ///             ReturnAll = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
+        /// *Look up all security-enabled groups that are not mail-enabled*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             MailEnabled = false,
+        ///             ReturnAll = true,
+        ///             SecurityEnabled = true,
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("azuread:index/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithVersion());
     }
 
 
@@ -157,6 +257,55 @@ namespace Pulumi.AzureAD
         public bool? SecurityEnabled { get; set; }
 
         public GetGroupsArgs()
+        {
+        }
+    }
+
+    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    {
+        [Input("displayNames")]
+        private InputList<string>? _displayNames;
+
+        /// <summary>
+        /// The display names of the groups.
+        /// </summary>
+        public InputList<string> DisplayNames
+        {
+            get => _displayNames ?? (_displayNames = new InputList<string>());
+            set => _displayNames = value;
+        }
+
+        /// <summary>
+        /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// </summary>
+        [Input("mailEnabled")]
+        public Input<bool>? MailEnabled { get; set; }
+
+        [Input("objectIds")]
+        private InputList<string>? _objectIds;
+
+        /// <summary>
+        /// The object IDs of the groups.
+        /// </summary>
+        public InputList<string> ObjectIds
+        {
+            get => _objectIds ?? (_objectIds = new InputList<string>());
+            set => _objectIds = value;
+        }
+
+        /// <summary>
+        /// A flag to denote if all groups should be fetched and returned.
+        /// </summary>
+        [Input("returnAll")]
+        public Input<bool>? ReturnAll { get; set; }
+
+        /// <summary>
+        /// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        /// </summary>
+        [Input("securityEnabled")]
+        public Input<bool>? SecurityEnabled { get; set; }
+
+        public GetGroupsInvokeArgs()
         {
         }
     }

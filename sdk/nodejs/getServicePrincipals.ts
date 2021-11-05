@@ -133,3 +133,33 @@ export interface GetServicePrincipalsResult {
      */
     readonly servicePrincipals: outputs.GetServicePrincipalsServicePrincipal[];
 }
+
+export function getServicePrincipalsOutput(args?: GetServicePrincipalsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalsResult> {
+    return pulumi.output(args).apply(a => getServicePrincipals(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getServicePrincipals.
+ */
+export interface GetServicePrincipalsOutputArgs {
+    /**
+     * A list of application IDs (client IDs) of the applications associated with the service principals.
+     */
+    applicationIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of display names of the applications associated with the service principals.
+     */
+    displayNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
+     */
+    ignoreMissing?: pulumi.Input<boolean>;
+    /**
+     * The object IDs of the service principals.
+     */
+    objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
+     */
+    returnAll?: pulumi.Input<boolean>;
+}

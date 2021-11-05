@@ -241,3 +241,25 @@ export interface GetUserResult {
      */
     readonly userType: string;
 }
+
+export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserResult> {
+    return pulumi.output(args).apply(a => getUser(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getUser.
+ */
+export interface GetUserOutputArgs {
+    /**
+     * The email alias of the user.
+     */
+    mailNickname?: pulumi.Input<string>;
+    /**
+     * The object ID of the user.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * The user principal name (UPN) of the user.
+     */
+    userPrincipalName?: pulumi.Input<string>;
+}

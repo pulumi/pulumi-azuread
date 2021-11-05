@@ -300,6 +300,10 @@ func (o ApplicationPreAuthorizedMapOutput) MapIndex(k pulumi.StringInput) Applic
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreAuthorizedInput)(nil)).Elem(), &ApplicationPreAuthorized{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreAuthorizedPtrInput)(nil)).Elem(), &ApplicationPreAuthorized{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreAuthorizedArrayInput)(nil)).Elem(), ApplicationPreAuthorizedArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationPreAuthorizedMapInput)(nil)).Elem(), ApplicationPreAuthorizedMap{})
 	pulumi.RegisterOutputType(ApplicationPreAuthorizedOutput{})
 	pulumi.RegisterOutputType(ApplicationPreAuthorizedPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationPreAuthorizedArrayOutput{})

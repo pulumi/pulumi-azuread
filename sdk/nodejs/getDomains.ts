@@ -97,3 +97,37 @@ export interface GetDomainsResult {
     readonly onlyRoot?: boolean;
     readonly supportsServices?: string[];
 }
+
+export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
+    return pulumi.output(args).apply(a => getDomains(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getDomains.
+ */
+export interface GetDomainsOutputArgs {
+    /**
+     * Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+     */
+    adminManaged?: pulumi.Input<boolean>;
+    /**
+     * Set to `true` if unverified Azure AD domains should be included. Defaults to `false`.
+     */
+    includeUnverified?: pulumi.Input<boolean>;
+    /**
+     * Set to `true` to only return the default domain.
+     */
+    onlyDefault?: pulumi.Input<boolean>;
+    /**
+     * Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
+     */
+    onlyInitial?: pulumi.Input<boolean>;
+    /**
+     * Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
+     */
+    onlyRoot?: pulumi.Input<boolean>;
+    /**
+     * A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+     */
+    supportsServices?: pulumi.Input<pulumi.Input<string>[]>;
+}

@@ -318,6 +318,10 @@ func (o ServicePrincipalPasswordMapOutput) MapIndex(k pulumi.StringInput) Servic
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalPasswordInput)(nil)).Elem(), &ServicePrincipalPassword{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalPasswordPtrInput)(nil)).Elem(), &ServicePrincipalPassword{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalPasswordArrayInput)(nil)).Elem(), ServicePrincipalPasswordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalPasswordMapInput)(nil)).Elem(), ServicePrincipalPasswordMap{})
 	pulumi.RegisterOutputType(ServicePrincipalPasswordOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalPasswordPtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalPasswordArrayOutput{})

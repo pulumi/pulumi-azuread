@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi.Utilities;
 
 namespace Pulumi.AzureAD
 {
@@ -51,6 +52,47 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithVersion());
+
+        /// <summary>
+        /// Gets basic information for multiple Azure Active Directory users.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var users = Output.Create(AzureAD.GetUsers.InvokeAsync(new AzureAD.GetUsersArgs
+        ///         {
+        ///             UserPrincipalNames = 
+        ///             {
+        ///                 "kat@hashicorp.com",
+        ///                 "byte@hashicorp.com",
+        ///             },
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.Invoke<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithVersion());
     }
 
 
@@ -105,6 +147,61 @@ namespace Pulumi.AzureAD
         }
 
         public GetUsersArgs()
+        {
+        }
+    }
+
+    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    {
+        /// <summary>
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+        /// </summary>
+        [Input("ignoreMissing")]
+        public Input<bool>? IgnoreMissing { get; set; }
+
+        [Input("mailNicknames")]
+        private InputList<string>? _mailNicknames;
+
+        /// <summary>
+        /// The email aliases of the users.
+        /// </summary>
+        public InputList<string> MailNicknames
+        {
+            get => _mailNicknames ?? (_mailNicknames = new InputList<string>());
+            set => _mailNicknames = value;
+        }
+
+        [Input("objectIds")]
+        private InputList<string>? _objectIds;
+
+        /// <summary>
+        /// The object IDs of the users.
+        /// </summary>
+        public InputList<string> ObjectIds
+        {
+            get => _objectIds ?? (_objectIds = new InputList<string>());
+            set => _objectIds = value;
+        }
+
+        /// <summary>
+        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+        /// </summary>
+        [Input("returnAll")]
+        public Input<bool>? ReturnAll { get; set; }
+
+        [Input("userPrincipalNames")]
+        private InputList<string>? _userPrincipalNames;
+
+        /// <summary>
+        /// The user principal names (UPNs) of the users.
+        /// </summary>
+        public InputList<string> UserPrincipalNames
+        {
+            get => _userPrincipalNames ?? (_userPrincipalNames = new InputList<string>());
+            set => _userPrincipalNames = value;
+        }
+
+        public GetUsersInvokeArgs()
         {
         }
     }

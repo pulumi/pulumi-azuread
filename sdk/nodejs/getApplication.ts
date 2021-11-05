@@ -183,3 +183,25 @@ export interface GetApplicationResult {
      */
     readonly webs: outputs.GetApplicationWeb[];
 }
+
+export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
+    return pulumi.output(args).apply(a => getApplication(a, opts))
+}
+
+/**
+ * A collection of arguments for invoking getApplication.
+ */
+export interface GetApplicationOutputArgs {
+    /**
+     * Specifies the Application ID (also called Client ID).
+     */
+    applicationId?: pulumi.Input<string>;
+    /**
+     * Specifies the display name of the application.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Specifies the Object ID of the application.
+     */
+    objectId?: pulumi.Input<string>;
+}

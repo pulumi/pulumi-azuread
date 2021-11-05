@@ -327,6 +327,10 @@ func (o DirectoryRoleMemberMapOutput) MapIndex(k pulumi.StringInput) DirectoryRo
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberInput)(nil)).Elem(), &DirectoryRoleMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberPtrInput)(nil)).Elem(), &DirectoryRoleMember{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberArrayInput)(nil)).Elem(), DirectoryRoleMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberMapInput)(nil)).Elem(), DirectoryRoleMemberMap{})
 	pulumi.RegisterOutputType(DirectoryRoleMemberOutput{})
 	pulumi.RegisterOutputType(DirectoryRoleMemberPtrOutput{})
 	pulumi.RegisterOutputType(DirectoryRoleMemberArrayOutput{})
