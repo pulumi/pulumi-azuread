@@ -2,6 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+* Upgrade to v2.9.0 of the AzureAD Terraform Provider
 * Upgrade to pulumi-terraform-bridge v3.11.0
 
 ---
