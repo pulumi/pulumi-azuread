@@ -1400,6 +1400,7 @@
                     "items": {
                         "$ref": "#/types/azuread:index/getApplicationApiOauth2PermissionScope:getApplicationApiOauth2PermissionScope"
                     },
+                    "description": "One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.\n",
                     "language": {
                         "python": {
                             "mapCase": false

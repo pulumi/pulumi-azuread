@@ -384,6 +384,9 @@ export interface GetApplicationApi {
      * Allows an application to use claims mapping without specifying a custom signing key.
      */
     mappedClaimsEnabled: boolean;
+    /**
+     * One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+     */
     oauth2PermissionScopes: outputs.GetApplicationApiOauth2PermissionScope[];
     /**
      * The access token version expected by this resource. Possible values are `1` or `2`.

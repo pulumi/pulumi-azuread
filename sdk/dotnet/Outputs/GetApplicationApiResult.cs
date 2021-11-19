@@ -21,6 +21,9 @@ namespace Pulumi.AzureAD.Outputs
         /// Allows an application to use claims mapping without specifying a custom signing key.
         /// </summary>
         public readonly bool MappedClaimsEnabled;
+        /// <summary>
+        /// One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationApiOauth2PermissionScopeResult> Oauth2PermissionScopes;
         /// <summary>
         /// The access token version expected by this resource. Possible values are `1` or `2`.
