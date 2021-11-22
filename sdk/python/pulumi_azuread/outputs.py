@@ -2070,6 +2070,7 @@ class GetApplicationApiResult(dict):
         """
         :param Sequence[str] known_client_applications: A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
         :param bool mapped_claims_enabled: Allows an application to use claims mapping without specifying a custom signing key.
+        :param Sequence['GetApplicationApiOauth2PermissionScopeArgs'] oauth2_permission_scopes: One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
         :param int requested_access_token_version: The access token version expected by this resource. Possible values are `1` or `2`.
         """
         pulumi.set(__self__, "known_client_applications", known_client_applications)
@@ -2096,6 +2097,9 @@ class GetApplicationApiResult(dict):
     @property
     @pulumi.getter(name="oauth2PermissionScopes")
     def oauth2_permission_scopes(self) -> Sequence['outputs.GetApplicationApiOauth2PermissionScopeResult']:
+        """
+        One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+        """
         return pulumi.get(self, "oauth2_permission_scopes")
 
     @property

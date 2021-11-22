@@ -4545,7 +4545,8 @@ type GetApplicationApi struct {
 	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 	KnownClientApplications []string `pulumi:"knownClientApplications"`
 	// Allows an application to use claims mapping without specifying a custom signing key.
-	MappedClaimsEnabled    bool                                     `pulumi:"mappedClaimsEnabled"`
+	MappedClaimsEnabled bool `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 	Oauth2PermissionScopes []GetApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
 	// The access token version expected by this resource. Possible values are `1` or `2`.
 	RequestedAccessTokenVersion int `pulumi:"requestedAccessTokenVersion"`
@@ -4566,7 +4567,8 @@ type GetApplicationApiArgs struct {
 	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 	KnownClientApplications pulumi.StringArrayInput `pulumi:"knownClientApplications"`
 	// Allows an application to use claims mapping without specifying a custom signing key.
-	MappedClaimsEnabled    pulumi.BoolInput                                 `pulumi:"mappedClaimsEnabled"`
+	MappedClaimsEnabled pulumi.BoolInput `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 	Oauth2PermissionScopes GetApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
 	// The access token version expected by this resource. Possible values are `1` or `2`.
 	RequestedAccessTokenVersion pulumi.IntInput `pulumi:"requestedAccessTokenVersion"`
@@ -4633,6 +4635,7 @@ func (o GetApplicationApiOutput) MappedClaimsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationApi) bool { return v.MappedClaimsEnabled }).(pulumi.BoolOutput)
 }
 
+// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 func (o GetApplicationApiOutput) Oauth2PermissionScopes() GetApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v GetApplicationApi) []GetApplicationApiOauth2PermissionScope { return v.Oauth2PermissionScopes }).(GetApplicationApiOauth2PermissionScopeArrayOutput)
 }
