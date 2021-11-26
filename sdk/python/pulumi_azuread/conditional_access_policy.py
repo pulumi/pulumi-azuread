@@ -219,6 +219,12 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                     included_applications=["All"],
                 ),
                 client_app_types=["all"],
+                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
+                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
+                        mode="exclude",
+                        rule="device.operatingSystem eq \"Doors\"",
+                    ),
+                ),
                 locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
                     excluded_locations=["AllTrusted"],
                     included_locations=["All"],
@@ -302,6 +308,12 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                     included_applications=["All"],
                 ),
                 client_app_types=["all"],
+                devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(
+                    filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(
+                        mode="exclude",
+                        rule="device.operatingSystem eq \"Doors\"",
+                    ),
+                ),
                 locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(
                     excluded_locations=["AllTrusted"],
                     included_locations=["All"],

@@ -20,6 +20,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azuread:index/administrativeUnit:AdministrativeUnit":
+		r = &AdministrativeUnit{}
+	case "azuread:index/administrativeUnitMember:AdministrativeUnitMember":
+		r = &AdministrativeUnitMember{}
 	case "azuread:index/appRoleAssignment:AppRoleAssignment":
 		r = &AppRoleAssignment{}
 	case "azuread:index/application:Application":
@@ -48,6 +52,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePrincipal{}
 	case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
 		r = &ServicePrincipalCertificate{}
+	case "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant":
+		r = &ServicePrincipalDelegatedPermissionGrant{}
 	case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
 		r = &ServicePrincipalPassword{}
 	case "azuread:index/user:User":
@@ -83,6 +89,16 @@ func init() {
 	if err != nil {
 		fmt.Printf("failed to determine package version. defaulting to v1: %v\n", err)
 	}
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/administrativeUnit",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/administrativeUnitMember",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/appRoleAssignment",
@@ -151,6 +167,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/servicePrincipalCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/servicePrincipalDelegatedPermissionGrant",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -25,6 +25,8 @@ __all__ = [
     'ApplicationWebImplicitGrantArgs',
     'ConditionalAccessPolicyConditionsArgs',
     'ConditionalAccessPolicyConditionsApplicationsArgs',
+    'ConditionalAccessPolicyConditionsDevicesArgs',
+    'ConditionalAccessPolicyConditionsDevicesFilterArgs',
     'ConditionalAccessPolicyConditionsLocationsArgs',
     'ConditionalAccessPolicyConditionsPlatformsArgs',
     'ConditionalAccessPolicyConditionsUsersArgs',
@@ -918,6 +920,7 @@ class ConditionalAccessPolicyConditionsArgs:
                  locations: pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'],
                  platforms: pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'],
                  users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'],
+                 devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']] = None,
                  sign_in_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -926,6 +929,7 @@ class ConditionalAccessPolicyConditionsArgs:
         :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sign_in_risk_levels: A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
@@ -934,6 +938,8 @@ class ConditionalAccessPolicyConditionsArgs:
         pulumi.set(__self__, "locations", locations)
         pulumi.set(__self__, "platforms", platforms)
         pulumi.set(__self__, "users", users)
+        if devices is not None:
+            pulumi.set(__self__, "devices", devices)
         if sign_in_risk_levels is not None:
             pulumi.set(__self__, "sign_in_risk_levels", sign_in_risk_levels)
         if user_risk_levels is not None:
@@ -998,6 +1004,18 @@ class ConditionalAccessPolicyConditionsArgs:
     @users.setter
     def users(self, value: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']):
         pulumi.set(self, "users", value)
+
+    @property
+    @pulumi.getter
+    def devices(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']]:
+        """
+        A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        """
+        return pulumi.get(self, "devices")
+
+    @devices.setter
+    def devices(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']]):
+        pulumi.set(self, "devices", value)
 
     @property
     @pulumi.getter(name="signInRiskLevels")
@@ -1076,6 +1094,66 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
     @included_user_actions.setter
     def included_user_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "included_user_actions", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsDevicesArgs:
+    def __init__(__self__, *,
+                 filter: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']] = None):
+        """
+        :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs'] filter: A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']]:
+        """
+        A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesFilterArgs']]):
+        pulumi.set(self, "filter", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsDevicesFilterArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[str],
+                 rule: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] mode: Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        :param pulumi.Input[str] rule: Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        """
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "rule", rule)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[str]:
+        """
+        Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
 
 
 @pulumi.input_type

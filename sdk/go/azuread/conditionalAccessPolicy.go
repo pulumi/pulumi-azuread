@@ -46,6 +46,12 @@ import (
 // 				ClientAppTypes: pulumi.StringArray{
 // 					pulumi.String("all"),
 // 				},
+// 				Devices: &ConditionalAccessPolicyConditionsDevicesArgs{
+// 					Filter: &ConditionalAccessPolicyConditionsDevicesFilterArgs{
+// 						Mode: pulumi.String("exclude"),
+// 						Rule: pulumi.String("device.operatingSystem eq \"Doors\""),
+// 					},
+// 				},
 // 				Locations: &ConditionalAccessPolicyConditionsLocationsArgs{
 // 					ExcludedLocations: pulumi.StringArray{
 // 						pulumi.String("AllTrusted"),

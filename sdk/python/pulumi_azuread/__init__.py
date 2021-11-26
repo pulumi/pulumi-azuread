@@ -5,6 +5,8 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .administrative_unit import *
+from .administrative_unit_member import *
 from .app_role_assignment import *
 from .application import *
 from .application_certificate import *
@@ -13,6 +15,7 @@ from .application_pre_authorized import *
 from .conditional_access_policy import *
 from .directory_role import *
 from .directory_role_member import *
+from .get_administrative_unit import *
 from .get_application import *
 from .get_application_published_app_ids import *
 from .get_application_template import *
@@ -31,6 +34,7 @@ from .named_location import *
 from .provider import *
 from .service_principal import *
 from .service_principal_certificate import *
+from .service_principal_delegated_permission_grant import *
 from .service_principal_password import *
 from .user import *
 from ._inputs import *
@@ -46,6 +50,22 @@ else:
 _utilities.register(
     resource_modules="""
 [
+ {
+  "pkg": "azuread",
+  "mod": "index/administrativeUnit",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/administrativeUnit:AdministrativeUnit": "AdministrativeUnit"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/administrativeUnitMember",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/administrativeUnitMember:AdministrativeUnitMember": "AdministrativeUnitMember"
+  }
+ },
  {
   "pkg": "azuread",
   "mod": "index/appRoleAssignment",
@@ -156,6 +176,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate": "ServicePrincipalCertificate"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/servicePrincipalDelegatedPermissionGrant",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant": "ServicePrincipalDelegatedPermissionGrant"
   }
  },
  {

@@ -98,11 +98,14 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"azuread_application":                   {Tok: makeResource(mainMod, "Application")},
-			"azuread_application_password":          {Tok: makeResource(mainMod, "ApplicationPassword")},
-			"azuread_group":                         {Tok: makeResource(mainMod, "Group")},
-			"azuread_service_principal":             {Tok: makeResource(mainMod, "ServicePrincipal")},
-			"azuread_service_principal_password":    {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
+			"azuread_application":                {Tok: makeResource(mainMod, "Application")},
+			"azuread_application_password":       {Tok: makeResource(mainMod, "ApplicationPassword")},
+			"azuread_group":                      {Tok: makeResource(mainMod, "Group")},
+			"azuread_service_principal":          {Tok: makeResource(mainMod, "ServicePrincipal")},
+			"azuread_service_principal_password": {Tok: makeResource(mainMod, "ServicePrincipalPassword")},
+			"azuread_service_principal_delegated_permission_grant": {
+				Tok: makeResource(mainMod, "ServicePrincipalDelegatedPermissionGrant"),
+			},
 			"azuread_user":                          {Tok: makeResource(mainMod, "User")},
 			"azuread_group_member":                  {Tok: makeResource(mainMod, "GroupMember")},
 			"azuread_application_certificate":       {Tok: makeResource(mainMod, "ApplicationCertificate")},
@@ -114,6 +117,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_directory_role":                {Tok: makeResource(mainMod, "DirectoryRole")},
 			"azuread_directory_role_member":         {Tok: makeResource(mainMod, "DirectoryRoleMember")},
 			"azuread_app_role_assignment":           {Tok: makeResource(mainMod, "AppRoleAssignment")},
+			"azuread_administrative_unit":           {Tok: makeResource(mainMod, "AdministrativeUnit")},
+			"azuread_administrative_unit_member":    {Tok: makeResource(mainMod, "AdministrativeUnitMember")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},
@@ -127,6 +132,7 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_application_published_app_ids": {Tok: makeDataSource(mainMod, "getApplicationPublishedAppIds")},
 			"azuread_application_template":          {Tok: makeDataSource(mainMod, "getApplicationTemplate")},
 			"azuread_service_principals":            {Tok: makeDataSource(mainMod, "getServicePrincipals")},
+			"azuread_administrative_unit":           {Tok: makeDataSource(mainMod, "getAdministrativeUnit")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
