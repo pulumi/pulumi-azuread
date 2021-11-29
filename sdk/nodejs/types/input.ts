@@ -252,6 +252,10 @@ export interface ConditionalAccessPolicyConditions {
      */
     clientAppTypes: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+     */
+    devices?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevices>;
+    /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      */
     locations: pulumi.Input<inputs.ConditionalAccessPolicyConditionsLocations>;
@@ -286,6 +290,24 @@ export interface ConditionalAccessPolicyConditionsApplications {
      * A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
      */
     includedUserActions?: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ConditionalAccessPolicyConditionsDevices {
+    /**
+     * A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+     */
+    filter?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsDevicesFilter>;
+}
+
+export interface ConditionalAccessPolicyConditionsDevicesFilter {
+    /**
+     * Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+     */
+    mode: pulumi.Input<string>;
+    /**
+     * Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+     */
+    rule: pulumi.Input<string>;
 }
 
 export interface ConditionalAccessPolicyConditionsLocations {

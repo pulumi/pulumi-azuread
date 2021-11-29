@@ -49,6 +49,14 @@ namespace Pulumi.AzureAD
     ///                 {
     ///                     "all",
     ///                 },
+    ///                 Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs
+    ///                 {
+    ///                     Filter = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs
+    ///                     {
+    ///                         Mode = "exclude",
+    ///                         Rule = "device.operatingSystem eq \"Doors\"",
+    ///                     },
+    ///                 },
     ///                 Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs
     ///                 {
     ///                     ExcludedLocations = 

@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-* Upgrade examples to pulumi 3.17.0_
+* Upgrade to v2.11.0 of the AzureAD Terraform Provider
 
 ---
 

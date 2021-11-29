@@ -13,6 +13,8 @@
         "strict": true
     },
     "files": [
+        "administrativeUnit.ts",
+        "administrativeUnitMember.ts",
         "appRoleAssignment.ts",
         "application.ts",
         "applicationCertificate.ts",
@@ -23,6 +25,7 @@
         "config/vars.ts",
         "directoryRole.ts",
         "directoryRoleMember.ts",
+        "getAdministrativeUnit.ts",
         "getApplication.ts",
         "getApplicationPublishedAppIds.ts",
         "getApplicationTemplate.ts",
@@ -42,6 +45,7 @@
         "provider.ts",
         "servicePrincipal.ts",
         "servicePrincipalCertificate.ts",
+        "servicePrincipalDelegatedPermissionGrant.ts",
         "servicePrincipalPassword.ts",
         "types/index.ts",
         "types/input.ts",

@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./administrativeUnit";
+export * from "./administrativeUnitMember";
 export * from "./appRoleAssignment";
 export * from "./application";
 export * from "./applicationCertificate";
@@ -13,6 +15,7 @@ export * from "./applicationPreAuthorized";
 export * from "./conditionalAccessPolicy";
 export * from "./directoryRole";
 export * from "./directoryRoleMember";
+export * from "./getAdministrativeUnit";
 export * from "./getApplication";
 export * from "./getApplicationPublishedAppIds";
 export * from "./getApplicationTemplate";
@@ -31,6 +34,7 @@ export * from "./namedLocation";
 export * from "./provider";
 export * from "./servicePrincipal";
 export * from "./servicePrincipalCertificate";
+export * from "./servicePrincipalDelegatedPermissionGrant";
 export * from "./servicePrincipalPassword";
 export * from "./user";
 
@@ -44,6 +48,8 @@ export {
 };
 
 // Import resources to register:
+import { AdministrativeUnit } from "./administrativeUnit";
+import { AdministrativeUnitMember } from "./administrativeUnitMember";
 import { AppRoleAssignment } from "./appRoleAssignment";
 import { Application } from "./application";
 import { ApplicationCertificate } from "./applicationCertificate";
@@ -58,6 +64,7 @@ import { Invitation } from "./invitation";
 import { NamedLocation } from "./namedLocation";
 import { ServicePrincipal } from "./servicePrincipal";
 import { ServicePrincipalCertificate } from "./servicePrincipalCertificate";
+import { ServicePrincipalDelegatedPermissionGrant } from "./servicePrincipalDelegatedPermissionGrant";
 import { ServicePrincipalPassword } from "./servicePrincipalPassword";
 import { User } from "./user";
 
@@ -65,6 +72,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "azuread:index/administrativeUnit:AdministrativeUnit":
+                return new AdministrativeUnit(name, <any>undefined, { urn })
+            case "azuread:index/administrativeUnitMember:AdministrativeUnitMember":
+                return new AdministrativeUnitMember(name, <any>undefined, { urn })
             case "azuread:index/appRoleAssignment:AppRoleAssignment":
                 return new AppRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/application:Application":
@@ -93,6 +104,8 @@ const _module = {
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
                 return new ServicePrincipalCertificate(name, <any>undefined, { urn })
+            case "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant":
+                return new ServicePrincipalDelegatedPermissionGrant(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
                 return new ServicePrincipalPassword(name, <any>undefined, { urn })
             case "azuread:index/user:User":
@@ -102,6 +115,8 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnit", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnitMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/appRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
@@ -116,6 +131,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/namedLocation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertificate", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalDelegatedPermissionGrant", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)
 

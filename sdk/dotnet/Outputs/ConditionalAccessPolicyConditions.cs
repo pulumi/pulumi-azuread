@@ -22,6 +22,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ClientAppTypes;
         /// <summary>
+        /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        /// </summary>
+        public readonly Outputs.ConditionalAccessPolicyConditionsDevices? Devices;
+        /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsLocations Locations;
@@ -48,6 +52,8 @@ namespace Pulumi.AzureAD.Outputs
 
             ImmutableArray<string> clientAppTypes,
 
+            Outputs.ConditionalAccessPolicyConditionsDevices? devices,
+
             Outputs.ConditionalAccessPolicyConditionsLocations locations,
 
             Outputs.ConditionalAccessPolicyConditionsPlatforms platforms,
@@ -60,6 +66,7 @@ namespace Pulumi.AzureAD.Outputs
         {
             Applications = applications;
             ClientAppTypes = clientAppTypes;
+            Devices = devices;
             Locations = locations;
             Platforms = platforms;
             SignInRiskLevels = signInRiskLevels;

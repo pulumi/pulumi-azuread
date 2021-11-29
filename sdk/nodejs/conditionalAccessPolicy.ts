@@ -29,6 +29,12 @@ import * as utilities from "./utilities";
  *             includedApplications: ["All"],
  *         },
  *         clientAppTypes: ["all"],
+ *         devices: {
+ *             filter: {
+ *                 mode: "exclude",
+ *                 rule: "device.operatingSystem eq \"Doors\"",
+ *             },
+ *         },
  *         locations: {
  *             excludedLocations: ["AllTrusted"],
  *             includedLocations: ["All"],

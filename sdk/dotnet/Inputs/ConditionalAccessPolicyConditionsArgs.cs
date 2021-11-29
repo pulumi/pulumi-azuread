@@ -31,6 +31,12 @@ namespace Pulumi.AzureAD.Inputs
         }
 
         /// <summary>
+        /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+        /// </summary>
+        [Input("devices")]
+        public Input<Inputs.ConditionalAccessPolicyConditionsDevicesArgs>? Devices { get; set; }
+
+        /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
         [Input("locations", required: true)]
