@@ -3080,9 +3080,9 @@ type ConditionalAccessPolicyConditionsUsers struct {
 	ExcludedRoles []string `pulumi:"excludedRoles"`
 	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 	ExcludedUsers []string `pulumi:"excludedUsers"`
-	// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+	// A list of group IDs in scope of policy unless explicitly excluded.
 	IncludedGroups []string `pulumi:"includedGroups"`
-	// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+	// A list of role IDs in scope of policy unless explicitly excluded.
 	IncludedRoles []string `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 	IncludedUsers []string `pulumi:"includedUsers"`
@@ -3106,9 +3106,9 @@ type ConditionalAccessPolicyConditionsUsersArgs struct {
 	ExcludedRoles pulumi.StringArrayInput `pulumi:"excludedRoles"`
 	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
-	// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+	// A list of group IDs in scope of policy unless explicitly excluded.
 	IncludedGroups pulumi.StringArrayInput `pulumi:"includedGroups"`
-	// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+	// A list of role IDs in scope of policy unless explicitly excluded.
 	IncludedRoles pulumi.StringArrayInput `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 	IncludedUsers pulumi.StringArrayInput `pulumi:"includedUsers"`
@@ -3206,12 +3206,12 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedUsers() pulumi.Str
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedUsers }).(pulumi.StringArrayOutput)
 }
 
-// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+// A list of group IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedGroups }).(pulumi.StringArrayOutput)
 }
 
-// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+// A list of role IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedRoles }).(pulumi.StringArrayOutput)
 }
@@ -3275,7 +3275,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedUsers() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+// A list of group IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -3285,7 +3285,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+// A list of role IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -3504,6 +3504,8 @@ type ConditionalAccessPolicySessionControls struct {
 	ApplicationEnforcedRestrictionsEnabled *bool `pulumi:"applicationEnforcedRestrictionsEnabled"`
 	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy *string `pulumi:"cloudAppSecurityPolicy"`
+	// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+	PersistentBrowserMode *string `pulumi:"persistentBrowserMode"`
 	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 	SignInFrequency *int `pulumi:"signInFrequency"`
 	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -3526,6 +3528,8 @@ type ConditionalAccessPolicySessionControlsArgs struct {
 	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput `pulumi:"applicationEnforcedRestrictionsEnabled"`
 	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
+	// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+	PersistentBrowserMode pulumi.StringPtrInput `pulumi:"persistentBrowserMode"`
 	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 	SignInFrequency pulumi.IntPtrInput `pulumi:"signInFrequency"`
 	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -3619,6 +3623,11 @@ func (o ConditionalAccessPolicySessionControlsOutput) CloudAppSecurityPolicy() p
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.CloudAppSecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+func (o ConditionalAccessPolicySessionControlsOutput) PersistentBrowserMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.PersistentBrowserMode }).(pulumi.StringPtrOutput)
+}
+
 // Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *int { return v.SignInFrequency }).(pulumi.IntPtrOutput)
@@ -3670,6 +3679,16 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy(
 			return nil
 		}
 		return v.CloudAppSecurityPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) PersistentBrowserMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PersistentBrowserMode
 	}).(pulumi.StringPtrOutput)
 }
 

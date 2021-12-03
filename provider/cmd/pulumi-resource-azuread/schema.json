@@ -946,7 +946,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of group IDs in scope of policy unless explicitly excluded, or `All`.\n",
+                    "description": "A list of group IDs in scope of policy unless explicitly excluded.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -958,7 +958,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of role IDs in scope of policy unless explicitly excluded, or `All`.\n",
+                    "description": "A list of role IDs in scope of policy unless explicitly excluded.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -1048,6 +1048,15 @@
                 "cloudAppSecurityPolicy": {
                     "type": "string",
                     "description": "Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "persistentBrowserMode": {
+                    "type": "string",
+                    "description": "Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
