@@ -1356,8 +1356,8 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         :param Sequence[str] excluded_groups: A list of group IDs excluded from scope of policy.
         :param Sequence[str] excluded_roles: A list of role IDs excluded from scope of policy.
         :param Sequence[str] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
-        :param Sequence[str] included_groups: A list of group IDs in scope of policy unless explicitly excluded, or `All`.
-        :param Sequence[str] included_roles: A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+        :param Sequence[str] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
+        :param Sequence[str] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
         :param Sequence[str] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
         """
         if excluded_groups is not None:
@@ -1401,7 +1401,7 @@ class ConditionalAccessPolicyConditionsUsers(dict):
     @pulumi.getter(name="includedGroups")
     def included_groups(self) -> Optional[Sequence[str]]:
         """
-        A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+        A list of group IDs in scope of policy unless explicitly excluded.
         """
         return pulumi.get(self, "included_groups")
 
@@ -1409,7 +1409,7 @@ class ConditionalAccessPolicyConditionsUsers(dict):
     @pulumi.getter(name="includedRoles")
     def included_roles(self) -> Optional[Sequence[str]]:
         """
-        A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+        A list of role IDs in scope of policy unless explicitly excluded.
         """
         return pulumi.get(self, "included_roles")
 
@@ -1505,6 +1505,8 @@ class ConditionalAccessPolicySessionControls(dict):
             suggest = "application_enforced_restrictions_enabled"
         elif key == "cloudAppSecurityPolicy":
             suggest = "cloud_app_security_policy"
+        elif key == "persistentBrowserMode":
+            suggest = "persistent_browser_mode"
         elif key == "signInFrequency":
             suggest = "sign_in_frequency"
         elif key == "signInFrequencyPeriod":
@@ -1524,11 +1526,13 @@ class ConditionalAccessPolicySessionControls(dict):
     def __init__(__self__, *,
                  application_enforced_restrictions_enabled: Optional[bool] = None,
                  cloud_app_security_policy: Optional[str] = None,
+                 persistent_browser_mode: Optional[str] = None,
                  sign_in_frequency: Optional[int] = None,
                  sign_in_frequency_period: Optional[str] = None):
         """
         :param bool application_enforced_restrictions_enabled: Whether or not application enforced restrictions are enabled. Defaults to `false`.
         :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+        :param str persistent_browser_mode: Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
         :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
@@ -1536,6 +1540,8 @@ class ConditionalAccessPolicySessionControls(dict):
             pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
         if cloud_app_security_policy is not None:
             pulumi.set(__self__, "cloud_app_security_policy", cloud_app_security_policy)
+        if persistent_browser_mode is not None:
+            pulumi.set(__self__, "persistent_browser_mode", persistent_browser_mode)
         if sign_in_frequency is not None:
             pulumi.set(__self__, "sign_in_frequency", sign_in_frequency)
         if sign_in_frequency_period is not None:
@@ -1556,6 +1562,14 @@ class ConditionalAccessPolicySessionControls(dict):
         Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         """
         return pulumi.get(self, "cloud_app_security_policy")
+
+    @property
+    @pulumi.getter(name="persistentBrowserMode")
+    def persistent_browser_mode(self) -> Optional[str]:
+        """
+        Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        """
+        return pulumi.get(self, "persistent_browser_mode")
 
     @property
     @pulumi.getter(name="signInFrequency")

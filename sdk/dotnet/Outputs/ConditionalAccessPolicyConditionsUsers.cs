@@ -26,11 +26,11 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludedUsers;
         /// <summary>
-        /// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+        /// A list of group IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public readonly ImmutableArray<string> IncludedGroups;
         /// <summary>
-        /// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+        /// A list of role IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public readonly ImmutableArray<string> IncludedRoles;
         /// <summary>

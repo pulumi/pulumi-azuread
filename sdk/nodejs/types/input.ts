@@ -346,11 +346,11 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     excludedUsers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+     * A list of group IDs in scope of policy unless explicitly excluded.
      */
     includedGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+     * A list of role IDs in scope of policy unless explicitly excluded.
      */
     includedRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -387,6 +387,10 @@ export interface ConditionalAccessPolicySessionControls {
      * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
      */
     cloudAppSecurityPolicy?: pulumi.Input<string>;
+    /**
+     * Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+     */
+    persistentBrowserMode?: pulumi.Input<string>;
     /**
      * Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
      */

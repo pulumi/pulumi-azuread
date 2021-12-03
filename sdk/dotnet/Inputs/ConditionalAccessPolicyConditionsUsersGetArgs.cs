@@ -52,7 +52,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _includedGroups;
 
         /// <summary>
-        /// A list of group IDs in scope of policy unless explicitly excluded, or `All`.
+        /// A list of group IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public InputList<string> IncludedGroups
         {
@@ -64,7 +64,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _includedRoles;
 
         /// <summary>
-        /// A list of role IDs in scope of policy unless explicitly excluded, or `All`.
+        /// A list of role IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public InputList<string> IncludedRoles
         {

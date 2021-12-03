@@ -25,6 +25,12 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? CloudAppSecurityPolicy { get; set; }
 
         /// <summary>
+        /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        /// </summary>
+        [Input("persistentBrowserMode")]
+        public Input<string>? PersistentBrowserMode { get; set; }
+
+        /// <summary>
         /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         /// </summary>
         [Input("signInFrequency")]

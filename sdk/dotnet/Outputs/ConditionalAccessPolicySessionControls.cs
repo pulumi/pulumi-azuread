@@ -22,6 +22,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? CloudAppSecurityPolicy;
         /// <summary>
+        /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        /// </summary>
+        public readonly string? PersistentBrowserMode;
+        /// <summary>
         /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         /// </summary>
         public readonly int? SignInFrequency;
@@ -36,12 +40,15 @@ namespace Pulumi.AzureAD.Outputs
 
             string? cloudAppSecurityPolicy,
 
+            string? persistentBrowserMode,
+
             int? signInFrequency,
 
             string? signInFrequencyPeriod)
         {
             ApplicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
             CloudAppSecurityPolicy = cloudAppSecurityPolicy;
+            PersistentBrowserMode = persistentBrowserMode;
             SignInFrequency = signInFrequency;
             SignInFrequencyPeriod = signInFrequencyPeriod;
         }
