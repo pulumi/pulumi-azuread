@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -88,6 +89,10 @@ export interface GetGroupResult {
      */
     readonly displayName: string;
     /**
+     * A `dynamicMembership` block as documented below.
+     */
+    readonly dynamicMemberships: outputs.GetGroupDynamicMembership[];
+    /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
@@ -156,7 +161,7 @@ export interface GetGroupResult {
      */
     readonly theme: string;
     /**
-     * A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+     * A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
      */
     readonly types: string[];
     /**

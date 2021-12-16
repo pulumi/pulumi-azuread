@@ -41,13 +41,15 @@ type Group struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name for the group.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	DynamicMembership GroupDynamicMembershipPtrOutput `pulumi:"dynamicMembership"`
 	// The SMTP address for the group.
 	Mail pulumi.StringOutput `pulumi:"mail"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled pulumi.BoolPtrOutput `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
 	// The object ID of the group.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
@@ -75,7 +77,7 @@ type Group struct {
 	SecurityEnabled pulumi.BoolPtrOutput `pulumi:"securityEnabled"`
 	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
 	Theme pulumi.StringPtrOutput `pulumi:"theme"`
-	// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
 	Types pulumi.StringArrayOutput `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility pulumi.StringOutput `pulumi:"visibility"`
@@ -121,13 +123,15 @@ type groupState struct {
 	Description *string `pulumi:"description"`
 	// The display name for the group.
 	DisplayName *string `pulumi:"displayName"`
+	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	DynamicMembership *GroupDynamicMembership `pulumi:"dynamicMembership"`
 	// The SMTP address for the group.
 	Mail *string `pulumi:"mail"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled *bool `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
 	MailNickname *string `pulumi:"mailNickname"`
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members []string `pulumi:"members"`
 	// The object ID of the group.
 	ObjectId *string `pulumi:"objectId"`
@@ -155,7 +159,7 @@ type groupState struct {
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
 	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
 	Theme *string `pulumi:"theme"`
-	// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility *string `pulumi:"visibility"`
@@ -170,13 +174,15 @@ type GroupState struct {
 	Description pulumi.StringPtrInput
 	// The display name for the group.
 	DisplayName pulumi.StringPtrInput
+	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	DynamicMembership GroupDynamicMembershipPtrInput
 	// The SMTP address for the group.
 	Mail pulumi.StringPtrInput
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled pulumi.BoolPtrInput
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
 	MailNickname pulumi.StringPtrInput
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members pulumi.StringArrayInput
 	// The object ID of the group.
 	ObjectId pulumi.StringPtrInput
@@ -204,7 +210,7 @@ type GroupState struct {
 	SecurityEnabled pulumi.BoolPtrInput
 	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
 	Theme pulumi.StringPtrInput
-	// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
 	Types pulumi.StringArrayInput
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility pulumi.StringPtrInput
@@ -223,11 +229,13 @@ type groupArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name for the group.
 	DisplayName string `pulumi:"displayName"`
+	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	DynamicMembership *GroupDynamicMembership `pulumi:"dynamicMembership"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled *bool `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
 	MailNickname *string `pulumi:"mailNickname"`
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members []string `pulumi:"members"`
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners []string `pulumi:"owners"`
@@ -239,7 +247,7 @@ type groupArgs struct {
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
 	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
 	Theme *string `pulumi:"theme"`
-	// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility *string `pulumi:"visibility"`
@@ -255,11 +263,13 @@ type GroupArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name for the group.
 	DisplayName pulumi.StringInput
+	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	DynamicMembership GroupDynamicMembershipPtrInput
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled pulumi.BoolPtrInput
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
 	MailNickname pulumi.StringPtrInput
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members pulumi.StringArrayInput
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners pulumi.StringArrayInput
@@ -271,7 +281,7 @@ type GroupArgs struct {
 	SecurityEnabled pulumi.BoolPtrInput
 	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
 	Theme pulumi.StringPtrInput
-	// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
 	Types pulumi.StringArrayInput
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility pulumi.StringPtrInput

@@ -7,6 +7,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetGroupResult',
@@ -20,7 +21,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, assignable_to_role=None, behaviors=None, description=None, display_name=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None):
+    def __init__(__self__, assignable_to_role=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None):
         if assignable_to_role and not isinstance(assignable_to_role, bool):
             raise TypeError("Expected argument 'assignable_to_role' to be a bool")
         pulumi.set(__self__, "assignable_to_role", assignable_to_role)
@@ -33,6 +34,9 @@ class GetGroupResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if dynamic_memberships and not isinstance(dynamic_memberships, list):
+            raise TypeError("Expected argument 'dynamic_memberships' to be a list")
+        pulumi.set(__self__, "dynamic_memberships", dynamic_memberships)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -122,6 +126,14 @@ class GetGroupResult:
         The display name for the group.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="dynamicMemberships")
+    def dynamic_memberships(self) -> Sequence['outputs.GetGroupDynamicMembershipResult']:
+        """
+        A `dynamic_membership` block as documented below.
+        """
+        return pulumi.get(self, "dynamic_memberships")
 
     @property
     @pulumi.getter
@@ -263,7 +275,7 @@ class GetGroupResult:
     @pulumi.getter
     def types(self) -> Sequence[str]:
         """
-        A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+        A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
         """
         return pulumi.get(self, "types")
 
@@ -286,6 +298,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             behaviors=self.behaviors,
             description=self.description,
             display_name=self.display_name,
+            dynamic_memberships=self.dynamic_memberships,
             id=self.id,
             mail=self.mail,
             mail_enabled=self.mail_enabled,
@@ -356,6 +369,7 @@ def get_group(display_name: Optional[str] = None,
         behaviors=__ret__.behaviors,
         description=__ret__.description,
         display_name=__ret__.display_name,
+        dynamic_memberships=__ret__.dynamic_memberships,
         id=__ret__.id,
         mail=__ret__.mail,
         mail_enabled=__ret__.mail_enabled,

@@ -2,6 +2,7 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import { input as inputs, output as outputs } from "./types";
 import * as utilities from "./utilities";
 
 /**
@@ -80,6 +81,25 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * *Group with dynamic membership*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.Group("example", {
+ *     displayName: "MyGroup",
+ *     owners: [current.then(current => current.objectId)],
+ *     securityEnabled: true,
+ *     types: ["DynamicMembership"],
+ *     dynamicMembership: {
+ *         enabled: true,
+ *         rule: "user.department -eq \"Sales\"",
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * Groups can be imported using their object ID, e.g.
@@ -133,6 +153,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
+     * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+     */
+    public readonly dynamicMembership!: pulumi.Output<outputs.GroupDynamicMembership | undefined>;
+    /**
      * The SMTP address for the group.
      */
     public /*out*/ readonly mail!: pulumi.Output<string>;
@@ -145,7 +169,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly mailNickname!: pulumi.Output<string>;
     /**
-     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      */
     public readonly members!: pulumi.Output<string[]>;
     /**
@@ -201,7 +225,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly theme!: pulumi.Output<string | undefined>;
     /**
-     * A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+     * A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
      */
     public readonly types!: pulumi.Output<string[] | undefined>;
     /**
@@ -226,6 +250,7 @@ export class Group extends pulumi.CustomResource {
             inputs["behaviors"] = state ? state.behaviors : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
+            inputs["dynamicMembership"] = state ? state.dynamicMembership : undefined;
             inputs["mail"] = state ? state.mail : undefined;
             inputs["mailEnabled"] = state ? state.mailEnabled : undefined;
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
@@ -254,6 +279,7 @@ export class Group extends pulumi.CustomResource {
             inputs["behaviors"] = args ? args.behaviors : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
+            inputs["dynamicMembership"] = args ? args.dynamicMembership : undefined;
             inputs["mailEnabled"] = args ? args.mailEnabled : undefined;
             inputs["mailNickname"] = args ? args.mailNickname : undefined;
             inputs["members"] = args ? args.members : undefined;
@@ -302,6 +328,10 @@ export interface GroupState {
      */
     displayName?: pulumi.Input<string>;
     /**
+     * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+     */
+    dynamicMembership?: pulumi.Input<inputs.GroupDynamicMembership>;
+    /**
      * The SMTP address for the group.
      */
     mail?: pulumi.Input<string>;
@@ -314,7 +344,7 @@ export interface GroupState {
      */
     mailNickname?: pulumi.Input<string>;
     /**
-     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -370,7 +400,7 @@ export interface GroupState {
      */
     theme?: pulumi.Input<string>;
     /**
-     * A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+     * A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
      */
     types?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -400,6 +430,10 @@ export interface GroupArgs {
      */
     displayName: pulumi.Input<string>;
     /**
+     * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+     */
+    dynamicMembership?: pulumi.Input<inputs.GroupDynamicMembership>;
+    /**
      * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      */
     mailEnabled?: pulumi.Input<boolean>;
@@ -408,7 +442,7 @@ export interface GroupArgs {
      */
     mailNickname?: pulumi.Input<string>;
     /**
-     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+     * A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -432,7 +466,7 @@ export interface GroupArgs {
      */
     theme?: pulumi.Input<string>;
     /**
-     * A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
+     * A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
      */
     types?: pulumi.Input<pulumi.Input<string>[]>;
     /**

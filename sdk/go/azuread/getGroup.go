@@ -77,6 +77,8 @@ type LookupGroupResult struct {
 	Description string `pulumi:"description"`
 	// The display name for the group.
 	DisplayName string `pulumi:"displayName"`
+	// A `dynamicMembership` block as documented below.
+	DynamicMemberships []GetGroupDynamicMembership `pulumi:"dynamicMemberships"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The SMTP address for the group.
@@ -111,7 +113,7 @@ type LookupGroupResult struct {
 	SecurityEnabled bool `pulumi:"securityEnabled"`
 	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
 	Theme string `pulumi:"theme"`
-	// A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+	// A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
 	Visibility string `pulumi:"visibility"`
@@ -175,6 +177,11 @@ func (o LookupGroupResultOutput) Description() pulumi.StringOutput {
 // The display name for the group.
 func (o LookupGroupResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A `dynamicMembership` block as documented below.
+func (o LookupGroupResultOutput) DynamicMemberships() GetGroupDynamicMembershipArrayOutput {
+	return o.ApplyT(func(v LookupGroupResult) []GetGroupDynamicMembership { return v.DynamicMemberships }).(GetGroupDynamicMembershipArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
@@ -262,7 +269,7 @@ func (o LookupGroupResultOutput) Theme() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Theme }).(pulumi.StringOutput)
 }
 
-// A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+// A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
 func (o LookupGroupResultOutput) Types() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Types }).(pulumi.StringArrayOutput)
 }

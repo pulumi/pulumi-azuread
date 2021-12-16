@@ -7,6 +7,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['GroupArgs', 'Group']
 
@@ -17,6 +19,7 @@ class GroupArgs:
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -33,15 +36,16 @@ class GroupArgs:
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
+        :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -51,6 +55,8 @@ class GroupArgs:
             pulumi.set(__self__, "behaviors", behaviors)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_membership is not None:
+            pulumi.set(__self__, "dynamic_membership", dynamic_membership)
         if mail_enabled is not None:
             pulumi.set(__self__, "mail_enabled", mail_enabled)
         if mail_nickname is not None:
@@ -121,6 +127,18 @@ class GroupArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="dynamicMembership")
+    def dynamic_membership(self) -> Optional[pulumi.Input['GroupDynamicMembershipArgs']]:
+        """
+        A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        """
+        return pulumi.get(self, "dynamic_membership")
+
+    @dynamic_membership.setter
+    def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArgs']]):
+        pulumi.set(self, "dynamic_membership", value)
+
+    @property
     @pulumi.getter(name="mailEnabled")
     def mail_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -148,7 +166,7 @@ class GroupArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         """
         return pulumi.get(self, "members")
 
@@ -220,7 +238,7 @@ class GroupArgs:
     @pulumi.getter
     def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "types")
 
@@ -248,6 +266,7 @@ class _GroupState:
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
@@ -273,10 +292,11 @@ class _GroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[str] mail: The SMTP address for the group.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         :param pulumi.Input[str] object_id: The object ID of the group.
         :param pulumi.Input[str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[str] onpremises_netbios_name: The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
@@ -290,7 +310,7 @@ class _GroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_addresses: List of email addresses for the group that direct to the same group mailbox.
         :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         if assignable_to_role is not None:
@@ -301,6 +321,8 @@ class _GroupState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if dynamic_membership is not None:
+            pulumi.set(__self__, "dynamic_membership", dynamic_membership)
         if mail is not None:
             pulumi.set(__self__, "mail", mail)
         if mail_enabled is not None:
@@ -389,6 +411,18 @@ class _GroupState:
         pulumi.set(self, "display_name", value)
 
     @property
+    @pulumi.getter(name="dynamicMembership")
+    def dynamic_membership(self) -> Optional[pulumi.Input['GroupDynamicMembershipArgs']]:
+        """
+        A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        """
+        return pulumi.get(self, "dynamic_membership")
+
+    @dynamic_membership.setter
+    def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArgs']]):
+        pulumi.set(self, "dynamic_membership", value)
+
+    @property
     @pulumi.getter
     def mail(self) -> Optional[pulumi.Input[str]]:
         """
@@ -428,7 +462,7 @@ class _GroupState:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         """
         return pulumi.get(self, "members")
 
@@ -596,7 +630,7 @@ class _GroupState:
     @pulumi.getter
     def types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "types")
 
@@ -626,6 +660,7 @@ class Group(pulumi.CustomResource):
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -664,15 +699,16 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         ...
@@ -721,6 +757,7 @@ class Group(pulumi.CustomResource):
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -749,6 +786,7 @@ class Group(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["dynamic_membership"] = dynamic_membership
             __props__.__dict__["mail_enabled"] = mail_enabled
             __props__.__dict__["mail_nickname"] = mail_nickname
             __props__.__dict__["members"] = members
@@ -782,6 +820,7 @@ class Group(pulumi.CustomResource):
             behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
+            dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
             mail: Optional[pulumi.Input[str]] = None,
             mail_enabled: Optional[pulumi.Input[bool]] = None,
             mail_nickname: Optional[pulumi.Input[str]] = None,
@@ -812,10 +851,11 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[str] mail: The SMTP address for the group.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         :param pulumi.Input[str] object_id: The object ID of the group.
         :param pulumi.Input[str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[str] onpremises_netbios_name: The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
@@ -829,7 +869,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_addresses: List of email addresses for the group that direct to the same group mailbox.
         :param pulumi.Input[bool] security_enabled: Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or `mail_enabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -840,6 +880,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["behaviors"] = behaviors
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["dynamic_membership"] = dynamic_membership
         __props__.__dict__["mail"] = mail
         __props__.__dict__["mail_enabled"] = mail_enabled
         __props__.__dict__["mail_nickname"] = mail_nickname
@@ -894,6 +935,14 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "display_name")
 
     @property
+    @pulumi.getter(name="dynamicMembership")
+    def dynamic_membership(self) -> pulumi.Output[Optional['outputs.GroupDynamicMembership']]:
+        """
+        A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        """
+        return pulumi.get(self, "dynamic_membership")
+
+    @property
     @pulumi.getter
     def mail(self) -> pulumi.Output[str]:
         """
@@ -921,7 +970,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         """
         return pulumi.get(self, "members")
 
@@ -1033,7 +1082,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def types(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "types")
 
