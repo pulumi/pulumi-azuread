@@ -3712,6 +3712,162 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod()
 	}).(pulumi.StringPtrOutput)
 }
 
+type GroupDynamicMembership struct {
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled bool `pulumi:"enabled"`
+	// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	Rule string `pulumi:"rule"`
+}
+
+// GroupDynamicMembershipInput is an input type that accepts GroupDynamicMembershipArgs and GroupDynamicMembershipOutput values.
+// You can construct a concrete instance of `GroupDynamicMembershipInput` via:
+//
+//          GroupDynamicMembershipArgs{...}
+type GroupDynamicMembershipInput interface {
+	pulumi.Input
+
+	ToGroupDynamicMembershipOutput() GroupDynamicMembershipOutput
+	ToGroupDynamicMembershipOutputWithContext(context.Context) GroupDynamicMembershipOutput
+}
+
+type GroupDynamicMembershipArgs struct {
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GroupDynamicMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupDynamicMembership)(nil)).Elem()
+}
+
+func (i GroupDynamicMembershipArgs) ToGroupDynamicMembershipOutput() GroupDynamicMembershipOutput {
+	return i.ToGroupDynamicMembershipOutputWithContext(context.Background())
+}
+
+func (i GroupDynamicMembershipArgs) ToGroupDynamicMembershipOutputWithContext(ctx context.Context) GroupDynamicMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDynamicMembershipOutput)
+}
+
+func (i GroupDynamicMembershipArgs) ToGroupDynamicMembershipPtrOutput() GroupDynamicMembershipPtrOutput {
+	return i.ToGroupDynamicMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i GroupDynamicMembershipArgs) ToGroupDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupDynamicMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDynamicMembershipOutput).ToGroupDynamicMembershipPtrOutputWithContext(ctx)
+}
+
+// GroupDynamicMembershipPtrInput is an input type that accepts GroupDynamicMembershipArgs, GroupDynamicMembershipPtr and GroupDynamicMembershipPtrOutput values.
+// You can construct a concrete instance of `GroupDynamicMembershipPtrInput` via:
+//
+//          GroupDynamicMembershipArgs{...}
+//
+//  or:
+//
+//          nil
+type GroupDynamicMembershipPtrInput interface {
+	pulumi.Input
+
+	ToGroupDynamicMembershipPtrOutput() GroupDynamicMembershipPtrOutput
+	ToGroupDynamicMembershipPtrOutputWithContext(context.Context) GroupDynamicMembershipPtrOutput
+}
+
+type groupDynamicMembershipPtrType GroupDynamicMembershipArgs
+
+func GroupDynamicMembershipPtr(v *GroupDynamicMembershipArgs) GroupDynamicMembershipPtrInput {
+	return (*groupDynamicMembershipPtrType)(v)
+}
+
+func (*groupDynamicMembershipPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupDynamicMembership)(nil)).Elem()
+}
+
+func (i *groupDynamicMembershipPtrType) ToGroupDynamicMembershipPtrOutput() GroupDynamicMembershipPtrOutput {
+	return i.ToGroupDynamicMembershipPtrOutputWithContext(context.Background())
+}
+
+func (i *groupDynamicMembershipPtrType) ToGroupDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupDynamicMembershipPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GroupDynamicMembershipPtrOutput)
+}
+
+type GroupDynamicMembershipOutput struct{ *pulumi.OutputState }
+
+func (GroupDynamicMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GroupDynamicMembership)(nil)).Elem()
+}
+
+func (o GroupDynamicMembershipOutput) ToGroupDynamicMembershipOutput() GroupDynamicMembershipOutput {
+	return o
+}
+
+func (o GroupDynamicMembershipOutput) ToGroupDynamicMembershipOutputWithContext(ctx context.Context) GroupDynamicMembershipOutput {
+	return o
+}
+
+func (o GroupDynamicMembershipOutput) ToGroupDynamicMembershipPtrOutput() GroupDynamicMembershipPtrOutput {
+	return o.ToGroupDynamicMembershipPtrOutputWithContext(context.Background())
+}
+
+func (o GroupDynamicMembershipOutput) ToGroupDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupDynamicMembershipPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GroupDynamicMembership) *GroupDynamicMembership {
+		return &v
+	}).(GroupDynamicMembershipPtrOutput)
+}
+
+// Whether rule processing is "On" (true) or "Paused" (false).
+func (o GroupDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GroupDynamicMembership) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+func (o GroupDynamicMembershipOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GroupDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GroupDynamicMembershipPtrOutput struct{ *pulumi.OutputState }
+
+func (GroupDynamicMembershipPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GroupDynamicMembership)(nil)).Elem()
+}
+
+func (o GroupDynamicMembershipPtrOutput) ToGroupDynamicMembershipPtrOutput() GroupDynamicMembershipPtrOutput {
+	return o
+}
+
+func (o GroupDynamicMembershipPtrOutput) ToGroupDynamicMembershipPtrOutputWithContext(ctx context.Context) GroupDynamicMembershipPtrOutput {
+	return o
+}
+
+func (o GroupDynamicMembershipPtrOutput) Elem() GroupDynamicMembershipOutput {
+	return o.ApplyT(func(v *GroupDynamicMembership) GroupDynamicMembership {
+		if v != nil {
+			return *v
+		}
+		var ret GroupDynamicMembership
+		return ret
+	}).(GroupDynamicMembershipOutput)
+}
+
+// Whether rule processing is "On" (true) or "Paused" (false).
+func (o GroupDynamicMembershipPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GroupDynamicMembership) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+func (o GroupDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupDynamicMembership) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rule
+	}).(pulumi.StringPtrOutput)
+}
+
 type InvitationMessage struct {
 	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 	AdditionalRecipients *string `pulumi:"additionalRecipients"`
@@ -6709,6 +6865,112 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 	}).(GetDomainsDomainOutput)
 }
 
+type GetGroupDynamicMembership struct {
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled bool `pulumi:"enabled"`
+	// The rule that determines membership of this group.
+	Rule string `pulumi:"rule"`
+}
+
+// GetGroupDynamicMembershipInput is an input type that accepts GetGroupDynamicMembershipArgs and GetGroupDynamicMembershipOutput values.
+// You can construct a concrete instance of `GetGroupDynamicMembershipInput` via:
+//
+//          GetGroupDynamicMembershipArgs{...}
+type GetGroupDynamicMembershipInput interface {
+	pulumi.Input
+
+	ToGetGroupDynamicMembershipOutput() GetGroupDynamicMembershipOutput
+	ToGetGroupDynamicMembershipOutputWithContext(context.Context) GetGroupDynamicMembershipOutput
+}
+
+type GetGroupDynamicMembershipArgs struct {
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The rule that determines membership of this group.
+	Rule pulumi.StringInput `pulumi:"rule"`
+}
+
+func (GetGroupDynamicMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupDynamicMembership)(nil)).Elem()
+}
+
+func (i GetGroupDynamicMembershipArgs) ToGetGroupDynamicMembershipOutput() GetGroupDynamicMembershipOutput {
+	return i.ToGetGroupDynamicMembershipOutputWithContext(context.Background())
+}
+
+func (i GetGroupDynamicMembershipArgs) ToGetGroupDynamicMembershipOutputWithContext(ctx context.Context) GetGroupDynamicMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupDynamicMembershipOutput)
+}
+
+// GetGroupDynamicMembershipArrayInput is an input type that accepts GetGroupDynamicMembershipArray and GetGroupDynamicMembershipArrayOutput values.
+// You can construct a concrete instance of `GetGroupDynamicMembershipArrayInput` via:
+//
+//          GetGroupDynamicMembershipArray{ GetGroupDynamicMembershipArgs{...} }
+type GetGroupDynamicMembershipArrayInput interface {
+	pulumi.Input
+
+	ToGetGroupDynamicMembershipArrayOutput() GetGroupDynamicMembershipArrayOutput
+	ToGetGroupDynamicMembershipArrayOutputWithContext(context.Context) GetGroupDynamicMembershipArrayOutput
+}
+
+type GetGroupDynamicMembershipArray []GetGroupDynamicMembershipInput
+
+func (GetGroupDynamicMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupDynamicMembership)(nil)).Elem()
+}
+
+func (i GetGroupDynamicMembershipArray) ToGetGroupDynamicMembershipArrayOutput() GetGroupDynamicMembershipArrayOutput {
+	return i.ToGetGroupDynamicMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i GetGroupDynamicMembershipArray) ToGetGroupDynamicMembershipArrayOutputWithContext(ctx context.Context) GetGroupDynamicMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGroupDynamicMembershipArrayOutput)
+}
+
+type GetGroupDynamicMembershipOutput struct{ *pulumi.OutputState }
+
+func (GetGroupDynamicMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGroupDynamicMembership)(nil)).Elem()
+}
+
+func (o GetGroupDynamicMembershipOutput) ToGetGroupDynamicMembershipOutput() GetGroupDynamicMembershipOutput {
+	return o
+}
+
+func (o GetGroupDynamicMembershipOutput) ToGetGroupDynamicMembershipOutputWithContext(ctx context.Context) GetGroupDynamicMembershipOutput {
+	return o
+}
+
+// Whether rule processing is "On" (true) or "Paused" (false).
+func (o GetGroupDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGroupDynamicMembership) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The rule that determines membership of this group.
+func (o GetGroupDynamicMembershipOutput) Rule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
+}
+
+type GetGroupDynamicMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGroupDynamicMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGroupDynamicMembership)(nil)).Elem()
+}
+
+func (o GetGroupDynamicMembershipArrayOutput) ToGetGroupDynamicMembershipArrayOutput() GetGroupDynamicMembershipArrayOutput {
+	return o
+}
+
+func (o GetGroupDynamicMembershipArrayOutput) ToGetGroupDynamicMembershipArrayOutputWithContext(ctx context.Context) GetGroupDynamicMembershipArrayOutput {
+	return o
+}
+
+func (o GetGroupDynamicMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupDynamicMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupDynamicMembership {
+		return vs[0].([]GetGroupDynamicMembership)[vs[1].(int)]
+	}).(GetGroupDynamicMembershipOutput)
+}
+
 type GetServicePrincipalAppRole struct {
 	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
@@ -7756,6 +8018,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyGrantControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicyGrantControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupDynamicMembershipInput)(nil)).Elem(), GroupDynamicMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GroupDynamicMembershipPtrInput)(nil)).Elem(), GroupDynamicMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvitationMessageInput)(nil)).Elem(), InvitationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvitationMessagePtrInput)(nil)).Elem(), InvitationMessageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedLocationCountryInput)(nil)).Elem(), NamedLocationCountryArgs{})
@@ -7802,6 +8066,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantArrayInput)(nil)).Elem(), GetApplicationWebImplicitGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipInput)(nil)).Elem(), GetGroupDynamicMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipArrayInput)(nil)).Elem(), GetGroupDynamicMembershipArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalAppRoleInput)(nil)).Elem(), GetServicePrincipalAppRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalAppRoleArrayInput)(nil)).Elem(), GetServicePrincipalAppRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalFeatureInput)(nil)).Elem(), GetServicePrincipalFeatureArgs{})
@@ -7862,6 +8128,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsPtrOutput{})
+	pulumi.RegisterOutputType(GroupDynamicMembershipOutput{})
+	pulumi.RegisterOutputType(GroupDynamicMembershipPtrOutput{})
 	pulumi.RegisterOutputType(InvitationMessageOutput{})
 	pulumi.RegisterOutputType(InvitationMessagePtrOutput{})
 	pulumi.RegisterOutputType(NamedLocationCountryOutput{})
@@ -7908,6 +8176,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetGroupDynamicMembershipOutput{})
+	pulumi.RegisterOutputType(GetGroupDynamicMembershipArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalFeatureOutput{})

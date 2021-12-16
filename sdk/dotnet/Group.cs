@@ -58,6 +58,12 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        /// </summary>
+        [Output("dynamicMembership")]
+        public Output<Outputs.GroupDynamicMembership?> DynamicMembership { get; private set; } = null!;
+
+        /// <summary>
         /// The SMTP address for the group.
         /// </summary>
         [Output("mail")]
@@ -76,7 +82,7 @@ namespace Pulumi.AzureAD
         public Output<string> MailNickname { get; private set; } = null!;
 
         /// <summary>
-        /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -160,7 +166,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Theme { get; private set; } = null!;
 
         /// <summary>
-        /// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        /// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         /// </summary>
         [Output("types")]
         public Output<ImmutableArray<string>> Types { get; private set; } = null!;
@@ -248,6 +254,12 @@ namespace Pulumi.AzureAD
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        /// </summary>
+        [Input("dynamicMembership")]
+        public Input<Inputs.GroupDynamicMembershipArgs>? DynamicMembership { get; set; }
+
+        /// <summary>
         /// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         /// </summary>
         [Input("mailEnabled")]
@@ -263,7 +275,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _members;
 
         /// <summary>
-        /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         /// </summary>
         public InputList<string> Members
         {
@@ -317,7 +329,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _types;
 
         /// <summary>
-        /// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        /// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         /// </summary>
         public InputList<string> Types
         {
@@ -369,6 +381,12 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
+        /// A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        /// </summary>
+        [Input("dynamicMembership")]
+        public Input<Inputs.GroupDynamicMembershipGetArgs>? DynamicMembership { get; set; }
+
+        /// <summary>
         /// The SMTP address for the group.
         /// </summary>
         [Input("mail")]
@@ -390,7 +408,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _members;
 
         /// <summary>
-        /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals.
+        /// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         /// </summary>
         public InputList<string> Members
         {
@@ -498,7 +516,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _types;
 
         /// <summary>
-        /// A set of group types to configure for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
+        /// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         /// </summary>
         public InputList<string> Types
         {

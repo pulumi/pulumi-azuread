@@ -175,6 +175,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// A `dynamic_membership` block as documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetGroupDynamicMembershipResult> DynamicMemberships;
+        /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
@@ -243,7 +247,7 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Theme;
         /// <summary>
-        /// A list of group types configured for the group. The only supported type is `Unified`, which specifies a Microsoft 365 group.
+        /// A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
         /// </summary>
         public readonly ImmutableArray<string> Types;
         /// <summary>
@@ -260,6 +264,8 @@ namespace Pulumi.AzureAD
             string description,
 
             string displayName,
+
+            ImmutableArray<Outputs.GetGroupDynamicMembershipResult> dynamicMemberships,
 
             string id,
 
@@ -303,6 +309,7 @@ namespace Pulumi.AzureAD
             Behaviors = behaviors;
             Description = description;
             DisplayName = displayName;
+            DynamicMemberships = dynamicMemberships;
             Id = id;
             Mail = mail;
             MailEnabled = mailEnabled;

@@ -674,6 +674,17 @@ export interface GetDomainsDomain {
     verified: boolean;
 }
 
+export interface GetGroupDynamicMembership {
+    /**
+     * Whether rule processing is "On" (true) or "Paused" (false).
+     */
+    enabled: boolean;
+    /**
+     * The rule that determines membership of this group.
+     */
+    rule: string;
+}
+
 export interface GetServicePrincipalAppRole {
     /**
      * Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
@@ -859,6 +870,17 @@ export interface GetUsersUser {
     userPrincipalName: string;
 }
 
+export interface GroupDynamicMembership {
+    /**
+     * Whether rule processing is "On" (true) or "Paused" (false).
+     */
+    enabled: boolean;
+    /**
+     * The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+     */
+    rule: string;
+}
+
 export interface InvitationMessage {
     /**
      * Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
@@ -990,4 +1012,3 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: string;
 }
-

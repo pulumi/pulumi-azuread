@@ -32,6 +32,7 @@ __all__ = [
     'ConditionalAccessPolicyConditionsUsersArgs',
     'ConditionalAccessPolicyGrantControlsArgs',
     'ConditionalAccessPolicySessionControlsArgs',
+    'GroupDynamicMembershipArgs',
     'InvitationMessageArgs',
     'NamedLocationCountryArgs',
     'NamedLocationIpArgs',
@@ -1489,6 +1490,43 @@ class ConditionalAccessPolicySessionControlsArgs:
     @sign_in_frequency_period.setter
     def sign_in_frequency_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sign_in_frequency_period", value)
+
+
+@pulumi.input_type
+class GroupDynamicMembershipArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool],
+                 rule: pulumi.Input[str]):
+        """
+        :param pulumi.Input[bool] enabled: Whether rule processing is "On" (true) or "Paused" (false).
+        :param pulumi.Input[str] rule: The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "rule", rule)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether rule processing is "On" (true) or "Paused" (false).
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def rule(self) -> pulumi.Input[str]:
+        """
+        The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+        """
+        return pulumi.get(self, "rule")
+
+    @rule.setter
+    def rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "rule", value)
 
 
 @pulumi.input_type
