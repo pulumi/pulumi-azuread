@@ -65,13 +65,13 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationPreAuthorizedArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationPreAuthorizedArgs | ApplicationPreAuthorizedState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPreAuthorizedState | undefined;
-            inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
-            inputs["authorizedAppId"] = state ? state.authorizedAppId : undefined;
-            inputs["permissionIds"] = state ? state.permissionIds : undefined;
+            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
+            resourceInputs["authorizedAppId"] = state ? state.authorizedAppId : undefined;
+            resourceInputs["permissionIds"] = state ? state.permissionIds : undefined;
         } else {
             const args = argsOrState as ApplicationPreAuthorizedArgs | undefined;
             if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
@@ -83,14 +83,14 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
             if ((!args || args.permissionIds === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'permissionIds'");
             }
-            inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
-            inputs["authorizedAppId"] = args ? args.authorizedAppId : undefined;
-            inputs["permissionIds"] = args ? args.permissionIds : undefined;
+            resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
+            resourceInputs["authorizedAppId"] = args ? args.authorizedAppId : undefined;
+            resourceInputs["permissionIds"] = args ? args.permissionIds : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ApplicationPreAuthorized.__pulumiType, name, inputs, opts);
+        super(ApplicationPreAuthorized.__pulumiType, name, resourceInputs, opts);
     }
 }
 

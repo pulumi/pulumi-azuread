@@ -139,15 +139,15 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
      */
     constructor(name: string, args: ConditionalAccessPolicyArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ConditionalAccessPolicyArgs | ConditionalAccessPolicyState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConditionalAccessPolicyState | undefined;
-            inputs["conditions"] = state ? state.conditions : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["grantControls"] = state ? state.grantControls : undefined;
-            inputs["sessionControls"] = state ? state.sessionControls : undefined;
-            inputs["state"] = state ? state.state : undefined;
+            resourceInputs["conditions"] = state ? state.conditions : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["grantControls"] = state ? state.grantControls : undefined;
+            resourceInputs["sessionControls"] = state ? state.sessionControls : undefined;
+            resourceInputs["state"] = state ? state.state : undefined;
         } else {
             const args = argsOrState as ConditionalAccessPolicyArgs | undefined;
             if ((!args || args.conditions === undefined) && !opts.urn) {
@@ -162,16 +162,16 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
             if ((!args || args.state === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
-            inputs["conditions"] = args ? args.conditions : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["grantControls"] = args ? args.grantControls : undefined;
-            inputs["sessionControls"] = args ? args.sessionControls : undefined;
-            inputs["state"] = args ? args.state : undefined;
+            resourceInputs["conditions"] = args ? args.conditions : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["grantControls"] = args ? args.grantControls : undefined;
+            resourceInputs["sessionControls"] = args ? args.sessionControls : undefined;
+            resourceInputs["state"] = args ? args.state : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ConditionalAccessPolicy.__pulumiType, name, inputs, opts);
+        super(ConditionalAccessPolicy.__pulumiType, name, resourceInputs, opts);
     }
 }
 

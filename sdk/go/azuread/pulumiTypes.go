@@ -2076,47 +2076,6 @@ func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditio
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsOutput)
 }
 
-func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Background())
-}
-
-func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsOutput).ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx)
-}
-
-// ConditionalAccessPolicyConditionsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsArgs, ConditionalAccessPolicyConditionsPtr and ConditionalAccessPolicyConditionsPtrOutput values.
-// You can construct a concrete instance of `ConditionalAccessPolicyConditionsPtrInput` via:
-//
-//          ConditionalAccessPolicyConditionsArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionalAccessPolicyConditionsPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput
-	ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsPtrOutput
-}
-
-type conditionalAccessPolicyConditionsPtrType ConditionalAccessPolicyConditionsArgs
-
-func ConditionalAccessPolicyConditionsPtr(v *ConditionalAccessPolicyConditionsArgs) ConditionalAccessPolicyConditionsPtrInput {
-	return (*conditionalAccessPolicyConditionsPtrType)(v)
-}
-
-func (*conditionalAccessPolicyConditionsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditions)(nil)).Elem()
-}
-
-func (i *conditionalAccessPolicyConditionsPtrType) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyConditionsPtrType) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPtrOutput)
-}
-
 type ConditionalAccessPolicyConditionsOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyConditionsOutput) ElementType() reflect.Type {
@@ -2129,16 +2088,6 @@ func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyCondit
 
 func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsOutput {
 	return o
-}
-
-func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
-	return o.ToConditionalAccessPolicyConditionsPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditions {
-		return &v
-	}).(ConditionalAccessPolicyConditionsPtrOutput)
 }
 
 // An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
@@ -2187,110 +2136,6 @@ func (o ConditionalAccessPolicyConditionsOutput) Users() ConditionalAccessPolicy
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsUsers { return v.Users }).(ConditionalAccessPolicyConditionsUsersOutput)
 }
 
-type ConditionalAccessPolicyConditionsPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyConditionsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditions)(nil)).Elem()
-}
-
-func (o ConditionalAccessPolicyConditionsPtrOutput) ToConditionalAccessPolicyConditionsPtrOutput() ConditionalAccessPolicyConditionsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsPtrOutput) ToConditionalAccessPolicyConditionsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsPtrOutput) Elem() ConditionalAccessPolicyConditionsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditions {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicyConditions
-		return ret
-	}).(ConditionalAccessPolicyConditionsOutput)
-}
-
-// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsPtrOutput) Applications() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsApplications {
-		if v == nil {
-			return nil
-		}
-		return &v.Applications
-	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
-}
-
-// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
-func (o ConditionalAccessPolicyConditionsPtrOutput) ClientAppTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ClientAppTypes
-	}).(pulumi.StringArrayOutput)
-}
-
-// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
-func (o ConditionalAccessPolicyConditionsPtrOutput) Devices() ConditionalAccessPolicyConditionsDevicesPtrOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsDevices {
-		if v == nil {
-			return nil
-		}
-		return v.Devices
-	}).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
-}
-
-// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
-		if v == nil {
-			return nil
-		}
-		return &v.Locations
-	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
-}
-
-// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
-		if v == nil {
-			return nil
-		}
-		return &v.Platforms
-	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
-}
-
-// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
-func (o ConditionalAccessPolicyConditionsPtrOutput) SignInRiskLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.SignInRiskLevels
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
-func (o ConditionalAccessPolicyConditionsPtrOutput) UserRiskLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
-		if v == nil {
-			return nil
-		}
-		return v.UserRiskLevels
-	}).(pulumi.StringArrayOutput)
-}
-
-// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsUsers {
-		if v == nil {
-			return nil
-		}
-		return &v.Users
-	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
-}
-
 type ConditionalAccessPolicyConditionsApplications struct {
 	// A list of application IDs explicitly excluded from the policy.
 	ExcludedApplications []string `pulumi:"excludedApplications"`
@@ -2332,47 +2177,6 @@ func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPo
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
-func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Background())
-}
-
-func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsApplicationsOutput).ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx)
-}
-
-// ConditionalAccessPolicyConditionsApplicationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsApplicationsArgs, ConditionalAccessPolicyConditionsApplicationsPtr and ConditionalAccessPolicyConditionsApplicationsPtrOutput values.
-// You can construct a concrete instance of `ConditionalAccessPolicyConditionsApplicationsPtrInput` via:
-//
-//          ConditionalAccessPolicyConditionsApplicationsArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionalAccessPolicyConditionsApplicationsPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput
-	ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput
-}
-
-type conditionalAccessPolicyConditionsApplicationsPtrType ConditionalAccessPolicyConditionsApplicationsArgs
-
-func ConditionalAccessPolicyConditionsApplicationsPtr(v *ConditionalAccessPolicyConditionsApplicationsArgs) ConditionalAccessPolicyConditionsApplicationsPtrInput {
-	return (*conditionalAccessPolicyConditionsApplicationsPtrType)(v)
-}
-
-func (*conditionalAccessPolicyConditionsApplicationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsApplications)(nil)).Elem()
-}
-
-func (i *conditionalAccessPolicyConditionsApplicationsPtrType) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyConditionsApplicationsPtrType) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
-}
-
 type ConditionalAccessPolicyConditionsApplicationsOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyConditionsApplicationsOutput) ElementType() reflect.Type {
@@ -2385,16 +2189,6 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccess
 
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsOutput {
 	return o
-}
-
-func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o.ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsApplications) *ConditionalAccessPolicyConditionsApplications {
-		return &v
-	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
 }
 
 // A list of application IDs explicitly excluded from the policy.
@@ -2410,60 +2204,6 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedApplication
 // A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedUserActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedUserActions }).(pulumi.StringArrayOutput)
-}
-
-type ConditionalAccessPolicyConditionsApplicationsPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyConditionsApplicationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsApplications)(nil)).Elem()
-}
-
-func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutput() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ToConditionalAccessPolicyConditionsApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsApplicationsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) Elem() ConditionalAccessPolicyConditionsApplicationsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) ConditionalAccessPolicyConditionsApplications {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicyConditionsApplications
-		return ret
-	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
-}
-
-// A list of application IDs explicitly excluded from the policy.
-func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedApplications
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
-func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedApplications
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
-func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedUserActions
-	}).(pulumi.StringArrayOutput)
 }
 
 type ConditionalAccessPolicyConditionsDevices struct {
@@ -2798,47 +2538,6 @@ func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolic
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsLocationsOutput)
 }
 
-func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Background())
-}
-
-func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsLocationsOutput).ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx)
-}
-
-// ConditionalAccessPolicyConditionsLocationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsLocationsArgs, ConditionalAccessPolicyConditionsLocationsPtr and ConditionalAccessPolicyConditionsLocationsPtrOutput values.
-// You can construct a concrete instance of `ConditionalAccessPolicyConditionsLocationsPtrInput` via:
-//
-//          ConditionalAccessPolicyConditionsLocationsArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionalAccessPolicyConditionsLocationsPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput
-	ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput
-}
-
-type conditionalAccessPolicyConditionsLocationsPtrType ConditionalAccessPolicyConditionsLocationsArgs
-
-func ConditionalAccessPolicyConditionsLocationsPtr(v *ConditionalAccessPolicyConditionsLocationsArgs) ConditionalAccessPolicyConditionsLocationsPtrInput {
-	return (*conditionalAccessPolicyConditionsLocationsPtrType)(v)
-}
-
-func (*conditionalAccessPolicyConditionsLocationsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsLocations)(nil)).Elem()
-}
-
-func (i *conditionalAccessPolicyConditionsLocationsPtrType) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyConditionsLocationsPtrType) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
-}
-
 type ConditionalAccessPolicyConditionsLocationsOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyConditionsLocationsOutput) ElementType() reflect.Type {
@@ -2853,16 +2552,6 @@ func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPol
 	return o
 }
 
-func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o.ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsLocations) *ConditionalAccessPolicyConditionsLocations {
-		return &v
-	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
-}
-
 // A list of location IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsLocationsOutput) ExcludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.ExcludedLocations }).(pulumi.StringArrayOutput)
@@ -2871,50 +2560,6 @@ func (o ConditionalAccessPolicyConditionsLocationsOutput) ExcludedLocations() pu
 // A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsOutput) IncludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.IncludedLocations }).(pulumi.StringArrayOutput)
-}
-
-type ConditionalAccessPolicyConditionsLocationsPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyConditionsLocationsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsLocations)(nil)).Elem()
-}
-
-func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutput() ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ToConditionalAccessPolicyConditionsLocationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsLocationsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) Elem() ConditionalAccessPolicyConditionsLocationsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) ConditionalAccessPolicyConditionsLocations {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicyConditionsLocations
-		return ret
-	}).(ConditionalAccessPolicyConditionsLocationsOutput)
-}
-
-// A list of location IDs excluded from scope of policy.
-func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ExcludedLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedLocations
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
-func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) IncludedLocations() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedLocations
-	}).(pulumi.StringArrayOutput)
 }
 
 type ConditionalAccessPolicyConditionsPlatforms struct {
@@ -2954,47 +2599,6 @@ func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolic
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPlatformsOutput)
 }
 
-func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Background())
-}
-
-func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPlatformsOutput).ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx)
-}
-
-// ConditionalAccessPolicyConditionsPlatformsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsPlatformsArgs, ConditionalAccessPolicyConditionsPlatformsPtr and ConditionalAccessPolicyConditionsPlatformsPtrOutput values.
-// You can construct a concrete instance of `ConditionalAccessPolicyConditionsPlatformsPtrInput` via:
-//
-//          ConditionalAccessPolicyConditionsPlatformsArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionalAccessPolicyConditionsPlatformsPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput
-	ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput
-}
-
-type conditionalAccessPolicyConditionsPlatformsPtrType ConditionalAccessPolicyConditionsPlatformsArgs
-
-func ConditionalAccessPolicyConditionsPlatformsPtr(v *ConditionalAccessPolicyConditionsPlatformsArgs) ConditionalAccessPolicyConditionsPlatformsPtrInput {
-	return (*conditionalAccessPolicyConditionsPlatformsPtrType)(v)
-}
-
-func (*conditionalAccessPolicyConditionsPlatformsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsPlatforms)(nil)).Elem()
-}
-
-func (i *conditionalAccessPolicyConditionsPlatformsPtrType) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyConditionsPlatformsPtrType) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
-}
-
 type ConditionalAccessPolicyConditionsPlatformsOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyConditionsPlatformsOutput) ElementType() reflect.Type {
@@ -3009,16 +2613,6 @@ func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPol
 	return o
 }
 
-func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o.ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsPlatforms) *ConditionalAccessPolicyConditionsPlatforms {
-		return &v
-	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
-}
-
 // A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.ExcludedPlatforms }).(pulumi.StringArrayOutput)
@@ -3027,50 +2621,6 @@ func (o ConditionalAccessPolicyConditionsPlatformsOutput) ExcludedPlatforms() pu
 // A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.IncludedPlatforms }).(pulumi.StringArrayOutput)
-}
-
-type ConditionalAccessPolicyConditionsPlatformsPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyConditionsPlatformsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsPlatforms)(nil)).Elem()
-}
-
-func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutput() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ToConditionalAccessPolicyConditionsPlatformsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsPlatformsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) Elem() ConditionalAccessPolicyConditionsPlatformsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) ConditionalAccessPolicyConditionsPlatforms {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicyConditionsPlatforms
-		return ret
-	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
-}
-
-// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedPlatforms
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedPlatforms
-	}).(pulumi.StringArrayOutput)
 }
 
 type ConditionalAccessPolicyConditionsUsers struct {
@@ -3126,47 +2676,6 @@ func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyCon
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersOutput)
 }
 
-func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Background())
-}
-
-func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersOutput).ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx)
-}
-
-// ConditionalAccessPolicyConditionsUsersPtrInput is an input type that accepts ConditionalAccessPolicyConditionsUsersArgs, ConditionalAccessPolicyConditionsUsersPtr and ConditionalAccessPolicyConditionsUsersPtrOutput values.
-// You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersPtrInput` via:
-//
-//          ConditionalAccessPolicyConditionsUsersArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionalAccessPolicyConditionsUsersPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput
-	ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput
-}
-
-type conditionalAccessPolicyConditionsUsersPtrType ConditionalAccessPolicyConditionsUsersArgs
-
-func ConditionalAccessPolicyConditionsUsersPtr(v *ConditionalAccessPolicyConditionsUsersArgs) ConditionalAccessPolicyConditionsUsersPtrInput {
-	return (*conditionalAccessPolicyConditionsUsersPtrType)(v)
-}
-
-func (*conditionalAccessPolicyConditionsUsersPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsUsers)(nil)).Elem()
-}
-
-func (i *conditionalAccessPolicyConditionsUsersPtrType) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return i.ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyConditionsUsersPtrType) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsUsersPtrOutput)
-}
-
 type ConditionalAccessPolicyConditionsUsersOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyConditionsUsersOutput) ElementType() reflect.Type {
@@ -3179,16 +2688,6 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyC
 
 func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersOutput {
 	return o
-}
-
-func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o.ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsUsers) *ConditionalAccessPolicyConditionsUsers {
-		return &v
-	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
 }
 
 // A list of group IDs excluded from scope of policy.
@@ -3219,90 +2718,6 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.Str
 // A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedUsers }).(pulumi.StringArrayOutput)
-}
-
-type ConditionalAccessPolicyConditionsUsersPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyConditionsUsersPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyConditionsUsers)(nil)).Elem()
-}
-
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ToConditionalAccessPolicyConditionsUsersPtrOutput() ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ToConditionalAccessPolicyConditionsUsersPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsUsersPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) Elem() ConditionalAccessPolicyConditionsUsersOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) ConditionalAccessPolicyConditionsUsers {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicyConditionsUsers
-		return ret
-	}).(ConditionalAccessPolicyConditionsUsersOutput)
-}
-
-// A list of group IDs excluded from scope of policy.
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedGroups
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of role IDs excluded from scope of policy.
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedRoles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedRoles
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedUsers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
-		if v == nil {
-			return nil
-		}
-		return v.ExcludedUsers
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of group IDs in scope of policy unless explicitly excluded.
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedGroups
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of role IDs in scope of policy unless explicitly excluded.
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedRoles
-	}).(pulumi.StringArrayOutput)
-}
-
-// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
-func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
-		if v == nil {
-			return nil
-		}
-		return v.IncludedUsers
-	}).(pulumi.StringArrayOutput)
 }
 
 type ConditionalAccessPolicyGrantControls struct {
@@ -3350,47 +2765,6 @@ func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrant
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyGrantControlsOutput)
 }
 
-func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
-	return i.ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Background())
-}
-
-func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyGrantControlsOutput).ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx)
-}
-
-// ConditionalAccessPolicyGrantControlsPtrInput is an input type that accepts ConditionalAccessPolicyGrantControlsArgs, ConditionalAccessPolicyGrantControlsPtr and ConditionalAccessPolicyGrantControlsPtrOutput values.
-// You can construct a concrete instance of `ConditionalAccessPolicyGrantControlsPtrInput` via:
-//
-//          ConditionalAccessPolicyGrantControlsArgs{...}
-//
-//  or:
-//
-//          nil
-type ConditionalAccessPolicyGrantControlsPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput
-	ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Context) ConditionalAccessPolicyGrantControlsPtrOutput
-}
-
-type conditionalAccessPolicyGrantControlsPtrType ConditionalAccessPolicyGrantControlsArgs
-
-func ConditionalAccessPolicyGrantControlsPtr(v *ConditionalAccessPolicyGrantControlsArgs) ConditionalAccessPolicyGrantControlsPtrInput {
-	return (*conditionalAccessPolicyGrantControlsPtrType)(v)
-}
-
-func (*conditionalAccessPolicyGrantControlsPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyGrantControls)(nil)).Elem()
-}
-
-func (i *conditionalAccessPolicyGrantControlsPtrType) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
-	return i.ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyGrantControlsPtrType) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyGrantControlsPtrOutput)
-}
-
 type ConditionalAccessPolicyGrantControlsOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyGrantControlsOutput) ElementType() reflect.Type {
@@ -3403,16 +2777,6 @@ func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGra
 
 func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsOutput {
 	return o
-}
-
-func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
-	return o.ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyGrantControls) *ConditionalAccessPolicyGrantControls {
-		return &v
-	}).(ConditionalAccessPolicyGrantControlsPtrOutput)
 }
 
 // List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
@@ -3433,70 +2797,6 @@ func (o ConditionalAccessPolicyGrantControlsOutput) Operator() pulumi.StringOutp
 // List of terms of use IDs required by the policy.
 func (o ConditionalAccessPolicyGrantControlsOutput) TermsOfUses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.TermsOfUses }).(pulumi.StringArrayOutput)
-}
-
-type ConditionalAccessPolicyGrantControlsPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyGrantControlsPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicyGrantControls)(nil)).Elem()
-}
-
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) ToConditionalAccessPolicyGrantControlsPtrOutput() ConditionalAccessPolicyGrantControlsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) ToConditionalAccessPolicyGrantControlsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyGrantControlsPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) Elem() ConditionalAccessPolicyGrantControlsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) ConditionalAccessPolicyGrantControls {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicyGrantControls
-		return ret
-	}).(ConditionalAccessPolicyGrantControlsOutput)
-}
-
-// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) BuiltInControls() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
-		if v == nil {
-			return nil
-		}
-		return v.BuiltInControls
-	}).(pulumi.StringArrayOutput)
-}
-
-// List of custom controls IDs required by the policy.
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) CustomAuthenticationFactors() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
-		if v == nil {
-			return nil
-		}
-		return v.CustomAuthenticationFactors
-	}).(pulumi.StringArrayOutput)
-}
-
-// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Operator
-	}).(pulumi.StringPtrOutput)
-}
-
-// List of terms of use IDs required by the policy.
-func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
-		if v == nil {
-			return nil
-		}
-		return v.TermsOfUses
-	}).(pulumi.StringArrayOutput)
 }
 
 type ConditionalAccessPolicySessionControls struct {
@@ -8001,21 +7301,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationWebImplicitGrantInput)(nil)).Elem(), ApplicationWebImplicitGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationWebImplicitGrantPtrInput)(nil)).Elem(), ApplicationWebImplicitGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsApplicationsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsApplicationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsApplicationsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesFilterInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesFilterPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsLocationsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsLocationsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsLocationsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsLocationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsPlatformsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsPlatformsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsPlatformsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsPlatformsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsUsersPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsUsersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyGrantControlsInput)(nil)).Elem(), ConditionalAccessPolicyGrantControlsArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyGrantControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicyGrantControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupDynamicMembershipInput)(nil)).Elem(), GroupDynamicMembershipArgs{})
@@ -8111,21 +7405,15 @@ func init() {
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(ApplicationWebImplicitGrantPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesFilterOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesFilterPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsLocationsOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsLocationsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPlatformsOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPlatformsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsUsersPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsPtrOutput{})
 	pulumi.RegisterOutputType(GroupDynamicMembershipOutput{})

@@ -101,25 +101,25 @@ export class DirectoryRole extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DirectoryRoleArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DirectoryRoleArgs | DirectoryRoleState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryRoleState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["objectId"] = state ? state.objectId : undefined;
-            inputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
         } else {
             const args = argsOrState as DirectoryRoleArgs | undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["templateId"] = args ? args.templateId : undefined;
-            inputs["description"] = undefined /*out*/;
-            inputs["objectId"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["objectId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(DirectoryRole.__pulumiType, name, inputs, opts);
+        super(DirectoryRole.__pulumiType, name, resourceInputs, opts);
     }
 }
 

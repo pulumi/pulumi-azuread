@@ -95,18 +95,18 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServicePrincipalCertificateArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalCertificateArgs | ServicePrincipalCertificateState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalCertificateState | undefined;
-            inputs["encoding"] = state ? state.encoding : undefined;
-            inputs["endDate"] = state ? state.endDate : undefined;
-            inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
-            inputs["keyId"] = state ? state.keyId : undefined;
-            inputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            inputs["startDate"] = state ? state.startDate : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["encoding"] = state ? state.encoding : undefined;
+            resourceInputs["endDate"] = state ? state.endDate : undefined;
+            resourceInputs["endDateRelative"] = state ? state.endDateRelative : undefined;
+            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
+            resourceInputs["startDate"] = state ? state.startDate : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ServicePrincipalCertificateArgs | undefined;
             if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
@@ -115,19 +115,19 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            inputs["encoding"] = args ? args.encoding : undefined;
-            inputs["endDate"] = args ? args.endDate : undefined;
-            inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
-            inputs["keyId"] = args ? args.keyId : undefined;
-            inputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            inputs["startDate"] = args ? args.startDate : undefined;
-            inputs["type"] = args ? args.type : undefined;
-            inputs["value"] = args ? args.value : undefined;
+            resourceInputs["encoding"] = args ? args.encoding : undefined;
+            resourceInputs["endDate"] = args ? args.endDate : undefined;
+            resourceInputs["endDateRelative"] = args ? args.endDateRelative : undefined;
+            resourceInputs["keyId"] = args ? args.keyId : undefined;
+            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
+            resourceInputs["startDate"] = args ? args.startDate : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["value"] = args ? args.value : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServicePrincipalCertificate.__pulumiType, name, inputs, opts);
+        super(ServicePrincipalCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }
 

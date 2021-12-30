@@ -98,32 +98,32 @@ export class AdministrativeUnit extends pulumi.CustomResource {
      */
     constructor(name: string, args: AdministrativeUnitArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AdministrativeUnitArgs | AdministrativeUnitState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdministrativeUnitState | undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["hiddenMembershipEnabled"] = state ? state.hiddenMembershipEnabled : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["objectId"] = state ? state.objectId : undefined;
-            inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["hiddenMembershipEnabled"] = state ? state.hiddenMembershipEnabled : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
         } else {
             const args = argsOrState as AdministrativeUnitArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["hiddenMembershipEnabled"] = args ? args.hiddenMembershipEnabled : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
-            inputs["objectId"] = undefined /*out*/;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["hiddenMembershipEnabled"] = args ? args.hiddenMembershipEnabled : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
+            resourceInputs["objectId"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AdministrativeUnit.__pulumiType, name, inputs, opts);
+        super(AdministrativeUnit.__pulumiType, name, resourceInputs, opts);
     }
 }
 

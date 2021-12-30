@@ -45,7 +45,7 @@ setup(name='pulumi_azuread',
       cmdclass={
           'install': InstallPluginCommand,
       },
-      keywords='pulumi azuread',
+      keywords='pulumi azuread category/infrastructure',
       url='https://pulumi.io',
       project_urls={
           'Repository': 'https://github.com/pulumi/pulumi-azuread'
@@ -55,6 +55,7 @@ setup(name='pulumi_azuread',
       package_data={
           'pulumi_azuread': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

@@ -176,82 +176,82 @@ export class Application extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationArgs | ApplicationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationState | undefined;
-            inputs["api"] = state ? state.api : undefined;
-            inputs["appRoleIds"] = state ? state.appRoleIds : undefined;
-            inputs["appRoles"] = state ? state.appRoles : undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
-            inputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["fallbackPublicClientEnabled"] = state ? state.fallbackPublicClientEnabled : undefined;
-            inputs["featureTags"] = state ? state.featureTags : undefined;
-            inputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
-            inputs["identifierUris"] = state ? state.identifierUris : undefined;
-            inputs["logoImage"] = state ? state.logoImage : undefined;
-            inputs["logoUrl"] = state ? state.logoUrl : undefined;
-            inputs["marketingUrl"] = state ? state.marketingUrl : undefined;
-            inputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
-            inputs["oauth2PostResponseRequired"] = state ? state.oauth2PostResponseRequired : undefined;
-            inputs["objectId"] = state ? state.objectId : undefined;
-            inputs["optionalClaims"] = state ? state.optionalClaims : undefined;
-            inputs["owners"] = state ? state.owners : undefined;
-            inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
-            inputs["privacyStatementUrl"] = state ? state.privacyStatementUrl : undefined;
-            inputs["publicClient"] = state ? state.publicClient : undefined;
-            inputs["publisherDomain"] = state ? state.publisherDomain : undefined;
-            inputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
-            inputs["signInAudience"] = state ? state.signInAudience : undefined;
-            inputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
-            inputs["supportUrl"] = state ? state.supportUrl : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["templateId"] = state ? state.templateId : undefined;
-            inputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
-            inputs["web"] = state ? state.web : undefined;
+            resourceInputs["api"] = state ? state.api : undefined;
+            resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
+            resourceInputs["appRoles"] = state ? state.appRoles : undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
+            resourceInputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["fallbackPublicClientEnabled"] = state ? state.fallbackPublicClientEnabled : undefined;
+            resourceInputs["featureTags"] = state ? state.featureTags : undefined;
+            resourceInputs["groupMembershipClaims"] = state ? state.groupMembershipClaims : undefined;
+            resourceInputs["identifierUris"] = state ? state.identifierUris : undefined;
+            resourceInputs["logoImage"] = state ? state.logoImage : undefined;
+            resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
+            resourceInputs["marketingUrl"] = state ? state.marketingUrl : undefined;
+            resourceInputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
+            resourceInputs["oauth2PostResponseRequired"] = state ? state.oauth2PostResponseRequired : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["optionalClaims"] = state ? state.optionalClaims : undefined;
+            resourceInputs["owners"] = state ? state.owners : undefined;
+            resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            resourceInputs["privacyStatementUrl"] = state ? state.privacyStatementUrl : undefined;
+            resourceInputs["publicClient"] = state ? state.publicClient : undefined;
+            resourceInputs["publisherDomain"] = state ? state.publisherDomain : undefined;
+            resourceInputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
+            resourceInputs["signInAudience"] = state ? state.signInAudience : undefined;
+            resourceInputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
+            resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["templateId"] = state ? state.templateId : undefined;
+            resourceInputs["termsOfServiceUrl"] = state ? state.termsOfServiceUrl : undefined;
+            resourceInputs["web"] = state ? state.web : undefined;
         } else {
             const args = argsOrState as ApplicationArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["api"] = args ? args.api : undefined;
-            inputs["appRoles"] = args ? args.appRoles : undefined;
-            inputs["deviceOnlyAuthEnabled"] = args ? args.deviceOnlyAuthEnabled : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
-            inputs["featureTags"] = args ? args.featureTags : undefined;
-            inputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
-            inputs["identifierUris"] = args ? args.identifierUris : undefined;
-            inputs["logoImage"] = args ? args.logoImage : undefined;
-            inputs["marketingUrl"] = args ? args.marketingUrl : undefined;
-            inputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
-            inputs["optionalClaims"] = args ? args.optionalClaims : undefined;
-            inputs["owners"] = args ? args.owners : undefined;
-            inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
-            inputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
-            inputs["publicClient"] = args ? args.publicClient : undefined;
-            inputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
-            inputs["signInAudience"] = args ? args.signInAudience : undefined;
-            inputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
-            inputs["supportUrl"] = args ? args.supportUrl : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["templateId"] = args ? args.templateId : undefined;
-            inputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
-            inputs["web"] = args ? args.web : undefined;
-            inputs["appRoleIds"] = undefined /*out*/;
-            inputs["applicationId"] = undefined /*out*/;
-            inputs["disabledByMicrosoft"] = undefined /*out*/;
-            inputs["logoUrl"] = undefined /*out*/;
-            inputs["oauth2PermissionScopeIds"] = undefined /*out*/;
-            inputs["objectId"] = undefined /*out*/;
-            inputs["publisherDomain"] = undefined /*out*/;
+            resourceInputs["api"] = args ? args.api : undefined;
+            resourceInputs["appRoles"] = args ? args.appRoles : undefined;
+            resourceInputs["deviceOnlyAuthEnabled"] = args ? args.deviceOnlyAuthEnabled : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
+            resourceInputs["featureTags"] = args ? args.featureTags : undefined;
+            resourceInputs["groupMembershipClaims"] = args ? args.groupMembershipClaims : undefined;
+            resourceInputs["identifierUris"] = args ? args.identifierUris : undefined;
+            resourceInputs["logoImage"] = args ? args.logoImage : undefined;
+            resourceInputs["marketingUrl"] = args ? args.marketingUrl : undefined;
+            resourceInputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
+            resourceInputs["optionalClaims"] = args ? args.optionalClaims : undefined;
+            resourceInputs["owners"] = args ? args.owners : undefined;
+            resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
+            resourceInputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
+            resourceInputs["publicClient"] = args ? args.publicClient : undefined;
+            resourceInputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
+            resourceInputs["signInAudience"] = args ? args.signInAudience : undefined;
+            resourceInputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
+            resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["templateId"] = args ? args.templateId : undefined;
+            resourceInputs["termsOfServiceUrl"] = args ? args.termsOfServiceUrl : undefined;
+            resourceInputs["web"] = args ? args.web : undefined;
+            resourceInputs["appRoleIds"] = undefined /*out*/;
+            resourceInputs["applicationId"] = undefined /*out*/;
+            resourceInputs["disabledByMicrosoft"] = undefined /*out*/;
+            resourceInputs["logoUrl"] = undefined /*out*/;
+            resourceInputs["oauth2PermissionScopeIds"] = undefined /*out*/;
+            resourceInputs["objectId"] = undefined /*out*/;
+            resourceInputs["publisherDomain"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Application.__pulumiType, name, inputs, opts);
+        super(Application.__pulumiType, name, resourceInputs, opts);
     }
 }
 

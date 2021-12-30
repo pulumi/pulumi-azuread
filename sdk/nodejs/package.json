@@ -4,7 +4,8 @@
     "description": "A Pulumi package for creating and managing azuread cloud resources.",
     "keywords": [
         "pulumi",
-        "azuread"
+        "azuread",
+        "category/infrastructure"
     ],
     "homepage": "https://pulumi.io",
     "repository": "https://github.com/pulumi/pulumi-azuread",

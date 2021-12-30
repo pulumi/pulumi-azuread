@@ -242,68 +242,68 @@ export class Group extends pulumi.CustomResource {
      */
     constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
-            inputs["assignableToRole"] = state ? state.assignableToRole : undefined;
-            inputs["behaviors"] = state ? state.behaviors : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["dynamicMembership"] = state ? state.dynamicMembership : undefined;
-            inputs["mail"] = state ? state.mail : undefined;
-            inputs["mailEnabled"] = state ? state.mailEnabled : undefined;
-            inputs["mailNickname"] = state ? state.mailNickname : undefined;
-            inputs["members"] = state ? state.members : undefined;
-            inputs["objectId"] = state ? state.objectId : undefined;
-            inputs["onpremisesDomainName"] = state ? state.onpremisesDomainName : undefined;
-            inputs["onpremisesNetbiosName"] = state ? state.onpremisesNetbiosName : undefined;
-            inputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
-            inputs["onpremisesSecurityIdentifier"] = state ? state.onpremisesSecurityIdentifier : undefined;
-            inputs["onpremisesSyncEnabled"] = state ? state.onpremisesSyncEnabled : undefined;
-            inputs["owners"] = state ? state.owners : undefined;
-            inputs["preferredLanguage"] = state ? state.preferredLanguage : undefined;
-            inputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
-            inputs["provisioningOptions"] = state ? state.provisioningOptions : undefined;
-            inputs["proxyAddresses"] = state ? state.proxyAddresses : undefined;
-            inputs["securityEnabled"] = state ? state.securityEnabled : undefined;
-            inputs["theme"] = state ? state.theme : undefined;
-            inputs["types"] = state ? state.types : undefined;
-            inputs["visibility"] = state ? state.visibility : undefined;
+            resourceInputs["assignableToRole"] = state ? state.assignableToRole : undefined;
+            resourceInputs["behaviors"] = state ? state.behaviors : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["dynamicMembership"] = state ? state.dynamicMembership : undefined;
+            resourceInputs["mail"] = state ? state.mail : undefined;
+            resourceInputs["mailEnabled"] = state ? state.mailEnabled : undefined;
+            resourceInputs["mailNickname"] = state ? state.mailNickname : undefined;
+            resourceInputs["members"] = state ? state.members : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["onpremisesDomainName"] = state ? state.onpremisesDomainName : undefined;
+            resourceInputs["onpremisesNetbiosName"] = state ? state.onpremisesNetbiosName : undefined;
+            resourceInputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
+            resourceInputs["onpremisesSecurityIdentifier"] = state ? state.onpremisesSecurityIdentifier : undefined;
+            resourceInputs["onpremisesSyncEnabled"] = state ? state.onpremisesSyncEnabled : undefined;
+            resourceInputs["owners"] = state ? state.owners : undefined;
+            resourceInputs["preferredLanguage"] = state ? state.preferredLanguage : undefined;
+            resourceInputs["preventDuplicateNames"] = state ? state.preventDuplicateNames : undefined;
+            resourceInputs["provisioningOptions"] = state ? state.provisioningOptions : undefined;
+            resourceInputs["proxyAddresses"] = state ? state.proxyAddresses : undefined;
+            resourceInputs["securityEnabled"] = state ? state.securityEnabled : undefined;
+            resourceInputs["theme"] = state ? state.theme : undefined;
+            resourceInputs["types"] = state ? state.types : undefined;
+            resourceInputs["visibility"] = state ? state.visibility : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["assignableToRole"] = args ? args.assignableToRole : undefined;
-            inputs["behaviors"] = args ? args.behaviors : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["dynamicMembership"] = args ? args.dynamicMembership : undefined;
-            inputs["mailEnabled"] = args ? args.mailEnabled : undefined;
-            inputs["mailNickname"] = args ? args.mailNickname : undefined;
-            inputs["members"] = args ? args.members : undefined;
-            inputs["owners"] = args ? args.owners : undefined;
-            inputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
-            inputs["provisioningOptions"] = args ? args.provisioningOptions : undefined;
-            inputs["securityEnabled"] = args ? args.securityEnabled : undefined;
-            inputs["theme"] = args ? args.theme : undefined;
-            inputs["types"] = args ? args.types : undefined;
-            inputs["visibility"] = args ? args.visibility : undefined;
-            inputs["mail"] = undefined /*out*/;
-            inputs["objectId"] = undefined /*out*/;
-            inputs["onpremisesDomainName"] = undefined /*out*/;
-            inputs["onpremisesNetbiosName"] = undefined /*out*/;
-            inputs["onpremisesSamAccountName"] = undefined /*out*/;
-            inputs["onpremisesSecurityIdentifier"] = undefined /*out*/;
-            inputs["onpremisesSyncEnabled"] = undefined /*out*/;
-            inputs["preferredLanguage"] = undefined /*out*/;
-            inputs["proxyAddresses"] = undefined /*out*/;
+            resourceInputs["assignableToRole"] = args ? args.assignableToRole : undefined;
+            resourceInputs["behaviors"] = args ? args.behaviors : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["dynamicMembership"] = args ? args.dynamicMembership : undefined;
+            resourceInputs["mailEnabled"] = args ? args.mailEnabled : undefined;
+            resourceInputs["mailNickname"] = args ? args.mailNickname : undefined;
+            resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["owners"] = args ? args.owners : undefined;
+            resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
+            resourceInputs["provisioningOptions"] = args ? args.provisioningOptions : undefined;
+            resourceInputs["securityEnabled"] = args ? args.securityEnabled : undefined;
+            resourceInputs["theme"] = args ? args.theme : undefined;
+            resourceInputs["types"] = args ? args.types : undefined;
+            resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["mail"] = undefined /*out*/;
+            resourceInputs["objectId"] = undefined /*out*/;
+            resourceInputs["onpremisesDomainName"] = undefined /*out*/;
+            resourceInputs["onpremisesNetbiosName"] = undefined /*out*/;
+            resourceInputs["onpremisesSamAccountName"] = undefined /*out*/;
+            resourceInputs["onpremisesSecurityIdentifier"] = undefined /*out*/;
+            resourceInputs["onpremisesSyncEnabled"] = undefined /*out*/;
+            resourceInputs["preferredLanguage"] = undefined /*out*/;
+            resourceInputs["proxyAddresses"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(Group.__pulumiType, name, inputs, opts);
+        super(Group.__pulumiType, name, resourceInputs, opts);
     }
 }
 

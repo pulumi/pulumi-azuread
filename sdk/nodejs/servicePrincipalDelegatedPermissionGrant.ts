@@ -162,14 +162,14 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
      */
     constructor(name: string, args: ServicePrincipalDelegatedPermissionGrantArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalDelegatedPermissionGrantArgs | ServicePrincipalDelegatedPermissionGrantState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalDelegatedPermissionGrantState | undefined;
-            inputs["claimValues"] = state ? state.claimValues : undefined;
-            inputs["resourceServicePrincipalObjectId"] = state ? state.resourceServicePrincipalObjectId : undefined;
-            inputs["servicePrincipalObjectId"] = state ? state.servicePrincipalObjectId : undefined;
-            inputs["userObjectId"] = state ? state.userObjectId : undefined;
+            resourceInputs["claimValues"] = state ? state.claimValues : undefined;
+            resourceInputs["resourceServicePrincipalObjectId"] = state ? state.resourceServicePrincipalObjectId : undefined;
+            resourceInputs["servicePrincipalObjectId"] = state ? state.servicePrincipalObjectId : undefined;
+            resourceInputs["userObjectId"] = state ? state.userObjectId : undefined;
         } else {
             const args = argsOrState as ServicePrincipalDelegatedPermissionGrantArgs | undefined;
             if ((!args || args.claimValues === undefined) && !opts.urn) {
@@ -181,15 +181,15 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
             if ((!args || args.servicePrincipalObjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalObjectId'");
             }
-            inputs["claimValues"] = args ? args.claimValues : undefined;
-            inputs["resourceServicePrincipalObjectId"] = args ? args.resourceServicePrincipalObjectId : undefined;
-            inputs["servicePrincipalObjectId"] = args ? args.servicePrincipalObjectId : undefined;
-            inputs["userObjectId"] = args ? args.userObjectId : undefined;
+            resourceInputs["claimValues"] = args ? args.claimValues : undefined;
+            resourceInputs["resourceServicePrincipalObjectId"] = args ? args.resourceServicePrincipalObjectId : undefined;
+            resourceInputs["servicePrincipalObjectId"] = args ? args.servicePrincipalObjectId : undefined;
+            resourceInputs["userObjectId"] = args ? args.userObjectId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ServicePrincipalDelegatedPermissionGrant.__pulumiType, name, inputs, opts);
+        super(ServicePrincipalDelegatedPermissionGrant.__pulumiType, name, resourceInputs, opts);
     }
 }
 

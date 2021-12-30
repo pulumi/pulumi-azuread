@@ -137,7 +137,7 @@ Object.defineProperty(exports, "useCli", {
 export declare const useMsi: boolean;
 Object.defineProperty(exports, "useMsi", {
     get() {
-        return __config.getObject<boolean>("useMsi") ?? (<any>utilities.getEnvBoolean("ARM_USE_MSI") || false);
+        return __config.getObject<boolean>("useMsi") ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false);
     },
     enumerable: true,
 });

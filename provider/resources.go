@@ -73,10 +73,11 @@ func Provider() tfbridge.ProviderInfo {
 		P:           p,
 		Name:        "azuread",
 		Description: "A Pulumi package for creating and managing azuread cloud resources.",
-		Keywords:    []string{"pulumi", "azuread"},
+		Keywords:    []string{"pulumi", "azuread", "category/infrastructure"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		GitHubOrg:   "hashicorp",
+		Publisher:   "Pulumi",
 		Repository:  "https://github.com/pulumi/pulumi-azuread",
 		Config: map[string]*tfbridge.SchemaInfo{
 			"environment": {

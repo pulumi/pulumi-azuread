@@ -79,36 +79,36 @@ export class ApplicationPassword extends pulumi.CustomResource {
      */
     constructor(name: string, args: ApplicationPasswordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationPasswordArgs | ApplicationPasswordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationPasswordState | undefined;
-            inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["endDate"] = state ? state.endDate : undefined;
-            inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
-            inputs["keyId"] = state ? state.keyId : undefined;
-            inputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
-            inputs["startDate"] = state ? state.startDate : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["endDate"] = state ? state.endDate : undefined;
+            resourceInputs["endDateRelative"] = state ? state.endDateRelative : undefined;
+            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
+            resourceInputs["startDate"] = state ? state.startDate : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ApplicationPasswordArgs | undefined;
             if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationObjectId'");
             }
-            inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["endDate"] = args ? args.endDate : undefined;
-            inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
-            inputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
-            inputs["startDate"] = args ? args.startDate : undefined;
-            inputs["keyId"] = undefined /*out*/;
-            inputs["value"] = undefined /*out*/;
+            resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["endDate"] = args ? args.endDate : undefined;
+            resourceInputs["endDateRelative"] = args ? args.endDateRelative : undefined;
+            resourceInputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
+            resourceInputs["startDate"] = args ? args.startDate : undefined;
+            resourceInputs["keyId"] = undefined /*out*/;
+            resourceInputs["value"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(ApplicationPassword.__pulumiType, name, inputs, opts);
+        super(ApplicationPassword.__pulumiType, name, resourceInputs, opts);
     }
 }
 

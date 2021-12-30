@@ -102,26 +102,26 @@ export class NamedLocation extends pulumi.CustomResource {
      */
     constructor(name: string, args: NamedLocationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: NamedLocationArgs | NamedLocationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NamedLocationState | undefined;
-            inputs["country"] = state ? state.country : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["country"] = state ? state.country : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["ip"] = state ? state.ip : undefined;
         } else {
             const args = argsOrState as NamedLocationArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            inputs["country"] = args ? args.country : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["country"] = args ? args.country : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["ip"] = args ? args.ip : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(NamedLocation.__pulumiType, name, inputs, opts);
+        super(NamedLocation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

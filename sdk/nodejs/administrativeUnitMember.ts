@@ -89,21 +89,21 @@ export class AdministrativeUnitMember extends pulumi.CustomResource {
      */
     constructor(name: string, args?: AdministrativeUnitMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AdministrativeUnitMemberArgs | AdministrativeUnitMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AdministrativeUnitMemberState | undefined;
-            inputs["administrativeUnitObjectId"] = state ? state.administrativeUnitObjectId : undefined;
-            inputs["memberObjectId"] = state ? state.memberObjectId : undefined;
+            resourceInputs["administrativeUnitObjectId"] = state ? state.administrativeUnitObjectId : undefined;
+            resourceInputs["memberObjectId"] = state ? state.memberObjectId : undefined;
         } else {
             const args = argsOrState as AdministrativeUnitMemberArgs | undefined;
-            inputs["administrativeUnitObjectId"] = args ? args.administrativeUnitObjectId : undefined;
-            inputs["memberObjectId"] = args ? args.memberObjectId : undefined;
+            resourceInputs["administrativeUnitObjectId"] = args ? args.administrativeUnitObjectId : undefined;
+            resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
         }
-        super(AdministrativeUnitMember.__pulumiType, name, inputs, opts);
+        super(AdministrativeUnitMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

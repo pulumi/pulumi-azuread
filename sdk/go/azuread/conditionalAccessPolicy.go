@@ -251,7 +251,7 @@ type ConditionalAccessPolicyInput interface {
 }
 
 func (*ConditionalAccessPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionalAccessPolicy)(nil))
+	return reflect.TypeOf((**ConditionalAccessPolicy)(nil)).Elem()
 }
 
 func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyOutput() ConditionalAccessPolicyOutput {
@@ -260,35 +260,6 @@ func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyOutput() ConditionalA
 
 func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyOutputWithContext(ctx context.Context) ConditionalAccessPolicyOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyOutput)
-}
-
-func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyPtrOutput() ConditionalAccessPolicyPtrOutput {
-	return i.ToConditionalAccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyPtrOutput)
-}
-
-type ConditionalAccessPolicyPtrInput interface {
-	pulumi.Input
-
-	ToConditionalAccessPolicyPtrOutput() ConditionalAccessPolicyPtrOutput
-	ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput
-}
-
-type conditionalAccessPolicyPtrType ConditionalAccessPolicyArgs
-
-func (*conditionalAccessPolicyPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicy)(nil))
-}
-
-func (i *conditionalAccessPolicyPtrType) ToConditionalAccessPolicyPtrOutput() ConditionalAccessPolicyPtrOutput {
-	return i.ToConditionalAccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (i *conditionalAccessPolicyPtrType) ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyPtrOutput)
 }
 
 // ConditionalAccessPolicyArrayInput is an input type that accepts ConditionalAccessPolicyArray and ConditionalAccessPolicyArrayOutput values.
@@ -344,7 +315,7 @@ func (i ConditionalAccessPolicyMap) ToConditionalAccessPolicyMapOutputWithContex
 type ConditionalAccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ConditionalAccessPolicy)(nil))
+	return reflect.TypeOf((**ConditionalAccessPolicy)(nil)).Elem()
 }
 
 func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyOutput() ConditionalAccessPolicyOutput {
@@ -355,44 +326,10 @@ func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyOutputWithContex
 	return o
 }
 
-func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyPtrOutput() ConditionalAccessPolicyPtrOutput {
-	return o.ToConditionalAccessPolicyPtrOutputWithContext(context.Background())
-}
-
-func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicy) *ConditionalAccessPolicy {
-		return &v
-	}).(ConditionalAccessPolicyPtrOutput)
-}
-
-type ConditionalAccessPolicyPtrOutput struct{ *pulumi.OutputState }
-
-func (ConditionalAccessPolicyPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ConditionalAccessPolicy)(nil))
-}
-
-func (o ConditionalAccessPolicyPtrOutput) ToConditionalAccessPolicyPtrOutput() ConditionalAccessPolicyPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyPtrOutput) ToConditionalAccessPolicyPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyPtrOutput {
-	return o
-}
-
-func (o ConditionalAccessPolicyPtrOutput) Elem() ConditionalAccessPolicyOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicy {
-		if v != nil {
-			return *v
-		}
-		var ret ConditionalAccessPolicy
-		return ret
-	}).(ConditionalAccessPolicyOutput)
-}
-
 type ConditionalAccessPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ConditionalAccessPolicy)(nil))
+	return reflect.TypeOf((*[]*ConditionalAccessPolicy)(nil)).Elem()
 }
 
 func (o ConditionalAccessPolicyArrayOutput) ToConditionalAccessPolicyArrayOutput() ConditionalAccessPolicyArrayOutput {
@@ -404,15 +341,15 @@ func (o ConditionalAccessPolicyArrayOutput) ToConditionalAccessPolicyArrayOutput
 }
 
 func (o ConditionalAccessPolicyArrayOutput) Index(i pulumi.IntInput) ConditionalAccessPolicyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ConditionalAccessPolicy {
-		return vs[0].([]ConditionalAccessPolicy)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConditionalAccessPolicy {
+		return vs[0].([]*ConditionalAccessPolicy)[vs[1].(int)]
 	}).(ConditionalAccessPolicyOutput)
 }
 
 type ConditionalAccessPolicyMapOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ConditionalAccessPolicy)(nil))
+	return reflect.TypeOf((*map[string]*ConditionalAccessPolicy)(nil)).Elem()
 }
 
 func (o ConditionalAccessPolicyMapOutput) ToConditionalAccessPolicyMapOutput() ConditionalAccessPolicyMapOutput {
@@ -424,18 +361,16 @@ func (o ConditionalAccessPolicyMapOutput) ToConditionalAccessPolicyMapOutputWith
 }
 
 func (o ConditionalAccessPolicyMapOutput) MapIndex(k pulumi.StringInput) ConditionalAccessPolicyOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ConditionalAccessPolicy {
-		return vs[0].(map[string]ConditionalAccessPolicy)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ConditionalAccessPolicy {
+		return vs[0].(map[string]*ConditionalAccessPolicy)[vs[1].(string)]
 	}).(ConditionalAccessPolicyOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyInput)(nil)).Elem(), &ConditionalAccessPolicy{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyPtrInput)(nil)).Elem(), &ConditionalAccessPolicy{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyArrayInput)(nil)).Elem(), ConditionalAccessPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyMapInput)(nil)).Elem(), ConditionalAccessPolicyMap{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyOutput{})
-	pulumi.RegisterOutputType(ConditionalAccessPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyArrayOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyMapOutput{})
 }

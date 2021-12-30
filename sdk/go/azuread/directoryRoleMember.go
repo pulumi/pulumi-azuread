@@ -148,7 +148,7 @@ type DirectoryRoleMemberInput interface {
 }
 
 func (*DirectoryRoleMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*DirectoryRoleMember)(nil))
+	return reflect.TypeOf((**DirectoryRoleMember)(nil)).Elem()
 }
 
 func (i *DirectoryRoleMember) ToDirectoryRoleMemberOutput() DirectoryRoleMemberOutput {
@@ -157,35 +157,6 @@ func (i *DirectoryRoleMember) ToDirectoryRoleMemberOutput() DirectoryRoleMemberO
 
 func (i *DirectoryRoleMember) ToDirectoryRoleMemberOutputWithContext(ctx context.Context) DirectoryRoleMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMemberOutput)
-}
-
-func (i *DirectoryRoleMember) ToDirectoryRoleMemberPtrOutput() DirectoryRoleMemberPtrOutput {
-	return i.ToDirectoryRoleMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *DirectoryRoleMember) ToDirectoryRoleMemberPtrOutputWithContext(ctx context.Context) DirectoryRoleMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMemberPtrOutput)
-}
-
-type DirectoryRoleMemberPtrInput interface {
-	pulumi.Input
-
-	ToDirectoryRoleMemberPtrOutput() DirectoryRoleMemberPtrOutput
-	ToDirectoryRoleMemberPtrOutputWithContext(ctx context.Context) DirectoryRoleMemberPtrOutput
-}
-
-type directoryRoleMemberPtrType DirectoryRoleMemberArgs
-
-func (*directoryRoleMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DirectoryRoleMember)(nil))
-}
-
-func (i *directoryRoleMemberPtrType) ToDirectoryRoleMemberPtrOutput() DirectoryRoleMemberPtrOutput {
-	return i.ToDirectoryRoleMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *directoryRoleMemberPtrType) ToDirectoryRoleMemberPtrOutputWithContext(ctx context.Context) DirectoryRoleMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMemberPtrOutput)
 }
 
 // DirectoryRoleMemberArrayInput is an input type that accepts DirectoryRoleMemberArray and DirectoryRoleMemberArrayOutput values.
@@ -241,7 +212,7 @@ func (i DirectoryRoleMemberMap) ToDirectoryRoleMemberMapOutputWithContext(ctx co
 type DirectoryRoleMemberOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DirectoryRoleMember)(nil))
+	return reflect.TypeOf((**DirectoryRoleMember)(nil)).Elem()
 }
 
 func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberOutput() DirectoryRoleMemberOutput {
@@ -252,44 +223,10 @@ func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberOutputWithContext(ctx co
 	return o
 }
 
-func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberPtrOutput() DirectoryRoleMemberPtrOutput {
-	return o.ToDirectoryRoleMemberPtrOutputWithContext(context.Background())
-}
-
-func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberPtrOutputWithContext(ctx context.Context) DirectoryRoleMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryRoleMember) *DirectoryRoleMember {
-		return &v
-	}).(DirectoryRoleMemberPtrOutput)
-}
-
-type DirectoryRoleMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (DirectoryRoleMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DirectoryRoleMember)(nil))
-}
-
-func (o DirectoryRoleMemberPtrOutput) ToDirectoryRoleMemberPtrOutput() DirectoryRoleMemberPtrOutput {
-	return o
-}
-
-func (o DirectoryRoleMemberPtrOutput) ToDirectoryRoleMemberPtrOutputWithContext(ctx context.Context) DirectoryRoleMemberPtrOutput {
-	return o
-}
-
-func (o DirectoryRoleMemberPtrOutput) Elem() DirectoryRoleMemberOutput {
-	return o.ApplyT(func(v *DirectoryRoleMember) DirectoryRoleMember {
-		if v != nil {
-			return *v
-		}
-		var ret DirectoryRoleMember
-		return ret
-	}).(DirectoryRoleMemberOutput)
-}
-
 type DirectoryRoleMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DirectoryRoleMember)(nil))
+	return reflect.TypeOf((*[]*DirectoryRoleMember)(nil)).Elem()
 }
 
 func (o DirectoryRoleMemberArrayOutput) ToDirectoryRoleMemberArrayOutput() DirectoryRoleMemberArrayOutput {
@@ -301,15 +238,15 @@ func (o DirectoryRoleMemberArrayOutput) ToDirectoryRoleMemberArrayOutputWithCont
 }
 
 func (o DirectoryRoleMemberArrayOutput) Index(i pulumi.IntInput) DirectoryRoleMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DirectoryRoleMember {
-		return vs[0].([]DirectoryRoleMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DirectoryRoleMember {
+		return vs[0].([]*DirectoryRoleMember)[vs[1].(int)]
 	}).(DirectoryRoleMemberOutput)
 }
 
 type DirectoryRoleMemberMapOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DirectoryRoleMember)(nil))
+	return reflect.TypeOf((*map[string]*DirectoryRoleMember)(nil)).Elem()
 }
 
 func (o DirectoryRoleMemberMapOutput) ToDirectoryRoleMemberMapOutput() DirectoryRoleMemberMapOutput {
@@ -321,18 +258,16 @@ func (o DirectoryRoleMemberMapOutput) ToDirectoryRoleMemberMapOutputWithContext(
 }
 
 func (o DirectoryRoleMemberMapOutput) MapIndex(k pulumi.StringInput) DirectoryRoleMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DirectoryRoleMember {
-		return vs[0].(map[string]DirectoryRoleMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DirectoryRoleMember {
+		return vs[0].(map[string]*DirectoryRoleMember)[vs[1].(string)]
 	}).(DirectoryRoleMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberInput)(nil)).Elem(), &DirectoryRoleMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberPtrInput)(nil)).Elem(), &DirectoryRoleMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberArrayInput)(nil)).Elem(), DirectoryRoleMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMemberMapInput)(nil)).Elem(), DirectoryRoleMemberMap{})
 	pulumi.RegisterOutputType(DirectoryRoleMemberOutput{})
-	pulumi.RegisterOutputType(DirectoryRoleMemberPtrOutput{})
 	pulumi.RegisterOutputType(DirectoryRoleMemberArrayOutput{})
 	pulumi.RegisterOutputType(DirectoryRoleMemberMapOutput{})
 }
