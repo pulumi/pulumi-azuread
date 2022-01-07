@@ -3695,6 +3695,123 @@
                 "type": "object"
             }
         },
+        "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential": {
+            "description": "\n\n\n## Import\n\nFederated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.\n\n```sh\n $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the application's object ID, the string \"federatedIdentityCredential\" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`. ",
+            "properties": {
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "audiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.\n"
+                },
+                "credentialId": {
+                    "type": "string",
+                    "description": "A UUID used to uniquely identify this federated identity credential.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the federated identity credential.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "A unique display name for the federated identity credential. Changing this forces a new resource to be created.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.\n"
+                }
+            },
+            "required": [
+                "applicationObjectId",
+                "audiences",
+                "credentialId",
+                "displayName",
+                "issuer",
+                "subject"
+            ],
+            "inputProperties": {
+                "applicationObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "audiences": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A description for the federated identity credential.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "A unique display name for the federated identity credential. Changing this forces a new resource to be created.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.\n"
+                }
+            },
+            "requiredInputs": [
+                "applicationObjectId",
+                "audiences",
+                "displayName",
+                "issuer",
+                "subject"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationFederatedIdentityCredential resources.\n",
+                "properties": {
+                    "applicationObjectId": {
+                        "type": "string",
+                        "description": "The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.\n"
+                    },
+                    "audiences": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.\n"
+                    },
+                    "credentialId": {
+                        "type": "string",
+                        "description": "A UUID used to uniquely identify this federated identity credential.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A description for the federated identity credential.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "A unique display name for the federated identity credential. Changing this forces a new resource to be created.\n"
+                    },
+                    "issuer": {
+                        "type": "string",
+                        "description": "The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.\n"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/applicationPassword:ApplicationPassword": {
             "description": "\n\n\n## Import\n\nThis resource does not support importing. ",
             "properties": {
@@ -5225,11 +5342,15 @@
             "properties": {
                 "displayName": {
                     "type": "string",
-                    "description": "The display name for the password.\n"
+                    "description": "A display name for the password.\n"
                 },
                 "endDate": {
                     "type": "string",
-                    "description": "The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).\n"
+                    "description": "The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
                 },
                 "keyId": {
                     "type": "string",
@@ -5248,7 +5369,7 @@
                 },
                 "startDate": {
                     "type": "string",
-                    "description": "The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).\n"
+                    "description": "The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
                 },
                 "value": {
                     "type": "string",
@@ -5264,6 +5385,18 @@
                 "value"
             ],
             "inputProperties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "A display name for the password.\n"
+                },
+                "endDate": {
+                    "type": "string",
+                    "description": "The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                },
+                "endDateRelative": {
+                    "type": "string",
+                    "description": "A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
+                },
                 "rotateWhenChanged": {
                     "type": "object",
                     "additionalProperties": {
@@ -5274,6 +5407,10 @@
                 "servicePrincipalId": {
                     "type": "string",
                     "description": "The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.\n"
+                },
+                "startDate": {
+                    "type": "string",
+                    "description": "The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
                 }
             },
             "requiredInputs": [
@@ -5284,11 +5421,15 @@
                 "properties": {
                     "displayName": {
                         "type": "string",
-                        "description": "The display name for the password.\n"
+                        "description": "A display name for the password.\n"
                     },
                     "endDate": {
                         "type": "string",
-                        "description": "The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).\n"
+                        "description": "The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.\n"
+                    },
+                    "endDateRelative": {
+                        "type": "string",
+                        "description": "A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.\n"
                     },
                     "keyId": {
                         "type": "string",
@@ -5307,7 +5448,7 @@
                     },
                     "startDate": {
                         "type": "string",
-                        "description": "The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).\n"
+                        "description": "The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
                     },
                     "value": {
                         "type": "string",
