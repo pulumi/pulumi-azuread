@@ -30,6 +30,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Application{}
 	case "azuread:index/applicationCertificate:ApplicationCertificate":
 		r = &ApplicationCertificate{}
+	case "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential":
+		r = &ApplicationFederatedIdentityCredential{}
 	case "azuread:index/applicationPassword:ApplicationPassword":
 		r = &ApplicationPassword{}
 	case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
@@ -112,6 +114,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/applicationCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/applicationFederatedIdentityCredential",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

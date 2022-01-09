@@ -18,6 +18,7 @@
         "appRoleAssignment.ts",
         "application.ts",
         "applicationCertificate.ts",
+        "applicationFederatedIdentityCredential.ts",
         "applicationPassword.ts",
         "applicationPreAuthorized.ts",
         "conditionalAccessPolicy.ts",

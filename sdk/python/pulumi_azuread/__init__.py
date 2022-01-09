@@ -10,6 +10,7 @@ from .administrative_unit_member import *
 from .app_role_assignment import *
 from .application import *
 from .application_certificate import *
+from .application_federated_identity_credential import *
 from .application_password import *
 from .application_pre_authorized import *
 from .conditional_access_policy import *
@@ -88,6 +89,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/applicationCertificate:ApplicationCertificate": "ApplicationCertificate"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/applicationFederatedIdentityCredential",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential": "ApplicationFederatedIdentityCredential"
   }
  },
  {

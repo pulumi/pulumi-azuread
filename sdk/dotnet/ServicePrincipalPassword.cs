@@ -28,16 +28,22 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipalPassword : Pulumi.CustomResource
     {
         /// <summary>
-        /// The display name for the password.
+        /// A display name for the password.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Output("endDate")]
         public Output<string> EndDate { get; private set; } = null!;
+
+        /// <summary>
+        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Output("endDateRelative")]
+        public Output<string?> EndDateRelative { get; private set; } = null!;
 
         /// <summary>
         /// A UUID used to uniquely identify this password credential.
@@ -58,7 +64,7 @@ namespace Pulumi.AzureAD
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
@@ -115,6 +121,24 @@ namespace Pulumi.AzureAD
 
     public sealed class ServicePrincipalPasswordArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A display name for the password.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("endDate")]
+        public Input<string>? EndDate { get; set; }
+
+        /// <summary>
+        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("endDateRelative")]
+        public Input<string>? EndDateRelative { get; set; }
+
         [Input("rotateWhenChanged")]
         private InputMap<string>? _rotateWhenChanged;
 
@@ -133,6 +157,12 @@ namespace Pulumi.AzureAD
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
+        /// <summary>
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("startDate")]
+        public Input<string>? StartDate { get; set; }
+
         public ServicePrincipalPasswordArgs()
         {
         }
@@ -141,16 +171,22 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordState : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name for the password.
+        /// A display name for the password.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
+
+        /// <summary>
+        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+        /// </summary>
+        [Input("endDateRelative")]
+        public Input<string>? EndDateRelative { get; set; }
 
         /// <summary>
         /// A UUID used to uniquely identify this password credential.
@@ -177,7 +213,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ServicePrincipalId { get; set; }
 
         /// <summary>
-        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }

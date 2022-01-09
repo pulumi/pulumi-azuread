@@ -10,6 +10,7 @@ export * from "./administrativeUnitMember";
 export * from "./appRoleAssignment";
 export * from "./application";
 export * from "./applicationCertificate";
+export * from "./applicationFederatedIdentityCredential";
 export * from "./applicationPassword";
 export * from "./applicationPreAuthorized";
 export * from "./conditionalAccessPolicy";
@@ -53,6 +54,7 @@ import { AdministrativeUnitMember } from "./administrativeUnitMember";
 import { AppRoleAssignment } from "./appRoleAssignment";
 import { Application } from "./application";
 import { ApplicationCertificate } from "./applicationCertificate";
+import { ApplicationFederatedIdentityCredential } from "./applicationFederatedIdentityCredential";
 import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
 import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
@@ -82,6 +84,8 @@ const _module = {
                 return new Application(name, <any>undefined, { urn })
             case "azuread:index/applicationCertificate:ApplicationCertificate":
                 return new ApplicationCertificate(name, <any>undefined, { urn })
+            case "azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential":
+                return new ApplicationFederatedIdentityCredential(name, <any>undefined, { urn })
             case "azuread:index/applicationPassword:ApplicationPassword":
                 return new ApplicationPassword(name, <any>undefined, { urn })
             case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
@@ -120,6 +124,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnitMember
 pulumi.runtime.registerResourceModule("azuread", "index/appRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/applicationFederatedIdentityCredential", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
