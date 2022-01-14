@@ -482,8 +482,8 @@ github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmX
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0 h1:AWFdqyfnOj04sxTdaAF57QqvW7XXrT8PseUHkbKsE8I=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220107004207-eeb7181dd0a9 h1:Oz+lApbiCc0bx69ujY+Euegx53Ab/macd2GL8++o+Ng=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220107004207-eeb7181dd0a9/go.mod h1:xwU7MrDRLRoyJUJSSDhNms8yv3jHnlq4tJkuCfrHlVc=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220114004106-da613363fc4a h1:ZRNcf+RNHFj2YmVshoKosI4SLUsP/z86oq4ypYZyH4Q=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220114004106-da613363fc4a/go.mod h1:xwU7MrDRLRoyJUJSSDhNms8yv3jHnlq4tJkuCfrHlVc=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=
 github.com/hashicorp/terraform-svchost v0.0.0-20191119180714-d2e4933b9136 h1:81Dg7SK6Q5vzqFItO8e1iIF2Nj8bLXV23NXjEgbev/s=
 github.com/hashicorp/terraform-svchost v0.0.0-20191119180714-d2e4933b9136/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=

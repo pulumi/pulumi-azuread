@@ -20,7 +20,10 @@ class GetGroupsResult:
     """
     A collection of values returned by getGroups.
     """
-    def __init__(__self__, display_names=None, id=None, mail_enabled=None, object_ids=None, return_all=None, security_enabled=None):
+    def __init__(__self__, display_name_prefix=None, display_names=None, id=None, mail_enabled=None, object_ids=None, return_all=None, security_enabled=None):
+        if display_name_prefix and not isinstance(display_name_prefix, str):
+            raise TypeError("Expected argument 'display_name_prefix' to be a str")
+        pulumi.set(__self__, "display_name_prefix", display_name_prefix)
         if display_names and not isinstance(display_names, list):
             raise TypeError("Expected argument 'display_names' to be a list")
         pulumi.set(__self__, "display_names", display_names)
@@ -39,6 +42,11 @@ class GetGroupsResult:
         if security_enabled and not isinstance(security_enabled, bool):
             raise TypeError("Expected argument 'security_enabled' to be a bool")
         pulumi.set(__self__, "security_enabled", security_enabled)
+
+    @property
+    @pulumi.getter(name="displayNamePrefix")
+    def display_name_prefix(self) -> str:
+        return pulumi.get(self, "display_name_prefix")
 
     @property
     @pulumi.getter(name="displayNames")
@@ -86,6 +94,7 @@ class AwaitableGetGroupsResult(GetGroupsResult):
         if False:
             yield self
         return GetGroupsResult(
+            display_name_prefix=self.display_name_prefix,
             display_names=self.display_names,
             id=self.id,
             mail_enabled=self.mail_enabled,
@@ -94,7 +103,8 @@ class AwaitableGetGroupsResult(GetGroupsResult):
             security_enabled=self.security_enabled)
 
 
-def get_groups(display_names: Optional[Sequence[str]] = None,
+def get_groups(display_name_prefix: Optional[str] = None,
+               display_names: Optional[Sequence[str]] = None,
                mail_enabled: Optional[bool] = None,
                object_ids: Optional[Sequence[str]] = None,
                return_all: Optional[bool] = None,
@@ -124,12 +134,20 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     ])
     ```
 
+    *Look up by display name prefix*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    sales = azuread.get_groups(display_name_prefix="sales-")
+    ```
+
     *Look up all groups*
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_groups(return_all=True)
+    all = azuread.get_groups(return_all=True)
     ```
 
     *Look up all mail-enabled groups*
@@ -137,7 +155,7 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_groups(mail_enabled=True,
+    mail_enabled = azuread.get_groups(mail_enabled=True,
         return_all=True)
     ```
 
@@ -146,12 +164,13 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_groups(mail_enabled=False,
+    security_only = azuread.get_groups(mail_enabled=False,
         return_all=True,
         security_enabled=True)
     ```
 
 
+    :param str display_name_prefix: A common display name prefix to match when returning groups.
     :param Sequence[str] display_names: The display names of the groups.
     :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     :param Sequence[str] object_ids: The object IDs of the groups.
@@ -159,6 +178,7 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     """
     __args__ = dict()
+    __args__['displayNamePrefix'] = display_name_prefix
     __args__['displayNames'] = display_names
     __args__['mailEnabled'] = mail_enabled
     __args__['objectIds'] = object_ids
@@ -171,6 +191,7 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult).value
 
     return AwaitableGetGroupsResult(
+        display_name_prefix=__ret__.display_name_prefix,
         display_names=__ret__.display_names,
         id=__ret__.id,
         mail_enabled=__ret__.mail_enabled,
@@ -180,7 +201,8 @@ def get_groups(display_names: Optional[Sequence[str]] = None,
 
 
 @_utilities.lift_output_func(get_groups)
-def get_groups_output(display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
+                      display_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       mail_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                       object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                       return_all: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -210,12 +232,20 @@ def get_groups_output(display_names: Optional[pulumi.Input[Optional[Sequence[str
     ])
     ```
 
+    *Look up by display name prefix*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    sales = azuread.get_groups(display_name_prefix="sales-")
+    ```
+
     *Look up all groups*
     ```python
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_groups(return_all=True)
+    all = azuread.get_groups(return_all=True)
     ```
 
     *Look up all mail-enabled groups*
@@ -223,7 +253,7 @@ def get_groups_output(display_names: Optional[pulumi.Input[Optional[Sequence[str
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_groups(mail_enabled=True,
+    mail_enabled = azuread.get_groups(mail_enabled=True,
         return_all=True)
     ```
 
@@ -232,12 +262,13 @@ def get_groups_output(display_names: Optional[pulumi.Input[Optional[Sequence[str
     import pulumi
     import pulumi_azuread as azuread
 
-    example = azuread.get_groups(mail_enabled=False,
+    security_only = azuread.get_groups(mail_enabled=False,
         return_all=True,
         security_enabled=True)
     ```
 
 
+    :param str display_name_prefix: A common display name prefix to match when returning groups.
     :param Sequence[str] display_names: The display names of the groups.
     :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
     :param Sequence[str] object_ids: The object IDs of the groups.
