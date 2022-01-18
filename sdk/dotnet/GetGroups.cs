@@ -49,6 +49,24 @@ namespace Pulumi.AzureAD
         /// }
         /// ```
         /// 
+        /// *Look up by display name prefix*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sales = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             DisplayNamePrefix = "sales-",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
         /// *Look up all groups*
         /// ```csharp
         /// using Pulumi;
@@ -58,7 +76,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var all = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             ReturnAll = true,
         ///         }));
@@ -76,7 +94,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var mailEnabled = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             MailEnabled = true,
         ///             ReturnAll = true,
@@ -95,7 +113,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var securityOnly = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             MailEnabled = false,
         ///             ReturnAll = true,
@@ -148,6 +166,24 @@ namespace Pulumi.AzureAD
         /// }
         /// ```
         /// 
+        /// *Look up by display name prefix*
+        /// ```csharp
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// class MyStack : Stack
+        /// {
+        ///     public MyStack()
+        ///     {
+        ///         var sales = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         {
+        ///             DisplayNamePrefix = "sales-",
+        ///         }));
+        ///     }
+        /// 
+        /// }
+        /// ```
+        /// 
         /// *Look up all groups*
         /// ```csharp
         /// using Pulumi;
@@ -157,7 +193,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var all = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             ReturnAll = true,
         ///         }));
@@ -175,7 +211,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var mailEnabled = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             MailEnabled = true,
         ///             ReturnAll = true,
@@ -194,7 +230,7 @@ namespace Pulumi.AzureAD
         /// {
         ///     public MyStack()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         var securityOnly = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
         ///         {
         ///             MailEnabled = false,
         ///             ReturnAll = true,
@@ -214,6 +250,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetGroupsArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A common display name prefix to match when returning groups.
+        /// </summary>
+        [Input("displayNamePrefix")]
+        public string? DisplayNamePrefix { get; set; }
+
         [Input("displayNames")]
         private List<string>? _displayNames;
 
@@ -263,6 +305,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// A common display name prefix to match when returning groups.
+        /// </summary>
+        [Input("displayNamePrefix")]
+        public Input<string>? DisplayNamePrefix { get; set; }
+
         [Input("displayNames")]
         private InputList<string>? _displayNames;
 
@@ -314,6 +362,7 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetGroupsResult
     {
+        public readonly string DisplayNamePrefix;
         /// <summary>
         /// The display names of the groups.
         /// </summary>
@@ -332,6 +381,8 @@ namespace Pulumi.AzureAD
 
         [OutputConstructor]
         private GetGroupsResult(
+            string displayNamePrefix,
+
             ImmutableArray<string> displayNames,
 
             string id,
@@ -344,6 +395,7 @@ namespace Pulumi.AzureAD
 
             bool securityEnabled)
         {
+            DisplayNamePrefix = displayNamePrefix;
             DisplayNames = displayNames;
             Id = id;
             MailEnabled = mailEnabled;

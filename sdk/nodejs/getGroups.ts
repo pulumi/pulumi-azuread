@@ -30,12 +30,22 @@ import * as utilities from "./utilities";
  * }));
  * ```
  *
+ * *Look up by display name prefix*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const sales = pulumi.output(azuread.getGroups({
+ *     displayNamePrefix: "sales-",
+ * }));
+ * ```
+ *
  * *Look up all groups*
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getGroups({
+ * const all = pulumi.output(azuread.getGroups({
  *     returnAll: true,
  * }));
  * ```
@@ -45,7 +55,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getGroups({
+ * const mailEnabled = pulumi.output(azuread.getGroups({
  *     mailEnabled: true,
  *     returnAll: true,
  * }));
@@ -56,7 +66,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getGroups({
+ * const securityOnly = pulumi.output(azuread.getGroups({
  *     mailEnabled: false,
  *     returnAll: true,
  *     securityEnabled: true,
@@ -73,6 +83,7 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
         opts.version = utilities.getVersion();
     }
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
+        "displayNamePrefix": args.displayNamePrefix,
         "displayNames": args.displayNames,
         "mailEnabled": args.mailEnabled,
         "objectIds": args.objectIds,
@@ -85,6 +96,10 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
  * A collection of arguments for invoking getGroups.
  */
 export interface GetGroupsArgs {
+    /**
+     * A common display name prefix to match when returning groups.
+     */
+    displayNamePrefix?: string;
     /**
      * The display names of the groups.
      */
@@ -111,6 +126,7 @@ export interface GetGroupsArgs {
  * A collection of values returned by getGroups.
  */
 export interface GetGroupsResult {
+    readonly displayNamePrefix: string;
     /**
      * The display names of the groups.
      */
@@ -136,6 +152,10 @@ export function getGroupsOutput(args?: GetGroupsOutputArgs, opts?: pulumi.Invoke
  * A collection of arguments for invoking getGroups.
  */
 export interface GetGroupsOutputArgs {
+    /**
+     * A common display name prefix to match when returning groups.
+     */
+    displayNamePrefix?: pulumi.Input<string>;
     /**
      * The display names of the groups.
      */

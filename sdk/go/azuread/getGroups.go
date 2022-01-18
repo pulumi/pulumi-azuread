@@ -47,6 +47,29 @@ import (
 // }
 // ```
 //
+// *Look up by display name prefix*
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		opt0 := "sales-"
+// 		_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+// 			DisplayNamePrefix: &opt0,
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // *Look up all groups*
 // ```go
 // package main
@@ -132,6 +155,8 @@ func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsArgs struct {
+	// A common display name prefix to match when returning groups.
+	DisplayNamePrefix *string `pulumi:"displayNamePrefix"`
 	// The display names of the groups.
 	DisplayNames []string `pulumi:"displayNames"`
 	// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
@@ -146,6 +171,7 @@ type GetGroupsArgs struct {
 
 // A collection of values returned by getGroups.
 type GetGroupsResult struct {
+	DisplayNamePrefix string `pulumi:"displayNamePrefix"`
 	// The display names of the groups.
 	DisplayNames []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
@@ -168,6 +194,8 @@ func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getGroups.
 type GetGroupsOutputArgs struct {
+	// A common display name prefix to match when returning groups.
+	DisplayNamePrefix pulumi.StringPtrInput `pulumi:"displayNamePrefix"`
 	// The display names of the groups.
 	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
 	// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
@@ -197,6 +225,10 @@ func (o GetGroupsResultOutput) ToGetGroupsResultOutput() GetGroupsResultOutput {
 
 func (o GetGroupsResultOutput) ToGetGroupsResultOutputWithContext(ctx context.Context) GetGroupsResultOutput {
 	return o
+}
+
+func (o GetGroupsResultOutput) DisplayNamePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGroupsResult) string { return v.DisplayNamePrefix }).(pulumi.StringOutput)
 }
 
 // The display names of the groups.
