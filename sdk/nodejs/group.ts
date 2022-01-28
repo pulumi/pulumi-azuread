@@ -20,6 +20,8 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  *
+ * The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
+ *
  * ## Example Usage
  *
  * *Basic example*
@@ -143,6 +145,10 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly assignableToRole!: pulumi.Output<boolean | undefined>;
     /**
+     * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+     */
+    public readonly autoSubscribeNewMembers!: pulumi.Output<boolean | undefined>;
+    /**
      * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
      */
     public readonly behaviors!: pulumi.Output<string[] | undefined>;
@@ -158,6 +164,18 @@ export class Group extends pulumi.CustomResource {
      * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      */
     public readonly dynamicMembership!: pulumi.Output<outputs.GroupDynamicMembership | undefined>;
+    /**
+     * Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+     */
+    public readonly externalSendersAllowed!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+     */
+    public readonly hideFromAddressLists!: pulumi.Output<boolean | undefined>;
+    /**
+     * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+     */
+    public readonly hideFromOutlookClients!: pulumi.Output<boolean | undefined>;
     /**
      * The SMTP address for the group.
      */
@@ -249,10 +267,14 @@ export class Group extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
             inputs["assignableToRole"] = state ? state.assignableToRole : undefined;
+            inputs["autoSubscribeNewMembers"] = state ? state.autoSubscribeNewMembers : undefined;
             inputs["behaviors"] = state ? state.behaviors : undefined;
             inputs["description"] = state ? state.description : undefined;
             inputs["displayName"] = state ? state.displayName : undefined;
             inputs["dynamicMembership"] = state ? state.dynamicMembership : undefined;
+            inputs["externalSendersAllowed"] = state ? state.externalSendersAllowed : undefined;
+            inputs["hideFromAddressLists"] = state ? state.hideFromAddressLists : undefined;
+            inputs["hideFromOutlookClients"] = state ? state.hideFromOutlookClients : undefined;
             inputs["mail"] = state ? state.mail : undefined;
             inputs["mailEnabled"] = state ? state.mailEnabled : undefined;
             inputs["mailNickname"] = state ? state.mailNickname : undefined;
@@ -278,10 +300,14 @@ export class Group extends pulumi.CustomResource {
                 throw new Error("Missing required property 'displayName'");
             }
             inputs["assignableToRole"] = args ? args.assignableToRole : undefined;
+            inputs["autoSubscribeNewMembers"] = args ? args.autoSubscribeNewMembers : undefined;
             inputs["behaviors"] = args ? args.behaviors : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
             inputs["dynamicMembership"] = args ? args.dynamicMembership : undefined;
+            inputs["externalSendersAllowed"] = args ? args.externalSendersAllowed : undefined;
+            inputs["hideFromAddressLists"] = args ? args.hideFromAddressLists : undefined;
+            inputs["hideFromOutlookClients"] = args ? args.hideFromOutlookClients : undefined;
             inputs["mailEnabled"] = args ? args.mailEnabled : undefined;
             inputs["mailNickname"] = args ? args.mailNickname : undefined;
             inputs["members"] = args ? args.members : undefined;
@@ -318,6 +344,10 @@ export interface GroupState {
      */
     assignableToRole?: pulumi.Input<boolean>;
     /**
+     * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+     */
+    autoSubscribeNewMembers?: pulumi.Input<boolean>;
+    /**
      * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
      */
     behaviors?: pulumi.Input<pulumi.Input<string>[]>;
@@ -333,6 +363,18 @@ export interface GroupState {
      * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      */
     dynamicMembership?: pulumi.Input<inputs.GroupDynamicMembership>;
+    /**
+     * Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+     */
+    externalSendersAllowed?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+     */
+    hideFromAddressLists?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+     */
+    hideFromOutlookClients?: pulumi.Input<boolean>;
     /**
      * The SMTP address for the group.
      */
@@ -420,6 +462,10 @@ export interface GroupArgs {
      */
     assignableToRole?: pulumi.Input<boolean>;
     /**
+     * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+     */
+    autoSubscribeNewMembers?: pulumi.Input<boolean>;
+    /**
      * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
      */
     behaviors?: pulumi.Input<pulumi.Input<string>[]>;
@@ -435,6 +481,18 @@ export interface GroupArgs {
      * A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
      */
     dynamicMembership?: pulumi.Input<inputs.GroupDynamicMembership>;
+    /**
+     * Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+     */
+    externalSendersAllowed?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+     */
+    hideFromAddressLists?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+     */
+    hideFromOutlookClients?: pulumi.Input<boolean>;
     /**
      * Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
      */

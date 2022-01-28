@@ -21,10 +21,13 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, assignable_to_role=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None):
+    def __init__(__self__, assignable_to_role=None, auto_subscribe_new_members=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, external_senders_allowed=None, hide_from_address_lists=None, hide_from_outlook_clients=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None):
         if assignable_to_role and not isinstance(assignable_to_role, bool):
             raise TypeError("Expected argument 'assignable_to_role' to be a bool")
         pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+        if auto_subscribe_new_members and not isinstance(auto_subscribe_new_members, bool):
+            raise TypeError("Expected argument 'auto_subscribe_new_members' to be a bool")
+        pulumi.set(__self__, "auto_subscribe_new_members", auto_subscribe_new_members)
         if behaviors and not isinstance(behaviors, list):
             raise TypeError("Expected argument 'behaviors' to be a list")
         pulumi.set(__self__, "behaviors", behaviors)
@@ -37,6 +40,15 @@ class GetGroupResult:
         if dynamic_memberships and not isinstance(dynamic_memberships, list):
             raise TypeError("Expected argument 'dynamic_memberships' to be a list")
         pulumi.set(__self__, "dynamic_memberships", dynamic_memberships)
+        if external_senders_allowed and not isinstance(external_senders_allowed, bool):
+            raise TypeError("Expected argument 'external_senders_allowed' to be a bool")
+        pulumi.set(__self__, "external_senders_allowed", external_senders_allowed)
+        if hide_from_address_lists and not isinstance(hide_from_address_lists, bool):
+            raise TypeError("Expected argument 'hide_from_address_lists' to be a bool")
+        pulumi.set(__self__, "hide_from_address_lists", hide_from_address_lists)
+        if hide_from_outlook_clients and not isinstance(hide_from_outlook_clients, bool):
+            raise TypeError("Expected argument 'hide_from_outlook_clients' to be a bool")
+        pulumi.set(__self__, "hide_from_outlook_clients", hide_from_outlook_clients)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -104,6 +116,14 @@ class GetGroupResult:
         return pulumi.get(self, "assignable_to_role")
 
     @property
+    @pulumi.getter(name="autoSubscribeNewMembers")
+    def auto_subscribe_new_members(self) -> bool:
+        """
+        Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+        """
+        return pulumi.get(self, "auto_subscribe_new_members")
+
+    @property
     @pulumi.getter
     def behaviors(self) -> Sequence[str]:
         """
@@ -134,6 +154,30 @@ class GetGroupResult:
         A `dynamic_membership` block as documented below.
         """
         return pulumi.get(self, "dynamic_memberships")
+
+    @property
+    @pulumi.getter(name="externalSendersAllowed")
+    def external_senders_allowed(self) -> bool:
+        """
+        Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+        """
+        return pulumi.get(self, "external_senders_allowed")
+
+    @property
+    @pulumi.getter(name="hideFromAddressLists")
+    def hide_from_address_lists(self) -> bool:
+        """
+        Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_address_lists")
+
+    @property
+    @pulumi.getter(name="hideFromOutlookClients")
+    def hide_from_outlook_clients(self) -> bool:
+        """
+        Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_outlook_clients")
 
     @property
     @pulumi.getter
@@ -295,10 +339,14 @@ class AwaitableGetGroupResult(GetGroupResult):
             yield self
         return GetGroupResult(
             assignable_to_role=self.assignable_to_role,
+            auto_subscribe_new_members=self.auto_subscribe_new_members,
             behaviors=self.behaviors,
             description=self.description,
             display_name=self.display_name,
             dynamic_memberships=self.dynamic_memberships,
+            external_senders_allowed=self.external_senders_allowed,
+            hide_from_address_lists=self.hide_from_address_lists,
+            hide_from_outlook_clients=self.hide_from_outlook_clients,
             id=self.id,
             mail=self.mail,
             mail_enabled=self.mail_enabled,
@@ -366,10 +414,14 @@ def get_group(display_name: Optional[str] = None,
 
     return AwaitableGetGroupResult(
         assignable_to_role=__ret__.assignable_to_role,
+        auto_subscribe_new_members=__ret__.auto_subscribe_new_members,
         behaviors=__ret__.behaviors,
         description=__ret__.description,
         display_name=__ret__.display_name,
         dynamic_memberships=__ret__.dynamic_memberships,
+        external_senders_allowed=__ret__.external_senders_allowed,
+        hide_from_address_lists=__ret__.hide_from_address_lists,
+        hide_from_outlook_clients=__ret__.hide_from_outlook_clients,
         id=__ret__.id,
         mail=__ret__.mail,
         mail_enabled=__ret__.mail_enabled,

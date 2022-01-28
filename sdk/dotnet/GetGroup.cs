@@ -163,6 +163,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly bool AssignableToRole;
         /// <summary>
+        /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+        /// </summary>
+        public readonly bool AutoSubscribeNewMembers;
+        /// <summary>
         /// A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
         /// </summary>
         public readonly ImmutableArray<string> Behaviors;
@@ -178,6 +182,18 @@ namespace Pulumi.AzureAD
         /// A `dynamic_membership` block as documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupDynamicMembershipResult> DynamicMemberships;
+        /// <summary>
+        /// Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+        /// </summary>
+        public readonly bool ExternalSendersAllowed;
+        /// <summary>
+        /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+        /// </summary>
+        public readonly bool HideFromAddressLists;
+        /// <summary>
+        /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+        /// </summary>
+        public readonly bool HideFromOutlookClients;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -259,6 +275,8 @@ namespace Pulumi.AzureAD
         private GetGroupResult(
             bool assignableToRole,
 
+            bool autoSubscribeNewMembers,
+
             ImmutableArray<string> behaviors,
 
             string description,
@@ -266,6 +284,12 @@ namespace Pulumi.AzureAD
             string displayName,
 
             ImmutableArray<Outputs.GetGroupDynamicMembershipResult> dynamicMemberships,
+
+            bool externalSendersAllowed,
+
+            bool hideFromAddressLists,
+
+            bool hideFromOutlookClients,
 
             string id,
 
@@ -306,10 +330,14 @@ namespace Pulumi.AzureAD
             string visibility)
         {
             AssignableToRole = assignableToRole;
+            AutoSubscribeNewMembers = autoSubscribeNewMembers;
             Behaviors = behaviors;
             Description = description;
             DisplayName = displayName;
             DynamicMemberships = dynamicMemberships;
+            ExternalSendersAllowed = externalSendersAllowed;
+            HideFromAddressLists = hideFromAddressLists;
+            HideFromOutlookClients = hideFromOutlookClients;
             Id = id;
             Mail = mail;
             MailEnabled = mailEnabled;

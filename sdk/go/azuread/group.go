@@ -25,6 +25,8 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 //
+// The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
+//
 // ## Import
 //
 // Groups can be imported using their object ID, e.g.
@@ -37,6 +39,8 @@ type Group struct {
 
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+	AutoSubscribeNewMembers pulumi.BoolPtrOutput `pulumi:"autoSubscribeNewMembers"`
 	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayOutput `pulumi:"behaviors"`
 	// The description for the group.
@@ -45,6 +49,12 @@ type Group struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
 	DynamicMembership GroupDynamicMembershipPtrOutput `pulumi:"dynamicMembership"`
+	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+	ExternalSendersAllowed pulumi.BoolPtrOutput `pulumi:"externalSendersAllowed"`
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+	HideFromAddressLists pulumi.BoolPtrOutput `pulumi:"hideFromAddressLists"`
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+	HideFromOutlookClients pulumi.BoolPtrOutput `pulumi:"hideFromOutlookClients"`
 	// The SMTP address for the group.
 	Mail pulumi.StringOutput `pulumi:"mail"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
@@ -119,6 +129,8 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
 	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors []string `pulumi:"behaviors"`
 	// The description for the group.
@@ -127,6 +139,12 @@ type groupState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
 	DynamicMembership *GroupDynamicMembership `pulumi:"dynamicMembership"`
+	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+	ExternalSendersAllowed *bool `pulumi:"externalSendersAllowed"`
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+	HideFromAddressLists *bool `pulumi:"hideFromAddressLists"`
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+	HideFromOutlookClients *bool `pulumi:"hideFromOutlookClients"`
 	// The SMTP address for the group.
 	Mail *string `pulumi:"mail"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
@@ -170,6 +188,8 @@ type groupState struct {
 type GroupState struct {
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+	AutoSubscribeNewMembers pulumi.BoolPtrInput
 	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayInput
 	// The description for the group.
@@ -178,6 +198,12 @@ type GroupState struct {
 	DisplayName pulumi.StringPtrInput
 	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
 	DynamicMembership GroupDynamicMembershipPtrInput
+	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+	ExternalSendersAllowed pulumi.BoolPtrInput
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+	HideFromAddressLists pulumi.BoolPtrInput
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+	HideFromOutlookClients pulumi.BoolPtrInput
 	// The SMTP address for the group.
 	Mail pulumi.StringPtrInput
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
@@ -225,6 +251,8 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
 	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors []string `pulumi:"behaviors"`
 	// The description for the group.
@@ -233,6 +261,12 @@ type groupArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
 	DynamicMembership *GroupDynamicMembership `pulumi:"dynamicMembership"`
+	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+	ExternalSendersAllowed *bool `pulumi:"externalSendersAllowed"`
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+	HideFromAddressLists *bool `pulumi:"hideFromAddressLists"`
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+	HideFromOutlookClients *bool `pulumi:"hideFromOutlookClients"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled *bool `pulumi:"mailEnabled"`
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
@@ -259,6 +293,8 @@ type groupArgs struct {
 type GroupArgs struct {
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+	AutoSubscribeNewMembers pulumi.BoolPtrInput
 	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayInput
 	// The description for the group.
@@ -267,6 +303,12 @@ type GroupArgs struct {
 	DisplayName pulumi.StringInput
 	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
 	DynamicMembership GroupDynamicMembershipPtrInput
+	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+	ExternalSendersAllowed pulumi.BoolPtrInput
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+	HideFromAddressLists pulumi.BoolPtrInput
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+	HideFromOutlookClients pulumi.BoolPtrInput
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
 	MailEnabled pulumi.BoolPtrInput
 	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.

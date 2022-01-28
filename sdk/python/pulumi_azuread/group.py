@@ -17,9 +17,13 @@ class GroupArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
+                 external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+                 hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+                 hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -34,9 +38,13 @@ class GroupArgs:
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_address_lists: Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_outlook_clients: Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
@@ -51,12 +59,20 @@ class GroupArgs:
         pulumi.set(__self__, "display_name", display_name)
         if assignable_to_role is not None:
             pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+        if auto_subscribe_new_members is not None:
+            pulumi.set(__self__, "auto_subscribe_new_members", auto_subscribe_new_members)
         if behaviors is not None:
             pulumi.set(__self__, "behaviors", behaviors)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if dynamic_membership is not None:
             pulumi.set(__self__, "dynamic_membership", dynamic_membership)
+        if external_senders_allowed is not None:
+            pulumi.set(__self__, "external_senders_allowed", external_senders_allowed)
+        if hide_from_address_lists is not None:
+            pulumi.set(__self__, "hide_from_address_lists", hide_from_address_lists)
+        if hide_from_outlook_clients is not None:
+            pulumi.set(__self__, "hide_from_outlook_clients", hide_from_outlook_clients)
         if mail_enabled is not None:
             pulumi.set(__self__, "mail_enabled", mail_enabled)
         if mail_nickname is not None:
@@ -103,6 +119,18 @@ class GroupArgs:
         pulumi.set(self, "assignable_to_role", value)
 
     @property
+    @pulumi.getter(name="autoSubscribeNewMembers")
+    def auto_subscribe_new_members(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "auto_subscribe_new_members")
+
+    @auto_subscribe_new_members.setter
+    def auto_subscribe_new_members(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_subscribe_new_members", value)
+
+    @property
     @pulumi.getter
     def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -137,6 +165,42 @@ class GroupArgs:
     @dynamic_membership.setter
     def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArgs']]):
         pulumi.set(self, "dynamic_membership", value)
+
+    @property
+    @pulumi.getter(name="externalSendersAllowed")
+    def external_senders_allowed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "external_senders_allowed")
+
+    @external_senders_allowed.setter
+    def external_senders_allowed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "external_senders_allowed", value)
+
+    @property
+    @pulumi.getter(name="hideFromAddressLists")
+    def hide_from_address_lists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_address_lists")
+
+    @hide_from_address_lists.setter
+    def hide_from_address_lists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide_from_address_lists", value)
+
+    @property
+    @pulumi.getter(name="hideFromOutlookClients")
+    def hide_from_outlook_clients(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_outlook_clients")
+
+    @hide_from_outlook_clients.setter
+    def hide_from_outlook_clients(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide_from_outlook_clients", value)
 
     @property
     @pulumi.getter(name="mailEnabled")
@@ -263,10 +327,14 @@ class GroupArgs:
 class _GroupState:
     def __init__(__self__, *,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_membership: Optional[pulumi.Input['GroupDynamicMembershipArgs']] = None,
+                 external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+                 hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+                 hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
                  mail: Optional[pulumi.Input[str]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
@@ -289,10 +357,14 @@ class _GroupState:
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_address_lists: Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_outlook_clients: Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
         :param pulumi.Input[str] mail: The SMTP address for the group.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
@@ -315,6 +387,8 @@ class _GroupState:
         """
         if assignable_to_role is not None:
             pulumi.set(__self__, "assignable_to_role", assignable_to_role)
+        if auto_subscribe_new_members is not None:
+            pulumi.set(__self__, "auto_subscribe_new_members", auto_subscribe_new_members)
         if behaviors is not None:
             pulumi.set(__self__, "behaviors", behaviors)
         if description is not None:
@@ -323,6 +397,12 @@ class _GroupState:
             pulumi.set(__self__, "display_name", display_name)
         if dynamic_membership is not None:
             pulumi.set(__self__, "dynamic_membership", dynamic_membership)
+        if external_senders_allowed is not None:
+            pulumi.set(__self__, "external_senders_allowed", external_senders_allowed)
+        if hide_from_address_lists is not None:
+            pulumi.set(__self__, "hide_from_address_lists", hide_from_address_lists)
+        if hide_from_outlook_clients is not None:
+            pulumi.set(__self__, "hide_from_outlook_clients", hide_from_outlook_clients)
         if mail is not None:
             pulumi.set(__self__, "mail", mail)
         if mail_enabled is not None:
@@ -375,6 +455,18 @@ class _GroupState:
         pulumi.set(self, "assignable_to_role", value)
 
     @property
+    @pulumi.getter(name="autoSubscribeNewMembers")
+    def auto_subscribe_new_members(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "auto_subscribe_new_members")
+
+    @auto_subscribe_new_members.setter
+    def auto_subscribe_new_members(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "auto_subscribe_new_members", value)
+
+    @property
     @pulumi.getter
     def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -421,6 +513,42 @@ class _GroupState:
     @dynamic_membership.setter
     def dynamic_membership(self, value: Optional[pulumi.Input['GroupDynamicMembershipArgs']]):
         pulumi.set(self, "dynamic_membership", value)
+
+    @property
+    @pulumi.getter(name="externalSendersAllowed")
+    def external_senders_allowed(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "external_senders_allowed")
+
+    @external_senders_allowed.setter
+    def external_senders_allowed(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "external_senders_allowed", value)
+
+    @property
+    @pulumi.getter(name="hideFromAddressLists")
+    def hide_from_address_lists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_address_lists")
+
+    @hide_from_address_lists.setter
+    def hide_from_address_lists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide_from_address_lists", value)
+
+    @property
+    @pulumi.getter(name="hideFromOutlookClients")
+    def hide_from_outlook_clients(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_outlook_clients")
+
+    @hide_from_outlook_clients.setter
+    def hide_from_outlook_clients(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "hide_from_outlook_clients", value)
 
     @property
     @pulumi.getter
@@ -657,10 +785,14 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
+                 external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+                 hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+                 hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -687,6 +819,8 @@ class Group(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
+        The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
+
         ## Import
 
         Groups can be imported using their object ID, e.g.
@@ -698,10 +832,14 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_address_lists: Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_outlook_clients: Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
@@ -734,6 +872,8 @@ class Group(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
+        The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
+
         ## Import
 
         Groups can be imported using their object ID, e.g.
@@ -758,10 +898,14 @@ class Group(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
+                 auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
+                 external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+                 hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+                 hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -785,12 +929,16 @@ class Group(pulumi.CustomResource):
             __props__ = GroupArgs.__new__(GroupArgs)
 
             __props__.__dict__["assignable_to_role"] = assignable_to_role
+            __props__.__dict__["auto_subscribe_new_members"] = auto_subscribe_new_members
             __props__.__dict__["behaviors"] = behaviors
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["dynamic_membership"] = dynamic_membership
+            __props__.__dict__["external_senders_allowed"] = external_senders_allowed
+            __props__.__dict__["hide_from_address_lists"] = hide_from_address_lists
+            __props__.__dict__["hide_from_outlook_clients"] = hide_from_outlook_clients
             __props__.__dict__["mail_enabled"] = mail_enabled
             __props__.__dict__["mail_nickname"] = mail_nickname
             __props__.__dict__["members"] = members
@@ -821,10 +969,14 @@ class Group(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             assignable_to_role: Optional[pulumi.Input[bool]] = None,
+            auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
             behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             dynamic_membership: Optional[pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']]] = None,
+            external_senders_allowed: Optional[pulumi.Input[bool]] = None,
+            hide_from_address_lists: Optional[pulumi.Input[bool]] = None,
+            hide_from_outlook_clients: Optional[pulumi.Input[bool]] = None,
             mail: Optional[pulumi.Input[str]] = None,
             mail_enabled: Optional[pulumi.Input[bool]] = None,
             mail_nickname: Optional[pulumi.Input[str]] = None,
@@ -852,10 +1004,14 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+        :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_address_lists: Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        :param pulumi.Input[bool] hide_from_outlook_clients: Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
         :param pulumi.Input[str] mail: The SMTP address for the group.
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
@@ -881,10 +1037,14 @@ class Group(pulumi.CustomResource):
         __props__ = _GroupState.__new__(_GroupState)
 
         __props__.__dict__["assignable_to_role"] = assignable_to_role
+        __props__.__dict__["auto_subscribe_new_members"] = auto_subscribe_new_members
         __props__.__dict__["behaviors"] = behaviors
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["dynamic_membership"] = dynamic_membership
+        __props__.__dict__["external_senders_allowed"] = external_senders_allowed
+        __props__.__dict__["hide_from_address_lists"] = hide_from_address_lists
+        __props__.__dict__["hide_from_outlook_clients"] = hide_from_outlook_clients
         __props__.__dict__["mail"] = mail
         __props__.__dict__["mail_enabled"] = mail_enabled
         __props__.__dict__["mail_nickname"] = mail_nickname
@@ -913,6 +1073,14 @@ class Group(pulumi.CustomResource):
         Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "assignable_to_role")
+
+    @property
+    @pulumi.getter(name="autoSubscribeNewMembers")
+    def auto_subscribe_new_members(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "auto_subscribe_new_members")
 
     @property
     @pulumi.getter
@@ -945,6 +1113,30 @@ class Group(pulumi.CustomResource):
         A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         """
         return pulumi.get(self, "dynamic_membership")
+
+    @property
+    @pulumi.getter(name="externalSendersAllowed")
+    def external_senders_allowed(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "external_senders_allowed")
+
+    @property
+    @pulumi.getter(name="hideFromAddressLists")
+    def hide_from_address_lists(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_address_lists")
+
+    @property
+    @pulumi.getter(name="hideFromOutlookClients")
+    def hide_from_outlook_clients(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+        """
+        return pulumi.get(self, "hide_from_outlook_clients")
 
     @property
     @pulumi.getter

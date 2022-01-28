@@ -24,6 +24,8 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
     /// 
+    /// The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
+    /// 
     /// ## Import
     /// 
     /// Groups can be imported using their object ID, e.g.
@@ -40,6 +42,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("assignableToRole")]
         public Output<bool?> AssignableToRole { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+        /// </summary>
+        [Output("autoSubscribeNewMembers")]
+        public Output<bool?> AutoSubscribeNewMembers { get; private set; } = null!;
 
         /// <summary>
         /// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
@@ -64,6 +72,24 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("dynamicMembership")]
         public Output<Outputs.GroupDynamicMembership?> DynamicMembership { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        /// </summary>
+        [Output("externalSendersAllowed")]
+        public Output<bool?> ExternalSendersAllowed { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        /// </summary>
+        [Output("hideFromAddressLists")]
+        public Output<bool?> HideFromAddressLists { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+        /// </summary>
+        [Output("hideFromOutlookClients")]
+        public Output<bool?> HideFromOutlookClients { get; private set; } = null!;
 
         /// <summary>
         /// The SMTP address for the group.
@@ -231,6 +257,12 @@ namespace Pulumi.AzureAD
         [Input("assignableToRole")]
         public Input<bool>? AssignableToRole { get; set; }
 
+        /// <summary>
+        /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+        /// </summary>
+        [Input("autoSubscribeNewMembers")]
+        public Input<bool>? AutoSubscribeNewMembers { get; set; }
+
         [Input("behaviors")]
         private InputList<string>? _behaviors;
 
@@ -260,6 +292,24 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("dynamicMembership")]
         public Input<Inputs.GroupDynamicMembershipArgs>? DynamicMembership { get; set; }
+
+        /// <summary>
+        /// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        /// </summary>
+        [Input("externalSendersAllowed")]
+        public Input<bool>? ExternalSendersAllowed { get; set; }
+
+        /// <summary>
+        /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        /// </summary>
+        [Input("hideFromAddressLists")]
+        public Input<bool>? HideFromAddressLists { get; set; }
+
+        /// <summary>
+        /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+        /// </summary>
+        [Input("hideFromOutlookClients")]
+        public Input<bool>? HideFromOutlookClients { get; set; }
 
         /// <summary>
         /// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
@@ -358,6 +408,12 @@ namespace Pulumi.AzureAD
         [Input("assignableToRole")]
         public Input<bool>? AssignableToRole { get; set; }
 
+        /// <summary>
+        /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
+        /// </summary>
+        [Input("autoSubscribeNewMembers")]
+        public Input<bool>? AutoSubscribeNewMembers { get; set; }
+
         [Input("behaviors")]
         private InputList<string>? _behaviors;
 
@@ -387,6 +443,24 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("dynamicMembership")]
         public Input<Inputs.GroupDynamicMembershipGetArgs>? DynamicMembership { get; set; }
+
+        /// <summary>
+        /// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
+        /// </summary>
+        [Input("externalSendersAllowed")]
+        public Input<bool>? ExternalSendersAllowed { get; set; }
+
+        /// <summary>
+        /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
+        /// </summary>
+        [Input("hideFromAddressLists")]
+        public Input<bool>? HideFromAddressLists { get; set; }
+
+        /// <summary>
+        /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
+        /// </summary>
+        [Input("hideFromOutlookClients")]
+        public Input<bool>? HideFromOutlookClients { get; set; }
 
         /// <summary>
         /// The SMTP address for the group.

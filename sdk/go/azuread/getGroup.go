@@ -71,6 +71,8 @@ type LookupGroupArgs struct {
 type LookupGroupResult struct {
 	// Indicates whether this group can be assigned to an Azure Active Directory role.
 	AssignableToRole bool `pulumi:"assignableToRole"`
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+	AutoSubscribeNewMembers bool `pulumi:"autoSubscribeNewMembers"`
 	// A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
 	Behaviors []string `pulumi:"behaviors"`
 	// The optional description of the group.
@@ -79,6 +81,12 @@ type LookupGroupResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// A `dynamicMembership` block as documented below.
 	DynamicMemberships []GetGroupDynamicMembership `pulumi:"dynamicMemberships"`
+	// Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+	ExternalSendersAllowed bool `pulumi:"externalSendersAllowed"`
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+	HideFromAddressLists bool `pulumi:"hideFromAddressLists"`
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+	HideFromOutlookClients bool `pulumi:"hideFromOutlookClients"`
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The SMTP address for the group.
@@ -164,6 +172,11 @@ func (o LookupGroupResultOutput) AssignableToRole() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupGroupResult) bool { return v.AssignableToRole }).(pulumi.BoolOutput)
 }
 
+// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+func (o LookupGroupResultOutput) AutoSubscribeNewMembers() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.AutoSubscribeNewMembers }).(pulumi.BoolOutput)
+}
+
 // A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
 func (o LookupGroupResultOutput) Behaviors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []string { return v.Behaviors }).(pulumi.StringArrayOutput)
@@ -182,6 +195,21 @@ func (o LookupGroupResultOutput) DisplayName() pulumi.StringOutput {
 // A `dynamicMembership` block as documented below.
 func (o LookupGroupResultOutput) DynamicMemberships() GetGroupDynamicMembershipArrayOutput {
 	return o.ApplyT(func(v LookupGroupResult) []GetGroupDynamicMembership { return v.DynamicMemberships }).(GetGroupDynamicMembershipArrayOutput)
+}
+
+// Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+func (o LookupGroupResultOutput) ExternalSendersAllowed() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.ExternalSendersAllowed }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+func (o LookupGroupResultOutput) HideFromAddressLists() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.HideFromAddressLists }).(pulumi.BoolOutput)
+}
+
+// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+func (o LookupGroupResultOutput) HideFromOutlookClients() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.HideFromOutlookClients }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
