@@ -77,6 +77,10 @@ export interface GetGroupResult {
      */
     readonly assignableToRole: boolean;
     /**
+     * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+     */
+    readonly autoSubscribeNewMembers: boolean;
+    /**
      * A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
      */
     readonly behaviors: string[];
@@ -92,6 +96,18 @@ export interface GetGroupResult {
      * A `dynamicMembership` block as documented below.
      */
     readonly dynamicMemberships: outputs.GetGroupDynamicMembership[];
+    /**
+     * Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+     */
+    readonly externalSendersAllowed: boolean;
+    /**
+     * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+     */
+    readonly hideFromAddressLists: boolean;
+    /**
+     * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+     */
+    readonly hideFromOutlookClients: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
