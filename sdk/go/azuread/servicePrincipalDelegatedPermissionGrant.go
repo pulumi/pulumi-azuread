@@ -291,7 +291,7 @@ type ServicePrincipalDelegatedPermissionGrantInput interface {
 }
 
 func (*ServicePrincipalDelegatedPermissionGrant) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDelegatedPermissionGrant)(nil))
+	return reflect.TypeOf((**ServicePrincipalDelegatedPermissionGrant)(nil)).Elem()
 }
 
 func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPermissionGrantOutput() ServicePrincipalDelegatedPermissionGrantOutput {
@@ -300,35 +300,6 @@ func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPe
 
 func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPermissionGrantOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDelegatedPermissionGrantOutput)
-}
-
-func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPermissionGrantPtrOutput() ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return i.ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(context.Background())
-}
-
-func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDelegatedPermissionGrantPtrOutput)
-}
-
-type ServicePrincipalDelegatedPermissionGrantPtrInput interface {
-	pulumi.Input
-
-	ToServicePrincipalDelegatedPermissionGrantPtrOutput() ServicePrincipalDelegatedPermissionGrantPtrOutput
-	ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantPtrOutput
-}
-
-type servicePrincipalDelegatedPermissionGrantPtrType ServicePrincipalDelegatedPermissionGrantArgs
-
-func (*servicePrincipalDelegatedPermissionGrantPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServicePrincipalDelegatedPermissionGrant)(nil))
-}
-
-func (i *servicePrincipalDelegatedPermissionGrantPtrType) ToServicePrincipalDelegatedPermissionGrantPtrOutput() ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return i.ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(context.Background())
-}
-
-func (i *servicePrincipalDelegatedPermissionGrantPtrType) ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDelegatedPermissionGrantPtrOutput)
 }
 
 // ServicePrincipalDelegatedPermissionGrantArrayInput is an input type that accepts ServicePrincipalDelegatedPermissionGrantArray and ServicePrincipalDelegatedPermissionGrantArrayOutput values.
@@ -384,7 +355,7 @@ func (i ServicePrincipalDelegatedPermissionGrantMap) ToServicePrincipalDelegated
 type ServicePrincipalDelegatedPermissionGrantOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalDelegatedPermissionGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ServicePrincipalDelegatedPermissionGrant)(nil))
+	return reflect.TypeOf((**ServicePrincipalDelegatedPermissionGrant)(nil)).Elem()
 }
 
 func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelegatedPermissionGrantOutput() ServicePrincipalDelegatedPermissionGrantOutput {
@@ -395,44 +366,10 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelega
 	return o
 }
 
-func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelegatedPermissionGrantPtrOutput() ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return o.ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(context.Background())
-}
-
-func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServicePrincipalDelegatedPermissionGrant) *ServicePrincipalDelegatedPermissionGrant {
-		return &v
-	}).(ServicePrincipalDelegatedPermissionGrantPtrOutput)
-}
-
-type ServicePrincipalDelegatedPermissionGrantPtrOutput struct{ *pulumi.OutputState }
-
-func (ServicePrincipalDelegatedPermissionGrantPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ServicePrincipalDelegatedPermissionGrant)(nil))
-}
-
-func (o ServicePrincipalDelegatedPermissionGrantPtrOutput) ToServicePrincipalDelegatedPermissionGrantPtrOutput() ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return o
-}
-
-func (o ServicePrincipalDelegatedPermissionGrantPtrOutput) ToServicePrincipalDelegatedPermissionGrantPtrOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantPtrOutput {
-	return o
-}
-
-func (o ServicePrincipalDelegatedPermissionGrantPtrOutput) Elem() ServicePrincipalDelegatedPermissionGrantOutput {
-	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) ServicePrincipalDelegatedPermissionGrant {
-		if v != nil {
-			return *v
-		}
-		var ret ServicePrincipalDelegatedPermissionGrant
-		return ret
-	}).(ServicePrincipalDelegatedPermissionGrantOutput)
-}
-
 type ServicePrincipalDelegatedPermissionGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalDelegatedPermissionGrantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ServicePrincipalDelegatedPermissionGrant)(nil))
+	return reflect.TypeOf((*[]*ServicePrincipalDelegatedPermissionGrant)(nil)).Elem()
 }
 
 func (o ServicePrincipalDelegatedPermissionGrantArrayOutput) ToServicePrincipalDelegatedPermissionGrantArrayOutput() ServicePrincipalDelegatedPermissionGrantArrayOutput {
@@ -444,15 +381,15 @@ func (o ServicePrincipalDelegatedPermissionGrantArrayOutput) ToServicePrincipalD
 }
 
 func (o ServicePrincipalDelegatedPermissionGrantArrayOutput) Index(i pulumi.IntInput) ServicePrincipalDelegatedPermissionGrantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServicePrincipalDelegatedPermissionGrant {
-		return vs[0].([]ServicePrincipalDelegatedPermissionGrant)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalDelegatedPermissionGrant {
+		return vs[0].([]*ServicePrincipalDelegatedPermissionGrant)[vs[1].(int)]
 	}).(ServicePrincipalDelegatedPermissionGrantOutput)
 }
 
 type ServicePrincipalDelegatedPermissionGrantMapOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalDelegatedPermissionGrantMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ServicePrincipalDelegatedPermissionGrant)(nil))
+	return reflect.TypeOf((*map[string]*ServicePrincipalDelegatedPermissionGrant)(nil)).Elem()
 }
 
 func (o ServicePrincipalDelegatedPermissionGrantMapOutput) ToServicePrincipalDelegatedPermissionGrantMapOutput() ServicePrincipalDelegatedPermissionGrantMapOutput {
@@ -464,18 +401,16 @@ func (o ServicePrincipalDelegatedPermissionGrantMapOutput) ToServicePrincipalDel
 }
 
 func (o ServicePrincipalDelegatedPermissionGrantMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalDelegatedPermissionGrantOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ServicePrincipalDelegatedPermissionGrant {
-		return vs[0].(map[string]ServicePrincipalDelegatedPermissionGrant)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ServicePrincipalDelegatedPermissionGrant {
+		return vs[0].(map[string]*ServicePrincipalDelegatedPermissionGrant)[vs[1].(string)]
 	}).(ServicePrincipalDelegatedPermissionGrantOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalDelegatedPermissionGrantInput)(nil)).Elem(), &ServicePrincipalDelegatedPermissionGrant{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalDelegatedPermissionGrantPtrInput)(nil)).Elem(), &ServicePrincipalDelegatedPermissionGrant{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalDelegatedPermissionGrantArrayInput)(nil)).Elem(), ServicePrincipalDelegatedPermissionGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalDelegatedPermissionGrantMapInput)(nil)).Elem(), ServicePrincipalDelegatedPermissionGrantMap{})
 	pulumi.RegisterOutputType(ServicePrincipalDelegatedPermissionGrantOutput{})
-	pulumi.RegisterOutputType(ServicePrincipalDelegatedPermissionGrantPtrOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalDelegatedPermissionGrantArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalDelegatedPermissionGrantMapOutput{})
 }

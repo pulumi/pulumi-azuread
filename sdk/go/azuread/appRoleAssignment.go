@@ -239,7 +239,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleIndex_appRoleAssignmentAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleIndex/appRoleAssignmentAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
 // 			AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
 // 				return appRoleIds.Admin.All, nil
 // 			}).(pulumi.StringOutput),
@@ -382,7 +382,7 @@ type AppRoleAssignmentInput interface {
 }
 
 func (*AppRoleAssignment) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRoleAssignment)(nil))
+	return reflect.TypeOf((**AppRoleAssignment)(nil)).Elem()
 }
 
 func (i *AppRoleAssignment) ToAppRoleAssignmentOutput() AppRoleAssignmentOutput {
@@ -391,35 +391,6 @@ func (i *AppRoleAssignment) ToAppRoleAssignmentOutput() AppRoleAssignmentOutput 
 
 func (i *AppRoleAssignment) ToAppRoleAssignmentOutputWithContext(ctx context.Context) AppRoleAssignmentOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AppRoleAssignmentOutput)
-}
-
-func (i *AppRoleAssignment) ToAppRoleAssignmentPtrOutput() AppRoleAssignmentPtrOutput {
-	return i.ToAppRoleAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *AppRoleAssignment) ToAppRoleAssignmentPtrOutputWithContext(ctx context.Context) AppRoleAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRoleAssignmentPtrOutput)
-}
-
-type AppRoleAssignmentPtrInput interface {
-	pulumi.Input
-
-	ToAppRoleAssignmentPtrOutput() AppRoleAssignmentPtrOutput
-	ToAppRoleAssignmentPtrOutputWithContext(ctx context.Context) AppRoleAssignmentPtrOutput
-}
-
-type appRoleAssignmentPtrType AppRoleAssignmentArgs
-
-func (*appRoleAssignmentPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppRoleAssignment)(nil))
-}
-
-func (i *appRoleAssignmentPtrType) ToAppRoleAssignmentPtrOutput() AppRoleAssignmentPtrOutput {
-	return i.ToAppRoleAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (i *appRoleAssignmentPtrType) ToAppRoleAssignmentPtrOutputWithContext(ctx context.Context) AppRoleAssignmentPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AppRoleAssignmentPtrOutput)
 }
 
 // AppRoleAssignmentArrayInput is an input type that accepts AppRoleAssignmentArray and AppRoleAssignmentArrayOutput values.
@@ -475,7 +446,7 @@ func (i AppRoleAssignmentMap) ToAppRoleAssignmentMapOutputWithContext(ctx contex
 type AppRoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (AppRoleAssignmentOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AppRoleAssignment)(nil))
+	return reflect.TypeOf((**AppRoleAssignment)(nil)).Elem()
 }
 
 func (o AppRoleAssignmentOutput) ToAppRoleAssignmentOutput() AppRoleAssignmentOutput {
@@ -486,44 +457,10 @@ func (o AppRoleAssignmentOutput) ToAppRoleAssignmentOutputWithContext(ctx contex
 	return o
 }
 
-func (o AppRoleAssignmentOutput) ToAppRoleAssignmentPtrOutput() AppRoleAssignmentPtrOutput {
-	return o.ToAppRoleAssignmentPtrOutputWithContext(context.Background())
-}
-
-func (o AppRoleAssignmentOutput) ToAppRoleAssignmentPtrOutputWithContext(ctx context.Context) AppRoleAssignmentPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppRoleAssignment) *AppRoleAssignment {
-		return &v
-	}).(AppRoleAssignmentPtrOutput)
-}
-
-type AppRoleAssignmentPtrOutput struct{ *pulumi.OutputState }
-
-func (AppRoleAssignmentPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AppRoleAssignment)(nil))
-}
-
-func (o AppRoleAssignmentPtrOutput) ToAppRoleAssignmentPtrOutput() AppRoleAssignmentPtrOutput {
-	return o
-}
-
-func (o AppRoleAssignmentPtrOutput) ToAppRoleAssignmentPtrOutputWithContext(ctx context.Context) AppRoleAssignmentPtrOutput {
-	return o
-}
-
-func (o AppRoleAssignmentPtrOutput) Elem() AppRoleAssignmentOutput {
-	return o.ApplyT(func(v *AppRoleAssignment) AppRoleAssignment {
-		if v != nil {
-			return *v
-		}
-		var ret AppRoleAssignment
-		return ret
-	}).(AppRoleAssignmentOutput)
-}
-
 type AppRoleAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (AppRoleAssignmentArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AppRoleAssignment)(nil))
+	return reflect.TypeOf((*[]*AppRoleAssignment)(nil)).Elem()
 }
 
 func (o AppRoleAssignmentArrayOutput) ToAppRoleAssignmentArrayOutput() AppRoleAssignmentArrayOutput {
@@ -535,15 +472,15 @@ func (o AppRoleAssignmentArrayOutput) ToAppRoleAssignmentArrayOutputWithContext(
 }
 
 func (o AppRoleAssignmentArrayOutput) Index(i pulumi.IntInput) AppRoleAssignmentOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppRoleAssignment {
-		return vs[0].([]AppRoleAssignment)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AppRoleAssignment {
+		return vs[0].([]*AppRoleAssignment)[vs[1].(int)]
 	}).(AppRoleAssignmentOutput)
 }
 
 type AppRoleAssignmentMapOutput struct{ *pulumi.OutputState }
 
 func (AppRoleAssignmentMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AppRoleAssignment)(nil))
+	return reflect.TypeOf((*map[string]*AppRoleAssignment)(nil)).Elem()
 }
 
 func (o AppRoleAssignmentMapOutput) ToAppRoleAssignmentMapOutput() AppRoleAssignmentMapOutput {
@@ -555,18 +492,16 @@ func (o AppRoleAssignmentMapOutput) ToAppRoleAssignmentMapOutputWithContext(ctx 
 }
 
 func (o AppRoleAssignmentMapOutput) MapIndex(k pulumi.StringInput) AppRoleAssignmentOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AppRoleAssignment {
-		return vs[0].(map[string]AppRoleAssignment)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AppRoleAssignment {
+		return vs[0].(map[string]*AppRoleAssignment)[vs[1].(string)]
 	}).(AppRoleAssignmentOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppRoleAssignmentInput)(nil)).Elem(), &AppRoleAssignment{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AppRoleAssignmentPtrInput)(nil)).Elem(), &AppRoleAssignment{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppRoleAssignmentArrayInput)(nil)).Elem(), AppRoleAssignmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppRoleAssignmentMapInput)(nil)).Elem(), AppRoleAssignmentMap{})
 	pulumi.RegisterOutputType(AppRoleAssignmentOutput{})
-	pulumi.RegisterOutputType(AppRoleAssignmentPtrOutput{})
 	pulumi.RegisterOutputType(AppRoleAssignmentArrayOutput{})
 	pulumi.RegisterOutputType(AppRoleAssignmentMapOutput{})
 }

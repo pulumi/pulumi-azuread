@@ -205,16 +205,16 @@ export class AppRoleAssignment extends pulumi.CustomResource {
      */
     constructor(name: string, args: AppRoleAssignmentArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: AppRoleAssignmentArgs | AppRoleAssignmentState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppRoleAssignmentState | undefined;
-            inputs["appRoleId"] = state ? state.appRoleId : undefined;
-            inputs["principalDisplayName"] = state ? state.principalDisplayName : undefined;
-            inputs["principalObjectId"] = state ? state.principalObjectId : undefined;
-            inputs["principalType"] = state ? state.principalType : undefined;
-            inputs["resourceDisplayName"] = state ? state.resourceDisplayName : undefined;
-            inputs["resourceObjectId"] = state ? state.resourceObjectId : undefined;
+            resourceInputs["appRoleId"] = state ? state.appRoleId : undefined;
+            resourceInputs["principalDisplayName"] = state ? state.principalDisplayName : undefined;
+            resourceInputs["principalObjectId"] = state ? state.principalObjectId : undefined;
+            resourceInputs["principalType"] = state ? state.principalType : undefined;
+            resourceInputs["resourceDisplayName"] = state ? state.resourceDisplayName : undefined;
+            resourceInputs["resourceObjectId"] = state ? state.resourceObjectId : undefined;
         } else {
             const args = argsOrState as AppRoleAssignmentArgs | undefined;
             if ((!args || args.appRoleId === undefined) && !opts.urn) {
@@ -226,17 +226,15 @@ export class AppRoleAssignment extends pulumi.CustomResource {
             if ((!args || args.resourceObjectId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'resourceObjectId'");
             }
-            inputs["appRoleId"] = args ? args.appRoleId : undefined;
-            inputs["principalObjectId"] = args ? args.principalObjectId : undefined;
-            inputs["resourceObjectId"] = args ? args.resourceObjectId : undefined;
-            inputs["principalDisplayName"] = undefined /*out*/;
-            inputs["principalType"] = undefined /*out*/;
-            inputs["resourceDisplayName"] = undefined /*out*/;
+            resourceInputs["appRoleId"] = args ? args.appRoleId : undefined;
+            resourceInputs["principalObjectId"] = args ? args.principalObjectId : undefined;
+            resourceInputs["resourceObjectId"] = args ? args.resourceObjectId : undefined;
+            resourceInputs["principalDisplayName"] = undefined /*out*/;
+            resourceInputs["principalType"] = undefined /*out*/;
+            resourceInputs["resourceDisplayName"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(AppRoleAssignment.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(AppRoleAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }
 

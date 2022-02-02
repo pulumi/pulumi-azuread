@@ -57,9 +57,7 @@ export function getApplicationPublishedAppIds(opts?: pulumi.InvokeOptions): Prom
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", {
     }, opts);
 }

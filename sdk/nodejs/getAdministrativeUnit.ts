@@ -44,9 +44,7 @@ export function getAdministrativeUnit(args?: GetAdministrativeUnitArgs, opts?: p
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("azuread:index/getAdministrativeUnit:getAdministrativeUnit", {
         "displayName": args.displayName,
         "objectId": args.objectId,

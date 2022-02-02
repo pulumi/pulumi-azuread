@@ -26,9 +26,7 @@ export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientC
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("azuread:index/getClientConfig:getClientConfig", {
     }, opts);
 }

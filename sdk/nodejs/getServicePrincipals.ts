@@ -68,9 +68,7 @@ export function getServicePrincipals(args?: GetServicePrincipalsArgs, opts?: pul
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("azuread:index/getServicePrincipals:getServicePrincipals", {
         "applicationIds": args.applicationIds,
         "displayNames": args.displayNames,

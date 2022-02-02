@@ -169,7 +169,7 @@ type DirectoryRoleInput interface {
 }
 
 func (*DirectoryRole) ElementType() reflect.Type {
-	return reflect.TypeOf((*DirectoryRole)(nil))
+	return reflect.TypeOf((**DirectoryRole)(nil)).Elem()
 }
 
 func (i *DirectoryRole) ToDirectoryRoleOutput() DirectoryRoleOutput {
@@ -178,35 +178,6 @@ func (i *DirectoryRole) ToDirectoryRoleOutput() DirectoryRoleOutput {
 
 func (i *DirectoryRole) ToDirectoryRoleOutputWithContext(ctx context.Context) DirectoryRoleOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleOutput)
-}
-
-func (i *DirectoryRole) ToDirectoryRolePtrOutput() DirectoryRolePtrOutput {
-	return i.ToDirectoryRolePtrOutputWithContext(context.Background())
-}
-
-func (i *DirectoryRole) ToDirectoryRolePtrOutputWithContext(ctx context.Context) DirectoryRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRolePtrOutput)
-}
-
-type DirectoryRolePtrInput interface {
-	pulumi.Input
-
-	ToDirectoryRolePtrOutput() DirectoryRolePtrOutput
-	ToDirectoryRolePtrOutputWithContext(ctx context.Context) DirectoryRolePtrOutput
-}
-
-type directoryRolePtrType DirectoryRoleArgs
-
-func (*directoryRolePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**DirectoryRole)(nil))
-}
-
-func (i *directoryRolePtrType) ToDirectoryRolePtrOutput() DirectoryRolePtrOutput {
-	return i.ToDirectoryRolePtrOutputWithContext(context.Background())
-}
-
-func (i *directoryRolePtrType) ToDirectoryRolePtrOutputWithContext(ctx context.Context) DirectoryRolePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRolePtrOutput)
 }
 
 // DirectoryRoleArrayInput is an input type that accepts DirectoryRoleArray and DirectoryRoleArrayOutput values.
@@ -262,7 +233,7 @@ func (i DirectoryRoleMap) ToDirectoryRoleMapOutputWithContext(ctx context.Contex
 type DirectoryRoleOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DirectoryRole)(nil))
+	return reflect.TypeOf((**DirectoryRole)(nil)).Elem()
 }
 
 func (o DirectoryRoleOutput) ToDirectoryRoleOutput() DirectoryRoleOutput {
@@ -273,44 +244,10 @@ func (o DirectoryRoleOutput) ToDirectoryRoleOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o DirectoryRoleOutput) ToDirectoryRolePtrOutput() DirectoryRolePtrOutput {
-	return o.ToDirectoryRolePtrOutputWithContext(context.Background())
-}
-
-func (o DirectoryRoleOutput) ToDirectoryRolePtrOutputWithContext(ctx context.Context) DirectoryRolePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v DirectoryRole) *DirectoryRole {
-		return &v
-	}).(DirectoryRolePtrOutput)
-}
-
-type DirectoryRolePtrOutput struct{ *pulumi.OutputState }
-
-func (DirectoryRolePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**DirectoryRole)(nil))
-}
-
-func (o DirectoryRolePtrOutput) ToDirectoryRolePtrOutput() DirectoryRolePtrOutput {
-	return o
-}
-
-func (o DirectoryRolePtrOutput) ToDirectoryRolePtrOutputWithContext(ctx context.Context) DirectoryRolePtrOutput {
-	return o
-}
-
-func (o DirectoryRolePtrOutput) Elem() DirectoryRoleOutput {
-	return o.ApplyT(func(v *DirectoryRole) DirectoryRole {
-		if v != nil {
-			return *v
-		}
-		var ret DirectoryRole
-		return ret
-	}).(DirectoryRoleOutput)
-}
-
 type DirectoryRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DirectoryRole)(nil))
+	return reflect.TypeOf((*[]*DirectoryRole)(nil)).Elem()
 }
 
 func (o DirectoryRoleArrayOutput) ToDirectoryRoleArrayOutput() DirectoryRoleArrayOutput {
@@ -322,15 +259,15 @@ func (o DirectoryRoleArrayOutput) ToDirectoryRoleArrayOutputWithContext(ctx cont
 }
 
 func (o DirectoryRoleArrayOutput) Index(i pulumi.IntInput) DirectoryRoleOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DirectoryRole {
-		return vs[0].([]DirectoryRole)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DirectoryRole {
+		return vs[0].([]*DirectoryRole)[vs[1].(int)]
 	}).(DirectoryRoleOutput)
 }
 
 type DirectoryRoleMapOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]DirectoryRole)(nil))
+	return reflect.TypeOf((*map[string]*DirectoryRole)(nil)).Elem()
 }
 
 func (o DirectoryRoleMapOutput) ToDirectoryRoleMapOutput() DirectoryRoleMapOutput {
@@ -342,18 +279,16 @@ func (o DirectoryRoleMapOutput) ToDirectoryRoleMapOutputWithContext(ctx context.
 }
 
 func (o DirectoryRoleMapOutput) MapIndex(k pulumi.StringInput) DirectoryRoleOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) DirectoryRole {
-		return vs[0].(map[string]DirectoryRole)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *DirectoryRole {
+		return vs[0].(map[string]*DirectoryRole)[vs[1].(string)]
 	}).(DirectoryRoleOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleInput)(nil)).Elem(), &DirectoryRole{})
-	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRolePtrInput)(nil)).Elem(), &DirectoryRole{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleArrayInput)(nil)).Elem(), DirectoryRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DirectoryRoleMapInput)(nil)).Elem(), DirectoryRoleMap{})
 	pulumi.RegisterOutputType(DirectoryRoleOutput{})
-	pulumi.RegisterOutputType(DirectoryRolePtrOutput{})
 	pulumi.RegisterOutputType(DirectoryRoleArrayOutput{})
 	pulumi.RegisterOutputType(DirectoryRoleMapOutput{})
 }

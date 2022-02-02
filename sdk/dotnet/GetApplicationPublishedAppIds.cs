@@ -89,7 +89,7 @@ namespace Pulumi.AzureAD
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationPublishedAppIdsResult> InvokeAsync(InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationPublishedAppIdsResult>("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", InvokeArgs.Empty, options.WithVersion());
+            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationPublishedAppIdsResult>("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

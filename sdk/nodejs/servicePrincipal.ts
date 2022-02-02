@@ -256,78 +256,76 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServicePrincipalArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalArgs | ServicePrincipalState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalState | undefined;
-            inputs["accountEnabled"] = state ? state.accountEnabled : undefined;
-            inputs["alternativeNames"] = state ? state.alternativeNames : undefined;
-            inputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
-            inputs["appRoleIds"] = state ? state.appRoleIds : undefined;
-            inputs["appRoles"] = state ? state.appRoles : undefined;
-            inputs["applicationId"] = state ? state.applicationId : undefined;
-            inputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["featureTags"] = state ? state.featureTags : undefined;
-            inputs["features"] = state ? state.features : undefined;
-            inputs["homepageUrl"] = state ? state.homepageUrl : undefined;
-            inputs["loginUrl"] = state ? state.loginUrl : undefined;
-            inputs["logoutUrl"] = state ? state.logoutUrl : undefined;
-            inputs["notes"] = state ? state.notes : undefined;
-            inputs["notificationEmailAddresses"] = state ? state.notificationEmailAddresses : undefined;
-            inputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
-            inputs["oauth2PermissionScopes"] = state ? state.oauth2PermissionScopes : undefined;
-            inputs["objectId"] = state ? state.objectId : undefined;
-            inputs["owners"] = state ? state.owners : undefined;
-            inputs["preferredSingleSignOnMode"] = state ? state.preferredSingleSignOnMode : undefined;
-            inputs["redirectUris"] = state ? state.redirectUris : undefined;
-            inputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
-            inputs["samlSingleSignOn"] = state ? state.samlSingleSignOn : undefined;
-            inputs["servicePrincipalNames"] = state ? state.servicePrincipalNames : undefined;
-            inputs["signInAudience"] = state ? state.signInAudience : undefined;
-            inputs["tags"] = state ? state.tags : undefined;
-            inputs["type"] = state ? state.type : undefined;
-            inputs["useExisting"] = state ? state.useExisting : undefined;
+            resourceInputs["accountEnabled"] = state ? state.accountEnabled : undefined;
+            resourceInputs["alternativeNames"] = state ? state.alternativeNames : undefined;
+            resourceInputs["appRoleAssignmentRequired"] = state ? state.appRoleAssignmentRequired : undefined;
+            resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
+            resourceInputs["appRoles"] = state ? state.appRoles : undefined;
+            resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["applicationTenantId"] = state ? state.applicationTenantId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["featureTags"] = state ? state.featureTags : undefined;
+            resourceInputs["features"] = state ? state.features : undefined;
+            resourceInputs["homepageUrl"] = state ? state.homepageUrl : undefined;
+            resourceInputs["loginUrl"] = state ? state.loginUrl : undefined;
+            resourceInputs["logoutUrl"] = state ? state.logoutUrl : undefined;
+            resourceInputs["notes"] = state ? state.notes : undefined;
+            resourceInputs["notificationEmailAddresses"] = state ? state.notificationEmailAddresses : undefined;
+            resourceInputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
+            resourceInputs["oauth2PermissionScopes"] = state ? state.oauth2PermissionScopes : undefined;
+            resourceInputs["objectId"] = state ? state.objectId : undefined;
+            resourceInputs["owners"] = state ? state.owners : undefined;
+            resourceInputs["preferredSingleSignOnMode"] = state ? state.preferredSingleSignOnMode : undefined;
+            resourceInputs["redirectUris"] = state ? state.redirectUris : undefined;
+            resourceInputs["samlMetadataUrl"] = state ? state.samlMetadataUrl : undefined;
+            resourceInputs["samlSingleSignOn"] = state ? state.samlSingleSignOn : undefined;
+            resourceInputs["servicePrincipalNames"] = state ? state.servicePrincipalNames : undefined;
+            resourceInputs["signInAudience"] = state ? state.signInAudience : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["useExisting"] = state ? state.useExisting : undefined;
         } else {
             const args = argsOrState as ServicePrincipalArgs | undefined;
             if ((!args || args.applicationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'applicationId'");
             }
-            inputs["accountEnabled"] = args ? args.accountEnabled : undefined;
-            inputs["alternativeNames"] = args ? args.alternativeNames : undefined;
-            inputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
-            inputs["applicationId"] = args ? args.applicationId : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["featureTags"] = args ? args.featureTags : undefined;
-            inputs["features"] = args ? args.features : undefined;
-            inputs["loginUrl"] = args ? args.loginUrl : undefined;
-            inputs["notes"] = args ? args.notes : undefined;
-            inputs["notificationEmailAddresses"] = args ? args.notificationEmailAddresses : undefined;
-            inputs["owners"] = args ? args.owners : undefined;
-            inputs["preferredSingleSignOnMode"] = args ? args.preferredSingleSignOnMode : undefined;
-            inputs["samlSingleSignOn"] = args ? args.samlSingleSignOn : undefined;
-            inputs["tags"] = args ? args.tags : undefined;
-            inputs["useExisting"] = args ? args.useExisting : undefined;
-            inputs["appRoleIds"] = undefined /*out*/;
-            inputs["appRoles"] = undefined /*out*/;
-            inputs["applicationTenantId"] = undefined /*out*/;
-            inputs["displayName"] = undefined /*out*/;
-            inputs["homepageUrl"] = undefined /*out*/;
-            inputs["logoutUrl"] = undefined /*out*/;
-            inputs["oauth2PermissionScopeIds"] = undefined /*out*/;
-            inputs["oauth2PermissionScopes"] = undefined /*out*/;
-            inputs["objectId"] = undefined /*out*/;
-            inputs["redirectUris"] = undefined /*out*/;
-            inputs["samlMetadataUrl"] = undefined /*out*/;
-            inputs["servicePrincipalNames"] = undefined /*out*/;
-            inputs["signInAudience"] = undefined /*out*/;
-            inputs["type"] = undefined /*out*/;
+            resourceInputs["accountEnabled"] = args ? args.accountEnabled : undefined;
+            resourceInputs["alternativeNames"] = args ? args.alternativeNames : undefined;
+            resourceInputs["appRoleAssignmentRequired"] = args ? args.appRoleAssignmentRequired : undefined;
+            resourceInputs["applicationId"] = args ? args.applicationId : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["featureTags"] = args ? args.featureTags : undefined;
+            resourceInputs["features"] = args ? args.features : undefined;
+            resourceInputs["loginUrl"] = args ? args.loginUrl : undefined;
+            resourceInputs["notes"] = args ? args.notes : undefined;
+            resourceInputs["notificationEmailAddresses"] = args ? args.notificationEmailAddresses : undefined;
+            resourceInputs["owners"] = args ? args.owners : undefined;
+            resourceInputs["preferredSingleSignOnMode"] = args ? args.preferredSingleSignOnMode : undefined;
+            resourceInputs["samlSingleSignOn"] = args ? args.samlSingleSignOn : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["useExisting"] = args ? args.useExisting : undefined;
+            resourceInputs["appRoleIds"] = undefined /*out*/;
+            resourceInputs["appRoles"] = undefined /*out*/;
+            resourceInputs["applicationTenantId"] = undefined /*out*/;
+            resourceInputs["displayName"] = undefined /*out*/;
+            resourceInputs["homepageUrl"] = undefined /*out*/;
+            resourceInputs["logoutUrl"] = undefined /*out*/;
+            resourceInputs["oauth2PermissionScopeIds"] = undefined /*out*/;
+            resourceInputs["oauth2PermissionScopes"] = undefined /*out*/;
+            resourceInputs["objectId"] = undefined /*out*/;
+            resourceInputs["redirectUris"] = undefined /*out*/;
+            resourceInputs["samlMetadataUrl"] = undefined /*out*/;
+            resourceInputs["servicePrincipalNames"] = undefined /*out*/;
+            resourceInputs["signInAudience"] = undefined /*out*/;
+            resourceInputs["type"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServicePrincipal.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServicePrincipal.__pulumiType, name, resourceInputs, opts);
     }
 }
 

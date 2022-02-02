@@ -55,6 +55,7 @@ setup(name='pulumi_azuread',
       package_data={
           'pulumi_azuread': [
               'py.typed',
+              'pulumi-plugin.json',
           ]
       },
       install_requires=[

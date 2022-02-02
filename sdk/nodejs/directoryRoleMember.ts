@@ -87,21 +87,19 @@ export class DirectoryRoleMember extends pulumi.CustomResource {
      */
     constructor(name: string, args?: DirectoryRoleMemberArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: DirectoryRoleMemberArgs | DirectoryRoleMemberState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DirectoryRoleMemberState | undefined;
-            inputs["memberObjectId"] = state ? state.memberObjectId : undefined;
-            inputs["roleObjectId"] = state ? state.roleObjectId : undefined;
+            resourceInputs["memberObjectId"] = state ? state.memberObjectId : undefined;
+            resourceInputs["roleObjectId"] = state ? state.roleObjectId : undefined;
         } else {
             const args = argsOrState as DirectoryRoleMemberArgs | undefined;
-            inputs["memberObjectId"] = args ? args.memberObjectId : undefined;
-            inputs["roleObjectId"] = args ? args.roleObjectId : undefined;
+            resourceInputs["memberObjectId"] = args ? args.memberObjectId : undefined;
+            resourceInputs["roleObjectId"] = args ? args.roleObjectId : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(DirectoryRoleMember.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(DirectoryRoleMember.__pulumiType, name, resourceInputs, opts);
     }
 }
 

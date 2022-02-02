@@ -150,7 +150,7 @@ type AdministrativeUnitMemberInput interface {
 }
 
 func (*AdministrativeUnitMember) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdministrativeUnitMember)(nil))
+	return reflect.TypeOf((**AdministrativeUnitMember)(nil)).Elem()
 }
 
 func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberOutput() AdministrativeUnitMemberOutput {
@@ -159,35 +159,6 @@ func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberOutput() Administra
 
 func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberOutputWithContext(ctx context.Context) AdministrativeUnitMemberOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMemberOutput)
-}
-
-func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberPtrOutput() AdministrativeUnitMemberPtrOutput {
-	return i.ToAdministrativeUnitMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberPtrOutputWithContext(ctx context.Context) AdministrativeUnitMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMemberPtrOutput)
-}
-
-type AdministrativeUnitMemberPtrInput interface {
-	pulumi.Input
-
-	ToAdministrativeUnitMemberPtrOutput() AdministrativeUnitMemberPtrOutput
-	ToAdministrativeUnitMemberPtrOutputWithContext(ctx context.Context) AdministrativeUnitMemberPtrOutput
-}
-
-type administrativeUnitMemberPtrType AdministrativeUnitMemberArgs
-
-func (*administrativeUnitMemberPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdministrativeUnitMember)(nil))
-}
-
-func (i *administrativeUnitMemberPtrType) ToAdministrativeUnitMemberPtrOutput() AdministrativeUnitMemberPtrOutput {
-	return i.ToAdministrativeUnitMemberPtrOutputWithContext(context.Background())
-}
-
-func (i *administrativeUnitMemberPtrType) ToAdministrativeUnitMemberPtrOutputWithContext(ctx context.Context) AdministrativeUnitMemberPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMemberPtrOutput)
 }
 
 // AdministrativeUnitMemberArrayInput is an input type that accepts AdministrativeUnitMemberArray and AdministrativeUnitMemberArrayOutput values.
@@ -243,7 +214,7 @@ func (i AdministrativeUnitMemberMap) ToAdministrativeUnitMemberMapOutputWithCont
 type AdministrativeUnitMemberOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitMemberOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*AdministrativeUnitMember)(nil))
+	return reflect.TypeOf((**AdministrativeUnitMember)(nil)).Elem()
 }
 
 func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberOutput() AdministrativeUnitMemberOutput {
@@ -254,44 +225,10 @@ func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberOutputWithCont
 	return o
 }
 
-func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberPtrOutput() AdministrativeUnitMemberPtrOutput {
-	return o.ToAdministrativeUnitMemberPtrOutputWithContext(context.Background())
-}
-
-func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberPtrOutputWithContext(ctx context.Context) AdministrativeUnitMemberPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v AdministrativeUnitMember) *AdministrativeUnitMember {
-		return &v
-	}).(AdministrativeUnitMemberPtrOutput)
-}
-
-type AdministrativeUnitMemberPtrOutput struct{ *pulumi.OutputState }
-
-func (AdministrativeUnitMemberPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**AdministrativeUnitMember)(nil))
-}
-
-func (o AdministrativeUnitMemberPtrOutput) ToAdministrativeUnitMemberPtrOutput() AdministrativeUnitMemberPtrOutput {
-	return o
-}
-
-func (o AdministrativeUnitMemberPtrOutput) ToAdministrativeUnitMemberPtrOutputWithContext(ctx context.Context) AdministrativeUnitMemberPtrOutput {
-	return o
-}
-
-func (o AdministrativeUnitMemberPtrOutput) Elem() AdministrativeUnitMemberOutput {
-	return o.ApplyT(func(v *AdministrativeUnitMember) AdministrativeUnitMember {
-		if v != nil {
-			return *v
-		}
-		var ret AdministrativeUnitMember
-		return ret
-	}).(AdministrativeUnitMemberOutput)
-}
-
 type AdministrativeUnitMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitMemberArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]AdministrativeUnitMember)(nil))
+	return reflect.TypeOf((*[]*AdministrativeUnitMember)(nil)).Elem()
 }
 
 func (o AdministrativeUnitMemberArrayOutput) ToAdministrativeUnitMemberArrayOutput() AdministrativeUnitMemberArrayOutput {
@@ -303,15 +240,15 @@ func (o AdministrativeUnitMemberArrayOutput) ToAdministrativeUnitMemberArrayOutp
 }
 
 func (o AdministrativeUnitMemberArrayOutput) Index(i pulumi.IntInput) AdministrativeUnitMemberOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AdministrativeUnitMember {
-		return vs[0].([]AdministrativeUnitMember)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdministrativeUnitMember {
+		return vs[0].([]*AdministrativeUnitMember)[vs[1].(int)]
 	}).(AdministrativeUnitMemberOutput)
 }
 
 type AdministrativeUnitMemberMapOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitMemberMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]AdministrativeUnitMember)(nil))
+	return reflect.TypeOf((*map[string]*AdministrativeUnitMember)(nil)).Elem()
 }
 
 func (o AdministrativeUnitMemberMapOutput) ToAdministrativeUnitMemberMapOutput() AdministrativeUnitMemberMapOutput {
@@ -323,18 +260,16 @@ func (o AdministrativeUnitMemberMapOutput) ToAdministrativeUnitMemberMapOutputWi
 }
 
 func (o AdministrativeUnitMemberMapOutput) MapIndex(k pulumi.StringInput) AdministrativeUnitMemberOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AdministrativeUnitMember {
-		return vs[0].(map[string]AdministrativeUnitMember)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *AdministrativeUnitMember {
+		return vs[0].(map[string]*AdministrativeUnitMember)[vs[1].(string)]
 	}).(AdministrativeUnitMemberOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AdministrativeUnitMemberInput)(nil)).Elem(), &AdministrativeUnitMember{})
-	pulumi.RegisterInputType(reflect.TypeOf((*AdministrativeUnitMemberPtrInput)(nil)).Elem(), &AdministrativeUnitMember{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdministrativeUnitMemberArrayInput)(nil)).Elem(), AdministrativeUnitMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdministrativeUnitMemberMapInput)(nil)).Elem(), AdministrativeUnitMemberMap{})
 	pulumi.RegisterOutputType(AdministrativeUnitMemberOutput{})
-	pulumi.RegisterOutputType(AdministrativeUnitMemberPtrOutput{})
 	pulumi.RegisterOutputType(AdministrativeUnitMemberArrayOutput{})
 	pulumi.RegisterOutputType(AdministrativeUnitMemberMapOutput{})
 }
