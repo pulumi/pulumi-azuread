@@ -89,36 +89,34 @@ export class ServicePrincipalPassword extends pulumi.CustomResource {
      */
     constructor(name: string, args: ServicePrincipalPasswordArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ServicePrincipalPasswordArgs | ServicePrincipalPasswordState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePrincipalPasswordState | undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["endDate"] = state ? state.endDate : undefined;
-            inputs["endDateRelative"] = state ? state.endDateRelative : undefined;
-            inputs["keyId"] = state ? state.keyId : undefined;
-            inputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
-            inputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
-            inputs["startDate"] = state ? state.startDate : undefined;
-            inputs["value"] = state ? state.value : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["endDate"] = state ? state.endDate : undefined;
+            resourceInputs["endDateRelative"] = state ? state.endDateRelative : undefined;
+            resourceInputs["keyId"] = state ? state.keyId : undefined;
+            resourceInputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
+            resourceInputs["servicePrincipalId"] = state ? state.servicePrincipalId : undefined;
+            resourceInputs["startDate"] = state ? state.startDate : undefined;
+            resourceInputs["value"] = state ? state.value : undefined;
         } else {
             const args = argsOrState as ServicePrincipalPasswordArgs | undefined;
             if ((!args || args.servicePrincipalId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'servicePrincipalId'");
             }
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["endDate"] = args ? args.endDate : undefined;
-            inputs["endDateRelative"] = args ? args.endDateRelative : undefined;
-            inputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
-            inputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
-            inputs["startDate"] = args ? args.startDate : undefined;
-            inputs["keyId"] = undefined /*out*/;
-            inputs["value"] = undefined /*out*/;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["endDate"] = args ? args.endDate : undefined;
+            resourceInputs["endDateRelative"] = args ? args.endDateRelative : undefined;
+            resourceInputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
+            resourceInputs["servicePrincipalId"] = args ? args.servicePrincipalId : undefined;
+            resourceInputs["startDate"] = args ? args.startDate : undefined;
+            resourceInputs["keyId"] = undefined /*out*/;
+            resourceInputs["value"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ServicePrincipalPassword.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ServicePrincipalPassword.__pulumiType, name, resourceInputs, opts);
     }
 }
 

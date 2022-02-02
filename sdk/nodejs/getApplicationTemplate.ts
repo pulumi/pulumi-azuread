@@ -29,9 +29,7 @@ export function getApplicationTemplate(args?: GetApplicationTemplateArgs, opts?:
         opts = {}
     }
 
-    if (!opts.version) {
-        opts.version = utilities.getVersion();
-    }
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
     return pulumi.runtime.invoke("azuread:index/getApplicationTemplate:getApplicationTemplate", {
         "displayName": args.displayName,
         "templateId": args.templateId,

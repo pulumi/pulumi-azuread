@@ -33,7 +33,7 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewNamedLocation(ctx, "example_ip", &azuread.NamedLocationArgs{
+// 		_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
 // 			DisplayName: pulumi.String("IP Named Location"),
 // 			Ip: &NamedLocationIpArgs{
 // 				IpRanges: pulumi.StringArray{
@@ -46,7 +46,7 @@ import (
 // 		if err != nil {
 // 			return err
 // 		}
-// 		_, err = azuread.NewNamedLocation(ctx, "example_country", &azuread.NamedLocationArgs{
+// 		_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
 // 			Country: &NamedLocationCountryArgs{
 // 				CountriesAndRegions: pulumi.StringArray{
 // 					pulumi.String("GB"),
@@ -166,7 +166,7 @@ type NamedLocationInput interface {
 }
 
 func (*NamedLocation) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamedLocation)(nil))
+	return reflect.TypeOf((**NamedLocation)(nil)).Elem()
 }
 
 func (i *NamedLocation) ToNamedLocationOutput() NamedLocationOutput {
@@ -175,35 +175,6 @@ func (i *NamedLocation) ToNamedLocationOutput() NamedLocationOutput {
 
 func (i *NamedLocation) ToNamedLocationOutputWithContext(ctx context.Context) NamedLocationOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationOutput)
-}
-
-func (i *NamedLocation) ToNamedLocationPtrOutput() NamedLocationPtrOutput {
-	return i.ToNamedLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *NamedLocation) ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationPtrOutput)
-}
-
-type NamedLocationPtrInput interface {
-	pulumi.Input
-
-	ToNamedLocationPtrOutput() NamedLocationPtrOutput
-	ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput
-}
-
-type namedLocationPtrType NamedLocationArgs
-
-func (*namedLocationPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamedLocation)(nil))
-}
-
-func (i *namedLocationPtrType) ToNamedLocationPtrOutput() NamedLocationPtrOutput {
-	return i.ToNamedLocationPtrOutputWithContext(context.Background())
-}
-
-func (i *namedLocationPtrType) ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NamedLocationPtrOutput)
 }
 
 // NamedLocationArrayInput is an input type that accepts NamedLocationArray and NamedLocationArrayOutput values.
@@ -259,7 +230,7 @@ func (i NamedLocationMap) ToNamedLocationMapOutputWithContext(ctx context.Contex
 type NamedLocationOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NamedLocation)(nil))
+	return reflect.TypeOf((**NamedLocation)(nil)).Elem()
 }
 
 func (o NamedLocationOutput) ToNamedLocationOutput() NamedLocationOutput {
@@ -270,44 +241,10 @@ func (o NamedLocationOutput) ToNamedLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
-func (o NamedLocationOutput) ToNamedLocationPtrOutput() NamedLocationPtrOutput {
-	return o.ToNamedLocationPtrOutputWithContext(context.Background())
-}
-
-func (o NamedLocationOutput) ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v NamedLocation) *NamedLocation {
-		return &v
-	}).(NamedLocationPtrOutput)
-}
-
-type NamedLocationPtrOutput struct{ *pulumi.OutputState }
-
-func (NamedLocationPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**NamedLocation)(nil))
-}
-
-func (o NamedLocationPtrOutput) ToNamedLocationPtrOutput() NamedLocationPtrOutput {
-	return o
-}
-
-func (o NamedLocationPtrOutput) ToNamedLocationPtrOutputWithContext(ctx context.Context) NamedLocationPtrOutput {
-	return o
-}
-
-func (o NamedLocationPtrOutput) Elem() NamedLocationOutput {
-	return o.ApplyT(func(v *NamedLocation) NamedLocation {
-		if v != nil {
-			return *v
-		}
-		var ret NamedLocation
-		return ret
-	}).(NamedLocationOutput)
-}
-
 type NamedLocationArrayOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NamedLocation)(nil))
+	return reflect.TypeOf((*[]*NamedLocation)(nil)).Elem()
 }
 
 func (o NamedLocationArrayOutput) ToNamedLocationArrayOutput() NamedLocationArrayOutput {
@@ -319,15 +256,15 @@ func (o NamedLocationArrayOutput) ToNamedLocationArrayOutputWithContext(ctx cont
 }
 
 func (o NamedLocationArrayOutput) Index(i pulumi.IntInput) NamedLocationOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NamedLocation {
-		return vs[0].([]NamedLocation)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *NamedLocation {
+		return vs[0].([]*NamedLocation)[vs[1].(int)]
 	}).(NamedLocationOutput)
 }
 
 type NamedLocationMapOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]NamedLocation)(nil))
+	return reflect.TypeOf((*map[string]*NamedLocation)(nil)).Elem()
 }
 
 func (o NamedLocationMapOutput) ToNamedLocationMapOutput() NamedLocationMapOutput {
@@ -339,18 +276,16 @@ func (o NamedLocationMapOutput) ToNamedLocationMapOutputWithContext(ctx context.
 }
 
 func (o NamedLocationMapOutput) MapIndex(k pulumi.StringInput) NamedLocationOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) NamedLocation {
-		return vs[0].(map[string]NamedLocation)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *NamedLocation {
+		return vs[0].(map[string]*NamedLocation)[vs[1].(string)]
 	}).(NamedLocationOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedLocationInput)(nil)).Elem(), &NamedLocation{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NamedLocationPtrInput)(nil)).Elem(), &NamedLocation{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedLocationArrayInput)(nil)).Elem(), NamedLocationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NamedLocationMapInput)(nil)).Elem(), NamedLocationMap{})
 	pulumi.RegisterOutputType(NamedLocationOutput{})
-	pulumi.RegisterOutputType(NamedLocationPtrOutput{})
 	pulumi.RegisterOutputType(NamedLocationArrayOutput{})
 	pulumi.RegisterOutputType(NamedLocationMapOutput{})
 }

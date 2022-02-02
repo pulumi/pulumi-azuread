@@ -132,17 +132,17 @@ export class Invitation extends pulumi.CustomResource {
      */
     constructor(name: string, args: InvitationArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: InvitationArgs | InvitationState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as InvitationState | undefined;
-            inputs["message"] = state ? state.message : undefined;
-            inputs["redeemUrl"] = state ? state.redeemUrl : undefined;
-            inputs["redirectUrl"] = state ? state.redirectUrl : undefined;
-            inputs["userDisplayName"] = state ? state.userDisplayName : undefined;
-            inputs["userEmailAddress"] = state ? state.userEmailAddress : undefined;
-            inputs["userId"] = state ? state.userId : undefined;
-            inputs["userType"] = state ? state.userType : undefined;
+            resourceInputs["message"] = state ? state.message : undefined;
+            resourceInputs["redeemUrl"] = state ? state.redeemUrl : undefined;
+            resourceInputs["redirectUrl"] = state ? state.redirectUrl : undefined;
+            resourceInputs["userDisplayName"] = state ? state.userDisplayName : undefined;
+            resourceInputs["userEmailAddress"] = state ? state.userEmailAddress : undefined;
+            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["userType"] = state ? state.userType : undefined;
         } else {
             const args = argsOrState as InvitationArgs | undefined;
             if ((!args || args.redirectUrl === undefined) && !opts.urn) {
@@ -151,18 +151,16 @@ export class Invitation extends pulumi.CustomResource {
             if ((!args || args.userEmailAddress === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'userEmailAddress'");
             }
-            inputs["message"] = args ? args.message : undefined;
-            inputs["redirectUrl"] = args ? args.redirectUrl : undefined;
-            inputs["userDisplayName"] = args ? args.userDisplayName : undefined;
-            inputs["userEmailAddress"] = args ? args.userEmailAddress : undefined;
-            inputs["userType"] = args ? args.userType : undefined;
-            inputs["redeemUrl"] = undefined /*out*/;
-            inputs["userId"] = undefined /*out*/;
+            resourceInputs["message"] = args ? args.message : undefined;
+            resourceInputs["redirectUrl"] = args ? args.redirectUrl : undefined;
+            resourceInputs["userDisplayName"] = args ? args.userDisplayName : undefined;
+            resourceInputs["userEmailAddress"] = args ? args.userEmailAddress : undefined;
+            resourceInputs["userType"] = args ? args.userType : undefined;
+            resourceInputs["redeemUrl"] = undefined /*out*/;
+            resourceInputs["userId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(Invitation.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(Invitation.__pulumiType, name, resourceInputs, opts);
     }
 }
 

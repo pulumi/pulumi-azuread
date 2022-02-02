@@ -81,17 +81,17 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
      */
     constructor(name: string, args: ApplicationFederatedIdentityCredentialArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ApplicationFederatedIdentityCredentialArgs | ApplicationFederatedIdentityCredentialState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ApplicationFederatedIdentityCredentialState | undefined;
-            inputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
-            inputs["audiences"] = state ? state.audiences : undefined;
-            inputs["credentialId"] = state ? state.credentialId : undefined;
-            inputs["description"] = state ? state.description : undefined;
-            inputs["displayName"] = state ? state.displayName : undefined;
-            inputs["issuer"] = state ? state.issuer : undefined;
-            inputs["subject"] = state ? state.subject : undefined;
+            resourceInputs["applicationObjectId"] = state ? state.applicationObjectId : undefined;
+            resourceInputs["audiences"] = state ? state.audiences : undefined;
+            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["issuer"] = state ? state.issuer : undefined;
+            resourceInputs["subject"] = state ? state.subject : undefined;
         } else {
             const args = argsOrState as ApplicationFederatedIdentityCredentialArgs | undefined;
             if ((!args || args.applicationObjectId === undefined) && !opts.urn) {
@@ -109,18 +109,16 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
             if ((!args || args.subject === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'subject'");
             }
-            inputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
-            inputs["audiences"] = args ? args.audiences : undefined;
-            inputs["description"] = args ? args.description : undefined;
-            inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["issuer"] = args ? args.issuer : undefined;
-            inputs["subject"] = args ? args.subject : undefined;
-            inputs["credentialId"] = undefined /*out*/;
+            resourceInputs["applicationObjectId"] = args ? args.applicationObjectId : undefined;
+            resourceInputs["audiences"] = args ? args.audiences : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
+            resourceInputs["issuer"] = args ? args.issuer : undefined;
+            resourceInputs["subject"] = args ? args.subject : undefined;
+            resourceInputs["credentialId"] = undefined /*out*/;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(ApplicationFederatedIdentityCredential.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(ApplicationFederatedIdentityCredential.__pulumiType, name, resourceInputs, opts);
     }
 }
 

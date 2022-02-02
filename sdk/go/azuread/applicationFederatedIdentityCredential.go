@@ -163,7 +163,7 @@ type ApplicationFederatedIdentityCredentialInput interface {
 }
 
 func (*ApplicationFederatedIdentityCredential) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationFederatedIdentityCredential)(nil))
+	return reflect.TypeOf((**ApplicationFederatedIdentityCredential)(nil)).Elem()
 }
 
 func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityCredentialOutput() ApplicationFederatedIdentityCredentialOutput {
@@ -172,35 +172,6 @@ func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityC
 
 func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityCredentialOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFederatedIdentityCredentialOutput)
-}
-
-func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityCredentialPtrOutput() ApplicationFederatedIdentityCredentialPtrOutput {
-	return i.ToApplicationFederatedIdentityCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityCredentialPtrOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFederatedIdentityCredentialPtrOutput)
-}
-
-type ApplicationFederatedIdentityCredentialPtrInput interface {
-	pulumi.Input
-
-	ToApplicationFederatedIdentityCredentialPtrOutput() ApplicationFederatedIdentityCredentialPtrOutput
-	ToApplicationFederatedIdentityCredentialPtrOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialPtrOutput
-}
-
-type applicationFederatedIdentityCredentialPtrType ApplicationFederatedIdentityCredentialArgs
-
-func (*applicationFederatedIdentityCredentialPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationFederatedIdentityCredential)(nil))
-}
-
-func (i *applicationFederatedIdentityCredentialPtrType) ToApplicationFederatedIdentityCredentialPtrOutput() ApplicationFederatedIdentityCredentialPtrOutput {
-	return i.ToApplicationFederatedIdentityCredentialPtrOutputWithContext(context.Background())
-}
-
-func (i *applicationFederatedIdentityCredentialPtrType) ToApplicationFederatedIdentityCredentialPtrOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFederatedIdentityCredentialPtrOutput)
 }
 
 // ApplicationFederatedIdentityCredentialArrayInput is an input type that accepts ApplicationFederatedIdentityCredentialArray and ApplicationFederatedIdentityCredentialArrayOutput values.
@@ -256,7 +227,7 @@ func (i ApplicationFederatedIdentityCredentialMap) ToApplicationFederatedIdentit
 type ApplicationFederatedIdentityCredentialOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFederatedIdentityCredentialOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ApplicationFederatedIdentityCredential)(nil))
+	return reflect.TypeOf((**ApplicationFederatedIdentityCredential)(nil)).Elem()
 }
 
 func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIdentityCredentialOutput() ApplicationFederatedIdentityCredentialOutput {
@@ -267,44 +238,10 @@ func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIden
 	return o
 }
 
-func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIdentityCredentialPtrOutput() ApplicationFederatedIdentityCredentialPtrOutput {
-	return o.ToApplicationFederatedIdentityCredentialPtrOutputWithContext(context.Background())
-}
-
-func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIdentityCredentialPtrOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationFederatedIdentityCredential) *ApplicationFederatedIdentityCredential {
-		return &v
-	}).(ApplicationFederatedIdentityCredentialPtrOutput)
-}
-
-type ApplicationFederatedIdentityCredentialPtrOutput struct{ *pulumi.OutputState }
-
-func (ApplicationFederatedIdentityCredentialPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ApplicationFederatedIdentityCredential)(nil))
-}
-
-func (o ApplicationFederatedIdentityCredentialPtrOutput) ToApplicationFederatedIdentityCredentialPtrOutput() ApplicationFederatedIdentityCredentialPtrOutput {
-	return o
-}
-
-func (o ApplicationFederatedIdentityCredentialPtrOutput) ToApplicationFederatedIdentityCredentialPtrOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialPtrOutput {
-	return o
-}
-
-func (o ApplicationFederatedIdentityCredentialPtrOutput) Elem() ApplicationFederatedIdentityCredentialOutput {
-	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) ApplicationFederatedIdentityCredential {
-		if v != nil {
-			return *v
-		}
-		var ret ApplicationFederatedIdentityCredential
-		return ret
-	}).(ApplicationFederatedIdentityCredentialOutput)
-}
-
 type ApplicationFederatedIdentityCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFederatedIdentityCredentialArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]ApplicationFederatedIdentityCredential)(nil))
+	return reflect.TypeOf((*[]*ApplicationFederatedIdentityCredential)(nil)).Elem()
 }
 
 func (o ApplicationFederatedIdentityCredentialArrayOutput) ToApplicationFederatedIdentityCredentialArrayOutput() ApplicationFederatedIdentityCredentialArrayOutput {
@@ -316,15 +253,15 @@ func (o ApplicationFederatedIdentityCredentialArrayOutput) ToApplicationFederate
 }
 
 func (o ApplicationFederatedIdentityCredentialArrayOutput) Index(i pulumi.IntInput) ApplicationFederatedIdentityCredentialOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationFederatedIdentityCredential {
-		return vs[0].([]ApplicationFederatedIdentityCredential)[vs[1].(int)]
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationFederatedIdentityCredential {
+		return vs[0].([]*ApplicationFederatedIdentityCredential)[vs[1].(int)]
 	}).(ApplicationFederatedIdentityCredentialOutput)
 }
 
 type ApplicationFederatedIdentityCredentialMapOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFederatedIdentityCredentialMapOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*map[string]ApplicationFederatedIdentityCredential)(nil))
+	return reflect.TypeOf((*map[string]*ApplicationFederatedIdentityCredential)(nil)).Elem()
 }
 
 func (o ApplicationFederatedIdentityCredentialMapOutput) ToApplicationFederatedIdentityCredentialMapOutput() ApplicationFederatedIdentityCredentialMapOutput {
@@ -336,18 +273,16 @@ func (o ApplicationFederatedIdentityCredentialMapOutput) ToApplicationFederatedI
 }
 
 func (o ApplicationFederatedIdentityCredentialMapOutput) MapIndex(k pulumi.StringInput) ApplicationFederatedIdentityCredentialOutput {
-	return pulumi.All(o, k).ApplyT(func(vs []interface{}) ApplicationFederatedIdentityCredential {
-		return vs[0].(map[string]ApplicationFederatedIdentityCredential)[vs[1].(string)]
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) *ApplicationFederatedIdentityCredential {
+		return vs[0].(map[string]*ApplicationFederatedIdentityCredential)[vs[1].(string)]
 	}).(ApplicationFederatedIdentityCredentialOutput)
 }
 
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFederatedIdentityCredentialInput)(nil)).Elem(), &ApplicationFederatedIdentityCredential{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFederatedIdentityCredentialPtrInput)(nil)).Elem(), &ApplicationFederatedIdentityCredential{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFederatedIdentityCredentialArrayInput)(nil)).Elem(), ApplicationFederatedIdentityCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationFederatedIdentityCredentialMapInput)(nil)).Elem(), ApplicationFederatedIdentityCredentialMap{})
 	pulumi.RegisterOutputType(ApplicationFederatedIdentityCredentialOutput{})
-	pulumi.RegisterOutputType(ApplicationFederatedIdentityCredentialPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationFederatedIdentityCredentialArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationFederatedIdentityCredentialMapOutput{})
 }
