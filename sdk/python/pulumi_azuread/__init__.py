@@ -14,6 +14,7 @@ from .application_federated_identity_credential import *
 from .application_password import *
 from .application_pre_authorized import *
 from .conditional_access_policy import *
+from .custom_directory_role import *
 from .directory_role import *
 from .directory_role_member import *
 from .get_administrative_unit import *
@@ -121,6 +122,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy": "ConditionalAccessPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/customDirectoryRole",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/customDirectoryRole:CustomDirectoryRole": "CustomDirectoryRole"
   }
  },
  {

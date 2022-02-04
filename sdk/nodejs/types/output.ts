@@ -401,6 +401,13 @@ export interface ConditionalAccessPolicySessionControls {
     signInFrequencyPeriod?: string;
 }
 
+export interface CustomDirectoryRolePermission {
+    /**
+     * A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+     */
+    allowedResourceActions: string[];
+}
+
 export interface GetApplicationApi {
     /**
      * A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
@@ -1012,3 +1019,4 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: string;
 }
+

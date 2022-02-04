@@ -3712,6 +3712,103 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod()
 	}).(pulumi.StringPtrOutput)
 }
 
+type CustomDirectoryRolePermission struct {
+	// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+	AllowedResourceActions []string `pulumi:"allowedResourceActions"`
+}
+
+// CustomDirectoryRolePermissionInput is an input type that accepts CustomDirectoryRolePermissionArgs and CustomDirectoryRolePermissionOutput values.
+// You can construct a concrete instance of `CustomDirectoryRolePermissionInput` via:
+//
+//          CustomDirectoryRolePermissionArgs{...}
+type CustomDirectoryRolePermissionInput interface {
+	pulumi.Input
+
+	ToCustomDirectoryRolePermissionOutput() CustomDirectoryRolePermissionOutput
+	ToCustomDirectoryRolePermissionOutputWithContext(context.Context) CustomDirectoryRolePermissionOutput
+}
+
+type CustomDirectoryRolePermissionArgs struct {
+	// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+	AllowedResourceActions pulumi.StringArrayInput `pulumi:"allowedResourceActions"`
+}
+
+func (CustomDirectoryRolePermissionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDirectoryRolePermission)(nil)).Elem()
+}
+
+func (i CustomDirectoryRolePermissionArgs) ToCustomDirectoryRolePermissionOutput() CustomDirectoryRolePermissionOutput {
+	return i.ToCustomDirectoryRolePermissionOutputWithContext(context.Background())
+}
+
+func (i CustomDirectoryRolePermissionArgs) ToCustomDirectoryRolePermissionOutputWithContext(ctx context.Context) CustomDirectoryRolePermissionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDirectoryRolePermissionOutput)
+}
+
+// CustomDirectoryRolePermissionArrayInput is an input type that accepts CustomDirectoryRolePermissionArray and CustomDirectoryRolePermissionArrayOutput values.
+// You can construct a concrete instance of `CustomDirectoryRolePermissionArrayInput` via:
+//
+//          CustomDirectoryRolePermissionArray{ CustomDirectoryRolePermissionArgs{...} }
+type CustomDirectoryRolePermissionArrayInput interface {
+	pulumi.Input
+
+	ToCustomDirectoryRolePermissionArrayOutput() CustomDirectoryRolePermissionArrayOutput
+	ToCustomDirectoryRolePermissionArrayOutputWithContext(context.Context) CustomDirectoryRolePermissionArrayOutput
+}
+
+type CustomDirectoryRolePermissionArray []CustomDirectoryRolePermissionInput
+
+func (CustomDirectoryRolePermissionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDirectoryRolePermission)(nil)).Elem()
+}
+
+func (i CustomDirectoryRolePermissionArray) ToCustomDirectoryRolePermissionArrayOutput() CustomDirectoryRolePermissionArrayOutput {
+	return i.ToCustomDirectoryRolePermissionArrayOutputWithContext(context.Background())
+}
+
+func (i CustomDirectoryRolePermissionArray) ToCustomDirectoryRolePermissionArrayOutputWithContext(ctx context.Context) CustomDirectoryRolePermissionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CustomDirectoryRolePermissionArrayOutput)
+}
+
+type CustomDirectoryRolePermissionOutput struct{ *pulumi.OutputState }
+
+func (CustomDirectoryRolePermissionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CustomDirectoryRolePermission)(nil)).Elem()
+}
+
+func (o CustomDirectoryRolePermissionOutput) ToCustomDirectoryRolePermissionOutput() CustomDirectoryRolePermissionOutput {
+	return o
+}
+
+func (o CustomDirectoryRolePermissionOutput) ToCustomDirectoryRolePermissionOutputWithContext(ctx context.Context) CustomDirectoryRolePermissionOutput {
+	return o
+}
+
+// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+func (o CustomDirectoryRolePermissionOutput) AllowedResourceActions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CustomDirectoryRolePermission) []string { return v.AllowedResourceActions }).(pulumi.StringArrayOutput)
+}
+
+type CustomDirectoryRolePermissionArrayOutput struct{ *pulumi.OutputState }
+
+func (CustomDirectoryRolePermissionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CustomDirectoryRolePermission)(nil)).Elem()
+}
+
+func (o CustomDirectoryRolePermissionArrayOutput) ToCustomDirectoryRolePermissionArrayOutput() CustomDirectoryRolePermissionArrayOutput {
+	return o
+}
+
+func (o CustomDirectoryRolePermissionArrayOutput) ToCustomDirectoryRolePermissionArrayOutputWithContext(ctx context.Context) CustomDirectoryRolePermissionArrayOutput {
+	return o
+}
+
+func (o CustomDirectoryRolePermissionArrayOutput) Index(i pulumi.IntInput) CustomDirectoryRolePermissionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CustomDirectoryRolePermission {
+		return vs[0].([]CustomDirectoryRolePermission)[vs[1].(int)]
+	}).(CustomDirectoryRolePermissionOutput)
+}
+
 type GroupDynamicMembership struct {
 	// Whether rule processing is "On" (true) or "Paused" (false).
 	Enabled bool `pulumi:"enabled"`
@@ -8018,6 +8115,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyGrantControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicyGrantControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicySessionControlsPtrInput)(nil)).Elem(), ConditionalAccessPolicySessionControlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDirectoryRolePermissionInput)(nil)).Elem(), CustomDirectoryRolePermissionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CustomDirectoryRolePermissionArrayInput)(nil)).Elem(), CustomDirectoryRolePermissionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupDynamicMembershipInput)(nil)).Elem(), GroupDynamicMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GroupDynamicMembershipPtrInput)(nil)).Elem(), GroupDynamicMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InvitationMessageInput)(nil)).Elem(), InvitationMessageArgs{})
@@ -8128,6 +8227,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionalAccessPolicyGrantControlsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicySessionControlsPtrOutput{})
+	pulumi.RegisterOutputType(CustomDirectoryRolePermissionOutput{})
+	pulumi.RegisterOutputType(CustomDirectoryRolePermissionArrayOutput{})
 	pulumi.RegisterOutputType(GroupDynamicMembershipOutput{})
 	pulumi.RegisterOutputType(GroupDynamicMembershipPtrOutput{})
 	pulumi.RegisterOutputType(InvitationMessageOutput{})

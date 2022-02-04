@@ -33,6 +33,7 @@ __all__ = [
     'ConditionalAccessPolicyConditionsUsers',
     'ConditionalAccessPolicyGrantControls',
     'ConditionalAccessPolicySessionControls',
+    'CustomDirectoryRolePermission',
     'GroupDynamicMembership',
     'InvitationMessage',
     'NamedLocationCountry',
@@ -1588,6 +1589,41 @@ class ConditionalAccessPolicySessionControls(dict):
         The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         """
         return pulumi.get(self, "sign_in_frequency_period")
+
+
+@pulumi.output_type
+class CustomDirectoryRolePermission(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedResourceActions":
+            suggest = "allowed_resource_actions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CustomDirectoryRolePermission. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CustomDirectoryRolePermission.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CustomDirectoryRolePermission.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_resource_actions: Sequence[str]):
+        """
+        :param Sequence[str] allowed_resource_actions: A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        """
+        pulumi.set(__self__, "allowed_resource_actions", allowed_resource_actions)
+
+    @property
+    @pulumi.getter(name="allowedResourceActions")
+    def allowed_resource_actions(self) -> Sequence[str]:
+        """
+        A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        """
+        return pulumi.get(self, "allowed_resource_actions")
 
 
 @pulumi.output_type
