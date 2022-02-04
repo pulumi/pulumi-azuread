@@ -14,6 +14,7 @@ export * from "./applicationFederatedIdentityCredential";
 export * from "./applicationPassword";
 export * from "./applicationPreAuthorized";
 export * from "./conditionalAccessPolicy";
+export * from "./customDirectoryRole";
 export * from "./directoryRole";
 export * from "./directoryRoleMember";
 export * from "./getAdministrativeUnit";
@@ -58,6 +59,7 @@ import { ApplicationFederatedIdentityCredential } from "./applicationFederatedId
 import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
 import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
+import { CustomDirectoryRole } from "./customDirectoryRole";
 import { DirectoryRole } from "./directoryRole";
 import { DirectoryRoleMember } from "./directoryRoleMember";
 import { Group } from "./group";
@@ -92,6 +94,8 @@ const _module = {
                 return new ApplicationPreAuthorized(name, <any>undefined, { urn })
             case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
                 return new ConditionalAccessPolicy(name, <any>undefined, { urn })
+            case "azuread:index/customDirectoryRole:CustomDirectoryRole":
+                return new CustomDirectoryRole(name, <any>undefined, { urn })
             case "azuread:index/directoryRole:DirectoryRole":
                 return new DirectoryRole(name, <any>undefined, { urn })
             case "azuread:index/directoryRoleMember:DirectoryRoleMember":
@@ -128,6 +132,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationFederatedIden
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/customDirectoryRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)

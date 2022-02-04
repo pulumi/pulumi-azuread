@@ -4,7 +4,7 @@ go 1.15
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.8.0
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220128030533-a33dcaa5e1f4
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220203233857-667295fd7567
 )
 
-replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20201218231525-9cca98608a5e
+replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20211230170131-3a7c83bfab87

@@ -401,6 +401,13 @@ export interface ConditionalAccessPolicySessionControls {
     signInFrequencyPeriod?: pulumi.Input<string>;
 }
 
+export interface CustomDirectoryRolePermission {
+    /**
+     * A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+     */
+    allowedResourceActions: pulumi.Input<pulumi.Input<string>[]>;
+}
+
 export interface GroupDynamicMembership {
     /**
      * Whether rule processing is "On" (true) or "Paused" (false).
@@ -543,4 +550,3 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: pulumi.Input<string>;
 }
-

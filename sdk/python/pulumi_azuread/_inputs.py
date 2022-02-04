@@ -32,6 +32,7 @@ __all__ = [
     'ConditionalAccessPolicyConditionsUsersArgs',
     'ConditionalAccessPolicyGrantControlsArgs',
     'ConditionalAccessPolicySessionControlsArgs',
+    'CustomDirectoryRolePermissionArgs',
     'GroupDynamicMembershipArgs',
     'InvitationMessageArgs',
     'NamedLocationCountryArgs',
@@ -1490,6 +1491,28 @@ class ConditionalAccessPolicySessionControlsArgs:
     @sign_in_frequency_period.setter
     def sign_in_frequency_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sign_in_frequency_period", value)
+
+
+@pulumi.input_type
+class CustomDirectoryRolePermissionArgs:
+    def __init__(__self__, *,
+                 allowed_resource_actions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_resource_actions: A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        """
+        pulumi.set(__self__, "allowed_resource_actions", allowed_resource_actions)
+
+    @property
+    @pulumi.getter(name="allowedResourceActions")
+    def allowed_resource_actions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        """
+        return pulumi.get(self, "allowed_resource_actions")
+
+    @allowed_resource_actions.setter
+    def allowed_resource_actions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_resource_actions", value)
 
 
 @pulumi.input_type

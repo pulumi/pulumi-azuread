@@ -1084,6 +1084,26 @@
             },
             "type": "object"
         },
+        "azuread:index/CustomDirectoryRolePermission:CustomDirectoryRolePermission": {
+            "properties": {
+                "allowedResourceActions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedResourceActions"
+            ]
+        },
         "azuread:index/GroupDynamicMembership:GroupDynamicMembership": {
             "properties": {
                 "enabled": {
@@ -4081,6 +4101,122 @@
                     "state": {
                         "type": "string",
                         "description": "Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/customDirectoryRole:CustomDirectoryRole": {
+            "description": "\n\n\n## Import\n\nThis resource does not support importing. ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the custom directory role.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the custom directory role.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the role is enabled for assignment.\n"
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The object ID of the custom directory role.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/CustomDirectoryRolePermission:CustomDirectoryRolePermission"
+                    },
+                    "description": "A collection of `permissions` blocks as documented below.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "- The version of the role definition. This can be any arbitrary string between 1-128 characters.\n"
+                }
+            },
+            "required": [
+                "displayName",
+                "enabled",
+                "objectId",
+                "permissions",
+                "templateId",
+                "version"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the custom directory role.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the custom directory role.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Indicates whether the role is enabled for assignment.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/CustomDirectoryRolePermission:CustomDirectoryRolePermission"
+                    },
+                    "description": "A collection of `permissions` blocks as documented below.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "- The version of the role definition. This can be any arbitrary string between 1-128 characters.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "enabled",
+                "permissions",
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering CustomDirectoryRole resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the custom directory role.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the custom directory role.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indicates whether the role is enabled for assignment.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The object ID of the custom directory role.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/CustomDirectoryRolePermission:CustomDirectoryRolePermission"
+                        },
+                        "description": "A collection of `permissions` blocks as documented below.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "- The version of the role definition. This can be any arbitrary string between 1-128 characters.\n"
                     }
                 },
                 "type": "object"
