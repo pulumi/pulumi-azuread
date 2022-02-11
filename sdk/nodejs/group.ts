@@ -147,7 +147,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
      */
-    public readonly autoSubscribeNewMembers!: pulumi.Output<boolean | undefined>;
+    public readonly autoSubscribeNewMembers!: pulumi.Output<boolean>;
     /**
      * A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
      */
@@ -167,15 +167,15 @@ export class Group extends pulumi.CustomResource {
     /**
      * Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
      */
-    public readonly externalSendersAllowed!: pulumi.Output<boolean | undefined>;
+    public readonly externalSendersAllowed!: pulumi.Output<boolean>;
     /**
      * Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
      */
-    public readonly hideFromAddressLists!: pulumi.Output<boolean | undefined>;
+    public readonly hideFromAddressLists!: pulumi.Output<boolean>;
     /**
      * Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
      */
-    public readonly hideFromOutlookClients!: pulumi.Output<boolean | undefined>;
+    public readonly hideFromOutlookClients!: pulumi.Output<boolean>;
     /**
      * The SMTP address for the group.
      */

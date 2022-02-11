@@ -47,7 +47,7 @@ namespace Pulumi.AzureAD
         /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         /// </summary>
         [Output("autoSubscribeNewMembers")]
-        public Output<bool?> AutoSubscribeNewMembers { get; private set; } = null!;
+        public Output<bool> AutoSubscribeNewMembers { get; private set; } = null!;
 
         /// <summary>
         /// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
@@ -77,19 +77,19 @@ namespace Pulumi.AzureAD
         /// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
         /// </summary>
         [Output("externalSendersAllowed")]
-        public Output<bool?> ExternalSendersAllowed { get; private set; } = null!;
+        public Output<bool> ExternalSendersAllowed { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
         /// </summary>
         [Output("hideFromAddressLists")]
-        public Output<bool?> HideFromAddressLists { get; private set; } = null!;
+        public Output<bool> HideFromAddressLists { get; private set; } = null!;
 
         /// <summary>
         /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
         /// </summary>
         [Output("hideFromOutlookClients")]
-        public Output<bool?> HideFromOutlookClients { get; private set; } = null!;
+        public Output<bool> HideFromOutlookClients { get; private set; } = null!;
 
         /// <summary>
         /// The SMTP address for the group.
