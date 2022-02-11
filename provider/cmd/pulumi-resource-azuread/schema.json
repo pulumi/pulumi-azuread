@@ -4453,7 +4453,11 @@
                 }
             },
             "required": [
+                "autoSubscribeNewMembers",
                 "displayName",
+                "externalSendersAllowed",
+                "hideFromAddressLists",
+                "hideFromOutlookClients",
                 "mail",
                 "mailNickname",
                 "members",

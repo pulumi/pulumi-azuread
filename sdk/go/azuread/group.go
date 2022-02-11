@@ -40,7 +40,7 @@ type Group struct {
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-	AutoSubscribeNewMembers pulumi.BoolPtrOutput `pulumi:"autoSubscribeNewMembers"`
+	AutoSubscribeNewMembers pulumi.BoolOutput `pulumi:"autoSubscribeNewMembers"`
 	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayOutput `pulumi:"behaviors"`
 	// The description for the group.
@@ -50,11 +50,11 @@ type Group struct {
 	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
 	DynamicMembership GroupDynamicMembershipPtrOutput `pulumi:"dynamicMembership"`
 	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-	ExternalSendersAllowed pulumi.BoolPtrOutput `pulumi:"externalSendersAllowed"`
+	ExternalSendersAllowed pulumi.BoolOutput `pulumi:"externalSendersAllowed"`
 	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-	HideFromAddressLists pulumi.BoolPtrOutput `pulumi:"hideFromAddressLists"`
+	HideFromAddressLists pulumi.BoolOutput `pulumi:"hideFromAddressLists"`
 	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-	HideFromOutlookClients pulumi.BoolPtrOutput `pulumi:"hideFromOutlookClients"`
+	HideFromOutlookClients pulumi.BoolOutput `pulumi:"hideFromOutlookClients"`
 	// The SMTP address for the group.
 	Mail pulumi.StringOutput `pulumi:"mail"`
 	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).

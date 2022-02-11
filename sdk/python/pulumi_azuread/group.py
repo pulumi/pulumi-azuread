@@ -1076,7 +1076,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="autoSubscribeNewMembers")
-    def auto_subscribe_new_members(self) -> pulumi.Output[Optional[bool]]:
+    def auto_subscribe_new_members(self) -> pulumi.Output[bool]:
         """
         Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         """
@@ -1116,7 +1116,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="externalSendersAllowed")
-    def external_senders_allowed(self) -> pulumi.Output[Optional[bool]]:
+    def external_senders_allowed(self) -> pulumi.Output[bool]:
         """
         Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
         """
@@ -1124,7 +1124,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hideFromAddressLists")
-    def hide_from_address_lists(self) -> pulumi.Output[Optional[bool]]:
+    def hide_from_address_lists(self) -> pulumi.Output[bool]:
         """
         Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
         """
@@ -1132,7 +1132,7 @@ class Group(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="hideFromOutlookClients")
-    def hide_from_outlook_clients(self) -> pulumi.Output[Optional[bool]]:
+    def hide_from_outlook_clients(self) -> pulumi.Output[bool]:
         """
         Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
         """
