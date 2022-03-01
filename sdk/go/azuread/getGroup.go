@@ -33,11 +33,9 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "MyGroupName"
-// 		opt1 := true
 // 		_, err := azuread.LookupGroup(ctx, &GetGroupArgs{
-// 			DisplayName:     &opt0,
-// 			SecurityEnabled: &opt1,
+// 			DisplayName:     pulumi.StringRef("MyGroupName"),
+// 			SecurityEnabled: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

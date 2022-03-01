@@ -10,6 +10,51 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var example = new AzureAD.CustomDirectoryRole("example", new AzureAD.CustomDirectoryRoleArgs
+    ///         {
+    ///             Description = "Allows reading applications and updating groups",
+    ///             DisplayName = "My Custom Role",
+    ///             Enabled = true,
+    ///             Permissions = 
+    ///             {
+    ///                 new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///                 {
+    ///                     AllowedResourceActions = 
+    ///                     {
+    ///                         "microsoft.directory/applications/basic/update",
+    ///                         "microsoft.directory/applications/create",
+    ///                         "microsoft.directory/applications/standard/read",
+    ///                     },
+    ///                 },
+    ///                 new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///                 {
+    ///                     AllowedResourceActions = 
+    ///                     {
+    ///                         "microsoft.directory/groups/allProperties/read",
+    ///                         "microsoft.directory/groups/allProperties/read",
+    ///                         "microsoft.directory/groups/basic/update",
+    ///                         "microsoft.directory/groups/create",
+    ///                         "microsoft.directory/groups/delete",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Version = "1.0",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// This resource does not support importing.

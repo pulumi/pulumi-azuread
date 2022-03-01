@@ -5,6 +5,48 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const authorized = new azuread.Application("authorized", {displayName: "example-authorized-app"});
+ * const authorizer = new azuread.Application("authorizer", {
+ *     displayName: "example-authorizing-app",
+ *     api: {
+ *         oauth2PermissionScopes: [
+ *             {
+ *                 adminConsentDescription: "Administer the application",
+ *                 adminConsentDisplayName: "Administer",
+ *                 enabled: true,
+ *                 id: "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+ *                 type: "Admin",
+ *                 value: "administer",
+ *             },
+ *             {
+ *                 adminConsentDescription: "Access the application",
+ *                 adminConsentDisplayName: "Access",
+ *                 enabled: true,
+ *                 id: "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+ *                 type: "User",
+ *                 userConsentDescription: "Access the application",
+ *                 userConsentDisplayName: "Access",
+ *                 value: "user_impersonation",
+ *             },
+ *         ],
+ *     },
+ * });
+ * const example = new azuread.ApplicationPreAuthorized("example", {
+ *     applicationObjectId: authorizer.objectId,
+ *     authorizedAppId: authorized.applicationId,
+ *     permissionIds: [
+ *         "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+ *         "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+ *     ],
+ * });
+ * ```
+ *
  * ## Import
  *
  * Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

@@ -151,9 +151,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "Marketo"
 // 		exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName: pulumi.StringRef("Marketo"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

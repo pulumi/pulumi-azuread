@@ -938,6 +938,142 @@ class Application(pulumi.CustomResource):
                  web: Optional[pulumi.Input[pulumi.InputType['ApplicationWebArgs']]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        *Create an application*
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.Application("example",
+            display_name="example",
+            identifier_uris=["api://example-app"],
+            logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
+            owners=[current.object_id],
+            sign_in_audience="AzureADMultipleOrgs",
+            api=azuread.ApplicationApiArgs(
+                mapped_claims_enabled=True,
+                requested_access_token_version=2,
+                known_client_applications=[
+                    azuread_application["known1"]["application_id"],
+                    azuread_application["known2"]["application_id"],
+                ],
+                oauth2_permission_scopes=[
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
+                        admin_consent_display_name="Access example",
+                        enabled=True,
+                        id="96183846-204b-4b43-82e1-5d2222eb4b9b",
+                        type="User",
+                        user_consent_description="Allow the application to access example on your behalf.",
+                        user_consent_display_name="Access example",
+                        value="user_impersonation",
+                    ),
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Administer the example application",
+                        admin_consent_display_name="Administer",
+                        enabled=True,
+                        id="be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
+                        type="Admin",
+                        value="administer",
+                    ),
+                ],
+            ),
+            app_roles=[
+                azuread.ApplicationAppRoleArgs(
+                    allowed_member_types=[
+                        "User",
+                        "Application",
+                    ],
+                    description="Admins can manage roles and perform all task actions",
+                    display_name="Admin",
+                    enabled=True,
+                    id="1b19509b-32b1-4e9f-b71d-4992aa991967",
+                    value="admin",
+                ),
+                azuread.ApplicationAppRoleArgs(
+                    allowed_member_types=["User"],
+                    description="ReadOnly roles have limited query access",
+                    display_name="ReadOnly",
+                    enabled=True,
+                    id="497406e4-012a-4267-bf18-45a1cb148a01",
+                    value="User",
+                ),
+            ],
+            feature_tags=[azuread.ApplicationFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )],
+            optional_claims=azuread.ApplicationOptionalClaimsArgs(
+                access_tokens=[
+                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                        name="myclaim",
+                    ),
+                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                        name="otherclaim",
+                    ),
+                ],
+                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
+                    name="userclaim",
+                    source="user",
+                    essential=True,
+                    additional_properties=["emit_as_roles"],
+                )],
+                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
+                    name="samlexample",
+                )],
+            ),
+            required_resource_accesses=[
+                azuread.ApplicationRequiredResourceAccessArgs(
+                    resource_app_id="00000003-0000-0000-c000-000000000000",
+                    resource_accesses=[
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                            id="df021288-bdef-4463-88db-98f22de89214",
+                            type="Role",
+                        ),
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                            id="b4e74841-8e56-480b-be8b-910348b18b4c",
+                            type="Scope",
+                        ),
+                    ],
+                ),
+                azuread.ApplicationRequiredResourceAccessArgs(
+                    resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
+                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id="594c1fb6-4f81-4475-ae41-0c394909246c",
+                        type="Role",
+                    )],
+                ),
+            ],
+            web=azuread.ApplicationWebArgs(
+                homepage_url="https://app.example.net",
+                logout_url="https://app.example.net/logout",
+                redirect_uris=["https://app.example.net/account"],
+                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
+                    access_token_issuance_enabled=True,
+                    id_token_issuance_enabled=True,
+                ),
+            ))
+        ```
+
+        *Create application from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id)
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        ```
+
         ## Import
 
         Applications can be imported using their object ID, e.g.
@@ -980,6 +1116,142 @@ class Application(pulumi.CustomResource):
                  args: ApplicationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        *Create an application*
+
+        ```python
+        import pulumi
+        import base64
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.Application("example",
+            display_name="example",
+            identifier_uris=["api://example-app"],
+            logo_image=(lambda path: base64.b64encode(open(path).read().encode()).decode())("/path/to/logo.png"),
+            owners=[current.object_id],
+            sign_in_audience="AzureADMultipleOrgs",
+            api=azuread.ApplicationApiArgs(
+                mapped_claims_enabled=True,
+                requested_access_token_version=2,
+                known_client_applications=[
+                    azuread_application["known1"]["application_id"],
+                    azuread_application["known2"]["application_id"],
+                ],
+                oauth2_permission_scopes=[
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Allow the application to access example on behalf of the signed-in user.",
+                        admin_consent_display_name="Access example",
+                        enabled=True,
+                        id="96183846-204b-4b43-82e1-5d2222eb4b9b",
+                        type="User",
+                        user_consent_description="Allow the application to access example on your behalf.",
+                        user_consent_display_name="Access example",
+                        value="user_impersonation",
+                    ),
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Administer the example application",
+                        admin_consent_display_name="Administer",
+                        enabled=True,
+                        id="be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
+                        type="Admin",
+                        value="administer",
+                    ),
+                ],
+            ),
+            app_roles=[
+                azuread.ApplicationAppRoleArgs(
+                    allowed_member_types=[
+                        "User",
+                        "Application",
+                    ],
+                    description="Admins can manage roles and perform all task actions",
+                    display_name="Admin",
+                    enabled=True,
+                    id="1b19509b-32b1-4e9f-b71d-4992aa991967",
+                    value="admin",
+                ),
+                azuread.ApplicationAppRoleArgs(
+                    allowed_member_types=["User"],
+                    description="ReadOnly roles have limited query access",
+                    display_name="ReadOnly",
+                    enabled=True,
+                    id="497406e4-012a-4267-bf18-45a1cb148a01",
+                    value="User",
+                ),
+            ],
+            feature_tags=[azuread.ApplicationFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )],
+            optional_claims=azuread.ApplicationOptionalClaimsArgs(
+                access_tokens=[
+                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                        name="myclaim",
+                    ),
+                    azuread.ApplicationOptionalClaimsAccessTokenArgs(
+                        name="otherclaim",
+                    ),
+                ],
+                id_tokens=[azuread.ApplicationOptionalClaimsIdTokenArgs(
+                    name="userclaim",
+                    source="user",
+                    essential=True,
+                    additional_properties=["emit_as_roles"],
+                )],
+                saml2_tokens=[azuread.ApplicationOptionalClaimsSaml2TokenArgs(
+                    name="samlexample",
+                )],
+            ),
+            required_resource_accesses=[
+                azuread.ApplicationRequiredResourceAccessArgs(
+                    resource_app_id="00000003-0000-0000-c000-000000000000",
+                    resource_accesses=[
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                            id="df021288-bdef-4463-88db-98f22de89214",
+                            type="Role",
+                        ),
+                        azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                            id="b4e74841-8e56-480b-be8b-910348b18b4c",
+                            type="Scope",
+                        ),
+                    ],
+                ),
+                azuread.ApplicationRequiredResourceAccessArgs(
+                    resource_app_id="c5393580-f805-4401-95e8-94b7a6ef2fc2",
+                    resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id="594c1fb6-4f81-4475-ae41-0c394909246c",
+                        type="Role",
+                    )],
+                ),
+            ],
+            web=azuread.ApplicationWebArgs(
+                homepage_url="https://app.example.net",
+                logout_url="https://app.example.net/logout",
+                redirect_uris=["https://app.example.net/account"],
+                implicit_grant=azuread.ApplicationWebImplicitGrantArgs(
+                    access_token_issuance_enabled=True,
+                    id_token_issuance_enabled=True,
+                ),
+            ))
+        ```
+
+        *Create application from a gallery template*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Marketo")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id)
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        ```
+
         ## Import
 
         Applications can be imported using their object ID, e.g.
