@@ -11,6 +11,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
+// 			Description: pulumi.String("Allows reading applications and updating groups"),
+// 			DisplayName: pulumi.String("My Custom Role"),
+// 			Enabled:     pulumi.Bool(true),
+// 			Permissions: CustomDirectoryRolePermissionArray{
+// 				&CustomDirectoryRolePermissionArgs{
+// 					AllowedResourceActions: pulumi.StringArray{
+// 						pulumi.String("microsoft.directory/applications/basic/update"),
+// 						pulumi.String("microsoft.directory/applications/create"),
+// 						pulumi.String("microsoft.directory/applications/standard/read"),
+// 					},
+// 				},
+// 				&CustomDirectoryRolePermissionArgs{
+// 					AllowedResourceActions: pulumi.StringArray{
+// 						pulumi.String("microsoft.directory/groups/allProperties/read"),
+// 						pulumi.String("microsoft.directory/groups/allProperties/read"),
+// 						pulumi.String("microsoft.directory/groups/basic/update"),
+// 						pulumi.String("microsoft.directory/groups/create"),
+// 						pulumi.String("microsoft.directory/groups/delete"),
+// 					},
+// 				},
+// 			},
+// 			Version: pulumi.String("1.0"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // This resource does not support importing.

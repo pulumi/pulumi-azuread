@@ -11,6 +11,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		authorized, err := azuread.NewApplication(ctx, "authorized", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example-authorized-app"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example-authorizing-app"),
+// 			Api: &ApplicationApiArgs{
+// 				Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
+// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 						AdminConsentDescription: pulumi.String("Administer the application"),
+// 						AdminConsentDisplayName: pulumi.String("Administer"),
+// 						Enabled:                 pulumi.Bool(true),
+// 						Id:                      pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
+// 						Type:                    pulumi.String("Admin"),
+// 						Value:                   pulumi.String("administer"),
+// 					},
+// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 						AdminConsentDescription: pulumi.String("Access the application"),
+// 						AdminConsentDisplayName: pulumi.String("Access"),
+// 						Enabled:                 pulumi.Bool(true),
+// 						Id:                      pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
+// 						Type:                    pulumi.String("User"),
+// 						UserConsentDescription:  pulumi.String("Access the application"),
+// 						UserConsentDisplayName:  pulumi.String("Access"),
+// 						Value:                   pulumi.String("user_impersonation"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
+// 			ApplicationObjectId: authorizer.ObjectId,
+// 			AuthorizedAppId:     authorized.ApplicationId,
+// 			PermissionIds: pulumi.StringArray{
+// 				pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
+// 				pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
 // ## Import
 //
 // Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

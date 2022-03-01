@@ -129,6 +129,46 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        authorized = azuread.Application("authorized", display_name="example-authorized-app")
+        authorizer = azuread.Application("authorizer",
+            display_name="example-authorizing-app",
+            api=azuread.ApplicationApiArgs(
+                oauth2_permission_scopes=[
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Administer the application",
+                        admin_consent_display_name="Administer",
+                        enabled=True,
+                        id="ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                        type="Admin",
+                        value="administer",
+                    ),
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Access the application",
+                        admin_consent_display_name="Access",
+                        enabled=True,
+                        id="2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                        type="User",
+                        user_consent_description="Access the application",
+                        user_consent_display_name="Access",
+                        value="user_impersonation",
+                    ),
+                ],
+            ))
+        example = azuread.ApplicationPreAuthorized("example",
+            application_object_id=authorizer.object_id,
+            authorized_app_id=authorized.application_id,
+            permission_ids=[
+                "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+            ])
+        ```
+
         ## Import
 
         Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
@@ -152,6 +192,46 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                  args: ApplicationPreAuthorizedArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        authorized = azuread.Application("authorized", display_name="example-authorized-app")
+        authorizer = azuread.Application("authorizer",
+            display_name="example-authorizing-app",
+            api=azuread.ApplicationApiArgs(
+                oauth2_permission_scopes=[
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Administer the application",
+                        admin_consent_display_name="Administer",
+                        enabled=True,
+                        id="ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                        type="Admin",
+                        value="administer",
+                    ),
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Access the application",
+                        admin_consent_display_name="Access",
+                        enabled=True,
+                        id="2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                        type="User",
+                        user_consent_description="Access the application",
+                        user_consent_display_name="Access",
+                        value="user_impersonation",
+                    ),
+                ],
+            ))
+        example = azuread.ApplicationPreAuthorized("example",
+            application_object_id=authorizer.object_id,
+            authorized_app_id=authorized.application_id,
+            permission_ids=[
+                "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+            ])
+        ```
+
         ## Import
 
         Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.

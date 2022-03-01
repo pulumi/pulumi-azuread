@@ -32,9 +32,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "My First AzureAD Application"
 // 		example, err := azuread.LookupApplication(ctx, &GetApplicationArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName: pulumi.StringRef("My First AzureAD Application"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

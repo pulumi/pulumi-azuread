@@ -182,9 +182,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := true
 // 		exampleDomains, err := azuread.GetDomains(ctx, &GetDomainsArgs{
-// 			OnlyInitial: &opt0,
+// 			OnlyInitial: pulumi.BoolRef(true),
 // 		}, nil)
 // 		if err != nil {
 // 			return err

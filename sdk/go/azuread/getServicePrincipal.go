@@ -34,9 +34,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "my-awesome-application"
 // 		_, err := azuread.LookupServicePrincipal(ctx, &GetServicePrincipalArgs{
-// 			DisplayName: &opt0,
+// 			DisplayName: pulumi.StringRef("my-awesome-application"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -58,9 +57,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "00000000-0000-0000-0000-000000000000"
 // 		_, err := azuread.LookupServicePrincipal(ctx, &GetServicePrincipalArgs{
-// 			ApplicationId: &opt0,
+// 			ApplicationId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
@@ -82,9 +80,8 @@ import (
 //
 // func main() {
 // 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		opt0 := "00000000-0000-0000-0000-000000000000"
 // 		_, err := azuread.LookupServicePrincipal(ctx, &GetServicePrincipalArgs{
-// 			ObjectId: &opt0,
+// 			ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 // 		}, nil)
 // 		if err != nil {
 // 			return err
