@@ -7714,6 +7714,8 @@ type GetServicePrincipalsServicePrincipal struct {
 	ApplicationTenantId string `pulumi:"applicationTenantId"`
 	// The display name of the application associated with this service principal.
 	DisplayName string `pulumi:"displayName"`
+	// The object ID of the service principal.
+	ObjectId string `pulumi:"objectId"`
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
 	PreferredSingleSignOnMode string `pulumi:"preferredSingleSignOnMode"`
 	// The URL where the service exposes SAML metadata for federation.
@@ -7750,6 +7752,8 @@ type GetServicePrincipalsServicePrincipalArgs struct {
 	ApplicationTenantId pulumi.StringInput `pulumi:"applicationTenantId"`
 	// The display name of the application associated with this service principal.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The object ID of the service principal.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
 	PreferredSingleSignOnMode pulumi.StringInput `pulumi:"preferredSingleSignOnMode"`
 	// The URL where the service exposes SAML metadata for federation.
@@ -7838,6 +7842,11 @@ func (o GetServicePrincipalsServicePrincipalOutput) ApplicationTenantId() pulumi
 // The display name of the application associated with this service principal.
 func (o GetServicePrincipalsServicePrincipalOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The object ID of the service principal.
+func (o GetServicePrincipalsServicePrincipalOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
 // The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.

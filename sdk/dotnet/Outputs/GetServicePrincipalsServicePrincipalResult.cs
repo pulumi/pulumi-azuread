@@ -34,6 +34,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// The object ID of the service principal.
+        /// </summary>
+        public readonly string ObjectId;
+        /// <summary>
         /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
         /// </summary>
         public readonly string PreferredSingleSignOnMode;
@@ -70,6 +74,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string displayName,
 
+            string objectId,
+
             string preferredSingleSignOnMode,
 
             string samlMetadataUrl,
@@ -87,6 +93,7 @@ namespace Pulumi.AzureAD.Outputs
             ApplicationId = applicationId;
             ApplicationTenantId = applicationTenantId;
             DisplayName = displayName;
+            ObjectId = objectId;
             PreferredSingleSignOnMode = preferredSingleSignOnMode;
             SamlMetadataUrl = samlMetadataUrl;
             ServicePrincipalNames = servicePrincipalNames;

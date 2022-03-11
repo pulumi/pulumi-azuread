@@ -809,6 +809,10 @@ export interface GetServicePrincipalsServicePrincipal {
      */
     displayName: string;
     /**
+     * The object ID of the service principal.
+     */
+    objectId: string;
+    /**
      * The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
      */
     preferredSingleSignOnMode: string;
