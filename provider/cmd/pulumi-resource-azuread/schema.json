@@ -2611,6 +2611,15 @@
                         }
                     }
                 },
+                "objectId": {
+                    "type": "string",
+                    "description": "The object ID of the service principal.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
                 "preferredSingleSignOnMode": {
                     "type": "string",
                     "description": "The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.\n",
@@ -2679,6 +2688,7 @@
                 "applicationId",
                 "applicationTenantId",
                 "displayName",
+                "objectId",
                 "preferredSingleSignOnMode",
                 "samlMetadataUrl",
                 "servicePrincipalNames",
