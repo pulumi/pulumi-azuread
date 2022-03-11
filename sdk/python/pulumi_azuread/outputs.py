@@ -3258,6 +3258,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
                  application_id: str,
                  application_tenant_id: str,
                  display_name: str,
+                 object_id: str,
                  preferred_single_sign_on_mode: str,
                  saml_metadata_url: str,
                  service_principal_names: Sequence[str],
@@ -3270,6 +3271,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         :param str application_id: The application ID (client ID) of the application associated with this service principal.
         :param str application_tenant_id: The tenant ID where the associated application is registered.
         :param str display_name: The display name of the application associated with this service principal.
+        :param str object_id: The object ID of the service principal.
         :param str preferred_single_sign_on_mode: The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
         :param str saml_metadata_url: The URL where the service exposes SAML metadata for federation.
         :param Sequence[str] service_principal_names: A list of identifier URI(s), copied over from the associated application.
@@ -3282,6 +3284,7 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         pulumi.set(__self__, "application_id", application_id)
         pulumi.set(__self__, "application_tenant_id", application_tenant_id)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "object_id", object_id)
         pulumi.set(__self__, "preferred_single_sign_on_mode", preferred_single_sign_on_mode)
         pulumi.set(__self__, "saml_metadata_url", saml_metadata_url)
         pulumi.set(__self__, "service_principal_names", service_principal_names)
@@ -3328,6 +3331,14 @@ class GetServicePrincipalsServicePrincipalResult(dict):
         The display name of the application associated with this service principal.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        """
+        The object ID of the service principal.
+        """
+        return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="preferredSingleSignOnMode")
