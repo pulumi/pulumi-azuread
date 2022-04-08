@@ -123,6 +123,10 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: makeResource(mainMod, "ApplicationFederatedIdentityCredential"),
 			},
 			"azuread_custom_directory_role": {Tok: makeResource(mainMod, "CustomDirectoryRole")},
+			"azuread_claims_mapping_policy": {Tok: makeResource(mainMod, "ClaimsMappingPolicy")},
+			"azuread_service_principal_claims_mapping_policy_assignment": {
+				Tok: makeResource(mainMod, "ServicePrincipalClaimsMappingPolicyAssignment"),
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},
