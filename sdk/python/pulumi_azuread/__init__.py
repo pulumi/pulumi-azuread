@@ -13,6 +13,7 @@ from .application_certificate import *
 from .application_federated_identity_credential import *
 from .application_password import *
 from .application_pre_authorized import *
+from .claims_mapping_policy import *
 from .conditional_access_policy import *
 from .custom_directory_role import *
 from .directory_role import *
@@ -36,6 +37,7 @@ from .named_location import *
 from .provider import *
 from .service_principal import *
 from .service_principal_certificate import *
+from .service_principal_claims_mapping_policy_assignment import *
 from .service_principal_delegated_permission_grant import *
 from .service_principal_password import *
 from .user import *
@@ -118,6 +120,14 @@ _utilities.register(
  },
  {
   "pkg": "azuread",
+  "mod": "index/claimsMappingPolicy",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy": "ClaimsMappingPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/conditionalAccessPolicy",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -194,6 +204,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate": "ServicePrincipalCertificate"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/servicePrincipalClaimsMappingPolicyAssignment",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment": "ServicePrincipalClaimsMappingPolicyAssignment"
   }
  },
  {

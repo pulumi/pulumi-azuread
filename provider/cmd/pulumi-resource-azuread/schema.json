@@ -4031,6 +4031,60 @@
                 "type": "object"
             }
         },
+        "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy": {
+            "description": "Manages a Claims Mapping Policy within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` \n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst myPolicy = new azuread.ClaimsMappingPolicy(\"myPolicy\", {\n    definitions: [JSON.stringify({\n        ClaimsMappingPolicy: {\n            ClaimsSchema: [\n                {\n                    ID: \"employeeid\",\n                    JwtClaimType: \"name\",\n                    SamlClaimType: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name\",\n                    Source: \"user\",\n                },\n                {\n                    ID: \"tenantcountry\",\n                    JwtClaimType: \"country\",\n                    SamlClaimType: \"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country\",\n                    Source: \"company\",\n                },\n            ],\n            IncludeBasicClaimSet: \"true\",\n            Version: 1,\n        },\n    })],\n    description: \"Policy created with Terraform\",\n    displayName: \"My Policy\",\n});\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nClaims Mapping Policy can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "definitions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A string collection containing a JSON string that defines the rules and settings for this policy\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name for this Claims Mapping Policy.\n"
+                }
+            },
+            "required": [
+                "definitions",
+                "displayName"
+            ],
+            "inputProperties": {
+                "definitions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A string collection containing a JSON string that defines the rules and settings for this policy\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name for this Claims Mapping Policy.\n"
+                }
+            },
+            "requiredInputs": [
+                "definitions",
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ClaimsMappingPolicy resources.\n",
+                "properties": {
+                    "definitions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A string collection containing a JSON string that defines the rules and settings for this policy\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name for this Claims Mapping Policy.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy": {
             "description": "Manages a Conditional Access Policy within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.ConditionalAccessPolicy(\"example\", {\n    conditions: {\n        applications: {\n            excludedApplications: [\"00000004-0000-0ff1-ce00-000000000000\"],\n            includedApplications: [\"All\"],\n        },\n        clientAppTypes: [\"all\"],\n        devices: {\n            filter: {\n                mode: \"exclude\",\n                rule: \"device.operatingSystem eq \\\"Doors\\\"\",\n            },\n        },\n        locations: {\n            excludedLocations: [\"AllTrusted\"],\n            includedLocations: [\"All\"],\n        },\n        platforms: {\n            excludedPlatforms: [\"iOS\"],\n            includedPlatforms: [\"android\"],\n        },\n        signInRiskLevels: [\"medium\"],\n        userRiskLevels: [\"medium\"],\n        users: {\n            excludedUsers: [\"GuestsOrExternalUsers\"],\n            includedUsers: [\"All\"],\n        },\n    },\n    displayName: \"example policy\",\n    grantControls: {\n        builtInControls: [\"mfa\"],\n        operator: \"OR\",\n    },\n    sessionControls: {\n        applicationEnforcedRestrictions: [{\n            enabled: true,\n        }],\n        cloudAppSecurity: [{\n            cloudAppSecurityType: \"monitorOnly\",\n            enabled: true,\n        }],\n        signInFrequency: [{\n            enabled: true,\n            type: \"hours\",\n            value: 10,\n        }],\n    },\n    state: \"disabled\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.ConditionalAccessPolicy(\"example\",\n    conditions=azuread.ConditionalAccessPolicyConditionsArgs(\n        applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(\n            excluded_applications=[\"00000004-0000-0ff1-ce00-000000000000\"],\n            included_applications=[\"All\"],\n        ),\n        client_app_types=[\"all\"],\n        devices=azuread.ConditionalAccessPolicyConditionsDevicesArgs(\n            filter=azuread.ConditionalAccessPolicyConditionsDevicesFilterArgs(\n                mode=\"exclude\",\n                rule=\"device.operatingSystem eq \\\"Doors\\\"\",\n            ),\n        ),\n        locations=azuread.ConditionalAccessPolicyConditionsLocationsArgs(\n            excluded_locations=[\"AllTrusted\"],\n            included_locations=[\"All\"],\n        ),\n        platforms=azuread.ConditionalAccessPolicyConditionsPlatformsArgs(\n            excluded_platforms=[\"iOS\"],\n            included_platforms=[\"android\"],\n        ),\n        sign_in_risk_levels=[\"medium\"],\n        user_risk_levels=[\"medium\"],\n        users=azuread.ConditionalAccessPolicyConditionsUsersArgs(\n            excluded_users=[\"GuestsOrExternalUsers\"],\n            included_users=[\"All\"],\n        ),\n    ),\n    display_name=\"example policy\",\n    grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(\n        built_in_controls=[\"mfa\"],\n        operator=\"OR\",\n    ),\n    session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(\n        application_enforced_restrictions=[{\n            \"enabled\": True,\n        }],\n        cloud_app_security=[{\n            \"cloudAppSecurityType\": \"monitorOnly\",\n            \"enabled\": True,\n        }],\n        sign_in_frequency=[{\n            \"enabled\": True,\n            \"type\": \"hours\",\n            \"value\": 10,\n        }],\n    ),\n    state=\"disabled\")\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var example = new AzureAD.ConditionalAccessPolicy(\"example\", new AzureAD.ConditionalAccessPolicyArgs\n        {\n            Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs\n            {\n                Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs\n                {\n                    ExcludedApplications = \n                    {\n                        \"00000004-0000-0ff1-ce00-000000000000\",\n                    },\n                    IncludedApplications = \n                    {\n                        \"All\",\n                    },\n                },\n                ClientAppTypes = \n                {\n                    \"all\",\n                },\n                Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs\n                {\n                    Filter = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs\n                    {\n                        Mode = \"exclude\",\n                        Rule = \"device.operatingSystem eq \\\"Doors\\\"\",\n                    },\n                },\n                Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs\n                {\n                    ExcludedLocations = \n                    {\n                        \"AllTrusted\",\n                    },\n                    IncludedLocations = \n                    {\n                        \"All\",\n                    },\n                },\n                Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs\n                {\n                    ExcludedPlatforms = \n                    {\n                        \"iOS\",\n                    },\n                    IncludedPlatforms = \n                    {\n                        \"android\",\n                    },\n                },\n                SignInRiskLevels = \n                {\n                    \"medium\",\n                },\n                UserRiskLevels = \n                {\n                    \"medium\",\n                },\n                Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs\n                {\n                    ExcludedUsers = \n                    {\n                        \"GuestsOrExternalUsers\",\n                    },\n                    IncludedUsers = \n                    {\n                        \"All\",\n                    },\n                },\n            },\n            DisplayName = \"example policy\",\n            GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs\n            {\n                BuiltInControls = \n                {\n                    \"mfa\",\n                },\n                Operator = \"OR\",\n            },\n            SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs\n            {\n                ApplicationEnforcedRestrictions = \n                {\n                    \n                    {\n                        { \"enabled\", true },\n                    },\n                },\n                CloudAppSecurity = \n                {\n                    \n                    {\n                        { \"cloudAppSecurityType\", \"monitorOnly\" },\n                        { \"enabled\", true },\n                    },\n                },\n                SignInFrequency = \n                {\n                    \n                    {\n                        { \"enabled\", true },\n                        { \"type\", \"hours\" },\n                        { \"value\", 10 },\n                    },\n                },\n            },\n            State = \"disabled\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewConditionalAccessPolicy(ctx, \"example\", \u0026azuread.ConditionalAccessPolicyArgs{\n\t\t\tConditions: \u0026ConditionalAccessPolicyConditionsArgs{\n\t\t\t\tApplications: \u0026ConditionalAccessPolicyConditionsApplicationsArgs{\n\t\t\t\t\tExcludedApplications: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"00000004-0000-0ff1-ce00-000000000000\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedApplications: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"All\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tClientAppTypes: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"all\"),\n\t\t\t\t},\n\t\t\t\tDevices: \u0026ConditionalAccessPolicyConditionsDevicesArgs{\n\t\t\t\t\tFilter: \u0026ConditionalAccessPolicyConditionsDevicesFilterArgs{\n\t\t\t\t\t\tMode: pulumi.String(\"exclude\"),\n\t\t\t\t\t\tRule: pulumi.String(\"device.operatingSystem eq \\\"Doors\\\"\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tLocations: \u0026ConditionalAccessPolicyConditionsLocationsArgs{\n\t\t\t\t\tExcludedLocations: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"AllTrusted\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedLocations: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"All\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tPlatforms: \u0026ConditionalAccessPolicyConditionsPlatformsArgs{\n\t\t\t\t\tExcludedPlatforms: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"iOS\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedPlatforms: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"android\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSignInRiskLevels: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"medium\"),\n\t\t\t\t},\n\t\t\t\tUserRiskLevels: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"medium\"),\n\t\t\t\t},\n\t\t\t\tUsers: \u0026ConditionalAccessPolicyConditionsUsersArgs{\n\t\t\t\t\tExcludedUsers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"GuestsOrExternalUsers\"),\n\t\t\t\t\t},\n\t\t\t\t\tIncludedUsers: pulumi.StringArray{\n\t\t\t\t\t\tpulumi.String(\"All\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tDisplayName: pulumi.String(\"example policy\"),\n\t\t\tGrantControls: \u0026ConditionalAccessPolicyGrantControlsArgs{\n\t\t\t\tBuiltInControls: pulumi.StringArray{\n\t\t\t\t\tpulumi.String(\"mfa\"),\n\t\t\t\t},\n\t\t\t\tOperator: pulumi.String(\"OR\"),\n\t\t\t},\n\t\t\tSessionControls: \u0026ConditionalAccessPolicySessionControlsArgs{\n\t\t\t\tApplicationEnforcedRestrictions: []map[string]interface{}{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"enabled\": true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tCloudAppSecurity: []map[string]interface{}{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"cloudAppSecurityType\": \"monitorOnly\",\n\t\t\t\t\t\t\"enabled\":              true,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\tSignInFrequency: pulumi.Int{\n\t\t\t\t\tmap[string]interface{}{\n\t\t\t\t\t\t\"enabled\": true,\n\t\t\t\t\t\t\"type\":    \"hours\",\n\t\t\t\t\t\t\"value\":   10,\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tState: pulumi.String(\"disabled\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nConditional Access Policies can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
@@ -5450,6 +5504,51 @@
                     "value": {
                         "type": "string",
                         "description": "The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment": {
+            "description": "## \n\n---\nsubcategory: \"Service Principals\"\n---\n\n# Resource: azuread.ServicePrincipalClaimsMappingPolicyAssignment\n\nManages a Claims Mapping Policy Assignment within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` \n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst app = new azuread.ServicePrincipalClaimsMappingPolicyAssignment(\"app\", {\n    claimsMappingPolicyId: azuread_claims_mapping_policy.my_policy.id,\n    servicePrincipalId: azuread_service_principal.my_principal.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\napp = azuread.ServicePrincipalClaimsMappingPolicyAssignment(\"app\",\n    claims_mapping_policy_id=azuread_claims_mapping_policy[\"my_policy\"][\"id\"],\n    service_principal_id=azuread_service_principal[\"my_principal\"][\"id\"])\n```\n```csharp\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment(\"app\", new AzureAD.ServicePrincipalClaimsMappingPolicyAssignmentArgs\n        {\n            ClaimsMappingPolicyId = azuread_claims_mapping_policy.My_policy.Id,\n            ServicePrincipalId = azuread_service_principal.My_principal.Id,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewServicePrincipalClaimsMappingPolicyAssignment(ctx, \"app\", \u0026azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs{\n\t\t\tClaimsMappingPolicyId: pulumi.Any(azuread_claims_mapping_policy.My_policy.Id),\n\t\t\tServicePrincipalId:    pulumi.Any(azuread_service_principal.My_principal.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nClaims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g\n\n```sh\n $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app 00000000-0000-0000-0000-000000000000/claimsMappingPolicy/11111111-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "claimsMappingPolicyId": {
+                    "type": "string",
+                    "description": "The ID of the claims mapping policy to assign.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The object ID of the service principal for the policy assignment.\n"
+                }
+            },
+            "required": [
+                "claimsMappingPolicyId",
+                "servicePrincipalId"
+            ],
+            "inputProperties": {
+                "claimsMappingPolicyId": {
+                    "type": "string",
+                    "description": "The ID of the claims mapping policy to assign.\n"
+                },
+                "servicePrincipalId": {
+                    "type": "string",
+                    "description": "The object ID of the service principal for the policy assignment.\n"
+                }
+            },
+            "requiredInputs": [
+                "claimsMappingPolicyId",
+                "servicePrincipalId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServicePrincipalClaimsMappingPolicyAssignment resources.\n",
+                "properties": {
+                    "claimsMappingPolicyId": {
+                        "type": "string",
+                        "description": "The ID of the claims mapping policy to assign.\n"
+                    },
+                    "servicePrincipalId": {
+                        "type": "string",
+                        "description": "The object ID of the service principal for the policy assignment.\n"
                     }
                 },
                 "type": "object"

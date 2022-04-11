@@ -13,6 +13,7 @@ export * from "./applicationCertificate";
 export * from "./applicationFederatedIdentityCredential";
 export * from "./applicationPassword";
 export * from "./applicationPreAuthorized";
+export * from "./claimsMappingPolicy";
 export * from "./conditionalAccessPolicy";
 export * from "./customDirectoryRole";
 export * from "./directoryRole";
@@ -36,6 +37,7 @@ export * from "./namedLocation";
 export * from "./provider";
 export * from "./servicePrincipal";
 export * from "./servicePrincipalCertificate";
+export * from "./servicePrincipalClaimsMappingPolicyAssignment";
 export * from "./servicePrincipalDelegatedPermissionGrant";
 export * from "./servicePrincipalPassword";
 export * from "./user";
@@ -58,6 +60,7 @@ import { ApplicationCertificate } from "./applicationCertificate";
 import { ApplicationFederatedIdentityCredential } from "./applicationFederatedIdentityCredential";
 import { ApplicationPassword } from "./applicationPassword";
 import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
+import { ClaimsMappingPolicy } from "./claimsMappingPolicy";
 import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
 import { CustomDirectoryRole } from "./customDirectoryRole";
 import { DirectoryRole } from "./directoryRole";
@@ -68,6 +71,7 @@ import { Invitation } from "./invitation";
 import { NamedLocation } from "./namedLocation";
 import { ServicePrincipal } from "./servicePrincipal";
 import { ServicePrincipalCertificate } from "./servicePrincipalCertificate";
+import { ServicePrincipalClaimsMappingPolicyAssignment } from "./servicePrincipalClaimsMappingPolicyAssignment";
 import { ServicePrincipalDelegatedPermissionGrant } from "./servicePrincipalDelegatedPermissionGrant";
 import { ServicePrincipalPassword } from "./servicePrincipalPassword";
 import { User } from "./user";
@@ -92,6 +96,8 @@ const _module = {
                 return new ApplicationPassword(name, <any>undefined, { urn })
             case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
                 return new ApplicationPreAuthorized(name, <any>undefined, { urn })
+            case "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy":
+                return new ClaimsMappingPolicy(name, <any>undefined, { urn })
             case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
                 return new ConditionalAccessPolicy(name, <any>undefined, { urn })
             case "azuread:index/customDirectoryRole:CustomDirectoryRole":
@@ -112,6 +118,8 @@ const _module = {
                 return new ServicePrincipal(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
                 return new ServicePrincipalCertificate(name, <any>undefined, { urn })
+            case "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment":
+                return new ServicePrincipalClaimsMappingPolicyAssignment(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant":
                 return new ServicePrincipalDelegatedPermissionGrant(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
@@ -131,6 +139,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate",
 pulumi.runtime.registerResourceModule("azuread", "index/applicationFederatedIdentityCredential", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationPreAuthorized", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/claimsMappingPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/customDirectoryRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRole", _module)
@@ -141,6 +150,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/invitation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/namedLocation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipal", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertificate", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalClaimsMappingPolicyAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalDelegatedPermissionGrant", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)

@@ -36,6 +36,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ApplicationPassword{}
 	case "azuread:index/applicationPreAuthorized:ApplicationPreAuthorized":
 		r = &ApplicationPreAuthorized{}
+	case "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy":
+		r = &ClaimsMappingPolicy{}
 	case "azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy":
 		r = &ConditionalAccessPolicy{}
 	case "azuread:index/customDirectoryRole:CustomDirectoryRole":
@@ -56,6 +58,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePrincipal{}
 	case "azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate":
 		r = &ServicePrincipalCertificate{}
+	case "azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment":
+		r = &ServicePrincipalClaimsMappingPolicyAssignment{}
 	case "azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant":
 		r = &ServicePrincipalDelegatedPermissionGrant{}
 	case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
@@ -135,6 +139,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/claimsMappingPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/conditionalAccessPolicy",
 		&module{version},
 	)
@@ -181,6 +190,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/servicePrincipalCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/servicePrincipalClaimsMappingPolicyAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
