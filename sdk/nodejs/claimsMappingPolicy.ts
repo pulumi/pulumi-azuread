@@ -42,7 +42,6 @@ import * as utilities from "./utilities";
  *             Version: 1,
  *         },
  *     })],
- *     description: "Policy created with Terraform",
  *     displayName: "My Policy",
  * });
  * ```

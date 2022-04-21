@@ -497,8 +497,8 @@ github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmX
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0 h1:AWFdqyfnOj04sxTdaAF57QqvW7XXrT8PseUHkbKsE8I=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220408013451-c302cae286e5 h1:XvaeRTq4NsUiN5jgIka/WtdsFG8Px/Hs98otGKVx5wk=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220408013451-c302cae286e5/go.mod h1:WLxVqX5HbBz9CxbeKvz2DAQzfo98UQb0dYpfA47QGTY=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220421193301-9a3dbd7ca2d7 h1:6buQ1DuGFJN1a4mwA/pgs0J0ejauOXoiNYiBHmahQhg=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20220421193301-9a3dbd7ca2d7/go.mod h1:k0JAWs9Go7wjXDcs+EKL2wQ+ciol3agfBe36yfN7Zhk=
 github.com/hashicorp/terraform-registry-address v0.0.0-20210412075316-9b2996cce896/go.mod h1:bzBPnUIkI0RxauU8Dqo+2KrZZ28Cf48s8V6IHt3p4co=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220131103327-5c1c5e123275 h1:x/8cnK295F9NK18FXxsJxU1bz2PusWH52DDDsuao+88=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220131103327-5c1c5e123275/go.mod h1:bdLC+qQlJIBHKbCMA6GipcuaKjmjcvZlnVdpU583z3Y=
@@ -586,8 +586,8 @@ github.com/leodido/go-urn v1.2.0/go.mod h1:+8+nEpDfqqsY+g338gtMEUOtuK+4dEMhiQEgx
 github.com/lib/pq v1.10.0/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
 github.com/lib/pq v1.10.1/go.mod h1:AlVN5x4E4T544tWzH6hKfbfQvm3HdbOxrmggDNAPY9o=
 github.com/magiconair/properties v1.8.0/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
-github.com/manicminer/hamilton v0.43.0 h1:X/XrzLWFhPx1mlLBycqgKRcIjM9vfCd/QR5YnJKIDTI=
-github.com/manicminer/hamilton v0.43.0/go.mod h1:lbVyngC+/nCWuDp8UhC6Bw+bh7jcP/E+YwqzHTmzemk=
+github.com/manicminer/hamilton v0.45.0 h1:LSbKARKc7pRVZaD1MEkyVDdm7fmgkZSnSobWn1xDYog=
+github.com/manicminer/hamilton v0.45.0/go.mod h1:lbVyngC+/nCWuDp8UhC6Bw+bh7jcP/E+YwqzHTmzemk=
 github.com/matryer/is v1.2.0/go.mod h1:2fLPjFQM9rhQ15aVEtbuwhJinnOqrmgXPNdZsdwlWXA=
 github.com/mattn/go-colorable v0.0.9/go.mod h1:9vuHe8Xs5qXnSaW/c/ABM9alt+Vo+STaOChaDxuIBZU=
 github.com/mattn/go-colorable v0.1.1/go.mod h1:FuOcm+DKB9mbwrcAfNl7/TZVBZ6rcnceauSikq3lYCQ=

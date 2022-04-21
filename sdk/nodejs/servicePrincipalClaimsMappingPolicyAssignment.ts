@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## 
- *
- * ***
- * subcategory: "Service Principals"
- * ---
- *
- * # Resource: azuread.ServicePrincipalClaimsMappingPolicyAssignment
- *
  * Manages a Claims Mapping Policy Assignment within Azure Active Directory.
  *
  * ## API Permissions

@@ -28,11 +28,11 @@ namespace Pulumi.AzureAD.Outputs
         /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
-        public readonly Outputs.ConditionalAccessPolicyConditionsLocations Locations;
+        public readonly Outputs.ConditionalAccessPolicyConditionsLocations? Locations;
         /// <summary>
         /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         /// </summary>
-        public readonly Outputs.ConditionalAccessPolicyConditionsPlatforms Platforms;
+        public readonly Outputs.ConditionalAccessPolicyConditionsPlatforms? Platforms;
         /// <summary>
         /// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         /// </summary>
@@ -54,9 +54,9 @@ namespace Pulumi.AzureAD.Outputs
 
             Outputs.ConditionalAccessPolicyConditionsDevices? devices,
 
-            Outputs.ConditionalAccessPolicyConditionsLocations locations,
+            Outputs.ConditionalAccessPolicyConditionsLocations? locations,
 
-            Outputs.ConditionalAccessPolicyConditionsPlatforms platforms,
+            Outputs.ConditionalAccessPolicyConditionsPlatforms? platforms,
 
             ImmutableArray<string> signInRiskLevels,
 
