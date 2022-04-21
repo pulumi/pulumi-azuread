@@ -258,11 +258,11 @@ export interface ConditionalAccessPolicyConditions {
     /**
      * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      */
-    locations: outputs.ConditionalAccessPolicyConditionsLocations;
+    locations?: outputs.ConditionalAccessPolicyConditionsLocations;
     /**
      * A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
      */
-    platforms: outputs.ConditionalAccessPolicyConditionsPlatforms;
+    platforms?: outputs.ConditionalAccessPolicyConditionsPlatforms;
     /**
      * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
@@ -283,11 +283,11 @@ export interface ConditionalAccessPolicyConditionsApplications {
      */
     excludedApplications?: string[];
     /**
-     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      */
-    includedApplications: string[];
+    includedApplications?: string[];
     /**
-     * A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+     * A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      */
     includedUserActions?: string[];
 }

@@ -20,6 +20,56 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         var myPolicy = new AzureAD.ClaimsMappingPolicy("myPolicy", new AzureAD.ClaimsMappingPolicyArgs
+    ///         {
+    ///             Definitions = 
+    ///             {
+    ///                 JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     { "ClaimsMappingPolicy", new Dictionary&lt;string, object?&gt;
+    ///                     {
+    ///                         { "ClaimsSchema", new[]
+    ///                             {
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     { "ID", "employeeid" },
+    ///                                     { "JwtClaimType", "name" },
+    ///                                     { "SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
+    ///                                     { "Source", "user" },
+    ///                                 },
+    ///                                 new Dictionary&lt;string, object?&gt;
+    ///                                 {
+    ///                                     { "ID", "tenantcountry" },
+    ///                                     { "JwtClaimType", "country" },
+    ///                                     { "SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country" },
+    ///                                     { "Source", "company" },
+    ///                                 },
+    ///                             }
+    ///                          },
+    ///                         { "IncludeBasicClaimSet", "true" },
+    ///                         { "Version", 1 },
+    ///                     } },
+    ///                 }),
+    ///             },
+    ///             DisplayName = "My Policy",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Claims Mapping Policy can be imported using the `id`, e.g.

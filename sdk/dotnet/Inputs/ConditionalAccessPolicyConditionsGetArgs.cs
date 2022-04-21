@@ -39,14 +39,14 @@ namespace Pulumi.AzureAD.Inputs
         /// <summary>
         /// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         /// </summary>
-        [Input("locations", required: true)]
-        public Input<Inputs.ConditionalAccessPolicyConditionsLocationsGetArgs> Locations { get; set; } = null!;
+        [Input("locations")]
+        public Input<Inputs.ConditionalAccessPolicyConditionsLocationsGetArgs>? Locations { get; set; }
 
         /// <summary>
         /// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         /// </summary>
-        [Input("platforms", required: true)]
-        public Input<Inputs.ConditionalAccessPolicyConditionsPlatformsGetArgs> Platforms { get; set; } = null!;
+        [Input("platforms")]
+        public Input<Inputs.ConditionalAccessPolicyConditionsPlatformsGetArgs>? Platforms { get; set; }
 
         [Input("signInRiskLevels")]
         private InputList<string>? _signInRiskLevels;

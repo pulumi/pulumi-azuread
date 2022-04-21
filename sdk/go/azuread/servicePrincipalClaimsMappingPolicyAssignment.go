@@ -11,14 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ##
-//
-// ***
-// subcategory: "Service Principals"
-// ---
-//
-// # Resource: ServicePrincipalClaimsMappingPolicyAssignment
-//
 // Manages a Claims Mapping Policy Assignment within Azure Active Directory.
 //
 // ## API Permissions

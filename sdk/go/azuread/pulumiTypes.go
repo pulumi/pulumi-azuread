@@ -2023,9 +2023,9 @@ type ConditionalAccessPolicyConditions struct {
 	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 	Devices *ConditionalAccessPolicyConditionsDevices `pulumi:"devices"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-	Locations ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
+	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-	Platforms ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
+	Platforms *ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
 	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	SignInRiskLevels []string `pulumi:"signInRiskLevels"`
 	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2053,9 +2053,9 @@ type ConditionalAccessPolicyConditionsArgs struct {
 	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 	Devices ConditionalAccessPolicyConditionsDevicesPtrInput `pulumi:"devices"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-	Locations ConditionalAccessPolicyConditionsLocationsInput `pulumi:"locations"`
+	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-	Platforms ConditionalAccessPolicyConditionsPlatformsInput `pulumi:"platforms"`
+	Platforms ConditionalAccessPolicyConditionsPlatformsPtrInput `pulumi:"platforms"`
 	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	SignInRiskLevels pulumi.StringArrayInput `pulumi:"signInRiskLevels"`
 	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2159,17 +2159,17 @@ func (o ConditionalAccessPolicyConditionsOutput) Devices() ConditionalAccessPoli
 }
 
 // A `locations` block as documented below, which specifies locations included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsLocations {
+func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
 		return v.Locations
-	}).(ConditionalAccessPolicyConditionsLocationsOutput)
+	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
 // A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsOutput {
-	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsPlatforms {
+func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
 		return v.Platforms
-	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
+	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
 // A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2247,7 +2247,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAcces
 		if v == nil {
 			return nil
 		}
-		return &v.Locations
+		return v.Locations
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
@@ -2257,7 +2257,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAcces
 		if v == nil {
 			return nil
 		}
-		return &v.Platforms
+		return v.Platforms
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
@@ -2294,9 +2294,9 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPol
 type ConditionalAccessPolicyConditionsApplications struct {
 	// A list of application IDs explicitly excluded from the policy.
 	ExcludedApplications []string `pulumi:"excludedApplications"`
-	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications []string `pulumi:"includedApplications"`
-	// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedUserActions []string `pulumi:"includedUserActions"`
 }
 
@@ -2314,9 +2314,9 @@ type ConditionalAccessPolicyConditionsApplicationsInput interface {
 type ConditionalAccessPolicyConditionsApplicationsArgs struct {
 	// A list of application IDs explicitly excluded from the policy.
 	ExcludedApplications pulumi.StringArrayInput `pulumi:"excludedApplications"`
-	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications pulumi.StringArrayInput `pulumi:"includedApplications"`
-	// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedUserActions pulumi.StringArrayInput `pulumi:"includedUserActions"`
 }
 
@@ -2402,12 +2402,12 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) ExcludedApplication
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.ExcludedApplications }).(pulumi.StringArrayOutput)
 }
 
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedApplications }).(pulumi.StringArrayOutput)
 }
 
-// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedUserActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedUserActions }).(pulumi.StringArrayOutput)
 }
@@ -2446,7 +2446,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplicat
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`.
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
@@ -2456,7 +2456,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplicat
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of user actions to include. Supported values are `urn:user:registersecurityinfo` and `urn:user:registerdevice`.
+// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {

@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
-    /// ## 
-    /// 
-    /// ***
-    /// subcategory: "Service Principals"
-    /// ---
-    /// 
-    /// # Resource: azuread.ServicePrincipalClaimsMappingPolicyAssignment
-    /// 
     /// Manages a Claims Mapping Policy Assignment within Azure Active Directory.
     /// 
     /// ## API Permissions

@@ -97,14 +97,6 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## 
-
-        ***
-        subcategory: "Service Principals"
-        ---
-
-        # Resource: ServicePrincipalClaimsMappingPolicyAssignment
-
         Manages a Claims Mapping Policy Assignment within Azure Active Directory.
 
         ## API Permissions
@@ -146,14 +138,6 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
                  args: ServicePrincipalClaimsMappingPolicyAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## 
-
-        ***
-        subcategory: "Service Principals"
-        ---
-
-        # Resource: ServicePrincipalClaimsMappingPolicyAssignment
-
         Manages a Claims Mapping Policy Assignment within Azure Active Directory.
 
         ## API Permissions
