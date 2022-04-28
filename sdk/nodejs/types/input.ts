@@ -323,11 +323,11 @@ export interface ConditionalAccessPolicyConditionsLocations {
 
 export interface ConditionalAccessPolicyConditionsPlatforms {
     /**
-     * A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+     * A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
     excludedPlatforms?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+     * A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      */
     includedPlatforms: pulumi.Input<pulumi.Input<string>[]>;
 }

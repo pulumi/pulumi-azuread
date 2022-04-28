@@ -2918,9 +2918,9 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) IncludedLocations()
 }
 
 type ConditionalAccessPolicyConditionsPlatforms struct {
-	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	ExcludedPlatforms []string `pulumi:"excludedPlatforms"`
-	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	IncludedPlatforms []string `pulumi:"includedPlatforms"`
 }
 
@@ -2936,9 +2936,9 @@ type ConditionalAccessPolicyConditionsPlatformsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsPlatformsArgs struct {
-	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	ExcludedPlatforms pulumi.StringArrayInput `pulumi:"excludedPlatforms"`
-	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	IncludedPlatforms pulumi.StringArrayInput `pulumi:"includedPlatforms"`
 }
 
@@ -3019,12 +3019,12 @@ func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPol
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
-// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.ExcludedPlatforms }).(pulumi.StringArrayOutput)
 }
 
-// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.IncludedPlatforms }).(pulumi.StringArrayOutput)
 }
@@ -3053,7 +3053,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) Elem() ConditionalA
 	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
 }
 
-// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
 		if v == nil {
@@ -3063,7 +3063,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms()
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
 		if v == nil {

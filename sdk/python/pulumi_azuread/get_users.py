@@ -140,10 +140,10 @@ def get_users(ignore_missing: Optional[bool] = None,
     ```
 
 
-    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param Sequence[str] mail_nicknames: The email aliases of the users.
     :param Sequence[str] object_ids: The object IDs of the users.
-    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
     :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
     """
     __args__ = dict()
@@ -199,10 +199,10 @@ def get_users_output(ignore_missing: Optional[pulumi.Input[Optional[bool]]] = No
     ```
 
 
-    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param Sequence[str] mail_nicknames: The email aliases of the users.
     :param Sequence[str] object_ids: The object IDs of the users.
-    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
     :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
     """
     ...

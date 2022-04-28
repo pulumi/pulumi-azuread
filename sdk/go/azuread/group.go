@@ -41,7 +41,7 @@ type Group struct {
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers pulumi.BoolOutput `pulumi:"autoSubscribeNewMembers"`
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayOutput `pulumi:"behaviors"`
 	// The description for the group.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -131,7 +131,7 @@ type groupState struct {
 	AssignableToRole *bool `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors []string `pulumi:"behaviors"`
 	// The description for the group.
 	Description *string `pulumi:"description"`
@@ -190,7 +190,7 @@ type GroupState struct {
 	AssignableToRole pulumi.BoolPtrInput
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers pulumi.BoolPtrInput
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayInput
 	// The description for the group.
 	Description pulumi.StringPtrInput
@@ -253,7 +253,7 @@ type groupArgs struct {
 	AssignableToRole *bool `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors []string `pulumi:"behaviors"`
 	// The description for the group.
 	Description *string `pulumi:"description"`
@@ -295,7 +295,7 @@ type GroupArgs struct {
 	AssignableToRole pulumi.BoolPtrInput
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers pulumi.BoolPtrInput
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
 	Behaviors pulumi.StringArrayInput
 	// The description for the group.
 	Description pulumi.StringPtrInput

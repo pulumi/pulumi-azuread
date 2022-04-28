@@ -83,6 +83,7 @@ export function getGroups(args?: GetGroupsArgs, opts?: pulumi.InvokeOptions): Pr
     return pulumi.runtime.invoke("azuread:index/getGroups:getGroups", {
         "displayNamePrefix": args.displayNamePrefix,
         "displayNames": args.displayNames,
+        "ignoreMissing": args.ignoreMissing,
         "mailEnabled": args.mailEnabled,
         "objectIds": args.objectIds,
         "returnAll": args.returnAll,
@@ -103,6 +104,10 @@ export interface GetGroupsArgs {
      */
     displayNames?: string[];
     /**
+     * Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
+     */
+    ignoreMissing?: boolean;
+    /**
      * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      */
     mailEnabled?: boolean;
@@ -111,7 +116,7 @@ export interface GetGroupsArgs {
      */
     objectIds?: string[];
     /**
-     * A flag to denote if all groups should be fetched and returned.
+     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
      */
     returnAll?: boolean;
     /**
@@ -133,6 +138,7 @@ export interface GetGroupsResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    readonly ignoreMissing?: boolean;
     readonly mailEnabled: boolean;
     /**
      * The object IDs of the groups.
@@ -159,6 +165,10 @@ export interface GetGroupsOutputArgs {
      */
     displayNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
+     */
+    ignoreMissing?: pulumi.Input<boolean>;
+    /**
      * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
      */
     mailEnabled?: pulumi.Input<boolean>;
@@ -167,7 +177,7 @@ export interface GetGroupsOutputArgs {
      */
     objectIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A flag to denote if all groups should be fetched and returned.
+     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
      */
     returnAll?: pulumi.Input<boolean>;
     /**

@@ -98,7 +98,7 @@ namespace Pulumi.AzureAD
     public sealed class GetUsersArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
         /// </summary>
         [Input("ignoreMissing")]
         public bool? IgnoreMissing { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AzureAD
     public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
         /// </summary>
         [Input("ignoreMissing")]
         public Input<bool>? IgnoreMissing { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.
+        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }

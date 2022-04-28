@@ -51,7 +51,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetUsersArgs {
     /**
-     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      */
     ignoreMissing?: boolean;
     /**
@@ -63,7 +63,7 @@ export interface GetUsersArgs {
      */
     objectIds?: string[];
     /**
-     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
      */
     returnAll?: boolean;
     /**
@@ -109,7 +109,7 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetUsersOutputArgs {
     /**
-     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      */
     ignoreMissing?: pulumi.Input<boolean>;
     /**
@@ -121,7 +121,7 @@ export interface GetUsersOutputArgs {
      */
     objectIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
      */
     returnAll?: pulumi.Input<boolean>;
     /**

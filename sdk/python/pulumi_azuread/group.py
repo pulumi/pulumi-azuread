@@ -39,7 +39,7 @@ class GroupArgs:
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
         :param pulumi.Input[bool] external_senders_allowed: Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
@@ -134,7 +134,7 @@ class GroupArgs:
     @pulumi.getter
     def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "behaviors")
 
@@ -358,7 +358,7 @@ class _GroupState:
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input['GroupDynamicMembershipArgs'] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
@@ -470,7 +470,7 @@ class _GroupState:
     @pulumi.getter
     def behaviors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "behaviors")
 
@@ -833,7 +833,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
@@ -1005,7 +1005,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         :param pulumi.Input[str] description: The description for the group.
         :param pulumi.Input[str] display_name: The display name for the group.
         :param pulumi.Input[pulumi.InputType['GroupDynamicMembershipArgs']] dynamic_membership: A `dynamic_membership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
@@ -1086,7 +1086,7 @@ class Group(pulumi.CustomResource):
     @pulumi.getter
     def behaviors(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+        A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "behaviors")
 

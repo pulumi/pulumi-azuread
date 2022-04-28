@@ -1205,8 +1205,8 @@ class ConditionalAccessPolicyConditionsPlatformsArgs:
                  included_platforms: pulumi.Input[Sequence[pulumi.Input[str]]],
                  excluded_platforms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         pulumi.set(__self__, "included_platforms", included_platforms)
         if excluded_platforms is not None:
@@ -1216,7 +1216,7 @@ class ConditionalAccessPolicyConditionsPlatformsArgs:
     @pulumi.getter(name="includedPlatforms")
     def included_platforms(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         return pulumi.get(self, "included_platforms")
 
@@ -1228,7 +1228,7 @@ class ConditionalAccessPolicyConditionsPlatformsArgs:
     @pulumi.getter(name="excludedPlatforms")
     def excluded_platforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         return pulumi.get(self, "excluded_platforms")
 

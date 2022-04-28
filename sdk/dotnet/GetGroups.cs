@@ -268,6 +268,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// </summary>
+        [Input("ignoreMissing")]
+        public bool? IgnoreMissing { get; set; }
+
+        /// <summary>
         /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
         /// </summary>
         [Input("mailEnabled")]
@@ -286,7 +292,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A flag to denote if all groups should be fetched and returned.
+        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
@@ -323,6 +329,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// </summary>
+        [Input("ignoreMissing")]
+        public Input<bool>? IgnoreMissing { get; set; }
+
+        /// <summary>
         /// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
         /// </summary>
         [Input("mailEnabled")]
@@ -341,7 +353,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A flag to denote if all groups should be fetched and returned.
+        /// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }
@@ -370,6 +382,7 @@ namespace Pulumi.AzureAD
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly bool? IgnoreMissing;
         public readonly bool MailEnabled;
         /// <summary>
         /// The object IDs of the groups.
@@ -386,6 +399,8 @@ namespace Pulumi.AzureAD
 
             string id,
 
+            bool? ignoreMissing,
+
             bool mailEnabled,
 
             ImmutableArray<string> objectIds,
@@ -397,6 +412,7 @@ namespace Pulumi.AzureAD
             DisplayNamePrefix = displayNamePrefix;
             DisplayNames = displayNames;
             Id = id;
+            IgnoreMissing = ignoreMissing;
             MailEnabled = mailEnabled;
             ObjectIds = objectIds;
             ReturnAll = returnAll;

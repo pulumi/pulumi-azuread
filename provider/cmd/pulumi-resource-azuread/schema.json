@@ -873,7 +873,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.\n",
+                    "description": "A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -885,7 +885,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.\n",
+                    "description": "A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -4393,7 +4393,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
+                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
                 },
                 "description": {
                     "type": "string",
@@ -4545,7 +4545,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
+                    "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
                 },
                 "description": {
                     "type": "string",
@@ -4643,7 +4643,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
+                        "description": "A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.\n"
                     },
                     "description": {
                         "type": "string",
@@ -7042,6 +7042,10 @@
                         },
                         "description": "The display names of the groups.\n"
                     },
+                    "ignoreMissing": {
+                        "type": "boolean",
+                        "description": "Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.\n"
+                    },
                     "mailEnabled": {
                         "type": "boolean",
                         "description": "Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.\n"
@@ -7055,7 +7059,7 @@
                     },
                     "returnAll": {
                         "type": "boolean",
-                        "description": "A flag to denote if all groups should be fetched and returned.\n"
+                        "description": "A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.\n"
                     },
                     "securityEnabled": {
                         "type": "boolean",
@@ -7080,6 +7084,9 @@
                     "id": {
                         "type": "string",
                         "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "ignoreMissing": {
+                        "type": "boolean"
                     },
                     "mailEnabled": {
                         "type": "boolean"
@@ -7671,7 +7678,7 @@
                 "properties": {
                     "ignoreMissing": {
                         "type": "boolean",
-                        "description": "Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.\n"
+                        "description": "Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.\n"
                     },
                     "mailNicknames": {
                         "type": "array",
@@ -7689,7 +7696,7 @@
                     },
                     "returnAll": {
                         "type": "boolean",
-                        "description": "When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to false.\n"
+                        "description": "When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.\n"
                     },
                     "userPrincipalNames": {
                         "type": "array",

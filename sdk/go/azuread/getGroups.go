@@ -152,11 +152,13 @@ type GetGroupsArgs struct {
 	DisplayNamePrefix *string `pulumi:"displayNamePrefix"`
 	// The display names of the groups.
 	DisplayNames []string `pulumi:"displayNames"`
+	// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
+	IgnoreMissing *bool `pulumi:"ignoreMissing"`
 	// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
 	MailEnabled *bool `pulumi:"mailEnabled"`
 	// The object IDs of the groups.
 	ObjectIds []string `pulumi:"objectIds"`
-	// A flag to denote if all groups should be fetched and returned.
+	// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
 	ReturnAll *bool `pulumi:"returnAll"`
 	// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
@@ -168,8 +170,9 @@ type GetGroupsResult struct {
 	// The display names of the groups.
 	DisplayNames []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
-	Id          string `pulumi:"id"`
-	MailEnabled bool   `pulumi:"mailEnabled"`
+	Id            string `pulumi:"id"`
+	IgnoreMissing *bool  `pulumi:"ignoreMissing"`
+	MailEnabled   bool   `pulumi:"mailEnabled"`
 	// The object IDs of the groups.
 	ObjectIds       []string `pulumi:"objectIds"`
 	ReturnAll       *bool    `pulumi:"returnAll"`
@@ -195,11 +198,13 @@ type GetGroupsOutputArgs struct {
 	DisplayNamePrefix pulumi.StringPtrInput `pulumi:"displayNamePrefix"`
 	// The display names of the groups.
 	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
+	// Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `returnAll`. Defaults to `false`.
+	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
 	// Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
 	MailEnabled pulumi.BoolPtrInput `pulumi:"mailEnabled"`
 	// The object IDs of the groups.
 	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
-	// A flag to denote if all groups should be fetched and returned.
+	// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
 	SecurityEnabled pulumi.BoolPtrInput `pulumi:"securityEnabled"`
@@ -236,6 +241,10 @@ func (o GetGroupsResultOutput) DisplayNames() pulumi.StringArrayOutput {
 // The provider-assigned unique ID for this managed resource.
 func (o GetGroupsResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupsResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetGroupsResultOutput) IgnoreMissing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGroupsResult) *bool { return v.IgnoreMissing }).(pulumi.BoolPtrOutput)
 }
 
 func (o GetGroupsResultOutput) MailEnabled() pulumi.BoolOutput {
