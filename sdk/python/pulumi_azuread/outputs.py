@@ -1298,8 +1298,8 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
                  included_platforms: Sequence[str],
                  excluded_platforms: Optional[Sequence[str]] = None):
         """
-        :param Sequence[str] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-        :param Sequence[str] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        :param Sequence[str] included_platforms: A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        :param Sequence[str] excluded_platforms: A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         pulumi.set(__self__, "included_platforms", included_platforms)
         if excluded_platforms is not None:
@@ -1309,7 +1309,7 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
     @pulumi.getter(name="includedPlatforms")
     def included_platforms(self) -> Sequence[str]:
         """
-        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         return pulumi.get(self, "included_platforms")
 
@@ -1317,7 +1317,7 @@ class ConditionalAccessPolicyConditionsPlatforms(dict):
     @pulumi.getter(name="excludedPlatforms")
     def excluded_platforms(self) -> Optional[Sequence[str]]:
         """
-        A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
+        A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
         """
         return pulumi.get(self, "excluded_platforms")
 

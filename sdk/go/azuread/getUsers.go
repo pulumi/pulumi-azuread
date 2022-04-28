@@ -56,13 +56,13 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
-	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
 	IgnoreMissing *bool `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
 	MailNicknames []string `pulumi:"mailNicknames"`
 	// The object IDs of the users.
 	ObjectIds []string `pulumi:"objectIds"`
-	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
 	ReturnAll *bool `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
@@ -99,13 +99,13 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
-	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Defaults to false.
+	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
 	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
 	MailNicknames pulumi.StringArrayInput `pulumi:"mailNicknames"`
 	// The object IDs of the users.
 	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
-	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to false.
+	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	UserPrincipalNames pulumi.StringArrayInput `pulumi:"userPrincipalNames"`
