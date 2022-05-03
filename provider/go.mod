@@ -5,7 +5,7 @@ go 1.16
 require (
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.21.0
-	github.com/pulumi/pulumi/sdk/v3 v3.30.0
+	github.com/pulumi/pulumi/sdk/v3 v3.31.0
 )
 
 replace (
