@@ -274,6 +274,41 @@ func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIden
 	return o
 }
 
+// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+func (o ApplicationFederatedIdentityCredentialOutput) ApplicationObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
+}
+
+// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+func (o ApplicationFederatedIdentityCredentialOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringArrayOutput { return v.Audiences }).(pulumi.StringArrayOutput)
+}
+
+// A UUID used to uniquely identify this federated identity credential.
+func (o ApplicationFederatedIdentityCredentialOutput) CredentialId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.CredentialId }).(pulumi.StringOutput)
+}
+
+// A description for the federated identity credential.
+func (o ApplicationFederatedIdentityCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
+func (o ApplicationFederatedIdentityCredentialOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
+func (o ApplicationFederatedIdentityCredentialOutput) Issuer() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.Issuer }).(pulumi.StringOutput)
+}
+
+// The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+func (o ApplicationFederatedIdentityCredentialOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
+}
+
 type ApplicationFederatedIdentityCredentialArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFederatedIdentityCredentialArrayOutput) ElementType() reflect.Type {

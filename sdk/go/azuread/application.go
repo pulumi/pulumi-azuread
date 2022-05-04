@@ -642,6 +642,161 @@ func (o ApplicationOutput) ToApplicationOutputWithContext(ctx context.Context) A
 	return o
 }
 
+// An `api` block as documented below, which configures API related settings for this application.
+func (o ApplicationOutput) Api() ApplicationApiPtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationApiPtrOutput { return v.Api }).(ApplicationApiPtrOutput)
+}
+
+// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+func (o ApplicationOutput) AppRoleIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringMapOutput { return v.AppRoleIds }).(pulumi.StringMapOutput)
+}
+
+// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+func (o ApplicationOutput) AppRoles() ApplicationAppRoleArrayOutput {
+	return o.ApplyT(func(v *Application) ApplicationAppRoleArrayOutput { return v.AppRoles }).(ApplicationAppRoleArrayOutput)
+}
+
+// The Application ID (also called Client ID).
+func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+func (o ApplicationOutput) DeviceOnlyAuthEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.DeviceOnlyAuthEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+func (o ApplicationOutput) DisabledByMicrosoft() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.DisabledByMicrosoft }).(pulumi.StringOutput)
+}
+
+// The display name for the application.
+func (o ApplicationOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+func (o ApplicationOutput) FallbackPublicClientEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.FallbackPublicClientEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+func (o ApplicationOutput) FeatureTags() ApplicationFeatureTagArrayOutput {
+	return o.ApplyT(func(v *Application) ApplicationFeatureTagArrayOutput { return v.FeatureTags }).(ApplicationFeatureTagArrayOutput)
+}
+
+// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+func (o ApplicationOutput) GroupMembershipClaims() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.GroupMembershipClaims }).(pulumi.StringArrayOutput)
+}
+
+// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+func (o ApplicationOutput) IdentifierUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.IdentifierUris }).(pulumi.StringArrayOutput)
+}
+
+// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+func (o ApplicationOutput) LogoImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.LogoImage }).(pulumi.StringPtrOutput)
+}
+
+// CDN URL to the application's logo, as uploaded with the `logoImage` property.
+func (o ApplicationOutput) LogoUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.LogoUrl }).(pulumi.StringOutput)
+}
+
+// URL of the application's marketing page.
+func (o ApplicationOutput) MarketingUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.MarketingUrl }).(pulumi.StringPtrOutput)
+}
+
+// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+func (o ApplicationOutput) Oauth2PermissionScopeIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringMapOutput { return v.Oauth2PermissionScopeIds }).(pulumi.StringMapOutput)
+}
+
+// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+func (o ApplicationOutput) Oauth2PostResponseRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.Oauth2PostResponseRequired }).(pulumi.BoolPtrOutput)
+}
+
+// The application's object ID.
+func (o ApplicationOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// An `optionalClaims` block as documented below.
+func (o ApplicationOutput) OptionalClaims() ApplicationOptionalClaimsPtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationOptionalClaimsPtrOutput { return v.OptionalClaims }).(ApplicationOptionalClaimsPtrOutput)
+}
+
+// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+func (o ApplicationOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+func (o ApplicationOutput) PreventDuplicateNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.BoolPtrOutput { return v.PreventDuplicateNames }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the application's privacy statement.
+func (o ApplicationOutput) PrivacyStatementUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.PrivacyStatementUrl }).(pulumi.StringPtrOutput)
+}
+
+// A `publicClient` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
+func (o ApplicationOutput) PublicClient() ApplicationPublicClientPtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationPublicClientPtrOutput { return v.PublicClient }).(ApplicationPublicClientPtrOutput)
+}
+
+// The verified publisher domain for the application.
+func (o ApplicationOutput) PublisherDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.PublisherDomain }).(pulumi.StringOutput)
+}
+
+// A collection of `requiredResourceAccess` blocks as documented below.
+func (o ApplicationOutput) RequiredResourceAccesses() ApplicationRequiredResourceAccessArrayOutput {
+	return o.ApplyT(func(v *Application) ApplicationRequiredResourceAccessArrayOutput { return v.RequiredResourceAccesses }).(ApplicationRequiredResourceAccessArrayOutput)
+}
+
+// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+func (o ApplicationOutput) SignInAudience() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.SignInAudience }).(pulumi.StringPtrOutput)
+}
+
+// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
+func (o ApplicationOutput) SinglePageApplication() ApplicationSinglePageApplicationPtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationSinglePageApplicationPtrOutput { return v.SinglePageApplication }).(ApplicationSinglePageApplicationPtrOutput)
+}
+
+// URL of the application's support page.
+func (o ApplicationOutput) SupportUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.SupportUrl }).(pulumi.StringPtrOutput)
+}
+
+// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+func (o ApplicationOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+func (o ApplicationOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// URL of the application's terms of service statement.
+func (o ApplicationOutput) TermsOfServiceUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.TermsOfServiceUrl }).(pulumi.StringPtrOutput)
+}
+
+// A `web` block as documented below, which configures web related settings for this application.
+func (o ApplicationOutput) Web() ApplicationWebPtrOutput {
+	return o.ApplyT(func(v *Application) ApplicationWebPtrOutput { return v.Web }).(ApplicationWebPtrOutput)
+}
+
 type ApplicationArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationArrayOutput) ElementType() reflect.Type {

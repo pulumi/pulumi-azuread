@@ -162,6 +162,54 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 	return o
 }
 
+// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
+func (o ProviderOutput) ClientCertificate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertificate }).(pulumi.StringPtrOutput)
+}
+
+// The password to decrypt the Client Certificate. For use when authenticating as a Service Principal using a Client
+// Certificate
+func (o ProviderOutput) ClientCertificatePassword() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertificatePassword }).(pulumi.StringPtrOutput)
+}
+
+// The path to the Client Certificate associated with the Service Principal for use when authenticating as a Service
+// Principal using a Client Certificate
+func (o ProviderOutput) ClientCertificatePath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientCertificatePath }).(pulumi.StringPtrOutput)
+}
+
+// The Client ID which should be used for service principal authentication
+func (o ProviderOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The application password to use when authenticating as a Service Principal using a Client Secret
+func (o ProviderOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClientSecret }).(pulumi.StringPtrOutput)
+}
+
+// The cloud environment which should be used. Possible values are: `global` (also `public`), `usgovernmentl4` (also
+// `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
+func (o ProviderOutput) Environment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Environment }).(pulumi.StringPtrOutput)
+}
+
+// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
+func (o ProviderOutput) MsiEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MsiEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
+func (o ProviderOutput) PartnerId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.PartnerId }).(pulumi.StringPtrOutput)
+}
+
+// The Tenant ID which should be used. Works with all authentication methods except Managed Identity
+func (o ProviderOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ProviderInput)(nil)).Elem(), &Provider{})
 	pulumi.RegisterOutputType(ProviderOutput{})

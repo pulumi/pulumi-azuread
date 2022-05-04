@@ -215,6 +215,20 @@ func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ToServicePrincipalC
 	return o
 }
 
+// The ID of the claims mapping policy to assign.
+func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ClaimsMappingPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalClaimsMappingPolicyAssignment) pulumi.StringOutput {
+		return v.ClaimsMappingPolicyId
+	}).(pulumi.StringOutput)
+}
+
+// The object ID of the service principal for the policy assignment.
+func (o ServicePrincipalClaimsMappingPolicyAssignmentOutput) ServicePrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalClaimsMappingPolicyAssignment) pulumi.StringOutput {
+		return v.ServicePrincipalId
+	}).(pulumi.StringOutput)
+}
+
 type ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput) ElementType() reflect.Type {

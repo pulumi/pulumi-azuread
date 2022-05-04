@@ -326,6 +326,33 @@ func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyOutputWithContex
 	return o
 }
 
+// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
+func (o ConditionalAccessPolicyOutput) Conditions() ConditionalAccessPolicyConditionsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicyConditionsOutput { return v.Conditions }).(ConditionalAccessPolicyConditionsOutput)
+}
+
+// The friendly name for this Conditional Access Policy.
+func (o ConditionalAccessPolicyOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
+func (o ConditionalAccessPolicyOutput) GrantControls() ConditionalAccessPolicyGrantControlsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicyGrantControlsOutput { return v.GrantControls }).(ConditionalAccessPolicyGrantControlsOutput)
+}
+
+// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+func (o ConditionalAccessPolicyOutput) SessionControls() ConditionalAccessPolicySessionControlsPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicySessionControlsPtrOutput {
+		return v.SessionControls
+	}).(ConditionalAccessPolicySessionControlsPtrOutput)
+}
+
+// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
+func (o ConditionalAccessPolicyOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
 type ConditionalAccessPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyArrayOutput) ElementType() reflect.Type {

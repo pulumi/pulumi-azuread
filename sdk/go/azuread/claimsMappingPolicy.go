@@ -243,6 +243,16 @@ func (o ClaimsMappingPolicyOutput) ToClaimsMappingPolicyOutputWithContext(ctx co
 	return o
 }
 
+// A string collection containing a JSON string that defines the rules and settings for this policy
+func (o ClaimsMappingPolicyOutput) Definitions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClaimsMappingPolicy) pulumi.StringArrayOutput { return v.Definitions }).(pulumi.StringArrayOutput)
+}
+
+// The display name for this Claims Mapping Policy.
+func (o ClaimsMappingPolicyOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ClaimsMappingPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
 type ClaimsMappingPolicyArrayOutput struct{ *pulumi.OutputState }
 
 func (ClaimsMappingPolicyArrayOutput) ElementType() reflect.Type {

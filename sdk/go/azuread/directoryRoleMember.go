@@ -222,6 +222,16 @@ func (o DirectoryRoleMemberOutput) ToDirectoryRoleMemberOutputWithContext(ctx co
 	return o
 }
 
+// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+func (o DirectoryRoleMemberOutput) MemberObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryRoleMember) pulumi.StringPtrOutput { return v.MemberObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
+func (o DirectoryRoleMemberOutput) RoleObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DirectoryRoleMember) pulumi.StringPtrOutput { return v.RoleObjectId }).(pulumi.StringPtrOutput)
+}
+
 type DirectoryRoleMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleMemberArrayOutput) ElementType() reflect.Type {

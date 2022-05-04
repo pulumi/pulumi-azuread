@@ -366,6 +366,30 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelega
 	return o
 }
 
+// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+func (o ServicePrincipalDelegatedPermissionGrantOutput) ClaimValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringArrayOutput { return v.ClaimValues }).(pulumi.StringArrayOutput)
+}
+
+// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+func (o ServicePrincipalDelegatedPermissionGrantOutput) ResourceServicePrincipalObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringOutput {
+		return v.ResourceServicePrincipalObjectId
+	}).(pulumi.StringOutput)
+}
+
+// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+func (o ServicePrincipalDelegatedPermissionGrantOutput) ServicePrincipalObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringOutput {
+		return v.ServicePrincipalObjectId
+	}).(pulumi.StringOutput)
+}
+
+// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+func (o ServicePrincipalDelegatedPermissionGrantOutput) UserObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringPtrOutput { return v.UserObjectId }).(pulumi.StringPtrOutput)
+}
+
 type ServicePrincipalDelegatedPermissionGrantArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalDelegatedPermissionGrantArrayOutput) ElementType() reflect.Type {
