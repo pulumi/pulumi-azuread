@@ -224,6 +224,16 @@ func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberOutputWithCont
 	return o
 }
 
+// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+func (o AdministrativeUnitMemberOutput) AdministrativeUnitObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdministrativeUnitMember) pulumi.StringPtrOutput { return v.AdministrativeUnitObjectId }).(pulumi.StringPtrOutput)
+}
+
+// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+func (o AdministrativeUnitMemberOutput) MemberObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdministrativeUnitMember) pulumi.StringPtrOutput { return v.MemberObjectId }).(pulumi.StringPtrOutput)
+}
+
 type AdministrativeUnitMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitMemberArrayOutput) ElementType() reflect.Type {

@@ -273,6 +273,41 @@ func (o CustomDirectoryRoleOutput) ToCustomDirectoryRoleOutputWithContext(ctx co
 	return o
 }
 
+// The description of the custom directory role.
+func (o CustomDirectoryRoleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the custom directory role.
+func (o CustomDirectoryRoleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Indicates whether the role is enabled for assignment.
+func (o CustomDirectoryRoleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The object ID of the custom directory role.
+func (o CustomDirectoryRoleOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// A collection of `permissions` blocks as documented below.
+func (o CustomDirectoryRoleOutput) Permissions() CustomDirectoryRolePermissionArrayOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) CustomDirectoryRolePermissionArrayOutput { return v.Permissions }).(CustomDirectoryRolePermissionArrayOutput)
+}
+
+// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
+func (o CustomDirectoryRoleOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+func (o CustomDirectoryRoleOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
+}
+
 type CustomDirectoryRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (CustomDirectoryRoleArrayOutput) ElementType() reflect.Type {

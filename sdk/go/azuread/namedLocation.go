@@ -241,6 +241,21 @@ func (o NamedLocationOutput) ToNamedLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
+// A `country` block as documented below, which configures a country-based named location.
+func (o NamedLocationOutput) Country() NamedLocationCountryPtrOutput {
+	return o.ApplyT(func(v *NamedLocation) NamedLocationCountryPtrOutput { return v.Country }).(NamedLocationCountryPtrOutput)
+}
+
+// The friendly name for this named location.
+func (o NamedLocationOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *NamedLocation) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// An `ip` block as documented below, which configures an IP-based named location.
+func (o NamedLocationOutput) Ip() NamedLocationIpPtrOutput {
+	return o.ApplyT(func(v *NamedLocation) NamedLocationIpPtrOutput { return v.Ip }).(NamedLocationIpPtrOutput)
+}
+
 type NamedLocationArrayOutput struct{ *pulumi.OutputState }
 
 func (NamedLocationArrayOutput) ElementType() reflect.Type {

@@ -224,6 +224,36 @@ func (o AdministrativeUnitOutput) ToAdministrativeUnitOutputWithContext(ctx cont
 	return o
 }
 
+// The description of the administrative unit.
+func (o AdministrativeUnitOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The display name of the administrative unit.
+func (o AdministrativeUnitOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+func (o AdministrativeUnitOutput) HiddenMembershipEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdministrativeUnit) pulumi.BoolPtrOutput { return v.HiddenMembershipEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+func (o AdministrativeUnitOutput) Members() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
+}
+
+// The object ID of the administrative unit.
+func (o AdministrativeUnitOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// If `true`, will return an error if an existing administrative unit is found with the same name
+func (o AdministrativeUnitOutput) PreventDuplicateNames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AdministrativeUnit) pulumi.BoolPtrOutput { return v.PreventDuplicateNames }).(pulumi.BoolPtrOutput)
+}
+
 type AdministrativeUnitArrayOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitArrayOutput) ElementType() reflect.Type {

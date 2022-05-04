@@ -567,6 +567,155 @@ func (o ServicePrincipalOutput) ToServicePrincipalOutputWithContext(ctx context.
 	return o
 }
 
+// Whether or not the service principal account is enabled. Defaults to `true`.
+func (o ServicePrincipalOutput) AccountEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.AccountEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+func (o ServicePrincipalOutput) AlternativeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.AlternativeNames }).(pulumi.StringArrayOutput)
+}
+
+// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+func (o ServicePrincipalOutput) AppRoleAssignmentRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.AppRoleAssignmentRequired }).(pulumi.BoolPtrOutput)
+}
+
+// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+func (o ServicePrincipalOutput) AppRoleIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringMapOutput { return v.AppRoleIds }).(pulumi.StringMapOutput)
+}
+
+// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+func (o ServicePrincipalOutput) AppRoles() ServicePrincipalAppRoleArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalAppRoleArrayOutput { return v.AppRoles }).(ServicePrincipalAppRoleArrayOutput)
+}
+
+// The application ID (client ID) of the application for which to create a service principal.
+func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The tenant ID where the associated application is registered.
+func (o ServicePrincipalOutput) ApplicationTenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationTenantId }).(pulumi.StringOutput)
+}
+
+// A description of the service principal provided for internal end-users.
+func (o ServicePrincipalOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Display name for the app role that appears during app role assignment and in consent experiences.
+func (o ServicePrincipalOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+func (o ServicePrincipalOutput) FeatureTags() ServicePrincipalFeatureTagArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalFeatureTagArrayOutput { return v.FeatureTags }).(ServicePrincipalFeatureTagArrayOutput)
+}
+
+// Block of features to configure for this service principal using tags
+//
+// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
+func (o ServicePrincipalOutput) Features() ServicePrincipalFeatureArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalFeatureArrayOutput { return v.Features }).(ServicePrincipalFeatureArrayOutput)
+}
+
+// Home page or landing page of the associated application.
+func (o ServicePrincipalOutput) HomepageUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.HomepageUrl }).(pulumi.StringOutput)
+}
+
+// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+func (o ServicePrincipalOutput) LoginUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.LoginUrl }).(pulumi.StringPtrOutput)
+}
+
+// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+func (o ServicePrincipalOutput) LogoutUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.LogoutUrl }).(pulumi.StringOutput)
+}
+
+// A free text field to capture information about the service principal, typically used for operational purposes.
+func (o ServicePrincipalOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
+// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+func (o ServicePrincipalOutput) NotificationEmailAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.NotificationEmailAddresses }).(pulumi.StringArrayOutput)
+}
+
+// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+func (o ServicePrincipalOutput) Oauth2PermissionScopeIds() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringMapOutput { return v.Oauth2PermissionScopeIds }).(pulumi.StringMapOutput)
+}
+
+// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
+func (o ServicePrincipalOutput) Oauth2PermissionScopes() ServicePrincipalOauth2PermissionScopeArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalOauth2PermissionScopeArrayOutput {
+		return v.Oauth2PermissionScopes
+	}).(ServicePrincipalOauth2PermissionScopeArrayOutput)
+}
+
+// The object ID of the service principal.
+func (o ServicePrincipalOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+func (o ServicePrincipalOutput) Owners() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
+}
+
+// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+func (o ServicePrincipalOutput) PreferredSingleSignOnMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.PreferredSingleSignOnMode }).(pulumi.StringPtrOutput)
+}
+
+// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+func (o ServicePrincipalOutput) RedirectUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.RedirectUris }).(pulumi.StringArrayOutput)
+}
+
+// The URL where the service exposes SAML metadata for federation.
+func (o ServicePrincipalOutput) SamlMetadataUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.SamlMetadataUrl }).(pulumi.StringOutput)
+}
+
+// A `samlSingleSignOn` block as documented below.
+func (o ServicePrincipalOutput) SamlSingleSignOn() ServicePrincipalSamlSingleSignOnPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalSamlSingleSignOnPtrOutput { return v.SamlSingleSignOn }).(ServicePrincipalSamlSingleSignOnPtrOutput)
+}
+
+// A list of identifier URI(s), copied over from the associated application.
+func (o ServicePrincipalOutput) ServicePrincipalNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.ServicePrincipalNames }).(pulumi.StringArrayOutput)
+}
+
+// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+func (o ServicePrincipalOutput) SignInAudience() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.SignInAudience }).(pulumi.StringOutput)
+}
+
+// A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
+func (o ServicePrincipalOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+func (o ServicePrincipalOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+func (o ServicePrincipalOutput) UseExisting() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.UseExisting }).(pulumi.BoolPtrOutput)
+}
+
 type ServicePrincipalArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalArrayOutput) ElementType() reflect.Type {

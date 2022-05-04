@@ -232,6 +232,16 @@ func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) G
 	return o
 }
 
+// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+func (o GroupMemberOutput) GroupObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.GroupObjectId }).(pulumi.StringOutput)
+}
+
+// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+func (o GroupMemberOutput) MemberObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.MemberObjectId }).(pulumi.StringOutput)
+}
+
 type GroupMemberArrayOutput struct{ *pulumi.OutputState }
 
 func (GroupMemberArrayOutput) ElementType() reflect.Type {

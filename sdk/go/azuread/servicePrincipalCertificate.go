@@ -253,6 +253,46 @@ func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutputWi
 	return o
 }
 
+// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+func (o ServicePrincipalCertificateOutput) Encoding() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
+}
+
+// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+func (o ServicePrincipalCertificateOutput) EndDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
+}
+
+// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+func (o ServicePrincipalCertificateOutput) EndDateRelative() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
+}
+
+// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
+func (o ServicePrincipalCertificateOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+func (o ServicePrincipalCertificateOutput) ServicePrincipalId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
+}
+
+// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+func (o ServicePrincipalCertificateOutput) StartDate() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
+}
+
+// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+func (o ServicePrincipalCertificateOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+func (o ServicePrincipalCertificateOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type ServicePrincipalCertificateArrayOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalCertificateArrayOutput) ElementType() reflect.Type {

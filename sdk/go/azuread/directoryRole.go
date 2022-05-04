@@ -244,6 +244,26 @@ func (o DirectoryRoleOutput) ToDirectoryRoleOutputWithContext(ctx context.Contex
 	return o
 }
 
+// The description of the directory role.
+func (o DirectoryRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the directory role to activate. Changing this forces a new resource to be created.
+func (o DirectoryRoleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The object ID of the directory role.
+func (o DirectoryRoleOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+func (o DirectoryRoleOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
+}
+
 type DirectoryRoleArrayOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleArrayOutput) ElementType() reflect.Type {

@@ -258,6 +258,21 @@ func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedOutputWithCont
 	return o
 }
 
+// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+func (o ApplicationPreAuthorizedOutput) ApplicationObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
+}
+
+// The application ID of the pre-authorized application
+func (o ApplicationPreAuthorizedOutput) AuthorizedAppId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.AuthorizedAppId }).(pulumi.StringOutput)
+}
+
+// A set of permission scope IDs required by the authorized application.
+func (o ApplicationPreAuthorizedOutput) PermissionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringArrayOutput { return v.PermissionIds }).(pulumi.StringArrayOutput)
+}
+
 type ApplicationPreAuthorizedArrayOutput struct{ *pulumi.OutputState }
 
 func (ApplicationPreAuthorizedArrayOutput) ElementType() reflect.Type {

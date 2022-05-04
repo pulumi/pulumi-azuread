@@ -311,6 +311,41 @@ func (o InvitationOutput) ToInvitationOutputWithContext(ctx context.Context) Inv
 	return o
 }
 
+// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+func (o InvitationOutput) Message() InvitationMessagePtrOutput {
+	return o.ApplyT(func(v *Invitation) InvitationMessagePtrOutput { return v.Message }).(InvitationMessagePtrOutput)
+}
+
+// The URL the user can use to redeem their invitation.
+func (o InvitationOutput) RedeemUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.RedeemUrl }).(pulumi.StringOutput)
+}
+
+// The URL that the user should be redirected to once the invitation is redeemed.
+func (o InvitationOutput) RedirectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.RedirectUrl }).(pulumi.StringOutput)
+}
+
+// The display name of the user being invited.
+func (o InvitationOutput) UserDisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringPtrOutput { return v.UserDisplayName }).(pulumi.StringPtrOutput)
+}
+
+// The email address of the user being invited.
+func (o InvitationOutput) UserEmailAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.UserEmailAddress }).(pulumi.StringOutput)
+}
+
+// Object ID of the invited user.
+func (o InvitationOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
+}
+
+// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+func (o InvitationOutput) UserType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Invitation) pulumi.StringPtrOutput { return v.UserType }).(pulumi.StringPtrOutput)
+}
+
 type InvitationArrayOutput struct{ *pulumi.OutputState }
 
 func (InvitationArrayOutput) ElementType() reflect.Type {
