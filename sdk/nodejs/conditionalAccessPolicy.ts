@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * const example = new azuread.ConditionalAccessPolicy("example", {
  *     conditions: {
  *         applications: {
- *             excludedApplications: ["00000004-0000-0ff1-ce00-000000000000"],
+ *             excludedApplications: [],
  *             includedApplications: ["All"],
  *         },
  *         clientAppTypes: ["all"],
@@ -56,18 +56,10 @@ import * as utilities from "./utilities";
  *         operator: "OR",
  *     },
  *     sessionControls: {
- *         applicationEnforcedRestrictions: [{
- *             enabled: true,
- *         }],
- *         cloudAppSecurity: [{
- *             cloudAppSecurityType: "monitorOnly",
- *             enabled: true,
- *         }],
- *         signInFrequency: [{
- *             enabled: true,
- *             type: "hours",
- *             value: 10,
- *         }],
+ *         applicationEnforcedRestrictionsEnabled: true,
+ *         cloudAppSecurityPolicy: "monitorOnly",
+ *         signInFrequency: 10,
+ *         signInFrequencyPeriod: "hours",
  *     },
  *     state: "disabled",
  * });
