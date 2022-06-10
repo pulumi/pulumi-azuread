@@ -51,6 +51,18 @@ msiEndpoint: Optional[str]
 The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 """
 
+oidcRequestToken: Optional[str]
+"""
+The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
+Connect.
+"""
+
+oidcRequestUrl: Optional[str]
+"""
+The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
+using OpenID Connect.
+"""
+
 partnerId: Optional[str]
 """
 A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
@@ -69,5 +81,10 @@ Allow Azure CLI to be used for Authentication
 useMsi: bool
 """
 Allow Managed Identity to be used for Authentication
+"""
+
+useOidc: Optional[bool]
+"""
+Allow OpenID Connect to be used for authentication
 """
 

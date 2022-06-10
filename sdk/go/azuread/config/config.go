@@ -59,6 +59,18 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 	return getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string)
 }
 
+// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
+// Connect.
+func GetOidcRequestToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:oidcRequestToken")
+}
+
+// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
+// using OpenID Connect.
+func GetOidcRequestUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:oidcRequestUrl")
+}
+
 // A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
 func GetPartnerId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:partnerId")
@@ -81,4 +93,9 @@ func GetUseMsi(ctx *pulumi.Context) bool {
 		return v
 	}
 	return getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI").(bool)
+}
+
+// Allow OpenID Connect to be used for authentication
+func GetUseOidc(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "azuread:useOidc")
 }

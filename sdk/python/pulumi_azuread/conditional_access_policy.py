@@ -215,7 +215,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         example = azuread.ConditionalAccessPolicy("example",
             conditions=azuread.ConditionalAccessPolicyConditionsArgs(
                 applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    excluded_applications=["00000004-0000-0ff1-ce00-000000000000"],
+                    excluded_applications=[],
                     included_applications=["All"],
                 ),
                 client_app_types=["all"],
@@ -246,18 +246,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 operator="OR",
             ),
             session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
-                application_enforced_restrictions=[{
-                    "enabled": True,
-                }],
-                cloud_app_security=[{
-                    "cloudAppSecurityType": "monitorOnly",
-                    "enabled": True,
-                }],
-                sign_in_frequency=[{
-                    "enabled": True,
-                    "type": "hours",
-                    "value": 10,
-                }],
+                application_enforced_restrictions_enabled=True,
+                cloud_app_security_policy="monitorOnly",
+                sign_in_frequency=10,
+                sign_in_frequency_period="hours",
             ),
             state="disabled")
         ```
@@ -304,7 +296,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         example = azuread.ConditionalAccessPolicy("example",
             conditions=azuread.ConditionalAccessPolicyConditionsArgs(
                 applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
-                    excluded_applications=["00000004-0000-0ff1-ce00-000000000000"],
+                    excluded_applications=[],
                     included_applications=["All"],
                 ),
                 client_app_types=["all"],
@@ -335,18 +327,10 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
                 operator="OR",
             ),
             session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
-                application_enforced_restrictions=[{
-                    "enabled": True,
-                }],
-                cloud_app_security=[{
-                    "cloudAppSecurityType": "monitorOnly",
-                    "enabled": True,
-                }],
-                sign_in_frequency=[{
-                    "enabled": True,
-                    "type": "hours",
-                    "value": 10,
-                }],
+                application_enforced_restrictions_enabled=True,
+                cloud_app_security_policy="monitorOnly",
+                sign_in_frequency=10,
+                sign_in_frequency_period="hours",
             ),
             state="disabled")
         ```

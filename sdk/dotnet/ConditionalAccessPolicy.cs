@@ -36,10 +36,7 @@ namespace Pulumi.AzureAD
     ///             {
     ///                 Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
     ///                 {
-    ///                     ExcludedApplications = 
-    ///                     {
-    ///                         "00000004-0000-0ff1-ce00-000000000000",
-    ///                     },
+    ///                     ExcludedApplications = {},
     ///                     IncludedApplications = 
     ///                     {
     ///                         "All",
@@ -110,30 +107,10 @@ namespace Pulumi.AzureAD
     ///             },
     ///             SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs
     ///             {
-    ///                 ApplicationEnforcedRestrictions = 
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "enabled", true },
-    ///                     },
-    ///                 },
-    ///                 CloudAppSecurity = 
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "cloudAppSecurityType", "monitorOnly" },
-    ///                         { "enabled", true },
-    ///                     },
-    ///                 },
-    ///                 SignInFrequency = 
-    ///                 {
-    ///                     
-    ///                     {
-    ///                         { "enabled", true },
-    ///                         { "type", "hours" },
-    ///                         { "value", 10 },
-    ///                     },
-    ///                 },
+    ///                 ApplicationEnforcedRestrictionsEnabled = true,
+    ///                 CloudAppSecurityPolicy = "monitorOnly",
+    ///                 SignInFrequency = 10,
+    ///                 SignInFrequencyPeriod = "hours",
     ///             },
     ///             State = "disabled",
     ///         });

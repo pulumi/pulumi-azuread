@@ -36,9 +36,7 @@ import (
 // 		_, err := azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
 // 			Conditions: &ConditionalAccessPolicyConditionsArgs{
 // 				Applications: &ConditionalAccessPolicyConditionsApplicationsArgs{
-// 					ExcludedApplications: pulumi.StringArray{
-// 						pulumi.String("00000004-0000-0ff1-ce00-000000000000"),
-// 					},
+// 					ExcludedApplications: pulumi.StringArray{},
 // 					IncludedApplications: pulumi.StringArray{
 // 						pulumi.String("All"),
 // 					},
@@ -91,24 +89,10 @@ import (
 // 				Operator: pulumi.String("OR"),
 // 			},
 // 			SessionControls: &ConditionalAccessPolicySessionControlsArgs{
-// 				ApplicationEnforcedRestrictions: []map[string]interface{}{
-// 					map[string]interface{}{
-// 						"enabled": true,
-// 					},
-// 				},
-// 				CloudAppSecurity: []map[string]interface{}{
-// 					map[string]interface{}{
-// 						"cloudAppSecurityType": "monitorOnly",
-// 						"enabled":              true,
-// 					},
-// 				},
-// 				SignInFrequency: pulumi.Int{
-// 					map[string]interface{}{
-// 						"enabled": true,
-// 						"type":    "hours",
-// 						"value":   10,
-// 					},
-// 				},
+// 				ApplicationEnforcedRestrictionsEnabled: pulumi.Bool(true),
+// 				CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
+// 				SignInFrequency:                        pulumi.Int(10),
+// 				SignInFrequencyPeriod:                  pulumi.String("hours"),
 // 			},
 // 			State: pulumi.String("disabled"),
 // 		})

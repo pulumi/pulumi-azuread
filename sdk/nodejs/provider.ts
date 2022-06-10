@@ -57,6 +57,16 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly msiEndpoint!: pulumi.Output<string | undefined>;
     /**
+     * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
+     * Connect.
+     */
+    public readonly oidcRequestToken!: pulumi.Output<string | undefined>;
+    /**
+     * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
+     * using OpenID Connect.
+     */
+    public readonly oidcRequestUrl!: pulumi.Output<string | undefined>;
+    /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */
     public readonly partnerId!: pulumi.Output<string | undefined>;
@@ -84,10 +94,13 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             resourceInputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
             resourceInputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
+            resourceInputs["oidcRequestToken"] = args ? args.oidcRequestToken : undefined;
+            resourceInputs["oidcRequestUrl"] = args ? args.oidcRequestUrl : undefined;
             resourceInputs["partnerId"] = args ? args.partnerId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
             resourceInputs["useMsi"] = pulumi.output((args ? args.useMsi : undefined) ?? (utilities.getEnvBoolean("ARM_USE_MSI") || false)).apply(JSON.stringify);
+            resourceInputs["useOidc"] = pulumi.output(args ? args.useOidc : undefined).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -134,6 +147,16 @@ export interface ProviderArgs {
      */
     msiEndpoint?: pulumi.Input<string>;
     /**
+     * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
+     * Connect.
+     */
+    oidcRequestToken?: pulumi.Input<string>;
+    /**
+     * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
+     * using OpenID Connect.
+     */
+    oidcRequestUrl?: pulumi.Input<string>;
+    /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */
     partnerId?: pulumi.Input<string>;
@@ -149,4 +172,8 @@ export interface ProviderArgs {
      * Allow Managed Identity to be used for Authentication
      */
     useMsi?: pulumi.Input<boolean>;
+    /**
+     * Allow OpenID Connect to be used for authentication
+     */
+    useOidc?: pulumi.Input<boolean>;
 }
