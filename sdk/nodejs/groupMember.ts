@@ -17,25 +17,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
- * });
- * const exampleGroup = new azuread.Group("exampleGroup", {
- *     displayName: "my_group",
- *     securityEnabled: true,
- * });
- * const exampleGroupMember = new azuread.GroupMember("exampleGroupMember", {
- *     groupObjectId: exampleGroup.id,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.id),
- * });
- * ```
- *
  * ## Import
  *
  * Group members can be imported using the object ID of the group and the object ID of the member, e.g.

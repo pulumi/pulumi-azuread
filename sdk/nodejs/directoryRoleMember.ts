@@ -15,22 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
- * });
- * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Security administrator"});
- * const exampleDirectoryRoleMember = new azuread.DirectoryRoleMember("exampleDirectoryRoleMember", {
- *     roleObjectId: exampleDirectoryRole.objectId,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.objectId),
- * });
- * ```
- *
  * ## Import
  *
  * Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.

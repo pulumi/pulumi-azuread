@@ -233,7 +233,7 @@ import (
 // 		exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
 // 			DisplayName:       pulumi.String("D. Duck"),
 // 			Password:          pulumi.String("SecretP@sswd99!"),
-// 			UserPrincipalName: pulumi.String(fmt.Sprintf("%v%v", "d.duck@", exampleDomains.Domains[0].DomainName)),
+// 			UserPrincipalName: pulumi.String(fmt.Sprintf("d.duck@%v", exampleDomains.Domains[0].DomainName)),
 // 		})
 // 		if err != nil {
 // 			return err

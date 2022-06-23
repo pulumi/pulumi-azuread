@@ -10,16 +10,6 @@ import * as utilities from "./utilities";
  * ## API Permissions
  *
  * No additional roles are required to use this data source.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getClientConfig({});
- * export const objectId = current.then(current => current.objectId);
- * ```
  */
 export function getClientConfig(opts?: pulumi.InvokeOptions): Promise<GetClientConfigResult> {
     if (!opts) {

@@ -5,23 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
- * const exampleApplicationFederatedIdentityCredential = new azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", {
- *     applicationObjectId: exampleApplication.objectId,
- *     displayName: "my-repo-deploy",
- *     description: "Deployments for my-repo",
- *     audiences: ["api://AzureADTokenExchange"],
- *     issuer: "https://token.actions.githubusercontent.com",
- *     subject: "repo:my-organization/my-repo:environment:prod",
- * });
- * ```
- *
  * ## Import
  *
  * Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
