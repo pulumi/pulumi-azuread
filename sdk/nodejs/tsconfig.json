@@ -27,6 +27,7 @@
         "config/vars.ts",
         "customDirectoryRole.ts",
         "directoryRole.ts",
+        "directoryRoleAssignment.ts",
         "directoryRoleMember.ts",
         "getAdministrativeUnit.ts",
         "getApplication.ts",

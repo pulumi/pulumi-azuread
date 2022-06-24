@@ -44,6 +44,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CustomDirectoryRole{}
 	case "azuread:index/directoryRole:DirectoryRole":
 		r = &DirectoryRole{}
+	case "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment":
+		r = &DirectoryRoleAssignment{}
 	case "azuread:index/directoryRoleMember:DirectoryRoleMember":
 		r = &DirectoryRoleMember{}
 	case "azuread:index/group:Group":
@@ -152,6 +154,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/directoryRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/directoryRoleAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
