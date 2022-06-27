@@ -1636,7 +1636,7 @@ class GroupDynamicMembership(dict):
                  rule: str):
         """
         :param bool enabled: Whether rule processing is "On" (true) or "Paused" (false).
-        :param str rule: The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+        :param str rule: The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "rule", rule)
@@ -1653,7 +1653,7 @@ class GroupDynamicMembership(dict):
     @pulumi.getter
     def rule(self) -> str:
         """
-        The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+        The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
         """
         return pulumi.get(self, "rule")
 

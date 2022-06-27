@@ -17,6 +17,7 @@ from .claims_mapping_policy import *
 from .conditional_access_policy import *
 from .custom_directory_role import *
 from .directory_role import *
+from .directory_role_assignment import *
 from .directory_role_member import *
 from .get_administrative_unit import *
 from .get_application import *
@@ -148,6 +149,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/directoryRole:DirectoryRole": "DirectoryRole"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/directoryRoleAssignment",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment": "DirectoryRoleAssignment"
   }
  },
  {

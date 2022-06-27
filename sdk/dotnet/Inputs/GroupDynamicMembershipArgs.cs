@@ -19,7 +19,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
-        /// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+        /// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
         /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;

@@ -17,6 +17,7 @@ export * from "./claimsMappingPolicy";
 export * from "./conditionalAccessPolicy";
 export * from "./customDirectoryRole";
 export * from "./directoryRole";
+export * from "./directoryRoleAssignment";
 export * from "./directoryRoleMember";
 export * from "./getAdministrativeUnit";
 export * from "./getApplication";
@@ -64,6 +65,7 @@ import { ClaimsMappingPolicy } from "./claimsMappingPolicy";
 import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
 import { CustomDirectoryRole } from "./customDirectoryRole";
 import { DirectoryRole } from "./directoryRole";
+import { DirectoryRoleAssignment } from "./directoryRoleAssignment";
 import { DirectoryRoleMember } from "./directoryRoleMember";
 import { Group } from "./group";
 import { GroupMember } from "./groupMember";
@@ -104,6 +106,8 @@ const _module = {
                 return new CustomDirectoryRole(name, <any>undefined, { urn })
             case "azuread:index/directoryRole:DirectoryRole":
                 return new DirectoryRole(name, <any>undefined, { urn })
+            case "azuread:index/directoryRoleAssignment:DirectoryRoleAssignment":
+                return new DirectoryRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/directoryRoleMember:DirectoryRoleMember":
                 return new DirectoryRoleMember(name, <any>undefined, { urn })
             case "azuread:index/group:Group":
@@ -143,6 +147,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/claimsMappingPolicy", _m
 pulumi.runtime.registerResourceModule("azuread", "index/conditionalAccessPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/customDirectoryRole", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRole", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/directoryRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/group", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/groupMember", _module)

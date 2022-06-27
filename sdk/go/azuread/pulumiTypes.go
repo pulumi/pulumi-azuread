@@ -3812,7 +3812,7 @@ func (o CustomDirectoryRolePermissionArrayOutput) Index(i pulumi.IntInput) Custo
 type GroupDynamicMembership struct {
 	// Whether rule processing is "On" (true) or "Paused" (false).
 	Enabled bool `pulumi:"enabled"`
-	// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
 	Rule string `pulumi:"rule"`
 }
 
@@ -3830,7 +3830,7 @@ type GroupDynamicMembershipInput interface {
 type GroupDynamicMembershipArgs struct {
 	// Whether rule processing is "On" (true) or "Paused" (false).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -3916,7 +3916,7 @@ func (o GroupDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GroupDynamicMembership) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
 func (o GroupDynamicMembershipOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -3955,7 +3955,7 @@ func (o GroupDynamicMembershipPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The rule that determines membership of this group. For more information, see official documentation on [memmbership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
 func (o GroupDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupDynamicMembership) *string {
 		if v == nil {
