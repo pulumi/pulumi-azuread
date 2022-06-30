@@ -429,6 +429,8 @@ jobs:
         - 3.1.301
         goversion:
         - 1.18.x
+        javaversion:
+        - "11"
         nodeversion:
         - 14.x
         pythonversion:
