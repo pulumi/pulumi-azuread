@@ -81,8 +81,8 @@ jobs:
       run: make install_plugins
     - name: Update path
       run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
-    - name: Set PROVIDER_VERSION to Env
-      run: echo "PROVIDER_VERSION=v$(pulumictl get version --language generic)" >>
+    - name: Set PACKAGE_VERSION to Env
+      run: echo "PACKAGE_VERSION=v$(pulumictl get version --language generic)" >>
         $GITHUB_ENV
     - name: Build SDK
       run: make build_${{ matrix.language }}
@@ -462,8 +462,8 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       name: Publish SDKs
       run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
-    - name: Set PROVIDER_VERSION to Env
-      run: echo "PROVIDER_VERSION=v$(pulumictl get version --language generic)" >>
+    - name: Set PACKAGE_VERSION to Env
+      run: echo "PACKAGE_VERSION=v$(pulumictl get version --language generic)" >>
         $GITHUB_ENV
     - name: Publish Java SDK
       uses: gradle/gradle-build-action@9b814496b50909128c6a52622b416c5ffa04db49
