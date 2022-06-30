@@ -9,7 +9,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-  OSSRH_REPO_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+  PUBLISH_REPO_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
   PROVIDER: azuread
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
@@ -469,7 +469,7 @@ jobs:
       uses: gradle/gradle-build-action@9b814496b50909128c6a52622b416c5ffa04db49
       with:
         arguments: publish
-        build-root-directory: sdk/java
+        build-root-directory: ./sdk/java
         gradle-version: 7.4.1
     - if: failure() && github.event_name == 'push'
       name: Notify Slack
