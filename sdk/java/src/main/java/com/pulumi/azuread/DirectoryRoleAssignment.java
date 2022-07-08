@@ -11,7 +11,6 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -25,81 +24,6 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  * 
- * ## Example Usage
- * 
- * *Assignment for a built-in role*
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleUser = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
- *             .build()));
- * 
- *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
- *             .displayName(&#34;Security administrator&#34;)
- *             .build());
- * 
- *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment(&#34;exampleDirectoryRoleAssignment&#34;, DirectoryRoleAssignmentArgs.builder()        
- *             .roleId(exampleDirectoryRole.getTemplateId())
- *             .principalObjectId(exampleUser.apply(getUserResult -&gt; getUserResult.getObjectId()))
- *             .build());
- * 
- *         }
- * }
- * ```
- * 
- * &gt; Note the use of the `template_id` attribute when referencing built-in roles.
- * 
- * *Assignment for a custom role*
- * ```java
- * package generated_program;
- * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var exampleUser = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
- *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
- *             .build()));
- * 
- *         var exampleCustomDirectoryRole = new CustomDirectoryRole(&#34;exampleCustomDirectoryRole&#34;, CustomDirectoryRoleArgs.builder()        
- *             .displayName(&#34;My Custom Role&#34;)
- *             .enabled(true)
- *             .version(&#34;1.0&#34;)
- *             .permissions(CustomDirectoryRolePermission.builder()
- *                 .allowedResourceActions(                
- *                     &#34;microsoft.directory/applications/basic/update&#34;,
- *                     &#34;microsoft.directory/applications/standard/read&#34;)
- *                 .build())
- *             .build());
- * 
- *         var exampleDirectoryRoleAssignment = new DirectoryRoleAssignment(&#34;exampleDirectoryRoleAssignment&#34;, DirectoryRoleAssignmentArgs.builder()        
- *             .roleId(exampleCustomDirectoryRole.getObjectId())
- *             .principalObjectId(exampleUser.apply(getUserResult -&gt; getUserResult.getObjectId()))
- *             .build());
- * 
- *         }
- * }
- * ```
- * 
  * ## Import
  * 
  * Directory role assignments can be imported using the ID of the assignment, e.g.
@@ -112,60 +36,92 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/directoryRoleAssignment:DirectoryRoleAssignment")
 public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_object_id`. Changing this forces a new resource to be created.
+     * Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
-    @Export(name="appScopeObjectId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> appScopeObjectId;
+    @Export(name="appScopeId", type=String.class, parameters={})
+    private Output<String> appScopeId;
 
     /**
-     * @return Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_object_id`. Changing this forces a new resource to be created.
+     * @return Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
      * 
      */
-    public Output<Optional<String>> appScopeObjectId() {
-        return Codegen.optional(this.appScopeObjectId);
+    public Output<String> appScopeId() {
+        return this.appScopeId;
     }
     /**
-     * The object ID of a directory object representing the scope of the assignment. Cannot be used with `app_scope_object_id`. Changing this forces a new resource to be created.
+     * Identifier of the app-specific scope when the assignment scope is app-specific
+     * 
+     * @deprecated
+     * `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
+     * 
+     */
+    @Deprecated /* `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider */
+    @Export(name="appScopeObjectId", type=String.class, parameters={})
+    private Output<String> appScopeObjectId;
+
+    /**
+     * @return Identifier of the app-specific scope when the assignment scope is app-specific
+     * 
+     */
+    public Output<String> appScopeObjectId() {
+        return this.appScopeObjectId;
+    }
+    /**
+     * Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+     * 
+     */
+    @Export(name="directoryScopeId", type=String.class, parameters={})
+    private Output<String> directoryScopeId;
+
+    /**
+     * @return Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
+     * 
+     */
+    public Output<String> directoryScopeId() {
+        return this.directoryScopeId;
+    }
+    /**
+     * Identifier of the directory object representing the scope of the assignment
      * 
      */
     @Export(name="directoryScopeObjectId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> directoryScopeObjectId;
+    private Output<String> directoryScopeObjectId;
 
     /**
-     * @return The object ID of a directory object representing the scope of the assignment. Cannot be used with `app_scope_object_id`. Changing this forces a new resource to be created.
+     * @return Identifier of the directory object representing the scope of the assignment
      * 
      */
-    public Output<Optional<String>> directoryScopeObjectId() {
-        return Codegen.optional(this.directoryScopeObjectId);
+    public Output<String> directoryScopeObjectId() {
+        return this.directoryScopeObjectId;
     }
     /**
      * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="principalObjectId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> principalObjectId;
+    private Output<String> principalObjectId;
 
     /**
      * @return The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
      * 
      */
-    public Output<Optional<String>> principalObjectId() {
-        return Codegen.optional(this.principalObjectId);
+    public Output<String> principalObjectId() {
+        return this.principalObjectId;
     }
     /**
      * The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="roleId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> roleId;
+    private Output<String> roleId;
 
     /**
      * @return The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
      * 
      */
-    public Output<Optional<String>> roleId() {
-        return Codegen.optional(this.roleId);
+    public Output<String> roleId() {
+        return this.roleId;
     }
 
     /**
@@ -180,7 +136,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DirectoryRoleAssignment(String name, @Nullable DirectoryRoleAssignmentArgs args) {
+    public DirectoryRoleAssignment(String name, DirectoryRoleAssignmentArgs args) {
         this(name, args, null);
     }
     /**
@@ -189,7 +145,7 @@ public class DirectoryRoleAssignment extends com.pulumi.resources.CustomResource
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DirectoryRoleAssignment(String name, @Nullable DirectoryRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public DirectoryRoleAssignment(String name, DirectoryRoleAssignmentArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("azuread:index/directoryRoleAssignment:DirectoryRoleAssignment", name, args == null ? DirectoryRoleAssignmentArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
