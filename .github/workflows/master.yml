@@ -8,10 +8,10 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
+  PROVIDER: azuread
   PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
   PUBLISH_REPO_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
   PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
-  PROVIDER: azuread
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
@@ -82,7 +82,7 @@ jobs:
     - name: Update path
       run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
     - name: Set PACKAGE_VERSION to Env
-      run: echo "PACKAGE_VERSION=v$(pulumictl get version --language generic)" >>
+      run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
         $GITHUB_ENV
     - name: Build SDK
       run: make build_${{ matrix.language }}
@@ -463,7 +463,7 @@ jobs:
       name: Publish SDKs
       run: ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
     - name: Set PACKAGE_VERSION to Env
-      run: echo "PACKAGE_VERSION=v$(pulumictl get version --language generic)" >>
+      run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
         $GITHUB_ENV
     - name: Publish Java SDK
       uses: gradle/gradle-build-action@9b814496b50909128c6a52622b416c5ffa04db49

@@ -8,11 +8,11 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
-  OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
-  OSSRH_REPO_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
-  OSSRH_USERNAME: ${{ secrets.OSSRH_USERNAME }}
   PROVIDER: azuread
   PR_COMMIT_SHA: ${{ github.event.client_payload.pull_request.head.sha }}
+  PUBLISH_REPO_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+  PUBLISH_REPO_URL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+  PUBLISH_REPO_USERNAME: ${{ secrets.OSSRH_USERNAME }}
   PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
   PULUMI_API: https://api.pulumi-staging.io
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
@@ -86,8 +86,8 @@ jobs:
       run: make install_plugins
     - name: Update path
       run: echo "${{ github.workspace }}/bin" >> $GITHUB_PATH
-    - name: Set PROVIDER_VERSION to Env
-      run: echo "PROVIDER_VERSION=v$(pulumictl get version --language generic)" >>
+    - name: Set PACKAGE_VERSION to Env
+      run: echo "PACKAGE_VERSION=$(pulumictl get version --language generic)" >>
         $GITHUB_ENV
     - name: Build SDK
       run: make build_${{ matrix.language }}
