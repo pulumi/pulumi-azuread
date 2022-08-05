@@ -42,7 +42,7 @@ export class ApplicationPassword extends pulumi.CustomResource {
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
-     * A display name for the password.
+     * A display name for the password. Changing this field forces a new resource to be created.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -119,7 +119,7 @@ export interface ApplicationPasswordState {
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
-     * A display name for the password.
+     * A display name for the password. Changing this field forces a new resource to be created.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface ApplicationPasswordArgs {
      */
     applicationObjectId: pulumi.Input<string>;
     /**
-     * A display name for the password.
+     * A display name for the password. Changing this field forces a new resource to be created.
      */
     displayName?: pulumi.Input<string>;
     /**

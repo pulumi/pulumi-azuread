@@ -3882,7 +3882,7 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "A display name for the password.\n"
+                    "description": "A display name for the password. Changing this field forces a new resource to be created.\n"
                 },
                 "endDate": {
                     "type": "string",
@@ -3927,7 +3927,7 @@
                 },
                 "displayName": {
                     "type": "string",
-                    "description": "A display name for the password.\n"
+                    "description": "A display name for the password. Changing this field forces a new resource to be created.\n"
                 },
                 "endDate": {
                     "type": "string",
@@ -3961,7 +3961,7 @@
                     },
                     "displayName": {
                         "type": "string",
-                        "description": "A display name for the password.\n"
+                        "description": "A display name for the password. Changing this field forces a new resource to be created.\n"
                     },
                     "endDate": {
                         "type": "string",

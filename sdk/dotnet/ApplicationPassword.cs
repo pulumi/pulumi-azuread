@@ -24,7 +24,7 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// A display name for the password.
+        /// A display name for the password. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.AzureAD
         public Input<string> ApplicationObjectId { get; set; } = null!;
 
         /// <summary>
-        /// A display name for the password.
+        /// A display name for the password. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -167,7 +167,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
-        /// A display name for the password.
+        /// A display name for the password. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
