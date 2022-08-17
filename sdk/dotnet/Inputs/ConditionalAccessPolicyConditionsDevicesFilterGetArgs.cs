@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicyConditionsDevicesFilterGetArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyConditionsDevicesFilterGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicyConditionsDevicesFilterGetArgs()
         {
         }
+        public static new ConditionalAccessPolicyConditionsDevicesFilterGetArgs Empty => new ConditionalAccessPolicyConditionsDevicesFilterGetArgs();
     }
 }

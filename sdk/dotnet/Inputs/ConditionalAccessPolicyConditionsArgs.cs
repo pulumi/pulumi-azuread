@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicyConditionsArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyConditionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
@@ -81,5 +81,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicyConditionsArgs()
         {
         }
+        public static new ConditionalAccessPolicyConditionsArgs Empty => new ConditionalAccessPolicyConditionsArgs();
     }
 }

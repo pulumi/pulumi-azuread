@@ -19,10 +19,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationApiArgs;
+ * import com.pulumi.azuread.ApplicationPreAuthorized;
+ * import com.pulumi.azuread.ApplicationPreAuthorizedArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -36,9 +46,9 @@ import javax.annotation.Nullable;
  * 
  *         var authorizer = new Application(&#34;authorizer&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example-authorizing-app&#34;)
- *             .api(ApplicationApi.builder()
+ *             .api(ApplicationApiArgs.builder()
  *                 .oauth2PermissionScopes(                
- *                     ApplicationApiOauth2PermissionScope.builder()
+ *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription(&#34;Administer the application&#34;)
  *                         .adminConsentDisplayName(&#34;Administer&#34;)
  *                         .enabled(true)
@@ -46,7 +56,7 @@ import javax.annotation.Nullable;
  *                         .type(&#34;Admin&#34;)
  *                         .value(&#34;administer&#34;)
  *                         .build(),
- *                     ApplicationApiOauth2PermissionScope.builder()
+ *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription(&#34;Access the application&#34;)
  *                         .adminConsentDisplayName(&#34;Access&#34;)
  *                         .enabled(true)
@@ -60,14 +70,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new ApplicationPreAuthorized(&#34;example&#34;, ApplicationPreAuthorizedArgs.builder()        
- *             .applicationObjectId(authorizer.getObjectId())
- *             .authorizedAppId(authorized.getApplicationId())
+ *             .applicationObjectId(authorizer.objectId())
+ *             .authorizedAppId(authorized.applicationId())
  *             .permissionIds(            
  *                 &#34;ced9c4c3-c273-4f0f-ac71-a20377b90f9c&#34;,
  *                 &#34;2d5e07ca-664d-4d9b-ad61-ec07fd215213&#34;)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

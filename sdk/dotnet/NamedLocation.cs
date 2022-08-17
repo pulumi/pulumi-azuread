@@ -23,42 +23,41 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example_ip = new AzureAD.NamedLocation("example-ip", new()
     ///     {
-    ///         var example_ip = new AzureAD.NamedLocation("example-ip", new AzureAD.NamedLocationArgs
+    ///         DisplayName = "IP Named Location",
+    ///         Ip = new AzureAD.Inputs.NamedLocationIpArgs
     ///         {
-    ///             DisplayName = "IP Named Location",
-    ///             Ip = new AzureAD.Inputs.NamedLocationIpArgs
+    ///             IpRanges = new[]
     ///             {
-    ///                 IpRanges = 
-    ///                 {
-    ///                     "1.1.1.1/32",
-    ///                     "2.2.2.2/32",
-    ///                 },
-    ///                 Trusted = true,
+    ///                 "1.1.1.1/32",
+    ///                 "2.2.2.2/32",
     ///             },
-    ///         });
-    ///         var example_country = new AzureAD.NamedLocation("example-country", new AzureAD.NamedLocationArgs
-    ///         {
-    ///             Country = new AzureAD.Inputs.NamedLocationCountryArgs
-    ///             {
-    ///                 CountriesAndRegions = 
-    ///                 {
-    ///                     "GB",
-    ///                     "US",
-    ///                 },
-    ///                 IncludeUnknownCountriesAndRegions = false,
-    ///             },
-    ///             DisplayName = "Country Named Location",
-    ///         });
-    ///     }
+    ///             Trusted = true,
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var example_country = new AzureAD.NamedLocation("example-country", new()
+    ///     {
+    ///         Country = new AzureAD.Inputs.NamedLocationCountryArgs
+    ///         {
+    ///             CountriesAndRegions = new[]
+    ///             {
+    ///                 "GB",
+    ///                 "US",
+    ///             },
+    ///             IncludeUnknownCountriesAndRegions = false,
+    ///         },
+    ///         DisplayName = "Country Named Location",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -70,7 +69,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/namedLocation:NamedLocation")]
-    public partial class NamedLocation : Pulumi.CustomResource
+    public partial class NamedLocation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A `country` block as documented below, which configures a country-based named location.
@@ -134,7 +133,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class NamedLocationArgs : Pulumi.ResourceArgs
+    public sealed class NamedLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `country` block as documented below, which configures a country-based named location.
@@ -157,9 +156,10 @@ namespace Pulumi.AzureAD
         public NamedLocationArgs()
         {
         }
+        public static new NamedLocationArgs Empty => new NamedLocationArgs();
     }
 
-    public sealed class NamedLocationState : Pulumi.ResourceArgs
+    public sealed class NamedLocationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `country` block as documented below, which configures a country-based named location.
@@ -182,5 +182,6 @@ namespace Pulumi.AzureAD
         public NamedLocationState()
         {
         }
+        public static new NamedLocationState Empty => new NamedLocationState();
     }
 }

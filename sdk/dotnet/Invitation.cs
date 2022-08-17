@@ -25,71 +25,65 @@ namespace Pulumi.AzureAD
     /// *Basic example*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.Invitation("example", new()
     ///     {
-    ///         var example = new AzureAD.Invitation("example", new AzureAD.InvitationArgs
-    ///         {
-    ///             RedirectUrl = "https://portal.azure.com",
-    ///             UserEmailAddress = "jdoe@hashicorp.com",
-    ///         });
-    ///     }
+    ///         RedirectUrl = "https://portal.azure.com",
+    ///         UserEmailAddress = "jdoe@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// *Invitation with standard message*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.Invitation("example", new()
     ///     {
-    ///         var example = new AzureAD.Invitation("example", new AzureAD.InvitationArgs
+    ///         Message = new AzureAD.Inputs.InvitationMessageArgs
     ///         {
-    ///             Message = new AzureAD.Inputs.InvitationMessageArgs
-    ///             {
-    ///                 Language = "en-US",
-    ///             },
-    ///             RedirectUrl = "https://portal.azure.com",
-    ///             UserEmailAddress = "jdoe@hashicorp.com",
-    ///         });
-    ///     }
+    ///             Language = "en-US",
+    ///         },
+    ///         RedirectUrl = "https://portal.azure.com",
+    ///         UserEmailAddress = "jdoe@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// *Invitation with custom message body and an additional recipient*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.Invitation("example", new()
     ///     {
-    ///         var example = new AzureAD.Invitation("example", new AzureAD.InvitationArgs
+    ///         Message = new AzureAD.Inputs.InvitationMessageArgs
     ///         {
-    ///             Message = new AzureAD.Inputs.InvitationMessageArgs
-    ///             {
-    ///                 AdditionalRecipients = "aaliceberg@hashicorp.com",
-    ///                 Body = "Hello there! You are invited to join my Azure tenant!",
-    ///             },
-    ///             RedirectUrl = "https://portal.azure.com",
-    ///             UserDisplayName = "Bob Bobson",
-    ///             UserEmailAddress = "bbobson@hashicorp.com",
-    ///         });
-    ///     }
+    ///             AdditionalRecipients = "aaliceberg@hashicorp.com",
+    ///             Body = "Hello there! You are invited to join my Azure tenant!",
+    ///         },
+    ///         RedirectUrl = "https://portal.azure.com",
+    ///         UserDisplayName = "Bob Bobson",
+    ///         UserEmailAddress = "bbobson@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -97,7 +91,7 @@ namespace Pulumi.AzureAD
     /// This resource does not support importing.
     /// </summary>
     [AzureADResourceType("azuread:index/invitation:Invitation")]
-    public partial class Invitation : Pulumi.CustomResource
+    public partial class Invitation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
@@ -185,7 +179,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class InvitationArgs : Pulumi.ResourceArgs
+    public sealed class InvitationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
@@ -220,9 +214,10 @@ namespace Pulumi.AzureAD
         public InvitationArgs()
         {
         }
+        public static new InvitationArgs Empty => new InvitationArgs();
     }
 
-    public sealed class InvitationState : Pulumi.ResourceArgs
+    public sealed class InvitationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
@@ -269,5 +264,6 @@ namespace Pulumi.AzureAD
         public InvitationState()
         {
         }
+        public static new InvitationState Empty => new InvitationState();
     }
 }

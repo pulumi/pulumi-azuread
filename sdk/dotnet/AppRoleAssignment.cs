@@ -25,189 +25,197 @@ namespace Pulumi.AzureAD
     /// *App role assignment for accessing Microsoft Graph*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    /// 
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
     ///     {
-    ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
-    ///         var msgraph = new AzureAD.ServicePrincipal("msgraph", new AzureAD.ServicePrincipalArgs
+    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         RequiredResourceAccesses = new[]
     ///         {
-    ///             ApplicationId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///             UseExisting = true,
-    ///         });
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             RequiredResourceAccesses = 
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
     ///             {
-    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///                 ResourceAccesses = new[]
     ///                 {
-    ///                     ResourceAppId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///                     ResourceAccesses = 
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                     {
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
-    ///                             Type = "Role",
-    ///                         },
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_ReadWrite),
-    ///                             Type = "Scope",
-    ///                         },
+    ///                         Id = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
+    ///                         Type = "Role",
+    ///                     },
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_ReadWrite),
+    ///                         Type = "Scope",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///         });
-    ///         var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new AzureAD.AppRoleAssignmentArgs
-    ///         {
-    ///             AppRoleId = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
-    ///             PrincipalObjectId = exampleServicePrincipal.ObjectId,
-    ///             ResourceObjectId = msgraph.ObjectId,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new()
+    ///     {
+    ///         AppRoleId = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
+    ///         PrincipalObjectId = exampleServicePrincipal.ObjectId,
+    ///         ResourceObjectId = msgraph.ObjectId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *App role assignment for internal application*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var internalApplication = new AzureAD.Application("internalApplication", new()
     ///     {
-    ///         var internalApplication = new AzureAD.Application("internalApplication", new AzureAD.ApplicationArgs
+    ///         DisplayName = "internal",
+    ///         AppRoles = new[]
     ///         {
-    ///             DisplayName = "internal",
-    ///             AppRoles = 
+    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
     ///             {
-    ///                 new AzureAD.Inputs.ApplicationAppRoleArgs
+    ///                 AllowedMemberTypes = new[]
     ///                 {
-    ///                     AllowedMemberTypes = 
-    ///                     {
-    ///                         "Application",
-    ///                     },
-    ///                     Description = "Apps can query the database",
-    ///                     DisplayName = "Query",
-    ///                     Enabled = true,
-    ///                     Id = "00000000-0000-0000-0000-111111111111",
-    ///                     Value = "Query.All",
+    ///                     "Application",
     ///                 },
+    ///                 Description = "Apps can query the database",
+    ///                 DisplayName = "Query",
+    ///                 Enabled = true,
+    ///                 Id = "00000000-0000-0000-0000-111111111111",
+    ///                 Value = "Query.All",
     ///             },
-    ///         });
-    ///         var internalServicePrincipal = new AzureAD.ServicePrincipal("internalServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = internalApplication.ApplicationId,
-    ///         });
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             RequiredResourceAccesses = 
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///                 {
-    ///                     ResourceAppId = internalApplication.ApplicationId,
-    ///                     ResourceAccesses = 
-    ///                     {
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
-    ///                             Type = "Role",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///         });
-    ///         var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new AzureAD.AppRoleAssignmentArgs
-    ///         {
-    ///             AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
-    ///             PrincipalObjectId = exampleServicePrincipal.ObjectId,
-    ///             ResourceObjectId = internalServicePrincipal.ObjectId,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internalServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = internalApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         RequiredResourceAccesses = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///             {
+    ///                 ResourceAppId = internalApplication.ApplicationId,
+    ///                 ResourceAccesses = new[]
+    ///                 {
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
+    ///                         Type = "Role",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new()
+    ///     {
+    ///         AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Query_All),
+    ///         PrincipalObjectId = exampleServicePrincipal.ObjectId,
+    ///         ResourceObjectId = internalServicePrincipal.ObjectId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *Assign a user and group to an internal application*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleDomains = AzureAD.GetDomains.Invoke(new()
     ///     {
-    ///         var exampleDomains = Output.Create(AzureAD.GetDomains.InvokeAsync(new AzureAD.GetDomainsArgs
-    ///         {
-    ///             OnlyInitial = true,
-    ///         }));
-    ///         var internalApplication = new AzureAD.Application("internalApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "internal",
-    ///             AppRoles = 
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationAppRoleArgs
-    ///                 {
-    ///                     AllowedMemberTypes = 
-    ///                     {
-    ///                         "Application",
-    ///                         "User",
-    ///                     },
-    ///                     Description = "Admins can perform all task actions",
-    ///                     DisplayName = "Admin",
-    ///                     Enabled = true,
-    ///                     Id = "00000000-0000-0000-0000-222222222222",
-    ///                     Value = "Admin.All",
-    ///                 },
-    ///             },
-    ///         });
-    ///         var internalServicePrincipal = new AzureAD.ServicePrincipal("internalServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = internalApplication.ApplicationId,
-    ///         });
-    ///         var exampleGroup = new AzureAD.Group("exampleGroup", new AzureAD.GroupArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             SecurityEnabled = true,
-    ///         });
-    ///         var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new AzureAD.AppRoleAssignmentArgs
-    ///         {
-    ///             AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Admin_All),
-    ///             PrincipalObjectId = exampleGroup.ObjectId,
-    ///             ResourceObjectId = internalServicePrincipal.ObjectId,
-    ///         });
-    ///         var exampleUser = new AzureAD.User("exampleUser", new AzureAD.UserArgs
-    ///         {
-    ///             DisplayName = "D. Duck",
-    ///             Password = "SecretP@sswd99!",
-    ///             UserPrincipalName = exampleDomains.Apply(exampleDomains =&gt; $"d.duck@{exampleDomains.Domains?[0]?.DomainName}"),
-    ///         });
-    ///         var exampleIndex_appRoleAssignmentAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment", new AzureAD.AppRoleAssignmentArgs
-    ///         {
-    ///             AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Admin_All),
-    ///             PrincipalObjectId = exampleUser.ObjectId,
-    ///             ResourceObjectId = internalServicePrincipal.ObjectId,
-    ///         });
-    ///     }
+    ///         OnlyInitial = true,
+    ///     });
     /// 
-    /// }
+    ///     var internalApplication = new AzureAD.Application("internalApplication", new()
+    ///     {
+    ///         DisplayName = "internal",
+    ///         AppRoles = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
+    ///             {
+    ///                 AllowedMemberTypes = new[]
+    ///                 {
+    ///                     "Application",
+    ///                     "User",
+    ///                 },
+    ///                 Description = "Admins can perform all task actions",
+    ///                 DisplayName = "Admin",
+    ///                 Enabled = true,
+    ///                 Id = "00000000-0000-0000-0000-222222222222",
+    ///                 Value = "Admin.All",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internalServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = internalApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         SecurityEnabled = true,
+    ///     });
+    /// 
+    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new()
+    ///     {
+    ///         AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Admin_All),
+    ///         PrincipalObjectId = exampleGroup.ObjectId,
+    ///         ResourceObjectId = internalServicePrincipal.ObjectId,
+    ///     });
+    /// 
+    ///     var exampleUser = new AzureAD.User("exampleUser", new()
+    ///     {
+    ///         DisplayName = "D. Duck",
+    ///         Password = "SecretP@sswd99!",
+    ///         UserPrincipalName = $"d.duck@{exampleDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains[0]?.DomainName)}",
+    ///     });
+    /// 
+    ///     var exampleIndex_appRoleAssignmentAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment", new()
+    ///     {
+    ///         AppRoleId = internalServicePrincipal.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.Admin_All),
+    ///         PrincipalObjectId = exampleUser.ObjectId,
+    ///         ResourceObjectId = internalServicePrincipal.ObjectId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -221,7 +229,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/appRoleAssignment:AppRoleAssignment")]
-    public partial class AppRoleAssignment : Pulumi.CustomResource
+    public partial class AppRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the app role to be assigned. Changing this forces a new resource to be created.
@@ -303,7 +311,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class AppRoleAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class AppRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the app role to be assigned. Changing this forces a new resource to be created.
@@ -326,9 +334,10 @@ namespace Pulumi.AzureAD
         public AppRoleAssignmentArgs()
         {
         }
+        public static new AppRoleAssignmentArgs Empty => new AppRoleAssignmentArgs();
     }
 
-    public sealed class AppRoleAssignmentState : Pulumi.ResourceArgs
+    public sealed class AppRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the app role to be assigned. Changing this forces a new resource to be created.
@@ -369,5 +378,6 @@ namespace Pulumi.AzureAD
         public AppRoleAssignmentState()
         {
         }
+        public static new AppRoleAssignmentState Empty => new AppRoleAssignmentState();
     }
 }

@@ -32,10 +32,26 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.ConditionalAccessPolicy;
+ * import com.pulumi.azuread.ConditionalAccessPolicyArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsApplicationsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsDevicesArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsLocationsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsPlatformsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicySessionControlsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -44,39 +60,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ConditionalAccessPolicy(&#34;example&#34;, ConditionalAccessPolicyArgs.builder()        
- *             .conditions(ConditionalAccessPolicyConditions.builder()
- *                 .applications(ConditionalAccessPolicyConditionsApplications.builder()
+ *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
+ *                 .applications(ConditionalAccessPolicyConditionsApplicationsArgs.builder()
  *                     .excludedApplications()
  *                     .includedApplications(&#34;All&#34;)
  *                     .build())
  *                 .clientAppTypes(&#34;all&#34;)
- *                 .devices(ConditionalAccessPolicyConditionsDevices.builder()
- *                     .filter(ConditionalAccessPolicyConditionsDevicesFilter.builder()
+ *                 .devices(ConditionalAccessPolicyConditionsDevicesArgs.builder()
+ *                     .filter(ConditionalAccessPolicyConditionsDevicesFilterArgs.builder()
  *                         .mode(&#34;exclude&#34;)
  *                         .rule(&#34;device.operatingSystem eq \&#34;Doors\&#34;&#34;)
  *                         .build())
  *                     .build())
- *                 .locations(ConditionalAccessPolicyConditionsLocations.builder()
+ *                 .locations(ConditionalAccessPolicyConditionsLocationsArgs.builder()
  *                     .excludedLocations(&#34;AllTrusted&#34;)
  *                     .includedLocations(&#34;All&#34;)
  *                     .build())
- *                 .platforms(ConditionalAccessPolicyConditionsPlatforms.builder()
+ *                 .platforms(ConditionalAccessPolicyConditionsPlatformsArgs.builder()
  *                     .excludedPlatforms(&#34;iOS&#34;)
  *                     .includedPlatforms(&#34;android&#34;)
  *                     .build())
  *                 .signInRiskLevels(&#34;medium&#34;)
  *                 .userRiskLevels(&#34;medium&#34;)
- *                 .users(ConditionalAccessPolicyConditionsUsers.builder()
+ *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
  *                     .excludedUsers(&#34;GuestsOrExternalUsers&#34;)
  *                     .includedUsers(&#34;All&#34;)
  *                     .build())
  *                 .build())
  *             .displayName(&#34;example policy&#34;)
- *             .grantControls(ConditionalAccessPolicyGrantControls.builder()
+ *             .grantControls(ConditionalAccessPolicyGrantControlsArgs.builder()
  *                 .builtInControls(&#34;mfa&#34;)
  *                 .operator(&#34;OR&#34;)
  *                 .build())
- *             .sessionControls(ConditionalAccessPolicySessionControls.builder()
+ *             .sessionControls(ConditionalAccessPolicySessionControlsArgs.builder()
  *                 .applicationEnforcedRestrictionsEnabled(true)
  *                 .cloudAppSecurityPolicy(&#34;monitorOnly&#34;)
  *                 .signInFrequency(10)
@@ -85,7 +101,7 @@ import javax.annotation.Nullable;
  *             .state(&#34;disabled&#34;)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

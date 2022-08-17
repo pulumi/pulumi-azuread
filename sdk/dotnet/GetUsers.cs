@@ -27,24 +27,22 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var users = AzureAD.GetUsers.Invoke(new()
         ///     {
-        ///         var users = Output.Create(AzureAD.GetUsers.InvokeAsync(new AzureAD.GetUsersArgs
+        ///         UserPrincipalNames = new[]
         ///         {
-        ///             UserPrincipalNames = 
-        ///             {
-        ///                 "kat@hashicorp.com",
-        ///                 "byte@hashicorp.com",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "kat@hashicorp.com",
+        ///             "byte@hashicorp.com",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -68,24 +66,22 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var users = AzureAD.GetUsers.Invoke(new()
         ///     {
-        ///         var users = Output.Create(AzureAD.GetUsers.InvokeAsync(new AzureAD.GetUsersArgs
+        ///         UserPrincipalNames = new[]
         ///         {
-        ///             UserPrincipalNames = 
-        ///             {
-        ///                 "kat@hashicorp.com",
-        ///                 "byte@hashicorp.com",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "kat@hashicorp.com",
+        ///             "byte@hashicorp.com",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +91,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetUsersArgs : Pulumi.InvokeArgs
+    public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
@@ -148,9 +144,10 @@ namespace Pulumi.AzureAD
         public GetUsersArgs()
         {
         }
+        public static new GetUsersArgs Empty => new GetUsersArgs();
     }
 
-    public sealed class GetUsersInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
@@ -203,6 +200,7 @@ namespace Pulumi.AzureAD
         public GetUsersInvokeArgs()
         {
         }
+        public static new GetUsersInvokeArgs Empty => new GetUsersInvokeArgs();
     }
 
 

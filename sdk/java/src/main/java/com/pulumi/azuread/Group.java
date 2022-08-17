@@ -40,10 +40,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -51,15 +59,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .securityEnabled(true)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -67,10 +75,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.User;
+ * import com.pulumi.azuread.UserArgs;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -78,7 +96,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var groupOwner = new User(&#34;groupOwner&#34;, UserArgs.builder()        
  *             .userPrincipalName(&#34;example-group-owner@hashicorp.com&#34;)
@@ -94,11 +112,11 @@ import javax.annotation.Nullable;
  *             .securityEnabled(true)
  *             .types(&#34;Unified&#34;)
  *             .owners(            
- *                 current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()),
- *                 groupOwner.getObjectId())
+ *                 current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()),
+ *                 groupOwner.objectId())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -107,10 +125,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.User;
+ * import com.pulumi.azuread.UserArgs;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -118,23 +146,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
  *             .displayName(&#34;J Doe&#34;)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .password(&#34;notSecure123&#34;)
  *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
  *             .build());
  * 
  *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
  *             .displayName(&#34;MyGroup&#34;)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .securityEnabled(true)
- *             .members(exampleUser.getObjectId())
+ *             .members(exampleUser.objectId())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -142,10 +170,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import com.pulumi.azuread.inputs.GroupDynamicMembershipArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -153,20 +190,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
  *             .displayName(&#34;MyGroup&#34;)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .securityEnabled(true)
  *             .types(&#34;DynamicMembership&#34;)
- *             .dynamicMembership(GroupDynamicMembership.builder()
+ *             .dynamicMembership(GroupDynamicMembershipArgs.builder()
  *                 .enabled(true)
  *                 .rule(&#34;user.department -eq \&#34;Sales\&#34;&#34;)
  *                 .build())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

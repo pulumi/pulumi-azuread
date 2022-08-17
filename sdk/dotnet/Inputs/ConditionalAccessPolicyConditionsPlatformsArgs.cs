@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicyConditionsPlatformsArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyConditionsPlatformsArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludedPlatforms")]
         private InputList<string>? _excludedPlatforms;
@@ -39,5 +39,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicyConditionsPlatformsArgs()
         {
         }
+        public static new ConditionalAccessPolicyConditionsPlatformsArgs Empty => new ConditionalAccessPolicyConditionsPlatformsArgs();
     }
 }

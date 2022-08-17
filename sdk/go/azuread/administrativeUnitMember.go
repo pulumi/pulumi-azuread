@@ -28,34 +28,37 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
-// 			UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "exampleAdministrativeUnit", &azuread.AdministrativeUnitArgs{
-// 			DisplayName: pulumi.String("Example-AU"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewAdministrativeUnitMember(ctx, "exampleAdministrativeUnitMember", &azuread.AdministrativeUnitMemberArgs{
-// 			AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-// 			MemberObjectId:             pulumi.String(exampleUser.Id),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
+//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "exampleAdministrativeUnit", &azuread.AdministrativeUnitArgs{
+//				DisplayName: pulumi.String("Example-AU"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAdministrativeUnitMember(ctx, "exampleAdministrativeUnitMember", &azuread.AdministrativeUnitMemberArgs{
+//				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
+//				MemberObjectId:             pulumi.String(exampleUser.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -63,10 +66,12 @@ import (
 // Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
 //
 // ```sh
-//  $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+//
+//	$ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+//
 // ```
 //
-//  -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
+//	-> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
 type AdministrativeUnitMember struct {
 	pulumi.CustomResourceState
 
@@ -163,7 +168,7 @@ func (i *AdministrativeUnitMember) ToAdministrativeUnitMemberOutputWithContext(c
 // AdministrativeUnitMemberArrayInput is an input type that accepts AdministrativeUnitMemberArray and AdministrativeUnitMemberArrayOutput values.
 // You can construct a concrete instance of `AdministrativeUnitMemberArrayInput` via:
 //
-//          AdministrativeUnitMemberArray{ AdministrativeUnitMemberArgs{...} }
+//	AdministrativeUnitMemberArray{ AdministrativeUnitMemberArgs{...} }
 type AdministrativeUnitMemberArrayInput interface {
 	pulumi.Input
 
@@ -188,7 +193,7 @@ func (i AdministrativeUnitMemberArray) ToAdministrativeUnitMemberArrayOutputWith
 // AdministrativeUnitMemberMapInput is an input type that accepts AdministrativeUnitMemberMap and AdministrativeUnitMemberMapOutput values.
 // You can construct a concrete instance of `AdministrativeUnitMemberMapInput` via:
 //
-//          AdministrativeUnitMemberMap{ "key": AdministrativeUnitMemberArgs{...} }
+//	AdministrativeUnitMemberMap{ "key": AdministrativeUnitMemberArgs{...} }
 type AdministrativeUnitMemberMapInput interface {
 	pulumi.Input
 

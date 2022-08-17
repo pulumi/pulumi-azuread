@@ -550,3 +550,4 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: pulumi.Input<string>;
 }
+

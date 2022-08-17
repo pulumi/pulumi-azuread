@@ -29,39 +29,35 @@ namespace Pulumi.AzureAD
     /// *Activate a directory role by its template ID*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.DirectoryRole("example", new()
     ///     {
-    ///         var example = new AzureAD.DirectoryRole("example", new AzureAD.DirectoryRoleArgs
-    ///         {
-    ///             TemplateId = "00000000-0000-0000-0000-000000000000",
-    ///         });
-    ///     }
+    ///         TemplateId = "00000000-0000-0000-0000-000000000000",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// *Activate a directory role by display name*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.DirectoryRole("example", new()
     ///     {
-    ///         var example = new AzureAD.DirectoryRole("example", new AzureAD.DirectoryRoleArgs
-    ///         {
-    ///             DisplayName = "Printer administrator",
-    ///         });
-    ///     }
+    ///         DisplayName = "Printer administrator",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -69,7 +65,7 @@ namespace Pulumi.AzureAD
     /// This resource does not support importing.
     /// </summary>
     [AzureADResourceType("azuread:index/directoryRole:DirectoryRole")]
-    public partial class DirectoryRole : Pulumi.CustomResource
+    public partial class DirectoryRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the directory role.
@@ -139,7 +135,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class DirectoryRoleArgs : Pulumi.ResourceArgs
+    public sealed class DirectoryRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the directory role to activate. Changing this forces a new resource to be created.
@@ -156,9 +152,10 @@ namespace Pulumi.AzureAD
         public DirectoryRoleArgs()
         {
         }
+        public static new DirectoryRoleArgs Empty => new DirectoryRoleArgs();
     }
 
-    public sealed class DirectoryRoleState : Pulumi.ResourceArgs
+    public sealed class DirectoryRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the directory role.
@@ -187,5 +184,6 @@ namespace Pulumi.AzureAD
         public DirectoryRoleState()
         {
         }
+        public static new DirectoryRoleState Empty => new DirectoryRoleState();
     }
 }

@@ -19,10 +19,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetUserArgs;
+ * import com.pulumi.azuread.DirectoryRole;
+ * import com.pulumi.azuread.DirectoryRoleArgs;
+ * import com.pulumi.azuread.DirectoryRoleMember;
+ * import com.pulumi.azuread.DirectoryRoleMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -30,20 +41,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var exampleDirectoryRole = new DirectoryRole(&#34;exampleDirectoryRole&#34;, DirectoryRoleArgs.builder()        
  *             .displayName(&#34;Security administrator&#34;)
  *             .build());
  * 
  *         var exampleDirectoryRoleMember = new DirectoryRoleMember(&#34;exampleDirectoryRoleMember&#34;, DirectoryRoleMemberArgs.builder()        
- *             .roleObjectId(exampleDirectoryRole.getObjectId())
- *             .memberObjectId(exampleUser.apply(getUserResult -&gt; getUserResult.getObjectId()))
+ *             .roleObjectId(exampleDirectoryRole.objectId())
+ *             .memberObjectId(exampleUser.applyValue(getUserResult -&gt; getUserResult.objectId()))
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

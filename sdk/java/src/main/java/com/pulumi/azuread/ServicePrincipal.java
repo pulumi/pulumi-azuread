@@ -41,10 +41,20 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -52,20 +62,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.getApplicationId())
+ *             .applicationId(exampleApplication.applicationId())
  *             .appRoleAssignmentRequired(false)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -73,10 +83,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.inputs.ServicePrincipalFeatureTagArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -84,24 +105,24 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.getApplicationId())
+ *             .applicationId(exampleApplication.applicationId())
  *             .appRoleAssignmentRequired(false)
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
- *             .featureTags(ServicePrincipalFeatureTag.builder()
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *             .featureTags(ServicePrincipalFeatureTagArgs.builder()
  *                 .enterprise(true)
  *                 .gallery(true)
  *                 .build())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -109,10 +130,18 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -120,14 +149,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
  *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+ *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -135,10 +164,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -146,21 +186,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleApplicationTemplate = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *         final var exampleApplicationTemplate = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
  *             .displayName(&#34;Marketo&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .templateId(exampleApplicationTemplate.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()))
+ *             .templateId(exampleApplicationTemplate.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.getApplicationId())
+ *             .applicationId(exampleApplication.applicationId())
  *             .useExisting(true)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

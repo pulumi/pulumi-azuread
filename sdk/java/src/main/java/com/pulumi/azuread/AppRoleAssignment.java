@@ -30,10 +30,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+ * import com.pulumi.azuread.AppRoleAssignment;
+ * import com.pulumi.azuread.AppRoleAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -41,40 +54,40 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+ *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
  * 
  *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+ *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *             .useExisting(true)
  *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
- *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+ *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+ *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
  *                 .resourceAccesses(                
- *                     ApplicationRequiredResourceAccessResourceAccess.builder()
- *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+ *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+ *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
  *                         .type(&#34;Role&#34;)
  *                         .build(),
- *                     ApplicationRequiredResourceAccessResourceAccess.builder()
- *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+ *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+ *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
  *                         .type(&#34;Scope&#34;)
  *                         .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.getApplicationId())
+ *             .applicationId(exampleApplication.applicationId())
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
- *             .appRoleId(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
- *             .principalObjectId(exampleServicePrincipal.getObjectId())
- *             .resourceObjectId(msgraph.getObjectId())
+ *             .appRoleId(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
+ *             .principalObjectId(exampleServicePrincipal.objectId())
+ *             .resourceObjectId(msgraph.objectId())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -82,10 +95,23 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationAppRoleArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+ * import com.pulumi.azuread.AppRoleAssignment;
+ * import com.pulumi.azuread.AppRoleAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -95,7 +121,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var internalApplication = new Application(&#34;internalApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;internal&#34;)
- *             .appRoles(ApplicationAppRole.builder()
+ *             .appRoles(ApplicationAppRoleArgs.builder()
  *                 .allowedMemberTypes(&#34;Application&#34;)
  *                 .description(&#34;Apps can query the database&#34;)
  *                 .displayName(&#34;Query&#34;)
@@ -106,31 +132,31 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var internalServicePrincipal = new ServicePrincipal(&#34;internalServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(internalApplication.getApplicationId())
+ *             .applicationId(internalApplication.applicationId())
  *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
- *                 .resourceAppId(internalApplication.getApplicationId())
- *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccess.builder()
- *                     .id(internalServicePrincipal.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getQuery.All()))
+ *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+ *                 .resourceAppId(internalApplication.applicationId())
+ *                 .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+ *                     .id(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Query.All()))
  *                     .type(&#34;Role&#34;)
  *                     .build())
  *                 .build())
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.getApplicationId())
+ *             .applicationId(exampleApplication.applicationId())
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
- *             .appRoleId(internalServicePrincipal.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getQuery.All()))
- *             .principalObjectId(exampleServicePrincipal.getObjectId())
- *             .resourceObjectId(internalServicePrincipal.getObjectId())
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Query.All()))
+ *             .principalObjectId(exampleServicePrincipal.objectId())
+ *             .resourceObjectId(internalServicePrincipal.objectId())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -138,10 +164,28 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetDomainsArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationAppRoleArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import com.pulumi.azuread.AppRoleAssignment;
+ * import com.pulumi.azuread.AppRoleAssignmentArgs;
+ * import com.pulumi.azuread.User;
+ * import com.pulumi.azuread.UserArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -149,13 +193,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleDomains = Output.of(AzureadFunctions.getDomains(GetDomainsArgs.builder()
+ *         final var exampleDomains = AzureadFunctions.getDomains(GetDomainsArgs.builder()
  *             .onlyInitial(true)
- *             .build()));
+ *             .build());
  * 
  *         var internalApplication = new Application(&#34;internalApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;internal&#34;)
- *             .appRoles(ApplicationAppRole.builder()
+ *             .appRoles(ApplicationAppRoleArgs.builder()
  *                 .allowedMemberTypes(                
  *                     &#34;Application&#34;,
  *                     &#34;User&#34;)
@@ -168,7 +212,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var internalServicePrincipal = new ServicePrincipal(&#34;internalServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(internalApplication.getApplicationId())
+ *             .applicationId(internalApplication.applicationId())
  *             .build());
  * 
  *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
@@ -177,24 +221,24 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
- *             .appRoleId(internalServicePrincipal.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getAdmin.All()))
- *             .principalObjectId(exampleGroup.getObjectId())
- *             .resourceObjectId(internalServicePrincipal.getObjectId())
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Admin.All()))
+ *             .principalObjectId(exampleGroup.objectId())
+ *             .resourceObjectId(internalServicePrincipal.objectId())
  *             .build());
  * 
  *         var exampleUser = new User(&#34;exampleUser&#34;, UserArgs.builder()        
  *             .displayName(&#34;D. Duck&#34;)
  *             .password(&#34;SecretP@sswd99!&#34;)
- *             .userPrincipalName(String.format(&#34;d.duck@%s&#34;, exampleDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()[0].getDomainName())))
+ *             .userPrincipalName(String.format(&#34;d.duck@%s&#34;, exampleDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()[0].domainName())))
  *             .build());
  * 
  *         var exampleIndex_appRoleAssignmentAppRoleAssignment = new AppRoleAssignment(&#34;exampleIndex/appRoleAssignmentAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
- *             .appRoleId(internalServicePrincipal.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getAdmin.All()))
- *             .principalObjectId(exampleUser.getObjectId())
- *             .resourceObjectId(internalServicePrincipal.getObjectId())
+ *             .appRoleId(internalServicePrincipal.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.Admin.All()))
+ *             .principalObjectId(exampleUser.objectId())
+ *             .resourceObjectId(internalServicePrincipal.objectId())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

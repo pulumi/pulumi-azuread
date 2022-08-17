@@ -20,10 +20,19 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ApplicationFederatedIdentityCredential;
+ * import com.pulumi.azuread.ApplicationFederatedIdentityCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -36,7 +45,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleApplicationFederatedIdentityCredential = new ApplicationFederatedIdentityCredential(&#34;exampleApplicationFederatedIdentityCredential&#34;, ApplicationFederatedIdentityCredentialArgs.builder()        
- *             .applicationObjectId(exampleApplication.getObjectId())
+ *             .applicationObjectId(exampleApplication.objectId())
  *             .displayName(&#34;my-repo-deploy&#34;)
  *             .description(&#34;Deployments for my-repo&#34;)
  *             .audiences(&#34;api://AzureADTokenExchange&#34;)
@@ -44,7 +53,7 @@ import javax.annotation.Nullable;
  *             .subject(&#34;repo:my-organization/my-repo:environment:prod&#34;)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

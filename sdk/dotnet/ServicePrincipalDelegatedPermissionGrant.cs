@@ -25,127 +25,132 @@ namespace Pulumi.AzureAD
     /// *Delegated permission grant for all users*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    /// 
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
     ///     {
-    ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
-    ///         var msgraph = new AzureAD.ServicePrincipal("msgraph", new AzureAD.ServicePrincipalArgs
+    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         RequiredResourceAccesses = new[]
     ///         {
-    ///             ApplicationId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///             UseExisting = true,
-    ///         });
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             RequiredResourceAccesses = 
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
     ///             {
-    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///                 ResourceAccesses = new[]
     ///                 {
-    ///                     ResourceAppId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///                     ResourceAccesses = 
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                     {
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.Openid),
-    ///                             Type = "Scope",
-    ///                         },
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_Read),
-    ///                             Type = "Scope",
-    ///                         },
+    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.Openid),
+    ///                         Type = "Scope",
+    ///                     },
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_Read),
+    ///                         Type = "Scope",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///         });
-    ///         var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", new AzureAD.ServicePrincipalDelegatedPermissionGrantArgs
-    ///         {
-    ///             ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
-    ///             ResourceServicePrincipalObjectId = msgraph.ObjectId,
-    ///             ClaimValues = 
-    ///             {
-    ///                 "openid",
-    ///                 "User.Read.All",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", new()
+    ///     {
+    ///         ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
+    ///         ResourceServicePrincipalObjectId = msgraph.ObjectId,
+    ///         ClaimValues = new[]
+    ///         {
+    ///             "openid",
+    ///             "User.Read.All",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *Delegated permission grant for a single user*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+    /// 
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
     ///     {
-    ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
-    ///         var msgraph = new AzureAD.ServicePrincipal("msgraph", new AzureAD.ServicePrincipalArgs
+    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         RequiredResourceAccesses = new[]
     ///         {
-    ///             ApplicationId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///             UseExisting = true,
-    ///         });
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             RequiredResourceAccesses = 
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
     ///             {
-    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///                 ResourceAccesses = new[]
     ///                 {
-    ///                     ResourceAppId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///                     ResourceAccesses = 
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
     ///                     {
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.Openid),
-    ///                             Type = "Scope",
-    ///                         },
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_Read),
-    ///                             Type = "Scope",
-    ///                         },
+    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.Openid),
+    ///                         Type = "Scope",
+    ///                     },
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_Read),
+    ///                         Type = "Scope",
     ///                     },
     ///                 },
     ///             },
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///         });
-    ///         var exampleUser = new AzureAD.User("exampleUser", new AzureAD.UserArgs
-    ///         {
-    ///             DisplayName = "J. Doe",
-    ///             UserPrincipalName = "jdoe@hashicorp.com",
-    ///             MailNickname = "jdoe",
-    ///             Password = "SecretP@sswd99!",
-    ///         });
-    ///         var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", new AzureAD.ServicePrincipalDelegatedPermissionGrantArgs
-    ///         {
-    ///             ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
-    ///             ResourceServicePrincipalObjectId = msgraph.ObjectId,
-    ///             ClaimValues = 
-    ///             {
-    ///                 "openid",
-    ///                 "User.Read.All",
-    ///             },
-    ///             UserObjectId = exampleUser.ObjectId,
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleUser = new AzureAD.User("exampleUser", new()
+    ///     {
+    ///         DisplayName = "J. Doe",
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///         MailNickname = "jdoe",
+    ///         Password = "SecretP@sswd99!",
+    ///     });
+    /// 
+    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", new()
+    ///     {
+    ///         ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
+    ///         ResourceServicePrincipalObjectId = msgraph.ObjectId,
+    ///         ClaimValues = new[]
+    ///         {
+    ///             "openid",
+    ///             "User.Read.All",
+    ///         },
+    ///         UserObjectId = exampleUser.ObjectId,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -157,7 +162,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant")]
-    public partial class ServicePrincipalDelegatedPermissionGrant : Pulumi.CustomResource
+    public partial class ServicePrincipalDelegatedPermissionGrant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
@@ -227,7 +232,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ServicePrincipalDelegatedPermissionGrantArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalDelegatedPermissionGrantArgs : global::Pulumi.ResourceArgs
     {
         [Input("claimValues", required: true)]
         private InputList<string>? _claimValues;
@@ -262,9 +267,10 @@ namespace Pulumi.AzureAD
         public ServicePrincipalDelegatedPermissionGrantArgs()
         {
         }
+        public static new ServicePrincipalDelegatedPermissionGrantArgs Empty => new ServicePrincipalDelegatedPermissionGrantArgs();
     }
 
-    public sealed class ServicePrincipalDelegatedPermissionGrantState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalDelegatedPermissionGrantState : global::Pulumi.ResourceArgs
     {
         [Input("claimValues")]
         private InputList<string>? _claimValues;
@@ -299,5 +305,6 @@ namespace Pulumi.AzureAD
         public ServicePrincipalDelegatedPermissionGrantState()
         {
         }
+        public static new ServicePrincipalDelegatedPermissionGrantState Empty => new ServicePrincipalDelegatedPermissionGrantState();
     }
 }

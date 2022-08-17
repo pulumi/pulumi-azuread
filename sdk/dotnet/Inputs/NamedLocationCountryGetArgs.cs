@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class NamedLocationCountryGetArgs : Pulumi.ResourceArgs
+    public sealed class NamedLocationCountryGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("countriesAndRegions", required: true)]
         private InputList<string>? _countriesAndRegions;
@@ -33,5 +33,6 @@ namespace Pulumi.AzureAD.Inputs
         public NamedLocationCountryGetArgs()
         {
         }
+        public static new NamedLocationCountryGetArgs Empty => new NamedLocationCountryGetArgs();
     }
 }

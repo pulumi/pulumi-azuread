@@ -13,60 +13,60 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var authorized = new AzureAD.Application("authorized", new()
     ///     {
-    ///         var authorized = new AzureAD.Application("authorized", new AzureAD.ApplicationArgs
+    ///         DisplayName = "example-authorized-app",
+    ///     });
+    /// 
+    ///     var authorizer = new AzureAD.Application("authorizer", new()
+    ///     {
+    ///         DisplayName = "example-authorizing-app",
+    ///         Api = new AzureAD.Inputs.ApplicationApiArgs
     ///         {
-    ///             DisplayName = "example-authorized-app",
-    ///         });
-    ///         var authorizer = new AzureAD.Application("authorizer", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example-authorizing-app",
-    ///             Api = new AzureAD.Inputs.ApplicationApiArgs
+    ///             Oauth2PermissionScopes = new[]
     ///             {
-    ///                 Oauth2PermissionScopes = 
+    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
     ///                 {
-    ///                     new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                     {
-    ///                         AdminConsentDescription = "Administer the application",
-    ///                         AdminConsentDisplayName = "Administer",
-    ///                         Enabled = true,
-    ///                         Id = "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
-    ///                         Type = "Admin",
-    ///                         Value = "administer",
-    ///                     },
-    ///                     new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                     {
-    ///                         AdminConsentDescription = "Access the application",
-    ///                         AdminConsentDisplayName = "Access",
-    ///                         Enabled = true,
-    ///                         Id = "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
-    ///                         Type = "User",
-    ///                         UserConsentDescription = "Access the application",
-    ///                         UserConsentDisplayName = "Access",
-    ///                         Value = "user_impersonation",
-    ///                     },
+    ///                     AdminConsentDescription = "Administer the application",
+    ///                     AdminConsentDisplayName = "Administer",
+    ///                     Enabled = true,
+    ///                     Id = "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+    ///                     Type = "Admin",
+    ///                     Value = "administer",
+    ///                 },
+    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
+    ///                 {
+    ///                     AdminConsentDescription = "Access the application",
+    ///                     AdminConsentDisplayName = "Access",
+    ///                     Enabled = true,
+    ///                     Id = "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+    ///                     Type = "User",
+    ///                     UserConsentDescription = "Access the application",
+    ///                     UserConsentDisplayName = "Access",
+    ///                     Value = "user_impersonation",
     ///                 },
     ///             },
-    ///         });
-    ///         var example = new AzureAD.ApplicationPreAuthorized("example", new AzureAD.ApplicationPreAuthorizedArgs
-    ///         {
-    ///             ApplicationObjectId = authorizer.ObjectId,
-    ///             AuthorizedAppId = authorized.ApplicationId,
-    ///             PermissionIds = 
-    ///             {
-    ///                 "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
-    ///                 "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
-    ///             },
-    ///         });
-    ///     }
+    ///         },
+    ///     });
     /// 
-    /// }
+    ///     var example = new AzureAD.ApplicationPreAuthorized("example", new()
+    ///     {
+    ///         ApplicationObjectId = authorizer.ObjectId,
+    ///         AuthorizedAppId = authorized.ApplicationId,
+    ///         PermissionIds = new[]
+    ///         {
+    ///             "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+    ///             "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -80,7 +80,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
     /// </summary>
     [AzureADResourceType("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized")]
-    public partial class ApplicationPreAuthorized : Pulumi.CustomResource
+    public partial class ApplicationPreAuthorized : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
@@ -144,7 +144,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ApplicationPreAuthorizedArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationPreAuthorizedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
@@ -173,9 +173,10 @@ namespace Pulumi.AzureAD
         public ApplicationPreAuthorizedArgs()
         {
         }
+        public static new ApplicationPreAuthorizedArgs Empty => new ApplicationPreAuthorizedArgs();
     }
 
-    public sealed class ApplicationPreAuthorizedState : Pulumi.ResourceArgs
+    public sealed class ApplicationPreAuthorizedState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
@@ -204,5 +205,6 @@ namespace Pulumi.AzureAD
         public ApplicationPreAuthorizedState()
         {
         }
+        public static new ApplicationPreAuthorizedState Empty => new ApplicationPreAuthorizedState();
     }
 }

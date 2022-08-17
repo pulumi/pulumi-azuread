@@ -13,32 +13,31 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
     ///     {
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///         });
-    ///         var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new AzureAD.ApplicationFederatedIdentityCredentialArgs
-    ///         {
-    ///             ApplicationObjectId = exampleApplication.ObjectId,
-    ///             DisplayName = "my-repo-deploy",
-    ///             Description = "Deployments for my-repo",
-    ///             Audiences = 
-    ///             {
-    ///                 "api://AzureADTokenExchange",
-    ///             },
-    ///             Issuer = "https://token.actions.githubusercontent.com",
-    ///             Subject = "repo:my-organization/my-repo:environment:prod",
-    ///         });
-    ///     }
+    ///         DisplayName = "example",
+    ///     });
     /// 
-    /// }
+    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new()
+    ///     {
+    ///         ApplicationObjectId = exampleApplication.ObjectId,
+    ///         DisplayName = "my-repo-deploy",
+    ///         Description = "Deployments for my-repo",
+    ///         Audiences = new[]
+    ///         {
+    ///             "api://AzureADTokenExchange",
+    ///         },
+    ///         Issuer = "https://token.actions.githubusercontent.com",
+    ///         Subject = "repo:my-organization/my-repo:environment:prod",
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -52,7 +51,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
     /// </summary>
     [AzureADResourceType("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential")]
-    public partial class ApplicationFederatedIdentityCredential : Pulumi.CustomResource
+    public partial class ApplicationFederatedIdentityCredential : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
@@ -140,7 +139,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ApplicationFederatedIdentityCredentialArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationFederatedIdentityCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
@@ -187,9 +186,10 @@ namespace Pulumi.AzureAD
         public ApplicationFederatedIdentityCredentialArgs()
         {
         }
+        public static new ApplicationFederatedIdentityCredentialArgs Empty => new ApplicationFederatedIdentityCredentialArgs();
     }
 
-    public sealed class ApplicationFederatedIdentityCredentialState : Pulumi.ResourceArgs
+    public sealed class ApplicationFederatedIdentityCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
@@ -242,5 +242,6 @@ namespace Pulumi.AzureAD
         public ApplicationFederatedIdentityCredentialState()
         {
         }
+        public static new ApplicationFederatedIdentityCredentialState Empty => new ApplicationFederatedIdentityCredentialState();
     }
 }

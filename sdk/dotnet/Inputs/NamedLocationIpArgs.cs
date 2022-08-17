@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class NamedLocationIpArgs : Pulumi.ResourceArgs
+    public sealed class NamedLocationIpArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipRanges", required: true)]
         private InputList<string>? _ipRanges;
@@ -33,5 +33,6 @@ namespace Pulumi.AzureAD.Inputs
         public NamedLocationIpArgs()
         {
         }
+        public static new NamedLocationIpArgs Empty => new NamedLocationIpArgs();
     }
 }

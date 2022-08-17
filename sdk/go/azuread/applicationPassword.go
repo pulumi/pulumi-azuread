@@ -19,7 +19,7 @@ type ApplicationPassword struct {
 
 	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
-	// A display name for the password.
+	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
@@ -69,7 +69,7 @@ func GetApplicationPassword(ctx *pulumi.Context,
 type applicationPasswordState struct {
 	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
-	// A display name for the password.
+	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
@@ -88,7 +88,7 @@ type applicationPasswordState struct {
 type ApplicationPasswordState struct {
 	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
-	// A display name for the password.
+	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
@@ -111,7 +111,7 @@ func (ApplicationPasswordState) ElementType() reflect.Type {
 type applicationPasswordArgs struct {
 	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
-	// A display name for the password.
+	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
@@ -127,7 +127,7 @@ type applicationPasswordArgs struct {
 type ApplicationPasswordArgs struct {
 	// The object ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
-	// A display name for the password.
+	// A display name for the password. Changing this field forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
@@ -165,7 +165,7 @@ func (i *ApplicationPassword) ToApplicationPasswordOutputWithContext(ctx context
 // ApplicationPasswordArrayInput is an input type that accepts ApplicationPasswordArray and ApplicationPasswordArrayOutput values.
 // You can construct a concrete instance of `ApplicationPasswordArrayInput` via:
 //
-//          ApplicationPasswordArray{ ApplicationPasswordArgs{...} }
+//	ApplicationPasswordArray{ ApplicationPasswordArgs{...} }
 type ApplicationPasswordArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +190,7 @@ func (i ApplicationPasswordArray) ToApplicationPasswordArrayOutputWithContext(ct
 // ApplicationPasswordMapInput is an input type that accepts ApplicationPasswordMap and ApplicationPasswordMapOutput values.
 // You can construct a concrete instance of `ApplicationPasswordMapInput` via:
 //
-//          ApplicationPasswordMap{ "key": ApplicationPasswordArgs{...} }
+//	ApplicationPasswordMap{ "key": ApplicationPasswordArgs{...} }
 type ApplicationPasswordMapInput interface {
 	pulumi.Input
 
@@ -231,7 +231,7 @@ func (o ApplicationPasswordOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }
 
-// A display name for the password.
+// A display name for the password. Changing this field forces a new resource to be created.
 func (o ApplicationPasswordOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPassword) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

@@ -29,38 +29,34 @@ namespace Pulumi.AzureAD
         /// 
         /// *Look up by display name*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetAdministrativeUnit.InvokeAsync(new AzureAD.GetAdministrativeUnitArgs
-        ///         {
-        ///             DisplayName = "Example-AU",
-        ///         }));
-        ///     }
+        ///         DisplayName = "Example-AU",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by object ID*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetAdministrativeUnit.InvokeAsync(new AzureAD.GetAdministrativeUnitArgs
-        ///         {
-        ///             ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///         }));
-        ///     }
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -86,38 +82,34 @@ namespace Pulumi.AzureAD
         /// 
         /// *Look up by display name*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetAdministrativeUnit.InvokeAsync(new AzureAD.GetAdministrativeUnitArgs
-        ///         {
-        ///             DisplayName = "Example-AU",
-        ///         }));
-        ///     }
+        ///         DisplayName = "Example-AU",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by object ID*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetAdministrativeUnit.InvokeAsync(new AzureAD.GetAdministrativeUnitArgs
-        ///         {
-        ///             ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///         }));
-        ///     }
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -127,7 +119,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetAdministrativeUnitArgs : Pulumi.InvokeArgs
+    public sealed class GetAdministrativeUnitArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies the display name of the administrative unit.
@@ -144,9 +136,10 @@ namespace Pulumi.AzureAD
         public GetAdministrativeUnitArgs()
         {
         }
+        public static new GetAdministrativeUnitArgs Empty => new GetAdministrativeUnitArgs();
     }
 
-    public sealed class GetAdministrativeUnitInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAdministrativeUnitInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies the display name of the administrative unit.
@@ -163,6 +156,7 @@ namespace Pulumi.AzureAD
         public GetAdministrativeUnitInvokeArgs()
         {
         }
+        public static new GetAdministrativeUnitInvokeArgs Empty => new GetAdministrativeUnitInvokeArgs();
     }
 
 

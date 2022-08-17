@@ -25,30 +25,30 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
     ///     {
-    ///         var exampleUser = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
-    ///         {
-    ///             UserPrincipalName = "jdoe@hashicorp.com",
-    ///         }));
-    ///         var exampleGroup = new AzureAD.Group("exampleGroup", new AzureAD.GroupArgs
-    ///         {
-    ///             DisplayName = "my_group",
-    ///             SecurityEnabled = true,
-    ///         });
-    ///         var exampleGroupMember = new AzureAD.GroupMember("exampleGroupMember", new AzureAD.GroupMemberArgs
-    ///         {
-    ///             GroupObjectId = exampleGroup.Id,
-    ///             MemberObjectId = exampleUser.Apply(exampleUser =&gt; exampleUser.Id),
-    ///         });
-    ///     }
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     {
+    ///         DisplayName = "my_group",
+    ///         SecurityEnabled = true,
+    ///     });
+    /// 
+    ///     var exampleGroupMember = new AzureAD.GroupMember("exampleGroupMember", new()
+    ///     {
+    ///         GroupObjectId = exampleGroup.Id,
+    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -62,7 +62,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/groupMember:GroupMember")]
-    public partial class GroupMember : Pulumi.CustomResource
+    public partial class GroupMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
@@ -120,7 +120,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class GroupMemberArgs : Pulumi.ResourceArgs
+    public sealed class GroupMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
@@ -137,9 +137,10 @@ namespace Pulumi.AzureAD
         public GroupMemberArgs()
         {
         }
+        public static new GroupMemberArgs Empty => new GroupMemberArgs();
     }
 
-    public sealed class GroupMemberState : Pulumi.ResourceArgs
+    public sealed class GroupMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
@@ -156,5 +157,6 @@ namespace Pulumi.AzureAD
         public GroupMemberState()
         {
         }
+        public static new GroupMemberState Empty => new GroupMemberState();
     }
 }

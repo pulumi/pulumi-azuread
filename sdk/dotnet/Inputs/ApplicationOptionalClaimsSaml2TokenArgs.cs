@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationOptionalClaimsSaml2TokenArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationOptionalClaimsSaml2TokenArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalProperties")]
         private InputList<string>? _additionalProperties;
@@ -45,5 +45,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationOptionalClaimsSaml2TokenArgs()
         {
         }
+        public static new ApplicationOptionalClaimsSaml2TokenArgs Empty => new ApplicationOptionalClaimsSaml2TokenArgs();
     }
 }

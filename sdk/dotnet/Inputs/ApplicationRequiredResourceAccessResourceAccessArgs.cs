@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationRequiredResourceAccessResourceAccessArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationRequiredResourceAccessResourceAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationRequiredResourceAccessResourceAccessArgs()
         {
         }
+        public static new ApplicationRequiredResourceAccessResourceAccessArgs Empty => new ApplicationRequiredResourceAccessResourceAccessArgs();
     }
 }

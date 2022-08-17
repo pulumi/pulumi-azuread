@@ -35,7 +35,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/group:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
@@ -249,7 +249,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
@@ -398,9 +398,10 @@ namespace Pulumi.AzureAD
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 
-    public sealed class GroupState : Pulumi.ResourceArgs
+    public sealed class GroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
@@ -609,5 +610,6 @@ namespace Pulumi.AzureAD
         public GroupState()
         {
         }
+        public static new GroupState Empty => new GroupState();
     }
 }

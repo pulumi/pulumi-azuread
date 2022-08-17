@@ -23,23 +23,22 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs
-        ///         {
-        ///             DisplayName = "Marketo",
-        ///         }));
-        ///         this.ApplicationTemplateId = example.Apply(example =&gt; example.TemplateId);
-        ///     }
+        ///         DisplayName = "Marketo",
+        ///     });
         /// 
-        ///     [Output("applicationTemplateId")]
-        ///     public Output&lt;string&gt; ApplicationTemplateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationTemplateId"] = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -59,23 +58,22 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetApplicationTemplate.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs
-        ///         {
-        ///             DisplayName = "Marketo",
-        ///         }));
-        ///         this.ApplicationTemplateId = example.Apply(example =&gt; example.TemplateId);
-        ///     }
+        ///         DisplayName = "Marketo",
+        ///     });
         /// 
-        ///     [Output("applicationTemplateId")]
-        ///     public Output&lt;string&gt; ApplicationTemplateId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationTemplateId"] = example.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -85,7 +83,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetApplicationTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationTemplateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies the display name of the templated application.
@@ -102,9 +100,10 @@ namespace Pulumi.AzureAD
         public GetApplicationTemplateArgs()
         {
         }
+        public static new GetApplicationTemplateArgs Empty => new GetApplicationTemplateArgs();
     }
 
-    public sealed class GetApplicationTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies the display name of the templated application.
@@ -121,6 +120,7 @@ namespace Pulumi.AzureAD
         public GetApplicationTemplateInvokeArgs()
         {
         }
+        public static new GetApplicationTemplateInvokeArgs Empty => new GetApplicationTemplateInvokeArgs();
     }
 
 

@@ -23,20 +23,19 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
-        ///         this.ObjectId = current.Apply(current =&gt; current.ObjectId);
-        ///     }
+        ///     var current = AzureAD.GetClientConfig.Invoke();
         /// 
-        ///     [Output("objectId")]
-        ///     public Output&lt;string&gt; ObjectId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["objectId"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

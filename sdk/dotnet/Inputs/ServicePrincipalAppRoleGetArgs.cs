@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ServicePrincipalAppRoleGetArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalAppRoleGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedMemberTypes")]
         private InputList<string>? _allowedMemberTypes;
@@ -57,5 +57,6 @@ namespace Pulumi.AzureAD.Inputs
         public ServicePrincipalAppRoleGetArgs()
         {
         }
+        public static new ServicePrincipalAppRoleGetArgs Empty => new ServicePrincipalAppRoleGetArgs();
     }
 }

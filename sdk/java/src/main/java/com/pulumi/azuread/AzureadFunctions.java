@@ -62,10 +62,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -73,11 +80,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .displayName(&#34;Example-AU&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -85,10 +92,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -96,11 +110,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -126,10 +140,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -137,11 +158,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .displayName(&#34;Example-AU&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -149,10 +170,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -160,11 +188,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -190,10 +218,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -201,11 +236,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .displayName(&#34;Example-AU&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -213,10 +248,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -224,11 +266,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -254,10 +296,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -265,11 +314,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .displayName(&#34;Example-AU&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -277,10 +326,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -288,11 +344,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -318,10 +374,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -329,11 +392,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .displayName(&#34;Example-AU&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -341,10 +404,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -352,11 +422,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -382,10 +452,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -393,11 +470,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .displayName(&#34;Example-AU&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -405,10 +482,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -416,11 +500,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
+     *         final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -443,10 +527,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -454,12 +545,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplication(GetApplicationArgs.builder()
+     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
      *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.apply(getApplicationResult -&gt; getApplicationResult.getId()));
-     *         }
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *     }
      * }
      * ```
      * 
@@ -482,10 +573,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -493,12 +591,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplication(GetApplicationArgs.builder()
+     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
      *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.apply(getApplicationResult -&gt; getApplicationResult.getId()));
-     *         }
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *     }
      * }
      * ```
      * 
@@ -521,10 +619,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -532,12 +637,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplication(GetApplicationArgs.builder()
+     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
      *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.apply(getApplicationResult -&gt; getApplicationResult.getId()));
-     *         }
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *     }
      * }
      * ```
      * 
@@ -560,10 +665,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -571,12 +683,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplication(GetApplicationArgs.builder()
+     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
      *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.apply(getApplicationResult -&gt; getApplicationResult.getId()));
-     *         }
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *     }
      * }
      * ```
      * 
@@ -599,10 +711,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -610,12 +729,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplication(GetApplicationArgs.builder()
+     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
      *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.apply(getApplicationResult -&gt; getApplicationResult.getId()));
-     *         }
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *     }
      * }
      * ```
      * 
@@ -638,10 +757,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -649,12 +775,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplication(GetApplicationArgs.builder()
+     *         final var example = AzureadFunctions.getApplication(GetApplicationArgs.builder()
      *             .displayName(&#34;My First AzureAD Application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationObjectId&#34;, example.apply(getApplicationResult -&gt; getApplicationResult.getId()));
-     *         }
+     *         ctx.export(&#34;applicationObjectId&#34;, example.applyValue(getApplicationResult -&gt; getApplicationResult.id()));
+     *     }
      * }
      * ```
      * 
@@ -675,10 +801,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -686,10 +818,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult()));
-     *         }
+     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *     }
      * }
      * ```
      * 
@@ -697,10 +829,21 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.ServicePrincipal;
+     * import com.pulumi.azuread.ServicePrincipalArgs;
+     * import com.pulumi.azuread.Application;
+     * import com.pulumi.azuread.ApplicationArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -708,30 +851,30 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
      *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
-     *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
      *                         .type(&#34;Role&#34;)
      *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type(&#34;Scope&#34;)
      *                         .build())
      *                 .build())
      *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -752,10 +895,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -763,10 +912,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult()));
-     *         }
+     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *     }
      * }
      * ```
      * 
@@ -774,10 +923,21 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.ServicePrincipal;
+     * import com.pulumi.azuread.ServicePrincipalArgs;
+     * import com.pulumi.azuread.Application;
+     * import com.pulumi.azuread.ApplicationArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -785,30 +945,30 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
      *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
-     *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
      *                         .type(&#34;Role&#34;)
      *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type(&#34;Scope&#34;)
      *                         .build())
      *                 .build())
      *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -829,10 +989,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -840,10 +1006,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult()));
-     *         }
+     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *     }
      * }
      * ```
      * 
@@ -851,10 +1017,21 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.ServicePrincipal;
+     * import com.pulumi.azuread.ServicePrincipalArgs;
+     * import com.pulumi.azuread.Application;
+     * import com.pulumi.azuread.ApplicationArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -862,30 +1039,30 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
      *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
-     *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
      *                         .type(&#34;Role&#34;)
      *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type(&#34;Scope&#34;)
      *                         .build())
      *                 .build())
      *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -906,10 +1083,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -917,10 +1100,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult()));
-     *         }
+     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *     }
      * }
      * ```
      * 
@@ -928,10 +1111,21 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.ServicePrincipal;
+     * import com.pulumi.azuread.ServicePrincipalArgs;
+     * import com.pulumi.azuread.Application;
+     * import com.pulumi.azuread.ApplicationArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -939,30 +1133,30 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
      *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
-     *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
      *                         .type(&#34;Role&#34;)
      *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type(&#34;Scope&#34;)
      *                         .build())
      *                 .build())
      *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -983,10 +1177,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -994,10 +1194,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult()));
-     *         }
+     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *     }
      * }
      * ```
      * 
@@ -1005,10 +1205,21 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.ServicePrincipal;
+     * import com.pulumi.azuread.ServicePrincipalArgs;
+     * import com.pulumi.azuread.Application;
+     * import com.pulumi.azuread.ApplicationArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1016,30 +1227,30 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
      *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
-     *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
      *                         .type(&#34;Role&#34;)
      *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type(&#34;Scope&#34;)
      *                         .build())
      *                 .build())
      *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1060,10 +1271,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1071,10 +1288,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
-     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult()));
-     *         }
+     *         ctx.export(&#34;publishedAppIds&#34;, wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result()));
+     *     }
      * }
      * ```
      * 
@@ -1082,10 +1299,21 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.ServicePrincipal;
+     * import com.pulumi.azuread.ServicePrincipalArgs;
+     * import com.pulumi.azuread.Application;
+     * import com.pulumi.azuread.ApplicationArgs;
+     * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1093,30 +1321,30 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var wellKnown = Output.of(AzureadFunctions.getApplicationPublishedAppIds());
+     *         final var wellKnown = AzureadFunctions.getApplicationPublishedAppIds();
      * 
      *         var msgraph = new ServicePrincipal(&#34;msgraph&#34;, ServicePrincipalArgs.builder()        
-     *             .applicationId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .applicationId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *             .useExisting(true)
      *             .build());
      * 
      *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
      *             .displayName(&#34;example&#34;)
-     *             .requiredResourceAccesses(ApplicationRequiredResourceAccess.builder()
-     *                 .resourceAppId(wellKnown.apply(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.getResult().getMicrosoftGraph()))
+     *             .requiredResourceAccesses(ApplicationRequiredResourceAccessArgs.builder()
+     *                 .resourceAppId(wellKnown.applyValue(getApplicationPublishedAppIdsResult -&gt; getApplicationPublishedAppIdsResult.result().MicrosoftGraph()))
      *                 .resourceAccesses(                
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getAppRoleIds().apply(appRoleIds -&gt; appRoleIds.getUser.Read.All()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.appRoleIds().applyValue(appRoleIds -&gt; appRoleIds.User.Read.All()))
      *                         .type(&#34;Role&#34;)
      *                         .build(),
-     *                     ApplicationRequiredResourceAccessResourceAccess.builder()
-     *                         .id(msgraph.getOauth2PermissionScopeIds().apply(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.getUser.ReadWrite()))
+     *                     ApplicationRequiredResourceAccessResourceAccessArgs.builder()
+     *                         .id(msgraph.oauth2PermissionScopeIds().applyValue(oauth2PermissionScopeIds -&gt; oauth2PermissionScopeIds.User.ReadWrite()))
      *                         .type(&#34;Scope&#34;)
      *                         .build())
      *                 .build())
      *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1135,10 +1363,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1146,12 +1381,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
      *             .displayName(&#34;Marketo&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()));
-     *         }
+     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *     }
      * }
      * ```
      * 
@@ -1170,10 +1405,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1181,12 +1423,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
      *             .displayName(&#34;Marketo&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()));
-     *         }
+     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *     }
      * }
      * ```
      * 
@@ -1205,10 +1447,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1216,12 +1465,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
      *             .displayName(&#34;Marketo&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()));
-     *         }
+     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *     }
      * }
      * ```
      * 
@@ -1240,10 +1489,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1251,12 +1507,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
      *             .displayName(&#34;Marketo&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()));
-     *         }
+     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *     }
      * }
      * ```
      * 
@@ -1275,10 +1531,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1286,12 +1549,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
      *             .displayName(&#34;Marketo&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()));
-     *         }
+     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *     }
      * }
      * ```
      * 
@@ -1310,10 +1573,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1321,12 +1591,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+     *         final var example = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
      *             .displayName(&#34;Marketo&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         ctx.export(&#34;applicationTemplateId&#34;, example.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()));
-     *         }
+     *         ctx.export(&#34;applicationTemplateId&#34;, example.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()));
+     *     }
      * }
      * ```
      * 
@@ -1345,10 +1615,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1356,10 +1632,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = Output.of(AzureadFunctions.getClientConfig());
+     *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()));
-     *         }
+     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *     }
      * }
      * ```
      * 
@@ -1378,10 +1654,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1389,10 +1671,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = Output.of(AzureadFunctions.getClientConfig());
+     *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()));
-     *         }
+     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *     }
      * }
      * ```
      * 
@@ -1411,10 +1693,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1422,10 +1710,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = Output.of(AzureadFunctions.getClientConfig());
+     *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()));
-     *         }
+     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *     }
      * }
      * ```
      * 
@@ -1444,10 +1732,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1455,10 +1749,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = Output.of(AzureadFunctions.getClientConfig());
+     *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()));
-     *         }
+     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *     }
      * }
      * ```
      * 
@@ -1477,10 +1771,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1488,10 +1788,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = Output.of(AzureadFunctions.getClientConfig());
+     *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()));
-     *         }
+     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *     }
      * }
      * ```
      * 
@@ -1510,10 +1810,16 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1521,10 +1827,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var current = Output.of(AzureadFunctions.getClientConfig());
+     *         final var current = AzureadFunctions.getClientConfig();
      * 
-     *         ctx.export(&#34;objectId&#34;, current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()));
-     *         }
+     *         ctx.export(&#34;objectId&#34;, current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()));
+     *     }
      * }
      * ```
      * 
@@ -1547,10 +1853,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1558,10 +1871,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = Output.of(AzureadFunctions.getDomains());
+     *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()).stream().map(element -&gt; element.getDomainName()).collect(toList()));
-     *         }
+     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *     }
      * }
      * ```
      * 
@@ -1584,10 +1897,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1595,10 +1915,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = Output.of(AzureadFunctions.getDomains());
+     *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()).stream().map(element -&gt; element.getDomainName()).collect(toList()));
-     *         }
+     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *     }
      * }
      * ```
      * 
@@ -1621,10 +1941,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1632,10 +1959,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = Output.of(AzureadFunctions.getDomains());
+     *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()).stream().map(element -&gt; element.getDomainName()).collect(toList()));
-     *         }
+     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *     }
      * }
      * ```
      * 
@@ -1658,10 +1985,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1669,10 +2003,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = Output.of(AzureadFunctions.getDomains());
+     *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()).stream().map(element -&gt; element.getDomainName()).collect(toList()));
-     *         }
+     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *     }
      * }
      * ```
      * 
@@ -1695,10 +2029,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1706,10 +2047,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = Output.of(AzureadFunctions.getDomains());
+     *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()).stream().map(element -&gt; element.getDomainName()).collect(toList()));
-     *         }
+     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *     }
      * }
      * ```
      * 
@@ -1732,10 +2073,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDomainsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1743,10 +2091,10 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var aadDomains = Output.of(AzureadFunctions.getDomains());
+     *         final var aadDomains = AzureadFunctions.getDomains();
      * 
-     *         ctx.export(&#34;domainNames&#34;, aadDomains.apply(getDomainsResult -&gt; getDomainsResult.getDomains()).stream().map(element -&gt; element.getDomainName()).collect(toList()));
-     *         }
+     *         ctx.export(&#34;domainNames&#34;, aadDomains.applyValue(getDomainsResult -&gt; getDomainsResult.domains()).stream().map(element -&gt; element.domainName()).collect(toList()));
+     *     }
      * }
      * ```
      * 
@@ -1770,10 +2118,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1781,12 +2136,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName(&#34;MyGroupName&#34;)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1810,10 +2165,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1821,12 +2183,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName(&#34;MyGroupName&#34;)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1850,10 +2212,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1861,12 +2230,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName(&#34;MyGroupName&#34;)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1890,10 +2259,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1901,12 +2277,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName(&#34;MyGroupName&#34;)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1930,10 +2306,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1941,12 +2324,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName(&#34;MyGroupName&#34;)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -1970,10 +2353,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -1981,12 +2371,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroup(GetGroupArgs.builder()
+     *         final var example = AzureadFunctions.getGroup(GetGroupArgs.builder()
      *             .displayName(&#34;MyGroupName&#34;)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2011,10 +2401,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2022,13 +2419,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
      *                 &#34;group-a&#34;,
      *                 &#34;group-b&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2036,10 +2433,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2047,11 +2451,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sales = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2059,10 +2463,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2070,11 +2481,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2082,10 +2493,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2093,12 +2511,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mailEnabled = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(true)
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2106,10 +2524,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2117,13 +2542,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var securityOnly = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(false)
      *             .returnAll(true)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2148,10 +2573,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2159,13 +2591,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
      *                 &#34;group-a&#34;,
      *                 &#34;group-b&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2173,10 +2605,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2184,11 +2623,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sales = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2196,10 +2635,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2207,11 +2653,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2219,10 +2665,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2230,12 +2683,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mailEnabled = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(true)
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2243,10 +2696,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2254,13 +2714,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var securityOnly = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(false)
      *             .returnAll(true)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2285,10 +2745,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2296,13 +2763,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
      *                 &#34;group-a&#34;,
      *                 &#34;group-b&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2310,10 +2777,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2321,11 +2795,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sales = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2333,10 +2807,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2344,11 +2825,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2356,10 +2837,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2367,12 +2855,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mailEnabled = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(true)
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2380,10 +2868,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2391,13 +2886,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var securityOnly = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(false)
      *             .returnAll(true)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2422,10 +2917,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2433,13 +2935,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
      *                 &#34;group-a&#34;,
      *                 &#34;group-b&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2447,10 +2949,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2458,11 +2967,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sales = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2470,10 +2979,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2481,11 +2997,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2493,10 +3009,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2504,12 +3027,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mailEnabled = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(true)
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2517,10 +3040,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2528,13 +3058,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var securityOnly = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(false)
      *             .returnAll(true)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2559,10 +3089,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2570,13 +3107,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
      *                 &#34;group-a&#34;,
      *                 &#34;group-b&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2584,10 +3121,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2595,11 +3139,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sales = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2607,10 +3151,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2618,11 +3169,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2630,10 +3181,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2641,12 +3199,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mailEnabled = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(true)
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2654,10 +3212,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2665,13 +3230,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var securityOnly = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(false)
      *             .returnAll(true)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2696,10 +3261,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2707,13 +3279,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var example = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNames(            
      *                 &#34;group-a&#34;,
      *                 &#34;group-b&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2721,10 +3293,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2732,11 +3311,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var sales = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var sales = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .displayNamePrefix(&#34;sales-&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2744,10 +3323,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2755,11 +3341,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var all = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var all = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2767,10 +3353,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2778,12 +3371,12 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var mailEnabled = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var mailEnabled = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(true)
      *             .returnAll(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2791,10 +3384,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2802,13 +3402,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var securityOnly = Output.of(AzureadFunctions.getGroups(GetGroupsArgs.builder()
+     *         final var securityOnly = AzureadFunctions.getGroups(GetGroupsArgs.builder()
      *             .mailEnabled(false)
      *             .returnAll(true)
      *             .securityEnabled(true)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2833,10 +3433,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2844,11 +3451,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2856,10 +3463,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2867,11 +3481,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2879,10 +3493,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2890,11 +3511,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2919,10 +3540,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2930,11 +3558,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2942,10 +3570,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2953,11 +3588,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -2965,10 +3600,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -2976,11 +3618,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3005,10 +3647,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3016,11 +3665,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3028,10 +3677,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3039,11 +3695,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3051,10 +3707,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3062,11 +3725,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3091,10 +3754,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3102,11 +3772,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3114,10 +3784,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3125,11 +3802,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3137,10 +3814,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3148,11 +3832,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3177,10 +3861,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3188,11 +3879,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3200,10 +3891,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3211,11 +3909,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3223,10 +3921,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3234,11 +3939,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3263,10 +3968,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3274,11 +3986,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .displayName(&#34;my-awesome-application&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3286,10 +3998,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3297,11 +4016,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .applicationId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3309,10 +4028,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3320,11 +4046,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipal(GetServicePrincipalArgs.builder()
      *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3349,10 +4075,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3360,13 +4093,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
      *                 &#34;example-app&#34;,
      *                 &#34;another-app&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3374,10 +4107,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3385,14 +4125,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .applicationIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3400,10 +4140,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3411,14 +4158,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
      *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
      *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
      *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3443,10 +4190,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3454,13 +4208,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
      *                 &#34;example-app&#34;,
      *                 &#34;another-app&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3468,10 +4222,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3479,14 +4240,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .applicationIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3494,10 +4255,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3505,14 +4273,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
      *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
      *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
      *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3537,10 +4305,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3548,13 +4323,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
      *                 &#34;example-app&#34;,
      *                 &#34;another-app&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3562,10 +4337,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3573,14 +4355,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .applicationIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3588,10 +4370,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3599,14 +4388,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
      *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
      *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
      *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3631,10 +4420,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3642,13 +4438,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
      *                 &#34;example-app&#34;,
      *                 &#34;another-app&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3656,10 +4452,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3667,14 +4470,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .applicationIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3682,10 +4485,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3693,14 +4503,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
      *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
      *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
      *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3725,10 +4535,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3736,13 +4553,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
      *                 &#34;example-app&#34;,
      *                 &#34;another-app&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3750,10 +4567,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3761,14 +4585,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .applicationIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3776,10 +4600,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3787,14 +4618,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
      *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
      *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
      *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3819,10 +4650,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3830,13 +4668,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .displayNames(            
      *                 &#34;example-app&#34;,
      *                 &#34;another-app&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3844,10 +4682,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3855,14 +4700,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .applicationIds(            
      *                 &#34;11111111-0000-0000-0000-000000000000&#34;,
      *                 &#34;22222222-0000-0000-0000-000000000000&#34;,
      *                 &#34;33333333-0000-0000-0000-000000000000&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3870,10 +4715,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3881,14 +4733,14 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
+     *         final var example = AzureadFunctions.getServicePrincipals(GetServicePrincipalsArgs.builder()
      *             .objectIds(            
      *                 &#34;00000000-0000-0000-0000-000000000000&#34;,
      *                 &#34;00000000-0000-0000-0000-111111111111&#34;,
      *                 &#34;00000000-0000-0000-0000-222222222222&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3911,10 +4763,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3922,11 +4781,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
      *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3949,10 +4808,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3960,11 +4826,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
      *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -3987,10 +4853,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -3998,11 +4871,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
      *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4025,10 +4898,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4036,11 +4916,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
      *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4063,10 +4943,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4074,11 +4961,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
      *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4101,10 +4988,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUserArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4112,11 +5006,11 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+     *         final var example = AzureadFunctions.getUser(GetUserArgs.builder()
      *             .userPrincipalName(&#34;user@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4139,10 +5033,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4150,13 +5051,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = Output.of(AzureadFunctions.getUsers(GetUsersArgs.builder()
+     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
      *                 &#34;kat@hashicorp.com&#34;,
      *                 &#34;byte@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4179,10 +5080,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4190,13 +5098,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = Output.of(AzureadFunctions.getUsers(GetUsersArgs.builder()
+     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
      *                 &#34;kat@hashicorp.com&#34;,
      *                 &#34;byte@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4219,10 +5127,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4230,13 +5145,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = Output.of(AzureadFunctions.getUsers(GetUsersArgs.builder()
+     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
      *                 &#34;kat@hashicorp.com&#34;,
      *                 &#34;byte@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4259,10 +5174,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4270,13 +5192,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = Output.of(AzureadFunctions.getUsers(GetUsersArgs.builder()
+     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
      *                 &#34;kat@hashicorp.com&#34;,
      *                 &#34;byte@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4299,10 +5221,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4310,13 +5239,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = Output.of(AzureadFunctions.getUsers(GetUsersArgs.builder()
+     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
      *                 &#34;kat@hashicorp.com&#34;,
      *                 &#34;byte@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 
@@ -4339,10 +5268,17 @@ public final class AzureadFunctions {
      * ```java
      * package generated_program;
      * 
-     * import java.util.*;
-     * import java.io.*;
-     * import java.nio.*;
-     * import com.pulumi.*;
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetUsersArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
      * 
      * public class App {
      *     public static void main(String[] args) {
@@ -4350,13 +5286,13 @@ public final class AzureadFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var users = Output.of(AzureadFunctions.getUsers(GetUsersArgs.builder()
+     *         final var users = AzureadFunctions.getUsers(GetUsersArgs.builder()
      *             .userPrincipalNames(            
      *                 &#34;kat@hashicorp.com&#34;,
      *                 &#34;byte@hashicorp.com&#34;)
-     *             .build()));
+     *             .build());
      * 
-     *         }
+     *     }
      * }
      * ```
      * 

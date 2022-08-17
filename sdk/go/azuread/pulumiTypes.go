@@ -24,7 +24,7 @@ type ApplicationApi struct {
 // ApplicationApiInput is an input type that accepts ApplicationApiArgs and ApplicationApiOutput values.
 // You can construct a concrete instance of `ApplicationApiInput` via:
 //
-//          ApplicationApiArgs{...}
+//	ApplicationApiArgs{...}
 type ApplicationApiInput interface {
 	pulumi.Input
 
@@ -66,11 +66,11 @@ func (i ApplicationApiArgs) ToApplicationApiPtrOutputWithContext(ctx context.Con
 // ApplicationApiPtrInput is an input type that accepts ApplicationApiArgs, ApplicationApiPtr and ApplicationApiPtrOutput values.
 // You can construct a concrete instance of `ApplicationApiPtrInput` via:
 //
-//          ApplicationApiArgs{...}
+//	        ApplicationApiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationApiPtrInput interface {
 	pulumi.Input
 
@@ -226,7 +226,7 @@ type ApplicationApiOauth2PermissionScope struct {
 // ApplicationApiOauth2PermissionScopeInput is an input type that accepts ApplicationApiOauth2PermissionScopeArgs and ApplicationApiOauth2PermissionScopeOutput values.
 // You can construct a concrete instance of `ApplicationApiOauth2PermissionScopeInput` via:
 //
-//          ApplicationApiOauth2PermissionScopeArgs{...}
+//	ApplicationApiOauth2PermissionScopeArgs{...}
 type ApplicationApiOauth2PermissionScopeInput interface {
 	pulumi.Input
 
@@ -268,7 +268,7 @@ func (i ApplicationApiOauth2PermissionScopeArgs) ToApplicationApiOauth2Permissio
 // ApplicationApiOauth2PermissionScopeArrayInput is an input type that accepts ApplicationApiOauth2PermissionScopeArray and ApplicationApiOauth2PermissionScopeArrayOutput values.
 // You can construct a concrete instance of `ApplicationApiOauth2PermissionScopeArrayInput` via:
 //
-//          ApplicationApiOauth2PermissionScopeArray{ ApplicationApiOauth2PermissionScopeArgs{...} }
+//	ApplicationApiOauth2PermissionScopeArray{ ApplicationApiOauth2PermissionScopeArgs{...} }
 type ApplicationApiOauth2PermissionScopeArrayInput interface {
 	pulumi.Input
 
@@ -382,7 +382,7 @@ type ApplicationAppRole struct {
 // ApplicationAppRoleInput is an input type that accepts ApplicationAppRoleArgs and ApplicationAppRoleOutput values.
 // You can construct a concrete instance of `ApplicationAppRoleInput` via:
 //
-//          ApplicationAppRoleArgs{...}
+//	ApplicationAppRoleArgs{...}
 type ApplicationAppRoleInput interface {
 	pulumi.Input
 
@@ -420,7 +420,7 @@ func (i ApplicationAppRoleArgs) ToApplicationAppRoleOutputWithContext(ctx contex
 // ApplicationAppRoleArrayInput is an input type that accepts ApplicationAppRoleArray and ApplicationAppRoleArrayOutput values.
 // You can construct a concrete instance of `ApplicationAppRoleArrayInput` via:
 //
-//          ApplicationAppRoleArray{ ApplicationAppRoleArgs{...} }
+//	ApplicationAppRoleArray{ ApplicationAppRoleArgs{...} }
 type ApplicationAppRoleArrayInput interface {
 	pulumi.Input
 
@@ -520,7 +520,7 @@ type ApplicationFeatureTag struct {
 // ApplicationFeatureTagInput is an input type that accepts ApplicationFeatureTagArgs and ApplicationFeatureTagOutput values.
 // You can construct a concrete instance of `ApplicationFeatureTagInput` via:
 //
-//          ApplicationFeatureTagArgs{...}
+//	ApplicationFeatureTagArgs{...}
 type ApplicationFeatureTagInput interface {
 	pulumi.Input
 
@@ -554,7 +554,7 @@ func (i ApplicationFeatureTagArgs) ToApplicationFeatureTagOutputWithContext(ctx 
 // ApplicationFeatureTagArrayInput is an input type that accepts ApplicationFeatureTagArray and ApplicationFeatureTagArrayOutput values.
 // You can construct a concrete instance of `ApplicationFeatureTagArrayInput` via:
 //
-//          ApplicationFeatureTagArray{ ApplicationFeatureTagArgs{...} }
+//	ApplicationFeatureTagArray{ ApplicationFeatureTagArgs{...} }
 type ApplicationFeatureTagArrayInput interface {
 	pulumi.Input
 
@@ -642,7 +642,7 @@ type ApplicationOptionalClaims struct {
 // ApplicationOptionalClaimsInput is an input type that accepts ApplicationOptionalClaimsArgs and ApplicationOptionalClaimsOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsInput` via:
 //
-//          ApplicationOptionalClaimsArgs{...}
+//	ApplicationOptionalClaimsArgs{...}
 type ApplicationOptionalClaimsInput interface {
 	pulumi.Input
 
@@ -682,11 +682,11 @@ func (i ApplicationOptionalClaimsArgs) ToApplicationOptionalClaimsPtrOutputWithC
 // ApplicationOptionalClaimsPtrInput is an input type that accepts ApplicationOptionalClaimsArgs, ApplicationOptionalClaimsPtr and ApplicationOptionalClaimsPtrOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsPtrInput` via:
 //
-//          ApplicationOptionalClaimsArgs{...}
+//	        ApplicationOptionalClaimsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationOptionalClaimsPtrInput interface {
 	pulumi.Input
 
@@ -819,7 +819,7 @@ type ApplicationOptionalClaimsAccessToken struct {
 // ApplicationOptionalClaimsAccessTokenInput is an input type that accepts ApplicationOptionalClaimsAccessTokenArgs and ApplicationOptionalClaimsAccessTokenOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsAccessTokenInput` via:
 //
-//          ApplicationOptionalClaimsAccessTokenArgs{...}
+//	ApplicationOptionalClaimsAccessTokenArgs{...}
 type ApplicationOptionalClaimsAccessTokenInput interface {
 	pulumi.Input
 
@@ -853,7 +853,7 @@ func (i ApplicationOptionalClaimsAccessTokenArgs) ToApplicationOptionalClaimsAcc
 // ApplicationOptionalClaimsAccessTokenArrayInput is an input type that accepts ApplicationOptionalClaimsAccessTokenArray and ApplicationOptionalClaimsAccessTokenArrayOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsAccessTokenArrayInput` via:
 //
-//          ApplicationOptionalClaimsAccessTokenArray{ ApplicationOptionalClaimsAccessTokenArgs{...} }
+//	ApplicationOptionalClaimsAccessTokenArray{ ApplicationOptionalClaimsAccessTokenArgs{...} }
 type ApplicationOptionalClaimsAccessTokenArrayInput interface {
 	pulumi.Input
 
@@ -943,7 +943,7 @@ type ApplicationOptionalClaimsIdToken struct {
 // ApplicationOptionalClaimsIdTokenInput is an input type that accepts ApplicationOptionalClaimsIdTokenArgs and ApplicationOptionalClaimsIdTokenOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsIdTokenInput` via:
 //
-//          ApplicationOptionalClaimsIdTokenArgs{...}
+//	ApplicationOptionalClaimsIdTokenArgs{...}
 type ApplicationOptionalClaimsIdTokenInput interface {
 	pulumi.Input
 
@@ -977,7 +977,7 @@ func (i ApplicationOptionalClaimsIdTokenArgs) ToApplicationOptionalClaimsIdToken
 // ApplicationOptionalClaimsIdTokenArrayInput is an input type that accepts ApplicationOptionalClaimsIdTokenArray and ApplicationOptionalClaimsIdTokenArrayOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsIdTokenArrayInput` via:
 //
-//          ApplicationOptionalClaimsIdTokenArray{ ApplicationOptionalClaimsIdTokenArgs{...} }
+//	ApplicationOptionalClaimsIdTokenArray{ ApplicationOptionalClaimsIdTokenArgs{...} }
 type ApplicationOptionalClaimsIdTokenArrayInput interface {
 	pulumi.Input
 
@@ -1067,7 +1067,7 @@ type ApplicationOptionalClaimsSaml2Token struct {
 // ApplicationOptionalClaimsSaml2TokenInput is an input type that accepts ApplicationOptionalClaimsSaml2TokenArgs and ApplicationOptionalClaimsSaml2TokenOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsSaml2TokenInput` via:
 //
-//          ApplicationOptionalClaimsSaml2TokenArgs{...}
+//	ApplicationOptionalClaimsSaml2TokenArgs{...}
 type ApplicationOptionalClaimsSaml2TokenInput interface {
 	pulumi.Input
 
@@ -1101,7 +1101,7 @@ func (i ApplicationOptionalClaimsSaml2TokenArgs) ToApplicationOptionalClaimsSaml
 // ApplicationOptionalClaimsSaml2TokenArrayInput is an input type that accepts ApplicationOptionalClaimsSaml2TokenArray and ApplicationOptionalClaimsSaml2TokenArrayOutput values.
 // You can construct a concrete instance of `ApplicationOptionalClaimsSaml2TokenArrayInput` via:
 //
-//          ApplicationOptionalClaimsSaml2TokenArray{ ApplicationOptionalClaimsSaml2TokenArgs{...} }
+//	ApplicationOptionalClaimsSaml2TokenArray{ ApplicationOptionalClaimsSaml2TokenArgs{...} }
 type ApplicationOptionalClaimsSaml2TokenArrayInput interface {
 	pulumi.Input
 
@@ -1185,7 +1185,7 @@ type ApplicationPublicClient struct {
 // ApplicationPublicClientInput is an input type that accepts ApplicationPublicClientArgs and ApplicationPublicClientOutput values.
 // You can construct a concrete instance of `ApplicationPublicClientInput` via:
 //
-//          ApplicationPublicClientArgs{...}
+//	ApplicationPublicClientArgs{...}
 type ApplicationPublicClientInput interface {
 	pulumi.Input
 
@@ -1221,11 +1221,11 @@ func (i ApplicationPublicClientArgs) ToApplicationPublicClientPtrOutputWithConte
 // ApplicationPublicClientPtrInput is an input type that accepts ApplicationPublicClientArgs, ApplicationPublicClientPtr and ApplicationPublicClientPtrOutput values.
 // You can construct a concrete instance of `ApplicationPublicClientPtrInput` via:
 //
-//          ApplicationPublicClientArgs{...}
+//	        ApplicationPublicClientArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationPublicClientPtrInput interface {
 	pulumi.Input
 
@@ -1324,7 +1324,7 @@ type ApplicationRequiredResourceAccess struct {
 // ApplicationRequiredResourceAccessInput is an input type that accepts ApplicationRequiredResourceAccessArgs and ApplicationRequiredResourceAccessOutput values.
 // You can construct a concrete instance of `ApplicationRequiredResourceAccessInput` via:
 //
-//          ApplicationRequiredResourceAccessArgs{...}
+//	ApplicationRequiredResourceAccessArgs{...}
 type ApplicationRequiredResourceAccessInput interface {
 	pulumi.Input
 
@@ -1354,7 +1354,7 @@ func (i ApplicationRequiredResourceAccessArgs) ToApplicationRequiredResourceAcce
 // ApplicationRequiredResourceAccessArrayInput is an input type that accepts ApplicationRequiredResourceAccessArray and ApplicationRequiredResourceAccessArrayOutput values.
 // You can construct a concrete instance of `ApplicationRequiredResourceAccessArrayInput` via:
 //
-//          ApplicationRequiredResourceAccessArray{ ApplicationRequiredResourceAccessArgs{...} }
+//	ApplicationRequiredResourceAccessArray{ ApplicationRequiredResourceAccessArgs{...} }
 type ApplicationRequiredResourceAccessArrayInput interface {
 	pulumi.Input
 
@@ -1432,7 +1432,7 @@ type ApplicationRequiredResourceAccessResourceAccess struct {
 // ApplicationRequiredResourceAccessResourceAccessInput is an input type that accepts ApplicationRequiredResourceAccessResourceAccessArgs and ApplicationRequiredResourceAccessResourceAccessOutput values.
 // You can construct a concrete instance of `ApplicationRequiredResourceAccessResourceAccessInput` via:
 //
-//          ApplicationRequiredResourceAccessResourceAccessArgs{...}
+//	ApplicationRequiredResourceAccessResourceAccessArgs{...}
 type ApplicationRequiredResourceAccessResourceAccessInput interface {
 	pulumi.Input
 
@@ -1462,7 +1462,7 @@ func (i ApplicationRequiredResourceAccessResourceAccessArgs) ToApplicationRequir
 // ApplicationRequiredResourceAccessResourceAccessArrayInput is an input type that accepts ApplicationRequiredResourceAccessResourceAccessArray and ApplicationRequiredResourceAccessResourceAccessArrayOutput values.
 // You can construct a concrete instance of `ApplicationRequiredResourceAccessResourceAccessArrayInput` via:
 //
-//          ApplicationRequiredResourceAccessResourceAccessArray{ ApplicationRequiredResourceAccessResourceAccessArgs{...} }
+//	ApplicationRequiredResourceAccessResourceAccessArray{ ApplicationRequiredResourceAccessResourceAccessArgs{...} }
 type ApplicationRequiredResourceAccessResourceAccessArrayInput interface {
 	pulumi.Input
 
@@ -1536,7 +1536,7 @@ type ApplicationSinglePageApplication struct {
 // ApplicationSinglePageApplicationInput is an input type that accepts ApplicationSinglePageApplicationArgs and ApplicationSinglePageApplicationOutput values.
 // You can construct a concrete instance of `ApplicationSinglePageApplicationInput` via:
 //
-//          ApplicationSinglePageApplicationArgs{...}
+//	ApplicationSinglePageApplicationArgs{...}
 type ApplicationSinglePageApplicationInput interface {
 	pulumi.Input
 
@@ -1572,11 +1572,11 @@ func (i ApplicationSinglePageApplicationArgs) ToApplicationSinglePageApplication
 // ApplicationSinglePageApplicationPtrInput is an input type that accepts ApplicationSinglePageApplicationArgs, ApplicationSinglePageApplicationPtr and ApplicationSinglePageApplicationPtrOutput values.
 // You can construct a concrete instance of `ApplicationSinglePageApplicationPtrInput` via:
 //
-//          ApplicationSinglePageApplicationArgs{...}
+//	        ApplicationSinglePageApplicationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationSinglePageApplicationPtrInput interface {
 	pulumi.Input
 
@@ -1679,7 +1679,7 @@ type ApplicationWeb struct {
 // ApplicationWebInput is an input type that accepts ApplicationWebArgs and ApplicationWebOutput values.
 // You can construct a concrete instance of `ApplicationWebInput` via:
 //
-//          ApplicationWebArgs{...}
+//	ApplicationWebArgs{...}
 type ApplicationWebInput interface {
 	pulumi.Input
 
@@ -1721,11 +1721,11 @@ func (i ApplicationWebArgs) ToApplicationWebPtrOutputWithContext(ctx context.Con
 // ApplicationWebPtrInput is an input type that accepts ApplicationWebArgs, ApplicationWebPtr and ApplicationWebPtrOutput values.
 // You can construct a concrete instance of `ApplicationWebPtrInput` via:
 //
-//          ApplicationWebArgs{...}
+//	        ApplicationWebArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationWebPtrInput interface {
 	pulumi.Input
 
@@ -1869,7 +1869,7 @@ type ApplicationWebImplicitGrant struct {
 // ApplicationWebImplicitGrantInput is an input type that accepts ApplicationWebImplicitGrantArgs and ApplicationWebImplicitGrantOutput values.
 // You can construct a concrete instance of `ApplicationWebImplicitGrantInput` via:
 //
-//          ApplicationWebImplicitGrantArgs{...}
+//	ApplicationWebImplicitGrantArgs{...}
 type ApplicationWebImplicitGrantInput interface {
 	pulumi.Input
 
@@ -1907,11 +1907,11 @@ func (i ApplicationWebImplicitGrantArgs) ToApplicationWebImplicitGrantPtrOutputW
 // ApplicationWebImplicitGrantPtrInput is an input type that accepts ApplicationWebImplicitGrantArgs, ApplicationWebImplicitGrantPtr and ApplicationWebImplicitGrantPtrOutput values.
 // You can construct a concrete instance of `ApplicationWebImplicitGrantPtrInput` via:
 //
-//          ApplicationWebImplicitGrantArgs{...}
+//	        ApplicationWebImplicitGrantArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApplicationWebImplicitGrantPtrInput interface {
 	pulumi.Input
 
@@ -2037,7 +2037,7 @@ type ConditionalAccessPolicyConditions struct {
 // ConditionalAccessPolicyConditionsInput is an input type that accepts ConditionalAccessPolicyConditionsArgs and ConditionalAccessPolicyConditionsOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsInput` via:
 //
-//          ConditionalAccessPolicyConditionsArgs{...}
+//	ConditionalAccessPolicyConditionsArgs{...}
 type ConditionalAccessPolicyConditionsInput interface {
 	pulumi.Input
 
@@ -2087,11 +2087,11 @@ func (i ConditionalAccessPolicyConditionsArgs) ToConditionalAccessPolicyConditio
 // ConditionalAccessPolicyConditionsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsArgs, ConditionalAccessPolicyConditionsPtr and ConditionalAccessPolicyConditionsPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsArgs{...}
+//	        ConditionalAccessPolicyConditionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsPtrInput interface {
 	pulumi.Input
 
@@ -2303,7 +2303,7 @@ type ConditionalAccessPolicyConditionsApplications struct {
 // ConditionalAccessPolicyConditionsApplicationsInput is an input type that accepts ConditionalAccessPolicyConditionsApplicationsArgs and ConditionalAccessPolicyConditionsApplicationsOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsApplicationsInput` via:
 //
-//          ConditionalAccessPolicyConditionsApplicationsArgs{...}
+//	ConditionalAccessPolicyConditionsApplicationsArgs{...}
 type ConditionalAccessPolicyConditionsApplicationsInput interface {
 	pulumi.Input
 
@@ -2343,11 +2343,11 @@ func (i ConditionalAccessPolicyConditionsApplicationsArgs) ToConditionalAccessPo
 // ConditionalAccessPolicyConditionsApplicationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsApplicationsArgs, ConditionalAccessPolicyConditionsApplicationsPtr and ConditionalAccessPolicyConditionsApplicationsPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsApplicationsPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsApplicationsArgs{...}
+//	        ConditionalAccessPolicyConditionsApplicationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsApplicationsPtrInput interface {
 	pulumi.Input
 
@@ -2474,7 +2474,7 @@ type ConditionalAccessPolicyConditionsDevices struct {
 // ConditionalAccessPolicyConditionsDevicesInput is an input type that accepts ConditionalAccessPolicyConditionsDevicesArgs and ConditionalAccessPolicyConditionsDevicesOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsDevicesInput` via:
 //
-//          ConditionalAccessPolicyConditionsDevicesArgs{...}
+//	ConditionalAccessPolicyConditionsDevicesArgs{...}
 type ConditionalAccessPolicyConditionsDevicesInput interface {
 	pulumi.Input
 
@@ -2510,11 +2510,11 @@ func (i ConditionalAccessPolicyConditionsDevicesArgs) ToConditionalAccessPolicyC
 // ConditionalAccessPolicyConditionsDevicesPtrInput is an input type that accepts ConditionalAccessPolicyConditionsDevicesArgs, ConditionalAccessPolicyConditionsDevicesPtr and ConditionalAccessPolicyConditionsDevicesPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsDevicesPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsDevicesArgs{...}
+//	        ConditionalAccessPolicyConditionsDevicesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsDevicesPtrInput interface {
 	pulumi.Input
 
@@ -2615,7 +2615,7 @@ type ConditionalAccessPolicyConditionsDevicesFilter struct {
 // ConditionalAccessPolicyConditionsDevicesFilterInput is an input type that accepts ConditionalAccessPolicyConditionsDevicesFilterArgs and ConditionalAccessPolicyConditionsDevicesFilterOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsDevicesFilterInput` via:
 //
-//          ConditionalAccessPolicyConditionsDevicesFilterArgs{...}
+//	ConditionalAccessPolicyConditionsDevicesFilterArgs{...}
 type ConditionalAccessPolicyConditionsDevicesFilterInput interface {
 	pulumi.Input
 
@@ -2653,11 +2653,11 @@ func (i ConditionalAccessPolicyConditionsDevicesFilterArgs) ToConditionalAccessP
 // ConditionalAccessPolicyConditionsDevicesFilterPtrInput is an input type that accepts ConditionalAccessPolicyConditionsDevicesFilterArgs, ConditionalAccessPolicyConditionsDevicesFilterPtr and ConditionalAccessPolicyConditionsDevicesFilterPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsDevicesFilterPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsDevicesFilterArgs{...}
+//	        ConditionalAccessPolicyConditionsDevicesFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsDevicesFilterPtrInput interface {
 	pulumi.Input
 
@@ -2771,7 +2771,7 @@ type ConditionalAccessPolicyConditionsLocations struct {
 // ConditionalAccessPolicyConditionsLocationsInput is an input type that accepts ConditionalAccessPolicyConditionsLocationsArgs and ConditionalAccessPolicyConditionsLocationsOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsLocationsInput` via:
 //
-//          ConditionalAccessPolicyConditionsLocationsArgs{...}
+//	ConditionalAccessPolicyConditionsLocationsArgs{...}
 type ConditionalAccessPolicyConditionsLocationsInput interface {
 	pulumi.Input
 
@@ -2809,11 +2809,11 @@ func (i ConditionalAccessPolicyConditionsLocationsArgs) ToConditionalAccessPolic
 // ConditionalAccessPolicyConditionsLocationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsLocationsArgs, ConditionalAccessPolicyConditionsLocationsPtr and ConditionalAccessPolicyConditionsLocationsPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsLocationsPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsLocationsArgs{...}
+//	        ConditionalAccessPolicyConditionsLocationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsLocationsPtrInput interface {
 	pulumi.Input
 
@@ -2927,7 +2927,7 @@ type ConditionalAccessPolicyConditionsPlatforms struct {
 // ConditionalAccessPolicyConditionsPlatformsInput is an input type that accepts ConditionalAccessPolicyConditionsPlatformsArgs and ConditionalAccessPolicyConditionsPlatformsOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsPlatformsInput` via:
 //
-//          ConditionalAccessPolicyConditionsPlatformsArgs{...}
+//	ConditionalAccessPolicyConditionsPlatformsArgs{...}
 type ConditionalAccessPolicyConditionsPlatformsInput interface {
 	pulumi.Input
 
@@ -2965,11 +2965,11 @@ func (i ConditionalAccessPolicyConditionsPlatformsArgs) ToConditionalAccessPolic
 // ConditionalAccessPolicyConditionsPlatformsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsPlatformsArgs, ConditionalAccessPolicyConditionsPlatformsPtr and ConditionalAccessPolicyConditionsPlatformsPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsPlatformsPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsPlatformsArgs{...}
+//	        ConditionalAccessPolicyConditionsPlatformsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsPlatformsPtrInput interface {
 	pulumi.Input
 
@@ -3091,7 +3091,7 @@ type ConditionalAccessPolicyConditionsUsers struct {
 // ConditionalAccessPolicyConditionsUsersInput is an input type that accepts ConditionalAccessPolicyConditionsUsersArgs and ConditionalAccessPolicyConditionsUsersOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersInput` via:
 //
-//          ConditionalAccessPolicyConditionsUsersArgs{...}
+//	ConditionalAccessPolicyConditionsUsersArgs{...}
 type ConditionalAccessPolicyConditionsUsersInput interface {
 	pulumi.Input
 
@@ -3137,11 +3137,11 @@ func (i ConditionalAccessPolicyConditionsUsersArgs) ToConditionalAccessPolicyCon
 // ConditionalAccessPolicyConditionsUsersPtrInput is an input type that accepts ConditionalAccessPolicyConditionsUsersArgs, ConditionalAccessPolicyConditionsUsersPtr and ConditionalAccessPolicyConditionsUsersPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyConditionsUsersPtrInput` via:
 //
-//          ConditionalAccessPolicyConditionsUsersArgs{...}
+//	        ConditionalAccessPolicyConditionsUsersArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyConditionsUsersPtrInput interface {
 	pulumi.Input
 
@@ -3319,7 +3319,7 @@ type ConditionalAccessPolicyGrantControls struct {
 // ConditionalAccessPolicyGrantControlsInput is an input type that accepts ConditionalAccessPolicyGrantControlsArgs and ConditionalAccessPolicyGrantControlsOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyGrantControlsInput` via:
 //
-//          ConditionalAccessPolicyGrantControlsArgs{...}
+//	ConditionalAccessPolicyGrantControlsArgs{...}
 type ConditionalAccessPolicyGrantControlsInput interface {
 	pulumi.Input
 
@@ -3361,11 +3361,11 @@ func (i ConditionalAccessPolicyGrantControlsArgs) ToConditionalAccessPolicyGrant
 // ConditionalAccessPolicyGrantControlsPtrInput is an input type that accepts ConditionalAccessPolicyGrantControlsArgs, ConditionalAccessPolicyGrantControlsPtr and ConditionalAccessPolicyGrantControlsPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyGrantControlsPtrInput` via:
 //
-//          ConditionalAccessPolicyGrantControlsArgs{...}
+//	        ConditionalAccessPolicyGrantControlsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicyGrantControlsPtrInput interface {
 	pulumi.Input
 
@@ -3515,7 +3515,7 @@ type ConditionalAccessPolicySessionControls struct {
 // ConditionalAccessPolicySessionControlsInput is an input type that accepts ConditionalAccessPolicySessionControlsArgs and ConditionalAccessPolicySessionControlsOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicySessionControlsInput` via:
 //
-//          ConditionalAccessPolicySessionControlsArgs{...}
+//	ConditionalAccessPolicySessionControlsArgs{...}
 type ConditionalAccessPolicySessionControlsInput interface {
 	pulumi.Input
 
@@ -3559,11 +3559,11 @@ func (i ConditionalAccessPolicySessionControlsArgs) ToConditionalAccessPolicySes
 // ConditionalAccessPolicySessionControlsPtrInput is an input type that accepts ConditionalAccessPolicySessionControlsArgs, ConditionalAccessPolicySessionControlsPtr and ConditionalAccessPolicySessionControlsPtrOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicySessionControlsPtrInput` via:
 //
-//          ConditionalAccessPolicySessionControlsArgs{...}
+//	        ConditionalAccessPolicySessionControlsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionalAccessPolicySessionControlsPtrInput interface {
 	pulumi.Input
 
@@ -3720,7 +3720,7 @@ type CustomDirectoryRolePermission struct {
 // CustomDirectoryRolePermissionInput is an input type that accepts CustomDirectoryRolePermissionArgs and CustomDirectoryRolePermissionOutput values.
 // You can construct a concrete instance of `CustomDirectoryRolePermissionInput` via:
 //
-//          CustomDirectoryRolePermissionArgs{...}
+//	CustomDirectoryRolePermissionArgs{...}
 type CustomDirectoryRolePermissionInput interface {
 	pulumi.Input
 
@@ -3748,7 +3748,7 @@ func (i CustomDirectoryRolePermissionArgs) ToCustomDirectoryRolePermissionOutput
 // CustomDirectoryRolePermissionArrayInput is an input type that accepts CustomDirectoryRolePermissionArray and CustomDirectoryRolePermissionArrayOutput values.
 // You can construct a concrete instance of `CustomDirectoryRolePermissionArrayInput` via:
 //
-//          CustomDirectoryRolePermissionArray{ CustomDirectoryRolePermissionArgs{...} }
+//	CustomDirectoryRolePermissionArray{ CustomDirectoryRolePermissionArgs{...} }
 type CustomDirectoryRolePermissionArrayInput interface {
 	pulumi.Input
 
@@ -3819,7 +3819,7 @@ type GroupDynamicMembership struct {
 // GroupDynamicMembershipInput is an input type that accepts GroupDynamicMembershipArgs and GroupDynamicMembershipOutput values.
 // You can construct a concrete instance of `GroupDynamicMembershipInput` via:
 //
-//          GroupDynamicMembershipArgs{...}
+//	GroupDynamicMembershipArgs{...}
 type GroupDynamicMembershipInput interface {
 	pulumi.Input
 
@@ -3857,11 +3857,11 @@ func (i GroupDynamicMembershipArgs) ToGroupDynamicMembershipPtrOutputWithContext
 // GroupDynamicMembershipPtrInput is an input type that accepts GroupDynamicMembershipArgs, GroupDynamicMembershipPtr and GroupDynamicMembershipPtrOutput values.
 // You can construct a concrete instance of `GroupDynamicMembershipPtrInput` via:
 //
-//          GroupDynamicMembershipArgs{...}
+//	        GroupDynamicMembershipArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GroupDynamicMembershipPtrInput interface {
 	pulumi.Input
 
@@ -3977,7 +3977,7 @@ type InvitationMessage struct {
 // InvitationMessageInput is an input type that accepts InvitationMessageArgs and InvitationMessageOutput values.
 // You can construct a concrete instance of `InvitationMessageInput` via:
 //
-//          InvitationMessageArgs{...}
+//	InvitationMessageArgs{...}
 type InvitationMessageInput interface {
 	pulumi.Input
 
@@ -4017,11 +4017,11 @@ func (i InvitationMessageArgs) ToInvitationMessagePtrOutputWithContext(ctx conte
 // InvitationMessagePtrInput is an input type that accepts InvitationMessageArgs, InvitationMessagePtr and InvitationMessagePtrOutput values.
 // You can construct a concrete instance of `InvitationMessagePtrInput` via:
 //
-//          InvitationMessageArgs{...}
+//	        InvitationMessageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InvitationMessagePtrInput interface {
 	pulumi.Input
 
@@ -4150,7 +4150,7 @@ type NamedLocationCountry struct {
 // NamedLocationCountryInput is an input type that accepts NamedLocationCountryArgs and NamedLocationCountryOutput values.
 // You can construct a concrete instance of `NamedLocationCountryInput` via:
 //
-//          NamedLocationCountryArgs{...}
+//	NamedLocationCountryArgs{...}
 type NamedLocationCountryInput interface {
 	pulumi.Input
 
@@ -4188,11 +4188,11 @@ func (i NamedLocationCountryArgs) ToNamedLocationCountryPtrOutputWithContext(ctx
 // NamedLocationCountryPtrInput is an input type that accepts NamedLocationCountryArgs, NamedLocationCountryPtr and NamedLocationCountryPtrOutput values.
 // You can construct a concrete instance of `NamedLocationCountryPtrInput` via:
 //
-//          NamedLocationCountryArgs{...}
+//	        NamedLocationCountryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NamedLocationCountryPtrInput interface {
 	pulumi.Input
 
@@ -4306,7 +4306,7 @@ type NamedLocationIp struct {
 // NamedLocationIpInput is an input type that accepts NamedLocationIpArgs and NamedLocationIpOutput values.
 // You can construct a concrete instance of `NamedLocationIpInput` via:
 //
-//          NamedLocationIpArgs{...}
+//	NamedLocationIpArgs{...}
 type NamedLocationIpInput interface {
 	pulumi.Input
 
@@ -4344,11 +4344,11 @@ func (i NamedLocationIpArgs) ToNamedLocationIpPtrOutputWithContext(ctx context.C
 // NamedLocationIpPtrInput is an input type that accepts NamedLocationIpArgs, NamedLocationIpPtr and NamedLocationIpPtrOutput values.
 // You can construct a concrete instance of `NamedLocationIpPtrInput` via:
 //
-//          NamedLocationIpArgs{...}
+//	        NamedLocationIpArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NamedLocationIpPtrInput interface {
 	pulumi.Input
 
@@ -4470,7 +4470,7 @@ type ServicePrincipalAppRole struct {
 // ServicePrincipalAppRoleInput is an input type that accepts ServicePrincipalAppRoleArgs and ServicePrincipalAppRoleOutput values.
 // You can construct a concrete instance of `ServicePrincipalAppRoleInput` via:
 //
-//          ServicePrincipalAppRoleArgs{...}
+//	ServicePrincipalAppRoleArgs{...}
 type ServicePrincipalAppRoleInput interface {
 	pulumi.Input
 
@@ -4508,7 +4508,7 @@ func (i ServicePrincipalAppRoleArgs) ToServicePrincipalAppRoleOutputWithContext(
 // ServicePrincipalAppRoleArrayInput is an input type that accepts ServicePrincipalAppRoleArray and ServicePrincipalAppRoleArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalAppRoleArrayInput` via:
 //
-//          ServicePrincipalAppRoleArray{ ServicePrincipalAppRoleArgs{...} }
+//	ServicePrincipalAppRoleArray{ ServicePrincipalAppRoleArgs{...} }
 type ServicePrincipalAppRoleArrayInput interface {
 	pulumi.Input
 
@@ -4604,7 +4604,7 @@ type ServicePrincipalFeature struct {
 // ServicePrincipalFeatureInput is an input type that accepts ServicePrincipalFeatureArgs and ServicePrincipalFeatureOutput values.
 // You can construct a concrete instance of `ServicePrincipalFeatureInput` via:
 //
-//          ServicePrincipalFeatureArgs{...}
+//	ServicePrincipalFeatureArgs{...}
 type ServicePrincipalFeatureInput interface {
 	pulumi.Input
 
@@ -4634,7 +4634,7 @@ func (i ServicePrincipalFeatureArgs) ToServicePrincipalFeatureOutputWithContext(
 // ServicePrincipalFeatureArrayInput is an input type that accepts ServicePrincipalFeatureArray and ServicePrincipalFeatureArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalFeatureArrayInput` via:
 //
-//          ServicePrincipalFeatureArray{ ServicePrincipalFeatureArgs{...} }
+//	ServicePrincipalFeatureArray{ ServicePrincipalFeatureArgs{...} }
 type ServicePrincipalFeatureArrayInput interface {
 	pulumi.Input
 
@@ -4720,7 +4720,7 @@ type ServicePrincipalFeatureTag struct {
 // ServicePrincipalFeatureTagInput is an input type that accepts ServicePrincipalFeatureTagArgs and ServicePrincipalFeatureTagOutput values.
 // You can construct a concrete instance of `ServicePrincipalFeatureTagInput` via:
 //
-//          ServicePrincipalFeatureTagArgs{...}
+//	ServicePrincipalFeatureTagArgs{...}
 type ServicePrincipalFeatureTagInput interface {
 	pulumi.Input
 
@@ -4754,7 +4754,7 @@ func (i ServicePrincipalFeatureTagArgs) ToServicePrincipalFeatureTagOutputWithCo
 // ServicePrincipalFeatureTagArrayInput is an input type that accepts ServicePrincipalFeatureTagArray and ServicePrincipalFeatureTagArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalFeatureTagArrayInput` via:
 //
-//          ServicePrincipalFeatureTagArray{ ServicePrincipalFeatureTagArgs{...} }
+//	ServicePrincipalFeatureTagArray{ ServicePrincipalFeatureTagArgs{...} }
 type ServicePrincipalFeatureTagArrayInput interface {
 	pulumi.Input
 
@@ -4852,7 +4852,7 @@ type ServicePrincipalOauth2PermissionScope struct {
 // ServicePrincipalOauth2PermissionScopeInput is an input type that accepts ServicePrincipalOauth2PermissionScopeArgs and ServicePrincipalOauth2PermissionScopeOutput values.
 // You can construct a concrete instance of `ServicePrincipalOauth2PermissionScopeInput` via:
 //
-//          ServicePrincipalOauth2PermissionScopeArgs{...}
+//	ServicePrincipalOauth2PermissionScopeArgs{...}
 type ServicePrincipalOauth2PermissionScopeInput interface {
 	pulumi.Input
 
@@ -4894,7 +4894,7 @@ func (i ServicePrincipalOauth2PermissionScopeArgs) ToServicePrincipalOauth2Permi
 // ServicePrincipalOauth2PermissionScopeArrayInput is an input type that accepts ServicePrincipalOauth2PermissionScopeArray and ServicePrincipalOauth2PermissionScopeArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalOauth2PermissionScopeArrayInput` via:
 //
-//          ServicePrincipalOauth2PermissionScopeArray{ ServicePrincipalOauth2PermissionScopeArgs{...} }
+//	ServicePrincipalOauth2PermissionScopeArray{ ServicePrincipalOauth2PermissionScopeArgs{...} }
 type ServicePrincipalOauth2PermissionScopeArrayInput interface {
 	pulumi.Input
 
@@ -4998,7 +4998,7 @@ type ServicePrincipalSamlSingleSignOn struct {
 // ServicePrincipalSamlSingleSignOnInput is an input type that accepts ServicePrincipalSamlSingleSignOnArgs and ServicePrincipalSamlSingleSignOnOutput values.
 // You can construct a concrete instance of `ServicePrincipalSamlSingleSignOnInput` via:
 //
-//          ServicePrincipalSamlSingleSignOnArgs{...}
+//	ServicePrincipalSamlSingleSignOnArgs{...}
 type ServicePrincipalSamlSingleSignOnInput interface {
 	pulumi.Input
 
@@ -5034,11 +5034,11 @@ func (i ServicePrincipalSamlSingleSignOnArgs) ToServicePrincipalSamlSingleSignOn
 // ServicePrincipalSamlSingleSignOnPtrInput is an input type that accepts ServicePrincipalSamlSingleSignOnArgs, ServicePrincipalSamlSingleSignOnPtr and ServicePrincipalSamlSingleSignOnPtrOutput values.
 // You can construct a concrete instance of `ServicePrincipalSamlSingleSignOnPtrInput` via:
 //
-//          ServicePrincipalSamlSingleSignOnArgs{...}
+//	        ServicePrincipalSamlSingleSignOnArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePrincipalSamlSingleSignOnPtrInput interface {
 	pulumi.Input
 
@@ -5141,7 +5141,7 @@ type GetApplicationApi struct {
 // GetApplicationApiInput is an input type that accepts GetApplicationApiArgs and GetApplicationApiOutput values.
 // You can construct a concrete instance of `GetApplicationApiInput` via:
 //
-//          GetApplicationApiArgs{...}
+//	GetApplicationApiArgs{...}
 type GetApplicationApiInput interface {
 	pulumi.Input
 
@@ -5175,7 +5175,7 @@ func (i GetApplicationApiArgs) ToGetApplicationApiOutputWithContext(ctx context.
 // GetApplicationApiArrayInput is an input type that accepts GetApplicationApiArray and GetApplicationApiArrayOutput values.
 // You can construct a concrete instance of `GetApplicationApiArrayInput` via:
 //
-//          GetApplicationApiArray{ GetApplicationApiArgs{...} }
+//	GetApplicationApiArray{ GetApplicationApiArgs{...} }
 type GetApplicationApiArrayInput interface {
 	pulumi.Input
 
@@ -5273,7 +5273,7 @@ type GetApplicationApiOauth2PermissionScope struct {
 // GetApplicationApiOauth2PermissionScopeInput is an input type that accepts GetApplicationApiOauth2PermissionScopeArgs and GetApplicationApiOauth2PermissionScopeOutput values.
 // You can construct a concrete instance of `GetApplicationApiOauth2PermissionScopeInput` via:
 //
-//          GetApplicationApiOauth2PermissionScopeArgs{...}
+//	GetApplicationApiOauth2PermissionScopeArgs{...}
 type GetApplicationApiOauth2PermissionScopeInput interface {
 	pulumi.Input
 
@@ -5315,7 +5315,7 @@ func (i GetApplicationApiOauth2PermissionScopeArgs) ToGetApplicationApiOauth2Per
 // GetApplicationApiOauth2PermissionScopeArrayInput is an input type that accepts GetApplicationApiOauth2PermissionScopeArray and GetApplicationApiOauth2PermissionScopeArrayOutput values.
 // You can construct a concrete instance of `GetApplicationApiOauth2PermissionScopeArrayInput` via:
 //
-//          GetApplicationApiOauth2PermissionScopeArray{ GetApplicationApiOauth2PermissionScopeArgs{...} }
+//	GetApplicationApiOauth2PermissionScopeArray{ GetApplicationApiOauth2PermissionScopeArgs{...} }
 type GetApplicationApiOauth2PermissionScopeArrayInput interface {
 	pulumi.Input
 
@@ -5429,7 +5429,7 @@ type GetApplicationAppRole struct {
 // GetApplicationAppRoleInput is an input type that accepts GetApplicationAppRoleArgs and GetApplicationAppRoleOutput values.
 // You can construct a concrete instance of `GetApplicationAppRoleInput` via:
 //
-//          GetApplicationAppRoleArgs{...}
+//	GetApplicationAppRoleArgs{...}
 type GetApplicationAppRoleInput interface {
 	pulumi.Input
 
@@ -5467,7 +5467,7 @@ func (i GetApplicationAppRoleArgs) ToGetApplicationAppRoleOutputWithContext(ctx 
 // GetApplicationAppRoleArrayInput is an input type that accepts GetApplicationAppRoleArray and GetApplicationAppRoleArrayOutput values.
 // You can construct a concrete instance of `GetApplicationAppRoleArrayInput` via:
 //
-//          GetApplicationAppRoleArray{ GetApplicationAppRoleArgs{...} }
+//	GetApplicationAppRoleArray{ GetApplicationAppRoleArgs{...} }
 type GetApplicationAppRoleArrayInput interface {
 	pulumi.Input
 
@@ -5567,7 +5567,7 @@ type GetApplicationFeatureTag struct {
 // GetApplicationFeatureTagInput is an input type that accepts GetApplicationFeatureTagArgs and GetApplicationFeatureTagOutput values.
 // You can construct a concrete instance of `GetApplicationFeatureTagInput` via:
 //
-//          GetApplicationFeatureTagArgs{...}
+//	GetApplicationFeatureTagArgs{...}
 type GetApplicationFeatureTagInput interface {
 	pulumi.Input
 
@@ -5601,7 +5601,7 @@ func (i GetApplicationFeatureTagArgs) ToGetApplicationFeatureTagOutputWithContex
 // GetApplicationFeatureTagArrayInput is an input type that accepts GetApplicationFeatureTagArray and GetApplicationFeatureTagArrayOutput values.
 // You can construct a concrete instance of `GetApplicationFeatureTagArrayInput` via:
 //
-//          GetApplicationFeatureTagArray{ GetApplicationFeatureTagArgs{...} }
+//	GetApplicationFeatureTagArray{ GetApplicationFeatureTagArgs{...} }
 type GetApplicationFeatureTagArrayInput interface {
 	pulumi.Input
 
@@ -5689,7 +5689,7 @@ type GetApplicationOptionalClaim struct {
 // GetApplicationOptionalClaimInput is an input type that accepts GetApplicationOptionalClaimArgs and GetApplicationOptionalClaimOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimInput` via:
 //
-//          GetApplicationOptionalClaimArgs{...}
+//	GetApplicationOptionalClaimArgs{...}
 type GetApplicationOptionalClaimInput interface {
 	pulumi.Input
 
@@ -5721,7 +5721,7 @@ func (i GetApplicationOptionalClaimArgs) ToGetApplicationOptionalClaimOutputWith
 // GetApplicationOptionalClaimArrayInput is an input type that accepts GetApplicationOptionalClaimArray and GetApplicationOptionalClaimArrayOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimArrayInput` via:
 //
-//          GetApplicationOptionalClaimArray{ GetApplicationOptionalClaimArgs{...} }
+//	GetApplicationOptionalClaimArray{ GetApplicationOptionalClaimArgs{...} }
 type GetApplicationOptionalClaimArrayInput interface {
 	pulumi.Input
 
@@ -5806,7 +5806,7 @@ type GetApplicationOptionalClaimAccessToken struct {
 // GetApplicationOptionalClaimAccessTokenInput is an input type that accepts GetApplicationOptionalClaimAccessTokenArgs and GetApplicationOptionalClaimAccessTokenOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimAccessTokenInput` via:
 //
-//          GetApplicationOptionalClaimAccessTokenArgs{...}
+//	GetApplicationOptionalClaimAccessTokenArgs{...}
 type GetApplicationOptionalClaimAccessTokenInput interface {
 	pulumi.Input
 
@@ -5840,7 +5840,7 @@ func (i GetApplicationOptionalClaimAccessTokenArgs) ToGetApplicationOptionalClai
 // GetApplicationOptionalClaimAccessTokenArrayInput is an input type that accepts GetApplicationOptionalClaimAccessTokenArray and GetApplicationOptionalClaimAccessTokenArrayOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimAccessTokenArrayInput` via:
 //
-//          GetApplicationOptionalClaimAccessTokenArray{ GetApplicationOptionalClaimAccessTokenArgs{...} }
+//	GetApplicationOptionalClaimAccessTokenArray{ GetApplicationOptionalClaimAccessTokenArgs{...} }
 type GetApplicationOptionalClaimAccessTokenArrayInput interface {
 	pulumi.Input
 
@@ -5930,7 +5930,7 @@ type GetApplicationOptionalClaimIdToken struct {
 // GetApplicationOptionalClaimIdTokenInput is an input type that accepts GetApplicationOptionalClaimIdTokenArgs and GetApplicationOptionalClaimIdTokenOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimIdTokenInput` via:
 //
-//          GetApplicationOptionalClaimIdTokenArgs{...}
+//	GetApplicationOptionalClaimIdTokenArgs{...}
 type GetApplicationOptionalClaimIdTokenInput interface {
 	pulumi.Input
 
@@ -5964,7 +5964,7 @@ func (i GetApplicationOptionalClaimIdTokenArgs) ToGetApplicationOptionalClaimIdT
 // GetApplicationOptionalClaimIdTokenArrayInput is an input type that accepts GetApplicationOptionalClaimIdTokenArray and GetApplicationOptionalClaimIdTokenArrayOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimIdTokenArrayInput` via:
 //
-//          GetApplicationOptionalClaimIdTokenArray{ GetApplicationOptionalClaimIdTokenArgs{...} }
+//	GetApplicationOptionalClaimIdTokenArray{ GetApplicationOptionalClaimIdTokenArgs{...} }
 type GetApplicationOptionalClaimIdTokenArrayInput interface {
 	pulumi.Input
 
@@ -6054,7 +6054,7 @@ type GetApplicationOptionalClaimSaml2Token struct {
 // GetApplicationOptionalClaimSaml2TokenInput is an input type that accepts GetApplicationOptionalClaimSaml2TokenArgs and GetApplicationOptionalClaimSaml2TokenOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimSaml2TokenInput` via:
 //
-//          GetApplicationOptionalClaimSaml2TokenArgs{...}
+//	GetApplicationOptionalClaimSaml2TokenArgs{...}
 type GetApplicationOptionalClaimSaml2TokenInput interface {
 	pulumi.Input
 
@@ -6088,7 +6088,7 @@ func (i GetApplicationOptionalClaimSaml2TokenArgs) ToGetApplicationOptionalClaim
 // GetApplicationOptionalClaimSaml2TokenArrayInput is an input type that accepts GetApplicationOptionalClaimSaml2TokenArray and GetApplicationOptionalClaimSaml2TokenArrayOutput values.
 // You can construct a concrete instance of `GetApplicationOptionalClaimSaml2TokenArrayInput` via:
 //
-//          GetApplicationOptionalClaimSaml2TokenArray{ GetApplicationOptionalClaimSaml2TokenArgs{...} }
+//	GetApplicationOptionalClaimSaml2TokenArray{ GetApplicationOptionalClaimSaml2TokenArgs{...} }
 type GetApplicationOptionalClaimSaml2TokenArrayInput interface {
 	pulumi.Input
 
@@ -6172,7 +6172,7 @@ type GetApplicationPublicClient struct {
 // GetApplicationPublicClientInput is an input type that accepts GetApplicationPublicClientArgs and GetApplicationPublicClientOutput values.
 // You can construct a concrete instance of `GetApplicationPublicClientInput` via:
 //
-//          GetApplicationPublicClientArgs{...}
+//	GetApplicationPublicClientArgs{...}
 type GetApplicationPublicClientInput interface {
 	pulumi.Input
 
@@ -6200,7 +6200,7 @@ func (i GetApplicationPublicClientArgs) ToGetApplicationPublicClientOutputWithCo
 // GetApplicationPublicClientArrayInput is an input type that accepts GetApplicationPublicClientArray and GetApplicationPublicClientArrayOutput values.
 // You can construct a concrete instance of `GetApplicationPublicClientArrayInput` via:
 //
-//          GetApplicationPublicClientArray{ GetApplicationPublicClientArgs{...} }
+//	GetApplicationPublicClientArray{ GetApplicationPublicClientArgs{...} }
 type GetApplicationPublicClientArrayInput interface {
 	pulumi.Input
 
@@ -6271,7 +6271,7 @@ type GetApplicationRequiredResourceAccess struct {
 // GetApplicationRequiredResourceAccessInput is an input type that accepts GetApplicationRequiredResourceAccessArgs and GetApplicationRequiredResourceAccessOutput values.
 // You can construct a concrete instance of `GetApplicationRequiredResourceAccessInput` via:
 //
-//          GetApplicationRequiredResourceAccessArgs{...}
+//	GetApplicationRequiredResourceAccessArgs{...}
 type GetApplicationRequiredResourceAccessInput interface {
 	pulumi.Input
 
@@ -6301,7 +6301,7 @@ func (i GetApplicationRequiredResourceAccessArgs) ToGetApplicationRequiredResour
 // GetApplicationRequiredResourceAccessArrayInput is an input type that accepts GetApplicationRequiredResourceAccessArray and GetApplicationRequiredResourceAccessArrayOutput values.
 // You can construct a concrete instance of `GetApplicationRequiredResourceAccessArrayInput` via:
 //
-//          GetApplicationRequiredResourceAccessArray{ GetApplicationRequiredResourceAccessArgs{...} }
+//	GetApplicationRequiredResourceAccessArray{ GetApplicationRequiredResourceAccessArgs{...} }
 type GetApplicationRequiredResourceAccessArrayInput interface {
 	pulumi.Input
 
@@ -6379,7 +6379,7 @@ type GetApplicationRequiredResourceAccessResourceAccess struct {
 // GetApplicationRequiredResourceAccessResourceAccessInput is an input type that accepts GetApplicationRequiredResourceAccessResourceAccessArgs and GetApplicationRequiredResourceAccessResourceAccessOutput values.
 // You can construct a concrete instance of `GetApplicationRequiredResourceAccessResourceAccessInput` via:
 //
-//          GetApplicationRequiredResourceAccessResourceAccessArgs{...}
+//	GetApplicationRequiredResourceAccessResourceAccessArgs{...}
 type GetApplicationRequiredResourceAccessResourceAccessInput interface {
 	pulumi.Input
 
@@ -6409,7 +6409,7 @@ func (i GetApplicationRequiredResourceAccessResourceAccessArgs) ToGetApplication
 // GetApplicationRequiredResourceAccessResourceAccessArrayInput is an input type that accepts GetApplicationRequiredResourceAccessResourceAccessArray and GetApplicationRequiredResourceAccessResourceAccessArrayOutput values.
 // You can construct a concrete instance of `GetApplicationRequiredResourceAccessResourceAccessArrayInput` via:
 //
-//          GetApplicationRequiredResourceAccessResourceAccessArray{ GetApplicationRequiredResourceAccessResourceAccessArgs{...} }
+//	GetApplicationRequiredResourceAccessResourceAccessArray{ GetApplicationRequiredResourceAccessResourceAccessArgs{...} }
 type GetApplicationRequiredResourceAccessResourceAccessArrayInput interface {
 	pulumi.Input
 
@@ -6483,7 +6483,7 @@ type GetApplicationSinglePageApplication struct {
 // GetApplicationSinglePageApplicationInput is an input type that accepts GetApplicationSinglePageApplicationArgs and GetApplicationSinglePageApplicationOutput values.
 // You can construct a concrete instance of `GetApplicationSinglePageApplicationInput` via:
 //
-//          GetApplicationSinglePageApplicationArgs{...}
+//	GetApplicationSinglePageApplicationArgs{...}
 type GetApplicationSinglePageApplicationInput interface {
 	pulumi.Input
 
@@ -6511,7 +6511,7 @@ func (i GetApplicationSinglePageApplicationArgs) ToGetApplicationSinglePageAppli
 // GetApplicationSinglePageApplicationArrayInput is an input type that accepts GetApplicationSinglePageApplicationArray and GetApplicationSinglePageApplicationArrayOutput values.
 // You can construct a concrete instance of `GetApplicationSinglePageApplicationArrayInput` via:
 //
-//          GetApplicationSinglePageApplicationArray{ GetApplicationSinglePageApplicationArgs{...} }
+//	GetApplicationSinglePageApplicationArray{ GetApplicationSinglePageApplicationArgs{...} }
 type GetApplicationSinglePageApplicationArrayInput interface {
 	pulumi.Input
 
@@ -6586,7 +6586,7 @@ type GetApplicationWeb struct {
 // GetApplicationWebInput is an input type that accepts GetApplicationWebArgs and GetApplicationWebOutput values.
 // You can construct a concrete instance of `GetApplicationWebInput` via:
 //
-//          GetApplicationWebArgs{...}
+//	GetApplicationWebArgs{...}
 type GetApplicationWebInput interface {
 	pulumi.Input
 
@@ -6620,7 +6620,7 @@ func (i GetApplicationWebArgs) ToGetApplicationWebOutputWithContext(ctx context.
 // GetApplicationWebArrayInput is an input type that accepts GetApplicationWebArray and GetApplicationWebArrayOutput values.
 // You can construct a concrete instance of `GetApplicationWebArrayInput` via:
 //
-//          GetApplicationWebArray{ GetApplicationWebArgs{...} }
+//	GetApplicationWebArray{ GetApplicationWebArgs{...} }
 type GetApplicationWebArrayInput interface {
 	pulumi.Input
 
@@ -6706,7 +6706,7 @@ type GetApplicationWebImplicitGrant struct {
 // GetApplicationWebImplicitGrantInput is an input type that accepts GetApplicationWebImplicitGrantArgs and GetApplicationWebImplicitGrantOutput values.
 // You can construct a concrete instance of `GetApplicationWebImplicitGrantInput` via:
 //
-//          GetApplicationWebImplicitGrantArgs{...}
+//	GetApplicationWebImplicitGrantArgs{...}
 type GetApplicationWebImplicitGrantInput interface {
 	pulumi.Input
 
@@ -6736,7 +6736,7 @@ func (i GetApplicationWebImplicitGrantArgs) ToGetApplicationWebImplicitGrantOutp
 // GetApplicationWebImplicitGrantArrayInput is an input type that accepts GetApplicationWebImplicitGrantArray and GetApplicationWebImplicitGrantArrayOutput values.
 // You can construct a concrete instance of `GetApplicationWebImplicitGrantArrayInput` via:
 //
-//          GetApplicationWebImplicitGrantArray{ GetApplicationWebImplicitGrantArgs{...} }
+//	GetApplicationWebImplicitGrantArray{ GetApplicationWebImplicitGrantArgs{...} }
 type GetApplicationWebImplicitGrantArrayInput interface {
 	pulumi.Input
 
@@ -6824,7 +6824,7 @@ type GetDomainsDomain struct {
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
 // You can construct a concrete instance of `GetDomainsDomainInput` via:
 //
-//          GetDomainsDomainArgs{...}
+//	GetDomainsDomainArgs{...}
 type GetDomainsDomainInput interface {
 	pulumi.Input
 
@@ -6866,7 +6866,7 @@ func (i GetDomainsDomainArgs) ToGetDomainsDomainOutputWithContext(ctx context.Co
 // GetDomainsDomainArrayInput is an input type that accepts GetDomainsDomainArray and GetDomainsDomainArrayOutput values.
 // You can construct a concrete instance of `GetDomainsDomainArrayInput` via:
 //
-//          GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
+//	GetDomainsDomainArray{ GetDomainsDomainArgs{...} }
 type GetDomainsDomainArrayInput interface {
 	pulumi.Input
 
@@ -6972,7 +6972,7 @@ type GetGroupDynamicMembership struct {
 // GetGroupDynamicMembershipInput is an input type that accepts GetGroupDynamicMembershipArgs and GetGroupDynamicMembershipOutput values.
 // You can construct a concrete instance of `GetGroupDynamicMembershipInput` via:
 //
-//          GetGroupDynamicMembershipArgs{...}
+//	GetGroupDynamicMembershipArgs{...}
 type GetGroupDynamicMembershipInput interface {
 	pulumi.Input
 
@@ -7002,7 +7002,7 @@ func (i GetGroupDynamicMembershipArgs) ToGetGroupDynamicMembershipOutputWithCont
 // GetGroupDynamicMembershipArrayInput is an input type that accepts GetGroupDynamicMembershipArray and GetGroupDynamicMembershipArrayOutput values.
 // You can construct a concrete instance of `GetGroupDynamicMembershipArrayInput` via:
 //
-//          GetGroupDynamicMembershipArray{ GetGroupDynamicMembershipArgs{...} }
+//	GetGroupDynamicMembershipArray{ GetGroupDynamicMembershipArgs{...} }
 type GetGroupDynamicMembershipArrayInput interface {
 	pulumi.Input
 
@@ -7086,7 +7086,7 @@ type GetServicePrincipalAppRole struct {
 // GetServicePrincipalAppRoleInput is an input type that accepts GetServicePrincipalAppRoleArgs and GetServicePrincipalAppRoleOutput values.
 // You can construct a concrete instance of `GetServicePrincipalAppRoleInput` via:
 //
-//          GetServicePrincipalAppRoleArgs{...}
+//	GetServicePrincipalAppRoleArgs{...}
 type GetServicePrincipalAppRoleInput interface {
 	pulumi.Input
 
@@ -7124,7 +7124,7 @@ func (i GetServicePrincipalAppRoleArgs) ToGetServicePrincipalAppRoleOutputWithCo
 // GetServicePrincipalAppRoleArrayInput is an input type that accepts GetServicePrincipalAppRoleArray and GetServicePrincipalAppRoleArrayOutput values.
 // You can construct a concrete instance of `GetServicePrincipalAppRoleArrayInput` via:
 //
-//          GetServicePrincipalAppRoleArray{ GetServicePrincipalAppRoleArgs{...} }
+//	GetServicePrincipalAppRoleArray{ GetServicePrincipalAppRoleArgs{...} }
 type GetServicePrincipalAppRoleArrayInput interface {
 	pulumi.Input
 
@@ -7224,7 +7224,7 @@ type GetServicePrincipalFeature struct {
 // GetServicePrincipalFeatureInput is an input type that accepts GetServicePrincipalFeatureArgs and GetServicePrincipalFeatureOutput values.
 // You can construct a concrete instance of `GetServicePrincipalFeatureInput` via:
 //
-//          GetServicePrincipalFeatureArgs{...}
+//	GetServicePrincipalFeatureArgs{...}
 type GetServicePrincipalFeatureInput interface {
 	pulumi.Input
 
@@ -7258,7 +7258,7 @@ func (i GetServicePrincipalFeatureArgs) ToGetServicePrincipalFeatureOutputWithCo
 // GetServicePrincipalFeatureArrayInput is an input type that accepts GetServicePrincipalFeatureArray and GetServicePrincipalFeatureArrayOutput values.
 // You can construct a concrete instance of `GetServicePrincipalFeatureArrayInput` via:
 //
-//          GetServicePrincipalFeatureArray{ GetServicePrincipalFeatureArgs{...} }
+//	GetServicePrincipalFeatureArray{ GetServicePrincipalFeatureArgs{...} }
 type GetServicePrincipalFeatureArrayInput interface {
 	pulumi.Input
 
@@ -7344,7 +7344,7 @@ type GetServicePrincipalFeatureTag struct {
 // GetServicePrincipalFeatureTagInput is an input type that accepts GetServicePrincipalFeatureTagArgs and GetServicePrincipalFeatureTagOutput values.
 // You can construct a concrete instance of `GetServicePrincipalFeatureTagInput` via:
 //
-//          GetServicePrincipalFeatureTagArgs{...}
+//	GetServicePrincipalFeatureTagArgs{...}
 type GetServicePrincipalFeatureTagInput interface {
 	pulumi.Input
 
@@ -7374,7 +7374,7 @@ func (i GetServicePrincipalFeatureTagArgs) ToGetServicePrincipalFeatureTagOutput
 // GetServicePrincipalFeatureTagArrayInput is an input type that accepts GetServicePrincipalFeatureTagArray and GetServicePrincipalFeatureTagArrayOutput values.
 // You can construct a concrete instance of `GetServicePrincipalFeatureTagArrayInput` via:
 //
-//          GetServicePrincipalFeatureTagArray{ GetServicePrincipalFeatureTagArgs{...} }
+//	GetServicePrincipalFeatureTagArray{ GetServicePrincipalFeatureTagArgs{...} }
 type GetServicePrincipalFeatureTagArrayInput interface {
 	pulumi.Input
 
@@ -7468,7 +7468,7 @@ type GetServicePrincipalOauth2PermissionScope struct {
 // GetServicePrincipalOauth2PermissionScopeInput is an input type that accepts GetServicePrincipalOauth2PermissionScopeArgs and GetServicePrincipalOauth2PermissionScopeOutput values.
 // You can construct a concrete instance of `GetServicePrincipalOauth2PermissionScopeInput` via:
 //
-//          GetServicePrincipalOauth2PermissionScopeArgs{...}
+//	GetServicePrincipalOauth2PermissionScopeArgs{...}
 type GetServicePrincipalOauth2PermissionScopeInput interface {
 	pulumi.Input
 
@@ -7510,7 +7510,7 @@ func (i GetServicePrincipalOauth2PermissionScopeArgs) ToGetServicePrincipalOauth
 // GetServicePrincipalOauth2PermissionScopeArrayInput is an input type that accepts GetServicePrincipalOauth2PermissionScopeArray and GetServicePrincipalOauth2PermissionScopeArrayOutput values.
 // You can construct a concrete instance of `GetServicePrincipalOauth2PermissionScopeArrayInput` via:
 //
-//          GetServicePrincipalOauth2PermissionScopeArray{ GetServicePrincipalOauth2PermissionScopeArgs{...} }
+//	GetServicePrincipalOauth2PermissionScopeArray{ GetServicePrincipalOauth2PermissionScopeArgs{...} }
 type GetServicePrincipalOauth2PermissionScopeArrayInput interface {
 	pulumi.Input
 
@@ -7614,7 +7614,7 @@ type GetServicePrincipalSamlSingleSignOn struct {
 // GetServicePrincipalSamlSingleSignOnInput is an input type that accepts GetServicePrincipalSamlSingleSignOnArgs and GetServicePrincipalSamlSingleSignOnOutput values.
 // You can construct a concrete instance of `GetServicePrincipalSamlSingleSignOnInput` via:
 //
-//          GetServicePrincipalSamlSingleSignOnArgs{...}
+//	GetServicePrincipalSamlSingleSignOnArgs{...}
 type GetServicePrincipalSamlSingleSignOnInput interface {
 	pulumi.Input
 
@@ -7642,7 +7642,7 @@ func (i GetServicePrincipalSamlSingleSignOnArgs) ToGetServicePrincipalSamlSingle
 // GetServicePrincipalSamlSingleSignOnArrayInput is an input type that accepts GetServicePrincipalSamlSingleSignOnArray and GetServicePrincipalSamlSingleSignOnArrayOutput values.
 // You can construct a concrete instance of `GetServicePrincipalSamlSingleSignOnArrayInput` via:
 //
-//          GetServicePrincipalSamlSingleSignOnArray{ GetServicePrincipalSamlSingleSignOnArgs{...} }
+//	GetServicePrincipalSamlSingleSignOnArray{ GetServicePrincipalSamlSingleSignOnArgs{...} }
 type GetServicePrincipalSamlSingleSignOnArrayInput interface {
 	pulumi.Input
 
@@ -7733,7 +7733,7 @@ type GetServicePrincipalsServicePrincipal struct {
 // GetServicePrincipalsServicePrincipalInput is an input type that accepts GetServicePrincipalsServicePrincipalArgs and GetServicePrincipalsServicePrincipalOutput values.
 // You can construct a concrete instance of `GetServicePrincipalsServicePrincipalInput` via:
 //
-//          GetServicePrincipalsServicePrincipalArgs{...}
+//	GetServicePrincipalsServicePrincipalArgs{...}
 type GetServicePrincipalsServicePrincipalInput interface {
 	pulumi.Input
 
@@ -7783,7 +7783,7 @@ func (i GetServicePrincipalsServicePrincipalArgs) ToGetServicePrincipalsServiceP
 // GetServicePrincipalsServicePrincipalArrayInput is an input type that accepts GetServicePrincipalsServicePrincipalArray and GetServicePrincipalsServicePrincipalArrayOutput values.
 // You can construct a concrete instance of `GetServicePrincipalsServicePrincipalArrayInput` via:
 //
-//          GetServicePrincipalsServicePrincipalArray{ GetServicePrincipalsServicePrincipalArgs{...} }
+//	GetServicePrincipalsServicePrincipalArray{ GetServicePrincipalsServicePrincipalArgs{...} }
 type GetServicePrincipalsServicePrincipalArrayInput interface {
 	pulumi.Input
 
@@ -7925,7 +7925,7 @@ type GetUsersUser struct {
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
 // You can construct a concrete instance of `GetUsersUserInput` via:
 //
-//          GetUsersUserArgs{...}
+//	GetUsersUserArgs{...}
 type GetUsersUserInput interface {
 	pulumi.Input
 
@@ -7971,7 +7971,7 @@ func (i GetUsersUserArgs) ToGetUsersUserOutputWithContext(ctx context.Context) G
 // GetUsersUserArrayInput is an input type that accepts GetUsersUserArray and GetUsersUserArrayOutput values.
 // You can construct a concrete instance of `GetUsersUserArrayInput` via:
 //
-//          GetUsersUserArray{ GetUsersUserArgs{...} }
+//	GetUsersUserArray{ GetUsersUserArgs{...} }
 type GetUsersUserArrayInput interface {
 	pulumi.Input
 

@@ -27,24 +27,23 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var aadDomains = Output.Create(AzureAD.GetDomains.InvokeAsync());
-        ///         this.DomainNames = 
-        ///         {
-        ///             aadDomains.Apply(aadDomains =&gt; aadDomains.Domains),
-        ///         }.Select(__item =&gt; __item?.DomainName).ToList();
-        ///     }
+        ///     var aadDomains = AzureAD.GetDomains.Invoke();
         /// 
-        ///     [Output("domainNames")]
-        ///     public Output&lt;string&gt; DomainNames { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domainNames"] = new[]
+        ///         {
+        ///             aadDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains),
+        ///         }.Select(__item =&gt; __item?.DomainName).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -68,24 +67,23 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var aadDomains = Output.Create(AzureAD.GetDomains.InvokeAsync());
-        ///         this.DomainNames = 
-        ///         {
-        ///             aadDomains.Apply(aadDomains =&gt; aadDomains.Domains),
-        ///         }.Select(__item =&gt; __item?.DomainName).ToList();
-        ///     }
+        ///     var aadDomains = AzureAD.GetDomains.Invoke();
         /// 
-        ///     [Output("domainNames")]
-        ///     public Output&lt;string&gt; DomainNames { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["domainNames"] = new[]
+        ///         {
+        ///             aadDomains.Apply(getDomainsResult =&gt; getDomainsResult.Domains),
+        ///         }.Select(__item =&gt; __item?.DomainName).ToList(),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -95,7 +93,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetDomainsArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
@@ -142,9 +140,10 @@ namespace Pulumi.AzureAD
         public GetDomainsArgs()
         {
         }
+        public static new GetDomainsArgs Empty => new GetDomainsArgs();
     }
 
-    public sealed class GetDomainsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
@@ -191,6 +190,7 @@ namespace Pulumi.AzureAD
         public GetDomainsInvokeArgs()
         {
         }
+        public static new GetDomainsInvokeArgs Empty => new GetDomainsInvokeArgs();
     }
 
 

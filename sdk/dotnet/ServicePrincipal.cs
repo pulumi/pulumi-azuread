@@ -27,125 +27,124 @@ namespace Pulumi.AzureAD
     /// *Create a service principal for an application*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             Owners = 
-    ///             {
-    ///                 current.Apply(current =&gt; current.ObjectId),
-    ///             },
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///             AppRoleAssignmentRequired = false,
-    ///             Owners = 
-    ///             {
-    ///                 current.Apply(current =&gt; current.ObjectId),
-    ///             },
-    ///         });
-    ///     }
+    ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    /// }
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         AppRoleAssignmentRequired = false,
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *Create a service principal for an enterprise application*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             Owners = 
-    ///             {
-    ///                 current.Apply(current =&gt; current.ObjectId),
-    ///             },
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///             AppRoleAssignmentRequired = false,
-    ///             Owners = 
-    ///             {
-    ///                 current.Apply(current =&gt; current.ObjectId),
-    ///             },
-    ///             FeatureTags = 
-    ///             {
-    ///                 new AzureAD.Inputs.ServicePrincipalFeatureTagArgs
-    ///                 {
-    ///                     Enterprise = true,
-    ///                     Gallery = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    /// }
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         AppRoleAssignmentRequired = false,
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///         FeatureTags = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ServicePrincipalFeatureTagArgs
+    ///             {
+    ///                 Enterprise = true,
+    ///                 Gallery = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *Manage a service principal for a first-party Microsoft application*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
-    ///     {
-    ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
-    ///         var msgraph = new AzureAD.ServicePrincipal("msgraph", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-    ///             UseExisting = true,
-    ///         });
-    ///     }
+    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
     /// 
-    /// }
+    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
+    ///     {
+    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *Create a service principal for an application created from a gallery template*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
-    ///         var exampleApplicationTemplate = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs
-    ///         {
-    ///             DisplayName = "Marketo",
-    ///         }));
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             TemplateId = exampleApplicationTemplate.Apply(exampleApplicationTemplate =&gt; exampleApplicationTemplate.TemplateId),
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///             UseExisting = true,
-    ///         });
-    ///     }
+    ///         DisplayName = "Marketo",
+    ///     });
     /// 
-    /// }
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -157,7 +156,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipal:ServicePrincipal")]
-    public partial class ServicePrincipal : Pulumi.CustomResource
+    public partial class ServicePrincipal : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Whether or not the service principal account is enabled. Defaults to `true`.
@@ -377,7 +376,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ServicePrincipalArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not the service principal account is enabled. Defaults to `true`.
@@ -509,9 +508,10 @@ namespace Pulumi.AzureAD
         public ServicePrincipalArgs()
         {
         }
+        public static new ServicePrincipalArgs Empty => new ServicePrincipalArgs();
     }
 
-    public sealed class ServicePrincipalState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not the service principal account is enabled. Defaults to `true`.
@@ -763,5 +763,6 @@ namespace Pulumi.AzureAD
         public ServicePrincipalState()
         {
         }
+        public static new ServicePrincipalState Empty => new ServicePrincipalState();
     }
 }

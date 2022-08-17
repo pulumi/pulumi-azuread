@@ -28,99 +28,89 @@ namespace Pulumi.AzureAD
         /// 
         /// *Look up by group name*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         DisplayNames = new[]
         ///         {
-        ///             DisplayNames = 
-        ///             {
-        ///                 "group-a",
-        ///                 "group-b",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "group-a",
+        ///             "group-b",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by display name prefix*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sales = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var sales = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             DisplayNamePrefix = "sales-",
-        ///         }));
-        ///     }
+        ///         DisplayNamePrefix = "sales-",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up all groups*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var all = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             ReturnAll = true,
-        ///         }));
-        ///     }
+        ///         ReturnAll = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up all mail-enabled groups*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mailEnabled = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var mailEnabled = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             MailEnabled = true,
-        ///             ReturnAll = true,
-        ///         }));
-        ///     }
+        ///         MailEnabled = true,
+        ///         ReturnAll = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up all security-enabled groups that are not mail-enabled*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var securityOnly = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var securityOnly = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             MailEnabled = false,
-        ///             ReturnAll = true,
-        ///             SecurityEnabled = true,
-        ///         }));
-        ///     }
+        ///         MailEnabled = false,
+        ///         ReturnAll = true,
+        ///         SecurityEnabled = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -145,99 +135,89 @@ namespace Pulumi.AzureAD
         /// 
         /// *Look up by group name*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
+        ///         DisplayNames = new[]
         ///         {
-        ///             DisplayNames = 
-        ///             {
-        ///                 "group-a",
-        ///                 "group-b",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "group-a",
+        ///             "group-b",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by display name prefix*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var sales = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var sales = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             DisplayNamePrefix = "sales-",
-        ///         }));
-        ///     }
+        ///         DisplayNamePrefix = "sales-",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up all groups*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var all = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var all = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             ReturnAll = true,
-        ///         }));
-        ///     }
+        ///         ReturnAll = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up all mail-enabled groups*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var mailEnabled = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var mailEnabled = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             MailEnabled = true,
-        ///             ReturnAll = true,
-        ///         }));
-        ///     }
+        ///         MailEnabled = true,
+        ///         ReturnAll = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up all security-enabled groups that are not mail-enabled*
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var securityOnly = AzureAD.GetGroups.Invoke(new()
         ///     {
-        ///         var securityOnly = Output.Create(AzureAD.GetGroups.InvokeAsync(new AzureAD.GetGroupsArgs
-        ///         {
-        ///             MailEnabled = false,
-        ///             ReturnAll = true,
-        ///             SecurityEnabled = true,
-        ///         }));
-        ///     }
+        ///         MailEnabled = false,
+        ///         ReturnAll = true,
+        ///         SecurityEnabled = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -247,7 +227,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetGroupsArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A common display name prefix to match when returning groups.
@@ -306,9 +286,10 @@ namespace Pulumi.AzureAD
         public GetGroupsArgs()
         {
         }
+        public static new GetGroupsArgs Empty => new GetGroupsArgs();
     }
 
-    public sealed class GetGroupsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// A common display name prefix to match when returning groups.
@@ -367,6 +348,7 @@ namespace Pulumi.AzureAD
         public GetGroupsInvokeArgs()
         {
         }
+        public static new GetGroupsInvokeArgs Empty => new GetGroupsInvokeArgs();
     }
 
 

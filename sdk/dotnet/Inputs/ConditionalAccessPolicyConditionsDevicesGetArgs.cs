@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicyConditionsDevicesGetArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyConditionsDevicesGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
@@ -21,5 +21,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicyConditionsDevicesGetArgs()
         {
         }
+        public static new ConditionalAccessPolicyConditionsDevicesGetArgs Empty => new ConditionalAccessPolicyConditionsDevicesGetArgs();
     }
 }

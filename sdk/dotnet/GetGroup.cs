@@ -28,21 +28,19 @@ namespace Pulumi.AzureAD
         /// ### By Group Display Name)
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetGroup.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs
-        ///         {
-        ///             DisplayName = "MyGroupName",
-        ///             SecurityEnabled = true,
-        ///         }));
-        ///     }
+        ///         DisplayName = "MyGroupName",
+        ///         SecurityEnabled = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -67,21 +65,19 @@ namespace Pulumi.AzureAD
         /// ### By Group Display Name)
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetGroup.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetGroup.InvokeAsync(new AzureAD.GetGroupArgs
-        ///         {
-        ///             DisplayName = "MyGroupName",
-        ///             SecurityEnabled = true,
-        ///         }));
-        ///     }
+        ///         DisplayName = "MyGroupName",
+        ///         SecurityEnabled = true,
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -91,7 +87,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The display name for the group.
@@ -120,9 +116,10 @@ namespace Pulumi.AzureAD
         public GetGroupArgs()
         {
         }
+        public static new GetGroupArgs Empty => new GetGroupArgs();
     }
 
-    public sealed class GetGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The display name for the group.
@@ -151,6 +148,7 @@ namespace Pulumi.AzureAD
         public GetGroupInvokeArgs()
         {
         }
+        public static new GetGroupInvokeArgs Empty => new GetGroupInvokeArgs();
     }
 
 

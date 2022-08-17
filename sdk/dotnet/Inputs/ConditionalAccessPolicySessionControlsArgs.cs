@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicySessionControlsArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicySessionControlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not application enforced restrictions are enabled. Defaults to `false`.
@@ -45,5 +45,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicySessionControlsArgs()
         {
         }
+        public static new ConditionalAccessPolicySessionControlsArgs Empty => new ConditionalAccessPolicySessionControlsArgs();
     }
 }

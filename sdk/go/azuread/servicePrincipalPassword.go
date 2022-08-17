@@ -175,7 +175,7 @@ func (i *ServicePrincipalPassword) ToServicePrincipalPasswordOutputWithContext(c
 // ServicePrincipalPasswordArrayInput is an input type that accepts ServicePrincipalPasswordArray and ServicePrincipalPasswordArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalPasswordArrayInput` via:
 //
-//          ServicePrincipalPasswordArray{ ServicePrincipalPasswordArgs{...} }
+//	ServicePrincipalPasswordArray{ ServicePrincipalPasswordArgs{...} }
 type ServicePrincipalPasswordArrayInput interface {
 	pulumi.Input
 
@@ -200,7 +200,7 @@ func (i ServicePrincipalPasswordArray) ToServicePrincipalPasswordArrayOutputWith
 // ServicePrincipalPasswordMapInput is an input type that accepts ServicePrincipalPasswordMap and ServicePrincipalPasswordMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalPasswordMapInput` via:
 //
-//          ServicePrincipalPasswordMap{ "key": ServicePrincipalPasswordArgs{...} }
+//	ServicePrincipalPasswordMap{ "key": ServicePrincipalPasswordArgs{...} }
 type ServicePrincipalPasswordMapInput interface {
 	pulumi.Input
 

@@ -26,7 +26,9 @@ import (
 // Directory role assignments can be imported using the ID of the assignment, e.g.
 //
 // ```sh
-//  $ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment test ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
+//
+//	$ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment test ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
+//
 // ```
 type DirectoryRoleAssignment struct {
 	pulumi.CustomResourceState
@@ -180,7 +182,7 @@ func (i *DirectoryRoleAssignment) ToDirectoryRoleAssignmentOutputWithContext(ctx
 // DirectoryRoleAssignmentArrayInput is an input type that accepts DirectoryRoleAssignmentArray and DirectoryRoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleAssignmentArrayInput` via:
 //
-//          DirectoryRoleAssignmentArray{ DirectoryRoleAssignmentArgs{...} }
+//	DirectoryRoleAssignmentArray{ DirectoryRoleAssignmentArgs{...} }
 type DirectoryRoleAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -205,7 +207,7 @@ func (i DirectoryRoleAssignmentArray) ToDirectoryRoleAssignmentArrayOutputWithCo
 // DirectoryRoleAssignmentMapInput is an input type that accepts DirectoryRoleAssignmentMap and DirectoryRoleAssignmentMapOutput values.
 // You can construct a concrete instance of `DirectoryRoleAssignmentMapInput` via:
 //
-//          DirectoryRoleAssignmentMap{ "key": DirectoryRoleAssignmentArgs{...} }
+//	DirectoryRoleAssignmentMap{ "key": DirectoryRoleAssignmentArgs{...} }
 type DirectoryRoleAssignmentMapInput interface {
 	pulumi.Input
 

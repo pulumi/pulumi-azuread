@@ -38,14 +38,14 @@ public class ApplicationPassword extends com.pulumi.resources.CustomResource {
         return this.applicationObjectId;
     }
     /**
-     * A display name for the password.
+     * A display name for the password. Changing this field forces a new resource to be created.
      * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
 
     /**
-     * @return A display name for the password.
+     * @return A display name for the password. Changing this field forces a new resource to be created.
      * 
      */
     public Output<String> displayName() {

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationPublicClientGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationPublicClientGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("redirectUris")]
         private InputList<string>? _redirectUris;
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationPublicClientGetArgs()
         {
         }
+        public static new ApplicationPublicClientGetArgs Empty => new ApplicationPublicClientGetArgs();
     }
 }

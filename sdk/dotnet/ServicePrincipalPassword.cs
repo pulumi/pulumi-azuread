@@ -25,7 +25,7 @@ namespace Pulumi.AzureAD
     /// This resource does not support importing.
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalPassword:ServicePrincipalPassword")]
-    public partial class ServicePrincipalPassword : Pulumi.CustomResource
+    public partial class ServicePrincipalPassword : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A display name for the password.
@@ -119,7 +119,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ServicePrincipalPasswordArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A display name for the password.
@@ -166,9 +166,10 @@ namespace Pulumi.AzureAD
         public ServicePrincipalPasswordArgs()
         {
         }
+        public static new ServicePrincipalPasswordArgs Empty => new ServicePrincipalPasswordArgs();
     }
 
-    public sealed class ServicePrincipalPasswordState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalPasswordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A display name for the password.
@@ -227,5 +228,6 @@ namespace Pulumi.AzureAD
         public ServicePrincipalPasswordState()
         {
         }
+        public static new ServicePrincipalPasswordState Empty => new ServicePrincipalPasswordState();
     }
 }

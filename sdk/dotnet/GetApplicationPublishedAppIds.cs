@@ -25,65 +25,64 @@ namespace Pulumi.AzureAD
         /// *Listing well-known application IDs*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
-        ///     {
-        ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
-        ///         this.PublishedAppIds = wellKnown.Apply(wellKnown =&gt; wellKnown.Result);
-        ///     }
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
         /// 
-        ///     [Output("publishedAppIds")]
-        ///     public Output&lt;string&gt; PublishedAppIds { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["publishedAppIds"] = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result),
+        ///     };
+        /// });
         /// ```
         /// 
         /// *Granting access to an application*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
+        /// 
+        ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
         ///     {
-        ///         var wellKnown = Output.Create(AzureAD.GetApplicationPublishedAppIds.InvokeAsync());
-        ///         var msgraph = new AzureAD.ServicePrincipal("msgraph", new AzureAD.ServicePrincipalArgs
+        ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+        ///         UseExisting = true,
+        ///     });
+        /// 
+        ///     var example = new AzureAD.Application("example", new()
+        ///     {
+        ///         DisplayName = "example",
+        ///         RequiredResourceAccesses = new[]
         ///         {
-        ///             ApplicationId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-        ///             UseExisting = true,
-        ///         });
-        ///         var example = new AzureAD.Application("example", new AzureAD.ApplicationArgs
-        ///         {
-        ///             DisplayName = "example",
-        ///             RequiredResourceAccesses = 
+        ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
         ///             {
-        ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+        ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
+        ///                 ResourceAccesses = new[]
         ///                 {
-        ///                     ResourceAppId = wellKnown.Apply(wellKnown =&gt; wellKnown.Result?.MicrosoftGraph),
-        ///                     ResourceAccesses = 
+        ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
         ///                     {
-        ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-        ///                         {
-        ///                             Id = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
-        ///                             Type = "Role",
-        ///                         },
-        ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-        ///                         {
-        ///                             Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_ReadWrite),
-        ///                             Type = "Scope",
-        ///                         },
+        ///                         Id = msgraph.AppRoleIds.Apply(appRoleIds =&gt; appRoleIds.User_Read_All),
+        ///                         Type = "Role",
+        ///                     },
+        ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+        ///                     {
+        ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_ReadWrite),
+        ///                         Type = "Scope",
         ///                     },
         ///                 },
         ///             },
-        ///         });
-        ///     }
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}

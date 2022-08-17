@@ -23,23 +23,21 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.User("example", new()
     ///     {
-    ///         var example = new AzureAD.User("example", new AzureAD.UserArgs
-    ///         {
-    ///             DisplayName = "J. Doe",
-    ///             MailNickname = "jdoe",
-    ///             Password = "SecretP@sswd99!",
-    ///             UserPrincipalName = "jdoe@hashicorp.com",
-    ///         });
-    ///     }
+    ///         DisplayName = "J. Doe",
+    ///         MailNickname = "jdoe",
+    ///         Password = "SecretP@sswd99!",
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -51,7 +49,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/user:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A freeform field for the user to describe themselves
@@ -385,7 +383,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not the account should be enabled.
@@ -612,9 +610,10 @@ namespace Pulumi.AzureAD
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 
-    public sealed class UserState : Pulumi.ResourceArgs
+    public sealed class UserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A freeform field for the user to describe themselves
@@ -931,5 +930,6 @@ namespace Pulumi.AzureAD
         public UserState()
         {
         }
+        public static new UserState Empty => new UserState();
     }
 }

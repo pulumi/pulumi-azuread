@@ -23,21 +23,19 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
     ///     {
-    ///         var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment("app", new AzureAD.ServicePrincipalClaimsMappingPolicyAssignmentArgs
-    ///         {
-    ///             ClaimsMappingPolicyId = azuread_claims_mapping_policy.My_policy.Id,
-    ///             ServicePrincipalId = azuread_service_principal.My_principal.Id,
-    ///         });
-    ///     }
+    ///         ClaimsMappingPolicyId = azuread_claims_mapping_policy.My_policy.Id,
+    ///         ServicePrincipalId = azuread_service_principal.My_principal.Id,
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +47,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment")]
-    public partial class ServicePrincipalClaimsMappingPolicyAssignment : Pulumi.CustomResource
+    public partial class ServicePrincipalClaimsMappingPolicyAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the claims mapping policy to assign.
@@ -107,7 +105,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ServicePrincipalClaimsMappingPolicyAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalClaimsMappingPolicyAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the claims mapping policy to assign.
@@ -124,9 +122,10 @@ namespace Pulumi.AzureAD
         public ServicePrincipalClaimsMappingPolicyAssignmentArgs()
         {
         }
+        public static new ServicePrincipalClaimsMappingPolicyAssignmentArgs Empty => new ServicePrincipalClaimsMappingPolicyAssignmentArgs();
     }
 
-    public sealed class ServicePrincipalClaimsMappingPolicyAssignmentState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalClaimsMappingPolicyAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the claims mapping policy to assign.
@@ -143,5 +142,6 @@ namespace Pulumi.AzureAD
         public ServicePrincipalClaimsMappingPolicyAssignmentState()
         {
         }
+        public static new ServicePrincipalClaimsMappingPolicyAssignmentState Empty => new ServicePrincipalClaimsMappingPolicyAssignmentState();
     }
 }

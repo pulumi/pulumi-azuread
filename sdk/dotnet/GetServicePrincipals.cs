@@ -29,72 +29,66 @@ namespace Pulumi.AzureAD
         /// *Look up by application display names*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         DisplayNames = new[]
         ///         {
-        ///             DisplayNames = 
-        ///             {
-        ///                 "example-app",
-        ///                 "another-app",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "example-app",
+        ///             "another-app",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by application IDs (client IDs*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         ApplicationIds = new[]
         ///         {
-        ///             ApplicationIds = 
-        ///             {
-        ///                 "11111111-0000-0000-0000-000000000000",
-        ///                 "22222222-0000-0000-0000-000000000000",
-        ///                 "33333333-0000-0000-0000-000000000000",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "11111111-0000-0000-0000-000000000000",
+        ///             "22222222-0000-0000-0000-000000000000",
+        ///             "33333333-0000-0000-0000-000000000000",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by service principal object IDs*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         ObjectIds = new[]
         ///         {
-        ///             ObjectIds = 
-        ///             {
-        ///                 "00000000-0000-0000-0000-000000000000",
-        ///                 "00000000-0000-0000-0000-111111111111",
-        ///                 "00000000-0000-0000-0000-222222222222",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "00000000-0000-0000-0000-000000000000",
+        ///             "00000000-0000-0000-0000-111111111111",
+        ///             "00000000-0000-0000-0000-222222222222",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -120,72 +114,66 @@ namespace Pulumi.AzureAD
         /// *Look up by application display names*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         DisplayNames = new[]
         ///         {
-        ///             DisplayNames = 
-        ///             {
-        ///                 "example-app",
-        ///                 "another-app",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "example-app",
+        ///             "another-app",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by application IDs (client IDs*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         ApplicationIds = new[]
         ///         {
-        ///             ApplicationIds = 
-        ///             {
-        ///                 "11111111-0000-0000-0000-000000000000",
-        ///                 "22222222-0000-0000-0000-000000000000",
-        ///                 "33333333-0000-0000-0000-000000000000",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "11111111-0000-0000-0000-000000000000",
+        ///             "22222222-0000-0000-0000-000000000000",
+        ///             "33333333-0000-0000-0000-000000000000",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by service principal object IDs*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipals.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipals.InvokeAsync(new AzureAD.GetServicePrincipalsArgs
+        ///         ObjectIds = new[]
         ///         {
-        ///             ObjectIds = 
-        ///             {
-        ///                 "00000000-0000-0000-0000-000000000000",
-        ///                 "00000000-0000-0000-0000-111111111111",
-        ///                 "00000000-0000-0000-0000-222222222222",
-        ///             },
-        ///         }));
-        ///     }
+        ///             "00000000-0000-0000-0000-000000000000",
+        ///             "00000000-0000-0000-0000-111111111111",
+        ///             "00000000-0000-0000-0000-222222222222",
+        ///         },
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -195,7 +183,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetServicePrincipalsArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalsArgs : global::Pulumi.InvokeArgs
     {
         [Input("applicationIds")]
         private List<string>? _applicationIds;
@@ -248,9 +236,10 @@ namespace Pulumi.AzureAD
         public GetServicePrincipalsArgs()
         {
         }
+        public static new GetServicePrincipalsArgs Empty => new GetServicePrincipalsArgs();
     }
 
-    public sealed class GetServicePrincipalsInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalsInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("applicationIds")]
         private InputList<string>? _applicationIds;
@@ -303,6 +292,7 @@ namespace Pulumi.AzureAD
         public GetServicePrincipalsInvokeArgs()
         {
         }
+        public static new GetServicePrincipalsInvokeArgs Empty => new GetServicePrincipalsInvokeArgs();
     }
 
 
