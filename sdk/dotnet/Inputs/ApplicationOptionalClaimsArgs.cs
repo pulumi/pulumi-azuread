@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationOptionalClaimsArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationOptionalClaimsArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessTokens")]
         private InputList<Inputs.ApplicationOptionalClaimsAccessTokenArgs>? _accessTokens;
@@ -51,5 +51,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationOptionalClaimsArgs()
         {
         }
+        public static new ApplicationOptionalClaimsArgs Empty => new ApplicationOptionalClaimsArgs();
     }
 }

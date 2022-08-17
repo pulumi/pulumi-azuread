@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [AzureADResourceType("pulumi:providers:azuread")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
@@ -115,7 +115,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
@@ -218,5 +218,6 @@ namespace Pulumi.AzureAD
             MsiEndpoint = Utilities.GetEnv("ARM_MSI_ENDPOINT");
             UseMsi = Utilities.GetEnvBoolean("ARM_USE_MSI") ?? false;
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

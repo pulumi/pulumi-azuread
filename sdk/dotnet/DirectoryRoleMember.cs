@@ -13,29 +13,29 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
     ///     {
-    ///         var exampleUser = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
-    ///         {
-    ///             UserPrincipalName = "jdoe@hashicorp.com",
-    ///         }));
-    ///         var exampleDirectoryRole = new AzureAD.DirectoryRole("exampleDirectoryRole", new AzureAD.DirectoryRoleArgs
-    ///         {
-    ///             DisplayName = "Security administrator",
-    ///         });
-    ///         var exampleDirectoryRoleMember = new AzureAD.DirectoryRoleMember("exampleDirectoryRoleMember", new AzureAD.DirectoryRoleMemberArgs
-    ///         {
-    ///             RoleObjectId = exampleDirectoryRole.ObjectId,
-    ///             MemberObjectId = exampleUser.Apply(exampleUser =&gt; exampleUser.ObjectId),
-    ///         });
-    ///     }
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("exampleDirectoryRole", new()
+    ///     {
+    ///         DisplayName = "Security administrator",
+    ///     });
+    /// 
+    ///     var exampleDirectoryRoleMember = new AzureAD.DirectoryRoleMember("exampleDirectoryRoleMember", new()
+    ///     {
+    ///         RoleObjectId = exampleDirectoryRole.ObjectId,
+    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -49,7 +49,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/directoryRoleMember:DirectoryRoleMember")]
-    public partial class DirectoryRoleMember : Pulumi.CustomResource
+    public partial class DirectoryRoleMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
@@ -107,7 +107,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class DirectoryRoleMemberArgs : Pulumi.ResourceArgs
+    public sealed class DirectoryRoleMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
@@ -124,9 +124,10 @@ namespace Pulumi.AzureAD
         public DirectoryRoleMemberArgs()
         {
         }
+        public static new DirectoryRoleMemberArgs Empty => new DirectoryRoleMemberArgs();
     }
 
-    public sealed class DirectoryRoleMemberState : Pulumi.ResourceArgs
+    public sealed class DirectoryRoleMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
@@ -143,5 +144,6 @@ namespace Pulumi.AzureAD
         public DirectoryRoleMemberState()
         {
         }
+        public static new DirectoryRoleMemberState Empty => new DirectoryRoleMemberState();
     }
 }

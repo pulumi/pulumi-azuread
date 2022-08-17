@@ -29,58 +29,52 @@ namespace Pulumi.AzureAD
         /// *Look up by application display name*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
-        ///         {
-        ///             DisplayName = "my-awesome-application",
-        ///         }));
-        ///     }
+        ///         DisplayName = "my-awesome-application",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by application ID (client ID)*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
-        ///         {
-        ///             ApplicationId = "00000000-0000-0000-0000-000000000000",
-        ///         }));
-        ///     }
+        ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by service principal object ID*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
-        ///         {
-        ///             ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///         }));
-        ///     }
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -106,58 +100,52 @@ namespace Pulumi.AzureAD
         /// *Look up by application display name*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
-        ///         {
-        ///             DisplayName = "my-awesome-application",
-        ///         }));
-        ///     }
+        ///         DisplayName = "my-awesome-application",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by application ID (client ID)*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
-        ///         {
-        ///             ApplicationId = "00000000-0000-0000-0000-000000000000",
-        ///         }));
-        ///     }
+        ///         ApplicationId = "00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// 
         /// *Look up by service principal object ID*
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetServicePrincipal.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetServicePrincipal.InvokeAsync(new AzureAD.GetServicePrincipalArgs
-        ///         {
-        ///             ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///         }));
-        ///     }
+        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -167,7 +155,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetServicePrincipalArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The application ID (client ID) of the application associated with this service principal.
@@ -190,9 +178,10 @@ namespace Pulumi.AzureAD
         public GetServicePrincipalArgs()
         {
         }
+        public static new GetServicePrincipalArgs Empty => new GetServicePrincipalArgs();
     }
 
-    public sealed class GetServicePrincipalInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePrincipalInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The application ID (client ID) of the application associated with this service principal.
@@ -215,6 +204,7 @@ namespace Pulumi.AzureAD
         public GetServicePrincipalInvokeArgs()
         {
         }
+        public static new GetServicePrincipalInvokeArgs Empty => new GetServicePrincipalInvokeArgs();
     }
 
 

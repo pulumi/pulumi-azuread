@@ -1023,4 +1023,3 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: string;
 }
-

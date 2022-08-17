@@ -31,10 +31,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetUserArgs;
+ * import com.pulumi.azuread.AdministrativeUnit;
+ * import com.pulumi.azuread.AdministrativeUnitArgs;
+ * import com.pulumi.azuread.AdministrativeUnitMember;
+ * import com.pulumi.azuread.AdministrativeUnitMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -42,20 +53,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var exampleAdministrativeUnit = new AdministrativeUnit(&#34;exampleAdministrativeUnit&#34;, AdministrativeUnitArgs.builder()        
  *             .displayName(&#34;Example-AU&#34;)
  *             .build());
  * 
  *         var exampleAdministrativeUnitMember = new AdministrativeUnitMember(&#34;exampleAdministrativeUnitMember&#34;, AdministrativeUnitMemberArgs.builder()        
- *             .administrativeUnitObjectId(exampleAdministrativeUnit.getId())
- *             .memberObjectId(exampleUser.apply(getUserResult -&gt; getUserResult.getId()))
+ *             .administrativeUnitObjectId(exampleAdministrativeUnit.id())
+ *             .memberObjectId(exampleUser.applyValue(getUserResult -&gt; getUserResult.id()))
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

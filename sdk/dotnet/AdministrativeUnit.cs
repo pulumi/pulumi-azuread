@@ -29,7 +29,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/administrativeUnit:AdministrativeUnit")]
-    public partial class AdministrativeUnit : Pulumi.CustomResource
+    public partial class AdministrativeUnit : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the administrative unit.
@@ -111,7 +111,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class AdministrativeUnitArgs : Pulumi.ResourceArgs
+    public sealed class AdministrativeUnitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the administrative unit.
@@ -152,9 +152,10 @@ namespace Pulumi.AzureAD
         public AdministrativeUnitArgs()
         {
         }
+        public static new AdministrativeUnitArgs Empty => new AdministrativeUnitArgs();
     }
 
-    public sealed class AdministrativeUnitState : Pulumi.ResourceArgs
+    public sealed class AdministrativeUnitState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the administrative unit.
@@ -201,5 +202,6 @@ namespace Pulumi.AzureAD
         public AdministrativeUnitState()
         {
         }
+        public static new AdministrativeUnitState Empty => new AdministrativeUnitState();
     }
 }

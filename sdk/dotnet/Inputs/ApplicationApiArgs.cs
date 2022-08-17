@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationApiArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationApiArgs : global::Pulumi.ResourceArgs
     {
         [Input("knownClientApplications")]
         private InputList<string>? _knownClientApplications;
@@ -51,5 +51,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationApiArgs()
         {
         }
+        public static new ApplicationApiArgs Empty => new ApplicationApiArgs();
     }
 }

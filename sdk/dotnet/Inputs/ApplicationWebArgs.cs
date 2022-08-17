@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationWebArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationWebArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Home page or landing page of the application.
@@ -45,5 +45,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationWebArgs()
         {
         }
+        public static new ApplicationWebArgs Empty => new ApplicationWebArgs();
     }
 }

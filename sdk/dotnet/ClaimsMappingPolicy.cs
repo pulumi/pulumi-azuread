@@ -28,46 +28,42 @@ namespace Pulumi.AzureAD
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var myPolicy = new AzureAD.ClaimsMappingPolicy("myPolicy", new()
     ///     {
-    ///         var myPolicy = new AzureAD.ClaimsMappingPolicy("myPolicy", new AzureAD.ClaimsMappingPolicyArgs
+    ///         Definitions = new[]
     ///         {
-    ///             Definitions = 
+    ///             JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///             {
-    ///                 JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///                 ["ClaimsMappingPolicy"] = new Dictionary&lt;string, object?&gt;
     ///                 {
-    ///                     { "ClaimsMappingPolicy", new Dictionary&lt;string, object?&gt;
+    ///                     ["ClaimsSchema"] = new[]
     ///                     {
-    ///                         { "ClaimsSchema", new[]
-    ///                             {
-    ///                                 new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     { "ID", "employeeid" },
-    ///                                     { "JwtClaimType", "name" },
-    ///                                     { "SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name" },
-    ///                                     { "Source", "user" },
-    ///                                 },
-    ///                                 new Dictionary&lt;string, object?&gt;
-    ///                                 {
-    ///                                     { "ID", "tenantcountry" },
-    ///                                     { "JwtClaimType", "country" },
-    ///                                     { "SamlClaimType", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country" },
-    ///                                     { "Source", "company" },
-    ///                                 },
-    ///                             }
-    ///                          },
-    ///                         { "IncludeBasicClaimSet", "true" },
-    ///                         { "Version", 1 },
-    ///                     } },
-    ///                 }),
-    ///             },
-    ///             DisplayName = "My Policy",
-    ///         });
-    ///     }
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["ID"] = "employeeid",
+    ///                             ["JwtClaimType"] = "name",
+    ///                             ["SamlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+    ///                             ["Source"] = "user",
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["ID"] = "tenantcountry",
+    ///                             ["JwtClaimType"] = "country",
+    ///                             ["SamlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+    ///                             ["Source"] = "company",
+    ///                         },
+    ///                     },
+    ///                     ["IncludeBasicClaimSet"] = "true",
+    ///                     ["Version"] = 1,
+    ///                 },
+    ///             }),
+    ///         },
+    ///         DisplayName = "My Policy",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -79,7 +75,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy")]
-    public partial class ClaimsMappingPolicy : Pulumi.CustomResource
+    public partial class ClaimsMappingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A string collection containing a JSON string that defines the rules and settings for this policy
@@ -137,7 +133,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ClaimsMappingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClaimsMappingPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("definitions", required: true)]
         private InputList<string>? _definitions;
@@ -160,9 +156,10 @@ namespace Pulumi.AzureAD
         public ClaimsMappingPolicyArgs()
         {
         }
+        public static new ClaimsMappingPolicyArgs Empty => new ClaimsMappingPolicyArgs();
     }
 
-    public sealed class ClaimsMappingPolicyState : Pulumi.ResourceArgs
+    public sealed class ClaimsMappingPolicyState : global::Pulumi.ResourceArgs
     {
         [Input("definitions")]
         private InputList<string>? _definitions;
@@ -185,5 +182,6 @@ namespace Pulumi.AzureAD
         public ClaimsMappingPolicyState()
         {
         }
+        public static new ClaimsMappingPolicyState Empty => new ClaimsMappingPolicyState();
     }
 }

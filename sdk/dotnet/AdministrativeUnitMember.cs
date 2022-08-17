@@ -25,29 +25,29 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
     ///     {
-    ///         var exampleUser = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
-    ///         {
-    ///             UserPrincipalName = "jdoe@hashicorp.com",
-    ///         }));
-    ///         var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("exampleAdministrativeUnit", new AzureAD.AdministrativeUnitArgs
-    ///         {
-    ///             DisplayName = "Example-AU",
-    ///         });
-    ///         var exampleAdministrativeUnitMember = new AzureAD.AdministrativeUnitMember("exampleAdministrativeUnitMember", new AzureAD.AdministrativeUnitMemberArgs
-    ///         {
-    ///             AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
-    ///             MemberObjectId = exampleUser.Apply(exampleUser =&gt; exampleUser.Id),
-    ///         });
-    ///     }
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
     /// 
-    /// }
+    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("exampleAdministrativeUnit", new()
+    ///     {
+    ///         DisplayName = "Example-AU",
+    ///     });
+    /// 
+    ///     var exampleAdministrativeUnitMember = new AzureAD.AdministrativeUnitMember("exampleAdministrativeUnitMember", new()
+    ///     {
+    ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
+    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -61,7 +61,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
     /// </summary>
     [AzureADResourceType("azuread:index/administrativeUnitMember:AdministrativeUnitMember")]
-    public partial class AdministrativeUnitMember : Pulumi.CustomResource
+    public partial class AdministrativeUnitMember : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -119,7 +119,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class AdministrativeUnitMemberArgs : Pulumi.ResourceArgs
+    public sealed class AdministrativeUnitMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -136,9 +136,10 @@ namespace Pulumi.AzureAD
         public AdministrativeUnitMemberArgs()
         {
         }
+        public static new AdministrativeUnitMemberArgs Empty => new AdministrativeUnitMemberArgs();
     }
 
-    public sealed class AdministrativeUnitMemberState : Pulumi.ResourceArgs
+    public sealed class AdministrativeUnitMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
@@ -155,5 +156,6 @@ namespace Pulumi.AzureAD
         public AdministrativeUnitMemberState()
         {
         }
+        public static new AdministrativeUnitMemberState Empty => new AdministrativeUnitMemberState();
     }
 }

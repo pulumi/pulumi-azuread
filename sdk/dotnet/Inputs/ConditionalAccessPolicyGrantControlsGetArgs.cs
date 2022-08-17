@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicyGrantControlsGetArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyGrantControlsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("builtInControls", required: true)]
         private InputList<string>? _builtInControls;
@@ -57,5 +57,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicyGrantControlsGetArgs()
         {
         }
+        public static new ConditionalAccessPolicyGrantControlsGetArgs Empty => new ConditionalAccessPolicyGrantControlsGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class CustomDirectoryRolePermissionGetArgs : Pulumi.ResourceArgs
+    public sealed class CustomDirectoryRolePermissionGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedResourceActions", required: true)]
         private InputList<string>? _allowedResourceActions;
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public CustomDirectoryRolePermissionGetArgs()
         {
         }
+        public static new CustomDirectoryRolePermissionGetArgs Empty => new CustomDirectoryRolePermissionGetArgs();
     }
 }

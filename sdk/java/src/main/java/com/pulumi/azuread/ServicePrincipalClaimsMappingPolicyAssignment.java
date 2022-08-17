@@ -28,10 +28,17 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.ServicePrincipalClaimsMappingPolicyAssignment;
+ * import com.pulumi.azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -40,11 +47,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var app = new ServicePrincipalClaimsMappingPolicyAssignment(&#34;app&#34;, ServicePrincipalClaimsMappingPolicyAssignmentArgs.builder()        
- *             .claimsMappingPolicyId(azuread_claims_mapping_policy.getMy_policy().getId())
- *             .servicePrincipalId(azuread_service_principal.getMy_principal().getId())
+ *             .claimsMappingPolicyId(azuread_claims_mapping_policy.my_policy().id())
+ *             .servicePrincipalId(azuread_service_principal.my_principal().id())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

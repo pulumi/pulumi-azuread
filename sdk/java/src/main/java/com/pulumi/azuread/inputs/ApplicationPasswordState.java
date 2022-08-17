@@ -32,14 +32,14 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * A display name for the password.
+     * A display name for the password. Changing this field forces a new resource to be created.
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return A display name for the password.
+     * @return A display name for the password. Changing this field forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -189,7 +189,7 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param displayName A display name for the password.
+         * @param displayName A display name for the password. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class ApplicationPasswordState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param displayName A display name for the password.
+         * @param displayName A display name for the password. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 

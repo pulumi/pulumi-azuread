@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ServicePrincipalSamlSingleSignOnGetArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalSamlSingleSignOnGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The relative URI the service provider would redirect to after completion of the single sign-on flow.
@@ -21,5 +21,6 @@ namespace Pulumi.AzureAD.Inputs
         public ServicePrincipalSamlSingleSignOnGetArgs()
         {
         }
+        public static new ServicePrincipalSamlSingleSignOnGetArgs Empty => new ServicePrincipalSamlSingleSignOnGetArgs();
     }
 }

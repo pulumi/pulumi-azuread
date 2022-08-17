@@ -21,7 +21,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
     /// </summary>
     [AzureADResourceType("azuread:index/applicationCertificate:ApplicationCertificate")]
-    public partial class ApplicationCertificate : Pulumi.CustomResource
+    public partial class ApplicationCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
@@ -115,7 +115,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ApplicationCertificateArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
@@ -168,9 +168,10 @@ namespace Pulumi.AzureAD
         public ApplicationCertificateArgs()
         {
         }
+        public static new ApplicationCertificateArgs Empty => new ApplicationCertificateArgs();
     }
 
-    public sealed class ApplicationCertificateState : Pulumi.ResourceArgs
+    public sealed class ApplicationCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
@@ -223,5 +224,6 @@ namespace Pulumi.AzureAD
         public ApplicationCertificateState()
         {
         }
+        public static new ApplicationCertificateState Empty => new ApplicationCertificateState();
     }
 }

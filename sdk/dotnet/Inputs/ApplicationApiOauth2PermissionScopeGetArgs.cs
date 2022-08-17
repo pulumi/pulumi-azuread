@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationApiOauth2PermissionScopeGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationApiOauth2PermissionScopeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
@@ -63,5 +63,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationApiOauth2PermissionScopeGetArgs()
         {
         }
+        public static new ApplicationApiOauth2PermissionScopeGetArgs Empty => new ApplicationApiOauth2PermissionScopeGetArgs();
     }
 }

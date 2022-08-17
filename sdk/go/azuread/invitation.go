@@ -29,22 +29,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-// 			RedirectUrl:      pulumi.String("https://portal.azure.com"),
-// 			UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
+//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // *Invitation with standard message*
@@ -53,25 +56,28 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-// 			Message: &InvitationMessageArgs{
-// 				Language: pulumi.String("en-US"),
-// 			},
-// 			RedirectUrl:      pulumi.String("https://portal.azure.com"),
-// 			UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+//				Message: &InvitationMessageArgs{
+//					Language: pulumi.String("en-US"),
+//				},
+//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
+//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // *Invitation with custom message body and an additional recipient*
@@ -80,27 +86,30 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-// 			Message: &InvitationMessageArgs{
-// 				AdditionalRecipients: pulumi.String("aaliceberg@hashicorp.com"),
-// 				Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
-// 			},
-// 			RedirectUrl:      pulumi.String("https://portal.azure.com"),
-// 			UserDisplayName:  pulumi.String("Bob Bobson"),
-// 			UserEmailAddress: pulumi.String("bbobson@hashicorp.com"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
+//				Message: &InvitationMessageArgs{
+//					AdditionalRecipients: pulumi.String("aaliceberg@hashicorp.com"),
+//					Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
+//				},
+//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
+//				UserDisplayName:  pulumi.String("Bob Bobson"),
+//				UserEmailAddress: pulumi.String("bbobson@hashicorp.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -250,7 +259,7 @@ func (i *Invitation) ToInvitationOutputWithContext(ctx context.Context) Invitati
 // InvitationArrayInput is an input type that accepts InvitationArray and InvitationArrayOutput values.
 // You can construct a concrete instance of `InvitationArrayInput` via:
 //
-//          InvitationArray{ InvitationArgs{...} }
+//	InvitationArray{ InvitationArgs{...} }
 type InvitationArrayInput interface {
 	pulumi.Input
 
@@ -275,7 +284,7 @@ func (i InvitationArray) ToInvitationArrayOutputWithContext(ctx context.Context)
 // InvitationMapInput is an input type that accepts InvitationMap and InvitationMapOutput values.
 // You can construct a concrete instance of `InvitationMapInput` via:
 //
-//          InvitationMap{ "key": InvitationArgs{...} }
+//	InvitationMap{ "key": InvitationArgs{...} }
 type InvitationMapInput interface {
 	pulumi.Input
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ServicePrincipalFeatureGetArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalFeatureGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("customSingleSignOnApp")]
         public Input<bool>? CustomSingleSignOnApp { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public ServicePrincipalFeatureGetArgs()
         {
         }
+        public static new ServicePrincipalFeatureGetArgs Empty => new ServicePrincipalFeatureGetArgs();
     }
 }

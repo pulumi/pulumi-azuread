@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class InvitationMessageArgs : Pulumi.ResourceArgs
+    public sealed class InvitationMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
@@ -33,5 +33,6 @@ namespace Pulumi.AzureAD.Inputs
         public InvitationMessageArgs()
         {
         }
+        public static new InvitationMessageArgs Empty => new InvitationMessageArgs();
     }
 }

@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
- * import * from "fs";
+ * import * as fs from "fs";
  *
  * const current = azuread.getClientConfig({});
  * const example = new azuread.Application("example", {

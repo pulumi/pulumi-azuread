@@ -27,23 +27,22 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetApplication.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs
-        ///         {
-        ///             DisplayName = "My First AzureAD Application",
-        ///         }));
-        ///         this.ApplicationObjectId = example.Apply(example =&gt; example.Id);
-        ///     }
+        ///         DisplayName = "My First AzureAD Application",
+        ///     });
         /// 
-        ///     [Output("applicationObjectId")]
-        ///     public Output&lt;string&gt; ApplicationObjectId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -67,23 +66,22 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetApplication.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetApplication.InvokeAsync(new AzureAD.GetApplicationArgs
-        ///         {
-        ///             DisplayName = "My First AzureAD Application",
-        ///         }));
-        ///         this.ApplicationObjectId = example.Apply(example =&gt; example.Id);
-        ///     }
+        ///         DisplayName = "My First AzureAD Application",
+        ///     });
         /// 
-        ///     [Output("applicationObjectId")]
-        ///     public Output&lt;string&gt; ApplicationObjectId { get; set; }
-        /// }
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.Id),
+        ///     };
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -93,7 +91,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetApplicationArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies the Application ID (also called Client ID).
@@ -116,9 +114,10 @@ namespace Pulumi.AzureAD
         public GetApplicationArgs()
         {
         }
+        public static new GetApplicationArgs Empty => new GetApplicationArgs();
     }
 
-    public sealed class GetApplicationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// Specifies the Application ID (also called Client ID).
@@ -141,6 +140,7 @@ namespace Pulumi.AzureAD
         public GetApplicationInvokeArgs()
         {
         }
+        public static new GetApplicationInvokeArgs Empty => new GetApplicationInvokeArgs();
     }
 
 

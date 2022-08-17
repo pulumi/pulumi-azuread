@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ConditionalAccessPolicyConditionsLocationsGetArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyConditionsLocationsGetArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludedLocations")]
         private InputList<string>? _excludedLocations;
@@ -39,5 +39,6 @@ namespace Pulumi.AzureAD.Inputs
         public ConditionalAccessPolicyConditionsLocationsGetArgs()
         {
         }
+        public static new ConditionalAccessPolicyConditionsLocationsGetArgs Empty => new ConditionalAccessPolicyConditionsLocationsGetArgs();
     }
 }

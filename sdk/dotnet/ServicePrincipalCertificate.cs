@@ -31,7 +31,7 @@ namespace Pulumi.AzureAD
     ///  -&gt; This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
     /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate")]
-    public partial class ServicePrincipalCertificate : Pulumi.CustomResource
+    public partial class ServicePrincipalCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -125,7 +125,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ServicePrincipalCertificateArgs : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -178,9 +178,10 @@ namespace Pulumi.AzureAD
         public ServicePrincipalCertificateArgs()
         {
         }
+        public static new ServicePrincipalCertificateArgs Empty => new ServicePrincipalCertificateArgs();
     }
 
-    public sealed class ServicePrincipalCertificateState : Pulumi.ResourceArgs
+    public sealed class ServicePrincipalCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
@@ -233,5 +234,6 @@ namespace Pulumi.AzureAD
         public ServicePrincipalCertificateState()
         {
         }
+        public static new ServicePrincipalCertificateState Empty => new ServicePrincipalCertificateState();
     }
 }

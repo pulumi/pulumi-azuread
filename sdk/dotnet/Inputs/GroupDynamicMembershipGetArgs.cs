@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class GroupDynamicMembershipGetArgs : Pulumi.ResourceArgs
+    public sealed class GroupDynamicMembershipGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether rule processing is "On" (true) or "Paused" (false).
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public GroupDynamicMembershipGetArgs()
         {
         }
+        public static new GroupDynamicMembershipGetArgs Empty => new GroupDynamicMembershipGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationWebImplicitGrantGetArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationWebImplicitGrantGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether this web application can request an access token using OAuth 2.0 implicit flow.
@@ -27,5 +27,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationWebImplicitGrantGetArgs()
         {
         }
+        public static new ApplicationWebImplicitGrantGetArgs Empty => new ApplicationWebImplicitGrantGetArgs();
     }
 }

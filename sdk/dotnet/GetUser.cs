@@ -27,20 +27,18 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
-        ///         {
-        ///             UserPrincipalName = "user@hashicorp.com",
-        ///         }));
-        ///     }
+        ///         UserPrincipalName = "user@hashicorp.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -64,20 +62,18 @@ namespace Pulumi.AzureAD
         /// {{% example %}}
         /// 
         /// ```csharp
+        /// using System.Collections.Generic;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
-        /// class MyStack : Stack
+        /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     public MyStack()
+        ///     var example = AzureAD.GetUser.Invoke(new()
         ///     {
-        ///         var example = Output.Create(AzureAD.GetUser.InvokeAsync(new AzureAD.GetUserArgs
-        ///         {
-        ///             UserPrincipalName = "user@hashicorp.com",
-        ///         }));
-        ///     }
+        ///         UserPrincipalName = "user@hashicorp.com",
+        ///     });
         /// 
-        /// }
+        /// });
         /// ```
         /// {{% /example %}}
         /// {{% /examples %}}
@@ -87,7 +83,7 @@ namespace Pulumi.AzureAD
     }
 
 
-    public sealed class GetUserArgs : Pulumi.InvokeArgs
+    public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The email alias of the user.
@@ -110,9 +106,10 @@ namespace Pulumi.AzureAD
         public GetUserArgs()
         {
         }
+        public static new GetUserArgs Empty => new GetUserArgs();
     }
 
-    public sealed class GetUserInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
         /// The email alias of the user.
@@ -135,6 +132,7 @@ namespace Pulumi.AzureAD
         public GetUserInvokeArgs()
         {
         }
+        public static new GetUserInvokeArgs Empty => new GetUserInvokeArgs();
     }
 
 

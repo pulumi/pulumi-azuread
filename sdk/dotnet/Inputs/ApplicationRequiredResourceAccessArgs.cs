@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationRequiredResourceAccessArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationRequiredResourceAccessArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceAccesses", required: true)]
         private InputList<Inputs.ApplicationRequiredResourceAccessResourceAccessArgs>? _resourceAccesses;
@@ -33,5 +33,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationRequiredResourceAccessArgs()
         {
         }
+        public static new ApplicationRequiredResourceAccessArgs Empty => new ApplicationRequiredResourceAccessArgs();
     }
 }

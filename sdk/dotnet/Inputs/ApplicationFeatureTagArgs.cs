@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD.Inputs
 {
 
-    public sealed class ApplicationFeatureTagArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationFeatureTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
@@ -39,5 +39,6 @@ namespace Pulumi.AzureAD.Inputs
         public ApplicationFeatureTagArgs()
         {
         }
+        public static new ApplicationFeatureTagArgs Empty => new ApplicationFeatureTagArgs();
     }
 }

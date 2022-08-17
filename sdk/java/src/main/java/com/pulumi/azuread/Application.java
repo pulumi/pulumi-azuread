@@ -32,10 +32,25 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.inputs.ApplicationApiArgs;
+ * import com.pulumi.azuread.inputs.ApplicationAppRoleArgs;
+ * import com.pulumi.azuread.inputs.ApplicationFeatureTagArgs;
+ * import com.pulumi.azuread.inputs.ApplicationOptionalClaimsArgs;
+ * import com.pulumi.azuread.inputs.ApplicationRequiredResourceAccessArgs;
+ * import com.pulumi.azuread.inputs.ApplicationWebArgs;
+ * import com.pulumi.azuread.inputs.ApplicationWebImplicitGrantArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -43,22 +58,22 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var current = Output.of(AzureadFunctions.getClientConfig());
+ *         final var current = AzureadFunctions.getClientConfig();
  * 
  *         var example = new Application(&#34;example&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
  *             .identifierUris(&#34;api://example-app&#34;)
  *             .logoImage(Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(&#34;/path/to/logo.png&#34;))))
- *             .owners(current.apply(getClientConfigResult -&gt; getClientConfigResult.getObjectId()))
+ *             .owners(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
  *             .signInAudience(&#34;AzureADMultipleOrgs&#34;)
- *             .api(ApplicationApi.builder()
+ *             .api(ApplicationApiArgs.builder()
  *                 .mappedClaimsEnabled(true)
  *                 .requestedAccessTokenVersion(2)
  *                 .knownClientApplications(                
- *                     azuread_application.getKnown1().getApplication_id(),
- *                     azuread_application.getKnown2().getApplication_id())
+ *                     azuread_application.known1().application_id(),
+ *                     azuread_application.known2().application_id())
  *                 .oauth2PermissionScopes(                
- *                     ApplicationApiOauth2PermissionScope.builder()
+ *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription(&#34;Allow the application to access example on behalf of the signed-in user.&#34;)
  *                         .adminConsentDisplayName(&#34;Access example&#34;)
  *                         .enabled(true)
@@ -68,7 +83,7 @@ import javax.annotation.Nullable;
  *                         .userConsentDisplayName(&#34;Access example&#34;)
  *                         .value(&#34;user_impersonation&#34;)
  *                         .build(),
- *                     ApplicationApiOauth2PermissionScope.builder()
+ *                     ApplicationApiOauth2PermissionScopeArgs.builder()
  *                         .adminConsentDescription(&#34;Administer the example application&#34;)
  *                         .adminConsentDisplayName(&#34;Administer&#34;)
  *                         .enabled(true)
@@ -78,7 +93,7 @@ import javax.annotation.Nullable;
  *                         .build())
  *                 .build())
  *             .appRoles(            
- *                 ApplicationAppRole.builder()
+ *                 ApplicationAppRoleArgs.builder()
  *                     .allowedMemberTypes(                    
  *                         &#34;User&#34;,
  *                         &#34;Application&#34;)
@@ -88,7 +103,7 @@ import javax.annotation.Nullable;
  *                     .id(&#34;1b19509b-32b1-4e9f-b71d-4992aa991967&#34;)
  *                     .value(&#34;admin&#34;)
  *                     .build(),
- *                 ApplicationAppRole.builder()
+ *                 ApplicationAppRoleArgs.builder()
  *                     .allowedMemberTypes(&#34;User&#34;)
  *                     .description(&#34;ReadOnly roles have limited query access&#34;)
  *                     .displayName(&#34;ReadOnly&#34;)
@@ -96,60 +111,60 @@ import javax.annotation.Nullable;
  *                     .id(&#34;497406e4-012a-4267-bf18-45a1cb148a01&#34;)
  *                     .value(&#34;User&#34;)
  *                     .build())
- *             .featureTags(ApplicationFeatureTag.builder()
+ *             .featureTags(ApplicationFeatureTagArgs.builder()
  *                 .enterprise(true)
  *                 .gallery(true)
  *                 .build())
- *             .optionalClaims(ApplicationOptionalClaims.builder()
+ *             .optionalClaims(ApplicationOptionalClaimsArgs.builder()
  *                 .accessTokens(                
- *                     ApplicationOptionalClaimsAccessToken.builder()
+ *                     ApplicationOptionalClaimsAccessTokenArgs.builder()
  *                         .name(&#34;myclaim&#34;)
  *                         .build(),
- *                     ApplicationOptionalClaimsAccessToken.builder()
+ *                     ApplicationOptionalClaimsAccessTokenArgs.builder()
  *                         .name(&#34;otherclaim&#34;)
  *                         .build())
- *                 .idTokens(ApplicationOptionalClaimsIdToken.builder()
+ *                 .idTokens(ApplicationOptionalClaimsIdTokenArgs.builder()
  *                     .name(&#34;userclaim&#34;)
  *                     .source(&#34;user&#34;)
  *                     .essential(true)
  *                     .additionalProperties(&#34;emit_as_roles&#34;)
  *                     .build())
- *                 .saml2Tokens(ApplicationOptionalClaimsSaml2Token.builder()
+ *                 .saml2Tokens(ApplicationOptionalClaimsSaml2TokenArgs.builder()
  *                     .name(&#34;samlexample&#34;)
  *                     .build())
  *                 .build())
  *             .requiredResourceAccesses(            
- *                 ApplicationRequiredResourceAccess.builder()
+ *                 ApplicationRequiredResourceAccessArgs.builder()
  *                     .resourceAppId(&#34;00000003-0000-0000-c000-000000000000&#34;)
  *                     .resourceAccesses(                    
- *                         ApplicationRequiredResourceAccessResourceAccess.builder()
+ *                         ApplicationRequiredResourceAccessResourceAccessArgs.builder()
  *                             .id(&#34;df021288-bdef-4463-88db-98f22de89214&#34;)
  *                             .type(&#34;Role&#34;)
  *                             .build(),
- *                         ApplicationRequiredResourceAccessResourceAccess.builder()
+ *                         ApplicationRequiredResourceAccessResourceAccessArgs.builder()
  *                             .id(&#34;b4e74841-8e56-480b-be8b-910348b18b4c&#34;)
  *                             .type(&#34;Scope&#34;)
  *                             .build())
  *                     .build(),
- *                 ApplicationRequiredResourceAccess.builder()
+ *                 ApplicationRequiredResourceAccessArgs.builder()
  *                     .resourceAppId(&#34;c5393580-f805-4401-95e8-94b7a6ef2fc2&#34;)
- *                     .resourceAccesses(ApplicationRequiredResourceAccessResourceAccess.builder()
+ *                     .resourceAccesses(ApplicationRequiredResourceAccessResourceAccessArgs.builder()
  *                         .id(&#34;594c1fb6-4f81-4475-ae41-0c394909246c&#34;)
  *                         .type(&#34;Role&#34;)
  *                         .build())
  *                     .build())
- *             .web(ApplicationWeb.builder()
+ *             .web(ApplicationWebArgs.builder()
  *                 .homepageUrl(&#34;https://app.example.net&#34;)
  *                 .logoutUrl(&#34;https://app.example.net/logout&#34;)
  *                 .redirectUris(&#34;https://app.example.net/account&#34;)
- *                 .implicitGrant(ApplicationWebImplicitGrant.builder()
+ *                 .implicitGrant(ApplicationWebImplicitGrantArgs.builder()
  *                     .accessTokenIssuanceEnabled(true)
  *                     .idTokenIssuanceEnabled(true)
  *                     .build())
  *                 .build())
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 
@@ -157,10 +172,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -168,21 +194,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleApplicationTemplate = Output.of(AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
+ *         final var exampleApplicationTemplate = AzureadFunctions.getApplicationTemplate(GetApplicationTemplateArgs.builder()
  *             .displayName(&#34;Marketo&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
  *             .displayName(&#34;example&#34;)
- *             .templateId(exampleApplicationTemplate.apply(getApplicationTemplateResult -&gt; getApplicationTemplateResult.getTemplateId()))
+ *             .templateId(exampleApplicationTemplate.applyValue(getApplicationTemplateResult -&gt; getApplicationTemplateResult.templateId()))
  *             .build());
  * 
  *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
- *             .applicationId(exampleApplication.getApplicationId())
+ *             .applicationId(exampleApplication.applicationId())
  *             .useExisting(true)
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

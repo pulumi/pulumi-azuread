@@ -13,46 +13,44 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.CustomDirectoryRole("example", new()
     ///     {
-    ///         var example = new AzureAD.CustomDirectoryRole("example", new AzureAD.CustomDirectoryRoleArgs
+    ///         Description = "Allows reading applications and updating groups",
+    ///         DisplayName = "My Custom Role",
+    ///         Enabled = true,
+    ///         Permissions = new[]
     ///         {
-    ///             Description = "Allows reading applications and updating groups",
-    ///             DisplayName = "My Custom Role",
-    ///             Enabled = true,
-    ///             Permissions = 
+    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
     ///             {
-    ///                 new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///                 AllowedResourceActions = new[]
     ///                 {
-    ///                     AllowedResourceActions = 
-    ///                     {
-    ///                         "microsoft.directory/applications/basic/update",
-    ///                         "microsoft.directory/applications/create",
-    ///                         "microsoft.directory/applications/standard/read",
-    ///                     },
-    ///                 },
-    ///                 new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
-    ///                 {
-    ///                     AllowedResourceActions = 
-    ///                     {
-    ///                         "microsoft.directory/groups/allProperties/read",
-    ///                         "microsoft.directory/groups/allProperties/read",
-    ///                         "microsoft.directory/groups/basic/update",
-    ///                         "microsoft.directory/groups/create",
-    ///                         "microsoft.directory/groups/delete",
-    ///                     },
+    ///                     "microsoft.directory/applications/basic/update",
+    ///                     "microsoft.directory/applications/create",
+    ///                     "microsoft.directory/applications/standard/read",
     ///                 },
     ///             },
-    ///             Version = "1.0",
-    ///         });
-    ///     }
+    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
+    ///             {
+    ///                 AllowedResourceActions = new[]
+    ///                 {
+    ///                     "microsoft.directory/groups/allProperties/read",
+    ///                     "microsoft.directory/groups/allProperties/read",
+    ///                     "microsoft.directory/groups/basic/update",
+    ///                     "microsoft.directory/groups/create",
+    ///                     "microsoft.directory/groups/delete",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Version = "1.0",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -60,7 +58,7 @@ namespace Pulumi.AzureAD
     /// This resource does not support importing.
     /// </summary>
     [AzureADResourceType("azuread:index/customDirectoryRole:CustomDirectoryRole")]
-    public partial class CustomDirectoryRole : Pulumi.CustomResource
+    public partial class CustomDirectoryRole : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the custom directory role.
@@ -148,7 +146,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class CustomDirectoryRoleArgs : Pulumi.ResourceArgs
+    public sealed class CustomDirectoryRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the custom directory role.
@@ -195,9 +193,10 @@ namespace Pulumi.AzureAD
         public CustomDirectoryRoleArgs()
         {
         }
+        public static new CustomDirectoryRoleArgs Empty => new CustomDirectoryRoleArgs();
     }
 
-    public sealed class CustomDirectoryRoleState : Pulumi.ResourceArgs
+    public sealed class CustomDirectoryRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the custom directory role.
@@ -250,5 +249,6 @@ namespace Pulumi.AzureAD
         public CustomDirectoryRoleState()
         {
         }
+        public static new CustomDirectoryRoleState Empty => new CustomDirectoryRoleState();
     }
 }

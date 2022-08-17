@@ -29,7 +29,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/directoryRoleAssignment:DirectoryRoleAssignment")]
-    public partial class DirectoryRoleAssignment : Pulumi.CustomResource
+    public partial class DirectoryRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
@@ -111,7 +111,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class DirectoryRoleAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class DirectoryRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
@@ -152,9 +152,10 @@ namespace Pulumi.AzureAD
         public DirectoryRoleAssignmentArgs()
         {
         }
+        public static new DirectoryRoleAssignmentArgs Empty => new DirectoryRoleAssignmentArgs();
     }
 
-    public sealed class DirectoryRoleAssignmentState : Pulumi.ResourceArgs
+    public sealed class DirectoryRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directory_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&amp;tabs=http) for example usage. Changing this forces a new resource to be created.
@@ -195,5 +196,6 @@ namespace Pulumi.AzureAD
         public DirectoryRoleAssignmentState()
         {
         }
+        public static new DirectoryRoleAssignmentState Empty => new DirectoryRoleAssignmentState();
     }
 }

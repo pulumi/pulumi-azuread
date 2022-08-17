@@ -23,100 +23,98 @@ namespace Pulumi.AzureAD
     /// ## Example Usage
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
     ///     {
-    ///         var example = new AzureAD.ConditionalAccessPolicy("example", new AzureAD.ConditionalAccessPolicyArgs
+    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
     ///         {
-    ///             Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
+    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
     ///             {
-    ///                 Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
+    ///                 ExcludedApplications = new[] {},
+    ///                 IncludedApplications = new[]
     ///                 {
-    ///                     ExcludedApplications = {},
-    ///                     IncludedApplications = 
-    ///                     {
-    ///                         "All",
-    ///                     },
-    ///                 },
-    ///                 ClientAppTypes = 
-    ///                 {
-    ///                     "all",
-    ///                 },
-    ///                 Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs
-    ///                 {
-    ///                     Filter = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs
-    ///                     {
-    ///                         Mode = "exclude",
-    ///                         Rule = "device.operatingSystem eq \"Doors\"",
-    ///                     },
-    ///                 },
-    ///                 Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs
-    ///                 {
-    ///                     ExcludedLocations = 
-    ///                     {
-    ///                         "AllTrusted",
-    ///                     },
-    ///                     IncludedLocations = 
-    ///                     {
-    ///                         "All",
-    ///                     },
-    ///                 },
-    ///                 Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs
-    ///                 {
-    ///                     ExcludedPlatforms = 
-    ///                     {
-    ///                         "iOS",
-    ///                     },
-    ///                     IncludedPlatforms = 
-    ///                     {
-    ///                         "android",
-    ///                     },
-    ///                 },
-    ///                 SignInRiskLevels = 
-    ///                 {
-    ///                     "medium",
-    ///                 },
-    ///                 UserRiskLevels = 
-    ///                 {
-    ///                     "medium",
-    ///                 },
-    ///                 Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
-    ///                 {
-    ///                     ExcludedUsers = 
-    ///                     {
-    ///                         "GuestsOrExternalUsers",
-    ///                     },
-    ///                     IncludedUsers = 
-    ///                     {
-    ///                         "All",
-    ///                     },
+    ///                     "All",
     ///                 },
     ///             },
-    ///             DisplayName = "example policy",
-    ///             GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
+    ///             ClientAppTypes = new[]
     ///             {
-    ///                 BuiltInControls = 
+    ///                 "all",
+    ///             },
+    ///             Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs
+    ///             {
+    ///                 Filter = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs
     ///                 {
-    ///                     "mfa",
+    ///                     Mode = "exclude",
+    ///                     Rule = "device.operatingSystem eq \"Doors\"",
     ///                 },
-    ///                 Operator = "OR",
     ///             },
-    ///             SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs
+    ///             Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs
     ///             {
-    ///                 ApplicationEnforcedRestrictionsEnabled = true,
-    ///                 CloudAppSecurityPolicy = "monitorOnly",
-    ///                 SignInFrequency = 10,
-    ///                 SignInFrequencyPeriod = "hours",
+    ///                 ExcludedLocations = new[]
+    ///                 {
+    ///                     "AllTrusted",
+    ///                 },
+    ///                 IncludedLocations = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
     ///             },
-    ///             State = "disabled",
-    ///         });
-    ///     }
+    ///             Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs
+    ///             {
+    ///                 ExcludedPlatforms = new[]
+    ///                 {
+    ///                     "iOS",
+    ///                 },
+    ///                 IncludedPlatforms = new[]
+    ///                 {
+    ///                     "android",
+    ///                 },
+    ///             },
+    ///             SignInRiskLevels = new[]
+    ///             {
+    ///                 "medium",
+    ///             },
+    ///             UserRiskLevels = new[]
+    ///             {
+    ///                 "medium",
+    ///             },
+    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
+    ///             {
+    ///                 ExcludedUsers = new[]
+    ///                 {
+    ///                     "GuestsOrExternalUsers",
+    ///                 },
+    ///                 IncludedUsers = new[]
+    ///                 {
+    ///                     "All",
+    ///                 },
+    ///             },
+    ///         },
+    ///         DisplayName = "example policy",
+    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
+    ///         {
+    ///             BuiltInControls = new[]
+    ///             {
+    ///                 "mfa",
+    ///             },
+    ///             Operator = "OR",
+    ///         },
+    ///         SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs
+    ///         {
+    ///             ApplicationEnforcedRestrictionsEnabled = true,
+    ///             CloudAppSecurityPolicy = "monitorOnly",
+    ///             SignInFrequency = 10,
+    ///             SignInFrequencyPeriod = "hours",
+    ///         },
+    ///         State = "disabled",
+    ///     });
     /// 
-    /// }
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -128,7 +126,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy")]
-    public partial class ConditionalAccessPolicy : Pulumi.CustomResource
+    public partial class ConditionalAccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
@@ -204,7 +202,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ConditionalAccessPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
@@ -239,9 +237,10 @@ namespace Pulumi.AzureAD
         public ConditionalAccessPolicyArgs()
         {
         }
+        public static new ConditionalAccessPolicyArgs Empty => new ConditionalAccessPolicyArgs();
     }
 
-    public sealed class ConditionalAccessPolicyState : Pulumi.ResourceArgs
+    public sealed class ConditionalAccessPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
@@ -276,5 +275,6 @@ namespace Pulumi.AzureAD
         public ConditionalAccessPolicyState()
         {
         }
+        public static new ConditionalAccessPolicyState Empty => new ConditionalAccessPolicyState();
     }
 }

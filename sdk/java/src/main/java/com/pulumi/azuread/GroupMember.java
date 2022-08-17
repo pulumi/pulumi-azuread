@@ -30,10 +30,21 @@ import javax.annotation.Nullable;
  * ```java
  * package generated_program;
  * 
- * import java.util.*;
- * import java.io.*;
- * import java.nio.*;
- * import com.pulumi.*;
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.inputs.GetUserArgs;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import com.pulumi.azuread.GroupMember;
+ * import com.pulumi.azuread.GroupMemberArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
  * 
  * public class App {
  *     public static void main(String[] args) {
@@ -41,9 +52,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleUser = Output.of(AzureadFunctions.getUser(GetUserArgs.builder()
+ *         final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()
  *             .userPrincipalName(&#34;jdoe@hashicorp.com&#34;)
- *             .build()));
+ *             .build());
  * 
  *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
  *             .displayName(&#34;my_group&#34;)
@@ -51,11 +62,11 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleGroupMember = new GroupMember(&#34;exampleGroupMember&#34;, GroupMemberArgs.builder()        
- *             .groupObjectId(exampleGroup.getId())
- *             .memberObjectId(exampleUser.apply(getUserResult -&gt; getUserResult.getId()))
+ *             .groupObjectId(exampleGroup.id())
+ *             .memberObjectId(exampleUser.applyValue(getUserResult -&gt; getUserResult.id()))
  *             .build());
  * 
- *         }
+ *     }
  * }
  * ```
  * 

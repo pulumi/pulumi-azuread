@@ -16,214 +16,213 @@ namespace Pulumi.AzureAD
     /// 
     /// ```csharp
     /// using System;
+    /// using System.Collections.Generic;
     /// using System.IO;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
-    /// {
     /// 	private static string ReadFileBase64(string path) {
     /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
     /// 	}
     /// 
-    ///     public MyStack()
-    ///     {
-    ///         var current = Output.Create(AzureAD.GetClientConfig.InvokeAsync());
-    ///         var example = new AzureAD.Application("example", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             IdentifierUris = 
-    ///             {
-    ///                 "api://example-app",
-    ///             },
-    ///             LogoImage = ReadFileBase64("/path/to/logo.png"),
-    ///             Owners = 
-    ///             {
-    ///                 current.Apply(current =&gt; current.ObjectId),
-    ///             },
-    ///             SignInAudience = "AzureADMultipleOrgs",
-    ///             Api = new AzureAD.Inputs.ApplicationApiArgs
-    ///             {
-    ///                 MappedClaimsEnabled = true,
-    ///                 RequestedAccessTokenVersion = 2,
-    ///                 KnownClientApplications = 
-    ///                 {
-    ///                     azuread_application.Known1.Application_id,
-    ///                     azuread_application.Known2.Application_id,
-    ///                 },
-    ///                 Oauth2PermissionScopes = 
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                     {
-    ///                         AdminConsentDescription = "Allow the application to access example on behalf of the signed-in user.",
-    ///                         AdminConsentDisplayName = "Access example",
-    ///                         Enabled = true,
-    ///                         Id = "96183846-204b-4b43-82e1-5d2222eb4b9b",
-    ///                         Type = "User",
-    ///                         UserConsentDescription = "Allow the application to access example on your behalf.",
-    ///                         UserConsentDisplayName = "Access example",
-    ///                         Value = "user_impersonation",
-    ///                     },
-    ///                     new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                     {
-    ///                         AdminConsentDescription = "Administer the example application",
-    ///                         AdminConsentDisplayName = "Administer",
-    ///                         Enabled = true,
-    ///                         Id = "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-    ///                         Type = "Admin",
-    ///                         Value = "administer",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             AppRoles = 
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationAppRoleArgs
-    ///                 {
-    ///                     AllowedMemberTypes = 
-    ///                     {
-    ///                         "User",
-    ///                         "Application",
-    ///                     },
-    ///                     Description = "Admins can manage roles and perform all task actions",
-    ///                     DisplayName = "Admin",
-    ///                     Enabled = true,
-    ///                     Id = "1b19509b-32b1-4e9f-b71d-4992aa991967",
-    ///                     Value = "admin",
-    ///                 },
-    ///                 new AzureAD.Inputs.ApplicationAppRoleArgs
-    ///                 {
-    ///                     AllowedMemberTypes = 
-    ///                     {
-    ///                         "User",
-    ///                     },
-    ///                     Description = "ReadOnly roles have limited query access",
-    ///                     DisplayName = "ReadOnly",
-    ///                     Enabled = true,
-    ///                     Id = "497406e4-012a-4267-bf18-45a1cb148a01",
-    ///                     Value = "User",
-    ///                 },
-    ///             },
-    ///             FeatureTags = 
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///                 {
-    ///                     Enterprise = true,
-    ///                     Gallery = true,
-    ///                 },
-    ///             },
-    ///             OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs
-    ///             {
-    ///                 AccessTokens = 
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
-    ///                     {
-    ///                         Name = "myclaim",
-    ///                     },
-    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
-    ///                     {
-    ///                         Name = "otherclaim",
-    ///                     },
-    ///                 },
-    ///                 IdTokens = 
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs
-    ///                     {
-    ///                         Name = "userclaim",
-    ///                         Source = "user",
-    ///                         Essential = true,
-    ///                         AdditionalProperties = 
-    ///                         {
-    ///                             "emit_as_roles",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 Saml2Tokens = 
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationOptionalClaimsSaml2TokenArgs
-    ///                     {
-    ///                         Name = "samlexample",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             RequiredResourceAccesses = 
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///                 {
-    ///                     ResourceAppId = "00000003-0000-0000-c000-000000000000",
-    ///                     ResourceAccesses = 
-    ///                     {
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = "df021288-bdef-4463-88db-98f22de89214",
-    ///                             Type = "Role",
-    ///                         },
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = "b4e74841-8e56-480b-be8b-910348b18b4c",
-    ///                             Type = "Scope",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///                 new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///                 {
-    ///                     ResourceAppId = "c5393580-f805-4401-95e8-94b7a6ef2fc2",
-    ///                     ResourceAccesses = 
-    ///                     {
-    ///                         new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                         {
-    ///                             Id = "594c1fb6-4f81-4475-ae41-0c394909246c",
-    ///                             Type = "Role",
-    ///                         },
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Web = new AzureAD.Inputs.ApplicationWebArgs
-    ///             {
-    ///                 HomepageUrl = "https://app.example.net",
-    ///                 LogoutUrl = "https://app.example.net/logout",
-    ///                 RedirectUris = 
-    ///                 {
-    ///                     "https://app.example.net/account",
-    ///                 },
-    ///                 ImplicitGrant = new AzureAD.Inputs.ApplicationWebImplicitGrantArgs
-    ///                 {
-    ///                     AccessTokenIssuanceEnabled = true,
-    ///                     IdTokenIssuanceEnabled = true,
-    ///                 },
-    ///             },
-    ///         });
-    ///     }
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var current = AzureAD.GetClientConfig.Invoke();
     /// 
-    /// }
+    ///     var example = new AzureAD.Application("example", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         IdentifierUris = new[]
+    ///         {
+    ///             "api://example-app",
+    ///         },
+    ///         LogoImage = ReadFileBase64("/path/to/logo.png"),
+    ///         Owners = new[]
+    ///         {
+    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
+    ///         },
+    ///         SignInAudience = "AzureADMultipleOrgs",
+    ///         Api = new AzureAD.Inputs.ApplicationApiArgs
+    ///         {
+    ///             MappedClaimsEnabled = true,
+    ///             RequestedAccessTokenVersion = 2,
+    ///             KnownClientApplications = new[]
+    ///             {
+    ///                 azuread_application.Known1.Application_id,
+    ///                 azuread_application.Known2.Application_id,
+    ///             },
+    ///             Oauth2PermissionScopes = new[]
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
+    ///                 {
+    ///                     AdminConsentDescription = "Allow the application to access example on behalf of the signed-in user.",
+    ///                     AdminConsentDisplayName = "Access example",
+    ///                     Enabled = true,
+    ///                     Id = "96183846-204b-4b43-82e1-5d2222eb4b9b",
+    ///                     Type = "User",
+    ///                     UserConsentDescription = "Allow the application to access example on your behalf.",
+    ///                     UserConsentDisplayName = "Access example",
+    ///                     Value = "user_impersonation",
+    ///                 },
+    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
+    ///                 {
+    ///                     AdminConsentDescription = "Administer the example application",
+    ///                     AdminConsentDisplayName = "Administer",
+    ///                     Enabled = true,
+    ///                     Id = "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
+    ///                     Type = "Admin",
+    ///                     Value = "administer",
+    ///                 },
+    ///             },
+    ///         },
+    ///         AppRoles = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
+    ///             {
+    ///                 AllowedMemberTypes = new[]
+    ///                 {
+    ///                     "User",
+    ///                     "Application",
+    ///                 },
+    ///                 Description = "Admins can manage roles and perform all task actions",
+    ///                 DisplayName = "Admin",
+    ///                 Enabled = true,
+    ///                 Id = "1b19509b-32b1-4e9f-b71d-4992aa991967",
+    ///                 Value = "admin",
+    ///             },
+    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
+    ///             {
+    ///                 AllowedMemberTypes = new[]
+    ///                 {
+    ///                     "User",
+    ///                 },
+    ///                 Description = "ReadOnly roles have limited query access",
+    ///                 DisplayName = "ReadOnly",
+    ///                 Enabled = true,
+    ///                 Id = "497406e4-012a-4267-bf18-45a1cb148a01",
+    ///                 Value = "User",
+    ///             },
+    ///         },
+    ///         FeatureTags = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
+    ///             {
+    ///                 Enterprise = true,
+    ///                 Gallery = true,
+    ///             },
+    ///         },
+    ///         OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs
+    ///         {
+    ///             AccessTokens = new[]
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
+    ///                 {
+    ///                     Name = "myclaim",
+    ///                 },
+    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
+    ///                 {
+    ///                     Name = "otherclaim",
+    ///                 },
+    ///             },
+    ///             IdTokens = new[]
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs
+    ///                 {
+    ///                     Name = "userclaim",
+    ///                     Source = "user",
+    ///                     Essential = true,
+    ///                     AdditionalProperties = new[]
+    ///                     {
+    ///                         "emit_as_roles",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Saml2Tokens = new[]
+    ///             {
+    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsSaml2TokenArgs
+    ///                 {
+    ///                     Name = "samlexample",
+    ///                 },
+    ///             },
+    ///         },
+    ///         RequiredResourceAccesses = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///             {
+    ///                 ResourceAppId = "00000003-0000-0000-c000-000000000000",
+    ///                 ResourceAccesses = new[]
+    ///                 {
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = "df021288-bdef-4463-88db-98f22de89214",
+    ///                         Type = "Role",
+    ///                     },
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = "b4e74841-8e56-480b-be8b-910348b18b4c",
+    ///                         Type = "Scope",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
+    ///             {
+    ///                 ResourceAppId = "c5393580-f805-4401-95e8-94b7a6ef2fc2",
+    ///                 ResourceAccesses = new[]
+    ///                 {
+    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
+    ///                     {
+    ///                         Id = "594c1fb6-4f81-4475-ae41-0c394909246c",
+    ///                         Type = "Role",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         Web = new AzureAD.Inputs.ApplicationWebArgs
+    ///         {
+    ///             HomepageUrl = "https://app.example.net",
+    ///             LogoutUrl = "https://app.example.net/logout",
+    ///             RedirectUris = new[]
+    ///             {
+    ///                 "https://app.example.net/account",
+    ///             },
+    ///             ImplicitGrant = new AzureAD.Inputs.ApplicationWebImplicitGrantArgs
+    ///             {
+    ///                 AccessTokenIssuanceEnabled = true,
+    ///                 IdTokenIssuanceEnabled = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// *Create application from a gallery template*
     /// 
     /// ```csharp
+    /// using System.Collections.Generic;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
-    /// class MyStack : Stack
+    /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     public MyStack()
+    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
     ///     {
-    ///         var exampleApplicationTemplate = Output.Create(AzureAD.GetApplicationTemplate.InvokeAsync(new AzureAD.GetApplicationTemplateArgs
-    ///         {
-    ///             DisplayName = "Marketo",
-    ///         }));
-    ///         var exampleApplication = new AzureAD.Application("exampleApplication", new AzureAD.ApplicationArgs
-    ///         {
-    ///             DisplayName = "example",
-    ///             TemplateId = exampleApplicationTemplate.Apply(exampleApplicationTemplate =&gt; exampleApplicationTemplate.TemplateId),
-    ///         });
-    ///         var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new AzureAD.ServicePrincipalArgs
-    ///         {
-    ///             ApplicationId = exampleApplication.ApplicationId,
-    ///             UseExisting = true,
-    ///         });
-    ///     }
+    ///         DisplayName = "Marketo",
+    ///     });
     /// 
-    /// }
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    /// });
     /// ```
     /// 
     /// ## Import
@@ -235,7 +234,7 @@ namespace Pulumi.AzureAD
     /// ```
     /// </summary>
     [AzureADResourceType("azuread:index/application:Application")]
-    public partial class Application : Pulumi.CustomResource
+    public partial class Application : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An `api` block as documented below, which configures API related settings for this application.
@@ -467,7 +466,7 @@ namespace Pulumi.AzureAD
         }
     }
 
-    public sealed class ApplicationArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An `api` block as documented below, which configures API related settings for this application.
@@ -658,9 +657,10 @@ namespace Pulumi.AzureAD
         public ApplicationArgs()
         {
         }
+        public static new ApplicationArgs Empty => new ApplicationArgs();
     }
 
-    public sealed class ApplicationState : Pulumi.ResourceArgs
+    public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An `api` block as documented below, which configures API related settings for this application.
@@ -905,5 +905,6 @@ namespace Pulumi.AzureAD
         public ApplicationState()
         {
         }
+        public static new ApplicationState Empty => new ApplicationState();
     }
 }
