@@ -15,49 +15,34 @@ public final class GetServicePrincipalAppRole {
      * @return Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
      * 
      */
-    private final List<String> allowedMemberTypes;
+    private List<String> allowedMemberTypes;
     /**
      * @return Permission help text that appears in the admin app assignment and consent experiences.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The display name of the application associated with this service principal.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Determines if the permission scope is enabled.
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The unique identifier of the delegated permission. Must be a valid UUID.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      * 
      */
-    private final String value;
+    private String value;
 
-    @CustomType.Constructor
-    private GetServicePrincipalAppRole(
-        @CustomType.Parameter("allowedMemberTypes") List<String> allowedMemberTypes,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("value") String value) {
-        this.allowedMemberTypes = allowedMemberTypes;
-        this.description = description;
-        this.displayName = displayName;
-        this.enabled = enabled;
-        this.id = id;
-        this.value = value;
-    }
-
+    private GetServicePrincipalAppRole() {}
     /**
      * @return Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
      * 
@@ -108,7 +93,7 @@ public final class GetServicePrincipalAppRole {
     public static Builder builder(GetServicePrincipalAppRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedMemberTypes;
         private String description;
@@ -116,11 +101,7 @@ public final class GetServicePrincipalAppRole {
         private Boolean enabled;
         private String id;
         private String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalAppRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedMemberTypes = defaults.allowedMemberTypes;
@@ -131,6 +112,7 @@ public final class GetServicePrincipalAppRole {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder allowedMemberTypes(List<String> allowedMemberTypes) {
             this.allowedMemberTypes = Objects.requireNonNull(allowedMemberTypes);
             return this;
@@ -138,27 +120,40 @@ public final class GetServicePrincipalAppRole {
         public Builder allowedMemberTypes(String... allowedMemberTypes) {
             return allowedMemberTypes(List.of(allowedMemberTypes));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder value(String value) {
             this.value = Objects.requireNonNull(value);
             return this;
-        }        public GetServicePrincipalAppRole build() {
-            return new GetServicePrincipalAppRole(allowedMemberTypes, description, displayName, enabled, id, value);
+        }
+        public GetServicePrincipalAppRole build() {
+            final var o = new GetServicePrincipalAppRole();
+            o.allowedMemberTypes = allowedMemberTypes;
+            o.description = description;
+            o.displayName = displayName;
+            o.enabled = enabled;
+            o.id = id;
+            o.value = value;
+            return o;
         }
     }
 }

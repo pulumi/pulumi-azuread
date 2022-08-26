@@ -17,49 +17,34 @@ public final class ServicePrincipalAppRole {
      * @return Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
      * 
      */
-    private final @Nullable List<String> allowedMemberTypes;
+    private @Nullable List<String> allowedMemberTypes;
     /**
      * @return A description of the service principal provided for internal end-users.
      * 
      */
-    private final @Nullable String description;
+    private @Nullable String description;
     /**
      * @return Display name for the app role that appears during app role assignment and in consent experiences.
      * 
      */
-    private final @Nullable String displayName;
+    private @Nullable String displayName;
     /**
      * @return Specifies whether the permission scope is enabled.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The unique identifier of the delegated permission.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ServicePrincipalAppRole(
-        @CustomType.Parameter("allowedMemberTypes") @Nullable List<String> allowedMemberTypes,
-        @CustomType.Parameter("description") @Nullable String description,
-        @CustomType.Parameter("displayName") @Nullable String displayName,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.allowedMemberTypes = allowedMemberTypes;
-        this.description = description;
-        this.displayName = displayName;
-        this.enabled = enabled;
-        this.id = id;
-        this.value = value;
-    }
-
+    private ServicePrincipalAppRole() {}
     /**
      * @return Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
      * 
@@ -110,7 +95,7 @@ public final class ServicePrincipalAppRole {
     public static Builder builder(ServicePrincipalAppRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedMemberTypes;
         private @Nullable String description;
@@ -118,11 +103,7 @@ public final class ServicePrincipalAppRole {
         private @Nullable Boolean enabled;
         private @Nullable String id;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePrincipalAppRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedMemberTypes = defaults.allowedMemberTypes;
@@ -133,6 +114,7 @@ public final class ServicePrincipalAppRole {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder allowedMemberTypes(@Nullable List<String> allowedMemberTypes) {
             this.allowedMemberTypes = allowedMemberTypes;
             return this;
@@ -140,27 +122,40 @@ public final class ServicePrincipalAppRole {
         public Builder allowedMemberTypes(String... allowedMemberTypes) {
             return allowedMemberTypes(List.of(allowedMemberTypes));
         }
+        @CustomType.Setter
         public Builder description(@Nullable String description) {
             this.description = description;
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
             this.displayName = displayName;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ServicePrincipalAppRole build() {
-            return new ServicePrincipalAppRole(allowedMemberTypes, description, displayName, enabled, id, value);
+        }
+        public ServicePrincipalAppRole build() {
+            final var o = new ServicePrincipalAppRole();
+            o.allowedMemberTypes = allowedMemberTypes;
+            o.description = description;
+            o.displayName = displayName;
+            o.enabled = enabled;
+            o.id = id;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -64,6 +64,11 @@ The URL for the OIDC provider from which to request an ID token. For use when au
 using OpenID Connect.
 """
 
+oidcToken: Optional[str]
+"""
+The ID token for use when authenticating as a Service Principal using OpenID Connect.
+"""
+
 partnerId: Optional[str]
 """
 A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution

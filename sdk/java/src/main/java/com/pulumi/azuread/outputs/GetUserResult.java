@@ -15,315 +15,224 @@ public final class GetUserResult {
      * @return Whether or not the account is enabled.
      * 
      */
-    private final Boolean accountEnabled;
+    private Boolean accountEnabled;
     /**
      * @return The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`.
      * 
      */
-    private final String ageGroup;
+    private String ageGroup;
     /**
      * @return A list of telephone numbers for the user.
      * 
      */
-    private final List<String> businessPhones;
+    private List<String> businessPhones;
     /**
      * @return The city in which the user is located.
      * 
      */
-    private final String city;
+    private String city;
     /**
      * @return The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
      * 
      */
-    private final String companyName;
+    private String companyName;
     /**
      * @return Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
      * 
      */
-    private final String consentProvidedForMinor;
+    private String consentProvidedForMinor;
     /**
      * @return The cost center associated with the user.
      * 
      */
-    private final String costCenter;
+    private String costCenter;
     /**
      * @return The country/region in which the user is located, e.g. `US` or `UK`.
      * 
      */
-    private final String country;
+    private String country;
     /**
      * @return Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
      * 
      */
-    private final String creationType;
+    private String creationType;
     /**
      * @return The name for the department in which the user works.
      * 
      */
-    private final String department;
+    private String department;
     /**
      * @return The display name of the user.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The name of the division in which the user works.
      * 
      */
-    private final String division;
+    private String division;
     /**
      * @return The employee identifier assigned to the user by the organisation.
      * 
      */
-    private final String employeeId;
+    private String employeeId;
     /**
      * @return Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
      * 
      */
-    private final String employeeType;
+    private String employeeType;
     /**
      * @return For an external user invited to the tenant, this property represents the invited user&#39;s invitation status. Possible values are `PendingAcceptance` or `Accepted`.
      * 
      */
-    private final String externalUserState;
+    private String externalUserState;
     /**
      * @return The fax number of the user.
      * 
      */
-    private final String faxNumber;
+    private String faxNumber;
     /**
      * @return The given name (first name) of the user.
      * 
      */
-    private final String givenName;
+    private String givenName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
      * 
      */
-    private final List<String> imAddresses;
+    private List<String> imAddresses;
     /**
      * @return The user’s job title.
      * 
      */
-    private final String jobTitle;
+    private String jobTitle;
     /**
      * @return The SMTP address for the user.
      * 
      */
-    private final String mail;
+    private String mail;
     /**
      * @return The email alias of the user.
      * 
      */
-    private final String mailNickname;
+    private String mailNickname;
     /**
      * @return The object ID of the user&#39;s manager.
      * 
      */
-    private final String managerId;
+    private String managerId;
     /**
      * @return The primary cellular telephone number for the user.
      * 
      */
-    private final String mobilePhone;
+    private String mobilePhone;
     /**
      * @return The object ID of the user.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return The office location in the user&#39;s place of business.
      * 
      */
-    private final String officeLocation;
+    private String officeLocation;
     /**
      * @return The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesDistinguishedName;
+    private String onpremisesDistinguishedName;
     /**
      * @return The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesDomainName;
+    private String onpremisesDomainName;
     /**
      * @return The value used to associate an on-premise Active Directory user account with their Azure AD user object.
      * 
      */
-    private final String onpremisesImmutableId;
+    private String onpremisesImmutableId;
     /**
      * @return The on-premise SAM account name of the user.
      * 
      */
-    private final String onpremisesSamAccountName;
+    private String onpremisesSamAccountName;
     /**
      * @return The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesSecurityIdentifier;
+    private String onpremisesSecurityIdentifier;
     /**
      * @return Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      * 
      */
-    private final Boolean onpremisesSyncEnabled;
+    private Boolean onpremisesSyncEnabled;
     /**
      * @return The on-premise user principal name of the user.
      * 
      */
-    private final String onpremisesUserPrincipalName;
+    private String onpremisesUserPrincipalName;
     /**
      * @return A list of additional email addresses for the user.
      * 
      */
-    private final List<String> otherMails;
+    private List<String> otherMails;
     /**
      * @return The postal code for the user&#39;s postal address. The postal code is specific to the user&#39;s country/region. In the United States of America, this attribute contains the ZIP code.
      * 
      */
-    private final String postalCode;
+    private String postalCode;
     /**
      * @return The user&#39;s preferred language, in ISO 639-1 notation.
      * 
      */
-    private final String preferredLanguage;
+    private String preferredLanguage;
     /**
      * @return List of email addresses for the user that direct to the same mailbox.
      * 
      */
-    private final List<String> proxyAddresses;
+    private List<String> proxyAddresses;
     /**
      * @return Whether or not the Outlook global address list should include this user.
      * 
      */
-    private final Boolean showInAddressList;
+    private Boolean showInAddressList;
     /**
      * @return The state or province in the user&#39;s address.
      * 
      */
-    private final String state;
+    private String state;
     /**
      * @return The street address of the user&#39;s place of business.
      * 
      */
-    private final String streetAddress;
+    private String streetAddress;
     /**
      * @return The user&#39;s surname (family name or last name).
      * 
      */
-    private final String surname;
+    private String surname;
     /**
      * @return The usage location of the user.
      * 
      */
-    private final String usageLocation;
+    private String usageLocation;
     /**
      * @return The user principal name (UPN) of the user.
      * 
      */
-    private final String userPrincipalName;
+    private String userPrincipalName;
     /**
      * @return The user type in the directory. Possible values are `Guest` or `Member`.
      * 
      */
-    private final String userType;
+    private String userType;
 
-    @CustomType.Constructor
-    private GetUserResult(
-        @CustomType.Parameter("accountEnabled") Boolean accountEnabled,
-        @CustomType.Parameter("ageGroup") String ageGroup,
-        @CustomType.Parameter("businessPhones") List<String> businessPhones,
-        @CustomType.Parameter("city") String city,
-        @CustomType.Parameter("companyName") String companyName,
-        @CustomType.Parameter("consentProvidedForMinor") String consentProvidedForMinor,
-        @CustomType.Parameter("costCenter") String costCenter,
-        @CustomType.Parameter("country") String country,
-        @CustomType.Parameter("creationType") String creationType,
-        @CustomType.Parameter("department") String department,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("division") String division,
-        @CustomType.Parameter("employeeId") String employeeId,
-        @CustomType.Parameter("employeeType") String employeeType,
-        @CustomType.Parameter("externalUserState") String externalUserState,
-        @CustomType.Parameter("faxNumber") String faxNumber,
-        @CustomType.Parameter("givenName") String givenName,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("imAddresses") List<String> imAddresses,
-        @CustomType.Parameter("jobTitle") String jobTitle,
-        @CustomType.Parameter("mail") String mail,
-        @CustomType.Parameter("mailNickname") String mailNickname,
-        @CustomType.Parameter("managerId") String managerId,
-        @CustomType.Parameter("mobilePhone") String mobilePhone,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("officeLocation") String officeLocation,
-        @CustomType.Parameter("onpremisesDistinguishedName") String onpremisesDistinguishedName,
-        @CustomType.Parameter("onpremisesDomainName") String onpremisesDomainName,
-        @CustomType.Parameter("onpremisesImmutableId") String onpremisesImmutableId,
-        @CustomType.Parameter("onpremisesSamAccountName") String onpremisesSamAccountName,
-        @CustomType.Parameter("onpremisesSecurityIdentifier") String onpremisesSecurityIdentifier,
-        @CustomType.Parameter("onpremisesSyncEnabled") Boolean onpremisesSyncEnabled,
-        @CustomType.Parameter("onpremisesUserPrincipalName") String onpremisesUserPrincipalName,
-        @CustomType.Parameter("otherMails") List<String> otherMails,
-        @CustomType.Parameter("postalCode") String postalCode,
-        @CustomType.Parameter("preferredLanguage") String preferredLanguage,
-        @CustomType.Parameter("proxyAddresses") List<String> proxyAddresses,
-        @CustomType.Parameter("showInAddressList") Boolean showInAddressList,
-        @CustomType.Parameter("state") String state,
-        @CustomType.Parameter("streetAddress") String streetAddress,
-        @CustomType.Parameter("surname") String surname,
-        @CustomType.Parameter("usageLocation") String usageLocation,
-        @CustomType.Parameter("userPrincipalName") String userPrincipalName,
-        @CustomType.Parameter("userType") String userType) {
-        this.accountEnabled = accountEnabled;
-        this.ageGroup = ageGroup;
-        this.businessPhones = businessPhones;
-        this.city = city;
-        this.companyName = companyName;
-        this.consentProvidedForMinor = consentProvidedForMinor;
-        this.costCenter = costCenter;
-        this.country = country;
-        this.creationType = creationType;
-        this.department = department;
-        this.displayName = displayName;
-        this.division = division;
-        this.employeeId = employeeId;
-        this.employeeType = employeeType;
-        this.externalUserState = externalUserState;
-        this.faxNumber = faxNumber;
-        this.givenName = givenName;
-        this.id = id;
-        this.imAddresses = imAddresses;
-        this.jobTitle = jobTitle;
-        this.mail = mail;
-        this.mailNickname = mailNickname;
-        this.managerId = managerId;
-        this.mobilePhone = mobilePhone;
-        this.objectId = objectId;
-        this.officeLocation = officeLocation;
-        this.onpremisesDistinguishedName = onpremisesDistinguishedName;
-        this.onpremisesDomainName = onpremisesDomainName;
-        this.onpremisesImmutableId = onpremisesImmutableId;
-        this.onpremisesSamAccountName = onpremisesSamAccountName;
-        this.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
-        this.onpremisesSyncEnabled = onpremisesSyncEnabled;
-        this.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
-        this.otherMails = otherMails;
-        this.postalCode = postalCode;
-        this.preferredLanguage = preferredLanguage;
-        this.proxyAddresses = proxyAddresses;
-        this.showInAddressList = showInAddressList;
-        this.state = state;
-        this.streetAddress = streetAddress;
-        this.surname = surname;
-        this.usageLocation = usageLocation;
-        this.userPrincipalName = userPrincipalName;
-        this.userType = userType;
-    }
-
+    private GetUserResult() {}
     /**
      * @return Whether or not the account is enabled.
      * 
@@ -640,7 +549,7 @@ public final class GetUserResult {
     public static Builder builder(GetUserResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accountEnabled;
         private String ageGroup;
@@ -686,11 +595,7 @@ public final class GetUserResult {
         private String usageLocation;
         private String userPrincipalName;
         private String userType;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUserResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEnabled = defaults.accountEnabled;
@@ -739,14 +644,17 @@ public final class GetUserResult {
     	      this.userType = defaults.userType;
         }
 
+        @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
             this.accountEnabled = Objects.requireNonNull(accountEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder ageGroup(String ageGroup) {
             this.ageGroup = Objects.requireNonNull(ageGroup);
             return this;
         }
+        @CustomType.Setter
         public Builder businessPhones(List<String> businessPhones) {
             this.businessPhones = Objects.requireNonNull(businessPhones);
             return this;
@@ -754,66 +662,82 @@ public final class GetUserResult {
         public Builder businessPhones(String... businessPhones) {
             return businessPhones(List.of(businessPhones));
         }
+        @CustomType.Setter
         public Builder city(String city) {
             this.city = Objects.requireNonNull(city);
             return this;
         }
+        @CustomType.Setter
         public Builder companyName(String companyName) {
             this.companyName = Objects.requireNonNull(companyName);
             return this;
         }
+        @CustomType.Setter
         public Builder consentProvidedForMinor(String consentProvidedForMinor) {
             this.consentProvidedForMinor = Objects.requireNonNull(consentProvidedForMinor);
             return this;
         }
+        @CustomType.Setter
         public Builder costCenter(String costCenter) {
             this.costCenter = Objects.requireNonNull(costCenter);
             return this;
         }
+        @CustomType.Setter
         public Builder country(String country) {
             this.country = Objects.requireNonNull(country);
             return this;
         }
+        @CustomType.Setter
         public Builder creationType(String creationType) {
             this.creationType = Objects.requireNonNull(creationType);
             return this;
         }
+        @CustomType.Setter
         public Builder department(String department) {
             this.department = Objects.requireNonNull(department);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder division(String division) {
             this.division = Objects.requireNonNull(division);
             return this;
         }
+        @CustomType.Setter
         public Builder employeeId(String employeeId) {
             this.employeeId = Objects.requireNonNull(employeeId);
             return this;
         }
+        @CustomType.Setter
         public Builder employeeType(String employeeType) {
             this.employeeType = Objects.requireNonNull(employeeType);
             return this;
         }
+        @CustomType.Setter
         public Builder externalUserState(String externalUserState) {
             this.externalUserState = Objects.requireNonNull(externalUserState);
             return this;
         }
+        @CustomType.Setter
         public Builder faxNumber(String faxNumber) {
             this.faxNumber = Objects.requireNonNull(faxNumber);
             return this;
         }
+        @CustomType.Setter
         public Builder givenName(String givenName) {
             this.givenName = Objects.requireNonNull(givenName);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder imAddresses(List<String> imAddresses) {
             this.imAddresses = Objects.requireNonNull(imAddresses);
             return this;
@@ -821,62 +745,77 @@ public final class GetUserResult {
         public Builder imAddresses(String... imAddresses) {
             return imAddresses(List.of(imAddresses));
         }
+        @CustomType.Setter
         public Builder jobTitle(String jobTitle) {
             this.jobTitle = Objects.requireNonNull(jobTitle);
             return this;
         }
+        @CustomType.Setter
         public Builder mail(String mail) {
             this.mail = Objects.requireNonNull(mail);
             return this;
         }
+        @CustomType.Setter
         public Builder mailNickname(String mailNickname) {
             this.mailNickname = Objects.requireNonNull(mailNickname);
             return this;
         }
+        @CustomType.Setter
         public Builder managerId(String managerId) {
             this.managerId = Objects.requireNonNull(managerId);
             return this;
         }
+        @CustomType.Setter
         public Builder mobilePhone(String mobilePhone) {
             this.mobilePhone = Objects.requireNonNull(mobilePhone);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder officeLocation(String officeLocation) {
             this.officeLocation = Objects.requireNonNull(officeLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesDistinguishedName(String onpremisesDistinguishedName) {
             this.onpremisesDistinguishedName = Objects.requireNonNull(onpremisesDistinguishedName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesDomainName(String onpremisesDomainName) {
             this.onpremisesDomainName = Objects.requireNonNull(onpremisesDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesImmutableId(String onpremisesImmutableId) {
             this.onpremisesImmutableId = Objects.requireNonNull(onpremisesImmutableId);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSamAccountName(String onpremisesSamAccountName) {
             this.onpremisesSamAccountName = Objects.requireNonNull(onpremisesSamAccountName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSecurityIdentifier(String onpremisesSecurityIdentifier) {
             this.onpremisesSecurityIdentifier = Objects.requireNonNull(onpremisesSecurityIdentifier);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSyncEnabled(Boolean onpremisesSyncEnabled) {
             this.onpremisesSyncEnabled = Objects.requireNonNull(onpremisesSyncEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesUserPrincipalName(String onpremisesUserPrincipalName) {
             this.onpremisesUserPrincipalName = Objects.requireNonNull(onpremisesUserPrincipalName);
             return this;
         }
+        @CustomType.Setter
         public Builder otherMails(List<String> otherMails) {
             this.otherMails = Objects.requireNonNull(otherMails);
             return this;
@@ -884,14 +823,17 @@ public final class GetUserResult {
         public Builder otherMails(String... otherMails) {
             return otherMails(List.of(otherMails));
         }
+        @CustomType.Setter
         public Builder postalCode(String postalCode) {
             this.postalCode = Objects.requireNonNull(postalCode);
             return this;
         }
+        @CustomType.Setter
         public Builder preferredLanguage(String preferredLanguage) {
             this.preferredLanguage = Objects.requireNonNull(preferredLanguage);
             return this;
         }
+        @CustomType.Setter
         public Builder proxyAddresses(List<String> proxyAddresses) {
             this.proxyAddresses = Objects.requireNonNull(proxyAddresses);
             return this;
@@ -899,35 +841,88 @@ public final class GetUserResult {
         public Builder proxyAddresses(String... proxyAddresses) {
             return proxyAddresses(List.of(proxyAddresses));
         }
+        @CustomType.Setter
         public Builder showInAddressList(Boolean showInAddressList) {
             this.showInAddressList = Objects.requireNonNull(showInAddressList);
             return this;
         }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
         }
+        @CustomType.Setter
         public Builder streetAddress(String streetAddress) {
             this.streetAddress = Objects.requireNonNull(streetAddress);
             return this;
         }
+        @CustomType.Setter
         public Builder surname(String surname) {
             this.surname = Objects.requireNonNull(surname);
             return this;
         }
+        @CustomType.Setter
         public Builder usageLocation(String usageLocation) {
             this.usageLocation = Objects.requireNonNull(usageLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder userPrincipalName(String userPrincipalName) {
             this.userPrincipalName = Objects.requireNonNull(userPrincipalName);
             return this;
         }
+        @CustomType.Setter
         public Builder userType(String userType) {
             this.userType = Objects.requireNonNull(userType);
             return this;
-        }        public GetUserResult build() {
-            return new GetUserResult(accountEnabled, ageGroup, businessPhones, city, companyName, consentProvidedForMinor, costCenter, country, creationType, department, displayName, division, employeeId, employeeType, externalUserState, faxNumber, givenName, id, imAddresses, jobTitle, mail, mailNickname, managerId, mobilePhone, objectId, officeLocation, onpremisesDistinguishedName, onpremisesDomainName, onpremisesImmutableId, onpremisesSamAccountName, onpremisesSecurityIdentifier, onpremisesSyncEnabled, onpremisesUserPrincipalName, otherMails, postalCode, preferredLanguage, proxyAddresses, showInAddressList, state, streetAddress, surname, usageLocation, userPrincipalName, userType);
+        }
+        public GetUserResult build() {
+            final var o = new GetUserResult();
+            o.accountEnabled = accountEnabled;
+            o.ageGroup = ageGroup;
+            o.businessPhones = businessPhones;
+            o.city = city;
+            o.companyName = companyName;
+            o.consentProvidedForMinor = consentProvidedForMinor;
+            o.costCenter = costCenter;
+            o.country = country;
+            o.creationType = creationType;
+            o.department = department;
+            o.displayName = displayName;
+            o.division = division;
+            o.employeeId = employeeId;
+            o.employeeType = employeeType;
+            o.externalUserState = externalUserState;
+            o.faxNumber = faxNumber;
+            o.givenName = givenName;
+            o.id = id;
+            o.imAddresses = imAddresses;
+            o.jobTitle = jobTitle;
+            o.mail = mail;
+            o.mailNickname = mailNickname;
+            o.managerId = managerId;
+            o.mobilePhone = mobilePhone;
+            o.objectId = objectId;
+            o.officeLocation = officeLocation;
+            o.onpremisesDistinguishedName = onpremisesDistinguishedName;
+            o.onpremisesDomainName = onpremisesDomainName;
+            o.onpremisesImmutableId = onpremisesImmutableId;
+            o.onpremisesSamAccountName = onpremisesSamAccountName;
+            o.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
+            o.onpremisesSyncEnabled = onpremisesSyncEnabled;
+            o.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
+            o.otherMails = otherMails;
+            o.postalCode = postalCode;
+            o.preferredLanguage = preferredLanguage;
+            o.proxyAddresses = proxyAddresses;
+            o.showInAddressList = showInAddressList;
+            o.state = state;
+            o.streetAddress = streetAddress;
+            o.surname = surname;
+            o.usageLocation = usageLocation;
+            o.userPrincipalName = userPrincipalName;
+            o.userType = userType;
+            return o;
         }
     }
 }

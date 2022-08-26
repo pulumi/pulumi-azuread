@@ -34,6 +34,7 @@
         "getApplicationPublishedAppIds.ts",
         "getApplicationTemplate.ts",
         "getClientConfig.ts",
+        "getDirectoryObject.ts",
         "getDomains.ts",
         "getGroup.ts",
         "getGroups.ts",

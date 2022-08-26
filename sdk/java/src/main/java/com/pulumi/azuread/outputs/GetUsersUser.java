@@ -14,77 +14,54 @@ public final class GetUsersUser {
      * @return Whether or not the account is enabled.
      * 
      */
-    private final Boolean accountEnabled;
+    private Boolean accountEnabled;
     /**
      * @return The display name of the user.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The primary email address of the user.
      * 
      */
-    private final String mail;
+    private String mail;
     /**
      * @return The email alias of the user.
      * 
      */
-    private final String mailNickname;
+    private String mailNickname;
     /**
      * @return The object ID of the user.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return The value used to associate an on-premises Active Directory user account with their Azure AD user object.
      * 
      */
-    private final String onpremisesImmutableId;
+    private String onpremisesImmutableId;
     /**
      * @return The on-premise SAM account name of the user.
      * 
      */
-    private final String onpremisesSamAccountName;
+    private String onpremisesSamAccountName;
     /**
      * @return The on-premise user principal name of the user.
      * 
      */
-    private final String onpremisesUserPrincipalName;
+    private String onpremisesUserPrincipalName;
     /**
      * @return The usage location of the user.
      * 
      */
-    private final String usageLocation;
+    private String usageLocation;
     /**
      * @return The user principal name (UPN) of the user.
      * 
      */
-    private final String userPrincipalName;
+    private String userPrincipalName;
 
-    @CustomType.Constructor
-    private GetUsersUser(
-        @CustomType.Parameter("accountEnabled") Boolean accountEnabled,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("mail") String mail,
-        @CustomType.Parameter("mailNickname") String mailNickname,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("onpremisesImmutableId") String onpremisesImmutableId,
-        @CustomType.Parameter("onpremisesSamAccountName") String onpremisesSamAccountName,
-        @CustomType.Parameter("onpremisesUserPrincipalName") String onpremisesUserPrincipalName,
-        @CustomType.Parameter("usageLocation") String usageLocation,
-        @CustomType.Parameter("userPrincipalName") String userPrincipalName) {
-        this.accountEnabled = accountEnabled;
-        this.displayName = displayName;
-        this.mail = mail;
-        this.mailNickname = mailNickname;
-        this.objectId = objectId;
-        this.onpremisesImmutableId = onpremisesImmutableId;
-        this.onpremisesSamAccountName = onpremisesSamAccountName;
-        this.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
-        this.usageLocation = usageLocation;
-        this.userPrincipalName = userPrincipalName;
-    }
-
+    private GetUsersUser() {}
     /**
      * @return Whether or not the account is enabled.
      * 
@@ -163,7 +140,7 @@ public final class GetUsersUser {
     public static Builder builder(GetUsersUser defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accountEnabled;
         private String displayName;
@@ -175,11 +152,7 @@ public final class GetUsersUser {
         private String onpremisesUserPrincipalName;
         private String usageLocation;
         private String userPrincipalName;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersUser defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEnabled = defaults.accountEnabled;
@@ -194,47 +167,69 @@ public final class GetUsersUser {
     	      this.userPrincipalName = defaults.userPrincipalName;
         }
 
+        @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
             this.accountEnabled = Objects.requireNonNull(accountEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder mail(String mail) {
             this.mail = Objects.requireNonNull(mail);
             return this;
         }
+        @CustomType.Setter
         public Builder mailNickname(String mailNickname) {
             this.mailNickname = Objects.requireNonNull(mailNickname);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesImmutableId(String onpremisesImmutableId) {
             this.onpremisesImmutableId = Objects.requireNonNull(onpremisesImmutableId);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSamAccountName(String onpremisesSamAccountName) {
             this.onpremisesSamAccountName = Objects.requireNonNull(onpremisesSamAccountName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesUserPrincipalName(String onpremisesUserPrincipalName) {
             this.onpremisesUserPrincipalName = Objects.requireNonNull(onpremisesUserPrincipalName);
             return this;
         }
+        @CustomType.Setter
         public Builder usageLocation(String usageLocation) {
             this.usageLocation = Objects.requireNonNull(usageLocation);
             return this;
         }
+        @CustomType.Setter
         public Builder userPrincipalName(String userPrincipalName) {
             this.userPrincipalName = Objects.requireNonNull(userPrincipalName);
             return this;
-        }        public GetUsersUser build() {
-            return new GetUsersUser(accountEnabled, displayName, mail, mailNickname, objectId, onpremisesImmutableId, onpremisesSamAccountName, onpremisesUserPrincipalName, usageLocation, userPrincipalName);
+        }
+        public GetUsersUser build() {
+            final var o = new GetUsersUser();
+            o.accountEnabled = accountEnabled;
+            o.displayName = displayName;
+            o.mail = mail;
+            o.mailNickname = mailNickname;
+            o.objectId = objectId;
+            o.onpremisesImmutableId = onpremisesImmutableId;
+            o.onpremisesSamAccountName = onpremisesSamAccountName;
+            o.onpremisesUserPrincipalName = onpremisesUserPrincipalName;
+            o.usageLocation = usageLocation;
+            o.userPrincipalName = userPrincipalName;
+            return o;
         }
     }
 }

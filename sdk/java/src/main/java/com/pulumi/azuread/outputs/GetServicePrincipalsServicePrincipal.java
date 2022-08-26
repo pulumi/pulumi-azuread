@@ -15,91 +15,64 @@ public final class GetServicePrincipalsServicePrincipal {
      * @return Whether or not the service principal account is enabled.
      * 
      */
-    private final Boolean accountEnabled;
+    private Boolean accountEnabled;
     /**
      * @return Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
      * 
      */
-    private final Boolean appRoleAssignmentRequired;
+    private Boolean appRoleAssignmentRequired;
     /**
      * @return The application ID (client ID) of the application associated with this service principal.
      * 
      */
-    private final String applicationId;
+    private String applicationId;
     /**
      * @return The tenant ID where the associated application is registered.
      * 
      */
-    private final String applicationTenantId;
+    private String applicationTenantId;
     /**
      * @return The display name of the application associated with this service principal.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The object ID of the service principal.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
      * 
      */
-    private final String preferredSingleSignOnMode;
+    private String preferredSingleSignOnMode;
     /**
      * @return The URL where the service exposes SAML metadata for federation.
      * 
      */
-    private final String samlMetadataUrl;
+    private String samlMetadataUrl;
     /**
      * @return A list of identifier URI(s), copied over from the associated application.
      * 
      */
-    private final List<String> servicePrincipalNames;
+    private List<String> servicePrincipalNames;
     /**
      * @return The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      * 
      */
-    private final String signInAudience;
+    private String signInAudience;
     /**
      * @return A list of tags applied to the service principal.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetServicePrincipalsServicePrincipal(
-        @CustomType.Parameter("accountEnabled") Boolean accountEnabled,
-        @CustomType.Parameter("appRoleAssignmentRequired") Boolean appRoleAssignmentRequired,
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("applicationTenantId") String applicationTenantId,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("preferredSingleSignOnMode") String preferredSingleSignOnMode,
-        @CustomType.Parameter("samlMetadataUrl") String samlMetadataUrl,
-        @CustomType.Parameter("servicePrincipalNames") List<String> servicePrincipalNames,
-        @CustomType.Parameter("signInAudience") String signInAudience,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("type") String type) {
-        this.accountEnabled = accountEnabled;
-        this.appRoleAssignmentRequired = appRoleAssignmentRequired;
-        this.applicationId = applicationId;
-        this.applicationTenantId = applicationTenantId;
-        this.displayName = displayName;
-        this.objectId = objectId;
-        this.preferredSingleSignOnMode = preferredSingleSignOnMode;
-        this.samlMetadataUrl = samlMetadataUrl;
-        this.servicePrincipalNames = servicePrincipalNames;
-        this.signInAudience = signInAudience;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private GetServicePrincipalsServicePrincipal() {}
     /**
      * @return Whether or not the service principal account is enabled.
      * 
@@ -192,7 +165,7 @@ public final class GetServicePrincipalsServicePrincipal {
     public static Builder builder(GetServicePrincipalsServicePrincipal defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accountEnabled;
         private Boolean appRoleAssignmentRequired;
@@ -206,11 +179,7 @@ public final class GetServicePrincipalsServicePrincipal {
         private String signInAudience;
         private List<String> tags;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalsServicePrincipal defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEnabled = defaults.accountEnabled;
@@ -227,38 +196,47 @@ public final class GetServicePrincipalsServicePrincipal {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
             this.accountEnabled = Objects.requireNonNull(accountEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder appRoleAssignmentRequired(Boolean appRoleAssignmentRequired) {
             this.appRoleAssignmentRequired = Objects.requireNonNull(appRoleAssignmentRequired);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationTenantId(String applicationTenantId) {
             this.applicationTenantId = Objects.requireNonNull(applicationTenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder preferredSingleSignOnMode(String preferredSingleSignOnMode) {
             this.preferredSingleSignOnMode = Objects.requireNonNull(preferredSingleSignOnMode);
             return this;
         }
+        @CustomType.Setter
         public Builder samlMetadataUrl(String samlMetadataUrl) {
             this.samlMetadataUrl = Objects.requireNonNull(samlMetadataUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder servicePrincipalNames(List<String> servicePrincipalNames) {
             this.servicePrincipalNames = Objects.requireNonNull(servicePrincipalNames);
             return this;
@@ -266,10 +244,12 @@ public final class GetServicePrincipalsServicePrincipal {
         public Builder servicePrincipalNames(String... servicePrincipalNames) {
             return servicePrincipalNames(List.of(servicePrincipalNames));
         }
+        @CustomType.Setter
         public Builder signInAudience(String signInAudience) {
             this.signInAudience = Objects.requireNonNull(signInAudience);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -277,11 +257,26 @@ public final class GetServicePrincipalsServicePrincipal {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetServicePrincipalsServicePrincipal build() {
-            return new GetServicePrincipalsServicePrincipal(accountEnabled, appRoleAssignmentRequired, applicationId, applicationTenantId, displayName, objectId, preferredSingleSignOnMode, samlMetadataUrl, servicePrincipalNames, signInAudience, tags, type);
+        }
+        public GetServicePrincipalsServicePrincipal build() {
+            final var o = new GetServicePrincipalsServicePrincipal();
+            o.accountEnabled = accountEnabled;
+            o.appRoleAssignmentRequired = appRoleAssignmentRequired;
+            o.applicationId = applicationId;
+            o.applicationTenantId = applicationTenantId;
+            o.displayName = displayName;
+            o.objectId = objectId;
+            o.preferredSingleSignOnMode = preferredSingleSignOnMode;
+            o.samlMetadataUrl = samlMetadataUrl;
+            o.servicePrincipalNames = servicePrincipalNames;
+            o.signInAudience = signInAudience;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

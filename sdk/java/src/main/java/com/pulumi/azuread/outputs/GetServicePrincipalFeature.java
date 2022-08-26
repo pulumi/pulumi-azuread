@@ -13,35 +13,24 @@ public final class GetServicePrincipalFeature {
      * @return Whether this service principal represents a custom SAML application.
      * 
      */
-    private final Boolean customSingleSignOnApp;
+    private Boolean customSingleSignOnApp;
     /**
      * @return Whether this service principal represents an Enterprise Application.
      * 
      */
-    private final Boolean enterpriseApplication;
+    private Boolean enterpriseApplication;
     /**
      * @return Whether this service principal represents a gallery application.
      * 
      */
-    private final Boolean galleryApplication;
+    private Boolean galleryApplication;
     /**
      * @return Whether this app is visible to users in My Apps and Office 365 Launcher.
      * 
      */
-    private final Boolean visibleToUsers;
+    private Boolean visibleToUsers;
 
-    @CustomType.Constructor
-    private GetServicePrincipalFeature(
-        @CustomType.Parameter("customSingleSignOnApp") Boolean customSingleSignOnApp,
-        @CustomType.Parameter("enterpriseApplication") Boolean enterpriseApplication,
-        @CustomType.Parameter("galleryApplication") Boolean galleryApplication,
-        @CustomType.Parameter("visibleToUsers") Boolean visibleToUsers) {
-        this.customSingleSignOnApp = customSingleSignOnApp;
-        this.enterpriseApplication = enterpriseApplication;
-        this.galleryApplication = galleryApplication;
-        this.visibleToUsers = visibleToUsers;
-    }
-
+    private GetServicePrincipalFeature() {}
     /**
      * @return Whether this service principal represents a custom SAML application.
      * 
@@ -78,17 +67,13 @@ public final class GetServicePrincipalFeature {
     public static Builder builder(GetServicePrincipalFeature defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean customSingleSignOnApp;
         private Boolean enterpriseApplication;
         private Boolean galleryApplication;
         private Boolean visibleToUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customSingleSignOnApp = defaults.customSingleSignOnApp;
@@ -97,23 +82,33 @@ public final class GetServicePrincipalFeature {
     	      this.visibleToUsers = defaults.visibleToUsers;
         }
 
+        @CustomType.Setter
         public Builder customSingleSignOnApp(Boolean customSingleSignOnApp) {
             this.customSingleSignOnApp = Objects.requireNonNull(customSingleSignOnApp);
             return this;
         }
+        @CustomType.Setter
         public Builder enterpriseApplication(Boolean enterpriseApplication) {
             this.enterpriseApplication = Objects.requireNonNull(enterpriseApplication);
             return this;
         }
+        @CustomType.Setter
         public Builder galleryApplication(Boolean galleryApplication) {
             this.galleryApplication = Objects.requireNonNull(galleryApplication);
             return this;
         }
+        @CustomType.Setter
         public Builder visibleToUsers(Boolean visibleToUsers) {
             this.visibleToUsers = Objects.requireNonNull(visibleToUsers);
             return this;
-        }        public GetServicePrincipalFeature build() {
-            return new GetServicePrincipalFeature(customSingleSignOnApp, enterpriseApplication, galleryApplication, visibleToUsers);
+        }
+        public GetServicePrincipalFeature build() {
+            final var o = new GetServicePrincipalFeature();
+            o.customSingleSignOnApp = customSingleSignOnApp;
+            o.enterpriseApplication = enterpriseApplication;
+            o.galleryApplication = galleryApplication;
+            o.visibleToUsers = visibleToUsers;
+            return o;
         }
     }
 }

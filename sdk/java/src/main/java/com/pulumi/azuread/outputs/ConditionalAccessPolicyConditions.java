@@ -21,63 +21,44 @@ public final class ConditionalAccessPolicyConditions {
      * @return An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
      * 
      */
-    private final ConditionalAccessPolicyConditionsApplications applications;
+    private ConditionalAccessPolicyConditionsApplications applications;
     /**
      * @return A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
      * 
      */
-    private final List<String> clientAppTypes;
+    private List<String> clientAppTypes;
     /**
      * @return A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
      * 
      */
-    private final @Nullable ConditionalAccessPolicyConditionsDevices devices;
+    private @Nullable ConditionalAccessPolicyConditionsDevices devices;
     /**
      * @return A `locations` block as documented below, which specifies locations included in and excluded from the policy.
      * 
      */
-    private final @Nullable ConditionalAccessPolicyConditionsLocations locations;
+    private @Nullable ConditionalAccessPolicyConditionsLocations locations;
     /**
      * @return A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
      * 
      */
-    private final @Nullable ConditionalAccessPolicyConditionsPlatforms platforms;
+    private @Nullable ConditionalAccessPolicyConditionsPlatforms platforms;
     /**
      * @return A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      * 
      */
-    private final @Nullable List<String> signInRiskLevels;
+    private @Nullable List<String> signInRiskLevels;
     /**
      * @return A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      * 
      */
-    private final @Nullable List<String> userRiskLevels;
+    private @Nullable List<String> userRiskLevels;
     /**
      * @return A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
      * 
      */
-    private final ConditionalAccessPolicyConditionsUsers users;
+    private ConditionalAccessPolicyConditionsUsers users;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditions(
-        @CustomType.Parameter("applications") ConditionalAccessPolicyConditionsApplications applications,
-        @CustomType.Parameter("clientAppTypes") List<String> clientAppTypes,
-        @CustomType.Parameter("devices") @Nullable ConditionalAccessPolicyConditionsDevices devices,
-        @CustomType.Parameter("locations") @Nullable ConditionalAccessPolicyConditionsLocations locations,
-        @CustomType.Parameter("platforms") @Nullable ConditionalAccessPolicyConditionsPlatforms platforms,
-        @CustomType.Parameter("signInRiskLevels") @Nullable List<String> signInRiskLevels,
-        @CustomType.Parameter("userRiskLevels") @Nullable List<String> userRiskLevels,
-        @CustomType.Parameter("users") ConditionalAccessPolicyConditionsUsers users) {
-        this.applications = applications;
-        this.clientAppTypes = clientAppTypes;
-        this.devices = devices;
-        this.locations = locations;
-        this.platforms = platforms;
-        this.signInRiskLevels = signInRiskLevels;
-        this.userRiskLevels = userRiskLevels;
-        this.users = users;
-    }
-
+    private ConditionalAccessPolicyConditions() {}
     /**
      * @return An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
      * 
@@ -142,7 +123,7 @@ public final class ConditionalAccessPolicyConditions {
     public static Builder builder(ConditionalAccessPolicyConditions defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private ConditionalAccessPolicyConditionsApplications applications;
         private List<String> clientAppTypes;
@@ -152,11 +133,7 @@ public final class ConditionalAccessPolicyConditions {
         private @Nullable List<String> signInRiskLevels;
         private @Nullable List<String> userRiskLevels;
         private ConditionalAccessPolicyConditionsUsers users;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditions defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applications = defaults.applications;
@@ -169,10 +146,12 @@ public final class ConditionalAccessPolicyConditions {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
         public Builder applications(ConditionalAccessPolicyConditionsApplications applications) {
             this.applications = Objects.requireNonNull(applications);
             return this;
         }
+        @CustomType.Setter
         public Builder clientAppTypes(List<String> clientAppTypes) {
             this.clientAppTypes = Objects.requireNonNull(clientAppTypes);
             return this;
@@ -180,18 +159,22 @@ public final class ConditionalAccessPolicyConditions {
         public Builder clientAppTypes(String... clientAppTypes) {
             return clientAppTypes(List.of(clientAppTypes));
         }
+        @CustomType.Setter
         public Builder devices(@Nullable ConditionalAccessPolicyConditionsDevices devices) {
             this.devices = devices;
             return this;
         }
+        @CustomType.Setter
         public Builder locations(@Nullable ConditionalAccessPolicyConditionsLocations locations) {
             this.locations = locations;
             return this;
         }
+        @CustomType.Setter
         public Builder platforms(@Nullable ConditionalAccessPolicyConditionsPlatforms platforms) {
             this.platforms = platforms;
             return this;
         }
+        @CustomType.Setter
         public Builder signInRiskLevels(@Nullable List<String> signInRiskLevels) {
             this.signInRiskLevels = signInRiskLevels;
             return this;
@@ -199,6 +182,7 @@ public final class ConditionalAccessPolicyConditions {
         public Builder signInRiskLevels(String... signInRiskLevels) {
             return signInRiskLevels(List.of(signInRiskLevels));
         }
+        @CustomType.Setter
         public Builder userRiskLevels(@Nullable List<String> userRiskLevels) {
             this.userRiskLevels = userRiskLevels;
             return this;
@@ -206,11 +190,22 @@ public final class ConditionalAccessPolicyConditions {
         public Builder userRiskLevels(String... userRiskLevels) {
             return userRiskLevels(List.of(userRiskLevels));
         }
+        @CustomType.Setter
         public Builder users(ConditionalAccessPolicyConditionsUsers users) {
             this.users = Objects.requireNonNull(users);
             return this;
-        }        public ConditionalAccessPolicyConditions build() {
-            return new ConditionalAccessPolicyConditions(applications, clientAppTypes, devices, locations, platforms, signInRiskLevels, userRiskLevels, users);
+        }
+        public ConditionalAccessPolicyConditions build() {
+            final var o = new ConditionalAccessPolicyConditions();
+            o.applications = applications;
+            o.clientAppTypes = clientAppTypes;
+            o.devices = devices;
+            o.locations = locations;
+            o.platforms = platforms;
+            o.signInRiskLevels = signInRiskLevels;
+            o.userRiskLevels = userRiskLevels;
+            o.users = users;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class ConditionalAccessPolicyConditionsPlatforms {
      * @return A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      * 
      */
-    private final @Nullable List<String> excludedPlatforms;
+    private @Nullable List<String> excludedPlatforms;
     /**
      * @return A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      * 
      */
-    private final List<String> includedPlatforms;
+    private List<String> includedPlatforms;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditionsPlatforms(
-        @CustomType.Parameter("excludedPlatforms") @Nullable List<String> excludedPlatforms,
-        @CustomType.Parameter("includedPlatforms") List<String> includedPlatforms) {
-        this.excludedPlatforms = excludedPlatforms;
-        this.includedPlatforms = includedPlatforms;
-    }
-
+    private ConditionalAccessPolicyConditionsPlatforms() {}
     /**
      * @return A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
      * 
@@ -52,21 +45,18 @@ public final class ConditionalAccessPolicyConditionsPlatforms {
     public static Builder builder(ConditionalAccessPolicyConditionsPlatforms defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedPlatforms;
         private List<String> includedPlatforms;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsPlatforms defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedPlatforms = defaults.excludedPlatforms;
     	      this.includedPlatforms = defaults.includedPlatforms;
         }
 
+        @CustomType.Setter
         public Builder excludedPlatforms(@Nullable List<String> excludedPlatforms) {
             this.excludedPlatforms = excludedPlatforms;
             return this;
@@ -74,14 +64,19 @@ public final class ConditionalAccessPolicyConditionsPlatforms {
         public Builder excludedPlatforms(String... excludedPlatforms) {
             return excludedPlatforms(List.of(excludedPlatforms));
         }
+        @CustomType.Setter
         public Builder includedPlatforms(List<String> includedPlatforms) {
             this.includedPlatforms = Objects.requireNonNull(includedPlatforms);
             return this;
         }
         public Builder includedPlatforms(String... includedPlatforms) {
             return includedPlatforms(List.of(includedPlatforms));
-        }        public ConditionalAccessPolicyConditionsPlatforms build() {
-            return new ConditionalAccessPolicyConditionsPlatforms(excludedPlatforms, includedPlatforms);
+        }
+        public ConditionalAccessPolicyConditionsPlatforms build() {
+            final var o = new ConditionalAccessPolicyConditionsPlatforms();
+            o.excludedPlatforms = excludedPlatforms;
+            o.includedPlatforms = includedPlatforms;
+            return o;
         }
     }
 }

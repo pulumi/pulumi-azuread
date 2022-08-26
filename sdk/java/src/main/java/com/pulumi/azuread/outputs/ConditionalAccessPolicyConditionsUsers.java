@@ -15,49 +15,34 @@ public final class ConditionalAccessPolicyConditionsUsers {
      * @return A list of group IDs excluded from scope of policy.
      * 
      */
-    private final @Nullable List<String> excludedGroups;
+    private @Nullable List<String> excludedGroups;
     /**
      * @return A list of role IDs excluded from scope of policy.
      * 
      */
-    private final @Nullable List<String> excludedRoles;
+    private @Nullable List<String> excludedRoles;
     /**
      * @return A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
      * 
      */
-    private final @Nullable List<String> excludedUsers;
+    private @Nullable List<String> excludedUsers;
     /**
      * @return A list of group IDs in scope of policy unless explicitly excluded.
      * 
      */
-    private final @Nullable List<String> includedGroups;
+    private @Nullable List<String> includedGroups;
     /**
      * @return A list of role IDs in scope of policy unless explicitly excluded.
      * 
      */
-    private final @Nullable List<String> includedRoles;
+    private @Nullable List<String> includedRoles;
     /**
      * @return A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      * 
      */
-    private final @Nullable List<String> includedUsers;
+    private @Nullable List<String> includedUsers;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditionsUsers(
-        @CustomType.Parameter("excludedGroups") @Nullable List<String> excludedGroups,
-        @CustomType.Parameter("excludedRoles") @Nullable List<String> excludedRoles,
-        @CustomType.Parameter("excludedUsers") @Nullable List<String> excludedUsers,
-        @CustomType.Parameter("includedGroups") @Nullable List<String> includedGroups,
-        @CustomType.Parameter("includedRoles") @Nullable List<String> includedRoles,
-        @CustomType.Parameter("includedUsers") @Nullable List<String> includedUsers) {
-        this.excludedGroups = excludedGroups;
-        this.excludedRoles = excludedRoles;
-        this.excludedUsers = excludedUsers;
-        this.includedGroups = includedGroups;
-        this.includedRoles = includedRoles;
-        this.includedUsers = includedUsers;
-    }
-
+    private ConditionalAccessPolicyConditionsUsers() {}
     /**
      * @return A list of group IDs excluded from scope of policy.
      * 
@@ -108,7 +93,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
     public static Builder builder(ConditionalAccessPolicyConditionsUsers defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedGroups;
         private @Nullable List<String> excludedRoles;
@@ -116,11 +101,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         private @Nullable List<String> includedGroups;
         private @Nullable List<String> includedRoles;
         private @Nullable List<String> includedUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsUsers defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedGroups = defaults.excludedGroups;
@@ -131,6 +112,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
     	      this.includedUsers = defaults.includedUsers;
         }
 
+        @CustomType.Setter
         public Builder excludedGroups(@Nullable List<String> excludedGroups) {
             this.excludedGroups = excludedGroups;
             return this;
@@ -138,6 +120,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         public Builder excludedGroups(String... excludedGroups) {
             return excludedGroups(List.of(excludedGroups));
         }
+        @CustomType.Setter
         public Builder excludedRoles(@Nullable List<String> excludedRoles) {
             this.excludedRoles = excludedRoles;
             return this;
@@ -145,6 +128,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         public Builder excludedRoles(String... excludedRoles) {
             return excludedRoles(List.of(excludedRoles));
         }
+        @CustomType.Setter
         public Builder excludedUsers(@Nullable List<String> excludedUsers) {
             this.excludedUsers = excludedUsers;
             return this;
@@ -152,6 +136,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         public Builder excludedUsers(String... excludedUsers) {
             return excludedUsers(List.of(excludedUsers));
         }
+        @CustomType.Setter
         public Builder includedGroups(@Nullable List<String> includedGroups) {
             this.includedGroups = includedGroups;
             return this;
@@ -159,6 +144,7 @@ public final class ConditionalAccessPolicyConditionsUsers {
         public Builder includedGroups(String... includedGroups) {
             return includedGroups(List.of(includedGroups));
         }
+        @CustomType.Setter
         public Builder includedRoles(@Nullable List<String> includedRoles) {
             this.includedRoles = includedRoles;
             return this;
@@ -166,14 +152,23 @@ public final class ConditionalAccessPolicyConditionsUsers {
         public Builder includedRoles(String... includedRoles) {
             return includedRoles(List.of(includedRoles));
         }
+        @CustomType.Setter
         public Builder includedUsers(@Nullable List<String> includedUsers) {
             this.includedUsers = includedUsers;
             return this;
         }
         public Builder includedUsers(String... includedUsers) {
             return includedUsers(List.of(includedUsers));
-        }        public ConditionalAccessPolicyConditionsUsers build() {
-            return new ConditionalAccessPolicyConditionsUsers(excludedGroups, excludedRoles, excludedUsers, includedGroups, includedRoles, includedUsers);
+        }
+        public ConditionalAccessPolicyConditionsUsers build() {
+            final var o = new ConditionalAccessPolicyConditionsUsers();
+            o.excludedGroups = excludedGroups;
+            o.excludedRoles = excludedRoles;
+            o.excludedUsers = excludedUsers;
+            o.includedGroups = includedGroups;
+            o.includedRoles = includedRoles;
+            o.includedUsers = includedUsers;
+            return o;
         }
     }
 }

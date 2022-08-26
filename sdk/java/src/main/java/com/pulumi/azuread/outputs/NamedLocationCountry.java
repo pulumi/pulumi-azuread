@@ -17,21 +17,14 @@ public final class NamedLocationCountry {
      * @return List of countries and/or regions in two-letter format specified by ISO 3166-2.
      * 
      */
-    private final List<String> countriesAndRegions;
+    private List<String> countriesAndRegions;
     /**
      * @return Whether IP addresses that don&#39;t map to a country or region should be included in the named location. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean includeUnknownCountriesAndRegions;
+    private @Nullable Boolean includeUnknownCountriesAndRegions;
 
-    @CustomType.Constructor
-    private NamedLocationCountry(
-        @CustomType.Parameter("countriesAndRegions") List<String> countriesAndRegions,
-        @CustomType.Parameter("includeUnknownCountriesAndRegions") @Nullable Boolean includeUnknownCountriesAndRegions) {
-        this.countriesAndRegions = countriesAndRegions;
-        this.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
-    }
-
+    private NamedLocationCountry() {}
     /**
      * @return List of countries and/or regions in two-letter format specified by ISO 3166-2.
      * 
@@ -54,21 +47,18 @@ public final class NamedLocationCountry {
     public static Builder builder(NamedLocationCountry defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> countriesAndRegions;
         private @Nullable Boolean includeUnknownCountriesAndRegions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NamedLocationCountry defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.countriesAndRegions = defaults.countriesAndRegions;
     	      this.includeUnknownCountriesAndRegions = defaults.includeUnknownCountriesAndRegions;
         }
 
+        @CustomType.Setter
         public Builder countriesAndRegions(List<String> countriesAndRegions) {
             this.countriesAndRegions = Objects.requireNonNull(countriesAndRegions);
             return this;
@@ -76,11 +66,16 @@ public final class NamedLocationCountry {
         public Builder countriesAndRegions(String... countriesAndRegions) {
             return countriesAndRegions(List.of(countriesAndRegions));
         }
+        @CustomType.Setter
         public Builder includeUnknownCountriesAndRegions(@Nullable Boolean includeUnknownCountriesAndRegions) {
             this.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
             return this;
-        }        public NamedLocationCountry build() {
-            return new NamedLocationCountry(countriesAndRegions, includeUnknownCountriesAndRegions);
+        }
+        public NamedLocationCountry build() {
+            final var o = new NamedLocationCountry();
+            o.countriesAndRegions = countriesAndRegions;
+            o.includeUnknownCountriesAndRegions = includeUnknownCountriesAndRegions;
+            return o;
         }
     }
 }

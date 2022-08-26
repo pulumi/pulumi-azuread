@@ -13,13 +13,9 @@ public final class GetServicePrincipalSamlSingleSignOn {
      * @return The relative URI the service provider would redirect to after completion of the single sign-on flow.
      * 
      */
-    private final String relayState;
+    private String relayState;
 
-    @CustomType.Constructor
-    private GetServicePrincipalSamlSingleSignOn(@CustomType.Parameter("relayState") String relayState) {
-        this.relayState = relayState;
-    }
-
+    private GetServicePrincipalSamlSingleSignOn() {}
     /**
      * @return The relative URI the service provider would redirect to after completion of the single sign-on flow.
      * 
@@ -35,24 +31,24 @@ public final class GetServicePrincipalSamlSingleSignOn {
     public static Builder builder(GetServicePrincipalSamlSingleSignOn defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String relayState;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalSamlSingleSignOn defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.relayState = defaults.relayState;
         }
 
+        @CustomType.Setter
         public Builder relayState(String relayState) {
             this.relayState = Objects.requireNonNull(relayState);
             return this;
-        }        public GetServicePrincipalSamlSingleSignOn build() {
-            return new GetServicePrincipalSamlSingleSignOn(relayState);
+        }
+        public GetServicePrincipalSamlSingleSignOn build() {
+            final var o = new GetServicePrincipalSamlSingleSignOn();
+            o.relayState = relayState;
+            return o;
         }
     }
 }

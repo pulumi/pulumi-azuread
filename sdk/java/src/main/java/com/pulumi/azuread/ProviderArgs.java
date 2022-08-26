@@ -178,6 +178,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The ID token for use when authenticating as a Service Principal using OpenID Connect.
+     * 
+     */
+    @Import(name="oidcToken")
+    private @Nullable Output<String> oidcToken;
+
+    /**
+     * @return The ID token for use when authenticating as a Service Principal using OpenID Connect.
+     * 
+     */
+    public Optional<Output<String>> oidcToken() {
+        return Optional.ofNullable(this.oidcToken);
+    }
+
+    /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      * 
      */
@@ -265,6 +280,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.msiEndpoint = $.msiEndpoint;
         this.oidcRequestToken = $.oidcRequestToken;
         this.oidcRequestUrl = $.oidcRequestUrl;
+        this.oidcToken = $.oidcToken;
         this.partnerId = $.partnerId;
         this.tenantId = $.tenantId;
         this.useCli = $.useCli;
@@ -508,6 +524,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder oidcRequestUrl(String oidcRequestUrl) {
             return oidcRequestUrl(Output.of(oidcRequestUrl));
+        }
+
+        /**
+         * @param oidcToken The ID token for use when authenticating as a Service Principal using OpenID Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcToken(@Nullable Output<String> oidcToken) {
+            $.oidcToken = oidcToken;
+            return this;
+        }
+
+        /**
+         * @param oidcToken The ID token for use when authenticating as a Service Principal using OpenID Connect.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder oidcToken(String oidcToken) {
+            return oidcToken(Output.of(oidcToken));
         }
 
         /**

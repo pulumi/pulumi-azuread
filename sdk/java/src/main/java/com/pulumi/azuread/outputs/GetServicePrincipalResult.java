@@ -21,48 +21,48 @@ public final class GetServicePrincipalResult {
      * @return Whether or not the service principal account is enabled.
      * 
      */
-    private final Boolean accountEnabled;
+    private Boolean accountEnabled;
     /**
      * @return A list of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
      * 
      */
-    private final List<String> alternativeNames;
+    private List<String> alternativeNames;
     /**
      * @return Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
      * 
      */
-    private final Boolean appRoleAssignmentRequired;
+    private Boolean appRoleAssignmentRequired;
     /**
      * @return A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
      * 
      */
-    private final Map<String,String> appRoleIds;
+    private Map<String,String> appRoleIds;
     /**
      * @return A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
-    private final List<GetServicePrincipalAppRole> appRoles;
+    private List<GetServicePrincipalAppRole> appRoles;
     /**
      * @return The application ID (client ID) of the application associated with this service principal.
      * 
      */
-    private final String applicationId;
+    private String applicationId;
     /**
      * @return The tenant ID where the associated application is registered.
      * 
      */
-    private final String applicationTenantId;
+    private String applicationTenantId;
     /**
      * @return Permission help text that appears in the admin app assignment and consent experiences.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Display name for the permission that appears in the admin consent and app assignment experiences.
      * 
      */
-    private final String displayName;
-    private final List<GetServicePrincipalFeatureTag> featureTags;
+    private String displayName;
+    private List<GetServicePrincipalFeatureTag> featureTags;
     /**
      * @return A `features` block as described below.
      * 
@@ -71,153 +71,94 @@ public final class GetServicePrincipalResult {
      * 
      */
     @Deprecated /* This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider */
-    private final List<GetServicePrincipalFeature> features;
+    private List<GetServicePrincipalFeature> features;
     /**
      * @return Home page or landing page of the associated application.
      * 
      */
-    private final String homepageUrl;
+    private String homepageUrl;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps.
      * 
      */
-    private final String loginUrl;
+    private String loginUrl;
     /**
      * @return The URL that will be used by Microsoft&#39;s authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
      * 
      */
-    private final String logoutUrl;
+    private String logoutUrl;
     /**
      * @return A free text field to capture information about the service principal, typically used for operational purposes.
      * 
      */
-    private final String notes;
+    private String notes;
     /**
      * @return A list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
      * 
      */
-    private final List<String> notificationEmailAddresses;
+    private List<String> notificationEmailAddresses;
     /**
      * @return A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
      * 
      */
-    private final Map<String,String> oauth2PermissionScopeIds;
+    private Map<String,String> oauth2PermissionScopeIds;
     /**
      * @return A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
      * 
      */
-    private final List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes;
+    private List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes;
     /**
      * @return The object ID of the service principal.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
      * 
      */
-    private final String preferredSingleSignOnMode;
+    private String preferredSingleSignOnMode;
     /**
      * @return A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
      * 
      */
-    private final List<String> redirectUris;
+    private List<String> redirectUris;
     /**
      * @return The URL where the service exposes SAML metadata for federation.
      * 
      */
-    private final String samlMetadataUrl;
+    private String samlMetadataUrl;
     /**
      * @return A `saml_single_sign_on` block as documented below.
      * 
      */
-    private final List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns;
+    private List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns;
     /**
      * @return A list of identifier URI(s), copied over from the associated application.
      * 
      */
-    private final List<String> servicePrincipalNames;
+    private List<String> servicePrincipalNames;
     /**
      * @return The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      * 
      */
-    private final String signInAudience;
+    private String signInAudience;
     /**
      * @return A list of tags applied to the service principal.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      * 
      */
-    private final String type;
+    private String type;
 
-    @CustomType.Constructor
-    private GetServicePrincipalResult(
-        @CustomType.Parameter("accountEnabled") Boolean accountEnabled,
-        @CustomType.Parameter("alternativeNames") List<String> alternativeNames,
-        @CustomType.Parameter("appRoleAssignmentRequired") Boolean appRoleAssignmentRequired,
-        @CustomType.Parameter("appRoleIds") Map<String,String> appRoleIds,
-        @CustomType.Parameter("appRoles") List<GetServicePrincipalAppRole> appRoles,
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("applicationTenantId") String applicationTenantId,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("featureTags") List<GetServicePrincipalFeatureTag> featureTags,
-        @CustomType.Parameter("features") List<GetServicePrincipalFeature> features,
-        @CustomType.Parameter("homepageUrl") String homepageUrl,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("loginUrl") String loginUrl,
-        @CustomType.Parameter("logoutUrl") String logoutUrl,
-        @CustomType.Parameter("notes") String notes,
-        @CustomType.Parameter("notificationEmailAddresses") List<String> notificationEmailAddresses,
-        @CustomType.Parameter("oauth2PermissionScopeIds") Map<String,String> oauth2PermissionScopeIds,
-        @CustomType.Parameter("oauth2PermissionScopes") List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("preferredSingleSignOnMode") String preferredSingleSignOnMode,
-        @CustomType.Parameter("redirectUris") List<String> redirectUris,
-        @CustomType.Parameter("samlMetadataUrl") String samlMetadataUrl,
-        @CustomType.Parameter("samlSingleSignOns") List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns,
-        @CustomType.Parameter("servicePrincipalNames") List<String> servicePrincipalNames,
-        @CustomType.Parameter("signInAudience") String signInAudience,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("type") String type) {
-        this.accountEnabled = accountEnabled;
-        this.alternativeNames = alternativeNames;
-        this.appRoleAssignmentRequired = appRoleAssignmentRequired;
-        this.appRoleIds = appRoleIds;
-        this.appRoles = appRoles;
-        this.applicationId = applicationId;
-        this.applicationTenantId = applicationTenantId;
-        this.description = description;
-        this.displayName = displayName;
-        this.featureTags = featureTags;
-        this.features = features;
-        this.homepageUrl = homepageUrl;
-        this.id = id;
-        this.loginUrl = loginUrl;
-        this.logoutUrl = logoutUrl;
-        this.notes = notes;
-        this.notificationEmailAddresses = notificationEmailAddresses;
-        this.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
-        this.oauth2PermissionScopes = oauth2PermissionScopes;
-        this.objectId = objectId;
-        this.preferredSingleSignOnMode = preferredSingleSignOnMode;
-        this.redirectUris = redirectUris;
-        this.samlMetadataUrl = samlMetadataUrl;
-        this.samlSingleSignOns = samlSingleSignOns;
-        this.servicePrincipalNames = servicePrincipalNames;
-        this.signInAudience = signInAudience;
-        this.tags = tags;
-        this.type = type;
-    }
-
+    private GetServicePrincipalResult() {}
     /**
      * @return Whether or not the service principal account is enabled.
      * 
@@ -422,7 +363,7 @@ public final class GetServicePrincipalResult {
     public static Builder builder(GetServicePrincipalResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean accountEnabled;
         private List<String> alternativeNames;
@@ -452,11 +393,7 @@ public final class GetServicePrincipalResult {
         private String signInAudience;
         private List<String> tags;
         private String type;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accountEnabled = defaults.accountEnabled;
@@ -489,10 +426,12 @@ public final class GetServicePrincipalResult {
     	      this.type = defaults.type;
         }
 
+        @CustomType.Setter
         public Builder accountEnabled(Boolean accountEnabled) {
             this.accountEnabled = Objects.requireNonNull(accountEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder alternativeNames(List<String> alternativeNames) {
             this.alternativeNames = Objects.requireNonNull(alternativeNames);
             return this;
@@ -500,14 +439,17 @@ public final class GetServicePrincipalResult {
         public Builder alternativeNames(String... alternativeNames) {
             return alternativeNames(List.of(alternativeNames));
         }
+        @CustomType.Setter
         public Builder appRoleAssignmentRequired(Boolean appRoleAssignmentRequired) {
             this.appRoleAssignmentRequired = Objects.requireNonNull(appRoleAssignmentRequired);
             return this;
         }
+        @CustomType.Setter
         public Builder appRoleIds(Map<String,String> appRoleIds) {
             this.appRoleIds = Objects.requireNonNull(appRoleIds);
             return this;
         }
+        @CustomType.Setter
         public Builder appRoles(List<GetServicePrincipalAppRole> appRoles) {
             this.appRoles = Objects.requireNonNull(appRoles);
             return this;
@@ -515,22 +457,27 @@ public final class GetServicePrincipalResult {
         public Builder appRoles(GetServicePrincipalAppRole... appRoles) {
             return appRoles(List.of(appRoles));
         }
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder applicationTenantId(String applicationTenantId) {
             this.applicationTenantId = Objects.requireNonNull(applicationTenantId);
             return this;
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder featureTags(List<GetServicePrincipalFeatureTag> featureTags) {
             this.featureTags = Objects.requireNonNull(featureTags);
             return this;
@@ -538,6 +485,7 @@ public final class GetServicePrincipalResult {
         public Builder featureTags(GetServicePrincipalFeatureTag... featureTags) {
             return featureTags(List.of(featureTags));
         }
+        @CustomType.Setter
         public Builder features(List<GetServicePrincipalFeature> features) {
             this.features = Objects.requireNonNull(features);
             return this;
@@ -545,26 +493,32 @@ public final class GetServicePrincipalResult {
         public Builder features(GetServicePrincipalFeature... features) {
             return features(List.of(features));
         }
+        @CustomType.Setter
         public Builder homepageUrl(String homepageUrl) {
             this.homepageUrl = Objects.requireNonNull(homepageUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder loginUrl(String loginUrl) {
             this.loginUrl = Objects.requireNonNull(loginUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder logoutUrl(String logoutUrl) {
             this.logoutUrl = Objects.requireNonNull(logoutUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder notes(String notes) {
             this.notes = Objects.requireNonNull(notes);
             return this;
         }
+        @CustomType.Setter
         public Builder notificationEmailAddresses(List<String> notificationEmailAddresses) {
             this.notificationEmailAddresses = Objects.requireNonNull(notificationEmailAddresses);
             return this;
@@ -572,10 +526,12 @@ public final class GetServicePrincipalResult {
         public Builder notificationEmailAddresses(String... notificationEmailAddresses) {
             return notificationEmailAddresses(List.of(notificationEmailAddresses));
         }
+        @CustomType.Setter
         public Builder oauth2PermissionScopeIds(Map<String,String> oauth2PermissionScopeIds) {
             this.oauth2PermissionScopeIds = Objects.requireNonNull(oauth2PermissionScopeIds);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2PermissionScopes(List<GetServicePrincipalOauth2PermissionScope> oauth2PermissionScopes) {
             this.oauth2PermissionScopes = Objects.requireNonNull(oauth2PermissionScopes);
             return this;
@@ -583,14 +539,17 @@ public final class GetServicePrincipalResult {
         public Builder oauth2PermissionScopes(GetServicePrincipalOauth2PermissionScope... oauth2PermissionScopes) {
             return oauth2PermissionScopes(List.of(oauth2PermissionScopes));
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder preferredSingleSignOnMode(String preferredSingleSignOnMode) {
             this.preferredSingleSignOnMode = Objects.requireNonNull(preferredSingleSignOnMode);
             return this;
         }
+        @CustomType.Setter
         public Builder redirectUris(List<String> redirectUris) {
             this.redirectUris = Objects.requireNonNull(redirectUris);
             return this;
@@ -598,10 +557,12 @@ public final class GetServicePrincipalResult {
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
         }
+        @CustomType.Setter
         public Builder samlMetadataUrl(String samlMetadataUrl) {
             this.samlMetadataUrl = Objects.requireNonNull(samlMetadataUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder samlSingleSignOns(List<GetServicePrincipalSamlSingleSignOn> samlSingleSignOns) {
             this.samlSingleSignOns = Objects.requireNonNull(samlSingleSignOns);
             return this;
@@ -609,6 +570,7 @@ public final class GetServicePrincipalResult {
         public Builder samlSingleSignOns(GetServicePrincipalSamlSingleSignOn... samlSingleSignOns) {
             return samlSingleSignOns(List.of(samlSingleSignOns));
         }
+        @CustomType.Setter
         public Builder servicePrincipalNames(List<String> servicePrincipalNames) {
             this.servicePrincipalNames = Objects.requireNonNull(servicePrincipalNames);
             return this;
@@ -616,10 +578,12 @@ public final class GetServicePrincipalResult {
         public Builder servicePrincipalNames(String... servicePrincipalNames) {
             return servicePrincipalNames(List.of(servicePrincipalNames));
         }
+        @CustomType.Setter
         public Builder signInAudience(String signInAudience) {
             this.signInAudience = Objects.requireNonNull(signInAudience);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -627,11 +591,42 @@ public final class GetServicePrincipalResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder type(String type) {
             this.type = Objects.requireNonNull(type);
             return this;
-        }        public GetServicePrincipalResult build() {
-            return new GetServicePrincipalResult(accountEnabled, alternativeNames, appRoleAssignmentRequired, appRoleIds, appRoles, applicationId, applicationTenantId, description, displayName, featureTags, features, homepageUrl, id, loginUrl, logoutUrl, notes, notificationEmailAddresses, oauth2PermissionScopeIds, oauth2PermissionScopes, objectId, preferredSingleSignOnMode, redirectUris, samlMetadataUrl, samlSingleSignOns, servicePrincipalNames, signInAudience, tags, type);
+        }
+        public GetServicePrincipalResult build() {
+            final var o = new GetServicePrincipalResult();
+            o.accountEnabled = accountEnabled;
+            o.alternativeNames = alternativeNames;
+            o.appRoleAssignmentRequired = appRoleAssignmentRequired;
+            o.appRoleIds = appRoleIds;
+            o.appRoles = appRoles;
+            o.applicationId = applicationId;
+            o.applicationTenantId = applicationTenantId;
+            o.description = description;
+            o.displayName = displayName;
+            o.featureTags = featureTags;
+            o.features = features;
+            o.homepageUrl = homepageUrl;
+            o.id = id;
+            o.loginUrl = loginUrl;
+            o.logoutUrl = logoutUrl;
+            o.notes = notes;
+            o.notificationEmailAddresses = notificationEmailAddresses;
+            o.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
+            o.oauth2PermissionScopes = oauth2PermissionScopes;
+            o.objectId = objectId;
+            o.preferredSingleSignOnMode = preferredSingleSignOnMode;
+            o.redirectUris = redirectUris;
+            o.samlMetadataUrl = samlMetadataUrl;
+            o.samlSingleSignOns = samlSingleSignOns;
+            o.servicePrincipalNames = servicePrincipalNames;
+            o.signInAudience = signInAudience;
+            o.tags = tags;
+            o.type = type;
+            return o;
         }
     }
 }

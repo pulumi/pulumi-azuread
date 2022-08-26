@@ -16,63 +16,44 @@ public final class ServicePrincipalOauth2PermissionScope {
      * @return Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      * 
      */
-    private final @Nullable String adminConsentDescription;
+    private @Nullable String adminConsentDescription;
     /**
      * @return Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
      * 
      */
-    private final @Nullable String adminConsentDisplayName;
+    private @Nullable String adminConsentDisplayName;
     /**
      * @return Specifies whether the permission scope is enabled.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The unique identifier of the delegated permission.
      * 
      */
-    private final @Nullable String id;
+    private @Nullable String id;
     /**
      * @return Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
      * 
      */
-    private final @Nullable String type;
+    private @Nullable String type;
     /**
      * @return Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
      * 
      */
-    private final @Nullable String userConsentDescription;
+    private @Nullable String userConsentDescription;
     /**
      * @return Display name for the delegated permission that appears in the end user consent experience.
      * 
      */
-    private final @Nullable String userConsentDisplayName;
+    private @Nullable String userConsentDisplayName;
     /**
      * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ServicePrincipalOauth2PermissionScope(
-        @CustomType.Parameter("adminConsentDescription") @Nullable String adminConsentDescription,
-        @CustomType.Parameter("adminConsentDisplayName") @Nullable String adminConsentDisplayName,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") @Nullable String id,
-        @CustomType.Parameter("type") @Nullable String type,
-        @CustomType.Parameter("userConsentDescription") @Nullable String userConsentDescription,
-        @CustomType.Parameter("userConsentDisplayName") @Nullable String userConsentDisplayName,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.adminConsentDescription = adminConsentDescription;
-        this.adminConsentDisplayName = adminConsentDisplayName;
-        this.enabled = enabled;
-        this.id = id;
-        this.type = type;
-        this.userConsentDescription = userConsentDescription;
-        this.userConsentDisplayName = userConsentDisplayName;
-        this.value = value;
-    }
-
+    private ServicePrincipalOauth2PermissionScope() {}
     /**
      * @return Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
      * 
@@ -137,7 +118,7 @@ public final class ServicePrincipalOauth2PermissionScope {
     public static Builder builder(ServicePrincipalOauth2PermissionScope defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String adminConsentDescription;
         private @Nullable String adminConsentDisplayName;
@@ -147,11 +128,7 @@ public final class ServicePrincipalOauth2PermissionScope {
         private @Nullable String userConsentDescription;
         private @Nullable String userConsentDisplayName;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePrincipalOauth2PermissionScope defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminConsentDescription = defaults.adminConsentDescription;
@@ -164,39 +141,57 @@ public final class ServicePrincipalOauth2PermissionScope {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder adminConsentDescription(@Nullable String adminConsentDescription) {
             this.adminConsentDescription = adminConsentDescription;
             return this;
         }
+        @CustomType.Setter
         public Builder adminConsentDisplayName(@Nullable String adminConsentDisplayName) {
             this.adminConsentDisplayName = adminConsentDisplayName;
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(@Nullable String id) {
             this.id = id;
             return this;
         }
+        @CustomType.Setter
         public Builder type(@Nullable String type) {
             this.type = type;
             return this;
         }
+        @CustomType.Setter
         public Builder userConsentDescription(@Nullable String userConsentDescription) {
             this.userConsentDescription = userConsentDescription;
             return this;
         }
+        @CustomType.Setter
         public Builder userConsentDisplayName(@Nullable String userConsentDisplayName) {
             this.userConsentDisplayName = userConsentDisplayName;
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ServicePrincipalOauth2PermissionScope build() {
-            return new ServicePrincipalOauth2PermissionScope(adminConsentDescription, adminConsentDisplayName, enabled, id, type, userConsentDescription, userConsentDisplayName, value);
+        }
+        public ServicePrincipalOauth2PermissionScope build() {
+            final var o = new ServicePrincipalOauth2PermissionScope();
+            o.adminConsentDescription = adminConsentDescription;
+            o.adminConsentDisplayName = adminConsentDisplayName;
+            o.enabled = enabled;
+            o.id = id;
+            o.type = type;
+            o.userConsentDescription = userConsentDescription;
+            o.userConsentDisplayName = userConsentDisplayName;
+            o.value = value;
+            return o;
         }
     }
 }

@@ -13,35 +13,24 @@ public final class GetClientConfigResult {
      * @return The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
      * 
      */
-    private final String clientId;
+    private String clientId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The object ID of the authenticated principal.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return The tenant ID of the authenticated principal.
      * 
      */
-    private final String tenantId;
+    private String tenantId;
 
-    @CustomType.Constructor
-    private GetClientConfigResult(
-        @CustomType.Parameter("clientId") String clientId,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("tenantId") String tenantId) {
-        this.clientId = clientId;
-        this.id = id;
-        this.objectId = objectId;
-        this.tenantId = tenantId;
-    }
-
+    private GetClientConfigResult() {}
     /**
      * @return The client ID (application ID) linked to the authenticated principal, or the application used for delegated authentication.
      * 
@@ -78,17 +67,13 @@ public final class GetClientConfigResult {
     public static Builder builder(GetClientConfigResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String clientId;
         private String id;
         private String objectId;
         private String tenantId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetClientConfigResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.clientId = defaults.clientId;
@@ -97,23 +82,33 @@ public final class GetClientConfigResult {
     	      this.tenantId = defaults.tenantId;
         }
 
+        @CustomType.Setter
         public Builder clientId(String clientId) {
             this.clientId = Objects.requireNonNull(clientId);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder tenantId(String tenantId) {
             this.tenantId = Objects.requireNonNull(tenantId);
             return this;
-        }        public GetClientConfigResult build() {
-            return new GetClientConfigResult(clientId, id, objectId, tenantId);
+        }
+        public GetClientConfigResult build() {
+            final var o = new GetClientConfigResult();
+            o.clientId = clientId;
+            o.id = id;
+            o.objectId = objectId;
+            o.tenantId = tenantId;
+            return o;
         }
     }
 }

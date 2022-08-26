@@ -137,6 +137,16 @@ namespace Pulumi.AzureAD
             set => _oidcRequestUrl.Set(value);
         }
 
+        private static readonly __Value<string?> _oidcToken = new __Value<string?>(() => __config.Get("oidcToken"));
+        /// <summary>
+        /// The ID token for use when authenticating as a Service Principal using OpenID Connect.
+        /// </summary>
+        public static string? OidcToken
+        {
+            get => _oidcToken.Get();
+            set => _oidcToken.Set(value);
+        }
+
         private static readonly __Value<string?> _partnerId = new __Value<string?>(() => __config.Get("partnerId"));
         /// <summary>
         /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution

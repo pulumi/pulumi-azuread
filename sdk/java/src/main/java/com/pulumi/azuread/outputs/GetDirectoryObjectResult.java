@@ -5,23 +5,19 @@ package com.pulumi.azuread.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.String;
-import java.util.Map;
 import java.util.Objects;
 
 @CustomType
-public final class GetApplicationPublishedAppIdsResult {
+public final class GetDirectoryObjectResult {
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
     private String id;
-    /**
-     * @return A map of application names to application IDs.
-     * 
-     */
-    private Map<String,String> result;
+    private String objectId;
+    private String type;
 
-    private GetApplicationPublishedAppIdsResult() {}
+    private GetDirectoryObjectResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -29,30 +25,31 @@ public final class GetApplicationPublishedAppIdsResult {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A map of application names to application IDs.
-     * 
-     */
-    public Map<String,String> result() {
-        return this.result;
+    public String objectId() {
+        return this.objectId;
+    }
+    public String type() {
+        return this.type;
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
-    public static Builder builder(GetApplicationPublishedAppIdsResult defaults) {
+    public static Builder builder(GetDirectoryObjectResult defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private String id;
-        private Map<String,String> result;
+        private String objectId;
+        private String type;
         public Builder() {}
-        public Builder(GetApplicationPublishedAppIdsResult defaults) {
+        public Builder(GetDirectoryObjectResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
-    	      this.result = defaults.result;
+    	      this.objectId = defaults.objectId;
+    	      this.type = defaults.type;
         }
 
         @CustomType.Setter
@@ -61,14 +58,20 @@ public final class GetApplicationPublishedAppIdsResult {
             return this;
         }
         @CustomType.Setter
-        public Builder result(Map<String,String> result) {
-            this.result = Objects.requireNonNull(result);
+        public Builder objectId(String objectId) {
+            this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
-        public GetApplicationPublishedAppIdsResult build() {
-            final var o = new GetApplicationPublishedAppIdsResult();
+        @CustomType.Setter
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
+            return this;
+        }
+        public GetDirectoryObjectResult build() {
+            final var o = new GetDirectoryObjectResult();
             o.id = id;
-            o.result = result;
+            o.objectId = objectId;
+            o.type = type;
             return o;
         }
     }
