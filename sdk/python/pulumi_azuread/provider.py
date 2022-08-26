@@ -24,6 +24,7 @@ class ProviderArgs:
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  oidc_request_token: Optional[pulumi.Input[str]] = None,
                  oidc_request_url: Optional[pulumi.Input[str]] = None,
+                 oidc_token: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  use_cli: Optional[pulumi.Input[bool]] = None,
@@ -46,6 +47,7 @@ class ProviderArgs:
                Connect.
         :param pulumi.Input[str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
                using OpenID Connect.
+        :param pulumi.Input[str] oidc_token: The ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity
         :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication
@@ -76,6 +78,8 @@ class ProviderArgs:
             pulumi.set(__self__, "oidc_request_token", oidc_request_token)
         if oidc_request_url is not None:
             pulumi.set(__self__, "oidc_request_url", oidc_request_url)
+        if oidc_token is not None:
+            pulumi.set(__self__, "oidc_token", oidc_token)
         if partner_id is not None:
             pulumi.set(__self__, "partner_id", partner_id)
         if tenant_id is not None:
@@ -215,6 +219,18 @@ class ProviderArgs:
         pulumi.set(self, "oidc_request_url", value)
 
     @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID token for use when authenticating as a Service Principal using OpenID Connect.
+        """
+        return pulumi.get(self, "oidc_token")
+
+    @oidc_token.setter
+    def oidc_token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oidc_token", value)
+
+    @property
     @pulumi.getter(name="partnerId")
     def partner_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -290,6 +306,7 @@ class Provider(pulumi.ProviderResource):
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  oidc_request_token: Optional[pulumi.Input[str]] = None,
                  oidc_request_url: Optional[pulumi.Input[str]] = None,
+                 oidc_token: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  use_cli: Optional[pulumi.Input[bool]] = None,
@@ -319,6 +336,7 @@ class Provider(pulumi.ProviderResource):
                Connect.
         :param pulumi.Input[str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal
                using OpenID Connect.
+        :param pulumi.Input[str] oidc_token: The ID token for use when authenticating as a Service Principal using OpenID Connect.
         :param pulumi.Input[str] partner_id: A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         :param pulumi.Input[str] tenant_id: The Tenant ID which should be used. Works with all authentication methods except Managed Identity
         :param pulumi.Input[bool] use_cli: Allow Azure CLI to be used for Authentication
@@ -362,6 +380,7 @@ class Provider(pulumi.ProviderResource):
                  msi_endpoint: Optional[pulumi.Input[str]] = None,
                  oidc_request_token: Optional[pulumi.Input[str]] = None,
                  oidc_request_url: Optional[pulumi.Input[str]] = None,
+                 oidc_token: Optional[pulumi.Input[str]] = None,
                  partner_id: Optional[pulumi.Input[str]] = None,
                  tenant_id: Optional[pulumi.Input[str]] = None,
                  use_cli: Optional[pulumi.Input[bool]] = None,
@@ -390,6 +409,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["msi_endpoint"] = msi_endpoint
             __props__.__dict__["oidc_request_token"] = oidc_request_token
             __props__.__dict__["oidc_request_url"] = oidc_request_url
+            __props__.__dict__["oidc_token"] = oidc_token
             __props__.__dict__["partner_id"] = partner_id
             __props__.__dict__["tenant_id"] = tenant_id
             __props__.__dict__["use_cli"] = pulumi.Output.from_input(use_cli).apply(pulumi.runtime.to_json) if use_cli is not None else None
@@ -479,6 +499,14 @@ class Provider(pulumi.ProviderResource):
         using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_url")
+
+    @property
+    @pulumi.getter(name="oidcToken")
+    def oidc_token(self) -> pulumi.Output[Optional[str]]:
+        """
+        The ID token for use when authenticating as a Service Principal using OpenID Connect.
+        """
+        return pulumi.get(self, "oidc_token")
 
     @property
     @pulumi.getter(name="partnerId")

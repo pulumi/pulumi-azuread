@@ -13,21 +13,14 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
      * @return Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
      * 
      */
-    private final String mode;
+    private String mode;
     /**
      * @return Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
      * 
      */
-    private final String rule;
+    private String rule;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditionsDevicesFilter(
-        @CustomType.Parameter("mode") String mode,
-        @CustomType.Parameter("rule") String rule) {
-        this.mode = mode;
-        this.rule = rule;
-    }
-
+    private ConditionalAccessPolicyConditionsDevicesFilter() {}
     /**
      * @return Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
      * 
@@ -50,30 +43,32 @@ public final class ConditionalAccessPolicyConditionsDevicesFilter {
     public static Builder builder(ConditionalAccessPolicyConditionsDevicesFilter defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String mode;
         private String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsDevicesFilter defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.mode = defaults.mode;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder mode(String mode) {
             this.mode = Objects.requireNonNull(mode);
             return this;
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
-        }        public ConditionalAccessPolicyConditionsDevicesFilter build() {
-            return new ConditionalAccessPolicyConditionsDevicesFilter(mode, rule);
+        }
+        public ConditionalAccessPolicyConditionsDevicesFilter build() {
+            final var o = new ConditionalAccessPolicyConditionsDevicesFilter();
+            o.mode = mode;
+            o.rule = rule;
+            return o;
         }
     }
 }

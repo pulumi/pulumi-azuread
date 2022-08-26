@@ -15,35 +15,24 @@ public final class ConditionalAccessPolicyGrantControls {
      * @return List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
      */
-    private final List<String> builtInControls;
+    private List<String> builtInControls;
     /**
      * @return List of custom controls IDs required by the policy.
      * 
      */
-    private final @Nullable List<String> customAuthenticationFactors;
+    private @Nullable List<String> customAuthenticationFactors;
     /**
      * @return Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
      * 
      */
-    private final String operator;
+    private String operator;
     /**
      * @return List of terms of use IDs required by the policy.
      * 
      */
-    private final @Nullable List<String> termsOfUses;
+    private @Nullable List<String> termsOfUses;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyGrantControls(
-        @CustomType.Parameter("builtInControls") List<String> builtInControls,
-        @CustomType.Parameter("customAuthenticationFactors") @Nullable List<String> customAuthenticationFactors,
-        @CustomType.Parameter("operator") String operator,
-        @CustomType.Parameter("termsOfUses") @Nullable List<String> termsOfUses) {
-        this.builtInControls = builtInControls;
-        this.customAuthenticationFactors = customAuthenticationFactors;
-        this.operator = operator;
-        this.termsOfUses = termsOfUses;
-    }
-
+    private ConditionalAccessPolicyGrantControls() {}
     /**
      * @return List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
      * 
@@ -80,17 +69,13 @@ public final class ConditionalAccessPolicyGrantControls {
     public static Builder builder(ConditionalAccessPolicyGrantControls defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> builtInControls;
         private @Nullable List<String> customAuthenticationFactors;
         private String operator;
         private @Nullable List<String> termsOfUses;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyGrantControls defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.builtInControls = defaults.builtInControls;
@@ -99,6 +84,7 @@ public final class ConditionalAccessPolicyGrantControls {
     	      this.termsOfUses = defaults.termsOfUses;
         }
 
+        @CustomType.Setter
         public Builder builtInControls(List<String> builtInControls) {
             this.builtInControls = Objects.requireNonNull(builtInControls);
             return this;
@@ -106,6 +92,7 @@ public final class ConditionalAccessPolicyGrantControls {
         public Builder builtInControls(String... builtInControls) {
             return builtInControls(List.of(builtInControls));
         }
+        @CustomType.Setter
         public Builder customAuthenticationFactors(@Nullable List<String> customAuthenticationFactors) {
             this.customAuthenticationFactors = customAuthenticationFactors;
             return this;
@@ -113,18 +100,26 @@ public final class ConditionalAccessPolicyGrantControls {
         public Builder customAuthenticationFactors(String... customAuthenticationFactors) {
             return customAuthenticationFactors(List.of(customAuthenticationFactors));
         }
+        @CustomType.Setter
         public Builder operator(String operator) {
             this.operator = Objects.requireNonNull(operator);
             return this;
         }
+        @CustomType.Setter
         public Builder termsOfUses(@Nullable List<String> termsOfUses) {
             this.termsOfUses = termsOfUses;
             return this;
         }
         public Builder termsOfUses(String... termsOfUses) {
             return termsOfUses(List.of(termsOfUses));
-        }        public ConditionalAccessPolicyGrantControls build() {
-            return new ConditionalAccessPolicyGrantControls(builtInControls, customAuthenticationFactors, operator, termsOfUses);
+        }
+        public ConditionalAccessPolicyGrantControls build() {
+            final var o = new ConditionalAccessPolicyGrantControls();
+            o.builtInControls = builtInControls;
+            o.customAuthenticationFactors = customAuthenticationFactors;
+            o.operator = operator;
+            o.termsOfUses = termsOfUses;
+            return o;
         }
     }
 }

@@ -13,47 +13,28 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetGroupsResult {
-    private final String displayNamePrefix;
+    private String displayNamePrefix;
     /**
      * @return The display names of the groups.
      * 
      */
-    private final List<String> displayNames;
+    private List<String> displayNames;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean ignoreMissing;
-    private final Boolean mailEnabled;
+    private String id;
+    private @Nullable Boolean ignoreMissing;
+    private Boolean mailEnabled;
     /**
      * @return The object IDs of the groups.
      * 
      */
-    private final List<String> objectIds;
-    private final @Nullable Boolean returnAll;
-    private final Boolean securityEnabled;
+    private List<String> objectIds;
+    private @Nullable Boolean returnAll;
+    private Boolean securityEnabled;
 
-    @CustomType.Constructor
-    private GetGroupsResult(
-        @CustomType.Parameter("displayNamePrefix") String displayNamePrefix,
-        @CustomType.Parameter("displayNames") List<String> displayNames,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ignoreMissing") @Nullable Boolean ignoreMissing,
-        @CustomType.Parameter("mailEnabled") Boolean mailEnabled,
-        @CustomType.Parameter("objectIds") List<String> objectIds,
-        @CustomType.Parameter("returnAll") @Nullable Boolean returnAll,
-        @CustomType.Parameter("securityEnabled") Boolean securityEnabled) {
-        this.displayNamePrefix = displayNamePrefix;
-        this.displayNames = displayNames;
-        this.id = id;
-        this.ignoreMissing = ignoreMissing;
-        this.mailEnabled = mailEnabled;
-        this.objectIds = objectIds;
-        this.returnAll = returnAll;
-        this.securityEnabled = securityEnabled;
-    }
-
+    private GetGroupsResult() {}
     public String displayNamePrefix() {
         return this.displayNamePrefix;
     }
@@ -98,7 +79,7 @@ public final class GetGroupsResult {
     public static Builder builder(GetGroupsResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String displayNamePrefix;
         private List<String> displayNames;
@@ -108,11 +89,7 @@ public final class GetGroupsResult {
         private List<String> objectIds;
         private @Nullable Boolean returnAll;
         private Boolean securityEnabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupsResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.displayNamePrefix = defaults.displayNamePrefix;
@@ -125,10 +102,12 @@ public final class GetGroupsResult {
     	      this.securityEnabled = defaults.securityEnabled;
         }
 
+        @CustomType.Setter
         public Builder displayNamePrefix(String displayNamePrefix) {
             this.displayNamePrefix = Objects.requireNonNull(displayNamePrefix);
             return this;
         }
+        @CustomType.Setter
         public Builder displayNames(List<String> displayNames) {
             this.displayNames = Objects.requireNonNull(displayNames);
             return this;
@@ -136,18 +115,22 @@ public final class GetGroupsResult {
         public Builder displayNames(String... displayNames) {
             return displayNames(List.of(displayNames));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreMissing(@Nullable Boolean ignoreMissing) {
             this.ignoreMissing = ignoreMissing;
             return this;
         }
+        @CustomType.Setter
         public Builder mailEnabled(Boolean mailEnabled) {
             this.mailEnabled = Objects.requireNonNull(mailEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
             this.objectIds = Objects.requireNonNull(objectIds);
             return this;
@@ -155,15 +138,27 @@ public final class GetGroupsResult {
         public Builder objectIds(String... objectIds) {
             return objectIds(List.of(objectIds));
         }
+        @CustomType.Setter
         public Builder returnAll(@Nullable Boolean returnAll) {
             this.returnAll = returnAll;
             return this;
         }
+        @CustomType.Setter
         public Builder securityEnabled(Boolean securityEnabled) {
             this.securityEnabled = Objects.requireNonNull(securityEnabled);
             return this;
-        }        public GetGroupsResult build() {
-            return new GetGroupsResult(displayNamePrefix, displayNames, id, ignoreMissing, mailEnabled, objectIds, returnAll, securityEnabled);
+        }
+        public GetGroupsResult build() {
+            final var o = new GetGroupsResult();
+            o.displayNamePrefix = displayNamePrefix;
+            o.displayNames = displayNames;
+            o.id = id;
+            o.ignoreMissing = ignoreMissing;
+            o.mailEnabled = mailEnabled;
+            o.objectIds = objectIds;
+            o.returnAll = returnAll;
+            o.securityEnabled = securityEnabled;
+            return o;
         }
     }
 }

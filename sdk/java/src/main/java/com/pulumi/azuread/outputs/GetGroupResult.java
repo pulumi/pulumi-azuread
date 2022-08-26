@@ -16,203 +16,144 @@ public final class GetGroupResult {
      * @return Indicates whether this group can be assigned to an Azure Active Directory role.
      * 
      */
-    private final Boolean assignableToRole;
+    private Boolean assignableToRole;
     /**
      * @return Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
      * 
      */
-    private final Boolean autoSubscribeNewMembers;
+    private Boolean autoSubscribeNewMembers;
     /**
      * @return A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
      * 
      */
-    private final List<String> behaviors;
+    private List<String> behaviors;
     /**
      * @return The optional description of the group.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return The display name for the group.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return A `dynamic_membership` block as documented below.
      * 
      */
-    private final List<GetGroupDynamicMembership> dynamicMemberships;
+    private List<GetGroupDynamicMembership> dynamicMemberships;
     /**
      * @return Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
      * 
      */
-    private final Boolean externalSendersAllowed;
+    private Boolean externalSendersAllowed;
     /**
      * @return Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
      * 
      */
-    private final Boolean hideFromAddressLists;
+    private Boolean hideFromAddressLists;
     /**
      * @return Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
      * 
      */
-    private final Boolean hideFromOutlookClients;
+    private Boolean hideFromOutlookClients;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The SMTP address for the group.
      * 
      */
-    private final String mail;
+    private String mail;
     /**
      * @return Whether the group is mail-enabled.
      * 
      */
-    private final Boolean mailEnabled;
+    private Boolean mailEnabled;
     /**
      * @return The mail alias for the group, unique in the organisation.
      * 
      */
-    private final String mailNickname;
+    private String mailNickname;
     /**
      * @return List of object IDs of the group members.
      * 
      */
-    private final List<String> members;
+    private List<String> members;
     /**
      * @return The object ID of the group.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesDomainName;
+    private String onpremisesDomainName;
     /**
      * @return The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesNetbiosName;
+    private String onpremisesNetbiosName;
     /**
      * @return The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesSamAccountName;
+    private String onpremisesSamAccountName;
     /**
      * @return The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
-    private final String onpremisesSecurityIdentifier;
+    private String onpremisesSecurityIdentifier;
     /**
      * @return Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
      * 
      */
-    private final Boolean onpremisesSyncEnabled;
+    private Boolean onpremisesSyncEnabled;
     /**
      * @return List of object IDs of the group owners.
      * 
      */
-    private final List<String> owners;
+    private List<String> owners;
     /**
      * @return The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
      * 
      */
-    private final String preferredLanguage;
+    private String preferredLanguage;
     /**
      * @return A list of provisioning options for a Microsoft 365 group, such as `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details.
      * 
      */
-    private final List<String> provisioningOptions;
+    private List<String> provisioningOptions;
     /**
      * @return List of email addresses for the group that direct to the same group mailbox.
      * 
      */
-    private final List<String> proxyAddresses;
+    private List<String> proxyAddresses;
     /**
      * @return Whether the group is a security group.
      * 
      */
-    private final Boolean securityEnabled;
+    private Boolean securityEnabled;
     /**
      * @return The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
      * 
      */
-    private final String theme;
+    private String theme;
     /**
      * @return A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
      * 
      */
-    private final List<String> types;
+    private List<String> types;
     /**
      * @return The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
      * 
      */
-    private final String visibility;
+    private String visibility;
 
-    @CustomType.Constructor
-    private GetGroupResult(
-        @CustomType.Parameter("assignableToRole") Boolean assignableToRole,
-        @CustomType.Parameter("autoSubscribeNewMembers") Boolean autoSubscribeNewMembers,
-        @CustomType.Parameter("behaviors") List<String> behaviors,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("dynamicMemberships") List<GetGroupDynamicMembership> dynamicMemberships,
-        @CustomType.Parameter("externalSendersAllowed") Boolean externalSendersAllowed,
-        @CustomType.Parameter("hideFromAddressLists") Boolean hideFromAddressLists,
-        @CustomType.Parameter("hideFromOutlookClients") Boolean hideFromOutlookClients,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("mail") String mail,
-        @CustomType.Parameter("mailEnabled") Boolean mailEnabled,
-        @CustomType.Parameter("mailNickname") String mailNickname,
-        @CustomType.Parameter("members") List<String> members,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("onpremisesDomainName") String onpremisesDomainName,
-        @CustomType.Parameter("onpremisesNetbiosName") String onpremisesNetbiosName,
-        @CustomType.Parameter("onpremisesSamAccountName") String onpremisesSamAccountName,
-        @CustomType.Parameter("onpremisesSecurityIdentifier") String onpremisesSecurityIdentifier,
-        @CustomType.Parameter("onpremisesSyncEnabled") Boolean onpremisesSyncEnabled,
-        @CustomType.Parameter("owners") List<String> owners,
-        @CustomType.Parameter("preferredLanguage") String preferredLanguage,
-        @CustomType.Parameter("provisioningOptions") List<String> provisioningOptions,
-        @CustomType.Parameter("proxyAddresses") List<String> proxyAddresses,
-        @CustomType.Parameter("securityEnabled") Boolean securityEnabled,
-        @CustomType.Parameter("theme") String theme,
-        @CustomType.Parameter("types") List<String> types,
-        @CustomType.Parameter("visibility") String visibility) {
-        this.assignableToRole = assignableToRole;
-        this.autoSubscribeNewMembers = autoSubscribeNewMembers;
-        this.behaviors = behaviors;
-        this.description = description;
-        this.displayName = displayName;
-        this.dynamicMemberships = dynamicMemberships;
-        this.externalSendersAllowed = externalSendersAllowed;
-        this.hideFromAddressLists = hideFromAddressLists;
-        this.hideFromOutlookClients = hideFromOutlookClients;
-        this.id = id;
-        this.mail = mail;
-        this.mailEnabled = mailEnabled;
-        this.mailNickname = mailNickname;
-        this.members = members;
-        this.objectId = objectId;
-        this.onpremisesDomainName = onpremisesDomainName;
-        this.onpremisesNetbiosName = onpremisesNetbiosName;
-        this.onpremisesSamAccountName = onpremisesSamAccountName;
-        this.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
-        this.onpremisesSyncEnabled = onpremisesSyncEnabled;
-        this.owners = owners;
-        this.preferredLanguage = preferredLanguage;
-        this.provisioningOptions = provisioningOptions;
-        this.proxyAddresses = proxyAddresses;
-        this.securityEnabled = securityEnabled;
-        this.theme = theme;
-        this.types = types;
-        this.visibility = visibility;
-    }
-
+    private GetGroupResult() {}
     /**
      * @return Indicates whether this group can be assigned to an Azure Active Directory role.
      * 
@@ -417,7 +358,7 @@ public final class GetGroupResult {
     public static Builder builder(GetGroupResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean assignableToRole;
         private Boolean autoSubscribeNewMembers;
@@ -447,11 +388,7 @@ public final class GetGroupResult {
         private String theme;
         private List<String> types;
         private String visibility;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.assignableToRole = defaults.assignableToRole;
@@ -484,14 +421,17 @@ public final class GetGroupResult {
     	      this.visibility = defaults.visibility;
         }
 
+        @CustomType.Setter
         public Builder assignableToRole(Boolean assignableToRole) {
             this.assignableToRole = Objects.requireNonNull(assignableToRole);
             return this;
         }
+        @CustomType.Setter
         public Builder autoSubscribeNewMembers(Boolean autoSubscribeNewMembers) {
             this.autoSubscribeNewMembers = Objects.requireNonNull(autoSubscribeNewMembers);
             return this;
         }
+        @CustomType.Setter
         public Builder behaviors(List<String> behaviors) {
             this.behaviors = Objects.requireNonNull(behaviors);
             return this;
@@ -499,14 +439,17 @@ public final class GetGroupResult {
         public Builder behaviors(String... behaviors) {
             return behaviors(List.of(behaviors));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder dynamicMemberships(List<GetGroupDynamicMembership> dynamicMemberships) {
             this.dynamicMemberships = Objects.requireNonNull(dynamicMemberships);
             return this;
@@ -514,34 +457,42 @@ public final class GetGroupResult {
         public Builder dynamicMemberships(GetGroupDynamicMembership... dynamicMemberships) {
             return dynamicMemberships(List.of(dynamicMemberships));
         }
+        @CustomType.Setter
         public Builder externalSendersAllowed(Boolean externalSendersAllowed) {
             this.externalSendersAllowed = Objects.requireNonNull(externalSendersAllowed);
             return this;
         }
+        @CustomType.Setter
         public Builder hideFromAddressLists(Boolean hideFromAddressLists) {
             this.hideFromAddressLists = Objects.requireNonNull(hideFromAddressLists);
             return this;
         }
+        @CustomType.Setter
         public Builder hideFromOutlookClients(Boolean hideFromOutlookClients) {
             this.hideFromOutlookClients = Objects.requireNonNull(hideFromOutlookClients);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder mail(String mail) {
             this.mail = Objects.requireNonNull(mail);
             return this;
         }
+        @CustomType.Setter
         public Builder mailEnabled(Boolean mailEnabled) {
             this.mailEnabled = Objects.requireNonNull(mailEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder mailNickname(String mailNickname) {
             this.mailNickname = Objects.requireNonNull(mailNickname);
             return this;
         }
+        @CustomType.Setter
         public Builder members(List<String> members) {
             this.members = Objects.requireNonNull(members);
             return this;
@@ -549,30 +500,37 @@ public final class GetGroupResult {
         public Builder members(String... members) {
             return members(List.of(members));
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesDomainName(String onpremisesDomainName) {
             this.onpremisesDomainName = Objects.requireNonNull(onpremisesDomainName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesNetbiosName(String onpremisesNetbiosName) {
             this.onpremisesNetbiosName = Objects.requireNonNull(onpremisesNetbiosName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSamAccountName(String onpremisesSamAccountName) {
             this.onpremisesSamAccountName = Objects.requireNonNull(onpremisesSamAccountName);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSecurityIdentifier(String onpremisesSecurityIdentifier) {
             this.onpremisesSecurityIdentifier = Objects.requireNonNull(onpremisesSecurityIdentifier);
             return this;
         }
+        @CustomType.Setter
         public Builder onpremisesSyncEnabled(Boolean onpremisesSyncEnabled) {
             this.onpremisesSyncEnabled = Objects.requireNonNull(onpremisesSyncEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder owners(List<String> owners) {
             this.owners = Objects.requireNonNull(owners);
             return this;
@@ -580,10 +538,12 @@ public final class GetGroupResult {
         public Builder owners(String... owners) {
             return owners(List.of(owners));
         }
+        @CustomType.Setter
         public Builder preferredLanguage(String preferredLanguage) {
             this.preferredLanguage = Objects.requireNonNull(preferredLanguage);
             return this;
         }
+        @CustomType.Setter
         public Builder provisioningOptions(List<String> provisioningOptions) {
             this.provisioningOptions = Objects.requireNonNull(provisioningOptions);
             return this;
@@ -591,6 +551,7 @@ public final class GetGroupResult {
         public Builder provisioningOptions(String... provisioningOptions) {
             return provisioningOptions(List.of(provisioningOptions));
         }
+        @CustomType.Setter
         public Builder proxyAddresses(List<String> proxyAddresses) {
             this.proxyAddresses = Objects.requireNonNull(proxyAddresses);
             return this;
@@ -598,14 +559,17 @@ public final class GetGroupResult {
         public Builder proxyAddresses(String... proxyAddresses) {
             return proxyAddresses(List.of(proxyAddresses));
         }
+        @CustomType.Setter
         public Builder securityEnabled(Boolean securityEnabled) {
             this.securityEnabled = Objects.requireNonNull(securityEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder theme(String theme) {
             this.theme = Objects.requireNonNull(theme);
             return this;
         }
+        @CustomType.Setter
         public Builder types(List<String> types) {
             this.types = Objects.requireNonNull(types);
             return this;
@@ -613,11 +577,42 @@ public final class GetGroupResult {
         public Builder types(String... types) {
             return types(List.of(types));
         }
+        @CustomType.Setter
         public Builder visibility(String visibility) {
             this.visibility = Objects.requireNonNull(visibility);
             return this;
-        }        public GetGroupResult build() {
-            return new GetGroupResult(assignableToRole, autoSubscribeNewMembers, behaviors, description, displayName, dynamicMemberships, externalSendersAllowed, hideFromAddressLists, hideFromOutlookClients, id, mail, mailEnabled, mailNickname, members, objectId, onpremisesDomainName, onpremisesNetbiosName, onpremisesSamAccountName, onpremisesSecurityIdentifier, onpremisesSyncEnabled, owners, preferredLanguage, provisioningOptions, proxyAddresses, securityEnabled, theme, types, visibility);
+        }
+        public GetGroupResult build() {
+            final var o = new GetGroupResult();
+            o.assignableToRole = assignableToRole;
+            o.autoSubscribeNewMembers = autoSubscribeNewMembers;
+            o.behaviors = behaviors;
+            o.description = description;
+            o.displayName = displayName;
+            o.dynamicMemberships = dynamicMemberships;
+            o.externalSendersAllowed = externalSendersAllowed;
+            o.hideFromAddressLists = hideFromAddressLists;
+            o.hideFromOutlookClients = hideFromOutlookClients;
+            o.id = id;
+            o.mail = mail;
+            o.mailEnabled = mailEnabled;
+            o.mailNickname = mailNickname;
+            o.members = members;
+            o.objectId = objectId;
+            o.onpremisesDomainName = onpremisesDomainName;
+            o.onpremisesNetbiosName = onpremisesNetbiosName;
+            o.onpremisesSamAccountName = onpremisesSamAccountName;
+            o.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
+            o.onpremisesSyncEnabled = onpremisesSyncEnabled;
+            o.owners = owners;
+            o.preferredLanguage = preferredLanguage;
+            o.provisioningOptions = provisioningOptions;
+            o.proxyAddresses = proxyAddresses;
+            o.securityEnabled = securityEnabled;
+            o.theme = theme;
+            o.types = types;
+            o.visibility = visibility;
+            return o;
         }
     }
 }

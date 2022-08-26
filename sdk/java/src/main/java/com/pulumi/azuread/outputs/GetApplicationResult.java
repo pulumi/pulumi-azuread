@@ -24,210 +24,149 @@ public final class GetApplicationResult {
      * @return An `api` block as documented below.
      * 
      */
-    private final List<GetApplicationApi> apis;
+    private List<GetApplicationApi> apis;
     /**
      * @return A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
      * 
      */
-    private final Map<String,String> appRoleIds;
+    private Map<String,String> appRoleIds;
     /**
      * @return A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      * 
      */
-    private final List<GetApplicationAppRole> appRoles;
+    private List<GetApplicationAppRole> appRoles;
     /**
      * @return The Application ID (also called Client ID).
      * 
      */
-    private final String applicationId;
+    private String applicationId;
     /**
      * @return Specifies whether this application supports device authentication without a user.
      * 
      */
-    private final Boolean deviceOnlyAuthEnabled;
+    private Boolean deviceOnlyAuthEnabled;
     /**
      * @return Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
      * 
      */
-    private final String disabledByMicrosoft;
+    private String disabledByMicrosoft;
     /**
      * @return Display name for the app role that appears during app role assignment and in consent experiences.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return The fallback application type as public client, such as an installed application running on a mobile device.
      * 
      */
-    private final Boolean fallbackPublicClientEnabled;
+    private Boolean fallbackPublicClientEnabled;
     /**
      * @return A `features` block as described below.
      * 
      */
-    private final List<GetApplicationFeatureTag> featureTags;
+    private List<GetApplicationFeatureTag> featureTags;
     /**
      * @return The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
      * 
      */
-    private final List<String> groupMembershipClaims;
+    private List<String> groupMembershipClaims;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return A list of user-defined URI(s) that uniquely identify a Web application within it&#39;s Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
      * 
      */
-    private final List<String> identifierUris;
+    private List<String> identifierUris;
     /**
      * @return CDN URL to the application&#39;s logo.
      * 
      */
-    private final String logoUrl;
+    private String logoUrl;
     /**
      * @return URL of the application&#39;s marketing page.
      * 
      */
-    private final String marketingUrl;
+    private String marketingUrl;
     /**
      * @return A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      * 
      */
-    private final Map<String,String> oauth2PermissionScopeIds;
+    private Map<String,String> oauth2PermissionScopeIds;
     /**
      * @return Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
      * 
      */
-    private final Boolean oauth2PostResponseRequired;
+    private Boolean oauth2PostResponseRequired;
     /**
      * @return The application&#39;s object ID.
      * 
      */
-    private final String objectId;
+    private String objectId;
     /**
      * @return An `optional_claims` block as documented below.
      * 
      */
-    private final List<GetApplicationOptionalClaim> optionalClaims;
+    private List<GetApplicationOptionalClaim> optionalClaims;
     /**
      * @return A list of object IDs of principals that are assigned ownership of the application.
      * 
      */
-    private final List<String> owners;
+    private List<String> owners;
     /**
      * @return URL of the application&#39;s privacy statement.
      * 
      */
-    private final String privacyStatementUrl;
+    private String privacyStatementUrl;
     /**
      * @return A `public_client` block as documented below.
      * 
      */
-    private final List<GetApplicationPublicClient> publicClients;
+    private List<GetApplicationPublicClient> publicClients;
     /**
      * @return The verified publisher domain for the application.
      * 
      */
-    private final String publisherDomain;
+    private String publisherDomain;
     /**
      * @return A collection of `required_resource_access` blocks as documented below.
      * 
      */
-    private final List<GetApplicationRequiredResourceAccess> requiredResourceAccesses;
+    private List<GetApplicationRequiredResourceAccess> requiredResourceAccesses;
     /**
      * @return The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      * 
      */
-    private final String signInAudience;
+    private String signInAudience;
     /**
      * @return A `single_page_application` block as documented below.
      * 
      */
-    private final List<GetApplicationSinglePageApplication> singlePageApplications;
+    private List<GetApplicationSinglePageApplication> singlePageApplications;
     /**
      * @return URL of the application&#39;s support page.
      * 
      */
-    private final String supportUrl;
+    private String supportUrl;
     /**
      * @return A list of tags applied to the application.
      * 
      */
-    private final List<String> tags;
+    private List<String> tags;
     /**
      * @return URL of the application&#39;s terms of service statement.
      * 
      */
-    private final String termsOfServiceUrl;
+    private String termsOfServiceUrl;
     /**
      * @return A `web` block as documented below.
      * 
      */
-    private final List<GetApplicationWeb> webs;
+    private List<GetApplicationWeb> webs;
 
-    @CustomType.Constructor
-    private GetApplicationResult(
-        @CustomType.Parameter("apis") List<GetApplicationApi> apis,
-        @CustomType.Parameter("appRoleIds") Map<String,String> appRoleIds,
-        @CustomType.Parameter("appRoles") List<GetApplicationAppRole> appRoles,
-        @CustomType.Parameter("applicationId") String applicationId,
-        @CustomType.Parameter("deviceOnlyAuthEnabled") Boolean deviceOnlyAuthEnabled,
-        @CustomType.Parameter("disabledByMicrosoft") String disabledByMicrosoft,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("fallbackPublicClientEnabled") Boolean fallbackPublicClientEnabled,
-        @CustomType.Parameter("featureTags") List<GetApplicationFeatureTag> featureTags,
-        @CustomType.Parameter("groupMembershipClaims") List<String> groupMembershipClaims,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("identifierUris") List<String> identifierUris,
-        @CustomType.Parameter("logoUrl") String logoUrl,
-        @CustomType.Parameter("marketingUrl") String marketingUrl,
-        @CustomType.Parameter("oauth2PermissionScopeIds") Map<String,String> oauth2PermissionScopeIds,
-        @CustomType.Parameter("oauth2PostResponseRequired") Boolean oauth2PostResponseRequired,
-        @CustomType.Parameter("objectId") String objectId,
-        @CustomType.Parameter("optionalClaims") List<GetApplicationOptionalClaim> optionalClaims,
-        @CustomType.Parameter("owners") List<String> owners,
-        @CustomType.Parameter("privacyStatementUrl") String privacyStatementUrl,
-        @CustomType.Parameter("publicClients") List<GetApplicationPublicClient> publicClients,
-        @CustomType.Parameter("publisherDomain") String publisherDomain,
-        @CustomType.Parameter("requiredResourceAccesses") List<GetApplicationRequiredResourceAccess> requiredResourceAccesses,
-        @CustomType.Parameter("signInAudience") String signInAudience,
-        @CustomType.Parameter("singlePageApplications") List<GetApplicationSinglePageApplication> singlePageApplications,
-        @CustomType.Parameter("supportUrl") String supportUrl,
-        @CustomType.Parameter("tags") List<String> tags,
-        @CustomType.Parameter("termsOfServiceUrl") String termsOfServiceUrl,
-        @CustomType.Parameter("webs") List<GetApplicationWeb> webs) {
-        this.apis = apis;
-        this.appRoleIds = appRoleIds;
-        this.appRoles = appRoles;
-        this.applicationId = applicationId;
-        this.deviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
-        this.disabledByMicrosoft = disabledByMicrosoft;
-        this.displayName = displayName;
-        this.fallbackPublicClientEnabled = fallbackPublicClientEnabled;
-        this.featureTags = featureTags;
-        this.groupMembershipClaims = groupMembershipClaims;
-        this.id = id;
-        this.identifierUris = identifierUris;
-        this.logoUrl = logoUrl;
-        this.marketingUrl = marketingUrl;
-        this.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
-        this.oauth2PostResponseRequired = oauth2PostResponseRequired;
-        this.objectId = objectId;
-        this.optionalClaims = optionalClaims;
-        this.owners = owners;
-        this.privacyStatementUrl = privacyStatementUrl;
-        this.publicClients = publicClients;
-        this.publisherDomain = publisherDomain;
-        this.requiredResourceAccesses = requiredResourceAccesses;
-        this.signInAudience = signInAudience;
-        this.singlePageApplications = singlePageApplications;
-        this.supportUrl = supportUrl;
-        this.tags = tags;
-        this.termsOfServiceUrl = termsOfServiceUrl;
-        this.webs = webs;
-    }
-
+    private GetApplicationResult() {}
     /**
      * @return An `api` block as documented below.
      * 
@@ -439,7 +378,7 @@ public final class GetApplicationResult {
     public static Builder builder(GetApplicationResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<GetApplicationApi> apis;
         private Map<String,String> appRoleIds;
@@ -470,11 +409,7 @@ public final class GetApplicationResult {
         private List<String> tags;
         private String termsOfServiceUrl;
         private List<GetApplicationWeb> webs;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.apis = defaults.apis;
@@ -508,6 +443,7 @@ public final class GetApplicationResult {
     	      this.webs = defaults.webs;
         }
 
+        @CustomType.Setter
         public Builder apis(List<GetApplicationApi> apis) {
             this.apis = Objects.requireNonNull(apis);
             return this;
@@ -515,10 +451,12 @@ public final class GetApplicationResult {
         public Builder apis(GetApplicationApi... apis) {
             return apis(List.of(apis));
         }
+        @CustomType.Setter
         public Builder appRoleIds(Map<String,String> appRoleIds) {
             this.appRoleIds = Objects.requireNonNull(appRoleIds);
             return this;
         }
+        @CustomType.Setter
         public Builder appRoles(List<GetApplicationAppRole> appRoles) {
             this.appRoles = Objects.requireNonNull(appRoles);
             return this;
@@ -526,26 +464,32 @@ public final class GetApplicationResult {
         public Builder appRoles(GetApplicationAppRole... appRoles) {
             return appRoles(List.of(appRoles));
         }
+        @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
             return this;
         }
+        @CustomType.Setter
         public Builder deviceOnlyAuthEnabled(Boolean deviceOnlyAuthEnabled) {
             this.deviceOnlyAuthEnabled = Objects.requireNonNull(deviceOnlyAuthEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder disabledByMicrosoft(String disabledByMicrosoft) {
             this.disabledByMicrosoft = Objects.requireNonNull(disabledByMicrosoft);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder fallbackPublicClientEnabled(Boolean fallbackPublicClientEnabled) {
             this.fallbackPublicClientEnabled = Objects.requireNonNull(fallbackPublicClientEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder featureTags(List<GetApplicationFeatureTag> featureTags) {
             this.featureTags = Objects.requireNonNull(featureTags);
             return this;
@@ -553,6 +497,7 @@ public final class GetApplicationResult {
         public Builder featureTags(GetApplicationFeatureTag... featureTags) {
             return featureTags(List.of(featureTags));
         }
+        @CustomType.Setter
         public Builder groupMembershipClaims(List<String> groupMembershipClaims) {
             this.groupMembershipClaims = Objects.requireNonNull(groupMembershipClaims);
             return this;
@@ -560,10 +505,12 @@ public final class GetApplicationResult {
         public Builder groupMembershipClaims(String... groupMembershipClaims) {
             return groupMembershipClaims(List.of(groupMembershipClaims));
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder identifierUris(List<String> identifierUris) {
             this.identifierUris = Objects.requireNonNull(identifierUris);
             return this;
@@ -571,26 +518,32 @@ public final class GetApplicationResult {
         public Builder identifierUris(String... identifierUris) {
             return identifierUris(List.of(identifierUris));
         }
+        @CustomType.Setter
         public Builder logoUrl(String logoUrl) {
             this.logoUrl = Objects.requireNonNull(logoUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder marketingUrl(String marketingUrl) {
             this.marketingUrl = Objects.requireNonNull(marketingUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2PermissionScopeIds(Map<String,String> oauth2PermissionScopeIds) {
             this.oauth2PermissionScopeIds = Objects.requireNonNull(oauth2PermissionScopeIds);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2PostResponseRequired(Boolean oauth2PostResponseRequired) {
             this.oauth2PostResponseRequired = Objects.requireNonNull(oauth2PostResponseRequired);
             return this;
         }
+        @CustomType.Setter
         public Builder objectId(String objectId) {
             this.objectId = Objects.requireNonNull(objectId);
             return this;
         }
+        @CustomType.Setter
         public Builder optionalClaims(List<GetApplicationOptionalClaim> optionalClaims) {
             this.optionalClaims = Objects.requireNonNull(optionalClaims);
             return this;
@@ -598,6 +551,7 @@ public final class GetApplicationResult {
         public Builder optionalClaims(GetApplicationOptionalClaim... optionalClaims) {
             return optionalClaims(List.of(optionalClaims));
         }
+        @CustomType.Setter
         public Builder owners(List<String> owners) {
             this.owners = Objects.requireNonNull(owners);
             return this;
@@ -605,10 +559,12 @@ public final class GetApplicationResult {
         public Builder owners(String... owners) {
             return owners(List.of(owners));
         }
+        @CustomType.Setter
         public Builder privacyStatementUrl(String privacyStatementUrl) {
             this.privacyStatementUrl = Objects.requireNonNull(privacyStatementUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder publicClients(List<GetApplicationPublicClient> publicClients) {
             this.publicClients = Objects.requireNonNull(publicClients);
             return this;
@@ -616,10 +572,12 @@ public final class GetApplicationResult {
         public Builder publicClients(GetApplicationPublicClient... publicClients) {
             return publicClients(List.of(publicClients));
         }
+        @CustomType.Setter
         public Builder publisherDomain(String publisherDomain) {
             this.publisherDomain = Objects.requireNonNull(publisherDomain);
             return this;
         }
+        @CustomType.Setter
         public Builder requiredResourceAccesses(List<GetApplicationRequiredResourceAccess> requiredResourceAccesses) {
             this.requiredResourceAccesses = Objects.requireNonNull(requiredResourceAccesses);
             return this;
@@ -627,10 +585,12 @@ public final class GetApplicationResult {
         public Builder requiredResourceAccesses(GetApplicationRequiredResourceAccess... requiredResourceAccesses) {
             return requiredResourceAccesses(List.of(requiredResourceAccesses));
         }
+        @CustomType.Setter
         public Builder signInAudience(String signInAudience) {
             this.signInAudience = Objects.requireNonNull(signInAudience);
             return this;
         }
+        @CustomType.Setter
         public Builder singlePageApplications(List<GetApplicationSinglePageApplication> singlePageApplications) {
             this.singlePageApplications = Objects.requireNonNull(singlePageApplications);
             return this;
@@ -638,10 +598,12 @@ public final class GetApplicationResult {
         public Builder singlePageApplications(GetApplicationSinglePageApplication... singlePageApplications) {
             return singlePageApplications(List.of(singlePageApplications));
         }
+        @CustomType.Setter
         public Builder supportUrl(String supportUrl) {
             this.supportUrl = Objects.requireNonNull(supportUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder tags(List<String> tags) {
             this.tags = Objects.requireNonNull(tags);
             return this;
@@ -649,18 +611,51 @@ public final class GetApplicationResult {
         public Builder tags(String... tags) {
             return tags(List.of(tags));
         }
+        @CustomType.Setter
         public Builder termsOfServiceUrl(String termsOfServiceUrl) {
             this.termsOfServiceUrl = Objects.requireNonNull(termsOfServiceUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder webs(List<GetApplicationWeb> webs) {
             this.webs = Objects.requireNonNull(webs);
             return this;
         }
         public Builder webs(GetApplicationWeb... webs) {
             return webs(List.of(webs));
-        }        public GetApplicationResult build() {
-            return new GetApplicationResult(apis, appRoleIds, appRoles, applicationId, deviceOnlyAuthEnabled, disabledByMicrosoft, displayName, fallbackPublicClientEnabled, featureTags, groupMembershipClaims, id, identifierUris, logoUrl, marketingUrl, oauth2PermissionScopeIds, oauth2PostResponseRequired, objectId, optionalClaims, owners, privacyStatementUrl, publicClients, publisherDomain, requiredResourceAccesses, signInAudience, singlePageApplications, supportUrl, tags, termsOfServiceUrl, webs);
+        }
+        public GetApplicationResult build() {
+            final var o = new GetApplicationResult();
+            o.apis = apis;
+            o.appRoleIds = appRoleIds;
+            o.appRoles = appRoles;
+            o.applicationId = applicationId;
+            o.deviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
+            o.disabledByMicrosoft = disabledByMicrosoft;
+            o.displayName = displayName;
+            o.fallbackPublicClientEnabled = fallbackPublicClientEnabled;
+            o.featureTags = featureTags;
+            o.groupMembershipClaims = groupMembershipClaims;
+            o.id = id;
+            o.identifierUris = identifierUris;
+            o.logoUrl = logoUrl;
+            o.marketingUrl = marketingUrl;
+            o.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
+            o.oauth2PostResponseRequired = oauth2PostResponseRequired;
+            o.objectId = objectId;
+            o.optionalClaims = optionalClaims;
+            o.owners = owners;
+            o.privacyStatementUrl = privacyStatementUrl;
+            o.publicClients = publicClients;
+            o.publisherDomain = publisherDomain;
+            o.requiredResourceAccesses = requiredResourceAccesses;
+            o.signInAudience = signInAudience;
+            o.singlePageApplications = singlePageApplications;
+            o.supportUrl = supportUrl;
+            o.tags = tags;
+            o.termsOfServiceUrl = termsOfServiceUrl;
+            o.webs = webs;
+            return o;
         }
     }
 }

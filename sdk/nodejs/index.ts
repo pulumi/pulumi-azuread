@@ -24,6 +24,7 @@ export * from "./getApplication";
 export * from "./getApplicationPublishedAppIds";
 export * from "./getApplicationTemplate";
 export * from "./getClientConfig";
+export * from "./getDirectoryObject";
 export * from "./getDomains";
 export * from "./getGroup";
 export * from "./getGroups";

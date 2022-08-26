@@ -14,70 +14,49 @@ public final class GetApplicationTemplateResult {
      * @return List of categories for this templated application.
      * 
      */
-    private final List<String> categories;
+    private List<String> categories;
     /**
      * @return The display name for the templated application.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Home page URL of the templated application.
      * 
      */
-    private final String homepageUrl;
+    private String homepageUrl;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return URL to retrieve the logo for this templated application.
      * 
      */
-    private final String logoUrl;
+    private String logoUrl;
     /**
      * @return Name of the publisher for this templated application.
      * 
      */
-    private final String publisher;
+    private String publisher;
     /**
      * @return List of provisioning modes supported by this templated application.
      * 
      */
-    private final List<String> supportedProvisioningTypes;
+    private List<String> supportedProvisioningTypes;
     /**
      * @return List of single sign on modes supported by this templated application.
      * 
      */
-    private final List<String> supportedSingleSignOnModes;
+    private List<String> supportedSingleSignOnModes;
     /**
      * @return The ID of the templated application.
      * 
      */
-    private final String templateId;
+    private String templateId;
 
-    @CustomType.Constructor
-    private GetApplicationTemplateResult(
-        @CustomType.Parameter("categories") List<String> categories,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("homepageUrl") String homepageUrl,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("logoUrl") String logoUrl,
-        @CustomType.Parameter("publisher") String publisher,
-        @CustomType.Parameter("supportedProvisioningTypes") List<String> supportedProvisioningTypes,
-        @CustomType.Parameter("supportedSingleSignOnModes") List<String> supportedSingleSignOnModes,
-        @CustomType.Parameter("templateId") String templateId) {
-        this.categories = categories;
-        this.displayName = displayName;
-        this.homepageUrl = homepageUrl;
-        this.id = id;
-        this.logoUrl = logoUrl;
-        this.publisher = publisher;
-        this.supportedProvisioningTypes = supportedProvisioningTypes;
-        this.supportedSingleSignOnModes = supportedSingleSignOnModes;
-        this.templateId = templateId;
-    }
-
+    private GetApplicationTemplateResult() {}
     /**
      * @return List of categories for this templated application.
      * 
@@ -149,7 +128,7 @@ public final class GetApplicationTemplateResult {
     public static Builder builder(GetApplicationTemplateResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> categories;
         private String displayName;
@@ -160,11 +139,7 @@ public final class GetApplicationTemplateResult {
         private List<String> supportedProvisioningTypes;
         private List<String> supportedSingleSignOnModes;
         private String templateId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationTemplateResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.categories = defaults.categories;
@@ -178,6 +153,7 @@ public final class GetApplicationTemplateResult {
     	      this.templateId = defaults.templateId;
         }
 
+        @CustomType.Setter
         public Builder categories(List<String> categories) {
             this.categories = Objects.requireNonNull(categories);
             return this;
@@ -185,26 +161,32 @@ public final class GetApplicationTemplateResult {
         public Builder categories(String... categories) {
             return categories(List.of(categories));
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder homepageUrl(String homepageUrl) {
             this.homepageUrl = Objects.requireNonNull(homepageUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder logoUrl(String logoUrl) {
             this.logoUrl = Objects.requireNonNull(logoUrl);
             return this;
         }
+        @CustomType.Setter
         public Builder publisher(String publisher) {
             this.publisher = Objects.requireNonNull(publisher);
             return this;
         }
+        @CustomType.Setter
         public Builder supportedProvisioningTypes(List<String> supportedProvisioningTypes) {
             this.supportedProvisioningTypes = Objects.requireNonNull(supportedProvisioningTypes);
             return this;
@@ -212,6 +194,7 @@ public final class GetApplicationTemplateResult {
         public Builder supportedProvisioningTypes(String... supportedProvisioningTypes) {
             return supportedProvisioningTypes(List.of(supportedProvisioningTypes));
         }
+        @CustomType.Setter
         public Builder supportedSingleSignOnModes(List<String> supportedSingleSignOnModes) {
             this.supportedSingleSignOnModes = Objects.requireNonNull(supportedSingleSignOnModes);
             return this;
@@ -219,11 +202,23 @@ public final class GetApplicationTemplateResult {
         public Builder supportedSingleSignOnModes(String... supportedSingleSignOnModes) {
             return supportedSingleSignOnModes(List.of(supportedSingleSignOnModes));
         }
+        @CustomType.Setter
         public Builder templateId(String templateId) {
             this.templateId = Objects.requireNonNull(templateId);
             return this;
-        }        public GetApplicationTemplateResult build() {
-            return new GetApplicationTemplateResult(categories, displayName, homepageUrl, id, logoUrl, publisher, supportedProvisioningTypes, supportedSingleSignOnModes, templateId);
+        }
+        public GetApplicationTemplateResult build() {
+            final var o = new GetApplicationTemplateResult();
+            o.categories = categories;
+            o.displayName = displayName;
+            o.homepageUrl = homepageUrl;
+            o.id = id;
+            o.logoUrl = logoUrl;
+            o.publisher = publisher;
+            o.supportedProvisioningTypes = supportedProvisioningTypes;
+            o.supportedSingleSignOnModes = supportedSingleSignOnModes;
+            o.templateId = templateId;
+            return o;
         }
     }
 }

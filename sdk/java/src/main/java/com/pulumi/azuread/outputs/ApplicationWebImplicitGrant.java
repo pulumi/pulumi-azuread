@@ -15,21 +15,14 @@ public final class ApplicationWebImplicitGrant {
      * @return Whether this web application can request an access token using OAuth 2.0 implicit flow.
      * 
      */
-    private final @Nullable Boolean accessTokenIssuanceEnabled;
+    private @Nullable Boolean accessTokenIssuanceEnabled;
     /**
      * @return Whether this web application can request an ID token using OAuth 2.0 implicit flow.
      * 
      */
-    private final @Nullable Boolean idTokenIssuanceEnabled;
+    private @Nullable Boolean idTokenIssuanceEnabled;
 
-    @CustomType.Constructor
-    private ApplicationWebImplicitGrant(
-        @CustomType.Parameter("accessTokenIssuanceEnabled") @Nullable Boolean accessTokenIssuanceEnabled,
-        @CustomType.Parameter("idTokenIssuanceEnabled") @Nullable Boolean idTokenIssuanceEnabled) {
-        this.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
-        this.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
-    }
-
+    private ApplicationWebImplicitGrant() {}
     /**
      * @return Whether this web application can request an access token using OAuth 2.0 implicit flow.
      * 
@@ -52,30 +45,32 @@ public final class ApplicationWebImplicitGrant {
     public static Builder builder(ApplicationWebImplicitGrant defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean accessTokenIssuanceEnabled;
         private @Nullable Boolean idTokenIssuanceEnabled;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationWebImplicitGrant defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessTokenIssuanceEnabled = defaults.accessTokenIssuanceEnabled;
     	      this.idTokenIssuanceEnabled = defaults.idTokenIssuanceEnabled;
         }
 
+        @CustomType.Setter
         public Builder accessTokenIssuanceEnabled(@Nullable Boolean accessTokenIssuanceEnabled) {
             this.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder idTokenIssuanceEnabled(@Nullable Boolean idTokenIssuanceEnabled) {
             this.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
             return this;
-        }        public ApplicationWebImplicitGrant build() {
-            return new ApplicationWebImplicitGrant(accessTokenIssuanceEnabled, idTokenIssuanceEnabled);
+        }
+        public ApplicationWebImplicitGrant build() {
+            final var o = new ApplicationWebImplicitGrant();
+            o.accessTokenIssuanceEnabled = accessTokenIssuanceEnabled;
+            o.idTokenIssuanceEnabled = idTokenIssuanceEnabled;
+            return o;
         }
     }
 }

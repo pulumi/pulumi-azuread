@@ -17,49 +17,34 @@ public final class ApplicationAppRole {
      * @return Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      * 
      */
-    private final List<String> allowedMemberTypes;
+    private List<String> allowedMemberTypes;
     /**
      * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
      * 
      */
-    private final String description;
+    private String description;
     /**
      * @return Display name for the app role that appears during app role assignment and in consent experiences.
      * 
      */
-    private final String displayName;
+    private String displayName;
     /**
      * @return Determines if the app role is enabled. Defaults to `true`.
      * 
      */
-    private final @Nullable Boolean enabled;
+    private @Nullable Boolean enabled;
     /**
      * @return The unique identifier of the app role. Must be a valid UUID.
      * 
      */
-    private final String id;
+    private String id;
     /**
      * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
      * 
      */
-    private final @Nullable String value;
+    private @Nullable String value;
 
-    @CustomType.Constructor
-    private ApplicationAppRole(
-        @CustomType.Parameter("allowedMemberTypes") List<String> allowedMemberTypes,
-        @CustomType.Parameter("description") String description,
-        @CustomType.Parameter("displayName") String displayName,
-        @CustomType.Parameter("enabled") @Nullable Boolean enabled,
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("value") @Nullable String value) {
-        this.allowedMemberTypes = allowedMemberTypes;
-        this.description = description;
-        this.displayName = displayName;
-        this.enabled = enabled;
-        this.id = id;
-        this.value = value;
-    }
-
+    private ApplicationAppRole() {}
     /**
      * @return Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
      * 
@@ -110,7 +95,7 @@ public final class ApplicationAppRole {
     public static Builder builder(ApplicationAppRole defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> allowedMemberTypes;
         private String description;
@@ -118,11 +103,7 @@ public final class ApplicationAppRole {
         private @Nullable Boolean enabled;
         private String id;
         private @Nullable String value;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationAppRole defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedMemberTypes = defaults.allowedMemberTypes;
@@ -133,6 +114,7 @@ public final class ApplicationAppRole {
     	      this.value = defaults.value;
         }
 
+        @CustomType.Setter
         public Builder allowedMemberTypes(List<String> allowedMemberTypes) {
             this.allowedMemberTypes = Objects.requireNonNull(allowedMemberTypes);
             return this;
@@ -140,27 +122,40 @@ public final class ApplicationAppRole {
         public Builder allowedMemberTypes(String... allowedMemberTypes) {
             return allowedMemberTypes(List.of(allowedMemberTypes));
         }
+        @CustomType.Setter
         public Builder description(String description) {
             this.description = Objects.requireNonNull(description);
             return this;
         }
+        @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
             return this;
         }
+        @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
             this.enabled = enabled;
             return this;
         }
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder value(@Nullable String value) {
             this.value = value;
             return this;
-        }        public ApplicationAppRole build() {
-            return new ApplicationAppRole(allowedMemberTypes, description, displayName, enabled, id, value);
+        }
+        public ApplicationAppRole build() {
+            final var o = new ApplicationAppRole();
+            o.allowedMemberTypes = allowedMemberTypes;
+            o.description = description;
+            o.displayName = displayName;
+            o.enabled = enabled;
+            o.id = id;
+            o.value = value;
+            return o;
         }
     }
 }

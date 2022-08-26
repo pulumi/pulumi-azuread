@@ -103,6 +103,10 @@
                 "type": "string",
                 "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal\nusing OpenID Connect.\n"
             },
+            "oidcToken": {
+                "type": "string",
+                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+            },
             "partnerId": {
                 "type": "string",
                 "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
@@ -2903,6 +2907,10 @@
                 "type": "string",
                 "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal\nusing OpenID Connect.\n"
             },
+            "oidcToken": {
+                "type": "string",
+                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+            },
             "partnerId": {
                 "type": "string",
                 "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
@@ -2975,6 +2983,10 @@
             "oidcRequestUrl": {
                 "type": "string",
                 "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Principal\nusing OpenID Connect.\n"
+            },
+            "oidcToken": {
+                "type": "string",
+                "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
             },
             "partnerId": {
                 "type": "string",
@@ -7061,6 +7073,43 @@
                     "clientId",
                     "objectId",
                     "tenantId",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getDirectoryObject:getDirectoryObject": {
+            "description": "Retrieves the OData type for a generic directory object having the provided object ID.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Look up and output type of object by ID*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getDirectoryObject({\n    objectId: \"00000000-0000-0000-0000-000000000000\",\n});\nexport const objectType = example.then(example =\u003e example.type);\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_directory_object(object_id=\"00000000-0000-0000-0000-000000000000\")\npulumi.export(\"objectType\", example.type)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetDirectoryObject.Invoke(new()\n    {\n        ObjectId = \"00000000-0000-0000-0000-000000000000\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"objectType\"] = example.Apply(getDirectoryObjectResult =\u003e getDirectoryObjectResult.Type),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := azuread.GetDirectoryObject(ctx, \u0026GetDirectoryObjectArgs{\n\t\t\tObjectId: \"00000000-0000-0000-0000-000000000000\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"objectType\", example.Type)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetDirectoryObjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()\n            .objectId(\"00000000-0000-0000-0000-000000000000\")\n            .build());\n\n        ctx.export(\"objectType\", example.applyValue(getDirectoryObjectResult -\u003e getDirectoryObjectResult.type()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    Fn::Invoke:\n      Function: azuread:getDirectoryObject\n      Arguments:\n        objectId: 00000000-0000-0000-0000-000000000000\noutputs:\n  objectType: ${example.type}\n```\n{{% /example %}}\n{{% /examples %}}\n## Attributes Reference \n\nThe following attributes are exported:\n\n*`object_id` - The object ID of the directory object.\n*`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDirectoryObject.\n",
+                "properties": {
+                    "objectId": {
+                        "type": "string",
+                        "description": "Specifies the Object ID of the directory object to look up.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "objectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDirectoryObject.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "objectId",
+                    "type",
                     "id"
                 ]
             }

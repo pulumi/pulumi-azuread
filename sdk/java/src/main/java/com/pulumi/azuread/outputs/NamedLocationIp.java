@@ -17,21 +17,14 @@ public final class NamedLocationIp {
      * @return List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
      * 
      */
-    private final List<String> ipRanges;
+    private List<String> ipRanges;
     /**
      * @return Whether the named location is trusted. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean trusted;
+    private @Nullable Boolean trusted;
 
-    @CustomType.Constructor
-    private NamedLocationIp(
-        @CustomType.Parameter("ipRanges") List<String> ipRanges,
-        @CustomType.Parameter("trusted") @Nullable Boolean trusted) {
-        this.ipRanges = ipRanges;
-        this.trusted = trusted;
-    }
-
+    private NamedLocationIp() {}
     /**
      * @return List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
      * 
@@ -54,21 +47,18 @@ public final class NamedLocationIp {
     public static Builder builder(NamedLocationIp defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> ipRanges;
         private @Nullable Boolean trusted;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(NamedLocationIp defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.ipRanges = defaults.ipRanges;
     	      this.trusted = defaults.trusted;
         }
 
+        @CustomType.Setter
         public Builder ipRanges(List<String> ipRanges) {
             this.ipRanges = Objects.requireNonNull(ipRanges);
             return this;
@@ -76,11 +66,16 @@ public final class NamedLocationIp {
         public Builder ipRanges(String... ipRanges) {
             return ipRanges(List.of(ipRanges));
         }
+        @CustomType.Setter
         public Builder trusted(@Nullable Boolean trusted) {
             this.trusted = trusted;
             return this;
-        }        public NamedLocationIp build() {
-            return new NamedLocationIp(ipRanges, trusted);
+        }
+        public NamedLocationIp build() {
+            final var o = new NamedLocationIp();
+            o.ipRanges = ipRanges;
+            o.trusted = trusted;
+            return o;
         }
     }
 }

@@ -14,13 +14,9 @@ public final class GetApplicationSinglePageApplication {
      * @return A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
      * 
      */
-    private final List<String> redirectUris;
+    private List<String> redirectUris;
 
-    @CustomType.Constructor
-    private GetApplicationSinglePageApplication(@CustomType.Parameter("redirectUris") List<String> redirectUris) {
-        this.redirectUris = redirectUris;
-    }
-
+    private GetApplicationSinglePageApplication() {}
     /**
      * @return A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
      * 
@@ -36,27 +32,27 @@ public final class GetApplicationSinglePageApplication {
     public static Builder builder(GetApplicationSinglePageApplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> redirectUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationSinglePageApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.redirectUris = defaults.redirectUris;
         }
 
+        @CustomType.Setter
         public Builder redirectUris(List<String> redirectUris) {
             this.redirectUris = Objects.requireNonNull(redirectUris);
             return this;
         }
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
-        }        public GetApplicationSinglePageApplication build() {
-            return new GetApplicationSinglePageApplication(redirectUris);
+        }
+        public GetApplicationSinglePageApplication build() {
+            final var o = new GetApplicationSinglePageApplication();
+            o.redirectUris = redirectUris;
+            return o;
         }
     }
 }

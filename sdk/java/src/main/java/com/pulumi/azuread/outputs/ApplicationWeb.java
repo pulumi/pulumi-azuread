@@ -17,35 +17,24 @@ public final class ApplicationWeb {
      * @return Home page or landing page of the application.
      * 
      */
-    private final @Nullable String homepageUrl;
+    private @Nullable String homepageUrl;
     /**
      * @return An `implicit_grant` block as documented above.
      * 
      */
-    private final @Nullable ApplicationWebImplicitGrant implicitGrant;
+    private @Nullable ApplicationWebImplicitGrant implicitGrant;
     /**
      * @return The URL that will be used by Microsoft&#39;s authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
      * 
      */
-    private final @Nullable String logoutUrl;
+    private @Nullable String logoutUrl;
     /**
      * @return A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
      * 
      */
-    private final @Nullable List<String> redirectUris;
+    private @Nullable List<String> redirectUris;
 
-    @CustomType.Constructor
-    private ApplicationWeb(
-        @CustomType.Parameter("homepageUrl") @Nullable String homepageUrl,
-        @CustomType.Parameter("implicitGrant") @Nullable ApplicationWebImplicitGrant implicitGrant,
-        @CustomType.Parameter("logoutUrl") @Nullable String logoutUrl,
-        @CustomType.Parameter("redirectUris") @Nullable List<String> redirectUris) {
-        this.homepageUrl = homepageUrl;
-        this.implicitGrant = implicitGrant;
-        this.logoutUrl = logoutUrl;
-        this.redirectUris = redirectUris;
-    }
-
+    private ApplicationWeb() {}
     /**
      * @return Home page or landing page of the application.
      * 
@@ -82,17 +71,13 @@ public final class ApplicationWeb {
     public static Builder builder(ApplicationWeb defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable String homepageUrl;
         private @Nullable ApplicationWebImplicitGrant implicitGrant;
         private @Nullable String logoutUrl;
         private @Nullable List<String> redirectUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationWeb defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.homepageUrl = defaults.homepageUrl;
@@ -101,26 +86,36 @@ public final class ApplicationWeb {
     	      this.redirectUris = defaults.redirectUris;
         }
 
+        @CustomType.Setter
         public Builder homepageUrl(@Nullable String homepageUrl) {
             this.homepageUrl = homepageUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder implicitGrant(@Nullable ApplicationWebImplicitGrant implicitGrant) {
             this.implicitGrant = implicitGrant;
             return this;
         }
+        @CustomType.Setter
         public Builder logoutUrl(@Nullable String logoutUrl) {
             this.logoutUrl = logoutUrl;
             return this;
         }
+        @CustomType.Setter
         public Builder redirectUris(@Nullable List<String> redirectUris) {
             this.redirectUris = redirectUris;
             return this;
         }
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
-        }        public ApplicationWeb build() {
-            return new ApplicationWeb(homepageUrl, implicitGrant, logoutUrl, redirectUris);
+        }
+        public ApplicationWeb build() {
+            final var o = new ApplicationWeb();
+            o.homepageUrl = homepageUrl;
+            o.implicitGrant = implicitGrant;
+            o.logoutUrl = logoutUrl;
+            o.redirectUris = redirectUris;
+            return o;
         }
     }
 }

@@ -15,21 +15,14 @@ public final class ApplicationRequiredResourceAccess {
      * @return A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
      * 
      */
-    private final List<ApplicationRequiredResourceAccessResourceAccess> resourceAccesses;
+    private List<ApplicationRequiredResourceAccessResourceAccess> resourceAccesses;
     /**
      * @return The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
      * 
      */
-    private final String resourceAppId;
+    private String resourceAppId;
 
-    @CustomType.Constructor
-    private ApplicationRequiredResourceAccess(
-        @CustomType.Parameter("resourceAccesses") List<ApplicationRequiredResourceAccessResourceAccess> resourceAccesses,
-        @CustomType.Parameter("resourceAppId") String resourceAppId) {
-        this.resourceAccesses = resourceAccesses;
-        this.resourceAppId = resourceAppId;
-    }
-
+    private ApplicationRequiredResourceAccess() {}
     /**
      * @return A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
      * 
@@ -52,21 +45,18 @@ public final class ApplicationRequiredResourceAccess {
     public static Builder builder(ApplicationRequiredResourceAccess defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<ApplicationRequiredResourceAccessResourceAccess> resourceAccesses;
         private String resourceAppId;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationRequiredResourceAccess defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.resourceAccesses = defaults.resourceAccesses;
     	      this.resourceAppId = defaults.resourceAppId;
         }
 
+        @CustomType.Setter
         public Builder resourceAccesses(List<ApplicationRequiredResourceAccessResourceAccess> resourceAccesses) {
             this.resourceAccesses = Objects.requireNonNull(resourceAccesses);
             return this;
@@ -74,11 +64,16 @@ public final class ApplicationRequiredResourceAccess {
         public Builder resourceAccesses(ApplicationRequiredResourceAccessResourceAccess... resourceAccesses) {
             return resourceAccesses(List.of(resourceAccesses));
         }
+        @CustomType.Setter
         public Builder resourceAppId(String resourceAppId) {
             this.resourceAppId = Objects.requireNonNull(resourceAppId);
             return this;
-        }        public ApplicationRequiredResourceAccess build() {
-            return new ApplicationRequiredResourceAccess(resourceAccesses, resourceAppId);
+        }
+        public ApplicationRequiredResourceAccess build() {
+            final var o = new ApplicationRequiredResourceAccess();
+            o.resourceAccesses = resourceAccesses;
+            o.resourceAppId = resourceAppId;
+            return o;
         }
     }
 }

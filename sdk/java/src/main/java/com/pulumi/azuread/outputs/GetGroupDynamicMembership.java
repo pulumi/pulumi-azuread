@@ -14,21 +14,14 @@ public final class GetGroupDynamicMembership {
      * @return Whether rule processing is &#34;On&#34; (true) or &#34;Paused&#34; (false).
      * 
      */
-    private final Boolean enabled;
+    private Boolean enabled;
     /**
      * @return The rule that determines membership of this group.
      * 
      */
-    private final String rule;
+    private String rule;
 
-    @CustomType.Constructor
-    private GetGroupDynamicMembership(
-        @CustomType.Parameter("enabled") Boolean enabled,
-        @CustomType.Parameter("rule") String rule) {
-        this.enabled = enabled;
-        this.rule = rule;
-    }
-
+    private GetGroupDynamicMembership() {}
     /**
      * @return Whether rule processing is &#34;On&#34; (true) or &#34;Paused&#34; (false).
      * 
@@ -51,30 +44,32 @@ public final class GetGroupDynamicMembership {
     public static Builder builder(GetGroupDynamicMembership defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean enabled;
         private String rule;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetGroupDynamicMembership defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enabled = defaults.enabled;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
         public Builder enabled(Boolean enabled) {
             this.enabled = Objects.requireNonNull(enabled);
             return this;
         }
+        @CustomType.Setter
         public Builder rule(String rule) {
             this.rule = Objects.requireNonNull(rule);
             return this;
-        }        public GetGroupDynamicMembership build() {
-            return new GetGroupDynamicMembership(enabled, rule);
+        }
+        public GetGroupDynamicMembership build() {
+            final var o = new GetGroupDynamicMembership();
+            o.enabled = enabled;
+            o.rule = rule;
+            return o;
         }
     }
 }

@@ -15,28 +15,19 @@ public final class ConditionalAccessPolicyConditionsApplications {
      * @return A list of application IDs explicitly excluded from the policy.
      * 
      */
-    private final @Nullable List<String> excludedApplications;
+    private @Nullable List<String> excludedApplications;
     /**
      * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
      * 
      */
-    private final @Nullable List<String> includedApplications;
+    private @Nullable List<String> includedApplications;
     /**
      * @return A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
      * 
      */
-    private final @Nullable List<String> includedUserActions;
+    private @Nullable List<String> includedUserActions;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditionsApplications(
-        @CustomType.Parameter("excludedApplications") @Nullable List<String> excludedApplications,
-        @CustomType.Parameter("includedApplications") @Nullable List<String> includedApplications,
-        @CustomType.Parameter("includedUserActions") @Nullable List<String> includedUserActions) {
-        this.excludedApplications = excludedApplications;
-        this.includedApplications = includedApplications;
-        this.includedUserActions = includedUserActions;
-    }
-
+    private ConditionalAccessPolicyConditionsApplications() {}
     /**
      * @return A list of application IDs explicitly excluded from the policy.
      * 
@@ -66,16 +57,12 @@ public final class ConditionalAccessPolicyConditionsApplications {
     public static Builder builder(ConditionalAccessPolicyConditionsApplications defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedApplications;
         private @Nullable List<String> includedApplications;
         private @Nullable List<String> includedUserActions;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsApplications defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedApplications = defaults.excludedApplications;
@@ -83,6 +70,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
     	      this.includedUserActions = defaults.includedUserActions;
         }
 
+        @CustomType.Setter
         public Builder excludedApplications(@Nullable List<String> excludedApplications) {
             this.excludedApplications = excludedApplications;
             return this;
@@ -90,6 +78,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
         public Builder excludedApplications(String... excludedApplications) {
             return excludedApplications(List.of(excludedApplications));
         }
+        @CustomType.Setter
         public Builder includedApplications(@Nullable List<String> includedApplications) {
             this.includedApplications = includedApplications;
             return this;
@@ -97,14 +86,20 @@ public final class ConditionalAccessPolicyConditionsApplications {
         public Builder includedApplications(String... includedApplications) {
             return includedApplications(List.of(includedApplications));
         }
+        @CustomType.Setter
         public Builder includedUserActions(@Nullable List<String> includedUserActions) {
             this.includedUserActions = includedUserActions;
             return this;
         }
         public Builder includedUserActions(String... includedUserActions) {
             return includedUserActions(List.of(includedUserActions));
-        }        public ConditionalAccessPolicyConditionsApplications build() {
-            return new ConditionalAccessPolicyConditionsApplications(excludedApplications, includedApplications, includedUserActions);
+        }
+        public ConditionalAccessPolicyConditionsApplications build() {
+            final var o = new ConditionalAccessPolicyConditionsApplications();
+            o.excludedApplications = excludedApplications;
+            o.includedApplications = includedApplications;
+            o.includedUserActions = includedUserActions;
+            return o;
         }
     }
 }

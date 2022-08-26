@@ -159,6 +159,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.oidcRequestUrl);
     }
     /**
+     * The ID token for use when authenticating as a Service Principal using OpenID Connect.
+     * 
+     */
+    @Export(name="oidcToken", type=String.class, parameters={})
+    private Output</* @Nullable */ String> oidcToken;
+
+    /**
+     * @return The ID token for use when authenticating as a Service Principal using OpenID Connect.
+     * 
+     */
+    public Output<Optional<String>> oidcToken() {
+        return Codegen.optional(this.oidcToken);
+    }
+    /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      * 
      */

@@ -9,23 +9,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetServicePrincipalFeatureTag {
-    private final Boolean customSingleSignOn;
-    private final Boolean enterprise;
-    private final Boolean gallery;
-    private final Boolean hide;
+    private Boolean customSingleSignOn;
+    private Boolean enterprise;
+    private Boolean gallery;
+    private Boolean hide;
 
-    @CustomType.Constructor
-    private GetServicePrincipalFeatureTag(
-        @CustomType.Parameter("customSingleSignOn") Boolean customSingleSignOn,
-        @CustomType.Parameter("enterprise") Boolean enterprise,
-        @CustomType.Parameter("gallery") Boolean gallery,
-        @CustomType.Parameter("hide") Boolean hide) {
-        this.customSingleSignOn = customSingleSignOn;
-        this.enterprise = enterprise;
-        this.gallery = gallery;
-        this.hide = hide;
-    }
-
+    private GetServicePrincipalFeatureTag() {}
     public Boolean customSingleSignOn() {
         return this.customSingleSignOn;
     }
@@ -46,17 +35,13 @@ public final class GetServicePrincipalFeatureTag {
     public static Builder builder(GetServicePrincipalFeatureTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean customSingleSignOn;
         private Boolean enterprise;
         private Boolean gallery;
         private Boolean hide;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetServicePrincipalFeatureTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customSingleSignOn = defaults.customSingleSignOn;
@@ -65,23 +50,33 @@ public final class GetServicePrincipalFeatureTag {
     	      this.hide = defaults.hide;
         }
 
+        @CustomType.Setter
         public Builder customSingleSignOn(Boolean customSingleSignOn) {
             this.customSingleSignOn = Objects.requireNonNull(customSingleSignOn);
             return this;
         }
+        @CustomType.Setter
         public Builder enterprise(Boolean enterprise) {
             this.enterprise = Objects.requireNonNull(enterprise);
             return this;
         }
+        @CustomType.Setter
         public Builder gallery(Boolean gallery) {
             this.gallery = Objects.requireNonNull(gallery);
             return this;
         }
+        @CustomType.Setter
         public Builder hide(Boolean hide) {
             this.hide = Objects.requireNonNull(hide);
             return this;
-        }        public GetServicePrincipalFeatureTag build() {
-            return new GetServicePrincipalFeatureTag(customSingleSignOn, enterprise, gallery, hide);
+        }
+        public GetServicePrincipalFeatureTag build() {
+            final var o = new GetServicePrincipalFeatureTag();
+            o.customSingleSignOn = customSingleSignOn;
+            o.enterprise = enterprise;
+            o.gallery = gallery;
+            o.hide = hide;
+            return o;
         }
     }
 }

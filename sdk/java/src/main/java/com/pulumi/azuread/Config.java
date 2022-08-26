@@ -87,6 +87,13 @@ public final class Config {
         return Codegen.stringProp("oidcRequestUrl").config(config).get();
     }
 /**
+ * The ID token for use when authenticating as a Service Principal using OpenID Connect.
+ * 
+ */
+    public Optional<String> oidcToken() {
+        return Codegen.stringProp("oidcToken").config(config).get();
+    }
+/**
  * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
  * 
  */

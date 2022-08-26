@@ -15,21 +15,14 @@ public final class ConditionalAccessPolicyConditionsLocations {
      * @return A list of location IDs excluded from scope of policy.
      * 
      */
-    private final @Nullable List<String> excludedLocations;
+    private @Nullable List<String> excludedLocations;
     /**
      * @return A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
      * 
      */
-    private final List<String> includedLocations;
+    private List<String> includedLocations;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditionsLocations(
-        @CustomType.Parameter("excludedLocations") @Nullable List<String> excludedLocations,
-        @CustomType.Parameter("includedLocations") List<String> includedLocations) {
-        this.excludedLocations = excludedLocations;
-        this.includedLocations = includedLocations;
-    }
-
+    private ConditionalAccessPolicyConditionsLocations() {}
     /**
      * @return A list of location IDs excluded from scope of policy.
      * 
@@ -52,21 +45,18 @@ public final class ConditionalAccessPolicyConditionsLocations {
     public static Builder builder(ConditionalAccessPolicyConditionsLocations defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> excludedLocations;
         private List<String> includedLocations;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsLocations defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.excludedLocations = defaults.excludedLocations;
     	      this.includedLocations = defaults.includedLocations;
         }
 
+        @CustomType.Setter
         public Builder excludedLocations(@Nullable List<String> excludedLocations) {
             this.excludedLocations = excludedLocations;
             return this;
@@ -74,14 +64,19 @@ public final class ConditionalAccessPolicyConditionsLocations {
         public Builder excludedLocations(String... excludedLocations) {
             return excludedLocations(List.of(excludedLocations));
         }
+        @CustomType.Setter
         public Builder includedLocations(List<String> includedLocations) {
             this.includedLocations = Objects.requireNonNull(includedLocations);
             return this;
         }
         public Builder includedLocations(String... includedLocations) {
             return includedLocations(List.of(includedLocations));
-        }        public ConditionalAccessPolicyConditionsLocations build() {
-            return new ConditionalAccessPolicyConditionsLocations(excludedLocations, includedLocations);
+        }
+        public ConditionalAccessPolicyConditionsLocations build() {
+            final var o = new ConditionalAccessPolicyConditionsLocations();
+            o.excludedLocations = excludedLocations;
+            o.includedLocations = includedLocations;
+            return o;
         }
     }
 }

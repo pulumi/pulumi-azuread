@@ -15,13 +15,9 @@ public final class ApplicationPublicClient {
      * @return A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
      * 
      */
-    private final @Nullable List<String> redirectUris;
+    private @Nullable List<String> redirectUris;
 
-    @CustomType.Constructor
-    private ApplicationPublicClient(@CustomType.Parameter("redirectUris") @Nullable List<String> redirectUris) {
-        this.redirectUris = redirectUris;
-    }
-
+    private ApplicationPublicClient() {}
     /**
      * @return A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
      * 
@@ -37,27 +33,27 @@ public final class ApplicationPublicClient {
     public static Builder builder(ApplicationPublicClient defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> redirectUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationPublicClient defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.redirectUris = defaults.redirectUris;
         }
 
+        @CustomType.Setter
         public Builder redirectUris(@Nullable List<String> redirectUris) {
             this.redirectUris = redirectUris;
             return this;
         }
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
-        }        public ApplicationPublicClient build() {
-            return new ApplicationPublicClient(redirectUris);
+        }
+        public ApplicationPublicClient build() {
+            final var o = new ApplicationPublicClient();
+            o.redirectUris = redirectUris;
+            return o;
         }
     }
 }

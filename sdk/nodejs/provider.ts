@@ -67,6 +67,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly oidcRequestUrl!: pulumi.Output<string | undefined>;
     /**
+     * The ID token for use when authenticating as a Service Principal using OpenID Connect.
+     */
+    public readonly oidcToken!: pulumi.Output<string | undefined>;
+    /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */
     public readonly partnerId!: pulumi.Output<string | undefined>;
@@ -96,6 +100,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
             resourceInputs["oidcRequestToken"] = args ? args.oidcRequestToken : undefined;
             resourceInputs["oidcRequestUrl"] = args ? args.oidcRequestUrl : undefined;
+            resourceInputs["oidcToken"] = args ? args.oidcToken : undefined;
             resourceInputs["partnerId"] = args ? args.partnerId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
             resourceInputs["useCli"] = pulumi.output(args ? args.useCli : undefined).apply(JSON.stringify);
@@ -156,6 +161,10 @@ export interface ProviderArgs {
      * using OpenID Connect.
      */
     oidcRequestUrl?: pulumi.Input<string>;
+    /**
+     * The ID token for use when authenticating as a Service Principal using OpenID Connect.
+     */
+    oidcToken?: pulumi.Input<string>;
     /**
      * A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
      */

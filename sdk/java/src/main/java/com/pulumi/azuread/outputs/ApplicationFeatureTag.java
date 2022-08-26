@@ -15,35 +15,24 @@ public final class ApplicationFeatureTag {
      * @return Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean customSingleSignOn;
+    private @Nullable Boolean customSingleSignOn;
     /**
      * @return Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean enterprise;
+    private @Nullable Boolean enterprise;
     /**
      * @return Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean gallery;
+    private @Nullable Boolean gallery;
     /**
      * @return Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean hide;
+    private @Nullable Boolean hide;
 
-    @CustomType.Constructor
-    private ApplicationFeatureTag(
-        @CustomType.Parameter("customSingleSignOn") @Nullable Boolean customSingleSignOn,
-        @CustomType.Parameter("enterprise") @Nullable Boolean enterprise,
-        @CustomType.Parameter("gallery") @Nullable Boolean gallery,
-        @CustomType.Parameter("hide") @Nullable Boolean hide) {
-        this.customSingleSignOn = customSingleSignOn;
-        this.enterprise = enterprise;
-        this.gallery = gallery;
-        this.hide = hide;
-    }
-
+    private ApplicationFeatureTag() {}
     /**
      * @return Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
      * 
@@ -80,17 +69,13 @@ public final class ApplicationFeatureTag {
     public static Builder builder(ApplicationFeatureTag defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean customSingleSignOn;
         private @Nullable Boolean enterprise;
         private @Nullable Boolean gallery;
         private @Nullable Boolean hide;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationFeatureTag defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customSingleSignOn = defaults.customSingleSignOn;
@@ -99,23 +84,33 @@ public final class ApplicationFeatureTag {
     	      this.hide = defaults.hide;
         }
 
+        @CustomType.Setter
         public Builder customSingleSignOn(@Nullable Boolean customSingleSignOn) {
             this.customSingleSignOn = customSingleSignOn;
             return this;
         }
+        @CustomType.Setter
         public Builder enterprise(@Nullable Boolean enterprise) {
             this.enterprise = enterprise;
             return this;
         }
+        @CustomType.Setter
         public Builder gallery(@Nullable Boolean gallery) {
             this.gallery = gallery;
             return this;
         }
+        @CustomType.Setter
         public Builder hide(@Nullable Boolean hide) {
             this.hide = hide;
             return this;
-        }        public ApplicationFeatureTag build() {
-            return new ApplicationFeatureTag(customSingleSignOn, enterprise, gallery, hide);
+        }
+        public ApplicationFeatureTag build() {
+            final var o = new ApplicationFeatureTag();
+            o.customSingleSignOn = customSingleSignOn;
+            o.enterprise = enterprise;
+            o.gallery = gallery;
+            o.hide = hide;
+            return o;
         }
     }
 }

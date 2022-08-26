@@ -17,35 +17,24 @@ public final class GetApplicationApi {
      * @return A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      * 
      */
-    private final List<String> knownClientApplications;
+    private List<String> knownClientApplications;
     /**
      * @return Allows an application to use claims mapping without specifying a custom signing key.
      * 
      */
-    private final Boolean mappedClaimsEnabled;
+    private Boolean mappedClaimsEnabled;
     /**
      * @return One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
      * 
      */
-    private final List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes;
+    private List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes;
     /**
      * @return The access token version expected by this resource. Possible values are `1` or `2`.
      * 
      */
-    private final Integer requestedAccessTokenVersion;
+    private Integer requestedAccessTokenVersion;
 
-    @CustomType.Constructor
-    private GetApplicationApi(
-        @CustomType.Parameter("knownClientApplications") List<String> knownClientApplications,
-        @CustomType.Parameter("mappedClaimsEnabled") Boolean mappedClaimsEnabled,
-        @CustomType.Parameter("oauth2PermissionScopes") List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes,
-        @CustomType.Parameter("requestedAccessTokenVersion") Integer requestedAccessTokenVersion) {
-        this.knownClientApplications = knownClientApplications;
-        this.mappedClaimsEnabled = mappedClaimsEnabled;
-        this.oauth2PermissionScopes = oauth2PermissionScopes;
-        this.requestedAccessTokenVersion = requestedAccessTokenVersion;
-    }
-
+    private GetApplicationApi() {}
     /**
      * @return A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
      * 
@@ -82,17 +71,13 @@ public final class GetApplicationApi {
     public static Builder builder(GetApplicationApi defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private List<String> knownClientApplications;
         private Boolean mappedClaimsEnabled;
         private List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes;
         private Integer requestedAccessTokenVersion;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationApi defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.knownClientApplications = defaults.knownClientApplications;
@@ -101,6 +86,7 @@ public final class GetApplicationApi {
     	      this.requestedAccessTokenVersion = defaults.requestedAccessTokenVersion;
         }
 
+        @CustomType.Setter
         public Builder knownClientApplications(List<String> knownClientApplications) {
             this.knownClientApplications = Objects.requireNonNull(knownClientApplications);
             return this;
@@ -108,10 +94,12 @@ public final class GetApplicationApi {
         public Builder knownClientApplications(String... knownClientApplications) {
             return knownClientApplications(List.of(knownClientApplications));
         }
+        @CustomType.Setter
         public Builder mappedClaimsEnabled(Boolean mappedClaimsEnabled) {
             this.mappedClaimsEnabled = Objects.requireNonNull(mappedClaimsEnabled);
             return this;
         }
+        @CustomType.Setter
         public Builder oauth2PermissionScopes(List<GetApplicationApiOauth2PermissionScope> oauth2PermissionScopes) {
             this.oauth2PermissionScopes = Objects.requireNonNull(oauth2PermissionScopes);
             return this;
@@ -119,11 +107,18 @@ public final class GetApplicationApi {
         public Builder oauth2PermissionScopes(GetApplicationApiOauth2PermissionScope... oauth2PermissionScopes) {
             return oauth2PermissionScopes(List.of(oauth2PermissionScopes));
         }
+        @CustomType.Setter
         public Builder requestedAccessTokenVersion(Integer requestedAccessTokenVersion) {
             this.requestedAccessTokenVersion = Objects.requireNonNull(requestedAccessTokenVersion);
             return this;
-        }        public GetApplicationApi build() {
-            return new GetApplicationApi(knownClientApplications, mappedClaimsEnabled, oauth2PermissionScopes, requestedAccessTokenVersion);
+        }
+        public GetApplicationApi build() {
+            final var o = new GetApplicationApi();
+            o.knownClientApplications = knownClientApplications;
+            o.mappedClaimsEnabled = mappedClaimsEnabled;
+            o.oauth2PermissionScopes = oauth2PermissionScopes;
+            o.requestedAccessTokenVersion = requestedAccessTokenVersion;
+            return o;
         }
     }
 }

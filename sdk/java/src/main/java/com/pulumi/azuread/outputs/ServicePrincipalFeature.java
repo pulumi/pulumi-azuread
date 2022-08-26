@@ -11,23 +11,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServicePrincipalFeature {
-    private final @Nullable Boolean customSingleSignOnApp;
-    private final @Nullable Boolean enterpriseApplication;
-    private final @Nullable Boolean galleryApplication;
-    private final @Nullable Boolean visibleToUsers;
+    private @Nullable Boolean customSingleSignOnApp;
+    private @Nullable Boolean enterpriseApplication;
+    private @Nullable Boolean galleryApplication;
+    private @Nullable Boolean visibleToUsers;
 
-    @CustomType.Constructor
-    private ServicePrincipalFeature(
-        @CustomType.Parameter("customSingleSignOnApp") @Nullable Boolean customSingleSignOnApp,
-        @CustomType.Parameter("enterpriseApplication") @Nullable Boolean enterpriseApplication,
-        @CustomType.Parameter("galleryApplication") @Nullable Boolean galleryApplication,
-        @CustomType.Parameter("visibleToUsers") @Nullable Boolean visibleToUsers) {
-        this.customSingleSignOnApp = customSingleSignOnApp;
-        this.enterpriseApplication = enterpriseApplication;
-        this.galleryApplication = galleryApplication;
-        this.visibleToUsers = visibleToUsers;
-    }
-
+    private ServicePrincipalFeature() {}
     public Optional<Boolean> customSingleSignOnApp() {
         return Optional.ofNullable(this.customSingleSignOnApp);
     }
@@ -48,17 +37,13 @@ public final class ServicePrincipalFeature {
     public static Builder builder(ServicePrincipalFeature defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean customSingleSignOnApp;
         private @Nullable Boolean enterpriseApplication;
         private @Nullable Boolean galleryApplication;
         private @Nullable Boolean visibleToUsers;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ServicePrincipalFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.customSingleSignOnApp = defaults.customSingleSignOnApp;
@@ -67,23 +52,33 @@ public final class ServicePrincipalFeature {
     	      this.visibleToUsers = defaults.visibleToUsers;
         }
 
+        @CustomType.Setter
         public Builder customSingleSignOnApp(@Nullable Boolean customSingleSignOnApp) {
             this.customSingleSignOnApp = customSingleSignOnApp;
             return this;
         }
+        @CustomType.Setter
         public Builder enterpriseApplication(@Nullable Boolean enterpriseApplication) {
             this.enterpriseApplication = enterpriseApplication;
             return this;
         }
+        @CustomType.Setter
         public Builder galleryApplication(@Nullable Boolean galleryApplication) {
             this.galleryApplication = galleryApplication;
             return this;
         }
+        @CustomType.Setter
         public Builder visibleToUsers(@Nullable Boolean visibleToUsers) {
             this.visibleToUsers = visibleToUsers;
             return this;
-        }        public ServicePrincipalFeature build() {
-            return new ServicePrincipalFeature(customSingleSignOnApp, enterpriseApplication, galleryApplication, visibleToUsers);
+        }
+        public ServicePrincipalFeature build() {
+            final var o = new ServicePrincipalFeature();
+            o.customSingleSignOnApp = customSingleSignOnApp;
+            o.enterpriseApplication = enterpriseApplication;
+            o.galleryApplication = galleryApplication;
+            o.visibleToUsers = visibleToUsers;
+            return o;
         }
     }
 }

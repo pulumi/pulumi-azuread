@@ -17,35 +17,24 @@ public final class GetApplicationOptionalClaimSaml2Token {
      * @return List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
      * 
      */
-    private final @Nullable List<String> additionalProperties;
+    private @Nullable List<String> additionalProperties;
     /**
      * @return Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
      * 
      */
-    private final @Nullable Boolean essential;
+    private @Nullable Boolean essential;
     /**
      * @return The name of the optional claim.
      * 
      */
-    private final String name;
+    private String name;
     /**
      * @return The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
      * 
      */
-    private final @Nullable String source;
+    private @Nullable String source;
 
-    @CustomType.Constructor
-    private GetApplicationOptionalClaimSaml2Token(
-        @CustomType.Parameter("additionalProperties") @Nullable List<String> additionalProperties,
-        @CustomType.Parameter("essential") @Nullable Boolean essential,
-        @CustomType.Parameter("name") String name,
-        @CustomType.Parameter("source") @Nullable String source) {
-        this.additionalProperties = additionalProperties;
-        this.essential = essential;
-        this.name = name;
-        this.source = source;
-    }
-
+    private GetApplicationOptionalClaimSaml2Token() {}
     /**
      * @return List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
      * 
@@ -82,17 +71,13 @@ public final class GetApplicationOptionalClaimSaml2Token {
     public static Builder builder(GetApplicationOptionalClaimSaml2Token defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> additionalProperties;
         private @Nullable Boolean essential;
         private String name;
         private @Nullable String source;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationOptionalClaimSaml2Token defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.additionalProperties = defaults.additionalProperties;
@@ -101,6 +86,7 @@ public final class GetApplicationOptionalClaimSaml2Token {
     	      this.source = defaults.source;
         }
 
+        @CustomType.Setter
         public Builder additionalProperties(@Nullable List<String> additionalProperties) {
             this.additionalProperties = additionalProperties;
             return this;
@@ -108,19 +94,28 @@ public final class GetApplicationOptionalClaimSaml2Token {
         public Builder additionalProperties(String... additionalProperties) {
             return additionalProperties(List.of(additionalProperties));
         }
+        @CustomType.Setter
         public Builder essential(@Nullable Boolean essential) {
             this.essential = essential;
             return this;
         }
+        @CustomType.Setter
         public Builder name(String name) {
             this.name = Objects.requireNonNull(name);
             return this;
         }
+        @CustomType.Setter
         public Builder source(@Nullable String source) {
             this.source = source;
             return this;
-        }        public GetApplicationOptionalClaimSaml2Token build() {
-            return new GetApplicationOptionalClaimSaml2Token(additionalProperties, essential, name, source);
+        }
+        public GetApplicationOptionalClaimSaml2Token build() {
+            final var o = new GetApplicationOptionalClaimSaml2Token();
+            o.additionalProperties = additionalProperties;
+            o.essential = essential;
+            o.name = name;
+            o.source = source;
+            return o;
         }
     }
 }

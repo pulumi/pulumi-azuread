@@ -17,28 +17,19 @@ public final class GetApplicationOptionalClaim {
      * @return One or more `access_token` blocks as documented below.
      * 
      */
-    private final @Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens;
+    private @Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens;
     /**
      * @return One or more `id_token` blocks as documented below.
      * 
      */
-    private final @Nullable List<GetApplicationOptionalClaimIdToken> idTokens;
+    private @Nullable List<GetApplicationOptionalClaimIdToken> idTokens;
     /**
      * @return One or more `saml2_token` blocks as documented below.
      * 
      */
-    private final @Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens;
+    private @Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens;
 
-    @CustomType.Constructor
-    private GetApplicationOptionalClaim(
-        @CustomType.Parameter("accessTokens") @Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens,
-        @CustomType.Parameter("idTokens") @Nullable List<GetApplicationOptionalClaimIdToken> idTokens,
-        @CustomType.Parameter("saml2Tokens") @Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens) {
-        this.accessTokens = accessTokens;
-        this.idTokens = idTokens;
-        this.saml2Tokens = saml2Tokens;
-    }
-
+    private GetApplicationOptionalClaim() {}
     /**
      * @return One or more `access_token` blocks as documented below.
      * 
@@ -68,16 +59,12 @@ public final class GetApplicationOptionalClaim {
     public static Builder builder(GetApplicationOptionalClaim defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens;
         private @Nullable List<GetApplicationOptionalClaimIdToken> idTokens;
         private @Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetApplicationOptionalClaim defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.accessTokens = defaults.accessTokens;
@@ -85,6 +72,7 @@ public final class GetApplicationOptionalClaim {
     	      this.saml2Tokens = defaults.saml2Tokens;
         }
 
+        @CustomType.Setter
         public Builder accessTokens(@Nullable List<GetApplicationOptionalClaimAccessToken> accessTokens) {
             this.accessTokens = accessTokens;
             return this;
@@ -92,6 +80,7 @@ public final class GetApplicationOptionalClaim {
         public Builder accessTokens(GetApplicationOptionalClaimAccessToken... accessTokens) {
             return accessTokens(List.of(accessTokens));
         }
+        @CustomType.Setter
         public Builder idTokens(@Nullable List<GetApplicationOptionalClaimIdToken> idTokens) {
             this.idTokens = idTokens;
             return this;
@@ -99,14 +88,20 @@ public final class GetApplicationOptionalClaim {
         public Builder idTokens(GetApplicationOptionalClaimIdToken... idTokens) {
             return idTokens(List.of(idTokens));
         }
+        @CustomType.Setter
         public Builder saml2Tokens(@Nullable List<GetApplicationOptionalClaimSaml2Token> saml2Tokens) {
             this.saml2Tokens = saml2Tokens;
             return this;
         }
         public Builder saml2Tokens(GetApplicationOptionalClaimSaml2Token... saml2Tokens) {
             return saml2Tokens(List.of(saml2Tokens));
-        }        public GetApplicationOptionalClaim build() {
-            return new GetApplicationOptionalClaim(accessTokens, idTokens, saml2Tokens);
+        }
+        public GetApplicationOptionalClaim build() {
+            final var o = new GetApplicationOptionalClaim();
+            o.accessTokens = accessTokens;
+            o.idTokens = idTokens;
+            o.saml2Tokens = saml2Tokens;
+            return o;
         }
     }
 }

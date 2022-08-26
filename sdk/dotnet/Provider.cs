@@ -78,6 +78,12 @@ namespace Pulumi.AzureAD
         public Output<string?> OidcRequestUrl { get; private set; } = null!;
 
         /// <summary>
+        /// The ID token for use when authenticating as a Service Principal using OpenID Connect.
+        /// </summary>
+        [Output("oidcToken")]
+        public Output<string?> OidcToken { get; private set; } = null!;
+
+        /// <summary>
         /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
         /// </summary>
         [Output("partnerId")]
@@ -181,6 +187,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("oidcRequestUrl")]
         public Input<string>? OidcRequestUrl { get; set; }
+
+        /// <summary>
+        /// The ID token for use when authenticating as a Service Principal using OpenID Connect.
+        /// </summary>
+        [Input("oidcToken")]
+        public Input<string>? OidcToken { get; set; }
 
         /// <summary>
         /// A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution

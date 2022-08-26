@@ -71,6 +71,11 @@ func GetOidcRequestUrl(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:oidcRequestUrl")
 }
 
+// The ID token for use when authenticating as a Service Principal using OpenID Connect.
+func GetOidcToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:oidcToken")
+}
+
 // A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
 func GetPartnerId(ctx *pulumi.Context) string {
 	return config.Get(ctx, "azuread:partnerId")

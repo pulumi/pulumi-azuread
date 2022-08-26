@@ -10,6 +10,8 @@ import com.pulumi.azuread.inputs.GetApplicationArgs;
 import com.pulumi.azuread.inputs.GetApplicationPlainArgs;
 import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
 import com.pulumi.azuread.inputs.GetApplicationTemplatePlainArgs;
+import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
+import com.pulumi.azuread.inputs.GetDirectoryObjectPlainArgs;
 import com.pulumi.azuread.inputs.GetDomainsArgs;
 import com.pulumi.azuread.inputs.GetDomainsPlainArgs;
 import com.pulumi.azuread.inputs.GetGroupArgs;
@@ -29,6 +31,7 @@ import com.pulumi.azuread.outputs.GetApplicationPublishedAppIdsResult;
 import com.pulumi.azuread.outputs.GetApplicationResult;
 import com.pulumi.azuread.outputs.GetApplicationTemplateResult;
 import com.pulumi.azuread.outputs.GetClientConfigResult;
+import com.pulumi.azuread.outputs.GetDirectoryObjectResult;
 import com.pulumi.azuread.outputs.GetDomainsResult;
 import com.pulumi.azuread.outputs.GetGroupResult;
 import com.pulumi.azuread.outputs.GetGroupsResult;
@@ -1837,6 +1840,222 @@ public final class AzureadFunctions {
      */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the OData type for a generic directory object having the provided object ID.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up and output type of object by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * *`object_id` - The object ID of the directory object.
+     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * 
+     */
+    public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args) {
+        return getDirectoryObject(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the OData type for a generic directory object having the provided object ID.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up and output type of object by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * *`object_id` - The object ID of the directory object.
+     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * 
+     */
+    public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args) {
+        return getDirectoryObjectPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the OData type for a generic directory object having the provided object ID.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up and output type of object by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * *`object_id` - The object ID of the directory object.
+     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * 
+     */
+    public static Output<GetDirectoryObjectResult> getDirectoryObject(GetDirectoryObjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getDirectoryObject:getDirectoryObject", TypeShape.of(GetDirectoryObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the OData type for a generic directory object having the provided object ID.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up and output type of object by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getDirectoryObject(GetDirectoryObjectArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;objectType&#34;, example.applyValue(getDirectoryObjectResult -&gt; getDirectoryObjectResult.type()));
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * *`object_id` - The object ID of the directory object.
+     * *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+     * 
+     */
+    public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getDirectoryObject:getDirectoryObject", TypeShape.of(GetDirectoryObjectResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about existing Domains within Azure Active Directory.

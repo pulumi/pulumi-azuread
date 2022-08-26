@@ -17,42 +17,29 @@ public final class ConditionalAccessPolicySessionControls {
      * @return Whether or not application enforced restrictions are enabled. Defaults to `false`.
      * 
      */
-    private final @Nullable Boolean applicationEnforcedRestrictionsEnabled;
+    private @Nullable Boolean applicationEnforcedRestrictionsEnabled;
     /**
      * @return Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
      * 
      */
-    private final @Nullable String cloudAppSecurityPolicy;
+    private @Nullable String cloudAppSecurityPolicy;
     /**
      * @return Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
      * 
      */
-    private final @Nullable String persistentBrowserMode;
+    private @Nullable String persistentBrowserMode;
     /**
      * @return Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
      * 
      */
-    private final @Nullable Integer signInFrequency;
+    private @Nullable Integer signInFrequency;
     /**
      * @return The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
      * 
      */
-    private final @Nullable String signInFrequencyPeriod;
+    private @Nullable String signInFrequencyPeriod;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicySessionControls(
-        @CustomType.Parameter("applicationEnforcedRestrictionsEnabled") @Nullable Boolean applicationEnforcedRestrictionsEnabled,
-        @CustomType.Parameter("cloudAppSecurityPolicy") @Nullable String cloudAppSecurityPolicy,
-        @CustomType.Parameter("persistentBrowserMode") @Nullable String persistentBrowserMode,
-        @CustomType.Parameter("signInFrequency") @Nullable Integer signInFrequency,
-        @CustomType.Parameter("signInFrequencyPeriod") @Nullable String signInFrequencyPeriod) {
-        this.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
-        this.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
-        this.persistentBrowserMode = persistentBrowserMode;
-        this.signInFrequency = signInFrequency;
-        this.signInFrequencyPeriod = signInFrequencyPeriod;
-    }
-
+    private ConditionalAccessPolicySessionControls() {}
     /**
      * @return Whether or not application enforced restrictions are enabled. Defaults to `false`.
      * 
@@ -96,18 +83,14 @@ public final class ConditionalAccessPolicySessionControls {
     public static Builder builder(ConditionalAccessPolicySessionControls defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean applicationEnforcedRestrictionsEnabled;
         private @Nullable String cloudAppSecurityPolicy;
         private @Nullable String persistentBrowserMode;
         private @Nullable Integer signInFrequency;
         private @Nullable String signInFrequencyPeriod;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicySessionControls defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.applicationEnforcedRestrictionsEnabled = defaults.applicationEnforcedRestrictionsEnabled;
@@ -117,27 +100,39 @@ public final class ConditionalAccessPolicySessionControls {
     	      this.signInFrequencyPeriod = defaults.signInFrequencyPeriod;
         }
 
+        @CustomType.Setter
         public Builder applicationEnforcedRestrictionsEnabled(@Nullable Boolean applicationEnforcedRestrictionsEnabled) {
             this.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
             return this;
         }
+        @CustomType.Setter
         public Builder cloudAppSecurityPolicy(@Nullable String cloudAppSecurityPolicy) {
             this.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
             return this;
         }
+        @CustomType.Setter
         public Builder persistentBrowserMode(@Nullable String persistentBrowserMode) {
             this.persistentBrowserMode = persistentBrowserMode;
             return this;
         }
+        @CustomType.Setter
         public Builder signInFrequency(@Nullable Integer signInFrequency) {
             this.signInFrequency = signInFrequency;
             return this;
         }
+        @CustomType.Setter
         public Builder signInFrequencyPeriod(@Nullable String signInFrequencyPeriod) {
             this.signInFrequencyPeriod = signInFrequencyPeriod;
             return this;
-        }        public ConditionalAccessPolicySessionControls build() {
-            return new ConditionalAccessPolicySessionControls(applicationEnforcedRestrictionsEnabled, cloudAppSecurityPolicy, persistentBrowserMode, signInFrequency, signInFrequencyPeriod);
+        }
+        public ConditionalAccessPolicySessionControls build() {
+            final var o = new ConditionalAccessPolicySessionControls();
+            o.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
+            o.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
+            o.persistentBrowserMode = persistentBrowserMode;
+            o.signInFrequency = signInFrequency;
+            o.signInFrequencyPeriod = signInFrequencyPeriod;
+            return o;
         }
     }
 }

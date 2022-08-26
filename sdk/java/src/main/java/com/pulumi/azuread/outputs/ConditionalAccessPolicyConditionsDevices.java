@@ -15,13 +15,9 @@ public final class ConditionalAccessPolicyConditionsDevices {
      * @return A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
      * 
      */
-    private final @Nullable ConditionalAccessPolicyConditionsDevicesFilter filter;
+    private @Nullable ConditionalAccessPolicyConditionsDevicesFilter filter;
 
-    @CustomType.Constructor
-    private ConditionalAccessPolicyConditionsDevices(@CustomType.Parameter("filter") @Nullable ConditionalAccessPolicyConditionsDevicesFilter filter) {
-        this.filter = filter;
-    }
-
+    private ConditionalAccessPolicyConditionsDevices() {}
     /**
      * @return A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
      * 
@@ -37,24 +33,24 @@ public final class ConditionalAccessPolicyConditionsDevices {
     public static Builder builder(ConditionalAccessPolicyConditionsDevices defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable ConditionalAccessPolicyConditionsDevicesFilter filter;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ConditionalAccessPolicyConditionsDevices defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.filter = defaults.filter;
         }
 
+        @CustomType.Setter
         public Builder filter(@Nullable ConditionalAccessPolicyConditionsDevicesFilter filter) {
             this.filter = filter;
             return this;
-        }        public ConditionalAccessPolicyConditionsDevices build() {
-            return new ConditionalAccessPolicyConditionsDevices(filter);
+        }
+        public ConditionalAccessPolicyConditionsDevices build() {
+            final var o = new ConditionalAccessPolicyConditionsDevices();
+            o.filter = filter;
+            return o;
         }
     }
 }

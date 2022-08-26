@@ -15,63 +15,44 @@ public final class GetDomainsDomain {
      * @return Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
      * 
      */
-    private final Boolean adminManaged;
+    private Boolean adminManaged;
     /**
      * @return The authentication type of the domain. Possible values include `Managed` or `Federated`.
      * 
      */
-    private final String authenticationType;
+    private String authenticationType;
     /**
      * @return Whether this is the default domain that is used for user creation.
      * 
      */
-    private final Boolean default_;
+    private Boolean default_;
     /**
      * @return The name of the domain.
      * 
      */
-    private final String domainName;
+    private String domainName;
     /**
      * @return Whether this is the initial domain created by Azure Active Directory.
      * 
      */
-    private final Boolean initial;
+    private Boolean initial;
     /**
      * @return Whether the domain is a verified root domain (not a subdomain).
      * 
      */
-    private final Boolean root;
+    private Boolean root;
     /**
      * @return A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
      * 
      */
-    private final List<String> supportedServices;
+    private List<String> supportedServices;
     /**
      * @return Whether the domain has completed domain ownership verification.
      * 
      */
-    private final Boolean verified;
+    private Boolean verified;
 
-    @CustomType.Constructor
-    private GetDomainsDomain(
-        @CustomType.Parameter("adminManaged") Boolean adminManaged,
-        @CustomType.Parameter("authenticationType") String authenticationType,
-        @CustomType.Parameter("default") Boolean default_,
-        @CustomType.Parameter("domainName") String domainName,
-        @CustomType.Parameter("initial") Boolean initial,
-        @CustomType.Parameter("root") Boolean root,
-        @CustomType.Parameter("supportedServices") List<String> supportedServices,
-        @CustomType.Parameter("verified") Boolean verified) {
-        this.adminManaged = adminManaged;
-        this.authenticationType = authenticationType;
-        this.default_ = default_;
-        this.domainName = domainName;
-        this.initial = initial;
-        this.root = root;
-        this.supportedServices = supportedServices;
-        this.verified = verified;
-    }
-
+    private GetDomainsDomain() {}
     /**
      * @return Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
      * 
@@ -136,7 +117,7 @@ public final class GetDomainsDomain {
     public static Builder builder(GetDomainsDomain defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private Boolean adminManaged;
         private String authenticationType;
@@ -146,11 +127,7 @@ public final class GetDomainsDomain {
         private Boolean root;
         private List<String> supportedServices;
         private Boolean verified;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetDomainsDomain defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.adminManaged = defaults.adminManaged;
@@ -163,30 +140,37 @@ public final class GetDomainsDomain {
     	      this.verified = defaults.verified;
         }
 
+        @CustomType.Setter
         public Builder adminManaged(Boolean adminManaged) {
             this.adminManaged = Objects.requireNonNull(adminManaged);
             return this;
         }
+        @CustomType.Setter
         public Builder authenticationType(String authenticationType) {
             this.authenticationType = Objects.requireNonNull(authenticationType);
             return this;
         }
+        @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
             this.default_ = Objects.requireNonNull(default_);
             return this;
         }
+        @CustomType.Setter
         public Builder domainName(String domainName) {
             this.domainName = Objects.requireNonNull(domainName);
             return this;
         }
+        @CustomType.Setter
         public Builder initial(Boolean initial) {
             this.initial = Objects.requireNonNull(initial);
             return this;
         }
+        @CustomType.Setter
         public Builder root(Boolean root) {
             this.root = Objects.requireNonNull(root);
             return this;
         }
+        @CustomType.Setter
         public Builder supportedServices(List<String> supportedServices) {
             this.supportedServices = Objects.requireNonNull(supportedServices);
             return this;
@@ -194,11 +178,22 @@ public final class GetDomainsDomain {
         public Builder supportedServices(String... supportedServices) {
             return supportedServices(List.of(supportedServices));
         }
+        @CustomType.Setter
         public Builder verified(Boolean verified) {
             this.verified = Objects.requireNonNull(verified);
             return this;
-        }        public GetDomainsDomain build() {
-            return new GetDomainsDomain(adminManaged, authenticationType, default_, domainName, initial, root, supportedServices, verified);
+        }
+        public GetDomainsDomain build() {
+            final var o = new GetDomainsDomain();
+            o.adminManaged = adminManaged;
+            o.authenticationType = authenticationType;
+            o.default_ = default_;
+            o.domainName = domainName;
+            o.initial = initial;
+            o.root = root;
+            o.supportedServices = supportedServices;
+            o.verified = verified;
+            return o;
         }
     }
 }

@@ -15,13 +15,9 @@ public final class ApplicationSinglePageApplication {
      * @return A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
      * 
      */
-    private final @Nullable List<String> redirectUris;
+    private @Nullable List<String> redirectUris;
 
-    @CustomType.Constructor
-    private ApplicationSinglePageApplication(@CustomType.Parameter("redirectUris") @Nullable List<String> redirectUris) {
-        this.redirectUris = redirectUris;
-    }
-
+    private ApplicationSinglePageApplication() {}
     /**
      * @return A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
      * 
@@ -37,27 +33,27 @@ public final class ApplicationSinglePageApplication {
     public static Builder builder(ApplicationSinglePageApplication defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> redirectUris;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(ApplicationSinglePageApplication defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.redirectUris = defaults.redirectUris;
         }
 
+        @CustomType.Setter
         public Builder redirectUris(@Nullable List<String> redirectUris) {
             this.redirectUris = redirectUris;
             return this;
         }
         public Builder redirectUris(String... redirectUris) {
             return redirectUris(List.of(redirectUris));
-        }        public ApplicationSinglePageApplication build() {
-            return new ApplicationSinglePageApplication(redirectUris);
+        }
+        public ApplicationSinglePageApplication build() {
+            final var o = new ApplicationSinglePageApplication();
+            o.redirectUris = redirectUris;
+            return o;
         }
     }
 }

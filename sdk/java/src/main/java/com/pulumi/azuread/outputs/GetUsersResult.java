@@ -18,48 +18,31 @@ public final class GetUsersResult {
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
-    private final String id;
-    private final @Nullable Boolean ignoreMissing;
+    private String id;
+    private @Nullable Boolean ignoreMissing;
     /**
      * @return The email aliases of the users.
      * 
      */
-    private final List<String> mailNicknames;
+    private List<String> mailNicknames;
     /**
      * @return The object IDs of the users.
      * 
      */
-    private final List<String> objectIds;
-    private final @Nullable Boolean returnAll;
+    private List<String> objectIds;
+    private @Nullable Boolean returnAll;
     /**
      * @return The user principal names (UPNs) of the users.
      * 
      */
-    private final List<String> userPrincipalNames;
+    private List<String> userPrincipalNames;
     /**
      * @return A list of users. Each `user` object provides the attributes documented below.
      * 
      */
-    private final List<GetUsersUser> users;
+    private List<GetUsersUser> users;
 
-    @CustomType.Constructor
-    private GetUsersResult(
-        @CustomType.Parameter("id") String id,
-        @CustomType.Parameter("ignoreMissing") @Nullable Boolean ignoreMissing,
-        @CustomType.Parameter("mailNicknames") List<String> mailNicknames,
-        @CustomType.Parameter("objectIds") List<String> objectIds,
-        @CustomType.Parameter("returnAll") @Nullable Boolean returnAll,
-        @CustomType.Parameter("userPrincipalNames") List<String> userPrincipalNames,
-        @CustomType.Parameter("users") List<GetUsersUser> users) {
-        this.id = id;
-        this.ignoreMissing = ignoreMissing;
-        this.mailNicknames = mailNicknames;
-        this.objectIds = objectIds;
-        this.returnAll = returnAll;
-        this.userPrincipalNames = userPrincipalNames;
-        this.users = users;
-    }
-
+    private GetUsersResult() {}
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -109,7 +92,7 @@ public final class GetUsersResult {
     public static Builder builder(GetUsersResult defaults) {
         return new Builder(defaults);
     }
-
+    @CustomType.Builder
     public static final class Builder {
         private String id;
         private @Nullable Boolean ignoreMissing;
@@ -118,11 +101,7 @@ public final class GetUsersResult {
         private @Nullable Boolean returnAll;
         private List<String> userPrincipalNames;
         private List<GetUsersUser> users;
-
-        public Builder() {
-    	      // Empty
-        }
-
+        public Builder() {}
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
@@ -134,14 +113,17 @@ public final class GetUsersResult {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
             return this;
         }
+        @CustomType.Setter
         public Builder ignoreMissing(@Nullable Boolean ignoreMissing) {
             this.ignoreMissing = ignoreMissing;
             return this;
         }
+        @CustomType.Setter
         public Builder mailNicknames(List<String> mailNicknames) {
             this.mailNicknames = Objects.requireNonNull(mailNicknames);
             return this;
@@ -149,6 +131,7 @@ public final class GetUsersResult {
         public Builder mailNicknames(String... mailNicknames) {
             return mailNicknames(List.of(mailNicknames));
         }
+        @CustomType.Setter
         public Builder objectIds(List<String> objectIds) {
             this.objectIds = Objects.requireNonNull(objectIds);
             return this;
@@ -156,10 +139,12 @@ public final class GetUsersResult {
         public Builder objectIds(String... objectIds) {
             return objectIds(List.of(objectIds));
         }
+        @CustomType.Setter
         public Builder returnAll(@Nullable Boolean returnAll) {
             this.returnAll = returnAll;
             return this;
         }
+        @CustomType.Setter
         public Builder userPrincipalNames(List<String> userPrincipalNames) {
             this.userPrincipalNames = Objects.requireNonNull(userPrincipalNames);
             return this;
@@ -167,14 +152,24 @@ public final class GetUsersResult {
         public Builder userPrincipalNames(String... userPrincipalNames) {
             return userPrincipalNames(List.of(userPrincipalNames));
         }
+        @CustomType.Setter
         public Builder users(List<GetUsersUser> users) {
             this.users = Objects.requireNonNull(users);
             return this;
         }
         public Builder users(GetUsersUser... users) {
             return users(List.of(users));
-        }        public GetUsersResult build() {
-            return new GetUsersResult(id, ignoreMissing, mailNicknames, objectIds, returnAll, userPrincipalNames, users);
+        }
+        public GetUsersResult build() {
+            final var o = new GetUsersResult();
+            o.id = id;
+            o.ignoreMissing = ignoreMissing;
+            o.mailNicknames = mailNicknames;
+            o.objectIds = objectIds;
+            o.returnAll = returnAll;
+            o.userPrincipalNames = userPrincipalNames;
+            o.users = users;
+            return o;
         }
     }
 }
