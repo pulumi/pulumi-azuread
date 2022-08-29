@@ -67,7 +67,8 @@ func makeResource(mod string, res string) tokens.Type {
 // managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
 // var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
 
-// stringValue gets a string value from a property map, then from environment vars; if neither are present, returns empty string ""
+// stringValue gets a string value from a property map, then from environment vars;
+// if neither are present, returns empty string ""
 func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
 	val, ok := vars[prop]
 	if ok && val.IsString() {
@@ -83,6 +84,8 @@ func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []st
 }
 
 // preConfigureCallback returns an error when cloud provider setup is misconfigured
+//
+// nolint: lll
 func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) error {
 
 	envName := stringValue(vars, "environment", []string{"ARM_ENVIRONMENT"})
