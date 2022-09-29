@@ -1054,8 +1054,8 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
                  included_applications: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  included_user_actions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_applications: A list of application IDs explicitly excluded from the policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_applications: A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_applications: A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_applications: A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_user_actions: A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
         """
         if excluded_applications is not None:
@@ -1069,7 +1069,7 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
     @pulumi.getter(name="excludedApplications")
     def excluded_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of application IDs explicitly excluded from the policy.
+        A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
         """
         return pulumi.get(self, "excluded_applications")
 
@@ -1081,7 +1081,7 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
     @pulumi.getter(name="includedApplications")
     def included_applications(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+        A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
         """
         return pulumi.get(self, "included_applications")
 
@@ -1169,7 +1169,7 @@ class ConditionalAccessPolicyConditionsLocationsArgs:
                  excluded_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] included_locations: A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_locations: A list of location IDs excluded from scope of policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_locations: A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
         """
         pulumi.set(__self__, "included_locations", included_locations)
         if excluded_locations is not None:
@@ -1191,7 +1191,7 @@ class ConditionalAccessPolicyConditionsLocationsArgs:
     @pulumi.getter(name="excludedLocations")
     def excluded_locations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of location IDs excluded from scope of policy.
+        A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
         """
         return pulumi.get(self, "excluded_locations")
 

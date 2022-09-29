@@ -45,7 +45,7 @@ type ServicePrincipalCertificate struct {
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
 	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -98,7 +98,7 @@ type servicePrincipalCertificateState struct {
 	KeyId *string `pulumi:"keyId"`
 	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
@@ -117,7 +117,7 @@ type ServicePrincipalCertificateState struct {
 	KeyId pulumi.StringPtrInput
 	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
@@ -140,7 +140,7 @@ type servicePrincipalCertificateArgs struct {
 	KeyId *string `pulumi:"keyId"`
 	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
@@ -160,7 +160,7 @@ type ServicePrincipalCertificateArgs struct {
 	KeyId pulumi.StringPtrInput
 	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
@@ -280,7 +280,7 @@ func (o ServicePrincipalCertificateOutput) ServicePrincipalId() pulumi.StringOut
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }
 
-// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 func (o ServicePrincipalCertificateOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }

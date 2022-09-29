@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConditionalAccessPolicyConditionsLocations {
     /**
-     * @return A list of location IDs excluded from scope of policy.
+     * @return A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
      * 
      */
     private @Nullable List<String> excludedLocations;
@@ -24,7 +24,7 @@ public final class ConditionalAccessPolicyConditionsLocations {
 
     private ConditionalAccessPolicyConditionsLocations() {}
     /**
-     * @return A list of location IDs excluded from scope of policy.
+     * @return A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
      * 
      */
     public List<String> excludedLocations() {

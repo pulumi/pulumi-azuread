@@ -69,6 +69,11 @@ oidcToken: Optional[str]
 The ID token for use when authenticating as a Service Principal using OpenID Connect.
 """
 
+oidcTokenFilePath: Optional[str]
+"""
+The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.
+"""
+
 partnerId: Optional[str]
 """
 A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution
