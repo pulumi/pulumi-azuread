@@ -16,7 +16,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _excludedApplications;
 
         /// <summary>
-        /// A list of application IDs explicitly excluded from the policy.
+        /// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
         /// </summary>
         public InputList<string> ExcludedApplications
         {
@@ -28,7 +28,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _includedApplications;
 
         /// <summary>
-        /// A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+        /// A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
         /// </summary>
         public InputList<string> IncludedApplications
         {

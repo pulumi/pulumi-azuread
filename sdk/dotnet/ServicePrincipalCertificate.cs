@@ -64,7 +64,7 @@ namespace Pulumi.AzureAD
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.AzureAD
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
@@ -214,7 +214,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ServicePrincipalId { get; set; }
 
         /// <summary>
-        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }

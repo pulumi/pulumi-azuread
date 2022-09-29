@@ -279,11 +279,11 @@ export interface ConditionalAccessPolicyConditions {
 
 export interface ConditionalAccessPolicyConditionsApplications {
     /**
-     * A list of application IDs explicitly excluded from the policy.
+     * A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
      */
     excludedApplications?: string[];
     /**
-     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      */
     includedApplications?: string[];
     /**
@@ -312,7 +312,7 @@ export interface ConditionalAccessPolicyConditionsDevicesFilter {
 
 export interface ConditionalAccessPolicyConditionsLocations {
     /**
-     * A list of location IDs excluded from scope of policy.
+     * A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
      */
     excludedLocations?: string[];
     /**
