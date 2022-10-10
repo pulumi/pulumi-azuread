@@ -35,7 +35,7 @@ type ApplicationCertificate struct {
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
@@ -88,7 +88,7 @@ type applicationCertificateState struct {
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
@@ -107,7 +107,7 @@ type ApplicationCertificateState struct {
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
@@ -130,7 +130,7 @@ type applicationCertificateArgs struct {
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
@@ -150,7 +150,7 @@ type ApplicationCertificateArgs struct {
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
 	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
@@ -270,7 +270,7 @@ func (o ApplicationCertificateOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.
+// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 func (o ApplicationCertificateOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }

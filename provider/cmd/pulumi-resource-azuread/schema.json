@@ -107,6 +107,10 @@
                 "type": "string",
                 "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
             },
+            "oidcTokenFilePath": {
+                "type": "string",
+                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+            },
             "partnerId": {
                 "type": "string",
                 "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
@@ -813,7 +817,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of application IDs explicitly excluded from the policy.\n",
+                    "description": "A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -825,7 +829,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.\n",
+                    "description": "A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -895,7 +899,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of location IDs excluded from scope of policy.\n",
+                    "description": "A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.\n",
                     "language": {
                         "python": {
                             "mapCase": false
@@ -2911,6 +2915,10 @@
                 "type": "string",
                 "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
             },
+            "oidcTokenFilePath": {
+                "type": "string",
+                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+            },
             "partnerId": {
                 "type": "string",
                 "description": "A GUID/UUID that is registered with Microsoft to facilitate partner resource usage attribution\n"
@@ -2987,6 +2995,10 @@
             "oidcToken": {
                 "type": "string",
                 "description": "The ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
+            },
+            "oidcTokenFilePath": {
+                "type": "string",
+                "description": "The path to a file containing an ID token for use when authenticating as a Service Principal using OpenID Connect.\n"
             },
             "partnerId": {
                 "type": "string",
@@ -3723,7 +3735,7 @@
                 },
                 "startDate": {
                     "type": "string",
-                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.\n"
+                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.\n"
                 },
                 "type": {
                     "type": "string",
@@ -3769,7 +3781,7 @@
                 },
                 "startDate": {
                     "type": "string",
-                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.\n",
+                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
@@ -3817,7 +3829,7 @@
                     },
                     "startDate": {
                         "type": "string",
-                        "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date and time are used.  Changing this field forces a new resource to be created.\n",
+                        "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {
@@ -5695,7 +5707,7 @@
                 },
                 "startDate": {
                     "type": "string",
-                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n"
+                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.\n"
                 },
                 "type": {
                     "type": "string",
@@ -5741,7 +5753,7 @@
                 },
                 "startDate": {
                     "type": "string",
-                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n",
+                    "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.\n",
                     "willReplaceOnChanges": true
                 },
                 "type": {
@@ -5789,7 +5801,7 @@
                     },
                     "startDate": {
                         "type": "string",
-                        "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.\n",
+                        "description": "The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
                     },
                     "type": {

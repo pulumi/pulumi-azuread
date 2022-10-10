@@ -74,7 +74,7 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      */
     public readonly startDate!: pulumi.Output<string>;
     /**
@@ -154,7 +154,7 @@ export interface ServicePrincipalCertificateState {
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      */
     startDate?: pulumi.Input<string>;
     /**
@@ -192,7 +192,7 @@ export interface ServicePrincipalCertificateArgs {
      */
     servicePrincipalId: pulumi.Input<string>;
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      */
     startDate?: pulumi.Input<string>;
     /**

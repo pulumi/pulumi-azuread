@@ -91,14 +91,14 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the current date and time are used.  Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      * 
      */
     @Import(name="startDate")
     private @Nullable Output<String> startDate;
 
     /**
-     * @return The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the current date and time are used.  Changing this field forces a new resource to be created.
+     * @return The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> startDate() {
@@ -272,7 +272,7 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param startDate The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the current date and time are used.  Changing this field forces a new resource to be created.
+         * @param startDate The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class ApplicationCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param startDate The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the current date and time are used.  Changing this field forces a new resource to be created.
+         * @param startDate The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn&#39;t specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
          * 
          * @return builder
          * 

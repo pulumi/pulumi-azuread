@@ -2292,9 +2292,9 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPol
 }
 
 type ConditionalAccessPolicyConditionsApplications struct {
-	// A list of application IDs explicitly excluded from the policy.
+	// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 	ExcludedApplications []string `pulumi:"excludedApplications"`
-	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications []string `pulumi:"includedApplications"`
 	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedUserActions []string `pulumi:"includedUserActions"`
@@ -2312,9 +2312,9 @@ type ConditionalAccessPolicyConditionsApplicationsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsApplicationsArgs struct {
-	// A list of application IDs explicitly excluded from the policy.
+	// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 	ExcludedApplications pulumi.StringArrayInput `pulumi:"excludedApplications"`
-	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications pulumi.StringArrayInput `pulumi:"includedApplications"`
 	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedUserActions pulumi.StringArrayInput `pulumi:"includedUserActions"`
@@ -2397,12 +2397,12 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccess
 	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
 }
 
-// A list of application IDs explicitly excluded from the policy.
+// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) ExcludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.ExcludedApplications }).(pulumi.StringArrayOutput)
 }
 
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedApplications }).(pulumi.StringArrayOutput)
 }
@@ -2436,7 +2436,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) Elem() Condition
 	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
-// A list of application IDs explicitly excluded from the policy.
+// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
@@ -2446,7 +2446,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplicat
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
@@ -2762,7 +2762,7 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Rule() pulumi.S
 }
 
 type ConditionalAccessPolicyConditionsLocations struct {
-	// A list of location IDs excluded from scope of policy.
+	// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 	ExcludedLocations []string `pulumi:"excludedLocations"`
 	// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 	IncludedLocations []string `pulumi:"includedLocations"`
@@ -2780,7 +2780,7 @@ type ConditionalAccessPolicyConditionsLocationsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsLocationsArgs struct {
-	// A list of location IDs excluded from scope of policy.
+	// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 	ExcludedLocations pulumi.StringArrayInput `pulumi:"excludedLocations"`
 	// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 	IncludedLocations pulumi.StringArrayInput `pulumi:"includedLocations"`
@@ -2863,7 +2863,7 @@ func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPol
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
-// A list of location IDs excluded from scope of policy.
+// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsOutput) ExcludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.ExcludedLocations }).(pulumi.StringArrayOutput)
 }
@@ -2897,7 +2897,7 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) Elem() ConditionalA
 	}).(ConditionalAccessPolicyConditionsLocationsOutput)
 }
 
-// A list of location IDs excluded from scope of policy.
+// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ExcludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
 		if v == nil {

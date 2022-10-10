@@ -17,14 +17,14 @@ public final class ConditionalAccessPolicyConditionsLocationsArgs extends com.pu
     public static final ConditionalAccessPolicyConditionsLocationsArgs Empty = new ConditionalAccessPolicyConditionsLocationsArgs();
 
     /**
-     * A list of location IDs excluded from scope of policy.
+     * A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
      * 
      */
     @Import(name="excludedLocations")
     private @Nullable Output<List<String>> excludedLocations;
 
     /**
-     * @return A list of location IDs excluded from scope of policy.
+     * @return A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
      * 
      */
     public Optional<Output<List<String>>> excludedLocations() {
@@ -72,7 +72,7 @@ public final class ConditionalAccessPolicyConditionsLocationsArgs extends com.pu
         }
 
         /**
-         * @param excludedLocations A list of location IDs excluded from scope of policy.
+         * @param excludedLocations A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ConditionalAccessPolicyConditionsLocationsArgs extends com.pu
         }
 
         /**
-         * @param excludedLocations A list of location IDs excluded from scope of policy.
+         * @param excludedLocations A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ConditionalAccessPolicyConditionsLocationsArgs extends com.pu
         }
 
         /**
-         * @param excludedLocations A list of location IDs excluded from scope of policy.
+         * @param excludedLocations A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
          * 
          * @return builder
          * 
