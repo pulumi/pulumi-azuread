@@ -15,14 +15,16 @@
 package provider
 
 import (
+	"context"
 	"fmt"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"os"
 	"path/filepath"
-	"strings"
 	"unicode"
 
-	"github.com/hashicorp/go-azure-helpers/authentication"
+	"github.com/manicminer/hamilton/auth"
+	"github.com/manicminer/hamilton/environments"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+
 	"github.com/hashicorp/terraform-provider-azuread/shim"
 	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
@@ -99,26 +101,6 @@ func boolValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []stri
 	return false
 }
 
-// arrayValue takes an array value from a property map, then from environment vars; defaults to an empty array
-func arrayValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) []string {
-	val, ok := vars[prop]
-	var vals []string
-	if ok && val.IsArray() {
-		for _, v := range val.ArrayValue() {
-			vals = append(vals, v.StringValue())
-		}
-		return vals
-	}
-
-	for _, env := range envs {
-		val, ok := os.LookupEnv(env)
-		if ok {
-			return strings.Split(val, ";")
-		}
-	}
-	return vals
-}
-
 // preConfigureCallback returns an error when cloud provider setup is misconfigured
 //
 // nolint: lll
@@ -129,39 +111,43 @@ func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) er
 		envName = "public"
 	}
 
-	//check for auxiliary tenants
-	auxTenants := arrayValue(vars, "auxiliaryTenantIDs", []string{"ARM_AUXILIARY_TENANT_IDS"})
-
-	// validate the azure config
-	// make a Builder
-	builder := &authentication.Builder{
-		SubscriptionID:       stringValue(vars, "subscriptionId", []string{"ARM_SUBSCRIPTION_ID"}),
-		ClientID:             stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
-		ClientSecret:         stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
-		TenantID:             stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
-		Environment:          envName,
-		ClientCertPath:       stringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
-		ClientCertPassword:   stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
-		MsiEndpoint:          stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
-		AuxiliaryTenantIDs:   auxTenants,
-		ClientSecretDocsLink: "https://www.pulumi.com/docs/intro/cloud-providers/azure/setup/#service-principal-authentication",
-
-		// Feature Toggles
-		SupportsClientCertAuth:         true,
-		SupportsClientSecretAuth:       true,
-		SupportsManagedServiceIdentity: boolValue(vars, "msiEndpoint", []string{"ARM_USE_MSI"}),
-		SupportsAzureCliToken:          true,
-		SupportsAuxiliaryTenants:       len(auxTenants) > 0,
+	env, err := environments.EnvironmentFromString(envName)
+	if err != nil {
+		return fmt.Errorf("failed to read Azure environment \"%s\": %v", envName, err)
 	}
 
-	_, err := builder.Build()
+	authConfig := &auth.Config{
+		Environment:            env,
+		EnableClientSecretAuth: true,
+		EnableAzureCliToken:    true,
+		TenantID:               stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
+		ClientID:               stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
+		ClientSecret:           stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
 
+		EnableClientCertAuth: true,
+		// We don't handle ClientCertData yet, which is the actual base-64 encoded cert in config
+		ClientCertPassword: stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
+		ClientCertPath:     stringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
+
+		EnableMsiAuth: boolValue(vars, "msiEndpoint", []string{"ARM_USE_MSI"}),
+		MsiEndpoint:   stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
+
+		// The configuration below would enable OIDC auth which we haven't tested and documented yet.
+		//FederatedAssertion:        idToken,
+		//IDTokenRequestURL:         d.Get("oidc_request_url").(string),
+		//IDTokenRequestToken:       d.Get("oidc_request_token").(string),
+		//EnableClientFederatedAuth: d.Get("use_oidc").(bool),
+		//EnableGitHubOIDCAuth:      d.Get("use_oidc").(bool),
+	}
+
+	_, err = authConfig.NewAuthorizer(context.Background(), env.MsGraph)
 	if err != nil {
-		return fmt.Errorf("failed to load application credentials.\n"+
+		return fmt.Errorf("failed to load Azure credentials.\n"+
 			"Details: %v\n\n"+
 			"\tPlease make sure you have signed in via 'az login' or configured another authentication method.\n\n"+
-			"\tSee https://www.pulumi.com/registry/packages/azure/installation-configuration/ for more information.", err)
+			"\tSee https://www.pulumi.com/registry/packages/azuread/installation-configuration/ for more information.", err)
 	}
+
 	return nil
 }
 
