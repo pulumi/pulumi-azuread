@@ -132,6 +132,7 @@ func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) er
 		EnableMsiAuth: boolValue(vars, "msiEndpoint", []string{"ARM_USE_MSI"}),
 		MsiEndpoint:   stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
 
+		// The configuration below would enable OIDC auth which we haven't tested and documented yet.
 		//FederatedAssertion:        idToken,
 		//IDTokenRequestURL:         d.Get("oidc_request_url").(string),
 		//IDTokenRequestToken:       d.Get("oidc_request_token").(string),
