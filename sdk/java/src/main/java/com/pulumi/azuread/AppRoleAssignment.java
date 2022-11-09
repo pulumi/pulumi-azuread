@@ -242,6 +242,57 @@ import javax.annotation.Nullable;
  * }
  * ```
  * 
+ * *Assign a group to the default app role for an internal application*
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.Group;
+ * import com.pulumi.azuread.GroupArgs;
+ * import com.pulumi.azuread.AppRoleAssignment;
+ * import com.pulumi.azuread.AppRoleAssignmentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var internalApplication = new Application(&#34;internalApplication&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;internal&#34;)
+ *             .build());
+ * 
+ *         var internalServicePrincipal = new ServicePrincipal(&#34;internalServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(internalApplication.applicationId())
+ *             .build());
+ * 
+ *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .securityEnabled(true)
+ *             .build());
+ * 
+ *         var exampleAppRoleAssignment = new AppRoleAssignment(&#34;exampleAppRoleAssignment&#34;, AppRoleAssignmentArgs.builder()        
+ *             .appRoleId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+ *             .principalObjectId(exampleGroup.objectId())
+ *             .resourceObjectId(internalServicePrincipal.objectId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
@@ -256,14 +307,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/appRoleAssignment:AppRoleAssignment")
 public class AppRoleAssignment extends com.pulumi.resources.CustomResource {
     /**
-     * The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="appRoleId", type=String.class, parameters={})
     private Output<String> appRoleId;
 
     /**
-     * @return The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * @return The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> appRoleId() {

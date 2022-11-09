@@ -218,6 +218,41 @@ namespace Pulumi.AzureAD
     /// });
     /// ```
     /// 
+    /// *Assign a group to the default app role for an internal application*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var internalApplication = new AzureAD.Application("internalApplication", new()
+    ///     {
+    ///         DisplayName = "internal",
+    ///     });
+    /// 
+    ///     var internalServicePrincipal = new AzureAD.ServicePrincipal("internalServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = internalApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         SecurityEnabled = true,
+    ///     });
+    /// 
+    ///     var exampleAppRoleAssignment = new AzureAD.AppRoleAssignment("exampleAppRoleAssignment", new()
+    ///     {
+    ///         AppRoleId = "00000000-0000-0000-0000-000000000000",
+    ///         PrincipalObjectId = exampleGroup.ObjectId,
+    ///         ResourceObjectId = internalServicePrincipal.ObjectId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
@@ -232,7 +267,7 @@ namespace Pulumi.AzureAD
     public partial class AppRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        /// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         /// </summary>
         [Output("appRoleId")]
         public Output<string> AppRoleId { get; private set; } = null!;
@@ -314,7 +349,7 @@ namespace Pulumi.AzureAD
     public sealed class AppRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        /// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         /// </summary>
         [Input("appRoleId", required: true)]
         public Input<string> AppRoleId { get; set; } = null!;
@@ -340,7 +375,7 @@ namespace Pulumi.AzureAD
     public sealed class AppRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        /// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         /// </summary>
         [Input("appRoleId")]
         public Input<string>? AppRoleId { get; set; }

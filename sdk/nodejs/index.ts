@@ -42,6 +42,8 @@ export * from "./servicePrincipalCertificate";
 export * from "./servicePrincipalClaimsMappingPolicyAssignment";
 export * from "./servicePrincipalDelegatedPermissionGrant";
 export * from "./servicePrincipalPassword";
+export * from "./synchronizationJob";
+export * from "./synchronizationSecret";
 export * from "./user";
 
 // Export sub-modules:
@@ -77,6 +79,8 @@ import { ServicePrincipalCertificate } from "./servicePrincipalCertificate";
 import { ServicePrincipalClaimsMappingPolicyAssignment } from "./servicePrincipalClaimsMappingPolicyAssignment";
 import { ServicePrincipalDelegatedPermissionGrant } from "./servicePrincipalDelegatedPermissionGrant";
 import { ServicePrincipalPassword } from "./servicePrincipalPassword";
+import { SynchronizationJob } from "./synchronizationJob";
+import { SynchronizationSecret } from "./synchronizationSecret";
 import { User } from "./user";
 
 const _module = {
@@ -129,6 +133,10 @@ const _module = {
                 return new ServicePrincipalDelegatedPermissionGrant(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
                 return new ServicePrincipalPassword(name, <any>undefined, { urn })
+            case "azuread:index/synchronizationJob:SynchronizationJob":
+                return new SynchronizationJob(name, <any>undefined, { urn })
+            case "azuread:index/synchronizationSecret:SynchronizationSecret":
+                return new SynchronizationSecret(name, <any>undefined, { urn })
             case "azuread:index/user:User":
                 return new User(name, <any>undefined, { urn })
             default:
@@ -159,6 +167,8 @@ pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertific
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalClaimsMappingPolicyAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalDelegatedPermissionGrant", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJob", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/synchronizationSecret", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)
 
 import { Provider } from "./provider";

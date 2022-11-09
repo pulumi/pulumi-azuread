@@ -14,14 +14,14 @@ public final class AppRoleAssignmentArgs extends com.pulumi.resources.ResourceAr
     public static final AppRoleAssignmentArgs Empty = new AppRoleAssignmentArgs();
 
     /**
-     * The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="appRoleId", required=true)
     private Output<String> appRoleId;
 
     /**
-     * @return The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * @return The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      * 
      */
     public Output<String> appRoleId() {
@@ -85,7 +85,7 @@ public final class AppRoleAssignmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appRoleId The ID of the app role to be assigned. Changing this forces a new resource to be created.
+         * @param appRoleId The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -96,7 +96,7 @@ public final class AppRoleAssignmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param appRoleId The ID of the app role to be assigned. Changing this forces a new resource to be created.
+         * @param appRoleId The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
