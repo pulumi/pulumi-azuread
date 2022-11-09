@@ -1023,3 +1023,29 @@ export interface ServicePrincipalSamlSingleSignOn {
      */
     relayState?: string;
 }
+
+export interface SynchronizationJobSchedule {
+    /**
+     * Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     */
+    expiration: string;
+    /**
+     * The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+     */
+    interval: string;
+    /**
+     * State of the job.
+     */
+    state: string;
+}
+
+export interface SynchronizationSecretCredential {
+    /**
+     * The key of the secret.
+     */
+    key: string;
+    /**
+     * The value of the secret.
+     */
+    value: string;
+}

@@ -19,7 +19,7 @@ class AppRoleAssignmentArgs:
                  resource_object_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AppRoleAssignment resource.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
@@ -31,7 +31,7 @@ class AppRoleAssignmentArgs:
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> pulumi.Input[str]:
         """
-        The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 
@@ -75,7 +75,7 @@ class _AppRoleAssignmentState:
                  resource_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AppRoleAssignment resources.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] principal_display_name: The display name of the principal to which the app role is assigned.
         :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] principal_type: The object type of the principal to which the app role is assigned.
@@ -99,7 +99,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 
@@ -200,7 +200,7 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
@@ -293,7 +293,7 @@ class AppRoleAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         :param pulumi.Input[str] principal_display_name: The display name of the principal to which the app role is assigned.
         :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         :param pulumi.Input[str] principal_type: The object type of the principal to which the app role is assigned.
@@ -316,7 +316,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> pulumi.Output[str]:
         """
-        The ID of the app role to be assigned. Changing this forces a new resource to be created.
+        The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 

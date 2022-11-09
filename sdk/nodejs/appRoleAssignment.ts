@@ -133,6 +133,25 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * *Assign a group to the default app role for an internal application*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const internalApplication = new azuread.Application("internalApplication", {displayName: "internal"});
+ * const internalServicePrincipal = new azuread.ServicePrincipal("internalServicePrincipal", {applicationId: internalApplication.applicationId});
+ * const exampleGroup = new azuread.Group("exampleGroup", {
+ *     displayName: "example",
+ *     securityEnabled: true,
+ * });
+ * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("exampleAppRoleAssignment", {
+ *     appRoleId: "00000000-0000-0000-0000-000000000000",
+ *     principalObjectId: exampleGroup.objectId,
+ *     resourceObjectId: internalServicePrincipal.objectId,
+ * });
+ * ```
+ *
  * ## Import
  *
  * App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
@@ -172,7 +191,7 @@ export class AppRoleAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      */
     public readonly appRoleId!: pulumi.Output<string>;
     /**
@@ -243,7 +262,7 @@ export class AppRoleAssignment extends pulumi.CustomResource {
  */
 export interface AppRoleAssignmentState {
     /**
-     * The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      */
     appRoleId?: pulumi.Input<string>;
     /**
@@ -273,7 +292,7 @@ export interface AppRoleAssignmentState {
  */
 export interface AppRoleAssignmentArgs {
     /**
-     * The ID of the app role to be assigned. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
      */
     appRoleId: pulumi.Input<string>;
     /**

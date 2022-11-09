@@ -5127,6 +5127,227 @@ func (o ServicePrincipalSamlSingleSignOnPtrOutput) RelayState() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type SynchronizationJobSchedule struct {
+	// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	Expiration *string `pulumi:"expiration"`
+	// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+	Interval *string `pulumi:"interval"`
+	// State of the job.
+	State *string `pulumi:"state"`
+}
+
+// SynchronizationJobScheduleInput is an input type that accepts SynchronizationJobScheduleArgs and SynchronizationJobScheduleOutput values.
+// You can construct a concrete instance of `SynchronizationJobScheduleInput` via:
+//
+//	SynchronizationJobScheduleArgs{...}
+type SynchronizationJobScheduleInput interface {
+	pulumi.Input
+
+	ToSynchronizationJobScheduleOutput() SynchronizationJobScheduleOutput
+	ToSynchronizationJobScheduleOutputWithContext(context.Context) SynchronizationJobScheduleOutput
+}
+
+type SynchronizationJobScheduleArgs struct {
+	// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
+	// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// State of the job.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (SynchronizationJobScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynchronizationJobSchedule)(nil)).Elem()
+}
+
+func (i SynchronizationJobScheduleArgs) ToSynchronizationJobScheduleOutput() SynchronizationJobScheduleOutput {
+	return i.ToSynchronizationJobScheduleOutputWithContext(context.Background())
+}
+
+func (i SynchronizationJobScheduleArgs) ToSynchronizationJobScheduleOutputWithContext(ctx context.Context) SynchronizationJobScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobScheduleOutput)
+}
+
+// SynchronizationJobScheduleArrayInput is an input type that accepts SynchronizationJobScheduleArray and SynchronizationJobScheduleArrayOutput values.
+// You can construct a concrete instance of `SynchronizationJobScheduleArrayInput` via:
+//
+//	SynchronizationJobScheduleArray{ SynchronizationJobScheduleArgs{...} }
+type SynchronizationJobScheduleArrayInput interface {
+	pulumi.Input
+
+	ToSynchronizationJobScheduleArrayOutput() SynchronizationJobScheduleArrayOutput
+	ToSynchronizationJobScheduleArrayOutputWithContext(context.Context) SynchronizationJobScheduleArrayOutput
+}
+
+type SynchronizationJobScheduleArray []SynchronizationJobScheduleInput
+
+func (SynchronizationJobScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SynchronizationJobSchedule)(nil)).Elem()
+}
+
+func (i SynchronizationJobScheduleArray) ToSynchronizationJobScheduleArrayOutput() SynchronizationJobScheduleArrayOutput {
+	return i.ToSynchronizationJobScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i SynchronizationJobScheduleArray) ToSynchronizationJobScheduleArrayOutputWithContext(ctx context.Context) SynchronizationJobScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationJobScheduleArrayOutput)
+}
+
+type SynchronizationJobScheduleOutput struct{ *pulumi.OutputState }
+
+func (SynchronizationJobScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynchronizationJobSchedule)(nil)).Elem()
+}
+
+func (o SynchronizationJobScheduleOutput) ToSynchronizationJobScheduleOutput() SynchronizationJobScheduleOutput {
+	return o
+}
+
+func (o SynchronizationJobScheduleOutput) ToSynchronizationJobScheduleOutputWithContext(ctx context.Context) SynchronizationJobScheduleOutput {
+	return o
+}
+
+// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+func (o SynchronizationJobScheduleOutput) Expiration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynchronizationJobSchedule) *string { return v.Expiration }).(pulumi.StringPtrOutput)
+}
+
+// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+func (o SynchronizationJobScheduleOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynchronizationJobSchedule) *string { return v.Interval }).(pulumi.StringPtrOutput)
+}
+
+// State of the job.
+func (o SynchronizationJobScheduleOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SynchronizationJobSchedule) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type SynchronizationJobScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (SynchronizationJobScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SynchronizationJobSchedule)(nil)).Elem()
+}
+
+func (o SynchronizationJobScheduleArrayOutput) ToSynchronizationJobScheduleArrayOutput() SynchronizationJobScheduleArrayOutput {
+	return o
+}
+
+func (o SynchronizationJobScheduleArrayOutput) ToSynchronizationJobScheduleArrayOutputWithContext(ctx context.Context) SynchronizationJobScheduleArrayOutput {
+	return o
+}
+
+func (o SynchronizationJobScheduleArrayOutput) Index(i pulumi.IntInput) SynchronizationJobScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SynchronizationJobSchedule {
+		return vs[0].([]SynchronizationJobSchedule)[vs[1].(int)]
+	}).(SynchronizationJobScheduleOutput)
+}
+
+type SynchronizationSecretCredential struct {
+	// The key of the secret.
+	Key string `pulumi:"key"`
+	// The value of the secret.
+	Value string `pulumi:"value"`
+}
+
+// SynchronizationSecretCredentialInput is an input type that accepts SynchronizationSecretCredentialArgs and SynchronizationSecretCredentialOutput values.
+// You can construct a concrete instance of `SynchronizationSecretCredentialInput` via:
+//
+//	SynchronizationSecretCredentialArgs{...}
+type SynchronizationSecretCredentialInput interface {
+	pulumi.Input
+
+	ToSynchronizationSecretCredentialOutput() SynchronizationSecretCredentialOutput
+	ToSynchronizationSecretCredentialOutputWithContext(context.Context) SynchronizationSecretCredentialOutput
+}
+
+type SynchronizationSecretCredentialArgs struct {
+	// The key of the secret.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the secret.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (SynchronizationSecretCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynchronizationSecretCredential)(nil)).Elem()
+}
+
+func (i SynchronizationSecretCredentialArgs) ToSynchronizationSecretCredentialOutput() SynchronizationSecretCredentialOutput {
+	return i.ToSynchronizationSecretCredentialOutputWithContext(context.Background())
+}
+
+func (i SynchronizationSecretCredentialArgs) ToSynchronizationSecretCredentialOutputWithContext(ctx context.Context) SynchronizationSecretCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationSecretCredentialOutput)
+}
+
+// SynchronizationSecretCredentialArrayInput is an input type that accepts SynchronizationSecretCredentialArray and SynchronizationSecretCredentialArrayOutput values.
+// You can construct a concrete instance of `SynchronizationSecretCredentialArrayInput` via:
+//
+//	SynchronizationSecretCredentialArray{ SynchronizationSecretCredentialArgs{...} }
+type SynchronizationSecretCredentialArrayInput interface {
+	pulumi.Input
+
+	ToSynchronizationSecretCredentialArrayOutput() SynchronizationSecretCredentialArrayOutput
+	ToSynchronizationSecretCredentialArrayOutputWithContext(context.Context) SynchronizationSecretCredentialArrayOutput
+}
+
+type SynchronizationSecretCredentialArray []SynchronizationSecretCredentialInput
+
+func (SynchronizationSecretCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SynchronizationSecretCredential)(nil)).Elem()
+}
+
+func (i SynchronizationSecretCredentialArray) ToSynchronizationSecretCredentialArrayOutput() SynchronizationSecretCredentialArrayOutput {
+	return i.ToSynchronizationSecretCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i SynchronizationSecretCredentialArray) ToSynchronizationSecretCredentialArrayOutputWithContext(ctx context.Context) SynchronizationSecretCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationSecretCredentialArrayOutput)
+}
+
+type SynchronizationSecretCredentialOutput struct{ *pulumi.OutputState }
+
+func (SynchronizationSecretCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SynchronizationSecretCredential)(nil)).Elem()
+}
+
+func (o SynchronizationSecretCredentialOutput) ToSynchronizationSecretCredentialOutput() SynchronizationSecretCredentialOutput {
+	return o
+}
+
+func (o SynchronizationSecretCredentialOutput) ToSynchronizationSecretCredentialOutputWithContext(ctx context.Context) SynchronizationSecretCredentialOutput {
+	return o
+}
+
+// The key of the secret.
+func (o SynchronizationSecretCredentialOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v SynchronizationSecretCredential) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The value of the secret.
+func (o SynchronizationSecretCredentialOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v SynchronizationSecretCredential) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type SynchronizationSecretCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (SynchronizationSecretCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SynchronizationSecretCredential)(nil)).Elem()
+}
+
+func (o SynchronizationSecretCredentialArrayOutput) ToSynchronizationSecretCredentialArrayOutput() SynchronizationSecretCredentialArrayOutput {
+	return o
+}
+
+func (o SynchronizationSecretCredentialArrayOutput) ToSynchronizationSecretCredentialArrayOutputWithContext(ctx context.Context) SynchronizationSecretCredentialArrayOutput {
+	return o
+}
+
+func (o SynchronizationSecretCredentialArrayOutput) Index(i pulumi.IntInput) SynchronizationSecretCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SynchronizationSecretCredential {
+		return vs[0].([]SynchronizationSecretCredential)[vs[1].(int)]
+	}).(SynchronizationSecretCredentialOutput)
+}
+
 type GetApplicationApi struct {
 	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 	KnownClientApplications []string `pulumi:"knownClientApplications"`
@@ -8144,6 +8365,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalOauth2PermissionScopeArrayInput)(nil)).Elem(), ServicePrincipalOauth2PermissionScopeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalSamlSingleSignOnInput)(nil)).Elem(), ServicePrincipalSamlSingleSignOnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServicePrincipalSamlSingleSignOnPtrInput)(nil)).Elem(), ServicePrincipalSamlSingleSignOnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationJobScheduleInput)(nil)).Elem(), SynchronizationJobScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationJobScheduleArrayInput)(nil)).Elem(), SynchronizationJobScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationSecretCredentialInput)(nil)).Elem(), SynchronizationSecretCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SynchronizationSecretCredentialArrayInput)(nil)).Elem(), SynchronizationSecretCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationApiInput)(nil)).Elem(), GetApplicationApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationApiArrayInput)(nil)).Elem(), GetApplicationApiArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationApiOauth2PermissionScopeInput)(nil)).Elem(), GetApplicationApiOauth2PermissionScopeArgs{})
@@ -8256,6 +8481,10 @@ func init() {
 	pulumi.RegisterOutputType(ServicePrincipalOauth2PermissionScopeArrayOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalSamlSingleSignOnOutput{})
 	pulumi.RegisterOutputType(ServicePrincipalSamlSingleSignOnPtrOutput{})
+	pulumi.RegisterOutputType(SynchronizationJobScheduleOutput{})
+	pulumi.RegisterOutputType(SynchronizationJobScheduleArrayOutput{})
+	pulumi.RegisterOutputType(SynchronizationSecretCredentialOutput{})
+	pulumi.RegisterOutputType(SynchronizationSecretCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationApiOauth2PermissionScopeOutput{})

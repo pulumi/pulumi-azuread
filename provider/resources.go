@@ -217,6 +217,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_service_principal_claims_mapping_policy_assignment": {
 				Tok: makeResource(mainMod, "ServicePrincipalClaimsMappingPolicyAssignment"),
 			},
+			"azuread_synchronization_job":    {Tok: makeResource(mainMod, "SynchronizationJob")},
+			"azuread_synchronization_secret": {Tok: makeResource(mainMod, "SynchronizationSecret")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},

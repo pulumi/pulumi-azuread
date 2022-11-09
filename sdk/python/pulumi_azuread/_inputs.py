@@ -43,6 +43,8 @@ __all__ = [
     'ServicePrincipalFeatureTagArgs',
     'ServicePrincipalOauth2PermissionScopeArgs',
     'ServicePrincipalSamlSingleSignOnArgs',
+    'SynchronizationJobScheduleArgs',
+    'SynchronizationSecretCredentialArgs',
 ]
 
 @pulumi.input_type
@@ -2070,5 +2072,97 @@ class ServicePrincipalSamlSingleSignOnArgs:
     @relay_state.setter
     def relay_state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "relay_state", value)
+
+
+@pulumi.input_type
+class SynchronizationJobScheduleArgs:
+    def __init__(__self__, *,
+                 expiration: Optional[pulumi.Input[str]] = None,
+                 interval: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expiration: Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        :param pulumi.Input[str] interval: The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+        :param pulumi.Input[str] state: State of the job.
+        """
+        if expiration is not None:
+            pulumi.set(__self__, "expiration", expiration)
+        if interval is not None:
+            pulumi.set(__self__, "interval", interval)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def expiration(self) -> Optional[pulumi.Input[str]]:
+        """
+        Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        """
+        return pulumi.get(self, "expiration")
+
+    @expiration.setter
+    def expiration(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expiration", value)
+
+    @property
+    @pulumi.getter
+    def interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interval", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        State of the job.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class SynchronizationSecretCredentialArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key: The key of the secret.
+        :param pulumi.Input[str] value: The value of the secret.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        The key of the secret.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the secret.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
 
 

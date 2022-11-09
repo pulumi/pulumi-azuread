@@ -262,6 +262,53 @@ import (
 //
 // ```
 //
+// *Assign a group to the default app role for an internal application*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("internal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: internalApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("example"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId:         pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				PrincipalObjectId: exampleGroup.ObjectId,
+//				ResourceObjectId:  internalServicePrincipal.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
@@ -276,7 +323,7 @@ import (
 type AppRoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId pulumi.StringOutput `pulumi:"appRoleId"`
 	// The display name of the principal to which the app role is assigned.
 	PrincipalDisplayName pulumi.StringOutput `pulumi:"principalDisplayName"`
@@ -328,7 +375,7 @@ func GetAppRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppRoleAssignment resources.
 type appRoleAssignmentState struct {
-	// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId *string `pulumi:"appRoleId"`
 	// The display name of the principal to which the app role is assigned.
 	PrincipalDisplayName *string `pulumi:"principalDisplayName"`
@@ -343,7 +390,7 @@ type appRoleAssignmentState struct {
 }
 
 type AppRoleAssignmentState struct {
-	// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId pulumi.StringPtrInput
 	// The display name of the principal to which the app role is assigned.
 	PrincipalDisplayName pulumi.StringPtrInput
@@ -362,7 +409,7 @@ func (AppRoleAssignmentState) ElementType() reflect.Type {
 }
 
 type appRoleAssignmentArgs struct {
-	// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId string `pulumi:"appRoleId"`
 	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId string `pulumi:"principalObjectId"`
@@ -372,7 +419,7 @@ type appRoleAssignmentArgs struct {
 
 // The set of arguments for constructing a AppRoleAssignment resource.
 type AppRoleAssignmentArgs struct {
-	// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId pulumi.StringInput
 	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringInput
@@ -467,7 +514,7 @@ func (o AppRoleAssignmentOutput) ToAppRoleAssignmentOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the app role to be assigned. Changing this forces a new resource to be created.
+// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 func (o AppRoleAssignmentOutput) AppRoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.AppRoleId }).(pulumi.StringOutput)
 }

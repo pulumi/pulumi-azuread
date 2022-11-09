@@ -53,6 +53,8 @@
         "servicePrincipalClaimsMappingPolicyAssignment.ts",
         "servicePrincipalDelegatedPermissionGrant.ts",
         "servicePrincipalPassword.ts",
+        "synchronizationJob.ts",
+        "synchronizationSecret.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",

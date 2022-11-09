@@ -42,6 +42,8 @@ from .service_principal_certificate import *
 from .service_principal_claims_mapping_policy_assignment import *
 from .service_principal_delegated_permission_grant import *
 from .service_principal_password import *
+from .synchronization_job import *
+from .synchronization_secret import *
 from .user import *
 from ._inputs import *
 from . import outputs
@@ -238,6 +240,22 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/servicePrincipalPassword:ServicePrincipalPassword": "ServicePrincipalPassword"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/synchronizationJob",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/synchronizationJob:SynchronizationJob": "SynchronizationJob"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/synchronizationSecret",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/synchronizationSecret:SynchronizationSecret": "SynchronizationSecret"
   }
  },
  {
