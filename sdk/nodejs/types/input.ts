@@ -576,4 +576,3 @@ export interface SynchronizationSecretCredential {
      */
     value: pulumi.Input<string>;
 }
-

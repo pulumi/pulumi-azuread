@@ -21,23 +21,20 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("publishedAppIds", wellKnown.Result)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("publishedAppIds", wellKnown.Result)
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Granting access to an application*
@@ -46,54 +43,51 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//									return appRoleIds.User.Read.All, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Role"),
-//							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.ReadWrite, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Scope"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 			UseExisting:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 								return appRoleIds.User.Read.All, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Role"),
+// 						},
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+// 								return oauth2PermissionScopeIds.User.ReadWrite, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func GetApplicationPublishedAppIds(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetApplicationPublishedAppIdsResult, error) {
 	var rv GetApplicationPublishedAppIdsResult

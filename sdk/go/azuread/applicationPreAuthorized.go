@@ -17,63 +17,60 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			authorized, err := azuread.NewApplication(ctx, "authorized", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example-authorized-app"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example-authorizing-app"),
-//				Api: &ApplicationApiArgs{
-//					Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
-//						&ApplicationApiOauth2PermissionScopeArgs{
-//							AdminConsentDescription: pulumi.String("Administer the application"),
-//							AdminConsentDisplayName: pulumi.String("Administer"),
-//							Enabled:                 pulumi.Bool(true),
-//							Id:                      pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
-//							Type:                    pulumi.String("Admin"),
-//							Value:                   pulumi.String("administer"),
-//						},
-//						&ApplicationApiOauth2PermissionScopeArgs{
-//							AdminConsentDescription: pulumi.String("Access the application"),
-//							AdminConsentDisplayName: pulumi.String("Access"),
-//							Enabled:                 pulumi.Bool(true),
-//							Id:                      pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
-//							Type:                    pulumi.String("User"),
-//							UserConsentDescription:  pulumi.String("Access the application"),
-//							UserConsentDisplayName:  pulumi.String("Access"),
-//							Value:                   pulumi.String("user_impersonation"),
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
-//				ApplicationObjectId: authorizer.ObjectId,
-//				AuthorizedAppId:     authorized.ApplicationId,
-//				PermissionIds: pulumi.StringArray{
-//					pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
-//					pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		authorized, err := azuread.NewApplication(ctx, "authorized", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example-authorized-app"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example-authorizing-app"),
+// 			Api: &ApplicationApiArgs{
+// 				Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
+// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 						AdminConsentDescription: pulumi.String("Administer the application"),
+// 						AdminConsentDisplayName: pulumi.String("Administer"),
+// 						Enabled:                 pulumi.Bool(true),
+// 						Id:                      pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
+// 						Type:                    pulumi.String("Admin"),
+// 						Value:                   pulumi.String("administer"),
+// 					},
+// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 						AdminConsentDescription: pulumi.String("Access the application"),
+// 						AdminConsentDisplayName: pulumi.String("Access"),
+// 						Enabled:                 pulumi.Bool(true),
+// 						Id:                      pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
+// 						Type:                    pulumi.String("User"),
+// 						UserConsentDescription:  pulumi.String("Access the application"),
+// 						UserConsentDisplayName:  pulumi.String("Access"),
+// 						Value:                   pulumi.String("user_impersonation"),
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
+// 			ApplicationObjectId: authorizer.ObjectId,
+// 			AuthorizedAppId:     authorized.ApplicationId,
+// 			PermissionIds: pulumi.StringArray{
+// 				pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
+// 				pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -81,12 +78,10 @@ import (
 // Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
-//
+//  $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+//  -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
 type ApplicationPreAuthorized struct {
 	pulumi.CustomResourceState
 
@@ -202,7 +197,7 @@ func (i *ApplicationPreAuthorized) ToApplicationPreAuthorizedOutputWithContext(c
 // ApplicationPreAuthorizedArrayInput is an input type that accepts ApplicationPreAuthorizedArray and ApplicationPreAuthorizedArrayOutput values.
 // You can construct a concrete instance of `ApplicationPreAuthorizedArrayInput` via:
 //
-//	ApplicationPreAuthorizedArray{ ApplicationPreAuthorizedArgs{...} }
+//          ApplicationPreAuthorizedArray{ ApplicationPreAuthorizedArgs{...} }
 type ApplicationPreAuthorizedArrayInput interface {
 	pulumi.Input
 
@@ -227,7 +222,7 @@ func (i ApplicationPreAuthorizedArray) ToApplicationPreAuthorizedArrayOutputWith
 // ApplicationPreAuthorizedMapInput is an input type that accepts ApplicationPreAuthorizedMap and ApplicationPreAuthorizedMapOutput values.
 // You can construct a concrete instance of `ApplicationPreAuthorizedMapInput` via:
 //
-//	ApplicationPreAuthorizedMap{ "key": ApplicationPreAuthorizedArgs{...} }
+//          ApplicationPreAuthorizedMap{ "key": ApplicationPreAuthorizedArgs{...} }
 type ApplicationPreAuthorizedMapInput interface {
 	pulumi.Input
 

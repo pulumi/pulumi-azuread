@@ -16,37 +16,34 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "exampleDirectoryRole", &azuread.DirectoryRoleArgs{
-//				DisplayName: pulumi.String("Security administrator"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewDirectoryRoleMember(ctx, "exampleDirectoryRoleMember", &azuread.DirectoryRoleMemberArgs{
-//				RoleObjectId:   exampleDirectoryRole.ObjectId,
-//				MemberObjectId: pulumi.String(exampleUser.ObjectId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
+// 			UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "exampleDirectoryRole", &azuread.DirectoryRoleArgs{
+// 			DisplayName: pulumi.String("Security administrator"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewDirectoryRoleMember(ctx, "exampleDirectoryRoleMember", &azuread.DirectoryRoleMemberArgs{
+// 			RoleObjectId:   exampleDirectoryRole.ObjectId,
+// 			MemberObjectId: pulumi.String(exampleUser.ObjectId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -54,12 +51,10 @@ import (
 // Directory role members can be imported using the object ID of the role and the object ID of the member, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
-//
+//  $ pulumi import azuread:index/directoryRoleMember:DirectoryRoleMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
+//  -> This ID format is unique to Terraform and is composed of the Directory Role Object ID and the target Member Object ID in the format `{RoleObjectID}/member/{MemberObjectID}`.
 type DirectoryRoleMember struct {
 	pulumi.CustomResourceState
 
@@ -156,7 +151,7 @@ func (i *DirectoryRoleMember) ToDirectoryRoleMemberOutputWithContext(ctx context
 // DirectoryRoleMemberArrayInput is an input type that accepts DirectoryRoleMemberArray and DirectoryRoleMemberArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleMemberArrayInput` via:
 //
-//	DirectoryRoleMemberArray{ DirectoryRoleMemberArgs{...} }
+//          DirectoryRoleMemberArray{ DirectoryRoleMemberArgs{...} }
 type DirectoryRoleMemberArrayInput interface {
 	pulumi.Input
 
@@ -181,7 +176,7 @@ func (i DirectoryRoleMemberArray) ToDirectoryRoleMemberArrayOutputWithContext(ct
 // DirectoryRoleMemberMapInput is an input type that accepts DirectoryRoleMemberMap and DirectoryRoleMemberMapOutput values.
 // You can construct a concrete instance of `DirectoryRoleMemberMapInput` via:
 //
-//	DirectoryRoleMemberMap{ "key": DirectoryRoleMemberArgs{...} }
+//          DirectoryRoleMemberMap{ "key": DirectoryRoleMemberArgs{...} }
 type DirectoryRoleMemberMapInput interface {
 	pulumi.Input
 

@@ -27,53 +27,50 @@ import (
 // package main
 //
 // import (
+// 	"encoding/json"
 //
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"ClaimsMappingPolicy": map[string]interface{}{
-//					"ClaimsSchema": []map[string]interface{}{
-//						map[string]interface{}{
-//							"ID":            "employeeid",
-//							"JwtClaimType":  "name",
-//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-//							"Source":        "user",
-//						},
-//						map[string]interface{}{
-//							"ID":            "tenantcountry",
-//							"JwtClaimType":  "country",
-//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-//							"Source":        "company",
-//						},
-//					},
-//					"IncludeBasicClaimSet": "true",
-//					"Version":              1,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			_, err = azuread.NewClaimsMappingPolicy(ctx, "myPolicy", &azuread.ClaimsMappingPolicyArgs{
-//				Definitions: pulumi.StringArray{
-//					pulumi.String(json0),
-//				},
-//				DisplayName: pulumi.String("My Policy"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		tmpJSON0, err := json.Marshal(map[string]interface{}{
+// 			"ClaimsMappingPolicy": map[string]interface{}{
+// 				"ClaimsSchema": []map[string]interface{}{
+// 					map[string]interface{}{
+// 						"ID":            "employeeid",
+// 						"JwtClaimType":  "name",
+// 						"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+// 						"Source":        "user",
+// 					},
+// 					map[string]interface{}{
+// 						"ID":            "tenantcountry",
+// 						"JwtClaimType":  "country",
+// 						"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+// 						"Source":        "company",
+// 					},
+// 				},
+// 				"IncludeBasicClaimSet": "true",
+// 				"Version":              1,
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		json0 := string(tmpJSON0)
+// 		_, err = azuread.NewClaimsMappingPolicy(ctx, "myPolicy", &azuread.ClaimsMappingPolicyArgs{
+// 			Definitions: pulumi.StringArray{
+// 				pulumi.String(json0),
+// 			},
+// 			DisplayName: pulumi.String("My Policy"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -81,9 +78,7 @@ import (
 // Claims Mapping Policy can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
 // ```
 type ClaimsMappingPolicy struct {
 	pulumi.CustomResourceState
@@ -187,7 +182,7 @@ func (i *ClaimsMappingPolicy) ToClaimsMappingPolicyOutputWithContext(ctx context
 // ClaimsMappingPolicyArrayInput is an input type that accepts ClaimsMappingPolicyArray and ClaimsMappingPolicyArrayOutput values.
 // You can construct a concrete instance of `ClaimsMappingPolicyArrayInput` via:
 //
-//	ClaimsMappingPolicyArray{ ClaimsMappingPolicyArgs{...} }
+//          ClaimsMappingPolicyArray{ ClaimsMappingPolicyArgs{...} }
 type ClaimsMappingPolicyArrayInput interface {
 	pulumi.Input
 
@@ -212,7 +207,7 @@ func (i ClaimsMappingPolicyArray) ToClaimsMappingPolicyArrayOutputWithContext(ct
 // ClaimsMappingPolicyMapInput is an input type that accepts ClaimsMappingPolicyMap and ClaimsMappingPolicyMapOutput values.
 // You can construct a concrete instance of `ClaimsMappingPolicyMapInput` via:
 //
-//	ClaimsMappingPolicyMap{ "key": ClaimsMappingPolicyArgs{...} }
+//          ClaimsMappingPolicyMap{ "key": ClaimsMappingPolicyArgs{...} }
 type ClaimsMappingPolicyMapInput interface {
 	pulumi.Input
 

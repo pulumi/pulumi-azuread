@@ -27,44 +27,41 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
-//				DisplayName: pulumi.String("IP Named Location"),
-//				Ip: &NamedLocationIpArgs{
-//					IpRanges: pulumi.StringArray{
-//						pulumi.String("1.1.1.1/32"),
-//						pulumi.String("2.2.2.2/32"),
-//					},
-//					Trusted: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
-//				Country: &NamedLocationCountryArgs{
-//					CountriesAndRegions: pulumi.StringArray{
-//						pulumi.String("GB"),
-//						pulumi.String("US"),
-//					},
-//					IncludeUnknownCountriesAndRegions: pulumi.Bool(false),
-//				},
-//				DisplayName: pulumi.String("Country Named Location"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
+// 			DisplayName: pulumi.String("IP Named Location"),
+// 			Ip: &NamedLocationIpArgs{
+// 				IpRanges: pulumi.StringArray{
+// 					pulumi.String("1.1.1.1/32"),
+// 					pulumi.String("2.2.2.2/32"),
+// 				},
+// 				Trusted: pulumi.Bool(true),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
+// 			Country: &NamedLocationCountryArgs{
+// 				CountriesAndRegions: pulumi.StringArray{
+// 					pulumi.String("GB"),
+// 					pulumi.String("US"),
+// 				},
+// 				IncludeUnknownCountriesAndRegions: pulumi.Bool(false),
+// 			},
+// 			DisplayName: pulumi.String("Country Named Location"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -72,9 +69,7 @@ import (
 // Named Locations can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/namedLocation:NamedLocation my_location 00000000-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/namedLocation:NamedLocation my_location 00000000-0000-0000-0000-000000000000
 // ```
 type NamedLocation struct {
 	pulumi.CustomResourceState
@@ -185,7 +180,7 @@ func (i *NamedLocation) ToNamedLocationOutputWithContext(ctx context.Context) Na
 // NamedLocationArrayInput is an input type that accepts NamedLocationArray and NamedLocationArrayOutput values.
 // You can construct a concrete instance of `NamedLocationArrayInput` via:
 //
-//	NamedLocationArray{ NamedLocationArgs{...} }
+//          NamedLocationArray{ NamedLocationArgs{...} }
 type NamedLocationArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +205,7 @@ func (i NamedLocationArray) ToNamedLocationArrayOutputWithContext(ctx context.Co
 // NamedLocationMapInput is an input type that accepts NamedLocationMap and NamedLocationMapOutput values.
 // You can construct a concrete instance of `NamedLocationMapInput` via:
 //
-//	NamedLocationMap{ "key": NamedLocationArgs{...} }
+//          NamedLocationMap{ "key": NamedLocationArgs{...} }
 type NamedLocationMapInput interface {
 	pulumi.Input
 

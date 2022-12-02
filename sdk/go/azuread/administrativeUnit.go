@@ -26,9 +26,7 @@ import (
 // Administrative units can be imported using their object ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
 // ```
 type AdministrativeUnit struct {
 	pulumi.CustomResourceState
@@ -165,7 +163,7 @@ func (i *AdministrativeUnit) ToAdministrativeUnitOutputWithContext(ctx context.C
 // AdministrativeUnitArrayInput is an input type that accepts AdministrativeUnitArray and AdministrativeUnitArrayOutput values.
 // You can construct a concrete instance of `AdministrativeUnitArrayInput` via:
 //
-//	AdministrativeUnitArray{ AdministrativeUnitArgs{...} }
+//          AdministrativeUnitArray{ AdministrativeUnitArgs{...} }
 type AdministrativeUnitArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +188,7 @@ func (i AdministrativeUnitArray) ToAdministrativeUnitArrayOutputWithContext(ctx 
 // AdministrativeUnitMapInput is an input type that accepts AdministrativeUnitMap and AdministrativeUnitMapOutput values.
 // You can construct a concrete instance of `AdministrativeUnitMapInput` via:
 //
-//	AdministrativeUnitMap{ "key": AdministrativeUnitArgs{...} }
+//          AdministrativeUnitMap{ "key": AdministrativeUnitArgs{...} }
 type AdministrativeUnitMapInput interface {
 	pulumi.Input
 

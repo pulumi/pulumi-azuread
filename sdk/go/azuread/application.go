@@ -19,164 +19,161 @@ import (
 // package main
 //
 // import (
+// 	"encoding/base64"
+// 	"io/ioutil"
 //
-//	"encoding/base64"
-//	"io/ioutil"
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func filebase64OrPanic(path string) pulumi.StringPtrInput {
-//		if fileData, err := ioutil.ReadFile(path); err == nil {
-//			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
-//		} else {
-//			panic(err.Error())
-//		}
-//	}
+// func filebase64OrPanic(path string) pulumi.StringPtrInput {
+// 	if fileData, err := ioutil.ReadFile(path); err == nil {
+// 		return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
+// 	} else {
+// 		panic(err.Error())
+// 	}
+// }
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				IdentifierUris: pulumi.StringArray{
-//					pulumi.String("api://example-app"),
-//				},
-//				LogoImage: filebase64OrPanic("/path/to/logo.png"),
-//				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
-//				},
-//				SignInAudience: pulumi.String("AzureADMultipleOrgs"),
-//				Api: &ApplicationApiArgs{
-//					MappedClaimsEnabled:         pulumi.Bool(true),
-//					RequestedAccessTokenVersion: pulumi.Int(2),
-//					KnownClientApplications: pulumi.StringArray{
-//						pulumi.Any(azuread_application.Known1.Application_id),
-//						pulumi.Any(azuread_application.Known2.Application_id),
-//					},
-//					Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
-//						&ApplicationApiOauth2PermissionScopeArgs{
-//							AdminConsentDescription: pulumi.String("Allow the application to access example on behalf of the signed-in user."),
-//							AdminConsentDisplayName: pulumi.String("Access example"),
-//							Enabled:                 pulumi.Bool(true),
-//							Id:                      pulumi.String("96183846-204b-4b43-82e1-5d2222eb4b9b"),
-//							Type:                    pulumi.String("User"),
-//							UserConsentDescription:  pulumi.String("Allow the application to access example on your behalf."),
-//							UserConsentDisplayName:  pulumi.String("Access example"),
-//							Value:                   pulumi.String("user_impersonation"),
-//						},
-//						&ApplicationApiOauth2PermissionScopeArgs{
-//							AdminConsentDescription: pulumi.String("Administer the example application"),
-//							AdminConsentDisplayName: pulumi.String("Administer"),
-//							Enabled:                 pulumi.Bool(true),
-//							Id:                      pulumi.String("be98fa3e-ab5b-4b11-83d9-04ba2b7946bc"),
-//							Type:                    pulumi.String("Admin"),
-//							Value:                   pulumi.String("administer"),
-//						},
-//					},
-//				},
-//				AppRoles: ApplicationAppRoleArray{
-//					&ApplicationAppRoleArgs{
-//						AllowedMemberTypes: pulumi.StringArray{
-//							pulumi.String("User"),
-//							pulumi.String("Application"),
-//						},
-//						Description: pulumi.String("Admins can manage roles and perform all task actions"),
-//						DisplayName: pulumi.String("Admin"),
-//						Enabled:     pulumi.Bool(true),
-//						Id:          pulumi.String("1b19509b-32b1-4e9f-b71d-4992aa991967"),
-//						Value:       pulumi.String("admin"),
-//					},
-//					&ApplicationAppRoleArgs{
-//						AllowedMemberTypes: pulumi.StringArray{
-//							pulumi.String("User"),
-//						},
-//						Description: pulumi.String("ReadOnly roles have limited query access"),
-//						DisplayName: pulumi.String("ReadOnly"),
-//						Enabled:     pulumi.Bool(true),
-//						Id:          pulumi.String("497406e4-012a-4267-bf18-45a1cb148a01"),
-//						Value:       pulumi.String("User"),
-//					},
-//				},
-//				FeatureTags: ApplicationFeatureTagArray{
-//					&ApplicationFeatureTagArgs{
-//						Enterprise: pulumi.Bool(true),
-//						Gallery:    pulumi.Bool(true),
-//					},
-//				},
-//				OptionalClaims: &ApplicationOptionalClaimsArgs{
-//					AccessTokens: ApplicationOptionalClaimsAccessTokenArray{
-//						&ApplicationOptionalClaimsAccessTokenArgs{
-//							Name: pulumi.String("myclaim"),
-//						},
-//						&ApplicationOptionalClaimsAccessTokenArgs{
-//							Name: pulumi.String("otherclaim"),
-//						},
-//					},
-//					IdTokens: ApplicationOptionalClaimsIdTokenArray{
-//						&ApplicationOptionalClaimsIdTokenArgs{
-//							Name:      pulumi.String("userclaim"),
-//							Source:    pulumi.String("user"),
-//							Essential: pulumi.Bool(true),
-//							AdditionalProperties: pulumi.StringArray{
-//								pulumi.String("emit_as_roles"),
-//							},
-//						},
-//					},
-//					Saml2Tokens: ApplicationOptionalClaimsSaml2TokenArray{
-//						&ApplicationOptionalClaimsSaml2TokenArgs{
-//							Name: pulumi.String("samlexample"),
-//						},
-//					},
-//				},
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String("00000003-0000-0000-c000-000000000000"),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id:   pulumi.String("df021288-bdef-4463-88db-98f22de89214"),
-//								Type: pulumi.String("Role"),
-//							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id:   pulumi.String("b4e74841-8e56-480b-be8b-910348b18b4c"),
-//								Type: pulumi.String("Scope"),
-//							},
-//						},
-//					},
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String("c5393580-f805-4401-95e8-94b7a6ef2fc2"),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id:   pulumi.String("594c1fb6-4f81-4475-ae41-0c394909246c"),
-//								Type: pulumi.String("Role"),
-//							},
-//						},
-//					},
-//				},
-//				Web: &ApplicationWebArgs{
-//					HomepageUrl: pulumi.String("https://app.example.net"),
-//					LogoutUrl:   pulumi.String("https://app.example.net/logout"),
-//					RedirectUris: pulumi.StringArray{
-//						pulumi.String("https://app.example.net/account"),
-//					},
-//					ImplicitGrant: &ApplicationWebImplicitGrantArgs{
-//						AccessTokenIssuanceEnabled: pulumi.Bool(true),
-//						IdTokenIssuanceEnabled:     pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		current, err := azuread.GetClientConfig(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			IdentifierUris: pulumi.StringArray{
+// 				pulumi.String("api://example-app"),
+// 			},
+// 			LogoImage: filebase64OrPanic("/path/to/logo.png"),
+// 			Owners: pulumi.StringArray{
+// 				pulumi.String(current.ObjectId),
+// 			},
+// 			SignInAudience: pulumi.String("AzureADMultipleOrgs"),
+// 			Api: &ApplicationApiArgs{
+// 				MappedClaimsEnabled:         pulumi.Bool(true),
+// 				RequestedAccessTokenVersion: pulumi.Int(2),
+// 				KnownClientApplications: pulumi.StringArray{
+// 					pulumi.Any(azuread_application.Known1.Application_id),
+// 					pulumi.Any(azuread_application.Known2.Application_id),
+// 				},
+// 				Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
+// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 						AdminConsentDescription: pulumi.String("Allow the application to access example on behalf of the signed-in user."),
+// 						AdminConsentDisplayName: pulumi.String("Access example"),
+// 						Enabled:                 pulumi.Bool(true),
+// 						Id:                      pulumi.String("96183846-204b-4b43-82e1-5d2222eb4b9b"),
+// 						Type:                    pulumi.String("User"),
+// 						UserConsentDescription:  pulumi.String("Allow the application to access example on your behalf."),
+// 						UserConsentDisplayName:  pulumi.String("Access example"),
+// 						Value:                   pulumi.String("user_impersonation"),
+// 					},
+// 					&ApplicationApiOauth2PermissionScopeArgs{
+// 						AdminConsentDescription: pulumi.String("Administer the example application"),
+// 						AdminConsentDisplayName: pulumi.String("Administer"),
+// 						Enabled:                 pulumi.Bool(true),
+// 						Id:                      pulumi.String("be98fa3e-ab5b-4b11-83d9-04ba2b7946bc"),
+// 						Type:                    pulumi.String("Admin"),
+// 						Value:                   pulumi.String("administer"),
+// 					},
+// 				},
+// 			},
+// 			AppRoles: ApplicationAppRoleArray{
+// 				&ApplicationAppRoleArgs{
+// 					AllowedMemberTypes: pulumi.StringArray{
+// 						pulumi.String("User"),
+// 						pulumi.String("Application"),
+// 					},
+// 					Description: pulumi.String("Admins can manage roles and perform all task actions"),
+// 					DisplayName: pulumi.String("Admin"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Id:          pulumi.String("1b19509b-32b1-4e9f-b71d-4992aa991967"),
+// 					Value:       pulumi.String("admin"),
+// 				},
+// 				&ApplicationAppRoleArgs{
+// 					AllowedMemberTypes: pulumi.StringArray{
+// 						pulumi.String("User"),
+// 					},
+// 					Description: pulumi.String("ReadOnly roles have limited query access"),
+// 					DisplayName: pulumi.String("ReadOnly"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Id:          pulumi.String("497406e4-012a-4267-bf18-45a1cb148a01"),
+// 					Value:       pulumi.String("User"),
+// 				},
+// 			},
+// 			FeatureTags: ApplicationFeatureTagArray{
+// 				&ApplicationFeatureTagArgs{
+// 					Enterprise: pulumi.Bool(true),
+// 					Gallery:    pulumi.Bool(true),
+// 				},
+// 			},
+// 			OptionalClaims: &ApplicationOptionalClaimsArgs{
+// 				AccessTokens: ApplicationOptionalClaimsAccessTokenArray{
+// 					&ApplicationOptionalClaimsAccessTokenArgs{
+// 						Name: pulumi.String("myclaim"),
+// 					},
+// 					&ApplicationOptionalClaimsAccessTokenArgs{
+// 						Name: pulumi.String("otherclaim"),
+// 					},
+// 				},
+// 				IdTokens: ApplicationOptionalClaimsIdTokenArray{
+// 					&ApplicationOptionalClaimsIdTokenArgs{
+// 						Name:      pulumi.String("userclaim"),
+// 						Source:    pulumi.String("user"),
+// 						Essential: pulumi.Bool(true),
+// 						AdditionalProperties: pulumi.StringArray{
+// 							pulumi.String("emit_as_roles"),
+// 						},
+// 					},
+// 				},
+// 				Saml2Tokens: ApplicationOptionalClaimsSaml2TokenArray{
+// 					&ApplicationOptionalClaimsSaml2TokenArgs{
+// 						Name: pulumi.String("samlexample"),
+// 					},
+// 				},
+// 			},
+// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: pulumi.String("00000003-0000-0000-c000-000000000000"),
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id:   pulumi.String("df021288-bdef-4463-88db-98f22de89214"),
+// 							Type: pulumi.String("Role"),
+// 						},
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id:   pulumi.String("b4e74841-8e56-480b-be8b-910348b18b4c"),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 					},
+// 				},
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: pulumi.String("c5393580-f805-4401-95e8-94b7a6ef2fc2"),
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id:   pulumi.String("594c1fb6-4f81-4475-ae41-0c394909246c"),
+// 							Type: pulumi.String("Role"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 			Web: &ApplicationWebArgs{
+// 				HomepageUrl: pulumi.String("https://app.example.net"),
+// 				LogoutUrl:   pulumi.String("https://app.example.net/logout"),
+// 				RedirectUris: pulumi.StringArray{
+// 					pulumi.String("https://app.example.net/account"),
+// 				},
+// 				ImplicitGrant: &ApplicationWebImplicitGrantArgs{
+// 					AccessTokenIssuanceEnabled: pulumi.Bool(true),
+// 					IdTokenIssuanceEnabled:     pulumi.Bool(true),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Create application from a gallery template*
@@ -185,38 +182,35 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
-//				DisplayName: pulumi.StringRef("Marketo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+// 			DisplayName: pulumi.StringRef("Marketo"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 			UseExisting:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -224,9 +218,7 @@ import (
 // Applications can be imported using their object ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
 // ```
 type Application struct {
 	pulumi.CustomResourceState
@@ -589,7 +581,7 @@ func (i *Application) ToApplicationOutputWithContext(ctx context.Context) Applic
 // ApplicationArrayInput is an input type that accepts ApplicationArray and ApplicationArrayOutput values.
 // You can construct a concrete instance of `ApplicationArrayInput` via:
 //
-//	ApplicationArray{ ApplicationArgs{...} }
+//          ApplicationArray{ ApplicationArgs{...} }
 type ApplicationArrayInput interface {
 	pulumi.Input
 
@@ -614,7 +606,7 @@ func (i ApplicationArray) ToApplicationArrayOutputWithContext(ctx context.Contex
 // ApplicationMapInput is an input type that accepts ApplicationMap and ApplicationMapOutput values.
 // You can construct a concrete instance of `ApplicationMapInput` via:
 //
-//	ApplicationMap{ "key": ApplicationArgs{...} }
+//          ApplicationMap{ "key": ApplicationArgs{...} }
 type ApplicationMapInput interface {
 	pulumi.Input
 

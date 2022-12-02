@@ -27,25 +27,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewServicePrincipalClaimsMappingPolicyAssignment(ctx, "app", &azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs{
-//				ClaimsMappingPolicyId: pulumi.Any(azuread_claims_mapping_policy.My_policy.Id),
-//				ServicePrincipalId:    pulumi.Any(azuread_service_principal.My_principal.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.NewServicePrincipalClaimsMappingPolicyAssignment(ctx, "app", &azuread.ServicePrincipalClaimsMappingPolicyAssignmentArgs{
+// 			ClaimsMappingPolicyId: pulumi.Any(azuread_claims_mapping_policy.My_policy.Id),
+// 			ServicePrincipalId:    pulumi.Any(azuread_service_principal.My_principal.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -53,9 +50,7 @@ import (
 // Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app 00000000-0000-0000-0000-000000000000/claimsMappingPolicy/11111111-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app 00000000-0000-0000-0000-000000000000/claimsMappingPolicy/11111111-0000-0000-0000-000000000000
 // ```
 type ServicePrincipalClaimsMappingPolicyAssignment struct {
 	pulumi.CustomResourceState
@@ -159,7 +154,7 @@ func (i *ServicePrincipalClaimsMappingPolicyAssignment) ToServicePrincipalClaims
 // ServicePrincipalClaimsMappingPolicyAssignmentArrayInput is an input type that accepts ServicePrincipalClaimsMappingPolicyAssignmentArray and ServicePrincipalClaimsMappingPolicyAssignmentArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalClaimsMappingPolicyAssignmentArrayInput` via:
 //
-//	ServicePrincipalClaimsMappingPolicyAssignmentArray{ ServicePrincipalClaimsMappingPolicyAssignmentArgs{...} }
+//          ServicePrincipalClaimsMappingPolicyAssignmentArray{ ServicePrincipalClaimsMappingPolicyAssignmentArgs{...} }
 type ServicePrincipalClaimsMappingPolicyAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -184,7 +179,7 @@ func (i ServicePrincipalClaimsMappingPolicyAssignmentArray) ToServicePrincipalCl
 // ServicePrincipalClaimsMappingPolicyAssignmentMapInput is an input type that accepts ServicePrincipalClaimsMappingPolicyAssignmentMap and ServicePrincipalClaimsMappingPolicyAssignmentMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalClaimsMappingPolicyAssignmentMapInput` via:
 //
-//	ServicePrincipalClaimsMappingPolicyAssignmentMap{ "key": ServicePrincipalClaimsMappingPolicyAssignmentArgs{...} }
+//          ServicePrincipalClaimsMappingPolicyAssignmentMap{ "key": ServicePrincipalClaimsMappingPolicyAssignmentArgs{...} }
 type ServicePrincipalClaimsMappingPolicyAssignmentMapInput interface {
 	pulumi.Input
 

@@ -32,9 +32,7 @@ import (
 // Groups can be imported using their object ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
 // ```
 type Group struct {
 	pulumi.CustomResourceState
@@ -359,7 +357,7 @@ func (i *Group) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 // GroupArrayInput is an input type that accepts GroupArray and GroupArrayOutput values.
 // You can construct a concrete instance of `GroupArrayInput` via:
 //
-//	GroupArray{ GroupArgs{...} }
+//          GroupArray{ GroupArgs{...} }
 type GroupArrayInput interface {
 	pulumi.Input
 
@@ -384,7 +382,7 @@ func (i GroupArray) ToGroupArrayOutputWithContext(ctx context.Context) GroupArra
 // GroupMapInput is an input type that accepts GroupMap and GroupMapOutput values.
 // You can construct a concrete instance of `GroupMapInput` via:
 //
-//	GroupMap{ "key": GroupArgs{...} }
+//          GroupMap{ "key": GroupArgs{...} }
 type GroupMapInput interface {
 	pulumi.Input
 

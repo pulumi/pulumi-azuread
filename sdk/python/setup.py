@@ -39,7 +39,7 @@ def readme():
 
 setup(name='pulumi_azuread',
       version=VERSION,
-      description="A Pulumi package for creating and managing azuread cloud resources.",
+      description="A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
       cmdclass={

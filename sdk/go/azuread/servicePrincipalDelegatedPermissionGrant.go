@@ -29,71 +29,68 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.Openid, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Scope"),
-//							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.Read, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Scope"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
-//				ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
-//				ResourceServicePrincipalObjectId: msgraph.ObjectId,
-//				ClaimValues: pulumi.StringArray{
-//					pulumi.String("openid"),
-//					pulumi.String("User.Read.All"),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 			UseExisting:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+// 								return oauth2PermissionScopeIds.Openid, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+// 								return oauth2PermissionScopeIds.User.Read, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
+// 			ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
+// 			ResourceServicePrincipalObjectId: msgraph.ObjectId,
+// 			ClaimValues: pulumi.StringArray{
+// 				pulumi.String("openid"),
+// 				pulumi.String("User.Read.All"),
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Delegated permission grant for a single user*
@@ -102,81 +99,78 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.Openid, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Scope"),
-//							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.Read, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Scope"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
-//				DisplayName:       pulumi.String("J. Doe"),
-//				UserPrincipalName: pulumi.String("jdoe@hashicorp.com"),
-//				MailNickname:      pulumi.String("jdoe"),
-//				Password:          pulumi.String("SecretP@sswd99!"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
-//				ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
-//				ResourceServicePrincipalObjectId: msgraph.ObjectId,
-//				ClaimValues: pulumi.StringArray{
-//					pulumi.String("openid"),
-//					pulumi.String("User.Read.All"),
-//				},
-//				UserObjectId: exampleUser.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 			UseExisting:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+// 								return oauth2PermissionScopeIds.Openid, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+// 								return oauth2PermissionScopeIds.User.Read, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
+// 			DisplayName:       pulumi.String("J. Doe"),
+// 			UserPrincipalName: pulumi.String("jdoe@hashicorp.com"),
+// 			MailNickname:      pulumi.String("jdoe"),
+// 			Password:          pulumi.String("SecretP@sswd99!"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
+// 			ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
+// 			ResourceServicePrincipalObjectId: msgraph.ObjectId,
+// 			ClaimValues: pulumi.StringArray{
+// 				pulumi.String("openid"),
+// 				pulumi.String("User.Read.All"),
+// 			},
+// 			UserObjectId: exampleUser.ObjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -184,9 +178,7 @@ import (
 // Delegated permission grants can be imported using their ID, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
-//
+//  $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
 // ```
 type ServicePrincipalDelegatedPermissionGrant struct {
 	pulumi.CustomResourceState
@@ -313,7 +305,7 @@ func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPe
 // ServicePrincipalDelegatedPermissionGrantArrayInput is an input type that accepts ServicePrincipalDelegatedPermissionGrantArray and ServicePrincipalDelegatedPermissionGrantArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalDelegatedPermissionGrantArrayInput` via:
 //
-//	ServicePrincipalDelegatedPermissionGrantArray{ ServicePrincipalDelegatedPermissionGrantArgs{...} }
+//          ServicePrincipalDelegatedPermissionGrantArray{ ServicePrincipalDelegatedPermissionGrantArgs{...} }
 type ServicePrincipalDelegatedPermissionGrantArrayInput interface {
 	pulumi.Input
 
@@ -338,7 +330,7 @@ func (i ServicePrincipalDelegatedPermissionGrantArray) ToServicePrincipalDelegat
 // ServicePrincipalDelegatedPermissionGrantMapInput is an input type that accepts ServicePrincipalDelegatedPermissionGrantMap and ServicePrincipalDelegatedPermissionGrantMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalDelegatedPermissionGrantMapInput` via:
 //
-//	ServicePrincipalDelegatedPermissionGrantMap{ "key": ServicePrincipalDelegatedPermissionGrantArgs{...} }
+//          ServicePrincipalDelegatedPermissionGrantMap{ "key": ServicePrincipalDelegatedPermissionGrantArgs{...} }
 type ServicePrincipalDelegatedPermissionGrantMapInput interface {
 	pulumi.Input
 

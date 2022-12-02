@@ -28,27 +28,24 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
-//				DisplayNames: []string{
-//					"example-app",
-//					"another-app",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
+// 			DisplayNames: []string{
+// 				"example-app",
+// 				"another-app",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Look up by application IDs (client IDs*
@@ -57,28 +54,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
-//				ApplicationIds: []string{
-//					"11111111-0000-0000-0000-000000000000",
-//					"22222222-0000-0000-0000-000000000000",
-//					"33333333-0000-0000-0000-000000000000",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
+// 			ApplicationIds: []string{
+// 				"11111111-0000-0000-0000-000000000000",
+// 				"22222222-0000-0000-0000-000000000000",
+// 				"33333333-0000-0000-0000-000000000000",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Look up by service principal object IDs*
@@ -87,28 +81,25 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
-//				ObjectIds: []string{
-//					"00000000-0000-0000-0000-000000000000",
-//					"00000000-0000-0000-0000-111111111111",
-//					"00000000-0000-0000-0000-222222222222",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
+// 			ObjectIds: []string{
+// 				"00000000-0000-0000-0000-000000000000",
+// 				"00000000-0000-0000-0000-111111111111",
+// 				"00000000-0000-0000-0000-222222222222",
+// 			},
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	var rv GetServicePrincipalsResult

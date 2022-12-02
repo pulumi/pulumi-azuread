@@ -26,25 +26,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.LookupApplication(ctx, &GetApplicationArgs{
-//				DisplayName: pulumi.StringRef("My First AzureAD Application"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("applicationObjectId", example.Id)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := azuread.LookupApplication(ctx, &GetApplicationArgs{
+// 			DisplayName: pulumi.StringRef("My First AzureAD Application"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("applicationObjectId", example.Id)
+// 		return nil
+// 	})
+// }
 // ```
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult

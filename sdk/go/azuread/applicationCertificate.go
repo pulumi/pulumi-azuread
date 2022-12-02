@@ -16,12 +16,10 @@ import (
 // Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
-//
+//  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
+//  -> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 type ApplicationCertificate struct {
 	pulumi.CustomResourceState
 
@@ -184,7 +182,7 @@ func (i *ApplicationCertificate) ToApplicationCertificateOutputWithContext(ctx c
 // ApplicationCertificateArrayInput is an input type that accepts ApplicationCertificateArray and ApplicationCertificateArrayOutput values.
 // You can construct a concrete instance of `ApplicationCertificateArrayInput` via:
 //
-//	ApplicationCertificateArray{ ApplicationCertificateArgs{...} }
+//          ApplicationCertificateArray{ ApplicationCertificateArgs{...} }
 type ApplicationCertificateArrayInput interface {
 	pulumi.Input
 
@@ -209,7 +207,7 @@ func (i ApplicationCertificateArray) ToApplicationCertificateArrayOutputWithCont
 // ApplicationCertificateMapInput is an input type that accepts ApplicationCertificateMap and ApplicationCertificateMapOutput values.
 // You can construct a concrete instance of `ApplicationCertificateMapInput` via:
 //
-//	ApplicationCertificateMap{ "key": ApplicationCertificateArgs{...} }
+//          ApplicationCertificateMap{ "key": ApplicationCertificateArgs{...} }
 type ApplicationCertificateMapInput interface {
 	pulumi.Input
 

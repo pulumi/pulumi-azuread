@@ -29,70 +29,67 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//									return appRoleIds.User.Read.All, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Role"),
-//							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
-//									return oauth2PermissionScopeIds.User.ReadWrite, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Scope"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
-//				AppRoleId: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//					return appRoleIds.User.Read.All, nil
-//				}).(pulumi.StringOutput),
-//				PrincipalObjectId: exampleServicePrincipal.ObjectId,
-//				ResourceObjectId:  msgraph.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 			UseExisting:   pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 								return appRoleIds.User.Read.All, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Role"),
+// 						},
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+// 								return oauth2PermissionScopeIds.User.ReadWrite, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Scope"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+// 			AppRoleId: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 				return appRoleIds.User.Read.All, nil
+// 			}).(pulumi.StringOutput),
+// 			PrincipalObjectId: exampleServicePrincipal.ObjectId,
+// 			ResourceObjectId:  msgraph.ObjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *App role assignment for internal application*
@@ -101,77 +98,74 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("internal"),
-//				AppRoles: ApplicationAppRoleArray{
-//					&ApplicationAppRoleArgs{
-//						AllowedMemberTypes: pulumi.StringArray{
-//							pulumi.String("Application"),
-//						},
-//						Description: pulumi.String("Apps can query the database"),
-//						DisplayName: pulumi.String("Query"),
-//						Enabled:     pulumi.Bool(true),
-//						Id:          pulumi.String("00000000-0000-0000-0000-111111111111"),
-//						Value:       pulumi.String("Query.All"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: internalApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: internalApplication.ApplicationId,
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
-//								Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//									return appRoleIds.Query.All, nil
-//								}).(pulumi.StringOutput),
-//								Type: pulumi.String("Role"),
-//							},
-//						},
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
-//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//					return appRoleIds.Query.All, nil
-//				}).(pulumi.StringOutput),
-//				PrincipalObjectId: exampleServicePrincipal.ObjectId,
-//				ResourceObjectId:  internalServicePrincipal.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("internal"),
+// 			AppRoles: ApplicationAppRoleArray{
+// 				&ApplicationAppRoleArgs{
+// 					AllowedMemberTypes: pulumi.StringArray{
+// 						pulumi.String("Application"),
+// 					},
+// 					Description: pulumi.String("Apps can query the database"),
+// 					DisplayName: pulumi.String("Query"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Id:          pulumi.String("00000000-0000-0000-0000-111111111111"),
+// 					Value:       pulumi.String("Query.All"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: internalApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 			RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
+// 				&ApplicationRequiredResourceAccessArgs{
+// 					ResourceAppId: internalApplication.ApplicationId,
+// 					ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
+// 						&ApplicationRequiredResourceAccessResourceAccessArgs{
+// 							Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 								return appRoleIds.Query.All, nil
+// 							}).(pulumi.StringOutput),
+// 							Type: pulumi.String("Role"),
+// 						},
+// 					},
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: exampleApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+// 			AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 				return appRoleIds.Query.All, nil
+// 			}).(pulumi.StringOutput),
+// 			PrincipalObjectId: exampleServicePrincipal.ObjectId,
+// 			ResourceObjectId:  internalServicePrincipal.ObjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Assign a user and group to an internal application*
@@ -180,86 +174,83 @@ import (
 // package main
 //
 // import (
+// 	"fmt"
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDomains, err := azuread.GetDomains(ctx, &GetDomainsArgs{
-//				OnlyInitial: pulumi.BoolRef(true),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("internal"),
-//				AppRoles: ApplicationAppRoleArray{
-//					&ApplicationAppRoleArgs{
-//						AllowedMemberTypes: pulumi.StringArray{
-//							pulumi.String("Application"),
-//							pulumi.String("User"),
-//						},
-//						Description: pulumi.String("Admins can perform all task actions"),
-//						DisplayName: pulumi.String("Admin"),
-//						Enabled:     pulumi.Bool(true),
-//						Id:          pulumi.String("00000000-0000-0000-0000-222222222222"),
-//						Value:       pulumi.String("Admin.All"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: internalApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("example"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
-//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//					return appRoleIds.Admin.All, nil
-//				}).(pulumi.StringOutput),
-//				PrincipalObjectId: exampleGroup.ObjectId,
-//				ResourceObjectId:  internalServicePrincipal.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
-//				DisplayName:       pulumi.String("D. Duck"),
-//				Password:          pulumi.String("SecretP@sswd99!"),
-//				UserPrincipalName: pulumi.String(fmt.Sprintf("d.duck@%v", exampleDomains.Domains[0].DomainName)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleIndex/appRoleAssignmentAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
-//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
-//					return appRoleIds.Admin.All, nil
-//				}).(pulumi.StringOutput),
-//				PrincipalObjectId: exampleUser.ObjectId,
-//				ResourceObjectId:  internalServicePrincipal.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleDomains, err := azuread.GetDomains(ctx, &GetDomainsArgs{
+// 			OnlyInitial: pulumi.BoolRef(true),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("internal"),
+// 			AppRoles: ApplicationAppRoleArray{
+// 				&ApplicationAppRoleArgs{
+// 					AllowedMemberTypes: pulumi.StringArray{
+// 						pulumi.String("Application"),
+// 						pulumi.String("User"),
+// 					},
+// 					Description: pulumi.String("Admins can perform all task actions"),
+// 					DisplayName: pulumi.String("Admin"),
+// 					Enabled:     pulumi.Bool(true),
+// 					Id:          pulumi.String("00000000-0000-0000-0000-222222222222"),
+// 					Value:       pulumi.String("Admin.All"),
+// 				},
+// 			},
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: internalApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+// 			DisplayName:     pulumi.String("example"),
+// 			SecurityEnabled: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+// 			AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 				return appRoleIds.Admin.All, nil
+// 			}).(pulumi.StringOutput),
+// 			PrincipalObjectId: exampleGroup.ObjectId,
+// 			ResourceObjectId:  internalServicePrincipal.ObjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
+// 			DisplayName:       pulumi.String("D. Duck"),
+// 			Password:          pulumi.String("SecretP@sswd99!"),
+// 			UserPrincipalName: pulumi.String(fmt.Sprintf("d.duck@%v", exampleDomains.Domains[0].DomainName)),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleIndex/appRoleAssignmentAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+// 			AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+// 				return appRoleIds.Admin.All, nil
+// 			}).(pulumi.StringOutput),
+// 			PrincipalObjectId: exampleUser.ObjectId,
+// 			ResourceObjectId:  internalServicePrincipal.ObjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // *Assign a group to the default app role for an internal application*
@@ -268,45 +259,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("internal"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: internalApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("example"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
-//				AppRoleId:         pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				PrincipalObjectId: exampleGroup.ObjectId,
-//				ResourceObjectId:  internalServicePrincipal.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("internal"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+// 			ApplicationId: internalApplication.ApplicationId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+// 			DisplayName:     pulumi.String("example"),
+// 			SecurityEnabled: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+// 			AppRoleId:         pulumi.String("00000000-0000-0000-0000-000000000000"),
+// 			PrincipalObjectId: exampleGroup.ObjectId,
+// 			ResourceObjectId:  internalServicePrincipal.ObjectId,
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -314,12 +302,10 @@ import (
 // App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
-//
+//  $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+//  -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
 type AppRoleAssignment struct {
 	pulumi.CustomResourceState
 
@@ -453,7 +439,7 @@ func (i *AppRoleAssignment) ToAppRoleAssignmentOutputWithContext(ctx context.Con
 // AppRoleAssignmentArrayInput is an input type that accepts AppRoleAssignmentArray and AppRoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `AppRoleAssignmentArrayInput` via:
 //
-//	AppRoleAssignmentArray{ AppRoleAssignmentArgs{...} }
+//          AppRoleAssignmentArray{ AppRoleAssignmentArgs{...} }
 type AppRoleAssignmentArrayInput interface {
 	pulumi.Input
 
@@ -478,7 +464,7 @@ func (i AppRoleAssignmentArray) ToAppRoleAssignmentArrayOutputWithContext(ctx co
 // AppRoleAssignmentMapInput is an input type that accepts AppRoleAssignmentMap and AppRoleAssignmentMapOutput values.
 // You can construct a concrete instance of `AppRoleAssignmentMapInput` via:
 //
-//	AppRoleAssignmentMap{ "key": AppRoleAssignmentArgs{...} }
+//          AppRoleAssignmentMap{ "key": AppRoleAssignmentArgs{...} }
 type AppRoleAssignmentMapInput interface {
 	pulumi.Input
 

@@ -1,3 +1,3 @@
-// A Pulumi package for creating and managing azuread cloud resources.
+// A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.
 
 package azuread

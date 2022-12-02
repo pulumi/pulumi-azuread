@@ -27,84 +27,81 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
-//				Conditions: &ConditionalAccessPolicyConditionsArgs{
-//					Applications: &ConditionalAccessPolicyConditionsApplicationsArgs{
-//						ExcludedApplications: pulumi.StringArray{},
-//						IncludedApplications: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//					},
-//					ClientAppTypes: pulumi.StringArray{
-//						pulumi.String("all"),
-//					},
-//					Devices: &ConditionalAccessPolicyConditionsDevicesArgs{
-//						Filter: &ConditionalAccessPolicyConditionsDevicesFilterArgs{
-//							Mode: pulumi.String("exclude"),
-//							Rule: pulumi.String("device.operatingSystem eq \"Doors\""),
-//						},
-//					},
-//					Locations: &ConditionalAccessPolicyConditionsLocationsArgs{
-//						ExcludedLocations: pulumi.StringArray{
-//							pulumi.String("AllTrusted"),
-//						},
-//						IncludedLocations: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//					},
-//					Platforms: &ConditionalAccessPolicyConditionsPlatformsArgs{
-//						ExcludedPlatforms: pulumi.StringArray{
-//							pulumi.String("iOS"),
-//						},
-//						IncludedPlatforms: pulumi.StringArray{
-//							pulumi.String("android"),
-//						},
-//					},
-//					SignInRiskLevels: pulumi.StringArray{
-//						pulumi.String("medium"),
-//					},
-//					UserRiskLevels: pulumi.StringArray{
-//						pulumi.String("medium"),
-//					},
-//					Users: &ConditionalAccessPolicyConditionsUsersArgs{
-//						ExcludedUsers: pulumi.StringArray{
-//							pulumi.String("GuestsOrExternalUsers"),
-//						},
-//						IncludedUsers: pulumi.StringArray{
-//							pulumi.String("All"),
-//						},
-//					},
-//				},
-//				DisplayName: pulumi.String("example policy"),
-//				GrantControls: &ConditionalAccessPolicyGrantControlsArgs{
-//					BuiltInControls: pulumi.StringArray{
-//						pulumi.String("mfa"),
-//					},
-//					Operator: pulumi.String("OR"),
-//				},
-//				SessionControls: &ConditionalAccessPolicySessionControlsArgs{
-//					ApplicationEnforcedRestrictionsEnabled: pulumi.Bool(true),
-//					CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
-//					SignInFrequency:                        pulumi.Int(10),
-//					SignInFrequencyPeriod:                  pulumi.String("hours"),
-//				},
-//				State: pulumi.String("disabled"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
+// 			Conditions: &ConditionalAccessPolicyConditionsArgs{
+// 				Applications: &ConditionalAccessPolicyConditionsApplicationsArgs{
+// 					ExcludedApplications: pulumi.StringArray{},
+// 					IncludedApplications: pulumi.StringArray{
+// 						pulumi.String("All"),
+// 					},
+// 				},
+// 				ClientAppTypes: pulumi.StringArray{
+// 					pulumi.String("all"),
+// 				},
+// 				Devices: &ConditionalAccessPolicyConditionsDevicesArgs{
+// 					Filter: &ConditionalAccessPolicyConditionsDevicesFilterArgs{
+// 						Mode: pulumi.String("exclude"),
+// 						Rule: pulumi.String("device.operatingSystem eq \"Doors\""),
+// 					},
+// 				},
+// 				Locations: &ConditionalAccessPolicyConditionsLocationsArgs{
+// 					ExcludedLocations: pulumi.StringArray{
+// 						pulumi.String("AllTrusted"),
+// 					},
+// 					IncludedLocations: pulumi.StringArray{
+// 						pulumi.String("All"),
+// 					},
+// 				},
+// 				Platforms: &ConditionalAccessPolicyConditionsPlatformsArgs{
+// 					ExcludedPlatforms: pulumi.StringArray{
+// 						pulumi.String("iOS"),
+// 					},
+// 					IncludedPlatforms: pulumi.StringArray{
+// 						pulumi.String("android"),
+// 					},
+// 				},
+// 				SignInRiskLevels: pulumi.StringArray{
+// 					pulumi.String("medium"),
+// 				},
+// 				UserRiskLevels: pulumi.StringArray{
+// 					pulumi.String("medium"),
+// 				},
+// 				Users: &ConditionalAccessPolicyConditionsUsersArgs{
+// 					ExcludedUsers: pulumi.StringArray{
+// 						pulumi.String("GuestsOrExternalUsers"),
+// 					},
+// 					IncludedUsers: pulumi.StringArray{
+// 						pulumi.String("All"),
+// 					},
+// 				},
+// 			},
+// 			DisplayName: pulumi.String("example policy"),
+// 			GrantControls: &ConditionalAccessPolicyGrantControlsArgs{
+// 				BuiltInControls: pulumi.StringArray{
+// 					pulumi.String("mfa"),
+// 				},
+// 				Operator: pulumi.String("OR"),
+// 			},
+// 			SessionControls: &ConditionalAccessPolicySessionControlsArgs{
+// 				ApplicationEnforcedRestrictionsEnabled: pulumi.Bool(true),
+// 				CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
+// 				SignInFrequency:                        pulumi.Int(10),
+// 				SignInFrequencyPeriod:                  pulumi.String("hours"),
+// 			},
+// 			State: pulumi.String("disabled"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -112,9 +109,7 @@ import (
 // Conditional Access Policies can be imported using the `id`, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000
-//
+//  $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000
 // ```
 type ConditionalAccessPolicy struct {
 	pulumi.CustomResourceState
@@ -254,7 +249,7 @@ func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyOutputWithContext(ctx
 // ConditionalAccessPolicyArrayInput is an input type that accepts ConditionalAccessPolicyArray and ConditionalAccessPolicyArrayOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyArrayInput` via:
 //
-//	ConditionalAccessPolicyArray{ ConditionalAccessPolicyArgs{...} }
+//          ConditionalAccessPolicyArray{ ConditionalAccessPolicyArgs{...} }
 type ConditionalAccessPolicyArrayInput interface {
 	pulumi.Input
 
@@ -279,7 +274,7 @@ func (i ConditionalAccessPolicyArray) ToConditionalAccessPolicyArrayOutputWithCo
 // ConditionalAccessPolicyMapInput is an input type that accepts ConditionalAccessPolicyMap and ConditionalAccessPolicyMapOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyMapInput` via:
 //
-//	ConditionalAccessPolicyMap{ "key": ConditionalAccessPolicyArgs{...} }
+//          ConditionalAccessPolicyMap{ "key": ConditionalAccessPolicyArgs{...} }
 type ConditionalAccessPolicyMapInput interface {
 	pulumi.Input
 

@@ -29,38 +29,35 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("my_group"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewGroupMember(ctx, "exampleGroupMember", &azuread.GroupMemberArgs{
-//				GroupObjectId:  exampleGroup.ID(),
-//				MemberObjectId: pulumi.String(exampleUser.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
+// 			UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+// 			DisplayName:     pulumi.String("my_group"),
+// 			SecurityEnabled: pulumi.Bool(true),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewGroupMember(ctx, "exampleGroupMember", &azuread.GroupMemberArgs{
+// 			GroupObjectId:  exampleGroup.ID(),
+// 			MemberObjectId: pulumi.String(exampleUser.Id),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -68,12 +65,10 @@ import (
 // Group members can be imported using the object ID of the group and the object ID of the member, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
-//
+//  $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+//  -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
 type GroupMember struct {
 	pulumi.CustomResourceState
 
@@ -176,7 +171,7 @@ func (i *GroupMember) ToGroupMemberOutputWithContext(ctx context.Context) GroupM
 // GroupMemberArrayInput is an input type that accepts GroupMemberArray and GroupMemberArrayOutput values.
 // You can construct a concrete instance of `GroupMemberArrayInput` via:
 //
-//	GroupMemberArray{ GroupMemberArgs{...} }
+//          GroupMemberArray{ GroupMemberArgs{...} }
 type GroupMemberArrayInput interface {
 	pulumi.Input
 
@@ -201,7 +196,7 @@ func (i GroupMemberArray) ToGroupMemberArrayOutputWithContext(ctx context.Contex
 // GroupMemberMapInput is an input type that accepts GroupMemberMap and GroupMemberMapOutput values.
 // You can construct a concrete instance of `GroupMemberMapInput` via:
 //
-//	GroupMemberMap{ "key": GroupMemberArgs{...} }
+//          GroupMemberMap{ "key": GroupMemberArgs{...} }
 type GroupMemberMapInput interface {
 	pulumi.Input
 

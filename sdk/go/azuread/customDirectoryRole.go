@@ -17,45 +17,42 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
-//				Description: pulumi.String("Allows reading applications and updating groups"),
-//				DisplayName: pulumi.String("My Custom Role"),
-//				Enabled:     pulumi.Bool(true),
-//				Permissions: CustomDirectoryRolePermissionArray{
-//					&CustomDirectoryRolePermissionArgs{
-//						AllowedResourceActions: pulumi.StringArray{
-//							pulumi.String("microsoft.directory/applications/basic/update"),
-//							pulumi.String("microsoft.directory/applications/create"),
-//							pulumi.String("microsoft.directory/applications/standard/read"),
-//						},
-//					},
-//					&CustomDirectoryRolePermissionArgs{
-//						AllowedResourceActions: pulumi.StringArray{
-//							pulumi.String("microsoft.directory/groups/allProperties/read"),
-//							pulumi.String("microsoft.directory/groups/allProperties/read"),
-//							pulumi.String("microsoft.directory/groups/basic/update"),
-//							pulumi.String("microsoft.directory/groups/create"),
-//							pulumi.String("microsoft.directory/groups/delete"),
-//						},
-//					},
-//				},
-//				Version: pulumi.String("1.0"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
+// 			Description: pulumi.String("Allows reading applications and updating groups"),
+// 			DisplayName: pulumi.String("My Custom Role"),
+// 			Enabled:     pulumi.Bool(true),
+// 			Permissions: CustomDirectoryRolePermissionArray{
+// 				&CustomDirectoryRolePermissionArgs{
+// 					AllowedResourceActions: pulumi.StringArray{
+// 						pulumi.String("microsoft.directory/applications/basic/update"),
+// 						pulumi.String("microsoft.directory/applications/create"),
+// 						pulumi.String("microsoft.directory/applications/standard/read"),
+// 					},
+// 				},
+// 				&CustomDirectoryRolePermissionArgs{
+// 					AllowedResourceActions: pulumi.StringArray{
+// 						pulumi.String("microsoft.directory/groups/allProperties/read"),
+// 						pulumi.String("microsoft.directory/groups/allProperties/read"),
+// 						pulumi.String("microsoft.directory/groups/basic/update"),
+// 						pulumi.String("microsoft.directory/groups/create"),
+// 						pulumi.String("microsoft.directory/groups/delete"),
+// 					},
+// 				},
+// 			},
+// 			Version: pulumi.String("1.0"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -215,7 +212,7 @@ func (i *CustomDirectoryRole) ToCustomDirectoryRoleOutputWithContext(ctx context
 // CustomDirectoryRoleArrayInput is an input type that accepts CustomDirectoryRoleArray and CustomDirectoryRoleArrayOutput values.
 // You can construct a concrete instance of `CustomDirectoryRoleArrayInput` via:
 //
-//	CustomDirectoryRoleArray{ CustomDirectoryRoleArgs{...} }
+//          CustomDirectoryRoleArray{ CustomDirectoryRoleArgs{...} }
 type CustomDirectoryRoleArrayInput interface {
 	pulumi.Input
 
@@ -240,7 +237,7 @@ func (i CustomDirectoryRoleArray) ToCustomDirectoryRoleArrayOutputWithContext(ct
 // CustomDirectoryRoleMapInput is an input type that accepts CustomDirectoryRoleMap and CustomDirectoryRoleMapOutput values.
 // You can construct a concrete instance of `CustomDirectoryRoleMapInput` via:
 //
-//	CustomDirectoryRoleMap{ "key": CustomDirectoryRoleArgs{...} }
+//          CustomDirectoryRoleMap{ "key": CustomDirectoryRoleArgs{...} }
 type CustomDirectoryRoleMapInput interface {
 	pulumi.Input
 

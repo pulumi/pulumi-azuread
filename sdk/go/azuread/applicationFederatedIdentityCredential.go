@@ -17,37 +17,34 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "exampleApplicationFederatedIdentityCredential", &azuread.ApplicationFederatedIdentityCredentialArgs{
-//				ApplicationObjectId: exampleApplication.ObjectId,
-//				DisplayName:         pulumi.String("my-repo-deploy"),
-//				Description:         pulumi.String("Deployments for my-repo"),
-//				Audiences: pulumi.StringArray{
-//					pulumi.String("api://AzureADTokenExchange"),
-//				},
-//				Issuer:  pulumi.String("https://token.actions.githubusercontent.com"),
-//				Subject: pulumi.String("repo:my-organization/my-repo:environment:prod"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+// 			DisplayName: pulumi.String("example"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "exampleApplicationFederatedIdentityCredential", &azuread.ApplicationFederatedIdentityCredentialArgs{
+// 			ApplicationObjectId: exampleApplication.ObjectId,
+// 			DisplayName:         pulumi.String("my-repo-deploy"),
+// 			Description:         pulumi.String("Deployments for my-repo"),
+// 			Audiences: pulumi.StringArray{
+// 				pulumi.String("api://AzureADTokenExchange"),
+// 			},
+// 			Issuer:  pulumi.String("https://token.actions.githubusercontent.com"),
+// 			Subject: pulumi.String("repo:my-organization/my-repo:environment:prod"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
 // ```
 //
 // ## Import
@@ -55,12 +52,10 @@ import (
 // Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
 //
 // ```sh
-//
-//	$ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
-//
+//  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
 // ```
 //
-//	-> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+//  -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
 type ApplicationFederatedIdentityCredential struct {
 	pulumi.CustomResourceState
 
@@ -218,7 +213,7 @@ func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityC
 // ApplicationFederatedIdentityCredentialArrayInput is an input type that accepts ApplicationFederatedIdentityCredentialArray and ApplicationFederatedIdentityCredentialArrayOutput values.
 // You can construct a concrete instance of `ApplicationFederatedIdentityCredentialArrayInput` via:
 //
-//	ApplicationFederatedIdentityCredentialArray{ ApplicationFederatedIdentityCredentialArgs{...} }
+//          ApplicationFederatedIdentityCredentialArray{ ApplicationFederatedIdentityCredentialArgs{...} }
 type ApplicationFederatedIdentityCredentialArrayInput interface {
 	pulumi.Input
 
@@ -243,7 +238,7 @@ func (i ApplicationFederatedIdentityCredentialArray) ToApplicationFederatedIdent
 // ApplicationFederatedIdentityCredentialMapInput is an input type that accepts ApplicationFederatedIdentityCredentialMap and ApplicationFederatedIdentityCredentialMapOutput values.
 // You can construct a concrete instance of `ApplicationFederatedIdentityCredentialMapInput` via:
 //
-//	ApplicationFederatedIdentityCredentialMap{ "key": ApplicationFederatedIdentityCredentialArgs{...} }
+//          ApplicationFederatedIdentityCredentialMap{ "key": ApplicationFederatedIdentityCredentialArgs{...} }
 type ApplicationFederatedIdentityCredentialMapInput interface {
 	pulumi.Input
 

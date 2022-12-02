@@ -27,25 +27,22 @@ import (
 // package main
 //
 // import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
+// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 // )
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.GetDirectoryObject(ctx, &GetDirectoryObjectArgs{
-//				ObjectId: "00000000-0000-0000-0000-000000000000",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("objectType", example.Type)
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		example, err := azuread.GetDirectoryObject(ctx, &GetDirectoryObjectArgs{
+// 			ObjectId: "00000000-0000-0000-0000-000000000000",
+// 		}, nil)
+// 		if err != nil {
+// 			return err
+// 		}
+// 		ctx.Export("objectType", example.Type)
+// 		return nil
+// 	})
+// }
 // ```
 // ## Attributes Reference
 //
