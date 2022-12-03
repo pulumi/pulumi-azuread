@@ -2294,7 +2294,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPol
 type ConditionalAccessPolicyConditionsApplications struct {
 	// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 	ExcludedApplications []string `pulumi:"excludedApplications"`
-	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications []string `pulumi:"includedApplications"`
 	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedUserActions []string `pulumi:"includedUserActions"`
@@ -2314,7 +2314,7 @@ type ConditionalAccessPolicyConditionsApplicationsInput interface {
 type ConditionalAccessPolicyConditionsApplicationsArgs struct {
 	// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 	ExcludedApplications pulumi.StringArrayInput `pulumi:"excludedApplications"`
-	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications pulumi.StringArrayInput `pulumi:"includedApplications"`
 	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedUserActions pulumi.StringArrayInput `pulumi:"includedUserActions"`
@@ -2402,7 +2402,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) ExcludedApplication
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.ExcludedApplications }).(pulumi.StringArrayOutput)
 }
 
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedApplications }).(pulumi.StringArrayOutput)
 }
@@ -2446,7 +2446,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplicat
 	}).(pulumi.StringArrayOutput)
 }
 
-// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
