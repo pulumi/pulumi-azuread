@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
-	github.com/manicminer/hamilton v0.49.0
+	github.com/manicminer/hamilton v0.52.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.28.0
 	github.com/pulumi/pulumi/sdk/v3 v3.38.0
 )
@@ -116,7 +116,7 @@ require (
 	github.com/hashicorp/terraform-plugin-log v0.7.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.7.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.19.0 // indirect
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20221028011557-09dba057f143 // indirect
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20221201215506-34fc902533a5 // indirect
 	github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c // indirect
 	github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 // indirect
 	github.com/hashicorp/vault/api v1.1.1 // indirect
