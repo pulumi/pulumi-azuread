@@ -3,7 +3,7 @@ module github.com/hashicorp/terraform-provider-azuread/shim
 go 1.18
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.17.0
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
 	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20221201215506-34fc902533a5
 )
 
