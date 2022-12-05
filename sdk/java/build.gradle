@@ -90,7 +90,7 @@ publishing {
                 inceptionYear = "2022"
                 name = "pulumi-azuread"
                 packaging = "jar"
-                description = "A Pulumi package for creating and managing azuread cloud resources."
+                description = "A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources."
 
                 url = "https://github.com/pulumi/pulumi-azuread"
 

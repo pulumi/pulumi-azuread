@@ -160,7 +160,8 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:           p,
 		Name:        "azuread",
-		Description: "A Pulumi package for creating and managing azuread cloud resources.",
+		DisplayName: "Azure Active Directory (Azure AD)",
+		Description: "A Pulumi package for creating and managing Azure Active Directory (Azure AD) cloud resources.",
 		Keywords:    []string{"pulumi", "azuread"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
