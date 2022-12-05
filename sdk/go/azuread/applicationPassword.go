@@ -165,7 +165,7 @@ func (i *ApplicationPassword) ToApplicationPasswordOutputWithContext(ctx context
 // ApplicationPasswordArrayInput is an input type that accepts ApplicationPasswordArray and ApplicationPasswordArrayOutput values.
 // You can construct a concrete instance of `ApplicationPasswordArrayInput` via:
 //
-//          ApplicationPasswordArray{ ApplicationPasswordArgs{...} }
+//	ApplicationPasswordArray{ ApplicationPasswordArgs{...} }
 type ApplicationPasswordArrayInput interface {
 	pulumi.Input
 
@@ -190,7 +190,7 @@ func (i ApplicationPasswordArray) ToApplicationPasswordArrayOutputWithContext(ct
 // ApplicationPasswordMapInput is an input type that accepts ApplicationPasswordMap and ApplicationPasswordMapOutput values.
 // You can construct a concrete instance of `ApplicationPasswordMapInput` via:
 //
-//          ApplicationPasswordMap{ "key": ApplicationPasswordArgs{...} }
+//	ApplicationPasswordMap{ "key": ApplicationPasswordArgs{...} }
 type ApplicationPasswordMapInput interface {
 	pulumi.Input
 

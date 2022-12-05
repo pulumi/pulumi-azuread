@@ -27,57 +27,60 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
-// 			DisplayName: pulumi.StringRef("Azure Databricks SCIM Provisioning Connector"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			DisplayName: pulumi.String("example"),
-// 			TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
-// 			FeatureTags: ApplicationFeatureTagArray{
-// 				&ApplicationFeatureTagArgs{
-// 					Enterprise: pulumi.Bool(true),
-// 					Gallery:    pulumi.Bool(true),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-// 			ApplicationId: exampleApplication.ApplicationId,
-// 			UseExisting:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewSynchronizationSecret(ctx, "exampleSynchronizationSecret", &azuread.SynchronizationSecretArgs{
-// 			ServicePrincipalId: exampleServicePrincipal.ID(),
-// 			Credentials: SynchronizationSecretCredentialArray{
-// 				&SynchronizationSecretCredentialArgs{
-// 					Key:   pulumi.String("BaseAddress"),
-// 					Value: pulumi.String("abc"),
-// 				},
-// 				&SynchronizationSecretCredentialArgs{
-// 					Key:   pulumi.String("SecretToken"),
-// 					Value: pulumi.String("some-token"),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+//				DisplayName: pulumi.StringRef("Azure Databricks SCIM Provisioning Connector"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
+//				FeatureTags: ApplicationFeatureTagArray{
+//					&ApplicationFeatureTagArgs{
+//						Enterprise: pulumi.Bool(true),
+//						Gallery:    pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewSynchronizationSecret(ctx, "exampleSynchronizationSecret", &azuread.SynchronizationSecretArgs{
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				Credentials: SynchronizationSecretCredentialArray{
+//					&SynchronizationSecretCredentialArgs{
+//						Key:   pulumi.String("BaseAddress"),
+//						Value: pulumi.String("abc"),
+//					},
+//					&SynchronizationSecretCredentialArgs{
+//						Key:   pulumi.String("SecretToken"),
+//						Value: pulumi.String("some-token"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -182,7 +185,7 @@ func (i *SynchronizationSecret) ToSynchronizationSecretOutputWithContext(ctx con
 // SynchronizationSecretArrayInput is an input type that accepts SynchronizationSecretArray and SynchronizationSecretArrayOutput values.
 // You can construct a concrete instance of `SynchronizationSecretArrayInput` via:
 //
-//          SynchronizationSecretArray{ SynchronizationSecretArgs{...} }
+//	SynchronizationSecretArray{ SynchronizationSecretArgs{...} }
 type SynchronizationSecretArrayInput interface {
 	pulumi.Input
 
@@ -207,7 +210,7 @@ func (i SynchronizationSecretArray) ToSynchronizationSecretArrayOutputWithContex
 // SynchronizationSecretMapInput is an input type that accepts SynchronizationSecretMap and SynchronizationSecretMapOutput values.
 // You can construct a concrete instance of `SynchronizationSecretMapInput` via:
 //
-//          SynchronizationSecretMap{ "key": SynchronizationSecretArgs{...} }
+//	SynchronizationSecretMap{ "key": SynchronizationSecretArgs{...} }
 type SynchronizationSecretMapInput interface {
 	pulumi.Input
 

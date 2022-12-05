@@ -26,10 +26,12 @@ import (
 // Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.
 //
 // ```sh
-//  $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+//
+//	$ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+//
 // ```
 //
-//  -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
+//	-> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
 type ServicePrincipalCertificate struct {
 	pulumi.CustomResourceState
 
@@ -192,7 +194,7 @@ func (i *ServicePrincipalCertificate) ToServicePrincipalCertificateOutputWithCon
 // ServicePrincipalCertificateArrayInput is an input type that accepts ServicePrincipalCertificateArray and ServicePrincipalCertificateArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalCertificateArrayInput` via:
 //
-//          ServicePrincipalCertificateArray{ ServicePrincipalCertificateArgs{...} }
+//	ServicePrincipalCertificateArray{ ServicePrincipalCertificateArgs{...} }
 type ServicePrincipalCertificateArrayInput interface {
 	pulumi.Input
 
@@ -217,7 +219,7 @@ func (i ServicePrincipalCertificateArray) ToServicePrincipalCertificateArrayOutp
 // ServicePrincipalCertificateMapInput is an input type that accepts ServicePrincipalCertificateMap and ServicePrincipalCertificateMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalCertificateMapInput` via:
 //
-//          ServicePrincipalCertificateMap{ "key": ServicePrincipalCertificateArgs{...} }
+//	ServicePrincipalCertificateMap{ "key": ServicePrincipalCertificateArgs{...} }
 type ServicePrincipalCertificateMapInput interface {
 	pulumi.Input
 

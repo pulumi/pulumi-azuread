@@ -22,22 +22,25 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		example, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
-// 			DisplayName: pulumi.StringRef("Marketo"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		ctx.Export("applicationTemplateId", example.TemplateId)
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+//				DisplayName: pulumi.StringRef("Marketo"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("applicationTemplateId", example.TemplateId)
+//			return nil
+//		})
+//	}
+//
 // ```
 func GetApplicationTemplate(ctx *pulumi.Context, args *GetApplicationTemplateArgs, opts ...pulumi.InvokeOption) (*GetApplicationTemplateResult, error) {
 	var rv GetApplicationTemplateResult

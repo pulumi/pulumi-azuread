@@ -31,38 +31,41 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := azuread.GetClientConfig(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			DisplayName: pulumi.String("example"),
-// 			Owners: pulumi.StringArray{
-// 				pulumi.String(current.ObjectId),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-// 			ApplicationId:             exampleApplication.ApplicationId,
-// 			AppRoleAssignmentRequired: pulumi.Bool(false),
-// 			Owners: pulumi.StringArray{
-// 				pulumi.String(current.ObjectId),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				Owners: pulumi.StringArray{
+//					pulumi.String(current.ObjectId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId:             exampleApplication.ApplicationId,
+//				AppRoleAssignmentRequired: pulumi.Bool(false),
+//				Owners: pulumi.StringArray{
+//					pulumi.String(current.ObjectId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // *Create a service principal for an enterprise application*
@@ -71,44 +74,47 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		current, err := azuread.GetClientConfig(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			DisplayName: pulumi.String("example"),
-// 			Owners: pulumi.StringArray{
-// 				pulumi.String(current.ObjectId),
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-// 			ApplicationId:             exampleApplication.ApplicationId,
-// 			AppRoleAssignmentRequired: pulumi.Bool(false),
-// 			Owners: pulumi.StringArray{
-// 				pulumi.String(current.ObjectId),
-// 			},
-// 			FeatureTags: ServicePrincipalFeatureTagArray{
-// 				&ServicePrincipalFeatureTagArgs{
-// 					Enterprise: pulumi.Bool(true),
-// 					Gallery:    pulumi.Bool(true),
-// 				},
-// 			},
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				Owners: pulumi.StringArray{
+//					pulumi.String(current.ObjectId),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId:             exampleApplication.ApplicationId,
+//				AppRoleAssignmentRequired: pulumi.Bool(false),
+//				Owners: pulumi.StringArray{
+//					pulumi.String(current.ObjectId),
+//				},
+//				FeatureTags: ServicePrincipalFeatureTagArray{
+//					&ServicePrincipalFeatureTagArgs{
+//						Enterprise: pulumi.Bool(true),
+//						Gallery:    pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // *Manage a service principal for a first-party Microsoft application*
@@ -117,26 +123,29 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-// 			ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-// 			UseExisting:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // *Create a service principal for an application created from a gallery template*
@@ -145,35 +154,38 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
-// 			DisplayName: pulumi.StringRef("Marketo"),
-// 		}, nil)
-// 		if err != nil {
-// 			return err
-// 		}
-// 		exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-// 			DisplayName: pulumi.String("example"),
-// 			TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-// 			ApplicationId: exampleApplication.ApplicationId,
-// 			UseExisting:   pulumi.Bool(true),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+//				DisplayName: pulumi.StringRef("Marketo"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -181,7 +193,9 @@ import (
 // Service principals can be imported using their object ID, e.g.
 //
 // ```sh
-//  $ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
+//
+//	$ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
+//
 // ```
 type ServicePrincipal struct {
 	pulumi.CustomResourceState
@@ -506,7 +520,7 @@ func (i *ServicePrincipal) ToServicePrincipalOutputWithContext(ctx context.Conte
 // ServicePrincipalArrayInput is an input type that accepts ServicePrincipalArray and ServicePrincipalArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalArrayInput` via:
 //
-//          ServicePrincipalArray{ ServicePrincipalArgs{...} }
+//	ServicePrincipalArray{ ServicePrincipalArgs{...} }
 type ServicePrincipalArrayInput interface {
 	pulumi.Input
 
@@ -531,7 +545,7 @@ func (i ServicePrincipalArray) ToServicePrincipalArrayOutputWithContext(ctx cont
 // ServicePrincipalMapInput is an input type that accepts ServicePrincipalMap and ServicePrincipalMapOutput values.
 // You can construct a concrete instance of `ServicePrincipalMapInput` via:
 //
-//          ServicePrincipalMap{ "key": ServicePrincipalArgs{...} }
+//	ServicePrincipalMap{ "key": ServicePrincipalArgs{...} }
 type ServicePrincipalMapInput interface {
 	pulumi.Input
 

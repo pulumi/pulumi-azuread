@@ -32,21 +32,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
-// 			TemplateId: pulumi.String("00000000-0000-0000-0000-000000000000"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+//				TemplateId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // *Activate a directory role by display name*
@@ -55,21 +58,24 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
-// 			DisplayName: pulumi.String("Printer administrator"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+//				DisplayName: pulumi.String("Printer administrator"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -183,7 +189,7 @@ func (i *DirectoryRole) ToDirectoryRoleOutputWithContext(ctx context.Context) Di
 // DirectoryRoleArrayInput is an input type that accepts DirectoryRoleArray and DirectoryRoleArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleArrayInput` via:
 //
-//          DirectoryRoleArray{ DirectoryRoleArgs{...} }
+//	DirectoryRoleArray{ DirectoryRoleArgs{...} }
 type DirectoryRoleArrayInput interface {
 	pulumi.Input
 
@@ -208,7 +214,7 @@ func (i DirectoryRoleArray) ToDirectoryRoleArrayOutputWithContext(ctx context.Co
 // DirectoryRoleMapInput is an input type that accepts DirectoryRoleMap and DirectoryRoleMapOutput values.
 // You can construct a concrete instance of `DirectoryRoleMapInput` via:
 //
-//          DirectoryRoleMap{ "key": DirectoryRoleArgs{...} }
+//	DirectoryRoleMap{ "key": DirectoryRoleArgs{...} }
 type DirectoryRoleMapInput interface {
 	pulumi.Input
 
