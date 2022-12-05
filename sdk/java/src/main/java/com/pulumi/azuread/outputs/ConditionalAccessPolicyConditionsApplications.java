@@ -17,7 +17,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
      */
     private @Nullable List<String> excludedApplications;
     /**
-     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
      * 
      */
     private @Nullable List<String> includedApplications;
@@ -36,7 +36,7 @@ public final class ConditionalAccessPolicyConditionsApplications {
         return this.excludedApplications == null ? List.of() : this.excludedApplications;
     }
     /**
-     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+     * @return A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
      * 
      */
     public List<String> includedApplications() {

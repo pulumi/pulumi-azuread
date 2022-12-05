@@ -283,7 +283,7 @@ export interface ConditionalAccessPolicyConditionsApplications {
      */
     excludedApplications?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
+     * A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
      */
     includedApplications?: pulumi.Input<pulumi.Input<string>[]>;
     /**

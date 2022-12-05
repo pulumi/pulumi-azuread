@@ -18,7 +18,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ExcludedApplications;
         /// <summary>
-        /// A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
+        /// A list of application IDs the policy applies to, unless explicitly excluded (in `excluded_applications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `included_user_actions`. One of `included_applications` or `included_user_actions` must be specified.
         /// </summary>
         public readonly ImmutableArray<string> IncludedApplications;
         /// <summary>
