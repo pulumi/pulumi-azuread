@@ -33,9 +33,9 @@ import (
 //			}
 //			authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example-authorizing-app"),
-//				Api: &ApplicationApiArgs{
-//					Oauth2PermissionScopes: ApplicationApiOauth2PermissionScopeArray{
-//						&ApplicationApiOauth2PermissionScopeArgs{
+//				Api: &azuread.ApplicationApiArgs{
+//					Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
+//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
 //							AdminConsentDescription: pulumi.String("Administer the application"),
 //							AdminConsentDisplayName: pulumi.String("Administer"),
 //							Enabled:                 pulumi.Bool(true),
@@ -43,7 +43,7 @@ import (
 //							Type:                    pulumi.String("Admin"),
 //							Value:                   pulumi.String("administer"),
 //						},
-//						&ApplicationApiOauth2PermissionScopeArgs{
+//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
 //							AdminConsentDescription: pulumi.String("Access the application"),
 //							AdminConsentDisplayName: pulumi.String("Access"),
 //							Enabled:                 pulumi.Bool(true),

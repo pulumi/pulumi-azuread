@@ -159,14 +159,14 @@ public class CustomDirectoryRole extends com.pulumi.resources.CustomResource {
         return this.templateId;
     }
     /**
-     * - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      * 
      */
     @Export(name="version", type=String.class, parameters={})
     private Output<String> version;
 
     /**
-     * @return - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * @return The version of the role definition. This can be any arbitrary string between 1-128 characters.
      * 
      */
     public Output<String> version() {

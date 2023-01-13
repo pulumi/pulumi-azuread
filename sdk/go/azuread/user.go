@@ -173,6 +173,13 @@ func NewUser(ctx *pulumi.Context,
 	if args.UserPrincipalName == nil {
 		return nil, errors.New("invalid value for required argument 'UserPrincipalName'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("azuread:index/user:User", name, args, &resource, opts...)
 	if err != nil {

@@ -55,6 +55,10 @@ func NewServicePrincipalPassword(ctx *pulumi.Context,
 	if args.ServicePrincipalId == nil {
 		return nil, errors.New("invalid value for required argument 'ServicePrincipalId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource ServicePrincipalPassword
 	err := ctx.RegisterResource("azuread:index/servicePrincipalPassword:ServicePrincipalPassword", name, args, &resource, opts...)
 	if err != nil {

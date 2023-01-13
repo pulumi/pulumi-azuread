@@ -20,10 +20,10 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
                  user_object_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalDelegatedPermissionGrant resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] user_object_id: - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "claim_values", claim_values)
         pulumi.set(__self__, "resource_service_principal_object_id", resource_service_principal_object_id)
@@ -35,7 +35,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
@@ -71,7 +71,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @pulumi.getter(name="userObjectId")
     def user_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_object_id")
 
@@ -89,10 +89,10 @@ class _ServicePrincipalDelegatedPermissionGrantState:
                  user_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalDelegatedPermissionGrant resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] user_object_id: - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         if claim_values is not None:
             pulumi.set(__self__, "claim_values", claim_values)
@@ -107,7 +107,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
@@ -143,7 +143,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     @pulumi.getter(name="userObjectId")
     def user_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_object_id")
 
@@ -183,10 +183,10 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] user_object_id: - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -272,10 +272,10 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] user_object_id: - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,7 +291,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> pulumi.Output[Sequence[str]]:
         """
-        - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
@@ -315,7 +315,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     @pulumi.getter(name="userObjectId")
     def user_object_id(self) -> pulumi.Output[Optional[str]]:
         """
-        - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_object_id")
 

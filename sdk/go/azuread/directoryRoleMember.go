@@ -24,7 +24,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &GetUserArgs{
+//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
 //				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
 //			}, nil)
 //			if err != nil {
@@ -38,7 +38,7 @@ import (
 //			}
 //			_, err = azuread.NewDirectoryRoleMember(ctx, "exampleDirectoryRoleMember", &azuread.DirectoryRoleMemberArgs{
 //				RoleObjectId:   exampleDirectoryRole.ObjectId,
-//				MemberObjectId: pulumi.String(exampleUser.ObjectId),
+//				MemberObjectId: *pulumi.String(exampleUser.ObjectId),
 //			})
 //			if err != nil {
 //				return err

@@ -29,15 +29,15 @@ import (
 //				Description: pulumi.String("Allows reading applications and updating groups"),
 //				DisplayName: pulumi.String("My Custom Role"),
 //				Enabled:     pulumi.Bool(true),
-//				Permissions: CustomDirectoryRolePermissionArray{
-//					&CustomDirectoryRolePermissionArgs{
+//				Permissions: azuread.CustomDirectoryRolePermissionArray{
+//					&azuread.CustomDirectoryRolePermissionArgs{
 //						AllowedResourceActions: pulumi.StringArray{
 //							pulumi.String("microsoft.directory/applications/basic/update"),
 //							pulumi.String("microsoft.directory/applications/create"),
 //							pulumi.String("microsoft.directory/applications/standard/read"),
 //						},
 //					},
-//					&CustomDirectoryRolePermissionArgs{
+//					&azuread.CustomDirectoryRolePermissionArgs{
 //						AllowedResourceActions: pulumi.StringArray{
 //							pulumi.String("microsoft.directory/groups/allProperties/read"),
 //							pulumi.String("microsoft.directory/groups/allProperties/read"),
@@ -76,7 +76,7 @@ type CustomDirectoryRole struct {
 	Permissions CustomDirectoryRolePermissionArrayOutput `pulumi:"permissions"`
 	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
-	// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -133,7 +133,7 @@ type customDirectoryRoleState struct {
 	Permissions []CustomDirectoryRolePermission `pulumi:"permissions"`
 	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
-	// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version *string `pulumi:"version"`
 }
 
@@ -150,7 +150,7 @@ type CustomDirectoryRoleState struct {
 	Permissions CustomDirectoryRolePermissionArrayInput
 	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
-	// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version pulumi.StringPtrInput
 }
 
@@ -169,7 +169,7 @@ type customDirectoryRoleArgs struct {
 	Permissions []CustomDirectoryRolePermission `pulumi:"permissions"`
 	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
-	// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version string `pulumi:"version"`
 }
 
@@ -185,7 +185,7 @@ type CustomDirectoryRoleArgs struct {
 	Permissions CustomDirectoryRolePermissionArrayInput
 	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
-	// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version pulumi.StringInput
 }
 
@@ -306,7 +306,7 @@ func (o CustomDirectoryRoleOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 func (o CustomDirectoryRoleOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

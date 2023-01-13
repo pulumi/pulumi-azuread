@@ -94,14 +94,14 @@ public final class CustomDirectoryRoleArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      * 
      */
     @Import(name="version", required=true)
     private Output<String> version;
 
     /**
-     * @return - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * @return The version of the role definition. This can be any arbitrary string between 1-128 characters.
      * 
      */
     public Output<String> version() {
@@ -253,7 +253,7 @@ public final class CustomDirectoryRoleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param version - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+         * @param version The version of the role definition. This can be any arbitrary string between 1-128 characters.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class CustomDirectoryRoleArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param version - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+         * @param version The version of the role definition. This can be any arbitrary string between 1-128 characters.
          * 
          * @return builder
          * 

@@ -165,7 +165,7 @@ namespace Pulumi.AzureAD
     public partial class ServicePrincipalDelegatedPermissionGrant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         /// </summary>
         [Output("claimValues")]
         public Output<ImmutableArray<string>> ClaimValues { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.AzureAD
         public Output<string> ServicePrincipalObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         /// </summary>
         [Output("userObjectId")]
         public Output<string?> UserObjectId { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _claimValues;
 
         /// <summary>
-        /// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         /// </summary>
         public InputList<string> ClaimValues
         {
@@ -259,7 +259,7 @@ namespace Pulumi.AzureAD
         public Input<string> ServicePrincipalObjectId { get; set; } = null!;
 
         /// <summary>
-        /// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         /// </summary>
         [Input("userObjectId")]
         public Input<string>? UserObjectId { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _claimValues;
 
         /// <summary>
-        /// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         /// </summary>
         public InputList<string> ClaimValues
         {
@@ -297,7 +297,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ServicePrincipalObjectId { get; set; }
 
         /// <summary>
-        /// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
         /// </summary>
         [Input("userObjectId")]
         public Input<string>? UserObjectId { get; set; }

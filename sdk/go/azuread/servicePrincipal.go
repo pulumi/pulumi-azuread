@@ -11,18 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a service principal associated with an application within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// It is not currently possible to manage service principals whilst having only the `Application.ReadWrite.OwnedBy` role granted.
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-//
 // ## Example Usage
 //
 // *Create a service principal for an application*
@@ -46,7 +34,7 @@ import (
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					*pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -56,7 +44,7 @@ import (
 //				ApplicationId:             exampleApplication.ApplicationId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					*pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -89,7 +77,7 @@ import (
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					*pulumi.String(current.ObjectId),
 //				},
 //			})
 //			if err != nil {
@@ -99,10 +87,10 @@ import (
 //				ApplicationId:             exampleApplication.ApplicationId,
 //				AppRoleAssignmentRequired: pulumi.Bool(false),
 //				Owners: pulumi.StringArray{
-//					pulumi.String(current.ObjectId),
+//					*pulumi.String(current.ObjectId),
 //				},
-//				FeatureTags: ServicePrincipalFeatureTagArray{
-//					&ServicePrincipalFeatureTagArgs{
+//				FeatureTags: azuread.ServicePrincipalFeatureTagArray{
+//					&azuread.ServicePrincipalFeatureTagArgs{
 //						Enterprise: pulumi.Bool(true),
 //						Gallery:    pulumi.Bool(true),
 //					},
@@ -136,7 +124,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -162,7 +150,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
 //				DisplayName: pulumi.StringRef("Marketo"),
 //			}, nil)
 //			if err != nil {
@@ -170,7 +158,7 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
+//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
 //			})
 //			if err != nil {
 //				return err

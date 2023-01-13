@@ -25,11 +25,8 @@ import * as utilities from "./utilities";
  */
 export function getApplicationTemplate(args?: GetApplicationTemplateArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationTemplateResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplicationTemplate:getApplicationTemplate", {
         "displayName": args.displayName,
         "templateId": args.templateId,
@@ -91,9 +88,27 @@ export interface GetApplicationTemplateResult {
      */
     readonly templateId: string;
 }
-
+/**
+ * Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
+ *
+ * ## API Permissions
+ *
+ * This data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getApplicationTemplate({
+ *     displayName: "Marketo",
+ * });
+ * export const applicationTemplateId = example.then(example => example.templateId);
+ * ```
+ */
 export function getApplicationTemplateOutput(args?: GetApplicationTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationTemplateResult> {
-    return pulumi.output(args).apply(a => getApplicationTemplate(a, opts))
+    return pulumi.output(args).apply((a: any) => getApplicationTemplate(a, opts))
 }
 
 /**

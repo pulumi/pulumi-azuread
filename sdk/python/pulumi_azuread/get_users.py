@@ -124,7 +124,7 @@ def get_users(ignore_missing: Optional[bool] = None,
 
     The following API permissions are required in order to use this data source.
 
-    When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+    When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
 
@@ -180,7 +180,7 @@ def get_users_output(ignore_missing: Optional[pulumi.Input[Optional[bool]]] = No
 
     The following API permissions are required in order to use this data source.
 
-    When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+    When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
 
     When authenticated with a user principal, this data source does not require any additional roles.
 

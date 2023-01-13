@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &GetApplicationTemplateArgs{
+//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
 //				DisplayName: pulumi.StringRef("Azure Databricks SCIM Provisioning Connector"),
 //			}, nil)
 //			if err != nil {
@@ -43,9 +43,9 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				TemplateId:  pulumi.String(exampleApplicationTemplate.TemplateId),
-//				FeatureTags: ApplicationFeatureTagArray{
-//					&ApplicationFeatureTagArgs{
+//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//				FeatureTags: azuread.ApplicationFeatureTagArray{
+//					&azuread.ApplicationFeatureTagArgs{
 //						Enterprise: pulumi.Bool(true),
 //						Gallery:    pulumi.Bool(true),
 //					},
@@ -63,12 +63,12 @@ import (
 //			}
 //			_, err = azuread.NewSynchronizationSecret(ctx, "exampleSynchronizationSecret", &azuread.SynchronizationSecretArgs{
 //				ServicePrincipalId: exampleServicePrincipal.ID(),
-//				Credentials: SynchronizationSecretCredentialArray{
-//					&SynchronizationSecretCredentialArgs{
+//				Credentials: azuread.SynchronizationSecretCredentialArray{
+//					&azuread.SynchronizationSecretCredentialArgs{
 //						Key:   pulumi.String("BaseAddress"),
 //						Value: pulumi.String("abc"),
 //					},
-//					&SynchronizationSecretCredentialArgs{
+//					&azuread.SynchronizationSecretCredentialArgs{
 //						Key:   pulumi.String("SecretToken"),
 //						Value: pulumi.String("some-token"),
 //					},

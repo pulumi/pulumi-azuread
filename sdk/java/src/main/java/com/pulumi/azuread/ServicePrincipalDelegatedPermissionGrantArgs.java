@@ -17,14 +17,14 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
     public static final ServicePrincipalDelegatedPermissionGrantArgs Empty = new ServicePrincipalDelegatedPermissionGrantArgs();
 
     /**
-     * - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      * 
      */
     @Import(name="claimValues", required=true)
     private Output<List<String>> claimValues;
 
     /**
-     * @return - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * @return A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      * 
      */
     public Output<List<String>> claimValues() {
@@ -62,14 +62,14 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
     }
 
     /**
-     * - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
      */
     @Import(name="userObjectId")
     private @Nullable Output<String> userObjectId;
 
     /**
-     * @return - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * @return The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
      */
     public Optional<Output<String>> userObjectId() {
@@ -104,7 +104,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         }
 
         /**
-         * @param claimValues - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+         * @param claimValues A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         }
 
         /**
-         * @param claimValues - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+         * @param claimValues A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
          * 
          * @return builder
          * 
@@ -125,7 +125,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         }
 
         /**
-         * @param claimValues - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+         * @param claimValues A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         }
 
         /**
-         * @param userObjectId - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+         * @param userObjectId The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ServicePrincipalDelegatedPermissionGrantArgs extends com.pulu
         }
 
         /**
-         * @param userObjectId - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+         * @param userObjectId The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
          * 
          * @return builder
          * 

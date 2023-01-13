@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.GetDirectoryObject(ctx, &GetDirectoryObjectArgs{
+//			example, err := azuread.GetDirectoryObject(ctx, &azuread.GetDirectoryObjectArgs{
 //				ObjectId: "00000000-0000-0000-0000-000000000000",
 //			}, nil)
 //			if err != nil {

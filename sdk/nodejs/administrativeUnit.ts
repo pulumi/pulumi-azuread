@@ -15,19 +15,6 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.AdministrativeUnit("example", {
- *     description: "Just an example",
- *     displayName: "Example-AU",
- *     visibility: "Public",
- * });
- * ```
- *
  * ## Import
  *
  * Administrative units can be imported using their object ID, e.g.

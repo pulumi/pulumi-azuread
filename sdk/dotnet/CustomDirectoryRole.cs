@@ -97,7 +97,7 @@ namespace Pulumi.AzureAD
         public Output<string> TemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -185,7 +185,7 @@ namespace Pulumi.AzureAD
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -241,7 +241,7 @@ namespace Pulumi.AzureAD
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

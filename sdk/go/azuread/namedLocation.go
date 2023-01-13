@@ -37,7 +37,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
 //				DisplayName: pulumi.String("IP Named Location"),
-//				Ip: &NamedLocationIpArgs{
+//				Ip: &azuread.NamedLocationIpArgs{
 //					IpRanges: pulumi.StringArray{
 //						pulumi.String("1.1.1.1/32"),
 //						pulumi.String("2.2.2.2/32"),
@@ -49,7 +49,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
-//				Country: &NamedLocationCountryArgs{
+//				Country: &azuread.NamedLocationCountryArgs{
 //					CountriesAndRegions: pulumi.StringArray{
 //						pulumi.String("GB"),
 //						pulumi.String("US"),

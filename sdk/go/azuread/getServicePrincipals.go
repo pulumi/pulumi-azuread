@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
+//			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
 //				DisplayNames: []string{
 //					"example-app",
 //					"another-app",
@@ -65,7 +65,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
+//			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
 //				ApplicationIds: []string{
 //					"11111111-0000-0000-0000-000000000000",
 //					"22222222-0000-0000-0000-000000000000",
@@ -95,7 +95,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &GetServicePrincipalsArgs{
+//			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
 //				ObjectIds: []string{
 //					"00000000-0000-0000-0000-000000000000",
 //					"00000000-0000-0000-0000-111111111111",

@@ -353,7 +353,7 @@ export class User extends pulumi.CustomResource {
             resourceInputs["officeLocation"] = args ? args.officeLocation : undefined;
             resourceInputs["onpremisesImmutableId"] = args ? args.onpremisesImmutableId : undefined;
             resourceInputs["otherMails"] = args ? args.otherMails : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["postalCode"] = args ? args.postalCode : undefined;
             resourceInputs["preferredLanguage"] = args ? args.preferredLanguage : undefined;
             resourceInputs["showInAddressList"] = args ? args.showInAddressList : undefined;
@@ -377,6 +377,8 @@ export class User extends pulumi.CustomResource {
             resourceInputs["userType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -45,6 +45,10 @@ func NewApplicationPassword(ctx *pulumi.Context,
 	if args.ApplicationObjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ApplicationObjectId'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"value",
+	})
+	opts = append(opts, secrets)
 	var resource ApplicationPassword
 	err := ctx.RegisterResource("azuread:index/applicationPassword:ApplicationPassword", name, args, &resource, opts...)
 	if err != nil {

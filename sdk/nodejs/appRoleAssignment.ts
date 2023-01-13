@@ -124,7 +124,7 @@ import * as utilities from "./utilities";
  * const exampleUser = new azuread.User("exampleUser", {
  *     displayName: "D. Duck",
  *     password: "SecretP@sswd99!",
- *     userPrincipalName: exampleDomains.then(exampleDomains => `d.duck@${exampleDomains.domains?[0]?.domainName}`),
+ *     userPrincipalName: exampleDomains.then(exampleDomains => `d.duck@${exampleDomains.domains?.[0]?.domainName}`),
  * });
  * const exampleIndex_appRoleAssignmentAppRoleAssignment = new azuread.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment", {
  *     appRoleId: internalServicePrincipal.appRoleIds["Admin.All"],

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -24,9 +25,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getServicePrincipal({
+ * const example = azuread.getServicePrincipal({
  *     displayName: "my-awesome-application",
- * }));
+ * });
  * ```
  *
  * *Look up by application ID (client ID)*
@@ -35,9 +36,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getServicePrincipal({
+ * const example = azuread.getServicePrincipal({
  *     applicationId: "00000000-0000-0000-0000-000000000000",
- * }));
+ * });
  * ```
  *
  * *Look up by service principal object ID*
@@ -46,18 +47,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getServicePrincipal({
+ * const example = azuread.getServicePrincipal({
  *     objectId: "00000000-0000-0000-0000-000000000000",
- * }));
+ * });
  * ```
  */
 export function getServicePrincipal(args?: GetServicePrincipalArgs, opts?: pulumi.InvokeOptions): Promise<GetServicePrincipalResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getServicePrincipal:getServicePrincipal", {
         "applicationId": args.applicationId,
         "displayName": args.displayName,
@@ -199,9 +197,54 @@ export interface GetServicePrincipalResult {
      */
     readonly type: string;
 }
-
+/**
+ * Gets information about an existing service principal associated with an application within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * *Look up by application display name*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     displayName: "my-awesome-application",
+ * });
+ * ```
+ *
+ * *Look up by application ID (client ID)*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     applicationId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ *
+ * *Look up by service principal object ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getServicePrincipal({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ */
 export function getServicePrincipalOutput(args?: GetServicePrincipalOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServicePrincipalResult> {
-    return pulumi.output(args).apply(a => getServicePrincipal(a, opts))
+    return pulumi.output(args).apply((a: any) => getServicePrincipal(a, opts))
 }
 
 /**

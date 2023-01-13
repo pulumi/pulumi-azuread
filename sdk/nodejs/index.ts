@@ -5,46 +5,208 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./administrativeUnit";
-export * from "./administrativeUnitMember";
-export * from "./appRoleAssignment";
-export * from "./application";
-export * from "./applicationCertificate";
-export * from "./applicationFederatedIdentityCredential";
-export * from "./applicationPassword";
-export * from "./applicationPreAuthorized";
-export * from "./claimsMappingPolicy";
-export * from "./conditionalAccessPolicy";
-export * from "./customDirectoryRole";
-export * from "./directoryRole";
-export * from "./directoryRoleAssignment";
-export * from "./directoryRoleMember";
-export * from "./getAdministrativeUnit";
-export * from "./getApplication";
-export * from "./getApplicationPublishedAppIds";
-export * from "./getApplicationTemplate";
-export * from "./getClientConfig";
-export * from "./getDirectoryObject";
-export * from "./getDomains";
-export * from "./getGroup";
-export * from "./getGroups";
-export * from "./getServicePrincipal";
-export * from "./getServicePrincipals";
-export * from "./getUser";
-export * from "./getUsers";
-export * from "./group";
-export * from "./groupMember";
-export * from "./invitation";
-export * from "./namedLocation";
-export * from "./provider";
-export * from "./servicePrincipal";
-export * from "./servicePrincipalCertificate";
-export * from "./servicePrincipalClaimsMappingPolicyAssignment";
-export * from "./servicePrincipalDelegatedPermissionGrant";
-export * from "./servicePrincipalPassword";
-export * from "./synchronizationJob";
-export * from "./synchronizationSecret";
-export * from "./user";
+export { AdministrativeUnitArgs, AdministrativeUnitState } from "./administrativeUnit";
+export type AdministrativeUnit = import("./administrativeUnit").AdministrativeUnit;
+export const AdministrativeUnit: typeof import("./administrativeUnit").AdministrativeUnit = null as any;
+utilities.lazyLoad(exports, ["AdministrativeUnit"], () => require("./administrativeUnit"));
+
+export { AdministrativeUnitMemberArgs, AdministrativeUnitMemberState } from "./administrativeUnitMember";
+export type AdministrativeUnitMember = import("./administrativeUnitMember").AdministrativeUnitMember;
+export const AdministrativeUnitMember: typeof import("./administrativeUnitMember").AdministrativeUnitMember = null as any;
+utilities.lazyLoad(exports, ["AdministrativeUnitMember"], () => require("./administrativeUnitMember"));
+
+export { AppRoleAssignmentArgs, AppRoleAssignmentState } from "./appRoleAssignment";
+export type AppRoleAssignment = import("./appRoleAssignment").AppRoleAssignment;
+export const AppRoleAssignment: typeof import("./appRoleAssignment").AppRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["AppRoleAssignment"], () => require("./appRoleAssignment"));
+
+export { ApplicationArgs, ApplicationState } from "./application";
+export type Application = import("./application").Application;
+export const Application: typeof import("./application").Application = null as any;
+utilities.lazyLoad(exports, ["Application"], () => require("./application"));
+
+export { ApplicationCertificateArgs, ApplicationCertificateState } from "./applicationCertificate";
+export type ApplicationCertificate = import("./applicationCertificate").ApplicationCertificate;
+export const ApplicationCertificate: typeof import("./applicationCertificate").ApplicationCertificate = null as any;
+utilities.lazyLoad(exports, ["ApplicationCertificate"], () => require("./applicationCertificate"));
+
+export { ApplicationFederatedIdentityCredentialArgs, ApplicationFederatedIdentityCredentialState } from "./applicationFederatedIdentityCredential";
+export type ApplicationFederatedIdentityCredential = import("./applicationFederatedIdentityCredential").ApplicationFederatedIdentityCredential;
+export const ApplicationFederatedIdentityCredential: typeof import("./applicationFederatedIdentityCredential").ApplicationFederatedIdentityCredential = null as any;
+utilities.lazyLoad(exports, ["ApplicationFederatedIdentityCredential"], () => require("./applicationFederatedIdentityCredential"));
+
+export { ApplicationPasswordArgs, ApplicationPasswordState } from "./applicationPassword";
+export type ApplicationPassword = import("./applicationPassword").ApplicationPassword;
+export const ApplicationPassword: typeof import("./applicationPassword").ApplicationPassword = null as any;
+utilities.lazyLoad(exports, ["ApplicationPassword"], () => require("./applicationPassword"));
+
+export { ApplicationPreAuthorizedArgs, ApplicationPreAuthorizedState } from "./applicationPreAuthorized";
+export type ApplicationPreAuthorized = import("./applicationPreAuthorized").ApplicationPreAuthorized;
+export const ApplicationPreAuthorized: typeof import("./applicationPreAuthorized").ApplicationPreAuthorized = null as any;
+utilities.lazyLoad(exports, ["ApplicationPreAuthorized"], () => require("./applicationPreAuthorized"));
+
+export { ClaimsMappingPolicyArgs, ClaimsMappingPolicyState } from "./claimsMappingPolicy";
+export type ClaimsMappingPolicy = import("./claimsMappingPolicy").ClaimsMappingPolicy;
+export const ClaimsMappingPolicy: typeof import("./claimsMappingPolicy").ClaimsMappingPolicy = null as any;
+utilities.lazyLoad(exports, ["ClaimsMappingPolicy"], () => require("./claimsMappingPolicy"));
+
+export { ConditionalAccessPolicyArgs, ConditionalAccessPolicyState } from "./conditionalAccessPolicy";
+export type ConditionalAccessPolicy = import("./conditionalAccessPolicy").ConditionalAccessPolicy;
+export const ConditionalAccessPolicy: typeof import("./conditionalAccessPolicy").ConditionalAccessPolicy = null as any;
+utilities.lazyLoad(exports, ["ConditionalAccessPolicy"], () => require("./conditionalAccessPolicy"));
+
+export { CustomDirectoryRoleArgs, CustomDirectoryRoleState } from "./customDirectoryRole";
+export type CustomDirectoryRole = import("./customDirectoryRole").CustomDirectoryRole;
+export const CustomDirectoryRole: typeof import("./customDirectoryRole").CustomDirectoryRole = null as any;
+utilities.lazyLoad(exports, ["CustomDirectoryRole"], () => require("./customDirectoryRole"));
+
+export { DirectoryRoleArgs, DirectoryRoleState } from "./directoryRole";
+export type DirectoryRole = import("./directoryRole").DirectoryRole;
+export const DirectoryRole: typeof import("./directoryRole").DirectoryRole = null as any;
+utilities.lazyLoad(exports, ["DirectoryRole"], () => require("./directoryRole"));
+
+export { DirectoryRoleAssignmentArgs, DirectoryRoleAssignmentState } from "./directoryRoleAssignment";
+export type DirectoryRoleAssignment = import("./directoryRoleAssignment").DirectoryRoleAssignment;
+export const DirectoryRoleAssignment: typeof import("./directoryRoleAssignment").DirectoryRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["DirectoryRoleAssignment"], () => require("./directoryRoleAssignment"));
+
+export { DirectoryRoleMemberArgs, DirectoryRoleMemberState } from "./directoryRoleMember";
+export type DirectoryRoleMember = import("./directoryRoleMember").DirectoryRoleMember;
+export const DirectoryRoleMember: typeof import("./directoryRoleMember").DirectoryRoleMember = null as any;
+utilities.lazyLoad(exports, ["DirectoryRoleMember"], () => require("./directoryRoleMember"));
+
+export { GetAdministrativeUnitArgs, GetAdministrativeUnitResult, GetAdministrativeUnitOutputArgs } from "./getAdministrativeUnit";
+export const getAdministrativeUnit: typeof import("./getAdministrativeUnit").getAdministrativeUnit = null as any;
+export const getAdministrativeUnitOutput: typeof import("./getAdministrativeUnit").getAdministrativeUnitOutput = null as any;
+utilities.lazyLoad(exports, ["getAdministrativeUnit","getAdministrativeUnitOutput"], () => require("./getAdministrativeUnit"));
+
+export { GetApplicationArgs, GetApplicationResult, GetApplicationOutputArgs } from "./getApplication";
+export const getApplication: typeof import("./getApplication").getApplication = null as any;
+export const getApplicationOutput: typeof import("./getApplication").getApplicationOutput = null as any;
+utilities.lazyLoad(exports, ["getApplication","getApplicationOutput"], () => require("./getApplication"));
+
+export { GetApplicationPublishedAppIdsResult } from "./getApplicationPublishedAppIds";
+export const getApplicationPublishedAppIds: typeof import("./getApplicationPublishedAppIds").getApplicationPublishedAppIds = null as any;
+utilities.lazyLoad(exports, ["getApplicationPublishedAppIds"], () => require("./getApplicationPublishedAppIds"));
+
+export { GetApplicationTemplateArgs, GetApplicationTemplateResult, GetApplicationTemplateOutputArgs } from "./getApplicationTemplate";
+export const getApplicationTemplate: typeof import("./getApplicationTemplate").getApplicationTemplate = null as any;
+export const getApplicationTemplateOutput: typeof import("./getApplicationTemplate").getApplicationTemplateOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationTemplate","getApplicationTemplateOutput"], () => require("./getApplicationTemplate"));
+
+export { GetClientConfigResult } from "./getClientConfig";
+export const getClientConfig: typeof import("./getClientConfig").getClientConfig = null as any;
+utilities.lazyLoad(exports, ["getClientConfig"], () => require("./getClientConfig"));
+
+export { GetDirectoryObjectArgs, GetDirectoryObjectResult, GetDirectoryObjectOutputArgs } from "./getDirectoryObject";
+export const getDirectoryObject: typeof import("./getDirectoryObject").getDirectoryObject = null as any;
+export const getDirectoryObjectOutput: typeof import("./getDirectoryObject").getDirectoryObjectOutput = null as any;
+utilities.lazyLoad(exports, ["getDirectoryObject","getDirectoryObjectOutput"], () => require("./getDirectoryObject"));
+
+export { GetDirectoryRolesResult } from "./getDirectoryRoles";
+export const getDirectoryRoles: typeof import("./getDirectoryRoles").getDirectoryRoles = null as any;
+utilities.lazyLoad(exports, ["getDirectoryRoles"], () => require("./getDirectoryRoles"));
+
+export { GetDomainsArgs, GetDomainsResult, GetDomainsOutputArgs } from "./getDomains";
+export const getDomains: typeof import("./getDomains").getDomains = null as any;
+export const getDomainsOutput: typeof import("./getDomains").getDomainsOutput = null as any;
+utilities.lazyLoad(exports, ["getDomains","getDomainsOutput"], () => require("./getDomains"));
+
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+
+export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups";
+export const getGroups: typeof import("./getGroups").getGroups = null as any;
+export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetServicePrincipalArgs, GetServicePrincipalResult, GetServicePrincipalOutputArgs } from "./getServicePrincipal";
+export const getServicePrincipal: typeof import("./getServicePrincipal").getServicePrincipal = null as any;
+export const getServicePrincipalOutput: typeof import("./getServicePrincipal").getServicePrincipalOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePrincipal","getServicePrincipalOutput"], () => require("./getServicePrincipal"));
+
+export { GetServicePrincipalsArgs, GetServicePrincipalsResult, GetServicePrincipalsOutputArgs } from "./getServicePrincipals";
+export const getServicePrincipals: typeof import("./getServicePrincipals").getServicePrincipals = null as any;
+export const getServicePrincipalsOutput: typeof import("./getServicePrincipals").getServicePrincipalsOutput = null as any;
+utilities.lazyLoad(exports, ["getServicePrincipals","getServicePrincipalsOutput"], () => require("./getServicePrincipals"));
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { GroupArgs, GroupState } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+
+export { GroupMemberArgs, GroupMemberState } from "./groupMember";
+export type GroupMember = import("./groupMember").GroupMember;
+export const GroupMember: typeof import("./groupMember").GroupMember = null as any;
+utilities.lazyLoad(exports, ["GroupMember"], () => require("./groupMember"));
+
+export { InvitationArgs, InvitationState } from "./invitation";
+export type Invitation = import("./invitation").Invitation;
+export const Invitation: typeof import("./invitation").Invitation = null as any;
+utilities.lazyLoad(exports, ["Invitation"], () => require("./invitation"));
+
+export { NamedLocationArgs, NamedLocationState } from "./namedLocation";
+export type NamedLocation = import("./namedLocation").NamedLocation;
+export const NamedLocation: typeof import("./namedLocation").NamedLocation = null as any;
+utilities.lazyLoad(exports, ["NamedLocation"], () => require("./namedLocation"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { ServicePrincipalArgs, ServicePrincipalState } from "./servicePrincipal";
+export type ServicePrincipal = import("./servicePrincipal").ServicePrincipal;
+export const ServicePrincipal: typeof import("./servicePrincipal").ServicePrincipal = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipal"], () => require("./servicePrincipal"));
+
+export { ServicePrincipalCertificateArgs, ServicePrincipalCertificateState } from "./servicePrincipalCertificate";
+export type ServicePrincipalCertificate = import("./servicePrincipalCertificate").ServicePrincipalCertificate;
+export const ServicePrincipalCertificate: typeof import("./servicePrincipalCertificate").ServicePrincipalCertificate = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalCertificate"], () => require("./servicePrincipalCertificate"));
+
+export { ServicePrincipalClaimsMappingPolicyAssignmentArgs, ServicePrincipalClaimsMappingPolicyAssignmentState } from "./servicePrincipalClaimsMappingPolicyAssignment";
+export type ServicePrincipalClaimsMappingPolicyAssignment = import("./servicePrincipalClaimsMappingPolicyAssignment").ServicePrincipalClaimsMappingPolicyAssignment;
+export const ServicePrincipalClaimsMappingPolicyAssignment: typeof import("./servicePrincipalClaimsMappingPolicyAssignment").ServicePrincipalClaimsMappingPolicyAssignment = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalClaimsMappingPolicyAssignment"], () => require("./servicePrincipalClaimsMappingPolicyAssignment"));
+
+export { ServicePrincipalDelegatedPermissionGrantArgs, ServicePrincipalDelegatedPermissionGrantState } from "./servicePrincipalDelegatedPermissionGrant";
+export type ServicePrincipalDelegatedPermissionGrant = import("./servicePrincipalDelegatedPermissionGrant").ServicePrincipalDelegatedPermissionGrant;
+export const ServicePrincipalDelegatedPermissionGrant: typeof import("./servicePrincipalDelegatedPermissionGrant").ServicePrincipalDelegatedPermissionGrant = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalDelegatedPermissionGrant"], () => require("./servicePrincipalDelegatedPermissionGrant"));
+
+export { ServicePrincipalPasswordArgs, ServicePrincipalPasswordState } from "./servicePrincipalPassword";
+export type ServicePrincipalPassword = import("./servicePrincipalPassword").ServicePrincipalPassword;
+export const ServicePrincipalPassword: typeof import("./servicePrincipalPassword").ServicePrincipalPassword = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalPassword"], () => require("./servicePrincipalPassword"));
+
+export { SynchronizationJobArgs, SynchronizationJobState } from "./synchronizationJob";
+export type SynchronizationJob = import("./synchronizationJob").SynchronizationJob;
+export const SynchronizationJob: typeof import("./synchronizationJob").SynchronizationJob = null as any;
+utilities.lazyLoad(exports, ["SynchronizationJob"], () => require("./synchronizationJob"));
+
+export { SynchronizationSecretArgs, SynchronizationSecretState } from "./synchronizationSecret";
+export type SynchronizationSecret = import("./synchronizationSecret").SynchronizationSecret;
+export const SynchronizationSecret: typeof import("./synchronizationSecret").SynchronizationSecret = null as any;
+utilities.lazyLoad(exports, ["SynchronizationSecret"], () => require("./synchronizationSecret"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -54,34 +216,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { AdministrativeUnit } from "./administrativeUnit";
-import { AdministrativeUnitMember } from "./administrativeUnitMember";
-import { AppRoleAssignment } from "./appRoleAssignment";
-import { Application } from "./application";
-import { ApplicationCertificate } from "./applicationCertificate";
-import { ApplicationFederatedIdentityCredential } from "./applicationFederatedIdentityCredential";
-import { ApplicationPassword } from "./applicationPassword";
-import { ApplicationPreAuthorized } from "./applicationPreAuthorized";
-import { ClaimsMappingPolicy } from "./claimsMappingPolicy";
-import { ConditionalAccessPolicy } from "./conditionalAccessPolicy";
-import { CustomDirectoryRole } from "./customDirectoryRole";
-import { DirectoryRole } from "./directoryRole";
-import { DirectoryRoleAssignment } from "./directoryRoleAssignment";
-import { DirectoryRoleMember } from "./directoryRoleMember";
-import { Group } from "./group";
-import { GroupMember } from "./groupMember";
-import { Invitation } from "./invitation";
-import { NamedLocation } from "./namedLocation";
-import { ServicePrincipal } from "./servicePrincipal";
-import { ServicePrincipalCertificate } from "./servicePrincipalCertificate";
-import { ServicePrincipalClaimsMappingPolicyAssignment } from "./servicePrincipalClaimsMappingPolicyAssignment";
-import { ServicePrincipalDelegatedPermissionGrant } from "./servicePrincipalDelegatedPermissionGrant";
-import { ServicePrincipalPassword } from "./servicePrincipalPassword";
-import { SynchronizationJob } from "./synchronizationJob";
-import { SynchronizationSecret } from "./synchronizationSecret";
-import { User } from "./user";
 
 const _module = {
     version: utilities.getVersion(),
@@ -170,9 +304,6 @@ pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJob", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationSecret", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("azuread", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
