@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -67,17 +67,17 @@ import (
 //			}
 //			_, err = azuread.NewApplication(ctx, "example", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
 //									return appRoleIds.User.Read.All, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Role"),
 //							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
 //									return oauth2PermissionScopeIds.User.ReadWrite, nil
 //								}).(pulumi.StringOutput),

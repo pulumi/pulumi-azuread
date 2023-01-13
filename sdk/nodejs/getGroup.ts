@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -23,19 +24,16 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getGroup({
+ * const example = azuread.getGroup({
  *     displayName: "MyGroupName",
  *     securityEnabled: true,
- * }));
+ * });
  * ```
  */
 export function getGroup(args?: GetGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getGroup:getGroup", {
         "displayName": args.displayName,
         "mailEnabled": args.mailEnabled,
@@ -183,9 +181,32 @@ export interface GetGroupResult {
      */
     readonly visibility: string;
 }
-
+/**
+ * Gets information about an Azure Active Directory group.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ * ### By Group Display Name)
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getGroup({
+ *     displayName: "MyGroupName",
+ *     securityEnabled: true,
+ * });
+ * ```
+ */
 export function getGroupOutput(args?: GetGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupResult> {
-    return pulumi.output(args).apply(a => getGroup(a, opts))
+    return pulumi.output(args).apply((a: any) => getGroup(a, opts))
 }
 
 /**

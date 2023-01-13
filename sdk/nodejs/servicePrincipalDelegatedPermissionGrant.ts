@@ -137,7 +137,7 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
     }
 
     /**
-     * - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      */
     public readonly claimValues!: pulumi.Output<string[]>;
     /**
@@ -149,7 +149,7 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
      */
     public readonly servicePrincipalObjectId!: pulumi.Output<string>;
     /**
-     * - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      */
     public readonly userObjectId!: pulumi.Output<string | undefined>;
 
@@ -196,7 +196,7 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
  */
 export interface ServicePrincipalDelegatedPermissionGrantState {
     /**
-     * - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      */
     claimValues?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -208,7 +208,7 @@ export interface ServicePrincipalDelegatedPermissionGrantState {
      */
     servicePrincipalObjectId?: pulumi.Input<string>;
     /**
-     * - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      */
     userObjectId?: pulumi.Input<string>;
 }
@@ -218,7 +218,7 @@ export interface ServicePrincipalDelegatedPermissionGrantState {
  */
 export interface ServicePrincipalDelegatedPermissionGrantArgs {
     /**
-     * - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      */
     claimValues: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -230,7 +230,7 @@ export interface ServicePrincipalDelegatedPermissionGrantArgs {
      */
     servicePrincipalObjectId: pulumi.Input<string>;
     /**
-     * - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      */
     userObjectId?: pulumi.Input<string>;
 }

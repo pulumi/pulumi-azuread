@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+//			_, err := azuread.GetGroups(ctx, &azuread.GetGroupsArgs{
 //				DisplayNames: []string{
 //					"group-a",
 //					"group-b",
@@ -63,7 +63,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+//			_, err := azuread.GetGroups(ctx, &azuread.GetGroupsArgs{
 //				DisplayNamePrefix: pulumi.StringRef("sales-"),
 //			}, nil)
 //			if err != nil {
@@ -88,7 +88,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+//			_, err := azuread.GetGroups(ctx, &azuread.GetGroupsArgs{
 //				ReturnAll: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -113,7 +113,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+//			_, err := azuread.GetGroups(ctx, &azuread.GetGroupsArgs{
 //				MailEnabled: pulumi.BoolRef(true),
 //				ReturnAll:   pulumi.BoolRef(true),
 //			}, nil)
@@ -139,7 +139,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetGroups(ctx, &GetGroupsArgs{
+//			_, err := azuread.GetGroups(ctx, &azuread.GetGroupsArgs{
 //				MailEnabled:     pulumi.BoolRef(false),
 //				ReturnAll:       pulumi.BoolRef(true),
 //				SecurityEnabled: pulumi.BoolRef(true),

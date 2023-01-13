@@ -327,6 +327,8 @@ class ApplicationPassword(pulumi.CustomResource):
             __props__.__dict__["start_date"] = start_date
             __props__.__dict__["key_id"] = None
             __props__.__dict__["value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApplicationPassword, __self__).__init__(
             'azuread:index/applicationPassword:ApplicationPassword',
             resource_name,

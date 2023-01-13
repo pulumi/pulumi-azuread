@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -50,17 +50,17 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
 //									return appRoleIds.User.Read.All, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Role"),
 //							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
 //									return oauth2PermissionScopeIds.User.ReadWrite, nil
 //								}).(pulumi.StringOutput),
@@ -111,8 +111,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("internal"),
-//				AppRoles: ApplicationAppRoleArray{
-//					&ApplicationAppRoleArgs{
+//				AppRoles: azuread.ApplicationAppRoleArray{
+//					&azuread.ApplicationAppRoleArgs{
 //						AllowedMemberTypes: pulumi.StringArray{
 //							pulumi.String("Application"),
 //						},
@@ -135,11 +135,11 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
 //						ResourceAppId: internalApplication.ApplicationId,
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
 //									return appRoleIds.Query.All, nil
 //								}).(pulumi.StringOutput),
@@ -190,7 +190,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleDomains, err := azuread.GetDomains(ctx, &GetDomainsArgs{
+//			exampleDomains, err := azuread.GetDomains(ctx, &azuread.GetDomainsArgs{
 //				OnlyInitial: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -198,8 +198,8 @@ import (
 //			}
 //			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("internal"),
-//				AppRoles: ApplicationAppRoleArray{
-//					&ApplicationAppRoleArgs{
+//				AppRoles: azuread.ApplicationAppRoleArray{
+//					&azuread.ApplicationAppRoleArgs{
 //						AllowedMemberTypes: pulumi.StringArray{
 //							pulumi.String("Application"),
 //							pulumi.String("User"),

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -30,11 +31,8 @@ import * as utilities from "./utilities";
  */
 export function getApplication(args?: GetApplicationArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getApplication:getApplication", {
         "applicationId": args.applicationId,
         "displayName": args.displayName,
@@ -181,9 +179,31 @@ export interface GetApplicationResult {
      */
     readonly webs: outputs.GetApplicationWeb[];
 }
-
+/**
+ * Use this data source to access information about an existing Application within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getApplication({
+ *     displayName: "My First AzureAD Application",
+ * });
+ * export const applicationObjectId = example.then(example => example.id);
+ * ```
+ */
 export function getApplicationOutput(args?: GetApplicationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationResult> {
-    return pulumi.output(args).apply(a => getApplication(a, opts))
+    return pulumi.output(args).apply((a: any) => getApplication(a, opts))
 }
 
 /**

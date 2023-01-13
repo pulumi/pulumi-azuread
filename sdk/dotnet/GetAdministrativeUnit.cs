@@ -62,7 +62,7 @@ namespace Pulumi.AzureAD
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAdministrativeUnitResult> InvokeAsync(GetAdministrativeUnitArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitArgs(), options.WithDefaults());
 
         /// <summary>
         /// Gets information about an adminisrative unit in Azure Active Directory.
@@ -115,7 +115,7 @@ namespace Pulumi.AzureAD
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAdministrativeUnitResult> Invoke(GetAdministrativeUnitInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());
     }
 
 

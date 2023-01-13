@@ -347,6 +347,8 @@ class ServicePrincipalPassword(pulumi.CustomResource):
             __props__.__dict__["start_date"] = start_date
             __props__.__dict__["key_id"] = None
             __props__.__dict__["value"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ServicePrincipalPassword, __self__).__init__(
             'azuread:index/servicePrincipalPassword:ServicePrincipalPassword',
             resource_name,

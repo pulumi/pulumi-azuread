@@ -32,6 +32,7 @@ import com.pulumi.azuread.outputs.GetApplicationResult;
 import com.pulumi.azuread.outputs.GetApplicationTemplateResult;
 import com.pulumi.azuread.outputs.GetClientConfigResult;
 import com.pulumi.azuread.outputs.GetDirectoryObjectResult;
+import com.pulumi.azuread.outputs.GetDirectoryRolesResult;
 import com.pulumi.azuread.outputs.GetDomainsResult;
 import com.pulumi.azuread.outputs.GetGroupResult;
 import com.pulumi.azuread.outputs.GetGroupsResult;
@@ -2056,6 +2057,264 @@ public final class AzureadFunctions {
      */
     public static CompletableFuture<GetDirectoryObjectResult> getDirectoryObjectPlain(GetDirectoryObjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getDirectoryObject:getDirectoryObject", TypeShape.of(GetDirectoryObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about activated directory roles within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoles();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryRolesResult> getDirectoryRoles() {
+        return getDirectoryRoles(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about activated directory roles within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoles();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain() {
+        return getDirectoryRolesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about activated directory roles within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoles();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryRolesResult> getDirectoryRoles(InvokeArgs args) {
+        return getDirectoryRoles(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about activated directory roles within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoles();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain(InvokeArgs args) {
+        return getDirectoryRolesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about activated directory roles within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoles();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryRolesResult> getDirectoryRoles(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getDirectoryRoles:getDirectoryRoles", TypeShape.of(GetDirectoryRolesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about activated directory roles within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoles();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRolesResult -&gt; getDirectoryRolesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryRolesResult> getDirectoryRolesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getDirectoryRoles:getDirectoryRoles", TypeShape.of(GetDirectoryRolesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access information about existing Domains within Azure Active Directory.
@@ -5244,7 +5503,7 @@ public final class AzureadFunctions {
      * 
      * The following API permissions are required in order to use this data source.
      * 
-     * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+     * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
@@ -5291,7 +5550,7 @@ public final class AzureadFunctions {
      * 
      * The following API permissions are required in order to use this data source.
      * 
-     * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+     * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
@@ -5338,7 +5597,7 @@ public final class AzureadFunctions {
      * 
      * The following API permissions are required in order to use this data source.
      * 
-     * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+     * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
@@ -5385,7 +5644,7 @@ public final class AzureadFunctions {
      * 
      * The following API permissions are required in order to use this data source.
      * 
-     * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+     * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
@@ -5432,7 +5691,7 @@ public final class AzureadFunctions {
      * 
      * The following API permissions are required in order to use this data source.
      * 
-     * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+     * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 
@@ -5479,7 +5738,7 @@ public final class AzureadFunctions {
      * 
      * The following API permissions are required in order to use this data source.
      * 
-     * When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+     * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
      * 
      * When authenticated with a user principal, this data source does not require any additional roles.
      * 

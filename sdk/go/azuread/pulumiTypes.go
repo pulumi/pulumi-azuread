@@ -7023,6 +7023,130 @@ func (o GetApplicationWebImplicitGrantArrayOutput) Index(i pulumi.IntInput) GetA
 	}).(GetApplicationWebImplicitGrantOutput)
 }
 
+type GetDirectoryRolesRole struct {
+	// The description of the directory role.
+	Description string `pulumi:"description"`
+	// The display name of the directory role.
+	DisplayName string `pulumi:"displayName"`
+	// The object ID of the directory role.
+	ObjectId string `pulumi:"objectId"`
+	// The template ID of the directory role.
+	TemplateId string `pulumi:"templateId"`
+}
+
+// GetDirectoryRolesRoleInput is an input type that accepts GetDirectoryRolesRoleArgs and GetDirectoryRolesRoleOutput values.
+// You can construct a concrete instance of `GetDirectoryRolesRoleInput` via:
+//
+//	GetDirectoryRolesRoleArgs{...}
+type GetDirectoryRolesRoleInput interface {
+	pulumi.Input
+
+	ToGetDirectoryRolesRoleOutput() GetDirectoryRolesRoleOutput
+	ToGetDirectoryRolesRoleOutputWithContext(context.Context) GetDirectoryRolesRoleOutput
+}
+
+type GetDirectoryRolesRoleArgs struct {
+	// The description of the directory role.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of the directory role.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The object ID of the directory role.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// The template ID of the directory role.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+}
+
+func (GetDirectoryRolesRoleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoryRolesRole)(nil)).Elem()
+}
+
+func (i GetDirectoryRolesRoleArgs) ToGetDirectoryRolesRoleOutput() GetDirectoryRolesRoleOutput {
+	return i.ToGetDirectoryRolesRoleOutputWithContext(context.Background())
+}
+
+func (i GetDirectoryRolesRoleArgs) ToGetDirectoryRolesRoleOutputWithContext(ctx context.Context) GetDirectoryRolesRoleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoryRolesRoleOutput)
+}
+
+// GetDirectoryRolesRoleArrayInput is an input type that accepts GetDirectoryRolesRoleArray and GetDirectoryRolesRoleArrayOutput values.
+// You can construct a concrete instance of `GetDirectoryRolesRoleArrayInput` via:
+//
+//	GetDirectoryRolesRoleArray{ GetDirectoryRolesRoleArgs{...} }
+type GetDirectoryRolesRoleArrayInput interface {
+	pulumi.Input
+
+	ToGetDirectoryRolesRoleArrayOutput() GetDirectoryRolesRoleArrayOutput
+	ToGetDirectoryRolesRoleArrayOutputWithContext(context.Context) GetDirectoryRolesRoleArrayOutput
+}
+
+type GetDirectoryRolesRoleArray []GetDirectoryRolesRoleInput
+
+func (GetDirectoryRolesRoleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirectoryRolesRole)(nil)).Elem()
+}
+
+func (i GetDirectoryRolesRoleArray) ToGetDirectoryRolesRoleArrayOutput() GetDirectoryRolesRoleArrayOutput {
+	return i.ToGetDirectoryRolesRoleArrayOutputWithContext(context.Background())
+}
+
+func (i GetDirectoryRolesRoleArray) ToGetDirectoryRolesRoleArrayOutputWithContext(ctx context.Context) GetDirectoryRolesRoleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoryRolesRoleArrayOutput)
+}
+
+type GetDirectoryRolesRoleOutput struct{ *pulumi.OutputState }
+
+func (GetDirectoryRolesRoleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoryRolesRole)(nil)).Elem()
+}
+
+func (o GetDirectoryRolesRoleOutput) ToGetDirectoryRolesRoleOutput() GetDirectoryRolesRoleOutput {
+	return o
+}
+
+func (o GetDirectoryRolesRoleOutput) ToGetDirectoryRolesRoleOutputWithContext(ctx context.Context) GetDirectoryRolesRoleOutput {
+	return o
+}
+
+// The description of the directory role.
+func (o GetDirectoryRolesRoleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the directory role.
+func (o GetDirectoryRolesRoleOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The object ID of the directory role.
+func (o GetDirectoryRolesRoleOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+// The template ID of the directory role.
+func (o GetDirectoryRolesRoleOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+type GetDirectoryRolesRoleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDirectoryRolesRoleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirectoryRolesRole)(nil)).Elem()
+}
+
+func (o GetDirectoryRolesRoleArrayOutput) ToGetDirectoryRolesRoleArrayOutput() GetDirectoryRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetDirectoryRolesRoleArrayOutput) ToGetDirectoryRolesRoleArrayOutputWithContext(ctx context.Context) GetDirectoryRolesRoleArrayOutput {
+	return o
+}
+
+func (o GetDirectoryRolesRoleArrayOutput) Index(i pulumi.IntInput) GetDirectoryRolesRoleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirectoryRolesRole {
+		return vs[0].([]GetDirectoryRolesRole)[vs[1].(int)]
+	}).(GetDirectoryRolesRoleOutput)
+}
+
 type GetDomainsDomain struct {
 	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
 	AdminManaged bool `pulumi:"adminManaged"`
@@ -8397,6 +8521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebArrayInput)(nil)).Elem(), GetApplicationWebArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantInput)(nil)).Elem(), GetApplicationWebImplicitGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantArrayInput)(nil)).Elem(), GetApplicationWebImplicitGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRolesRoleInput)(nil)).Elem(), GetDirectoryRolesRoleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRolesRoleArrayInput)(nil)).Elem(), GetDirectoryRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipInput)(nil)).Elem(), GetGroupDynamicMembershipArgs{})
@@ -8513,6 +8639,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationWebArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetDirectoryRolesRoleOutput{})
+	pulumi.RegisterOutputType(GetDirectoryRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupDynamicMembershipOutput{})

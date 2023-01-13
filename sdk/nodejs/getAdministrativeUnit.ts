@@ -23,9 +23,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getAdministrativeUnit({
+ * const example = azuread.getAdministrativeUnit({
  *     displayName: "Example-AU",
- * }));
+ * });
  * ```
  *
  * *Look up by object ID*
@@ -33,18 +33,15 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as azuread from "@pulumi/azuread";
  *
- * const example = pulumi.output(azuread.getAdministrativeUnit({
+ * const example = azuread.getAdministrativeUnit({
  *     objectId: "00000000-0000-0000-0000-000000000000",
- * }));
+ * });
  * ```
  */
 export function getAdministrativeUnit(args?: GetAdministrativeUnitArgs, opts?: pulumi.InvokeOptions): Promise<GetAdministrativeUnitResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getAdministrativeUnit:getAdministrativeUnit", {
         "displayName": args.displayName,
         "objectId": args.objectId,
@@ -94,9 +91,42 @@ export interface GetAdministrativeUnitResult {
      */
     readonly visibility: string;
 }
-
+/**
+ * Gets information about an adminisrative unit in Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ * ### By Group Display Name)
+ *
+ * *Look up by display name*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAdministrativeUnit({
+ *     displayName: "Example-AU",
+ * });
+ * ```
+ *
+ * *Look up by object ID*
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAdministrativeUnit({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ */
 export function getAdministrativeUnitOutput(args?: GetAdministrativeUnitOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdministrativeUnitResult> {
-    return pulumi.output(args).apply(a => getAdministrativeUnit(a, opts))
+    return pulumi.output(args).apply((a: any) => getAdministrativeUnit(a, opts))
 }
 
 /**

@@ -48,7 +48,7 @@ namespace Pulumi.AzureAD
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
 
         /// <summary>
         /// Use this data source to access information about an existing Application within Azure Active Directory.
@@ -87,7 +87,7 @@ namespace Pulumi.AzureAD
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
     }
 
 

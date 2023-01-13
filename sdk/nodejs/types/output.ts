@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface ApplicationApi {
     /**
@@ -646,6 +647,25 @@ export interface GetApplicationWebImplicitGrant {
     idTokenIssuanceEnabled: boolean;
 }
 
+export interface GetDirectoryRolesRole {
+    /**
+     * The description of the directory role.
+     */
+    description: string;
+    /**
+     * The display name of the directory role.
+     */
+    displayName: string;
+    /**
+     * The object ID of the directory role.
+     */
+    objectId: string;
+    /**
+     * The template ID of the directory role.
+     */
+    templateId: string;
+}
+
 export interface GetDomainsDomain {
     /**
      * Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
@@ -1049,3 +1069,4 @@ export interface SynchronizationSecretCredential {
      */
     value: string;
 }
+

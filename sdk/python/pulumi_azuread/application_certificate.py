@@ -377,7 +377,9 @@ class ApplicationCertificate(pulumi.CustomResource):
             __props__.__dict__["type"] = type
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ApplicationCertificate, __self__).__init__(
             'azuread:index/applicationCertificate:ApplicationCertificate',
             resource_name,

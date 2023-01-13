@@ -1589,7 +1589,7 @@ class User(pulumi.CustomResource):
             __props__.__dict__["office_location"] = office_location
             __props__.__dict__["onpremises_immutable_id"] = onpremises_immutable_id
             __props__.__dict__["other_mails"] = other_mails
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["postal_code"] = postal_code
             __props__.__dict__["preferred_language"] = preferred_language
             __props__.__dict__["show_in_address_list"] = show_in_address_list
@@ -1613,6 +1613,8 @@ class User(pulumi.CustomResource):
             __props__.__dict__["onpremises_user_principal_name"] = None
             __props__.__dict__["proxy_addresses"] = None
             __props__.__dict__["user_type"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'azuread:index/user:User',
             resource_name,

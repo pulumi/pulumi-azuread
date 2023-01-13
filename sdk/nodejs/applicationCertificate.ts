@@ -112,9 +112,11 @@ export class ApplicationCertificate extends pulumi.CustomResource {
             resourceInputs["keyId"] = args ? args.keyId : undefined;
             resourceInputs["startDate"] = args ? args.startDate : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ApplicationCertificate.__pulumiType, name, resourceInputs, opts);
     }
 }

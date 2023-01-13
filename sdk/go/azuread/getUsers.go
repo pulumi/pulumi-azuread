@@ -16,7 +16,7 @@ import (
 //
 // The following API permissions are required in order to use this data source.
 //
-// When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
+// When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
 //
 // When authenticated with a user principal, this data source does not require any additional roles.
 //
@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetUsers(ctx, &GetUsersArgs{
+//			_, err := azuread.GetUsers(ctx, &azuread.GetUsersArgs{
 //				UserPrincipalNames: []string{
 //					"kat@hashicorp.com",
 //					"byte@hashicorp.com",

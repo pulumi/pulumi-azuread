@@ -65,7 +65,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				Message: &InvitationMessageArgs{
+//				Message: &azuread.InvitationMessageArgs{
 //					Language: pulumi.String("en-US"),
 //				},
 //				RedirectUrl:      pulumi.String("https://portal.azure.com"),
@@ -95,7 +95,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				Message: &InvitationMessageArgs{
+//				Message: &azuread.InvitationMessageArgs{
 //					AdditionalRecipients: pulumi.String("aaliceberg@hashicorp.com"),
 //					Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
 //				},

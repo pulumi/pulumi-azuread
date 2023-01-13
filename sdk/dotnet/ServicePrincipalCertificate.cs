@@ -104,6 +104,10 @@ namespace Pulumi.AzureAD
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "value",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -169,11 +173,21 @@ namespace Pulumi.AzureAD
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("value", required: true)]
+        private Input<string>? _value;
+
         /// <summary>
         /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         /// </summary>
-        [Input("value", required: true)]
-        public Input<string> Value { get; set; } = null!;
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ServicePrincipalCertificateArgs()
         {
@@ -225,11 +239,21 @@ namespace Pulumi.AzureAD
         [Input("type")]
         public Input<string>? Type { get; set; }
 
+        [Input("value")]
+        private Input<string>? _value;
+
         /// <summary>
         /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        public Input<string>? Value
+        {
+            get => _value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _value = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ServicePrincipalCertificateState()
         {

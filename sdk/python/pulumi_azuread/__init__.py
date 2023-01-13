@@ -25,6 +25,7 @@ from .get_application_published_app_ids import *
 from .get_application_template import *
 from .get_client_config import *
 from .get_directory_object import *
+from .get_directory_roles import *
 from .get_domains import *
 from .get_group import *
 from .get_groups import *

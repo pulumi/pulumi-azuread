@@ -60,6 +60,7 @@ __all__ = [
     'GetApplicationSinglePageApplicationResult',
     'GetApplicationWebResult',
     'GetApplicationWebImplicitGrantResult',
+    'GetDirectoryRolesRoleResult',
     'GetDomainsDomainResult',
     'GetGroupDynamicMembershipResult',
     'GetServicePrincipalAppRoleResult',
@@ -2932,6 +2933,57 @@ class GetApplicationWebImplicitGrantResult(dict):
         Whether this web application can request an ID token using OAuth 2.0 implicit flow.
         """
         return pulumi.get(self, "id_token_issuance_enabled")
+
+
+@pulumi.output_type
+class GetDirectoryRolesRoleResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 display_name: str,
+                 object_id: str,
+                 template_id: str):
+        """
+        :param str description: The description of the directory role.
+        :param str display_name: The display name of the directory role.
+        :param str object_id: The object ID of the directory role.
+        :param str template_id: The template ID of the directory role.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "template_id", template_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the directory role.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the directory role.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        """
+        The object ID of the directory role.
+        """
+        return pulumi.get(self, "object_id")
+
+    @property
+    @pulumi.getter(name="templateId")
+    def template_id(self) -> str:
+        """
+        The template ID of the directory role.
+        """
+        return pulumi.get(self, "template_id")
 
 
 @pulumi.output_type

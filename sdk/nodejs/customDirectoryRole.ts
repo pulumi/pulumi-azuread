@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -95,7 +96,7 @@ export class CustomDirectoryRole extends pulumi.CustomResource {
      */
     public readonly templateId!: pulumi.Output<string>;
     /**
-     * - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -175,7 +176,7 @@ export interface CustomDirectoryRoleState {
      */
     templateId?: pulumi.Input<string>;
     /**
-     * - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      */
     version?: pulumi.Input<string>;
 }
@@ -205,7 +206,7 @@ export interface CustomDirectoryRoleArgs {
      */
     templateId?: pulumi.Input<string>;
     /**
-     * - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+     * The version of the role definition. This can be any arbitrary string between 1-128 characters.
      */
     version: pulumi.Input<string>;
 }

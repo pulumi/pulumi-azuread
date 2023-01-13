@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupAdministrativeUnit(ctx, &GetAdministrativeUnitArgs{
+//			_, err := azuread.LookupAdministrativeUnit(ctx, &azuread.LookupAdministrativeUnitArgs{
 //				DisplayName: pulumi.StringRef("Example-AU"),
 //			}, nil)
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.LookupAdministrativeUnit(ctx, &GetAdministrativeUnitArgs{
+//			_, err := azuread.LookupAdministrativeUnit(ctx, &azuread.LookupAdministrativeUnitArgs{
 //				ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
 //			}, nil)
 //			if err != nil {

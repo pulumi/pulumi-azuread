@@ -27,7 +27,7 @@ class CustomDirectoryRoleArgs:
         :param pulumi.Input[str] display_name: The display name of the custom directory role.
         :param pulumi.Input[bool] enabled: Indicates whether the role is enabled for assignment.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]] permissions: A collection of `permissions` blocks as documented below.
-        :param pulumi.Input[str] version: - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         :param pulumi.Input[str] description: The description of the custom directory role.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
         """
@@ -80,7 +80,7 @@ class CustomDirectoryRoleArgs:
     @pulumi.getter
     def version(self) -> pulumi.Input[str]:
         """
-        - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
         return pulumi.get(self, "version")
 
@@ -131,7 +131,7 @@ class _CustomDirectoryRoleState:
         :param pulumi.Input[str] object_id: The object ID of the custom directory role.
         :param pulumi.Input[Sequence[pulumi.Input['CustomDirectoryRolePermissionArgs']]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] version: - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -224,7 +224,7 @@ class _CustomDirectoryRoleState:
     @pulumi.getter
     def version(self) -> Optional[pulumi.Input[str]]:
         """
-        - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
         return pulumi.get(self, "version")
 
@@ -288,7 +288,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[bool] enabled: Indicates whether the role is enabled for assignment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] version: - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
         ...
     @overload
@@ -407,7 +407,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[str] object_id: The object ID of the custom directory role.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CustomDirectoryRolePermissionArgs']]]] permissions: A collection of `permissions` blocks as documented below.
         :param pulumi.Input[str] template_id: Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] version: - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        :param pulumi.Input[str] version: The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -474,7 +474,7 @@ class CustomDirectoryRole(pulumi.CustomResource):
     @pulumi.getter
     def version(self) -> pulumi.Output[str]:
         """
-        - The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        The version of the role definition. This can be any arbitrary string between 1-128 characters.
         """
         return pulumi.get(self, "version")
 

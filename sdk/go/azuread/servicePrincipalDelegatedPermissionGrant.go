@@ -42,7 +42,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -50,17 +50,17 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
 //									return oauth2PermissionScopeIds.Openid, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
 //									return oauth2PermissionScopeIds.User.Read, nil
 //								}).(pulumi.StringOutput),
@@ -115,7 +115,7 @@ import (
 //				return err
 //			}
 //			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
 //				UseExisting:   pulumi.Bool(true),
 //			})
 //			if err != nil {
@@ -123,17 +123,17 @@ import (
 //			}
 //			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
 //				DisplayName: pulumi.String("example"),
-//				RequiredResourceAccesses: ApplicationRequiredResourceAccessArray{
-//					&ApplicationRequiredResourceAccessArgs{
-//						ResourceAppId: pulumi.String(wellKnown.Result.MicrosoftGraph),
-//						ResourceAccesses: ApplicationRequiredResourceAccessResourceAccessArray{
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
 //									return oauth2PermissionScopeIds.Openid, nil
 //								}).(pulumi.StringOutput),
 //								Type: pulumi.String("Scope"),
 //							},
-//							&ApplicationRequiredResourceAccessResourceAccessArgs{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
 //								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
 //									return oauth2PermissionScopeIds.User.Read, nil
 //								}).(pulumi.StringOutput),
@@ -191,13 +191,13 @@ import (
 type ServicePrincipalDelegatedPermissionGrant struct {
 	pulumi.CustomResourceState
 
-	// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues pulumi.StringArrayOutput `pulumi:"claimValues"`
 	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId pulumi.StringOutput `pulumi:"resourceServicePrincipalObjectId"`
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringOutput `pulumi:"servicePrincipalObjectId"`
-	// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 	UserObjectId pulumi.StringPtrOutput `pulumi:"userObjectId"`
 }
 
@@ -239,24 +239,24 @@ func GetServicePrincipalDelegatedPermissionGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalDelegatedPermissionGrant resources.
 type servicePrincipalDelegatedPermissionGrantState struct {
-	// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues []string `pulumi:"claimValues"`
 	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId *string `pulumi:"resourceServicePrincipalObjectId"`
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId *string `pulumi:"servicePrincipalObjectId"`
-	// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 	UserObjectId *string `pulumi:"userObjectId"`
 }
 
 type ServicePrincipalDelegatedPermissionGrantState struct {
-	// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues pulumi.StringArrayInput
 	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId pulumi.StringPtrInput
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringPtrInput
-	// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 	UserObjectId pulumi.StringPtrInput
 }
 
@@ -265,25 +265,25 @@ func (ServicePrincipalDelegatedPermissionGrantState) ElementType() reflect.Type 
 }
 
 type servicePrincipalDelegatedPermissionGrantArgs struct {
-	// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues []string `pulumi:"claimValues"`
 	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId string `pulumi:"resourceServicePrincipalObjectId"`
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId string `pulumi:"servicePrincipalObjectId"`
-	// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 	UserObjectId *string `pulumi:"userObjectId"`
 }
 
 // The set of arguments for constructing a ServicePrincipalDelegatedPermissionGrant resource.
 type ServicePrincipalDelegatedPermissionGrantArgs struct {
-	// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues pulumi.StringArrayInput
 	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId pulumi.StringInput
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringInput
-	// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 	UserObjectId pulumi.StringPtrInput
 }
 
@@ -374,7 +374,7 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelega
 	return o
 }
 
-// - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) ClaimValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringArrayOutput { return v.ClaimValues }).(pulumi.StringArrayOutput)
 }
@@ -393,7 +393,7 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ServicePrincipalObjectId
 	}).(pulumi.StringOutput)
 }
 
-// - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) UserObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringPtrOutput { return v.UserObjectId }).(pulumi.StringPtrOutput)
 }

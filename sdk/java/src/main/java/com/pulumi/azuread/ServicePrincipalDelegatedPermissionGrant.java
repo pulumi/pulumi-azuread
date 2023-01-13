@@ -184,14 +184,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant")
 public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resources.CustomResource {
     /**
-     * - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      * 
      */
     @Export(name="claimValues", type=List.class, parameters={String.class})
     private Output<List<String>> claimValues;
 
     /**
-     * @return - A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+     * @return A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
      * 
      */
     public Output<List<String>> claimValues() {
@@ -226,14 +226,14 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
         return this.servicePrincipalObjectId;
     }
     /**
-     * - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="userObjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> userObjectId;
 
     /**
-     * @return - The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * @return The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
      */
     public Output<Optional<String>> userObjectId() {

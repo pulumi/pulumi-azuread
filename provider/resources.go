@@ -235,6 +235,7 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_service_principals":            {Tok: makeDataSource(mainMod, "getServicePrincipals")},
 			"azuread_administrative_unit":           {Tok: makeDataSource(mainMod, "getAdministrativeUnit")},
 			"azuread_directory_object":              {Tok: makeDataSource(mainMod, "getDirectoryObject")},
+			"azuread_directory_roles":               {Tok: makeDataSource(mainMod, "getDirectoryRoles")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
