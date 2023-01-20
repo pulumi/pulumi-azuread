@@ -19,6 +19,7 @@ class ApplicationArgs:
                  display_name: pulumi.Input[str],
                  api: Optional[pulumi.Input['ApplicationApiArgs']] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
                  feature_tags: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]] = None,
@@ -45,6 +46,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
@@ -72,6 +74,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "api", api)
         if app_roles is not None:
             pulumi.set(__self__, "app_roles", app_roles)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if device_only_auth_enabled is not None:
             pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
         if fallback_public_client_enabled is not None:
@@ -150,6 +154,18 @@ class ApplicationArgs:
     @app_roles.setter
     def app_roles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]]):
         pulumi.set(self, "app_roles", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="deviceOnlyAuthEnabled")
@@ -411,6 +427,7 @@ class _ApplicationState:
                  app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]]] = None,
                  application_id: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -444,6 +461,7 @@ class _ApplicationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
@@ -480,6 +498,8 @@ class _ApplicationState:
             pulumi.set(__self__, "app_roles", app_roles)
         if application_id is not None:
             pulumi.set(__self__, "application_id", application_id)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if device_only_auth_enabled is not None:
             pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
         if disabled_by_microsoft is not None:
@@ -582,6 +602,18 @@ class _ApplicationState:
     @application_id.setter
     def application_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "application_id", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="deviceOnlyAuthEnabled")
@@ -915,6 +947,7 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1087,6 +1120,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
@@ -1278,6 +1312,7 @@ class Application(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  api: Optional[pulumi.Input[pulumi.InputType['ApplicationApiArgs']]] = None,
                  app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
+                 description: Optional[pulumi.Input[str]] = None,
                  device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  fallback_public_client_enabled: Optional[pulumi.Input[bool]] = None,
@@ -1311,6 +1346,7 @@ class Application(pulumi.CustomResource):
 
             __props__.__dict__["api"] = api
             __props__.__dict__["app_roles"] = app_roles
+            __props__.__dict__["description"] = description
             __props__.__dict__["device_only_auth_enabled"] = device_only_auth_enabled
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -1356,6 +1392,7 @@ class Application(pulumi.CustomResource):
             app_role_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             app_roles: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]]] = None,
             application_id: Optional[pulumi.Input[str]] = None,
+            description: Optional[pulumi.Input[str]] = None,
             device_only_auth_enabled: Optional[pulumi.Input[bool]] = None,
             disabled_by_microsoft: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -1394,6 +1431,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
+        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
@@ -1430,6 +1468,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["app_role_ids"] = app_role_ids
         __props__.__dict__["app_roles"] = app_roles
         __props__.__dict__["application_id"] = application_id
+        __props__.__dict__["description"] = description
         __props__.__dict__["device_only_auth_enabled"] = device_only_auth_enabled
         __props__.__dict__["disabled_by_microsoft"] = disabled_by_microsoft
         __props__.__dict__["display_name"] = display_name
@@ -1490,6 +1529,14 @@ class Application(pulumi.CustomResource):
         The Application ID (also called Client ID).
         """
         return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Output[Optional[str]]:
+        """
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceOnlyAuthEnabled")
