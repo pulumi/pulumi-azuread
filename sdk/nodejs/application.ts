@@ -201,6 +201,10 @@ export class Application extends pulumi.CustomResource {
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     */
+    public readonly description!: pulumi.Output<string | undefined>;
+    /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
     public readonly deviceOnlyAuthEnabled!: pulumi.Output<boolean | undefined>;
@@ -326,6 +330,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["appRoleIds"] = state ? state.appRoleIds : undefined;
             resourceInputs["appRoles"] = state ? state.appRoles : undefined;
             resourceInputs["applicationId"] = state ? state.applicationId : undefined;
+            resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["deviceOnlyAuthEnabled"] = state ? state.deviceOnlyAuthEnabled : undefined;
             resourceInputs["disabledByMicrosoft"] = state ? state.disabledByMicrosoft : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -360,6 +365,7 @@ export class Application extends pulumi.CustomResource {
             }
             resourceInputs["api"] = args ? args.api : undefined;
             resourceInputs["appRoles"] = args ? args.appRoles : undefined;
+            resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["deviceOnlyAuthEnabled"] = args ? args.deviceOnlyAuthEnabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["fallbackPublicClientEnabled"] = args ? args.fallbackPublicClientEnabled : undefined;
@@ -415,6 +421,10 @@ export interface ApplicationState {
      * The Application ID (also called Client ID).
      */
     applicationId?: pulumi.Input<string>;
+    /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */
@@ -537,6 +547,10 @@ export interface ApplicationArgs {
      * A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
+    /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     */
+    description?: pulumi.Input<string>;
     /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      */

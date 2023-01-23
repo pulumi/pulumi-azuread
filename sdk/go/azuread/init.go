@@ -66,6 +66,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServicePrincipalDelegatedPermissionGrant{}
 	case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
 		r = &ServicePrincipalPassword{}
+	case "azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate":
+		r = &ServicePrincipalTokenSigningCertificate{}
 	case "azuread:index/synchronizationJob:SynchronizationJob":
 		r = &SynchronizationJob{}
 	case "azuread:index/synchronizationSecret:SynchronizationSecret":
@@ -213,6 +215,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/servicePrincipalPassword",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/servicePrincipalTokenSigningCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

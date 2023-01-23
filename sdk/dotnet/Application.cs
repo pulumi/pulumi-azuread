@@ -261,6 +261,12 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// </summary>
+        [Output("description")]
+        public Output<string?> Description { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
         /// </summary>
         [Output("deviceOnlyAuthEnabled")]
@@ -487,6 +493,12 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
+
+        /// <summary>
         /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
         /// </summary>
         [Input("deviceOnlyAuthEnabled")]
@@ -697,6 +709,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
+
+        /// <summary>
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// </summary>
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// Specifies whether this application supports device authentication without a user. Defaults to `false`.

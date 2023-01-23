@@ -239,6 +239,8 @@ type Application struct {
 	AppRoles ApplicationAppRoleArrayOutput `pulumi:"appRoles"`
 	// The Application ID (also called Client ID).
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled pulumi.BoolPtrOutput `pulumi:"deviceOnlyAuthEnabled"`
 	// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -335,6 +337,8 @@ type applicationState struct {
 	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
 	// The Application ID (also called Client ID).
 	ApplicationId *string `pulumi:"applicationId"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description *string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled *bool `pulumi:"deviceOnlyAuthEnabled"`
 	// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -400,6 +404,8 @@ type ApplicationState struct {
 	AppRoles ApplicationAppRoleArrayInput
 	// The Application ID (also called Client ID).
 	ApplicationId pulumi.StringPtrInput
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description pulumi.StringPtrInput
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled pulumi.BoolPtrInput
 	// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -465,6 +471,8 @@ type applicationArgs struct {
 	Api *ApplicationApi `pulumi:"api"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description *string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled *bool `pulumi:"deviceOnlyAuthEnabled"`
 	// The display name for the application.
@@ -517,6 +525,8 @@ type ApplicationArgs struct {
 	Api ApplicationApiPtrInput
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles ApplicationAppRoleArrayInput
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description pulumi.StringPtrInput
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled pulumi.BoolPtrInput
 	// The display name for the application.
@@ -668,6 +678,11 @@ func (o ApplicationOutput) AppRoles() ApplicationAppRoleArrayOutput {
 // The Application ID (also called Client ID).
 func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // Specifies whether this application supports device authentication without a user. Defaults to `false`.

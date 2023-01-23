@@ -54,6 +54,7 @@
         "servicePrincipalClaimsMappingPolicyAssignment.ts",
         "servicePrincipalDelegatedPermissionGrant.ts",
         "servicePrincipalPassword.ts",
+        "servicePrincipalTokenSigningCertificate.ts",
         "synchronizationJob.ts",
         "synchronizationSecret.ts",
         "types/index.ts",

@@ -1035,8 +1035,8 @@ github.com/hashicorp/terraform-plugin-log v0.7.0/go.mod h1:p4R1jWBXRTvL4odmEkFfD
 github.com/hashicorp/terraform-plugin-sdk v1.7.0 h1:B//oq0ZORG+EkVrIJy0uPGSonvmXqxSzXe8+GhknoW0=
 github.com/hashicorp/terraform-plugin-sdk v1.7.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230112204020-86691b547689 h1:AwnbVUuD2QEnUKmFNP6UfDyFmFfFE/2PhP68L8wr6Os=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230112204020-86691b547689/go.mod h1:vCDxHxQc2keY+AdHOqBOWejc263vgYyZVBqfWh9jLNM=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230119151555-58136a1ffb3b h1:EYN+8jkS3xQd1aoFoJn5peoOlkvT2lJ2BwwUCcGAgoE=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230119151555-58136a1ffb3b/go.mod h1:sY2vIZNEMCrJtA1UjOnm27On/TaWZzVFK8+SxqtbhWw=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c h1:D8aRO6+mTqHfLsK/BC3j5OAoogv1WLRWzY1AaTo3rBg=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c/go.mod h1:Wn3Na71knbXc1G8Lh+yu/dQWWJeFQEpDeJMtWMtlmNI=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=
@@ -1217,8 +1217,6 @@ github.com/mailru/easyjson v0.0.0-20190626092158-b2ccc519800e/go.mod h1:C1wdFJiN
 github.com/mailru/easyjson v0.7.0/go.mod h1:KAzv3t3aY1NaHWoQz1+4F1ccyAH66Jk7yos7ldAVICs=
 github.com/mailru/easyjson v0.7.6/go.mod h1:xzfreul335JAWq5oZzymOObrkdz5UnU4kGfJJLY9Nlc=
 github.com/mailru/easyjson v0.7.7/go.mod h1:xzfreul335JAWq5oZzymOObrkdz5UnU4kGfJJLY9Nlc=
-github.com/manicminer/hamilton v0.52.0 h1:z+K/fxTpCtWi/XMB4L9QgqPo2B+eoYozNeh8YvplJ3I=
-github.com/manicminer/hamilton v0.52.0/go.mod h1:lbVyngC+/nCWuDp8UhC6Bw+bh7jcP/E+YwqzHTmzemk=
 github.com/manicminer/hamilton v0.54.0 h1:vnjgE7Eer9dnrAd78qZHPK6CTNCwwFmuVtvBjjl4OtY=
 github.com/manicminer/hamilton v0.54.0/go.mod h1:lbVyngC+/nCWuDp8UhC6Bw+bh7jcP/E+YwqzHTmzemk=
 github.com/markbates/oncer v0.0.0-20181203154359-bf2de49a0be2/go.mod h1:Ld9puTsIW75CHf65OeIOkyKbteujpZVXDpWK6YGZbxE=
@@ -1513,8 +1511,8 @@ github.com/prometheus/prometheus v0.37.0/go.mod h1:egARUgz+K93zwqsVIAneFlLZefyGO
 github.com/prometheus/tsdb v0.7.1/go.mod h1:qhTCs0VvXwvX/y3TZrWD7rabWM+ijKTux40TwIPHuXU=
 github.com/pulumi/pulumi-java/pkg v0.7.1 h1:3tl36+I5BRYVXbq10mqDeh3X5kdJBaNDYiATOfEfgSY=
 github.com/pulumi/pulumi-java/pkg v0.7.1/go.mod h1:XdN2jYNlcQewr0MFecZfBnY3gnGcvV+WoPTzQqH48k4=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.37.0 h1:57iznat7A7G5ySfOlZxWOhhCaG59G5lrQdbh7KNeLbQ=
-github.com/pulumi/pulumi-terraform-bridge/v3 v3.37.0/go.mod h1:RC9XOYwRU6c+1TtZKwwzpojz6POHz8Mbtx9qZcU+lPA=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.0 h1:Bho2n0wbfq6UwE7YXYahHURXKTwpZVz2bBtz9WVpzN4=
+github.com/pulumi/pulumi-terraform-bridge/v3 v3.38.0/go.mod h1:RC9XOYwRU6c+1TtZKwwzpojz6POHz8Mbtx9qZcU+lPA=
 github.com/pulumi/pulumi-yaml v1.0.4 h1:p+989rW3AqkkxbzxtxccHKAN4xCJi3K2cRpvA2K84tw=
 github.com/pulumi/pulumi-yaml v1.0.4/go.mod h1:Szj8ud4Vqyq3oO1n3kzIUfaP3AiCjYZM4FYjOVWwJn8=
 github.com/pulumi/pulumi/pkg/v3 v3.51.0 h1:FAgWGex4SIMvu3wCIoANjhI4uEUXk4IgHM/HMVZnZ0M=

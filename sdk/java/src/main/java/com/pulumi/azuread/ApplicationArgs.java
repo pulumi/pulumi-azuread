@@ -56,6 +56,21 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * 
+     */
+    @Import(name="description")
+    private @Nullable Output<String> description;
+
+    /**
+     * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * 
+     */
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
+    }
+
+    /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      * 
      */
@@ -390,6 +405,7 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
     private ApplicationArgs(ApplicationArgs $) {
         this.api = $.api;
         this.appRoles = $.appRoles;
+        this.description = $.description;
         this.deviceOnlyAuthEnabled = $.deviceOnlyAuthEnabled;
         this.displayName = $.displayName;
         this.fallbackPublicClientEnabled = $.fallbackPublicClientEnabled;
@@ -482,6 +498,27 @@ public final class ApplicationArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder appRoles(ApplicationAppRoleArgs... appRoles) {
             return appRoles(List.of(appRoles));
+        }
+
+        /**
+         * @param description Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(@Nullable Output<String> description) {
+            $.description = description;
+            return this;
+        }
+
+        /**
+         * @param description Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder description(String description) {
+            return description(Output.of(description));
         }
 
         /**

@@ -192,6 +192,11 @@ export type ServicePrincipalPassword = import("./servicePrincipalPassword").Serv
 export const ServicePrincipalPassword: typeof import("./servicePrincipalPassword").ServicePrincipalPassword = null as any;
 utilities.lazyLoad(exports, ["ServicePrincipalPassword"], () => require("./servicePrincipalPassword"));
 
+export { ServicePrincipalTokenSigningCertificateArgs, ServicePrincipalTokenSigningCertificateState } from "./servicePrincipalTokenSigningCertificate";
+export type ServicePrincipalTokenSigningCertificate = import("./servicePrincipalTokenSigningCertificate").ServicePrincipalTokenSigningCertificate;
+export const ServicePrincipalTokenSigningCertificate: typeof import("./servicePrincipalTokenSigningCertificate").ServicePrincipalTokenSigningCertificate = null as any;
+utilities.lazyLoad(exports, ["ServicePrincipalTokenSigningCertificate"], () => require("./servicePrincipalTokenSigningCertificate"));
+
 export { SynchronizationJobArgs, SynchronizationJobState } from "./synchronizationJob";
 export type SynchronizationJob = import("./synchronizationJob").SynchronizationJob;
 export const SynchronizationJob: typeof import("./synchronizationJob").SynchronizationJob = null as any;
@@ -267,6 +272,8 @@ const _module = {
                 return new ServicePrincipalDelegatedPermissionGrant(name, <any>undefined, { urn })
             case "azuread:index/servicePrincipalPassword:ServicePrincipalPassword":
                 return new ServicePrincipalPassword(name, <any>undefined, { urn })
+            case "azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate":
+                return new ServicePrincipalTokenSigningCertificate(name, <any>undefined, { urn })
             case "azuread:index/synchronizationJob:SynchronizationJob":
                 return new SynchronizationJob(name, <any>undefined, { urn })
             case "azuread:index/synchronizationSecret:SynchronizationSecret":
@@ -301,6 +308,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalCertific
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalClaimsMappingPolicyAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalDelegatedPermissionGrant", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalPassword", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalTokenSigningCertificate", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJob", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationSecret", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)

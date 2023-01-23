@@ -280,6 +280,20 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.applicationId;
     }
     /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * 
+     */
+    @Export(name="description", type=String.class, parameters={})
+    private Output</* @Nullable */ String> description;
+
+    /**
+     * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * 
+     */
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
+    }
+    /**
      * Specifies whether this application supports device authentication without a user. Defaults to `false`.
      * 
      */
