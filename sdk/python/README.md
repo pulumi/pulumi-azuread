@@ -35,7 +35,7 @@ or `yarn`:
 
 To use from Python, install using `pip`:
 
-    $ pip install pulumi_azuread
+    $ pip install pulumi-azuread
 
 ### Go
 
@@ -72,4 +72,4 @@ The following configuration points are available:
    
 ## Reference
 
-For further information, please visit [the AzureAD provider docs](https://www.pulumi.com/docs/intro/cloud-providers/azuread) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/docs/reference/pkg/azuread).
+For further information, please visit [the AzureAD provider docs](https://www.pulumi.com/registry/packages/azuread/) or for detailed reference documentation, please visit [the API docs](https://www.pulumi.com/registry/packages/azuread/api-docs/).
