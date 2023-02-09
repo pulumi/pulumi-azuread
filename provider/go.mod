@@ -1,6 +1,6 @@
 module github.com/pulumi/pulumi-azuread/provider/v5
 
-go 1.18
+go 1.19
 
 require (
 	github.com/hashicorp/terraform-provider-azuread/shim v0.0.0
