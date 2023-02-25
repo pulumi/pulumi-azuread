@@ -105,6 +105,16 @@ namespace Pulumi.AzureAD
             set => _environment.Set(value);
         }
 
+        private static readonly __Value<string?> _metadataHost = new __Value<string?>(() => __config.Get("metadataHost"));
+        /// <summary>
+        /// The Hostname which should be used for the Azure Metadata Service.
+        /// </summary>
+        public static string? MetadataHost
+        {
+            get => _metadataHost.Get();
+            set => _metadataHost.Set(value);
+        }
+
         private static readonly __Value<string?> _msiEndpoint = new __Value<string?>(() => __config.Get("msiEndpoint") ?? Utilities.GetEnv("ARM_MSI_ENDPOINT"));
         /// <summary>
         /// The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically

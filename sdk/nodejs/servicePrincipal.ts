@@ -224,7 +224,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly signInAudience!: pulumi.Output<string>;
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
+     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
@@ -429,7 +429,7 @@ export interface ServicePrincipalState {
      */
     signInAudience?: pulumi.Input<string>;
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
+     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -501,7 +501,7 @@ export interface ServicePrincipalArgs {
      */
     samlSingleSignOn?: pulumi.Input<inputs.ServicePrincipalSamlSingleSignOn>;
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `featureTags` block.
+     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

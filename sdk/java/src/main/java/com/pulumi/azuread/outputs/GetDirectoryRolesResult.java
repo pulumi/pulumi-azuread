@@ -26,6 +26,11 @@ public final class GetDirectoryRolesResult {
      * 
      */
     private List<GetDirectoryRolesRole> roles;
+    /**
+     * @return The template IDs of the roles.
+     * 
+     */
+    private List<String> templateIds;
 
     private GetDirectoryRolesResult() {}
     /**
@@ -49,6 +54,13 @@ public final class GetDirectoryRolesResult {
     public List<GetDirectoryRolesRole> roles() {
         return this.roles;
     }
+    /**
+     * @return The template IDs of the roles.
+     * 
+     */
+    public List<String> templateIds() {
+        return this.templateIds;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -62,12 +74,14 @@ public final class GetDirectoryRolesResult {
         private String id;
         private List<String> objectIds;
         private List<GetDirectoryRolesRole> roles;
+        private List<String> templateIds;
         public Builder() {}
         public Builder(GetDirectoryRolesResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.id = defaults.id;
     	      this.objectIds = defaults.objectIds;
     	      this.roles = defaults.roles;
+    	      this.templateIds = defaults.templateIds;
         }
 
         @CustomType.Setter
@@ -91,11 +105,20 @@ public final class GetDirectoryRolesResult {
         public Builder roles(GetDirectoryRolesRole... roles) {
             return roles(List.of(roles));
         }
+        @CustomType.Setter
+        public Builder templateIds(List<String> templateIds) {
+            this.templateIds = Objects.requireNonNull(templateIds);
+            return this;
+        }
+        public Builder templateIds(String... templateIds) {
+            return templateIds(List.of(templateIds));
+        }
         public GetDirectoryRolesResult build() {
             final var o = new GetDirectoryRolesResult();
             o.id = id;
             o.objectIds = objectIds;
             o.roles = roles;
+            o.templateIds = templateIds;
             return o;
         }
     }

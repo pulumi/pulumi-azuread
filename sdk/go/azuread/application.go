@@ -239,7 +239,7 @@ type Application struct {
 	AppRoles ApplicationAppRoleArrayOutput `pulumi:"appRoles"`
 	// The Application ID (also called Client ID).
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	// A description of the application, as shown to end users.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled pulumi.BoolPtrOutput `pulumi:"deviceOnlyAuthEnabled"`
@@ -261,6 +261,8 @@ type Application struct {
 	LogoUrl pulumi.StringOutput `pulumi:"logoUrl"`
 	// URL of the application's marketing page.
 	MarketingUrl pulumi.StringPtrOutput `pulumi:"marketingUrl"`
+	// User-specified notes relevant for the management of the application.
+	Notes pulumi.StringPtrOutput `pulumi:"notes"`
 	// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
 	Oauth2PermissionScopeIds pulumi.StringMapOutput `pulumi:"oauth2PermissionScopeIds"`
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -287,7 +289,7 @@ type Application struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrOutput `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
-	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
@@ -337,7 +339,7 @@ type applicationState struct {
 	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
 	// The Application ID (also called Client ID).
 	ApplicationId *string `pulumi:"applicationId"`
-	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	// A description of the application, as shown to end users.
 	Description *string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled *bool `pulumi:"deviceOnlyAuthEnabled"`
@@ -359,6 +361,8 @@ type applicationState struct {
 	LogoUrl *string `pulumi:"logoUrl"`
 	// URL of the application's marketing page.
 	MarketingUrl *string `pulumi:"marketingUrl"`
+	// User-specified notes relevant for the management of the application.
+	Notes *string `pulumi:"notes"`
 	// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
 	Oauth2PermissionScopeIds map[string]string `pulumi:"oauth2PermissionScopeIds"`
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -385,7 +389,7 @@ type applicationState struct {
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
-	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
 	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
@@ -404,7 +408,7 @@ type ApplicationState struct {
 	AppRoles ApplicationAppRoleArrayInput
 	// The Application ID (also called Client ID).
 	ApplicationId pulumi.StringPtrInput
-	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	// A description of the application, as shown to end users.
 	Description pulumi.StringPtrInput
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled pulumi.BoolPtrInput
@@ -426,6 +430,8 @@ type ApplicationState struct {
 	LogoUrl pulumi.StringPtrInput
 	// URL of the application's marketing page.
 	MarketingUrl pulumi.StringPtrInput
+	// User-specified notes relevant for the management of the application.
+	Notes pulumi.StringPtrInput
 	// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
 	Oauth2PermissionScopeIds pulumi.StringMapInput
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -452,7 +458,7 @@ type ApplicationState struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
-	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
 	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
@@ -471,7 +477,7 @@ type applicationArgs struct {
 	Api *ApplicationApi `pulumi:"api"`
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles []ApplicationAppRole `pulumi:"appRoles"`
-	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	// A description of the application, as shown to end users.
 	Description *string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled *bool `pulumi:"deviceOnlyAuthEnabled"`
@@ -489,6 +495,8 @@ type applicationArgs struct {
 	LogoImage *string `pulumi:"logoImage"`
 	// URL of the application's marketing page.
 	MarketingUrl *string `pulumi:"marketingUrl"`
+	// User-specified notes relevant for the management of the application.
+	Notes *string `pulumi:"notes"`
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
 	Oauth2PostResponseRequired *bool `pulumi:"oauth2PostResponseRequired"`
 	// An `optionalClaims` block as documented below.
@@ -509,7 +517,7 @@ type applicationArgs struct {
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
-	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
 	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
@@ -525,7 +533,7 @@ type ApplicationArgs struct {
 	Api ApplicationApiPtrInput
 	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 	AppRoles ApplicationAppRoleArrayInput
-	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	// A description of the application, as shown to end users.
 	Description pulumi.StringPtrInput
 	// Specifies whether this application supports device authentication without a user. Defaults to `false`.
 	DeviceOnlyAuthEnabled pulumi.BoolPtrInput
@@ -543,6 +551,8 @@ type ApplicationArgs struct {
 	LogoImage pulumi.StringPtrInput
 	// URL of the application's marketing page.
 	MarketingUrl pulumi.StringPtrInput
+	// User-specified notes relevant for the management of the application.
+	Notes pulumi.StringPtrInput
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
 	Oauth2PostResponseRequired pulumi.BoolPtrInput
 	// An `optionalClaims` block as documented below.
@@ -563,7 +573,7 @@ type ApplicationArgs struct {
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
-	// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
 	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
@@ -680,7 +690,7 @@ func (o ApplicationOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+// A description of the application, as shown to end users.
 func (o ApplicationOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -733,6 +743,11 @@ func (o ApplicationOutput) LogoUrl() pulumi.StringOutput {
 // URL of the application's marketing page.
 func (o ApplicationOutput) MarketingUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.MarketingUrl }).(pulumi.StringPtrOutput)
+}
+
+// User-specified notes relevant for the management of the application.
+func (o ApplicationOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
 // A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
@@ -800,7 +815,7 @@ func (o ApplicationOutput) SupportUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.SupportUrl }).(pulumi.StringPtrOutput)
 }
 
-// A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
 func (o ApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }

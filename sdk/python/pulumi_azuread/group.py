@@ -17,6 +17,7 @@ __all__ = ['GroupArgs', 'Group']
 class GroupArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
+                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
                  auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -38,6 +39,7 @@ class GroupArgs:
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] display_name: The display name for the group.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
@@ -58,6 +60,8 @@ class GroupArgs:
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         pulumi.set(__self__, "display_name", display_name)
+        if administrative_unit_ids is not None:
+            pulumi.set(__self__, "administrative_unit_ids", administrative_unit_ids)
         if assignable_to_role is not None:
             pulumi.set(__self__, "assignable_to_role", assignable_to_role)
         if auto_subscribe_new_members is not None:
@@ -106,6 +110,18 @@ class GroupArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="administrativeUnitIds")
+    def administrative_unit_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+        """
+        return pulumi.get(self, "administrative_unit_ids")
+
+    @administrative_unit_ids.setter
+    def administrative_unit_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "administrative_unit_ids", value)
 
     @property
     @pulumi.getter(name="assignableToRole")
@@ -327,6 +343,7 @@ class GroupArgs:
 @pulumi.input_type
 class _GroupState:
     def __init__(__self__, *,
+                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
                  auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -357,6 +374,7 @@ class _GroupState:
                  visibility: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Group resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
@@ -386,6 +404,8 @@ class _GroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
+        if administrative_unit_ids is not None:
+            pulumi.set(__self__, "administrative_unit_ids", administrative_unit_ids)
         if assignable_to_role is not None:
             pulumi.set(__self__, "assignable_to_role", assignable_to_role)
         if auto_subscribe_new_members is not None:
@@ -442,6 +462,18 @@ class _GroupState:
             pulumi.set(__self__, "types", types)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter(name="administrativeUnitIds")
+    def administrative_unit_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+        """
+        return pulumi.get(self, "administrative_unit_ids")
+
+    @administrative_unit_ids.setter
+    def administrative_unit_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "administrative_unit_ids", value)
 
     @property
     @pulumi.getter(name="assignableToRole")
@@ -785,6 +817,7 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
                  auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -820,6 +853,8 @@ class Group(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
+        When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
+
         The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
 
         ## Import
@@ -832,6 +867,7 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
@@ -873,6 +909,8 @@ class Group(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 
+        When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
+
         The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
 
         ## Import
@@ -898,6 +936,7 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  assignable_to_role: Optional[pulumi.Input[bool]] = None,
                  auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
                  behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -926,6 +965,7 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
+            __props__.__dict__["administrative_unit_ids"] = administrative_unit_ids
             __props__.__dict__["assignable_to_role"] = assignable_to_role
             __props__.__dict__["auto_subscribe_new_members"] = auto_subscribe_new_members
             __props__.__dict__["behaviors"] = behaviors
@@ -966,6 +1006,7 @@ class Group(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            administrative_unit_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             assignable_to_role: Optional[pulumi.Input[bool]] = None,
             auto_subscribe_new_members: Optional[pulumi.Input[bool]] = None,
             behaviors: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1001,6 +1042,7 @@ class Group(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
         :param pulumi.Input[bool] assignable_to_role: Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[bool] auto_subscribe_new_members: Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] behaviors: A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
@@ -1034,6 +1076,7 @@ class Group(pulumi.CustomResource):
 
         __props__ = _GroupState.__new__(_GroupState)
 
+        __props__.__dict__["administrative_unit_ids"] = administrative_unit_ids
         __props__.__dict__["assignable_to_role"] = assignable_to_role
         __props__.__dict__["auto_subscribe_new_members"] = auto_subscribe_new_members
         __props__.__dict__["behaviors"] = behaviors
@@ -1063,6 +1106,14 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["types"] = types
         __props__.__dict__["visibility"] = visibility
         return Group(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="administrativeUnitIds")
+    def administrative_unit_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+        """
+        return pulumi.get(self, "administrative_unit_ids")
 
     @property
     @pulumi.getter(name="assignableToRole")

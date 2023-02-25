@@ -19,6 +19,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     public static final GroupState Empty = new GroupState();
 
     /**
+     * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+     * 
+     */
+    @Import(name="administrativeUnitIds")
+    private @Nullable Output<List<String>> administrativeUnitIds;
+
+    /**
+     * @return The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+     * 
+     */
+    public Optional<Output<List<String>>> administrativeUnitIds() {
+        return Optional.ofNullable(this.administrativeUnitIds);
+    }
+
+    /**
      * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
      * 
      */
@@ -441,6 +456,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     private GroupState() {}
 
     private GroupState(GroupState $) {
+        this.administrativeUnitIds = $.administrativeUnitIds;
         this.assignableToRole = $.assignableToRole;
         this.autoSubscribeNewMembers = $.autoSubscribeNewMembers;
         this.behaviors = $.behaviors;
@@ -487,6 +503,37 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(GroupState defaults) {
             $ = new GroupState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder administrativeUnitIds(@Nullable Output<List<String>> administrativeUnitIds) {
+            $.administrativeUnitIds = administrativeUnitIds;
+            return this;
+        }
+
+        /**
+         * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder administrativeUnitIds(List<String> administrativeUnitIds) {
+            return administrativeUnitIds(Output.of(administrativeUnitIds));
+        }
+
+        /**
+         * @param administrativeUnitIds The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder administrativeUnitIds(String... administrativeUnitIds) {
+            return administrativeUnitIds(List.of(administrativeUnitIds));
         }
 
         /**

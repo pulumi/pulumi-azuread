@@ -58,4 +58,6 @@ type GetDirectoryRolesResult struct {
 	ObjectIds []string `pulumi:"objectIds"`
 	// A list of users. Each `role` object provides the attributes documented below.
 	Roles []GetDirectoryRolesRole `pulumi:"roles"`
+	// The template IDs of the roles.
+	TemplateIds []string `pulumi:"templateIds"`
 }

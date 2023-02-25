@@ -129,6 +129,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The Hostname which should be used for the Azure Metadata Service.
+     * 
+     */
+    @Import(name="metadataHost", required=true)
+    private Output<String> metadataHost;
+
+    /**
+     * @return The Hostname which should be used for the Azure Metadata Service.
+     * 
+     */
+    public Output<String> metadataHost() {
+        return this.metadataHost;
+    }
+
+    /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      * 
      */
@@ -292,6 +307,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clientSecret = $.clientSecret;
         this.disableTerraformPartnerId = $.disableTerraformPartnerId;
         this.environment = $.environment;
+        this.metadataHost = $.metadataHost;
         this.msiEndpoint = $.msiEndpoint;
         this.oidcRequestToken = $.oidcRequestToken;
         this.oidcRequestUrl = $.oidcRequestUrl;
@@ -473,6 +489,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder environment(String environment) {
             return environment(Output.of(environment));
+        }
+
+        /**
+         * @param metadataHost The Hostname which should be used for the Azure Metadata Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataHost(Output<String> metadataHost) {
+            $.metadataHost = metadataHost;
+            return this;
+        }
+
+        /**
+         * @param metadataHost The Hostname which should be used for the Azure Metadata Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metadataHost(String metadataHost) {
+            return metadataHost(Output.of(metadataHost));
         }
 
         /**
@@ -691,6 +728,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public ProviderArgs build() {
             $.environment = Codegen.stringProp("environment").output().arg($.environment).env("ARM_ENVIRONMENT").def("public").getNullable();
+            $.metadataHost = Objects.requireNonNull($.metadataHost, "expected parameter 'metadataHost' to be non-null");
             $.msiEndpoint = Codegen.stringProp("msiEndpoint").output().arg($.msiEndpoint).env("ARM_MSI_ENDPOINT").getNullable();
             $.useMsi = Codegen.booleanProp("useMsi").output().arg($.useMsi).env("ARM_USE_MSI").def(false).getNullable();
             return $;

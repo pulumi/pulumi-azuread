@@ -27,6 +27,7 @@ class ApplicationArgs:
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input['ApplicationOptionalClaimsArgs']] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -46,7 +47,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input['ApplicationApiArgs'] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
@@ -54,6 +55,7 @@ class ApplicationArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
@@ -64,7 +66,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
@@ -90,6 +92,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "logo_image", logo_image)
         if marketing_url is not None:
             pulumi.set(__self__, "marketing_url", marketing_url)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
         if oauth2_post_response_required is not None:
             pulumi.set(__self__, "oauth2_post_response_required", oauth2_post_response_required)
         if optional_claims is not None:
@@ -159,7 +163,7 @@ class ApplicationArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        A description of the application, as shown to end users.
         """
         return pulumi.get(self, "description")
 
@@ -250,6 +254,18 @@ class ApplicationArgs:
     @marketing_url.setter
     def marketing_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "marketing_url", value)
+
+    @property
+    @pulumi.getter
+    def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-specified notes relevant for the management of the application.
+        """
+        return pulumi.get(self, "notes")
+
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notes", value)
 
     @property
     @pulumi.getter(name="oauth2PostResponseRequired")
@@ -375,7 +391,7 @@ class ApplicationArgs:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         """
         return pulumi.get(self, "tags")
 
@@ -438,6 +454,7 @@ class _ApplicationState:
                  logo_image: Optional[pulumi.Input[str]] = None,
                  logo_url: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
                  oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
@@ -461,7 +478,7 @@ class _ApplicationState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationAppRoleArgs']]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
-        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
@@ -472,6 +489,7 @@ class _ApplicationState:
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] logo_url: CDN URL to the application's logo, as uploaded with the `logo_image` property.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
@@ -485,7 +503,7 @@ class _ApplicationState:
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
@@ -520,6 +538,8 @@ class _ApplicationState:
             pulumi.set(__self__, "logo_url", logo_url)
         if marketing_url is not None:
             pulumi.set(__self__, "marketing_url", marketing_url)
+        if notes is not None:
+            pulumi.set(__self__, "notes", notes)
         if oauth2_permission_scope_ids is not None:
             pulumi.set(__self__, "oauth2_permission_scope_ids", oauth2_permission_scope_ids)
         if oauth2_post_response_required is not None:
@@ -607,7 +627,7 @@ class _ApplicationState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        A description of the application, as shown to end users.
         """
         return pulumi.get(self, "description")
 
@@ -734,6 +754,18 @@ class _ApplicationState:
     @marketing_url.setter
     def marketing_url(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "marketing_url", value)
+
+    @property
+    @pulumi.getter
+    def notes(self) -> Optional[pulumi.Input[str]]:
+        """
+        User-specified notes relevant for the management of the application.
+        """
+        return pulumi.get(self, "notes")
+
+    @notes.setter
+    def notes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "notes", value)
 
     @property
     @pulumi.getter(name="oauth2PermissionScopeIds")
@@ -895,7 +927,7 @@ class _ApplicationState:
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         """
         return pulumi.get(self, "tags")
 
@@ -956,6 +988,7 @@ class Application(pulumi.CustomResource):
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1120,7 +1153,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ApplicationApiArgs']] api: An `api` block as documented below, which configures API related settings for this application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
@@ -1129,6 +1162,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
@@ -1139,7 +1173,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
@@ -1321,6 +1355,7 @@ class Application(pulumi.CustomResource):
                  identifier_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logo_image: Optional[pulumi.Input[str]] = None,
                  marketing_url: Optional[pulumi.Input[str]] = None,
+                 notes: Optional[pulumi.Input[str]] = None,
                  oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
                  optional_claims: Optional[pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1357,6 +1392,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["identifier_uris"] = identifier_uris
             __props__.__dict__["logo_image"] = logo_image
             __props__.__dict__["marketing_url"] = marketing_url
+            __props__.__dict__["notes"] = notes
             __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
             __props__.__dict__["optional_claims"] = optional_claims
             __props__.__dict__["owners"] = owners
@@ -1403,6 +1439,7 @@ class Application(pulumi.CustomResource):
             logo_image: Optional[pulumi.Input[str]] = None,
             logo_url: Optional[pulumi.Input[str]] = None,
             marketing_url: Optional[pulumi.Input[str]] = None,
+            notes: Optional[pulumi.Input[str]] = None,
             oauth2_permission_scope_ids: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             oauth2_post_response_required: Optional[pulumi.Input[bool]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
@@ -1431,7 +1468,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] app_role_ids: A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationAppRoleArgs']]]] app_roles: A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
         :param pulumi.Input[str] application_id: The Application ID (also called Client ID).
-        :param pulumi.Input[str] description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        :param pulumi.Input[str] description: A description of the application, as shown to end users.
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[str] disabled_by_microsoft: Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
         :param pulumi.Input[str] display_name: The display name for the application.
@@ -1442,6 +1479,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
         :param pulumi.Input[str] logo_url: CDN URL to the application's logo, as uploaded with the `logo_image` property.
         :param pulumi.Input[str] marketing_url: URL of the application's marketing page.
+        :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] oauth2_permission_scope_ids: A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
@@ -1455,7 +1493,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
@@ -1479,6 +1517,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["logo_image"] = logo_image
         __props__.__dict__["logo_url"] = logo_url
         __props__.__dict__["marketing_url"] = marketing_url
+        __props__.__dict__["notes"] = notes
         __props__.__dict__["oauth2_permission_scope_ids"] = oauth2_permission_scope_ids
         __props__.__dict__["oauth2_post_response_required"] = oauth2_post_response_required
         __props__.__dict__["object_id"] = object_id
@@ -1534,7 +1573,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        A description of the application, as shown to end users.
         """
         return pulumi.get(self, "description")
 
@@ -1617,6 +1656,14 @@ class Application(pulumi.CustomResource):
         URL of the application's marketing page.
         """
         return pulumi.get(self, "marketing_url")
+
+    @property
+    @pulumi.getter
+    def notes(self) -> pulumi.Output[Optional[str]]:
+        """
+        User-specified notes relevant for the management of the application.
+        """
+        return pulumi.get(self, "notes")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopeIds")
@@ -1726,7 +1773,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         """
         return pulumi.get(self, "tags")
 

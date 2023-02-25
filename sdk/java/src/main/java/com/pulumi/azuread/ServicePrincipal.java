@@ -572,14 +572,14 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.signInAudience;
     }
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     public Output<List<String>> tags() {

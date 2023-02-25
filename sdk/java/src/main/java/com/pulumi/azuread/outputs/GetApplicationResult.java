@@ -41,6 +41,11 @@ public final class GetApplicationResult {
      */
     private String applicationId;
     /**
+     * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * 
+     */
+    private String description;
+    /**
      * @return Specifies whether this application supports device authentication without a user.
      * 
      */
@@ -90,6 +95,11 @@ public final class GetApplicationResult {
      * 
      */
     private String marketingUrl;
+    /**
+     * @return User-specified notes relevant for the management of the application.
+     * 
+     */
+    private String notes;
     /**
      * @return A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      * 
@@ -196,6 +206,13 @@ public final class GetApplicationResult {
         return this.applicationId;
     }
     /**
+     * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * 
+     */
+    public String description() {
+        return this.description;
+    }
+    /**
      * @return Specifies whether this application supports device authentication without a user.
      * 
      */
@@ -264,6 +281,13 @@ public final class GetApplicationResult {
      */
     public String marketingUrl() {
         return this.marketingUrl;
+    }
+    /**
+     * @return User-specified notes relevant for the management of the application.
+     * 
+     */
+    public String notes() {
+        return this.notes;
     }
     /**
      * @return A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
@@ -384,6 +408,7 @@ public final class GetApplicationResult {
         private Map<String,String> appRoleIds;
         private List<GetApplicationAppRole> appRoles;
         private String applicationId;
+        private String description;
         private Boolean deviceOnlyAuthEnabled;
         private String disabledByMicrosoft;
         private String displayName;
@@ -394,6 +419,7 @@ public final class GetApplicationResult {
         private List<String> identifierUris;
         private String logoUrl;
         private String marketingUrl;
+        private String notes;
         private Map<String,String> oauth2PermissionScopeIds;
         private Boolean oauth2PostResponseRequired;
         private String objectId;
@@ -416,6 +442,7 @@ public final class GetApplicationResult {
     	      this.appRoleIds = defaults.appRoleIds;
     	      this.appRoles = defaults.appRoles;
     	      this.applicationId = defaults.applicationId;
+    	      this.description = defaults.description;
     	      this.deviceOnlyAuthEnabled = defaults.deviceOnlyAuthEnabled;
     	      this.disabledByMicrosoft = defaults.disabledByMicrosoft;
     	      this.displayName = defaults.displayName;
@@ -426,6 +453,7 @@ public final class GetApplicationResult {
     	      this.identifierUris = defaults.identifierUris;
     	      this.logoUrl = defaults.logoUrl;
     	      this.marketingUrl = defaults.marketingUrl;
+    	      this.notes = defaults.notes;
     	      this.oauth2PermissionScopeIds = defaults.oauth2PermissionScopeIds;
     	      this.oauth2PostResponseRequired = defaults.oauth2PostResponseRequired;
     	      this.objectId = defaults.objectId;
@@ -467,6 +495,11 @@ public final class GetApplicationResult {
         @CustomType.Setter
         public Builder applicationId(String applicationId) {
             this.applicationId = Objects.requireNonNull(applicationId);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder description(String description) {
+            this.description = Objects.requireNonNull(description);
             return this;
         }
         @CustomType.Setter
@@ -526,6 +559,11 @@ public final class GetApplicationResult {
         @CustomType.Setter
         public Builder marketingUrl(String marketingUrl) {
             this.marketingUrl = Objects.requireNonNull(marketingUrl);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder notes(String notes) {
+            this.notes = Objects.requireNonNull(notes);
             return this;
         }
         @CustomType.Setter
@@ -630,6 +668,7 @@ public final class GetApplicationResult {
             o.appRoleIds = appRoleIds;
             o.appRoles = appRoles;
             o.applicationId = applicationId;
+            o.description = description;
             o.deviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
             o.disabledByMicrosoft = disabledByMicrosoft;
             o.displayName = displayName;
@@ -640,6 +679,7 @@ public final class GetApplicationResult {
             o.identifierUris = identifierUris;
             o.logoUrl = logoUrl;
             o.marketingUrl = marketingUrl;
+            o.notes = notes;
             o.oauth2PermissionScopeIds = oauth2PermissionScopeIds;
             o.oauth2PostResponseRequired = oauth2PostResponseRequired;
             o.objectId = objectId;

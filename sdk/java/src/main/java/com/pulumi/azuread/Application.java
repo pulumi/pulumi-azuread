@@ -280,14 +280,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return this.applicationId;
     }
     /**
-     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * A description of the application, as shown to end users.
      * 
      */
     @Export(name="description", type=String.class, parameters={})
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * @return A description of the application, as shown to end users.
      * 
      */
     public Output<Optional<String>> description() {
@@ -432,6 +432,20 @@ public class Application extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> marketingUrl() {
         return Codegen.optional(this.marketingUrl);
+    }
+    /**
+     * User-specified notes relevant for the management of the application.
+     * 
+     */
+    @Export(name="notes", type=String.class, parameters={})
+    private Output</* @Nullable */ String> notes;
+
+    /**
+     * @return User-specified notes relevant for the management of the application.
+     * 
+     */
+    public Output<Optional<String>> notes() {
+        return Codegen.optional(this.notes);
     }
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
@@ -616,14 +630,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.supportUrl);
     }
     /**
-     * A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     public Output<List<String>> tags() {
