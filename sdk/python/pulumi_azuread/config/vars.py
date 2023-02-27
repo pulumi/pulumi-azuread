@@ -68,6 +68,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('environment') or (_utilities.get_env('ARM_ENVIRONMENT') or 'public')
 
     @property
+    def metadata_host(self) -> Optional[str]:
+        """
+        The Hostname which should be used for the Azure Metadata Service.
+        """
+        return __config__.get('metadataHost')
+
+    @property
     def msi_endpoint(self) -> Optional[str]:
         """
         The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically

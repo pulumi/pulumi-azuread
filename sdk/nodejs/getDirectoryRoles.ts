@@ -50,4 +50,8 @@ export interface GetDirectoryRolesResult {
      * A list of users. Each `role` object provides the attributes documented below.
      */
     readonly roles: outputs.GetDirectoryRolesRole[];
+    /**
+     * The template IDs of the roles.
+     */
+    readonly templateIds: string[];
 }

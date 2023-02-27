@@ -88,6 +88,17 @@ Object.defineProperty(exports, "environment", {
 });
 
 /**
+ * The Hostname which should be used for the Azure Metadata Service.
+ */
+export declare const metadataHost: string | undefined;
+Object.defineProperty(exports, "metadataHost", {
+    get() {
+        return __config.get("metadataHost");
+    },
+    enumerable: true,
+});
+
+/**
  * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
  */
 export declare const msiEndpoint: string | undefined;

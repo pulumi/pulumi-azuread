@@ -75,6 +75,8 @@ type LookupApplicationResult struct {
 	AppRoles []GetApplicationAppRole `pulumi:"appRoles"`
 	// The Application ID (also called Client ID).
 	ApplicationId string `pulumi:"applicationId"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description string `pulumi:"description"`
 	// Specifies whether this application supports device authentication without a user.
 	DeviceOnlyAuthEnabled bool `pulumi:"deviceOnlyAuthEnabled"`
 	// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
@@ -95,6 +97,8 @@ type LookupApplicationResult struct {
 	LogoUrl string `pulumi:"logoUrl"`
 	// URL of the application's marketing page.
 	MarketingUrl string `pulumi:"marketingUrl"`
+	// User-specified notes relevant for the management of the application.
+	Notes string `pulumi:"notes"`
 	// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
 	Oauth2PermissionScopeIds map[string]string `pulumi:"oauth2PermissionScopeIds"`
 	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
@@ -189,6 +193,11 @@ func (o LookupApplicationResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+func (o LookupApplicationResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
 // Specifies whether this application supports device authentication without a user.
 func (o LookupApplicationResultOutput) DeviceOnlyAuthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationResult) bool { return v.DeviceOnlyAuthEnabled }).(pulumi.BoolOutput)
@@ -237,6 +246,11 @@ func (o LookupApplicationResultOutput) LogoUrl() pulumi.StringOutput {
 // URL of the application's marketing page.
 func (o LookupApplicationResultOutput) MarketingUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.MarketingUrl }).(pulumi.StringOutput)
+}
+
+// User-specified notes relevant for the management of the application.
+func (o LookupApplicationResultOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.Notes }).(pulumi.StringOutput)
 }
 
 // A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.

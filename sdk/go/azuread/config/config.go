@@ -50,6 +50,11 @@ func GetEnvironment(ctx *pulumi.Context) string {
 	return getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string)
 }
 
+// The Hostname which should be used for the Azure Metadata Service.
+func GetMetadataHost(ctx *pulumi.Context) string {
+	return config.Get(ctx, "azuread:metadataHost")
+}
+
 // The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
 func GetMsiEndpoint(ctx *pulumi.Context) string {
 	v, err := config.Try(ctx, "azuread:msiEndpoint")

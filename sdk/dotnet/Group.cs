@@ -24,6 +24,8 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
     /// 
+    /// When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
+    /// 
     /// The `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
     /// 
     /// ## Import
@@ -37,6 +39,12 @@ namespace Pulumi.AzureAD
     [AzureADResourceType("azuread:index/group:Group")]
     public partial class Group : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+        /// </summary>
+        [Output("administrativeUnitIds")]
+        public Output<ImmutableArray<string>> AdministrativeUnitIds { get; private set; } = null!;
+
         /// <summary>
         /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         /// </summary>
@@ -251,6 +259,18 @@ namespace Pulumi.AzureAD
 
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
+        [Input("administrativeUnitIds")]
+        private InputList<string>? _administrativeUnitIds;
+
+        /// <summary>
+        /// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+        /// </summary>
+        public InputList<string> AdministrativeUnitIds
+        {
+            get => _administrativeUnitIds ?? (_administrativeUnitIds = new InputList<string>());
+            set => _administrativeUnitIds = value;
+        }
+
         /// <summary>
         /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         /// </summary>
@@ -403,6 +423,18 @@ namespace Pulumi.AzureAD
 
     public sealed class GroupState : global::Pulumi.ResourceArgs
     {
+        [Input("administrativeUnitIds")]
+        private InputList<string>? _administrativeUnitIds;
+
+        /// <summary>
+        /// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+        /// </summary>
+        public InputList<string> AdministrativeUnitIds
+        {
+            get => _administrativeUnitIds ?? (_administrativeUnitIds = new InputList<string>());
+            set => _administrativeUnitIds = value;
+        }
+
         /// <summary>
         /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
         /// </summary>

@@ -164,6 +164,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string ApplicationId;
         /// <summary>
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// </summary>
+        public readonly string Description;
+        /// <summary>
         /// Specifies whether this application supports device authentication without a user.
         /// </summary>
         public readonly bool DeviceOnlyAuthEnabled;
@@ -203,6 +207,10 @@ namespace Pulumi.AzureAD
         /// URL of the application's marketing page.
         /// </summary>
         public readonly string MarketingUrl;
+        /// <summary>
+        /// User-specified notes relevant for the management of the application.
+        /// </summary>
+        public readonly string Notes;
         /// <summary>
         /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
         /// </summary>
@@ -274,6 +282,8 @@ namespace Pulumi.AzureAD
 
             string applicationId,
 
+            string description,
+
             bool deviceOnlyAuthEnabled,
 
             string disabledByMicrosoft,
@@ -293,6 +303,8 @@ namespace Pulumi.AzureAD
             string logoUrl,
 
             string marketingUrl,
+
+            string notes,
 
             ImmutableDictionary<string, string> oauth2PermissionScopeIds,
 
@@ -328,6 +340,7 @@ namespace Pulumi.AzureAD
             AppRoleIds = appRoleIds;
             AppRoles = appRoles;
             ApplicationId = applicationId;
+            Description = description;
             DeviceOnlyAuthEnabled = deviceOnlyAuthEnabled;
             DisabledByMicrosoft = disabledByMicrosoft;
             DisplayName = displayName;
@@ -338,6 +351,7 @@ namespace Pulumi.AzureAD
             IdentifierUris = identifierUris;
             LogoUrl = logoUrl;
             MarketingUrl = marketingUrl;
+            Notes = notes;
             Oauth2PermissionScopeIds = oauth2PermissionScopeIds;
             Oauth2PostResponseRequired = oauth2PostResponseRequired;
             ObjectId = objectId;

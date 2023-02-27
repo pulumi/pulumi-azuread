@@ -201,7 +201,7 @@ export class Application extends pulumi.CustomResource {
      */
     public /*out*/ readonly applicationId!: pulumi.Output<string>;
     /**
-     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * A description of the application, as shown to end users.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -244,6 +244,10 @@ export class Application extends pulumi.CustomResource {
      * URL of the application's marketing page.
      */
     public readonly marketingUrl!: pulumi.Output<string | undefined>;
+    /**
+     * User-specified notes relevant for the management of the application.
+     */
+    public readonly notes!: pulumi.Output<string | undefined>;
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
@@ -297,7 +301,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly supportUrl!: pulumi.Output<string | undefined>;
     /**
-     * A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
@@ -341,6 +345,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["logoImage"] = state ? state.logoImage : undefined;
             resourceInputs["logoUrl"] = state ? state.logoUrl : undefined;
             resourceInputs["marketingUrl"] = state ? state.marketingUrl : undefined;
+            resourceInputs["notes"] = state ? state.notes : undefined;
             resourceInputs["oauth2PermissionScopeIds"] = state ? state.oauth2PermissionScopeIds : undefined;
             resourceInputs["oauth2PostResponseRequired"] = state ? state.oauth2PostResponseRequired : undefined;
             resourceInputs["objectId"] = state ? state.objectId : undefined;
@@ -374,6 +379,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["identifierUris"] = args ? args.identifierUris : undefined;
             resourceInputs["logoImage"] = args ? args.logoImage : undefined;
             resourceInputs["marketingUrl"] = args ? args.marketingUrl : undefined;
+            resourceInputs["notes"] = args ? args.notes : undefined;
             resourceInputs["oauth2PostResponseRequired"] = args ? args.oauth2PostResponseRequired : undefined;
             resourceInputs["optionalClaims"] = args ? args.optionalClaims : undefined;
             resourceInputs["owners"] = args ? args.owners : undefined;
@@ -422,7 +428,7 @@ export interface ApplicationState {
      */
     applicationId?: pulumi.Input<string>;
     /**
-     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * A description of the application, as shown to end users.
      */
     description?: pulumi.Input<string>;
     /**
@@ -465,6 +471,10 @@ export interface ApplicationState {
      * URL of the application's marketing page.
      */
     marketingUrl?: pulumi.Input<string>;
+    /**
+     * User-specified notes relevant for the management of the application.
+     */
+    notes?: pulumi.Input<string>;
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */
@@ -518,7 +528,7 @@ export interface ApplicationState {
      */
     supportUrl?: pulumi.Input<string>;
     /**
-     * A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -548,7 +558,7 @@ export interface ApplicationArgs {
      */
     appRoles?: pulumi.Input<pulumi.Input<inputs.ApplicationAppRole>[]>;
     /**
-     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * A description of the application, as shown to end users.
      */
     description?: pulumi.Input<string>;
     /**
@@ -583,6 +593,10 @@ export interface ApplicationArgs {
      * URL of the application's marketing page.
      */
     marketingUrl?: pulumi.Input<string>;
+    /**
+     * User-specified notes relevant for the management of the application.
+     */
+    notes?: pulumi.Input<string>;
     /**
      * Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
      */
@@ -624,7 +638,7 @@ export interface ApplicationArgs {
      */
     supportUrl?: pulumi.Input<string>;
     /**
-     * A set of tags to apply to the application. Cannot be used together with the `featureTags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**

@@ -87,14 +87,14 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * A description of the application, as shown to end users.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     * @return A description of the application, as shown to end users.
      * 
      */
     public Optional<Output<String>> description() {
@@ -249,6 +249,21 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> marketingUrl() {
         return Optional.ofNullable(this.marketingUrl);
+    }
+
+    /**
+     * User-specified notes relevant for the management of the application.
+     * 
+     */
+    @Import(name="notes")
+    private @Nullable Output<String> notes;
+
+    /**
+     * @return User-specified notes relevant for the management of the application.
+     * 
+     */
+    public Optional<Output<String>> notes() {
+        return Optional.ofNullable(this.notes);
     }
 
     /**
@@ -447,14 +462,14 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -524,6 +539,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.logoImage = $.logoImage;
         this.logoUrl = $.logoUrl;
         this.marketingUrl = $.marketingUrl;
+        this.notes = $.notes;
         this.oauth2PermissionScopeIds = $.oauth2PermissionScopeIds;
         this.oauth2PostResponseRequired = $.oauth2PostResponseRequired;
         this.objectId = $.objectId;
@@ -656,7 +672,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+         * @param description A description of the application, as shown to end users.
          * 
          * @return builder
          * 
@@ -667,7 +683,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+         * @param description A description of the application, as shown to end users.
          * 
          * @return builder
          * 
@@ -914,6 +930,27 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder marketingUrl(String marketingUrl) {
             return marketingUrl(Output.of(marketingUrl));
+        }
+
+        /**
+         * @param notes User-specified notes relevant for the management of the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notes(@Nullable Output<String> notes) {
+            $.notes = notes;
+            return this;
+        }
+
+        /**
+         * @param notes User-specified notes relevant for the management of the application.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder notes(String notes) {
+            return notes(Output.of(notes));
         }
 
         /**
@@ -1210,7 +1247,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
          * 
          * @return builder
          * 
@@ -1221,7 +1258,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
          * 
          * @return builder
          * 
@@ -1231,7 +1268,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
          * 
          * @return builder
          * 

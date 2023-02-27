@@ -22,7 +22,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
+    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -35,6 +35,9 @@ class GetApplicationResult:
         if application_id and not isinstance(application_id, str):
             raise TypeError("Expected argument 'application_id' to be a str")
         pulumi.set(__self__, "application_id", application_id)
+        if description and not isinstance(description, str):
+            raise TypeError("Expected argument 'description' to be a str")
+        pulumi.set(__self__, "description", description)
         if device_only_auth_enabled and not isinstance(device_only_auth_enabled, bool):
             raise TypeError("Expected argument 'device_only_auth_enabled' to be a bool")
         pulumi.set(__self__, "device_only_auth_enabled", device_only_auth_enabled)
@@ -65,6 +68,9 @@ class GetApplicationResult:
         if marketing_url and not isinstance(marketing_url, str):
             raise TypeError("Expected argument 'marketing_url' to be a str")
         pulumi.set(__self__, "marketing_url", marketing_url)
+        if notes and not isinstance(notes, str):
+            raise TypeError("Expected argument 'notes' to be a str")
+        pulumi.set(__self__, "notes", notes)
         if oauth2_permission_scope_ids and not isinstance(oauth2_permission_scope_ids, dict):
             raise TypeError("Expected argument 'oauth2_permission_scope_ids' to be a dict")
         pulumi.set(__self__, "oauth2_permission_scope_ids", oauth2_permission_scope_ids)
@@ -142,6 +148,14 @@ class GetApplicationResult:
         The Application ID (also called Client ID).
         """
         return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        """
+        return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceOnlyAuthEnabled")
@@ -222,6 +236,14 @@ class GetApplicationResult:
         URL of the application's marketing page.
         """
         return pulumi.get(self, "marketing_url")
+
+    @property
+    @pulumi.getter
+    def notes(self) -> str:
+        """
+        User-specified notes relevant for the management of the application.
+        """
+        return pulumi.get(self, "notes")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopeIds")
@@ -354,6 +376,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             app_role_ids=self.app_role_ids,
             app_roles=self.app_roles,
             application_id=self.application_id,
+            description=self.description,
             device_only_auth_enabled=self.device_only_auth_enabled,
             disabled_by_microsoft=self.disabled_by_microsoft,
             display_name=self.display_name,
@@ -364,6 +387,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             identifier_uris=self.identifier_uris,
             logo_url=self.logo_url,
             marketing_url=self.marketing_url,
+            notes=self.notes,
             oauth2_permission_scope_ids=self.oauth2_permission_scope_ids,
             oauth2_post_response_required=self.oauth2_post_response_required,
             object_id=self.object_id,
@@ -423,6 +447,7 @@ def get_application(application_id: Optional[str] = None,
         app_role_ids=__ret__.app_role_ids,
         app_roles=__ret__.app_roles,
         application_id=__ret__.application_id,
+        description=__ret__.description,
         device_only_auth_enabled=__ret__.device_only_auth_enabled,
         disabled_by_microsoft=__ret__.disabled_by_microsoft,
         display_name=__ret__.display_name,
@@ -433,6 +458,7 @@ def get_application(application_id: Optional[str] = None,
         identifier_uris=__ret__.identifier_uris,
         logo_url=__ret__.logo_url,
         marketing_url=__ret__.marketing_url,
+        notes=__ret__.notes,
         oauth2_permission_scope_ids=__ret__.oauth2_permission_scope_ids,
         oauth2_post_response_required=__ret__.oauth2_post_response_required,
         object_id=__ret__.object_id,

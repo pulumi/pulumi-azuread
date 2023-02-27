@@ -53,6 +53,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     public readonly environment!: pulumi.Output<string | undefined>;
     /**
+     * The Hostname which should be used for the Azure Metadata Service.
+     */
+    public readonly metadataHost!: pulumi.Output<string>;
+    /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */
     public readonly msiEndpoint!: pulumi.Output<string | undefined>;
@@ -90,10 +94,13 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            if ((!args || args.metadataHost === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metadataHost'");
+            }
             resourceInputs["clientCertificate"] = args ? args.clientCertificate : undefined;
             resourceInputs["clientCertificatePassword"] = args ? args.clientCertificatePassword : undefined;
             resourceInputs["clientCertificatePath"] = args ? args.clientCertificatePath : undefined;
@@ -101,6 +108,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clientSecret"] = args ? args.clientSecret : undefined;
             resourceInputs["disableTerraformPartnerId"] = pulumi.output(args ? args.disableTerraformPartnerId : undefined).apply(JSON.stringify);
             resourceInputs["environment"] = (args ? args.environment : undefined) ?? (utilities.getEnv("ARM_ENVIRONMENT") || "public");
+            resourceInputs["metadataHost"] = args ? args.metadataHost : undefined;
             resourceInputs["msiEndpoint"] = (args ? args.msiEndpoint : undefined) ?? utilities.getEnv("ARM_MSI_ENDPOINT");
             resourceInputs["oidcRequestToken"] = args ? args.oidcRequestToken : undefined;
             resourceInputs["oidcRequestUrl"] = args ? args.oidcRequestUrl : undefined;
@@ -152,6 +160,10 @@ export interface ProviderArgs {
      * `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
      */
     environment?: pulumi.Input<string>;
+    /**
+     * The Hostname which should be used for the Azure Metadata Service.
+     */
+    metadataHost: pulumi.Input<string>;
     /**
      * The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically
      */

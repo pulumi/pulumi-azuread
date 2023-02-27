@@ -21,7 +21,7 @@ class GetDirectoryRolesResult:
     """
     A collection of values returned by getDirectoryRoles.
     """
-    def __init__(__self__, id=None, object_ids=None, roles=None):
+    def __init__(__self__, id=None, object_ids=None, roles=None, template_ids=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -31,6 +31,9 @@ class GetDirectoryRolesResult:
         if roles and not isinstance(roles, list):
             raise TypeError("Expected argument 'roles' to be a list")
         pulumi.set(__self__, "roles", roles)
+        if template_ids and not isinstance(template_ids, list):
+            raise TypeError("Expected argument 'template_ids' to be a list")
+        pulumi.set(__self__, "template_ids", template_ids)
 
     @property
     @pulumi.getter
@@ -56,6 +59,14 @@ class GetDirectoryRolesResult:
         """
         return pulumi.get(self, "roles")
 
+    @property
+    @pulumi.getter(name="templateIds")
+    def template_ids(self) -> Sequence[str]:
+        """
+        The template IDs of the roles.
+        """
+        return pulumi.get(self, "template_ids")
+
 
 class AwaitableGetDirectoryRolesResult(GetDirectoryRolesResult):
     # pylint: disable=using-constant-test
@@ -65,7 +76,8 @@ class AwaitableGetDirectoryRolesResult(GetDirectoryRolesResult):
         return GetDirectoryRolesResult(
             id=self.id,
             object_ids=self.object_ids,
-            roles=self.roles)
+            roles=self.roles,
+            template_ids=self.template_ids)
 
 
 def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryRolesResult:
@@ -97,4 +109,5 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     return AwaitableGetDirectoryRolesResult(
         id=__ret__.id,
         object_ids=__ret__.object_ids,
-        roles=__ret__.roles)
+        roles=__ret__.roles,
+        template_ids=__ret__.template_ids)

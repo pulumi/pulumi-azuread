@@ -21,16 +21,17 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/manicminer/hamilton/auth"
-	"github.com/manicminer/hamilton/environments"
+	"github.com/hashicorp/go-azure-sdk/sdk/auth"
+	"github.com/hashicorp/go-azure-sdk/sdk/environments"
+
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/hashicorp/terraform-provider-azuread/shim"
 	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfshim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 )
 
 // all of the token components used below.
@@ -111,26 +112,26 @@ func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) er
 		envName = "public"
 	}
 
-	env, err := environments.EnvironmentFromString(envName)
+	env, err := environments.FromName(envName)
 	if err != nil {
 		return fmt.Errorf("failed to read Azure environment \"%s\": %v", envName, err)
 	}
 
-	authConfig := &auth.Config{
-		Environment:            env,
-		EnableClientSecretAuth: true,
-		EnableAzureCliToken:    true,
-		TenantID:               stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
-		ClientID:               stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
-		ClientSecret:           stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
+	authConfig := auth.Credentials{
+		Environment:                           *env,
+		EnableAuthenticatingUsingClientSecret: true,
+		EnableAuthenticatingUsingAzureCLI:     true,
+		TenantID:                              stringValue(vars, "tenantId", []string{"ARM_TENANT_ID"}),
+		ClientID:                              stringValue(vars, "clientId", []string{"ARM_CLIENT_ID"}),
+		ClientSecret:                          stringValue(vars, "clientSecret", []string{"ARM_CLIENT_SECRET"}),
 
-		EnableClientCertAuth: true,
+		EnableAuthenticatingUsingClientCertificate: true,
 		// We don't handle ClientCertData yet, which is the actual base-64 encoded cert in config
-		ClientCertPassword: stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
-		ClientCertPath:     stringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
+		ClientCertificatePassword: stringValue(vars, "clientCertificatePassword", []string{"ARM_CLIENT_CERTIFICATE_PASSWORD"}),
+		ClientCertificatePath:     stringValue(vars, "clientCertificatePath", []string{"ARM_CLIENT_CERTIFICATE_PATH"}),
 
-		EnableMsiAuth: boolValue(vars, "msiEndpoint", []string{"ARM_USE_MSI"}),
-		MsiEndpoint:   stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
+		EnableAuthenticatingUsingManagedIdentity: boolValue(vars, "msiEndpoint", []string{"ARM_USE_MSI"}),
+		CustomManagedIdentityEndpoint:            stringValue(vars, "msiEndpoint", []string{"ARM_MSI_ENDPOINT"}),
 
 		// The configuration below would enable OIDC auth which we haven't tested and documented yet.
 		//FederatedAssertion:        idToken,
@@ -140,7 +141,7 @@ func preConfigureCallback(vars resource.PropertyMap, c tfshim.ResourceConfig) er
 		//EnableGitHubOIDCAuth:      d.Get("use_oidc").(bool),
 	}
 
-	_, err = authConfig.NewAuthorizer(context.Background(), env.MsGraph)
+	_, err = auth.NewAuthorizerFromCredentials(context.Background(), authConfig, env.MicrosoftGraph)
 	if err != nil {
 		return fmt.Errorf("failed to load Azure credentials.\n"+
 			"Details: %v\n\n"+

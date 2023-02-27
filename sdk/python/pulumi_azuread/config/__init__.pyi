@@ -47,6 +47,11 @@ The cloud environment which should be used. Possible values are: `global` (also 
 `usgovernment`), `usgovernmentl5` (also `dod`), and `china`. Defaults to `global`
 """
 
+metadataHost: Optional[str]
+"""
+The Hostname which should be used for the Azure Metadata Service.
+"""
+
 msiEndpoint: Optional[str]
 """
 The path to a custom endpoint for Managed Identity - in most circumstances this should be detected automatically

@@ -224,14 +224,14 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+     * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<String>> tags;
 
     /**
-     * @return A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+     * @return A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -627,7 +627,7 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
          * 
          * @return builder
          * 
@@ -638,7 +638,7 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
          * 
          * @return builder
          * 
@@ -648,7 +648,7 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param tags A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+         * @param tags A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
          * 
          * @return builder
          * 

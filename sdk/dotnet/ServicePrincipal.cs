@@ -303,7 +303,7 @@ namespace Pulumi.AzureAD
         public Output<string> SignInAudience { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -479,7 +479,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         /// </summary>
         public InputList<string> Tags
         {
@@ -728,7 +728,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the service principal. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         /// </summary>
         public InputList<string> Tags
         {

@@ -261,7 +261,7 @@ namespace Pulumi.AzureAD
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// A description of the application, as shown to end users.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -325,6 +325,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("marketingUrl")]
         public Output<string?> MarketingUrl { get; private set; } = null!;
+
+        /// <summary>
+        /// User-specified notes relevant for the management of the application.
+        /// </summary>
+        [Output("notes")]
+        public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
@@ -405,7 +411,7 @@ namespace Pulumi.AzureAD
         public Output<string?> SupportUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
@@ -493,7 +499,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// A description of the application, as shown to end users.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -563,6 +569,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("marketingUrl")]
         public Input<string>? MarketingUrl { get; set; }
+
+        /// <summary>
+        /// User-specified notes relevant for the management of the application.
+        /// </summary>
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
 
         /// <summary>
         /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
@@ -640,7 +652,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         /// </summary>
         public InputList<string> Tags
         {
@@ -711,7 +723,7 @@ namespace Pulumi.AzureAD
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// A description of the application, as shown to end users.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -793,6 +805,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("marketingUrl")]
         public Input<string>? MarketingUrl { get; set; }
+
+        /// <summary>
+        /// User-specified notes relevant for the management of the application.
+        /// </summary>
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
 
         [Input("oauth2PermissionScopeIds")]
         private InputMap<string>? _oauth2PermissionScopeIds;
@@ -894,7 +912,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the application. Cannot be used together with the `feature_tags` block.
+        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
         /// </summary>
         public InputList<string> Tags
         {

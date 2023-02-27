@@ -25,6 +25,8 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
 //
+// When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
+//
 // The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
 //
 // ## Import
@@ -39,6 +41,8 @@ import (
 type Group struct {
 	pulumi.CustomResourceState
 
+	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+	AdministrativeUnitIds pulumi.StringArrayOutput `pulumi:"administrativeUnitIds"`
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
@@ -129,6 +133,8 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
+	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
@@ -188,6 +194,8 @@ type groupState struct {
 }
 
 type GroupState struct {
+	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+	AdministrativeUnitIds pulumi.StringArrayInput
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
@@ -251,6 +259,8 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
+	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
@@ -293,6 +303,8 @@ type groupArgs struct {
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
+	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+	AdministrativeUnitIds pulumi.StringArrayInput
 	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
@@ -418,6 +430,11 @@ func (o GroupOutput) ToGroupOutput() GroupOutput {
 
 func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
+}
+
+// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+func (o GroupOutput) AdministrativeUnitIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AdministrativeUnitIds }).(pulumi.StringArrayOutput)
 }
 
 // Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.

@@ -79,6 +79,10 @@ export interface GetApplicationResult {
      */
     readonly applicationId: string;
     /**
+     * Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+     */
+    readonly description: string;
+    /**
      * Specifies whether this application supports device authentication without a user.
      */
     readonly deviceOnlyAuthEnabled: boolean;
@@ -118,6 +122,10 @@ export interface GetApplicationResult {
      * URL of the application's marketing page.
      */
     readonly marketingUrl: string;
+    /**
+     * User-specified notes relevant for the management of the application.
+     */
+    readonly notes: string;
     /**
      * A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
      */

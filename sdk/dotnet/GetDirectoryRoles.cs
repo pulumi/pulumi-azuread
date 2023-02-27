@@ -64,6 +64,10 @@ namespace Pulumi.AzureAD
         /// A list of users. Each `role` object provides the attributes documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDirectoryRolesRoleResult> Roles;
+        /// <summary>
+        /// The template IDs of the roles.
+        /// </summary>
+        public readonly ImmutableArray<string> TemplateIds;
 
         [OutputConstructor]
         private GetDirectoryRolesResult(
@@ -71,11 +75,14 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<string> objectIds,
 
-            ImmutableArray<Outputs.GetDirectoryRolesRoleResult> roles)
+            ImmutableArray<Outputs.GetDirectoryRolesRoleResult> roles,
+
+            ImmutableArray<string> templateIds)
         {
             Id = id;
             ObjectIds = objectIds;
             Roles = roles;
+            TemplateIds = templateIds;
         }
     }
 }

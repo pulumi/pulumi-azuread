@@ -21,6 +21,8 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
  *
+ * When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
+ *
  * The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
  *
  * ## Import
@@ -59,6 +61,10 @@ export class Group extends pulumi.CustomResource {
         return obj['__pulumiType'] === Group.__pulumiType;
     }
 
+    /**
+     * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+     */
+    public readonly administrativeUnitIds!: pulumi.Output<string[] | undefined>;
     /**
      * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
@@ -185,6 +191,7 @@ export class Group extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GroupState | undefined;
+            resourceInputs["administrativeUnitIds"] = state ? state.administrativeUnitIds : undefined;
             resourceInputs["assignableToRole"] = state ? state.assignableToRole : undefined;
             resourceInputs["autoSubscribeNewMembers"] = state ? state.autoSubscribeNewMembers : undefined;
             resourceInputs["behaviors"] = state ? state.behaviors : undefined;
@@ -218,6 +225,7 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["administrativeUnitIds"] = args ? args.administrativeUnitIds : undefined;
             resourceInputs["assignableToRole"] = args ? args.assignableToRole : undefined;
             resourceInputs["autoSubscribeNewMembers"] = args ? args.autoSubscribeNewMembers : undefined;
             resourceInputs["behaviors"] = args ? args.behaviors : undefined;
@@ -256,6 +264,10 @@ export class Group extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Group resources.
  */
 export interface GroupState {
+    /**
+     * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+     */
+    administrativeUnitIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
@@ -374,6 +386,10 @@ export interface GroupState {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
+    /**
+     * The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
+     */
+    administrativeUnitIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
