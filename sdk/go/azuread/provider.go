@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -63,13 +63,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.MetadataHost == nil {
 		return nil, errors.New("invalid value for required argument 'MetadataHost'")
 	}
-	if isZero(args.Environment) {
+	if args.Environment == nil {
 		args.Environment = pulumi.StringPtr(getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string))
 	}
-	if isZero(args.MsiEndpoint) {
+	if args.MsiEndpoint == nil {
 		args.MsiEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string))
 	}
-	if isZero(args.UseMsi) {
+	if args.UseMsi == nil {
 		args.UseMsi = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI").(bool))
 	}
 	var resource Provider
