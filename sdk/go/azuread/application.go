@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 // import (
 //
 //	"encoding/base64"
-//	"io/ioutil"
+//	"os"
 //
 //	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -29,7 +29,7 @@ import (
 // )
 //
 //	func filebase64OrPanic(path string) pulumi.StringPtrInput {
-//		if fileData, err := ioutil.ReadFile(path); err == nil {
+//		if fileData, err := os.ReadFile(path); err == nil {
 //			return pulumi.String(base64.StdEncoding.EncodeToString(fileData[:]))
 //		} else {
 //			panic(err.Error())
