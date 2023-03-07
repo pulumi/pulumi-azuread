@@ -228,8 +228,8 @@ github.com/hashicorp/terraform-plugin-go v0.14.1 h1:cwZzPYla82XwAqpLhSzdVsOMU+6H
 github.com/hashicorp/terraform-plugin-go v0.14.1/go.mod h1:Bc/K6K26BQ2FHqIELPbpKtt2CzzbQou+0UQF3/0NsCQ=
 github.com/hashicorp/terraform-plugin-log v0.7.0 h1:SDxJUyT8TwN4l5b5/VkiTIaQgY6R+Y2BQ0sRZftGKQs=
 github.com/hashicorp/terraform-plugin-log v0.7.0/go.mod h1:p4R1jWBXRTvL4odmEkFfDdhUjHf9zcs/BCoNHAc7IK4=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230223224332-5896f2d36401 h1:9fKYMQxuMZwl0HTHrCOC3K2nzGmpzDB1h2sr0onKNB0=
-github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230223224332-5896f2d36401/go.mod h1:t9ohbhkX1EkcwrvkpP+oYPr3KW7q6L2kfnLo0tuzDSk=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230302235257-7ddd481b4352 h1:6ov/5e6ea8HRYRwA3JwZKGpMhnUWZFDPTvKfgCGAfQA=
+github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230302235257-7ddd481b4352/go.mod h1:3gvi+tMJX9cwL5DVfJ6MPcKkAfJF7CyaGGfq9lW6CyU=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c h1:D8aRO6+mTqHfLsK/BC3j5OAoogv1WLRWzY1AaTo3rBg=
 github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c/go.mod h1:Wn3Na71knbXc1G8Lh+yu/dQWWJeFQEpDeJMtWMtlmNI=
 github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 h1:HKLsbzeOsfXmKNpr3GiT18XAblV0BjCbzL8KQAMZGa0=
@@ -264,8 +264,8 @@ github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0
 github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+fNqagV/RAw=
 github.com/manicminer/hamilton v0.43.0/go.mod h1:lbVyngC+/nCWuDp8UhC6Bw+bh7jcP/E+YwqzHTmzemk=
 github.com/manicminer/hamilton v0.55.0/go.mod h1:lbVyngC+/nCWuDp8UhC6Bw+bh7jcP/E+YwqzHTmzemk=
-github.com/manicminer/hamilton v0.58.0 h1:aMB8AN2t1sDm1RlC/qDziN3MVhLTY3j+b8rSkqV5U1M=
-github.com/manicminer/hamilton v0.58.0/go.mod h1:kvNZuh/KneyjgSvx/DU/117zjgPDWV7b18LLJivHMa8=
+github.com/manicminer/hamilton v0.59.0 h1:RLGwWamCtTUa53sdAbv04XzRu3e9RwJoPcAN/VReydY=
+github.com/manicminer/hamilton v0.59.0/go.mod h1:kvNZuh/KneyjgSvx/DU/117zjgPDWV7b18LLJivHMa8=
 github.com/manicminer/hamilton-autorest v0.3.0/go.mod h1:NselDpNTImEmOc/fa41kPg6YhDt/6S95ejWbTGZ6tlg=
 github.com/matryer/is v1.2.0/go.mod h1:2fLPjFQM9rhQ15aVEtbuwhJinnOqrmgXPNdZsdwlWXA=
 github.com/mattn/go-colorable v0.1.4/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
