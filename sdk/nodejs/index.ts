@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { AccessPackageArgs, AccessPackageState } from "./accessPackage";
+export type AccessPackage = import("./accessPackage").AccessPackage;
+export const AccessPackage: typeof import("./accessPackage").AccessPackage = null as any;
+utilities.lazyLoad(exports, ["AccessPackage"], () => require("./accessPackage"));
+
+export { AccessPackageAssignmentPolicyArgs, AccessPackageAssignmentPolicyState } from "./accessPackageAssignmentPolicy";
+export type AccessPackageAssignmentPolicy = import("./accessPackageAssignmentPolicy").AccessPackageAssignmentPolicy;
+export const AccessPackageAssignmentPolicy: typeof import("./accessPackageAssignmentPolicy").AccessPackageAssignmentPolicy = null as any;
+utilities.lazyLoad(exports, ["AccessPackageAssignmentPolicy"], () => require("./accessPackageAssignmentPolicy"));
+
+export { AccessPackageCatalogArgs, AccessPackageCatalogState } from "./accessPackageCatalog";
+export type AccessPackageCatalog = import("./accessPackageCatalog").AccessPackageCatalog;
+export const AccessPackageCatalog: typeof import("./accessPackageCatalog").AccessPackageCatalog = null as any;
+utilities.lazyLoad(exports, ["AccessPackageCatalog"], () => require("./accessPackageCatalog"));
+
+export { AccessPackageResourceCatalogAssociationArgs, AccessPackageResourceCatalogAssociationState } from "./accessPackageResourceCatalogAssociation";
+export type AccessPackageResourceCatalogAssociation = import("./accessPackageResourceCatalogAssociation").AccessPackageResourceCatalogAssociation;
+export const AccessPackageResourceCatalogAssociation: typeof import("./accessPackageResourceCatalogAssociation").AccessPackageResourceCatalogAssociation = null as any;
+utilities.lazyLoad(exports, ["AccessPackageResourceCatalogAssociation"], () => require("./accessPackageResourceCatalogAssociation"));
+
+export { AccessPackageResourcePackageAssociationArgs, AccessPackageResourcePackageAssociationState } from "./accessPackageResourcePackageAssociation";
+export type AccessPackageResourcePackageAssociation = import("./accessPackageResourcePackageAssociation").AccessPackageResourcePackageAssociation;
+export const AccessPackageResourcePackageAssociation: typeof import("./accessPackageResourcePackageAssociation").AccessPackageResourcePackageAssociation = null as any;
+utilities.lazyLoad(exports, ["AccessPackageResourcePackageAssociation"], () => require("./accessPackageResourcePackageAssociation"));
+
 export { AdministrativeUnitArgs, AdministrativeUnitState } from "./administrativeUnit";
 export type AdministrativeUnit = import("./administrativeUnit").AdministrativeUnit;
 export const AdministrativeUnit: typeof import("./administrativeUnit").AdministrativeUnit = null as any;
@@ -14,6 +39,11 @@ export { AdministrativeUnitMemberArgs, AdministrativeUnitMemberState } from "./a
 export type AdministrativeUnitMember = import("./administrativeUnitMember").AdministrativeUnitMember;
 export const AdministrativeUnitMember: typeof import("./administrativeUnitMember").AdministrativeUnitMember = null as any;
 utilities.lazyLoad(exports, ["AdministrativeUnitMember"], () => require("./administrativeUnitMember"));
+
+export { AdministrativeUnitRoleMemberArgs, AdministrativeUnitRoleMemberState } from "./administrativeUnitRoleMember";
+export type AdministrativeUnitRoleMember = import("./administrativeUnitRoleMember").AdministrativeUnitRoleMember;
+export const AdministrativeUnitRoleMember: typeof import("./administrativeUnitRoleMember").AdministrativeUnitRoleMember = null as any;
+utilities.lazyLoad(exports, ["AdministrativeUnitRoleMember"], () => require("./administrativeUnitRoleMember"));
 
 export { AppRoleAssignmentArgs, AppRoleAssignmentState } from "./appRoleAssignment";
 export type AppRoleAssignment = import("./appRoleAssignment").AppRoleAssignment;
@@ -74,6 +104,16 @@ export { DirectoryRoleMemberArgs, DirectoryRoleMemberState } from "./directoryRo
 export type DirectoryRoleMember = import("./directoryRoleMember").DirectoryRoleMember;
 export const DirectoryRoleMember: typeof import("./directoryRoleMember").DirectoryRoleMember = null as any;
 utilities.lazyLoad(exports, ["DirectoryRoleMember"], () => require("./directoryRoleMember"));
+
+export { GetAccessPackageArgs, GetAccessPackageResult, GetAccessPackageOutputArgs } from "./getAccessPackage";
+export const getAccessPackage: typeof import("./getAccessPackage").getAccessPackage = null as any;
+export const getAccessPackageOutput: typeof import("./getAccessPackage").getAccessPackageOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPackage","getAccessPackageOutput"], () => require("./getAccessPackage"));
+
+export { GetAccessPackageCatalogArgs, GetAccessPackageCatalogResult, GetAccessPackageCatalogOutputArgs } from "./getAccessPackageCatalog";
+export const getAccessPackageCatalog: typeof import("./getAccessPackageCatalog").getAccessPackageCatalog = null as any;
+export const getAccessPackageCatalogOutput: typeof import("./getAccessPackageCatalog").getAccessPackageCatalogOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPackageCatalog","getAccessPackageCatalogOutput"], () => require("./getAccessPackageCatalog"));
 
 export { GetAdministrativeUnitArgs, GetAdministrativeUnitResult, GetAdministrativeUnitOutputArgs } from "./getAdministrativeUnit";
 export const getAdministrativeUnit: typeof import("./getAdministrativeUnit").getAdministrativeUnit = null as any;
@@ -212,6 +252,11 @@ export type User = import("./user").User;
 export const User: typeof import("./user").User = null as any;
 utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
+export { UserFlowAttributeArgs, UserFlowAttributeState } from "./userFlowAttribute";
+export type UserFlowAttribute = import("./userFlowAttribute").UserFlowAttribute;
+export const UserFlowAttribute: typeof import("./userFlowAttribute").UserFlowAttribute = null as any;
+utilities.lazyLoad(exports, ["UserFlowAttribute"], () => require("./userFlowAttribute"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -226,10 +271,22 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "azuread:index/accessPackage:AccessPackage":
+                return new AccessPackage(name, <any>undefined, { urn })
+            case "azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy":
+                return new AccessPackageAssignmentPolicy(name, <any>undefined, { urn })
+            case "azuread:index/accessPackageCatalog:AccessPackageCatalog":
+                return new AccessPackageCatalog(name, <any>undefined, { urn })
+            case "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation":
+                return new AccessPackageResourceCatalogAssociation(name, <any>undefined, { urn })
+            case "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation":
+                return new AccessPackageResourcePackageAssociation(name, <any>undefined, { urn })
             case "azuread:index/administrativeUnit:AdministrativeUnit":
                 return new AdministrativeUnit(name, <any>undefined, { urn })
             case "azuread:index/administrativeUnitMember:AdministrativeUnitMember":
                 return new AdministrativeUnitMember(name, <any>undefined, { urn })
+            case "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember":
+                return new AdministrativeUnitRoleMember(name, <any>undefined, { urn })
             case "azuread:index/appRoleAssignment:AppRoleAssignment":
                 return new AppRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/application:Application":
@@ -280,13 +337,21 @@ const _module = {
                 return new SynchronizationSecret(name, <any>undefined, { urn })
             case "azuread:index/user:User":
                 return new User(name, <any>undefined, { urn })
+            case "azuread:index/userFlowAttribute:UserFlowAttribute":
+                return new UserFlowAttribute(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("azuread", "index/accessPackage", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/accessPackageAssignmentPolicy", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/accessPackageCatalog", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/accessPackageResourceCatalogAssociation", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/accessPackageResourcePackageAssociation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnit", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnitMember", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnitRoleMember", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/appRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/application", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/applicationCertificate", _module)
@@ -312,6 +377,7 @@ pulumi.runtime.registerResourceModule("azuread", "index/servicePrincipalTokenSig
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationJob", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/synchronizationSecret", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/user", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/userFlowAttribute", _module)
 pulumi.runtime.registerResourcePackage("azuread", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

@@ -259,6 +259,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    @Import(name="onpremisesGroupType")
+    private @Nullable Output<String> onpremisesGroupType;
+
+    /**
+     * @return The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    public Optional<Output<String>> onpremisesGroupType() {
+        return Optional.ofNullable(this.onpremisesGroupType);
+    }
+
+    /**
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
@@ -453,6 +468,21 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.visibility);
     }
 
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    @Import(name="writebackEnabled")
+    private @Nullable Output<Boolean> writebackEnabled;
+
+    /**
+     * @return Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    public Optional<Output<Boolean>> writebackEnabled() {
+        return Optional.ofNullable(this.writebackEnabled);
+    }
+
     private GroupState() {}
 
     private GroupState(GroupState $) {
@@ -472,6 +502,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.members = $.members;
         this.objectId = $.objectId;
         this.onpremisesDomainName = $.onpremisesDomainName;
+        this.onpremisesGroupType = $.onpremisesGroupType;
         this.onpremisesNetbiosName = $.onpremisesNetbiosName;
         this.onpremisesSamAccountName = $.onpremisesSamAccountName;
         this.onpremisesSecurityIdentifier = $.onpremisesSecurityIdentifier;
@@ -485,6 +516,7 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         this.theme = $.theme;
         this.types = $.types;
         this.visibility = $.visibility;
+        this.writebackEnabled = $.writebackEnabled;
     }
 
     public static Builder builder() {
@@ -872,6 +904,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param onpremisesGroupType The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onpremisesGroupType(@Nullable Output<String> onpremisesGroupType) {
+            $.onpremisesGroupType = onpremisesGroupType;
+            return this;
+        }
+
+        /**
+         * @param onpremisesGroupType The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onpremisesGroupType(String onpremisesGroupType) {
+            return onpremisesGroupType(Output.of(onpremisesGroupType));
+        }
+
+        /**
          * @param onpremisesNetbiosName The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
          * 
          * @return builder
@@ -1182,6 +1235,27 @@ public final class GroupState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder visibility(String visibility) {
             return visibility(Output.of(visibility));
+        }
+
+        /**
+         * @param writebackEnabled Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writebackEnabled(@Nullable Output<Boolean> writebackEnabled) {
+            $.writebackEnabled = writebackEnabled;
+            return this;
+        }
+
+        /**
+         * @param writebackEnabled Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writebackEnabled(Boolean writebackEnabled) {
+            return writebackEnabled(Output.of(writebackEnabled));
         }
 
         public GroupState build() {

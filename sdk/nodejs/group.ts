@@ -13,7 +13,9 @@ import * as utilities from "./utilities";
  *
  * The following API permissions are required in order to use this resource.
  *
- * When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+ *
+ * Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
  *
  * If using the `assignableToRole` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
  *
@@ -126,6 +128,10 @@ export class Group extends pulumi.CustomResource {
      */
     public /*out*/ readonly onpremisesDomainName!: pulumi.Output<string>;
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     */
+    public readonly onpremisesGroupType!: pulumi.Output<string>;
+    /**
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      */
     public /*out*/ readonly onpremisesNetbiosName!: pulumi.Output<string>;
@@ -177,6 +183,10 @@ export class Group extends pulumi.CustomResource {
      * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
      */
     public readonly visibility!: pulumi.Output<string>;
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     */
+    public readonly writebackEnabled!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Group resource with the given unique name, arguments, and options.
@@ -207,6 +217,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["members"] = state ? state.members : undefined;
             resourceInputs["objectId"] = state ? state.objectId : undefined;
             resourceInputs["onpremisesDomainName"] = state ? state.onpremisesDomainName : undefined;
+            resourceInputs["onpremisesGroupType"] = state ? state.onpremisesGroupType : undefined;
             resourceInputs["onpremisesNetbiosName"] = state ? state.onpremisesNetbiosName : undefined;
             resourceInputs["onpremisesSamAccountName"] = state ? state.onpremisesSamAccountName : undefined;
             resourceInputs["onpremisesSecurityIdentifier"] = state ? state.onpremisesSecurityIdentifier : undefined;
@@ -220,6 +231,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["theme"] = state ? state.theme : undefined;
             resourceInputs["types"] = state ? state.types : undefined;
             resourceInputs["visibility"] = state ? state.visibility : undefined;
+            resourceInputs["writebackEnabled"] = state ? state.writebackEnabled : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
             if ((!args || args.displayName === undefined) && !opts.urn) {
@@ -238,6 +250,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["mailEnabled"] = args ? args.mailEnabled : undefined;
             resourceInputs["mailNickname"] = args ? args.mailNickname : undefined;
             resourceInputs["members"] = args ? args.members : undefined;
+            resourceInputs["onpremisesGroupType"] = args ? args.onpremisesGroupType : undefined;
             resourceInputs["owners"] = args ? args.owners : undefined;
             resourceInputs["preventDuplicateNames"] = args ? args.preventDuplicateNames : undefined;
             resourceInputs["provisioningOptions"] = args ? args.provisioningOptions : undefined;
@@ -245,6 +258,7 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["theme"] = args ? args.theme : undefined;
             resourceInputs["types"] = args ? args.types : undefined;
             resourceInputs["visibility"] = args ? args.visibility : undefined;
+            resourceInputs["writebackEnabled"] = args ? args.writebackEnabled : undefined;
             resourceInputs["mail"] = undefined /*out*/;
             resourceInputs["objectId"] = undefined /*out*/;
             resourceInputs["onpremisesDomainName"] = undefined /*out*/;
@@ -329,6 +343,10 @@ export interface GroupState {
      */
     onpremisesDomainName?: pulumi.Input<string>;
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     */
+    onpremisesGroupType?: pulumi.Input<string>;
+    /**
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      */
     onpremisesNetbiosName?: pulumi.Input<string>;
@@ -380,6 +398,10 @@ export interface GroupState {
      * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
      */
     visibility?: pulumi.Input<string>;
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     */
+    writebackEnabled?: pulumi.Input<boolean>;
 }
 
 /**
@@ -439,6 +461,10 @@ export interface GroupArgs {
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     */
+    onpremisesGroupType?: pulumi.Input<string>;
+    /**
      * A set of owners who own this group. Supported object types are Users or Service Principals
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
@@ -466,4 +492,8 @@ export interface GroupArgs {
      * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
      */
     visibility?: pulumi.Input<string>;
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     */
+    writebackEnabled?: pulumi.Input<boolean>;
 }

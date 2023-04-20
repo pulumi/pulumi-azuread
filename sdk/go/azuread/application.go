@@ -283,6 +283,8 @@ type Application struct {
 	PublisherDomain pulumi.StringOutput `pulumi:"publisherDomain"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayOutput `pulumi:"requiredResourceAccesses"`
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference pulumi.StringPtrOutput `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
 	SignInAudience pulumi.StringPtrOutput `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
@@ -383,6 +385,8 @@ type applicationState struct {
 	PublisherDomain *string `pulumi:"publisherDomain"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference *string `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
 	SignInAudience *string `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
@@ -452,6 +456,8 @@ type ApplicationState struct {
 	PublisherDomain pulumi.StringPtrInput
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference pulumi.StringPtrInput
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
 	SignInAudience pulumi.StringPtrInput
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
@@ -511,6 +517,8 @@ type applicationArgs struct {
 	PublicClient *ApplicationPublicClient `pulumi:"publicClient"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []ApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference *string `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
 	SignInAudience *string `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
@@ -567,6 +575,8 @@ type ApplicationArgs struct {
 	PublicClient ApplicationPublicClientPtrInput
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses ApplicationRequiredResourceAccessArrayInput
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference pulumi.StringPtrInput
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
 	SignInAudience pulumi.StringPtrInput
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
@@ -798,6 +808,11 @@ func (o ApplicationOutput) PublisherDomain() pulumi.StringOutput {
 // A collection of `requiredResourceAccess` blocks as documented below.
 func (o ApplicationOutput) RequiredResourceAccesses() ApplicationRequiredResourceAccessArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationRequiredResourceAccessArrayOutput { return v.RequiredResourceAccesses }).(ApplicationRequiredResourceAccessArrayOutput)
+}
+
+// References application context information from a Service or Asset Management database.
+func (o ApplicationOutput) ServiceManagementReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.ServiceManagementReference }).(pulumi.StringPtrOutput)
 }
 
 // The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.

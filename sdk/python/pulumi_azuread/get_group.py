@@ -22,7 +22,7 @@ class GetGroupResult:
     """
     A collection of values returned by getGroup.
     """
-    def __init__(__self__, assignable_to_role=None, auto_subscribe_new_members=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, external_senders_allowed=None, hide_from_address_lists=None, hide_from_outlook_clients=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None):
+    def __init__(__self__, assignable_to_role=None, auto_subscribe_new_members=None, behaviors=None, description=None, display_name=None, dynamic_memberships=None, external_senders_allowed=None, hide_from_address_lists=None, hide_from_outlook_clients=None, id=None, mail=None, mail_enabled=None, mail_nickname=None, members=None, object_id=None, onpremises_domain_name=None, onpremises_group_type=None, onpremises_netbios_name=None, onpremises_sam_account_name=None, onpremises_security_identifier=None, onpremises_sync_enabled=None, owners=None, preferred_language=None, provisioning_options=None, proxy_addresses=None, security_enabled=None, theme=None, types=None, visibility=None, writeback_enabled=None):
         if assignable_to_role and not isinstance(assignable_to_role, bool):
             raise TypeError("Expected argument 'assignable_to_role' to be a bool")
         pulumi.set(__self__, "assignable_to_role", assignable_to_role)
@@ -71,6 +71,9 @@ class GetGroupResult:
         if onpremises_domain_name and not isinstance(onpremises_domain_name, str):
             raise TypeError("Expected argument 'onpremises_domain_name' to be a str")
         pulumi.set(__self__, "onpremises_domain_name", onpremises_domain_name)
+        if onpremises_group_type and not isinstance(onpremises_group_type, str):
+            raise TypeError("Expected argument 'onpremises_group_type' to be a str")
+        pulumi.set(__self__, "onpremises_group_type", onpremises_group_type)
         if onpremises_netbios_name and not isinstance(onpremises_netbios_name, str):
             raise TypeError("Expected argument 'onpremises_netbios_name' to be a str")
         pulumi.set(__self__, "onpremises_netbios_name", onpremises_netbios_name)
@@ -107,6 +110,9 @@ class GetGroupResult:
         if visibility and not isinstance(visibility, str):
             raise TypeError("Expected argument 'visibility' to be a str")
         pulumi.set(__self__, "visibility", visibility)
+        if writeback_enabled and not isinstance(writeback_enabled, bool):
+            raise TypeError("Expected argument 'writeback_enabled' to be a bool")
+        pulumi.set(__self__, "writeback_enabled", writeback_enabled)
 
     @property
     @pulumi.getter(name="assignableToRole")
@@ -237,6 +243,14 @@ class GetGroupResult:
         return pulumi.get(self, "onpremises_domain_name")
 
     @property
+    @pulumi.getter(name="onpremisesGroupType")
+    def onpremises_group_type(self) -> str:
+        """
+        The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        """
+        return pulumi.get(self, "onpremises_group_type")
+
+    @property
     @pulumi.getter(name="onpremisesNetbiosName")
     def onpremises_netbios_name(self) -> str:
         """
@@ -332,6 +346,14 @@ class GetGroupResult:
         """
         return pulumi.get(self, "visibility")
 
+    @property
+    @pulumi.getter(name="writebackEnabled")
+    def writeback_enabled(self) -> bool:
+        """
+        Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "writeback_enabled")
+
 
 class AwaitableGetGroupResult(GetGroupResult):
     # pylint: disable=using-constant-test
@@ -355,6 +377,7 @@ class AwaitableGetGroupResult(GetGroupResult):
             members=self.members,
             object_id=self.object_id,
             onpremises_domain_name=self.onpremises_domain_name,
+            onpremises_group_type=self.onpremises_group_type,
             onpremises_netbios_name=self.onpremises_netbios_name,
             onpremises_sam_account_name=self.onpremises_sam_account_name,
             onpremises_security_identifier=self.onpremises_security_identifier,
@@ -366,7 +389,8 @@ class AwaitableGetGroupResult(GetGroupResult):
             security_enabled=self.security_enabled,
             theme=self.theme,
             types=self.types,
-            visibility=self.visibility)
+            visibility=self.visibility,
+            writeback_enabled=self.writeback_enabled)
 
 
 def get_group(display_name: Optional[str] = None,
@@ -427,6 +451,7 @@ def get_group(display_name: Optional[str] = None,
         members=__ret__.members,
         object_id=__ret__.object_id,
         onpremises_domain_name=__ret__.onpremises_domain_name,
+        onpremises_group_type=__ret__.onpremises_group_type,
         onpremises_netbios_name=__ret__.onpremises_netbios_name,
         onpremises_sam_account_name=__ret__.onpremises_sam_account_name,
         onpremises_security_identifier=__ret__.onpremises_security_identifier,
@@ -438,7 +463,8 @@ def get_group(display_name: Optional[str] = None,
         security_enabled=__ret__.security_enabled,
         theme=__ret__.theme,
         types=__ret__.types,
-        visibility=__ret__.visibility)
+        visibility=__ret__.visibility,
+        writeback_enabled=__ret__.writeback_enabled)
 
 
 @_utilities.lift_output_func(get_group)

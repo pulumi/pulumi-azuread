@@ -133,6 +133,10 @@ export interface GetGroupResult {
      */
     readonly onpremisesDomainName: string;
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     */
+    readonly onpremisesGroupType: string;
+    /**
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      */
     readonly onpremisesNetbiosName: string;
@@ -180,6 +184,10 @@ export interface GetGroupResult {
      * The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
      */
     readonly visibility: string;
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     */
+    readonly writebackEnabled: boolean;
 }
 /**
  * Gets information about an Azure Active Directory group.

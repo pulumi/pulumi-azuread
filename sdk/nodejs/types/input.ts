@@ -5,6 +5,240 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AccessPackageAssignmentPolicyApprovalSettings {
+    /**
+     * Whether an approval is required.
+     */
+    approvalRequired?: pulumi.Input<boolean>;
+    /**
+     * Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+     */
+    approvalRequiredForExtension?: pulumi.Input<boolean>;
+    /**
+     * An `approvalStage` block specifying the process to obtain an approval, as documented below.
+     */
+    approvalStages?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage>[]>;
+    /**
+     * Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+     */
+    requestorJustificationRequired?: pulumi.Input<boolean>;
+}
+
+export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
+    /**
+     * Whether alternative approvers are enabled.
+     */
+    alternativeApprovalEnabled?: pulumi.Input<boolean>;
+    /**
+     * A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+     */
+    alternativeApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover>[]>;
+    /**
+     * Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+     */
+    approvalTimeoutInDays: pulumi.Input<number>;
+    /**
+     * Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+     */
+    approverJustificationRequired?: pulumi.Input<boolean>;
+    /**
+     * Number of days before the request is forwarded to alternative approvers.
+     */
+    enableAlternativeApprovalInDays?: pulumi.Input<number>;
+    /**
+     * A block specifying the users who will be asked to approve requests, as documented below.
+     */
+    primaryApprovers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover>[]>;
+}
+
+export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
+    /**
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * The ID of the subject.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     */
+    subjectType: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
+    /**
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * The ID of the subject.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     */
+    subjectType: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
+    /**
+     * Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+     */
+    accessRecommendationEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+     */
+    accessReviewTimeoutBehavior?: pulumi.Input<string>;
+    /**
+     * Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+     */
+    approverJustificationRequired?: pulumi.Input<boolean>;
+    /**
+     * How many days each occurrence of the access review series will run.
+     */
+    durationInDays?: pulumi.Input<number>;
+    /**
+     * Whether to enable assignment review.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+     */
+    reviewFrequency?: pulumi.Input<string>;
+    /**
+     * Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     */
+    reviewType?: pulumi.Input<string>;
+    /**
+     * One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+     */
+    reviewers?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer>[]>;
+    /**
+     * This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+     */
+    startingOn?: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
+    /**
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * The ID of the subject.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     */
+    subjectType: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyQuestion {
+    /**
+     * One or more blocks configuring a choice to the question, as documented below.
+     */
+    choices?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoice>[]>;
+    /**
+     * Whether this question is required.
+     */
+    required?: pulumi.Input<boolean>;
+    /**
+     * The sequence number of this question.
+     */
+    sequence?: pulumi.Input<number>;
+    /**
+     * A block describing the content of this question, as documented below.
+     */
+    text: pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionText>;
+}
+
+export interface AccessPackageAssignmentPolicyQuestionChoice {
+    /**
+     * The actual value of this choice.
+     */
+    actualValue: pulumi.Input<string>;
+    /**
+     * A block describing the display text of this choice, as documented below.
+     */
+    displayValue: pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValue>;
+}
+
+export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
+    /**
+     * The default text of this question.
+     */
+    defaultText: pulumi.Input<string>;
+    /**
+     * One or more blocks describing localized text of this question, as documented below.
+     */
+    localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText>[]>;
+}
+
+export interface AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
+    /**
+     * The localized content of this question.
+     */
+    content: pulumi.Input<string>;
+    /**
+     * The ISO 639 language code for this question content.
+     */
+    languageCode: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyQuestionText {
+    /**
+     * The default text of this question.
+     */
+    defaultText: pulumi.Input<string>;
+    /**
+     * One or more blocks describing localized text of this question, as documented below.
+     */
+    localizedTexts?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestionTextLocalizedText>[]>;
+}
+
+export interface AccessPackageAssignmentPolicyQuestionTextLocalizedText {
+    /**
+     * The localized content of this question.
+     */
+    content: pulumi.Input<string>;
+    /**
+     * The ISO 639 language code for this question content.
+     */
+    languageCode: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyRequestorSettings {
+    /**
+     * A block specifying the users who are allowed to request on this policy, as documented below.
+     */
+    requestors?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor>[]>;
+    /**
+     * Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+     */
+    requestsAccepted?: pulumi.Input<boolean>;
+    /**
+     * Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+     */
+    scopeType?: pulumi.Input<string>;
+}
+
+export interface AccessPackageAssignmentPolicyRequestorSettingsRequestor {
+    /**
+     * For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+     */
+    backup?: pulumi.Input<boolean>;
+    /**
+     * The ID of the subject.
+     */
+    objectId?: pulumi.Input<string>;
+    /**
+     * Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+     */
+    subjectType: pulumi.Input<string>;
+}
+
 export interface ApplicationApi {
     /**
      * A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.

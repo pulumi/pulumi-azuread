@@ -20,10 +20,22 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "azuread:index/accessPackage:AccessPackage":
+		r = &AccessPackage{}
+	case "azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy":
+		r = &AccessPackageAssignmentPolicy{}
+	case "azuread:index/accessPackageCatalog:AccessPackageCatalog":
+		r = &AccessPackageCatalog{}
+	case "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation":
+		r = &AccessPackageResourceCatalogAssociation{}
+	case "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation":
+		r = &AccessPackageResourcePackageAssociation{}
 	case "azuread:index/administrativeUnit:AdministrativeUnit":
 		r = &AdministrativeUnit{}
 	case "azuread:index/administrativeUnitMember:AdministrativeUnitMember":
 		r = &AdministrativeUnitMember{}
+	case "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember":
+		r = &AdministrativeUnitRoleMember{}
 	case "azuread:index/appRoleAssignment:AppRoleAssignment":
 		r = &AppRoleAssignment{}
 	case "azuread:index/application:Application":
@@ -74,6 +86,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SynchronizationSecret{}
 	case "azuread:index/user:User":
 		r = &User{}
+	case "azuread:index/userFlowAttribute:UserFlowAttribute":
+		r = &UserFlowAttribute{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -104,12 +118,42 @@ func init() {
 	version, _ := PkgVersion()
 	pulumi.RegisterResourceModule(
 		"azuread",
+		"index/accessPackage",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/accessPackageAssignmentPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/accessPackageCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/accessPackageResourceCatalogAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/accessPackageResourcePackageAssociation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
 		"index/administrativeUnit",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/administrativeUnitMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/administrativeUnitRoleMember",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -235,6 +279,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/user",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/userFlowAttribute",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

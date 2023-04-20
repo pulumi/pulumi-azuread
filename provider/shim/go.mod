@@ -4,7 +4,7 @@ go 1.19
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.24.1
-	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230302235257-7ddd481b4352
+	github.com/hashicorp/terraform-provider-azuread v1.6.1-0.20230419234510-a8170bb91957
 )
 
 require (
@@ -16,8 +16,8 @@ require (
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
-	github.com/hashicorp/go-azure-helpers v0.52.0 // indirect
-	github.com/hashicorp/go-azure-sdk v0.20230223.1132808 // indirect
+	github.com/hashicorp/go-azure-helpers v0.55.0 // indirect
+	github.com/hashicorp/go-azure-sdk v0.20230331.1143618 // indirect
 	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 // indirect
@@ -37,7 +37,7 @@ require (
 	github.com/hashicorp/terraform-registry-address v0.0.0-20220623143253-7d51757b572c // indirect
 	github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734 // indirect
 	github.com/hashicorp/yamux v0.0.0-20211028200310-0bc27b27de87 // indirect
-	github.com/manicminer/hamilton v0.59.0 // indirect
+	github.com/manicminer/hamilton v0.61.0 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mitchellh/copystructure v1.2.0 // indirect

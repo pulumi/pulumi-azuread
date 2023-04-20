@@ -13,8 +13,14 @@
         "strict": true
     },
     "files": [
+        "accessPackage.ts",
+        "accessPackageAssignmentPolicy.ts",
+        "accessPackageCatalog.ts",
+        "accessPackageResourceCatalogAssociation.ts",
+        "accessPackageResourcePackageAssociation.ts",
         "administrativeUnit.ts",
         "administrativeUnitMember.ts",
+        "administrativeUnitRoleMember.ts",
         "appRoleAssignment.ts",
         "application.ts",
         "applicationCertificate.ts",
@@ -29,6 +35,8 @@
         "directoryRole.ts",
         "directoryRoleAssignment.ts",
         "directoryRoleMember.ts",
+        "getAccessPackage.ts",
+        "getAccessPackageCatalog.ts",
         "getAdministrativeUnit.ts",
         "getApplication.ts",
         "getApplicationPublishedAppIds.ts",
@@ -61,6 +69,7 @@
         "types/input.ts",
         "types/output.ts",
         "user.ts",
+        "userFlowAttribute.ts",
         "utilities.ts"
     ]
 }

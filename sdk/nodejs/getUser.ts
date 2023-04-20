@@ -31,6 +31,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
+        "mail": args.mail,
         "mailNickname": args.mailNickname,
         "objectId": args.objectId,
         "userPrincipalName": args.userPrincipalName,
@@ -41,6 +42,10 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The SMTP address for the user.
+     */
+    mail?: string;
     /**
      * The email alias of the user.
      */
@@ -266,6 +271,10 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOpti
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserOutputArgs {
+    /**
+     * The SMTP address for the user.
+     */
+    mail?: pulumi.Input<string>;
     /**
      * The email alias of the user.
      */

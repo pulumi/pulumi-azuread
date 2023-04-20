@@ -24,7 +24,9 @@ import javax.annotation.Nullable;
  * 
  * The following API permissions are required in order to use this resource.
  * 
- * When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+ * 
+ * Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
  * 
  * If using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
  * 
@@ -445,6 +447,20 @@ public class Group extends com.pulumi.resources.CustomResource {
         return this.onpremisesDomainName;
     }
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    @Export(name="onpremisesGroupType", type=String.class, parameters={})
+    private Output<String> onpremisesGroupType;
+
+    /**
+     * @return The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    public Output<String> onpremisesGroupType() {
+        return this.onpremisesGroupType;
+    }
+    /**
      * The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
@@ -625,6 +641,20 @@ public class Group extends com.pulumi.resources.CustomResource {
      */
     public Output<String> visibility() {
         return this.visibility;
+    }
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    @Export(name="writebackEnabled", type=Boolean.class, parameters={})
+    private Output</* @Nullable */ Boolean> writebackEnabled;
+
+    /**
+     * @return Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    public Output<Optional<Boolean>> writebackEnabled() {
+        return Codegen.optional(this.writebackEnabled);
     }
 
     /**

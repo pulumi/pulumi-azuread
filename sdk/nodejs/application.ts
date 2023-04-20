@@ -289,6 +289,10 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly requiredResourceAccesses!: pulumi.Output<outputs.ApplicationRequiredResourceAccess[] | undefined>;
     /**
+     * References application context information from a Service or Asset Management database.
+     */
+    public readonly serviceManagementReference!: pulumi.Output<string | undefined>;
+    /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
     public readonly signInAudience!: pulumi.Output<string | undefined>;
@@ -356,6 +360,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["publicClient"] = state ? state.publicClient : undefined;
             resourceInputs["publisherDomain"] = state ? state.publisherDomain : undefined;
             resourceInputs["requiredResourceAccesses"] = state ? state.requiredResourceAccesses : undefined;
+            resourceInputs["serviceManagementReference"] = state ? state.serviceManagementReference : undefined;
             resourceInputs["signInAudience"] = state ? state.signInAudience : undefined;
             resourceInputs["singlePageApplication"] = state ? state.singlePageApplication : undefined;
             resourceInputs["supportUrl"] = state ? state.supportUrl : undefined;
@@ -387,6 +392,7 @@ export class Application extends pulumi.CustomResource {
             resourceInputs["privacyStatementUrl"] = args ? args.privacyStatementUrl : undefined;
             resourceInputs["publicClient"] = args ? args.publicClient : undefined;
             resourceInputs["requiredResourceAccesses"] = args ? args.requiredResourceAccesses : undefined;
+            resourceInputs["serviceManagementReference"] = args ? args.serviceManagementReference : undefined;
             resourceInputs["signInAudience"] = args ? args.signInAudience : undefined;
             resourceInputs["singlePageApplication"] = args ? args.singlePageApplication : undefined;
             resourceInputs["supportUrl"] = args ? args.supportUrl : undefined;
@@ -516,6 +522,10 @@ export interface ApplicationState {
      */
     requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
     /**
+     * References application context information from a Service or Asset Management database.
+     */
+    serviceManagementReference?: pulumi.Input<string>;
+    /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */
     signInAudience?: pulumi.Input<string>;
@@ -625,6 +635,10 @@ export interface ApplicationArgs {
      * A collection of `requiredResourceAccess` blocks as documented below.
      */
     requiredResourceAccesses?: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccess>[]>;
+    /**
+     * References application context information from a Service or Asset Management database.
+     */
+    serviceManagementReference?: pulumi.Input<string>;
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      */

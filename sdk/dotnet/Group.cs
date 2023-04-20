@@ -16,7 +16,9 @@ namespace Pulumi.AzureAD
     /// 
     /// The following API permissions are required in order to use this resource.
     /// 
-    /// When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+    /// 
+    /// Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
     /// 
     /// If using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
     /// 
@@ -136,6 +138,12 @@ namespace Pulumi.AzureAD
         public Output<string> OnpremisesDomainName { get; private set; } = null!;
 
         /// <summary>
+        /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        /// </summary>
+        [Output("onpremisesGroupType")]
+        public Output<string> OnpremisesGroupType { get; private set; } = null!;
+
+        /// <summary>
         /// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
         /// </summary>
         [Output("onpremisesNetbiosName")]
@@ -212,6 +220,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Output("visibility")]
         public Output<string> Visibility { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        /// </summary>
+        [Output("writebackEnabled")]
+        public Output<bool?> WritebackEnabled { get; private set; } = null!;
 
 
         /// <summary>
@@ -355,6 +369,12 @@ namespace Pulumi.AzureAD
             set => _members = value;
         }
 
+        /// <summary>
+        /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        /// </summary>
+        [Input("onpremisesGroupType")]
+        public Input<string>? OnpremisesGroupType { get; set; }
+
         [Input("owners")]
         private InputList<string>? _owners;
 
@@ -414,6 +434,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
+
+        /// <summary>
+        /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        /// </summary>
+        [Input("writebackEnabled")]
+        public Input<bool>? WritebackEnabled { get; set; }
 
         public GroupArgs()
         {
@@ -538,6 +564,12 @@ namespace Pulumi.AzureAD
         public Input<string>? OnpremisesDomainName { get; set; }
 
         /// <summary>
+        /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        /// </summary>
+        [Input("onpremisesGroupType")]
+        public Input<string>? OnpremisesGroupType { get; set; }
+
+        /// <summary>
         /// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
         /// </summary>
         [Input("onpremisesNetbiosName")]
@@ -638,6 +670,12 @@ namespace Pulumi.AzureAD
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }
+
+        /// <summary>
+        /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        /// </summary>
+        [Input("writebackEnabled")]
+        public Input<bool>? WritebackEnabled { get; set; }
 
         public GroupState()
         {

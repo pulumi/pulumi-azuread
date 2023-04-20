@@ -163,6 +163,10 @@ export interface GetApplicationResult {
      */
     readonly requiredResourceAccesses: outputs.GetApplicationRequiredResourceAccess[];
     /**
+     * References application context information from a Service or Asset Management database.
+     */
+    readonly serviceManagementReference: string;
+    /**
      * The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      */
     readonly signInAudience: string;

@@ -149,6 +149,568 @@
         ]
     },
     "types": {
+        "azuread:index/AccessPackageAssignmentPolicyApprovalSettings:AccessPackageAssignmentPolicyApprovalSettings": {
+            "properties": {
+                "approvalRequired": {
+                    "type": "boolean",
+                    "description": "Whether an approval is required.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "approvalRequiredForExtension": {
+                    "type": "boolean",
+                    "description": "Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "approvalStages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStage:AccessPackageAssignmentPolicyApprovalSettingsApprovalStage"
+                    },
+                    "description": "An `approval_stage` block specifying the process to obtain an approval, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestorJustificationRequired": {
+                    "type": "boolean",
+                    "description": "Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStage:AccessPackageAssignmentPolicyApprovalSettingsApprovalStage": {
+            "properties": {
+                "alternativeApprovalEnabled": {
+                    "type": "boolean",
+                    "description": "Whether alternative approvers are enabled.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "alternativeApprovers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover:AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover"
+                    },
+                    "description": "A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "approvalTimeoutInDays": {
+                    "type": "integer",
+                    "description": "Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "approverJustificationRequired": {
+                    "type": "boolean",
+                    "description": "Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enableAlternativeApprovalInDays": {
+                    "type": "integer",
+                    "description": "Number of days before the request is forwarded to alternative approvers.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "primaryApprovers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover:AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover"
+                    },
+                    "description": "A block specifying the users who will be asked to approve requests, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "approvalTimeoutInDays"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover:AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover": {
+            "properties": {
+                "backup": {
+                    "type": "boolean",
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The ID of the subject.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subjectType": {
+                    "type": "string",
+                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subjectType"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover:AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover": {
+            "properties": {
+                "backup": {
+                    "type": "boolean",
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The ID of the subject.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subjectType": {
+                    "type": "string",
+                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subjectType"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyAssignmentReviewSettings:AccessPackageAssignmentPolicyAssignmentReviewSettings": {
+            "properties": {
+                "accessRecommendationEnabled": {
+                    "type": "boolean",
+                    "description": "Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "accessReviewTimeoutBehavior": {
+                    "type": "string",
+                    "description": "Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "approverJustificationRequired": {
+                    "type": "boolean",
+                    "description": "Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "durationInDays": {
+                    "type": "integer",
+                    "description": "How many days each occurrence of the access review series will run.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether to enable assignment review.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "reviewFrequency": {
+                    "type": "string",
+                    "description": "This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "reviewType": {
+                    "type": "string",
+                    "description": "Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "reviewers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer:AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer"
+                    },
+                    "description": "One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "startingOn": {
+                    "type": "string",
+                    "description": "This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:index/AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer:AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer": {
+            "properties": {
+                "backup": {
+                    "type": "boolean",
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The ID of the subject.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subjectType": {
+                    "type": "string",
+                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subjectType"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyQuestion:AccessPackageAssignmentPolicyQuestion": {
+            "properties": {
+                "choices": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoice:AccessPackageAssignmentPolicyQuestionChoice"
+                    },
+                    "description": "One or more blocks configuring a choice to the question, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "required": {
+                    "type": "boolean",
+                    "description": "Whether this question is required.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "sequence": {
+                    "type": "integer",
+                    "description": "The sequence number of this question.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "text": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionText:AccessPackageAssignmentPolicyQuestionText",
+                    "description": "A block describing the content of this question, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "text"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyQuestionChoice:AccessPackageAssignmentPolicyQuestionChoice": {
+            "properties": {
+                "actualValue": {
+                    "type": "string",
+                    "description": "The actual value of this choice.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "displayValue": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValue:AccessPackageAssignmentPolicyQuestionChoiceDisplayValue",
+                    "description": "A block describing the display text of this choice, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "actualValue",
+                "displayValue"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValue:AccessPackageAssignmentPolicyQuestionChoiceDisplayValue": {
+            "properties": {
+                "defaultText": {
+                    "type": "string",
+                    "description": "The default text of this question.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "localizedTexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText:AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText"
+                    },
+                    "description": "One or more blocks describing localized text of this question, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultText"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText:AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "The localized content of this question.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "languageCode": {
+                    "type": "string",
+                    "description": "The ISO 639 language code for this question content.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "content",
+                "languageCode"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyQuestionText:AccessPackageAssignmentPolicyQuestionText": {
+            "properties": {
+                "defaultText": {
+                    "type": "string",
+                    "description": "The default text of this question.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "localizedTexts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestionTextLocalizedText:AccessPackageAssignmentPolicyQuestionTextLocalizedText"
+                    },
+                    "description": "One or more blocks describing localized text of this question, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultText"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyQuestionTextLocalizedText:AccessPackageAssignmentPolicyQuestionTextLocalizedText": {
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "The localized content of this question.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "languageCode": {
+                    "type": "string",
+                    "description": "The ISO 639 language code for this question content.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "content",
+                "languageCode"
+            ]
+        },
+        "azuread:index/AccessPackageAssignmentPolicyRequestorSettings:AccessPackageAssignmentPolicyRequestorSettings": {
+            "properties": {
+                "requestors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyRequestorSettingsRequestor:AccessPackageAssignmentPolicyRequestorSettingsRequestor"
+                    },
+                    "description": "A block specifying the users who are allowed to request on this policy, as documented below.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "requestsAccepted": {
+                    "type": "boolean",
+                    "description": "Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "scopeType": {
+                    "type": "string",
+                    "description": "Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        },
+        "azuread:index/AccessPackageAssignmentPolicyRequestorSettingsRequestor:AccessPackageAssignmentPolicyRequestorSettingsRequestor": {
+            "properties": {
+                "backup": {
+                    "type": "boolean",
+                    "description": "For a user in an approval stage, this property indicates whether the user is a backup fallback approver.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "objectId": {
+                    "type": "string",
+                    "description": "The ID of the subject.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                },
+                "subjectType": {
+                    "type": "string",
+                    "description": "Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.\n",
+                    "language": {
+                        "python": {
+                            "mapCase": false
+                        }
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "subjectType"
+            ]
+        },
         "azuread:index/ApplicationApi:ApplicationApi": {
             "properties": {
                 "knownClientApplications": {
@@ -3170,6 +3732,428 @@
         ]
     },
     "resources": {
+        "azuread:index/accessPackage:AccessPackage": {
+            "description": "Manages an Access Package within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleAccessPackageCatalog = new azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\", {\n    displayName: \"example-catalog\",\n    description: \"Example catalog\",\n});\nconst exampleAccessPackage = new azuread.AccessPackage(\"exampleAccessPackage\", {\n    catalogId: exampleAccessPackageCatalog.id,\n    displayName: \"access-package\",\n    description: \"Access Package\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_access_package_catalog = azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\",\n    display_name=\"example-catalog\",\n    description=\"Example catalog\")\nexample_access_package = azuread.AccessPackage(\"exampleAccessPackage\",\n    catalog_id=example_access_package_catalog.id,\n    display_name=\"access-package\",\n    description=\"Access Package\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog(\"exampleAccessPackageCatalog\", new()\n    {\n        DisplayName = \"example-catalog\",\n        Description = \"Example catalog\",\n    });\n\n    var exampleAccessPackage = new AzureAD.AccessPackage(\"exampleAccessPackage\", new()\n    {\n        CatalogId = exampleAccessPackageCatalog.Id,\n        DisplayName = \"access-package\",\n        Description = \"Access Package\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, \"exampleAccessPackageCatalog\", \u0026azuread.AccessPackageCatalogArgs{\n\t\t\tDisplayName: pulumi.String(\"example-catalog\"),\n\t\t\tDescription: pulumi.String(\"Example catalog\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackage(ctx, \"exampleAccessPackage\", \u0026azuread.AccessPackageArgs{\n\t\t\tCatalogId:   exampleAccessPackageCatalog.ID(),\n\t\t\tDisplayName: pulumi.String(\"access-package\"),\n\t\t\tDescription: pulumi.String(\"Access Package\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AccessPackageCatalog;\nimport com.pulumi.azuread.AccessPackageCatalogArgs;\nimport com.pulumi.azuread.AccessPackage;\nimport com.pulumi.azuread.AccessPackageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleAccessPackageCatalog = new AccessPackageCatalog(\"exampleAccessPackageCatalog\", AccessPackageCatalogArgs.builder()        \n            .displayName(\"example-catalog\")\n            .description(\"Example catalog\")\n            .build());\n\n        var exampleAccessPackage = new AccessPackage(\"exampleAccessPackage\", AccessPackageArgs.builder()        \n            .catalogId(exampleAccessPackageCatalog.id())\n            .displayName(\"access-package\")\n            .description(\"Access Package\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleAccessPackageCatalog:\n    type: azuread:AccessPackageCatalog\n    properties:\n      displayName: example-catalog\n      description: Example catalog\n  exampleAccessPackage:\n    type: azuread:AccessPackage\n    properties:\n      catalogId: ${exampleAccessPackageCatalog.id}\n      displayName: access-package\n      description: Access Package\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAccess Packages can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "catalogId": {
+                    "type": "string",
+                    "description": "The ID of the Catalog this access package will be created in.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the access package.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the access package.\n"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "Whether the access package is hidden from the requestor.\n"
+                }
+            },
+            "required": [
+                "catalogId",
+                "description",
+                "displayName"
+            ],
+            "inputProperties": {
+                "catalogId": {
+                    "type": "string",
+                    "description": "The ID of the Catalog this access package will be created in.\n",
+                    "willReplaceOnChanges": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the access package.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the access package.\n"
+                },
+                "hidden": {
+                    "type": "boolean",
+                    "description": "Whether the access package is hidden from the requestor.\n"
+                }
+            },
+            "requiredInputs": [
+                "catalogId",
+                "description",
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessPackage resources.\n",
+                "properties": {
+                    "catalogId": {
+                        "type": "string",
+                        "description": "The ID of the Catalog this access package will be created in.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the access package.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the access package.\n"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the access package is hidden from the requestor.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy": {
+            "description": "Manages an assignment policy for an access package within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {\n    displayName: \"group-name\",\n    securityEnabled: true,\n});\nconst exampleAccessPackageCatalog = new azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\", {\n    displayName: \"example-catalog\",\n    description: \"Example catalog\",\n});\nconst exampleAccessPackage = new azuread.AccessPackage(\"exampleAccessPackage\", {\n    catalogId: exampleAccessPackageCatalog.id,\n    displayName: \"access-package\",\n    description: \"Access Package\",\n});\nconst test = new azuread.AccessPackageAssignmentPolicy(\"test\", {\n    accessPackageId: azuread_access_package.test.id,\n    displayName: \"assignment-policy\",\n    description: \"My assignment policy\",\n    durationInDays: 90,\n    requestorSettings: {\n        scopeType: \"AllExistingDirectoryMemberUsers\",\n    },\n    approvalSettings: {\n        approvalRequired: true,\n        approvalStages: [{\n            approvalTimeoutInDays: 14,\n            primaryApprovers: [{\n                objectId: azuread_group.test.object_id,\n                subjectType: \"groupMembers\",\n            }],\n        }],\n    },\n    assignmentReviewSettings: {\n        enabled: true,\n        reviewFrequency: \"weekly\",\n        durationInDays: 3,\n        reviewType: \"Self\",\n        accessReviewTimeoutBehavior: \"keepAccess\",\n    },\n    questions: [{\n        text: {\n            defaultText: \"hello, how are you?\",\n        },\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_group = azuread.Group(\"exampleGroup\",\n    display_name=\"group-name\",\n    security_enabled=True)\nexample_access_package_catalog = azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\",\n    display_name=\"example-catalog\",\n    description=\"Example catalog\")\nexample_access_package = azuread.AccessPackage(\"exampleAccessPackage\",\n    catalog_id=example_access_package_catalog.id,\n    display_name=\"access-package\",\n    description=\"Access Package\")\ntest = azuread.AccessPackageAssignmentPolicy(\"test\",\n    access_package_id=azuread_access_package[\"test\"][\"id\"],\n    display_name=\"assignment-policy\",\n    description=\"My assignment policy\",\n    duration_in_days=90,\n    requestor_settings=azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs(\n        scope_type=\"AllExistingDirectoryMemberUsers\",\n    ),\n    approval_settings=azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs(\n        approval_required=True,\n        approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(\n            approval_timeout_in_days=14,\n            primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(\n                object_id=azuread_group[\"test\"][\"object_id\"],\n                subject_type=\"groupMembers\",\n            )],\n        )],\n    ),\n    assignment_review_settings=azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs(\n        enabled=True,\n        review_frequency=\"weekly\",\n        duration_in_days=3,\n        review_type=\"Self\",\n        access_review_timeout_behavior=\"keepAccess\",\n    ),\n    questions=[azuread.AccessPackageAssignmentPolicyQuestionArgs(\n        text=azuread.AccessPackageAssignmentPolicyQuestionTextArgs(\n            default_text=\"hello, how are you?\",\n        ),\n    )])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleGroup = new AzureAD.Group(\"exampleGroup\", new()\n    {\n        DisplayName = \"group-name\",\n        SecurityEnabled = true,\n    });\n\n    var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog(\"exampleAccessPackageCatalog\", new()\n    {\n        DisplayName = \"example-catalog\",\n        Description = \"Example catalog\",\n    });\n\n    var exampleAccessPackage = new AzureAD.AccessPackage(\"exampleAccessPackage\", new()\n    {\n        CatalogId = exampleAccessPackageCatalog.Id,\n        DisplayName = \"access-package\",\n        Description = \"Access Package\",\n    });\n\n    var test = new AzureAD.AccessPackageAssignmentPolicy(\"test\", new()\n    {\n        AccessPackageId = azuread_access_package.Test.Id,\n        DisplayName = \"assignment-policy\",\n        Description = \"My assignment policy\",\n        DurationInDays = 90,\n        RequestorSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs\n        {\n            ScopeType = \"AllExistingDirectoryMemberUsers\",\n        },\n        ApprovalSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs\n        {\n            ApprovalRequired = true,\n            ApprovalStages = new[]\n            {\n                new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs\n                {\n                    ApprovalTimeoutInDays = 14,\n                    PrimaryApprovers = new[]\n                    {\n                        new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs\n                        {\n                            ObjectId = azuread_group.Test.Object_id,\n                            SubjectType = \"groupMembers\",\n                        },\n                    },\n                },\n            },\n        },\n        AssignmentReviewSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs\n        {\n            Enabled = true,\n            ReviewFrequency = \"weekly\",\n            DurationInDays = 3,\n            ReviewType = \"Self\",\n            AccessReviewTimeoutBehavior = \"keepAccess\",\n        },\n        Questions = new[]\n        {\n            new AzureAD.Inputs.AccessPackageAssignmentPolicyQuestionArgs\n            {\n                Text = new AzureAD.Inputs.AccessPackageAssignmentPolicyQuestionTextArgs\n                {\n                    DefaultText = \"hello, how are you?\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"group-name\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, \"exampleAccessPackageCatalog\", \u0026azuread.AccessPackageCatalogArgs{\n\t\t\tDisplayName: pulumi.String(\"example-catalog\"),\n\t\t\tDescription: pulumi.String(\"Example catalog\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackage(ctx, \"exampleAccessPackage\", \u0026azuread.AccessPackageArgs{\n\t\t\tCatalogId:   exampleAccessPackageCatalog.ID(),\n\t\t\tDisplayName: pulumi.String(\"access-package\"),\n\t\t\tDescription: pulumi.String(\"Access Package\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, \"test\", \u0026azuread.AccessPackageAssignmentPolicyArgs{\n\t\t\tAccessPackageId: pulumi.Any(azuread_access_package.Test.Id),\n\t\t\tDisplayName:     pulumi.String(\"assignment-policy\"),\n\t\t\tDescription:     pulumi.String(\"My assignment policy\"),\n\t\t\tDurationInDays:  pulumi.Int(90),\n\t\t\tRequestorSettings: \u0026azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs{\n\t\t\t\tScopeType: pulumi.String(\"AllExistingDirectoryMemberUsers\"),\n\t\t\t},\n\t\t\tApprovalSettings: \u0026azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs{\n\t\t\t\tApprovalRequired: pulumi.Bool(true),\n\t\t\t\tApprovalStages: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray{\n\t\t\t\t\t\u0026azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{\n\t\t\t\t\t\tApprovalTimeoutInDays: pulumi.Int(14),\n\t\t\t\t\t\tPrimaryApprovers: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{\n\t\t\t\t\t\t\t\u0026azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{\n\t\t\t\t\t\t\t\tObjectId:    pulumi.Any(azuread_group.Test.Object_id),\n\t\t\t\t\t\t\t\tSubjectType: pulumi.String(\"groupMembers\"),\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tAssignmentReviewSettings: \u0026azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{\n\t\t\t\tEnabled:                     pulumi.Bool(true),\n\t\t\t\tReviewFrequency:             pulumi.String(\"weekly\"),\n\t\t\t\tDurationInDays:              pulumi.Int(3),\n\t\t\t\tReviewType:                  pulumi.String(\"Self\"),\n\t\t\t\tAccessReviewTimeoutBehavior: pulumi.String(\"keepAccess\"),\n\t\t\t},\n\t\t\tQuestions: azuread.AccessPackageAssignmentPolicyQuestionArray{\n\t\t\t\t\u0026azuread.AccessPackageAssignmentPolicyQuestionArgs{\n\t\t\t\t\tText: \u0026azuread.AccessPackageAssignmentPolicyQuestionTextArgs{\n\t\t\t\t\t\tDefaultText: pulumi.String(\"hello, how are you?\"),\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.AccessPackageCatalog;\nimport com.pulumi.azuread.AccessPackageCatalogArgs;\nimport com.pulumi.azuread.AccessPackage;\nimport com.pulumi.azuread.AccessPackageArgs;\nimport com.pulumi.azuread.AccessPackageAssignmentPolicy;\nimport com.pulumi.azuread.AccessPackageAssignmentPolicyArgs;\nimport com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs;\nimport com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs;\nimport com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs;\nimport com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionArgs;\nimport com.pulumi.azuread.inputs.AccessPackageAssignmentPolicyQuestionTextArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"group-name\")\n            .securityEnabled(true)\n            .build());\n\n        var exampleAccessPackageCatalog = new AccessPackageCatalog(\"exampleAccessPackageCatalog\", AccessPackageCatalogArgs.builder()        \n            .displayName(\"example-catalog\")\n            .description(\"Example catalog\")\n            .build());\n\n        var exampleAccessPackage = new AccessPackage(\"exampleAccessPackage\", AccessPackageArgs.builder()        \n            .catalogId(exampleAccessPackageCatalog.id())\n            .displayName(\"access-package\")\n            .description(\"Access Package\")\n            .build());\n\n        var test = new AccessPackageAssignmentPolicy(\"test\", AccessPackageAssignmentPolicyArgs.builder()        \n            .accessPackageId(azuread_access_package.test().id())\n            .displayName(\"assignment-policy\")\n            .description(\"My assignment policy\")\n            .durationInDays(90)\n            .requestorSettings(AccessPackageAssignmentPolicyRequestorSettingsArgs.builder()\n                .scopeType(\"AllExistingDirectoryMemberUsers\")\n                .build())\n            .approvalSettings(AccessPackageAssignmentPolicyApprovalSettingsArgs.builder()\n                .approvalRequired(true)\n                .approvalStages(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs.builder()\n                    .approvalTimeoutInDays(14)\n                    .primaryApprovers(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs.builder()\n                        .objectId(azuread_group.test().object_id())\n                        .subjectType(\"groupMembers\")\n                        .build())\n                    .build())\n                .build())\n            .assignmentReviewSettings(AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs.builder()\n                .enabled(true)\n                .reviewFrequency(\"weekly\")\n                .durationInDays(3)\n                .reviewType(\"Self\")\n                .accessReviewTimeoutBehavior(\"keepAccess\")\n                .build())\n            .questions(AccessPackageAssignmentPolicyQuestionArgs.builder()\n                .text(AccessPackageAssignmentPolicyQuestionTextArgs.builder()\n                    .defaultText(\"hello, how are you?\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: group-name\n      securityEnabled: true\n  exampleAccessPackageCatalog:\n    type: azuread:AccessPackageCatalog\n    properties:\n      displayName: example-catalog\n      description: Example catalog\n  exampleAccessPackage:\n    type: azuread:AccessPackage\n    properties:\n      catalogId: ${exampleAccessPackageCatalog.id}\n      displayName: access-package\n      description: Access Package\n  test:\n    type: azuread:AccessPackageAssignmentPolicy\n    properties:\n      accessPackageId: ${azuread_access_package.test.id}\n      displayName: assignment-policy\n      description: My assignment policy\n      durationInDays: 90\n      requestorSettings:\n        scopeType: AllExistingDirectoryMemberUsers\n      approvalSettings:\n        approvalRequired: true\n        approvalStages:\n          - approvalTimeoutInDays: 14\n            primaryApprovers:\n              - objectId: ${azuread_group.test.object_id}\n                subjectType: groupMembers\n      assignmentReviewSettings:\n        enabled: true\n        reviewFrequency: weekly\n        durationInDays: 3\n        reviewType: Self\n        accessReviewTimeoutBehavior: keepAccess\n      questions:\n        - text:\n            defaultText: hello, how are you?\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn access package assignment policy can be imported using the ID, e.g.\n\n```sh\n $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "accessPackageId": {
+                    "type": "string",
+                    "description": "The ID of the access package that will contain the policy.\n"
+                },
+                "approvalSettings": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettings:AccessPackageAssignmentPolicyApprovalSettings",
+                    "description": "An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.\n"
+                },
+                "assignmentReviewSettings": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyAssignmentReviewSettings:AccessPackageAssignmentPolicyAssignmentReviewSettings",
+                    "description": "An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the policy.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the policy.\n"
+                },
+                "durationInDays": {
+                    "type": "integer",
+                    "description": "How many days this assignment is valid for.\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).\n"
+                },
+                "extensionEnabled": {
+                    "type": "boolean",
+                    "description": "Whether users will be able to request extension of their access to this package before their access expires.\n"
+                },
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestion:AccessPackageAssignmentPolicyQuestion"
+                    },
+                    "description": "One or more `question` blocks for the requestor, as documented below.\n"
+                },
+                "requestorSettings": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyRequestorSettings:AccessPackageAssignmentPolicyRequestorSettings",
+                    "description": "A `requestor_settings` block to configure the users who can request access, as documented below.\n"
+                }
+            },
+            "required": [
+                "accessPackageId",
+                "description",
+                "displayName"
+            ],
+            "inputProperties": {
+                "accessPackageId": {
+                    "type": "string",
+                    "description": "The ID of the access package that will contain the policy.\n"
+                },
+                "approvalSettings": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettings:AccessPackageAssignmentPolicyApprovalSettings",
+                    "description": "An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.\n"
+                },
+                "assignmentReviewSettings": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyAssignmentReviewSettings:AccessPackageAssignmentPolicyAssignmentReviewSettings",
+                    "description": "An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the policy.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the policy.\n"
+                },
+                "durationInDays": {
+                    "type": "integer",
+                    "description": "How many days this assignment is valid for.\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).\n"
+                },
+                "extensionEnabled": {
+                    "type": "boolean",
+                    "description": "Whether users will be able to request extension of their access to this package before their access expires.\n"
+                },
+                "questions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestion:AccessPackageAssignmentPolicyQuestion"
+                    },
+                    "description": "One or more `question` blocks for the requestor, as documented below.\n"
+                },
+                "requestorSettings": {
+                    "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyRequestorSettings:AccessPackageAssignmentPolicyRequestorSettings",
+                    "description": "A `requestor_settings` block to configure the users who can request access, as documented below.\n"
+                }
+            },
+            "requiredInputs": [
+                "accessPackageId",
+                "description",
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessPackageAssignmentPolicy resources.\n",
+                "properties": {
+                    "accessPackageId": {
+                        "type": "string",
+                        "description": "The ID of the access package that will contain the policy.\n"
+                    },
+                    "approvalSettings": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyApprovalSettings:AccessPackageAssignmentPolicyApprovalSettings",
+                        "description": "An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.\n"
+                    },
+                    "assignmentReviewSettings": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyAssignmentReviewSettings:AccessPackageAssignmentPolicyAssignmentReviewSettings",
+                        "description": "An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the policy.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the policy.\n"
+                    },
+                    "durationInDays": {
+                        "type": "integer",
+                        "description": "How many days this assignment is valid for.\n"
+                    },
+                    "expirationDate": {
+                        "type": "string",
+                        "description": "The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).\n"
+                    },
+                    "extensionEnabled": {
+                        "type": "boolean",
+                        "description": "Whether users will be able to request extension of their access to this package before their access expires.\n"
+                    },
+                    "questions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyQuestion:AccessPackageAssignmentPolicyQuestion"
+                        },
+                        "description": "One or more `question` blocks for the requestor, as documented below.\n"
+                    },
+                    "requestorSettings": {
+                        "$ref": "#/types/azuread:index/AccessPackageAssignmentPolicyRequestorSettings:AccessPackageAssignmentPolicyRequestorSettings",
+                        "description": "A `requestor_settings` block to configure the users who can request access, as documented below.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/accessPackageCatalog:AccessPackageCatalog": {
+            "description": "Manages an access package catalog within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.AccessPackageCatalog(\"example\", {\n    description: \"Example access package catalog\",\n    displayName: \"example-access-package-catalog\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.AccessPackageCatalog(\"example\",\n    description=\"Example access package catalog\",\n    display_name=\"example-access-package-catalog\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.AccessPackageCatalog(\"example\", new()\n    {\n        Description = \"Example access package catalog\",\n        DisplayName = \"example-access-package-catalog\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewAccessPackageCatalog(ctx, \"example\", \u0026azuread.AccessPackageCatalogArgs{\n\t\t\tDescription: pulumi.String(\"Example access package catalog\"),\n\t\t\tDisplayName: pulumi.String(\"example-access-package-catalog\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AccessPackageCatalog;\nimport com.pulumi.azuread.AccessPackageCatalogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new AccessPackageCatalog(\"example\", AccessPackageCatalogArgs.builder()        \n            .description(\"Example access package catalog\")\n            .displayName(\"example-access-package-catalog\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:AccessPackageCatalog\n    properties:\n      description: Example access package catalog\n      displayName: example-access-package-catalog\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAn Access Package Catalog can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the access package catalog.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the access package catalog.\n"
+                },
+                "externallyVisible": {
+                    "type": "boolean",
+                    "description": "Whether the access packages in this catalog can be requested by users outside the tenant.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the access packages in this catalog are available for management.\n"
+                }
+            },
+            "required": [
+                "description",
+                "displayName"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the access package catalog.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the access package catalog.\n"
+                },
+                "externallyVisible": {
+                    "type": "boolean",
+                    "description": "Whether the access packages in this catalog can be requested by users outside the tenant.\n"
+                },
+                "published": {
+                    "type": "boolean",
+                    "description": "Whether the access packages in this catalog are available for management.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessPackageCatalog resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the access package catalog.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the access package catalog.\n"
+                    },
+                    "externallyVisible": {
+                        "type": "boolean",
+                        "description": "Whether the access packages in this catalog can be requested by users outside the tenant.\n"
+                    },
+                    "published": {
+                        "type": "boolean",
+                        "description": "Whether the access packages in this catalog are available for management.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation": {
+            "description": "Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`\n\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {\n    displayName: \"example-group\",\n    securityEnabled: true,\n});\nconst exampleAccessPackageCatalog = new azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\", {\n    displayName: \"example-catalog\",\n    description: \"Example catalog\",\n});\nconst exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\", {\n    catalogId: azuread_access_package_catalog.example_catalog.id,\n    resourceOriginId: azuread_group.example_group.object_id,\n    resourceOriginSystem: \"AadGroup\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_group = azuread.Group(\"exampleGroup\",\n    display_name=\"example-group\",\n    security_enabled=True)\nexample_access_package_catalog = azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\",\n    display_name=\"example-catalog\",\n    description=\"Example catalog\")\nexample_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\",\n    catalog_id=azuread_access_package_catalog[\"example_catalog\"][\"id\"],\n    resource_origin_id=azuread_group[\"example_group\"][\"object_id\"],\n    resource_origin_system=\"AadGroup\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleGroup = new AzureAD.Group(\"exampleGroup\", new()\n    {\n        DisplayName = \"example-group\",\n        SecurityEnabled = true,\n    });\n\n    var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog(\"exampleAccessPackageCatalog\", new()\n    {\n        DisplayName = \"example-catalog\",\n        Description = \"Example catalog\",\n    });\n\n    var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\", new()\n    {\n        CatalogId = azuread_access_package_catalog.Example_catalog.Id,\n        ResourceOriginId = azuread_group.Example_group.Object_id,\n        ResourceOriginSystem = \"AadGroup\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"example-group\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackageCatalog(ctx, \"exampleAccessPackageCatalog\", \u0026azuread.AccessPackageCatalogArgs{\n\t\t\tDisplayName: pulumi.String(\"example-catalog\"),\n\t\t\tDescription: pulumi.String(\"Example catalog\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackageResourceCatalogAssociation(ctx, \"exampleAccessPackageResourceCatalogAssociation\", \u0026azuread.AccessPackageResourceCatalogAssociationArgs{\n\t\t\tCatalogId:            pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),\n\t\t\tResourceOriginId:     pulumi.Any(azuread_group.Example_group.Object_id),\n\t\t\tResourceOriginSystem: pulumi.String(\"AadGroup\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.AccessPackageCatalog;\nimport com.pulumi.azuread.AccessPackageCatalogArgs;\nimport com.pulumi.azuread.AccessPackageResourceCatalogAssociation;\nimport com.pulumi.azuread.AccessPackageResourceCatalogAssociationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"example-group\")\n            .securityEnabled(true)\n            .build());\n\n        var exampleAccessPackageCatalog = new AccessPackageCatalog(\"exampleAccessPackageCatalog\", AccessPackageCatalogArgs.builder()        \n            .displayName(\"example-catalog\")\n            .description(\"Example catalog\")\n            .build());\n\n        var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\", AccessPackageResourceCatalogAssociationArgs.builder()        \n            .catalogId(azuread_access_package_catalog.example_catalog().id())\n            .resourceOriginId(azuread_group.example_group().object_id())\n            .resourceOriginSystem(\"AadGroup\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: example-group\n      securityEnabled: true\n  exampleAccessPackageCatalog:\n    type: azuread:AccessPackageCatalog\n    properties:\n      displayName: example-catalog\n      description: Example catalog\n  exampleAccessPackageResourceCatalogAssociation:\n    type: azuread:AccessPackageResourceCatalogAssociation\n    properties:\n      catalogId: ${azuread_access_package_catalog.example_catalog.id}\n      resourceOriginId: ${azuread_group.example_group.object_id}\n      resourceOriginSystem: AadGroup\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThe resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.\n\n```sh\n $ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`. ",
+            "properties": {
+                "catalogId": {
+                    "type": "string",
+                    "description": "The unique ID of the access package catalog. Changing this forces a new resource to be created.\n"
+                },
+                "resourceOriginId": {
+                    "type": "string",
+                    "description": "The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.\n"
+                },
+                "resourceOriginSystem": {
+                    "type": "string",
+                    "description": "The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "catalogId",
+                "resourceOriginId",
+                "resourceOriginSystem"
+            ],
+            "inputProperties": {
+                "catalogId": {
+                    "type": "string",
+                    "description": "The unique ID of the access package catalog. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceOriginId": {
+                    "type": "string",
+                    "description": "The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "resourceOriginSystem": {
+                    "type": "string",
+                    "description": "The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "catalogId",
+                "resourceOriginId",
+                "resourceOriginSystem"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessPackageResourceCatalogAssociation resources.\n",
+                "properties": {
+                    "catalogId": {
+                        "type": "string",
+                        "description": "The unique ID of the access package catalog. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceOriginId": {
+                        "type": "string",
+                        "description": "The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "resourceOriginSystem": {
+                        "type": "string",
+                        "description": "The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation": {
+            "description": "Manages the resources added to access packages within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {\n    displayName: \"example-group\",\n    securityEnabled: true,\n});\nconst exampleAccessPackageCatalog = new azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\", {\n    displayName: \"example-catalog\",\n    description: \"Example catalog\",\n});\nconst exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\", {\n    catalogId: azuread_access_package_catalog.example_catalog.id,\n    resourceOriginId: azuread_group.example_group.object_id,\n    resourceOriginSystem: \"AadGroup\",\n});\nconst exampleAccessPackage = new azuread.AccessPackage(\"exampleAccessPackage\", {\n    displayName: \"example-package\",\n    description: \"Example Package\",\n    catalogId: azuread_access_package_catalog.example_catalog.id,\n});\nconst exampleAccessPackageResourcePackageAssociation = new azuread.AccessPackageResourcePackageAssociation(\"exampleAccessPackageResourcePackageAssociation\", {\n    accessPackageId: exampleAccessPackage.id,\n    catalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_group = azuread.Group(\"exampleGroup\",\n    display_name=\"example-group\",\n    security_enabled=True)\nexample_access_package_catalog = azuread.AccessPackageCatalog(\"exampleAccessPackageCatalog\",\n    display_name=\"example-catalog\",\n    description=\"Example catalog\")\nexample_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\",\n    catalog_id=azuread_access_package_catalog[\"example_catalog\"][\"id\"],\n    resource_origin_id=azuread_group[\"example_group\"][\"object_id\"],\n    resource_origin_system=\"AadGroup\")\nexample_access_package = azuread.AccessPackage(\"exampleAccessPackage\",\n    display_name=\"example-package\",\n    description=\"Example Package\",\n    catalog_id=azuread_access_package_catalog[\"example_catalog\"][\"id\"])\nexample_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation(\"exampleAccessPackageResourcePackageAssociation\",\n    access_package_id=example_access_package.id,\n    catalog_resource_association_id=example_access_package_resource_catalog_association.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleGroup = new AzureAD.Group(\"exampleGroup\", new()\n    {\n        DisplayName = \"example-group\",\n        SecurityEnabled = true,\n    });\n\n    var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog(\"exampleAccessPackageCatalog\", new()\n    {\n        DisplayName = \"example-catalog\",\n        Description = \"Example catalog\",\n    });\n\n    var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\", new()\n    {\n        CatalogId = azuread_access_package_catalog.Example_catalog.Id,\n        ResourceOriginId = azuread_group.Example_group.Object_id,\n        ResourceOriginSystem = \"AadGroup\",\n    });\n\n    var exampleAccessPackage = new AzureAD.AccessPackage(\"exampleAccessPackage\", new()\n    {\n        DisplayName = \"example-package\",\n        Description = \"Example Package\",\n        CatalogId = azuread_access_package_catalog.Example_catalog.Id,\n    });\n\n    var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation(\"exampleAccessPackageResourcePackageAssociation\", new()\n    {\n        AccessPackageId = exampleAccessPackage.Id,\n        CatalogResourceAssociationId = exampleAccessPackageResourceCatalogAssociation.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"example-group\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackageCatalog(ctx, \"exampleAccessPackageCatalog\", \u0026azuread.AccessPackageCatalogArgs{\n\t\t\tDisplayName: pulumi.String(\"example-catalog\"),\n\t\t\tDescription: pulumi.String(\"Example catalog\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleAccessPackageResourceCatalogAssociation, err := azuread.NewAccessPackageResourceCatalogAssociation(ctx, \"exampleAccessPackageResourceCatalogAssociation\", \u0026azuread.AccessPackageResourceCatalogAssociationArgs{\n\t\t\tCatalogId:            pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),\n\t\t\tResourceOriginId:     pulumi.Any(azuread_group.Example_group.Object_id),\n\t\t\tResourceOriginSystem: pulumi.String(\"AadGroup\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleAccessPackage, err := azuread.NewAccessPackage(ctx, \"exampleAccessPackage\", \u0026azuread.AccessPackageArgs{\n\t\t\tDisplayName: pulumi.String(\"example-package\"),\n\t\t\tDescription: pulumi.String(\"Example Package\"),\n\t\t\tCatalogId:   pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAccessPackageResourcePackageAssociation(ctx, \"exampleAccessPackageResourcePackageAssociation\", \u0026azuread.AccessPackageResourcePackageAssociationArgs{\n\t\t\tAccessPackageId:              exampleAccessPackage.ID(),\n\t\t\tCatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.AccessPackageCatalog;\nimport com.pulumi.azuread.AccessPackageCatalogArgs;\nimport com.pulumi.azuread.AccessPackageResourceCatalogAssociation;\nimport com.pulumi.azuread.AccessPackageResourceCatalogAssociationArgs;\nimport com.pulumi.azuread.AccessPackage;\nimport com.pulumi.azuread.AccessPackageArgs;\nimport com.pulumi.azuread.AccessPackageResourcePackageAssociation;\nimport com.pulumi.azuread.AccessPackageResourcePackageAssociationArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"example-group\")\n            .securityEnabled(true)\n            .build());\n\n        var exampleAccessPackageCatalog = new AccessPackageCatalog(\"exampleAccessPackageCatalog\", AccessPackageCatalogArgs.builder()        \n            .displayName(\"example-catalog\")\n            .description(\"Example catalog\")\n            .build());\n\n        var exampleAccessPackageResourceCatalogAssociation = new AccessPackageResourceCatalogAssociation(\"exampleAccessPackageResourceCatalogAssociation\", AccessPackageResourceCatalogAssociationArgs.builder()        \n            .catalogId(azuread_access_package_catalog.example_catalog().id())\n            .resourceOriginId(azuread_group.example_group().object_id())\n            .resourceOriginSystem(\"AadGroup\")\n            .build());\n\n        var exampleAccessPackage = new AccessPackage(\"exampleAccessPackage\", AccessPackageArgs.builder()        \n            .displayName(\"example-package\")\n            .description(\"Example Package\")\n            .catalogId(azuread_access_package_catalog.example_catalog().id())\n            .build());\n\n        var exampleAccessPackageResourcePackageAssociation = new AccessPackageResourcePackageAssociation(\"exampleAccessPackageResourcePackageAssociation\", AccessPackageResourcePackageAssociationArgs.builder()        \n            .accessPackageId(exampleAccessPackage.id())\n            .catalogResourceAssociationId(exampleAccessPackageResourceCatalogAssociation.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: example-group\n      securityEnabled: true\n  exampleAccessPackageCatalog:\n    type: azuread:AccessPackageCatalog\n    properties:\n      displayName: example-catalog\n      description: Example catalog\n  exampleAccessPackageResourceCatalogAssociation:\n    type: azuread:AccessPackageResourceCatalogAssociation\n    properties:\n      catalogId: ${azuread_access_package_catalog.example_catalog.id}\n      resourceOriginId: ${azuread_group.example_group.object_id}\n      resourceOriginSystem: AadGroup\n  exampleAccessPackage:\n    type: azuread:AccessPackage\n    properties:\n      displayName: example-package\n      description: Example Package\n      catalogId: ${azuread_access_package_catalog.example_catalog.id}\n  exampleAccessPackageResourcePackageAssociation:\n    type: azuread:AccessPackageResourcePackageAssociation\n    properties:\n      accessPackageId: ${exampleAccessPackage.id}\n      catalogResourceAssociationId: ${exampleAccessPackageResourceCatalogAssociation.id}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nThe resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.\n\n```sh\n $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`. ",
+            "properties": {
+                "accessPackageId": {
+                    "type": "string",
+                    "description": "The ID of access package this resource association is configured to. Changing this forces a new resource to be created.\n"
+                },
+                "accessType": {
+                    "type": "string",
+                    "description": "The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.\n"
+                },
+                "catalogResourceAssociationId": {
+                    "type": "string",
+                    "description": "The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "accessPackageId",
+                "catalogResourceAssociationId"
+            ],
+            "inputProperties": {
+                "accessPackageId": {
+                    "type": "string",
+                    "description": "The ID of access package this resource association is configured to. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "accessType": {
+                    "type": "string",
+                    "description": "The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "catalogResourceAssociationId": {
+                    "type": "string",
+                    "description": "The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "accessPackageId",
+                "catalogResourceAssociationId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AccessPackageResourcePackageAssociation resources.\n",
+                "properties": {
+                    "accessPackageId": {
+                        "type": "string",
+                        "description": "The ID of access package this resource association is configured to. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "accessType": {
+                        "type": "string",
+                        "description": "The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "catalogResourceAssociationId": {
+                        "type": "string",
+                        "description": "The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "azuread:index/administrativeUnit:AdministrativeUnit": {
             "description": "Manages an Administrative Unit within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AdministrativeUnit;\nimport com.pulumi.azuread.AdministrativeUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new AdministrativeUnit(\"example\", AdministrativeUnitArgs.builder()        \n            .description(\"Just an example\")\n            .displayName(\"Example-AU\")\n            .visibility(\"Public\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:AdministrativeUnit\n    properties:\n      description: Just an example\n      displayName: Example-AU\n      visibility: Public\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAdministrative units can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
@@ -3303,6 +4287,71 @@
                     "memberObjectId": {
                         "type": "string",
                         "description": "The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember": {
+            "description": "Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = azuread.getUser({\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleAdministrativeUnit = new azuread.AdministrativeUnit(\"exampleAdministrativeUnit\", {displayName: \"Example-AU\"});\nconst exampleDirectoryRole = new azuread.DirectoryRole(\"exampleDirectoryRole\", {displayName: \"Security administrator\"});\nconst exampleAdministrativeUnitRoleMember = new azuread.AdministrativeUnitRoleMember(\"exampleAdministrativeUnitRoleMember\", {\n    roleObjectId: exampleDirectoryRole.objectId,\n    administrativeUnitObjectId: exampleAdministrativeUnit.id,\n    memberObjectId: exampleUser.then(exampleUser =\u003e exampleUser.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.get_user(user_principal_name=\"jdoe@hashicorp.com\")\nexample_administrative_unit = azuread.AdministrativeUnit(\"exampleAdministrativeUnit\", display_name=\"Example-AU\")\nexample_directory_role = azuread.DirectoryRole(\"exampleDirectoryRole\", display_name=\"Security administrator\")\nexample_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember(\"exampleAdministrativeUnitRoleMember\",\n    role_object_id=example_directory_role.object_id,\n    administrative_unit_object_id=example_administrative_unit.id,\n    member_object_id=example_user.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = AzureAD.GetUser.Invoke(new()\n    {\n        UserPrincipalName = \"jdoe@hashicorp.com\",\n    });\n\n    var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit(\"exampleAdministrativeUnit\", new()\n    {\n        DisplayName = \"Example-AU\",\n    });\n\n    var exampleDirectoryRole = new AzureAD.DirectoryRole(\"exampleDirectoryRole\", new()\n    {\n        DisplayName = \"Security administrator\",\n    });\n\n    var exampleAdministrativeUnitRoleMember = new AzureAD.AdministrativeUnitRoleMember(\"exampleAdministrativeUnitRoleMember\", new()\n    {\n        RoleObjectId = exampleDirectoryRole.ObjectId,\n        AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,\n        MemberObjectId = exampleUser.Apply(getUserResult =\u003e getUserResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := azuread.LookupUser(ctx, \u0026azuread.LookupUserArgs{\n\t\t\tUserPrincipalName: pulumi.StringRef(\"jdoe@hashicorp.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, \"exampleAdministrativeUnit\", \u0026azuread.AdministrativeUnitArgs{\n\t\t\tDisplayName: pulumi.String(\"Example-AU\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, \"exampleDirectoryRole\", \u0026azuread.DirectoryRoleArgs{\n\t\t\tDisplayName: pulumi.String(\"Security administrator\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewAdministrativeUnitRoleMember(ctx, \"exampleAdministrativeUnitRoleMember\", \u0026azuread.AdministrativeUnitRoleMemberArgs{\n\t\t\tRoleObjectId:               exampleDirectoryRole.ObjectId,\n\t\t\tAdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),\n\t\t\tMemberObjectId:             *pulumi.String(exampleUser.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetUserArgs;\nimport com.pulumi.azuread.AdministrativeUnit;\nimport com.pulumi.azuread.AdministrativeUnitArgs;\nimport com.pulumi.azuread.DirectoryRole;\nimport com.pulumi.azuread.DirectoryRoleArgs;\nimport com.pulumi.azuread.AdministrativeUnitRoleMember;\nimport com.pulumi.azuread.AdministrativeUnitRoleMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleAdministrativeUnit = new AdministrativeUnit(\"exampleAdministrativeUnit\", AdministrativeUnitArgs.builder()        \n            .displayName(\"Example-AU\")\n            .build());\n\n        var exampleDirectoryRole = new DirectoryRole(\"exampleDirectoryRole\", DirectoryRoleArgs.builder()        \n            .displayName(\"Security administrator\")\n            .build());\n\n        var exampleAdministrativeUnitRoleMember = new AdministrativeUnitRoleMember(\"exampleAdministrativeUnitRoleMember\", AdministrativeUnitRoleMemberArgs.builder()        \n            .roleObjectId(exampleDirectoryRole.objectId())\n            .administrativeUnitObjectId(exampleAdministrativeUnit.id())\n            .memberObjectId(exampleUser.applyValue(getUserResult -\u003e getUserResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleAdministrativeUnit:\n    type: azuread:AdministrativeUnit\n    properties:\n      displayName: Example-AU\n  exampleDirectoryRole:\n    type: azuread:DirectoryRole\n    properties:\n      displayName: Security administrator\n  exampleAdministrativeUnitRoleMember:\n    type: azuread:AdministrativeUnitRoleMember\n    properties:\n      roleObjectId: ${exampleDirectoryRole.objectId}\n      administrativeUnitObjectId: ${exampleAdministrativeUnit.id}\n      memberObjectId: ${exampleUser.id}\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: azuread:getUser\n      Arguments:\n        userPrincipalName: jdoe@hashicorp.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nAdministrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.\n\n```sh\n $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`. ",
+            "properties": {
+                "administrativeUnitObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.\n"
+                },
+                "memberObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n"
+                },
+                "roleObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the directory role you want to assign. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "administrativeUnitObjectId",
+                "memberObjectId",
+                "roleObjectId"
+            ],
+            "inputProperties": {
+                "administrativeUnitObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "memberObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "roleObjectId": {
+                    "type": "string",
+                    "description": "The object ID of the directory role you want to assign. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "administrativeUnitObjectId",
+                "memberObjectId",
+                "roleObjectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AdministrativeUnitRoleMember resources.\n",
+                "properties": {
+                    "administrativeUnitObjectId": {
+                        "type": "string",
+                        "description": "The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "memberObjectId": {
+                        "type": "string",
+                        "description": "The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "roleObjectId": {
+                        "type": "string",
+                        "description": "The object ID of the directory role you want to assign. Changing this forces a new resource to be created.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -3532,6 +4581,10 @@
                     },
                     "description": "A collection of `required_resource_access` blocks as documented below.\n"
                 },
+                "serviceManagementReference": {
+                    "type": "string",
+                    "description": "References application context information from a Service or Asset Management database.\n"
+                },
                 "signInAudience": {
                     "type": "string",
                     "description": "The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.\n"
@@ -3671,6 +4724,10 @@
                         "$ref": "#/types/azuread:index/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
                     },
                     "description": "A collection of `required_resource_access` blocks as documented below.\n"
+                },
+                "serviceManagementReference": {
+                    "type": "string",
+                    "description": "References application context information from a Service or Asset Management database.\n"
                 },
                 "signInAudience": {
                     "type": "string",
@@ -3838,6 +4895,10 @@
                             "$ref": "#/types/azuread:index/ApplicationRequiredResourceAccess:ApplicationRequiredResourceAccess"
                         },
                         "description": "A collection of `required_resource_access` blocks as documented below.\n"
+                    },
+                    "serviceManagementReference": {
+                        "type": "string",
+                        "description": "References application context information from a Service or Asset Management database.\n"
                     },
                     "signInAudience": {
                         "type": "string",
@@ -4816,7 +5877,7 @@
             }
         },
         "azuread:index/group:Group": {
-            "description": "Manages a group within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`\n\nIf using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`\n\nIf specifying owners for a group, which are user principals, this resource additionally requires one of the following application roles: `User.Read.All`, `User.ReadWrite.All`, `Directory.Read.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`\n\nWhen creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.\n\nThe `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Basic example*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    owners=[current.object_id],\n    security_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\t*pulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\n*Microsoft 365 group*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst groupOwner = new azuread.User(\"groupOwner\", {\n    userPrincipalName: \"example-group-owner@hashicorp.com\",\n    displayName: \"Group Owner\",\n    mailNickname: \"example-group-owner\",\n    password: \"SecretP@sswd99!\",\n});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    mailEnabled: true,\n    mailNickname: \"ExampleGroup\",\n    securityEnabled: true,\n    types: [\"Unified\"],\n    owners: [\n        current.then(current =\u003e current.objectId),\n        groupOwner.objectId,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\ngroup_owner = azuread.User(\"groupOwner\",\n    user_principal_name=\"example-group-owner@hashicorp.com\",\n    display_name=\"Group Owner\",\n    mail_nickname=\"example-group-owner\",\n    password=\"SecretP@sswd99!\")\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    mail_enabled=True,\n    mail_nickname=\"ExampleGroup\",\n    security_enabled=True,\n    types=[\"Unified\"],\n    owners=[\n        current.object_id,\n        group_owner.object_id,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var groupOwner = new AzureAD.User(\"groupOwner\", new()\n    {\n        UserPrincipalName = \"example-group-owner@hashicorp.com\",\n        DisplayName = \"Group Owner\",\n        MailNickname = \"example-group-owner\",\n        Password = \"SecretP@sswd99!\",\n    });\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        MailEnabled = true,\n        MailNickname = \"ExampleGroup\",\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"Unified\",\n        },\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n            groupOwner.ObjectId,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupOwner, err := azuread.NewUser(ctx, \"groupOwner\", \u0026azuread.UserArgs{\n\t\t\tUserPrincipalName: pulumi.String(\"example-group-owner@hashicorp.com\"),\n\t\t\tDisplayName:       pulumi.String(\"Group Owner\"),\n\t\t\tMailNickname:      pulumi.String(\"example-group-owner\"),\n\t\t\tPassword:          pulumi.String(\"SecretP@sswd99!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"example\"),\n\t\t\tMailEnabled:     pulumi.Bool(true),\n\t\t\tMailNickname:    pulumi.String(\"ExampleGroup\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Unified\"),\n\t\t\t},\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\t*pulumi.String(current.ObjectId),\n\t\t\t\tgroupOwner.ObjectId,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var groupOwner = new User(\"groupOwner\", UserArgs.builder()        \n            .userPrincipalName(\"example-group-owner@hashicorp.com\")\n            .displayName(\"Group Owner\")\n            .mailNickname(\"example-group-owner\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .mailEnabled(true)\n            .mailNickname(\"ExampleGroup\")\n            .securityEnabled(true)\n            .types(\"Unified\")\n            .owners(            \n                current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()),\n                groupOwner.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  groupOwner:\n    type: azuread:User\n    properties:\n      userPrincipalName: example-group-owner@hashicorp.com\n      displayName: Group Owner\n      mailNickname: example-group-owner\n      password: SecretP@sswd99!\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      mailEnabled: true\n      mailNickname: ExampleGroup\n      securityEnabled: true\n      types:\n        - Unified\n      owners:\n        - ${current.objectId}\n        - ${groupOwner.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\n*Group with members*\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var exampleUser = new User(\"exampleUser\", UserArgs.builder()        \n            .displayName(\"J Doe\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .password(\"notSecure123\")\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .members(exampleUser.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUser:\n    type: azuread:User\n    properties:\n      displayName: J Doe\n      owners:\n        - ${current.objectId}\n      password: notSecure123\n      userPrincipalName: jdoe@hashicorp.com\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      members:\n        - ${exampleUser.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\n*Group with dynamic membership*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"MyGroup\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n    types: [\"DynamicMembership\"],\n    dynamicMembership: {\n        enabled: true,\n        rule: \"user.department -eq \\\"Sales\\\"\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"MyGroup\",\n    owners=[current.object_id],\n    security_enabled=True,\n    types=[\"DynamicMembership\"],\n    dynamic_membership=azuread.GroupDynamicMembershipArgs(\n        enabled=True,\n        rule=\"user.department -eq \\\"Sales\\\"\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"MyGroup\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"DynamicMembership\",\n        },\n        DynamicMembership = new AzureAD.Inputs.GroupDynamicMembershipArgs\n        {\n            Enabled = true,\n            Rule = \"user.department -eq \\\"Sales\\\"\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"MyGroup\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\t*pulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DynamicMembership\"),\n\t\t\t},\n\t\t\tDynamicMembership: \u0026azuread.GroupDynamicMembershipArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tRule:    pulumi.String(\"user.department -eq \\\"Sales\\\"\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.inputs.GroupDynamicMembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .types(\"DynamicMembership\")\n            .dynamicMembership(GroupDynamicMembershipArgs.builder()\n                .enabled(true)\n                .rule(\"user.department -eq \\\"Sales\\\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      types:\n        - DynamicMembership\n      dynamicMembership:\n        enabled: true\n        rule: user.department -eq \"Sales\"\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGroups can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000\n```\n\n ",
+            "description": "Manages a group within Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.\n\nAlternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.\n\nIf using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`\n\nIf specifying owners for a group, which are user principals, this resource additionally requires one of the following application roles: `User.Read.All`, `User.ReadWrite.All`, `Directory.Read.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`\n\nWhen creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.\n\nThe `external_senders_allowed`, `auto_subscribe_new_members`, `hide_from_address_lists` and `hide_from_outlook_clients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Basic example*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    owners=[current.object_id],\n    security_enabled=True)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"example\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\t*pulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\n*Microsoft 365 group*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst groupOwner = new azuread.User(\"groupOwner\", {\n    userPrincipalName: \"example-group-owner@hashicorp.com\",\n    displayName: \"Group Owner\",\n    mailNickname: \"example-group-owner\",\n    password: \"SecretP@sswd99!\",\n});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"example\",\n    mailEnabled: true,\n    mailNickname: \"ExampleGroup\",\n    securityEnabled: true,\n    types: [\"Unified\"],\n    owners: [\n        current.then(current =\u003e current.objectId),\n        groupOwner.objectId,\n    ],\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\ngroup_owner = azuread.User(\"groupOwner\",\n    user_principal_name=\"example-group-owner@hashicorp.com\",\n    display_name=\"Group Owner\",\n    mail_nickname=\"example-group-owner\",\n    password=\"SecretP@sswd99!\")\nexample = azuread.Group(\"example\",\n    display_name=\"example\",\n    mail_enabled=True,\n    mail_nickname=\"ExampleGroup\",\n    security_enabled=True,\n    types=[\"Unified\"],\n    owners=[\n        current.object_id,\n        group_owner.object_id,\n    ])\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var groupOwner = new AzureAD.User(\"groupOwner\", new()\n    {\n        UserPrincipalName = \"example-group-owner@hashicorp.com\",\n        DisplayName = \"Group Owner\",\n        MailNickname = \"example-group-owner\",\n        Password = \"SecretP@sswd99!\",\n    });\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"example\",\n        MailEnabled = true,\n        MailNickname = \"ExampleGroup\",\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"Unified\",\n        },\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n            groupOwner.ObjectId,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tgroupOwner, err := azuread.NewUser(ctx, \"groupOwner\", \u0026azuread.UserArgs{\n\t\t\tUserPrincipalName: pulumi.String(\"example-group-owner@hashicorp.com\"),\n\t\t\tDisplayName:       pulumi.String(\"Group Owner\"),\n\t\t\tMailNickname:      pulumi.String(\"example-group-owner\"),\n\t\t\tPassword:          pulumi.String(\"SecretP@sswd99!\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"example\"),\n\t\t\tMailEnabled:     pulumi.Bool(true),\n\t\t\tMailNickname:    pulumi.String(\"ExampleGroup\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"Unified\"),\n\t\t\t},\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\t*pulumi.String(current.ObjectId),\n\t\t\t\tgroupOwner.ObjectId,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var groupOwner = new User(\"groupOwner\", UserArgs.builder()        \n            .userPrincipalName(\"example-group-owner@hashicorp.com\")\n            .displayName(\"Group Owner\")\n            .mailNickname(\"example-group-owner\")\n            .password(\"SecretP@sswd99!\")\n            .build());\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"example\")\n            .mailEnabled(true)\n            .mailNickname(\"ExampleGroup\")\n            .securityEnabled(true)\n            .types(\"Unified\")\n            .owners(            \n                current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()),\n                groupOwner.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  groupOwner:\n    type: azuread:User\n    properties:\n      userPrincipalName: example-group-owner@hashicorp.com\n      displayName: Group Owner\n      mailNickname: example-group-owner\n      password: SecretP@sswd99!\n  example:\n    type: azuread:Group\n    properties:\n      displayName: example\n      mailEnabled: true\n      mailNickname: ExampleGroup\n      securityEnabled: true\n      types:\n        - Unified\n      owners:\n        - ${current.objectId}\n        - ${groupOwner.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\n*Group with members*\n\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.User;\nimport com.pulumi.azuread.UserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var exampleUser = new User(\"exampleUser\", UserArgs.builder()        \n            .displayName(\"J Doe\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .password(\"notSecure123\")\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .members(exampleUser.objectId())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleUser:\n    type: azuread:User\n    properties:\n      displayName: J Doe\n      owners:\n        - ${current.objectId}\n      password: notSecure123\n      userPrincipalName: jdoe@hashicorp.com\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      members:\n        - ${exampleUser.objectId}\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n\n*Group with dynamic membership*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst current = azuread.getClientConfig({});\nconst example = new azuread.Group(\"example\", {\n    displayName: \"MyGroup\",\n    owners: [current.then(current =\u003e current.objectId)],\n    securityEnabled: true,\n    types: [\"DynamicMembership\"],\n    dynamicMembership: {\n        enabled: true,\n        rule: \"user.department -eq \\\"Sales\\\"\",\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\ncurrent = azuread.get_client_config()\nexample = azuread.Group(\"example\",\n    display_name=\"MyGroup\",\n    owners=[current.object_id],\n    security_enabled=True,\n    types=[\"DynamicMembership\"],\n    dynamic_membership=azuread.GroupDynamicMembershipArgs(\n        enabled=True,\n        rule=\"user.department -eq \\\"Sales\\\"\",\n    ))\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var current = AzureAD.GetClientConfig.Invoke();\n\n    var example = new AzureAD.Group(\"example\", new()\n    {\n        DisplayName = \"MyGroup\",\n        Owners = new[]\n        {\n            current.Apply(getClientConfigResult =\u003e getClientConfigResult.ObjectId),\n        },\n        SecurityEnabled = true,\n        Types = new[]\n        {\n            \"DynamicMembership\",\n        },\n        DynamicMembership = new AzureAD.Inputs.GroupDynamicMembershipArgs\n        {\n            Enabled = true,\n            Rule = \"user.department -eq \\\"Sales\\\"\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tcurrent, err := azuread.GetClientConfig(ctx, nil, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroup(ctx, \"example\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName: pulumi.String(\"MyGroup\"),\n\t\t\tOwners: pulumi.StringArray{\n\t\t\t\t*pulumi.String(current.ObjectId),\n\t\t\t},\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t\tTypes: pulumi.StringArray{\n\t\t\t\tpulumi.String(\"DynamicMembership\"),\n\t\t\t},\n\t\t\tDynamicMembership: \u0026azuread.GroupDynamicMembershipArgs{\n\t\t\t\tEnabled: pulumi.Bool(true),\n\t\t\t\tRule:    pulumi.String(\"user.department -eq \\\"Sales\\\"\"),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.inputs.GroupDynamicMembershipArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var current = AzureadFunctions.getClientConfig();\n\n        var example = new Group(\"example\", GroupArgs.builder()        \n            .displayName(\"MyGroup\")\n            .owners(current.applyValue(getClientConfigResult -\u003e getClientConfigResult.objectId()))\n            .securityEnabled(true)\n            .types(\"DynamicMembership\")\n            .dynamicMembership(GroupDynamicMembershipArgs.builder()\n                .enabled(true)\n                .rule(\"user.department -eq \\\"Sales\\\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:Group\n    properties:\n      displayName: MyGroup\n      owners:\n        - ${current.objectId}\n      securityEnabled: true\n      types:\n        - DynamicMembership\n      dynamicMembership:\n        enabled: true\n        rule: user.department -eq \"Sales\"\nvariables:\n  current:\n    fn::invoke:\n      Function: azuread:getClientConfig\n      Arguments: {}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGroups can be imported using their object ID, e.g.\n\n```sh\n $ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000\n```\n\n ",
             "properties": {
                 "administrativeUnitIds": {
                     "type": "array",
@@ -4891,6 +5952,10 @@
                     "type": "string",
                     "description": "The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.\n"
                 },
+                "onpremisesGroupType": {
+                    "type": "string",
+                    "description": "The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.\n"
+                },
                 "onpremisesNetbiosName": {
                     "type": "string",
                     "description": "The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.\n"
@@ -4954,6 +6019,10 @@
                 "visibility": {
                     "type": "string",
                     "description": "The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.\n"
+                },
+                "writebackEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.\n"
                 }
             },
             "required": [
@@ -4967,6 +6036,7 @@
                 "members",
                 "objectId",
                 "onpremisesDomainName",
+                "onpremisesGroupType",
                 "onpremisesNetbiosName",
                 "onpremisesSamAccountName",
                 "onpremisesSecurityIdentifier",
@@ -5041,6 +6111,10 @@
                     },
                     "description": "A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.\n"
                 },
+                "onpremisesGroupType": {
+                    "type": "string",
+                    "description": "The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.\n"
+                },
                 "owners": {
                     "type": "array",
                     "items": {
@@ -5079,6 +6153,10 @@
                 "visibility": {
                     "type": "string",
                     "description": "The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.\n"
+                },
+                "writebackEnabled": {
+                    "type": "boolean",
+                    "description": "Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.\n"
                 }
             },
             "requiredInputs": [
@@ -5163,6 +6241,10 @@
                         "type": "string",
                         "description": "The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.\n"
                     },
+                    "onpremisesGroupType": {
+                        "type": "string",
+                        "description": "The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.\n"
+                    },
                     "onpremisesNetbiosName": {
                         "type": "string",
                         "description": "The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.\n"
@@ -5228,13 +6310,17 @@
                     "visibility": {
                         "type": "string",
                         "description": "The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.\n"
+                    },
+                    "writebackEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "azuread:index/groupMember:GroupMember": {
-            "description": "Manages a single group membership within Azure Active Directory.\n\n\u003e **Warning** Do not use this resource at the same time as the `members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = azuread.getUser({\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {\n    displayName: \"my_group\",\n    securityEnabled: true,\n});\nconst exampleGroupMember = new azuread.GroupMember(\"exampleGroupMember\", {\n    groupObjectId: exampleGroup.id,\n    memberObjectId: exampleUser.then(exampleUser =\u003e exampleUser.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.get_user(user_principal_name=\"jdoe@hashicorp.com\")\nexample_group = azuread.Group(\"exampleGroup\",\n    display_name=\"my_group\",\n    security_enabled=True)\nexample_group_member = azuread.GroupMember(\"exampleGroupMember\",\n    group_object_id=example_group.id,\n    member_object_id=example_user.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = AzureAD.GetUser.Invoke(new()\n    {\n        UserPrincipalName = \"jdoe@hashicorp.com\",\n    });\n\n    var exampleGroup = new AzureAD.Group(\"exampleGroup\", new()\n    {\n        DisplayName = \"my_group\",\n        SecurityEnabled = true,\n    });\n\n    var exampleGroupMember = new AzureAD.GroupMember(\"exampleGroupMember\", new()\n    {\n        GroupObjectId = exampleGroup.Id,\n        MemberObjectId = exampleUser.Apply(getUserResult =\u003e getUserResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := azuread.LookupUser(ctx, \u0026azuread.LookupUserArgs{\n\t\t\tUserPrincipalName: pulumi.StringRef(\"jdoe@hashicorp.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleGroup, err := azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"my_group\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroupMember(ctx, \"exampleGroupMember\", \u0026azuread.GroupMemberArgs{\n\t\t\tGroupObjectId:  exampleGroup.ID(),\n\t\t\tMemberObjectId: *pulumi.String(exampleUser.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetUserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.GroupMember;\nimport com.pulumi.azuread.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"my_group\")\n            .securityEnabled(true)\n            .build());\n\n        var exampleGroupMember = new GroupMember(\"exampleGroupMember\", GroupMemberArgs.builder()        \n            .groupObjectId(exampleGroup.id())\n            .memberObjectId(exampleUser.applyValue(getUserResult -\u003e getUserResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: my_group\n      securityEnabled: true\n  exampleGroupMember:\n    type: azuread:GroupMember\n    properties:\n      groupObjectId: ${exampleGroup.id}\n      memberObjectId: ${exampleUser.id}\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: azuread:getUser\n      Arguments:\n        userPrincipalName: jdoe@hashicorp.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGroup members can be imported using the object ID of the group and the object ID of the member, e.g.\n\n```sh\n $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`. ",
+            "description": "Manages a single group membership within Azure Active Directory.\n\n\u003e **Warning** Do not use this resource at the same time as the `members` property of the `azuread.Group` resource for the same group. Doing so will cause a conflict and group members will be removed.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.\n\nHowever, if the authenticated service principal is an owner of the group being managed, an application role is not required.\n\nWhen authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst exampleUser = azuread.getUser({\n    userPrincipalName: \"jdoe@hashicorp.com\",\n});\nconst exampleGroup = new azuread.Group(\"exampleGroup\", {\n    displayName: \"my_group\",\n    securityEnabled: true,\n});\nconst exampleGroupMember = new azuread.GroupMember(\"exampleGroupMember\", {\n    groupObjectId: exampleGroup.id,\n    memberObjectId: exampleUser.then(exampleUser =\u003e exampleUser.id),\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample_user = azuread.get_user(user_principal_name=\"jdoe@hashicorp.com\")\nexample_group = azuread.Group(\"exampleGroup\",\n    display_name=\"my_group\",\n    security_enabled=True)\nexample_group_member = azuread.GroupMember(\"exampleGroupMember\",\n    group_object_id=example_group.id,\n    member_object_id=example_user.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleUser = AzureAD.GetUser.Invoke(new()\n    {\n        UserPrincipalName = \"jdoe@hashicorp.com\",\n    });\n\n    var exampleGroup = new AzureAD.Group(\"exampleGroup\", new()\n    {\n        DisplayName = \"my_group\",\n        SecurityEnabled = true,\n    });\n\n    var exampleGroupMember = new AzureAD.GroupMember(\"exampleGroupMember\", new()\n    {\n        GroupObjectId = exampleGroup.Id,\n        MemberObjectId = exampleUser.Apply(getUserResult =\u003e getUserResult.Id),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleUser, err := azuread.LookupUser(ctx, \u0026azuread.LookupUserArgs{\n\t\t\tUserPrincipalName: pulumi.StringRef(\"jdoe@hashicorp.com\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleGroup, err := azuread.NewGroup(ctx, \"exampleGroup\", \u0026azuread.GroupArgs{\n\t\t\tDisplayName:     pulumi.String(\"my_group\"),\n\t\t\tSecurityEnabled: pulumi.Bool(true),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = azuread.NewGroupMember(ctx, \"exampleGroupMember\", \u0026azuread.GroupMemberArgs{\n\t\t\tGroupObjectId:  exampleGroup.ID(),\n\t\t\tMemberObjectId: *pulumi.String(exampleUser.Id),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetUserArgs;\nimport com.pulumi.azuread.Group;\nimport com.pulumi.azuread.GroupArgs;\nimport com.pulumi.azuread.GroupMember;\nimport com.pulumi.azuread.GroupMemberArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var exampleUser = AzureadFunctions.getUser(GetUserArgs.builder()\n            .userPrincipalName(\"jdoe@hashicorp.com\")\n            .build());\n\n        var exampleGroup = new Group(\"exampleGroup\", GroupArgs.builder()        \n            .displayName(\"my_group\")\n            .securityEnabled(true)\n            .build());\n\n        var exampleGroupMember = new GroupMember(\"exampleGroupMember\", GroupMemberArgs.builder()        \n            .groupObjectId(exampleGroup.id())\n            .memberObjectId(exampleUser.applyValue(getUserResult -\u003e getUserResult.id()))\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  exampleGroup:\n    type: azuread:Group\n    properties:\n      displayName: my_group\n      securityEnabled: true\n  exampleGroupMember:\n    type: azuread:GroupMember\n    properties:\n      groupObjectId: ${exampleGroup.id}\n      memberObjectId: ${exampleUser.id}\nvariables:\n  exampleUser:\n    fn::invoke:\n      Function: azuread:getUser\n      Arguments:\n        userPrincipalName: jdoe@hashicorp.com\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nGroup members can be imported using the object ID of the group and the object ID of the member, e.g.\n\n```sh\n $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111\n```\n\n -\u003e This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`. ",
             "properties": {
                 "groupObjectId": {
                     "type": "string",
@@ -7108,9 +8194,189 @@
                 },
                 "type": "object"
             }
+        },
+        "azuread:index/userFlowAttribute:UserFlowAttribute": {
+            "description": "Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.\n\n## API Permissions\n\nThe following API permissions are required in order to use this resource.\n\nWhen authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Basic example*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = new azuread.UserFlowAttribute(\"example\", {\n    dataType: \"string\",\n    description: \"Your hobby\",\n    displayName: \"Hobby\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.UserFlowAttribute(\"example\",\n    data_type=\"string\",\n    description=\"Your hobby\",\n    display_name=\"Hobby\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new AzureAD.UserFlowAttribute(\"example\", new()\n    {\n        DataType = \"string\",\n        Description = \"Your hobby\",\n        DisplayName = \"Hobby\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.NewUserFlowAttribute(ctx, \"example\", \u0026azuread.UserFlowAttributeArgs{\n\t\t\tDataType:    pulumi.String(\"string\"),\n\t\t\tDescription: pulumi.String(\"Your hobby\"),\n\t\t\tDisplayName: pulumi.String(\"Hobby\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.UserFlowAttribute;\nimport com.pulumi.azuread.UserFlowAttributeArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new UserFlowAttribute(\"example\", UserFlowAttributeArgs.builder()        \n            .dataType(\"string\")\n            .description(\"Your hobby\")\n            .displayName(\"Hobby\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: azuread:UserFlowAttribute\n    properties:\n      dataType: string\n      description: Your hobby\n      displayName: Hobby\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nUser flow attributes can be imported using the `id`, e.g.\n\n```sh\n $ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv\n```\n\n -\u003e This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0\u0026tabs=http). ",
+            "properties": {
+                "attributeType": {
+                    "type": "string",
+                    "description": "The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.\n"
+                },
+                "dataType": {
+                    "type": "string",
+                    "description": "The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the user flow attribute that is shown to the user at the time of sign-up.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the user flow attribute. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "required": [
+                "attributeType",
+                "dataType",
+                "description",
+                "displayName"
+            ],
+            "inputProperties": {
+                "dataType": {
+                    "type": "string",
+                    "description": "The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the user flow attribute that is shown to the user at the time of sign-up.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name of the user flow attribute. Changing this forces a new resource to be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "dataType",
+                "description",
+                "displayName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering UserFlowAttribute resources.\n",
+                "properties": {
+                    "attributeType": {
+                        "type": "string",
+                        "description": "The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.\n"
+                    },
+                    "dataType": {
+                        "type": "string",
+                        "description": "The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the user flow attribute that is shown to the user at the time of sign-up.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the user flow attribute. Changing this forces a new resource to be created.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
         }
     },
     "functions": {
+        "azuread:index/getAccessPackage:getAccessPackage": {
+            "description": "Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Look up by ID*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getAccessPackage({\n    objectId: \"00000000-0000-0000-0000-000000000000\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_access_package(object_id=\"00000000-0000-0000-0000-000000000000\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetAccessPackage.Invoke(new()\n    {\n        ObjectId = \"00000000-0000-0000-0000-000000000000\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupAccessPackage(ctx, \u0026azuread.LookupAccessPackageArgs{\n\t\t\tObjectId: pulumi.StringRef(\"00000000-0000-0000-0000-000000000000\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetAccessPackageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()\n            .objectId(\"00000000-0000-0000-0000-000000000000\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getAccessPackage\n      Arguments:\n        objectId: 00000000-0000-0000-0000-000000000000\n```\n\n*Look up by DisplayName*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getAccessPackage({\n    catalogId: \"00000000-0000-0000-0000-000000000000\",\n    displayName: \"My access package Catalog\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_access_package(catalog_id=\"00000000-0000-0000-0000-000000000000\",\n    display_name=\"My access package Catalog\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetAccessPackage.Invoke(new()\n    {\n        CatalogId = \"00000000-0000-0000-0000-000000000000\",\n        DisplayName = \"My access package Catalog\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupAccessPackage(ctx, \u0026azuread.LookupAccessPackageArgs{\n\t\t\tCatalogId:   pulumi.StringRef(\"00000000-0000-0000-0000-000000000000\"),\n\t\t\tDisplayName: pulumi.StringRef(\"My access package Catalog\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetAccessPackageArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()\n            .catalogId(\"00000000-0000-0000-0000-000000000000\")\n            .displayName(\"My access package Catalog\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getAccessPackage\n      Arguments:\n        catalogId: 00000000-0000-0000-0000-000000000000\n        displayName: My access package Catalog\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccessPackage.\n",
+                "properties": {
+                    "catalogId": {
+                        "type": "string",
+                        "description": "The ID of the Catalog this access package is in.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the access package.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The ID of this access package.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccessPackage.\n",
+                "properties": {
+                    "catalogId": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the access package.\n"
+                    },
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "hidden": {
+                        "type": "boolean",
+                        "description": "Whether the access package is hidden from the requestor.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "displayName",
+                    "hidden",
+                    "objectId",
+                    "id"
+                ]
+            }
+        },
+        "azuread:index/getAccessPackageCatalog:getAccessPackageCatalog": {
+            "description": "i\nUse this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.\n\nWhen authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n*Look up by ID*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getAccessPackageCatalog({\n    objectId: \"00000000-0000-0000-0000-000000000000\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_access_package_catalog(object_id=\"00000000-0000-0000-0000-000000000000\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetAccessPackageCatalog.Invoke(new()\n    {\n        ObjectId = \"00000000-0000-0000-0000-000000000000\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupAccessPackageCatalog(ctx, \u0026azuread.LookupAccessPackageCatalogArgs{\n\t\t\tObjectId: pulumi.StringRef(\"00000000-0000-0000-0000-000000000000\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()\n            .objectId(\"00000000-0000-0000-0000-000000000000\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getAccessPackageCatalog\n      Arguments:\n        objectId: 00000000-0000-0000-0000-000000000000\n```\n\n*Look up by DisplayName*\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getAccessPackageCatalog({\n    displayName: \"My access package Catalog\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_access_package_catalog(display_name=\"My access package Catalog\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetAccessPackageCatalog.Invoke(new()\n    {\n        DisplayName = \"My access package Catalog\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupAccessPackageCatalog(ctx, \u0026azuread.LookupAccessPackageCatalogArgs{\n\t\t\tDisplayName: pulumi.StringRef(\"My access package Catalog\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()\n            .displayName(\"My access package Catalog\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getAccessPackageCatalog\n      Arguments:\n        displayName: My access package Catalog\n```\n{{% /example %}}\n{{% /examples %}}",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAccessPackageCatalog.\n",
+                "properties": {
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name of the access package catalog.\n"
+                    },
+                    "objectId": {
+                        "type": "string",
+                        "description": "The ID of this access package catalog.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAccessPackageCatalog.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the access package catalog.\n"
+                    },
+                    "displayName": {
+                        "type": "string"
+                    },
+                    "externallyVisible": {
+                        "type": "boolean",
+                        "description": "Whether the access packages in this catalog can be requested by users outside the tenant.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "objectId": {
+                        "type": "string"
+                    },
+                    "published": {
+                        "type": "boolean",
+                        "description": "Whether the access packages in this catalog are available for management.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "displayName",
+                    "externallyVisible",
+                    "objectId",
+                    "published",
+                    "id"
+                ]
+            }
+        },
         "azuread:index/getAdministrativeUnit:getAdministrativeUnit": {
             "description": "Gets information about an adminisrative unit in Azure Active Directory.\n\n## API Permissions\n\nThe following API permissions are required in order to use this data source.\n\nWhen authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`\n\nWhen authenticated with a user principal, this data source does not require any additional roles.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n### By Group Display Name)\n\n*Look up by display name*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getAdministrativeUnit({\n    displayName: \"Example-AU\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_administrative_unit(display_name=\"Example-AU\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetAdministrativeUnit.Invoke(new()\n    {\n        DisplayName = \"Example-AU\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupAdministrativeUnit(ctx, \u0026azuread.LookupAdministrativeUnitArgs{\n\t\t\tDisplayName: pulumi.StringRef(\"Example-AU\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()\n            .displayName(\"Example-AU\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getAdministrativeUnit\n      Arguments:\n        displayName: Example-AU\n```\n\n*Look up by object ID*\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as azuread from \"@pulumi/azuread\";\n\nconst example = azuread.getAdministrativeUnit({\n    objectId: \"00000000-0000-0000-0000-000000000000\",\n});\n```\n```python\nimport pulumi\nimport pulumi_azuread as azuread\n\nexample = azuread.get_administrative_unit(object_id=\"00000000-0000-0000-0000-000000000000\")\n```\n```csharp\nusing System.Collections.Generic;\nusing Pulumi;\nusing AzureAD = Pulumi.AzureAD;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = AzureAD.GetAdministrativeUnit.Invoke(new()\n    {\n        ObjectId = \"00000000-0000-0000-0000-000000000000\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := azuread.LookupAdministrativeUnit(ctx, \u0026azuread.LookupAdministrativeUnitArgs{\n\t\t\tObjectId: pulumi.StringRef(\"00000000-0000-0000-0000-000000000000\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.azuread.AzureadFunctions;\nimport com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = AzureadFunctions.getAdministrativeUnit(GetAdministrativeUnitArgs.builder()\n            .objectId(\"00000000-0000-0000-0000-000000000000\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      Function: azuread:getAdministrativeUnit\n      Arguments:\n        objectId: 00000000-0000-0000-0000-000000000000\n```\n{{% /example %}}\n{{% /examples %}}",
             "inputs": {
@@ -7325,6 +8591,10 @@
                         },
                         "description": "A collection of `required_resource_access` blocks as documented below.\n"
                     },
+                    "serviceManagementReference": {
+                        "type": "string",
+                        "description": "References application context information from a Service or Asset Management database.\n"
+                    },
                     "signInAudience": {
                         "type": "string",
                         "description": "The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.\n"
@@ -7385,6 +8655,7 @@
                     "publicClients",
                     "publisherDomain",
                     "requiredResourceAccesses",
+                    "serviceManagementReference",
                     "signInAudience",
                     "singlePageApplications",
                     "supportUrl",
@@ -7785,6 +9056,10 @@
                         "type": "string",
                         "description": "The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.\n"
                     },
+                    "onpremisesGroupType": {
+                        "type": "string",
+                        "description": "The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.\n"
+                    },
                     "onpremisesNetbiosName": {
                         "type": "string",
                         "description": "The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.\n"
@@ -7844,6 +9119,10 @@
                     "visibility": {
                         "type": "string",
                         "description": "The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.\n"
+                    },
+                    "writebackEnabled": {
+                        "type": "boolean",
+                        "description": "Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.\n"
                     }
                 },
                 "type": "object",
@@ -7863,6 +9142,7 @@
                     "members",
                     "objectId",
                     "onpremisesDomainName",
+                    "onpremisesGroupType",
                     "onpremisesNetbiosName",
                     "onpremisesSamAccountName",
                     "onpremisesSecurityIdentifier",
@@ -7875,6 +9155,7 @@
                     "theme",
                     "types",
                     "visibility",
+                    "writebackEnabled",
                     "id"
                 ]
             }
@@ -8268,6 +9549,10 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getUser.\n",
                 "properties": {
+                    "mail": {
+                        "type": "string",
+                        "description": "The SMTP address for the user.\n"
+                    },
                     "mailNickname": {
                         "type": "string",
                         "description": "The email alias of the user.\n"

@@ -10,6 +10,20 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = [
+    'AccessPackageAssignmentPolicyApprovalSettingsArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs',
+    'AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs',
+    'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs',
+    'AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs',
+    'AccessPackageAssignmentPolicyQuestionArgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceArgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs',
+    'AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs',
+    'AccessPackageAssignmentPolicyQuestionTextArgs',
+    'AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs',
+    'AccessPackageAssignmentPolicyRequestorSettingsArgs',
+    'AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs',
     'ApplicationApiArgs',
     'ApplicationApiOauth2PermissionScopeArgs',
     'ApplicationAppRoleArgs',
@@ -46,6 +60,858 @@ __all__ = [
     'SynchronizationJobScheduleArgs',
     'SynchronizationSecretCredentialArgs',
 ]
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyApprovalSettingsArgs:
+    def __init__(__self__, *,
+                 approval_required: Optional[pulumi.Input[bool]] = None,
+                 approval_required_for_extension: Optional[pulumi.Input[bool]] = None,
+                 approval_stages: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]] = None,
+                 requestor_justification_required: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] approval_required: Whether an approval is required.
+        :param pulumi.Input[bool] approval_required_for_extension: Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]] approval_stages: An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        :param pulumi.Input[bool] requestor_justification_required: Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+        """
+        if approval_required is not None:
+            pulumi.set(__self__, "approval_required", approval_required)
+        if approval_required_for_extension is not None:
+            pulumi.set(__self__, "approval_required_for_extension", approval_required_for_extension)
+        if approval_stages is not None:
+            pulumi.set(__self__, "approval_stages", approval_stages)
+        if requestor_justification_required is not None:
+            pulumi.set(__self__, "requestor_justification_required", requestor_justification_required)
+
+    @property
+    @pulumi.getter(name="approvalRequired")
+    def approval_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether an approval is required.
+        """
+        return pulumi.get(self, "approval_required")
+
+    @approval_required.setter
+    def approval_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approval_required", value)
+
+    @property
+    @pulumi.getter(name="approvalRequiredForExtension")
+    def approval_required_for_extension(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+        """
+        return pulumi.get(self, "approval_required_for_extension")
+
+    @approval_required_for_extension.setter
+    def approval_required_for_extension(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approval_required_for_extension", value)
+
+    @property
+    @pulumi.getter(name="approvalStages")
+    def approval_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]]:
+        """
+        An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        """
+        return pulumi.get(self, "approval_stages")
+
+    @approval_stages.setter
+    def approval_stages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs']]]]):
+        pulumi.set(self, "approval_stages", value)
+
+    @property
+    @pulumi.getter(name="requestorJustificationRequired")
+    def requestor_justification_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+        """
+        return pulumi.get(self, "requestor_justification_required")
+
+    @requestor_justification_required.setter
+    def requestor_justification_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "requestor_justification_required", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs:
+    def __init__(__self__, *,
+                 approval_timeout_in_days: pulumi.Input[int],
+                 alternative_approval_enabled: Optional[pulumi.Input[bool]] = None,
+                 alternative_approvers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]] = None,
+                 approver_justification_required: Optional[pulumi.Input[bool]] = None,
+                 enable_alternative_approval_in_days: Optional[pulumi.Input[int]] = None,
+                 primary_approvers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]] = None):
+        """
+        :param pulumi.Input[int] approval_timeout_in_days: Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+        :param pulumi.Input[bool] alternative_approval_enabled: Whether alternative approvers are enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]] alternative_approvers: A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        :param pulumi.Input[bool] approver_justification_required: Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+        :param pulumi.Input[int] enable_alternative_approval_in_days: Number of days before the request is forwarded to alternative approvers.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]] primary_approvers: A block specifying the users who will be asked to approve requests, as documented below.
+        """
+        pulumi.set(__self__, "approval_timeout_in_days", approval_timeout_in_days)
+        if alternative_approval_enabled is not None:
+            pulumi.set(__self__, "alternative_approval_enabled", alternative_approval_enabled)
+        if alternative_approvers is not None:
+            pulumi.set(__self__, "alternative_approvers", alternative_approvers)
+        if approver_justification_required is not None:
+            pulumi.set(__self__, "approver_justification_required", approver_justification_required)
+        if enable_alternative_approval_in_days is not None:
+            pulumi.set(__self__, "enable_alternative_approval_in_days", enable_alternative_approval_in_days)
+        if primary_approvers is not None:
+            pulumi.set(__self__, "primary_approvers", primary_approvers)
+
+    @property
+    @pulumi.getter(name="approvalTimeoutInDays")
+    def approval_timeout_in_days(self) -> pulumi.Input[int]:
+        """
+        Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+        """
+        return pulumi.get(self, "approval_timeout_in_days")
+
+    @approval_timeout_in_days.setter
+    def approval_timeout_in_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "approval_timeout_in_days", value)
+
+    @property
+    @pulumi.getter(name="alternativeApprovalEnabled")
+    def alternative_approval_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether alternative approvers are enabled.
+        """
+        return pulumi.get(self, "alternative_approval_enabled")
+
+    @alternative_approval_enabled.setter
+    def alternative_approval_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "alternative_approval_enabled", value)
+
+    @property
+    @pulumi.getter(name="alternativeApprovers")
+    def alternative_approvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]]:
+        """
+        A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        """
+        return pulumi.get(self, "alternative_approvers")
+
+    @alternative_approvers.setter
+    def alternative_approvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs']]]]):
+        pulumi.set(self, "alternative_approvers", value)
+
+    @property
+    @pulumi.getter(name="approverJustificationRequired")
+    def approver_justification_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+        """
+        return pulumi.get(self, "approver_justification_required")
+
+    @approver_justification_required.setter
+    def approver_justification_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approver_justification_required", value)
+
+    @property
+    @pulumi.getter(name="enableAlternativeApprovalInDays")
+    def enable_alternative_approval_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of days before the request is forwarded to alternative approvers.
+        """
+        return pulumi.get(self, "enable_alternative_approval_in_days")
+
+    @enable_alternative_approval_in_days.setter
+    def enable_alternative_approval_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "enable_alternative_approval_in_days", value)
+
+    @property
+    @pulumi.getter(name="primaryApprovers")
+    def primary_approvers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]]:
+        """
+        A block specifying the users who will be asked to approve requests, as documented below.
+        """
+        return pulumi.get(self, "primary_approvers")
+
+    @primary_approvers.setter
+    def primary_approvers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs']]]]):
+        pulumi.set(self, "primary_approvers", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs:
+    def __init__(__self__, *,
+                 subject_type: pulumi.Input[str],
+                 backup: Optional[pulumi.Input[bool]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        :param pulumi.Input[bool] backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param pulumi.Input[str] object_id: The ID of the subject.
+        """
+        pulumi.set(__self__, "subject_type", subject_type)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+
+    @property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> pulumi.Input[str]:
+        """
+        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        """
+        return pulumi.get(self, "subject_type")
+
+    @subject_type.setter
+    def subject_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_type", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the subject.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs:
+    def __init__(__self__, *,
+                 subject_type: pulumi.Input[str],
+                 backup: Optional[pulumi.Input[bool]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        :param pulumi.Input[bool] backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param pulumi.Input[str] object_id: The ID of the subject.
+        """
+        pulumi.set(__self__, "subject_type", subject_type)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+
+    @property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> pulumi.Input[str]:
+        """
+        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        """
+        return pulumi.get(self, "subject_type")
+
+    @subject_type.setter
+    def subject_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_type", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the subject.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
+    def __init__(__self__, *,
+                 access_recommendation_enabled: Optional[pulumi.Input[bool]] = None,
+                 access_review_timeout_behavior: Optional[pulumi.Input[str]] = None,
+                 approver_justification_required: Optional[pulumi.Input[bool]] = None,
+                 duration_in_days: Optional[pulumi.Input[int]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 review_frequency: Optional[pulumi.Input[str]] = None,
+                 review_type: Optional[pulumi.Input[str]] = None,
+                 reviewers: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]] = None,
+                 starting_on: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] access_recommendation_enabled: Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+        :param pulumi.Input[str] access_review_timeout_behavior: Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+        :param pulumi.Input[bool] approver_justification_required: Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+        :param pulumi.Input[int] duration_in_days: How many days each occurrence of the access review series will run.
+        :param pulumi.Input[bool] enabled: Whether to enable assignment review.
+        :param pulumi.Input[str] review_frequency: This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+        :param pulumi.Input[str] review_type: Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        :param pulumi.Input[str] starting_on: This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+        """
+        if access_recommendation_enabled is not None:
+            pulumi.set(__self__, "access_recommendation_enabled", access_recommendation_enabled)
+        if access_review_timeout_behavior is not None:
+            pulumi.set(__self__, "access_review_timeout_behavior", access_review_timeout_behavior)
+        if approver_justification_required is not None:
+            pulumi.set(__self__, "approver_justification_required", approver_justification_required)
+        if duration_in_days is not None:
+            pulumi.set(__self__, "duration_in_days", duration_in_days)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if review_frequency is not None:
+            pulumi.set(__self__, "review_frequency", review_frequency)
+        if review_type is not None:
+            pulumi.set(__self__, "review_type", review_type)
+        if reviewers is not None:
+            pulumi.set(__self__, "reviewers", reviewers)
+        if starting_on is not None:
+            pulumi.set(__self__, "starting_on", starting_on)
+
+    @property
+    @pulumi.getter(name="accessRecommendationEnabled")
+    def access_recommendation_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+        """
+        return pulumi.get(self, "access_recommendation_enabled")
+
+    @access_recommendation_enabled.setter
+    def access_recommendation_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "access_recommendation_enabled", value)
+
+    @property
+    @pulumi.getter(name="accessReviewTimeoutBehavior")
+    def access_review_timeout_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+        """
+        return pulumi.get(self, "access_review_timeout_behavior")
+
+    @access_review_timeout_behavior.setter
+    def access_review_timeout_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_review_timeout_behavior", value)
+
+    @property
+    @pulumi.getter(name="approverJustificationRequired")
+    def approver_justification_required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+        """
+        return pulumi.get(self, "approver_justification_required")
+
+    @approver_justification_required.setter
+    def approver_justification_required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "approver_justification_required", value)
+
+    @property
+    @pulumi.getter(name="durationInDays")
+    def duration_in_days(self) -> Optional[pulumi.Input[int]]:
+        """
+        How many days each occurrence of the access review series will run.
+        """
+        return pulumi.get(self, "duration_in_days")
+
+    @duration_in_days.setter
+    def duration_in_days(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "duration_in_days", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable assignment review.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="reviewFrequency")
+    def review_frequency(self) -> Optional[pulumi.Input[str]]:
+        """
+        This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+        """
+        return pulumi.get(self, "review_frequency")
+
+    @review_frequency.setter
+    def review_frequency(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "review_frequency", value)
+
+    @property
+    @pulumi.getter(name="reviewType")
+    def review_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        """
+        return pulumi.get(self, "review_type")
+
+    @review_type.setter
+    def review_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "review_type", value)
+
+    @property
+    @pulumi.getter
+    def reviewers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]]:
+        """
+        One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
+        """
+        return pulumi.get(self, "reviewers")
+
+    @reviewers.setter
+    def reviewers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]]]):
+        pulumi.set(self, "reviewers", value)
+
+    @property
+    @pulumi.getter(name="startingOn")
+    def starting_on(self) -> Optional[pulumi.Input[str]]:
+        """
+        This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+        """
+        return pulumi.get(self, "starting_on")
+
+    @starting_on.setter
+    def starting_on(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "starting_on", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs:
+    def __init__(__self__, *,
+                 subject_type: pulumi.Input[str],
+                 backup: Optional[pulumi.Input[bool]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        :param pulumi.Input[bool] backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param pulumi.Input[str] object_id: The ID of the subject.
+        """
+        pulumi.set(__self__, "subject_type", subject_type)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+
+    @property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> pulumi.Input[str]:
+        """
+        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        """
+        return pulumi.get(self, "subject_type")
+
+    @subject_type.setter
+    def subject_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_type", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the subject.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyQuestionArgs:
+    def __init__(__self__, *,
+                 text: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs'],
+                 choices: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]] = None,
+                 required: Optional[pulumi.Input[bool]] = None,
+                 sequence: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs'] text: A block describing the content of this question, as documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]] choices: One or more blocks configuring a choice to the question, as documented below.
+        :param pulumi.Input[bool] required: Whether this question is required.
+        :param pulumi.Input[int] sequence: The sequence number of this question.
+        """
+        pulumi.set(__self__, "text", text)
+        if choices is not None:
+            pulumi.set(__self__, "choices", choices)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+        if sequence is not None:
+            pulumi.set(__self__, "sequence", sequence)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs']:
+        """
+        A block describing the content of this question, as documented below.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionTextArgs']):
+        pulumi.set(self, "text", value)
+
+    @property
+    @pulumi.getter
+    def choices(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]]:
+        """
+        One or more blocks configuring a choice to the question, as documented below.
+        """
+        return pulumi.get(self, "choices")
+
+    @choices.setter
+    def choices(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceArgs']]]]):
+        pulumi.set(self, "choices", value)
+
+    @property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this question is required.
+        """
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "required", value)
+
+    @property
+    @pulumi.getter
+    def sequence(self) -> Optional[pulumi.Input[int]]:
+        """
+        The sequence number of this question.
+        """
+        return pulumi.get(self, "sequence")
+
+    @sequence.setter
+    def sequence(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "sequence", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyQuestionChoiceArgs:
+    def __init__(__self__, *,
+                 actual_value: pulumi.Input[str],
+                 display_value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']):
+        """
+        :param pulumi.Input[str] actual_value: The actual value of this choice.
+        :param pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs'] display_value: A block describing the display text of this choice, as documented below.
+        """
+        pulumi.set(__self__, "actual_value", actual_value)
+        pulumi.set(__self__, "display_value", display_value)
+
+    @property
+    @pulumi.getter(name="actualValue")
+    def actual_value(self) -> pulumi.Input[str]:
+        """
+        The actual value of this choice.
+        """
+        return pulumi.get(self, "actual_value")
+
+    @actual_value.setter
+    def actual_value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "actual_value", value)
+
+    @property
+    @pulumi.getter(name="displayValue")
+    def display_value(self) -> pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']:
+        """
+        A block describing the display text of this choice, as documented below.
+        """
+        return pulumi.get(self, "display_value")
+
+    @display_value.setter
+    def display_value(self, value: pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs']):
+        pulumi.set(self, "display_value", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs:
+    def __init__(__self__, *,
+                 default_text: pulumi.Input[str],
+                 localized_texts: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]] = None):
+        """
+        :param pulumi.Input[str] default_text: The default text of this question.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]] localized_texts: One or more blocks describing localized text of this question, as documented below.
+        """
+        pulumi.set(__self__, "default_text", default_text)
+        if localized_texts is not None:
+            pulumi.set(__self__, "localized_texts", localized_texts)
+
+    @property
+    @pulumi.getter(name="defaultText")
+    def default_text(self) -> pulumi.Input[str]:
+        """
+        The default text of this question.
+        """
+        return pulumi.get(self, "default_text")
+
+    @default_text.setter
+    def default_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_text", value)
+
+    @property
+    @pulumi.getter(name="localizedTexts")
+    def localized_texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]]:
+        """
+        One or more blocks describing localized text of this question, as documented below.
+        """
+        return pulumi.get(self, "localized_texts")
+
+    @localized_texts.setter
+    def localized_texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs']]]]):
+        pulumi.set(self, "localized_texts", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 language_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] content: The localized content of this question.
+        :param pulumi.Input[str] language_code: The ISO 639 language code for this question content.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "language_code", language_code)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The localized content of this question.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Input[str]:
+        """
+        The ISO 639 language code for this question content.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "language_code", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyQuestionTextArgs:
+    def __init__(__self__, *,
+                 default_text: pulumi.Input[str],
+                 localized_texts: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]] = None):
+        """
+        :param pulumi.Input[str] default_text: The default text of this question.
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]] localized_texts: One or more blocks describing localized text of this question, as documented below.
+        """
+        pulumi.set(__self__, "default_text", default_text)
+        if localized_texts is not None:
+            pulumi.set(__self__, "localized_texts", localized_texts)
+
+    @property
+    @pulumi.getter(name="defaultText")
+    def default_text(self) -> pulumi.Input[str]:
+        """
+        The default text of this question.
+        """
+        return pulumi.get(self, "default_text")
+
+    @default_text.setter
+    def default_text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_text", value)
+
+    @property
+    @pulumi.getter(name="localizedTexts")
+    def localized_texts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]]:
+        """
+        One or more blocks describing localized text of this question, as documented below.
+        """
+        return pulumi.get(self, "localized_texts")
+
+    @localized_texts.setter
+    def localized_texts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs']]]]):
+        pulumi.set(self, "localized_texts", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs:
+    def __init__(__self__, *,
+                 content: pulumi.Input[str],
+                 language_code: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] content: The localized content of this question.
+        :param pulumi.Input[str] language_code: The ISO 639 language code for this question content.
+        """
+        pulumi.set(__self__, "content", content)
+        pulumi.set(__self__, "language_code", language_code)
+
+    @property
+    @pulumi.getter
+    def content(self) -> pulumi.Input[str]:
+        """
+        The localized content of this question.
+        """
+        return pulumi.get(self, "content")
+
+    @content.setter
+    def content(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content", value)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> pulumi.Input[str]:
+        """
+        The ISO 639 language code for this question content.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "language_code", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyRequestorSettingsArgs:
+    def __init__(__self__, *,
+                 requestors: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]] = None,
+                 requests_accepted: Optional[pulumi.Input[bool]] = None,
+                 scope_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]] requestors: A block specifying the users who are allowed to request on this policy, as documented below.
+        :param pulumi.Input[bool] requests_accepted: Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+        :param pulumi.Input[str] scope_type: Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+        """
+        if requestors is not None:
+            pulumi.set(__self__, "requestors", requestors)
+        if requests_accepted is not None:
+            pulumi.set(__self__, "requests_accepted", requests_accepted)
+        if scope_type is not None:
+            pulumi.set(__self__, "scope_type", scope_type)
+
+    @property
+    @pulumi.getter
+    def requestors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]]:
+        """
+        A block specifying the users who are allowed to request on this policy, as documented below.
+        """
+        return pulumi.get(self, "requestors")
+
+    @requestors.setter
+    def requestors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs']]]]):
+        pulumi.set(self, "requestors", value)
+
+    @property
+    @pulumi.getter(name="requestsAccepted")
+    def requests_accepted(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+        """
+        return pulumi.get(self, "requests_accepted")
+
+    @requests_accepted.setter
+    def requests_accepted(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "requests_accepted", value)
+
+    @property
+    @pulumi.getter(name="scopeType")
+    def scope_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+        """
+        return pulumi.get(self, "scope_type")
+
+    @scope_type.setter
+    def scope_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scope_type", value)
+
+
+@pulumi.input_type
+class AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs:
+    def __init__(__self__, *,
+                 subject_type: pulumi.Input[str],
+                 backup: Optional[pulumi.Input[bool]] = None,
+                 object_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] subject_type: Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        :param pulumi.Input[bool] backup: For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        :param pulumi.Input[str] object_id: The ID of the subject.
+        """
+        pulumi.set(__self__, "subject_type", subject_type)
+        if backup is not None:
+            pulumi.set(__self__, "backup", backup)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
+
+    @property
+    @pulumi.getter(name="subjectType")
+    def subject_type(self) -> pulumi.Input[str]:
+        """
+        Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+        """
+        return pulumi.get(self, "subject_type")
+
+    @subject_type.setter
+    def subject_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "subject_type", value)
+
+    @property
+    @pulumi.getter
+    def backup(self) -> Optional[pulumi.Input[bool]]:
+        """
+        For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+        """
+        return pulumi.get(self, "backup")
+
+    @backup.setter
+    def backup(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "backup", value)
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the subject.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "object_id", value)
+
 
 @pulumi.input_type
 class ApplicationApiArgs:
