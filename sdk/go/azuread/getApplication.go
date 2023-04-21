@@ -117,6 +117,8 @@ type LookupApplicationResult struct {
 	PublisherDomain string `pulumi:"publisherDomain"`
 	// A collection of `requiredResourceAccess` blocks as documented below.
 	RequiredResourceAccesses []GetApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference string `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 	SignInAudience string `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below.
@@ -298,6 +300,11 @@ func (o LookupApplicationResultOutput) RequiredResourceAccesses() GetApplication
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationRequiredResourceAccess {
 		return v.RequiredResourceAccesses
 	}).(GetApplicationRequiredResourceAccessArrayOutput)
+}
+
+// References application context information from a Service or Asset Management database.
+func (o LookupApplicationResultOutput) ServiceManagementReference() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApplicationResult) string { return v.ServiceManagementReference }).(pulumi.StringOutput)
 }
 
 // The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.

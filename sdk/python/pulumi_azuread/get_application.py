@@ -22,7 +22,7 @@ class GetApplicationResult:
     """
     A collection of values returned by getApplication.
     """
-    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
+    def __init__(__self__, apis=None, app_role_ids=None, app_roles=None, application_id=None, description=None, device_only_auth_enabled=None, disabled_by_microsoft=None, display_name=None, fallback_public_client_enabled=None, feature_tags=None, group_membership_claims=None, id=None, identifier_uris=None, logo_url=None, marketing_url=None, notes=None, oauth2_permission_scope_ids=None, oauth2_post_response_required=None, object_id=None, optional_claims=None, owners=None, privacy_statement_url=None, public_clients=None, publisher_domain=None, required_resource_accesses=None, service_management_reference=None, sign_in_audience=None, single_page_applications=None, support_url=None, tags=None, terms_of_service_url=None, webs=None):
         if apis and not isinstance(apis, list):
             raise TypeError("Expected argument 'apis' to be a list")
         pulumi.set(__self__, "apis", apis)
@@ -98,6 +98,9 @@ class GetApplicationResult:
         if required_resource_accesses and not isinstance(required_resource_accesses, list):
             raise TypeError("Expected argument 'required_resource_accesses' to be a list")
         pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
+        if service_management_reference and not isinstance(service_management_reference, str):
+            raise TypeError("Expected argument 'service_management_reference' to be a str")
+        pulumi.set(__self__, "service_management_reference", service_management_reference)
         if sign_in_audience and not isinstance(sign_in_audience, str):
             raise TypeError("Expected argument 'sign_in_audience' to be a str")
         pulumi.set(__self__, "sign_in_audience", sign_in_audience)
@@ -318,6 +321,14 @@ class GetApplicationResult:
         return pulumi.get(self, "required_resource_accesses")
 
     @property
+    @pulumi.getter(name="serviceManagementReference")
+    def service_management_reference(self) -> str:
+        """
+        References application context information from a Service or Asset Management database.
+        """
+        return pulumi.get(self, "service_management_reference")
+
+    @property
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> str:
         """
@@ -397,6 +408,7 @@ class AwaitableGetApplicationResult(GetApplicationResult):
             public_clients=self.public_clients,
             publisher_domain=self.publisher_domain,
             required_resource_accesses=self.required_resource_accesses,
+            service_management_reference=self.service_management_reference,
             sign_in_audience=self.sign_in_audience,
             single_page_applications=self.single_page_applications,
             support_url=self.support_url,
@@ -468,6 +480,7 @@ def get_application(application_id: Optional[str] = None,
         public_clients=__ret__.public_clients,
         publisher_domain=__ret__.publisher_domain,
         required_resource_accesses=__ret__.required_resource_accesses,
+        service_management_reference=__ret__.service_management_reference,
         sign_in_audience=__ret__.sign_in_audience,
         single_page_applications=__ret__.single_page_applications,
         support_url=__ret__.support_url,

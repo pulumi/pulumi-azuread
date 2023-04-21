@@ -17,7 +17,9 @@ import (
 //
 // The following API permissions are required in order to use this resource.
 //
-// When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+// When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+//
+// Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
 //
 // If using the `assignableToRole` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 //
@@ -73,6 +75,8 @@ type Group struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesDomainName pulumi.StringOutput `pulumi:"onpremisesDomainName"`
+	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	OnpremisesGroupType pulumi.StringOutput `pulumi:"onpremisesGroupType"`
 	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesNetbiosName pulumi.StringOutput `pulumi:"onpremisesNetbiosName"`
 	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
@@ -99,6 +103,8 @@ type Group struct {
 	Types pulumi.StringArrayOutput `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility pulumi.StringOutput `pulumi:"visibility"`
+	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	WritebackEnabled pulumi.BoolPtrOutput `pulumi:"writebackEnabled"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -165,6 +171,8 @@ type groupState struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesDomainName *string `pulumi:"onpremisesDomainName"`
+	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	OnpremisesGroupType *string `pulumi:"onpremisesGroupType"`
 	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesNetbiosName *string `pulumi:"onpremisesNetbiosName"`
 	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
@@ -191,6 +199,8 @@ type groupState struct {
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility *string `pulumi:"visibility"`
+	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	WritebackEnabled *bool `pulumi:"writebackEnabled"`
 }
 
 type GroupState struct {
@@ -226,6 +236,8 @@ type GroupState struct {
 	ObjectId pulumi.StringPtrInput
 	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesDomainName pulumi.StringPtrInput
+	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	OnpremisesGroupType pulumi.StringPtrInput
 	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesNetbiosName pulumi.StringPtrInput
 	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
@@ -252,6 +264,8 @@ type GroupState struct {
 	Types pulumi.StringArrayInput
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility pulumi.StringPtrInput
+	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	WritebackEnabled pulumi.BoolPtrInput
 }
 
 func (GroupState) ElementType() reflect.Type {
@@ -285,6 +299,8 @@ type groupArgs struct {
 	MailNickname *string `pulumi:"mailNickname"`
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members []string `pulumi:"members"`
+	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	OnpremisesGroupType *string `pulumi:"onpremisesGroupType"`
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners []string `pulumi:"owners"`
 	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
@@ -299,6 +315,8 @@ type groupArgs struct {
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility *string `pulumi:"visibility"`
+	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	WritebackEnabled *bool `pulumi:"writebackEnabled"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -329,6 +347,8 @@ type GroupArgs struct {
 	MailNickname pulumi.StringPtrInput
 	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
 	Members pulumi.StringArrayInput
+	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	OnpremisesGroupType pulumi.StringPtrInput
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners pulumi.StringArrayInput
 	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
@@ -343,6 +363,8 @@ type GroupArgs struct {
 	Types pulumi.StringArrayInput
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 	Visibility pulumi.StringPtrInput
+	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	WritebackEnabled pulumi.BoolPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -512,6 +534,11 @@ func (o GroupOutput) OnpremisesDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesDomainName }).(pulumi.StringOutput)
 }
 
+// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+func (o GroupOutput) OnpremisesGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesGroupType }).(pulumi.StringOutput)
+}
+
 // The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
 func (o GroupOutput) OnpremisesNetbiosName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesNetbiosName }).(pulumi.StringOutput)
@@ -575,6 +602,11 @@ func (o GroupOutput) Types() pulumi.StringArrayOutput {
 // The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
 func (o GroupOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Visibility }).(pulumi.StringOutput)
+}
+
+// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+func (o GroupOutput) WritebackEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WritebackEnabled }).(pulumi.BoolPtrOutput)
 }
 
 type GroupArrayOutput struct{ *pulumi.OutputState }

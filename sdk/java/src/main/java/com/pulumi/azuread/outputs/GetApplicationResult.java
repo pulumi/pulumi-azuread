@@ -146,6 +146,11 @@ public final class GetApplicationResult {
      */
     private List<GetApplicationRequiredResourceAccess> requiredResourceAccesses;
     /**
+     * @return References application context information from a Service or Asset Management database.
+     * 
+     */
+    private String serviceManagementReference;
+    /**
      * @return The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      * 
      */
@@ -353,6 +358,13 @@ public final class GetApplicationResult {
         return this.requiredResourceAccesses;
     }
     /**
+     * @return References application context information from a Service or Asset Management database.
+     * 
+     */
+    public String serviceManagementReference() {
+        return this.serviceManagementReference;
+    }
+    /**
      * @return The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
      * 
      */
@@ -429,6 +441,7 @@ public final class GetApplicationResult {
         private List<GetApplicationPublicClient> publicClients;
         private String publisherDomain;
         private List<GetApplicationRequiredResourceAccess> requiredResourceAccesses;
+        private String serviceManagementReference;
         private String signInAudience;
         private List<GetApplicationSinglePageApplication> singlePageApplications;
         private String supportUrl;
@@ -463,6 +476,7 @@ public final class GetApplicationResult {
     	      this.publicClients = defaults.publicClients;
     	      this.publisherDomain = defaults.publisherDomain;
     	      this.requiredResourceAccesses = defaults.requiredResourceAccesses;
+    	      this.serviceManagementReference = defaults.serviceManagementReference;
     	      this.signInAudience = defaults.signInAudience;
     	      this.singlePageApplications = defaults.singlePageApplications;
     	      this.supportUrl = defaults.supportUrl;
@@ -624,6 +638,11 @@ public final class GetApplicationResult {
             return requiredResourceAccesses(List.of(requiredResourceAccesses));
         }
         @CustomType.Setter
+        public Builder serviceManagementReference(String serviceManagementReference) {
+            this.serviceManagementReference = Objects.requireNonNull(serviceManagementReference);
+            return this;
+        }
+        @CustomType.Setter
         public Builder signInAudience(String signInAudience) {
             this.signInAudience = Objects.requireNonNull(signInAudience);
             return this;
@@ -689,6 +708,7 @@ public final class GetApplicationResult {
             o.publicClients = publicClients;
             o.publisherDomain = publisherDomain;
             o.requiredResourceAccesses = requiredResourceAccesses;
+            o.serviceManagementReference = serviceManagementReference;
             o.signInAudience = signInAudience;
             o.singlePageApplications = singlePageApplications;
             o.supportUrl = supportUrl;

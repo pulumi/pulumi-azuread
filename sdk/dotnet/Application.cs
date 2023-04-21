@@ -393,6 +393,12 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<Outputs.ApplicationRequiredResourceAccess>> RequiredResourceAccesses { get; private set; } = null!;
 
         /// <summary>
+        /// References application context information from a Service or Asset Management database.
+        /// </summary>
+        [Output("serviceManagementReference")]
+        public Output<string?> ServiceManagementReference { get; private set; } = null!;
+
+        /// <summary>
         /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         /// </summary>
         [Output("signInAudience")]
@@ -629,6 +635,12 @@ namespace Pulumi.AzureAD
             get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessArgs>());
             set => _requiredResourceAccesses = value;
         }
+
+        /// <summary>
+        /// References application context information from a Service or Asset Management database.
+        /// </summary>
+        [Input("serviceManagementReference")]
+        public Input<string>? ServiceManagementReference { get; set; }
 
         /// <summary>
         /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
@@ -889,6 +901,12 @@ namespace Pulumi.AzureAD
             get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessGetArgs>());
             set => _requiredResourceAccesses = value;
         }
+
+        /// <summary>
+        /// References application context information from a Service or Asset Management database.
+        /// </summary>
+        [Input("serviceManagementReference")]
+        public Input<string>? ServiceManagementReference { get; set; }
 
         /// <summary>
         /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.

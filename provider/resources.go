@@ -224,8 +224,19 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_service_principal_claims_mapping_policy_assignment": {
 				Tok: makeResource(mainMod, "ServicePrincipalClaimsMappingPolicyAssignment"),
 			},
-			"azuread_synchronization_job":    {Tok: makeResource(mainMod, "SynchronizationJob")},
-			"azuread_synchronization_secret": {Tok: makeResource(mainMod, "SynchronizationSecret")},
+			"azuread_synchronization_job":              {Tok: makeResource(mainMod, "SynchronizationJob")},
+			"azuread_synchronization_secret":           {Tok: makeResource(mainMod, "SynchronizationSecret")},
+			"azuread_access_package":                   {Tok: makeResource(mainMod, "AccessPackage")},
+			"azuread_access_package_assignment_policy": {Tok: makeResource(mainMod, "AccessPackageAssignmentPolicy")},
+			"azuread_access_package_catalog":           {Tok: makeResource(mainMod, "AccessPackageCatalog")},
+			"azuread_access_package_resource_catalog_association": {
+				Tok: makeResource(mainMod, "AccessPackageResourceCatalogAssociation"),
+			},
+			"azuread_access_package_resource_package_association": {
+				Tok: makeResource(mainMod, "AccessPackageResourcePackageAssociation"),
+			},
+			"azuread_administrative_unit_role_member": {Tok: makeResource(mainMod, "AdministrativeUnitRoleMember")},
+			"azuread_user_flow_attribute":             {Tok: makeResource(mainMod, "UserFlowAttribute")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},
@@ -242,6 +253,8 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_administrative_unit":           {Tok: makeDataSource(mainMod, "getAdministrativeUnit")},
 			"azuread_directory_object":              {Tok: makeDataSource(mainMod, "getDirectoryObject")},
 			"azuread_directory_roles":               {Tok: makeDataSource(mainMod, "getDirectoryRoles")},
+			"azuread_access_package":                {Tok: makeDataSource(mainMod, "getAccessPackage")},
+			"azuread_access_package_catalog":        {Tok: makeDataSource(mainMod, "getAccessPackageCatalog")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions

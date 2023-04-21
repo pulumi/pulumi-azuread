@@ -417,6 +417,21 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * References application context information from a Service or Asset Management database.
+     * 
+     */
+    @Import(name="serviceManagementReference")
+    private @Nullable Output<String> serviceManagementReference;
+
+    /**
+     * @return References application context information from a Service or Asset Management database.
+     * 
+     */
+    public Optional<Output<String>> serviceManagementReference() {
+        return Optional.ofNullable(this.serviceManagementReference);
+    }
+
+    /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
      */
@@ -550,6 +565,7 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
         this.publicClient = $.publicClient;
         this.publisherDomain = $.publisherDomain;
         this.requiredResourceAccesses = $.requiredResourceAccesses;
+        this.serviceManagementReference = $.serviceManagementReference;
         this.signInAudience = $.signInAudience;
         this.singlePageApplication = $.singlePageApplication;
         this.supportUrl = $.supportUrl;
@@ -1181,6 +1197,27 @@ public final class ApplicationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requiredResourceAccesses(ApplicationRequiredResourceAccessArgs... requiredResourceAccesses) {
             return requiredResourceAccesses(List.of(requiredResourceAccesses));
+        }
+
+        /**
+         * @param serviceManagementReference References application context information from a Service or Asset Management database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceManagementReference(@Nullable Output<String> serviceManagementReference) {
+            $.serviceManagementReference = serviceManagementReference;
+            return this;
+        }
+
+        /**
+         * @param serviceManagementReference References application context information from a Service or Asset Management database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceManagementReference(String serviceManagementReference) {
+            return serviceManagementReference(Output.of(serviceManagementReference));
         }
 
         /**

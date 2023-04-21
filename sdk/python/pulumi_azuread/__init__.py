@@ -5,8 +5,14 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .access_package import *
+from .access_package_assignment_policy import *
+from .access_package_catalog import *
+from .access_package_resource_catalog_association import *
+from .access_package_resource_package_association import *
 from .administrative_unit import *
 from .administrative_unit_member import *
+from .administrative_unit_role_member import *
 from .app_role_assignment import *
 from .application import *
 from .application_certificate import *
@@ -19,6 +25,8 @@ from .custom_directory_role import *
 from .directory_role import *
 from .directory_role_assignment import *
 from .directory_role_member import *
+from .get_access_package import *
+from .get_access_package_catalog import *
 from .get_administrative_unit import *
 from .get_application import *
 from .get_application_published_app_ids import *
@@ -47,6 +55,7 @@ from .service_principal_token_signing_certificate import *
 from .synchronization_job import *
 from .synchronization_secret import *
 from .user import *
+from .user_flow_attribute import *
 from ._inputs import *
 from . import outputs
 
@@ -62,6 +71,46 @@ _utilities.register(
 [
  {
   "pkg": "azuread",
+  "mod": "index/accessPackage",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/accessPackage:AccessPackage": "AccessPackage"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/accessPackageAssignmentPolicy",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy": "AccessPackageAssignmentPolicy"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/accessPackageCatalog",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/accessPackageCatalog:AccessPackageCatalog": "AccessPackageCatalog"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/accessPackageResourceCatalogAssociation",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation": "AccessPackageResourceCatalogAssociation"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/accessPackageResourcePackageAssociation",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation": "AccessPackageResourcePackageAssociation"
+  }
+ },
+ {
+  "pkg": "azuread",
   "mod": "index/administrativeUnit",
   "fqn": "pulumi_azuread",
   "classes": {
@@ -74,6 +123,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/administrativeUnitMember:AdministrativeUnitMember": "AdministrativeUnitMember"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/administrativeUnitRoleMember",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember": "AdministrativeUnitRoleMember"
   }
  },
  {
@@ -274,6 +331,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/user:User": "User"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/userFlowAttribute",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/userFlowAttribute:UserFlowAttribute": "UserFlowAttribute"
   }
  }
 ]

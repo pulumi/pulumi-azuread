@@ -56,6 +56,8 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// The SMTP address for the user.
+	Mail *string `pulumi:"mail"`
 	// The email alias of the user.
 	MailNickname *string `pulumi:"mailNickname"`
 	// The object ID of the user.
@@ -171,6 +173,8 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// The SMTP address for the user.
+	Mail pulumi.StringPtrInput `pulumi:"mail"`
 	// The email alias of the user.
 	MailNickname pulumi.StringPtrInput `pulumi:"mailNickname"`
 	// The object ID of the user.

@@ -93,6 +93,11 @@ public final class GetGroupResult {
      */
     private String onpremisesDomainName;
     /**
+     * @return The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    private String onpremisesGroupType;
+    /**
      * @return The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
@@ -152,6 +157,11 @@ public final class GetGroupResult {
      * 
      */
     private String visibility;
+    /**
+     * @return Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    private Boolean writebackEnabled;
 
     private GetGroupResult() {}
     /**
@@ -267,6 +277,13 @@ public final class GetGroupResult {
         return this.onpremisesDomainName;
     }
     /**
+     * @return The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    public String onpremisesGroupType() {
+        return this.onpremisesGroupType;
+    }
+    /**
      * @return The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
      * 
      */
@@ -350,6 +367,13 @@ public final class GetGroupResult {
     public String visibility() {
         return this.visibility;
     }
+    /**
+     * @return Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    public Boolean writebackEnabled() {
+        return this.writebackEnabled;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -376,6 +400,7 @@ public final class GetGroupResult {
         private List<String> members;
         private String objectId;
         private String onpremisesDomainName;
+        private String onpremisesGroupType;
         private String onpremisesNetbiosName;
         private String onpremisesSamAccountName;
         private String onpremisesSecurityIdentifier;
@@ -388,6 +413,7 @@ public final class GetGroupResult {
         private String theme;
         private List<String> types;
         private String visibility;
+        private Boolean writebackEnabled;
         public Builder() {}
         public Builder(GetGroupResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -407,6 +433,7 @@ public final class GetGroupResult {
     	      this.members = defaults.members;
     	      this.objectId = defaults.objectId;
     	      this.onpremisesDomainName = defaults.onpremisesDomainName;
+    	      this.onpremisesGroupType = defaults.onpremisesGroupType;
     	      this.onpremisesNetbiosName = defaults.onpremisesNetbiosName;
     	      this.onpremisesSamAccountName = defaults.onpremisesSamAccountName;
     	      this.onpremisesSecurityIdentifier = defaults.onpremisesSecurityIdentifier;
@@ -419,6 +446,7 @@ public final class GetGroupResult {
     	      this.theme = defaults.theme;
     	      this.types = defaults.types;
     	      this.visibility = defaults.visibility;
+    	      this.writebackEnabled = defaults.writebackEnabled;
         }
 
         @CustomType.Setter
@@ -511,6 +539,11 @@ public final class GetGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder onpremisesGroupType(String onpremisesGroupType) {
+            this.onpremisesGroupType = Objects.requireNonNull(onpremisesGroupType);
+            return this;
+        }
+        @CustomType.Setter
         public Builder onpremisesNetbiosName(String onpremisesNetbiosName) {
             this.onpremisesNetbiosName = Objects.requireNonNull(onpremisesNetbiosName);
             return this;
@@ -582,6 +615,11 @@ public final class GetGroupResult {
             this.visibility = Objects.requireNonNull(visibility);
             return this;
         }
+        @CustomType.Setter
+        public Builder writebackEnabled(Boolean writebackEnabled) {
+            this.writebackEnabled = Objects.requireNonNull(writebackEnabled);
+            return this;
+        }
         public GetGroupResult build() {
             final var o = new GetGroupResult();
             o.assignableToRole = assignableToRole;
@@ -600,6 +638,7 @@ public final class GetGroupResult {
             o.members = members;
             o.objectId = objectId;
             o.onpremisesDomainName = onpremisesDomainName;
+            o.onpremisesGroupType = onpremisesGroupType;
             o.onpremisesNetbiosName = onpremisesNetbiosName;
             o.onpremisesSamAccountName = onpremisesSamAccountName;
             o.onpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
@@ -612,6 +651,7 @@ public final class GetGroupResult {
             o.theme = theme;
             o.types = types;
             o.visibility = visibility;
+            o.writebackEnabled = writebackEnabled;
             return o;
         }
     }

@@ -29,13 +29,15 @@ class GroupArgs:
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 onpremises_group_type: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  security_enabled: Optional[pulumi.Input[bool]] = None,
                  theme: Optional[pulumi.Input[str]] = None,
                  types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None):
+                 visibility: Optional[pulumi.Input[str]] = None,
+                 writeback_enabled: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Group resource.
         :param pulumi.Input[str] display_name: The display name for the group.
@@ -51,6 +53,7 @@ class GroupArgs:
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
+        :param pulumi.Input[str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
@@ -58,6 +61,7 @@ class GroupArgs:
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        :param pulumi.Input[bool] writeback_enabled: Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
         pulumi.set(__self__, "display_name", display_name)
         if administrative_unit_ids is not None:
@@ -84,6 +88,8 @@ class GroupArgs:
             pulumi.set(__self__, "mail_nickname", mail_nickname)
         if members is not None:
             pulumi.set(__self__, "members", members)
+        if onpremises_group_type is not None:
+            pulumi.set(__self__, "onpremises_group_type", onpremises_group_type)
         if owners is not None:
             pulumi.set(__self__, "owners", owners)
         if prevent_duplicate_names is not None:
@@ -98,6 +104,8 @@ class GroupArgs:
             pulumi.set(__self__, "types", types)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
+        if writeback_enabled is not None:
+            pulumi.set(__self__, "writeback_enabled", writeback_enabled)
 
     @property
     @pulumi.getter(name="displayName")
@@ -256,6 +264,18 @@ class GroupArgs:
         pulumi.set(self, "members", value)
 
     @property
+    @pulumi.getter(name="onpremisesGroupType")
+    def onpremises_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        """
+        return pulumi.get(self, "onpremises_group_type")
+
+    @onpremises_group_type.setter
+    def onpremises_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_group_type", value)
+
+    @property
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -339,6 +359,18 @@ class GroupArgs:
     def visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visibility", value)
 
+    @property
+    @pulumi.getter(name="writebackEnabled")
+    def writeback_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "writeback_enabled")
+
+    @writeback_enabled.setter
+    def writeback_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "writeback_enabled", value)
+
 
 @pulumi.input_type
 class _GroupState:
@@ -359,6 +391,7 @@ class _GroupState:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  object_id: Optional[pulumi.Input[str]] = None,
                  onpremises_domain_name: Optional[pulumi.Input[str]] = None,
+                 onpremises_group_type: Optional[pulumi.Input[str]] = None,
                  onpremises_netbios_name: Optional[pulumi.Input[str]] = None,
                  onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
                  onpremises_security_identifier: Optional[pulumi.Input[str]] = None,
@@ -371,7 +404,8 @@ class _GroupState:
                  security_enabled: Optional[pulumi.Input[bool]] = None,
                  theme: Optional[pulumi.Input[str]] = None,
                  types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 visibility: Optional[pulumi.Input[str]] = None):
+                 visibility: Optional[pulumi.Input[str]] = None,
+                 writeback_enabled: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering Group resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] administrative_unit_ids: The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
@@ -390,6 +424,7 @@ class _GroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         :param pulumi.Input[str] object_id: The object ID of the group.
         :param pulumi.Input[str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         :param pulumi.Input[str] onpremises_netbios_name: The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[str] onpremises_sam_account_name: The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[str] onpremises_security_identifier: The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
@@ -403,6 +438,7 @@ class _GroupState:
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        :param pulumi.Input[bool] writeback_enabled: Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
         if administrative_unit_ids is not None:
             pulumi.set(__self__, "administrative_unit_ids", administrative_unit_ids)
@@ -436,6 +472,8 @@ class _GroupState:
             pulumi.set(__self__, "object_id", object_id)
         if onpremises_domain_name is not None:
             pulumi.set(__self__, "onpremises_domain_name", onpremises_domain_name)
+        if onpremises_group_type is not None:
+            pulumi.set(__self__, "onpremises_group_type", onpremises_group_type)
         if onpremises_netbios_name is not None:
             pulumi.set(__self__, "onpremises_netbios_name", onpremises_netbios_name)
         if onpremises_sam_account_name is not None:
@@ -462,6 +500,8 @@ class _GroupState:
             pulumi.set(__self__, "types", types)
         if visibility is not None:
             pulumi.set(__self__, "visibility", visibility)
+        if writeback_enabled is not None:
+            pulumi.set(__self__, "writeback_enabled", writeback_enabled)
 
     @property
     @pulumi.getter(name="administrativeUnitIds")
@@ -656,6 +696,18 @@ class _GroupState:
         pulumi.set(self, "onpremises_domain_name", value)
 
     @property
+    @pulumi.getter(name="onpremisesGroupType")
+    def onpremises_group_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        """
+        return pulumi.get(self, "onpremises_group_type")
+
+    @onpremises_group_type.setter
+    def onpremises_group_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "onpremises_group_type", value)
+
+    @property
     @pulumi.getter(name="onpremisesNetbiosName")
     def onpremises_netbios_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -811,6 +863,18 @@ class _GroupState:
     def visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "visibility", value)
 
+    @property
+    @pulumi.getter(name="writebackEnabled")
+    def writeback_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "writeback_enabled")
+
+    @writeback_enabled.setter
+    def writeback_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "writeback_enabled", value)
+
 
 class Group(pulumi.CustomResource):
     @overload
@@ -830,6 +894,7 @@ class Group(pulumi.CustomResource):
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 onpremises_group_type: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -837,6 +902,7 @@ class Group(pulumi.CustomResource):
                  theme: Optional[pulumi.Input[str]] = None,
                  types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  visibility: Optional[pulumi.Input[str]] = None,
+                 writeback_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Manages a group within Azure Active Directory.
@@ -845,7 +911,9 @@ class Group(pulumi.CustomResource):
 
         The following API permissions are required in order to use this resource.
 
-        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+
+        Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
 
         If using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
@@ -880,6 +948,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[bool] mail_enabled: Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
         :param pulumi.Input[str] mail_nickname: The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
+        :param pulumi.Input[str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of owners who own this group. Supported object types are Users or Service Principals
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] provisioning_options: A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
@@ -887,6 +956,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        :param pulumi.Input[bool] writeback_enabled: Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
         ...
     @overload
@@ -901,7 +971,9 @@ class Group(pulumi.CustomResource):
 
         The following API permissions are required in order to use this resource.
 
-        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`
+        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+
+        Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
 
         If using the `assignable_to_role` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
 
@@ -949,6 +1021,7 @@ class Group(pulumi.CustomResource):
                  mail_enabled: Optional[pulumi.Input[bool]] = None,
                  mail_nickname: Optional[pulumi.Input[str]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 onpremises_group_type: Optional[pulumi.Input[str]] = None,
                  owners: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  provisioning_options: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -956,6 +1029,7 @@ class Group(pulumi.CustomResource):
                  theme: Optional[pulumi.Input[str]] = None,
                  types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  visibility: Optional[pulumi.Input[str]] = None,
+                 writeback_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -980,6 +1054,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["mail_enabled"] = mail_enabled
             __props__.__dict__["mail_nickname"] = mail_nickname
             __props__.__dict__["members"] = members
+            __props__.__dict__["onpremises_group_type"] = onpremises_group_type
             __props__.__dict__["owners"] = owners
             __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
             __props__.__dict__["provisioning_options"] = provisioning_options
@@ -987,6 +1062,7 @@ class Group(pulumi.CustomResource):
             __props__.__dict__["theme"] = theme
             __props__.__dict__["types"] = types
             __props__.__dict__["visibility"] = visibility
+            __props__.__dict__["writeback_enabled"] = writeback_enabled
             __props__.__dict__["mail"] = None
             __props__.__dict__["object_id"] = None
             __props__.__dict__["onpremises_domain_name"] = None
@@ -1022,6 +1098,7 @@ class Group(pulumi.CustomResource):
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             object_id: Optional[pulumi.Input[str]] = None,
             onpremises_domain_name: Optional[pulumi.Input[str]] = None,
+            onpremises_group_type: Optional[pulumi.Input[str]] = None,
             onpremises_netbios_name: Optional[pulumi.Input[str]] = None,
             onpremises_sam_account_name: Optional[pulumi.Input[str]] = None,
             onpremises_security_identifier: Optional[pulumi.Input[str]] = None,
@@ -1034,7 +1111,8 @@ class Group(pulumi.CustomResource):
             security_enabled: Optional[pulumi.Input[bool]] = None,
             theme: Optional[pulumi.Input[str]] = None,
             types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-            visibility: Optional[pulumi.Input[str]] = None) -> 'Group':
+            visibility: Optional[pulumi.Input[str]] = None,
+            writeback_enabled: Optional[pulumi.Input[bool]] = None) -> 'Group':
         """
         Get an existing Group resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1058,6 +1136,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamic_membership` block.
         :param pulumi.Input[str] object_id: The object ID of the group.
         :param pulumi.Input[str] onpremises_domain_name: The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        :param pulumi.Input[str] onpremises_group_type: The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
         :param pulumi.Input[str] onpremises_netbios_name: The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[str] onpremises_sam_account_name: The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
         :param pulumi.Input[str] onpremises_security_identifier: The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
@@ -1071,6 +1150,7 @@ class Group(pulumi.CustomResource):
         :param pulumi.Input[str] theme: The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] types: A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mail_enabled` is true. Changing this forces a new resource to be created.
         :param pulumi.Input[str] visibility: The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
+        :param pulumi.Input[bool] writeback_enabled: Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1092,6 +1172,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["members"] = members
         __props__.__dict__["object_id"] = object_id
         __props__.__dict__["onpremises_domain_name"] = onpremises_domain_name
+        __props__.__dict__["onpremises_group_type"] = onpremises_group_type
         __props__.__dict__["onpremises_netbios_name"] = onpremises_netbios_name
         __props__.__dict__["onpremises_sam_account_name"] = onpremises_sam_account_name
         __props__.__dict__["onpremises_security_identifier"] = onpremises_security_identifier
@@ -1105,6 +1186,7 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["theme"] = theme
         __props__.__dict__["types"] = types
         __props__.__dict__["visibility"] = visibility
+        __props__.__dict__["writeback_enabled"] = writeback_enabled
         return Group(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1236,6 +1318,14 @@ class Group(pulumi.CustomResource):
         return pulumi.get(self, "onpremises_domain_name")
 
     @property
+    @pulumi.getter(name="onpremisesGroupType")
+    def onpremises_group_type(self) -> pulumi.Output[str]:
+        """
+        The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        """
+        return pulumi.get(self, "onpremises_group_type")
+
+    @property
     @pulumi.getter(name="onpremisesNetbiosName")
     def onpremises_netbios_name(self) -> pulumi.Output[str]:
         """
@@ -1338,4 +1428,12 @@ class Group(pulumi.CustomResource):
         The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
         """
         return pulumi.get(self, "visibility")
+
+    @property
+    @pulumi.getter(name="writebackEnabled")
+    def writeback_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        """
+        return pulumi.get(self, "writeback_enabled")
 

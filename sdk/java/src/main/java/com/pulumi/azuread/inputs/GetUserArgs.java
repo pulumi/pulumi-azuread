@@ -16,6 +16,21 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserArgs Empty = new GetUserArgs();
 
     /**
+     * The SMTP address for the user.
+     * 
+     */
+    @Import(name="mail")
+    private @Nullable Output<String> mail;
+
+    /**
+     * @return The SMTP address for the user.
+     * 
+     */
+    public Optional<Output<String>> mail() {
+        return Optional.ofNullable(this.mail);
+    }
+
+    /**
      * The email alias of the user.
      * 
      */
@@ -63,6 +78,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserArgs() {}
 
     private GetUserArgs(GetUserArgs $) {
+        this.mail = $.mail;
         this.mailNickname = $.mailNickname;
         this.objectId = $.objectId;
         this.userPrincipalName = $.userPrincipalName;
@@ -84,6 +100,27 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUserArgs defaults) {
             $ = new GetUserArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param mail The SMTP address for the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mail(@Nullable Output<String> mail) {
+            $.mail = mail;
+            return this;
+        }
+
+        /**
+         * @param mail The SMTP address for the user.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder mail(String mail) {
+            return mail(Output.of(mail));
         }
 
         /**

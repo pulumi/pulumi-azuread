@@ -214,6 +214,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    @Import(name="onpremisesGroupType")
+    private @Nullable Output<String> onpremisesGroupType;
+
+    /**
+     * @return The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+     * 
+     */
+    public Optional<Output<String>> onpremisesGroupType() {
+        return Optional.ofNullable(this.onpremisesGroupType);
+    }
+
+    /**
      * A set of owners who own this group. Supported object types are Users or Service Principals
      * 
      */
@@ -318,6 +333,21 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.visibility);
     }
 
+    /**
+     * Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    @Import(name="writebackEnabled")
+    private @Nullable Output<Boolean> writebackEnabled;
+
+    /**
+     * @return Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+     * 
+     */
+    public Optional<Output<Boolean>> writebackEnabled() {
+        return Optional.ofNullable(this.writebackEnabled);
+    }
+
     private GroupArgs() {}
 
     private GroupArgs(GroupArgs $) {
@@ -334,6 +364,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.mailEnabled = $.mailEnabled;
         this.mailNickname = $.mailNickname;
         this.members = $.members;
+        this.onpremisesGroupType = $.onpremisesGroupType;
         this.owners = $.owners;
         this.preventDuplicateNames = $.preventDuplicateNames;
         this.provisioningOptions = $.provisioningOptions;
@@ -341,6 +372,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         this.theme = $.theme;
         this.types = $.types;
         this.visibility = $.visibility;
+        this.writebackEnabled = $.writebackEnabled;
     }
 
     public static Builder builder() {
@@ -665,6 +697,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param onpremisesGroupType The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onpremisesGroupType(@Nullable Output<String> onpremisesGroupType) {
+            $.onpremisesGroupType = onpremisesGroupType;
+            return this;
+        }
+
+        /**
+         * @param onpremisesGroupType The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder onpremisesGroupType(String onpremisesGroupType) {
+            return onpremisesGroupType(Output.of(onpremisesGroupType));
+        }
+
+        /**
          * @param owners A set of owners who own this group. Supported object types are Users or Service Principals
          * 
          * @return builder
@@ -839,6 +892,27 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder visibility(String visibility) {
             return visibility(Output.of(visibility));
+        }
+
+        /**
+         * @param writebackEnabled Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writebackEnabled(@Nullable Output<Boolean> writebackEnabled) {
+            $.writebackEnabled = writebackEnabled;
+            return this;
+        }
+
+        /**
+         * @param writebackEnabled Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder writebackEnabled(Boolean writebackEnabled) {
+            return writebackEnabled(Output.of(writebackEnabled));
         }
 
         public GroupArgs build() {

@@ -86,6 +86,12 @@ namespace Pulumi.AzureAD
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The SMTP address for the user.
+        /// </summary>
+        [Input("mail")]
+        public string? Mail { get; set; }
+
+        /// <summary>
         /// The email alias of the user.
         /// </summary>
         [Input("mailNickname")]
@@ -111,6 +117,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The SMTP address for the user.
+        /// </summary>
+        [Input("mail")]
+        public Input<string>? Mail { get; set; }
+
         /// <summary>
         /// The email alias of the user.
         /// </summary>

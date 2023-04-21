@@ -248,6 +248,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> RequiredResourceAccesses;
         /// <summary>
+        /// References application context information from a Service or Asset Management database.
+        /// </summary>
+        public readonly string ServiceManagementReference;
+        /// <summary>
         /// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
         /// </summary>
         public readonly string SignInAudience;
@@ -324,6 +328,8 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> requiredResourceAccesses,
 
+            string serviceManagementReference,
+
             string signInAudience,
 
             ImmutableArray<Outputs.GetApplicationSinglePageApplicationResult> singlePageApplications,
@@ -361,6 +367,7 @@ namespace Pulumi.AzureAD
             PublicClients = publicClients;
             PublisherDomain = publisherDomain;
             RequiredResourceAccesses = requiredResourceAccesses;
+            ServiceManagementReference = serviceManagementReference;
             SignInAudience = signInAudience;
             SinglePageApplications = singlePageApplications;
             SupportUrl = supportUrl;

@@ -560,7 +560,8 @@ class AwaitableGetUserResult(GetUserResult):
             user_type=self.user_type)
 
 
-def get_user(mail_nickname: Optional[str] = None,
+def get_user(mail: Optional[str] = None,
+             mail_nickname: Optional[str] = None,
              object_id: Optional[str] = None,
              user_principal_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
@@ -585,11 +586,13 @@ def get_user(mail_nickname: Optional[str] = None,
     ```
 
 
+    :param str mail: The SMTP address for the user.
     :param str mail_nickname: The email alias of the user.
     :param str object_id: The object ID of the user.
     :param str user_principal_name: The user principal name (UPN) of the user.
     """
     __args__ = dict()
+    __args__['mail'] = mail
     __args__['mailNickname'] = mail_nickname
     __args__['objectId'] = object_id
     __args__['userPrincipalName'] = user_principal_name
@@ -644,7 +647,8 @@ def get_user(mail_nickname: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_user)
-def get_user_output(mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
+def get_user_output(mail: Optional[pulumi.Input[Optional[str]]] = None,
+                    mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
                     object_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_principal_name: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
@@ -669,6 +673,7 @@ def get_user_output(mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
+    :param str mail: The SMTP address for the user.
     :param str mail_nickname: The email alias of the user.
     :param str object_id: The object ID of the user.
     :param str user_principal_name: The user principal name (UPN) of the user.

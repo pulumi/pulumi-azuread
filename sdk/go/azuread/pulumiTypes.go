@@ -10,6 +10,1874 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type AccessPackageAssignmentPolicyApprovalSettings struct {
+	// Whether an approval is required.
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+	ApprovalRequiredForExtension *bool `pulumi:"approvalRequiredForExtension"`
+	// An `approvalStage` block specifying the process to obtain an approval, as documented below.
+	ApprovalStages []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage `pulumi:"approvalStages"`
+	// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+	RequestorJustificationRequired *bool `pulumi:"requestorJustificationRequired"`
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsArgs and AccessPackageAssignmentPolicyApprovalSettingsOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsArgs{...}
+type AccessPackageAssignmentPolicyApprovalSettingsInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsOutput() AccessPackageAssignmentPolicyApprovalSettingsOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsArgs struct {
+	// Whether an approval is required.
+	ApprovalRequired pulumi.BoolPtrInput `pulumi:"approvalRequired"`
+	// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+	ApprovalRequiredForExtension pulumi.BoolPtrInput `pulumi:"approvalRequiredForExtension"`
+	// An `approvalStage` block specifying the process to obtain an approval, as documented below.
+	ApprovalStages AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput `pulumi:"approvalStages"`
+	// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+	RequestorJustificationRequired pulumi.BoolPtrInput `pulumi:"requestorJustificationRequired"`
+}
+
+func (AccessPackageAssignmentPolicyApprovalSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettings)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsArgs) ToAccessPackageAssignmentPolicyApprovalSettingsOutput() AccessPackageAssignmentPolicyApprovalSettingsOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsArgs) ToAccessPackageAssignmentPolicyApprovalSettingsOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsOutput)
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsArgs) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutput() AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsArgs) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsOutput).ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(ctx)
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsPtrInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsArgs, AccessPackageAssignmentPolicyApprovalSettingsPtr and AccessPackageAssignmentPolicyApprovalSettingsPtrOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsPtrInput` via:
+//
+//	        AccessPackageAssignmentPolicyApprovalSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPackageAssignmentPolicyApprovalSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutput() AccessPackageAssignmentPolicyApprovalSettingsPtrOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsPtrOutput
+}
+
+type accessPackageAssignmentPolicyApprovalSettingsPtrType AccessPackageAssignmentPolicyApprovalSettingsArgs
+
+func AccessPackageAssignmentPolicyApprovalSettingsPtr(v *AccessPackageAssignmentPolicyApprovalSettingsArgs) AccessPackageAssignmentPolicyApprovalSettingsPtrInput {
+	return (*accessPackageAssignmentPolicyApprovalSettingsPtrType)(v)
+}
+
+func (*accessPackageAssignmentPolicyApprovalSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPackageAssignmentPolicyApprovalSettings)(nil)).Elem()
+}
+
+func (i *accessPackageAssignmentPolicyApprovalSettingsPtrType) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutput() AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPackageAssignmentPolicyApprovalSettingsPtrType) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettings)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ToAccessPackageAssignmentPolicyApprovalSettingsOutput() AccessPackageAssignmentPolicyApprovalSettingsOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ToAccessPackageAssignmentPolicyApprovalSettingsOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutput() AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return o.ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPackageAssignmentPolicyApprovalSettings) *AccessPackageAssignmentPolicyApprovalSettings {
+		return &v
+	}).(AccessPackageAssignmentPolicyApprovalSettingsPtrOutput)
+}
+
+// Whether an approval is required.
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
+}
+
+// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalRequiredForExtension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.ApprovalRequiredForExtension }).(pulumi.BoolPtrOutput)
+}
+
+// An `approvalStage` block specifying the process to obtain an approval, as documented below.
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalStages() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
+		return v.ApprovalStages
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput)
+}
+
+// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) RequestorJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.RequestorJustificationRequired }).(pulumi.BoolPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPackageAssignmentPolicyApprovalSettings)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutput() AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ToAccessPackageAssignmentPolicyApprovalSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) Elem() AccessPackageAssignmentPolicyApprovalSettingsOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) AccessPackageAssignmentPolicyApprovalSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPackageAssignmentPolicyApprovalSettings
+		return ret
+	}).(AccessPackageAssignmentPolicyApprovalSettingsOutput)
+}
+
+// Whether an approval is required.
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalRequiredForExtension() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalRequiredForExtension
+	}).(pulumi.BoolPtrOutput)
+}
+
+// An `approvalStage` block specifying the process to obtain an approval, as documented below.
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalStages() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
+		if v == nil {
+			return nil
+		}
+		return v.ApprovalStages
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput)
+}
+
+// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) RequestorJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestorJustificationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStage struct {
+	// Whether alternative approvers are enabled.
+	AlternativeApprovalEnabled *bool `pulumi:"alternativeApprovalEnabled"`
+	// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+	AlternativeApprovers []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover `pulumi:"alternativeApprovers"`
+	// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+	ApprovalTimeoutInDays int `pulumi:"approvalTimeoutInDays"`
+	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+	ApproverJustificationRequired *bool `pulumi:"approverJustificationRequired"`
+	// Number of days before the request is forwarded to alternative approvers.
+	EnableAlternativeApprovalInDays *int `pulumi:"enableAlternativeApprovalInDays"`
+	// A block specifying the users who will be asked to approve requests, as documented below.
+	PrimaryApprovers []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover `pulumi:"primaryApprovers"`
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs and AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{...}
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs struct {
+	// Whether alternative approvers are enabled.
+	AlternativeApprovalEnabled pulumi.BoolPtrInput `pulumi:"alternativeApprovalEnabled"`
+	// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+	AlternativeApprovers AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput `pulumi:"alternativeApprovers"`
+	// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+	ApprovalTimeoutInDays pulumi.IntInput `pulumi:"approvalTimeoutInDays"`
+	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+	ApproverJustificationRequired pulumi.BoolPtrInput `pulumi:"approverJustificationRequired"`
+	// Number of days before the request is forwarded to alternative approvers.
+	EnableAlternativeApprovalInDays pulumi.IntPtrInput `pulumi:"enableAlternativeApprovalInDays"`
+	// A block specifying the users who will be asked to approve requests, as documented below.
+	PrimaryApprovers AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput `pulumi:"primaryApprovers"`
+}
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStage)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput)
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray and AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray{ AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{...} }
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyApprovalSettingsApprovalStage)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStage)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput {
+	return o
+}
+
+// Whether alternative approvers are enabled.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) AlternativeApprovalEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *bool {
+		return v.AlternativeApprovalEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) AlternativeApprovers() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
+		return v.AlternativeApprovers
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput)
+}
+
+// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ApprovalTimeoutInDays() pulumi.IntOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) int { return v.ApprovalTimeoutInDays }).(pulumi.IntOutput)
+}
+
+// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *bool {
+		return v.ApproverJustificationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Number of days before the request is forwarded to alternative approvers.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) EnableAlternativeApprovalInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *int {
+		return v.EnableAlternativeApprovalInDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// A block specifying the users who will be asked to approve requests, as documented below.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) PrimaryApprovers() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
+		return v.PrimaryApprovers
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyApprovalSettingsApprovalStage)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
+		return vs[0].([]AccessPackageAssignmentPolicyApprovalSettingsApprovalStage)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs and AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs{...}
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput)
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray and AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray{ AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs{...} }
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverInput
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput {
+	return o
+}
+
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *bool {
+		return v.Backup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the subject.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *string {
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) string {
+		return v.SubjectType
+	}).(pulumi.StringOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
+		return vs[0].([]AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs and AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{...}
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput)
+}
+
+// AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray and AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{ AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{...} }
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput
+	ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverInput
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput {
+	return o
+}
+
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) *bool {
+		return v.Backup
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the subject.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) *string {
+		return v.ObjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) string {
+		return v.SubjectType
+	}).(pulumi.StringOutput)
+}
+
+type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput) ToAccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
+		return vs[0].([]AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput)
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettings struct {
+	// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+	AccessRecommendationEnabled *bool `pulumi:"accessRecommendationEnabled"`
+	// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+	AccessReviewTimeoutBehavior *string `pulumi:"accessReviewTimeoutBehavior"`
+	// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+	ApproverJustificationRequired *bool `pulumi:"approverJustificationRequired"`
+	// How many days each occurrence of the access review series will run.
+	DurationInDays *int `pulumi:"durationInDays"`
+	// Whether to enable assignment review.
+	Enabled *bool `pulumi:"enabled"`
+	// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+	ReviewFrequency *string `pulumi:"reviewFrequency"`
+	// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+	ReviewType *string `pulumi:"reviewType"`
+	// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+	Reviewers []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer `pulumi:"reviewers"`
+	// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+	StartingOn *string `pulumi:"startingOn"`
+}
+
+// AccessPackageAssignmentPolicyAssignmentReviewSettingsInput is an input type that accepts AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs and AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyAssignmentReviewSettingsInput` via:
+//
+//	AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{...}
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutputWithContext(context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs struct {
+	// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+	AccessRecommendationEnabled pulumi.BoolPtrInput `pulumi:"accessRecommendationEnabled"`
+	// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+	AccessReviewTimeoutBehavior pulumi.StringPtrInput `pulumi:"accessReviewTimeoutBehavior"`
+	// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+	ApproverJustificationRequired pulumi.BoolPtrInput `pulumi:"approverJustificationRequired"`
+	// How many days each occurrence of the access review series will run.
+	DurationInDays pulumi.IntPtrInput `pulumi:"durationInDays"`
+	// Whether to enable assignment review.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+	ReviewFrequency pulumi.StringPtrInput `pulumi:"reviewFrequency"`
+	// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+	ReviewType pulumi.StringPtrInput `pulumi:"reviewType"`
+	// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+	Reviewers AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput `pulumi:"reviewers"`
+	// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+	StartingOn pulumi.StringPtrInput `pulumi:"startingOn"`
+}
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettings)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput {
+	return i.ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput)
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return i.ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput).ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(ctx)
+}
+
+// AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput is an input type that accepts AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs, AccessPackageAssignmentPolicyAssignmentReviewSettingsPtr and AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput` via:
+//
+//	        AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput
+}
+
+type accessPackageAssignmentPolicyAssignmentReviewSettingsPtrType AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs
+
+func AccessPackageAssignmentPolicyAssignmentReviewSettingsPtr(v *AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput {
+	return (*accessPackageAssignmentPolicyAssignmentReviewSettingsPtrType)(v)
+}
+
+func (*accessPackageAssignmentPolicyAssignmentReviewSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPackageAssignmentPolicyAssignmentReviewSettings)(nil)).Elem()
+}
+
+func (i *accessPackageAssignmentPolicyAssignmentReviewSettingsPtrType) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return i.ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPackageAssignmentPolicyAssignmentReviewSettingsPtrType) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettings)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return o.ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPackageAssignmentPolicyAssignmentReviewSettings) *AccessPackageAssignmentPolicyAssignmentReviewSettings {
+		return &v
+	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput)
+}
+
+// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) AccessRecommendationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
+		return v.AccessRecommendationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) AccessReviewTimeoutBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
+		return v.AccessReviewTimeoutBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
+		return v.ApproverJustificationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// How many days each occurrence of the access review series will run.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) DurationInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *int { return v.DurationInDays }).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable assignment review.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ReviewFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.ReviewFrequency }).(pulumi.StringPtrOutput)
+}
+
+// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ReviewType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.ReviewType }).(pulumi.StringPtrOutput)
+}
+
+// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) Reviewers() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
+		return v.Reviewers
+	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput)
+}
+
+// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) StartingOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.StartingOn }).(pulumi.StringPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPackageAssignmentPolicyAssignmentReviewSettings)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Elem() AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) AccessPackageAssignmentPolicyAssignmentReviewSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPackageAssignmentPolicyAssignmentReviewSettings
+		return ret
+	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput)
+}
+
+// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) AccessRecommendationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AccessRecommendationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) AccessReviewTimeoutBehavior() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessReviewTimeoutBehavior
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ApproverJustificationRequired
+	}).(pulumi.BoolPtrOutput)
+}
+
+// How many days each occurrence of the access review series will run.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) DurationInDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DurationInDays
+	}).(pulumi.IntPtrOutput)
+}
+
+// Whether to enable assignment review.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewFrequency() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReviewFrequency
+	}).(pulumi.StringPtrOutput)
+}
+
+// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReviewType
+	}).(pulumi.StringPtrOutput)
+}
+
+// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Reviewers() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
+		if v == nil {
+			return nil
+		}
+		return v.Reviewers
+	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput)
+}
+
+// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) StartingOn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartingOn
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput is an input type that accepts AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs and AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput` via:
+//
+//	AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs{...}
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutputWithContext(context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput {
+	return i.ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput)
+}
+
+// AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput is an input type that accepts AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray and AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray{ AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs{...} }
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput
+	ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput {
+	return o
+}
+
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the subject.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) string { return v.SubjectType }).(pulumi.StringOutput)
+}
+
+type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput) ToAccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
+		return vs[0].([]AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestion struct {
+	// One or more blocks configuring a choice to the question, as documented below.
+	Choices []AccessPackageAssignmentPolicyQuestionChoice `pulumi:"choices"`
+	// Whether this question is required.
+	Required *bool `pulumi:"required"`
+	// The sequence number of this question.
+	Sequence *int `pulumi:"sequence"`
+	// A block describing the content of this question, as documented below.
+	Text AccessPackageAssignmentPolicyQuestionText `pulumi:"text"`
+}
+
+// AccessPackageAssignmentPolicyQuestionInput is an input type that accepts AccessPackageAssignmentPolicyQuestionArgs and AccessPackageAssignmentPolicyQuestionOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionArgs{...}
+type AccessPackageAssignmentPolicyQuestionInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionOutput() AccessPackageAssignmentPolicyQuestionOutput
+	ToAccessPackageAssignmentPolicyQuestionOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionArgs struct {
+	// One or more blocks configuring a choice to the question, as documented below.
+	Choices AccessPackageAssignmentPolicyQuestionChoiceArrayInput `pulumi:"choices"`
+	// Whether this question is required.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The sequence number of this question.
+	Sequence pulumi.IntPtrInput `pulumi:"sequence"`
+	// A block describing the content of this question, as documented below.
+	Text AccessPackageAssignmentPolicyQuestionTextInput `pulumi:"text"`
+}
+
+func (AccessPackageAssignmentPolicyQuestionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestion)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionArgs) ToAccessPackageAssignmentPolicyQuestionOutput() AccessPackageAssignmentPolicyQuestionOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionArgs) ToAccessPackageAssignmentPolicyQuestionOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionOutput)
+}
+
+// AccessPackageAssignmentPolicyQuestionArrayInput is an input type that accepts AccessPackageAssignmentPolicyQuestionArray and AccessPackageAssignmentPolicyQuestionArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionArray{ AccessPackageAssignmentPolicyQuestionArgs{...} }
+type AccessPackageAssignmentPolicyQuestionArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionArrayOutput() AccessPackageAssignmentPolicyQuestionArrayOutput
+	ToAccessPackageAssignmentPolicyQuestionArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionArrayOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionArray []AccessPackageAssignmentPolicyQuestionInput
+
+func (AccessPackageAssignmentPolicyQuestionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestion)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionArray) ToAccessPackageAssignmentPolicyQuestionArrayOutput() AccessPackageAssignmentPolicyQuestionArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionArray) ToAccessPackageAssignmentPolicyQuestionArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestion)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionOutput) ToAccessPackageAssignmentPolicyQuestionOutput() AccessPackageAssignmentPolicyQuestionOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionOutput) ToAccessPackageAssignmentPolicyQuestionOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionOutput {
+	return o
+}
+
+// One or more blocks configuring a choice to the question, as documented below.
+func (o AccessPackageAssignmentPolicyQuestionOutput) Choices() AccessPackageAssignmentPolicyQuestionChoiceArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) []AccessPackageAssignmentPolicyQuestionChoice {
+		return v.Choices
+	}).(AccessPackageAssignmentPolicyQuestionChoiceArrayOutput)
+}
+
+// Whether this question is required.
+func (o AccessPackageAssignmentPolicyQuestionOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+// The sequence number of this question.
+func (o AccessPackageAssignmentPolicyQuestionOutput) Sequence() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) *int { return v.Sequence }).(pulumi.IntPtrOutput)
+}
+
+// A block describing the content of this question, as documented below.
+func (o AccessPackageAssignmentPolicyQuestionOutput) Text() AccessPackageAssignmentPolicyQuestionTextOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) AccessPackageAssignmentPolicyQuestionText { return v.Text }).(AccessPackageAssignmentPolicyQuestionTextOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestion)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionArrayOutput) ToAccessPackageAssignmentPolicyQuestionArrayOutput() AccessPackageAssignmentPolicyQuestionArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionArrayOutput) ToAccessPackageAssignmentPolicyQuestionArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyQuestionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyQuestion {
+		return vs[0].([]AccessPackageAssignmentPolicyQuestion)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyQuestionOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoice struct {
+	// The actual value of this choice.
+	ActualValue string `pulumi:"actualValue"`
+	// A block describing the display text of this choice, as documented below.
+	DisplayValue AccessPackageAssignmentPolicyQuestionChoiceDisplayValue `pulumi:"displayValue"`
+}
+
+// AccessPackageAssignmentPolicyQuestionChoiceInput is an input type that accepts AccessPackageAssignmentPolicyQuestionChoiceArgs and AccessPackageAssignmentPolicyQuestionChoiceOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionChoiceInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionChoiceArgs{...}
+type AccessPackageAssignmentPolicyQuestionChoiceInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionChoiceOutput() AccessPackageAssignmentPolicyQuestionChoiceOutput
+	ToAccessPackageAssignmentPolicyQuestionChoiceOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionChoiceOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceArgs struct {
+	// The actual value of this choice.
+	ActualValue pulumi.StringInput `pulumi:"actualValue"`
+	// A block describing the display text of this choice, as documented below.
+	DisplayValue AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput `pulumi:"displayValue"`
+}
+
+func (AccessPackageAssignmentPolicyQuestionChoiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoice)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceArgs) ToAccessPackageAssignmentPolicyQuestionChoiceOutput() AccessPackageAssignmentPolicyQuestionChoiceOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionChoiceOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceArgs) ToAccessPackageAssignmentPolicyQuestionChoiceOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionChoiceOutput)
+}
+
+// AccessPackageAssignmentPolicyQuestionChoiceArrayInput is an input type that accepts AccessPackageAssignmentPolicyQuestionChoiceArray and AccessPackageAssignmentPolicyQuestionChoiceArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionChoiceArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionChoiceArray{ AccessPackageAssignmentPolicyQuestionChoiceArgs{...} }
+type AccessPackageAssignmentPolicyQuestionChoiceArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutput() AccessPackageAssignmentPolicyQuestionChoiceArrayOutput
+	ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionChoiceArrayOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceArray []AccessPackageAssignmentPolicyQuestionChoiceInput
+
+func (AccessPackageAssignmentPolicyQuestionChoiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestionChoice)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceArray) ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutput() AccessPackageAssignmentPolicyQuestionChoiceArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceArray) ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionChoiceArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionChoiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoice)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ToAccessPackageAssignmentPolicyQuestionChoiceOutput() AccessPackageAssignmentPolicyQuestionChoiceOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ToAccessPackageAssignmentPolicyQuestionChoiceOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceOutput {
+	return o
+}
+
+// The actual value of this choice.
+func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ActualValue() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoice) string { return v.ActualValue }).(pulumi.StringOutput)
+}
+
+// A block describing the display text of this choice, as documented below.
+func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) DisplayValue() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoice) AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
+		return v.DisplayValue
+	}).(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestionChoice)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutput() AccessPackageAssignmentPolicyQuestionChoiceArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) ToAccessPackageAssignmentPolicyQuestionChoiceArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyQuestionChoiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyQuestionChoice {
+		return vs[0].([]AccessPackageAssignmentPolicyQuestionChoice)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyQuestionChoiceOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValue struct {
+	// The default text of this question.
+	DefaultText string `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
+	LocalizedTexts []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText `pulumi:"localizedTexts"`
+}
+
+// AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput is an input type that accepts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs and AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs{...}
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput
+	ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs struct {
+	// The default text of this question.
+	DefaultText pulumi.StringInput `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
+	LocalizedTexts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput `pulumi:"localizedTexts"`
+}
+
+func (AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValue)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValue)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
+	return o
+}
+
+// The default text of this question.
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) DefaultText() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) string { return v.DefaultText }).(pulumi.StringOutput)
+}
+
+// One or more blocks describing localized text of this question, as documented below.
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
+		return v.LocalizedTexts
+	}).(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText struct {
+	// The localized content of this question.
+	Content string `pulumi:"content"`
+	// The ISO 639 language code for this question content.
+	LanguageCode string `pulumi:"languageCode"`
+}
+
+// AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput is an input type that accepts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs and AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs{...}
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput
+	ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs struct {
+	// The localized content of this question.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The ISO 639 language code for this question content.
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+}
+
+func (AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput)
+}
+
+// AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput is an input type that accepts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray and AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray{ AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs{...} }
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput
+	ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput
+
+func (AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput {
+	return o
+}
+
+// The localized content of this question.
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The ISO 639 language code for this question content.
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string {
+		return v.LanguageCode
+	}).(pulumi.StringOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput) ToAccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
+		return vs[0].([]AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionText struct {
+	// The default text of this question.
+	DefaultText string `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
+	LocalizedTexts []AccessPackageAssignmentPolicyQuestionTextLocalizedText `pulumi:"localizedTexts"`
+}
+
+// AccessPackageAssignmentPolicyQuestionTextInput is an input type that accepts AccessPackageAssignmentPolicyQuestionTextArgs and AccessPackageAssignmentPolicyQuestionTextOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionTextInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionTextArgs{...}
+type AccessPackageAssignmentPolicyQuestionTextInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionTextOutput() AccessPackageAssignmentPolicyQuestionTextOutput
+	ToAccessPackageAssignmentPolicyQuestionTextOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionTextOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionTextArgs struct {
+	// The default text of this question.
+	DefaultText pulumi.StringInput `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
+	LocalizedTexts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput `pulumi:"localizedTexts"`
+}
+
+func (AccessPackageAssignmentPolicyQuestionTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionText)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionTextArgs) ToAccessPackageAssignmentPolicyQuestionTextOutput() AccessPackageAssignmentPolicyQuestionTextOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionTextOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionTextArgs) ToAccessPackageAssignmentPolicyQuestionTextOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionTextOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionTextOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionText)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextOutput) ToAccessPackageAssignmentPolicyQuestionTextOutput() AccessPackageAssignmentPolicyQuestionTextOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextOutput) ToAccessPackageAssignmentPolicyQuestionTextOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionTextOutput {
+	return o
+}
+
+// The default text of this question.
+func (o AccessPackageAssignmentPolicyQuestionTextOutput) DefaultText() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) string { return v.DefaultText }).(pulumi.StringOutput)
+}
+
+// One or more blocks describing localized text of this question, as documented below.
+func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) []AccessPackageAssignmentPolicyQuestionTextLocalizedText {
+		return v.LocalizedTexts
+	}).(AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionTextLocalizedText struct {
+	// The localized content of this question.
+	Content string `pulumi:"content"`
+	// The ISO 639 language code for this question content.
+	LanguageCode string `pulumi:"languageCode"`
+}
+
+// AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput is an input type that accepts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs and AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs{...}
+type AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput() AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput
+	ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs struct {
+	// The localized content of this question.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The ISO 639 language code for this question content.
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
+}
+
+func (AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionTextLocalizedText)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput() AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput)
+}
+
+// AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput is an input type that accepts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray and AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray{ AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs{...} }
+type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput
+	ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput
+}
+
+type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray []AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput
+
+func (AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestionTextLocalizedText)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionTextLocalizedText)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput() AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput {
+	return o
+}
+
+// The localized content of this question.
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) Content() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.Content }).(pulumi.StringOutput)
+}
+
+// The ISO 639 language code for this question content.
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyQuestionTextLocalizedText)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput) ToAccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyQuestionTextLocalizedText {
+		return vs[0].([]AccessPackageAssignmentPolicyQuestionTextLocalizedText)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput)
+}
+
+type AccessPackageAssignmentPolicyRequestorSettings struct {
+	// A block specifying the users who are allowed to request on this policy, as documented below.
+	Requestors []AccessPackageAssignmentPolicyRequestorSettingsRequestor `pulumi:"requestors"`
+	// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+	RequestsAccepted *bool `pulumi:"requestsAccepted"`
+	// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+	ScopeType *string `pulumi:"scopeType"`
+}
+
+// AccessPackageAssignmentPolicyRequestorSettingsInput is an input type that accepts AccessPackageAssignmentPolicyRequestorSettingsArgs and AccessPackageAssignmentPolicyRequestorSettingsOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyRequestorSettingsInput` via:
+//
+//	AccessPackageAssignmentPolicyRequestorSettingsArgs{...}
+type AccessPackageAssignmentPolicyRequestorSettingsInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyRequestorSettingsOutput() AccessPackageAssignmentPolicyRequestorSettingsOutput
+	ToAccessPackageAssignmentPolicyRequestorSettingsOutputWithContext(context.Context) AccessPackageAssignmentPolicyRequestorSettingsOutput
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsArgs struct {
+	// A block specifying the users who are allowed to request on this policy, as documented below.
+	Requestors AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput `pulumi:"requestors"`
+	// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+	RequestsAccepted pulumi.BoolPtrInput `pulumi:"requestsAccepted"`
+	// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+	ScopeType pulumi.StringPtrInput `pulumi:"scopeType"`
+}
+
+func (AccessPackageAssignmentPolicyRequestorSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettings)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsArgs) ToAccessPackageAssignmentPolicyRequestorSettingsOutput() AccessPackageAssignmentPolicyRequestorSettingsOutput {
+	return i.ToAccessPackageAssignmentPolicyRequestorSettingsOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsArgs) ToAccessPackageAssignmentPolicyRequestorSettingsOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyRequestorSettingsOutput)
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsArgs) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutput() AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return i.ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsArgs) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyRequestorSettingsOutput).ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(ctx)
+}
+
+// AccessPackageAssignmentPolicyRequestorSettingsPtrInput is an input type that accepts AccessPackageAssignmentPolicyRequestorSettingsArgs, AccessPackageAssignmentPolicyRequestorSettingsPtr and AccessPackageAssignmentPolicyRequestorSettingsPtrOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyRequestorSettingsPtrInput` via:
+//
+//	        AccessPackageAssignmentPolicyRequestorSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AccessPackageAssignmentPolicyRequestorSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutput() AccessPackageAssignmentPolicyRequestorSettingsPtrOutput
+	ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(context.Context) AccessPackageAssignmentPolicyRequestorSettingsPtrOutput
+}
+
+type accessPackageAssignmentPolicyRequestorSettingsPtrType AccessPackageAssignmentPolicyRequestorSettingsArgs
+
+func AccessPackageAssignmentPolicyRequestorSettingsPtr(v *AccessPackageAssignmentPolicyRequestorSettingsArgs) AccessPackageAssignmentPolicyRequestorSettingsPtrInput {
+	return (*accessPackageAssignmentPolicyRequestorSettingsPtrType)(v)
+}
+
+func (*accessPackageAssignmentPolicyRequestorSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPackageAssignmentPolicyRequestorSettings)(nil)).Elem()
+}
+
+func (i *accessPackageAssignmentPolicyRequestorSettingsPtrType) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutput() AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return i.ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *accessPackageAssignmentPolicyRequestorSettingsPtrType) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyRequestorSettingsPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyRequestorSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettings)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ToAccessPackageAssignmentPolicyRequestorSettingsOutput() AccessPackageAssignmentPolicyRequestorSettingsOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ToAccessPackageAssignmentPolicyRequestorSettingsOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutput() AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return o.ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AccessPackageAssignmentPolicyRequestorSettings) *AccessPackageAssignmentPolicyRequestorSettings {
+		return &v
+	}).(AccessPackageAssignmentPolicyRequestorSettingsPtrOutput)
+}
+
+// A block specifying the users who are allowed to request on this policy, as documented below.
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) Requestors() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettings) []AccessPackageAssignmentPolicyRequestorSettingsRequestor {
+		return v.Requestors
+	}).(AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput)
+}
+
+// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) RequestsAccepted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettings) *bool { return v.RequestsAccepted }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettings) *string { return v.ScopeType }).(pulumi.StringPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AccessPackageAssignmentPolicyRequestorSettings)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutput() AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ToAccessPackageAssignmentPolicyRequestorSettingsPtrOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) Elem() AccessPackageAssignmentPolicyRequestorSettingsOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) AccessPackageAssignmentPolicyRequestorSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AccessPackageAssignmentPolicyRequestorSettings
+		return ret
+	}).(AccessPackageAssignmentPolicyRequestorSettingsOutput)
+}
+
+// A block specifying the users who are allowed to request on this policy, as documented below.
+func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) Requestors() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) []AccessPackageAssignmentPolicyRequestorSettingsRequestor {
+		if v == nil {
+			return nil
+		}
+		return v.Requestors
+	}).(AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput)
+}
+
+// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) RequestsAccepted() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RequestsAccepted
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ScopeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScopeType
+	}).(pulumi.StringPtrOutput)
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsRequestor struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
+}
+
+// AccessPackageAssignmentPolicyRequestorSettingsRequestorInput is an input type that accepts AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs and AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyRequestorSettingsRequestorInput` via:
+//
+//	AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs{...}
+type AccessPackageAssignmentPolicyRequestorSettingsRequestorInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutput() AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput
+	ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutputWithContext(context.Context) AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs struct {
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
+}
+
+func (AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettingsRequestor)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutput() AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput {
+	return i.ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput)
+}
+
+// AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput is an input type that accepts AccessPackageAssignmentPolicyRequestorSettingsRequestorArray and AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput values.
+// You can construct a concrete instance of `AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput` via:
+//
+//	AccessPackageAssignmentPolicyRequestorSettingsRequestorArray{ AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs{...} }
+type AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput interface {
+	pulumi.Input
+
+	ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput
+	ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutputWithContext(context.Context) AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsRequestorArray []AccessPackageAssignmentPolicyRequestorSettingsRequestorInput
+
+func (AccessPackageAssignmentPolicyRequestorSettingsRequestorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyRequestorSettingsRequestor)(nil)).Elem()
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsRequestorArray) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
+	return i.ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutputWithContext(context.Background())
+}
+
+func (i AccessPackageAssignmentPolicyRequestorSettingsRequestorArray) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput)
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettingsRequestor)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutput() AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput {
+	return o
+}
+
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) Backup() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
+}
+
+// The ID of the subject.
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ObjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) SubjectType() pulumi.StringOutput {
+	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) string { return v.SubjectType }).(pulumi.StringOutput)
+}
+
+type AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput struct{ *pulumi.OutputState }
+
+func (AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AccessPackageAssignmentPolicyRequestorSettingsRequestor)(nil)).Elem()
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput) ToAccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
+	return o
+}
+
+func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AccessPackageAssignmentPolicyRequestorSettingsRequestor {
+		return vs[0].([]AccessPackageAssignmentPolicyRequestorSettingsRequestor)[vs[1].(int)]
+	}).(AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput)
+}
+
 type ApplicationApi struct {
 	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 	KnownClientApplications []string `pulumi:"knownClientApplications"`
@@ -8423,6 +10291,32 @@ func (o GetUsersUserArrayOutput) Index(i pulumi.IntInput) GetUsersUserOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsPtrInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettingsInput)(nil)).Elem(), AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput)(nil)).Elem(), AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput)(nil)).Elem(), AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionChoiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionChoiceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionTextInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyQuestionTextLocalizedTextArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettingsInput)(nil)).Elem(), AccessPackageAssignmentPolicyRequestorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettingsPtrInput)(nil)).Elem(), AccessPackageAssignmentPolicyRequestorSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettingsRequestorInput)(nil)).Elem(), AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput)(nil)).Elem(), AccessPackageAssignmentPolicyRequestorSettingsRequestorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationApiInput)(nil)).Elem(), ApplicationApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationApiPtrInput)(nil)).Elem(), ApplicationApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationApiOauth2PermissionScopeInput)(nil)).Elem(), ApplicationApiOauth2PermissionScopeArgs{})
@@ -8541,6 +10435,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalsServicePrincipalArrayInput)(nil)).Elem(), GetServicePrincipalsServicePrincipalArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserInput)(nil)).Elem(), GetUsersUserArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetUsersUserArrayInput)(nil)).Elem(), GetUsersUserArray{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionChoiceOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionChoiceArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionTextOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyRequestorSettingsOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyRequestorSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput{})
+	pulumi.RegisterOutputType(AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationApiOutput{})
 	pulumi.RegisterOutputType(ApplicationApiPtrOutput{})
 	pulumi.RegisterOutputType(ApplicationApiOauth2PermissionScopeOutput{})

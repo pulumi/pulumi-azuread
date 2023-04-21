@@ -4,6 +4,10 @@
 package com.pulumi.azuread;
 
 import com.pulumi.azuread.Utilities;
+import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+import com.pulumi.azuread.inputs.GetAccessPackageCatalogPlainArgs;
+import com.pulumi.azuread.inputs.GetAccessPackagePlainArgs;
 import com.pulumi.azuread.inputs.GetAdministrativeUnitArgs;
 import com.pulumi.azuread.inputs.GetAdministrativeUnitPlainArgs;
 import com.pulumi.azuread.inputs.GetApplicationArgs;
@@ -26,6 +30,8 @@ import com.pulumi.azuread.inputs.GetUserArgs;
 import com.pulumi.azuread.inputs.GetUserPlainArgs;
 import com.pulumi.azuread.inputs.GetUsersArgs;
 import com.pulumi.azuread.inputs.GetUsersPlainArgs;
+import com.pulumi.azuread.outputs.GetAccessPackageCatalogResult;
+import com.pulumi.azuread.outputs.GetAccessPackageResult;
 import com.pulumi.azuread.outputs.GetAdministrativeUnitResult;
 import com.pulumi.azuread.outputs.GetApplicationPublishedAppIdsResult;
 import com.pulumi.azuread.outputs.GetApplicationResult;
@@ -48,6 +54,942 @@ import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
 public final class AzureadFunctions {
+    /**
+     * Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessPackageResult> getAccessPackage() {
+        return getAccessPackage(GetAccessPackageArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain() {
+        return getAccessPackagePlain(GetAccessPackagePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessPackageResult> getAccessPackage(GetAccessPackageArgs args) {
+        return getAccessPackage(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain(GetAccessPackagePlainArgs args) {
+        return getAccessPackagePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessPackageResult> getAccessPackage(GetAccessPackageArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getAccessPackage:getAccessPackage", TypeShape.of(GetAccessPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackage(GetAccessPackageArgs.builder()
+     *             .catalogId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessPackageResult> getAccessPackagePlain(GetAccessPackagePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getAccessPackage:getAccessPackage", TypeShape.of(GetAccessPackageResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * i
+     * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog() {
+        return getAccessPackageCatalog(GetAccessPackageCatalogArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * i
+     * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain() {
+        return getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * i
+     * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog(GetAccessPackageCatalogArgs args) {
+        return getAccessPackageCatalog(args, InvokeOptions.Empty);
+    }
+    /**
+     * i
+     * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs args) {
+        return getAccessPackageCatalogPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * i
+     * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetAccessPackageCatalogResult> getAccessPackageCatalog(GetAccessPackageCatalogArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", TypeShape.of(GetAccessPackageCatalogResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * i
+     * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+     * 
+     * ## Example Usage
+     * 
+     * *Look up by ID*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .objectId(&#34;00000000-0000-0000-0000-000000000000&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * *Look up by DisplayName*
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAccessPackageCatalogArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAccessPackageCatalog(GetAccessPackageCatalogArgs.builder()
+     *             .displayName(&#34;My access package Catalog&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetAccessPackageCatalogResult> getAccessPackageCatalogPlain(GetAccessPackageCatalogPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", TypeShape.of(GetAccessPackageCatalogResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Gets information about an adminisrative unit in Azure Active Directory.
      * 

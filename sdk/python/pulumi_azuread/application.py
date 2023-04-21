@@ -35,6 +35,7 @@ class ApplicationArgs:
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
+                 service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,7 @@ class ApplicationArgs:
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
@@ -108,6 +110,8 @@ class ApplicationArgs:
             pulumi.set(__self__, "public_client", public_client)
         if required_resource_accesses is not None:
             pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
+        if service_management_reference is not None:
+            pulumi.set(__self__, "service_management_reference", service_management_reference)
         if sign_in_audience is not None:
             pulumi.set(__self__, "sign_in_audience", sign_in_audience)
         if single_page_application is not None:
@@ -352,6 +356,18 @@ class ApplicationArgs:
         pulumi.set(self, "required_resource_accesses", value)
 
     @property
+    @pulumi.getter(name="serviceManagementReference")
+    def service_management_reference(self) -> Optional[pulumi.Input[str]]:
+        """
+        References application context information from a Service or Asset Management database.
+        """
+        return pulumi.get(self, "service_management_reference")
+
+    @service_management_reference.setter
+    def service_management_reference(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_management_reference", value)
+
+    @property
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
         """
@@ -465,6 +481,7 @@ class _ApplicationState:
                  public_client: Optional[pulumi.Input['ApplicationPublicClientArgs']] = None,
                  publisher_domain: Optional[pulumi.Input[str]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]]] = None,
+                 service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input['ApplicationSinglePageApplicationArgs']] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
@@ -500,6 +517,7 @@ class _ApplicationState:
         :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
@@ -560,6 +578,8 @@ class _ApplicationState:
             pulumi.set(__self__, "publisher_domain", publisher_domain)
         if required_resource_accesses is not None:
             pulumi.set(__self__, "required_resource_accesses", required_resource_accesses)
+        if service_management_reference is not None:
+            pulumi.set(__self__, "service_management_reference", service_management_reference)
         if sign_in_audience is not None:
             pulumi.set(__self__, "sign_in_audience", sign_in_audience)
         if single_page_application is not None:
@@ -888,6 +908,18 @@ class _ApplicationState:
         pulumi.set(self, "required_resource_accesses", value)
 
     @property
+    @pulumi.getter(name="serviceManagementReference")
+    def service_management_reference(self) -> Optional[pulumi.Input[str]]:
+        """
+        References application context information from a Service or Asset Management database.
+        """
+        return pulumi.get(self, "service_management_reference")
+
+    @service_management_reference.setter
+    def service_management_reference(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_management_reference", value)
+
+    @property
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
         """
@@ -996,6 +1028,7 @@ class Application(pulumi.CustomResource):
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+                 service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
@@ -1170,6 +1203,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
@@ -1363,6 +1397,7 @@ class Application(pulumi.CustomResource):
                  privacy_statement_url: Optional[pulumi.Input[str]] = None,
                  public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
                  required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+                 service_management_reference: Optional[pulumi.Input[str]] = None,
                  sign_in_audience: Optional[pulumi.Input[str]] = None,
                  single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
                  support_url: Optional[pulumi.Input[str]] = None,
@@ -1400,6 +1435,7 @@ class Application(pulumi.CustomResource):
             __props__.__dict__["privacy_statement_url"] = privacy_statement_url
             __props__.__dict__["public_client"] = public_client
             __props__.__dict__["required_resource_accesses"] = required_resource_accesses
+            __props__.__dict__["service_management_reference"] = service_management_reference
             __props__.__dict__["sign_in_audience"] = sign_in_audience
             __props__.__dict__["single_page_application"] = single_page_application
             __props__.__dict__["support_url"] = support_url
@@ -1450,6 +1486,7 @@ class Application(pulumi.CustomResource):
             public_client: Optional[pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']]] = None,
             publisher_domain: Optional[pulumi.Input[str]] = None,
             required_resource_accesses: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]]] = None,
+            service_management_reference: Optional[pulumi.Input[str]] = None,
             sign_in_audience: Optional[pulumi.Input[str]] = None,
             single_page_application: Optional[pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']]] = None,
             support_url: Optional[pulumi.Input[str]] = None,
@@ -1490,6 +1527,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[str] publisher_domain: The verified publisher domain for the application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
+        :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
@@ -1528,6 +1566,7 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["public_client"] = public_client
         __props__.__dict__["publisher_domain"] = publisher_domain
         __props__.__dict__["required_resource_accesses"] = required_resource_accesses
+        __props__.__dict__["service_management_reference"] = service_management_reference
         __props__.__dict__["sign_in_audience"] = sign_in_audience
         __props__.__dict__["single_page_application"] = single_page_application
         __props__.__dict__["support_url"] = support_url
@@ -1744,6 +1783,14 @@ class Application(pulumi.CustomResource):
         A collection of `required_resource_access` blocks as documented below.
         """
         return pulumi.get(self, "required_resource_accesses")
+
+    @property
+    @pulumi.getter(name="serviceManagementReference")
+    def service_management_reference(self) -> pulumi.Output[Optional[str]]:
+        """
+        References application context information from a Service or Asset Management database.
+        """
+        return pulumi.get(self, "service_management_reference")
 
     @property
     @pulumi.getter(name="signInAudience")

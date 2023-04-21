@@ -220,6 +220,10 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string OnpremisesDomainName;
         /// <summary>
+        /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        /// </summary>
+        public readonly string OnpremisesGroupType;
+        /// <summary>
         /// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
         /// </summary>
         public readonly string OnpremisesNetbiosName;
@@ -267,6 +271,10 @@ namespace Pulumi.AzureAD
         /// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
         /// </summary>
         public readonly string Visibility;
+        /// <summary>
+        /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        /// </summary>
+        public readonly bool WritebackEnabled;
 
         [OutputConstructor]
         private GetGroupResult(
@@ -302,6 +310,8 @@ namespace Pulumi.AzureAD
 
             string onpremisesDomainName,
 
+            string onpremisesGroupType,
+
             string onpremisesNetbiosName,
 
             string onpremisesSamAccountName,
@@ -324,7 +334,9 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<string> types,
 
-            string visibility)
+            string visibility,
+
+            bool writebackEnabled)
         {
             AssignableToRole = assignableToRole;
             AutoSubscribeNewMembers = autoSubscribeNewMembers;
@@ -342,6 +354,7 @@ namespace Pulumi.AzureAD
             Members = members;
             ObjectId = objectId;
             OnpremisesDomainName = onpremisesDomainName;
+            OnpremisesGroupType = onpremisesGroupType;
             OnpremisesNetbiosName = onpremisesNetbiosName;
             OnpremisesSamAccountName = onpremisesSamAccountName;
             OnpremisesSecurityIdentifier = onpremisesSecurityIdentifier;
@@ -354,6 +367,7 @@ namespace Pulumi.AzureAD
             Theme = theme;
             Types = types;
             Visibility = visibility;
+            WritebackEnabled = writebackEnabled;
         }
     }
 }

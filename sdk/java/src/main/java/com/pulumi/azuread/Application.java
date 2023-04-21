@@ -588,6 +588,20 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.requiredResourceAccesses);
     }
     /**
+     * References application context information from a Service or Asset Management database.
+     * 
+     */
+    @Export(name="serviceManagementReference", type=String.class, parameters={})
+    private Output</* @Nullable */ String> serviceManagementReference;
+
+    /**
+     * @return References application context information from a Service or Asset Management database.
+     * 
+     */
+    public Output<Optional<String>> serviceManagementReference() {
+        return Codegen.optional(this.serviceManagementReference);
+    }
+    /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
      */

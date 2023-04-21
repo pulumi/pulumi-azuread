@@ -102,6 +102,8 @@ type LookupGroupResult struct {
 	ObjectId string `pulumi:"objectId"`
 	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesDomainName string `pulumi:"onpremisesDomainName"`
+	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	OnpremisesGroupType string `pulumi:"onpremisesGroupType"`
 	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
 	OnpremisesNetbiosName string `pulumi:"onpremisesNetbiosName"`
 	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
@@ -126,6 +128,8 @@ type LookupGroupResult struct {
 	Types []string `pulumi:"types"`
 	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
 	Visibility string `pulumi:"visibility"`
+	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	WritebackEnabled bool `pulumi:"writebackEnabled"`
 }
 
 func LookupGroupOutput(ctx *pulumi.Context, args LookupGroupOutputArgs, opts ...pulumi.InvokeOption) LookupGroupResultOutput {
@@ -252,6 +256,11 @@ func (o LookupGroupResultOutput) OnpremisesDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesDomainName }).(pulumi.StringOutput)
 }
 
+// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+func (o LookupGroupResultOutput) OnpremisesGroupType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesGroupType }).(pulumi.StringOutput)
+}
+
 // The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
 func (o LookupGroupResultOutput) OnpremisesNetbiosName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.OnpremisesNetbiosName }).(pulumi.StringOutput)
@@ -310,6 +319,11 @@ func (o LookupGroupResultOutput) Types() pulumi.StringArrayOutput {
 // The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
 func (o LookupGroupResultOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGroupResult) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+func (o LookupGroupResultOutput) WritebackEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupGroupResult) bool { return v.WritebackEnabled }).(pulumi.BoolOutput)
 }
 
 func init() {
