@@ -29,6 +29,7 @@ namespace Pulumi.AzureAD
         /// *Look up by group name*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -49,6 +50,7 @@ namespace Pulumi.AzureAD
         /// *Look up by display name prefix*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -65,6 +67,7 @@ namespace Pulumi.AzureAD
         /// *Look up all groups*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -81,6 +84,7 @@ namespace Pulumi.AzureAD
         /// *Look up all mail-enabled groups*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -98,6 +102,7 @@ namespace Pulumi.AzureAD
         /// *Look up all security-enabled groups that are not mail-enabled*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -136,6 +141,7 @@ namespace Pulumi.AzureAD
         /// *Look up by group name*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -156,6 +162,7 @@ namespace Pulumi.AzureAD
         /// *Look up by display name prefix*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -172,6 +179,7 @@ namespace Pulumi.AzureAD
         /// *Look up all groups*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -188,6 +196,7 @@ namespace Pulumi.AzureAD
         /// *Look up all mail-enabled groups*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 
@@ -205,6 +214,7 @@ namespace Pulumi.AzureAD
         /// *Look up all security-enabled groups that are not mail-enabled*
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using AzureAD = Pulumi.AzureAD;
         /// 

@@ -6,7 +6,6 @@ package com.pulumi.azuread;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.String;
-import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -36,13 +35,13 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
      * 
      */
     @Import(name="audiences", required=true)
-    private Output<List<String>> audiences;
+    private Output<String> audiences;
 
     /**
      * @return List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */
-    public Output<List<String>> audiences() {
+    public Output<String> audiences() {
         return this.audiences;
     }
 
@@ -162,7 +161,7 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder audiences(Output<List<String>> audiences) {
+        public Builder audiences(Output<String> audiences) {
             $.audiences = audiences;
             return this;
         }
@@ -173,18 +172,8 @@ public final class ApplicationFederatedIdentityCredentialArgs extends com.pulumi
          * @return builder
          * 
          */
-        public Builder audiences(List<String> audiences) {
+        public Builder audiences(String audiences) {
             return audiences(Output.of(audiences));
-        }
-
-        /**
-         * @param audiences List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder audiences(String... audiences) {
-            return audiences(List.of(audiences));
         }
 
         /**

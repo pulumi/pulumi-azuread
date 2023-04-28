@@ -11,12 +11,12 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
-import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * ## Example Usage
+ * 
  * ```java
  * package generated_program;
  * 
@@ -88,14 +88,14 @@ public class ApplicationFederatedIdentityCredential extends com.pulumi.resources
      * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */
-    @Export(name="audiences", type=List.class, parameters={String.class})
-    private Output<List<String>> audiences;
+    @Export(name="audiences", type=String.class, parameters={})
+    private Output<String> audiences;
 
     /**
      * @return List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      * 
      */
-    public Output<List<String>> audiences() {
+    public Output<String> audiences() {
         return this.audiences;
     }
     /**

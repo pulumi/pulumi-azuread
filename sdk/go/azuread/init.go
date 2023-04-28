@@ -26,6 +26,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AccessPackageAssignmentPolicy{}
 	case "azuread:index/accessPackageCatalog:AccessPackageCatalog":
 		r = &AccessPackageCatalog{}
+	case "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment":
+		r = &AccessPackageCatalogRoleAssignment{}
 	case "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation":
 		r = &AccessPackageResourceCatalogAssociation{}
 	case "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation":
@@ -129,6 +131,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"azuread",
 		"index/accessPackageCatalog",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"azuread",
+		"index/accessPackageCatalogRoleAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -20,6 +20,11 @@ export type AccessPackageCatalog = import("./accessPackageCatalog").AccessPackag
 export const AccessPackageCatalog: typeof import("./accessPackageCatalog").AccessPackageCatalog = null as any;
 utilities.lazyLoad(exports, ["AccessPackageCatalog"], () => require("./accessPackageCatalog"));
 
+export { AccessPackageCatalogRoleAssignmentArgs, AccessPackageCatalogRoleAssignmentState } from "./accessPackageCatalogRoleAssignment";
+export type AccessPackageCatalogRoleAssignment = import("./accessPackageCatalogRoleAssignment").AccessPackageCatalogRoleAssignment;
+export const AccessPackageCatalogRoleAssignment: typeof import("./accessPackageCatalogRoleAssignment").AccessPackageCatalogRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["AccessPackageCatalogRoleAssignment"], () => require("./accessPackageCatalogRoleAssignment"));
+
 export { AccessPackageResourceCatalogAssociationArgs, AccessPackageResourceCatalogAssociationState } from "./accessPackageResourceCatalogAssociation";
 export type AccessPackageResourceCatalogAssociation = import("./accessPackageResourceCatalogAssociation").AccessPackageResourceCatalogAssociation;
 export const AccessPackageResourceCatalogAssociation: typeof import("./accessPackageResourceCatalogAssociation").AccessPackageResourceCatalogAssociation = null as any;
@@ -114,6 +119,11 @@ export { GetAccessPackageCatalogArgs, GetAccessPackageCatalogResult, GetAccessPa
 export const getAccessPackageCatalog: typeof import("./getAccessPackageCatalog").getAccessPackageCatalog = null as any;
 export const getAccessPackageCatalogOutput: typeof import("./getAccessPackageCatalog").getAccessPackageCatalogOutput = null as any;
 utilities.lazyLoad(exports, ["getAccessPackageCatalog","getAccessPackageCatalogOutput"], () => require("./getAccessPackageCatalog"));
+
+export { GetAccessPackageCatalogRoleArgs, GetAccessPackageCatalogRoleResult, GetAccessPackageCatalogRoleOutputArgs } from "./getAccessPackageCatalogRole";
+export const getAccessPackageCatalogRole: typeof import("./getAccessPackageCatalogRole").getAccessPackageCatalogRole = null as any;
+export const getAccessPackageCatalogRoleOutput: typeof import("./getAccessPackageCatalogRole").getAccessPackageCatalogRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPackageCatalogRole","getAccessPackageCatalogRoleOutput"], () => require("./getAccessPackageCatalogRole"));
 
 export { GetAdministrativeUnitArgs, GetAdministrativeUnitResult, GetAdministrativeUnitOutputArgs } from "./getAdministrativeUnit";
 export const getAdministrativeUnit: typeof import("./getAdministrativeUnit").getAdministrativeUnit = null as any;
@@ -277,6 +287,8 @@ const _module = {
                 return new AccessPackageAssignmentPolicy(name, <any>undefined, { urn })
             case "azuread:index/accessPackageCatalog:AccessPackageCatalog":
                 return new AccessPackageCatalog(name, <any>undefined, { urn })
+            case "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment":
+                return new AccessPackageCatalogRoleAssignment(name, <any>undefined, { urn })
             case "azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation":
                 return new AccessPackageResourceCatalogAssociation(name, <any>undefined, { urn })
             case "azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation":
@@ -347,6 +359,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("azuread", "index/accessPackage", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/accessPackageAssignmentPolicy", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/accessPackageCatalog", _module)
+pulumi.runtime.registerResourceModule("azuread", "index/accessPackageCatalogRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/accessPackageResourceCatalogAssociation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/accessPackageResourcePackageAssociation", _module)
 pulumi.runtime.registerResourceModule("azuread", "index/administrativeUnit", _module)

@@ -18,11 +18,12 @@ namespace Pulumi.AzureAD
     /// using System;
     /// using System.Collections.Generic;
     /// using System.IO;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
     /// 	private static string ReadFileBase64(string path) {
-    /// 		return Convert.ToBase64String(Encoding.UTF8.GetBytes(File.ReadAllText(path)))
+    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
     /// 	}
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
@@ -200,6 +201,7 @@ namespace Pulumi.AzureAD
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 

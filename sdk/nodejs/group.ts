@@ -68,7 +68,7 @@ export class Group extends pulumi.CustomResource {
      */
     public readonly administrativeUnitIds!: pulumi.Output<string[] | undefined>;
     /**
-     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
     public readonly assignableToRole!: pulumi.Output<boolean | undefined>;
     /**
@@ -283,7 +283,7 @@ export interface GroupState {
      */
     administrativeUnitIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
     assignableToRole?: pulumi.Input<boolean>;
     /**
@@ -413,7 +413,7 @@ export interface GroupArgs {
      */
     administrativeUnitIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      */
     assignableToRole?: pulumi.Input<boolean>;
     /**

@@ -48,7 +48,7 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> AdministrativeUnitIds { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        /// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         /// </summary>
         [Output("assignableToRole")]
         public Output<bool?> AssignableToRole { get; private set; } = null!;
@@ -286,7 +286,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        /// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         /// </summary>
         [Input("assignableToRole")]
         public Input<bool>? AssignableToRole { get; set; }
@@ -462,7 +462,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+        /// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
         /// </summary>
         [Input("assignableToRole")]
         public Input<bool>? AssignableToRole { get; set; }

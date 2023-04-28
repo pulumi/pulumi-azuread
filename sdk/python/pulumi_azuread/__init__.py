@@ -8,6 +8,7 @@ import typing
 from .access_package import *
 from .access_package_assignment_policy import *
 from .access_package_catalog import *
+from .access_package_catalog_role_assignment import *
 from .access_package_resource_catalog_association import *
 from .access_package_resource_package_association import *
 from .administrative_unit import *
@@ -27,6 +28,7 @@ from .directory_role_assignment import *
 from .directory_role_member import *
 from .get_access_package import *
 from .get_access_package_catalog import *
+from .get_access_package_catalog_role import *
 from .get_administrative_unit import *
 from .get_application import *
 from .get_application_published_app_ids import *
@@ -91,6 +93,14 @@ _utilities.register(
   "fqn": "pulumi_azuread",
   "classes": {
    "azuread:index/accessPackageCatalog:AccessPackageCatalog": "AccessPackageCatalog"
+  }
+ },
+ {
+  "pkg": "azuread",
+  "mod": "index/accessPackageCatalogRoleAssignment",
+  "fqn": "pulumi_azuread",
+  "classes": {
+   "azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment": "AccessPackageCatalogRoleAssignment"
   }
  },
  {

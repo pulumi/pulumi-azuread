@@ -45,7 +45,7 @@ type Group struct {
 
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	AdministrativeUnitIds pulumi.StringArrayOutput `pulumi:"administrativeUnitIds"`
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers pulumi.BoolOutput `pulumi:"autoSubscribeNewMembers"`
@@ -141,7 +141,7 @@ func GetGroup(ctx *pulumi.Context,
 type groupState struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
@@ -206,7 +206,7 @@ type groupState struct {
 type GroupState struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	AdministrativeUnitIds pulumi.StringArrayInput
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers pulumi.BoolPtrInput
@@ -275,7 +275,7 @@ func (GroupState) ElementType() reflect.Type {
 type groupArgs struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
@@ -323,7 +323,7 @@ type groupArgs struct {
 type GroupArgs struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	AdministrativeUnitIds pulumi.StringArrayInput
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 	AssignableToRole pulumi.BoolPtrInput
 	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
 	AutoSubscribeNewMembers pulumi.BoolPtrInput
@@ -459,7 +459,7 @@ func (o GroupOutput) AdministrativeUnitIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AdministrativeUnitIds }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
 func (o GroupOutput) AssignableToRole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.AssignableToRole }).(pulumi.BoolPtrOutput)
 }
