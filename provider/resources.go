@@ -288,10 +288,11 @@ func Provider() tfbridge.ProviderInfo {
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("azuread_", mainMod,
 		x.MakeStandardToken(mainPkg)))
 	contract.AssertNoErrorf(err, "failed to apply auto token mapping")
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	prov.SetAutonaming(255, "-")
+
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	return prov
 }
