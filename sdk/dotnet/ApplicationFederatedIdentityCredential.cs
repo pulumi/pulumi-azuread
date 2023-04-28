@@ -10,6 +10,37 @@ using Pulumi.Serialization;
 namespace Pulumi.AzureAD
 {
     /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new()
+    ///     {
+    ///         ApplicationObjectId = exampleApplication.ObjectId,
+    ///         DisplayName = "my-repo-deploy",
+    ///         Description = "Deployments for my-repo",
+    ///         Audiences = new[]
+    ///         {
+    ///             "api://AzureADTokenExchange",
+    ///         },
+    ///         Issuer = "https://token.actions.githubusercontent.com",
+    ///         Subject = "repo:my-organization/my-repo:environment:prod",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
@@ -33,7 +64,7 @@ namespace Pulumi.AzureAD
         /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
         [Output("audiences")]
-        public Output<string> Audiences { get; private set; } = null!;
+        public Output<ImmutableArray<string>> Audiences { get; private set; } = null!;
 
         /// <summary>
         /// A UUID used to uniquely identify this federated identity credential.
@@ -117,11 +148,17 @@ namespace Pulumi.AzureAD
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
 
+        [Input("audiences", required: true)]
+        private InputList<string>? _audiences;
+
         /// <summary>
         /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
-        [Input("audiences", required: true)]
-        public Input<string> Audiences { get; set; } = null!;
+        public InputList<string> Audiences
+        {
+            get => _audiences ?? (_audiences = new InputList<string>());
+            set => _audiences = value;
+        }
 
         /// <summary>
         /// A description for the federated identity credential.
@@ -161,11 +198,17 @@ namespace Pulumi.AzureAD
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
 
+        [Input("audiences")]
+        private InputList<string>? _audiences;
+
         /// <summary>
         /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
-        [Input("audiences")]
-        public Input<string>? Audiences { get; set; }
+        public InputList<string> Audiences
+        {
+            get => _audiences ?? (_audiences = new InputList<string>());
+            set => _audiences = value;
+        }
 
         /// <summary>
         /// A UUID used to uniquely identify this federated identity credential.

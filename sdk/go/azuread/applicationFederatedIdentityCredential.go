@@ -11,6 +11,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "exampleApplicationFederatedIdentityCredential", &azuread.ApplicationFederatedIdentityCredentialArgs{
+//				ApplicationObjectId: exampleApplication.ObjectId,
+//				DisplayName:         pulumi.String("my-repo-deploy"),
+//				Description:         pulumi.String("Deployments for my-repo"),
+//				Audiences: pulumi.StringArray{
+//					pulumi.String("api://AzureADTokenExchange"),
+//				},
+//				Issuer:  pulumi.String("https://token.actions.githubusercontent.com"),
+//				Subject: pulumi.String("repo:my-organization/my-repo:environment:prod"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
@@ -28,7 +67,7 @@ type ApplicationFederatedIdentityCredential struct {
 	// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-	Audiences pulumi.StringOutput `pulumi:"audiences"`
+	Audiences pulumi.StringArrayOutput `pulumi:"audiences"`
 	// A UUID used to uniquely identify this federated identity credential.
 	CredentialId pulumi.StringOutput `pulumi:"credentialId"`
 	// A description for the federated identity credential.
@@ -88,7 +127,7 @@ type applicationFederatedIdentityCredentialState struct {
 	// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-	Audiences *string `pulumi:"audiences"`
+	Audiences []string `pulumi:"audiences"`
 	// A UUID used to uniquely identify this federated identity credential.
 	CredentialId *string `pulumi:"credentialId"`
 	// A description for the federated identity credential.
@@ -105,7 +144,7 @@ type ApplicationFederatedIdentityCredentialState struct {
 	// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-	Audiences pulumi.StringPtrInput
+	Audiences pulumi.StringArrayInput
 	// A UUID used to uniquely identify this federated identity credential.
 	CredentialId pulumi.StringPtrInput
 	// A description for the federated identity credential.
@@ -126,7 +165,7 @@ type applicationFederatedIdentityCredentialArgs struct {
 	// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-	Audiences string `pulumi:"audiences"`
+	Audiences []string `pulumi:"audiences"`
 	// A description for the federated identity credential.
 	Description *string `pulumi:"description"`
 	// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
@@ -142,7 +181,7 @@ type ApplicationFederatedIdentityCredentialArgs struct {
 	// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
 	// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-	Audiences pulumi.StringInput
+	Audiences pulumi.StringArrayInput
 	// A description for the federated identity credential.
 	Description pulumi.StringPtrInput
 	// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
@@ -246,8 +285,8 @@ func (o ApplicationFederatedIdentityCredentialOutput) ApplicationObjectId() pulu
 }
 
 // List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-func (o ApplicationFederatedIdentityCredentialOutput) Audiences() pulumi.StringOutput {
-	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringOutput { return v.Audiences }).(pulumi.StringOutput)
+func (o ApplicationFederatedIdentityCredentialOutput) Audiences() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationFederatedIdentityCredential) pulumi.StringArrayOutput { return v.Audiences }).(pulumi.StringArrayOutput)
 }
 
 // A UUID used to uniquely identify this federated identity credential.
