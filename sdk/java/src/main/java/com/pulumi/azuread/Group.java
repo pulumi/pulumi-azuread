@@ -237,14 +237,14 @@ public class Group extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.administrativeUnitIds);
     }
     /**
-     * Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     * Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      * 
      */
     @Export(name="assignableToRole", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> assignableToRole;
 
     /**
-     * @return Indicates whether this group can be assigned to an Azure Active Directory role. Can only be `true` for security-enabled groups. Changing this forces a new resource to be created.
+     * @return Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
      * 
      */
     public Output<Optional<Boolean>> assignableToRole() {

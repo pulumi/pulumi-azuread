@@ -9,16 +9,16 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    public static class GetAdministrativeUnit
+    public static class GetAccessPackageCatalogRole
     {
         /// <summary>
-        /// Gets information about an adminisrative unit in Azure Active Directory.
+        /// Gets information about an access package catalog role.
         /// 
         /// ## API Permissions
         /// 
         /// The following API permissions are required in order to use this data source.
         /// 
-        /// When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All` or `Directory.Read.All`
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
@@ -36,9 +36,9 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
-        ///         DisplayName = "Example-AU",
+        ///         DisplayName = "Catalog owner",
         ///     });
         /// 
         /// });
@@ -53,7 +53,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -63,17 +63,17 @@ namespace Pulumi.AzureAD
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Task<GetAdministrativeUnitResult> InvokeAsync(GetAdministrativeUnitArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitArgs(), options.WithDefaults());
+        public static Task<GetAccessPackageCatalogRoleResult> InvokeAsync(GetAccessPackageCatalogRoleArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPackageCatalogRoleResult>("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args ?? new GetAccessPackageCatalogRoleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets information about an adminisrative unit in Azure Active Directory.
+        /// Gets information about an access package catalog role.
         /// 
         /// ## API Permissions
         /// 
         /// The following API permissions are required in order to use this data source.
         /// 
-        /// When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All` or `Directory.Read.All`
         /// 
         /// When authenticated with a user principal, this data source does not require any additional roles.
         /// 
@@ -91,9 +91,9 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
-        ///         DisplayName = "Example-AU",
+        ///         DisplayName = "Catalog owner",
         ///     });
         /// 
         /// });
@@ -108,7 +108,7 @@ namespace Pulumi.AzureAD
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
+        ///     var example = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
         ///     {
         ///         ObjectId = "00000000-0000-0000-0000-000000000000",
         ///     });
@@ -118,61 +118,61 @@ namespace Pulumi.AzureAD
         /// {{% /example %}}
         /// {{% /examples %}}
         /// </summary>
-        public static Output<GetAdministrativeUnitResult> Invoke(GetAdministrativeUnitInvokeArgs? args = null, InvokeOptions? options = null)
-            => global::Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());
+        public static Output<GetAccessPackageCatalogRoleResult> Invoke(GetAccessPackageCatalogRoleInvokeArgs? args = null, InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessPackageCatalogRoleResult>("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args ?? new GetAccessPackageCatalogRoleInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetAdministrativeUnitArgs : global::Pulumi.InvokeArgs
+    public sealed class GetAccessPackageCatalogRoleArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specifies the display name of the administrative unit.
+        /// Specifies the display name of the role.
         /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies the object ID of the administrative unit.
+        /// Specifies the object ID of the role.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
-        public GetAdministrativeUnitArgs()
+        public GetAccessPackageCatalogRoleArgs()
         {
         }
-        public static new GetAdministrativeUnitArgs Empty => new GetAdministrativeUnitArgs();
+        public static new GetAccessPackageCatalogRoleArgs Empty => new GetAccessPackageCatalogRoleArgs();
     }
 
-    public sealed class GetAdministrativeUnitInvokeArgs : global::Pulumi.InvokeArgs
+    public sealed class GetAccessPackageCatalogRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specifies the display name of the administrative unit.
+        /// Specifies the display name of the role.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies the object ID of the administrative unit.
+        /// Specifies the object ID of the role.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
-        public GetAdministrativeUnitInvokeArgs()
+        public GetAccessPackageCatalogRoleInvokeArgs()
         {
         }
-        public static new GetAdministrativeUnitInvokeArgs Empty => new GetAdministrativeUnitInvokeArgs();
+        public static new GetAccessPackageCatalogRoleInvokeArgs Empty => new GetAccessPackageCatalogRoleInvokeArgs();
     }
 
 
     [OutputType]
-    public sealed class GetAdministrativeUnitResult
+    public sealed class GetAccessPackageCatalogRoleResult
     {
         /// <summary>
-        /// The description of the administrative unit.
+        /// The description of the role.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The display name of the administrative unit.
+        /// The display name of the role.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -180,38 +180,31 @@ namespace Pulumi.AzureAD
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A list of object IDs of members who are present in this administrative unit.
-        /// </summary>
-        public readonly ImmutableArray<string> Members;
-        /// <summary>
-        /// The object ID of the administrative unit.
+        /// The object ID of the role.
         /// </summary>
         public readonly string ObjectId;
         /// <summary>
-        /// Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
+        /// The object ID of the role.
         /// </summary>
-        public readonly string Visibility;
+        public readonly string TemplateId;
 
         [OutputConstructor]
-        private GetAdministrativeUnitResult(
+        private GetAccessPackageCatalogRoleResult(
             string description,
 
             string displayName,
 
             string id,
 
-            ImmutableArray<string> members,
-
             string objectId,
 
-            string visibility)
+            string templateId)
         {
             Description = description;
             DisplayName = displayName;
             Id = id;
-            Members = members;
             ObjectId = objectId;
-            Visibility = visibility;
+            TemplateId = templateId;
         }
     }
 }

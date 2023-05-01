@@ -16,6 +16,8 @@ package provider
 
 import (
 	"context"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -239,13 +241,6 @@ func Provider() tfbridge.ProviderInfo {
 			"azuread_user_flow_attribute":             {Tok: makeResource(mainMod, "UserFlowAttribute")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"azuread_application":                   {Tok: makeDataSource(mainMod, "getApplication")},
-			"azuread_domains":                       {Tok: makeDataSource(mainMod, "getDomains")},
-			"azuread_group":                         {Tok: makeDataSource(mainMod, "getGroup")},
-			"azuread_service_principal":             {Tok: makeDataSource(mainMod, "getServicePrincipal")},
-			"azuread_user":                          {Tok: makeDataSource(mainMod, "getUser")},
-			"azuread_groups":                        {Tok: makeDataSource(mainMod, "getGroups")},
-			"azuread_users":                         {Tok: makeDataSource(mainMod, "getUsers")},
 			"azuread_client_config":                 {Tok: makeDataSource(mainMod, "getClientConfig")},
 			"azuread_application_published_app_ids": {Tok: makeDataSource(mainMod, "getApplicationPublishedAppIds")},
 			"azuread_application_template":          {Tok: makeDataSource(mainMod, "getApplicationTemplate")},
@@ -287,13 +282,20 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				"azuread": "AzureAD",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
 	err := x.ComputeDefaults(&prov, x.TokensSingleModule("azuread_", mainMod,
 		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoError(err)
+	contract.AssertNoErrorf(err, "failed to apply auto token mapping")
+
 	prov.SetAutonaming(255, "-")
+
+	err = x.AutoAliasing(&prov, prov.GetMetadata())
+	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-azuread/bridge-metadata.json
+var metadata []byte

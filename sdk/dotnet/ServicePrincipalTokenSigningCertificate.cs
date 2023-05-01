@@ -26,6 +26,7 @@ namespace Pulumi.AzureAD
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
@@ -53,6 +54,7 @@ namespace Pulumi.AzureAD
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using AzureAD = Pulumi.AzureAD;
     /// 
