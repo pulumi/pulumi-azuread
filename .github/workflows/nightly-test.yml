@@ -10,7 +10,7 @@ env:
     6.0.x
     3.1.301
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  GOVERSION: 1.19.x
+  GOVERSION: 1.20.1
   JAVAVERSION: "11"
   NODEVERSION: 16.x
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -47,9 +47,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -138,9 +138,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -151,7 +151,7 @@ jobs:
       name: Install Schema Tools
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
-        repo: mikhailshilkov/schema-tools
+        repo: pulumi/schema-tools
     - name: Build tfgen & provider binaries
       run: make provider
     - if: github.event_name == 'pull_request'
@@ -159,7 +159,7 @@ jobs:
       run: >-
         echo 'SCHEMA_CHANGES<<EOF' >> $GITHUB_ENV
 
-        schema-tools compare ${{ env.PROVIDER }} master --local-path=provider/cmd/pulumi-resource-${{ env.PROVIDER }}/schema.json >> $GITHUB_ENV
+        schema-tools compare -p ${{ env.PROVIDER }} -o ${{ github.event.repository.default_branch }} -n --local-path=provider/cmd/pulumi-resource-${{ env.PROVIDER }}/schema.json >> $GITHUB_ENV
 
         echo 'EOF' >> $GITHUB_ENV
     - if: github.event_name == 'pull_request'
@@ -205,9 +205,9 @@ jobs:
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go
-      uses: actions/setup-go@v2
+      uses: actions/setup-go@v3
       with:
-        go-version: ${{ env.GOVERSION }}
+        go-version: 1.20.1
     - name: Install pulumictl
       uses: jaxxstorm/action-install-gh-release@v1.5.0
       with:
@@ -281,7 +281,7 @@ jobs:
         fields: repo,commit,author,action
         status: ${{ job.status }}
     strategy:
-      fail-fast: true
+      fail-fast: false
       matrix:
         language:
         - nodejs
