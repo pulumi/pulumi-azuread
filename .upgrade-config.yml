@@ -2,4 +2,5 @@
 
 ---
 upstream-provider-name: terraform-provider-azuread
+pulumi-infer-version: true
 
