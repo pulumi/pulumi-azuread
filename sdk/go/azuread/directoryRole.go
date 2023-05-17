@@ -91,6 +91,8 @@ type DirectoryRole struct {
 	// The object ID of the directory role.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 }
 
@@ -130,6 +132,8 @@ type directoryRoleState struct {
 	// The object ID of the directory role.
 	ObjectId *string `pulumi:"objectId"`
 	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId *string `pulumi:"templateId"`
 }
 
@@ -141,6 +145,8 @@ type DirectoryRoleState struct {
 	// The object ID of the directory role.
 	ObjectId pulumi.StringPtrInput
 	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -152,6 +158,8 @@ type directoryRoleArgs struct {
 	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
 	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId *string `pulumi:"templateId"`
 }
 
@@ -160,6 +168,8 @@ type DirectoryRoleArgs struct {
 	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
 	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -266,6 +276,8 @@ func (o DirectoryRoleOutput) ObjectId() pulumi.StringOutput {
 }
 
 // The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+//
+// > Either `displayName` or `templateId` must be specified.
 func (o DirectoryRoleOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }

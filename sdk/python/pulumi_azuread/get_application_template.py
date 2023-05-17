@@ -163,6 +163,8 @@ def get_application_template(display_name: Optional[str] = None,
 
     :param str display_name: Specifies the display name of the templated application.
     :param str template_id: Specifies the ID of the templated application.
+           
+           > One of `template_id` or `display_name` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -206,5 +208,7 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
 
     :param str display_name: Specifies the display name of the templated application.
     :param str template_id: Specifies the ID of the templated application.
+           
+           > One of `template_id` or `display_name` must be specified.
     """
     ...

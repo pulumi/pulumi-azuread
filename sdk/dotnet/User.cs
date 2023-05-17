@@ -275,7 +275,8 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> OtherMails { get; private set; } = null!;
 
         /// <summary>
-        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+        /// maximum length is 256 characters. This property is required when creating a new user
         /// </summary>
         [Output("password")]
         public Output<string> Password { get; private set; } = null!;
@@ -562,7 +563,8 @@ namespace Pulumi.AzureAD
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+        /// maximum length is 256 characters. This property is required when creating a new user
         /// </summary>
         public Input<string>? Password
         {
@@ -874,7 +876,8 @@ namespace Pulumi.AzureAD
         private Input<string>? _password;
 
         /// <summary>
-        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        /// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+        /// maximum length is 256 characters. This property is required when creating a new user
         /// </summary>
         public Input<string>? Password
         {

@@ -20,6 +20,8 @@ class DirectoryRoleArgs:
         The set of arguments for constructing a DirectoryRole resource.
         :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
         :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+               
+               > Either `display_name` or `template_id` must be specified.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -43,6 +45,8 @@ class DirectoryRoleArgs:
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+
+        > Either `display_name` or `template_id` must be specified.
         """
         return pulumi.get(self, "template_id")
 
@@ -64,6 +68,8 @@ class _DirectoryRoleState:
         :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
         :param pulumi.Input[str] object_id: The object ID of the directory role.
         :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+               
+               > Either `display_name` or `template_id` must be specified.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -115,6 +121,8 @@ class _DirectoryRoleState:
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+
+        > Either `display_name` or `template_id` must be specified.
         """
         return pulumi.get(self, "template_id")
 
@@ -174,6 +182,8 @@ class DirectoryRole(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
         :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+               
+               > Either `display_name` or `template_id` must be specified.
         """
         ...
     @overload
@@ -275,6 +285,8 @@ class DirectoryRole(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
         :param pulumi.Input[str] object_id: The object ID of the directory role.
         :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+               
+               > Either `display_name` or `template_id` must be specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -315,6 +327,8 @@ class DirectoryRole(pulumi.CustomResource):
     def template_id(self) -> pulumi.Output[str]:
         """
         The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+
+        > Either `display_name` or `template_id` must be specified.
         """
         return pulumi.get(self, "template_id")
 

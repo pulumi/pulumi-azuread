@@ -36,10 +36,14 @@ type ServicePrincipalCertificate struct {
 	pulumi.CustomResourceState
 
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
 	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
@@ -96,10 +100,14 @@ func GetServicePrincipalCertificate(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServicePrincipalCertificate resources.
 type servicePrincipalCertificateState struct {
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding *string `pulumi:"encoding"`
 	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
@@ -115,10 +123,14 @@ type servicePrincipalCertificateState struct {
 
 type ServicePrincipalCertificateState struct {
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding pulumi.StringPtrInput
 	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
@@ -138,10 +150,14 @@ func (ServicePrincipalCertificateState) ElementType() reflect.Type {
 
 type servicePrincipalCertificateArgs struct {
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding *string `pulumi:"encoding"`
 	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
 	EndDateRelative *string `pulumi:"endDateRelative"`
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
@@ -158,10 +174,14 @@ type servicePrincipalCertificateArgs struct {
 // The set of arguments for constructing a ServicePrincipalCertificate resource.
 type ServicePrincipalCertificateArgs struct {
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding pulumi.StringPtrInput
 	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
 	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
 	EndDateRelative pulumi.StringPtrInput
 	// A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
@@ -263,6 +283,8 @@ func (o ServicePrincipalCertificateOutput) ToServicePrincipalCertificateOutputWi
 }
 
 // Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+//
+// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 func (o ServicePrincipalCertificateOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
 }
@@ -273,6 +295,8 @@ func (o ServicePrincipalCertificateOutput) EndDate() pulumi.StringOutput {
 }
 
 // A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+//
+// > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
 func (o ServicePrincipalCertificateOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalCertificate) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }

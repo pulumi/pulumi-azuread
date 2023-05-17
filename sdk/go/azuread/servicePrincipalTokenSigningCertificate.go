@@ -117,6 +117,8 @@ type ServicePrincipalTokenSigningCertificate struct {
 
 	// Specifies a friendly name for the certificate.
 	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	//
+	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
@@ -171,6 +173,8 @@ func GetServicePrincipalTokenSigningCertificate(ctx *pulumi.Context,
 type servicePrincipalTokenSigningCertificateState struct {
 	// Specifies a friendly name for the certificate.
 	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	//
+	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
@@ -190,6 +194,8 @@ type servicePrincipalTokenSigningCertificateState struct {
 type ServicePrincipalTokenSigningCertificateState struct {
 	// Specifies a friendly name for the certificate.
 	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	//
+	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
@@ -213,6 +219,8 @@ func (ServicePrincipalTokenSigningCertificateState) ElementType() reflect.Type {
 type servicePrincipalTokenSigningCertificateArgs struct {
 	// Specifies a friendly name for the certificate.
 	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	//
+	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName *string `pulumi:"displayName"`
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
@@ -224,6 +232,8 @@ type servicePrincipalTokenSigningCertificateArgs struct {
 type ServicePrincipalTokenSigningCertificateArgs struct {
 	// Specifies a friendly name for the certificate.
 	// Must start with `CN=`. Changing this field forces a new resource to be created.
+	//
+	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 	DisplayName pulumi.StringPtrInput
 	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
@@ -320,6 +330,8 @@ func (o ServicePrincipalTokenSigningCertificateOutput) ToServicePrincipalTokenSi
 
 // Specifies a friendly name for the certificate.
 // Must start with `CN=`. Changing this field forces a new resource to be created.
+//
+// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
 func (o ServicePrincipalTokenSigningCertificateOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

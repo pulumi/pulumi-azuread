@@ -100,6 +100,18 @@ class DirectoryRoleMember(pulumi.CustomResource):
                  role_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Manages a single directory role membership (assignment) within Azure Active Directory.
+
+        > **Deprecation Warning:** This resource has been superseded by the DirectoryRoleAssignment resource and will be removed in version 3.0 of the AzureAD provider
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python
@@ -135,6 +147,18 @@ class DirectoryRoleMember(pulumi.CustomResource):
                  args: Optional[DirectoryRoleMemberArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Manages a single directory role membership (assignment) within Azure Active Directory.
+
+        > **Deprecation Warning:** This resource has been superseded by the DirectoryRoleAssignment resource and will be removed in version 3.0 of the AzureAD provider
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
         ## Example Usage
 
         ```python

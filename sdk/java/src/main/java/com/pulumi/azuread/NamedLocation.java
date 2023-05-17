@@ -117,12 +117,16 @@ public class NamedLocation extends com.pulumi.resources.CustomResource {
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
      * 
+     * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+     * 
      */
     @Export(name="ip", type=NamedLocationIp.class, parameters={})
     private Output</* @Nullable */ NamedLocationIp> ip;
 
     /**
      * @return An `ip` block as documented below, which configures an IP-based named location.
+     * 
+     * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      * 
      */
     public Output<Optional<NamedLocationIp>> ip() {

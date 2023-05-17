@@ -63,6 +63,8 @@ type LookupUserArgs struct {
 	// The object ID of the user.
 	ObjectId *string `pulumi:"objectId"`
 	// The user principal name (UPN) of the user.
+	//
+	// > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
@@ -180,6 +182,8 @@ type LookupUserOutputArgs struct {
 	// The object ID of the user.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 	// The user principal name (UPN) of the user.
+	//
+	// > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
 	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
 }
 

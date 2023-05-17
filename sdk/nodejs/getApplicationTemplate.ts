@@ -43,6 +43,8 @@ export interface GetApplicationTemplateArgs {
     displayName?: string;
     /**
      * Specifies the ID of the templated application.
+     *
+     * > One of `templateId` or `displayName` must be specified.
      */
     templateId?: string;
 }
@@ -121,6 +123,8 @@ export interface GetApplicationTemplateOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Specifies the ID of the templated application.
+     *
+     * > One of `templateId` or `displayName` must be specified.
      */
     templateId?: pulumi.Input<string>;
 }

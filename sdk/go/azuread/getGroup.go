@@ -65,6 +65,8 @@ type LookupGroupArgs struct {
 	// Specifies the object ID of the group.
 	ObjectId *string `pulumi:"objectId"`
 	// Whether the group is a security group.
+	//
+	// > One of `displayName` or `objectId` must be specified.
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
 }
 
@@ -154,6 +156,8 @@ type LookupGroupOutputArgs struct {
 	// Specifies the object ID of the group.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 	// Whether the group is a security group.
+	//
+	// > One of `displayName` or `objectId` must be specified.
 	SecurityEnabled pulumi.BoolPtrInput `pulumi:"securityEnabled"`
 }
 

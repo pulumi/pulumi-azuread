@@ -15,6 +15,8 @@ namespace Pulumi.AzureAD.Outputs
     {
         /// <summary>
         /// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        /// 
+        /// &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         /// </summary>
         public readonly bool? ApplicationEnforcedRestrictionsEnabled;
         /// <summary>

@@ -418,6 +418,8 @@ def get_service_principal(application_id: Optional[str] = None,
     :param str application_id: The application ID (client ID) of the application associated with this service principal.
     :param str display_name: The display name of the application associated with this service principal.
     :param str object_id: The object ID of the service principal.
+           
+           > One of `application_id`, `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -506,5 +508,7 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
     :param str application_id: The application ID (client ID) of the application associated with this service principal.
     :param str display_name: The display name of the application associated with this service principal.
     :param str object_id: The object ID of the service principal.
+           
+           > One of `application_id`, `display_name` or `object_id` must be specified.
     """
     ...

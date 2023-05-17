@@ -425,6 +425,8 @@ def get_group(display_name: Optional[str] = None,
     :param bool mail_enabled: Whether the group is mail-enabled.
     :param str object_id: Specifies the object ID of the group.
     :param bool security_enabled: Whether the group is a security group.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -500,5 +502,7 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
     :param bool mail_enabled: Whether the group is mail-enabled.
     :param str object_id: Specifies the object ID of the group.
     :param bool security_enabled: Whether the group is a security group.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...

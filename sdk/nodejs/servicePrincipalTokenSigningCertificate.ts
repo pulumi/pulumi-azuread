@@ -84,6 +84,8 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
     /**
      * Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
+     *
+     * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -159,6 +161,8 @@ export interface ServicePrincipalTokenSigningCertificateState {
     /**
      * Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
+     *
+     * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -195,6 +199,8 @@ export interface ServicePrincipalTokenSigningCertificateArgs {
     /**
      * Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
+     *
+     * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
     displayName?: pulumi.Input<string>;
     /**

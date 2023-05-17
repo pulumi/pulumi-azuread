@@ -91,6 +91,8 @@ export class NamedLocation extends pulumi.CustomResource {
     public readonly displayName!: pulumi.Output<string>;
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
+     *
+     * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
     public readonly ip!: pulumi.Output<outputs.NamedLocationIp | undefined>;
 
@@ -138,6 +140,8 @@ export interface NamedLocationState {
     displayName?: pulumi.Input<string>;
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
+     *
+     * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
     ip?: pulumi.Input<inputs.NamedLocationIp>;
 }
@@ -156,6 +160,8 @@ export interface NamedLocationArgs {
     displayName: pulumi.Input<string>;
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
+     *
+     * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      */
     ip?: pulumi.Input<inputs.NamedLocationIp>;
 }

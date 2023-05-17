@@ -83,7 +83,7 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * A string collection containing a JSON string that defines the rules and settings for this policy
+     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      */
     public readonly definitions!: pulumi.Output<string[]>;
     /**
@@ -127,7 +127,7 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
  */
 export interface ClaimsMappingPolicyState {
     /**
-     * A string collection containing a JSON string that defines the rules and settings for this policy
+     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      */
     definitions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -141,7 +141,7 @@ export interface ClaimsMappingPolicyState {
  */
 export interface ClaimsMappingPolicyArgs {
     /**
-     * A string collection containing a JSON string that defines the rules and settings for this policy
+     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      */
     definitions: pulumi.Input<pulumi.Input<string>[]>;
     /**

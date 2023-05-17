@@ -111,6 +111,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Whether the group is a security group.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("securityEnabled")]
         public bool? SecurityEnabled { get; set; }
@@ -143,6 +145,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Whether the group is a security group.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("securityEnabled")]
         public Input<bool>? SecurityEnabled { get; set; }

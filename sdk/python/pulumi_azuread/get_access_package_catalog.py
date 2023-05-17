@@ -136,6 +136,8 @@ def get_access_package_catalog(display_name: Optional[str] = None,
 
     :param str display_name: The display name of the access package catalog.
     :param str object_id: The ID of this access package catalog.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -191,5 +193,7 @@ def get_access_package_catalog_output(display_name: Optional[pulumi.Input[Option
 
     :param str display_name: The display name of the access package catalog.
     :param str object_id: The ID of this access package catalog.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...

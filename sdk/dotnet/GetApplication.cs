@@ -109,6 +109,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Specifies the Object ID of the application.
+        /// 
+        /// &gt; One of `object_id`, `application_id` or `display_name` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -135,6 +137,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Specifies the Object ID of the application.
+        /// 
+        /// &gt; One of `object_id`, `application_id` or `display_name` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }

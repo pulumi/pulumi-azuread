@@ -65,6 +65,8 @@ export class AdministrativeUnit extends pulumi.CustomResource {
     public readonly hiddenMembershipEnabled!: pulumi.Output<boolean | undefined>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     public readonly members!: pulumi.Output<string[]>;
     /**
@@ -130,6 +132,8 @@ export interface AdministrativeUnitState {
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -160,6 +164,8 @@ export interface AdministrativeUnitArgs {
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**
      * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**

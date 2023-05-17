@@ -590,14 +590,16 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.otherMails);
     }
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+     * maximum length is 256 characters. This property is required when creating a new user
      * 
      */
     @Export(name="password", type=String.class, parameters={})
     private Output<String> password;
 
     /**
-     * @return The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+     * @return The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+     * maximum length is 256 characters. This property is required when creating a new user
      * 
      */
     public Output<String> password() {

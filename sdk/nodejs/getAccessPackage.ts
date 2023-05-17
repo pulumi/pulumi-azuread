@@ -65,6 +65,8 @@ export interface GetAccessPackageArgs {
     displayName?: string;
     /**
      * The ID of this access package.
+     *
+     * > Either `objectId`, or both `catalogId` and `displayName`, must be specified.
      */
     objectId?: string;
 }
@@ -143,6 +145,8 @@ export interface GetAccessPackageOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The ID of this access package.
+     *
+     * > Either `objectId`, or both `catalogId` and `displayName`, must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

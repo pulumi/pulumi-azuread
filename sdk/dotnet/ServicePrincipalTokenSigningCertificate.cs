@@ -96,6 +96,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies a friendly name for the certificate.
         /// Must start with `CN=`. Changing this field forces a new resource to be created.
+        /// 
+        /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -190,6 +192,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies a friendly name for the certificate.
         /// Must start with `CN=`. Changing this field forces a new resource to be created.
+        /// 
+        /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -217,6 +221,8 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// Specifies a friendly name for the certificate.
         /// Must start with `CN=`. Changing this field forces a new resource to be created.
+        /// 
+        /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

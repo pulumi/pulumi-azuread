@@ -52,6 +52,8 @@ class ApplicationArgs:
         :param pulumi.Input[bool] device_only_auth_enabled: Specifies whether this application supports device authentication without a user. Defaults to `false`.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+               
+               > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -59,19 +61,25 @@ class ApplicationArgs:
         :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+               
+               > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+               
+               > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
+               
+               > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         pulumi.set(__self__, "display_name", display_name)
         if api is not None:
@@ -204,6 +212,8 @@ class ApplicationArgs:
     def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+
+        > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         """
         return pulumi.get(self, "feature_tags")
 
@@ -299,7 +309,7 @@ class ApplicationArgs:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        A list of object IDs of principals that will be granted ownership of the application
         """
         return pulumi.get(self, "owners")
 
@@ -372,6 +382,8 @@ class ApplicationArgs:
     def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
         """
         The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+
+        > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         """
         return pulumi.get(self, "sign_in_audience")
 
@@ -408,6 +420,8 @@ class ApplicationArgs:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+
+        > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         """
         return pulumi.get(self, "tags")
 
@@ -444,6 +458,8 @@ class ApplicationArgs:
     def web(self) -> Optional[pulumi.Input['ApplicationWebArgs']]:
         """
         A `web` block as documented below, which configures web related settings for this application.
+
+        > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         return pulumi.get(self, "web")
 
@@ -501,6 +517,8 @@ class _ApplicationState:
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+               
+               > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -511,7 +529,7 @@ class _ApplicationState:
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
         :param pulumi.Input['ApplicationOptionalClaimsArgs'] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input['ApplicationPublicClientArgs'] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
@@ -519,12 +537,18 @@ class _ApplicationState:
         :param pulumi.Input[Sequence[pulumi.Input['ApplicationRequiredResourceAccessArgs']]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+               
+               > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         :param pulumi.Input['ApplicationSinglePageApplicationArgs'] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+               
+               > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input['ApplicationWebArgs'] web: A `web` block as documented below, which configures web related settings for this application.
+               
+               > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         if api is not None:
             pulumi.set(__self__, "api", api)
@@ -708,6 +732,8 @@ class _ApplicationState:
     def feature_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationFeatureTagArgs']]]]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+
+        > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         """
         return pulumi.get(self, "feature_tags")
 
@@ -839,7 +865,7 @@ class _ApplicationState:
     @pulumi.getter
     def owners(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        A list of object IDs of principals that will be granted ownership of the application
         """
         return pulumi.get(self, "owners")
 
@@ -924,6 +950,8 @@ class _ApplicationState:
     def sign_in_audience(self) -> Optional[pulumi.Input[str]]:
         """
         The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+
+        > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         """
         return pulumi.get(self, "sign_in_audience")
 
@@ -960,6 +988,8 @@ class _ApplicationState:
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
         A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+
+        > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         """
         return pulumi.get(self, "tags")
 
@@ -996,6 +1026,8 @@ class _ApplicationState:
     def web(self) -> Optional[pulumi.Input['ApplicationWebArgs']]:
         """
         A `web` block as documented below, which configures web related settings for this application.
+
+        > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         return pulumi.get(self, "web")
 
@@ -1191,6 +1223,8 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+               
+               > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -1198,19 +1232,25 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] notes: User-specified notes relevant for the management of the application.
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+               
+               > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+               
+               > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
+               
+               > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         ...
     @overload
@@ -1511,6 +1551,8 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The display name for the application.
         :param pulumi.Input[bool] fallback_public_client_enabled: Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationFeatureTagArgs']]]] feature_tags: A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+               
+               > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] group_membership_claims: Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identifier_uris: A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
         :param pulumi.Input[str] logo_image: A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
@@ -1521,7 +1563,7 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[bool] oauth2_post_response_required: Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
         :param pulumi.Input[str] object_id: The application's object ID.
         :param pulumi.Input[pulumi.InputType['ApplicationOptionalClaimsArgs']] optional_claims: An `optional_claims` block as documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] owners: A list of object IDs of principals that will be granted ownership of the application
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
         :param pulumi.Input[str] privacy_statement_url: URL of the application's privacy statement.
         :param pulumi.Input[pulumi.InputType['ApplicationPublicClientArgs']] public_client: A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
@@ -1529,12 +1571,18 @@ class Application(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ApplicationRequiredResourceAccessArgs']]]] required_resource_accesses: A collection of `required_resource_access` blocks as documented below.
         :param pulumi.Input[str] service_management_reference: References application context information from a Service or Asset Management database.
         :param pulumi.Input[str] sign_in_audience: The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+               
+               > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         :param pulumi.Input[pulumi.InputType['ApplicationSinglePageApplicationArgs']] single_page_application: A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
         :param pulumi.Input[str] support_url: URL of the application's support page.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+               
+               > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         :param pulumi.Input[str] template_id: Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
         :param pulumi.Input[str] terms_of_service_url: URL of the application's terms of service statement.
         :param pulumi.Input[pulumi.InputType['ApplicationWebArgs']] web: A `web` block as documented below, which configures web related settings for this application.
+               
+               > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1653,6 +1701,8 @@ class Application(pulumi.CustomResource):
     def feature_tags(self) -> pulumi.Output[Sequence['outputs.ApplicationFeatureTag']]:
         """
         A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+
+        > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
         """
         return pulumi.get(self, "feature_tags")
 
@@ -1740,7 +1790,7 @@ class Application(pulumi.CustomResource):
     @pulumi.getter
     def owners(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+        A list of object IDs of principals that will be granted ownership of the application
         """
         return pulumi.get(self, "owners")
 
@@ -1797,6 +1847,8 @@ class Application(pulumi.CustomResource):
     def sign_in_audience(self) -> pulumi.Output[Optional[str]]:
         """
         The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+
+        > **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
         """
         return pulumi.get(self, "sign_in_audience")
 
@@ -1821,6 +1873,8 @@ class Application(pulumi.CustomResource):
     def tags(self) -> pulumi.Output[Sequence[str]]:
         """
         A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+
+        > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
         """
         return pulumi.get(self, "tags")
 
@@ -1845,6 +1899,8 @@ class Application(pulumi.CustomResource):
     def web(self) -> pulumi.Output[Optional['outputs.ApplicationWeb']]:
         """
         A `web` block as documented below, which configures web related settings for this application.
+
+        > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
         """
         return pulumi.get(self, "web")
 

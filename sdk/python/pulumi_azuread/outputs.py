@@ -1124,14 +1124,12 @@ class ApplicationApiOauth2PermissionScope(dict):
                  user_consent_display_name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str id: The unique identifier of the delegated permission. Must be a valid UUID.
         :param str admin_consent_description: Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
         :param str admin_consent_display_name: Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
         :param bool enabled: Determines if the permission scope is enabled. Defaults to `true`.
         :param str type: Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
         :param str user_consent_description: Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
         :param str user_consent_display_name: Display name for the delegated permission that appears in the end user consent experience.
-        :param str value: The value that is used for the `scp` claim in OAuth 2.0 access tokens.
         """
         pulumi.set(__self__, "id", id)
         if admin_consent_description is not None:
@@ -1152,9 +1150,6 @@ class ApplicationApiOauth2PermissionScope(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The unique identifier of the delegated permission. Must be a valid UUID.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -1208,9 +1203,6 @@ class ApplicationApiOauth2PermissionScope(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1246,9 +1238,7 @@ class ApplicationAppRole(dict):
         :param Sequence[str] allowed_member_types: Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
         :param str description: Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
         :param str display_name: Display name for the app role that appears during app role assignment and in consent experiences.
-        :param str id: The unique identifier of the app role. Must be a valid UUID.
         :param bool enabled: Determines if the app role is enabled. Defaults to `true`.
-        :param str value: The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
         """
         pulumi.set(__self__, "allowed_member_types", allowed_member_types)
         pulumi.set(__self__, "description", description)
@@ -1286,9 +1276,6 @@ class ApplicationAppRole(dict):
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The unique identifier of the app role. Must be a valid UUID.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -1302,9 +1289,6 @@ class ApplicationAppRole(dict):
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1720,6 +1704,8 @@ class ApplicationRequiredResourceAccess(dict):
         """
         :param Sequence['ApplicationRequiredResourceAccessResourceAccessArgs'] resource_accesses: A collection of `resource_access` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         :param str resource_app_id: The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+               
+               > **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
         """
         pulumi.set(__self__, "resource_accesses", resource_accesses)
         pulumi.set(__self__, "resource_app_id", resource_app_id)
@@ -1737,6 +1723,8 @@ class ApplicationRequiredResourceAccess(dict):
     def resource_app_id(self) -> str:
         """
         The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+
+        > **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
         """
         return pulumi.get(self, "resource_app_id")
 
@@ -2308,6 +2296,8 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         :param Sequence[str] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
         :param Sequence[str] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
         :param Sequence[str] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+               
+               > At least one of `included_groups`, `included_roles` or `included_users` must be specified.
         """
         if excluded_groups is not None:
             pulumi.set(__self__, "excluded_groups", excluded_groups)
@@ -2367,6 +2357,8 @@ class ConditionalAccessPolicyConditionsUsers(dict):
     def included_users(self) -> Optional[Sequence[str]]:
         """
         A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+
+        > At least one of `included_groups`, `included_roles` or `included_users` must be specified.
         """
         return pulumi.get(self, "included_users")
 
@@ -2480,6 +2472,8 @@ class ConditionalAccessPolicySessionControls(dict):
                  sign_in_frequency_period: Optional[str] = None):
         """
         :param bool application_enforced_restrictions_enabled: Whether or not application enforced restrictions are enabled. Defaults to `false`.
+               
+               > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         :param str persistent_browser_mode: Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
         :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -2501,6 +2495,8 @@ class ConditionalAccessPolicySessionControls(dict):
     def application_enforced_restrictions_enabled(self) -> Optional[bool]:
         """
         Whether or not application enforced restrictions are enabled. Defaults to `false`.
+
+        > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         """
         return pulumi.get(self, "application_enforced_restrictions_enabled")
 
@@ -2580,6 +2576,8 @@ class GroupDynamicMembership(dict):
         """
         :param bool enabled: Whether rule processing is "On" (true) or "Paused" (false).
         :param str rule: The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+               
+               > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "rule", rule)
@@ -2597,6 +2595,8 @@ class GroupDynamicMembership(dict):
     def rule(self) -> str:
         """
         The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+
+        > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
         """
         return pulumi.get(self, "rule")
 

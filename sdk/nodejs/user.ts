@@ -214,7 +214,8 @@ export class User extends pulumi.CustomResource {
      */
     public readonly otherMails!: pulumi.Output<string[] | undefined>;
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+     * maximum length is 256 characters. This property is required when creating a new user
      */
     public readonly password!: pulumi.Output<string>;
     /**
@@ -536,7 +537,8 @@ export interface UserState {
      */
     otherMails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+     * maximum length is 256 characters. This property is required when creating a new user
      */
     password?: pulumi.Input<string>;
     /**
@@ -690,7 +692,8 @@ export interface UserArgs {
      */
     otherMails?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+     * The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+     * maximum length is 256 characters. This property is required when creating a new user
      */
     password?: pulumi.Input<string>;
     /**

@@ -77,6 +77,8 @@ export interface GetServicePrincipalArgs {
     displayName?: string;
     /**
      * The object ID of the service principal.
+     *
+     * > One of `applicationId`, `displayName` or `objectId` must be specified.
      */
     objectId?: string;
 }
@@ -261,6 +263,8 @@ export interface GetServicePrincipalOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The object ID of the service principal.
+     *
+     * > One of `applicationId`, `displayName` or `objectId` must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

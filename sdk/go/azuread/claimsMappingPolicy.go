@@ -88,7 +88,7 @@ import (
 type ClaimsMappingPolicy struct {
 	pulumi.CustomResourceState
 
-	// A string collection containing a JSON string that defines the rules and settings for this policy
+	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 	Definitions pulumi.StringArrayOutput `pulumi:"definitions"`
 	// The display name for this Claims Mapping Policy.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
@@ -129,14 +129,14 @@ func GetClaimsMappingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClaimsMappingPolicy resources.
 type claimsMappingPolicyState struct {
-	// A string collection containing a JSON string that defines the rules and settings for this policy
+	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 	Definitions []string `pulumi:"definitions"`
 	// The display name for this Claims Mapping Policy.
 	DisplayName *string `pulumi:"displayName"`
 }
 
 type ClaimsMappingPolicyState struct {
-	// A string collection containing a JSON string that defines the rules and settings for this policy
+	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 	Definitions pulumi.StringArrayInput
 	// The display name for this Claims Mapping Policy.
 	DisplayName pulumi.StringPtrInput
@@ -147,7 +147,7 @@ func (ClaimsMappingPolicyState) ElementType() reflect.Type {
 }
 
 type claimsMappingPolicyArgs struct {
-	// A string collection containing a JSON string that defines the rules and settings for this policy
+	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 	Definitions []string `pulumi:"definitions"`
 	// The display name for this Claims Mapping Policy.
 	DisplayName string `pulumi:"displayName"`
@@ -155,7 +155,7 @@ type claimsMappingPolicyArgs struct {
 
 // The set of arguments for constructing a ClaimsMappingPolicy resource.
 type ClaimsMappingPolicyArgs struct {
-	// A string collection containing a JSON string that defines the rules and settings for this policy
+	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 	Definitions pulumi.StringArrayInput
 	// The display name for this Claims Mapping Policy.
 	DisplayName pulumi.StringInput
@@ -248,7 +248,7 @@ func (o ClaimsMappingPolicyOutput) ToClaimsMappingPolicyOutputWithContext(ctx co
 	return o
 }
 
-// A string collection containing a JSON string that defines the rules and settings for this policy
+// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 func (o ClaimsMappingPolicyOutput) Definitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClaimsMappingPolicy) pulumi.StringArrayOutput { return v.Definitions }).(pulumi.StringArrayOutput)
 }

@@ -95,6 +95,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Specifies the ID of the templated application.
+        /// 
+        /// &gt; One of `template_id` or `display_name` must be specified.
         /// </summary>
         [Input("templateId")]
         public string? TemplateId { get; set; }
@@ -115,6 +117,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Specifies the ID of the templated application.
+        /// 
+        /// &gt; One of `template_id` or `display_name` must be specified.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }

@@ -64,12 +64,16 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * Whether the group is a security group.
      * 
+     * &gt; One of `display_name` or `object_id` must be specified.
+     * 
      */
     @Import(name="securityEnabled")
     private @Nullable Output<Boolean> securityEnabled;
 
     /**
      * @return Whether the group is a security group.
+     * 
+     * &gt; One of `display_name` or `object_id` must be specified.
      * 
      */
     public Optional<Output<Boolean>> securityEnabled() {
@@ -169,6 +173,8 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param securityEnabled Whether the group is a security group.
          * 
+         * &gt; One of `display_name` or `object_id` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -179,6 +185,8 @@ public final class GetGroupArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param securityEnabled Whether the group is a security group.
+         * 
+         * &gt; One of `display_name` or `object_id` must be specified.
          * 
          * @return builder
          * 

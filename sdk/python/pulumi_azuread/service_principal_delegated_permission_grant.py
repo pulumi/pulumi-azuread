@@ -24,6 +24,8 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         pulumi.set(__self__, "claim_values", claim_values)
         pulumi.set(__self__, "resource_service_principal_object_id", resource_service_principal_object_id)
@@ -72,6 +74,8 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     def user_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+
+        > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         return pulumi.get(self, "user_object_id")
 
@@ -93,6 +97,8 @@ class _ServicePrincipalDelegatedPermissionGrantState:
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         if claim_values is not None:
             pulumi.set(__self__, "claim_values", claim_values)
@@ -144,6 +150,8 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     def user_object_id(self) -> Optional[pulumi.Input[str]]:
         """
         The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+
+        > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         return pulumi.get(self, "user_object_id")
 
@@ -173,6 +181,84 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one the following directory role: `Global Administrator`
 
+        ## Example Usage
+
+        *Delegated permission grant for all users*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ])
+        ```
+
+        *Delegated permission grant for a single user*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_user = azuread.User("exampleUser",
+            display_name="J. Doe",
+            user_principal_name="jdoe@hashicorp.com",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!")
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ],
+            user_object_id=example_user.object_id)
+        ```
+
         ## Import
 
         Delegated permission grants can be imported using their ID, e.g.
@@ -187,6 +273,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         ...
     @overload
@@ -204,6 +292,84 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires the following application role: `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one the following directory role: `Global Administrator`
+
+        ## Example Usage
+
+        *Delegated permission grant for all users*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ])
+        ```
+
+        *Delegated permission grant for a single user*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_user = azuread.User("exampleUser",
+            display_name="J. Doe",
+            user_principal_name="jdoe@hashicorp.com",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!")
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ],
+            user_object_id=example_user.object_id)
+        ```
 
         ## Import
 
@@ -276,6 +442,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -316,6 +484,8 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     def user_object_id(self) -> pulumi.Output[Optional[str]]:
         """
         The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+
+        > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         return pulumi.get(self, "user_object_id")
 

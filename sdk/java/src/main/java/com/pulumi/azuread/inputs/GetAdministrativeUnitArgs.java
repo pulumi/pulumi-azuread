@@ -33,12 +33,16 @@ public final class GetAdministrativeUnitArgs extends com.pulumi.resources.Invoke
     /**
      * Specifies the object ID of the administrative unit.
      * 
+     * &gt; One of `display_name` or `object_id` must be specified.
+     * 
      */
     @Import(name="objectId")
     private @Nullable Output<String> objectId;
 
     /**
      * @return Specifies the object ID of the administrative unit.
+     * 
+     * &gt; One of `display_name` or `object_id` must be specified.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -94,6 +98,8 @@ public final class GetAdministrativeUnitArgs extends com.pulumi.resources.Invoke
         /**
          * @param objectId Specifies the object ID of the administrative unit.
          * 
+         * &gt; One of `display_name` or `object_id` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class GetAdministrativeUnitArgs extends com.pulumi.resources.Invoke
 
         /**
          * @param objectId Specifies the object ID of the administrative unit.
+         * 
+         * &gt; One of `display_name` or `object_id` must be specified.
          * 
          * @return builder
          * 

@@ -130,6 +130,8 @@ type GetServicePrincipalsArgs struct {
 	// The object IDs of the service principals.
 	ObjectIds []string `pulumi:"objectIds"`
 	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
+	//
+	// > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	ReturnAll *bool `pulumi:"returnAll"`
 }
 
@@ -173,6 +175,8 @@ type GetServicePrincipalsOutputArgs struct {
 	// The object IDs of the service principals.
 	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
 	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
+	//
+	// > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 }
 

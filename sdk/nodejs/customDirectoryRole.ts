@@ -7,6 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Manages a Custom Directory Role within Azure Active Directory.
+ *
+ * This resource is for managing custom directory roles. For management of built-in roles, see the azuread.DirectoryRole resource.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+ *
  * ## Example Usage
  *
  * ```typescript

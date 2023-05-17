@@ -68,6 +68,8 @@ type GetUsersArgs struct {
 	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
 	ReturnAll *bool `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
+	//
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
 
@@ -111,6 +113,8 @@ type GetUsersOutputArgs struct {
 	// When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
+	//
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames pulumi.StringArrayInput `pulumi:"userPrincipalNames"`
 }
 

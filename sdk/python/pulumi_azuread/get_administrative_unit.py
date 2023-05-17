@@ -140,6 +140,8 @@ def get_administrative_unit(display_name: Optional[str] = None,
 
     :param str display_name: Specifies the display name of the administrative unit.
     :param str object_id: Specifies the object ID of the administrative unit.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -193,5 +195,7 @@ def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[
 
     :param str display_name: Specifies the display name of the administrative unit.
     :param str object_id: Specifies the object ID of the administrative unit.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...

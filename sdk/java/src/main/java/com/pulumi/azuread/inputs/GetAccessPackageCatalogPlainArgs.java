@@ -32,12 +32,16 @@ public final class GetAccessPackageCatalogPlainArgs extends com.pulumi.resources
     /**
      * The ID of this access package catalog.
      * 
+     * &gt; One of `display_name` or `object_id` must be specified.
+     * 
      */
     @Import(name="objectId")
     private @Nullable String objectId;
 
     /**
      * @return The ID of this access package catalog.
+     * 
+     * &gt; One of `display_name` or `object_id` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -82,6 +86,8 @@ public final class GetAccessPackageCatalogPlainArgs extends com.pulumi.resources
 
         /**
          * @param objectId The ID of this access package catalog.
+         * 
+         * &gt; One of `display_name` or `object_id` must be specified.
          * 
          * @return builder
          * 

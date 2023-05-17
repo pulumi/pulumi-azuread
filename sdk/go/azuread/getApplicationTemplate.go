@@ -56,6 +56,8 @@ type GetApplicationTemplateArgs struct {
 	// Specifies the display name of the templated application.
 	DisplayName *string `pulumi:"displayName"`
 	// Specifies the ID of the templated application.
+	//
+	// > One of `templateId` or `displayName` must be specified.
 	TemplateId *string `pulumi:"templateId"`
 }
 
@@ -99,6 +101,8 @@ type GetApplicationTemplateOutputArgs struct {
 	// Specifies the display name of the templated application.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Specifies the ID of the templated application.
+	//
+	// > One of `templateId` or `displayName` must be specified.
 	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
 }
 

@@ -50,12 +50,16 @@ public final class NamedLocationArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * An `ip` block as documented below, which configures an IP-based named location.
      * 
+     * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+     * 
      */
     @Import(name="ip")
     private @Nullable Output<NamedLocationIpArgs> ip;
 
     /**
      * @return An `ip` block as documented below, which configures an IP-based named location.
+     * 
+     * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
      * 
      */
     public Optional<Output<NamedLocationIpArgs>> ip() {
@@ -133,6 +137,8 @@ public final class NamedLocationArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param ip An `ip` block as documented below, which configures an IP-based named location.
          * 
+         * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+         * 
          * @return builder
          * 
          */
@@ -143,6 +149,8 @@ public final class NamedLocationArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ip An `ip` block as documented below, which configures an IP-based named location.
+         * 
+         * &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
          * 
          * @return builder
          * 

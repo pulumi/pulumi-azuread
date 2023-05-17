@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * import * as azuread from "@pulumi/azuread";
  *
  * const aadDomains = azuread.getDomains({});
- * export const domainNames = [aadDomains.then(aadDomains => aadDomains.domains)].map(__item => __item?.domainName);
+ * export const domainNames = aadDomains.then(aadDomains => aadDomains.domains.map(__item => __item.domainName));
  * ```
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
@@ -67,6 +67,8 @@ export interface GetDomainsArgs {
     onlyRoot?: boolean;
     /**
      * A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+     *
+     * > **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
      */
     supportsServices?: string[];
 }
@@ -111,7 +113,7 @@ export interface GetDomainsResult {
  * import * as azuread from "@pulumi/azuread";
  *
  * const aadDomains = azuread.getDomains({});
- * export const domainNames = [aadDomains.then(aadDomains => aadDomains.domains)].map(__item => __item?.domainName);
+ * export const domainNames = aadDomains.then(aadDomains => aadDomains.domains.map(__item => __item.domainName));
  * ```
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
@@ -144,6 +146,8 @@ export interface GetDomainsOutputArgs {
     onlyRoot?: pulumi.Input<boolean>;
     /**
      * A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+     *
+     * > **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
      */
     supportsServices?: pulumi.Input<pulumi.Input<string>[]>;
 }

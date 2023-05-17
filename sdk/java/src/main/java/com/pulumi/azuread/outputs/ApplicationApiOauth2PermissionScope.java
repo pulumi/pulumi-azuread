@@ -27,10 +27,6 @@ public final class ApplicationApiOauth2PermissionScope {
      * 
      */
     private @Nullable Boolean enabled;
-    /**
-     * @return The unique identifier of the delegated permission. Must be a valid UUID.
-     * 
-     */
     private String id;
     /**
      * @return Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
@@ -47,10 +43,6 @@ public final class ApplicationApiOauth2PermissionScope {
      * 
      */
     private @Nullable String userConsentDisplayName;
-    /**
-     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-     * 
-     */
     private @Nullable String value;
 
     private ApplicationApiOauth2PermissionScope() {}
@@ -75,10 +67,6 @@ public final class ApplicationApiOauth2PermissionScope {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return The unique identifier of the delegated permission. Must be a valid UUID.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -103,10 +91,6 @@ public final class ApplicationApiOauth2PermissionScope {
     public Optional<String> userConsentDisplayName() {
         return Optional.ofNullable(this.userConsentDisplayName);
     }
-    /**
-     * @return The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

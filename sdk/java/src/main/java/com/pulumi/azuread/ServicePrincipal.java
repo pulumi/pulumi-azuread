@@ -332,12 +332,16 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
     /**
      * A `feature_tags` block as described below. Cannot be used together with the `tags` property.
      * 
+     * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+     * 
      */
     @Export(name="featureTags", type=List.class, parameters={ServicePrincipalFeatureTag.class})
     private Output<List<ServicePrincipalFeatureTag>> featureTags;
 
     /**
      * @return A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * 
+     * &gt; **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      * 
      */
     public Output<List<ServicePrincipalFeatureTag>> featureTags() {
@@ -474,14 +478,14 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.objectId;
     }
     /**
-     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     * A list of object IDs of principals that will be granted ownership of the service principal
      * 
      */
     @Export(name="owners", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> owners;
 
     /**
-     * @return A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     * @return A list of object IDs of principals that will be granted ownership of the service principal
      * 
      */
     public Output<Optional<List<String>>> owners() {
@@ -574,12 +578,16 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
      * @return A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * 
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      * 
      */
     public Output<List<String>> tags() {
@@ -600,14 +608,14 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
         return this.type;
     }
     /**
-     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     * When true, the resource will return an existing service principal instead of failing with an error
      * 
      */
     @Export(name="useExisting", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> useExisting;
 
     /**
-     * @return When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     * @return When true, the resource will return an existing service principal instead of failing with an error
      * 
      */
     public Output<Optional<Boolean>> useExisting() {

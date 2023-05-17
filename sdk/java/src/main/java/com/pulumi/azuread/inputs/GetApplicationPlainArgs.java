@@ -47,12 +47,16 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
     /**
      * Specifies the Object ID of the application.
      * 
+     * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+     * 
      */
     @Import(name="objectId")
     private @Nullable String objectId;
 
     /**
      * @return Specifies the Object ID of the application.
+     * 
+     * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -109,6 +113,8 @@ public final class GetApplicationPlainArgs extends com.pulumi.resources.InvokeAr
 
         /**
          * @param objectId Specifies the Object ID of the application.
+         * 
+         * &gt; One of `object_id`, `application_id` or `display_name` must be specified.
          * 
          * @return builder
          * 

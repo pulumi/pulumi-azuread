@@ -79,7 +79,7 @@ namespace Pulumi.AzureAD
     public partial class ClaimsMappingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A string collection containing a JSON string that defines the rules and settings for this policy
+        /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         /// </summary>
         [Output("definitions")]
         public Output<ImmutableArray<string>> Definitions { get; private set; } = null!;
@@ -140,7 +140,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _definitions;
 
         /// <summary>
-        /// A string collection containing a JSON string that defines the rules and settings for this policy
+        /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         /// </summary>
         public InputList<string> Definitions
         {
@@ -166,7 +166,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _definitions;
 
         /// <summary>
-        /// A string collection containing a JSON string that defines the rules and settings for this policy
+        /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         /// </summary>
         public InputList<string> Definitions
         {

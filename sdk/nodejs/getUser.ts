@@ -56,6 +56,8 @@ export interface GetUserArgs {
     objectId?: string;
     /**
      * The user principal name (UPN) of the user.
+     *
+     * > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
      */
     userPrincipalName?: string;
 }
@@ -285,6 +287,8 @@ export interface GetUserOutputArgs {
     objectId?: pulumi.Input<string>;
     /**
      * The user principal name (UPN) of the user.
+     *
+     * > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
      */
     userPrincipalName?: pulumi.Input<string>;
 }

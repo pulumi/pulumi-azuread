@@ -590,6 +590,8 @@ def get_user(mail: Optional[str] = None,
     :param str mail_nickname: The email alias of the user.
     :param str object_id: The object ID of the user.
     :param str user_principal_name: The user principal name (UPN) of the user.
+           
+           > One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
     """
     __args__ = dict()
     __args__['mail'] = mail
@@ -677,5 +679,7 @@ def get_user_output(mail: Optional[pulumi.Input[Optional[str]]] = None,
     :param str mail_nickname: The email alias of the user.
     :param str object_id: The object ID of the user.
     :param str user_principal_name: The user principal name (UPN) of the user.
+           
+           > One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
     """
     ...

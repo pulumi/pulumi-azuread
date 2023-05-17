@@ -58,6 +58,8 @@ export interface GetAdministrativeUnitArgs {
     displayName?: string;
     /**
      * Specifies the object ID of the administrative unit.
+     *
+     * > One of `displayName` or `objectId` must be specified.
      */
     objectId?: string;
 }
@@ -139,6 +141,8 @@ export interface GetAdministrativeUnitOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Specifies the object ID of the administrative unit.
+     *
+     * > One of `displayName` or `objectId` must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

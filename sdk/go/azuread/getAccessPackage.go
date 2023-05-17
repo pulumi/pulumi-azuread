@@ -90,6 +90,8 @@ type LookupAccessPackageArgs struct {
 	// The display name of the access package.
 	DisplayName *string `pulumi:"displayName"`
 	// The ID of this access package.
+	//
+	// > Either `objectId`, or both `catalogId` and `displayName`, must be specified.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -126,6 +128,8 @@ type LookupAccessPackageOutputArgs struct {
 	// The display name of the access package.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The ID of this access package.
+	//
+	// > Either `objectId`, or both `catalogId` and `displayName`, must be specified.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 

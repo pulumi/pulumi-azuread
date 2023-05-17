@@ -86,6 +86,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// An `ip` block as documented below, which configures an IP-based named location.
+        /// 
+        /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         /// </summary>
         [Output("ip")]
         public Output<Outputs.NamedLocationIp?> Ip { get; private set; } = null!;
@@ -150,6 +152,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// An `ip` block as documented below, which configures an IP-based named location.
+        /// 
+        /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         /// </summary>
         [Input("ip")]
         public Input<Inputs.NamedLocationIpArgs>? Ip { get; set; }
@@ -176,6 +180,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// An `ip` block as documented below, which configures an IP-based named location.
+        /// 
+        /// &gt; Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         /// </summary>
         [Input("ip")]
         public Input<Inputs.NamedLocationIpGetArgs>? Ip { get; set; }

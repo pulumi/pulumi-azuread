@@ -139,7 +139,7 @@ def get_domains(admin_managed: Optional[bool] = None,
     import pulumi_azuread as azuread
 
     aad_domains = azuread.get_domains()
-    pulumi.export("domainNames", [__item.domain_name for __item in [aad_domains.domains]])
+    pulumi.export("domainNames", [__item.domain_name for __item in aad_domains.domains])
     ```
 
 
@@ -149,6 +149,8 @@ def get_domains(admin_managed: Optional[bool] = None,
     :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
     :param bool only_root: Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
     :param Sequence[str] supports_services: A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+           
+           > **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
     """
     __args__ = dict()
     __args__['adminManaged'] = admin_managed
@@ -197,7 +199,7 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
     import pulumi_azuread as azuread
 
     aad_domains = azuread.get_domains()
-    pulumi.export("domainNames", [__item.domain_name for __item in [aad_domains.domains]])
+    pulumi.export("domainNames", [__item.domain_name for __item in aad_domains.domains])
     ```
 
 
@@ -207,5 +209,7 @@ def get_domains_output(admin_managed: Optional[pulumi.Input[Optional[bool]]] = N
     :param bool only_initial: Set to `true` to only return the initial domain, which is your primary Azure Active Directory tenant domain. Defaults to `false`.
     :param bool only_root: Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
     :param Sequence[str] supports_services: A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+           
+           > **Note on filters** If `include_unverified` is set to `true`, you cannot specify `only_default` or `only_initial`. Additionally, you cannot combine `only_default` with `only_initial`.
     """
     ...

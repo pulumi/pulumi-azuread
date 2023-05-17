@@ -62,12 +62,16 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user principal name (UPN) of the user.
      * 
+     * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+     * 
      */
     @Import(name="userPrincipalName")
     private @Nullable String userPrincipalName;
 
     /**
      * @return The user principal name (UPN) of the user.
+     * 
+     * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
      * 
      */
     public Optional<String> userPrincipalName() {
@@ -136,6 +140,8 @@ public final class GetUserPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param userPrincipalName The user principal name (UPN) of the user.
+         * 
+         * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
          * 
          * @return builder
          * 

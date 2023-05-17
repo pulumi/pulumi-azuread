@@ -84,6 +84,8 @@ type NamedLocation struct {
 	// The friendly name for this named location.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// An `ip` block as documented below, which configures an IP-based named location.
+	//
+	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip NamedLocationIpPtrOutput `pulumi:"ip"`
 }
 
@@ -124,6 +126,8 @@ type namedLocationState struct {
 	// The friendly name for this named location.
 	DisplayName *string `pulumi:"displayName"`
 	// An `ip` block as documented below, which configures an IP-based named location.
+	//
+	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip *NamedLocationIp `pulumi:"ip"`
 }
 
@@ -133,6 +137,8 @@ type NamedLocationState struct {
 	// The friendly name for this named location.
 	DisplayName pulumi.StringPtrInput
 	// An `ip` block as documented below, which configures an IP-based named location.
+	//
+	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip NamedLocationIpPtrInput
 }
 
@@ -146,6 +152,8 @@ type namedLocationArgs struct {
 	// The friendly name for this named location.
 	DisplayName string `pulumi:"displayName"`
 	// An `ip` block as documented below, which configures an IP-based named location.
+	//
+	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip *NamedLocationIp `pulumi:"ip"`
 }
 
@@ -156,6 +164,8 @@ type NamedLocationArgs struct {
 	// The friendly name for this named location.
 	DisplayName pulumi.StringInput
 	// An `ip` block as documented below, which configures an IP-based named location.
+	//
+	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 	Ip NamedLocationIpPtrInput
 }
 
@@ -257,6 +267,8 @@ func (o NamedLocationOutput) DisplayName() pulumi.StringOutput {
 }
 
 // An `ip` block as documented below, which configures an IP-based named location.
+//
+// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 func (o NamedLocationOutput) Ip() NamedLocationIpPtrOutput {
 	return o.ApplyT(func(v *NamedLocation) NamedLocationIpPtrOutput { return v.Ip }).(NamedLocationIpPtrOutput)
 }

@@ -128,6 +128,8 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
 
     :param str display_name: Specifies the display name of the role.
     :param str object_id: Specifies the object ID of the role.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -180,5 +182,7 @@ def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[O
 
     :param str display_name: Specifies the display name of the role.
     :param str object_id: Specifies the object ID of the role.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...
