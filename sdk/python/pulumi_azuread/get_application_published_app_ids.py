@@ -62,6 +62,45 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     This data source uses an [unofficial source of application IDs](https://github.com/hashicorp/go-azure-sdk/blob/main/sdk/environments/application_ids.go), as there is currently no available official indexed source for applications or APIs published by Microsoft.
 
     The app IDs returned by this data source are sourced from the Azure Global (Public) Cloud, however some of them are known to work in government and national clouds.
+
+    ## Example Usage
+
+    *Listing well-known application IDs*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    well_known = azuread.get_application_published_app_ids()
+    pulumi.export("publishedAppIds", well_known.result)
+    ```
+
+    *Granting access to an application*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    well_known = azuread.get_application_published_app_ids()
+    msgraph = azuread.ServicePrincipal("msgraph",
+        application_id=well_known.result["MicrosoftGraph"],
+        use_existing=True)
+    example = azuread.Application("example",
+        display_name="example",
+        required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+            resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+            resource_accesses=[
+                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    type="Role",
+                ),
+                azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    type="Scope",
+                ),
+            ],
+        )])
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

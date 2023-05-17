@@ -133,6 +133,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Specifies the object ID of the administrative unit.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -153,6 +155,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// Specifies the object ID of the administrative unit.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }

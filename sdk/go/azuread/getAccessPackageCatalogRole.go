@@ -86,6 +86,8 @@ type GetAccessPackageCatalogRoleArgs struct {
 	// Specifies the display name of the role.
 	DisplayName *string `pulumi:"displayName"`
 	// Specifies the object ID of the role.
+	//
+	// > One of `displayName` or `objectId` must be specified.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -121,6 +123,8 @@ type GetAccessPackageCatalogRoleOutputArgs struct {
 	// Specifies the display name of the role.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Specifies the object ID of the role.
+	//
+	// > One of `displayName` or `objectId` must be specified.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 

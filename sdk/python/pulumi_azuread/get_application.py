@@ -446,6 +446,8 @@ def get_application(application_id: Optional[str] = None,
     :param str application_id: Specifies the Application ID (also called Client ID).
     :param str display_name: Specifies the display name of the application.
     :param str object_id: Specifies the Object ID of the application.
+           
+           > One of `object_id`, `application_id` or `display_name` must be specified.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -519,5 +521,7 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
     :param str application_id: Specifies the Application ID (also called Client ID).
     :param str display_name: Specifies the display name of the application.
     :param str object_id: Specifies the Object ID of the application.
+           
+           > One of `object_id`, `application_id` or `display_name` must be specified.
     """
     ...

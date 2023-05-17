@@ -235,6 +235,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+        /// 
+        /// &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
@@ -291,6 +293,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+        /// 
+        /// &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }

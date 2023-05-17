@@ -352,12 +352,16 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * A `feature_tags` block as described below. Cannot be used together with the `tags` property.
      * 
+     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+     * 
      */
     @Export(name="featureTags", type=List.class, parameters={ApplicationFeatureTag.class})
     private Output<List<ApplicationFeatureTag>> featureTags;
 
     /**
      * @return A `feature_tags` block as described below. Cannot be used together with the `tags` property.
+     * 
+     * &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it&#39;s recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
      * 
      */
     public Output<List<ApplicationFeatureTag>> featureTags() {
@@ -504,14 +508,14 @@ public class Application extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.optionalClaims);
     }
     /**
-     * A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     * A list of object IDs of principals that will be granted ownership of the application
      * 
      */
     @Export(name="owners", type=List.class, parameters={String.class})
     private Output</* @Nullable */ List<String>> owners;
 
     /**
-     * @return A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+     * @return A list of object IDs of principals that will be granted ownership of the application
      * 
      */
     public Output<Optional<List<String>>> owners() {
@@ -604,12 +608,16 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
      * 
+     * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+     * 
      */
     @Export(name="signInAudience", type=String.class, parameters={})
     private Output</* @Nullable */ String> signInAudience;
 
     /**
      * @return The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+     * 
+     * &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
      * 
      */
     public Output<Optional<String>> signInAudience() {
@@ -646,12 +654,16 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
      * 
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+     * 
      */
     @Export(name="tags", type=List.class, parameters={String.class})
     private Output<List<String>> tags;
 
     /**
      * @return A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
+     * 
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it&#39;s recommended to use the `tags` property. Tag values also propagate to any linked service principals.
      * 
      */
     public Output<List<String>> tags() {
@@ -688,12 +700,16 @@ public class Application extends com.pulumi.resources.CustomResource {
     /**
      * A `web` block as documented below, which configures web related settings for this application.
      * 
+     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
+     * 
      */
     @Export(name="web", type=ApplicationWeb.class, parameters={})
     private Output</* @Nullable */ ApplicationWeb> web;
 
     /**
      * @return A `web` block as documented below, which configures web related settings for this application.
+     * 
+     * &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
      * 
      */
     public Output<Optional<ApplicationWeb>> web() {

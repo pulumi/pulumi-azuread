@@ -33,12 +33,16 @@ public final class DirectoryRoleArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
      * 
+     * &gt; Either `display_name` or `template_id` must be specified.
+     * 
      */
     @Import(name="templateId")
     private @Nullable Output<String> templateId;
 
     /**
      * @return The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+     * 
+     * &gt; Either `display_name` or `template_id` must be specified.
      * 
      */
     public Optional<Output<String>> templateId() {
@@ -94,6 +98,8 @@ public final class DirectoryRoleArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param templateId The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
          * 
+         * &gt; Either `display_name` or `template_id` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -104,6 +110,8 @@ public final class DirectoryRoleArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param templateId The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+         * 
+         * &gt; Either `display_name` or `template_id` must be specified.
          * 
          * @return builder
          * 

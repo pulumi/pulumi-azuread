@@ -32,12 +32,16 @@ public final class GroupDynamicMembershipArgs extends com.pulumi.resources.Resou
     /**
      * The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
      * 
+     * &gt; **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+     * 
      */
     @Import(name="rule", required=true)
     private Output<String> rule;
 
     /**
      * @return The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+     * 
+     * &gt; **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
      * 
      */
     public Output<String> rule() {
@@ -93,6 +97,8 @@ public final class GroupDynamicMembershipArgs extends com.pulumi.resources.Resou
         /**
          * @param rule The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
          * 
+         * &gt; **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+         * 
          * @return builder
          * 
          */
@@ -103,6 +109,8 @@ public final class GroupDynamicMembershipArgs extends com.pulumi.resources.Resou
 
         /**
          * @param rule The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+         * 
+         * &gt; **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
          * 
          * @return builder
          * 

@@ -46,12 +46,16 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      * 
+     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+     * 
      */
     @Export(name="encoding", type=String.class, parameters={})
     private Output</* @Nullable */ String> encoding;
 
     /**
      * @return Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     * 
+     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
      * 
      */
     public Output<Optional<String>> encoding() {
@@ -74,12 +78,16 @@ public class ApplicationCertificate extends com.pulumi.resources.CustomResource 
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+     * 
      */
     @Export(name="endDateRelative", type=String.class, parameters={})
     private Output</* @Nullable */ String> endDateRelative;
 
     /**
      * @return A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     * 
+     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
      * 
      */
     public Output<Optional<String>> endDateRelative() {

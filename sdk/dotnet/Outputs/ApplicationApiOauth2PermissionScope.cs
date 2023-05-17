@@ -25,9 +25,6 @@ namespace Pulumi.AzureAD.Outputs
         /// Determines if the permission scope is enabled. Defaults to `true`.
         /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// The unique identifier of the delegated permission. Must be a valid UUID.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
@@ -41,9 +38,6 @@ namespace Pulumi.AzureAD.Outputs
         /// Display name for the delegated permission that appears in the end user consent experience.
         /// </summary>
         public readonly string? UserConsentDisplayName;
-        /// <summary>
-        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

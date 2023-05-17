@@ -85,6 +85,8 @@ export class DirectoryRole extends pulumi.CustomResource {
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+     *
+     * > Either `displayName` or `templateId` must be specified.
      */
     public readonly templateId!: pulumi.Output<string>;
 
@@ -135,6 +137,8 @@ export interface DirectoryRoleState {
     objectId?: pulumi.Input<string>;
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+     *
+     * > Either `displayName` or `templateId` must be specified.
      */
     templateId?: pulumi.Input<string>;
 }
@@ -149,6 +153,8 @@ export interface DirectoryRoleArgs {
     displayName?: pulumi.Input<string>;
     /**
      * The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+     *
+     * > Either `displayName` or `templateId` must be specified.
      */
     templateId?: pulumi.Input<string>;
 }

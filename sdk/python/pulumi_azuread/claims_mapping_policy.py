@@ -18,7 +18,7 @@ class ClaimsMappingPolicyArgs:
                  display_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ClaimsMappingPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
         """
         pulumi.set(__self__, "definitions", definitions)
@@ -28,7 +28,7 @@ class ClaimsMappingPolicyArgs:
     @pulumi.getter
     def definitions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A string collection containing a JSON string that defines the rules and settings for this policy
+        The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         """
         return pulumi.get(self, "definitions")
 
@@ -56,7 +56,7 @@ class _ClaimsMappingPolicyState:
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClaimsMappingPolicy resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
         """
         if definitions is not None:
@@ -68,7 +68,7 @@ class _ClaimsMappingPolicyState:
     @pulumi.getter
     def definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A string collection containing a JSON string that defines the rules and settings for this policy
+        The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         """
         return pulumi.get(self, "definitions")
 
@@ -149,7 +149,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
         """
         ...
@@ -259,7 +259,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -274,7 +274,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
     @pulumi.getter
     def definitions(self) -> pulumi.Output[Sequence[str]]:
         """
-        A string collection containing a JSON string that defines the rules and settings for this policy
+        The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         """
         return pulumi.get(self, "definitions")
 

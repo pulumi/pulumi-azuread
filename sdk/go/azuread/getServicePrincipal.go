@@ -115,6 +115,8 @@ type LookupServicePrincipalArgs struct {
 	// The display name of the application associated with this service principal.
 	DisplayName *string `pulumi:"displayName"`
 	// The object ID of the service principal.
+	//
+	// > One of `applicationId`, `displayName` or `objectId` must be specified.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -199,6 +201,8 @@ type LookupServicePrincipalOutputArgs struct {
 	// The display name of the application associated with this service principal.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// The object ID of the service principal.
+	//
+	// > One of `applicationId`, `displayName` or `objectId` must be specified.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 

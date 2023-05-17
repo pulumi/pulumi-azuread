@@ -250,6 +250,8 @@ type Application struct {
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled pulumi.BoolPtrOutput `pulumi:"fallbackPublicClientEnabled"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags ApplicationFeatureTagArrayOutput `pulumi:"featureTags"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayOutput `pulumi:"groupMembershipClaims"`
@@ -271,7 +273,7 @@ type Application struct {
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// An `optionalClaims` block as documented below.
 	OptionalClaims ApplicationOptionalClaimsPtrOutput `pulumi:"optionalClaims"`
-	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
@@ -286,18 +288,24 @@ type Application struct {
 	// References application context information from a Service or Asset Management database.
 	ServiceManagementReference pulumi.StringPtrOutput `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+	//
+	// > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
 	SignInAudience pulumi.StringPtrOutput `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
 	SinglePageApplication ApplicationSinglePageApplicationPtrOutput `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrOutput `pulumi:"supportUrl"`
 	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrOutput `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below, which configures web related settings for this application.
+	//
+	// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
 	Web ApplicationWebPtrOutput `pulumi:"web"`
 }
 
@@ -352,6 +360,8 @@ type applicationState struct {
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled *bool `pulumi:"fallbackPublicClientEnabled"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags []ApplicationFeatureTag `pulumi:"featureTags"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
@@ -373,7 +383,7 @@ type applicationState struct {
 	ObjectId *string `pulumi:"objectId"`
 	// An `optionalClaims` block as documented below.
 	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
-	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the application
 	Owners []string `pulumi:"owners"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
@@ -388,18 +398,24 @@ type applicationState struct {
 	// References application context information from a Service or Asset Management database.
 	ServiceManagementReference *string `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+	//
+	// > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
 	SignInAudience *string `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
 	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl *string `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below, which configures web related settings for this application.
+	//
+	// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
 	Web *ApplicationWeb `pulumi:"web"`
 }
 
@@ -423,6 +439,8 @@ type ApplicationState struct {
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled pulumi.BoolPtrInput
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags ApplicationFeatureTagArrayInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayInput
@@ -444,7 +462,7 @@ type ApplicationState struct {
 	ObjectId pulumi.StringPtrInput
 	// An `optionalClaims` block as documented below.
 	OptionalClaims ApplicationOptionalClaimsPtrInput
-	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayInput
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrInput
@@ -459,18 +477,24 @@ type ApplicationState struct {
 	// References application context information from a Service or Asset Management database.
 	ServiceManagementReference pulumi.StringPtrInput
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+	//
+	// > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
 	SignInAudience pulumi.StringPtrInput
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
 	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrInput
 	// A `web` block as documented below, which configures web related settings for this application.
+	//
+	// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
 	Web ApplicationWebPtrInput
 }
 
@@ -492,6 +516,8 @@ type applicationArgs struct {
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled *bool `pulumi:"fallbackPublicClientEnabled"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags []ApplicationFeatureTag `pulumi:"featureTags"`
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
@@ -507,7 +533,7 @@ type applicationArgs struct {
 	Oauth2PostResponseRequired *bool `pulumi:"oauth2PostResponseRequired"`
 	// An `optionalClaims` block as documented below.
 	OptionalClaims *ApplicationOptionalClaims `pulumi:"optionalClaims"`
-	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the application
 	Owners []string `pulumi:"owners"`
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
@@ -520,18 +546,24 @@ type applicationArgs struct {
 	// References application context information from a Service or Asset Management database.
 	ServiceManagementReference *string `pulumi:"serviceManagementReference"`
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+	//
+	// > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
 	SignInAudience *string `pulumi:"signInAudience"`
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
 	SinglePageApplication *ApplicationSinglePageApplication `pulumi:"singlePageApplication"`
 	// URL of the application's support page.
 	SupportUrl *string `pulumi:"supportUrl"`
 	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags []string `pulumi:"tags"`
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl *string `pulumi:"termsOfServiceUrl"`
 	// A `web` block as documented below, which configures web related settings for this application.
+	//
+	// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
 	Web *ApplicationWeb `pulumi:"web"`
 }
 
@@ -550,6 +582,8 @@ type ApplicationArgs struct {
 	// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
 	FallbackPublicClientEnabled pulumi.BoolPtrInput
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 	FeatureTags ApplicationFeatureTagArrayInput
 	// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
 	GroupMembershipClaims pulumi.StringArrayInput
@@ -565,7 +599,7 @@ type ApplicationArgs struct {
 	Oauth2PostResponseRequired pulumi.BoolPtrInput
 	// An `optionalClaims` block as documented below.
 	OptionalClaims ApplicationOptionalClaimsPtrInput
-	// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the application
 	Owners pulumi.StringArrayInput
 	// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
 	PreventDuplicateNames pulumi.BoolPtrInput
@@ -578,18 +612,24 @@ type ApplicationArgs struct {
 	// References application context information from a Service or Asset Management database.
 	ServiceManagementReference pulumi.StringPtrInput
 	// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+	//
+	// > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
 	SignInAudience pulumi.StringPtrInput
 	// A `singlePageApplication` block as documented below, which configures single-page application (SPA) related settings for this application.
 	SinglePageApplication ApplicationSinglePageApplicationPtrInput
 	// URL of the application's support page.
 	SupportUrl pulumi.StringPtrInput
 	// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 	Tags pulumi.StringArrayInput
 	// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
 	// URL of the application's terms of service statement.
 	TermsOfServiceUrl pulumi.StringPtrInput
 	// A `web` block as documented below, which configures web related settings for this application.
+	//
+	// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
 	Web ApplicationWebPtrInput
 }
 
@@ -726,6 +766,8 @@ func (o ApplicationOutput) FallbackPublicClientEnabled() pulumi.BoolPtrOutput {
 }
 
 // A `featureTags` block as described below. Cannot be used together with the `tags` property.
+//
+// > **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
 func (o ApplicationOutput) FeatureTags() ApplicationFeatureTagArrayOutput {
 	return o.ApplyT(func(v *Application) ApplicationFeatureTagArrayOutput { return v.FeatureTags }).(ApplicationFeatureTagArrayOutput)
 }
@@ -780,7 +822,7 @@ func (o ApplicationOutput) OptionalClaims() ApplicationOptionalClaimsPtrOutput {
 	return o.ApplyT(func(v *Application) ApplicationOptionalClaimsPtrOutput { return v.OptionalClaims }).(ApplicationOptionalClaimsPtrOutput)
 }
 
-// A set of object IDs of principals that will be granted ownership of the application. Supported object types are users or service principals. By default, no owners are assigned.
+// A list of object IDs of principals that will be granted ownership of the application
 func (o ApplicationOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
 }
@@ -816,6 +858,8 @@ func (o ApplicationOutput) ServiceManagementReference() pulumi.StringPtrOutput {
 }
 
 // The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
+//
+// > **Changing `signInAudience` for existing applications** When updating an existing application to use a `signInAudience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
 func (o ApplicationOutput) SignInAudience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringPtrOutput { return v.SignInAudience }).(pulumi.StringPtrOutput)
 }
@@ -831,6 +875,8 @@ func (o ApplicationOutput) SupportUrl() pulumi.StringPtrOutput {
 }
 
 // A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+//
+// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
 func (o ApplicationOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Application) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -846,6 +892,8 @@ func (o ApplicationOutput) TermsOfServiceUrl() pulumi.StringPtrOutput {
 }
 
 // A `web` block as documented below, which configures web related settings for this application.
+//
+// > **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing applications if you want to avoid name collisions.
 func (o ApplicationOutput) Web() ApplicationWebPtrOutput {
 	return o.ApplyT(func(v *Application) ApplicationWebPtrOutput { return v.Web }).(ApplicationWebPtrOutput)
 }

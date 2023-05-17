@@ -130,6 +130,8 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
      * Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
+     * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+     * 
      */
     @Export(name="displayName", type=String.class, parameters={})
     private Output<String> displayName;
@@ -137,6 +139,8 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
     /**
      * @return Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * 
+     * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
      */
     public Output<String> displayName() {

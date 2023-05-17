@@ -55,6 +55,8 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
 
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     *
+     * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
      */
     public readonly encoding!: pulumi.Output<string | undefined>;
     /**
@@ -63,6 +65,8 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
     public readonly endDate!: pulumi.Output<string>;
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+     *
+     * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
@@ -137,6 +141,8 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
 export interface ServicePrincipalCertificateState {
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     *
+     * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
      */
     encoding?: pulumi.Input<string>;
     /**
@@ -145,6 +151,8 @@ export interface ServicePrincipalCertificateState {
     endDate?: pulumi.Input<string>;
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+     *
+     * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      */
     endDateRelative?: pulumi.Input<string>;
     /**
@@ -175,6 +183,8 @@ export interface ServicePrincipalCertificateState {
 export interface ServicePrincipalCertificateArgs {
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     *
+     * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
      */
     encoding?: pulumi.Input<string>;
     /**
@@ -183,6 +193,8 @@ export interface ServicePrincipalCertificateArgs {
     endDate?: pulumi.Input<string>;
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
+     *
+     * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      */
     endDateRelative?: pulumi.Input<string>;
     /**

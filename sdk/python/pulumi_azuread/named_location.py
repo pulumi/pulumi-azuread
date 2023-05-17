@@ -24,6 +24,8 @@ class NamedLocationArgs:
         :param pulumi.Input[str] display_name: The friendly name for this named location.
         :param pulumi.Input['NamedLocationCountryArgs'] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input['NamedLocationIpArgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
+               
+               > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         pulumi.set(__self__, "display_name", display_name)
         if country is not None:
@@ -60,6 +62,8 @@ class NamedLocationArgs:
     def ip(self) -> Optional[pulumi.Input['NamedLocationIpArgs']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
+
+        > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         return pulumi.get(self, "ip")
 
@@ -79,6 +83,8 @@ class _NamedLocationState:
         :param pulumi.Input['NamedLocationCountryArgs'] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
         :param pulumi.Input['NamedLocationIpArgs'] ip: An `ip` block as documented below, which configures an IP-based named location.
+               
+               > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         if country is not None:
             pulumi.set(__self__, "country", country)
@@ -116,6 +122,8 @@ class _NamedLocationState:
     def ip(self) -> Optional[pulumi.Input['NamedLocationIpArgs']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
+
+        > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         return pulumi.get(self, "ip")
 
@@ -183,6 +191,8 @@ class NamedLocation(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
         :param pulumi.Input[pulumi.InputType['NamedLocationIpArgs']] ip: An `ip` block as documented below, which configures an IP-based named location.
+               
+               > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         ...
     @overload
@@ -290,6 +300,8 @@ class NamedLocation(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['NamedLocationCountryArgs']] country: A `country` block as documented below, which configures a country-based named location.
         :param pulumi.Input[str] display_name: The friendly name for this named location.
         :param pulumi.Input[pulumi.InputType['NamedLocationIpArgs']] ip: An `ip` block as documented below, which configures an IP-based named location.
+               
+               > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -321,6 +333,8 @@ class NamedLocation(pulumi.CustomResource):
     def ip(self) -> pulumi.Output[Optional['outputs.NamedLocationIp']]:
         """
         An `ip` block as documented below, which configures an IP-based named location.
+
+        > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
         """
         return pulumi.get(self, "ip")
 

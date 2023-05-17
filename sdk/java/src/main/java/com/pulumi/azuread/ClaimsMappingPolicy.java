@@ -89,14 +89,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="azuread:index/claimsMappingPolicy:ClaimsMappingPolicy")
 public class ClaimsMappingPolicy extends com.pulumi.resources.CustomResource {
     /**
-     * A string collection containing a JSON string that defines the rules and settings for this policy
+     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      * 
      */
     @Export(name="definitions", type=List.class, parameters={String.class})
     private Output<List<String>> definitions;
 
     /**
-     * @return A string collection containing a JSON string that defines the rules and settings for this policy
+     * @return The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      * 
      */
     public Output<List<String>> definitions() {

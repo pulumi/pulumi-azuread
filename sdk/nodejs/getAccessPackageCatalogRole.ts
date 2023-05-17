@@ -58,6 +58,8 @@ export interface GetAccessPackageCatalogRoleArgs {
     displayName?: string;
     /**
      * Specifies the object ID of the role.
+     *
+     * > One of `displayName` or `objectId` must be specified.
      */
     objectId?: string;
 }
@@ -135,6 +137,8 @@ export interface GetAccessPackageCatalogRoleOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Specifies the object ID of the role.
+     *
+     * > One of `displayName` or `objectId` must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

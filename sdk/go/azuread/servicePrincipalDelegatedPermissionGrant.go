@@ -198,6 +198,8 @@ type ServicePrincipalDelegatedPermissionGrant struct {
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringOutput `pulumi:"servicePrincipalObjectId"`
 	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId pulumi.StringPtrOutput `pulumi:"userObjectId"`
 }
 
@@ -246,6 +248,8 @@ type servicePrincipalDelegatedPermissionGrantState struct {
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId *string `pulumi:"servicePrincipalObjectId"`
 	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId *string `pulumi:"userObjectId"`
 }
 
@@ -257,6 +261,8 @@ type ServicePrincipalDelegatedPermissionGrantState struct {
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringPtrInput
 	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId pulumi.StringPtrInput
 }
 
@@ -272,6 +278,8 @@ type servicePrincipalDelegatedPermissionGrantArgs struct {
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId string `pulumi:"servicePrincipalObjectId"`
 	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId *string `pulumi:"userObjectId"`
 }
 
@@ -284,6 +292,8 @@ type ServicePrincipalDelegatedPermissionGrantArgs struct {
 	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringInput
 	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId pulumi.StringPtrInput
 }
 
@@ -394,6 +404,8 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ServicePrincipalObjectId
 }
 
 // The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+//
+// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) UserObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringPtrOutput { return v.UserObjectId }).(pulumi.StringPtrOutput)
 }

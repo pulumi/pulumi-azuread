@@ -271,9 +271,6 @@ export interface ApplicationApiOauth2PermissionScope {
      * Determines if the permission scope is enabled. Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * The unique identifier of the delegated permission. Must be a valid UUID.
-     */
     id: pulumi.Input<string>;
     /**
      * Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
@@ -287,9 +284,6 @@ export interface ApplicationApiOauth2PermissionScope {
      * Display name for the delegated permission that appears in the end user consent experience.
      */
     userConsentDisplayName?: pulumi.Input<string>;
-    /**
-     * The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -310,13 +304,7 @@ export interface ApplicationAppRole {
      * Determines if the app role is enabled. Defaults to `true`.
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * The unique identifier of the app role. Must be a valid UUID.
-     */
     id: pulumi.Input<string>;
-    /**
-     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-     */
     value?: pulumi.Input<string>;
 }
 
@@ -425,6 +413,8 @@ export interface ApplicationRequiredResourceAccess {
     resourceAccesses: pulumi.Input<pulumi.Input<inputs.ApplicationRequiredResourceAccessResourceAccess>[]>;
     /**
      * The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+     *
+     * > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
      */
     resourceAppId: pulumi.Input<string>;
 }
@@ -590,6 +580,8 @@ export interface ConditionalAccessPolicyConditionsUsers {
     includedRoles?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+     *
+     * > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
      */
     includedUsers?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -616,6 +608,8 @@ export interface ConditionalAccessPolicyGrantControls {
 export interface ConditionalAccessPolicySessionControls {
     /**
      * Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     *
+     * > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      */
     applicationEnforcedRestrictionsEnabled?: pulumi.Input<boolean>;
     /**
@@ -650,6 +644,8 @@ export interface GroupDynamicMembership {
     enabled: pulumi.Input<boolean>;
     /**
      * The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+     *
+     * > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
      */
     rule: pulumi.Input<string>;
 }

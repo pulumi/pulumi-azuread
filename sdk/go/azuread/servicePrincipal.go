@@ -207,6 +207,8 @@ type ServicePrincipal struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
 	FeatureTags ServicePrincipalFeatureTagArrayOutput `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
@@ -228,7 +230,7 @@ type ServicePrincipal struct {
 	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayOutput `pulumi:"oauth2PermissionScopes"`
 	// The object ID of the service principal.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode pulumi.StringPtrOutput `pulumi:"preferredSingleSignOnMode"`
@@ -243,10 +245,12 @@ type ServicePrincipal struct {
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 	SignInAudience pulumi.StringOutput `pulumi:"signInAudience"`
 	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting pulumi.BoolPtrOutput `pulumi:"useExisting"`
 }
 
@@ -301,6 +305,8 @@ type servicePrincipalState struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName *string `pulumi:"displayName"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
 	FeatureTags []ServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
@@ -322,7 +328,7 @@ type servicePrincipalState struct {
 	Oauth2PermissionScopes []ServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
 	// The object ID of the service principal.
 	ObjectId *string `pulumi:"objectId"`
-	// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners []string `pulumi:"owners"`
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode *string `pulumi:"preferredSingleSignOnMode"`
@@ -337,10 +343,12 @@ type servicePrincipalState struct {
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 	SignInAudience *string `pulumi:"signInAudience"`
 	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
 	Tags []string `pulumi:"tags"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type *string `pulumi:"type"`
-	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting *bool `pulumi:"useExisting"`
 }
 
@@ -364,6 +372,8 @@ type ServicePrincipalState struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringPtrInput
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
 	FeatureTags ServicePrincipalFeatureTagArrayInput
 	// Block of features to configure for this service principal using tags
 	//
@@ -385,7 +395,7 @@ type ServicePrincipalState struct {
 	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayInput
 	// The object ID of the service principal.
 	ObjectId pulumi.StringPtrInput
-	// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners pulumi.StringArrayInput
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode pulumi.StringPtrInput
@@ -400,10 +410,12 @@ type ServicePrincipalState struct {
 	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 	SignInAudience pulumi.StringPtrInput
 	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
 	Tags pulumi.StringArrayInput
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 	Type pulumi.StringPtrInput
-	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting pulumi.BoolPtrInput
 }
 
@@ -423,6 +435,8 @@ type servicePrincipalArgs struct {
 	// A description of the service principal provided for internal end-users.
 	Description *string `pulumi:"description"`
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
 	FeatureTags []ServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
@@ -434,15 +448,17 @@ type servicePrincipalArgs struct {
 	Notes *string `pulumi:"notes"`
 	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
 	NotificationEmailAddresses []string `pulumi:"notificationEmailAddresses"`
-	// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners []string `pulumi:"owners"`
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode *string `pulumi:"preferredSingleSignOnMode"`
 	// A `samlSingleSignOn` block as documented below.
 	SamlSingleSignOn *ServicePrincipalSamlSingleSignOn `pulumi:"samlSingleSignOn"`
 	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
 	Tags []string `pulumi:"tags"`
-	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting *bool `pulumi:"useExisting"`
 }
 
@@ -459,6 +475,8 @@ type ServicePrincipalArgs struct {
 	// A description of the service principal provided for internal end-users.
 	Description pulumi.StringPtrInput
 	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
+	//
+	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
 	FeatureTags ServicePrincipalFeatureTagArrayInput
 	// Block of features to configure for this service principal using tags
 	//
@@ -470,15 +488,17 @@ type ServicePrincipalArgs struct {
 	Notes pulumi.StringPtrInput
 	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
 	NotificationEmailAddresses pulumi.StringArrayInput
-	// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners pulumi.StringArrayInput
 	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
 	PreferredSingleSignOnMode pulumi.StringPtrInput
 	// A `samlSingleSignOn` block as documented below.
 	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrInput
 	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+	//
+	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
 	Tags pulumi.StringArrayInput
-	// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting pulumi.BoolPtrInput
 }
 
@@ -615,6 +635,8 @@ func (o ServicePrincipalOutput) DisplayName() pulumi.StringOutput {
 }
 
 // A `featureTags` block as described below. Cannot be used together with the `tags` property.
+//
+// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
 func (o ServicePrincipalOutput) FeatureTags() ServicePrincipalFeatureTagArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalFeatureTagArrayOutput { return v.FeatureTags }).(ServicePrincipalFeatureTagArrayOutput)
 }
@@ -668,7 +690,7 @@ func (o ServicePrincipalOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+// A list of object IDs of principals that will be granted ownership of the service principal
 func (o ServicePrincipalOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
 }
@@ -704,6 +726,8 @@ func (o ServicePrincipalOutput) SignInAudience() pulumi.StringOutput {
 }
 
 // A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+//
+// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
 func (o ServicePrincipalOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
@@ -713,7 +737,7 @@ func (o ServicePrincipalOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+// When true, the resource will return an existing service principal instead of failing with an error
 func (o ServicePrincipalOutput) UseExisting() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.UseExisting }).(pulumi.BoolPtrOutput)
 }

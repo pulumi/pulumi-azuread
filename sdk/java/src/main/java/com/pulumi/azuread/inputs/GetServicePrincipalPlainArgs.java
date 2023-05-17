@@ -47,12 +47,16 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
     /**
      * The object ID of the service principal.
      * 
+     * &gt; One of `application_id`, `display_name` or `object_id` must be specified.
+     * 
      */
     @Import(name="objectId")
     private @Nullable String objectId;
 
     /**
      * @return The object ID of the service principal.
+     * 
+     * &gt; One of `application_id`, `display_name` or `object_id` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -109,6 +113,8 @@ public final class GetServicePrincipalPlainArgs extends com.pulumi.resources.Inv
 
         /**
          * @param objectId The object ID of the service principal.
+         * 
+         * &gt; One of `application_id`, `display_name` or `object_id` must be specified.
          * 
          * @return builder
          * 

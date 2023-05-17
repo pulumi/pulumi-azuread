@@ -177,6 +177,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The object ID of the service principal.
+        /// 
+        /// &gt; One of `application_id`, `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -203,6 +205,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The object ID of the service principal.
+        /// 
+        /// &gt; One of `application_id`, `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }

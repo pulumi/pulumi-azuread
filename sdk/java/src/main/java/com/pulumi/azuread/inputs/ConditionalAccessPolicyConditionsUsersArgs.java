@@ -94,12 +94,16 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
     /**
      * A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
      * 
+     * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+     * 
      */
     @Import(name="includedUsers")
     private @Nullable Output<List<String>> includedUsers;
 
     /**
      * @return A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+     * 
+     * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
      * 
      */
     public Optional<Output<List<String>>> includedUsers() {
@@ -293,6 +297,8 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         /**
          * @param includedUsers A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
          * 
+         * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -304,6 +310,8 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
         /**
          * @param includedUsers A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
          * 
+         * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+         * 
          * @return builder
          * 
          */
@@ -313,6 +321,8 @@ public final class ConditionalAccessPolicyConditionsUsersArgs extends com.pulumi
 
         /**
          * @param includedUsers A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+         * 
+         * &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
          * 
          * @return builder
          * 

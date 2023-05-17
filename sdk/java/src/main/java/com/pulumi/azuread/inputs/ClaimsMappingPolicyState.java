@@ -17,14 +17,14 @@ public final class ClaimsMappingPolicyState extends com.pulumi.resources.Resourc
     public static final ClaimsMappingPolicyState Empty = new ClaimsMappingPolicyState();
 
     /**
-     * A string collection containing a JSON string that defines the rules and settings for this policy
+     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      * 
      */
     @Import(name="definitions")
     private @Nullable Output<List<String>> definitions;
 
     /**
-     * @return A string collection containing a JSON string that defines the rules and settings for this policy
+     * @return The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
      * 
      */
     public Optional<Output<List<String>>> definitions() {
@@ -72,7 +72,7 @@ public final class ClaimsMappingPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param definitions A string collection containing a JSON string that defines the rules and settings for this policy
+         * @param definitions The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClaimsMappingPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param definitions A string collection containing a JSON string that defines the rules and settings for this policy
+         * @param definitions The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
          * 
          * @return builder
          * 
@@ -93,7 +93,7 @@ public final class ClaimsMappingPolicyState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param definitions A string collection containing a JSON string that defines the rules and settings for this policy
+         * @param definitions The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
          * 
          * @return builder
          * 

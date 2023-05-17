@@ -33,12 +33,16 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
     /**
      * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
      * 
+     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+     * 
      */
     @Import(name="encoding")
     private @Nullable Output<String> encoding;
 
     /**
      * @return Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+     * 
+     * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
      * 
      */
     public Optional<Output<String>> encoding() {
@@ -63,12 +67,16 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
     /**
      * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
      * 
+     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+     * 
      */
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
     /**
      * @return A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+     * 
+     * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
      * 
      */
     public Optional<Output<String>> endDateRelative() {
@@ -190,6 +198,8 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         /**
          * @param encoding Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
          * 
+         * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+         * 
          * @return builder
          * 
          */
@@ -200,6 +210,8 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
 
         /**
          * @param encoding Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+         * 
+         * &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
          * 
          * @return builder
          * 
@@ -232,6 +244,8 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
         /**
          * @param endDateRelative A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
          * 
+         * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+         * 
          * @return builder
          * 
          */
@@ -242,6 +256,8 @@ public final class ApplicationCertificateArgs extends com.pulumi.resources.Resou
 
         /**
          * @param endDateRelative A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+         * 
+         * &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
          * 
          * @return builder
          * 

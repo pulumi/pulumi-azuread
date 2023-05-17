@@ -118,6 +118,8 @@ export interface GetGroupsArgs {
     returnAll?: boolean;
     /**
      * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     *
+     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
      */
     securityEnabled?: boolean;
 }
@@ -247,6 +249,8 @@ export interface GetGroupsOutputArgs {
     returnAll?: pulumi.Input<boolean>;
     /**
      * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     *
+     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
      */
     securityEnabled?: pulumi.Input<boolean>;
 }

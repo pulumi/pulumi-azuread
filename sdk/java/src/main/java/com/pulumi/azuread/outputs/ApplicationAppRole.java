@@ -33,15 +33,7 @@ public final class ApplicationAppRole {
      * 
      */
     private @Nullable Boolean enabled;
-    /**
-     * @return The unique identifier of the app role. Must be a valid UUID.
-     * 
-     */
     private String id;
-    /**
-     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-     * 
-     */
     private @Nullable String value;
 
     private ApplicationAppRole() {}
@@ -73,17 +65,9 @@ public final class ApplicationAppRole {
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return The unique identifier of the app role. Must be a valid UUID.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

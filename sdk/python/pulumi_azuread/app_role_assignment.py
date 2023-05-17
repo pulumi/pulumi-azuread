@@ -188,6 +188,128 @@ class AppRoleAssignment(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *App role assignment for accessing Microsoft Graph*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Role",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=msgraph.app_role_ids["User.Read.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=msgraph.object_id)
+        ```
+
+        *App role assignment for internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=["Application"],
+                description="Apps can query the database",
+                display_name="Query",
+                enabled=True,
+                id="00000000-0000-0000-0000-111111111111",
+                value="Query.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=internal_application.application_id,
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    type="Role",
+                )],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Query.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a user and group to an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_domains = azuread.get_domains(only_initial=True)
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=[
+                    "Application",
+                    "User",
+                ],
+                description="Admins can perform all task actions",
+                display_name="Admin",
+                enabled=True,
+                id="00000000-0000-0000-0000-222222222222",
+                value="Admin.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        example_user = azuread.User("exampleUser",
+            display_name="D. Duck",
+            password="SecretP@sswd99!",
+            user_principal_name=f"d.duck@{example_domains.domains[0].domain_name}")
+        example_index_app_role_assignment_app_role_assignment = azuread.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_user.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a group to the default app role for an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication", display_name="internal")
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id="00000000-0000-0000-0000-000000000000",
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
         ## Import
 
         App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
@@ -220,6 +342,128 @@ class AppRoleAssignment(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `AppRoleAssignment.ReadWrite.All` and `Application.Read.All`, or `AppRoleAssignment.ReadWrite.All` and `Directory.Read.All`, or `Application.ReadWrite.All`, or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *App role assignment for accessing Microsoft Graph*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Role",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=msgraph.app_role_ids["User.Read.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=msgraph.object_id)
+        ```
+
+        *App role assignment for internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=["Application"],
+                description="Apps can query the database",
+                display_name="Query",
+                enabled=True,
+                id="00000000-0000-0000-0000-111111111111",
+                value="Query.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=internal_application.application_id,
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    type="Role",
+                )],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Query.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a user and group to an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_domains = azuread.get_domains(only_initial=True)
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=[
+                    "Application",
+                    "User",
+                ],
+                description="Admins can perform all task actions",
+                display_name="Admin",
+                enabled=True,
+                id="00000000-0000-0000-0000-222222222222",
+                value="Admin.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        example_user = azuread.User("exampleUser",
+            display_name="D. Duck",
+            password="SecretP@sswd99!",
+            user_principal_name=f"d.duck@{example_domains.domains[0].domain_name}")
+        example_index_app_role_assignment_app_role_assignment = azuread.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_user.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a group to the default app role for an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication", display_name="internal")
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id="00000000-0000-0000-0000-000000000000",
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
 
         ## Import
 

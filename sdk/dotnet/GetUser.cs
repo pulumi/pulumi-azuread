@@ -107,6 +107,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The user principal name (UPN) of the user.
+        /// 
+        /// &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
         /// </summary>
         [Input("userPrincipalName")]
         public string? UserPrincipalName { get; set; }
@@ -139,6 +141,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The user principal name (UPN) of the user.
+        /// 
+        /// &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
         /// </summary>
         [Input("userPrincipalName")]
         public Input<string>? UserPrincipalName { get; set; }

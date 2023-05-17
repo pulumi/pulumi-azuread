@@ -60,6 +60,8 @@ export interface GetGroupArgs {
     objectId?: string;
     /**
      * Whether the group is a security group.
+     *
+     * > One of `displayName` or `objectId` must be specified.
      */
     securityEnabled?: boolean;
 }
@@ -235,6 +237,8 @@ export interface GetGroupOutputArgs {
     objectId?: pulumi.Input<string>;
     /**
      * Whether the group is a security group.
+     *
+     * > One of `displayName` or `objectId` must be specified.
      */
     securityEnabled?: pulumi.Input<boolean>;
 }

@@ -150,6 +150,8 @@ export class ServicePrincipalDelegatedPermissionGrant extends pulumi.CustomResou
     public readonly servicePrincipalObjectId!: pulumi.Output<string>;
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     *
+     * > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      */
     public readonly userObjectId!: pulumi.Output<string | undefined>;
 
@@ -209,6 +211,8 @@ export interface ServicePrincipalDelegatedPermissionGrantState {
     servicePrincipalObjectId?: pulumi.Input<string>;
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     *
+     * > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      */
     userObjectId?: pulumi.Input<string>;
 }
@@ -231,6 +235,8 @@ export interface ServicePrincipalDelegatedPermissionGrantArgs {
     servicePrincipalObjectId: pulumi.Input<string>;
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     *
+     * > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
      */
     userObjectId?: pulumi.Input<string>;
 }

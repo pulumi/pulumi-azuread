@@ -137,6 +137,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The ID of this access package catalog.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
@@ -157,6 +159,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// The ID of this access package catalog.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }

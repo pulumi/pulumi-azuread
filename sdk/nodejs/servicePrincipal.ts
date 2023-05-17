@@ -155,6 +155,8 @@ export class ServicePrincipal extends pulumi.CustomResource {
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     *
+     * > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      */
     public readonly featureTags!: pulumi.Output<outputs.ServicePrincipalFeatureTag[]>;
     /**
@@ -196,7 +198,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
-     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     * A list of object IDs of principals that will be granted ownership of the service principal
      */
     public readonly owners!: pulumi.Output<string[] | undefined>;
     /**
@@ -225,6 +227,8 @@ export class ServicePrincipal extends pulumi.CustomResource {
     public /*out*/ readonly signInAudience!: pulumi.Output<string>;
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+     *
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
     public readonly tags!: pulumi.Output<string[]>;
     /**
@@ -232,7 +236,7 @@ export class ServicePrincipal extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     * When true, the resource will return an existing service principal instead of failing with an error
      */
     public readonly useExisting!: pulumi.Output<boolean | undefined>;
 
@@ -360,6 +364,8 @@ export interface ServicePrincipalState {
     displayName?: pulumi.Input<string>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     *
+     * > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      */
     featureTags?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeatureTag>[]>;
     /**
@@ -401,7 +407,7 @@ export interface ServicePrincipalState {
      */
     objectId?: pulumi.Input<string>;
     /**
-     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     * A list of object IDs of principals that will be granted ownership of the service principal
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -430,6 +436,8 @@ export interface ServicePrincipalState {
     signInAudience?: pulumi.Input<string>;
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+     *
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -437,7 +445,7 @@ export interface ServicePrincipalState {
      */
     type?: pulumi.Input<string>;
     /**
-     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     * When true, the resource will return an existing service principal instead of failing with an error
      */
     useExisting?: pulumi.Input<boolean>;
 }
@@ -468,6 +476,8 @@ export interface ServicePrincipalArgs {
     description?: pulumi.Input<string>;
     /**
      * A `featureTags` block as described below. Cannot be used together with the `tags` property.
+     *
+     * > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
      */
     featureTags?: pulumi.Input<pulumi.Input<inputs.ServicePrincipalFeatureTag>[]>;
     /**
@@ -489,7 +499,7 @@ export interface ServicePrincipalArgs {
      */
     notificationEmailAddresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A set of object IDs of principals that will be granted ownership of the service principal. Supported object types are users or service principals. By default, no owners are assigned.
+     * A list of object IDs of principals that will be granted ownership of the service principal
      */
     owners?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -502,10 +512,12 @@ export interface ServicePrincipalArgs {
     samlSingleSignOn?: pulumi.Input<inputs.ServicePrincipalSamlSingleSignOn>;
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
+     *
+     * > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
+     * When true, the resource will return an existing service principal instead of failing with an error
      */
     useExisting?: pulumi.Input<boolean>;
 }

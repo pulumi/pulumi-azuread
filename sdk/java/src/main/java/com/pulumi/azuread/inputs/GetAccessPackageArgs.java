@@ -48,12 +48,16 @@ public final class GetAccessPackageArgs extends com.pulumi.resources.InvokeArgs 
     /**
      * The ID of this access package.
      * 
+     * &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
+     * 
      */
     @Import(name="objectId")
     private @Nullable Output<String> objectId;
 
     /**
      * @return The ID of this access package.
+     * 
+     * &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
      * 
      */
     public Optional<Output<String>> objectId() {
@@ -131,6 +135,8 @@ public final class GetAccessPackageArgs extends com.pulumi.resources.InvokeArgs 
         /**
          * @param objectId The ID of this access package.
          * 
+         * &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
+         * 
          * @return builder
          * 
          */
@@ -141,6 +147,8 @@ public final class GetAccessPackageArgs extends com.pulumi.resources.InvokeArgs 
 
         /**
          * @param objectId The ID of this access package.
+         * 
+         * &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
          * 
          * @return builder
          * 

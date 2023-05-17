@@ -19,6 +19,8 @@ public final class ApplicationRequiredResourceAccess {
     /**
      * @return The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
      * 
+     * &gt; **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name &#34;Microsoft Graph&#34; --query &#39;[].{appDisplayName:appDisplayName, appId:appId}&#39;`)
+     * 
      */
     private String resourceAppId;
 
@@ -32,6 +34,8 @@ public final class ApplicationRequiredResourceAccess {
     }
     /**
      * @return The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+     * 
+     * &gt; **Note:** Documentation on `resource_app_id` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name &#34;Microsoft Graph&#34; --query &#39;[].{appDisplayName:appDisplayName, appId:appId}&#39;`)
      * 
      */
     public String resourceAppId() {

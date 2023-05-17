@@ -54,6 +54,8 @@ export interface GetApplicationArgs {
     displayName?: string;
     /**
      * Specifies the Object ID of the application.
+     *
+     * > One of `objectId`, `applicationId` or `displayName` must be specified.
      */
     objectId?: string;
 }
@@ -232,6 +234,8 @@ export interface GetApplicationOutputArgs {
     displayName?: pulumi.Input<string>;
     /**
      * Specifies the Object ID of the application.
+     *
+     * > One of `objectId`, `applicationId` or `displayName` must be specified.
      */
     objectId?: pulumi.Input<string>;
 }

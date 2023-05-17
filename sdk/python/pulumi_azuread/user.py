@@ -78,7 +78,8 @@ class UserArgs:
         :param pulumi.Input[str] office_location: The office location in the user's place of business.
         :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] other_mails: A list of additional email addresses for the user.
-        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+               maximum length is 256 characters. This property is required when creating a new user
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] preferred_language: The user's preferred language, in ISO 639-1 notation.
         :param pulumi.Input[bool] show_in_address_list: Whether or not the Outlook global address list should include this user. Defaults to `true`.
@@ -484,7 +485,8 @@ class UserArgs:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+        maximum length is 256 characters. This property is required when creating a new user
         """
         return pulumi.get(self, "password")
 
@@ -667,7 +669,8 @@ class _UserState:
         :param pulumi.Input[bool] onpremises_sync_enabled: Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
         :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] other_mails: A list of additional email addresses for the user.
-        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+               maximum length is 256 characters. This property is required when creating a new user
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] preferred_language: The user's preferred language, in ISO 639-1 notation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_addresses: List of email addresses for the user that direct to the same mailbox.
@@ -1224,7 +1227,8 @@ class _UserState:
     @pulumi.getter
     def password(self) -> Optional[pulumi.Input[str]]:
         """
-        The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+        maximum length is 256 characters. This property is required when creating a new user
         """
         return pulumi.get(self, "password")
 
@@ -1454,7 +1458,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] office_location: The office location in the user's place of business.
         :param pulumi.Input[str] onpremises_immutable_id: The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user account.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] other_mails: A list of additional email addresses for the user.
-        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+               maximum length is 256 characters. This property is required when creating a new user
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] preferred_language: The user's preferred language, in ISO 639-1 notation.
         :param pulumi.Input[bool] show_in_address_list: Whether or not the Outlook global address list should include this user. Defaults to `true`.
@@ -1717,7 +1722,8 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[bool] onpremises_sync_enabled: Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
         :param pulumi.Input[str] onpremises_user_principal_name: The on-premise user principal name of the user.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] other_mails: A list of additional email addresses for the user.
-        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        :param pulumi.Input[str] password: The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+               maximum length is 256 characters. This property is required when creating a new user
         :param pulumi.Input[str] postal_code: The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
         :param pulumi.Input[str] preferred_language: The user's preferred language, in ISO 639-1 notation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] proxy_addresses: List of email addresses for the user that direct to the same mailbox.
@@ -2083,7 +2089,8 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def password(self) -> pulumi.Output[str]:
         """
-        The password for the user. The password must satisfy minimum requirements as specified by the password policy. The maximum length is 256 characters. This property is required when creating a new user.
+        The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
+        maximum length is 256 characters. This property is required when creating a new user
         """
         return pulumi.get(self, "password")
 

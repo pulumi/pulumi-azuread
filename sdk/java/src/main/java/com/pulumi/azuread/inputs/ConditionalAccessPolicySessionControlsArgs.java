@@ -20,12 +20,16 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     /**
      * Whether or not application enforced restrictions are enabled. Defaults to `false`.
      * 
+     * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
+     * 
      */
     @Import(name="applicationEnforcedRestrictionsEnabled")
     private @Nullable Output<Boolean> applicationEnforcedRestrictionsEnabled;
 
     /**
      * @return Whether or not application enforced restrictions are enabled. Defaults to `false`.
+     * 
+     * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
      * 
      */
     public Optional<Output<Boolean>> applicationEnforcedRestrictionsEnabled() {
@@ -123,6 +127,8 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
         /**
          * @param applicationEnforcedRestrictionsEnabled Whether or not application enforced restrictions are enabled. Defaults to `false`.
          * 
+         * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
+         * 
          * @return builder
          * 
          */
@@ -133,6 +139,8 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
 
         /**
          * @param applicationEnforcedRestrictionsEnabled Whether or not application enforced restrictions are enabled. Defaults to `false`.
+         * 
+         * &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
          * 
          * @return builder
          * 

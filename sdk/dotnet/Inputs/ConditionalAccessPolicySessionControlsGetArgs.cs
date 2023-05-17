@@ -14,6 +14,8 @@ namespace Pulumi.AzureAD.Inputs
     {
         /// <summary>
         /// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        /// 
+        /// &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         /// </summary>
         [Input("applicationEnforcedRestrictionsEnabled")]
         public Input<bool>? ApplicationEnforcedRestrictionsEnabled { get; set; }

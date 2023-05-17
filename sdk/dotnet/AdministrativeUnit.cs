@@ -51,6 +51,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+        /// 
+        /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         /// </summary>
         [Output("members")]
         public Output<ImmutableArray<string>> Members { get; private set; } = null!;
@@ -136,6 +138,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+        /// 
+        /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         /// </summary>
         public InputList<string> Members
         {
@@ -180,6 +184,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+        /// 
+        /// !&gt; **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         /// </summary>
         public InputList<string> Members
         {

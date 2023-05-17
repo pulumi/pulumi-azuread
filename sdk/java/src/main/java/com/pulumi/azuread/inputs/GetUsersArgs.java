@@ -80,12 +80,16 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user principal names (UPNs) of the users.
      * 
+     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * 
      */
     @Import(name="userPrincipalNames")
     private @Nullable Output<List<String>> userPrincipalNames;
 
     /**
      * @return The user principal names (UPNs) of the users.
+     * 
+     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<Output<List<String>>> userPrincipalNames() {
@@ -227,6 +231,8 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * 
          * @return builder
          * 
          */
@@ -238,6 +244,8 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * 
          * @return builder
          * 
          */
@@ -247,6 +255,8 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
+         * 
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 

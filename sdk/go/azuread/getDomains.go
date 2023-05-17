@@ -19,6 +19,35 @@ import (
 // When authenticated with a service principal, this data source requires one of the following application roles: `Domain.Read.All` or `Directory.Read.All`
 //
 // When authenticated with a user principal, this data source does not require any additional roles.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			aadDomains, err := azuread.GetDomains(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			var splat0 []*string
+//			for _, val0 := range aadDomains.Domains {
+//				splat0 = append(splat0, val0.DomainName)
+//			}
+//			ctx.Export("domainNames", splat0)
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	var rv GetDomainsResult
 	err := ctx.Invoke("azuread:index/getDomains:getDomains", args, &rv, opts...)
@@ -41,6 +70,8 @@ type GetDomainsArgs struct {
 	// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
 	OnlyRoot *bool `pulumi:"onlyRoot"`
 	// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	//
+	// > **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
 	SupportsServices []string `pulumi:"supportsServices"`
 }
 
@@ -85,6 +116,8 @@ type GetDomainsOutputArgs struct {
 	// Set to `true` to only return verified root domains. Excludes subdomains and unverified domains.
 	OnlyRoot pulumi.BoolPtrInput `pulumi:"onlyRoot"`
 	// A list of supported services that must be supported by a domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	//
+	// > **Note on filters** If `includeUnverified` is set to `true`, you cannot specify `onlyDefault` or `onlyInitial`. Additionally, you cannot combine `onlyDefault` with `onlyInitial`.
 	SupportsServices pulumi.StringArrayInput `pulumi:"supportsServices"`
 }
 

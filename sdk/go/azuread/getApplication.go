@@ -62,6 +62,8 @@ type LookupApplicationArgs struct {
 	// Specifies the display name of the application.
 	DisplayName *string `pulumi:"displayName"`
 	// Specifies the Object ID of the application.
+	//
+	// > One of `objectId`, `applicationId` or `displayName` must be specified.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -153,6 +155,8 @@ type LookupApplicationOutputArgs struct {
 	// Specifies the display name of the application.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Specifies the Object ID of the application.
+	//
+	// > One of `objectId`, `applicationId` or `displayName` must be specified.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 

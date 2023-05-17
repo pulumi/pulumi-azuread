@@ -77,32 +77,16 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * The unique identifier of the app role. Must be a valid UUID.
-     * 
-     */
     @Import(name="id", required=true)
     private Output<String> id;
 
-    /**
-     * @return The unique identifier of the app role. Must be a valid UUID.
-     * 
-     */
     public Output<String> id() {
         return this.id;
     }
 
-    /**
-     * The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -230,44 +214,20 @@ public final class ApplicationAppRoleArgs extends com.pulumi.resources.ResourceA
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param id The unique identifier of the app role. Must be a valid UUID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id The unique identifier of the app role. Must be a valid UUID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param value The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

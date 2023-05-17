@@ -66,6 +66,8 @@ export interface GetUsersArgs {
     returnAll?: boolean;
     /**
      * The user principal names (UPNs) of the users.
+     *
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: string[];
 }
@@ -148,6 +150,8 @@ export interface GetUsersOutputArgs {
     returnAll?: pulumi.Input<boolean>;
     /**
      * The user principal names (UPNs) of the users.
+     *
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

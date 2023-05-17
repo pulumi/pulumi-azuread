@@ -228,12 +228,16 @@ public class ServicePrincipalDelegatedPermissionGrant extends com.pulumi.resourc
     /**
      * The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
      * 
+     * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+     * 
      */
     @Export(name="userObjectId", type=String.class, parameters={})
     private Output</* @Nullable */ String> userObjectId;
 
     /**
      * @return The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+     * 
+     * &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
      * 
      */
     public Output<Optional<String>> userObjectId() {

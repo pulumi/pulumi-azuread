@@ -19,6 +19,8 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
      * Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
      * 
+     * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+     * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
@@ -26,6 +28,8 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
     /**
      * @return Specifies a friendly name for the certificate.
      * Must start with `CN=`. Changing this field forces a new resource to be created.
+     * 
+     * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -92,6 +96,8 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
          * @param displayName Specifies a friendly name for the certificate.
          * Must start with `CN=`. Changing this field forces a new resource to be created.
          * 
+         * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+         * 
          * @return builder
          * 
          */
@@ -103,6 +109,8 @@ public final class ServicePrincipalTokenSigningCertificateArgs extends com.pulum
         /**
          * @param displayName Specifies a friendly name for the certificate.
          * Must start with `CN=`. Changing this field forces a new resource to be created.
+         * 
+         * &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
          * 
          * @return builder
          * 

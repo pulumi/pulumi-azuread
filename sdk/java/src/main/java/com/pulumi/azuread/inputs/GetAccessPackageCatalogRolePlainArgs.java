@@ -32,12 +32,16 @@ public final class GetAccessPackageCatalogRolePlainArgs extends com.pulumi.resou
     /**
      * Specifies the object ID of the role.
      * 
+     * &gt; One of `display_name` or `object_id` must be specified.
+     * 
      */
     @Import(name="objectId")
     private @Nullable String objectId;
 
     /**
      * @return Specifies the object ID of the role.
+     * 
+     * &gt; One of `display_name` or `object_id` must be specified.
      * 
      */
     public Optional<String> objectId() {
@@ -82,6 +86,8 @@ public final class GetAccessPackageCatalogRolePlainArgs extends com.pulumi.resou
 
         /**
          * @param objectId Specifies the object ID of the role.
+         * 
+         * &gt; One of `display_name` or `object_id` must be specified.
          * 
          * @return builder
          * 

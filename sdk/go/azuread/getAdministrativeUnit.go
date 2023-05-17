@@ -86,6 +86,8 @@ type LookupAdministrativeUnitArgs struct {
 	// Specifies the display name of the administrative unit.
 	DisplayName *string `pulumi:"displayName"`
 	// Specifies the object ID of the administrative unit.
+	//
+	// > One of `displayName` or `objectId` must be specified.
 	ObjectId *string `pulumi:"objectId"`
 }
 
@@ -123,6 +125,8 @@ type LookupAdministrativeUnitOutputArgs struct {
 	// Specifies the display name of the administrative unit.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Specifies the object ID of the administrative unit.
+	//
+	// > One of `displayName` or `objectId` must be specified.
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 

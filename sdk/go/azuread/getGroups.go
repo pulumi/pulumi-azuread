@@ -176,6 +176,8 @@ type GetGroupsArgs struct {
 	// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
 	ReturnAll *bool `pulumi:"returnAll"`
 	// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+	//
+	// > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
 }
 
@@ -222,6 +224,8 @@ type GetGroupsOutputArgs struct {
 	// A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+	//
+	// > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
 	SecurityEnabled pulumi.BoolPtrInput `pulumi:"securityEnabled"`
 }
 

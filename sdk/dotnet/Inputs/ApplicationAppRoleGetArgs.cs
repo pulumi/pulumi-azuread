@@ -42,15 +42,9 @@ namespace Pulumi.AzureAD.Inputs
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// The unique identifier of the app role. Must be a valid UUID.
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

@@ -2078,17 +2078,15 @@ type ApplicationApiOauth2PermissionScope struct {
 	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
 	// Determines if the permission scope is enabled. Defaults to `true`.
-	Enabled *bool `pulumi:"enabled"`
-	// The unique identifier of the delegated permission. Must be a valid UUID.
-	Id string `pulumi:"id"`
+	Enabled *bool  `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 	Type *string `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription *string `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-	Value *string `pulumi:"value"`
+	Value                  *string `pulumi:"value"`
 }
 
 // ApplicationApiOauth2PermissionScopeInput is an input type that accepts ApplicationApiOauth2PermissionScopeArgs and ApplicationApiOauth2PermissionScopeOutput values.
@@ -2109,16 +2107,14 @@ type ApplicationApiOauth2PermissionScopeArgs struct {
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
 	// Determines if the permission scope is enabled. Defaults to `true`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The unique identifier of the delegated permission. Must be a valid UUID.
-	Id pulumi.StringInput `pulumi:"id"`
+	Id      pulumi.StringInput  `pulumi:"id"`
 	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
 	// Display name for the delegated permission that appears in the end user consent experience.
 	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value                  pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ApplicationApiOauth2PermissionScopeArgs) ElementType() reflect.Type {
@@ -2187,7 +2183,6 @@ func (o ApplicationApiOauth2PermissionScopeOutput) Enabled() pulumi.BoolPtrOutpu
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The unique identifier of the delegated permission. Must be a valid UUID.
 func (o ApplicationApiOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -2207,7 +2202,6 @@ func (o ApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulu
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o ApplicationApiOauth2PermissionScopeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2240,11 +2234,9 @@ type ApplicationAppRole struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName string `pulumi:"displayName"`
 	// Determines if the app role is enabled. Defaults to `true`.
-	Enabled *bool `pulumi:"enabled"`
-	// The unique identifier of the app role. Must be a valid UUID.
-	Id string `pulumi:"id"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-	Value *string `pulumi:"value"`
+	Enabled *bool   `pulumi:"enabled"`
+	Id      string  `pulumi:"id"`
+	Value   *string `pulumi:"value"`
 }
 
 // ApplicationAppRoleInput is an input type that accepts ApplicationAppRoleArgs and ApplicationAppRoleOutput values.
@@ -2266,11 +2258,9 @@ type ApplicationAppRoleArgs struct {
 	// Display name for the app role that appears during app role assignment and in consent experiences.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Determines if the app role is enabled. Defaults to `true`.
-	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The unique identifier of the app role. Must be a valid UUID.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput    `pulumi:"id"`
+	Value   pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ApplicationAppRoleArgs) ElementType() reflect.Type {
@@ -2344,12 +2334,10 @@ func (o ApplicationAppRoleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The unique identifier of the app role. Must be a valid UUID.
 func (o ApplicationAppRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 func (o ApplicationAppRoleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3186,6 +3174,8 @@ type ApplicationRequiredResourceAccess struct {
 	// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 	ResourceAccesses []ApplicationRequiredResourceAccessResourceAccess `pulumi:"resourceAccesses"`
 	// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+	//
+	// > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
 	ResourceAppId string `pulumi:"resourceAppId"`
 }
 
@@ -3204,6 +3194,8 @@ type ApplicationRequiredResourceAccessArgs struct {
 	// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 	ResourceAccesses ApplicationRequiredResourceAccessResourceAccessArrayInput `pulumi:"resourceAccesses"`
 	// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+	//
+	// > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
 	ResourceAppId pulumi.StringInput `pulumi:"resourceAppId"`
 }
 
@@ -3266,6 +3258,8 @@ func (o ApplicationRequiredResourceAccessOutput) ResourceAccesses() ApplicationR
 }
 
 // The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+//
+// > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
 func (o ApplicationRequiredResourceAccessOutput) ResourceAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccess) string { return v.ResourceAppId }).(pulumi.StringOutput)
 }
@@ -4953,6 +4947,8 @@ type ConditionalAccessPolicyConditionsUsers struct {
 	// A list of role IDs in scope of policy unless explicitly excluded.
 	IncludedRoles []string `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+	//
+	// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
 	IncludedUsers []string `pulumi:"includedUsers"`
 }
 
@@ -4979,6 +4975,8 @@ type ConditionalAccessPolicyConditionsUsersArgs struct {
 	// A list of role IDs in scope of policy unless explicitly excluded.
 	IncludedRoles pulumi.StringArrayInput `pulumi:"includedRoles"`
 	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+	//
+	// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
 	IncludedUsers pulumi.StringArrayInput `pulumi:"includedUsers"`
 }
 
@@ -5085,6 +5083,8 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.Str
 }
 
 // A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+//
+// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedUsers }).(pulumi.StringArrayOutput)
 }
@@ -5164,6 +5164,8 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.
 }
 
 // A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+//
+// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -5369,6 +5371,8 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.Stri
 
 type ConditionalAccessPolicySessionControls struct {
 	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+	//
+	// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
 	ApplicationEnforcedRestrictionsEnabled *bool `pulumi:"applicationEnforcedRestrictionsEnabled"`
 	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy *string `pulumi:"cloudAppSecurityPolicy"`
@@ -5393,6 +5397,8 @@ type ConditionalAccessPolicySessionControlsInput interface {
 
 type ConditionalAccessPolicySessionControlsArgs struct {
 	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+	//
+	// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
 	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput `pulumi:"applicationEnforcedRestrictionsEnabled"`
 	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
@@ -5482,6 +5488,8 @@ func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicyS
 }
 
 // Whether or not application enforced restrictions are enabled. Defaults to `false`.
+//
+// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
 func (o ConditionalAccessPolicySessionControlsOutput) ApplicationEnforcedRestrictionsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *bool { return v.ApplicationEnforcedRestrictionsEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -5531,6 +5539,8 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) Elem() ConditionalAcces
 }
 
 // Whether or not application enforced restrictions are enabled. Defaults to `false`.
+//
+// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) ApplicationEnforcedRestrictionsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *bool {
 		if v == nil {
@@ -5681,6 +5691,8 @@ type GroupDynamicMembership struct {
 	// Whether rule processing is "On" (true) or "Paused" (false).
 	Enabled bool `pulumi:"enabled"`
 	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	//
+	// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
 	Rule string `pulumi:"rule"`
 }
 
@@ -5699,6 +5711,8 @@ type GroupDynamicMembershipArgs struct {
 	// Whether rule processing is "On" (true) or "Paused" (false).
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	//
+	// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -5785,6 +5799,8 @@ func (o GroupDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
 }
 
 // The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+//
+// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
 func (o GroupDynamicMembershipOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -5824,6 +5840,8 @@ func (o GroupDynamicMembershipPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+//
+// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
 func (o GroupDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupDynamicMembership) *string {
 		if v == nil {

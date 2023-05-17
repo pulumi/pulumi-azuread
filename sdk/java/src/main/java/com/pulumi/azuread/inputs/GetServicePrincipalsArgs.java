@@ -80,12 +80,16 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
     /**
      * When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
      * 
+     * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * 
      */
     @Import(name="returnAll")
     private @Nullable Output<Boolean> returnAll;
 
     /**
      * @return When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+     * 
+     * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<Output<Boolean>> returnAll() {
@@ -237,6 +241,8 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
         /**
          * @param returnAll When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
          * 
+         * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * 
          * @return builder
          * 
          */
@@ -247,6 +253,8 @@ public final class GetServicePrincipalsArgs extends com.pulumi.resources.InvokeA
 
         /**
          * @param returnAll When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
+         * 
+         * &gt; Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 
