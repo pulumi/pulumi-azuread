@@ -47,7 +47,11 @@ func GetEnvironment(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string)
+	var value string
+	if d := getEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The Hostname which should be used for the Azure Metadata Service.
@@ -61,7 +65,11 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string)
+	var value string
+	if d := getEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
+		value = d.(string)
+	}
+	return value
 }
 
 // The bearer token for the request to the OIDC provider. For use when authenticating as a Service Principal using OpenID
@@ -107,7 +115,11 @@ func GetUseMsi(ctx *pulumi.Context) bool {
 	if err == nil {
 		return v
 	}
-	return getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI").(bool)
+	var value bool
+	if d := getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI"); d != nil {
+		value = d.(bool)
+	}
+	return value
 }
 
 // Allow OpenID Connect to be used for authentication

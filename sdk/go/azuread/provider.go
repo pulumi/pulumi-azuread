@@ -64,13 +64,19 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'MetadataHost'")
 	}
 	if args.Environment == nil {
-		args.Environment = pulumi.StringPtr(getEnvOrDefault("public", nil, "ARM_ENVIRONMENT").(string))
+		if d := getEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
+			args.Environment = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.MsiEndpoint == nil {
-		args.MsiEndpoint = pulumi.StringPtr(getEnvOrDefault("", nil, "ARM_MSI_ENDPOINT").(string))
+		if d := getEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
+			args.MsiEndpoint = pulumi.StringPtr(d.(string))
+		}
 	}
 	if args.UseMsi == nil {
-		args.UseMsi = pulumi.BoolPtr(getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI").(bool))
+		if d := getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI"); d != nil {
+			args.UseMsi = pulumi.BoolPtr(d.(bool))
+		}
 	}
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:azuread", name, args, &resource, opts...)
