@@ -536,6 +536,19 @@
                                     "maxItemsOne": false,
                                     "elem": {}
                                 },
+                                "client_applications": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "excluded_service_principals": {
+                                                "maxItemsOne": false
+                                            },
+                                            "included_service_principals": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "devices": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -1125,16 +1138,152 @@
                 "current": "azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole"
             },
             "azuread_administrative_unit": {
-                "current": "azuread:index/getAdministrativeUnit:getAdministrativeUnit"
+                "current": "azuread:index/getAdministrativeUnit:getAdministrativeUnit",
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_application": {
-                "current": "azuread:index/getApplication:getApplication"
+                "current": "azuread:index/getApplication:getApplication",
+                "fields": {
+                    "api": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "known_client_applications": {
+                                    "maxItemsOne": false
+                                },
+                                "oauth2_permission_scopes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "app_roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_member_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "feature_tags": {
+                        "maxItemsOne": false
+                    },
+                    "group_membership_claims": {
+                        "maxItemsOne": false
+                    },
+                    "identifier_uris": {
+                        "maxItemsOne": false
+                    },
+                    "optional_claims": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "access_token": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_properties": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "id_token": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_properties": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "saml2_token": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "additional_properties": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "owners": {
+                        "maxItemsOne": false
+                    },
+                    "public_client": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "redirect_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "required_resource_access": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "resource_access": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "single_page_application": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "redirect_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "web": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "implicit_grant": {
+                                    "maxItemsOne": false
+                                },
+                                "redirect_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "azuread_application_published_app_ids": {
                 "current": "azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds"
             },
             "azuread_application_template": {
-                "current": "azuread:index/getApplicationTemplate:getApplicationTemplate"
+                "current": "azuread:index/getApplicationTemplate:getApplicationTemplate",
+                "fields": {
+                    "categories": {
+                        "maxItemsOne": false
+                    },
+                    "supported_provisioning_types": {
+                        "maxItemsOne": false
+                    },
+                    "supported_single_sign_on_modes": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_client_config": {
                 "current": "azuread:index/getClientConfig:getClientConfig"
@@ -1143,28 +1292,179 @@
                 "current": "azuread:index/getDirectoryObject:getDirectoryObject"
             },
             "azuread_directory_roles": {
-                "current": "azuread:index/getDirectoryRoles:getDirectoryRoles"
+                "current": "azuread:index/getDirectoryRoles:getDirectoryRoles",
+                "fields": {
+                    "object_ids": {
+                        "maxItemsOne": false
+                    },
+                    "roles": {
+                        "maxItemsOne": false
+                    },
+                    "template_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_domains": {
-                "current": "azuread:index/getDomains:getDomains"
+                "current": "azuread:index/getDomains:getDomains",
+                "fields": {
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "supported_services": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "supports_services": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_group": {
-                "current": "azuread:index/getGroup:getGroup"
+                "current": "azuread:index/getGroup:getGroup",
+                "fields": {
+                    "behaviors": {
+                        "maxItemsOne": false
+                    },
+                    "dynamic_membership": {
+                        "maxItemsOne": false
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    },
+                    "owners": {
+                        "maxItemsOne": false
+                    },
+                    "provisioning_options": {
+                        "maxItemsOne": false
+                    },
+                    "proxy_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "types": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_groups": {
-                "current": "azuread:index/getGroups:getGroups"
+                "current": "azuread:index/getGroups:getGroups",
+                "fields": {
+                    "display_names": {
+                        "maxItemsOne": false
+                    },
+                    "object_ids": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_service_principal": {
-                "current": "azuread:index/getServicePrincipal:getServicePrincipal"
+                "current": "azuread:index/getServicePrincipal:getServicePrincipal",
+                "fields": {
+                    "alternative_names": {
+                        "maxItemsOne": false
+                    },
+                    "app_roles": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_member_types": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "feature_tags": {
+                        "maxItemsOne": false
+                    },
+                    "features": {
+                        "maxItemsOne": false
+                    },
+                    "notification_email_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "oauth2_permission_scopes": {
+                        "maxItemsOne": false
+                    },
+                    "redirect_uris": {
+                        "maxItemsOne": false
+                    },
+                    "saml_single_sign_on": {
+                        "maxItemsOne": false
+                    },
+                    "service_principal_names": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_service_principals": {
-                "current": "azuread:index/getServicePrincipals:getServicePrincipals"
+                "current": "azuread:index/getServicePrincipals:getServicePrincipals",
+                "fields": {
+                    "application_ids": {
+                        "maxItemsOne": false
+                    },
+                    "display_names": {
+                        "maxItemsOne": false
+                    },
+                    "object_ids": {
+                        "maxItemsOne": false
+                    },
+                    "service_principals": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "service_principal_names": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "azuread_user": {
-                "current": "azuread:index/getUser:getUser"
+                "current": "azuread:index/getUser:getUser",
+                "fields": {
+                    "business_phones": {
+                        "maxItemsOne": false
+                    },
+                    "im_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "other_mails": {
+                        "maxItemsOne": false
+                    },
+                    "proxy_addresses": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "azuread_users": {
-                "current": "azuread:index/getUsers:getUsers"
+                "current": "azuread:index/getUsers:getUsers",
+                "fields": {
+                    "employee_ids": {
+                        "maxItemsOne": false
+                    },
+                    "mail_nicknames": {
+                        "maxItemsOne": false
+                    },
+                    "object_ids": {
+                        "maxItemsOne": false
+                    },
+                    "user_principal_names": {
+                        "maxItemsOne": false
+                    },
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         }
     },
@@ -1347,6 +1647,7 @@
             },
             "azuread:index/ConditionalAccessPolicyConditions:ConditionalAccessPolicyConditions": {
                 "clientAppTypes": "client_app_types",
+                "clientApplications": "client_applications",
                 "signInRiskLevels": "sign_in_risk_levels",
                 "userRiskLevels": "user_risk_levels"
             },
@@ -1354,6 +1655,10 @@
                 "excludedApplications": "excluded_applications",
                 "includedApplications": "included_applications",
                 "includedUserActions": "included_user_actions"
+            },
+            "azuread:index/ConditionalAccessPolicyConditionsClientApplications:ConditionalAccessPolicyConditionsClientApplications": {
+                "excludedServicePrincipals": "excluded_service_principals",
+                "includedServicePrincipals": "included_service_principals"
             },
             "azuread:index/ConditionalAccessPolicyConditionsLocations:ConditionalAccessPolicyConditionsLocations": {
                 "excludedLocations": "excluded_locations",
@@ -1379,6 +1684,7 @@
             "azuread:index/ConditionalAccessPolicySessionControls:ConditionalAccessPolicySessionControls": {
                 "applicationEnforcedRestrictionsEnabled": "application_enforced_restrictions_enabled",
                 "cloudAppSecurityPolicy": "cloud_app_security_policy",
+                "disableResilienceDefaults": "disable_resilience_defaults",
                 "persistentBrowserMode": "persistent_browser_mode",
                 "signInFrequency": "sign_in_frequency",
                 "signInFrequencyPeriod": "sign_in_frequency_period"
@@ -1839,6 +2145,7 @@
                 "userType": "user_type"
             },
             "azuread:index/getUsers:getUsers": {
+                "employeeIds": "employee_ids",
                 "ignoreMissing": "ignore_missing",
                 "mailNicknames": "mail_nicknames",
                 "objectIds": "object_ids",
@@ -1848,6 +2155,7 @@
             "azuread:index/getUsersUser:getUsersUser": {
                 "accountEnabled": "account_enabled",
                 "displayName": "display_name",
+                "employeeId": "employee_id",
                 "mailNickname": "mail_nickname",
                 "objectId": "object_id",
                 "onpremisesImmutableId": "onpremises_immutable_id",
