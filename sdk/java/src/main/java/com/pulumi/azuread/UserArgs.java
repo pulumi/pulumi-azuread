@@ -123,14 +123,14 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The country/region in which the user is located, e.g. `US` or `UK`.
+     * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      * 
      */
     @Import(name="country")
     private @Nullable Output<String> country;
 
     /**
-     * @return The country/region in which the user is located, e.g. `US` or `UK`.
+     * @return The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      * 
      */
     public Optional<Output<String>> country() {
@@ -760,7 +760,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param country The country/region in which the user is located, e.g. `US` or `UK`.
+         * @param country The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param country The country/region in which the user is located, e.g. `US` or `UK`.
+         * @param country The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
          * 
          * @return builder
          * 

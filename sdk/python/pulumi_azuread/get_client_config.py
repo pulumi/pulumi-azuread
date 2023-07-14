@@ -102,7 +102,7 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
     __ret__ = pulumi.runtime.invoke('azuread:index/getClientConfig:getClientConfig', __args__, opts=opts, typ=GetClientConfigResult).value
 
     return AwaitableGetClientConfigResult(
-        client_id=__ret__.client_id,
-        id=__ret__.id,
-        object_id=__ret__.object_id,
-        tenant_id=__ret__.tenant_id)
+        client_id=pulumi.get(__ret__, 'client_id'),
+        id=pulumi.get(__ret__, 'id'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        tenant_id=pulumi.get(__ret__, 'tenant_id'))

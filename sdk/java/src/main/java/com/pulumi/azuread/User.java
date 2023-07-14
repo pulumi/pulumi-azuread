@@ -184,14 +184,14 @@ public class User extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.costCenter);
     }
     /**
-     * The country/region in which the user is located, e.g. `US` or `UK`.
+     * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      * 
      */
     @Export(name="country", type=String.class, parameters={})
     private Output</* @Nullable */ String> country;
 
     /**
-     * @return The country/region in which the user is located, e.g. `US` or `UK`.
+     * @return The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      * 
      */
     public Output<Optional<String>> country() {

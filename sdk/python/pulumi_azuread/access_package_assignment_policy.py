@@ -402,7 +402,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                 approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
                     approval_timeout_in_days=14,
                     primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        object_id=azuread_group["test"]["object_id"],
                         subject_type="groupMembers",
                     )],
                 )],
@@ -488,7 +488,7 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
                 approval_stages=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs(
                     approval_timeout_in_days=14,
                     primary_approvers=[azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs(
-                        object_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        object_id=azuread_group["test"]["object_id"],
                         subject_type="groupMembers",
                     )],
                 )],

@@ -203,14 +203,14 @@ def get_groups(display_name_prefix: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult).value
 
     return AwaitableGetGroupsResult(
-        display_name_prefix=__ret__.display_name_prefix,
-        display_names=__ret__.display_names,
-        id=__ret__.id,
-        ignore_missing=__ret__.ignore_missing,
-        mail_enabled=__ret__.mail_enabled,
-        object_ids=__ret__.object_ids,
-        return_all=__ret__.return_all,
-        security_enabled=__ret__.security_enabled)
+        display_name_prefix=pulumi.get(__ret__, 'display_name_prefix'),
+        display_names=pulumi.get(__ret__, 'display_names'),
+        id=pulumi.get(__ret__, 'id'),
+        ignore_missing=pulumi.get(__ret__, 'ignore_missing'),
+        mail_enabled=pulumi.get(__ret__, 'mail_enabled'),
+        object_ids=pulumi.get(__ret__, 'object_ids'),
+        return_all=pulumi.get(__ret__, 'return_all'),
+        security_enabled=pulumi.get(__ret__, 'security_enabled'))
 
 
 @_utilities.lift_output_func(get_groups)

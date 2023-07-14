@@ -55,10 +55,6 @@ class GetServicePrincipalResult:
         pulumi.set(__self__, "feature_tags", feature_tags)
         if features and not isinstance(features, list):
             raise TypeError("Expected argument 'features' to be a list")
-        if features is not None:
-            warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
-            pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
-
         pulumi.set(__self__, "features", features)
         if homepage_url and not isinstance(homepage_url, str):
             raise TypeError("Expected argument 'homepage_url' to be a str")
@@ -195,6 +191,9 @@ class GetServicePrincipalResult:
         """
         A `features` block as described below.
         """
+        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
+        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
+
         return pulumi.get(self, "features")
 
     @property
@@ -429,34 +428,34 @@ def get_service_principal(application_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipal:getServicePrincipal', __args__, opts=opts, typ=GetServicePrincipalResult).value
 
     return AwaitableGetServicePrincipalResult(
-        account_enabled=__ret__.account_enabled,
-        alternative_names=__ret__.alternative_names,
-        app_role_assignment_required=__ret__.app_role_assignment_required,
-        app_role_ids=__ret__.app_role_ids,
-        app_roles=__ret__.app_roles,
-        application_id=__ret__.application_id,
-        application_tenant_id=__ret__.application_tenant_id,
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        feature_tags=__ret__.feature_tags,
-        features=__ret__.features,
-        homepage_url=__ret__.homepage_url,
-        id=__ret__.id,
-        login_url=__ret__.login_url,
-        logout_url=__ret__.logout_url,
-        notes=__ret__.notes,
-        notification_email_addresses=__ret__.notification_email_addresses,
-        oauth2_permission_scope_ids=__ret__.oauth2_permission_scope_ids,
-        oauth2_permission_scopes=__ret__.oauth2_permission_scopes,
-        object_id=__ret__.object_id,
-        preferred_single_sign_on_mode=__ret__.preferred_single_sign_on_mode,
-        redirect_uris=__ret__.redirect_uris,
-        saml_metadata_url=__ret__.saml_metadata_url,
-        saml_single_sign_ons=__ret__.saml_single_sign_ons,
-        service_principal_names=__ret__.service_principal_names,
-        sign_in_audience=__ret__.sign_in_audience,
-        tags=__ret__.tags,
-        type=__ret__.type)
+        account_enabled=pulumi.get(__ret__, 'account_enabled'),
+        alternative_names=pulumi.get(__ret__, 'alternative_names'),
+        app_role_assignment_required=pulumi.get(__ret__, 'app_role_assignment_required'),
+        app_role_ids=pulumi.get(__ret__, 'app_role_ids'),
+        app_roles=pulumi.get(__ret__, 'app_roles'),
+        application_id=pulumi.get(__ret__, 'application_id'),
+        application_tenant_id=pulumi.get(__ret__, 'application_tenant_id'),
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        feature_tags=pulumi.get(__ret__, 'feature_tags'),
+        features=pulumi.get(__ret__, 'features'),
+        homepage_url=pulumi.get(__ret__, 'homepage_url'),
+        id=pulumi.get(__ret__, 'id'),
+        login_url=pulumi.get(__ret__, 'login_url'),
+        logout_url=pulumi.get(__ret__, 'logout_url'),
+        notes=pulumi.get(__ret__, 'notes'),
+        notification_email_addresses=pulumi.get(__ret__, 'notification_email_addresses'),
+        oauth2_permission_scope_ids=pulumi.get(__ret__, 'oauth2_permission_scope_ids'),
+        oauth2_permission_scopes=pulumi.get(__ret__, 'oauth2_permission_scopes'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        preferred_single_sign_on_mode=pulumi.get(__ret__, 'preferred_single_sign_on_mode'),
+        redirect_uris=pulumi.get(__ret__, 'redirect_uris'),
+        saml_metadata_url=pulumi.get(__ret__, 'saml_metadata_url'),
+        saml_single_sign_ons=pulumi.get(__ret__, 'saml_single_sign_ons'),
+        service_principal_names=pulumi.get(__ret__, 'service_principal_names'),
+        sign_in_audience=pulumi.get(__ret__, 'sign_in_audience'),
+        tags=pulumi.get(__ret__, 'tags'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_service_principal)

@@ -21,6 +21,11 @@ public final class GetUsersUser {
      */
     private String displayName;
     /**
+     * @return The employee identifier assigned to the user by the organisation.
+     * 
+     */
+    private String employeeId;
+    /**
      * @return The primary email address of the user.
      * 
      */
@@ -75,6 +80,13 @@ public final class GetUsersUser {
      */
     public String displayName() {
         return this.displayName;
+    }
+    /**
+     * @return The employee identifier assigned to the user by the organisation.
+     * 
+     */
+    public String employeeId() {
+        return this.employeeId;
     }
     /**
      * @return The primary email address of the user.
@@ -144,6 +156,7 @@ public final class GetUsersUser {
     public static final class Builder {
         private Boolean accountEnabled;
         private String displayName;
+        private String employeeId;
         private String mail;
         private String mailNickname;
         private String objectId;
@@ -157,6 +170,7 @@ public final class GetUsersUser {
     	      Objects.requireNonNull(defaults);
     	      this.accountEnabled = defaults.accountEnabled;
     	      this.displayName = defaults.displayName;
+    	      this.employeeId = defaults.employeeId;
     	      this.mail = defaults.mail;
     	      this.mailNickname = defaults.mailNickname;
     	      this.objectId = defaults.objectId;
@@ -175,6 +189,11 @@ public final class GetUsersUser {
         @CustomType.Setter
         public Builder displayName(String displayName) {
             this.displayName = Objects.requireNonNull(displayName);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder employeeId(String employeeId) {
+            this.employeeId = Objects.requireNonNull(employeeId);
             return this;
         }
         @CustomType.Setter
@@ -221,6 +240,7 @@ public final class GetUsersUser {
             final var o = new GetUsersUser();
             o.accountEnabled = accountEnabled;
             o.displayName = displayName;
+            o.employeeId = employeeId;
             o.mail = mail;
             o.mailNickname = mailNickname;
             o.objectId = objectId;

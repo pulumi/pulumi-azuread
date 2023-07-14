@@ -166,6 +166,9 @@ class ServicePrincipalArgs:
         """
         Block of features to configure for this service principal using tags
         """
+        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
+        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
+
         return pulumi.get(self, "features")
 
     @features.setter
@@ -529,6 +532,9 @@ class _ServicePrincipalState:
         """
         Block of features to configure for this service principal using tags
         """
+        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
+        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
+
         return pulumi.get(self, "features")
 
     @features.setter
@@ -1227,6 +1233,9 @@ class ServicePrincipal(pulumi.CustomResource):
         """
         Block of features to configure for this service principal using tags
         """
+        warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
+        pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
+
         return pulumi.get(self, "features")
 
     @property

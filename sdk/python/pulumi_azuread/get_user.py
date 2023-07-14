@@ -560,7 +560,8 @@ class AwaitableGetUserResult(GetUserResult):
             user_type=self.user_type)
 
 
-def get_user(mail: Optional[str] = None,
+def get_user(employee_id: Optional[str] = None,
+             mail: Optional[str] = None,
              mail_nickname: Optional[str] = None,
              object_id: Optional[str] = None,
              user_principal_name: Optional[str] = None,
@@ -586,14 +587,16 @@ def get_user(mail: Optional[str] = None,
     ```
 
 
+    :param str employee_id: The employee identifier assigned to the user by the organisation.
     :param str mail: The SMTP address for the user.
     :param str mail_nickname: The email alias of the user.
     :param str object_id: The object ID of the user.
     :param str user_principal_name: The user principal name (UPN) of the user.
            
-           > One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+           > One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
     """
     __args__ = dict()
+    __args__['employeeId'] = employee_id
     __args__['mail'] = mail
     __args__['mailNickname'] = mail_nickname
     __args__['objectId'] = object_id
@@ -602,54 +605,55 @@ def get_user(mail: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getUser:getUser', __args__, opts=opts, typ=GetUserResult).value
 
     return AwaitableGetUserResult(
-        account_enabled=__ret__.account_enabled,
-        age_group=__ret__.age_group,
-        business_phones=__ret__.business_phones,
-        city=__ret__.city,
-        company_name=__ret__.company_name,
-        consent_provided_for_minor=__ret__.consent_provided_for_minor,
-        cost_center=__ret__.cost_center,
-        country=__ret__.country,
-        creation_type=__ret__.creation_type,
-        department=__ret__.department,
-        display_name=__ret__.display_name,
-        division=__ret__.division,
-        employee_id=__ret__.employee_id,
-        employee_type=__ret__.employee_type,
-        external_user_state=__ret__.external_user_state,
-        fax_number=__ret__.fax_number,
-        given_name=__ret__.given_name,
-        id=__ret__.id,
-        im_addresses=__ret__.im_addresses,
-        job_title=__ret__.job_title,
-        mail=__ret__.mail,
-        mail_nickname=__ret__.mail_nickname,
-        manager_id=__ret__.manager_id,
-        mobile_phone=__ret__.mobile_phone,
-        object_id=__ret__.object_id,
-        office_location=__ret__.office_location,
-        onpremises_distinguished_name=__ret__.onpremises_distinguished_name,
-        onpremises_domain_name=__ret__.onpremises_domain_name,
-        onpremises_immutable_id=__ret__.onpremises_immutable_id,
-        onpremises_sam_account_name=__ret__.onpremises_sam_account_name,
-        onpremises_security_identifier=__ret__.onpremises_security_identifier,
-        onpremises_sync_enabled=__ret__.onpremises_sync_enabled,
-        onpremises_user_principal_name=__ret__.onpremises_user_principal_name,
-        other_mails=__ret__.other_mails,
-        postal_code=__ret__.postal_code,
-        preferred_language=__ret__.preferred_language,
-        proxy_addresses=__ret__.proxy_addresses,
-        show_in_address_list=__ret__.show_in_address_list,
-        state=__ret__.state,
-        street_address=__ret__.street_address,
-        surname=__ret__.surname,
-        usage_location=__ret__.usage_location,
-        user_principal_name=__ret__.user_principal_name,
-        user_type=__ret__.user_type)
+        account_enabled=pulumi.get(__ret__, 'account_enabled'),
+        age_group=pulumi.get(__ret__, 'age_group'),
+        business_phones=pulumi.get(__ret__, 'business_phones'),
+        city=pulumi.get(__ret__, 'city'),
+        company_name=pulumi.get(__ret__, 'company_name'),
+        consent_provided_for_minor=pulumi.get(__ret__, 'consent_provided_for_minor'),
+        cost_center=pulumi.get(__ret__, 'cost_center'),
+        country=pulumi.get(__ret__, 'country'),
+        creation_type=pulumi.get(__ret__, 'creation_type'),
+        department=pulumi.get(__ret__, 'department'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        division=pulumi.get(__ret__, 'division'),
+        employee_id=pulumi.get(__ret__, 'employee_id'),
+        employee_type=pulumi.get(__ret__, 'employee_type'),
+        external_user_state=pulumi.get(__ret__, 'external_user_state'),
+        fax_number=pulumi.get(__ret__, 'fax_number'),
+        given_name=pulumi.get(__ret__, 'given_name'),
+        id=pulumi.get(__ret__, 'id'),
+        im_addresses=pulumi.get(__ret__, 'im_addresses'),
+        job_title=pulumi.get(__ret__, 'job_title'),
+        mail=pulumi.get(__ret__, 'mail'),
+        mail_nickname=pulumi.get(__ret__, 'mail_nickname'),
+        manager_id=pulumi.get(__ret__, 'manager_id'),
+        mobile_phone=pulumi.get(__ret__, 'mobile_phone'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        office_location=pulumi.get(__ret__, 'office_location'),
+        onpremises_distinguished_name=pulumi.get(__ret__, 'onpremises_distinguished_name'),
+        onpremises_domain_name=pulumi.get(__ret__, 'onpremises_domain_name'),
+        onpremises_immutable_id=pulumi.get(__ret__, 'onpremises_immutable_id'),
+        onpremises_sam_account_name=pulumi.get(__ret__, 'onpremises_sam_account_name'),
+        onpremises_security_identifier=pulumi.get(__ret__, 'onpremises_security_identifier'),
+        onpremises_sync_enabled=pulumi.get(__ret__, 'onpremises_sync_enabled'),
+        onpremises_user_principal_name=pulumi.get(__ret__, 'onpremises_user_principal_name'),
+        other_mails=pulumi.get(__ret__, 'other_mails'),
+        postal_code=pulumi.get(__ret__, 'postal_code'),
+        preferred_language=pulumi.get(__ret__, 'preferred_language'),
+        proxy_addresses=pulumi.get(__ret__, 'proxy_addresses'),
+        show_in_address_list=pulumi.get(__ret__, 'show_in_address_list'),
+        state=pulumi.get(__ret__, 'state'),
+        street_address=pulumi.get(__ret__, 'street_address'),
+        surname=pulumi.get(__ret__, 'surname'),
+        usage_location=pulumi.get(__ret__, 'usage_location'),
+        user_principal_name=pulumi.get(__ret__, 'user_principal_name'),
+        user_type=pulumi.get(__ret__, 'user_type'))
 
 
 @_utilities.lift_output_func(get_user)
-def get_user_output(mail: Optional[pulumi.Input[Optional[str]]] = None,
+def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
+                    mail: Optional[pulumi.Input[Optional[str]]] = None,
                     mail_nickname: Optional[pulumi.Input[Optional[str]]] = None,
                     object_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_principal_name: Optional[pulumi.Input[Optional[str]]] = None,
@@ -675,11 +679,12 @@ def get_user_output(mail: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
+    :param str employee_id: The employee identifier assigned to the user by the organisation.
     :param str mail: The SMTP address for the user.
     :param str mail_nickname: The email alias of the user.
     :param str object_id: The object ID of the user.
     :param str user_principal_name: The user principal name (UPN) of the user.
            
-           > One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+           > One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
     """
     ...

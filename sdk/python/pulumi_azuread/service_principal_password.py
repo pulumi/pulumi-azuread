@@ -273,6 +273,36 @@ class ServicePrincipalPassword(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", service_principal_id=example_service_principal.object_id)
+        ```
+
+        *Time-based rotation*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumiverse_time as time
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
+        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
+            service_principal_id=example_service_principal.object_id,
+            rotate_when_changed={
+                "rotation": example_rotating.id,
+            })
+        ```
+
         ## Import
 
         This resource does not support importing.
@@ -302,6 +332,36 @@ class ServicePrincipalPassword(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", service_principal_id=example_service_principal.object_id)
+        ```
+
+        *Time-based rotation*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+        import pulumiverse_time as time
+
+        example_application = azuread.Application("exampleApplication", display_name="example")
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_rotating = time.Rotating("exampleRotating", rotation_days=7)
+        example_service_principal_password = azuread.ServicePrincipalPassword("exampleServicePrincipalPassword",
+            service_principal_id=example_service_principal.object_id,
+            rotate_when_changed={
+                "rotation": example_rotating.id,
+            })
+        ```
 
         ## Import
 

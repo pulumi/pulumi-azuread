@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
 /**
  * Manages a Conditional Access Policy within Azure Active Directory.
  * 
+ * &gt; **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+ * 
  * ## API Permissions
  * 
  * The following API permissions are required in order to use this resource.
@@ -29,6 +31,7 @@ import javax.annotation.Nullable;
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
  * 
  * ## Example Usage
+ * ### All users except guests or external users
  * ```java
  * package generated_program;
  * 
@@ -95,10 +98,121 @@ import javax.annotation.Nullable;
  *             .sessionControls(ConditionalAccessPolicySessionControlsArgs.builder()
  *                 .applicationEnforcedRestrictionsEnabled(true)
  *                 .cloudAppSecurityPolicy(&#34;monitorOnly&#34;)
+ *                 .disableResilienceDefaults(false)
  *                 .signInFrequency(10)
  *                 .signInFrequencyPeriod(&#34;hours&#34;)
  *                 .build())
  *             .state(&#34;disabled&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Included client applications / service principals
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.ConditionalAccessPolicy;
+ * import com.pulumi.azuread.ConditionalAccessPolicyArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsApplicationsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = AzureadFunctions.getClientConfig();
+ * 
+ *         var example = new ConditionalAccessPolicy(&#34;example&#34;, ConditionalAccessPolicyArgs.builder()        
+ *             .displayName(&#34;example policy&#34;)
+ *             .state(&#34;disabled&#34;)
+ *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
+ *                 .clientAppTypes(&#34;all&#34;)
+ *                 .applications(ConditionalAccessPolicyConditionsApplicationsArgs.builder()
+ *                     .includedApplications(&#34;All&#34;)
+ *                     .build())
+ *                 .clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs.builder()
+ *                     .includedServicePrincipals(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *                     .excludedServicePrincipals()
+ *                     .build())
+ *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
+ *                     .includedUsers(&#34;None&#34;)
+ *                     .build())
+ *                 .build())
+ *             .grantControls(ConditionalAccessPolicyGrantControlsArgs.builder()
+ *                 .operator(&#34;OR&#34;)
+ *                 .builtInControls(&#34;block&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Excluded client applications / service principals
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.AzureadFunctions;
+ * import com.pulumi.azuread.ConditionalAccessPolicy;
+ * import com.pulumi.azuread.ConditionalAccessPolicyArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsApplicationsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsUsersArgs;
+ * import com.pulumi.azuread.inputs.ConditionalAccessPolicyGrantControlsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var current = AzureadFunctions.getClientConfig();
+ * 
+ *         var example = new ConditionalAccessPolicy(&#34;example&#34;, ConditionalAccessPolicyArgs.builder()        
+ *             .displayName(&#34;example policy&#34;)
+ *             .state(&#34;disabled&#34;)
+ *             .conditions(ConditionalAccessPolicyConditionsArgs.builder()
+ *                 .clientAppTypes(&#34;all&#34;)
+ *                 .applications(ConditionalAccessPolicyConditionsApplicationsArgs.builder()
+ *                     .includedApplications(&#34;All&#34;)
+ *                     .build())
+ *                 .clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs.builder()
+ *                     .includedServicePrincipals(&#34;ServicePrincipalsInMyTenant&#34;)
+ *                     .excludedServicePrincipals(current.applyValue(getClientConfigResult -&gt; getClientConfigResult.objectId()))
+ *                     .build())
+ *                 .users(ConditionalAccessPolicyConditionsUsersArgs.builder()
+ *                     .includedUsers(&#34;None&#34;)
+ *                     .build())
+ *                 .build())
+ *             .grantControls(ConditionalAccessPolicyGrantControlsArgs.builder()
+ *                 .operator(&#34;OR&#34;)
+ *                 .builtInControls(&#34;block&#34;)
+ *                 .build())
  *             .build());
  * 
  *     }

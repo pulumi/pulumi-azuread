@@ -16,6 +16,21 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUserArgs Empty = new GetUserArgs();
 
     /**
+     * The employee identifier assigned to the user by the organisation.
+     * 
+     */
+    @Import(name="employeeId")
+    private @Nullable Output<String> employeeId;
+
+    /**
+     * @return The employee identifier assigned to the user by the organisation.
+     * 
+     */
+    public Optional<Output<String>> employeeId() {
+        return Optional.ofNullable(this.employeeId);
+    }
+
+    /**
      * The SMTP address for the user.
      * 
      */
@@ -63,7 +78,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user principal name (UPN) of the user.
      * 
-     * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+     * &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
      * 
      */
     @Import(name="userPrincipalName")
@@ -72,7 +87,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The user principal name (UPN) of the user.
      * 
-     * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+     * &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
      * 
      */
     public Optional<Output<String>> userPrincipalName() {
@@ -82,6 +97,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
     private GetUserArgs() {}
 
     private GetUserArgs(GetUserArgs $) {
+        this.employeeId = $.employeeId;
         this.mail = $.mail;
         this.mailNickname = $.mailNickname;
         this.objectId = $.objectId;
@@ -104,6 +120,27 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUserArgs defaults) {
             $ = new GetUserArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param employeeId The employee identifier assigned to the user by the organisation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder employeeId(@Nullable Output<String> employeeId) {
+            $.employeeId = employeeId;
+            return this;
+        }
+
+        /**
+         * @param employeeId The employee identifier assigned to the user by the organisation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder employeeId(String employeeId) {
+            return employeeId(Output.of(employeeId));
         }
 
         /**
@@ -172,7 +209,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalName The user principal name (UPN) of the user.
          * 
-         * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+         * &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
          * 
          * @return builder
          * 
@@ -185,7 +222,7 @@ public final class GetUserArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalName The user principal name (UPN) of the user.
          * 
-         * &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+         * &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
          * 
          * @return builder
          * 

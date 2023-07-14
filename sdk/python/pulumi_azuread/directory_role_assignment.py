@@ -85,6 +85,9 @@ class DirectoryRoleAssignmentArgs:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific
         """
+        warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
+        pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
+
         return pulumi.get(self, "app_scope_object_id")
 
     @app_scope_object_id.setter
@@ -168,6 +171,9 @@ class _DirectoryRoleAssignmentState:
         """
         Identifier of the app-specific scope when the assignment scope is app-specific
         """
+        warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
+        pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
+
         return pulumi.get(self, "app_scope_object_id")
 
     @app_scope_object_id.setter
@@ -387,6 +393,9 @@ class DirectoryRoleAssignment(pulumi.CustomResource):
         """
         Identifier of the app-specific scope when the assignment scope is app-specific
         """
+        warnings.warn("""`app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""", DeprecationWarning)
+        pulumi.log.warn("""app_scope_object_id is deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider""")
+
         return pulumi.get(self, "app_scope_object_id")
 
     @property

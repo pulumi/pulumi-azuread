@@ -17,6 +17,87 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * ## Example Usage
+ * 
+ * *Basic example*
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ApplicationPassword;
+ * import com.pulumi.azuread.ApplicationPasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .build());
+ * 
+ *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
+ *             .applicationObjectId(exampleApplication.objectId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * *Time-based rotation*
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.time.Rotating;
+ * import com.pulumi.time.RotatingArgs;
+ * import com.pulumi.azuread.ApplicationPassword;
+ * import com.pulumi.azuread.ApplicationPasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .build());
+ * 
+ *         var exampleRotating = new Rotating(&#34;exampleRotating&#34;, RotatingArgs.builder()        
+ *             .rotationDays(7)
+ *             .build());
+ * 
+ *         var exampleApplicationPassword = new ApplicationPassword(&#34;exampleApplicationPassword&#34;, ApplicationPasswordArgs.builder()        
+ *             .applicationObjectId(exampleApplication.objectId())
+ *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * This resource does not support importing.

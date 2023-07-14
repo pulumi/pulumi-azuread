@@ -3882,6 +3882,8 @@ type ConditionalAccessPolicyConditions struct {
 	Applications ConditionalAccessPolicyConditionsApplications `pulumi:"applications"`
 	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 	ClientAppTypes []string `pulumi:"clientAppTypes"`
+	// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
+	ClientApplications *ConditionalAccessPolicyConditionsClientApplications `pulumi:"clientApplications"`
 	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 	Devices *ConditionalAccessPolicyConditionsDevices `pulumi:"devices"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
@@ -3912,6 +3914,8 @@ type ConditionalAccessPolicyConditionsArgs struct {
 	Applications ConditionalAccessPolicyConditionsApplicationsInput `pulumi:"applications"`
 	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 	ClientAppTypes pulumi.StringArrayInput `pulumi:"clientAppTypes"`
+	// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
+	ClientApplications ConditionalAccessPolicyConditionsClientApplicationsPtrInput `pulumi:"clientApplications"`
 	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 	Devices ConditionalAccessPolicyConditionsDevicesPtrInput `pulumi:"devices"`
 	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
@@ -4015,6 +4019,13 @@ func (o ConditionalAccessPolicyConditionsOutput) ClientAppTypes() pulumi.StringA
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.ClientAppTypes }).(pulumi.StringArrayOutput)
 }
 
+// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsOutput) ClientApplications() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsClientApplications {
+		return v.ClientApplications
+	}).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
+}
+
 // A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 func (o ConditionalAccessPolicyConditionsOutput) Devices() ConditionalAccessPolicyConditionsDevicesPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsDevices { return v.Devices }).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
@@ -4091,6 +4102,16 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) ClientAppTypes() pulumi.Stri
 		}
 		return v.ClientAppTypes
 	}).(pulumi.StringArrayOutput)
+}
+
+// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
+func (o ConditionalAccessPolicyConditionsPtrOutput) ClientApplications() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsClientApplications {
+		if v == nil {
+			return nil
+		}
+		return v.ClientApplications
+	}).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
 }
 
 // A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
@@ -4325,6 +4346,166 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActi
 			return nil
 		}
 		return v.IncludedUserActions
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsClientApplications struct {
+	// A list of service principal IDs explicitly excluded in the policy.
+	ExcludedServicePrincipals []string `pulumi:"excludedServicePrincipals"`
+	// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
+	IncludedServicePrincipals []string `pulumi:"includedServicePrincipals"`
+}
+
+// ConditionalAccessPolicyConditionsClientApplicationsInput is an input type that accepts ConditionalAccessPolicyConditionsClientApplicationsArgs and ConditionalAccessPolicyConditionsClientApplicationsOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsClientApplicationsInput` via:
+//
+//	ConditionalAccessPolicyConditionsClientApplicationsArgs{...}
+type ConditionalAccessPolicyConditionsClientApplicationsInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsClientApplicationsOutput() ConditionalAccessPolicyConditionsClientApplicationsOutput
+	ToConditionalAccessPolicyConditionsClientApplicationsOutputWithContext(context.Context) ConditionalAccessPolicyConditionsClientApplicationsOutput
+}
+
+type ConditionalAccessPolicyConditionsClientApplicationsArgs struct {
+	// A list of service principal IDs explicitly excluded in the policy.
+	ExcludedServicePrincipals pulumi.StringArrayInput `pulumi:"excludedServicePrincipals"`
+	// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
+	IncludedServicePrincipals pulumi.StringArrayInput `pulumi:"includedServicePrincipals"`
+}
+
+func (ConditionalAccessPolicyConditionsClientApplicationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplications)(nil)).Elem()
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsArgs) ToConditionalAccessPolicyConditionsClientApplicationsOutput() ConditionalAccessPolicyConditionsClientApplicationsOutput {
+	return i.ToConditionalAccessPolicyConditionsClientApplicationsOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsArgs) ToConditionalAccessPolicyConditionsClientApplicationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsClientApplicationsOutput)
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsArgs) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionalAccessPolicyConditionsClientApplicationsArgs) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsClientApplicationsOutput).ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(ctx)
+}
+
+// ConditionalAccessPolicyConditionsClientApplicationsPtrInput is an input type that accepts ConditionalAccessPolicyConditionsClientApplicationsArgs, ConditionalAccessPolicyConditionsClientApplicationsPtr and ConditionalAccessPolicyConditionsClientApplicationsPtrOutput values.
+// You can construct a concrete instance of `ConditionalAccessPolicyConditionsClientApplicationsPtrInput` via:
+//
+//	        ConditionalAccessPolicyConditionsClientApplicationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConditionalAccessPolicyConditionsClientApplicationsPtrInput interface {
+	pulumi.Input
+
+	ToConditionalAccessPolicyConditionsClientApplicationsPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput
+	ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(context.Context) ConditionalAccessPolicyConditionsClientApplicationsPtrOutput
+}
+
+type conditionalAccessPolicyConditionsClientApplicationsPtrType ConditionalAccessPolicyConditionsClientApplicationsArgs
+
+func ConditionalAccessPolicyConditionsClientApplicationsPtr(v *ConditionalAccessPolicyConditionsClientApplicationsArgs) ConditionalAccessPolicyConditionsClientApplicationsPtrInput {
+	return (*conditionalAccessPolicyConditionsClientApplicationsPtrType)(v)
+}
+
+func (*conditionalAccessPolicyConditionsClientApplicationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsClientApplications)(nil)).Elem()
+}
+
+func (i *conditionalAccessPolicyConditionsClientApplicationsPtrType) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return i.ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionalAccessPolicyConditionsClientApplicationsPtrType) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
+}
+
+type ConditionalAccessPolicyConditionsClientApplicationsOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsClientApplicationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplications)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ToConditionalAccessPolicyConditionsClientApplicationsOutput() ConditionalAccessPolicyConditionsClientApplicationsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ToConditionalAccessPolicyConditionsClientApplicationsOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return o.ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConditionalAccessPolicyConditionsClientApplications) *ConditionalAccessPolicyConditionsClientApplications {
+		return &v
+	}).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
+}
+
+// A list of service principal IDs explicitly excluded in the policy.
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ExcludedServicePrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplications) []string {
+		return v.ExcludedServicePrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
+func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) IncludedServicePrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplications) []string {
+		return v.IncludedServicePrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+type ConditionalAccessPolicyConditionsClientApplicationsPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ConditionalAccessPolicyConditionsClientApplications)(nil)).Elem()
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutput() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ToConditionalAccessPolicyConditionsClientApplicationsPtrOutputWithContext(ctx context.Context) ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
+	return o
+}
+
+func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) Elem() ConditionalAccessPolicyConditionsClientApplicationsOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) ConditionalAccessPolicyConditionsClientApplications {
+		if v != nil {
+			return *v
+		}
+		var ret ConditionalAccessPolicyConditionsClientApplications
+		return ret
+	}).(ConditionalAccessPolicyConditionsClientApplicationsOutput)
+}
+
+// A list of service principal IDs explicitly excluded in the policy.
+func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ExcludedServicePrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludedServicePrincipals
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
+func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) IncludedServicePrincipals() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludedServicePrincipals
 	}).(pulumi.StringArrayOutput)
 }
 
@@ -5376,6 +5557,8 @@ type ConditionalAccessPolicySessionControls struct {
 	ApplicationEnforcedRestrictionsEnabled *bool `pulumi:"applicationEnforcedRestrictionsEnabled"`
 	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy *string `pulumi:"cloudAppSecurityPolicy"`
+	// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+	DisableResilienceDefaults *bool `pulumi:"disableResilienceDefaults"`
 	// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
 	PersistentBrowserMode *string `pulumi:"persistentBrowserMode"`
 	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -5402,6 +5585,8 @@ type ConditionalAccessPolicySessionControlsArgs struct {
 	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput `pulumi:"applicationEnforcedRestrictionsEnabled"`
 	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 	CloudAppSecurityPolicy pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
+	// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+	DisableResilienceDefaults pulumi.BoolPtrInput `pulumi:"disableResilienceDefaults"`
 	// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
 	PersistentBrowserMode pulumi.StringPtrInput `pulumi:"persistentBrowserMode"`
 	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -5499,6 +5684,11 @@ func (o ConditionalAccessPolicySessionControlsOutput) CloudAppSecurityPolicy() p
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.CloudAppSecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+func (o ConditionalAccessPolicySessionControlsOutput) DisableResilienceDefaults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *bool { return v.DisableResilienceDefaults }).(pulumi.BoolPtrOutput)
+}
+
 // Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
 func (o ConditionalAccessPolicySessionControlsOutput) PersistentBrowserMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.PersistentBrowserMode }).(pulumi.StringPtrOutput)
@@ -5558,6 +5748,16 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy(
 		}
 		return v.CloudAppSecurityPolicy
 	}).(pulumi.StringPtrOutput)
+}
+
+// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+func (o ConditionalAccessPolicySessionControlsPtrOutput) DisableResilienceDefaults() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableResilienceDefaults
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
@@ -10135,6 +10335,8 @@ type GetUsersUser struct {
 	AccountEnabled bool `pulumi:"accountEnabled"`
 	// The display name of the user.
 	DisplayName string `pulumi:"displayName"`
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId string `pulumi:"employeeId"`
 	// The primary email address of the user.
 	Mail string `pulumi:"mail"`
 	// The email alias of the user.
@@ -10169,6 +10371,8 @@ type GetUsersUserArgs struct {
 	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
 	// The display name of the user.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId pulumi.StringInput `pulumi:"employeeId"`
 	// The primary email address of the user.
 	Mail pulumi.StringInput `pulumi:"mail"`
 	// The email alias of the user.
@@ -10246,6 +10450,11 @@ func (o GetUsersUserOutput) AccountEnabled() pulumi.BoolOutput {
 // The display name of the user.
 func (o GetUsersUserOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The employee identifier assigned to the user by the organisation.
+func (o GetUsersUserOutput) EmployeeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetUsersUser) string { return v.EmployeeId }).(pulumi.StringOutput)
 }
 
 // The primary email address of the user.
@@ -10367,6 +10576,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsApplicationsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsApplicationsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsApplicationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsInput)(nil)).Elem(), ConditionalAccessPolicyConditionsClientApplicationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsClientApplicationsPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsClientApplicationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesPtrInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConditionalAccessPolicyConditionsDevicesFilterInput)(nil)).Elem(), ConditionalAccessPolicyConditionsDevicesFilterArgs{})
@@ -10511,6 +10722,8 @@ func init() {
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsApplicationsPtrOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsClientApplicationsOutput{})
+	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesPtrOutput{})
 	pulumi.RegisterOutputType(ConditionalAccessPolicyConditionsDevicesFilterOutput{})

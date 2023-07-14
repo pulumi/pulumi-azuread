@@ -95,6 +95,18 @@ namespace Pulumi.AzureAD
 
     public sealed class GetUsersArgs : global::Pulumi.InvokeArgs
     {
+        [Input("employeeIds")]
+        private List<string>? _employeeIds;
+
+        /// <summary>
+        /// The employee identifiers assigned to the users by the organisation.
+        /// </summary>
+        public List<string> EmployeeIds
+        {
+            get => _employeeIds ?? (_employeeIds = new List<string>());
+            set => _employeeIds = value;
+        }
+
         /// <summary>
         /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
         /// </summary>
@@ -137,7 +149,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public List<string> UserPrincipalNames
         {
@@ -153,6 +165,18 @@ namespace Pulumi.AzureAD
 
     public sealed class GetUsersInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("employeeIds")]
+        private InputList<string>? _employeeIds;
+
+        /// <summary>
+        /// The employee identifiers assigned to the users by the organisation.
+        /// </summary>
+        public InputList<string> EmployeeIds
+        {
+            get => _employeeIds ?? (_employeeIds = new InputList<string>());
+            set => _employeeIds = value;
+        }
+
         /// <summary>
         /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
         /// </summary>
@@ -195,7 +219,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal names (UPNs) of the users.
         /// 
-        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
         /// </summary>
         public InputList<string> UserPrincipalNames
         {
@@ -213,6 +237,10 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// The employee identifiers assigned to the users by the organisation.
+        /// </summary>
+        public readonly ImmutableArray<string> EmployeeIds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -238,6 +266,8 @@ namespace Pulumi.AzureAD
 
         [OutputConstructor]
         private GetUsersResult(
+            ImmutableArray<string> employeeIds,
+
             string id,
 
             bool? ignoreMissing,
@@ -252,6 +282,7 @@ namespace Pulumi.AzureAD
 
             ImmutableArray<Outputs.GetUsersUserResult> users)
         {
+            EmployeeIds = employeeIds;
             Id = id;
             IgnoreMissing = ignoreMissing;
             MailNicknames = mailNicknames;

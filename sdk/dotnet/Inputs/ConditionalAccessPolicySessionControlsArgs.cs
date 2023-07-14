@@ -27,6 +27,12 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? CloudAppSecurityPolicy { get; set; }
 
         /// <summary>
+        /// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        /// </summary>
+        [Input("disableResilienceDefaults")]
+        public Input<bool>? DisableResilienceDefaults { get; set; }
+
+        /// <summary>
         /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
         /// </summary>
         [Input("persistentBrowserMode")]

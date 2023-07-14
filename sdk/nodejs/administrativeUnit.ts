@@ -15,6 +15,19 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.AdministrativeUnit("example", {
+ *     description: "Just an example",
+ *     displayName: "Example-AU",
+ *     hiddenMembershipEnabled: false,
+ * });
+ * ```
+ *
  * ## Import
  *
  * Administrative units can be imported using their object ID, e.g.
@@ -60,7 +73,7 @@ export class AdministrativeUnit extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
     public readonly hiddenMembershipEnabled!: pulumi.Output<boolean | undefined>;
     /**
@@ -127,7 +140,7 @@ export interface AdministrativeUnitState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**
@@ -159,7 +172,7 @@ export interface AdministrativeUnitArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**

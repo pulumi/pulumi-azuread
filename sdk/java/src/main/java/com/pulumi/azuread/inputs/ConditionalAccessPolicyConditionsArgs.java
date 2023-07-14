@@ -4,6 +4,7 @@
 package com.pulumi.azuread.inputs;
 
 import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsApplicationsArgs;
+import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs;
 import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsDevicesArgs;
 import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsLocationsArgs;
 import com.pulumi.azuread.inputs.ConditionalAccessPolicyConditionsPlatformsArgs;
@@ -49,6 +50,21 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
      */
     public Output<List<String>> clientAppTypes() {
         return this.clientAppTypes;
+    }
+
+    /**
+     * An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * 
+     */
+    @Import(name="clientApplications")
+    private @Nullable Output<ConditionalAccessPolicyConditionsClientApplicationsArgs> clientApplications;
+
+    /**
+     * @return An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * 
+     */
+    public Optional<Output<ConditionalAccessPolicyConditionsClientApplicationsArgs>> clientApplications() {
+        return Optional.ofNullable(this.clientApplications);
     }
 
     /**
@@ -146,6 +162,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
     private ConditionalAccessPolicyConditionsArgs(ConditionalAccessPolicyConditionsArgs $) {
         this.applications = $.applications;
         this.clientAppTypes = $.clientAppTypes;
+        this.clientApplications = $.clientApplications;
         this.devices = $.devices;
         this.locations = $.locations;
         this.platforms = $.platforms;
@@ -222,6 +239,27 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
          */
         public Builder clientAppTypes(String... clientAppTypes) {
             return clientAppTypes(List.of(clientAppTypes));
+        }
+
+        /**
+         * @param clientApplications An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientApplications(@Nullable Output<ConditionalAccessPolicyConditionsClientApplicationsArgs> clientApplications) {
+            $.clientApplications = clientApplications;
+            return this;
+        }
+
+        /**
+         * @param clientApplications An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clientApplications(ConditionalAccessPolicyConditionsClientApplicationsArgs clientApplications) {
+            return clientApplications(Output.of(clientApplications));
         }
 
         /**

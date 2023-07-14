@@ -28,7 +28,6 @@ import javax.annotation.Nullable;
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
  * 
  * ## Example Usage
- * 
  * ```java
  * package generated_program;
  * 
@@ -53,7 +52,7 @@ import javax.annotation.Nullable;
  *         var example = new AdministrativeUnit(&#34;example&#34;, AdministrativeUnitArgs.builder()        
  *             .description(&#34;Just an example&#34;)
  *             .displayName(&#34;Example-AU&#34;)
- *             .visibility(&#34;Public&#34;)
+ *             .hiddenMembershipEnabled(false)
  *             .build());
  * 
  *     }
@@ -100,14 +99,14 @@ public class AdministrativeUnit extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      * 
      */
     @Export(name="hiddenMembershipEnabled", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> hiddenMembershipEnabled;
 
     /**
-     * @return Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * @return Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      * 
      */
     public Output<Optional<Boolean>> hiddenMembershipEnabled() {

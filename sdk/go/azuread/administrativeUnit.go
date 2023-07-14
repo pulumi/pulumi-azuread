@@ -21,6 +21,34 @@ import (
 //
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
+//				Description:             pulumi.String("Just an example"),
+//				DisplayName:             pulumi.String("Example-AU"),
+//				HiddenMembershipEnabled: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // Administrative units can be imported using their object ID, e.g.
@@ -37,7 +65,7 @@ type AdministrativeUnit struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The display name of the administrative unit.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrOutput `pulumi:"hiddenMembershipEnabled"`
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
@@ -85,7 +113,7 @@ type administrativeUnitState struct {
 	Description *string `pulumi:"description"`
 	// The display name of the administrative unit.
 	DisplayName *string `pulumi:"displayName"`
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled *bool `pulumi:"hiddenMembershipEnabled"`
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
@@ -102,7 +130,7 @@ type AdministrativeUnitState struct {
 	Description pulumi.StringPtrInput
 	// The display name of the administrative unit.
 	DisplayName pulumi.StringPtrInput
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrInput
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
@@ -123,7 +151,7 @@ type administrativeUnitArgs struct {
 	Description *string `pulumi:"description"`
 	// The display name of the administrative unit.
 	DisplayName string `pulumi:"displayName"`
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled *bool `pulumi:"hiddenMembershipEnabled"`
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
@@ -139,7 +167,7 @@ type AdministrativeUnitArgs struct {
 	Description pulumi.StringPtrInput
 	// The display name of the administrative unit.
 	DisplayName pulumi.StringInput
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrInput
 	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
 	//
@@ -246,7 +274,7 @@ func (o AdministrativeUnitOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 func (o AdministrativeUnitOutput) HiddenMembershipEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.BoolPtrOutput { return v.HiddenMembershipEnabled }).(pulumi.BoolPtrOutput)
 }

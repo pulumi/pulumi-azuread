@@ -88,6 +88,12 @@ namespace Pulumi.AzureAD
     public sealed class GetUserArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The employee identifier assigned to the user by the organisation.
+        /// </summary>
+        [Input("employeeId")]
+        public string? EmployeeId { get; set; }
+
+        /// <summary>
         /// The SMTP address for the user.
         /// </summary>
         [Input("mail")]
@@ -108,7 +114,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal name (UPN) of the user.
         /// 
-        /// &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+        /// &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
         /// </summary>
         [Input("userPrincipalName")]
         public string? UserPrincipalName { get; set; }
@@ -121,6 +127,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetUserInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The employee identifier assigned to the user by the organisation.
+        /// </summary>
+        [Input("employeeId")]
+        public Input<string>? EmployeeId { get; set; }
+
         /// <summary>
         /// The SMTP address for the user.
         /// </summary>
@@ -142,7 +154,7 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// The user principal name (UPN) of the user.
         /// 
-        /// &gt; One of `user_principal_name`, `object_id`, `mail` or `mail_nickname` must be specified.
+        /// &gt; One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
         /// </summary>
         [Input("userPrincipalName")]
         public Input<string>? UserPrincipalName { get; set; }

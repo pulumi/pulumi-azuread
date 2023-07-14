@@ -187,13 +187,13 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getServicePrincipals:getServicePrincipals', __args__, opts=opts, typ=GetServicePrincipalsResult).value
 
     return AwaitableGetServicePrincipalsResult(
-        application_ids=__ret__.application_ids,
-        display_names=__ret__.display_names,
-        id=__ret__.id,
-        ignore_missing=__ret__.ignore_missing,
-        object_ids=__ret__.object_ids,
-        return_all=__ret__.return_all,
-        service_principals=__ret__.service_principals)
+        application_ids=pulumi.get(__ret__, 'application_ids'),
+        display_names=pulumi.get(__ret__, 'display_names'),
+        id=pulumi.get(__ret__, 'id'),
+        ignore_missing=pulumi.get(__ret__, 'ignore_missing'),
+        object_ids=pulumi.get(__ret__, 'object_ids'),
+        return_all=pulumi.get(__ret__, 'return_all'),
+        service_principals=pulumi.get(__ret__, 'service_principals'))
 
 
 @_utilities.lift_output_func(get_service_principals)

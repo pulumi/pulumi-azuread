@@ -48,14 +48,14 @@ public final class AdministrativeUnitArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      * 
      */
     @Import(name="hiddenMembershipEnabled")
     private @Nullable Output<Boolean> hiddenMembershipEnabled;
 
     /**
-     * @return Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * @return Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      * 
      */
     public Optional<Output<Boolean>> hiddenMembershipEnabled() {
@@ -167,7 +167,7 @@ public final class AdministrativeUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hiddenMembershipEnabled Whether the administrative unit and its members are hidden or publicly viewable in the directory
+         * @param hiddenMembershipEnabled Whether the administrative unit and its members are hidden or publicly viewable in the directory.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class AdministrativeUnitArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param hiddenMembershipEnabled Whether the administrative unit and its members are hidden or publicly viewable in the directory
+         * @param hiddenMembershipEnabled Whether the administrative unit and its members are hidden or publicly viewable in the directory.
          * 
          * @return builder
          * 

@@ -24,6 +24,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? CloudAppSecurityPolicy;
         /// <summary>
+        /// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        /// </summary>
+        public readonly bool? DisableResilienceDefaults;
+        /// <summary>
         /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
         /// </summary>
         public readonly string? PersistentBrowserMode;
@@ -42,6 +46,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string? cloudAppSecurityPolicy,
 
+            bool? disableResilienceDefaults,
+
             string? persistentBrowserMode,
 
             int? signInFrequency,
@@ -50,6 +56,7 @@ namespace Pulumi.AzureAD.Outputs
         {
             ApplicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
             CloudAppSecurityPolicy = cloudAppSecurityPolicy;
+            DisableResilienceDefaults = disableResilienceDefaults;
             PersistentBrowserMode = persistentBrowserMode;
             SignInFrequency = signInFrequency;
             SignInFrequencyPeriod = signInFrequencyPeriod;

@@ -101,9 +101,9 @@ def get_directory_object(object_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getDirectoryObject:getDirectoryObject', __args__, opts=opts, typ=GetDirectoryObjectResult).value
 
     return AwaitableGetDirectoryObjectResult(
-        id=__ret__.id,
-        object_id=__ret__.object_id,
-        type=__ret__.type)
+        id=pulumi.get(__ret__, 'id'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        type=pulumi.get(__ret__, 'type'))
 
 
 @_utilities.lift_output_func(get_directory_object)

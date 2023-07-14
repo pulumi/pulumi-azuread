@@ -27,6 +27,99 @@ import javax.annotation.Nullable;
  * 
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  * 
+ * ## Example Usage
+ * 
+ * *Basic example*
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.azuread.ServicePrincipalPassword;
+ * import com.pulumi.azuread.ServicePrincipalPasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .build());
+ * 
+ *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(exampleApplication.applicationId())
+ *             .build());
+ * 
+ *         var exampleServicePrincipalPassword = new ServicePrincipalPassword(&#34;exampleServicePrincipalPassword&#34;, ServicePrincipalPasswordArgs.builder()        
+ *             .servicePrincipalId(exampleServicePrincipal.objectId())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * *Time-based rotation*
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.azuread.Application;
+ * import com.pulumi.azuread.ApplicationArgs;
+ * import com.pulumi.azuread.ServicePrincipal;
+ * import com.pulumi.azuread.ServicePrincipalArgs;
+ * import com.pulumi.time.Rotating;
+ * import com.pulumi.time.RotatingArgs;
+ * import com.pulumi.azuread.ServicePrincipalPassword;
+ * import com.pulumi.azuread.ServicePrincipalPasswordArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleApplication = new Application(&#34;exampleApplication&#34;, ApplicationArgs.builder()        
+ *             .displayName(&#34;example&#34;)
+ *             .build());
+ * 
+ *         var exampleServicePrincipal = new ServicePrincipal(&#34;exampleServicePrincipal&#34;, ServicePrincipalArgs.builder()        
+ *             .applicationId(exampleApplication.applicationId())
+ *             .build());
+ * 
+ *         var exampleRotating = new Rotating(&#34;exampleRotating&#34;, RotatingArgs.builder()        
+ *             .rotationDays(7)
+ *             .build());
+ * 
+ *         var exampleServicePrincipalPassword = new ServicePrincipalPassword(&#34;exampleServicePrincipalPassword&#34;, ServicePrincipalPasswordArgs.builder()        
+ *             .servicePrincipalId(exampleServicePrincipal.objectId())
+ *             .rotateWhenChanged(Map.of(&#34;rotation&#34;, exampleRotating.id()))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
  * ## Import
  * 
  * This resource does not support importing.

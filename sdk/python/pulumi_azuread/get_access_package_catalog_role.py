@@ -138,11 +138,11 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole', __args__, opts=opts, typ=GetAccessPackageCatalogRoleResult).value
 
     return AwaitableGetAccessPackageCatalogRoleResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        object_id=__ret__.object_id,
-        template_id=__ret__.template_id)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        template_id=pulumi.get(__ret__, 'template_id'))
 
 
 @_utilities.lift_output_func(get_access_package_catalog_role)

@@ -36,6 +36,7 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getUsers:getUsers", {
+        "employeeIds": args.employeeIds,
         "ignoreMissing": args.ignoreMissing,
         "mailNicknames": args.mailNicknames,
         "objectIds": args.objectIds,
@@ -48,6 +49,10 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * The employee identifiers assigned to the users by the organisation.
+     */
+    employeeIds?: string[];
     /**
      * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      */
@@ -67,7 +72,7 @@ export interface GetUsersArgs {
     /**
      * The user principal names (UPNs) of the users.
      *
-     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: string[];
 }
@@ -76,6 +81,10 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    /**
+     * The employee identifiers assigned to the users by the organisation.
+     */
+    readonly employeeIds: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
@@ -133,6 +142,10 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetUsersOutputArgs {
     /**
+     * The employee identifiers assigned to the users by the organisation.
+     */
+    employeeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
      */
     ignoreMissing?: pulumi.Input<boolean>;
@@ -151,7 +164,7 @@ export interface GetUsersOutputArgs {
     /**
      * The user principal names (UPNs) of the users.
      *
-     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      */
     userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

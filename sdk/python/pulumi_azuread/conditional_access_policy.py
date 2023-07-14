@@ -199,6 +199,8 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         """
         Manages a Conditional Access Policy within Azure Active Directory.
 
+        > **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+
         ## API Permissions
 
         The following API permissions are required in order to use this resource.
@@ -208,6 +210,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
+        ### All users except guests or external users
 
         ```python
         import pulumi
@@ -249,10 +252,67 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
                 application_enforced_restrictions_enabled=True,
                 cloud_app_security_policy="monitorOnly",
+                disable_resilience_defaults=False,
                 sign_in_frequency=10,
                 sign_in_frequency_period="hours",
             ),
             state="disabled")
+        ```
+        ### Included client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=[current.object_id],
+                    excluded_service_principals=[],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
+        ```
+        ### Excluded client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=["ServicePrincipalsInMyTenant"],
+                    excluded_service_principals=[current.object_id],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
         ```
 
         ## Import
@@ -280,6 +340,8 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         """
         Manages a Conditional Access Policy within Azure Active Directory.
 
+        > **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+
         ## API Permissions
 
         The following API permissions are required in order to use this resource.
@@ -289,6 +351,7 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 
         ## Example Usage
+        ### All users except guests or external users
 
         ```python
         import pulumi
@@ -330,10 +393,67 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
             session_controls=azuread.ConditionalAccessPolicySessionControlsArgs(
                 application_enforced_restrictions_enabled=True,
                 cloud_app_security_policy="monitorOnly",
+                disable_resilience_defaults=False,
                 sign_in_frequency=10,
                 sign_in_frequency_period="hours",
             ),
             state="disabled")
+        ```
+        ### Included client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=[current.object_id],
+                    excluded_service_principals=[],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
+        ```
+        ### Excluded client applications / service principals
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        current = azuread.get_client_config()
+        example = azuread.ConditionalAccessPolicy("example",
+            display_name="example policy",
+            state="disabled",
+            conditions=azuread.ConditionalAccessPolicyConditionsArgs(
+                client_app_types=["all"],
+                applications=azuread.ConditionalAccessPolicyConditionsApplicationsArgs(
+                    included_applications=["All"],
+                ),
+                client_applications=azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs(
+                    included_service_principals=["ServicePrincipalsInMyTenant"],
+                    excluded_service_principals=[current.object_id],
+                ),
+                users=azuread.ConditionalAccessPolicyConditionsUsersArgs(
+                    included_users=["None"],
+                ),
+            ),
+            grant_controls=azuread.ConditionalAccessPolicyGrantControlsArgs(
+                operator="OR",
+                built_in_controls=["block"],
+            ))
         ```
 
         ## Import

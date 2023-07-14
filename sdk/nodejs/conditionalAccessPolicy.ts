@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Manages a Conditional Access Policy within Azure Active Directory.
  *
+ * > **Licensing Requirements** Specifying `clientApplications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+ *
  * ## API Permissions
  *
  * The following API permissions are required in order to use this resource.
@@ -18,6 +20,7 @@ import * as utilities from "./utilities";
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
  *
  * ## Example Usage
+ * ### All users except guests or external users
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -59,10 +62,69 @@ import * as utilities from "./utilities";
  *     sessionControls: {
  *         applicationEnforcedRestrictionsEnabled: true,
  *         cloudAppSecurityPolicy: "monitorOnly",
+ *         disableResilienceDefaults: false,
  *         signInFrequency: 10,
  *         signInFrequencyPeriod: "hours",
  *     },
  *     state: "disabled",
+ * });
+ * ```
+ * ### Included client applications / service principals
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.ConditionalAccessPolicy("example", {
+ *     displayName: "example policy",
+ *     state: "disabled",
+ *     conditions: {
+ *         clientAppTypes: ["all"],
+ *         applications: {
+ *             includedApplications: ["All"],
+ *         },
+ *         clientApplications: {
+ *             includedServicePrincipals: [current.then(current => current.objectId)],
+ *             excludedServicePrincipals: [],
+ *         },
+ *         users: {
+ *             includedUsers: ["None"],
+ *         },
+ *     },
+ *     grantControls: {
+ *         operator: "OR",
+ *         builtInControls: ["block"],
+ *     },
+ * });
+ * ```
+ * ### Excluded client applications / service principals
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const current = azuread.getClientConfig({});
+ * const example = new azuread.ConditionalAccessPolicy("example", {
+ *     displayName: "example policy",
+ *     state: "disabled",
+ *     conditions: {
+ *         clientAppTypes: ["all"],
+ *         applications: {
+ *             includedApplications: ["All"],
+ *         },
+ *         clientApplications: {
+ *             includedServicePrincipals: ["ServicePrincipalsInMyTenant"],
+ *             excludedServicePrincipals: [current.then(current => current.objectId)],
+ *         },
+ *         users: {
+ *             includedUsers: ["None"],
+ *         },
+ *     },
+ *     grantControls: {
+ *         operator: "OR",
+ *         builtInControls: ["block"],
+ *     },
  * });
  * ```
  *

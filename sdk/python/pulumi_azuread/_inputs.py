@@ -40,6 +40,7 @@ __all__ = [
     'ApplicationWebImplicitGrantArgs',
     'ConditionalAccessPolicyConditionsArgs',
     'ConditionalAccessPolicyConditionsApplicationsArgs',
+    'ConditionalAccessPolicyConditionsClientApplicationsArgs',
     'ConditionalAccessPolicyConditionsDevicesArgs',
     'ConditionalAccessPolicyConditionsDevicesFilterArgs',
     'ConditionalAccessPolicyConditionsLocationsArgs',
@@ -1777,6 +1778,7 @@ class ConditionalAccessPolicyConditionsArgs:
                  applications: pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'],
                  client_app_types: pulumi.Input[Sequence[pulumi.Input[str]]],
                  users: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'],
+                 client_applications: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']] = None,
                  devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']] = None,
                  locations: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']] = None,
                  platforms: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']] = None,
@@ -1786,6 +1788,7 @@ class ConditionalAccessPolicyConditionsArgs:
         :param pulumi.Input['ConditionalAccessPolicyConditionsApplicationsArgs'] applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
         :param pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs'] users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        :param pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs'] client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
@@ -1795,6 +1798,8 @@ class ConditionalAccessPolicyConditionsArgs:
         pulumi.set(__self__, "applications", applications)
         pulumi.set(__self__, "client_app_types", client_app_types)
         pulumi.set(__self__, "users", users)
+        if client_applications is not None:
+            pulumi.set(__self__, "client_applications", client_applications)
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
         if locations is not None:
@@ -1841,6 +1846,18 @@ class ConditionalAccessPolicyConditionsArgs:
     @users.setter
     def users(self, value: pulumi.Input['ConditionalAccessPolicyConditionsUsersArgs']):
         pulumi.set(self, "users", value)
+
+    @property
+    @pulumi.getter(name="clientApplications")
+    def client_applications(self) -> Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']]:
+        """
+        An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        """
+        return pulumi.get(self, "client_applications")
+
+    @client_applications.setter
+    def client_applications(self, value: Optional[pulumi.Input['ConditionalAccessPolicyConditionsClientApplicationsArgs']]):
+        pulumi.set(self, "client_applications", value)
 
     @property
     @pulumi.getter
@@ -1956,6 +1973,45 @@ class ConditionalAccessPolicyConditionsApplicationsArgs:
     @included_user_actions.setter
     def included_user_actions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "included_user_actions", value)
+
+
+@pulumi.input_type
+class ConditionalAccessPolicyConditionsClientApplicationsArgs:
+    def __init__(__self__, *,
+                 excluded_service_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 included_service_principals: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] excluded_service_principals: A list of service principal IDs explicitly excluded in the policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] included_service_principals: A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+        """
+        if excluded_service_principals is not None:
+            pulumi.set(__self__, "excluded_service_principals", excluded_service_principals)
+        if included_service_principals is not None:
+            pulumi.set(__self__, "included_service_principals", included_service_principals)
+
+    @property
+    @pulumi.getter(name="excludedServicePrincipals")
+    def excluded_service_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of service principal IDs explicitly excluded in the policy.
+        """
+        return pulumi.get(self, "excluded_service_principals")
+
+    @excluded_service_principals.setter
+    def excluded_service_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "excluded_service_principals", value)
+
+    @property
+    @pulumi.getter(name="includedServicePrincipals")
+    def included_service_principals(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+        """
+        return pulumi.get(self, "included_service_principals")
+
+    @included_service_principals.setter
+    def included_service_principals(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "included_service_principals", value)
 
 
 @pulumi.input_type
@@ -2275,6 +2331,7 @@ class ConditionalAccessPolicySessionControlsArgs:
     def __init__(__self__, *,
                  application_enforced_restrictions_enabled: Optional[pulumi.Input[bool]] = None,
                  cloud_app_security_policy: Optional[pulumi.Input[str]] = None,
+                 disable_resilience_defaults: Optional[pulumi.Input[bool]] = None,
                  persistent_browser_mode: Optional[pulumi.Input[str]] = None,
                  sign_in_frequency: Optional[pulumi.Input[int]] = None,
                  sign_in_frequency_period: Optional[pulumi.Input[str]] = None):
@@ -2283,6 +2340,7 @@ class ConditionalAccessPolicySessionControlsArgs:
                
                > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         :param pulumi.Input[str] cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+        :param pulumi.Input[bool] disable_resilience_defaults: Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
         :param pulumi.Input[str] persistent_browser_mode: Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
         :param pulumi.Input[int] sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         :param pulumi.Input[str] sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -2291,6 +2349,8 @@ class ConditionalAccessPolicySessionControlsArgs:
             pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
         if cloud_app_security_policy is not None:
             pulumi.set(__self__, "cloud_app_security_policy", cloud_app_security_policy)
+        if disable_resilience_defaults is not None:
+            pulumi.set(__self__, "disable_resilience_defaults", disable_resilience_defaults)
         if persistent_browser_mode is not None:
             pulumi.set(__self__, "persistent_browser_mode", persistent_browser_mode)
         if sign_in_frequency is not None:
@@ -2323,6 +2383,18 @@ class ConditionalAccessPolicySessionControlsArgs:
     @cloud_app_security_policy.setter
     def cloud_app_security_policy(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloud_app_security_policy", value)
+
+    @property
+    @pulumi.getter(name="disableResilienceDefaults")
+    def disable_resilience_defaults(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_resilience_defaults")
+
+    @disable_resilience_defaults.setter
+    def disable_resilience_defaults(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_resilience_defaults", value)
 
     @property
     @pulumi.getter(name="persistentBrowserMode")
