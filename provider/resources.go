@@ -28,12 +28,11 @@ import (
 
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 
 	"github.com/hashicorp/terraform-provider-azuread/shim"
 	"github.com/pulumi/pulumi-azuread/provider/v5/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	tfshim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 )
@@ -285,14 +284,11 @@ func Provider() tfbridge.ProviderInfo {
 		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	err := x.ComputeDefaults(&prov, x.TokensSingleModule("azuread_", mainMod,
-		x.MakeStandardToken(mainPkg)))
-	contract.AssertNoErrorf(err, "failed to apply auto token mapping")
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("azuread_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
 
 	prov.SetAutonaming(255, "-")
-
-	err = x.AutoAliasing(&prov, prov.GetMetadata())
-	contract.AssertNoErrorf(err, "auto aliasing apply failed")
 
 	return prov
 }
