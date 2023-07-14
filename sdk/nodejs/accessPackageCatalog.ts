@@ -4,37 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages an access package catalog within Identity Governance in Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.AccessPackageCatalog("example", {
- *     description: "Example access package catalog",
- *     displayName: "example-access-package-catalog",
- * });
- * ```
- *
- * ## Import
- *
- * An Access Package Catalog can be imported using the `id`, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
- * ```
- */
 export class AccessPackageCatalog extends pulumi.CustomResource {
     /**
      * Get an existing AccessPackageCatalog resource's state with the given name, ID, and optional extra
@@ -64,19 +33,19 @@ export class AccessPackageCatalog extends pulumi.CustomResource {
     }
 
     /**
-     * The description of the access package catalog.
+     * The description of the access package catalog
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The display name of the access package catalog.
+     * The display name of the access package catalog
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Whether the access packages in this catalog can be requested by users outside the tenant.
+     * Whether the access packages in this catalog can be requested by users outside the tenant
      */
     public readonly externallyVisible!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether the access packages in this catalog are available for management.
+     * Whether the access packages in this catalog are available for management
      */
     public readonly published!: pulumi.Output<boolean | undefined>;
 
@@ -120,19 +89,19 @@ export class AccessPackageCatalog extends pulumi.CustomResource {
  */
 export interface AccessPackageCatalogState {
     /**
-     * The description of the access package catalog.
+     * The description of the access package catalog
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name of the access package catalog.
+     * The display name of the access package catalog
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Whether the access packages in this catalog can be requested by users outside the tenant.
+     * Whether the access packages in this catalog can be requested by users outside the tenant
      */
     externallyVisible?: pulumi.Input<boolean>;
     /**
-     * Whether the access packages in this catalog are available for management.
+     * Whether the access packages in this catalog are available for management
      */
     published?: pulumi.Input<boolean>;
 }
@@ -142,19 +111,19 @@ export interface AccessPackageCatalogState {
  */
 export interface AccessPackageCatalogArgs {
     /**
-     * The description of the access package catalog.
+     * The description of the access package catalog
      */
     description: pulumi.Input<string>;
     /**
-     * The display name of the access package catalog.
+     * The display name of the access package catalog
      */
     displayName: pulumi.Input<string>;
     /**
-     * Whether the access packages in this catalog can be requested by users outside the tenant.
+     * Whether the access packages in this catalog can be requested by users outside the tenant
      */
     externallyVisible?: pulumi.Input<boolean>;
     /**
-     * Whether the access packages in this catalog are available for management.
+     * Whether the access packages in this catalog are available for management
      */
     published?: pulumi.Input<boolean>;
 }

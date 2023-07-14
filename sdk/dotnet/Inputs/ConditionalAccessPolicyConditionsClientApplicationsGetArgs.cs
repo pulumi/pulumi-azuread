@@ -14,10 +14,6 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("excludedServicePrincipals")]
         private InputList<string>? _excludedServicePrincipals;
-
-        /// <summary>
-        /// A list of service principal IDs explicitly excluded in the policy.
-        /// </summary>
         public InputList<string> ExcludedServicePrincipals
         {
             get => _excludedServicePrincipals ?? (_excludedServicePrincipals = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("includedServicePrincipals")]
         private InputList<string>? _includedServicePrincipals;
-
-        /// <summary>
-        /// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
-        /// </summary>
         public InputList<string> IncludedServicePrincipals
         {
             get => _includedServicePrincipals ?? (_includedServicePrincipals = new InputList<string>());

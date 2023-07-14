@@ -6,27 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Use this data source to access information about activated directory roles within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
- *
- * When authenticated with a user principal, this data source does not require any additional roles.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getDirectoryRoles({});
- * export const roles = current.then(current => current.objectIds);
- * ```
- */
 export function getDirectoryRoles(opts?: pulumi.InvokeOptions): Promise<GetDirectoryRolesResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -42,16 +21,7 @@ export interface GetDirectoryRolesResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
-    /**
-     * The object IDs of the roles.
-     */
     readonly objectIds: string[];
-    /**
-     * A list of users. Each `role` object provides the attributes documented below.
-     */
     readonly roles: outputs.GetDirectoryRolesRole[];
-    /**
-     * The template IDs of the roles.
-     */
     readonly templateIds: string[];
 }

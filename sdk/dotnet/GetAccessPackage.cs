@@ -11,117 +11,9 @@ namespace Pulumi.AzureAD
 {
     public static class GetAccessPackage
     {
-        /// <summary>
-        /// Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
-        /// 
-        /// ## API Permissions
-        /// 
-        /// The following API permissions are required in order to use this data source.
-        /// 
-        /// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
-        /// 
-        /// When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// *Look up by ID*
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAccessPackage.Invoke(new()
-        ///     {
-        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// *Look up by DisplayName*
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAccessPackage.Invoke(new()
-        ///     {
-        ///         CatalogId = "00000000-0000-0000-0000-000000000000",
-        ///         DisplayName = "My access package Catalog",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAccessPackageResult> InvokeAsync(GetAccessPackageArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPackageResult>("azuread:index/getAccessPackage:getAccessPackage", args ?? new GetAccessPackageArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
-        /// 
-        /// ## API Permissions
-        /// 
-        /// The following API permissions are required in order to use this data source.
-        /// 
-        /// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
-        /// 
-        /// When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// *Look up by ID*
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAccessPackage.Invoke(new()
-        ///     {
-        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// *Look up by DisplayName*
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAccessPackage.Invoke(new()
-        ///     {
-        ///         CatalogId = "00000000-0000-0000-0000-000000000000",
-        ///         DisplayName = "My access package Catalog",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetAccessPackageResult> Invoke(GetAccessPackageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPackageResult>("azuread:index/getAccessPackage:getAccessPackage", args ?? new GetAccessPackageInvokeArgs(), options.WithDefaults());
     }
@@ -129,23 +21,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetAccessPackageArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the Catalog this access package is in.
-        /// </summary>
         [Input("catalogId")]
         public string? CatalogId { get; set; }
 
-        /// <summary>
-        /// The display name of the access package.
-        /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
-        /// <summary>
-        /// The ID of this access package.
-        /// 
-        /// &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
-        /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
@@ -157,23 +38,12 @@ namespace Pulumi.AzureAD
 
     public sealed class GetAccessPackageInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the Catalog this access package is in.
-        /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
 
-        /// <summary>
-        /// The display name of the access package.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// The ID of this access package.
-        /// 
-        /// &gt; Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
-        /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
@@ -188,14 +58,8 @@ namespace Pulumi.AzureAD
     public sealed class GetAccessPackageResult
     {
         public readonly string? CatalogId;
-        /// <summary>
-        /// The description of the access package.
-        /// </summary>
         public readonly string Description;
         public readonly string DisplayName;
-        /// <summary>
-        /// Whether the access package is hidden from the requestor.
-        /// </summary>
         public readonly bool Hidden;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.

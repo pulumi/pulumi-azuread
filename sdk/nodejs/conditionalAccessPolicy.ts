@@ -6,136 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a Conditional Access Policy within Azure Active Directory.
- *
- * > **Licensing Requirements** Specifying `clientApplications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
- *
- * ## Example Usage
- * ### All users except guests or external users
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.ConditionalAccessPolicy("example", {
- *     conditions: {
- *         applications: {
- *             excludedApplications: [],
- *             includedApplications: ["All"],
- *         },
- *         clientAppTypes: ["all"],
- *         devices: {
- *             filter: {
- *                 mode: "exclude",
- *                 rule: "device.operatingSystem eq \"Doors\"",
- *             },
- *         },
- *         locations: {
- *             excludedLocations: ["AllTrusted"],
- *             includedLocations: ["All"],
- *         },
- *         platforms: {
- *             excludedPlatforms: ["iOS"],
- *             includedPlatforms: ["android"],
- *         },
- *         signInRiskLevels: ["medium"],
- *         userRiskLevels: ["medium"],
- *         users: {
- *             excludedUsers: ["GuestsOrExternalUsers"],
- *             includedUsers: ["All"],
- *         },
- *     },
- *     displayName: "example policy",
- *     grantControls: {
- *         builtInControls: ["mfa"],
- *         operator: "OR",
- *     },
- *     sessionControls: {
- *         applicationEnforcedRestrictionsEnabled: true,
- *         cloudAppSecurityPolicy: "monitorOnly",
- *         disableResilienceDefaults: false,
- *         signInFrequency: 10,
- *         signInFrequencyPeriod: "hours",
- *     },
- *     state: "disabled",
- * });
- * ```
- * ### Included client applications / service principals
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getClientConfig({});
- * const example = new azuread.ConditionalAccessPolicy("example", {
- *     displayName: "example policy",
- *     state: "disabled",
- *     conditions: {
- *         clientAppTypes: ["all"],
- *         applications: {
- *             includedApplications: ["All"],
- *         },
- *         clientApplications: {
- *             includedServicePrincipals: [current.then(current => current.objectId)],
- *             excludedServicePrincipals: [],
- *         },
- *         users: {
- *             includedUsers: ["None"],
- *         },
- *     },
- *     grantControls: {
- *         operator: "OR",
- *         builtInControls: ["block"],
- *     },
- * });
- * ```
- * ### Excluded client applications / service principals
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const current = azuread.getClientConfig({});
- * const example = new azuread.ConditionalAccessPolicy("example", {
- *     displayName: "example policy",
- *     state: "disabled",
- *     conditions: {
- *         clientAppTypes: ["all"],
- *         applications: {
- *             includedApplications: ["All"],
- *         },
- *         clientApplications: {
- *             includedServicePrincipals: ["ServicePrincipalsInMyTenant"],
- *             excludedServicePrincipals: [current.then(current => current.objectId)],
- *         },
- *         users: {
- *             includedUsers: ["None"],
- *         },
- *     },
- *     grantControls: {
- *         operator: "OR",
- *         builtInControls: ["block"],
- *     },
- * });
- * ```
- *
- * ## Import
- *
- * Conditional Access Policies can be imported using the `id`, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000
- * ```
- */
 export class ConditionalAccessPolicy extends pulumi.CustomResource {
     /**
      * Get an existing ConditionalAccessPolicy resource's state with the given name, ID, and optional extra
@@ -164,25 +34,10 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
         return obj['__pulumiType'] === ConditionalAccessPolicy.__pulumiType;
     }
 
-    /**
-     * A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-     */
     public readonly conditions!: pulumi.Output<outputs.ConditionalAccessPolicyConditions>;
-    /**
-     * The friendly name for this Conditional Access Policy.
-     */
     public readonly displayName!: pulumi.Output<string>;
-    /**
-     * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-     */
     public readonly grantControls!: pulumi.Output<outputs.ConditionalAccessPolicyGrantControls>;
-    /**
-     * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
-     */
     public readonly sessionControls!: pulumi.Output<outputs.ConditionalAccessPolicySessionControls | undefined>;
-    /**
-     * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-     */
     public readonly state!: pulumi.Output<string>;
 
     /**
@@ -232,25 +87,10 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ConditionalAccessPolicy resources.
  */
 export interface ConditionalAccessPolicyState {
-    /**
-     * A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-     */
     conditions?: pulumi.Input<inputs.ConditionalAccessPolicyConditions>;
-    /**
-     * The friendly name for this Conditional Access Policy.
-     */
     displayName?: pulumi.Input<string>;
-    /**
-     * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-     */
     grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
-    /**
-     * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
-     */
     sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls>;
-    /**
-     * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-     */
     state?: pulumi.Input<string>;
 }
 
@@ -258,24 +98,9 @@ export interface ConditionalAccessPolicyState {
  * The set of arguments for constructing a ConditionalAccessPolicy resource.
  */
 export interface ConditionalAccessPolicyArgs {
-    /**
-     * A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-     */
     conditions: pulumi.Input<inputs.ConditionalAccessPolicyConditions>;
-    /**
-     * The friendly name for this Conditional Access Policy.
-     */
     displayName: pulumi.Input<string>;
-    /**
-     * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-     */
     grantControls: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
-    /**
-     * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
-     */
     sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls>;
-    /**
-     * Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-     */
     state: pulumi.Input<string>;
 }

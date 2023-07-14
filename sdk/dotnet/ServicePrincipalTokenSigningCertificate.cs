@@ -9,101 +9,18 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages a token signing certificate associated with a service principal within Azure Active Directory.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// *Using default settings*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///     });
-    /// 
-    ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", new()
-    ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// *Using custom settings*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///     });
-    /// 
-    ///     var exampleServicePrincipalTokenSigningCertificate = new AzureAD.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", new()
-    ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
-    ///         DisplayName = "CN=example.com",
-    ///         EndDate = "2023-05-01T01:02:03Z",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
-    /// ```
-    /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
-    /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate")]
     public partial class ServicePrincipalTokenSigningCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies a friendly name for the certificate.
-        /// Must start with `CN=`. Changing this field forces a new resource to be created.
-        /// 
-        /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+        /// A friendly name for the certificate
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// Default is 3 years from current date.
         /// </summary>
         [Output("endDate")]
         public Output<string> EndDate { get; private set; } = null!;
@@ -115,7 +32,7 @@ namespace Pulumi.AzureAD
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this certificate should be created
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -127,14 +44,13 @@ namespace Pulumi.AzureAD
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
+        /// The thumbprint of the certificate.
         /// </summary>
         [Output("thumbprint")]
         public Output<string> Thumbprint { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate data, which is PEM encoded but does not include the
-        /// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+        /// The certificate data, which is PEM encoded but does not include the header/footer
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -190,22 +106,20 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalTokenSigningCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a friendly name for the certificate.
-        /// Must start with `CN=`. Changing this field forces a new resource to be created.
-        /// 
-        /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+        /// A friendly name for the certificate
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// Default is 3 years from current date.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this certificate should be created
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -219,16 +133,14 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalTokenSigningCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a friendly name for the certificate.
-        /// Must start with `CN=`. Changing this field forces a new resource to be created.
-        /// 
-        /// &gt; If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+        /// A friendly name for the certificate
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// Default is 3 years from current date.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
@@ -240,7 +152,7 @@ namespace Pulumi.AzureAD
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this certificate should be created
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
@@ -252,7 +164,7 @@ namespace Pulumi.AzureAD
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
+        /// The thumbprint of the certificate.
         /// </summary>
         [Input("thumbprint")]
         public Input<string>? Thumbprint { get; set; }
@@ -261,8 +173,7 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The certificate data, which is PEM encoded but does not include the
-        /// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+        /// The certificate data, which is PEM encoded but does not include the header/footer
         /// </summary>
         public Input<string>? Value
         {

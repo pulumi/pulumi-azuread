@@ -13,21 +13,9 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class AccessPackageAssignmentPolicyQuestion
     {
-        /// <summary>
-        /// One or more blocks configuring a choice to the question, as documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyQuestionChoice> Choices;
-        /// <summary>
-        /// Whether this question is required.
-        /// </summary>
         public readonly bool? Required;
-        /// <summary>
-        /// The sequence number of this question.
-        /// </summary>
         public readonly int? Sequence;
-        /// <summary>
-        /// A block describing the content of this question, as documented below.
-        /// </summary>
         public readonly Outputs.AccessPackageAssignmentPolicyQuestionText Text;
 
         [OutputConstructor]

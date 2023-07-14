@@ -12,15 +12,9 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ApplicationRequiredResourceAccessResourceAccessArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
-        /// </summary>
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
-        /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 

@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicyConditionsPlatforms
     {
-        /// <summary>
-        /// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-        /// </summary>
         public readonly ImmutableArray<string> ExcludedPlatforms;
-        /// <summary>
-        /// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-        /// </summary>
         public readonly ImmutableArray<string> IncludedPlatforms;
 
         [OutputConstructor]

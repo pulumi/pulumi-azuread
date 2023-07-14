@@ -4,27 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a certificate associated with a service principal within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
- *
- * ## Import
- *
- * Certificates can be imported using the object ID of the associated service principal and the key ID of the certificate credential, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
- * ```
- *
- *  -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "certificate" and the certificate's key ID in the format `{ServicePrincipalObjectId}/certificate/{CertificateKeyId}`.
- */
 export class ServicePrincipalCertificate extends pulumi.CustomResource {
     /**
      * Get an existing ServicePrincipalCertificate resource's state with the given name, ID, and optional extra
@@ -54,39 +33,37 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-     *
-     * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
+     * Specifies the encoding used for the supplied certificate data
      */
     public readonly encoding!: pulumi.Output<string | undefined>;
     /**
-     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
      */
     public readonly endDate!: pulumi.Output<string>;
     /**
-     * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
-     *
-     * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+     * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time
+     * units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
      */
     public readonly endDateRelative!: pulumi.Output<string | undefined>;
     /**
-     * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
+     * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated
      */
     public readonly keyId!: pulumi.Output<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The object ID of the service principal for which this certificate should be created
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * If this isn't specified, the current date is used
      */
     public readonly startDate!: pulumi.Output<string>;
     /**
-     * The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+     * The type of key/certificate
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
-     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER
      */
     public readonly value!: pulumi.Output<string>;
 
@@ -140,39 +117,37 @@ export class ServicePrincipalCertificate extends pulumi.CustomResource {
  */
 export interface ServicePrincipalCertificateState {
     /**
-     * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-     *
-     * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
+     * Specifies the encoding used for the supplied certificate data
      */
     encoding?: pulumi.Input<string>;
     /**
-     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
      */
     endDate?: pulumi.Input<string>;
     /**
-     * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
-     *
-     * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+     * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time
+     * units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
      */
     endDateRelative?: pulumi.Input<string>;
     /**
-     * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
+     * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated
      */
     keyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The object ID of the service principal for which this certificate should be created
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * If this isn't specified, the current date is used
      */
     startDate?: pulumi.Input<string>;
     /**
-     * The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+     * The type of key/certificate
      */
     type?: pulumi.Input<string>;
     /**
-     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER
      */
     value?: pulumi.Input<string>;
 }
@@ -182,39 +157,37 @@ export interface ServicePrincipalCertificateState {
  */
 export interface ServicePrincipalCertificateArgs {
     /**
-     * Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-     *
-     * > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
+     * Specifies the encoding used for the supplied certificate data
      */
     encoding?: pulumi.Input<string>;
     /**
-     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
      */
     endDate?: pulumi.Input<string>;
     /**
-     * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". Changing this field forces a new resource to be created.
-     *
-     * > One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
+     * A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Valid time
+     * units are "ns", "us" (or "µs"), "ms", "s", "m", "h"
      */
     endDateRelative?: pulumi.Input<string>;
     /**
-     * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated. Changing this field forces a new resource to be created.
+     * A UUID used to uniquely identify this certificate. If not specified a UUID will be automatically generated
      */
     keyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+     * The object ID of the service principal for which this certificate should be created
      */
     servicePrincipalId: pulumi.Input<string>;
     /**
-     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
+     * The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+     * If this isn't specified, the current date is used
      */
     startDate?: pulumi.Input<string>;
     /**
-     * The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+     * The type of key/certificate
      */
     type?: pulumi.Input<string>;
     /**
-     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+     * The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER
      */
     value: pulumi.Input<string>;
 }

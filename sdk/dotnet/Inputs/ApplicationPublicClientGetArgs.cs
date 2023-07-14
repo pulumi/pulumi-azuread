@@ -14,10 +14,6 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("redirectUris")]
         private InputList<string>? _redirectUris;
-
-        /// <summary>
-        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
-        /// </summary>
         public InputList<string> RedirectUris
         {
             get => _redirectUris ?? (_redirectUris = new InputList<string>());

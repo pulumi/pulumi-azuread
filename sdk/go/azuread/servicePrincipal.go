@@ -11,244 +11,72 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// ## Example Usage
-//
-// *Create a service principal for an application*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId:             exampleApplication.ApplicationId,
-//				AppRoleAssignmentRequired: pulumi.Bool(false),
-//				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Create a service principal for an enterprise application*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			current, err := azuread.GetClientConfig(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId:             exampleApplication.ApplicationId,
-//				AppRoleAssignmentRequired: pulumi.Bool(false),
-//				Owners: pulumi.StringArray{
-//					*pulumi.String(current.ObjectId),
-//				},
-//				FeatureTags: azuread.ServicePrincipalFeatureTagArray{
-//					&azuread.ServicePrincipalFeatureTagArgs{
-//						Enterprise: pulumi.Bool(true),
-//						Gallery:    pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Manage a service principal for a first-party Microsoft application*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
-//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Create a service principal for an application created from a gallery template*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
-//				DisplayName: pulumi.StringRef("Marketo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Service principals can be imported using their object ID, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/servicePrincipal:ServicePrincipal test 00000000-0000-0000-0000-000000000000
-//
-// ```
 type ServicePrincipal struct {
 	pulumi.CustomResourceState
 
-	// Whether or not the service principal account is enabled. Defaults to `true`.
+	// Whether or not the service principal account is enabled
 	AccountEnabled pulumi.BoolPtrOutput `pulumi:"accountEnabled"`
-	// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full
+	// resource ids for managed identities
 	AlternativeNames pulumi.StringArrayOutput `pulumi:"alternativeNames"`
-	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or
+	// access token to the application
 	AppRoleAssignmentRequired pulumi.BoolPtrOutput `pulumi:"appRoleAssignmentRequired"`
-	// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
-	AppRoleIds pulumi.StringMapOutput `pulumi:"appRoleIds"`
-	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
-	// The application ID (client ID) of the application for which to create a service principal.
+	// Mapping of app role names to UUIDs
+	AppRoleIds pulumi.StringMapOutput             `pulumi:"appRoleIds"`
+	AppRoles   ServicePrincipalAppRoleArrayOutput `pulumi:"appRoles"`
+	// The application ID (client ID) of the application for which to create a service principal
 	ApplicationId pulumi.StringOutput `pulumi:"applicationId"`
-	// The tenant ID where the associated application is registered.
+	// The tenant ID where the associated application is registered
 	ApplicationTenantId pulumi.StringOutput `pulumi:"applicationTenantId"`
-	// A description of the service principal provided for internal end-users.
+	// Description of the service principal provided for internal end-users
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Display name for the app role that appears during app role assignment and in consent experiences.
+	// The display name of the application associated with this service principal
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
-	//
-	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+	// Block of features to configure for this service principal using tags
 	FeatureTags ServicePrincipalFeatureTagArrayOutput `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
 	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 	Features ServicePrincipalFeatureArrayOutput `pulumi:"features"`
-	// Home page or landing page of the associated application.
+	// Home page or landing page of the application
 	HomepageUrl pulumi.StringOutput `pulumi:"homepageUrl"`
-	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the
+	// application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for
+	// applications configured with SAML-based single sign-on
 	LoginUrl pulumi.StringPtrOutput `pulumi:"loginUrl"`
-	// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or
+	// SAML logout protocols
 	LogoutUrl pulumi.StringOutput `pulumi:"logoutUrl"`
-	// A free text field to capture information about the service principal, typically used for operational purposes.
+	// Free text field to capture information about the service principal, typically used for operational purposes
 	Notes pulumi.StringPtrOutput `pulumi:"notes"`
-	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+	// List of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+	// This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications
 	NotificationEmailAddresses pulumi.StringArrayOutput `pulumi:"notificationEmailAddresses"`
-	// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
-	Oauth2PermissionScopeIds pulumi.StringMapOutput `pulumi:"oauth2PermissionScopeIds"`
-	// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
-	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayOutput `pulumi:"oauth2PermissionScopes"`
-	// The object ID of the service principal.
+	// Mapping of OAuth2.0 permission scope names to UUIDs
+	Oauth2PermissionScopeIds pulumi.StringMapOutput                           `pulumi:"oauth2PermissionScopeIds"`
+	Oauth2PermissionScopes   ServicePrincipalOauth2PermissionScopeArrayOutput `pulumi:"oauth2PermissionScopes"`
+	// The object ID of the service principal
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
-	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the
+	// application from Microsoft 365 or the Azure AD My Apps
 	PreferredSingleSignOnMode pulumi.StringPtrOutput `pulumi:"preferredSingleSignOnMode"`
-	// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+	// The URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0
+	// authorization codes and access tokens are sent for the associated application
 	RedirectUris pulumi.StringArrayOutput `pulumi:"redirectUris"`
-	// The URL where the service exposes SAML metadata for federation.
+	// The URL where the service exposes SAML metadata for federation
 	SamlMetadataUrl pulumi.StringOutput `pulumi:"samlMetadataUrl"`
-	// A `samlSingleSignOn` block as documented below.
+	// Settings related to SAML single sign-on
 	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrOutput `pulumi:"samlSingleSignOn"`
-	// A list of identifier URI(s), copied over from the associated application.
+	// A list of identifier URI(s), copied over from the associated application
 	ServicePrincipalNames pulumi.StringArrayOutput `pulumi:"servicePrincipalNames"`
-	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	// The Microsoft account types that are supported for the associated application
 	SignInAudience pulumi.StringOutput `pulumi:"signInAudience"`
-	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
-	//
-	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+	// A set of tags to apply to the service principal
 	Tags pulumi.StringArrayOutput `pulumi:"tags"`
-	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	// Identifies whether the service principal represents an application or a managed identity
 	Type pulumi.StringOutput `pulumi:"type"`
 	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting pulumi.BoolPtrOutput `pulumi:"useExisting"`
@@ -286,134 +114,138 @@ func GetServicePrincipal(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipal resources.
 type servicePrincipalState struct {
-	// Whether or not the service principal account is enabled. Defaults to `true`.
+	// Whether or not the service principal account is enabled
 	AccountEnabled *bool `pulumi:"accountEnabled"`
-	// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full
+	// resource ids for managed identities
 	AlternativeNames []string `pulumi:"alternativeNames"`
-	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or
+	// access token to the application
 	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
-	// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
-	AppRoleIds map[string]string `pulumi:"appRoleIds"`
-	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles []ServicePrincipalAppRole `pulumi:"appRoles"`
-	// The application ID (client ID) of the application for which to create a service principal.
+	// Mapping of app role names to UUIDs
+	AppRoleIds map[string]string         `pulumi:"appRoleIds"`
+	AppRoles   []ServicePrincipalAppRole `pulumi:"appRoles"`
+	// The application ID (client ID) of the application for which to create a service principal
 	ApplicationId *string `pulumi:"applicationId"`
-	// The tenant ID where the associated application is registered.
+	// The tenant ID where the associated application is registered
 	ApplicationTenantId *string `pulumi:"applicationTenantId"`
-	// A description of the service principal provided for internal end-users.
+	// Description of the service principal provided for internal end-users
 	Description *string `pulumi:"description"`
-	// Display name for the app role that appears during app role assignment and in consent experiences.
+	// The display name of the application associated with this service principal
 	DisplayName *string `pulumi:"displayName"`
-	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
-	//
-	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+	// Block of features to configure for this service principal using tags
 	FeatureTags []ServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
 	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 	Features []ServicePrincipalFeature `pulumi:"features"`
-	// Home page or landing page of the associated application.
+	// Home page or landing page of the application
 	HomepageUrl *string `pulumi:"homepageUrl"`
-	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the
+	// application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for
+	// applications configured with SAML-based single sign-on
 	LoginUrl *string `pulumi:"loginUrl"`
-	// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or
+	// SAML logout protocols
 	LogoutUrl *string `pulumi:"logoutUrl"`
-	// A free text field to capture information about the service principal, typically used for operational purposes.
+	// Free text field to capture information about the service principal, typically used for operational purposes
 	Notes *string `pulumi:"notes"`
-	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+	// List of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+	// This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications
 	NotificationEmailAddresses []string `pulumi:"notificationEmailAddresses"`
-	// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
-	Oauth2PermissionScopeIds map[string]string `pulumi:"oauth2PermissionScopeIds"`
-	// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
-	Oauth2PermissionScopes []ServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
-	// The object ID of the service principal.
+	// Mapping of OAuth2.0 permission scope names to UUIDs
+	Oauth2PermissionScopeIds map[string]string                       `pulumi:"oauth2PermissionScopeIds"`
+	Oauth2PermissionScopes   []ServicePrincipalOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// The object ID of the service principal
 	ObjectId *string `pulumi:"objectId"`
 	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners []string `pulumi:"owners"`
-	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the
+	// application from Microsoft 365 or the Azure AD My Apps
 	PreferredSingleSignOnMode *string `pulumi:"preferredSingleSignOnMode"`
-	// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+	// The URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0
+	// authorization codes and access tokens are sent for the associated application
 	RedirectUris []string `pulumi:"redirectUris"`
-	// The URL where the service exposes SAML metadata for federation.
+	// The URL where the service exposes SAML metadata for federation
 	SamlMetadataUrl *string `pulumi:"samlMetadataUrl"`
-	// A `samlSingleSignOn` block as documented below.
+	// Settings related to SAML single sign-on
 	SamlSingleSignOn *ServicePrincipalSamlSingleSignOn `pulumi:"samlSingleSignOn"`
-	// A list of identifier URI(s), copied over from the associated application.
+	// A list of identifier URI(s), copied over from the associated application
 	ServicePrincipalNames []string `pulumi:"servicePrincipalNames"`
-	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	// The Microsoft account types that are supported for the associated application
 	SignInAudience *string `pulumi:"signInAudience"`
-	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
-	//
-	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+	// A set of tags to apply to the service principal
 	Tags []string `pulumi:"tags"`
-	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	// Identifies whether the service principal represents an application or a managed identity
 	Type *string `pulumi:"type"`
 	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting *bool `pulumi:"useExisting"`
 }
 
 type ServicePrincipalState struct {
-	// Whether or not the service principal account is enabled. Defaults to `true`.
+	// Whether or not the service principal account is enabled
 	AccountEnabled pulumi.BoolPtrInput
-	// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full
+	// resource ids for managed identities
 	AlternativeNames pulumi.StringArrayInput
-	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or
+	// access token to the application
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
-	// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+	// Mapping of app role names to UUIDs
 	AppRoleIds pulumi.StringMapInput
-	// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-	AppRoles ServicePrincipalAppRoleArrayInput
-	// The application ID (client ID) of the application for which to create a service principal.
+	AppRoles   ServicePrincipalAppRoleArrayInput
+	// The application ID (client ID) of the application for which to create a service principal
 	ApplicationId pulumi.StringPtrInput
-	// The tenant ID where the associated application is registered.
+	// The tenant ID where the associated application is registered
 	ApplicationTenantId pulumi.StringPtrInput
-	// A description of the service principal provided for internal end-users.
+	// Description of the service principal provided for internal end-users
 	Description pulumi.StringPtrInput
-	// Display name for the app role that appears during app role assignment and in consent experiences.
+	// The display name of the application associated with this service principal
 	DisplayName pulumi.StringPtrInput
-	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
-	//
-	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+	// Block of features to configure for this service principal using tags
 	FeatureTags ServicePrincipalFeatureTagArrayInput
 	// Block of features to configure for this service principal using tags
 	//
 	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 	Features ServicePrincipalFeatureArrayInput
-	// Home page or landing page of the associated application.
+	// Home page or landing page of the application
 	HomepageUrl pulumi.StringPtrInput
-	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the
+	// application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for
+	// applications configured with SAML-based single sign-on
 	LoginUrl pulumi.StringPtrInput
-	// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or
+	// SAML logout protocols
 	LogoutUrl pulumi.StringPtrInput
-	// A free text field to capture information about the service principal, typically used for operational purposes.
+	// Free text field to capture information about the service principal, typically used for operational purposes
 	Notes pulumi.StringPtrInput
-	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+	// List of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+	// This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications
 	NotificationEmailAddresses pulumi.StringArrayInput
-	// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+	// Mapping of OAuth2.0 permission scope names to UUIDs
 	Oauth2PermissionScopeIds pulumi.StringMapInput
-	// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
-	Oauth2PermissionScopes ServicePrincipalOauth2PermissionScopeArrayInput
-	// The object ID of the service principal.
+	Oauth2PermissionScopes   ServicePrincipalOauth2PermissionScopeArrayInput
+	// The object ID of the service principal
 	ObjectId pulumi.StringPtrInput
 	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners pulumi.StringArrayInput
-	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the
+	// application from Microsoft 365 or the Azure AD My Apps
 	PreferredSingleSignOnMode pulumi.StringPtrInput
-	// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+	// The URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0
+	// authorization codes and access tokens are sent for the associated application
 	RedirectUris pulumi.StringArrayInput
-	// The URL where the service exposes SAML metadata for federation.
+	// The URL where the service exposes SAML metadata for federation
 	SamlMetadataUrl pulumi.StringPtrInput
-	// A `samlSingleSignOn` block as documented below.
+	// Settings related to SAML single sign-on
 	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrInput
-	// A list of identifier URI(s), copied over from the associated application.
+	// A list of identifier URI(s), copied over from the associated application
 	ServicePrincipalNames pulumi.StringArrayInput
-	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	// The Microsoft account types that are supported for the associated application
 	SignInAudience pulumi.StringPtrInput
-	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
-	//
-	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+	// A set of tags to apply to the service principal
 	Tags pulumi.StringArrayInput
-	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	// Identifies whether the service principal represents an application or a managed identity
 	Type pulumi.StringPtrInput
 	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting pulumi.BoolPtrInput
@@ -424,39 +256,41 @@ func (ServicePrincipalState) ElementType() reflect.Type {
 }
 
 type servicePrincipalArgs struct {
-	// Whether or not the service principal account is enabled. Defaults to `true`.
+	// Whether or not the service principal account is enabled
 	AccountEnabled *bool `pulumi:"accountEnabled"`
-	// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full
+	// resource ids for managed identities
 	AlternativeNames []string `pulumi:"alternativeNames"`
-	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or
+	// access token to the application
 	AppRoleAssignmentRequired *bool `pulumi:"appRoleAssignmentRequired"`
-	// The application ID (client ID) of the application for which to create a service principal.
+	// The application ID (client ID) of the application for which to create a service principal
 	ApplicationId string `pulumi:"applicationId"`
-	// A description of the service principal provided for internal end-users.
+	// Description of the service principal provided for internal end-users
 	Description *string `pulumi:"description"`
-	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
-	//
-	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+	// Block of features to configure for this service principal using tags
 	FeatureTags []ServicePrincipalFeatureTag `pulumi:"featureTags"`
 	// Block of features to configure for this service principal using tags
 	//
 	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 	Features []ServicePrincipalFeature `pulumi:"features"`
-	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the
+	// application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for
+	// applications configured with SAML-based single sign-on
 	LoginUrl *string `pulumi:"loginUrl"`
-	// A free text field to capture information about the service principal, typically used for operational purposes.
+	// Free text field to capture information about the service principal, typically used for operational purposes
 	Notes *string `pulumi:"notes"`
-	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+	// List of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+	// This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications
 	NotificationEmailAddresses []string `pulumi:"notificationEmailAddresses"`
 	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners []string `pulumi:"owners"`
-	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the
+	// application from Microsoft 365 or the Azure AD My Apps
 	PreferredSingleSignOnMode *string `pulumi:"preferredSingleSignOnMode"`
-	// A `samlSingleSignOn` block as documented below.
+	// Settings related to SAML single sign-on
 	SamlSingleSignOn *ServicePrincipalSamlSingleSignOn `pulumi:"samlSingleSignOn"`
-	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
-	//
-	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+	// A set of tags to apply to the service principal
 	Tags []string `pulumi:"tags"`
 	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting *bool `pulumi:"useExisting"`
@@ -464,39 +298,41 @@ type servicePrincipalArgs struct {
 
 // The set of arguments for constructing a ServicePrincipal resource.
 type ServicePrincipalArgs struct {
-	// Whether or not the service principal account is enabled. Defaults to `true`.
+	// Whether or not the service principal account is enabled
 	AccountEnabled pulumi.BoolPtrInput
-	// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+	// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full
+	// resource ids for managed identities
 	AlternativeNames pulumi.StringArrayInput
-	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or
+	// access token to the application
 	AppRoleAssignmentRequired pulumi.BoolPtrInput
-	// The application ID (client ID) of the application for which to create a service principal.
+	// The application ID (client ID) of the application for which to create a service principal
 	ApplicationId pulumi.StringInput
-	// A description of the service principal provided for internal end-users.
+	// Description of the service principal provided for internal end-users
 	Description pulumi.StringPtrInput
-	// A `featureTags` block as described below. Cannot be used together with the `tags` property.
-	//
-	// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+	// Block of features to configure for this service principal using tags
 	FeatureTags ServicePrincipalFeatureTagArrayInput
 	// Block of features to configure for this service principal using tags
 	//
 	// Deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider
 	Features ServicePrincipalFeatureArrayInput
-	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+	// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the
+	// application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for
+	// applications configured with SAML-based single sign-on
 	LoginUrl pulumi.StringPtrInput
-	// A free text field to capture information about the service principal, typically used for operational purposes.
+	// Free text field to capture information about the service principal, typically used for operational purposes
 	Notes pulumi.StringPtrInput
-	// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+	// List of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+	// This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications
 	NotificationEmailAddresses pulumi.StringArrayInput
 	// A list of object IDs of principals that will be granted ownership of the service principal
 	Owners pulumi.StringArrayInput
-	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the
+	// application from Microsoft 365 or the Azure AD My Apps
 	PreferredSingleSignOnMode pulumi.StringPtrInput
-	// A `samlSingleSignOn` block as documented below.
+	// Settings related to SAML single sign-on
 	SamlSingleSignOn ServicePrincipalSamlSingleSignOnPtrInput
-	// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
-	//
-	// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+	// A set of tags to apply to the service principal
 	Tags pulumi.StringArrayInput
 	// When true, the resource will return an existing service principal instead of failing with an error
 	UseExisting pulumi.BoolPtrInput
@@ -589,54 +425,53 @@ func (o ServicePrincipalOutput) ToServicePrincipalOutputWithContext(ctx context.
 	return o
 }
 
-// Whether or not the service principal account is enabled. Defaults to `true`.
+// Whether or not the service principal account is enabled
 func (o ServicePrincipalOutput) AccountEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.AccountEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// A set of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
+// A list of alternative names, used to retrieve service principals by subscription, identify resource group and full
+// resource ids for managed identities
 func (o ServicePrincipalOutput) AlternativeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.AlternativeNames }).(pulumi.StringArrayOutput)
 }
 
-// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application. Defaults to `false`.
+// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or
+// access token to the application
 func (o ServicePrincipalOutput) AppRoleAssignmentRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.BoolPtrOutput { return v.AppRoleAssignmentRequired }).(pulumi.BoolPtrOutput)
 }
 
-// A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
+// Mapping of app role names to UUIDs
 func (o ServicePrincipalOutput) AppRoleIds() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringMapOutput { return v.AppRoleIds }).(pulumi.StringMapOutput)
 }
 
-// A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 func (o ServicePrincipalOutput) AppRoles() ServicePrincipalAppRoleArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalAppRoleArrayOutput { return v.AppRoles }).(ServicePrincipalAppRoleArrayOutput)
 }
 
-// The application ID (client ID) of the application for which to create a service principal.
+// The application ID (client ID) of the application for which to create a service principal
 func (o ServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
-// The tenant ID where the associated application is registered.
+// The tenant ID where the associated application is registered
 func (o ServicePrincipalOutput) ApplicationTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ApplicationTenantId }).(pulumi.StringOutput)
 }
 
-// A description of the service principal provided for internal end-users.
+// Description of the service principal provided for internal end-users
 func (o ServicePrincipalOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Display name for the app role that appears during app role assignment and in consent experiences.
+// The display name of the application associated with this service principal
 func (o ServicePrincipalOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// A `featureTags` block as described below. Cannot be used together with the `tags` property.
-//
-// > **Features and Tags** Features are configured for a service principal using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `featureTags` and `tags` for a service principal at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Any tags configured for the linked application will propagate to this service principal.
+// Block of features to configure for this service principal using tags
 func (o ServicePrincipalOutput) FeatureTags() ServicePrincipalFeatureTagArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalFeatureTagArrayOutput { return v.FeatureTags }).(ServicePrincipalFeatureTagArrayOutput)
 }
@@ -648,44 +483,47 @@ func (o ServicePrincipalOutput) Features() ServicePrincipalFeatureArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalFeatureArrayOutput { return v.Features }).(ServicePrincipalFeatureArrayOutput)
 }
 
-// Home page or landing page of the associated application.
+// Home page or landing page of the application
 func (o ServicePrincipalOutput) HomepageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.HomepageUrl }).(pulumi.StringOutput)
 }
 
-// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for applications configured with SAML-based single sign-on.
+// The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the
+// application from Microsoft 365 or the Azure AD My Apps. When blank, Azure AD performs IdP-initiated sign-on for
+// applications configured with SAML-based single sign-on
 func (o ServicePrincipalOutput) LoginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.LoginUrl }).(pulumi.StringPtrOutput)
 }
 
-// The URL that will be used by Microsoft's authorization service to log out an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
+// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or
+// SAML logout protocols
 func (o ServicePrincipalOutput) LogoutUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.LogoutUrl }).(pulumi.StringOutput)
 }
 
-// A free text field to capture information about the service principal, typically used for operational purposes.
+// Free text field to capture information about the service principal, typically used for operational purposes
 func (o ServicePrincipalOutput) Notes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.Notes }).(pulumi.StringPtrOutput)
 }
 
-// A set of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
+// List of email addresses where Azure AD sends a notification when the active certificate is near the expiration date.
+// This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications
 func (o ServicePrincipalOutput) NotificationEmailAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.NotificationEmailAddresses }).(pulumi.StringArrayOutput)
 }
 
-// A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
+// Mapping of OAuth2.0 permission scope names to UUIDs
 func (o ServicePrincipalOutput) Oauth2PermissionScopeIds() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringMapOutput { return v.Oauth2PermissionScopeIds }).(pulumi.StringMapOutput)
 }
 
-// A list of OAuth 2.0 delegated permission scopes exposed by the associated application, as documented below.
 func (o ServicePrincipalOutput) Oauth2PermissionScopes() ServicePrincipalOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalOauth2PermissionScopeArrayOutput {
 		return v.Oauth2PermissionScopes
 	}).(ServicePrincipalOauth2PermissionScopeArrayOutput)
 }
 
-// The object ID of the service principal.
+// The object ID of the service principal
 func (o ServicePrincipalOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
@@ -695,44 +533,44 @@ func (o ServicePrincipalOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
 }
 
-// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps. Supported values are `oidc`, `password`, `saml` or `notSupported`. Omit this property or specify a blank string to unset.
+// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the
+// application from Microsoft 365 or the Azure AD My Apps
 func (o ServicePrincipalOutput) PreferredSingleSignOnMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringPtrOutput { return v.PreferredSingleSignOnMode }).(pulumi.StringPtrOutput)
 }
 
-// A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
+// The URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0
+// authorization codes and access tokens are sent for the associated application
 func (o ServicePrincipalOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
 
-// The URL where the service exposes SAML metadata for federation.
+// The URL where the service exposes SAML metadata for federation
 func (o ServicePrincipalOutput) SamlMetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.SamlMetadataUrl }).(pulumi.StringOutput)
 }
 
-// A `samlSingleSignOn` block as documented below.
+// Settings related to SAML single sign-on
 func (o ServicePrincipalOutput) SamlSingleSignOn() ServicePrincipalSamlSingleSignOnPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipal) ServicePrincipalSamlSingleSignOnPtrOutput { return v.SamlSingleSignOn }).(ServicePrincipalSamlSingleSignOnPtrOutput)
 }
 
-// A list of identifier URI(s), copied over from the associated application.
+// A list of identifier URI(s), copied over from the associated application
 func (o ServicePrincipalOutput) ServicePrincipalNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.ServicePrincipalNames }).(pulumi.StringArrayOutput)
 }
 
-// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+// The Microsoft account types that are supported for the associated application
 func (o ServicePrincipalOutput) SignInAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.SignInAudience }).(pulumi.StringOutput)
 }
 
-// A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
-//
-// > **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it's recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+// A set of tags to apply to the service principal
 func (o ServicePrincipalOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringArrayOutput { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+// Identifies whether the service principal represents an application or a managed identity
 func (o ServicePrincipalOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipal) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

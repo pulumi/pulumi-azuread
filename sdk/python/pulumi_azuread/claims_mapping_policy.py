@@ -18,8 +18,8 @@ class ClaimsMappingPolicyArgs:
                  display_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a ClaimsMappingPolicy resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
-        :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[str] display_name: Display name for this policy
         """
         pulumi.set(__self__, "definitions", definitions)
         pulumi.set(__self__, "display_name", display_name)
@@ -28,7 +28,7 @@ class ClaimsMappingPolicyArgs:
     @pulumi.getter
     def definitions(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+        A string collection containing a JSON string that defines the rules and settings for this policy
         """
         return pulumi.get(self, "definitions")
 
@@ -40,7 +40,7 @@ class ClaimsMappingPolicyArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The display name for this Claims Mapping Policy.
+        Display name for this policy
         """
         return pulumi.get(self, "display_name")
 
@@ -56,8 +56,8 @@ class _ClaimsMappingPolicyState:
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ClaimsMappingPolicy resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
-        :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[str] display_name: Display name for this policy
         """
         if definitions is not None:
             pulumi.set(__self__, "definitions", definitions)
@@ -68,7 +68,7 @@ class _ClaimsMappingPolicyState:
     @pulumi.getter
     def definitions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+        A string collection containing a JSON string that defines the rules and settings for this policy
         """
         return pulumi.get(self, "definitions")
 
@@ -80,7 +80,7 @@ class _ClaimsMappingPolicyState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name for this Claims Mapping Policy.
+        Display name for this policy
         """
         return pulumi.get(self, "display_name")
 
@@ -98,59 +98,11 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Claims Mapping Policy within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_azuread as azuread
-
-        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
-            definitions=[json.dumps({
-                "ClaimsMappingPolicy": {
-                    "ClaimsSchema": [
-                        {
-                            "ID": "employeeid",
-                            "JwtClaimType": "name",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "Source": "user",
-                        },
-                        {
-                            "ID": "tenantcountry",
-                            "JwtClaimType": "country",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "Source": "company",
-                        },
-                    ],
-                    "IncludeBasicClaimSet": "true",
-                    "Version": 1,
-                },
-            })],
-            display_name="My Policy")
-        ```
-
-        ## Import
-
-        Claims Mapping Policy can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
-        ```
-
+        Create a ClaimsMappingPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
-        :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[str] display_name: Display name for this policy
         """
         ...
     @overload
@@ -159,55 +111,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
                  args: ClaimsMappingPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Claims Mapping Policy within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_azuread as azuread
-
-        my_policy = azuread.ClaimsMappingPolicy("myPolicy",
-            definitions=[json.dumps({
-                "ClaimsMappingPolicy": {
-                    "ClaimsSchema": [
-                        {
-                            "ID": "employeeid",
-                            "JwtClaimType": "name",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-                            "Source": "user",
-                        },
-                        {
-                            "ID": "tenantcountry",
-                            "JwtClaimType": "country",
-                            "SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-                            "Source": "company",
-                        },
-                    ],
-                    "IncludeBasicClaimSet": "true",
-                    "Version": 1,
-                },
-            })],
-            display_name="My Policy")
-        ```
-
-        ## Import
-
-        Claims Mapping Policy can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
-        ```
-
+        Create a ClaimsMappingPolicy resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ClaimsMappingPolicyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -259,8 +163,8 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
-        :param pulumi.Input[str] display_name: The display name for this Claims Mapping Policy.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] definitions: A string collection containing a JSON string that defines the rules and settings for this policy
+        :param pulumi.Input[str] display_name: Display name for this policy
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -274,7 +178,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
     @pulumi.getter
     def definitions(self) -> pulumi.Output[Sequence[str]]:
         """
-        The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+        A string collection containing a JSON string that defines the rules and settings for this policy
         """
         return pulumi.get(self, "definitions")
 
@@ -282,7 +186,7 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name for this Claims Mapping Policy.
+        Display name for this policy
         """
         return pulumi.get(self, "display_name")
 

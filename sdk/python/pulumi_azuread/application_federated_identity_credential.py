@@ -22,12 +22,15 @@ class ApplicationFederatedIdentityCredentialArgs:
                  description: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ApplicationFederatedIdentityCredential resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
-        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
-        :param pulumi.Input[str] description: A description for the federated identity credential.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+               incoming tokens.
+        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential
+        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+               combination of the values of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and
+               subject must be unique on the app.
+        :param pulumi.Input[str] description: A description for the federated identity credential
         """
         pulumi.set(__self__, "application_object_id", application_object_id)
         pulumi.set(__self__, "audiences", audiences)
@@ -41,7 +44,7 @@ class ApplicationFederatedIdentityCredentialArgs:
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this federated identity credential should be created
         """
         return pulumi.get(self, "application_object_id")
 
@@ -53,7 +56,8 @@ class ApplicationFederatedIdentityCredentialArgs:
     @pulumi.getter
     def audiences(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+        List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+        incoming tokens.
         """
         return pulumi.get(self, "audiences")
 
@@ -65,7 +69,7 @@ class ApplicationFederatedIdentityCredentialArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        A unique display name for the federated identity credential. Changing this forces a new resource to be created.
+        A unique display name for the federated identity credential
         """
         return pulumi.get(self, "display_name")
 
@@ -77,7 +81,8 @@ class ApplicationFederatedIdentityCredentialArgs:
     @pulumi.getter
     def issuer(self) -> pulumi.Input[str]:
         """
-        The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
+        The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+        combination of the values of issuer and subject must be unique on the app.
         """
         return pulumi.get(self, "issuer")
 
@@ -89,7 +94,8 @@ class ApplicationFederatedIdentityCredentialArgs:
     @pulumi.getter
     def subject(self) -> pulumi.Input[str]:
         """
-        The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+        The identifier of the external software workload within the external identity provider. The combination of issuer and
+        subject must be unique on the app.
         """
         return pulumi.get(self, "subject")
 
@@ -101,7 +107,7 @@ class ApplicationFederatedIdentityCredentialArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description for the federated identity credential.
+        A description for the federated identity credential
         """
         return pulumi.get(self, "description")
 
@@ -122,13 +128,16 @@ class _ApplicationFederatedIdentityCredentialState:
                  subject: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ApplicationFederatedIdentityCredential resources.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-        :param pulumi.Input[str] credential_id: A UUID used to uniquely identify this federated identity credential.
-        :param pulumi.Input[str] description: A description for the federated identity credential.
-        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
-        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+               incoming tokens.
+        :param pulumi.Input[str] credential_id: A UUID used to uniquely identify this federated identity credential
+        :param pulumi.Input[str] description: A description for the federated identity credential
+        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential
+        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+               combination of the values of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and
+               subject must be unique on the app.
         """
         if application_object_id is not None:
             pulumi.set(__self__, "application_object_id", application_object_id)
@@ -149,7 +158,7 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this federated identity credential should be created
         """
         return pulumi.get(self, "application_object_id")
 
@@ -161,7 +170,8 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter
     def audiences(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+        List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+        incoming tokens.
         """
         return pulumi.get(self, "audiences")
 
@@ -173,7 +183,7 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> Optional[pulumi.Input[str]]:
         """
-        A UUID used to uniquely identify this federated identity credential.
+        A UUID used to uniquely identify this federated identity credential
         """
         return pulumi.get(self, "credential_id")
 
@@ -185,7 +195,7 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        A description for the federated identity credential.
+        A description for the federated identity credential
         """
         return pulumi.get(self, "description")
 
@@ -197,7 +207,7 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique display name for the federated identity credential. Changing this forces a new resource to be created.
+        A unique display name for the federated identity credential
         """
         return pulumi.get(self, "display_name")
 
@@ -209,7 +219,8 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter
     def issuer(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
+        The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+        combination of the values of issuer and subject must be unique on the app.
         """
         return pulumi.get(self, "issuer")
 
@@ -221,7 +232,8 @@ class _ApplicationFederatedIdentityCredentialState:
     @pulumi.getter
     def subject(self) -> Optional[pulumi.Input[str]]:
         """
-        The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+        The identifier of the external software workload within the external identity provider. The combination of issuer and
+        subject must be unique on the app.
         """
         return pulumi.get(self, "subject")
 
@@ -243,40 +255,18 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
-            application_object_id=example_application.object_id,
-            display_name="my-repo-deploy",
-            description="Deployments for my-repo",
-            audiences=["api://AzureADTokenExchange"],
-            issuer="https://token.actions.githubusercontent.com",
-            subject="repo:my-organization/my-repo:environment:prod")
-        ```
-
-        ## Import
-
-        Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
-        ```
-
-         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
-
+        Create a ApplicationFederatedIdentityCredential resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-        :param pulumi.Input[str] description: A description for the federated identity credential.
-        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
-        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+               incoming tokens.
+        :param pulumi.Input[str] description: A description for the federated identity credential
+        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential
+        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+               combination of the values of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and
+               subject must be unique on the app.
         """
         ...
     @overload
@@ -285,32 +275,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
                  args: ApplicationFederatedIdentityCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_application = azuread.Application("exampleApplication", display_name="example")
-        example_application_federated_identity_credential = azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential",
-            application_object_id=example_application.object_id,
-            display_name="my-repo-deploy",
-            description="Deployments for my-repo",
-            audiences=["api://AzureADTokenExchange"],
-            issuer="https://token.actions.githubusercontent.com",
-            subject="repo:my-organization/my-repo:environment:prod")
-        ```
-
-        ## Import
-
-        Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
-        ```
-
-         -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
-
+        Create a ApplicationFederatedIdentityCredential resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param ApplicationFederatedIdentityCredentialArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -382,13 +347,16 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
-        :param pulumi.Input[str] credential_id: A UUID used to uniquely identify this federated identity credential.
-        :param pulumi.Input[str] description: A description for the federated identity credential.
-        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
-        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which this federated identity credential should be created
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] audiences: List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+               incoming tokens.
+        :param pulumi.Input[str] credential_id: A UUID used to uniquely identify this federated identity credential
+        :param pulumi.Input[str] description: A description for the federated identity credential
+        :param pulumi.Input[str] display_name: A unique display name for the federated identity credential
+        :param pulumi.Input[str] issuer: The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+               combination of the values of issuer and subject must be unique on the app.
+        :param pulumi.Input[str] subject: The identifier of the external software workload within the external identity provider. The combination of issuer and
+               subject must be unique on the app.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -407,7 +375,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
+        The object ID of the application for which this federated identity credential should be created
         """
         return pulumi.get(self, "application_object_id")
 
@@ -415,7 +383,8 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter
     def audiences(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
+        List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
+        incoming tokens.
         """
         return pulumi.get(self, "audiences")
 
@@ -423,7 +392,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Output[str]:
         """
-        A UUID used to uniquely identify this federated identity credential.
+        A UUID used to uniquely identify this federated identity credential
         """
         return pulumi.get(self, "credential_id")
 
@@ -431,7 +400,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        A description for the federated identity credential.
+        A description for the federated identity credential
         """
         return pulumi.get(self, "description")
 
@@ -439,7 +408,7 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        A unique display name for the federated identity credential. Changing this forces a new resource to be created.
+        A unique display name for the federated identity credential
         """
         return pulumi.get(self, "display_name")
 
@@ -447,7 +416,8 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter
     def issuer(self) -> pulumi.Output[str]:
         """
-        The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
+        The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
+        combination of the values of issuer and subject must be unique on the app.
         """
         return pulumi.get(self, "issuer")
 
@@ -455,7 +425,8 @@ class ApplicationFederatedIdentityCredential(pulumi.CustomResource):
     @pulumi.getter
     def subject(self) -> pulumi.Output[str]:
         """
-        The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
+        The identifier of the external software workload within the external identity provider. The combination of issuer and
+        subject must be unique on the app.
         """
         return pulumi.get(self, "subject")
 

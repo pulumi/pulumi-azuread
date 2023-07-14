@@ -18,10 +18,8 @@ class DirectoryRoleArgs:
                  template_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a DirectoryRole resource.
-        :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-               
-               > Either `display_name` or `template_id` must be specified.
+        :param pulumi.Input[str] display_name: The display name of the directory role
+        :param pulumi.Input[str] template_id: The object ID of the template associated with the directory role
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -32,7 +30,7 @@ class DirectoryRoleArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the directory role to activate. Changing this forces a new resource to be created.
+        The display name of the directory role
         """
         return pulumi.get(self, "display_name")
 
@@ -44,9 +42,7 @@ class DirectoryRoleArgs:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-
-        > Either `display_name` or `template_id` must be specified.
+        The object ID of the template associated with the directory role
         """
         return pulumi.get(self, "template_id")
 
@@ -64,12 +60,10 @@ class _DirectoryRoleState:
                  template_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering DirectoryRole resources.
-        :param pulumi.Input[str] description: The description of the directory role.
-        :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] object_id: The object ID of the directory role.
-        :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-               
-               > Either `display_name` or `template_id` must be specified.
+        :param pulumi.Input[str] description: The description of the directory role
+        :param pulumi.Input[str] display_name: The display name of the directory role
+        :param pulumi.Input[str] object_id: The object ID of the directory role
+        :param pulumi.Input[str] template_id: The object ID of the template associated with the directory role
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -84,7 +78,7 @@ class _DirectoryRoleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the directory role.
+        The description of the directory role
         """
         return pulumi.get(self, "description")
 
@@ -96,7 +90,7 @@ class _DirectoryRoleState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the directory role to activate. Changing this forces a new resource to be created.
+        The display name of the directory role
         """
         return pulumi.get(self, "display_name")
 
@@ -108,7 +102,7 @@ class _DirectoryRoleState:
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the directory role.
+        The object ID of the directory role
         """
         return pulumi.get(self, "object_id")
 
@@ -120,9 +114,7 @@ class _DirectoryRoleState:
     @pulumi.getter(name="templateId")
     def template_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-
-        > Either `display_name` or `template_id` must be specified.
+        The object ID of the template associated with the directory role
         """
         return pulumi.get(self, "template_id")
 
@@ -140,50 +132,11 @@ class DirectoryRole(pulumi.CustomResource):
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a Directory Role within Azure Active Directory. Directory Roles are also known as Administrator Roles.
-
-        Directory Roles are built-in to Azure Active Directory and are immutable. However, by default they are not activated in a tenant (except for the Global Administrator role). This resource ensures a directory role is activated from its associated role template, and exports the object ID of the role, so that role assignments can be made for it.
-
-        Once activated, directory roles cannot be deactivated and so this resource does not perform any actions on destroy.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        *Activate a directory role by its template ID*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
-        ```
-
-        *Activate a directory role by display name*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", display_name="Printer administrator")
-        ```
-
-        ## Import
-
-        This resource does not support importing.
-
+        Create a DirectoryRole resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-               
-               > Either `display_name` or `template_id` must be specified.
+        :param pulumi.Input[str] display_name: The display name of the directory role
+        :param pulumi.Input[str] template_id: The object ID of the template associated with the directory role
         """
         ...
     @overload
@@ -192,44 +145,7 @@ class DirectoryRole(pulumi.CustomResource):
                  args: Optional[DirectoryRoleArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a Directory Role within Azure Active Directory. Directory Roles are also known as Administrator Roles.
-
-        Directory Roles are built-in to Azure Active Directory and are immutable. However, by default they are not activated in a tenant (except for the Global Administrator role). This resource ensures a directory role is activated from its associated role template, and exports the object ID of the role, so that role assignments can be made for it.
-
-        Once activated, directory roles cannot be deactivated and so this resource does not perform any actions on destroy.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        *Activate a directory role by its template ID*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", template_id="00000000-0000-0000-0000-000000000000")
-        ```
-
-        *Activate a directory role by display name*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.DirectoryRole("example", display_name="Printer administrator")
-        ```
-
-        ## Import
-
-        This resource does not support importing.
-
+        Create a DirectoryRole resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DirectoryRoleArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,12 +197,10 @@ class DirectoryRole(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the directory role.
-        :param pulumi.Input[str] display_name: The display name of the directory role to activate. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] object_id: The object ID of the directory role.
-        :param pulumi.Input[str] template_id: The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-               
-               > Either `display_name` or `template_id` must be specified.
+        :param pulumi.Input[str] description: The description of the directory role
+        :param pulumi.Input[str] display_name: The display name of the directory role
+        :param pulumi.Input[str] object_id: The object ID of the directory role
+        :param pulumi.Input[str] template_id: The object ID of the template associated with the directory role
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -302,7 +216,7 @@ class DirectoryRole(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description of the directory role.
+        The description of the directory role
         """
         return pulumi.get(self, "description")
 
@@ -310,7 +224,7 @@ class DirectoryRole(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name of the directory role to activate. Changing this forces a new resource to be created.
+        The display name of the directory role
         """
         return pulumi.get(self, "display_name")
 
@@ -318,7 +232,7 @@ class DirectoryRole(pulumi.CustomResource):
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the directory role.
+        The object ID of the directory role
         """
         return pulumi.get(self, "object_id")
 
@@ -326,9 +240,7 @@ class DirectoryRole(pulumi.CustomResource):
     @pulumi.getter(name="templateId")
     def template_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-
-        > Either `display_name` or `template_id` must be specified.
+        The object ID of the template associated with the directory role
         """
         return pulumi.get(self, "template_id")
 

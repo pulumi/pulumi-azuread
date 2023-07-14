@@ -4,164 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `AppRoleAssignment.ReadWrite.All` and `Application.Read.All`, or `AppRoleAssignment.ReadWrite.All` and `Directory.Read.All`, or `Application.ReadWrite.All`, or `Directory.ReadWrite.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
- *
- * ## Example Usage
- *
- * *App role assignment for accessing Microsoft Graph*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const wellKnown = azuread.getApplicationPublishedAppIds({});
- * const msgraph = new azuread.ServicePrincipal("msgraph", {
- *     applicationId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *     useExisting: true,
- * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
- *     displayName: "example",
- *     requiredResourceAccesses: [{
- *         resourceAppId: wellKnown.then(wellKnown => wellKnown.result?.MicrosoftGraph),
- *         resourceAccesses: [
- *             {
- *                 id: msgraph.appRoleIds["User.Read.All"],
- *                 type: "Role",
- *             },
- *             {
- *                 id: msgraph.oauth2PermissionScopeIds["User.ReadWrite"],
- *                 type: "Scope",
- *             },
- *         ],
- *     }],
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("exampleAppRoleAssignment", {
- *     appRoleId: msgraph.appRoleIds["User.Read.All"],
- *     principalObjectId: exampleServicePrincipal.objectId,
- *     resourceObjectId: msgraph.objectId,
- * });
- * ```
- *
- * *App role assignment for internal application*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const internalApplication = new azuread.Application("internalApplication", {
- *     displayName: "internal",
- *     appRoles: [{
- *         allowedMemberTypes: ["Application"],
- *         description: "Apps can query the database",
- *         displayName: "Query",
- *         enabled: true,
- *         id: "00000000-0000-0000-0000-111111111111",
- *         value: "Query.All",
- *     }],
- * });
- * const internalServicePrincipal = new azuread.ServicePrincipal("internalServicePrincipal", {applicationId: internalApplication.applicationId});
- * const exampleApplication = new azuread.Application("exampleApplication", {
- *     displayName: "example",
- *     requiredResourceAccesses: [{
- *         resourceAppId: internalApplication.applicationId,
- *         resourceAccesses: [{
- *             id: internalServicePrincipal.appRoleIds["Query.All"],
- *             type: "Role",
- *         }],
- *     }],
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
- * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("exampleAppRoleAssignment", {
- *     appRoleId: internalServicePrincipal.appRoleIds["Query.All"],
- *     principalObjectId: exampleServicePrincipal.objectId,
- *     resourceObjectId: internalServicePrincipal.objectId,
- * });
- * ```
- *
- * *Assign a user and group to an internal application*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleDomains = azuread.getDomains({
- *     onlyInitial: true,
- * });
- * const internalApplication = new azuread.Application("internalApplication", {
- *     displayName: "internal",
- *     appRoles: [{
- *         allowedMemberTypes: [
- *             "Application",
- *             "User",
- *         ],
- *         description: "Admins can perform all task actions",
- *         displayName: "Admin",
- *         enabled: true,
- *         id: "00000000-0000-0000-0000-222222222222",
- *         value: "Admin.All",
- *     }],
- * });
- * const internalServicePrincipal = new azuread.ServicePrincipal("internalServicePrincipal", {applicationId: internalApplication.applicationId});
- * const exampleGroup = new azuread.Group("exampleGroup", {
- *     displayName: "example",
- *     securityEnabled: true,
- * });
- * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("exampleAppRoleAssignment", {
- *     appRoleId: internalServicePrincipal.appRoleIds["Admin.All"],
- *     principalObjectId: exampleGroup.objectId,
- *     resourceObjectId: internalServicePrincipal.objectId,
- * });
- * const exampleUser = new azuread.User("exampleUser", {
- *     displayName: "D. Duck",
- *     password: "SecretP@sswd99!",
- *     userPrincipalName: exampleDomains.then(exampleDomains => `d.duck@${exampleDomains.domains?.[0]?.domainName}`),
- * });
- * const exampleIndex_appRoleAssignmentAppRoleAssignment = new azuread.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment", {
- *     appRoleId: internalServicePrincipal.appRoleIds["Admin.All"],
- *     principalObjectId: exampleUser.objectId,
- *     resourceObjectId: internalServicePrincipal.objectId,
- * });
- * ```
- *
- * *Assign a group to the default app role for an internal application*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const internalApplication = new azuread.Application("internalApplication", {displayName: "internal"});
- * const internalServicePrincipal = new azuread.ServicePrincipal("internalServicePrincipal", {applicationId: internalApplication.applicationId});
- * const exampleGroup = new azuread.Group("exampleGroup", {
- *     displayName: "example",
- *     securityEnabled: true,
- * });
- * const exampleAppRoleAssignment = new azuread.AppRoleAssignment("exampleAppRoleAssignment", {
- *     appRoleId: "00000000-0000-0000-0000-000000000000",
- *     principalObjectId: exampleGroup.objectId,
- *     resourceObjectId: internalServicePrincipal.objectId,
- * });
- * ```
- *
- * ## Import
- *
- * App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
- * ```
- *
- *  -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
- */
 export class AppRoleAssignment extends pulumi.CustomResource {
     /**
      * Get an existing AppRoleAssignment resource's state with the given name, ID, and optional extra
@@ -191,27 +33,27 @@ export class AppRoleAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned
      */
     public readonly appRoleId!: pulumi.Output<string>;
     /**
-     * The display name of the principal to which the app role is assigned.
+     * The display name of the principal to which the app role is assigned
      */
     public /*out*/ readonly principalDisplayName!: pulumi.Output<string>;
     /**
-     * The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the user, group or service principal to be assigned this app role
      */
     public readonly principalObjectId!: pulumi.Output<string>;
     /**
-     * The object type of the principal to which the app role is assigned.
+     * The object type of the principal to which the app role is assigned
      */
     public /*out*/ readonly principalType!: pulumi.Output<string>;
     /**
-     * The display name of the application representing the resource.
+     * The display name of the application representing the resource
      */
     public /*out*/ readonly resourceDisplayName!: pulumi.Output<string>;
     /**
-     * The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
+     * The object ID of the service principal representing the resource
      */
     public readonly resourceObjectId!: pulumi.Output<string>;
 
@@ -262,27 +104,27 @@ export class AppRoleAssignment extends pulumi.CustomResource {
  */
 export interface AppRoleAssignmentState {
     /**
-     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned
      */
     appRoleId?: pulumi.Input<string>;
     /**
-     * The display name of the principal to which the app role is assigned.
+     * The display name of the principal to which the app role is assigned
      */
     principalDisplayName?: pulumi.Input<string>;
     /**
-     * The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the user, group or service principal to be assigned this app role
      */
     principalObjectId?: pulumi.Input<string>;
     /**
-     * The object type of the principal to which the app role is assigned.
+     * The object type of the principal to which the app role is assigned
      */
     principalType?: pulumi.Input<string>;
     /**
-     * The display name of the application representing the resource.
+     * The display name of the application representing the resource
      */
     resourceDisplayName?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
+     * The object ID of the service principal representing the resource
      */
     resourceObjectId?: pulumi.Input<string>;
 }
@@ -292,15 +134,15 @@ export interface AppRoleAssignmentState {
  */
 export interface AppRoleAssignmentArgs {
     /**
-     * The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+     * The ID of the app role to be assigned
      */
     appRoleId: pulumi.Input<string>;
     /**
-     * The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the user, group or service principal to be assigned this app role
      */
     principalObjectId: pulumi.Input<string>;
     /**
-     * The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
+     * The object ID of the service principal representing the resource
      */
     resourceObjectId: pulumi.Input<string>;
 }

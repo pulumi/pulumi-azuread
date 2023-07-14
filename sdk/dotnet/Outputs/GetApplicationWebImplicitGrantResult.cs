@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationWebImplicitGrantResult
     {
-        /// <summary>
-        /// Whether this web application can request an access token using OAuth 2.0 implicit flow.
-        /// </summary>
         public readonly bool AccessTokenIssuanceEnabled;
-        /// <summary>
-        /// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
-        /// </summary>
         public readonly bool IdTokenIssuanceEnabled;
 
         [OutputConstructor]

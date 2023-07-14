@@ -11,86 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Claims Mapping Policy within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"encoding/json"
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			tmpJSON0, err := json.Marshal(map[string]interface{}{
-//				"ClaimsMappingPolicy": map[string]interface{}{
-//					"ClaimsSchema": []map[string]interface{}{
-//						map[string]interface{}{
-//							"ID":            "employeeid",
-//							"JwtClaimType":  "name",
-//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
-//							"Source":        "user",
-//						},
-//						map[string]interface{}{
-//							"ID":            "tenantcountry",
-//							"JwtClaimType":  "country",
-//							"SamlClaimType": "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
-//							"Source":        "company",
-//						},
-//					},
-//					"IncludeBasicClaimSet": "true",
-//					"Version":              1,
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			json0 := string(tmpJSON0)
-//			_, err = azuread.NewClaimsMappingPolicy(ctx, "myPolicy", &azuread.ClaimsMappingPolicyArgs{
-//				Definitions: pulumi.StringArray{
-//					pulumi.String(json0),
-//				},
-//				DisplayName: pulumi.String("My Policy"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Claims Mapping Policy can be imported using the `id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
-//
-// ```
 type ClaimsMappingPolicy struct {
 	pulumi.CustomResourceState
 
-	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+	// A string collection containing a JSON string that defines the rules and settings for this policy
 	Definitions pulumi.StringArrayOutput `pulumi:"definitions"`
-	// The display name for this Claims Mapping Policy.
+	// Display name for this policy
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 }
 
@@ -129,16 +55,16 @@ func GetClaimsMappingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClaimsMappingPolicy resources.
 type claimsMappingPolicyState struct {
-	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+	// A string collection containing a JSON string that defines the rules and settings for this policy
 	Definitions []string `pulumi:"definitions"`
-	// The display name for this Claims Mapping Policy.
+	// Display name for this policy
 	DisplayName *string `pulumi:"displayName"`
 }
 
 type ClaimsMappingPolicyState struct {
-	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+	// A string collection containing a JSON string that defines the rules and settings for this policy
 	Definitions pulumi.StringArrayInput
-	// The display name for this Claims Mapping Policy.
+	// Display name for this policy
 	DisplayName pulumi.StringPtrInput
 }
 
@@ -147,17 +73,17 @@ func (ClaimsMappingPolicyState) ElementType() reflect.Type {
 }
 
 type claimsMappingPolicyArgs struct {
-	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+	// A string collection containing a JSON string that defines the rules and settings for this policy
 	Definitions []string `pulumi:"definitions"`
-	// The display name for this Claims Mapping Policy.
+	// Display name for this policy
 	DisplayName string `pulumi:"displayName"`
 }
 
 // The set of arguments for constructing a ClaimsMappingPolicy resource.
 type ClaimsMappingPolicyArgs struct {
-	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+	// A string collection containing a JSON string that defines the rules and settings for this policy
 	Definitions pulumi.StringArrayInput
-	// The display name for this Claims Mapping Policy.
+	// Display name for this policy
 	DisplayName pulumi.StringInput
 }
 
@@ -248,12 +174,12 @@ func (o ClaimsMappingPolicyOutput) ToClaimsMappingPolicyOutputWithContext(ctx co
 	return o
 }
 
-// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+// A string collection containing a JSON string that defines the rules and settings for this policy
 func (o ClaimsMappingPolicyOutput) Definitions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ClaimsMappingPolicy) pulumi.StringArrayOutput { return v.Definitions }).(pulumi.StringArrayOutput)
 }
 
-// The display name for this Claims Mapping Policy.
+// Display name for this policy
 func (o ClaimsMappingPolicyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ClaimsMappingPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

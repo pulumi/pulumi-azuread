@@ -111,73 +111,46 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
-        """
-        Whether or not the service principal account is enabled.
-        """
         return pulumi.get(self, "account_enabled")
 
     @property
     @pulumi.getter(name="alternativeNames")
     def alternative_names(self) -> Sequence[str]:
-        """
-        A list of alternative names, used to retrieve service principals by subscription, identify resource group and full resource ids for managed identities.
-        """
         return pulumi.get(self, "alternative_names")
 
     @property
     @pulumi.getter(name="appRoleAssignmentRequired")
     def app_role_assignment_required(self) -> bool:
-        """
-        Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
-        """
         return pulumi.get(self, "app_role_assignment_required")
 
     @property
     @pulumi.getter(name="appRoleIds")
     def app_role_ids(self) -> Mapping[str, str]:
-        """
-        A mapping of app role values to app role IDs, as published by the associated application, intended to be useful when referencing app roles in other resources in your configuration.
-        """
         return pulumi.get(self, "app_role_ids")
 
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> Sequence['outputs.GetServicePrincipalAppRoleResult']:
-        """
-        A list of app roles published by the associated application, as documented below. For more information [official documentation](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        """
         return pulumi.get(self, "app_roles")
 
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
-        """
-        The application ID (client ID) of the application associated with this service principal.
-        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter(name="applicationTenantId")
     def application_tenant_id(self) -> str:
-        """
-        The tenant ID where the associated application is registered.
-        """
         return pulumi.get(self, "application_tenant_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        Permission help text that appears in the admin app assignment and consent experiences.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
-        """
-        Display name for the permission that appears in the admin consent and app assignment experiences.
-        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -188,9 +161,6 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter
     def features(self) -> Sequence['outputs.GetServicePrincipalFeatureResult']:
-        """
-        A `features` block as described below.
-        """
         warnings.warn("""This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""", DeprecationWarning)
         pulumi.log.warn("""features is deprecated: This block has been renamed to `feature_tags` and will be removed in version 3.0 of the provider""")
 
@@ -199,9 +169,6 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="homepageUrl")
     def homepage_url(self) -> str:
-        """
-        Home page or landing page of the associated application.
-        """
         return pulumi.get(self, "homepage_url")
 
     @property
@@ -215,121 +182,76 @@ class GetServicePrincipalResult:
     @property
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> str:
-        """
-        The URL where the service provider redirects the user to Azure AD to authenticate. Azure AD uses the URL to launch the application from Microsoft 365 or the Azure AD My Apps.
-        """
         return pulumi.get(self, "login_url")
 
     @property
     @pulumi.getter(name="logoutUrl")
     def logout_url(self) -> str:
-        """
-        The URL that will be used by Microsoft's authorization service to logout an user using OpenId Connect front-channel, back-channel or SAML logout protocols, taken from the associated application.
-        """
         return pulumi.get(self, "logout_url")
 
     @property
     @pulumi.getter
     def notes(self) -> str:
-        """
-        A free text field to capture information about the service principal, typically used for operational purposes.
-        """
         return pulumi.get(self, "notes")
 
     @property
     @pulumi.getter(name="notificationEmailAddresses")
     def notification_email_addresses(self) -> Sequence[str]:
-        """
-        A list of email addresses where Azure AD sends a notification when the active certificate is near the expiration date. This is only for the certificates used to sign the SAML token issued for Azure AD Gallery applications.
-        """
         return pulumi.get(self, "notification_email_addresses")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopeIds")
     def oauth2_permission_scope_ids(self) -> Mapping[str, str]:
-        """
-        A mapping of OAuth2.0 permission scope values to scope IDs, as exposed by the associated application, intended to be useful when referencing permission scopes in other resources in your configuration.
-        """
         return pulumi.get(self, "oauth2_permission_scope_ids")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopes")
     def oauth2_permission_scopes(self) -> Sequence['outputs.GetServicePrincipalOauth2PermissionScopeResult']:
-        """
-        A collection of OAuth 2.0 delegated permissions exposed by the associated application. Each permission is covered by an `oauth2_permission_scopes` block as documented below.
-        """
         return pulumi.get(self, "oauth2_permission_scopes")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
-        """
-        The object ID of the service principal.
-        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="preferredSingleSignOnMode")
     def preferred_single_sign_on_mode(self) -> str:
-        """
-        The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
-        """
         return pulumi.get(self, "preferred_single_sign_on_mode")
 
     @property
     @pulumi.getter(name="redirectUris")
     def redirect_uris(self) -> Sequence[str]:
-        """
-        A list of URLs where user tokens are sent for sign-in with the associated application, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent for the associated application.
-        """
         return pulumi.get(self, "redirect_uris")
 
     @property
     @pulumi.getter(name="samlMetadataUrl")
     def saml_metadata_url(self) -> str:
-        """
-        The URL where the service exposes SAML metadata for federation.
-        """
         return pulumi.get(self, "saml_metadata_url")
 
     @property
     @pulumi.getter(name="samlSingleSignOns")
     def saml_single_sign_ons(self) -> Sequence['outputs.GetServicePrincipalSamlSingleSignOnResult']:
-        """
-        A `saml_single_sign_on` block as documented below.
-        """
         return pulumi.get(self, "saml_single_sign_ons")
 
     @property
     @pulumi.getter(name="servicePrincipalNames")
     def service_principal_names(self) -> Sequence[str]:
-        """
-        A list of identifier URI(s), copied over from the associated application.
-        """
         return pulumi.get(self, "service_principal_names")
 
     @property
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> str:
-        """
-        The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
-        """
         return pulumi.get(self, "sign_in_audience")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
-        """
-        A list of tags applied to the service principal.
-        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter
     def type(self) -> str:
-        """
-        Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
-        """
         return pulumi.get(self, "type")
 
 
@@ -374,51 +296,7 @@ def get_service_principal(application_id: Optional[str] = None,
                           object_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalResult:
     """
-    Gets information about an existing service principal associated with an application within Azure Active Directory.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    *Look up by application display name*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principal(display_name="my-awesome-application")
-    ```
-
-    *Look up by application ID (client ID)*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principal(application_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-    *Look up by service principal object ID*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-
-    :param str application_id: The application ID (client ID) of the application associated with this service principal.
-    :param str display_name: The display name of the application associated with this service principal.
-    :param str object_id: The object ID of the service principal.
-           
-           > One of `application_id`, `display_name` or `object_id` must be specified.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -464,50 +342,6 @@ def get_service_principal_output(application_id: Optional[pulumi.Input[Optional[
                                  object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalResult]:
     """
-    Gets information about an existing service principal associated with an application within Azure Active Directory.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    *Look up by application display name*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principal(display_name="my-awesome-application")
-    ```
-
-    *Look up by application ID (client ID)*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principal(application_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-    *Look up by service principal object ID*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principal(object_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-
-    :param str application_id: The application ID (client ID) of the application associated with this service principal.
-    :param str display_name: The display name of the application associated with this service principal.
-    :param str object_id: The object ID of the service principal.
-           
-           > One of `application_id`, `display_name` or `object_id` must be specified.
+    Use this data source to access information about an existing resource.
     """
     ...

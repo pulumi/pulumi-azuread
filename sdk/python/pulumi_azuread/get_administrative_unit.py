@@ -44,17 +44,11 @@ class GetAdministrativeUnitResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the administrative unit.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
-        """
-        The display name of the administrative unit.
-        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -68,25 +62,16 @@ class GetAdministrativeUnitResult:
     @property
     @pulumi.getter
     def members(self) -> Sequence[str]:
-        """
-        A list of object IDs of members who are present in this administrative unit.
-        """
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
-        """
-        The object ID of the administrative unit.
-        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter
     def visibility(self) -> str:
-        """
-        Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
-        """
         return pulumi.get(self, "visibility")
 
 
@@ -108,40 +93,7 @@ def get_administrative_unit(display_name: Optional[str] = None,
                             object_id: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAdministrativeUnitResult:
     """
-    Gets information about an adminisrative unit in Azure Active Directory.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-    ### By Group Display Name)
-
-    *Look up by display name*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_administrative_unit(display_name="Example-AU")
-    ```
-
-    *Look up by object ID*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_administrative_unit(object_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-
-    :param str display_name: Specifies the display name of the administrative unit.
-    :param str object_id: Specifies the object ID of the administrative unit.
-           
-           > One of `display_name` or `object_id` must be specified.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -163,39 +115,6 @@ def get_administrative_unit_output(display_name: Optional[pulumi.Input[Optional[
                                    object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAdministrativeUnitResult]:
     """
-    Gets information about an adminisrative unit in Azure Active Directory.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-    ### By Group Display Name)
-
-    *Look up by display name*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_administrative_unit(display_name="Example-AU")
-    ```
-
-    *Look up by object ID*
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_administrative_unit(object_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-
-    :param str display_name: Specifies the display name of the administrative unit.
-    :param str object_id: Specifies the object ID of the administrative unit.
-           
-           > One of `display_name` or `object_id` must be specified.
+    Use this data source to access information about an existing resource.
     """
     ...

@@ -4,48 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleGroup = new azuread.Group("exampleGroup", {
- *     displayName: "example-group",
- *     securityEnabled: true,
- * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
- *     displayName: "example-catalog",
- *     description: "Example catalog",
- * });
- * const exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", {
- *     catalogId: azuread_access_package_catalog.example_catalog.id,
- *     resourceOriginId: azuread_group.example_group.object_id,
- *     resourceOriginSystem: "AadGroup",
- * });
- * ```
- *
- * ## Import
- *
- * The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
- * ```
- *
- *  -> This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
- */
 export class AccessPackageResourceCatalogAssociation extends pulumi.CustomResource {
     /**
      * Get an existing AccessPackageResourceCatalogAssociation resource's state with the given name, ID, and optional extra
@@ -75,15 +33,16 @@ export class AccessPackageResourceCatalogAssociation extends pulumi.CustomResour
     }
 
     /**
-     * The unique ID of the access package catalog. Changing this forces a new resource to be created.
+     * The unique ID of the access package catalog
      */
     public readonly catalogId!: pulumi.Output<string>;
     /**
-     * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+     * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+     * the group
      */
     public readonly resourceOriginId!: pulumi.Output<string>;
     /**
-     * The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+     * The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
      */
     public readonly resourceOriginSystem!: pulumi.Output<string>;
 
@@ -128,15 +87,16 @@ export class AccessPackageResourceCatalogAssociation extends pulumi.CustomResour
  */
 export interface AccessPackageResourceCatalogAssociationState {
     /**
-     * The unique ID of the access package catalog. Changing this forces a new resource to be created.
+     * The unique ID of the access package catalog
      */
     catalogId?: pulumi.Input<string>;
     /**
-     * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+     * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+     * the group
      */
     resourceOriginId?: pulumi.Input<string>;
     /**
-     * The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+     * The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
      */
     resourceOriginSystem?: pulumi.Input<string>;
 }
@@ -146,15 +106,16 @@ export interface AccessPackageResourceCatalogAssociationState {
  */
 export interface AccessPackageResourceCatalogAssociationArgs {
     /**
-     * The unique ID of the access package catalog. Changing this forces a new resource to be created.
+     * The unique ID of the access package catalog
      */
     catalogId: pulumi.Input<string>;
     /**
-     * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+     * The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+     * the group
      */
     resourceOriginId: pulumi.Input<string>;
     /**
-     * The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+     * The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
      */
     resourceOriginSystem: pulumi.Input<string>;
 }

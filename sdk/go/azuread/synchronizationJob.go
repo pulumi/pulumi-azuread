@@ -11,105 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a synchronization job associated with a service principal (enterprise application) within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// ## Example Usage
-//
-// *Basic example*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
-//				DisplayName: pulumi.StringRef("Azure Databricks SCIM Provisioning Connector"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
-//				FeatureTags: azuread.ApplicationFeatureTagArray{
-//					&azuread.ApplicationFeatureTagArgs{
-//						Enterprise: pulumi.Bool(true),
-//						Gallery:    pulumi.Bool(true),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//				UseExisting:   pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewSynchronizationSecret(ctx, "exampleSynchronizationSecret", &azuread.SynchronizationSecretArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//				Credentials: azuread.SynchronizationSecretCredentialArray{
-//					&azuread.SynchronizationSecretCredentialArgs{
-//						Key:   pulumi.String("BaseAddress"),
-//						Value: pulumi.String("https://adb-example.azuredatabricks.net/api/2.0/preview/scim"),
-//					},
-//					&azuread.SynchronizationSecretCredentialArgs{
-//						Key:   pulumi.String("SecretToken"),
-//						Value: pulumi.String("some-token"),
-//					},
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewSynchronizationJob(ctx, "exampleSynchronizationJob", &azuread.SynchronizationJobArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//				TemplateId:         pulumi.String("dataBricks"),
-//				Enabled:            pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Synchronization jobs can be imported using the `id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/synchronizationJob:SynchronizationJob example 00000000-0000-0000-0000-000000000000/job/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
-//
-// ```
-//
-//	-> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `{servicePrincipalId}/job/{jobId}`.
 type SynchronizationJob struct {
 	pulumi.CustomResourceState
 
-	// Whether or not the provisioning job is enabled. Default state is `true`.
-	Enabled pulumi.BoolPtrOutput `pulumi:"enabled"`
-	// A `schedule` list as documented below.
+	// Whether or not the synchronization job is enabled
+	Enabled   pulumi.BoolPtrOutput                  `pulumi:"enabled"`
 	Schedules SynchronizationJobScheduleArrayOutput `pulumi:"schedules"`
-	// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this synchronization job should be created
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// Identifier of the synchronization template this job is based on.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
@@ -150,22 +58,20 @@ func GetSynchronizationJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SynchronizationJob resources.
 type synchronizationJobState struct {
-	// Whether or not the provisioning job is enabled. Default state is `true`.
-	Enabled *bool `pulumi:"enabled"`
-	// A `schedule` list as documented below.
+	// Whether or not the synchronization job is enabled
+	Enabled   *bool                        `pulumi:"enabled"`
 	Schedules []SynchronizationJobSchedule `pulumi:"schedules"`
-	// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this synchronization job should be created
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// Identifier of the synchronization template this job is based on.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 type SynchronizationJobState struct {
-	// Whether or not the provisioning job is enabled. Default state is `true`.
-	Enabled pulumi.BoolPtrInput
-	// A `schedule` list as documented below.
+	// Whether or not the synchronization job is enabled
+	Enabled   pulumi.BoolPtrInput
 	Schedules SynchronizationJobScheduleArrayInput
-	// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this synchronization job should be created
 	ServicePrincipalId pulumi.StringPtrInput
 	// Identifier of the synchronization template this job is based on.
 	TemplateId pulumi.StringPtrInput
@@ -176,9 +82,9 @@ func (SynchronizationJobState) ElementType() reflect.Type {
 }
 
 type synchronizationJobArgs struct {
-	// Whether or not the provisioning job is enabled. Default state is `true`.
+	// Whether or not the synchronization job is enabled
 	Enabled *bool `pulumi:"enabled"`
-	// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this synchronization job should be created
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 	// Identifier of the synchronization template this job is based on.
 	TemplateId string `pulumi:"templateId"`
@@ -186,9 +92,9 @@ type synchronizationJobArgs struct {
 
 // The set of arguments for constructing a SynchronizationJob resource.
 type SynchronizationJobArgs struct {
-	// Whether or not the provisioning job is enabled. Default state is `true`.
+	// Whether or not the synchronization job is enabled
 	Enabled pulumi.BoolPtrInput
-	// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this synchronization job should be created
 	ServicePrincipalId pulumi.StringInput
 	// Identifier of the synchronization template this job is based on.
 	TemplateId pulumi.StringInput
@@ -281,17 +187,16 @@ func (o SynchronizationJobOutput) ToSynchronizationJobOutputWithContext(ctx cont
 	return o
 }
 
-// Whether or not the provisioning job is enabled. Default state is `true`.
+// Whether or not the synchronization job is enabled
 func (o SynchronizationJobOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.BoolPtrOutput { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// A `schedule` list as documented below.
 func (o SynchronizationJobOutput) Schedules() SynchronizationJobScheduleArrayOutput {
 	return o.ApplyT(func(v *SynchronizationJob) SynchronizationJobScheduleArrayOutput { return v.Schedules }).(SynchronizationJobScheduleArrayOutput)
 }
 
-// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+// The object ID of the service principal for which this synchronization job should be created
 func (o SynchronizationJobOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationJob) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

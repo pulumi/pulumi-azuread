@@ -12,9 +12,6 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ServicePrincipalSamlSingleSignOnArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The relative URI the service provider would redirect to after completion of the single sign-on flow.
-        /// </summary>
         [Input("relayState")]
         public Input<string>? RelayState { get; set; }
 

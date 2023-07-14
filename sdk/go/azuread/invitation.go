@@ -11,126 +11,22 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages an invitation of a guest user within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// *Basic example*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Invitation with standard message*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				Message: &azuread.InvitationMessageArgs{
-//					Language: pulumi.String("en-US"),
-//				},
-//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				UserEmailAddress: pulumi.String("jdoe@hashicorp.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Invitation with custom message body and an additional recipient*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewInvitation(ctx, "example", &azuread.InvitationArgs{
-//				Message: &azuread.InvitationMessageArgs{
-//					AdditionalRecipients: pulumi.String("aaliceberg@hashicorp.com"),
-//					Body:                 pulumi.String("Hello there! You are invited to join my Azure tenant!"),
-//				},
-//				RedirectUrl:      pulumi.String("https://portal.azure.com"),
-//				UserDisplayName:  pulumi.String("Bob Bobson"),
-//				UserEmailAddress: pulumi.String("bbobson@hashicorp.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource does not support importing.
 type Invitation struct {
 	pulumi.CustomResourceState
 
-	// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+	// Customize the message sent to the invited user
 	Message InvitationMessagePtrOutput `pulumi:"message"`
-	// The URL the user can use to redeem their invitation.
+	// The URL the user can use to redeem their invitation
 	RedeemUrl pulumi.StringOutput `pulumi:"redeemUrl"`
-	// The URL that the user should be redirected to once the invitation is redeemed.
+	// The URL that the user should be redirected to once the invitation is redeemed
 	RedirectUrl pulumi.StringOutput `pulumi:"redirectUrl"`
-	// The display name of the user being invited.
+	// The display name of the user being invited
 	UserDisplayName pulumi.StringPtrOutput `pulumi:"userDisplayName"`
-	// The email address of the user being invited.
+	// The email address of the user being invited
 	UserEmailAddress pulumi.StringOutput `pulumi:"userEmailAddress"`
-	// Object ID of the invited user.
+	// Object ID of the invited user
 	UserId pulumi.StringOutput `pulumi:"userId"`
-	// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+	// The user type of the user being invited
 	UserType pulumi.StringPtrOutput `pulumi:"userType"`
 }
 
@@ -169,36 +65,36 @@ func GetInvitation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Invitation resources.
 type invitationState struct {
-	// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+	// Customize the message sent to the invited user
 	Message *InvitationMessage `pulumi:"message"`
-	// The URL the user can use to redeem their invitation.
+	// The URL the user can use to redeem their invitation
 	RedeemUrl *string `pulumi:"redeemUrl"`
-	// The URL that the user should be redirected to once the invitation is redeemed.
+	// The URL that the user should be redirected to once the invitation is redeemed
 	RedirectUrl *string `pulumi:"redirectUrl"`
-	// The display name of the user being invited.
+	// The display name of the user being invited
 	UserDisplayName *string `pulumi:"userDisplayName"`
-	// The email address of the user being invited.
+	// The email address of the user being invited
 	UserEmailAddress *string `pulumi:"userEmailAddress"`
-	// Object ID of the invited user.
+	// Object ID of the invited user
 	UserId *string `pulumi:"userId"`
-	// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+	// The user type of the user being invited
 	UserType *string `pulumi:"userType"`
 }
 
 type InvitationState struct {
-	// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+	// Customize the message sent to the invited user
 	Message InvitationMessagePtrInput
-	// The URL the user can use to redeem their invitation.
+	// The URL the user can use to redeem their invitation
 	RedeemUrl pulumi.StringPtrInput
-	// The URL that the user should be redirected to once the invitation is redeemed.
+	// The URL that the user should be redirected to once the invitation is redeemed
 	RedirectUrl pulumi.StringPtrInput
-	// The display name of the user being invited.
+	// The display name of the user being invited
 	UserDisplayName pulumi.StringPtrInput
-	// The email address of the user being invited.
+	// The email address of the user being invited
 	UserEmailAddress pulumi.StringPtrInput
-	// Object ID of the invited user.
+	// Object ID of the invited user
 	UserId pulumi.StringPtrInput
-	// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+	// The user type of the user being invited
 	UserType pulumi.StringPtrInput
 }
 
@@ -207,29 +103,29 @@ func (InvitationState) ElementType() reflect.Type {
 }
 
 type invitationArgs struct {
-	// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+	// Customize the message sent to the invited user
 	Message *InvitationMessage `pulumi:"message"`
-	// The URL that the user should be redirected to once the invitation is redeemed.
+	// The URL that the user should be redirected to once the invitation is redeemed
 	RedirectUrl string `pulumi:"redirectUrl"`
-	// The display name of the user being invited.
+	// The display name of the user being invited
 	UserDisplayName *string `pulumi:"userDisplayName"`
-	// The email address of the user being invited.
+	// The email address of the user being invited
 	UserEmailAddress string `pulumi:"userEmailAddress"`
-	// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+	// The user type of the user being invited
 	UserType *string `pulumi:"userType"`
 }
 
 // The set of arguments for constructing a Invitation resource.
 type InvitationArgs struct {
-	// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+	// Customize the message sent to the invited user
 	Message InvitationMessagePtrInput
-	// The URL that the user should be redirected to once the invitation is redeemed.
+	// The URL that the user should be redirected to once the invitation is redeemed
 	RedirectUrl pulumi.StringInput
-	// The display name of the user being invited.
+	// The display name of the user being invited
 	UserDisplayName pulumi.StringPtrInput
-	// The email address of the user being invited.
+	// The email address of the user being invited
 	UserEmailAddress pulumi.StringInput
-	// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+	// The user type of the user being invited
 	UserType pulumi.StringPtrInput
 }
 
@@ -320,37 +216,37 @@ func (o InvitationOutput) ToInvitationOutputWithContext(ctx context.Context) Inv
 	return o
 }
 
-// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+// Customize the message sent to the invited user
 func (o InvitationOutput) Message() InvitationMessagePtrOutput {
 	return o.ApplyT(func(v *Invitation) InvitationMessagePtrOutput { return v.Message }).(InvitationMessagePtrOutput)
 }
 
-// The URL the user can use to redeem their invitation.
+// The URL the user can use to redeem their invitation
 func (o InvitationOutput) RedeemUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.RedeemUrl }).(pulumi.StringOutput)
 }
 
-// The URL that the user should be redirected to once the invitation is redeemed.
+// The URL that the user should be redirected to once the invitation is redeemed
 func (o InvitationOutput) RedirectUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.RedirectUrl }).(pulumi.StringOutput)
 }
 
-// The display name of the user being invited.
+// The display name of the user being invited
 func (o InvitationOutput) UserDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Invitation) pulumi.StringPtrOutput { return v.UserDisplayName }).(pulumi.StringPtrOutput)
 }
 
-// The email address of the user being invited.
+// The email address of the user being invited
 func (o InvitationOutput) UserEmailAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.UserEmailAddress }).(pulumi.StringOutput)
 }
 
-// Object ID of the invited user.
+// Object ID of the invited user
 func (o InvitationOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Invitation) pulumi.StringOutput { return v.UserId }).(pulumi.StringOutput)
 }
 
-// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
+// The user type of the user being invited
 func (o InvitationOutput) UserType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Invitation) pulumi.StringPtrOutput { return v.UserType }).(pulumi.StringPtrOutput)
 }

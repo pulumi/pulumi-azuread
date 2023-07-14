@@ -4,59 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const authorized = new azuread.Application("authorized", {displayName: "example-authorized-app"});
- * const authorizer = new azuread.Application("authorizer", {
- *     displayName: "example-authorizing-app",
- *     api: {
- *         oauth2PermissionScopes: [
- *             {
- *                 adminConsentDescription: "Administer the application",
- *                 adminConsentDisplayName: "Administer",
- *                 enabled: true,
- *                 id: "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
- *                 type: "Admin",
- *                 value: "administer",
- *             },
- *             {
- *                 adminConsentDescription: "Access the application",
- *                 adminConsentDisplayName: "Access",
- *                 enabled: true,
- *                 id: "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
- *                 type: "User",
- *                 userConsentDescription: "Access the application",
- *                 userConsentDisplayName: "Access",
- *                 value: "user_impersonation",
- *             },
- *         ],
- *     },
- * });
- * const example = new azuread.ApplicationPreAuthorized("example", {
- *     applicationObjectId: authorizer.objectId,
- *     authorizedAppId: authorized.applicationId,
- *     permissionIds: [
- *         "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
- *         "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
- *     ],
- * });
- * ```
- *
- * ## Import
- *
- * Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
- * ```
- *
- *  -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
- */
 export class ApplicationPreAuthorized extends pulumi.CustomResource {
     /**
      * Get an existing ApplicationPreAuthorized resource's state with the given name, ID, and optional extra
@@ -86,7 +33,7 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
     }
 
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The object ID of the application to which this pre-authorized application should be added
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
@@ -94,7 +41,7 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
      */
     public readonly authorizedAppId!: pulumi.Output<string>;
     /**
-     * A set of permission scope IDs required by the authorized application.
+     * The IDs of the permission scopes required by the pre-authorized application
      */
     public readonly permissionIds!: pulumi.Output<string[]>;
 
@@ -139,7 +86,7 @@ export class ApplicationPreAuthorized extends pulumi.CustomResource {
  */
 export interface ApplicationPreAuthorizedState {
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The object ID of the application to which this pre-authorized application should be added
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
@@ -147,7 +94,7 @@ export interface ApplicationPreAuthorizedState {
      */
     authorizedAppId?: pulumi.Input<string>;
     /**
-     * A set of permission scope IDs required by the authorized application.
+     * The IDs of the permission scopes required by the pre-authorized application
      */
     permissionIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -157,7 +104,7 @@ export interface ApplicationPreAuthorizedState {
  */
 export interface ApplicationPreAuthorizedArgs {
     /**
-     * The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+     * The object ID of the application to which this pre-authorized application should be added
      */
     applicationObjectId: pulumi.Input<string>;
     /**
@@ -165,7 +112,7 @@ export interface ApplicationPreAuthorizedArgs {
      */
     authorizedAppId: pulumi.Input<string>;
     /**
-     * A set of permission scope IDs required by the authorized application.
+     * The IDs of the permission scopes required by the pre-authorized application
      */
     permissionIds: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -19,9 +19,9 @@ class AccessPackageCatalogRoleAssignmentArgs:
                  role_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AccessPackageCatalogRoleAssignment resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog.
+        :param pulumi.Input[str] principal_object_id: The object ID of the member principal
+        :param pulumi.Input[str] role_id: The object ID of the catalog role for this assignment
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "principal_object_id", principal_object_id)
@@ -31,7 +31,7 @@ class AccessPackageCatalogRoleAssignmentArgs:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
+        The unique ID of the access package catalog.
         """
         return pulumi.get(self, "catalog_id")
 
@@ -43,7 +43,7 @@ class AccessPackageCatalogRoleAssignmentArgs:
     @pulumi.getter(name="principalObjectId")
     def principal_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        The object ID of the member principal
         """
         return pulumi.get(self, "principal_object_id")
 
@@ -55,7 +55,7 @@ class AccessPackageCatalogRoleAssignmentArgs:
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        The object ID of the catalog role for this assignment
         """
         return pulumi.get(self, "role_id")
 
@@ -72,9 +72,9 @@ class _AccessPackageCatalogRoleAssignmentState:
                  role_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessPackageCatalogRoleAssignment resources.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog.
+        :param pulumi.Input[str] principal_object_id: The object ID of the member principal
+        :param pulumi.Input[str] role_id: The object ID of the catalog role for this assignment
         """
         if catalog_id is not None:
             pulumi.set(__self__, "catalog_id", catalog_id)
@@ -87,7 +87,7 @@ class _AccessPackageCatalogRoleAssignmentState:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
+        The unique ID of the access package catalog.
         """
         return pulumi.get(self, "catalog_id")
 
@@ -99,7 +99,7 @@ class _AccessPackageCatalogRoleAssignmentState:
     @pulumi.getter(name="principalObjectId")
     def principal_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        The object ID of the member principal
         """
         return pulumi.get(self, "principal_object_id")
 
@@ -111,7 +111,7 @@ class _AccessPackageCatalogRoleAssignmentState:
     @pulumi.getter(name="roleId")
     def role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        The object ID of the catalog role for this assignment
         """
         return pulumi.get(self, "role_id")
 
@@ -130,46 +130,12 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
                  role_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a single catalog role assignment within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-access-package-catalog",
-            description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment",
-            role_id=example_access_package_catalog_role.object_id,
-            principal_object_id=example_user.object_id,
-            catalog_id=example_access_package_catalog.id)
-        ```
-
-        ## Import
-
-        Catalog role assignments can be imported using the ID of the assignment, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
-        ```
-
+        Create a AccessPackageCatalogRoleAssignment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog.
+        :param pulumi.Input[str] principal_object_id: The object ID of the member principal
+        :param pulumi.Input[str] role_id: The object ID of the catalog role for this assignment
         """
         ...
     @overload
@@ -178,41 +144,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
                  args: AccessPackageCatalogRoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a single catalog role assignment within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_access_package_catalog_role = azuread.get_access_package_catalog_role(display_name="Catalog owner")
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-access-package-catalog",
-            description="Example access package catalog")
-        example_access_package_catalog_role_assignment = azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment",
-            role_id=example_access_package_catalog_role.object_id,
-            principal_object_id=example_user.object_id,
-            catalog_id=example_access_package_catalog.id)
-        ```
-
-        ## Import
-
-        Catalog role assignments can be imported using the ID of the assignment, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
-        ```
-
+        Create a AccessPackageCatalogRoleAssignment resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AccessPackageCatalogRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -269,9 +201,9 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] principal_object_id: The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_id: The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog.
+        :param pulumi.Input[str] principal_object_id: The object ID of the member principal
+        :param pulumi.Input[str] role_id: The object ID of the catalog role for this assignment
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -286,7 +218,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
+        The unique ID of the access package catalog.
         """
         return pulumi.get(self, "catalog_id")
 
@@ -294,7 +226,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="principalObjectId")
     def principal_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        The object ID of the member principal
         """
         return pulumi.get(self, "principal_object_id")
 
@@ -302,7 +234,7 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="roleId")
     def role_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+        The object ID of the catalog role for this assignment
         """
         return pulumi.get(self, "role_id")
 

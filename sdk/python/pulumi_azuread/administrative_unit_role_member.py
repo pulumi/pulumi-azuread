@@ -19,9 +19,9 @@ class AdministrativeUnitRoleMemberArgs:
                  role_object_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AdministrativeUnitRoleMember resource.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] member_object_id: The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
+        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role
         """
         pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
         pulumi.set(__self__, "member_object_id", member_object_id)
@@ -31,7 +31,7 @@ class AdministrativeUnitRoleMemberArgs:
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        The object ID of the administrative unit
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
@@ -43,7 +43,7 @@ class AdministrativeUnitRoleMemberArgs:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        The object ID of the member
         """
         return pulumi.get(self, "member_object_id")
 
@@ -55,7 +55,7 @@ class AdministrativeUnitRoleMemberArgs:
     @pulumi.getter(name="roleObjectId")
     def role_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        The object ID of the directory role
         """
         return pulumi.get(self, "role_object_id")
 
@@ -72,9 +72,9 @@ class _AdministrativeUnitRoleMemberState:
                  role_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnitRoleMember resources.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] member_object_id: The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
+        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role
         """
         if administrative_unit_object_id is not None:
             pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
@@ -87,7 +87,7 @@ class _AdministrativeUnitRoleMemberState:
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        The object ID of the administrative unit
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
@@ -99,7 +99,7 @@ class _AdministrativeUnitRoleMemberState:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        The object ID of the member
         """
         return pulumi.get(self, "member_object_id")
 
@@ -111,7 +111,7 @@ class _AdministrativeUnitRoleMemberState:
     @pulumi.getter(name="roleObjectId")
     def role_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        The object ID of the directory role
         """
         return pulumi.get(self, "role_object_id")
 
@@ -130,46 +130,12 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
                  role_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
-        example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember",
-            role_object_id=example_directory_role.object_id,
-            administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example_user.id)
-        ```
-
-        ## Import
-
-        Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
-        ```
-
-         -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
-
+        Create a AdministrativeUnitRoleMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] member_object_id: The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
+        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role
         """
         ...
     @overload
@@ -178,41 +144,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
                  args: AdministrativeUnitRoleMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
-        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
-        example_directory_role = azuread.DirectoryRole("exampleDirectoryRole", display_name="Security administrator")
-        example_administrative_unit_role_member = azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember",
-            role_object_id=example_directory_role.object_id,
-            administrative_unit_object_id=example_administrative_unit.id,
-            member_object_id=example_user.id)
-        ```
-
-        ## Import
-
-        Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
-        ```
-
-         -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
-
+        Create a AdministrativeUnitRoleMember resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitRoleMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -269,9 +201,9 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] member_object_id: The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] role_object_id: The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
+        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] role_object_id: The object ID of the directory role
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -286,7 +218,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        The object ID of the administrative unit
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
@@ -294,7 +226,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        The object ID of the member
         """
         return pulumi.get(self, "member_object_id")
 
@@ -302,7 +234,7 @@ class AdministrativeUnitRoleMember(pulumi.CustomResource):
     @pulumi.getter(name="roleObjectId")
     def role_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+        The object ID of the directory role
         """
         return pulumi.get(self, "role_object_id")
 

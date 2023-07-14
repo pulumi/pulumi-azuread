@@ -13,29 +13,11 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationAppRoleResult
     {
-        /// <summary>
-        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
-        /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
-        /// <summary>
-        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// Specifies the display name of the application.
-        /// </summary>
         public readonly string DisplayName;
-        /// <summary>
-        /// Determines if the app role is enabled.
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

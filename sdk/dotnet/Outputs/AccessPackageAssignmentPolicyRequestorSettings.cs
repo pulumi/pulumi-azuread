@@ -13,17 +13,8 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class AccessPackageAssignmentPolicyRequestorSettings
     {
-        /// <summary>
-        /// A block specifying the users who are allowed to request on this policy, as documented below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyRequestorSettingsRequestor> Requestors;
-        /// <summary>
-        /// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
-        /// </summary>
         public readonly bool? RequestsAccepted;
-        /// <summary>
-        /// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
-        /// </summary>
         public readonly string? ScopeType;
 
         [OutputConstructor]

@@ -11,113 +11,9 @@ namespace Pulumi.AzureAD
 {
     public static class GetAdministrativeUnit
     {
-        /// <summary>
-        /// Gets information about an adminisrative unit in Azure Active Directory.
-        /// 
-        /// ## API Permissions
-        /// 
-        /// The following API permissions are required in order to use this data source.
-        /// 
-        /// When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
-        /// 
-        /// When authenticated with a user principal, this data source does not require any additional roles.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// ### By Group Display Name)
-        /// 
-        /// *Look up by display name*
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
-        ///     {
-        ///         DisplayName = "Example-AU",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// *Look up by object ID*
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
-        ///     {
-        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetAdministrativeUnitResult> InvokeAsync(GetAdministrativeUnitArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Gets information about an adminisrative unit in Azure Active Directory.
-        /// 
-        /// ## API Permissions
-        /// 
-        /// The following API permissions are required in order to use this data source.
-        /// 
-        /// When authenticated with a service principal, this data source requires one of the following application roles: `AdministrativeUnit.Read.All` or `Directory.Read.All`
-        /// 
-        /// When authenticated with a user principal, this data source does not require any additional roles.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// ### By Group Display Name)
-        /// 
-        /// *Look up by display name*
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
-        ///     {
-        ///         DisplayName = "Example-AU",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// 
-        /// *Look up by object ID*
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AzureAD = Pulumi.AzureAD;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var example = AzureAD.GetAdministrativeUnit.Invoke(new()
-        ///     {
-        ///         ObjectId = "00000000-0000-0000-0000-000000000000",
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetAdministrativeUnitResult> Invoke(GetAdministrativeUnitInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdministrativeUnitResult>("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args ?? new GetAdministrativeUnitInvokeArgs(), options.WithDefaults());
     }
@@ -125,17 +21,9 @@ namespace Pulumi.AzureAD
 
     public sealed class GetAdministrativeUnitArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specifies the display name of the administrative unit.
-        /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
-        /// <summary>
-        /// Specifies the object ID of the administrative unit.
-        /// 
-        /// &gt; One of `display_name` or `object_id` must be specified.
-        /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
@@ -147,17 +35,9 @@ namespace Pulumi.AzureAD
 
     public sealed class GetAdministrativeUnitInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// Specifies the display name of the administrative unit.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// Specifies the object ID of the administrative unit.
-        /// 
-        /// &gt; One of `display_name` or `object_id` must be specified.
-        /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
@@ -171,29 +51,14 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetAdministrativeUnitResult
     {
-        /// <summary>
-        /// The description of the administrative unit.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The display name of the administrative unit.
-        /// </summary>
         public readonly string DisplayName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// A list of object IDs of members who are present in this administrative unit.
-        /// </summary>
         public readonly ImmutableArray<string> Members;
-        /// <summary>
-        /// The object ID of the administrative unit.
-        /// </summary>
         public readonly string ObjectId;
-        /// <summary>
-        /// Whether the administrative unit _and_ its members are hidden or publicly viewable in the directory. One of: `Hiddenmembership` or `Public`.
-        /// </summary>
         public readonly string Visibility;
 
         [OutputConstructor]

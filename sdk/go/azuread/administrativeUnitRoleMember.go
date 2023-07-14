@@ -11,81 +11,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "exampleAdministrativeUnit", &azuread.AdministrativeUnitArgs{
-//				DisplayName: pulumi.String("Example-AU"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleDirectoryRole, err := azuread.NewDirectoryRole(ctx, "exampleDirectoryRole", &azuread.DirectoryRoleArgs{
-//				DisplayName: pulumi.String("Security administrator"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAdministrativeUnitRoleMember(ctx, "exampleAdministrativeUnitRoleMember", &azuread.AdministrativeUnitRoleMemberArgs{
-//				RoleObjectId:               exampleDirectoryRole.ObjectId,
-//				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-//				MemberObjectId:             *pulumi.String(exampleUser.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
-//
-// ```
-//
-//	-> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
 type AdministrativeUnitRoleMember struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId pulumi.StringOutput `pulumi:"administrativeUnitObjectId"`
-	// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId pulumi.StringOutput `pulumi:"memberObjectId"`
-	// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+	// The object ID of the directory role
 	RoleObjectId pulumi.StringOutput `pulumi:"roleObjectId"`
 }
 
@@ -127,20 +60,20 @@ func GetAdministrativeUnitRoleMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AdministrativeUnitRoleMember resources.
 type administrativeUnitRoleMemberState struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId *string `pulumi:"administrativeUnitObjectId"`
-	// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId *string `pulumi:"memberObjectId"`
-	// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+	// The object ID of the directory role
 	RoleObjectId *string `pulumi:"roleObjectId"`
 }
 
 type AdministrativeUnitRoleMemberState struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId pulumi.StringPtrInput
-	// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId pulumi.StringPtrInput
-	// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+	// The object ID of the directory role
 	RoleObjectId pulumi.StringPtrInput
 }
 
@@ -149,21 +82,21 @@ func (AdministrativeUnitRoleMemberState) ElementType() reflect.Type {
 }
 
 type administrativeUnitRoleMemberArgs struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId string `pulumi:"administrativeUnitObjectId"`
-	// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId string `pulumi:"memberObjectId"`
-	// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+	// The object ID of the directory role
 	RoleObjectId string `pulumi:"roleObjectId"`
 }
 
 // The set of arguments for constructing a AdministrativeUnitRoleMember resource.
 type AdministrativeUnitRoleMemberArgs struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId pulumi.StringInput
-	// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId pulumi.StringInput
-	// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+	// The object ID of the directory role
 	RoleObjectId pulumi.StringInput
 }
 
@@ -254,17 +187,17 @@ func (o AdministrativeUnitRoleMemberOutput) ToAdministrativeUnitRoleMemberOutput
 	return o
 }
 
-// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+// The object ID of the administrative unit
 func (o AdministrativeUnitRoleMemberOutput) AdministrativeUnitObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdministrativeUnitRoleMember) pulumi.StringOutput { return v.AdministrativeUnitObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+// The object ID of the member
 func (o AdministrativeUnitRoleMemberOutput) MemberObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdministrativeUnitRoleMember) pulumi.StringOutput { return v.MemberObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+// The object ID of the directory role
 func (o AdministrativeUnitRoleMemberOutput) RoleObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdministrativeUnitRoleMember) pulumi.StringOutput { return v.RoleObjectId }).(pulumi.StringOutput)
 }

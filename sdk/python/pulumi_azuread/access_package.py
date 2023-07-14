@@ -20,10 +20,10 @@ class AccessPackageArgs:
                  hidden: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AccessPackage resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in.
-        :param pulumi.Input[str] description: The description of the access package.
-        :param pulumi.Input[str] display_name: The display name of the access package.
-        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor.
+        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in
+        :param pulumi.Input[str] description: The description of the access package
+        :param pulumi.Input[str] display_name: The display name of the access package
+        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "description", description)
@@ -35,7 +35,7 @@ class AccessPackageArgs:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Catalog this access package will be created in.
+        The ID of the Catalog this access package will be created in
         """
         return pulumi.get(self, "catalog_id")
 
@@ -47,7 +47,7 @@ class AccessPackageArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        The description of the access package.
+        The description of the access package
         """
         return pulumi.get(self, "description")
 
@@ -59,7 +59,7 @@ class AccessPackageArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The display name of the access package.
+        The display name of the access package
         """
         return pulumi.get(self, "display_name")
 
@@ -71,7 +71,7 @@ class AccessPackageArgs:
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the access package is hidden from the requestor.
+        Whether the access package is hidden from the requestor
         """
         return pulumi.get(self, "hidden")
 
@@ -89,10 +89,10 @@ class _AccessPackageState:
                  hidden: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AccessPackage resources.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in.
-        :param pulumi.Input[str] description: The description of the access package.
-        :param pulumi.Input[str] display_name: The display name of the access package.
-        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor.
+        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in
+        :param pulumi.Input[str] description: The description of the access package
+        :param pulumi.Input[str] display_name: The display name of the access package
+        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor
         """
         if catalog_id is not None:
             pulumi.set(__self__, "catalog_id", catalog_id)
@@ -107,7 +107,7 @@ class _AccessPackageState:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Catalog this access package will be created in.
+        The ID of the Catalog this access package will be created in
         """
         return pulumi.get(self, "catalog_id")
 
@@ -119,7 +119,7 @@ class _AccessPackageState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the access package.
+        The description of the access package
         """
         return pulumi.get(self, "description")
 
@@ -131,7 +131,7 @@ class _AccessPackageState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the access package.
+        The display name of the access package
         """
         return pulumi.get(self, "display_name")
 
@@ -143,7 +143,7 @@ class _AccessPackageState:
     @pulumi.getter
     def hidden(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the access package is hidden from the requestor.
+        Whether the access package is hidden from the requestor
         """
         return pulumi.get(self, "hidden")
 
@@ -163,45 +163,13 @@ class AccessPackage(pulumi.CustomResource):
                  hidden: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Manages an Access Package within Identity Governance in Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
-            catalog_id=example_access_package_catalog.id,
-            display_name="access-package",
-            description="Access Package")
-        ```
-
-        ## Import
-
-        Access Packages can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
-        ```
-
+        Create a AccessPackage resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in.
-        :param pulumi.Input[str] description: The description of the access package.
-        :param pulumi.Input[str] display_name: The display name of the access package.
-        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor.
+        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in
+        :param pulumi.Input[str] description: The description of the access package
+        :param pulumi.Input[str] display_name: The display name of the access package
+        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor
         """
         ...
     @overload
@@ -210,39 +178,7 @@ class AccessPackage(pulumi.CustomResource):
                  args: AccessPackageArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages an Access Package within Identity Governance in Azure Active Directory.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
-
-        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
-            display_name="example-catalog",
-            description="Example catalog")
-        example_access_package = azuread.AccessPackage("exampleAccessPackage",
-            catalog_id=example_access_package_catalog.id,
-            display_name="access-package",
-            description="Access Package")
-        ```
-
-        ## Import
-
-        Access Packages can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
-        ```
-
+        Create a AccessPackage resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param AccessPackageArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -302,10 +238,10 @@ class AccessPackage(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in.
-        :param pulumi.Input[str] description: The description of the access package.
-        :param pulumi.Input[str] display_name: The display name of the access package.
-        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor.
+        :param pulumi.Input[str] catalog_id: The ID of the Catalog this access package will be created in
+        :param pulumi.Input[str] description: The description of the access package
+        :param pulumi.Input[str] display_name: The display name of the access package
+        :param pulumi.Input[bool] hidden: Whether the access package is hidden from the requestor
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -321,7 +257,7 @@ class AccessPackage(pulumi.CustomResource):
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Catalog this access package will be created in.
+        The ID of the Catalog this access package will be created in
         """
         return pulumi.get(self, "catalog_id")
 
@@ -329,7 +265,7 @@ class AccessPackage(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description of the access package.
+        The description of the access package
         """
         return pulumi.get(self, "description")
 
@@ -337,7 +273,7 @@ class AccessPackage(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name of the access package.
+        The display name of the access package
         """
         return pulumi.get(self, "display_name")
 
@@ -345,7 +281,7 @@ class AccessPackage(pulumi.CustomResource):
     @pulumi.getter
     def hidden(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the access package is hidden from the requestor.
+        Whether the access package is hidden from the requestor
         """
         return pulumi.get(self, "hidden")
 

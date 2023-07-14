@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class NamedLocationIp
     {
-        /// <summary>
-        /// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
-        /// </summary>
         public readonly ImmutableArray<string> IpRanges;
-        /// <summary>
-        /// Whether the named location is trusted. Defaults to `false`.
-        /// </summary>
         public readonly bool? Trusted;
 
         [OutputConstructor]

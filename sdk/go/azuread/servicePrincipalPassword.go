@@ -11,125 +11,26 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a password credential associated with a service principal within Azure Active Directory. See also the ApplicationPassword resource.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// *Basic example*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalPassword(ctx, "exampleServicePrincipalPassword", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ObjectId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Time-based rotation*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleRotating, err := time.NewRotating(ctx, "exampleRotating", &time.RotatingArgs{
-//				RotationDays: pulumi.Int(7),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalPassword(ctx, "exampleServicePrincipalPassword", &azuread.ServicePrincipalPasswordArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ObjectId,
-//				RotateWhenChanged: pulumi.StringMap{
-//					"rotation": exampleRotating.ID(),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// This resource does not support importing.
 type ServicePrincipalPassword struct {
 	pulumi.CustomResourceState
 
-	// A display name for the password.
+	// A display name for the password
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
-	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
+	// field forces a new resource to be created
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
-	// A UUID used to uniquely identify this password credential.
+	// A UUID used to uniquely identify this password credential
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	// Arbitrary map of values that, when changed, will trigger rotation of the password
 	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this password should be created
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
-	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+	// this isn't specified, the current date is used
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
-	// The password for this service principal, which is generated by Azure Active Directory.
+	// The password for this service principal, which is generated by Azure Active Directory
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -169,40 +70,44 @@ func GetServicePrincipalPassword(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalPassword resources.
 type servicePrincipalPasswordState struct {
-	// A display name for the password.
+	// A display name for the password
 	DisplayName *string `pulumi:"displayName"`
-	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
 	EndDate *string `pulumi:"endDate"`
-	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
+	// field forces a new resource to be created
 	EndDateRelative *string `pulumi:"endDateRelative"`
-	// A UUID used to uniquely identify this password credential.
+	// A UUID used to uniquely identify this password credential
 	KeyId *string `pulumi:"keyId"`
-	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	// Arbitrary map of values that, when changed, will trigger rotation of the password
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this password should be created
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
-	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+	// this isn't specified, the current date is used
 	StartDate *string `pulumi:"startDate"`
-	// The password for this service principal, which is generated by Azure Active Directory.
+	// The password for this service principal, which is generated by Azure Active Directory
 	Value *string `pulumi:"value"`
 }
 
 type ServicePrincipalPasswordState struct {
-	// A display name for the password.
+	// A display name for the password
 	DisplayName pulumi.StringPtrInput
-	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
 	EndDate pulumi.StringPtrInput
-	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
+	// field forces a new resource to be created
 	EndDateRelative pulumi.StringPtrInput
-	// A UUID used to uniquely identify this password credential.
+	// A UUID used to uniquely identify this password credential
 	KeyId pulumi.StringPtrInput
-	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	// Arbitrary map of values that, when changed, will trigger rotation of the password
 	RotateWhenChanged pulumi.StringMapInput
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this password should be created
 	ServicePrincipalId pulumi.StringPtrInput
-	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+	// this isn't specified, the current date is used
 	StartDate pulumi.StringPtrInput
-	// The password for this service principal, which is generated by Azure Active Directory.
+	// The password for this service principal, which is generated by Azure Active Directory
 	Value pulumi.StringPtrInput
 }
 
@@ -211,33 +116,37 @@ func (ServicePrincipalPasswordState) ElementType() reflect.Type {
 }
 
 type servicePrincipalPasswordArgs struct {
-	// A display name for the password.
+	// A display name for the password
 	DisplayName *string `pulumi:"displayName"`
-	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
 	EndDate *string `pulumi:"endDate"`
-	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
+	// field forces a new resource to be created
 	EndDateRelative *string `pulumi:"endDateRelative"`
-	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	// Arbitrary map of values that, when changed, will trigger rotation of the password
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this password should be created
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
-	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+	// this isn't specified, the current date is used
 	StartDate *string `pulumi:"startDate"`
 }
 
 // The set of arguments for constructing a ServicePrincipalPassword resource.
 type ServicePrincipalPasswordArgs struct {
-	// A display name for the password.
+	// A display name for the password
 	DisplayName pulumi.StringPtrInput
-	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
 	EndDate pulumi.StringPtrInput
-	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
+	// field forces a new resource to be created
 	EndDateRelative pulumi.StringPtrInput
-	// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	// Arbitrary map of values that, when changed, will trigger rotation of the password
 	RotateWhenChanged pulumi.StringMapInput
-	// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this password should be created
 	ServicePrincipalId pulumi.StringInput
-	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+	// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+	// this isn't specified, the current date is used
 	StartDate pulumi.StringPtrInput
 }
 
@@ -328,42 +237,44 @@ func (o ServicePrincipalPasswordOutput) ToServicePrincipalPasswordOutputWithCont
 	return o
 }
 
-// A display name for the password.
+// A display name for the password
 func (o ServicePrincipalPasswordOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
 func (o ServicePrincipalPasswordOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
+// field forces a new resource to be created
 func (o ServicePrincipalPasswordOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }
 
-// A UUID used to uniquely identify this password credential.
+// A UUID used to uniquely identify this password credential
 func (o ServicePrincipalPasswordOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+// Arbitrary map of values that, when changed, will trigger rotation of the password
 func (o ServicePrincipalPasswordOutput) RotateWhenChanged() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
-// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
+// The object ID of the service principal for which this password should be created
 func (o ServicePrincipalPasswordOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }
 
-// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
+// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+// this isn't specified, the current date is used
 func (o ServicePrincipalPasswordOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }
 
-// The password for this service principal, which is generated by Azure Active Directory.
+// The password for this service principal, which is generated by Azure Active Directory
 func (o ServicePrincipalPasswordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalPassword) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

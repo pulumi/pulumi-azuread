@@ -12,33 +12,20 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class AccessPackageAssignmentPolicyApprovalSettingsGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether an approval is required.
-        /// </summary>
         [Input("approvalRequired")]
         public Input<bool>? ApprovalRequired { get; set; }
 
-        /// <summary>
-        /// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
-        /// </summary>
         [Input("approvalRequiredForExtension")]
         public Input<bool>? ApprovalRequiredForExtension { get; set; }
 
         [Input("approvalStages")]
         private InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageGetArgs>? _approvalStages;
-
-        /// <summary>
-        /// An `approval_stage` block specifying the process to obtain an approval, as documented below.
-        /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageGetArgs> ApprovalStages
         {
             get => _approvalStages ?? (_approvalStages = new InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageGetArgs>());
             set => _approvalStages = value;
         }
 
-        /// <summary>
-        /// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
-        /// </summary>
         [Input("requestorJustificationRequired")]
         public Input<bool>? RequestorJustificationRequired { get; set; }
 

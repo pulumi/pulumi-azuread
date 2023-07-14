@@ -13,9 +13,6 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationPublicClientResult
     {
-        /// <summary>
-        /// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-        /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
 
         [OutputConstructor]

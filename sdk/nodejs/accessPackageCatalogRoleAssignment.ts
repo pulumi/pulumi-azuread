@@ -4,48 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a single catalog role assignment within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
- * });
- * const exampleAccessPackageCatalogRole = azuread.getAccessPackageCatalogRole({
- *     displayName: "Catalog owner",
- * });
- * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
- *     displayName: "example-access-package-catalog",
- *     description: "Example access package catalog",
- * });
- * const exampleAccessPackageCatalogRoleAssignment = new azuread.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", {
- *     roleId: exampleAccessPackageCatalogRole.then(exampleAccessPackageCatalogRole => exampleAccessPackageCatalogRole.objectId),
- *     principalObjectId: exampleUser.then(exampleUser => exampleUser.objectId),
- *     catalogId: exampleAccessPackageCatalog.id,
- * });
- * ```
- *
- * ## Import
- *
- * Catalog role assignments can be imported using the ID of the assignment, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
- * ```
- */
 export class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
     /**
      * Get an existing AccessPackageCatalogRoleAssignment resource's state with the given name, ID, and optional extra
@@ -75,15 +33,15 @@ export class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
+     * The unique ID of the access package catalog.
      */
     public readonly catalogId!: pulumi.Output<string>;
     /**
-     * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the member principal
      */
     public readonly principalObjectId!: pulumi.Output<string>;
     /**
-     * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+     * The object ID of the catalog role for this assignment
      */
     public readonly roleId!: pulumi.Output<string>;
 
@@ -128,15 +86,15 @@ export class AccessPackageCatalogRoleAssignment extends pulumi.CustomResource {
  */
 export interface AccessPackageCatalogRoleAssignmentState {
     /**
-     * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
+     * The unique ID of the access package catalog.
      */
     catalogId?: pulumi.Input<string>;
     /**
-     * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the member principal
      */
     principalObjectId?: pulumi.Input<string>;
     /**
-     * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+     * The object ID of the catalog role for this assignment
      */
     roleId?: pulumi.Input<string>;
 }
@@ -146,15 +104,15 @@ export interface AccessPackageCatalogRoleAssignmentState {
  */
 export interface AccessPackageCatalogRoleAssignmentArgs {
     /**
-     * The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
+     * The unique ID of the access package catalog.
      */
     catalogId: pulumi.Input<string>;
     /**
-     * The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+     * The object ID of the member principal
      */
     principalObjectId: pulumi.Input<string>;
     /**
-     * The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
+     * The object ID of the catalog role for this assignment
      */
     roleId: pulumi.Input<string>;
 }

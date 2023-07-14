@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetGroupDynamicMembershipResult
     {
-        /// <summary>
-        /// Whether rule processing is "On" (true) or "Paused" (false).
-        /// </summary>
         public readonly bool Enabled;
-        /// <summary>
-        /// The rule that determines membership of this group.
-        /// </summary>
         public readonly string Rule;
 
         [OutputConstructor]

@@ -11,153 +11,116 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a user within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `User.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `User Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewUser(ctx, "example", &azuread.UserArgs{
-//				DisplayName:       pulumi.String("J. Doe"),
-//				MailNickname:      pulumi.String("jdoe"),
-//				Password:          pulumi.String("SecretP@sswd99!"),
-//				UserPrincipalName: pulumi.String("jdoe@hashicorp.com"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Users can be imported using their object ID, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/user:User my_user 00000000-0000-0000-0000-000000000000
-//
-// ```
 type User struct {
 	pulumi.CustomResourceState
 
 	// A freeform field for the user to describe themselves
 	AboutMe pulumi.StringOutput `pulumi:"aboutMe"`
-	// Whether or not the account should be enabled.
+	// Whether or not the account should be enabled
 	AccountEnabled pulumi.BoolPtrOutput `pulumi:"accountEnabled"`
-	// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
+	// The age group of the user
 	AgeGroup pulumi.StringPtrOutput `pulumi:"ageGroup"`
-	// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
+	// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure
+	// AD Connect
 	BusinessPhones pulumi.StringArrayOutput `pulumi:"businessPhones"`
-	// The city in which the user is located.
+	// The city in which the user is located
 	City pulumi.StringPtrOutput `pulumi:"city"`
-	// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+	// The company name which the user is associated. This property can be useful for describing the company that an external
+	// user comes from
 	CompanyName pulumi.StringPtrOutput `pulumi:"companyName"`
-	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+	// Whether consent has been obtained for minors
 	ConsentProvidedForMinor pulumi.StringPtrOutput `pulumi:"consentProvidedForMinor"`
 	// The cost center associated with the user.
 	CostCenter pulumi.StringPtrOutput `pulumi:"costCenter"`
-	// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
+	// The country/region in which the user is located, e.g. `US` or `UK`
 	Country pulumi.StringPtrOutput `pulumi:"country"`
-	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+	// Indicates whether the user account was created as a regular school or work account (`null`), an external account
+	// (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using
+	// email verification (`EmailVerified`)
 	CreationType pulumi.StringOutput `pulumi:"creationType"`
-	// The name for the department in which the user works.
+	// The name for the department in which the user works
 	Department pulumi.StringPtrOutput `pulumi:"department"`
-	// Whether the user's password is exempt from expiring. Defaults to `false`.
+	// Whether the users password is exempt from expiring
 	DisablePasswordExpiration pulumi.BoolPtrOutput `pulumi:"disablePasswordExpiration"`
-	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+	// Whether the user is allowed weaker passwords than the default policy to be specified.
 	DisableStrongPassword pulumi.BoolPtrOutput `pulumi:"disableStrongPassword"`
-	// The name to display in the address book for the user.
+	// The name to display in the address book for the user
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division pulumi.StringPtrOutput `pulumi:"division"`
-	// The employee identifier assigned to the user by the organisation.
+	// The employee identifier assigned to the user by the organisation
 	EmployeeId pulumi.StringPtrOutput `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
 	EmployeeType pulumi.StringPtrOutput `pulumi:"employeeType"`
-	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+	// For an external user invited to the tenant, this property represents the invited user's invitation status
 	ExternalUserState pulumi.StringOutput `pulumi:"externalUserState"`
-	// The fax number of the user.
+	// The fax number of the user
 	FaxNumber pulumi.StringPtrOutput `pulumi:"faxNumber"`
-	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the
+	// password
 	ForcePasswordChange pulumi.BoolPtrOutput `pulumi:"forcePasswordChange"`
-	// The given name (first name) of the user.
+	// The given name (first name) of the user
 	GivenName pulumi.StringPtrOutput `pulumi:"givenName"`
-	// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
+	// The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user
 	ImAddresses pulumi.StringArrayOutput `pulumi:"imAddresses"`
-	// The user’s job title.
+	// The user’s job title
 	JobTitle pulumi.StringPtrOutput `pulumi:"jobTitle"`
-	// The SMTP address for the user. This property cannot be unset once specified.
+	// The SMTP address for the user. Cannot be unset.
 	Mail pulumi.StringOutput `pulumi:"mail"`
-	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN)
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
-	// The object ID of the user's manager.
+	// The object ID of the user's manager
 	ManagerId pulumi.StringPtrOutput `pulumi:"managerId"`
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user
 	MobilePhone pulumi.StringPtrOutput `pulumi:"mobilePhone"`
-	// The object ID of the user.
+	// The object ID of the user
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// The office location in the user's place of business.
+	// The office location in the user's place of business
 	OfficeLocation pulumi.StringPtrOutput `pulumi:"officeLocation"`
-	// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise Active Directory distinguished name (DN) of the user
 	OnpremisesDistinguishedName pulumi.StringOutput `pulumi:"onpremisesDistinguishedName"`
-	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise FQDN (i.e. dnsDomainName) of the user
 	OnpremisesDomainName pulumi.StringOutput `pulumi:"onpremisesDomainName"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be
+	// specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user
+	// account
 	OnpremisesImmutableId pulumi.StringOutput `pulumi:"onpremisesImmutableId"`
-	// The on-premise SAM account name of the user.
+	// The on-premise SAM account name of the user
 	OnpremisesSamAccountName pulumi.StringOutput `pulumi:"onpremisesSamAccountName"`
-	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise security identifier (SID) of the user
 	OnpremisesSecurityIdentifier pulumi.StringOutput `pulumi:"onpremisesSecurityIdentifier"`
-	// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	// Whether this user is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+	// been synchronized (null)
 	OnpremisesSyncEnabled pulumi.BoolOutput `pulumi:"onpremisesSyncEnabled"`
-	// The on-premise user principal name of the user.
+	// The on-premise user principal name of the user
 	OnpremisesUserPrincipalName pulumi.StringOutput `pulumi:"onpremisesUserPrincipalName"`
-	// A list of additional email addresses for the user.
+	// Additional email addresses for the user
 	OtherMails pulumi.StringArrayOutput `pulumi:"otherMails"`
 	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
 	// maximum length is 256 characters. This property is required when creating a new user
 	Password pulumi.StringOutput `pulumi:"password"`
-	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
+	// States of America, this attribute contains the ZIP code
 	PostalCode pulumi.StringPtrOutput `pulumi:"postalCode"`
-	// The user's preferred language, in ISO 639-1 notation.
+	// The user's preferred language, in ISO 639-1 notation
 	PreferredLanguage pulumi.StringPtrOutput `pulumi:"preferredLanguage"`
-	// List of email addresses for the user that direct to the same mailbox.
+	// Email addresses for the user that direct to the same mailbox
 	ProxyAddresses pulumi.StringArrayOutput `pulumi:"proxyAddresses"`
-	// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+	// Whether or not the Outlook global address list should include this user
 	ShowInAddressList pulumi.BoolPtrOutput `pulumi:"showInAddressList"`
-	// The state or province in the user's address.
+	// The state or province in the user's address
 	State pulumi.StringPtrOutput `pulumi:"state"`
-	// The street address of the user's place of business.
+	// The street address of the user's place of business
 	StreetAddress pulumi.StringPtrOutput `pulumi:"streetAddress"`
-	// The user's surname (family name or last name).
+	// The user's surname (family name or last name)
 	Surname pulumi.StringPtrOutput `pulumi:"surname"`
-	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for
+	// availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples
+	// include: `NO`, `JP`, and `GB`. Cannot be reset to null once set
 	UsageLocation pulumi.StringPtrOutput `pulumi:"usageLocation"`
-	// The user principal name (UPN) of the user.
+	// The user principal name (UPN) of the user
 	UserPrincipalName pulumi.StringOutput `pulumi:"userPrincipalName"`
-	// The user type in the directory. Possible values are `Guest` or `Member`.
+	// The user type in the directory. Possible values are `Guest` or `Member`
 	UserType pulumi.StringOutput `pulumi:"userType"`
 }
 
@@ -205,200 +168,222 @@ func GetUser(ctx *pulumi.Context,
 type userState struct {
 	// A freeform field for the user to describe themselves
 	AboutMe *string `pulumi:"aboutMe"`
-	// Whether or not the account should be enabled.
+	// Whether or not the account should be enabled
 	AccountEnabled *bool `pulumi:"accountEnabled"`
-	// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
+	// The age group of the user
 	AgeGroup *string `pulumi:"ageGroup"`
-	// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
+	// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure
+	// AD Connect
 	BusinessPhones []string `pulumi:"businessPhones"`
-	// The city in which the user is located.
+	// The city in which the user is located
 	City *string `pulumi:"city"`
-	// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+	// The company name which the user is associated. This property can be useful for describing the company that an external
+	// user comes from
 	CompanyName *string `pulumi:"companyName"`
-	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+	// Whether consent has been obtained for minors
 	ConsentProvidedForMinor *string `pulumi:"consentProvidedForMinor"`
 	// The cost center associated with the user.
 	CostCenter *string `pulumi:"costCenter"`
-	// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
+	// The country/region in which the user is located, e.g. `US` or `UK`
 	Country *string `pulumi:"country"`
-	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+	// Indicates whether the user account was created as a regular school or work account (`null`), an external account
+	// (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using
+	// email verification (`EmailVerified`)
 	CreationType *string `pulumi:"creationType"`
-	// The name for the department in which the user works.
+	// The name for the department in which the user works
 	Department *string `pulumi:"department"`
-	// Whether the user's password is exempt from expiring. Defaults to `false`.
+	// Whether the users password is exempt from expiring
 	DisablePasswordExpiration *bool `pulumi:"disablePasswordExpiration"`
-	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+	// Whether the user is allowed weaker passwords than the default policy to be specified.
 	DisableStrongPassword *bool `pulumi:"disableStrongPassword"`
-	// The name to display in the address book for the user.
+	// The name to display in the address book for the user
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division *string `pulumi:"division"`
-	// The employee identifier assigned to the user by the organisation.
+	// The employee identifier assigned to the user by the organisation
 	EmployeeId *string `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
 	EmployeeType *string `pulumi:"employeeType"`
-	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+	// For an external user invited to the tenant, this property represents the invited user's invitation status
 	ExternalUserState *string `pulumi:"externalUserState"`
-	// The fax number of the user.
+	// The fax number of the user
 	FaxNumber *string `pulumi:"faxNumber"`
-	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the
+	// password
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
-	// The given name (first name) of the user.
+	// The given name (first name) of the user
 	GivenName *string `pulumi:"givenName"`
-	// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
+	// The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user
 	ImAddresses []string `pulumi:"imAddresses"`
-	// The user’s job title.
+	// The user’s job title
 	JobTitle *string `pulumi:"jobTitle"`
-	// The SMTP address for the user. This property cannot be unset once specified.
+	// The SMTP address for the user. Cannot be unset.
 	Mail *string `pulumi:"mail"`
-	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN)
 	MailNickname *string `pulumi:"mailNickname"`
-	// The object ID of the user's manager.
+	// The object ID of the user's manager
 	ManagerId *string `pulumi:"managerId"`
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user
 	MobilePhone *string `pulumi:"mobilePhone"`
-	// The object ID of the user.
+	// The object ID of the user
 	ObjectId *string `pulumi:"objectId"`
-	// The office location in the user's place of business.
+	// The office location in the user's place of business
 	OfficeLocation *string `pulumi:"officeLocation"`
-	// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise Active Directory distinguished name (DN) of the user
 	OnpremisesDistinguishedName *string `pulumi:"onpremisesDistinguishedName"`
-	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise FQDN (i.e. dnsDomainName) of the user
 	OnpremisesDomainName *string `pulumi:"onpremisesDomainName"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be
+	// specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user
+	// account
 	OnpremisesImmutableId *string `pulumi:"onpremisesImmutableId"`
-	// The on-premise SAM account name of the user.
+	// The on-premise SAM account name of the user
 	OnpremisesSamAccountName *string `pulumi:"onpremisesSamAccountName"`
-	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise security identifier (SID) of the user
 	OnpremisesSecurityIdentifier *string `pulumi:"onpremisesSecurityIdentifier"`
-	// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	// Whether this user is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+	// been synchronized (null)
 	OnpremisesSyncEnabled *bool `pulumi:"onpremisesSyncEnabled"`
-	// The on-premise user principal name of the user.
+	// The on-premise user principal name of the user
 	OnpremisesUserPrincipalName *string `pulumi:"onpremisesUserPrincipalName"`
-	// A list of additional email addresses for the user.
+	// Additional email addresses for the user
 	OtherMails []string `pulumi:"otherMails"`
 	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
 	// maximum length is 256 characters. This property is required when creating a new user
 	Password *string `pulumi:"password"`
-	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
+	// States of America, this attribute contains the ZIP code
 	PostalCode *string `pulumi:"postalCode"`
-	// The user's preferred language, in ISO 639-1 notation.
+	// The user's preferred language, in ISO 639-1 notation
 	PreferredLanguage *string `pulumi:"preferredLanguage"`
-	// List of email addresses for the user that direct to the same mailbox.
+	// Email addresses for the user that direct to the same mailbox
 	ProxyAddresses []string `pulumi:"proxyAddresses"`
-	// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+	// Whether or not the Outlook global address list should include this user
 	ShowInAddressList *bool `pulumi:"showInAddressList"`
-	// The state or province in the user's address.
+	// The state or province in the user's address
 	State *string `pulumi:"state"`
-	// The street address of the user's place of business.
+	// The street address of the user's place of business
 	StreetAddress *string `pulumi:"streetAddress"`
-	// The user's surname (family name or last name).
+	// The user's surname (family name or last name)
 	Surname *string `pulumi:"surname"`
-	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for
+	// availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples
+	// include: `NO`, `JP`, and `GB`. Cannot be reset to null once set
 	UsageLocation *string `pulumi:"usageLocation"`
-	// The user principal name (UPN) of the user.
+	// The user principal name (UPN) of the user
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
-	// The user type in the directory. Possible values are `Guest` or `Member`.
+	// The user type in the directory. Possible values are `Guest` or `Member`
 	UserType *string `pulumi:"userType"`
 }
 
 type UserState struct {
 	// A freeform field for the user to describe themselves
 	AboutMe pulumi.StringPtrInput
-	// Whether or not the account should be enabled.
+	// Whether or not the account should be enabled
 	AccountEnabled pulumi.BoolPtrInput
-	// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
+	// The age group of the user
 	AgeGroup pulumi.StringPtrInput
-	// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
+	// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure
+	// AD Connect
 	BusinessPhones pulumi.StringArrayInput
-	// The city in which the user is located.
+	// The city in which the user is located
 	City pulumi.StringPtrInput
-	// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+	// The company name which the user is associated. This property can be useful for describing the company that an external
+	// user comes from
 	CompanyName pulumi.StringPtrInput
-	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+	// Whether consent has been obtained for minors
 	ConsentProvidedForMinor pulumi.StringPtrInput
 	// The cost center associated with the user.
 	CostCenter pulumi.StringPtrInput
-	// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
+	// The country/region in which the user is located, e.g. `US` or `UK`
 	Country pulumi.StringPtrInput
-	// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+	// Indicates whether the user account was created as a regular school or work account (`null`), an external account
+	// (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using
+	// email verification (`EmailVerified`)
 	CreationType pulumi.StringPtrInput
-	// The name for the department in which the user works.
+	// The name for the department in which the user works
 	Department pulumi.StringPtrInput
-	// Whether the user's password is exempt from expiring. Defaults to `false`.
+	// Whether the users password is exempt from expiring
 	DisablePasswordExpiration pulumi.BoolPtrInput
-	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+	// Whether the user is allowed weaker passwords than the default policy to be specified.
 	DisableStrongPassword pulumi.BoolPtrInput
-	// The name to display in the address book for the user.
+	// The name to display in the address book for the user
 	DisplayName pulumi.StringPtrInput
 	// The name of the division in which the user works.
 	Division pulumi.StringPtrInput
-	// The employee identifier assigned to the user by the organisation.
+	// The employee identifier assigned to the user by the organisation
 	EmployeeId pulumi.StringPtrInput
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
 	EmployeeType pulumi.StringPtrInput
-	// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+	// For an external user invited to the tenant, this property represents the invited user's invitation status
 	ExternalUserState pulumi.StringPtrInput
-	// The fax number of the user.
+	// The fax number of the user
 	FaxNumber pulumi.StringPtrInput
-	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the
+	// password
 	ForcePasswordChange pulumi.BoolPtrInput
-	// The given name (first name) of the user.
+	// The given name (first name) of the user
 	GivenName pulumi.StringPtrInput
-	// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
+	// The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user
 	ImAddresses pulumi.StringArrayInput
-	// The user’s job title.
+	// The user’s job title
 	JobTitle pulumi.StringPtrInput
-	// The SMTP address for the user. This property cannot be unset once specified.
+	// The SMTP address for the user. Cannot be unset.
 	Mail pulumi.StringPtrInput
-	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN)
 	MailNickname pulumi.StringPtrInput
-	// The object ID of the user's manager.
+	// The object ID of the user's manager
 	ManagerId pulumi.StringPtrInput
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user
 	MobilePhone pulumi.StringPtrInput
-	// The object ID of the user.
+	// The object ID of the user
 	ObjectId pulumi.StringPtrInput
-	// The office location in the user's place of business.
+	// The office location in the user's place of business
 	OfficeLocation pulumi.StringPtrInput
-	// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise Active Directory distinguished name (DN) of the user
 	OnpremisesDistinguishedName pulumi.StringPtrInput
-	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise FQDN (i.e. dnsDomainName) of the user
 	OnpremisesDomainName pulumi.StringPtrInput
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be
+	// specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user
+	// account
 	OnpremisesImmutableId pulumi.StringPtrInput
-	// The on-premise SAM account name of the user.
+	// The on-premise SAM account name of the user
 	OnpremisesSamAccountName pulumi.StringPtrInput
-	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premise security identifier (SID) of the user
 	OnpremisesSecurityIdentifier pulumi.StringPtrInput
-	// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	// Whether this user is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+	// been synchronized (null)
 	OnpremisesSyncEnabled pulumi.BoolPtrInput
-	// The on-premise user principal name of the user.
+	// The on-premise user principal name of the user
 	OnpremisesUserPrincipalName pulumi.StringPtrInput
-	// A list of additional email addresses for the user.
+	// Additional email addresses for the user
 	OtherMails pulumi.StringArrayInput
 	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
 	// maximum length is 256 characters. This property is required when creating a new user
 	Password pulumi.StringPtrInput
-	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
+	// States of America, this attribute contains the ZIP code
 	PostalCode pulumi.StringPtrInput
-	// The user's preferred language, in ISO 639-1 notation.
+	// The user's preferred language, in ISO 639-1 notation
 	PreferredLanguage pulumi.StringPtrInput
-	// List of email addresses for the user that direct to the same mailbox.
+	// Email addresses for the user that direct to the same mailbox
 	ProxyAddresses pulumi.StringArrayInput
-	// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+	// Whether or not the Outlook global address list should include this user
 	ShowInAddressList pulumi.BoolPtrInput
-	// The state or province in the user's address.
+	// The state or province in the user's address
 	State pulumi.StringPtrInput
-	// The street address of the user's place of business.
+	// The street address of the user's place of business
 	StreetAddress pulumi.StringPtrInput
-	// The user's surname (family name or last name).
+	// The user's surname (family name or last name)
 	Surname pulumi.StringPtrInput
-	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for
+	// availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples
+	// include: `NO`, `JP`, and `GB`. Cannot be reset to null once set
 	UsageLocation pulumi.StringPtrInput
-	// The user principal name (UPN) of the user.
+	// The user principal name (UPN) of the user
 	UserPrincipalName pulumi.StringPtrInput
-	// The user type in the directory. Possible values are `Guest` or `Member`.
+	// The user type in the directory. Possible values are `Guest` or `Member`
 	UserType pulumi.StringPtrInput
 }
 
@@ -407,151 +392,167 @@ func (UserState) ElementType() reflect.Type {
 }
 
 type userArgs struct {
-	// Whether or not the account should be enabled.
+	// Whether or not the account should be enabled
 	AccountEnabled *bool `pulumi:"accountEnabled"`
-	// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
+	// The age group of the user
 	AgeGroup *string `pulumi:"ageGroup"`
-	// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
+	// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure
+	// AD Connect
 	BusinessPhones []string `pulumi:"businessPhones"`
-	// The city in which the user is located.
+	// The city in which the user is located
 	City *string `pulumi:"city"`
-	// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+	// The company name which the user is associated. This property can be useful for describing the company that an external
+	// user comes from
 	CompanyName *string `pulumi:"companyName"`
-	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+	// Whether consent has been obtained for minors
 	ConsentProvidedForMinor *string `pulumi:"consentProvidedForMinor"`
 	// The cost center associated with the user.
 	CostCenter *string `pulumi:"costCenter"`
-	// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
+	// The country/region in which the user is located, e.g. `US` or `UK`
 	Country *string `pulumi:"country"`
-	// The name for the department in which the user works.
+	// The name for the department in which the user works
 	Department *string `pulumi:"department"`
-	// Whether the user's password is exempt from expiring. Defaults to `false`.
+	// Whether the users password is exempt from expiring
 	DisablePasswordExpiration *bool `pulumi:"disablePasswordExpiration"`
-	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+	// Whether the user is allowed weaker passwords than the default policy to be specified.
 	DisableStrongPassword *bool `pulumi:"disableStrongPassword"`
-	// The name to display in the address book for the user.
+	// The name to display in the address book for the user
 	DisplayName string `pulumi:"displayName"`
 	// The name of the division in which the user works.
 	Division *string `pulumi:"division"`
-	// The employee identifier assigned to the user by the organisation.
+	// The employee identifier assigned to the user by the organisation
 	EmployeeId *string `pulumi:"employeeId"`
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
 	EmployeeType *string `pulumi:"employeeType"`
-	// The fax number of the user.
+	// The fax number of the user
 	FaxNumber *string `pulumi:"faxNumber"`
-	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the
+	// password
 	ForcePasswordChange *bool `pulumi:"forcePasswordChange"`
-	// The given name (first name) of the user.
+	// The given name (first name) of the user
 	GivenName *string `pulumi:"givenName"`
-	// The user’s job title.
+	// The user’s job title
 	JobTitle *string `pulumi:"jobTitle"`
-	// The SMTP address for the user. This property cannot be unset once specified.
+	// The SMTP address for the user. Cannot be unset.
 	Mail *string `pulumi:"mail"`
-	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN)
 	MailNickname *string `pulumi:"mailNickname"`
-	// The object ID of the user's manager.
+	// The object ID of the user's manager
 	ManagerId *string `pulumi:"managerId"`
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user
 	MobilePhone *string `pulumi:"mobilePhone"`
-	// The office location in the user's place of business.
+	// The office location in the user's place of business
 	OfficeLocation *string `pulumi:"officeLocation"`
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be
+	// specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user
+	// account
 	OnpremisesImmutableId *string `pulumi:"onpremisesImmutableId"`
-	// A list of additional email addresses for the user.
+	// Additional email addresses for the user
 	OtherMails []string `pulumi:"otherMails"`
 	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
 	// maximum length is 256 characters. This property is required when creating a new user
 	Password *string `pulumi:"password"`
-	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
+	// States of America, this attribute contains the ZIP code
 	PostalCode *string `pulumi:"postalCode"`
-	// The user's preferred language, in ISO 639-1 notation.
+	// The user's preferred language, in ISO 639-1 notation
 	PreferredLanguage *string `pulumi:"preferredLanguage"`
-	// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+	// Whether or not the Outlook global address list should include this user
 	ShowInAddressList *bool `pulumi:"showInAddressList"`
-	// The state or province in the user's address.
+	// The state or province in the user's address
 	State *string `pulumi:"state"`
-	// The street address of the user's place of business.
+	// The street address of the user's place of business
 	StreetAddress *string `pulumi:"streetAddress"`
-	// The user's surname (family name or last name).
+	// The user's surname (family name or last name)
 	Surname *string `pulumi:"surname"`
-	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for
+	// availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples
+	// include: `NO`, `JP`, and `GB`. Cannot be reset to null once set
 	UsageLocation *string `pulumi:"usageLocation"`
-	// The user principal name (UPN) of the user.
+	// The user principal name (UPN) of the user
 	UserPrincipalName string `pulumi:"userPrincipalName"`
 }
 
 // The set of arguments for constructing a User resource.
 type UserArgs struct {
-	// Whether or not the account should be enabled.
+	// Whether or not the account should be enabled
 	AccountEnabled pulumi.BoolPtrInput
-	// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
+	// The age group of the user
 	AgeGroup pulumi.StringPtrInput
-	// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
+	// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure
+	// AD Connect
 	BusinessPhones pulumi.StringArrayInput
-	// The city in which the user is located.
+	// The city in which the user is located
 	City pulumi.StringPtrInput
-	// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+	// The company name which the user is associated. This property can be useful for describing the company that an external
+	// user comes from
 	CompanyName pulumi.StringPtrInput
-	// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+	// Whether consent has been obtained for minors
 	ConsentProvidedForMinor pulumi.StringPtrInput
 	// The cost center associated with the user.
 	CostCenter pulumi.StringPtrInput
-	// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
+	// The country/region in which the user is located, e.g. `US` or `UK`
 	Country pulumi.StringPtrInput
-	// The name for the department in which the user works.
+	// The name for the department in which the user works
 	Department pulumi.StringPtrInput
-	// Whether the user's password is exempt from expiring. Defaults to `false`.
+	// Whether the users password is exempt from expiring
 	DisablePasswordExpiration pulumi.BoolPtrInput
-	// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+	// Whether the user is allowed weaker passwords than the default policy to be specified.
 	DisableStrongPassword pulumi.BoolPtrInput
-	// The name to display in the address book for the user.
+	// The name to display in the address book for the user
 	DisplayName pulumi.StringInput
 	// The name of the division in which the user works.
 	Division pulumi.StringPtrInput
-	// The employee identifier assigned to the user by the organisation.
+	// The employee identifier assigned to the user by the organisation
 	EmployeeId pulumi.StringPtrInput
 	// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
 	EmployeeType pulumi.StringPtrInput
-	// The fax number of the user.
+	// The fax number of the user
 	FaxNumber pulumi.StringPtrInput
-	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+	// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the
+	// password
 	ForcePasswordChange pulumi.BoolPtrInput
-	// The given name (first name) of the user.
+	// The given name (first name) of the user
 	GivenName pulumi.StringPtrInput
-	// The user’s job title.
+	// The user’s job title
 	JobTitle pulumi.StringPtrInput
-	// The SMTP address for the user. This property cannot be unset once specified.
+	// The SMTP address for the user. Cannot be unset.
 	Mail pulumi.StringPtrInput
-	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+	// The mail alias for the user. Defaults to the user name part of the user principal name (UPN)
 	MailNickname pulumi.StringPtrInput
-	// The object ID of the user's manager.
+	// The object ID of the user's manager
 	ManagerId pulumi.StringPtrInput
-	// The primary cellular telephone number for the user.
+	// The primary cellular telephone number for the user
 	MobilePhone pulumi.StringPtrInput
-	// The office location in the user's place of business.
+	// The office location in the user's place of business
 	OfficeLocation pulumi.StringPtrInput
-	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
+	// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be
+	// specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user
+	// account
 	OnpremisesImmutableId pulumi.StringPtrInput
-	// A list of additional email addresses for the user.
+	// Additional email addresses for the user
 	OtherMails pulumi.StringArrayInput
 	// The password for the user. The password must satisfy minimum requirements as specified by the password policy. The
 	// maximum length is 256 characters. This property is required when creating a new user
 	Password pulumi.StringPtrInput
-	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+	// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
+	// States of America, this attribute contains the ZIP code
 	PostalCode pulumi.StringPtrInput
-	// The user's preferred language, in ISO 639-1 notation.
+	// The user's preferred language, in ISO 639-1 notation
 	PreferredLanguage pulumi.StringPtrInput
-	// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+	// Whether or not the Outlook global address list should include this user
 	ShowInAddressList pulumi.BoolPtrInput
-	// The state or province in the user's address.
+	// The state or province in the user's address
 	State pulumi.StringPtrInput
-	// The street address of the user's place of business.
+	// The street address of the user's place of business
 	StreetAddress pulumi.StringPtrInput
-	// The user's surname (family name or last name).
+	// The user's surname (family name or last name)
 	Surname pulumi.StringPtrInput
-	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+	// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for
+	// availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples
+	// include: `NO`, `JP`, and `GB`. Cannot be reset to null once set
 	UsageLocation pulumi.StringPtrInput
-	// The user principal name (UPN) of the user.
+	// The user principal name (UPN) of the user
 	UserPrincipalName pulumi.StringInput
 }
 
@@ -647,32 +648,34 @@ func (o UserOutput) AboutMe() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.AboutMe }).(pulumi.StringOutput)
 }
 
-// Whether or not the account should be enabled.
+// Whether or not the account should be enabled
 func (o UserOutput) AccountEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.AccountEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`. Omit this property or specify a blank string to unset.
+// The age group of the user
 func (o UserOutput) AgeGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.AgeGroup }).(pulumi.StringPtrOutput)
 }
 
-// A list of telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure AD Connect.
+// The telephone numbers for the user. Only one number can be set for this property. Read-only for users synced with Azure
+// AD Connect
 func (o UserOutput) BusinessPhones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.BusinessPhones }).(pulumi.StringArrayOutput)
 }
 
-// The city in which the user is located.
+// The city in which the user is located
 func (o UserOutput) City() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.City }).(pulumi.StringPtrOutput)
 }
 
-// The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
+// The company name which the user is associated. This property can be useful for describing the company that an external
+// user comes from
 func (o UserOutput) CompanyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.CompanyName }).(pulumi.StringPtrOutput)
 }
 
-// Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
+// Whether consent has been obtained for minors
 func (o UserOutput) ConsentProvidedForMinor() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ConsentProvidedForMinor }).(pulumi.StringPtrOutput)
 }
@@ -682,32 +685,34 @@ func (o UserOutput) CostCenter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.CostCenter }).(pulumi.StringPtrOutput)
 }
 
-// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
+// The country/region in which the user is located, e.g. `US` or `UK`
 func (o UserOutput) Country() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Country }).(pulumi.StringPtrOutput)
 }
 
-// Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
+// Indicates whether the user account was created as a regular school or work account (`null`), an external account
+// (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using
+// email verification (`EmailVerified`)
 func (o UserOutput) CreationType() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.CreationType }).(pulumi.StringOutput)
 }
 
-// The name for the department in which the user works.
+// The name for the department in which the user works
 func (o UserOutput) Department() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Department }).(pulumi.StringPtrOutput)
 }
 
-// Whether the user's password is exempt from expiring. Defaults to `false`.
+// Whether the users password is exempt from expiring
 func (o UserOutput) DisablePasswordExpiration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.DisablePasswordExpiration }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
+// Whether the user is allowed weaker passwords than the default policy to be specified.
 func (o UserOutput) DisableStrongPassword() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.DisableStrongPassword }).(pulumi.BoolPtrOutput)
 }
 
-// The name to display in the address book for the user.
+// The name to display in the address book for the user
 func (o UserOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -717,7 +722,7 @@ func (o UserOutput) Division() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Division }).(pulumi.StringPtrOutput)
 }
 
-// The employee identifier assigned to the user by the organisation.
+// The employee identifier assigned to the user by the organisation
 func (o UserOutput) EmployeeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.EmployeeId }).(pulumi.StringPtrOutput)
 }
@@ -727,102 +732,106 @@ func (o UserOutput) EmployeeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.EmployeeType }).(pulumi.StringPtrOutput)
 }
 
-// For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
+// For an external user invited to the tenant, this property represents the invited user's invitation status
 func (o UserOutput) ExternalUserState() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ExternalUserState }).(pulumi.StringOutput)
 }
 
-// The fax number of the user.
+// The fax number of the user
 func (o UserOutput) FaxNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.FaxNumber }).(pulumi.StringPtrOutput)
 }
 
-// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the password. Defaults to `false`.
+// Whether the user is forced to change the password during the next sign-in. Only takes effect when also changing the
+// password
 func (o UserOutput) ForcePasswordChange() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.ForcePasswordChange }).(pulumi.BoolPtrOutput)
 }
 
-// The given name (first name) of the user.
+// The given name (first name) of the user
 func (o UserOutput) GivenName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.GivenName }).(pulumi.StringPtrOutput)
 }
 
-// A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
+// The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user
 func (o UserOutput) ImAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.ImAddresses }).(pulumi.StringArrayOutput)
 }
 
-// The user’s job title.
+// The user’s job title
 func (o UserOutput) JobTitle() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.JobTitle }).(pulumi.StringPtrOutput)
 }
 
-// The SMTP address for the user. This property cannot be unset once specified.
+// The SMTP address for the user. Cannot be unset.
 func (o UserOutput) Mail() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Mail }).(pulumi.StringOutput)
 }
 
-// The mail alias for the user. Defaults to the user name part of the user principal name (UPN).
+// The mail alias for the user. Defaults to the user name part of the user principal name (UPN)
 func (o UserOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.MailNickname }).(pulumi.StringOutput)
 }
 
-// The object ID of the user's manager.
+// The object ID of the user's manager
 func (o UserOutput) ManagerId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.ManagerId }).(pulumi.StringPtrOutput)
 }
 
-// The primary cellular telephone number for the user.
+// The primary cellular telephone number for the user
 func (o UserOutput) MobilePhone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.MobilePhone }).(pulumi.StringPtrOutput)
 }
 
-// The object ID of the user.
+// The object ID of the user
 func (o UserOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The office location in the user's place of business.
+// The office location in the user's place of business
 func (o UserOutput) OfficeLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.OfficeLocation }).(pulumi.StringPtrOutput)
 }
 
-// The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premise Active Directory distinguished name (DN) of the user
 func (o UserOutput) OnpremisesDistinguishedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.OnpremisesDistinguishedName }).(pulumi.StringOutput)
 }
 
-// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premise FQDN (i.e. dnsDomainName) of the user
 func (o UserOutput) OnpremisesDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.OnpremisesDomainName }).(pulumi.StringOutput)
 }
 
-// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be specified if you are using a federated domain for the user's `userPrincipalName` property when creating a new user account.
+// The value used to associate an on-premise Active Directory user account with their Azure AD user object. This must be
+// specified if you are using a federated domain for the user's `user_principal_name` property when creating a new user
+// account
 func (o UserOutput) OnpremisesImmutableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.OnpremisesImmutableId }).(pulumi.StringOutput)
 }
 
-// The on-premise SAM account name of the user.
+// The on-premise SAM account name of the user
 func (o UserOutput) OnpremisesSamAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
 }
 
-// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premise security identifier (SID) of the user
 func (o UserOutput) OnpremisesSecurityIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.OnpremisesSecurityIdentifier }).(pulumi.StringOutput)
 }
 
-// Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+// Whether this user is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+// been synchronized (null)
 func (o UserOutput) OnpremisesSyncEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolOutput { return v.OnpremisesSyncEnabled }).(pulumi.BoolOutput)
 }
 
-// The on-premise user principal name of the user.
+// The on-premise user principal name of the user
 func (o UserOutput) OnpremisesUserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.OnpremisesUserPrincipalName }).(pulumi.StringOutput)
 }
 
-// A list of additional email addresses for the user.
+// Additional email addresses for the user
 func (o UserOutput) OtherMails() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.OtherMails }).(pulumi.StringArrayOutput)
 }
@@ -833,52 +842,55 @@ func (o UserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
-// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
+// The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United
+// States of America, this attribute contains the ZIP code
 func (o UserOutput) PostalCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PostalCode }).(pulumi.StringPtrOutput)
 }
 
-// The user's preferred language, in ISO 639-1 notation.
+// The user's preferred language, in ISO 639-1 notation
 func (o UserOutput) PreferredLanguage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.PreferredLanguage }).(pulumi.StringPtrOutput)
 }
 
-// List of email addresses for the user that direct to the same mailbox.
+// Email addresses for the user that direct to the same mailbox
 func (o UserOutput) ProxyAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *User) pulumi.StringArrayOutput { return v.ProxyAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Whether or not the Outlook global address list should include this user. Defaults to `true`.
+// Whether or not the Outlook global address list should include this user
 func (o UserOutput) ShowInAddressList() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.BoolPtrOutput { return v.ShowInAddressList }).(pulumi.BoolPtrOutput)
 }
 
-// The state or province in the user's address.
+// The state or province in the user's address
 func (o UserOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.State }).(pulumi.StringPtrOutput)
 }
 
-// The street address of the user's place of business.
+// The street address of the user's place of business
 func (o UserOutput) StreetAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.StreetAddress }).(pulumi.StringPtrOutput)
 }
 
-// The user's surname (family name or last name).
+// The user's surname (family name or last name)
 func (o UserOutput) Surname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Surname }).(pulumi.StringPtrOutput)
 }
 
-// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples include: `NO`, `JP`, and `GB`. Cannot be reset to null once set.
+// The usage location of the user. Required for users that will be assigned licenses due to legal requirement to check for
+// availability of services in countries. The usage location is a two letter country code (ISO standard 3166). Examples
+// include: `NO`, `JP`, and `GB`. Cannot be reset to null once set
 func (o UserOutput) UsageLocation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.UsageLocation }).(pulumi.StringPtrOutput)
 }
 
-// The user principal name (UPN) of the user.
+// The user principal name (UPN) of the user
 func (o UserOutput) UserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserPrincipalName }).(pulumi.StringOutput)
 }
 
-// The user type in the directory. Possible values are `Guest` or `Member`.
+// The user type in the directory. Possible values are `Guest` or `Member`
 func (o UserOutput) UserType() pulumi.StringOutput {
 	return o.ApplyT(func(v *User) pulumi.StringOutput { return v.UserType }).(pulumi.StringOutput)
 }

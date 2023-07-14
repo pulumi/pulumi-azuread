@@ -14,31 +14,18 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("choices")]
         private InputList<Inputs.AccessPackageAssignmentPolicyQuestionChoiceArgs>? _choices;
-
-        /// <summary>
-        /// One or more blocks configuring a choice to the question, as documented below.
-        /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyQuestionChoiceArgs> Choices
         {
             get => _choices ?? (_choices = new InputList<Inputs.AccessPackageAssignmentPolicyQuestionChoiceArgs>());
             set => _choices = value;
         }
 
-        /// <summary>
-        /// Whether this question is required.
-        /// </summary>
         [Input("required")]
         public Input<bool>? Required { get; set; }
 
-        /// <summary>
-        /// The sequence number of this question.
-        /// </summary>
         [Input("sequence")]
         public Input<int>? Sequence { get; set; }
 
-        /// <summary>
-        /// A block describing the content of this question, as documented below.
-        /// </summary>
         [Input("text", required: true)]
         public Input<Inputs.AccessPackageAssignmentPolicyQuestionTextArgs> Text { get; set; } = null!;
 

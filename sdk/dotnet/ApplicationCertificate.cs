@@ -9,68 +9,56 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// ## Import
-    /// 
-    /// Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
-    /// ```
-    /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
-    /// </summary>
     [AzureADResourceType("azuread:index/applicationCertificate:ApplicationCertificate")]
     public partial class ApplicationCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the application for which this certificate should be created
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        /// 
-        /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+        /// Specifies the encoding used for the supplied certificate data
         /// </summary>
         [Output("encoding")]
         public Output<string?> Encoding { get; private set; } = null!;
 
         /// <summary>
-        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+        /// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
         /// </summary>
         [Output("endDate")]
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
         /// </summary>
         [Output("endDateRelative")]
         public Output<string?> EndDateRelative { get; private set; } = null!;
 
         /// <summary>
-        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// If this isn't specified, the current date and time are use
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+        /// The type of key/certificate
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
+        /// argumen
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -126,47 +114,45 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the application for which this certificate should be created
         /// </summary>
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
 
         /// <summary>
-        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        /// 
-        /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+        /// Specifies the encoding used for the supplied certificate data
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+        /// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
         /// <summary>
-        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// If this isn't specified, the current date and time are use
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+        /// The type of key/certificate
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -175,7 +161,8 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
+        /// argumen
         /// </summary>
         public Input<string>? Value
         {
@@ -196,47 +183,45 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationCertificateState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
+        /// The object ID of the application for which this certificate should be created
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
 
         /// <summary>
-        /// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
-        /// 
-        /// &gt; **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurerm_key_vault_certificate resource.
+        /// Specifies the encoding used for the supplied certificate data
         /// </summary>
         [Input("encoding")]
         public Input<string>? Encoding { get; set; }
 
         /// <summary>
-        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
+        /// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
+        /// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
-        /// 
-        /// &gt; One of `end_date` or `end_date_relative` must be set. The maximum allowed duration is determined by Azure AD.
+        /// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
         /// <summary>
-        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
+        /// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
 
         /// <summary>
-        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
+        /// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// If this isn't specified, the current date and time are use
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
 
         /// <summary>
-        /// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
+        /// The type of key/certificate
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -245,7 +230,8 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
+        /// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
+        /// argumen
         /// </summary>
         public Input<string>? Value
         {

@@ -4,45 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleUser = azuread.getUser({
- *     userPrincipalName: "jdoe@hashicorp.com",
- * });
- * const exampleAdministrativeUnit = new azuread.AdministrativeUnit("exampleAdministrativeUnit", {displayName: "Example-AU"});
- * const exampleDirectoryRole = new azuread.DirectoryRole("exampleDirectoryRole", {displayName: "Security administrator"});
- * const exampleAdministrativeUnitRoleMember = new azuread.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", {
- *     roleObjectId: exampleDirectoryRole.objectId,
- *     administrativeUnitObjectId: exampleAdministrativeUnit.id,
- *     memberObjectId: exampleUser.then(exampleUser => exampleUser.id),
- * });
- * ```
- *
- * ## Import
- *
- * Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
- * ```
- *
- *  -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
- */
 export class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     /**
      * Get an existing AdministrativeUnitRoleMember resource's state with the given name, ID, and optional extra
@@ -72,15 +33,15 @@ export class AdministrativeUnitRoleMember extends pulumi.CustomResource {
     }
 
     /**
-     * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+     * The object ID of the administrative unit
      */
     public readonly administrativeUnitObjectId!: pulumi.Output<string>;
     /**
-     * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+     * The object ID of the member
      */
     public readonly memberObjectId!: pulumi.Output<string>;
     /**
-     * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+     * The object ID of the directory role
      */
     public readonly roleObjectId!: pulumi.Output<string>;
 
@@ -125,15 +86,15 @@ export class AdministrativeUnitRoleMember extends pulumi.CustomResource {
  */
 export interface AdministrativeUnitRoleMemberState {
     /**
-     * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+     * The object ID of the administrative unit
      */
     administrativeUnitObjectId?: pulumi.Input<string>;
     /**
-     * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+     * The object ID of the member
      */
     memberObjectId?: pulumi.Input<string>;
     /**
-     * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+     * The object ID of the directory role
      */
     roleObjectId?: pulumi.Input<string>;
 }
@@ -143,15 +104,15 @@ export interface AdministrativeUnitRoleMemberState {
  */
 export interface AdministrativeUnitRoleMemberArgs {
     /**
-     * The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+     * The object ID of the administrative unit
      */
     administrativeUnitObjectId: pulumi.Input<string>;
     /**
-     * The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+     * The object ID of the member
      */
     memberObjectId: pulumi.Input<string>;
     /**
-     * The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
+     * The object ID of the directory role
      */
     roleObjectId: pulumi.Input<string>;
 }

@@ -10,38 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
-//
-// ## API Permissions
-//
-// This data source does not require any additional roles.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
-//				DisplayName: pulumi.StringRef("Marketo"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("applicationTemplateId", example.TemplateId)
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetApplicationTemplate(ctx *pulumi.Context, args *GetApplicationTemplateArgs, opts ...pulumi.InvokeOption) (*GetApplicationTemplateResult, error) {
 	var rv GetApplicationTemplateResult
 	err := ctx.Invoke("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, opts...)
@@ -53,34 +21,22 @@ func GetApplicationTemplate(ctx *pulumi.Context, args *GetApplicationTemplateArg
 
 // A collection of arguments for invoking getApplicationTemplate.
 type GetApplicationTemplateArgs struct {
-	// Specifies the display name of the templated application.
 	DisplayName *string `pulumi:"displayName"`
-	// Specifies the ID of the templated application.
-	//
-	// > One of `templateId` or `displayName` must be specified.
-	TemplateId *string `pulumi:"templateId"`
+	TemplateId  *string `pulumi:"templateId"`
 }
 
 // A collection of values returned by getApplicationTemplate.
 type GetApplicationTemplateResult struct {
-	// List of categories for this templated application.
-	Categories []string `pulumi:"categories"`
-	// The display name for the templated application.
-	DisplayName string `pulumi:"displayName"`
-	// Home page URL of the templated application.
-	HomepageUrl string `pulumi:"homepageUrl"`
+	Categories  []string `pulumi:"categories"`
+	DisplayName string   `pulumi:"displayName"`
+	HomepageUrl string   `pulumi:"homepageUrl"`
 	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
-	// URL to retrieve the logo for this templated application.
-	LogoUrl string `pulumi:"logoUrl"`
-	// Name of the publisher for this templated application.
-	Publisher string `pulumi:"publisher"`
-	// List of provisioning modes supported by this templated application.
+	Id                         string   `pulumi:"id"`
+	LogoUrl                    string   `pulumi:"logoUrl"`
+	Publisher                  string   `pulumi:"publisher"`
 	SupportedProvisioningTypes []string `pulumi:"supportedProvisioningTypes"`
-	// List of single sign on modes supported by this templated application.
 	SupportedSingleSignOnModes []string `pulumi:"supportedSingleSignOnModes"`
-	// The ID of the templated application.
-	TemplateId string `pulumi:"templateId"`
+	TemplateId                 string   `pulumi:"templateId"`
 }
 
 func GetApplicationTemplateOutput(ctx *pulumi.Context, args GetApplicationTemplateOutputArgs, opts ...pulumi.InvokeOption) GetApplicationTemplateResultOutput {
@@ -98,12 +54,8 @@ func GetApplicationTemplateOutput(ctx *pulumi.Context, args GetApplicationTempla
 
 // A collection of arguments for invoking getApplicationTemplate.
 type GetApplicationTemplateOutputArgs struct {
-	// Specifies the display name of the templated application.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Specifies the ID of the templated application.
-	//
-	// > One of `templateId` or `displayName` must be specified.
-	TemplateId pulumi.StringPtrInput `pulumi:"templateId"`
+	TemplateId  pulumi.StringPtrInput `pulumi:"templateId"`
 }
 
 func (GetApplicationTemplateOutputArgs) ElementType() reflect.Type {
@@ -125,17 +77,14 @@ func (o GetApplicationTemplateResultOutput) ToGetApplicationTemplateResultOutput
 	return o
 }
 
-// List of categories for this templated application.
 func (o GetApplicationTemplateResultOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
-// The display name for the templated application.
 func (o GetApplicationTemplateResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Home page URL of the templated application.
 func (o GetApplicationTemplateResultOutput) HomepageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.HomepageUrl }).(pulumi.StringOutput)
 }
@@ -145,27 +94,22 @@ func (o GetApplicationTemplateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// URL to retrieve the logo for this templated application.
 func (o GetApplicationTemplateResultOutput) LogoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.LogoUrl }).(pulumi.StringOutput)
 }
 
-// Name of the publisher for this templated application.
 func (o GetApplicationTemplateResultOutput) Publisher() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.Publisher }).(pulumi.StringOutput)
 }
 
-// List of provisioning modes supported by this templated application.
 func (o GetApplicationTemplateResultOutput) SupportedProvisioningTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) []string { return v.SupportedProvisioningTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of single sign on modes supported by this templated application.
 func (o GetApplicationTemplateResultOutput) SupportedSingleSignOnModes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) []string { return v.SupportedSingleSignOnModes }).(pulumi.StringArrayOutput)
 }
 
-// The ID of the templated application.
 func (o GetApplicationTemplateResultOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationTemplateResult) string { return v.TemplateId }).(pulumi.StringOutput)
 }

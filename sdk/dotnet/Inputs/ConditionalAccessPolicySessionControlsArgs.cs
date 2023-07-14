@@ -12,41 +12,21 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ConditionalAccessPolicySessionControlsArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether or not application enforced restrictions are enabled. Defaults to `false`.
-        /// 
-        /// &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
-        /// </summary>
         [Input("applicationEnforcedRestrictionsEnabled")]
         public Input<bool>? ApplicationEnforcedRestrictionsEnabled { get; set; }
 
-        /// <summary>
-        /// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
-        /// </summary>
         [Input("cloudAppSecurityPolicy")]
         public Input<string>? CloudAppSecurityPolicy { get; set; }
 
-        /// <summary>
-        /// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
-        /// </summary>
         [Input("disableResilienceDefaults")]
         public Input<bool>? DisableResilienceDefaults { get; set; }
 
-        /// <summary>
-        /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
-        /// </summary>
         [Input("persistentBrowserMode")]
         public Input<string>? PersistentBrowserMode { get; set; }
 
-        /// <summary>
-        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
-        /// </summary>
         [Input("signInFrequency")]
         public Input<int>? SignInFrequency { get; set; }
 
-        /// <summary>
-        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
-        /// </summary>
         [Input("signInFrequencyPeriod")]
         public Input<string>? SignInFrequencyPeriod { get; set; }
 

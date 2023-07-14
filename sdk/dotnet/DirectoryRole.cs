@@ -9,88 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages a Directory Role within Azure Active Directory. Directory Roles are also known as Administrator Roles.
-    /// 
-    /// Directory Roles are built-in to Azure Active Directory and are immutable. However, by default they are not activated in a tenant (except for the Global Administrator role). This resource ensures a directory role is activated from its associated role template, and exports the object ID of the role, so that role assignments can be made for it.
-    /// 
-    /// Once activated, directory roles cannot be deactivated and so this resource does not perform any actions on destroy.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// *Activate a directory role by its template ID*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
-    ///     {
-    ///         TemplateId = "00000000-0000-0000-0000-000000000000",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// *Activate a directory role by display name*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.DirectoryRole("example", new()
-    ///     {
-    ///         DisplayName = "Printer administrator",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource does not support importing.
-    /// </summary>
     [AzureADResourceType("azuread:index/directoryRole:DirectoryRole")]
     public partial class DirectoryRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the directory role.
+        /// The description of the directory role
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the directory role to activate. Changing this forces a new resource to be created.
+        /// The display name of the directory role
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the directory role.
+        /// The object ID of the directory role
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-        /// 
-        /// &gt; Either `display_name` or `template_id` must be specified.
+        /// The object ID of the template associated with the directory role
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
@@ -142,15 +83,13 @@ namespace Pulumi.AzureAD
     public sealed class DirectoryRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The display name of the directory role to activate. Changing this forces a new resource to be created.
+        /// The display name of the directory role
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-        /// 
-        /// &gt; Either `display_name` or `template_id` must be specified.
+        /// The object ID of the template associated with the directory role
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
@@ -164,27 +103,25 @@ namespace Pulumi.AzureAD
     public sealed class DirectoryRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the directory role.
+        /// The description of the directory role
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the directory role to activate. Changing this forces a new resource to be created.
+        /// The display name of the directory role
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The object ID of the directory role.
+        /// The object ID of the directory role
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-        /// 
-        /// &gt; Either `display_name` or `template_id` must be specified.
+        /// The object ID of the template associated with the directory role
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }

@@ -13,21 +13,9 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetDirectoryRolesRoleResult
     {
-        /// <summary>
-        /// The description of the directory role.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The display name of the directory role.
-        /// </summary>
         public readonly string DisplayName;
-        /// <summary>
-        /// The object ID of the directory role.
-        /// </summary>
         public readonly string ObjectId;
-        /// <summary>
-        /// The template ID of the directory role.
-        /// </summary>
         public readonly string TemplateId;
 
         [OutputConstructor]

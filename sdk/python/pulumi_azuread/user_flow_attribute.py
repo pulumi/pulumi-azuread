@@ -19,9 +19,9 @@ class UserFlowAttributeArgs:
                  display_name: pulumi.Input[str]):
         """
         The set of arguments for constructing a UserFlowAttribute resource.
-        :param pulumi.Input[str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
-        :param pulumi.Input[str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] data_type: The data type of the user flow attribute
+        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up
+        :param pulumi.Input[str] display_name: The display name of the user flow attribute.
         """
         pulumi.set(__self__, "data_type", data_type)
         pulumi.set(__self__, "description", description)
@@ -31,7 +31,7 @@ class UserFlowAttributeArgs:
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Input[str]:
         """
-        The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        The data type of the user flow attribute
         """
         return pulumi.get(self, "data_type")
 
@@ -43,7 +43,7 @@ class UserFlowAttributeArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        The description of the user flow attribute that is shown to the user at the time of sign-up.
+        The description of the user flow attribute that is shown to the user at the time of sign-up
         """
         return pulumi.get(self, "description")
 
@@ -55,7 +55,7 @@ class UserFlowAttributeArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The display name of the user flow attribute. Changing this forces a new resource to be created.
+        The display name of the user flow attribute.
         """
         return pulumi.get(self, "display_name")
 
@@ -73,10 +73,10 @@ class _UserFlowAttributeState:
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering UserFlowAttribute resources.
-        :param pulumi.Input[str] attribute_type: The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
-        :param pulumi.Input[str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
-        :param pulumi.Input[str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] attribute_type: The type of the user flow attribute
+        :param pulumi.Input[str] data_type: The data type of the user flow attribute
+        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up
+        :param pulumi.Input[str] display_name: The display name of the user flow attribute.
         """
         if attribute_type is not None:
             pulumi.set(__self__, "attribute_type", attribute_type)
@@ -91,7 +91,7 @@ class _UserFlowAttributeState:
     @pulumi.getter(name="attributeType")
     def attribute_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+        The type of the user flow attribute
         """
         return pulumi.get(self, "attribute_type")
 
@@ -103,7 +103,7 @@ class _UserFlowAttributeState:
     @pulumi.getter(name="dataType")
     def data_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        The data type of the user flow attribute
         """
         return pulumi.get(self, "data_type")
 
@@ -115,7 +115,7 @@ class _UserFlowAttributeState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the user flow attribute that is shown to the user at the time of sign-up.
+        The description of the user flow attribute that is shown to the user at the time of sign-up
         """
         return pulumi.get(self, "description")
 
@@ -127,7 +127,7 @@ class _UserFlowAttributeState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the user flow attribute. Changing this forces a new resource to be created.
+        The display name of the user flow attribute.
         """
         return pulumi.get(self, "display_name")
 
@@ -146,43 +146,12 @@ class UserFlowAttribute(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
-
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.UserFlowAttribute("example",
-            data_type="string",
-            description="Your hobby",
-            display_name="Hobby")
-        ```
-
-        ## Import
-
-        User flow attributes can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv
-        ```
-
-         -> This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&tabs=http).
-
+        Create a UserFlowAttribute resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
-        :param pulumi.Input[str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] data_type: The data type of the user flow attribute
+        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up
+        :param pulumi.Input[str] display_name: The display name of the user flow attribute.
         """
         ...
     @overload
@@ -191,38 +160,7 @@ class UserFlowAttribute(pulumi.CustomResource):
                  args: UserFlowAttributeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.
-
-        ## API Permissions
-
-        The following API permissions are required in order to use this resource.
-
-        When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
-
-        ## Example Usage
-
-        *Basic example*
-
-        ```python
-        import pulumi
-        import pulumi_azuread as azuread
-
-        example = azuread.UserFlowAttribute("example",
-            data_type="string",
-            description="Your hobby",
-            display_name="Hobby")
-        ```
-
-        ## Import
-
-        User flow attributes can be imported using the `id`, e.g.
-
-        ```sh
-         $ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv
-        ```
-
-         -> This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&tabs=http).
-
+        Create a UserFlowAttribute resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param UserFlowAttributeArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -281,10 +219,10 @@ class UserFlowAttribute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] attribute_type: The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
-        :param pulumi.Input[str] data_type: The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
-        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up.
-        :param pulumi.Input[str] display_name: The display name of the user flow attribute. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] attribute_type: The type of the user flow attribute
+        :param pulumi.Input[str] data_type: The data type of the user flow attribute
+        :param pulumi.Input[str] description: The description of the user flow attribute that is shown to the user at the time of sign-up
+        :param pulumi.Input[str] display_name: The display name of the user flow attribute.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -300,7 +238,7 @@ class UserFlowAttribute(pulumi.CustomResource):
     @pulumi.getter(name="attributeType")
     def attribute_type(self) -> pulumi.Output[str]:
         """
-        The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+        The type of the user flow attribute
         """
         return pulumi.get(self, "attribute_type")
 
@@ -308,7 +246,7 @@ class UserFlowAttribute(pulumi.CustomResource):
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Output[str]:
         """
-        The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        The data type of the user flow attribute
         """
         return pulumi.get(self, "data_type")
 
@@ -316,7 +254,7 @@ class UserFlowAttribute(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description of the user flow attribute that is shown to the user at the time of sign-up.
+        The description of the user flow attribute that is shown to the user at the time of sign-up
         """
         return pulumi.get(self, "description")
 
@@ -324,7 +262,7 @@ class UserFlowAttribute(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name of the user flow attribute. Changing this forces a new resource to be created.
+        The display name of the user flow attribute.
         """
         return pulumi.get(self, "display_name")
 

@@ -9,88 +9,14 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// *Basic example*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
-    ///     {
-    ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///         FeatureTags = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///             {
-    ///                 Enterprise = true,
-    ///                 Gallery = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///         UseExisting = true,
-    ///     });
-    /// 
-    ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("exampleSynchronizationSecret", new()
-    ///     {
-    ///         ServicePrincipalId = exampleServicePrincipal.Id,
-    ///         Credentials = new[]
-    ///         {
-    ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
-    ///             {
-    ///                 Key = "BaseAddress",
-    ///                 Value = "abc",
-    ///             },
-    ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
-    ///             {
-    ///                 Key = "SecretToken",
-    ///                 Value = "some-token",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource does not support importing.
-    /// </summary>
     [AzureADResourceType("azuread:index/synchronizationSecret:SynchronizationSecret")]
     public partial class SynchronizationSecret : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// One or more `credential` blocks as documented below.
-        /// </summary>
         [Output("credentials")]
         public Output<ImmutableArray<Outputs.SynchronizationSecretCredential>> Credentials { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this synchronization secret should be created
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -143,10 +69,6 @@ namespace Pulumi.AzureAD
     {
         [Input("credentials")]
         private InputList<Inputs.SynchronizationSecretCredentialArgs>? _credentials;
-
-        /// <summary>
-        /// One or more `credential` blocks as documented below.
-        /// </summary>
         public InputList<Inputs.SynchronizationSecretCredentialArgs> Credentials
         {
             get => _credentials ?? (_credentials = new InputList<Inputs.SynchronizationSecretCredentialArgs>());
@@ -154,7 +76,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this synchronization secret should be created
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -169,10 +91,6 @@ namespace Pulumi.AzureAD
     {
         [Input("credentials")]
         private InputList<Inputs.SynchronizationSecretCredentialGetArgs>? _credentials;
-
-        /// <summary>
-        /// One or more `credential` blocks as documented below.
-        /// </summary>
         public InputList<Inputs.SynchronizationSecretCredentialGetArgs> Credentials
         {
             get => _credentials ?? (_credentials = new InputList<Inputs.SynchronizationSecretCredentialGetArgs>());
@@ -180,7 +98,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        /// The object ID of the service principal for which this synchronization secret should be created
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

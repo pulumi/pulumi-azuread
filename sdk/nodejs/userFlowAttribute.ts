@@ -4,40 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
- *
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const example = new azuread.UserFlowAttribute("example", {
- *     dataType: "string",
- *     description: "Your hobby",
- *     displayName: "Hobby",
- * });
- * ```
- *
- * ## Import
- *
- * User flow attributes can be imported using the `id`, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv
- * ```
- *
- *  -> This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&tabs=http).
- */
 export class UserFlowAttribute extends pulumi.CustomResource {
     /**
      * Get an existing UserFlowAttribute resource's state with the given name, ID, and optional extra
@@ -67,19 +33,19 @@ export class UserFlowAttribute extends pulumi.CustomResource {
     }
 
     /**
-     * The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+     * The type of the user flow attribute
      */
     public /*out*/ readonly attributeType!: pulumi.Output<string>;
     /**
-     * The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+     * The data type of the user flow attribute
      */
     public readonly dataType!: pulumi.Output<string>;
     /**
-     * The description of the user flow attribute that is shown to the user at the time of sign-up.
+     * The description of the user flow attribute that is shown to the user at the time of sign-up
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The display name of the user flow attribute. Changing this forces a new resource to be created.
+     * The display name of the user flow attribute.
      */
     public readonly displayName!: pulumi.Output<string>;
 
@@ -126,19 +92,19 @@ export class UserFlowAttribute extends pulumi.CustomResource {
  */
 export interface UserFlowAttributeState {
     /**
-     * The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+     * The type of the user flow attribute
      */
     attributeType?: pulumi.Input<string>;
     /**
-     * The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+     * The data type of the user flow attribute
      */
     dataType?: pulumi.Input<string>;
     /**
-     * The description of the user flow attribute that is shown to the user at the time of sign-up.
+     * The description of the user flow attribute that is shown to the user at the time of sign-up
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name of the user flow attribute. Changing this forces a new resource to be created.
+     * The display name of the user flow attribute.
      */
     displayName?: pulumi.Input<string>;
 }
@@ -148,15 +114,15 @@ export interface UserFlowAttributeState {
  */
 export interface UserFlowAttributeArgs {
     /**
-     * The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+     * The data type of the user flow attribute
      */
     dataType: pulumi.Input<string>;
     /**
-     * The description of the user flow attribute that is shown to the user at the time of sign-up.
+     * The description of the user flow attribute that is shown to the user at the time of sign-up
      */
     description: pulumi.Input<string>;
     /**
-     * The display name of the user flow attribute. Changing this forces a new resource to be created.
+     * The display name of the user flow attribute.
      */
     displayName: pulumi.Input<string>;
 }

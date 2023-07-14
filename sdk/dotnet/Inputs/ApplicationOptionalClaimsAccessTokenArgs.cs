@@ -14,31 +14,18 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("additionalProperties")]
         private InputList<string>? _additionalProperties;
-
-        /// <summary>
-        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
-        /// </summary>
         public InputList<string> AdditionalProperties
         {
             get => _additionalProperties ?? (_additionalProperties = new InputList<string>());
             set => _additionalProperties = value;
         }
 
-        /// <summary>
-        /// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
-        /// </summary>
         [Input("essential")]
         public Input<bool>? Essential { get; set; }
 
-        /// <summary>
-        /// The name of the optional claim.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
-        /// </summary>
         [Input("source")]
         public Input<string>? Source { get; set; }
 

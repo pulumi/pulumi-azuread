@@ -49,9 +49,6 @@ class GetAccessPackageResult:
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the access package.
-        """
         return pulumi.get(self, "description")
 
     @property
@@ -62,9 +59,6 @@ class GetAccessPackageResult:
     @property
     @pulumi.getter
     def hidden(self) -> bool:
-        """
-        Whether the access package is hidden from the requestor.
-        """
         return pulumi.get(self, "hidden")
 
     @property
@@ -100,43 +94,7 @@ def get_access_package(catalog_id: Optional[str] = None,
                        object_id: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessPackageResult:
     """
-    Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
-
-    When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-
-    ## Example Usage
-
-    *Look up by ID*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_access_package(object_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-    *Look up by DisplayName*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_access_package(catalog_id="00000000-0000-0000-0000-000000000000",
-        display_name="My access package Catalog")
-    ```
-
-
-    :param str catalog_id: The ID of the Catalog this access package is in.
-    :param str display_name: The display name of the access package.
-    :param str object_id: The ID of this access package.
-           
-           > Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['catalogId'] = catalog_id
@@ -160,42 +118,6 @@ def get_access_package_output(catalog_id: Optional[pulumi.Input[Optional[str]]] 
                               object_id: Optional[pulumi.Input[Optional[str]]] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageResult]:
     """
-    Use this data source to retrieve information for an existing access package within Identity Governance in Azure Active Directory.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
-
-    When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Access package manager`, `Global Reader`, or `Global Administrator`.
-
-    ## Example Usage
-
-    *Look up by ID*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_access_package(object_id="00000000-0000-0000-0000-000000000000")
-    ```
-
-    *Look up by DisplayName*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_access_package(catalog_id="00000000-0000-0000-0000-000000000000",
-        display_name="My access package Catalog")
-    ```
-
-
-    :param str catalog_id: The ID of the Catalog this access package is in.
-    :param str display_name: The display name of the access package.
-    :param str object_id: The ID of this access package.
-           
-           > Either `object_id`, or both `catalog_id` and `display_name`, must be specified.
+    Use this data source to access information about an existing resource.
     """
     ...

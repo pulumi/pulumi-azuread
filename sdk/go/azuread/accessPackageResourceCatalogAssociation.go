@@ -11,77 +11,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("example-group"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
-//				DisplayName: pulumi.String("example-catalog"),
-//				Description: pulumi.String("Example catalog"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackageResourceCatalogAssociation(ctx, "exampleAccessPackageResourceCatalogAssociation", &azuread.AccessPackageResourceCatalogAssociationArgs{
-//				CatalogId:            pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),
-//				ResourceOriginId:     pulumi.Any(azuread_group.Example_group.Object_id),
-//				ResourceOriginSystem: pulumi.String("AadGroup"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
-//
-// ```
-//
-//	-> This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
 type AccessPackageResourceCatalogAssociation struct {
 	pulumi.CustomResourceState
 
-	// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+	// The unique ID of the access package catalog
 	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
-	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+	// the group
 	ResourceOriginId pulumi.StringOutput `pulumi:"resourceOriginId"`
-	// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+	// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
 	ResourceOriginSystem pulumi.StringOutput `pulumi:"resourceOriginSystem"`
 }
 
@@ -123,20 +61,22 @@ func GetAccessPackageResourceCatalogAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPackageResourceCatalogAssociation resources.
 type accessPackageResourceCatalogAssociationState struct {
-	// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+	// The unique ID of the access package catalog
 	CatalogId *string `pulumi:"catalogId"`
-	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+	// the group
 	ResourceOriginId *string `pulumi:"resourceOriginId"`
-	// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+	// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
 	ResourceOriginSystem *string `pulumi:"resourceOriginSystem"`
 }
 
 type AccessPackageResourceCatalogAssociationState struct {
-	// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+	// The unique ID of the access package catalog
 	CatalogId pulumi.StringPtrInput
-	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+	// the group
 	ResourceOriginId pulumi.StringPtrInput
-	// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+	// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
 	ResourceOriginSystem pulumi.StringPtrInput
 }
 
@@ -145,21 +85,23 @@ func (AccessPackageResourceCatalogAssociationState) ElementType() reflect.Type {
 }
 
 type accessPackageResourceCatalogAssociationArgs struct {
-	// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+	// The unique ID of the access package catalog
 	CatalogId string `pulumi:"catalogId"`
-	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+	// the group
 	ResourceOriginId string `pulumi:"resourceOriginId"`
-	// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+	// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
 	ResourceOriginSystem string `pulumi:"resourceOriginSystem"`
 }
 
 // The set of arguments for constructing a AccessPackageResourceCatalogAssociation resource.
 type AccessPackageResourceCatalogAssociationArgs struct {
-	// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+	// The unique ID of the access package catalog
 	CatalogId pulumi.StringInput
-	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+	// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+	// the group
 	ResourceOriginId pulumi.StringInput
-	// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+	// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
 	ResourceOriginSystem pulumi.StringInput
 }
 
@@ -250,17 +192,18 @@ func (o AccessPackageResourceCatalogAssociationOutput) ToAccessPackageResourceCa
 	return o
 }
 
-// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+// The unique ID of the access package catalog
 func (o AccessPackageResourceCatalogAssociationOutput) CatalogId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageResourceCatalogAssociation) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+// the group
 func (o AccessPackageResourceCatalogAssociationOutput) ResourceOriginId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageResourceCatalogAssociation) pulumi.StringOutput { return v.ResourceOriginId }).(pulumi.StringOutput)
 }
 
-// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
 func (o AccessPackageResourceCatalogAssociationOutput) ResourceOriginSystem() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageResourceCatalogAssociation) pulumi.StringOutput { return v.ResourceOriginSystem }).(pulumi.StringOutput)
 }

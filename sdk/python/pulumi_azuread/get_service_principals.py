@@ -48,17 +48,11 @@ class GetServicePrincipalsResult:
     @property
     @pulumi.getter(name="applicationIds")
     def application_ids(self) -> Sequence[str]:
-        """
-        A list of application IDs (client IDs) of the applications associated with the service principals.
-        """
         return pulumi.get(self, "application_ids")
 
     @property
     @pulumi.getter(name="displayNames")
     def display_names(self) -> Sequence[str]:
-        """
-        A list of display names of the applications associated with the service principals.
-        """
         return pulumi.get(self, "display_names")
 
     @property
@@ -77,9 +71,6 @@ class GetServicePrincipalsResult:
     @property
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence[str]:
-        """
-        The object IDs of the service principals.
-        """
         return pulumi.get(self, "object_ids")
 
     @property
@@ -90,9 +81,6 @@ class GetServicePrincipalsResult:
     @property
     @pulumi.getter(name="servicePrincipals")
     def service_principals(self) -> Sequence['outputs.GetServicePrincipalsServicePrincipalResult']:
-        """
-        A list of service principals. Each `service_principal` object provides the attributes documented below.
-        """
         return pulumi.get(self, "service_principals")
 
 
@@ -118,64 +106,7 @@ def get_service_principals(application_ids: Optional[Sequence[str]] = None,
                            return_all: Optional[bool] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServicePrincipalsResult:
     """
-    Gets basic information for multiple Azure Active Directory service principals.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    *Look up by application display names*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principals(display_names=[
-        "example-app",
-        "another-app",
-    ])
-    ```
-
-    *Look up by application IDs (client IDs*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principals(application_ids=[
-        "11111111-0000-0000-0000-000000000000",
-        "22222222-0000-0000-0000-000000000000",
-        "33333333-0000-0000-0000-000000000000",
-    ])
-    ```
-
-    *Look up by service principal object IDs*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principals(object_ids=[
-        "00000000-0000-0000-0000-000000000000",
-        "00000000-0000-0000-0000-111111111111",
-        "00000000-0000-0000-0000-222222222222",
-    ])
-    ```
-
-
-    :param Sequence[str] application_ids: A list of application IDs (client IDs) of the applications associated with the service principals.
-    :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
-    :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
-    :param Sequence[str] object_ids: The object IDs of the service principals.
-    :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
-           
-           > Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['applicationIds'] = application_ids
@@ -204,63 +135,6 @@ def get_service_principals_output(application_ids: Optional[pulumi.Input[Optiona
                                   return_all: Optional[pulumi.Input[Optional[bool]]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServicePrincipalsResult]:
     """
-    Gets basic information for multiple Azure Active Directory service principals.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    *Look up by application display names*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principals(display_names=[
-        "example-app",
-        "another-app",
-    ])
-    ```
-
-    *Look up by application IDs (client IDs*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principals(application_ids=[
-        "11111111-0000-0000-0000-000000000000",
-        "22222222-0000-0000-0000-000000000000",
-        "33333333-0000-0000-0000-000000000000",
-    ])
-    ```
-
-    *Look up by service principal object IDs*
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_service_principals(object_ids=[
-        "00000000-0000-0000-0000-000000000000",
-        "00000000-0000-0000-0000-111111111111",
-        "00000000-0000-0000-0000-222222222222",
-    ])
-    ```
-
-
-    :param Sequence[str] application_ids: A list of application IDs (client IDs) of the applications associated with the service principals.
-    :param Sequence[str] display_names: A list of display names of the applications associated with the service principals.
-    :param bool ignore_missing: Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
-    :param Sequence[str] object_ids: The object IDs of the service principals.
-    :param bool return_all: When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
-           
-           > Either `return_all`, or one of `application_ids`, `display_names` or `object_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+    Use this data source to access information about an existing resource.
     """
     ...

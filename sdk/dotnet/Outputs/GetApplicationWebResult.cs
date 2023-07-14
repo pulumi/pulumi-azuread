@@ -13,21 +13,9 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationWebResult
     {
-        /// <summary>
-        /// Home page or landing page of the application.
-        /// </summary>
         public readonly string HomepageUrl;
-        /// <summary>
-        /// An `implicit_grant` block as documented above.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationWebImplicitGrantResult> ImplicitGrants;
-        /// <summary>
-        /// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
-        /// </summary>
         public readonly string LogoutUrl;
-        /// <summary>
-        /// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
-        /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
 
         [OutputConstructor]

@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class SynchronizationSecretCredential
     {
-        /// <summary>
-        /// The key of the secret.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The value of the secret.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

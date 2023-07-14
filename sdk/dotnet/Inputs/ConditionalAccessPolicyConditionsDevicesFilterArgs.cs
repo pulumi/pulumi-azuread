@@ -12,15 +12,9 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ConditionalAccessPolicyConditionsDevicesFilterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
-        /// </summary>
         [Input("mode", required: true)]
         public Input<string> Mode { get; set; } = null!;
 
-        /// <summary>
-        /// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
-        /// </summary>
         [Input("rule", required: true)]
         public Input<string> Rule { get; set; } = null!;
 

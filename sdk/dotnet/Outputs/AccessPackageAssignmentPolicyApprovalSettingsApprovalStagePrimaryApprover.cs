@@ -13,17 +13,8 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover
     {
-        /// <summary>
-        /// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
-        /// </summary>
         public readonly bool? Backup;
-        /// <summary>
-        /// The ID of the subject.
-        /// </summary>
         public readonly string? ObjectId;
-        /// <summary>
-        /// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
-        /// </summary>
         public readonly string SubjectType;
 
         [OutputConstructor]

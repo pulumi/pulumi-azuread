@@ -14,10 +14,6 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("excludedLocations")]
         private InputList<string>? _excludedLocations;
-
-        /// <summary>
-        /// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
-        /// </summary>
         public InputList<string> ExcludedLocations
         {
             get => _excludedLocations ?? (_excludedLocations = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("includedLocations", required: true)]
         private InputList<string>? _includedLocations;
-
-        /// <summary>
-        /// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
-        /// </summary>
         public InputList<string> IncludedLocations
         {
             get => _includedLocations ?? (_includedLocations = new InputList<string>());

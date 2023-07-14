@@ -11,127 +11,23 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a token signing certificate associated with a service principal within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// *Using default settings*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "exampleServicePrincipalTokenSigningCertificate", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Using custom settings*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
-//				DisplayName: pulumi.String("example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
-//				ApplicationId: exampleApplication.ApplicationId,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "exampleServicePrincipalTokenSigningCertificate", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID(),
-//				DisplayName:        pulumi.String("CN=example.com"),
-//				EndDate:            pulumi.String("2023-05-01T01:02:03Z"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
-//
-// ```
-//
-//	-> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
 type ServicePrincipalTokenSigningCertificate struct {
 	pulumi.CustomResourceState
 
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
-	//
-	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+	// A friendly name for the certificate
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	// Default is 3 years from current date.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
 	// A UUID used to uniquely identify the verify certificate.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this certificate should be created
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
-	// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
+	// The thumbprint of the certificate.
 	Thumbprint pulumi.StringOutput `pulumi:"thumbprint"`
-	// The certificate data, which is PEM encoded but does not include the
-	// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+	// The certificate data, which is PEM encoded but does not include the header/footer
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -171,44 +67,38 @@ func GetServicePrincipalTokenSigningCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalTokenSigningCertificate resources.
 type servicePrincipalTokenSigningCertificateState struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
-	//
-	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+	// A friendly name for the certificate
 	DisplayName *string `pulumi:"displayName"`
-	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	// Default is 3 years from current date.
 	EndDate *string `pulumi:"endDate"`
 	// A UUID used to uniquely identify the verify certificate.
 	KeyId *string `pulumi:"keyId"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this certificate should be created
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	StartDate *string `pulumi:"startDate"`
-	// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
+	// The thumbprint of the certificate.
 	Thumbprint *string `pulumi:"thumbprint"`
-	// The certificate data, which is PEM encoded but does not include the
-	// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+	// The certificate data, which is PEM encoded but does not include the header/footer
 	Value *string `pulumi:"value"`
 }
 
 type ServicePrincipalTokenSigningCertificateState struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
-	//
-	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+	// A friendly name for the certificate
 	DisplayName pulumi.StringPtrInput
-	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	// Default is 3 years from current date.
 	EndDate pulumi.StringPtrInput
 	// A UUID used to uniquely identify the verify certificate.
 	KeyId pulumi.StringPtrInput
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this certificate should be created
 	ServicePrincipalId pulumi.StringPtrInput
 	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	StartDate pulumi.StringPtrInput
-	// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
+	// The thumbprint of the certificate.
 	Thumbprint pulumi.StringPtrInput
-	// The certificate data, which is PEM encoded but does not include the
-	// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+	// The certificate data, which is PEM encoded but does not include the header/footer
 	Value pulumi.StringPtrInput
 }
 
@@ -217,27 +107,23 @@ func (ServicePrincipalTokenSigningCertificateState) ElementType() reflect.Type {
 }
 
 type servicePrincipalTokenSigningCertificateArgs struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
-	//
-	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+	// A friendly name for the certificate
 	DisplayName *string `pulumi:"displayName"`
-	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	// Default is 3 years from current date.
 	EndDate *string `pulumi:"endDate"`
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this certificate should be created
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
 // The set of arguments for constructing a ServicePrincipalTokenSigningCertificate resource.
 type ServicePrincipalTokenSigningCertificateArgs struct {
-	// Specifies a friendly name for the certificate.
-	// Must start with `CN=`. Changing this field forces a new resource to be created.
-	//
-	// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+	// A friendly name for the certificate
 	DisplayName pulumi.StringPtrInput
-	// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+	// Default is 3 years from current date.
 	EndDate pulumi.StringPtrInput
-	// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+	// The object ID of the service principal for which this certificate should be created
 	ServicePrincipalId pulumi.StringInput
 }
 
@@ -328,15 +214,13 @@ func (o ServicePrincipalTokenSigningCertificateOutput) ToServicePrincipalTokenSi
 	return o
 }
 
-// Specifies a friendly name for the certificate.
-// Must start with `CN=`. Changing this field forces a new resource to be created.
-//
-// > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
+// A friendly name for the certificate
 func (o ServicePrincipalTokenSigningCertificateOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
+// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+// Default is 3 years from current date.
 func (o ServicePrincipalTokenSigningCertificateOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
 }
@@ -346,7 +230,7 @@ func (o ServicePrincipalTokenSigningCertificateOutput) KeyId() pulumi.StringOutp
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
+// The object ID of the service principal for which this certificate should be created
 func (o ServicePrincipalTokenSigningCertificateOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }
@@ -356,13 +240,12 @@ func (o ServicePrincipalTokenSigningCertificateOutput) StartDate() pulumi.String
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }
 
-// A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
+// The thumbprint of the certificate.
 func (o ServicePrincipalTokenSigningCertificateOutput) Thumbprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.Thumbprint }).(pulumi.StringOutput)
 }
 
-// The certificate data, which is PEM encoded but does not include the
-// header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+// The certificate data, which is PEM encoded but does not include the header/footer
 func (o ServicePrincipalTokenSigningCertificateOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalTokenSigningCertificate) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

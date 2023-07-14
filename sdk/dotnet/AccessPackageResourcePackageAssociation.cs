@@ -9,89 +9,23 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages the resources added to access packages within Identity Governance in Azure Active Directory.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
-    ///     {
-    ///         DisplayName = "example-group",
-    ///         SecurityEnabled = true,
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
-    ///     {
-    ///         DisplayName = "example-catalog",
-    ///         Description = "Example catalog",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", new()
-    ///     {
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///         ResourceOriginId = azuread_group.Example_group.Object_id,
-    ///         ResourceOriginSystem = "AadGroup",
-    ///     });
-    /// 
-    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
-    ///     {
-    ///         DisplayName = "example-package",
-    ///         Description = "Example Package",
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///     });
-    /// 
-    ///     var exampleAccessPackageResourcePackageAssociation = new AzureAD.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation", new()
-    ///     {
-    ///         AccessPackageId = exampleAccessPackage.Id,
-    ///         CatalogResourceAssociationId = exampleAccessPackageResourceCatalogAssociation.Id,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
-    /// ```
-    /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`.
-    /// </summary>
     [AzureADResourceType("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation")]
     public partial class AccessPackageResourcePackageAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        /// The ID of access package this resource association is configured to
         /// </summary>
         [Output("accessPackageId")]
         public Output<string> AccessPackageId { get; private set; } = null!;
 
         /// <summary>
-        /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
+        /// The role of access type to the specified resource, valid values are `Member` and `Owner`
         /// </summary>
         [Output("accessType")]
         public Output<string?> AccessType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
+        /// The ID of the access package catalog association
         /// </summary>
         [Output("catalogResourceAssociationId")]
         public Output<string> CatalogResourceAssociationId { get; private set; } = null!;
@@ -143,19 +77,19 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageResourcePackageAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        /// The ID of access package this resource association is configured to
         /// </summary>
         [Input("accessPackageId", required: true)]
         public Input<string> AccessPackageId { get; set; } = null!;
 
         /// <summary>
-        /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
+        /// The role of access type to the specified resource, valid values are `Member` and `Owner`
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
+        /// The ID of the access package catalog association
         /// </summary>
         [Input("catalogResourceAssociationId", required: true)]
         public Input<string> CatalogResourceAssociationId { get; set; } = null!;
@@ -169,19 +103,19 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageResourcePackageAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        /// The ID of access package this resource association is configured to
         /// </summary>
         [Input("accessPackageId")]
         public Input<string>? AccessPackageId { get; set; }
 
         /// <summary>
-        /// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
+        /// The role of access type to the specified resource, valid values are `Member` and `Owner`
         /// </summary>
         [Input("accessType")]
         public Input<string>? AccessType { get; set; }
 
         /// <summary>
-        /// The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
+        /// The ID of the access package catalog association
         /// </summary>
         [Input("catalogResourceAssociationId")]
         public Input<string>? CatalogResourceAssociationId { get; set; }

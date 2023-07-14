@@ -4,56 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Manages a Claims Mapping Policy within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
- *
- * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const myPolicy = new azuread.ClaimsMappingPolicy("myPolicy", {
- *     definitions: [JSON.stringify({
- *         ClaimsMappingPolicy: {
- *             ClaimsSchema: [
- *                 {
- *                     ID: "employeeid",
- *                     JwtClaimType: "name",
- *                     SamlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
- *                     Source: "user",
- *                 },
- *                 {
- *                     ID: "tenantcountry",
- *                     JwtClaimType: "country",
- *                     SamlClaimType: "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
- *                     Source: "company",
- *                 },
- *             ],
- *             IncludeBasicClaimSet: "true",
- *             Version: 1,
- *         },
- *     })],
- *     displayName: "My Policy",
- * });
- * ```
- *
- * ## Import
- *
- * Claims Mapping Policy can be imported using the `id`, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
- * ```
- */
 export class ClaimsMappingPolicy extends pulumi.CustomResource {
     /**
      * Get an existing ClaimsMappingPolicy resource's state with the given name, ID, and optional extra
@@ -83,11 +33,11 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+     * A string collection containing a JSON string that defines the rules and settings for this policy
      */
     public readonly definitions!: pulumi.Output<string[]>;
     /**
-     * The display name for this Claims Mapping Policy.
+     * Display name for this policy
      */
     public readonly displayName!: pulumi.Output<string>;
 
@@ -127,11 +77,11 @@ export class ClaimsMappingPolicy extends pulumi.CustomResource {
  */
 export interface ClaimsMappingPolicyState {
     /**
-     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+     * A string collection containing a JSON string that defines the rules and settings for this policy
      */
     definitions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The display name for this Claims Mapping Policy.
+     * Display name for this policy
      */
     displayName?: pulumi.Input<string>;
 }
@@ -141,11 +91,11 @@ export interface ClaimsMappingPolicyState {
  */
 export interface ClaimsMappingPolicyArgs {
     /**
-     * The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
+     * A string collection containing a JSON string that defines the rules and settings for this policy
      */
     definitions: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The display name for this Claims Mapping Policy.
+     * Display name for this policy
      */
     displayName: pulumi.Input<string>;
 }

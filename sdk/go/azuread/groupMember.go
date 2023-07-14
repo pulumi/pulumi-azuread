@@ -11,77 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a single group membership within Azure Active Directory.
-//
-// > **Warning** Do not use this resource at the same time as the `members` property of the `Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
-//
-// However, if the authenticated service principal is an owner of the group being managed, an application role is not required.
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
-//				DisplayName:     pulumi.String("my_group"),
-//				SecurityEnabled: pulumi.Bool(true),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewGroupMember(ctx, "exampleGroupMember", &azuread.GroupMemberArgs{
-//				GroupObjectId:  exampleGroup.ID(),
-//				MemberObjectId: *pulumi.String(exampleUser.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Group members can be imported using the object ID of the group and the object ID of the member, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
-//
-// ```
-//
-//	-> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
 type GroupMember struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the group you want to add the member to
 	GroupObjectId pulumi.StringOutput `pulumi:"groupObjectId"`
-	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
+	// Service Principals
 	MemberObjectId pulumi.StringOutput `pulumi:"memberObjectId"`
 }
 
@@ -120,16 +56,18 @@ func GetGroupMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GroupMember resources.
 type groupMemberState struct {
-	// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the group you want to add the member to
 	GroupObjectId *string `pulumi:"groupObjectId"`
-	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
+	// Service Principals
 	MemberObjectId *string `pulumi:"memberObjectId"`
 }
 
 type GroupMemberState struct {
-	// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the group you want to add the member to
 	GroupObjectId pulumi.StringPtrInput
-	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
+	// Service Principals
 	MemberObjectId pulumi.StringPtrInput
 }
 
@@ -138,17 +76,19 @@ func (GroupMemberState) ElementType() reflect.Type {
 }
 
 type groupMemberArgs struct {
-	// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the group you want to add the member to
 	GroupObjectId string `pulumi:"groupObjectId"`
-	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
+	// Service Principals
 	MemberObjectId string `pulumi:"memberObjectId"`
 }
 
 // The set of arguments for constructing a GroupMember resource.
 type GroupMemberArgs struct {
-	// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the group you want to add the member to
 	GroupObjectId pulumi.StringInput
-	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+	// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
+	// Service Principals
 	MemberObjectId pulumi.StringInput
 }
 
@@ -239,12 +179,13 @@ func (o GroupMemberOutput) ToGroupMemberOutputWithContext(ctx context.Context) G
 	return o
 }
 
-// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+// The object ID of the group you want to add the member to
 func (o GroupMemberOutput) GroupObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.GroupObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+// The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
+// Service Principals
 func (o GroupMemberOutput) MemberObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMember) pulumi.StringOutput { return v.MemberObjectId }).(pulumi.StringOutput)
 }

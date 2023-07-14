@@ -13,13 +13,7 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicyConditionsLocations
     {
-        /// <summary>
-        /// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
-        /// </summary>
         public readonly ImmutableArray<string> ExcludedLocations;
-        /// <summary>
-        /// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
-        /// </summary>
         public readonly ImmutableArray<string> IncludedLocations;
 
         [OutputConstructor]

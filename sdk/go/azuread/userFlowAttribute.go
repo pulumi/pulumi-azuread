@@ -11,65 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
-//
-// ## Example Usage
-//
-// *Basic example*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewUserFlowAttribute(ctx, "example", &azuread.UserFlowAttributeArgs{
-//				DataType:    pulumi.String("string"),
-//				Description: pulumi.String("Your hobby"),
-//				DisplayName: pulumi.String("Hobby"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// User flow attributes can be imported using the `id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv
-//
-// ```
-//
-//	-> This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&tabs=http).
 type UserFlowAttribute struct {
 	pulumi.CustomResourceState
 
-	// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+	// The type of the user flow attribute
 	AttributeType pulumi.StringOutput `pulumi:"attributeType"`
-	// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+	// The data type of the user flow attribute
 	DataType pulumi.StringOutput `pulumi:"dataType"`
-	// The description of the user flow attribute that is shown to the user at the time of sign-up.
+	// The description of the user flow attribute that is shown to the user at the time of sign-up
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The display name of the user flow attribute. Changing this forces a new resource to be created.
+	// The display name of the user flow attribute.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 }
 
@@ -111,24 +62,24 @@ func GetUserFlowAttribute(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering UserFlowAttribute resources.
 type userFlowAttributeState struct {
-	// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+	// The type of the user flow attribute
 	AttributeType *string `pulumi:"attributeType"`
-	// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+	// The data type of the user flow attribute
 	DataType *string `pulumi:"dataType"`
-	// The description of the user flow attribute that is shown to the user at the time of sign-up.
+	// The description of the user flow attribute that is shown to the user at the time of sign-up
 	Description *string `pulumi:"description"`
-	// The display name of the user flow attribute. Changing this forces a new resource to be created.
+	// The display name of the user flow attribute.
 	DisplayName *string `pulumi:"displayName"`
 }
 
 type UserFlowAttributeState struct {
-	// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+	// The type of the user flow attribute
 	AttributeType pulumi.StringPtrInput
-	// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+	// The data type of the user flow attribute
 	DataType pulumi.StringPtrInput
-	// The description of the user flow attribute that is shown to the user at the time of sign-up.
+	// The description of the user flow attribute that is shown to the user at the time of sign-up
 	Description pulumi.StringPtrInput
-	// The display name of the user flow attribute. Changing this forces a new resource to be created.
+	// The display name of the user flow attribute.
 	DisplayName pulumi.StringPtrInput
 }
 
@@ -137,21 +88,21 @@ func (UserFlowAttributeState) ElementType() reflect.Type {
 }
 
 type userFlowAttributeArgs struct {
-	// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+	// The data type of the user flow attribute
 	DataType string `pulumi:"dataType"`
-	// The description of the user flow attribute that is shown to the user at the time of sign-up.
+	// The description of the user flow attribute that is shown to the user at the time of sign-up
 	Description string `pulumi:"description"`
-	// The display name of the user flow attribute. Changing this forces a new resource to be created.
+	// The display name of the user flow attribute.
 	DisplayName string `pulumi:"displayName"`
 }
 
 // The set of arguments for constructing a UserFlowAttribute resource.
 type UserFlowAttributeArgs struct {
-	// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+	// The data type of the user flow attribute
 	DataType pulumi.StringInput
-	// The description of the user flow attribute that is shown to the user at the time of sign-up.
+	// The description of the user flow attribute that is shown to the user at the time of sign-up
 	Description pulumi.StringInput
-	// The display name of the user flow attribute. Changing this forces a new resource to be created.
+	// The display name of the user flow attribute.
 	DisplayName pulumi.StringInput
 }
 
@@ -242,22 +193,22 @@ func (o UserFlowAttributeOutput) ToUserFlowAttributeOutputWithContext(ctx contex
 	return o
 }
 
-// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+// The type of the user flow attribute
 func (o UserFlowAttributeOutput) AttributeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserFlowAttribute) pulumi.StringOutput { return v.AttributeType }).(pulumi.StringOutput)
 }
 
-// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+// The data type of the user flow attribute
 func (o UserFlowAttributeOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserFlowAttribute) pulumi.StringOutput { return v.DataType }).(pulumi.StringOutput)
 }
 
-// The description of the user flow attribute that is shown to the user at the time of sign-up.
+// The description of the user flow attribute that is shown to the user at the time of sign-up
 func (o UserFlowAttributeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserFlowAttribute) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The display name of the user flow attribute. Changing this forces a new resource to be created.
+// The display name of the user flow attribute.
 func (o UserFlowAttributeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UserFlowAttribute) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }

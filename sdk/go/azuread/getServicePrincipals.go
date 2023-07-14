@@ -10,106 +10,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets basic information for multiple Azure Active Directory service principals.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this data source.
-//
-// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
-//
-// When authenticated with a user principal, this data source does not require any additional roles.
-//
-// ## Example Usage
-//
-// *Look up by application display names*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
-//				DisplayNames: []string{
-//					"example-app",
-//					"another-app",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Look up by application IDs (client IDs*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
-//				ApplicationIds: []string{
-//					"11111111-0000-0000-0000-000000000000",
-//					"22222222-0000-0000-0000-000000000000",
-//					"33333333-0000-0000-0000-000000000000",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// *Look up by service principal object IDs*
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.GetServicePrincipals(ctx, &azuread.GetServicePrincipalsArgs{
-//				ObjectIds: []string{
-//					"00000000-0000-0000-0000-000000000000",
-//					"00000000-0000-0000-0000-111111111111",
-//					"00000000-0000-0000-0000-222222222222",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
 	var rv GetServicePrincipalsResult
 	err := ctx.Invoke("azuread:index/getServicePrincipals:getServicePrincipals", args, &rv, opts...)
@@ -121,33 +21,22 @@ func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, o
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsArgs struct {
-	// A list of application IDs (client IDs) of the applications associated with the service principals.
 	ApplicationIds []string `pulumi:"applicationIds"`
-	// A list of display names of the applications associated with the service principals.
-	DisplayNames []string `pulumi:"displayNames"`
-	// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
-	IgnoreMissing *bool `pulumi:"ignoreMissing"`
-	// The object IDs of the service principals.
-	ObjectIds []string `pulumi:"objectIds"`
-	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
-	//
-	// > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
-	ReturnAll *bool `pulumi:"returnAll"`
+	DisplayNames   []string `pulumi:"displayNames"`
+	IgnoreMissing  *bool    `pulumi:"ignoreMissing"`
+	ObjectIds      []string `pulumi:"objectIds"`
+	ReturnAll      *bool    `pulumi:"returnAll"`
 }
 
 // A collection of values returned by getServicePrincipals.
 type GetServicePrincipalsResult struct {
-	// A list of application IDs (client IDs) of the applications associated with the service principals.
 	ApplicationIds []string `pulumi:"applicationIds"`
-	// A list of display names of the applications associated with the service principals.
-	DisplayNames []string `pulumi:"displayNames"`
+	DisplayNames   []string `pulumi:"displayNames"`
 	// The provider-assigned unique ID for this managed resource.
-	Id            string `pulumi:"id"`
-	IgnoreMissing *bool  `pulumi:"ignoreMissing"`
-	// The object IDs of the service principals.
-	ObjectIds []string `pulumi:"objectIds"`
-	ReturnAll *bool    `pulumi:"returnAll"`
-	// A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
+	Id                string                                 `pulumi:"id"`
+	IgnoreMissing     *bool                                  `pulumi:"ignoreMissing"`
+	ObjectIds         []string                               `pulumi:"objectIds"`
+	ReturnAll         *bool                                  `pulumi:"returnAll"`
 	ServicePrincipals []GetServicePrincipalsServicePrincipal `pulumi:"servicePrincipals"`
 }
 
@@ -166,18 +55,11 @@ func GetServicePrincipalsOutput(ctx *pulumi.Context, args GetServicePrincipalsOu
 
 // A collection of arguments for invoking getServicePrincipals.
 type GetServicePrincipalsOutputArgs struct {
-	// A list of application IDs (client IDs) of the applications associated with the service principals.
 	ApplicationIds pulumi.StringArrayInput `pulumi:"applicationIds"`
-	// A list of display names of the applications associated with the service principals.
-	DisplayNames pulumi.StringArrayInput `pulumi:"displayNames"`
-	// Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
-	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
-	// The object IDs of the service principals.
-	ObjectIds pulumi.StringArrayInput `pulumi:"objectIds"`
-	// When `true`, the data source will return all service principals. Cannot be used with `ignoreMissing`. Defaults to false.
-	//
-	// > Either `returnAll`, or one of `applicationIds`, `displayNames` or `objectIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
-	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
+	DisplayNames   pulumi.StringArrayInput `pulumi:"displayNames"`
+	IgnoreMissing  pulumi.BoolPtrInput     `pulumi:"ignoreMissing"`
+	ObjectIds      pulumi.StringArrayInput `pulumi:"objectIds"`
+	ReturnAll      pulumi.BoolPtrInput     `pulumi:"returnAll"`
 }
 
 func (GetServicePrincipalsOutputArgs) ElementType() reflect.Type {
@@ -199,12 +81,10 @@ func (o GetServicePrincipalsResultOutput) ToGetServicePrincipalsResultOutputWith
 	return o
 }
 
-// A list of application IDs (client IDs) of the applications associated with the service principals.
 func (o GetServicePrincipalsResultOutput) ApplicationIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ApplicationIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of display names of the applications associated with the service principals.
 func (o GetServicePrincipalsResultOutput) DisplayNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.DisplayNames }).(pulumi.StringArrayOutput)
 }
@@ -218,7 +98,6 @@ func (o GetServicePrincipalsResultOutput) IgnoreMissing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) *bool { return v.IgnoreMissing }).(pulumi.BoolPtrOutput)
 }
 
-// The object IDs of the service principals.
 func (o GetServicePrincipalsResultOutput) ObjectIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []string { return v.ObjectIds }).(pulumi.StringArrayOutput)
 }
@@ -227,7 +106,6 @@ func (o GetServicePrincipalsResultOutput) ReturnAll() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) *bool { return v.ReturnAll }).(pulumi.BoolPtrOutput)
 }
 
-// A list of service principals. Each `servicePrincipal` object provides the attributes documented below.
 func (o GetServicePrincipalsResultOutput) ServicePrincipals() GetServicePrincipalsServicePrincipalArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsResult) []GetServicePrincipalsServicePrincipal { return v.ServicePrincipals }).(GetServicePrincipalsServicePrincipalArrayOutput)
 }

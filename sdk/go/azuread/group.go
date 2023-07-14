@@ -11,115 +11,77 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a group within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
-//
-// Alternatively, if the authenticated service principal is also an owner of the group being managed, this resource can use the application role: `Group.Create`.
-//
-// If using the `assignableToRole` property, this resource additionally requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
-//
-// If specifying owners for a group, which are user principals, this resource additionally requires one of the following application roles: `User.Read.All`, `User.ReadWrite.All`, `Directory.Read.All` or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
-//
-// When creating this resource in administrative units exclusively, the role `Groups Administrator` is required to be scoped on any administrative unit used.
-//
-// The `externalSendersAllowed`, `autoSubscribeNewMembers`, `hideFromAddressLists` and `hideFromOutlookClients` properties can only be configured when authenticating as a user and cannot be configured when authenticating as a service principal. Additionally, the user being used for authentication must be a Member of the tenant where the group is being managed and _not_ a Guest. This is a known API issue; please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) official documentation.
-//
-// ## Import
-//
-// Groups can be imported using their object ID, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/group:Group my_group 00000000-0000-0000-0000-000000000000
-//
-// ```
 type Group struct {
 	pulumi.CustomResourceState
 
-	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
-	//
-	// !> **Warning** Do not use the `administrativeUnitIds` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+	// The administrative unit IDs in which the group should be. If empty, the group will be created at the tenant level.
 	AdministrativeUnitIds pulumi.StringArrayOutput `pulumi:"administrativeUnitIds"`
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. This property can only be `true` for
+	// security-enabled groups.
 	AssignableToRole pulumi.BoolPtrOutput `pulumi:"assignableToRole"`
-	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications.
 	AutoSubscribeNewMembers pulumi.BoolOutput `pulumi:"autoSubscribeNewMembers"`
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// The group behaviours for a Microsoft 365 group
 	Behaviors pulumi.StringArrayOutput `pulumi:"behaviors"`
-	// The description for the group.
+	// The description for the group
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The display name for the group.
+	// The display name for the group
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	// An optional block to configure dynamic membership for the group. Cannot be used with `members`
 	DynamicMembership GroupDynamicMembershipPtrOutput `pulumi:"dynamicMembership"`
-	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether people external to the organization can send messages to the group.
 	ExternalSendersAllowed pulumi.BoolOutput `pulumi:"externalSendersAllowed"`
-	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address
+	// lists for selecting message recipients, and in the Browse Groups dialog for searching groups.
 	HideFromAddressLists pulumi.BoolOutput `pulumi:"hideFromAddressLists"`
-	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web.
 	HideFromOutlookClients pulumi.BoolOutput `pulumi:"hideFromOutlookClients"`
-	// The SMTP address for the group.
+	// The SMTP address for the group
 	Mail pulumi.StringOutput `pulumi:"mail"`
-	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled`
+	// must be specified. A group can be mail enabled _and_ security enabled
 	MailEnabled pulumi.BoolPtrOutput `pulumi:"mailEnabled"`
-	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+	// The mail alias for the group, unique in the organisation
 	MailNickname pulumi.StringOutput `pulumi:"mailNickname"`
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
-	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The object ID of the group.
+	// The object ID of the group
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises FQDN, also called dnsDomainName, synchronized from the on-premises directory when Azure AD Connect is
+	// used
 	OnpremisesDomainName pulumi.StringOutput `pulumi:"onpremisesDomainName"`
-	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	// Indicates the target on-premise group type the group will be written back as
 	OnpremisesGroupType pulumi.StringOutput `pulumi:"onpremisesGroupType"`
-	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises NetBIOS name, synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesNetbiosName pulumi.StringOutput `pulumi:"onpremisesNetbiosName"`
-	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises SAM account name, synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesSamAccountName pulumi.StringOutput `pulumi:"onpremisesSamAccountName"`
-	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises security identifier (SID), synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesSecurityIdentifier pulumi.StringOutput `pulumi:"onpremisesSecurityIdentifier"`
-	// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	// Whether this group is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+	// been synchronized (null)
 	OnpremisesSyncEnabled pulumi.BoolOutput `pulumi:"onpremisesSyncEnabled"`
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners pulumi.StringArrayOutput `pulumi:"owners"`
-	// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+	// The preferred language for a Microsoft 365 group, in ISO 639-1 notation
 	PreferredLanguage pulumi.StringOutput `pulumi:"preferredLanguage"`
-	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+	// If `true`, will return an error if an existing group is found with the same name
 	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
-	// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+	// The group provisioning options for a Microsoft 365 group
 	ProvisioningOptions pulumi.StringArrayOutput `pulumi:"provisioningOptions"`
-	// List of email addresses for the group that direct to the same group mailbox.
+	// Email addresses for the group that direct to the same group mailbox
 	ProxyAddresses pulumi.StringArrayOutput `pulumi:"proxyAddresses"`
-	// Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+	// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or
+	// `mail_enabled` must be specified. A group can be security enabled _and_ mail enabled
 	SecurityEnabled pulumi.BoolPtrOutput `pulumi:"securityEnabled"`
-	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+	// The colour theme for a Microsoft 365 group
 	Theme pulumi.StringPtrOutput `pulumi:"theme"`
-	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
-	//
-	// > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
+	// A set of group types to configure for the group. `Unified` specifies a Microsoft 365 group. Required when `mail_enabled`
+	// is true
 	Types pulumi.StringArrayOutput `pulumi:"types"`
-	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
-	//
-	// > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
+	// Specifies the group join policy and group content visibility
 	Visibility pulumi.StringOutput `pulumi:"visibility"`
-	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	// Whether this group should be synced from Azure AD to the on-premises directory when Azure AD Connect is used
 	WritebackEnabled pulumi.BoolPtrOutput `pulumi:"writebackEnabled"`
 }
 
@@ -155,164 +117,146 @@ func GetGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Group resources.
 type groupState struct {
-	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
-	//
-	// !> **Warning** Do not use the `administrativeUnitIds` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+	// The administrative unit IDs in which the group should be. If empty, the group will be created at the tenant level.
 	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. This property can only be `true` for
+	// security-enabled groups.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
-	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications.
 	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// The group behaviours for a Microsoft 365 group
 	Behaviors []string `pulumi:"behaviors"`
-	// The description for the group.
+	// The description for the group
 	Description *string `pulumi:"description"`
-	// The display name for the group.
+	// The display name for the group
 	DisplayName *string `pulumi:"displayName"`
-	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	// An optional block to configure dynamic membership for the group. Cannot be used with `members`
 	DynamicMembership *GroupDynamicMembership `pulumi:"dynamicMembership"`
-	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether people external to the organization can send messages to the group.
 	ExternalSendersAllowed *bool `pulumi:"externalSendersAllowed"`
-	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address
+	// lists for selecting message recipients, and in the Browse Groups dialog for searching groups.
 	HideFromAddressLists *bool `pulumi:"hideFromAddressLists"`
-	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web.
 	HideFromOutlookClients *bool `pulumi:"hideFromOutlookClients"`
-	// The SMTP address for the group.
+	// The SMTP address for the group
 	Mail *string `pulumi:"mail"`
-	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled`
+	// must be specified. A group can be mail enabled _and_ security enabled
 	MailEnabled *bool `pulumi:"mailEnabled"`
-	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+	// The mail alias for the group, unique in the organisation
 	MailNickname *string `pulumi:"mailNickname"`
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
-	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals
 	Members []string `pulumi:"members"`
-	// The object ID of the group.
+	// The object ID of the group
 	ObjectId *string `pulumi:"objectId"`
-	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises FQDN, also called dnsDomainName, synchronized from the on-premises directory when Azure AD Connect is
+	// used
 	OnpremisesDomainName *string `pulumi:"onpremisesDomainName"`
-	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	// Indicates the target on-premise group type the group will be written back as
 	OnpremisesGroupType *string `pulumi:"onpremisesGroupType"`
-	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises NetBIOS name, synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesNetbiosName *string `pulumi:"onpremisesNetbiosName"`
-	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises SAM account name, synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesSamAccountName *string `pulumi:"onpremisesSamAccountName"`
-	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises security identifier (SID), synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesSecurityIdentifier *string `pulumi:"onpremisesSecurityIdentifier"`
-	// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	// Whether this group is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+	// been synchronized (null)
 	OnpremisesSyncEnabled *bool `pulumi:"onpremisesSyncEnabled"`
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners []string `pulumi:"owners"`
-	// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+	// The preferred language for a Microsoft 365 group, in ISO 639-1 notation
 	PreferredLanguage *string `pulumi:"preferredLanguage"`
-	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+	// If `true`, will return an error if an existing group is found with the same name
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
-	// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+	// The group provisioning options for a Microsoft 365 group
 	ProvisioningOptions []string `pulumi:"provisioningOptions"`
-	// List of email addresses for the group that direct to the same group mailbox.
+	// Email addresses for the group that direct to the same group mailbox
 	ProxyAddresses []string `pulumi:"proxyAddresses"`
-	// Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+	// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or
+	// `mail_enabled` must be specified. A group can be security enabled _and_ mail enabled
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
-	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+	// The colour theme for a Microsoft 365 group
 	Theme *string `pulumi:"theme"`
-	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
-	//
-	// > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
+	// A set of group types to configure for the group. `Unified` specifies a Microsoft 365 group. Required when `mail_enabled`
+	// is true
 	Types []string `pulumi:"types"`
-	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
-	//
-	// > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
+	// Specifies the group join policy and group content visibility
 	Visibility *string `pulumi:"visibility"`
-	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	// Whether this group should be synced from Azure AD to the on-premises directory when Azure AD Connect is used
 	WritebackEnabled *bool `pulumi:"writebackEnabled"`
 }
 
 type GroupState struct {
-	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
-	//
-	// !> **Warning** Do not use the `administrativeUnitIds` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+	// The administrative unit IDs in which the group should be. If empty, the group will be created at the tenant level.
 	AdministrativeUnitIds pulumi.StringArrayInput
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. This property can only be `true` for
+	// security-enabled groups.
 	AssignableToRole pulumi.BoolPtrInput
-	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications.
 	AutoSubscribeNewMembers pulumi.BoolPtrInput
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// The group behaviours for a Microsoft 365 group
 	Behaviors pulumi.StringArrayInput
-	// The description for the group.
+	// The description for the group
 	Description pulumi.StringPtrInput
-	// The display name for the group.
+	// The display name for the group
 	DisplayName pulumi.StringPtrInput
-	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	// An optional block to configure dynamic membership for the group. Cannot be used with `members`
 	DynamicMembership GroupDynamicMembershipPtrInput
-	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether people external to the organization can send messages to the group.
 	ExternalSendersAllowed pulumi.BoolPtrInput
-	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address
+	// lists for selecting message recipients, and in the Browse Groups dialog for searching groups.
 	HideFromAddressLists pulumi.BoolPtrInput
-	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web.
 	HideFromOutlookClients pulumi.BoolPtrInput
-	// The SMTP address for the group.
+	// The SMTP address for the group
 	Mail pulumi.StringPtrInput
-	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled`
+	// must be specified. A group can be mail enabled _and_ security enabled
 	MailEnabled pulumi.BoolPtrInput
-	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+	// The mail alias for the group, unique in the organisation
 	MailNickname pulumi.StringPtrInput
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
-	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals
 	Members pulumi.StringArrayInput
-	// The object ID of the group.
+	// The object ID of the group
 	ObjectId pulumi.StringPtrInput
-	// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises FQDN, also called dnsDomainName, synchronized from the on-premises directory when Azure AD Connect is
+	// used
 	OnpremisesDomainName pulumi.StringPtrInput
-	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	// Indicates the target on-premise group type the group will be written back as
 	OnpremisesGroupType pulumi.StringPtrInput
-	// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises NetBIOS name, synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesNetbiosName pulumi.StringPtrInput
-	// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises SAM account name, synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesSamAccountName pulumi.StringPtrInput
-	// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+	// The on-premises security identifier (SID), synchronized from the on-premises directory when Azure AD Connect is used
 	OnpremisesSecurityIdentifier pulumi.StringPtrInput
-	// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+	// Whether this group is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+	// been synchronized (null)
 	OnpremisesSyncEnabled pulumi.BoolPtrInput
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners pulumi.StringArrayInput
-	// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+	// The preferred language for a Microsoft 365 group, in ISO 639-1 notation
 	PreferredLanguage pulumi.StringPtrInput
-	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+	// If `true`, will return an error if an existing group is found with the same name
 	PreventDuplicateNames pulumi.BoolPtrInput
-	// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+	// The group provisioning options for a Microsoft 365 group
 	ProvisioningOptions pulumi.StringArrayInput
-	// List of email addresses for the group that direct to the same group mailbox.
+	// Email addresses for the group that direct to the same group mailbox
 	ProxyAddresses pulumi.StringArrayInput
-	// Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+	// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or
+	// `mail_enabled` must be specified. A group can be security enabled _and_ mail enabled
 	SecurityEnabled pulumi.BoolPtrInput
-	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+	// The colour theme for a Microsoft 365 group
 	Theme pulumi.StringPtrInput
-	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
-	//
-	// > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
+	// A set of group types to configure for the group. `Unified` specifies a Microsoft 365 group. Required when `mail_enabled`
+	// is true
 	Types pulumi.StringArrayInput
-	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
-	//
-	// > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
+	// Specifies the group join policy and group content visibility
 	Visibility pulumi.StringPtrInput
-	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	// Whether this group should be synced from Azure AD to the on-premises directory when Azure AD Connect is used
 	WritebackEnabled pulumi.BoolPtrInput
 }
 
@@ -321,129 +265,107 @@ func (GroupState) ElementType() reflect.Type {
 }
 
 type groupArgs struct {
-	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
-	//
-	// !> **Warning** Do not use the `administrativeUnitIds` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+	// The administrative unit IDs in which the group should be. If empty, the group will be created at the tenant level.
 	AdministrativeUnitIds []string `pulumi:"administrativeUnitIds"`
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. This property can only be `true` for
+	// security-enabled groups.
 	AssignableToRole *bool `pulumi:"assignableToRole"`
-	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications.
 	AutoSubscribeNewMembers *bool `pulumi:"autoSubscribeNewMembers"`
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// The group behaviours for a Microsoft 365 group
 	Behaviors []string `pulumi:"behaviors"`
-	// The description for the group.
+	// The description for the group
 	Description *string `pulumi:"description"`
-	// The display name for the group.
+	// The display name for the group
 	DisplayName string `pulumi:"displayName"`
-	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	// An optional block to configure dynamic membership for the group. Cannot be used with `members`
 	DynamicMembership *GroupDynamicMembership `pulumi:"dynamicMembership"`
-	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether people external to the organization can send messages to the group.
 	ExternalSendersAllowed *bool `pulumi:"externalSendersAllowed"`
-	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address
+	// lists for selecting message recipients, and in the Browse Groups dialog for searching groups.
 	HideFromAddressLists *bool `pulumi:"hideFromAddressLists"`
-	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web.
 	HideFromOutlookClients *bool `pulumi:"hideFromOutlookClients"`
-	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled`
+	// must be specified. A group can be mail enabled _and_ security enabled
 	MailEnabled *bool `pulumi:"mailEnabled"`
-	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+	// The mail alias for the group, unique in the organisation
 	MailNickname *string `pulumi:"mailNickname"`
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
-	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals
 	Members []string `pulumi:"members"`
-	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	// Indicates the target on-premise group type the group will be written back as
 	OnpremisesGroupType *string `pulumi:"onpremisesGroupType"`
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners []string `pulumi:"owners"`
-	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+	// If `true`, will return an error if an existing group is found with the same name
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
-	// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+	// The group provisioning options for a Microsoft 365 group
 	ProvisioningOptions []string `pulumi:"provisioningOptions"`
-	// Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+	// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or
+	// `mail_enabled` must be specified. A group can be security enabled _and_ mail enabled
 	SecurityEnabled *bool `pulumi:"securityEnabled"`
-	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+	// The colour theme for a Microsoft 365 group
 	Theme *string `pulumi:"theme"`
-	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
-	//
-	// > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
+	// A set of group types to configure for the group. `Unified` specifies a Microsoft 365 group. Required when `mail_enabled`
+	// is true
 	Types []string `pulumi:"types"`
-	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
-	//
-	// > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
+	// Specifies the group join policy and group content visibility
 	Visibility *string `pulumi:"visibility"`
-	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	// Whether this group should be synced from Azure AD to the on-premises directory when Azure AD Connect is used
 	WritebackEnabled *bool `pulumi:"writebackEnabled"`
 }
 
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
-	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
-	//
-	// !> **Warning** Do not use the `administrativeUnitIds` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+	// The administrative unit IDs in which the group should be. If empty, the group will be created at the tenant level.
 	AdministrativeUnitIds pulumi.StringArrayInput
-	// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
+	// Indicates whether this group can be assigned to an Azure Active Directory role. This property can only be `true` for
+	// security-enabled groups.
 	AssignableToRole pulumi.BoolPtrInput
-	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether new members added to the group will be auto-subscribed to receive email notifications.
 	AutoSubscribeNewMembers pulumi.BoolPtrInput
-	// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+	// The group behaviours for a Microsoft 365 group
 	Behaviors pulumi.StringArrayInput
-	// The description for the group.
+	// The description for the group
 	Description pulumi.StringPtrInput
-	// The display name for the group.
+	// The display name for the group
 	DisplayName pulumi.StringInput
-	// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+	// An optional block to configure dynamic membership for the group. Cannot be used with `members`
 	DynamicMembership GroupDynamicMembershipPtrInput
-	// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether people external to the organization can send messages to the group.
 	ExternalSendersAllowed pulumi.BoolPtrInput
-	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address
+	// lists for selecting message recipients, and in the Browse Groups dialog for searching groups.
 	HideFromAddressLists pulumi.BoolPtrInput
-	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-	//
-	// > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+	// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web.
 	HideFromOutlookClients pulumi.BoolPtrInput
-	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+	// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled`
+	// must be specified. A group can be mail enabled _and_ security enabled
 	MailEnabled pulumi.BoolPtrInput
-	// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+	// The mail alias for the group, unique in the organisation
 	MailNickname pulumi.StringPtrInput
-	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
-	//
-	// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+	// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals
 	Members pulumi.StringArrayInput
-	// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+	// Indicates the target on-premise group type the group will be written back as
 	OnpremisesGroupType pulumi.StringPtrInput
 	// A set of owners who own this group. Supported object types are Users or Service Principals
 	Owners pulumi.StringArrayInput
-	// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+	// If `true`, will return an error if an existing group is found with the same name
 	PreventDuplicateNames pulumi.BoolPtrInput
-	// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+	// The group provisioning options for a Microsoft 365 group
 	ProvisioningOptions pulumi.StringArrayInput
-	// Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+	// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or
+	// `mail_enabled` must be specified. A group can be security enabled _and_ mail enabled
 	SecurityEnabled pulumi.BoolPtrInput
-	// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+	// The colour theme for a Microsoft 365 group
 	Theme pulumi.StringPtrInput
-	// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
-	//
-	// > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
+	// A set of group types to configure for the group. `Unified` specifies a Microsoft 365 group. Required when `mail_enabled`
+	// is true
 	Types pulumi.StringArrayInput
-	// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
-	//
-	// > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
+	// Specifies the group join policy and group content visibility
 	Visibility pulumi.StringPtrInput
-	// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+	// Whether this group should be synced from Azure AD to the on-premises directory when Azure AD Connect is used
 	WritebackEnabled pulumi.BoolPtrInput
 }
 
@@ -534,119 +456,112 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 	return o
 }
 
-// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
-//
-// !> **Warning** Do not use the `administrativeUnitIds` property at the same time as the AdministrativeUnitMember resource, _for the same group_. Doing so will cause a conflict and administrative unit members will be removed.
+// The administrative unit IDs in which the group should be. If empty, the group will be created at the tenant level.
 func (o GroupOutput) AdministrativeUnitIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.AdministrativeUnitIds }).(pulumi.StringArrayOutput)
 }
 
-// Indicates whether this group can be assigned to an Azure Active Directory role. Defaults to `false`. Can only be set to `true` for security-enabled groups. Changing this forces a new resource to be created.
+// Indicates whether this group can be assigned to an Azure Active Directory role. This property can only be `true` for
+// security-enabled groups.
 func (o GroupOutput) AssignableToRole() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.AssignableToRole }).(pulumi.BoolPtrOutput)
 }
 
-// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Can only be set for Unified groups.
-//
-// > **Known Permissions Issue** The `autoSubscribeNewMembers` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+// Indicates whether new members added to the group will be auto-subscribed to receive email notifications.
 func (o GroupOutput) AutoSubscribeNewMembers() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.AutoSubscribeNewMembers }).(pulumi.BoolOutput)
 }
 
-// A set of behaviors for a Microsoft 365 group. Possible values are `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeMembersToCalendarEventsDisabled`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details. Changing this forces a new resource to be created.
+// The group behaviours for a Microsoft 365 group
 func (o GroupOutput) Behaviors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.Behaviors }).(pulumi.StringArrayOutput)
 }
 
-// The description for the group.
+// The description for the group
 func (o GroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The display name for the group.
+// The display name for the group
 func (o GroupOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// A `dynamicMembership` block as documented below. Required when `types` contains `DynamicMembership`. Cannot be used with the `members` property.
+// An optional block to configure dynamic membership for the group. Cannot be used with `members`
 func (o GroupOutput) DynamicMembership() GroupDynamicMembershipPtrOutput {
 	return o.ApplyT(func(v *Group) GroupDynamicMembershipPtrOutput { return v.DynamicMembership }).(GroupDynamicMembershipPtrOutput)
 }
 
-// Indicates whether people external to the organization can send messages to the group. Can only be set for Unified groups.
-//
-// > **Known Permissions Issue** The `externalSendersAllowed` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+// Indicates whether people external to the organization can send messages to the group.
 func (o GroupOutput) ExternalSendersAllowed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.ExternalSendersAllowed }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Can only be set for Unified groups.
-//
-// > **Known Permissions Issue** The `hideFromAddressLists` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address
+// lists for selecting message recipients, and in the Browse Groups dialog for searching groups.
 func (o GroupOutput) HideFromAddressLists() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.HideFromAddressLists }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Can only be set for Unified groups.
-//
-// > **Known Permissions Issue** The `hideFromOutlookClients` property can only be set when authenticating as a Member user of the tenant and _not_ when authenticating as a Guest user or as a service principal. Please see the [Microsoft Graph Known Issues](https://docs.microsoft.com/en-us/graph/known-issues#groups) documentation.
+// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web.
 func (o GroupOutput) HideFromOutlookClients() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.HideFromOutlookClients }).(pulumi.BoolOutput)
 }
 
-// The SMTP address for the group.
+// The SMTP address for the group
 func (o GroupOutput) Mail() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Mail }).(pulumi.StringOutput)
 }
 
-// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mailEnabled` or `securityEnabled` must be specified. Only Microsoft 365 groups can be mail enabled (see the `types` property).
+// Whether the group is a mail enabled, with a shared group mailbox. At least one of `mail_enabled` or `security_enabled`
+// must be specified. A group can be mail enabled _and_ security enabled
 func (o GroupOutput) MailEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.MailEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The mail alias for the group, unique in the organisation. Required for mail-enabled groups. Changing this forces a new resource to be created.
+// The mail alias for the group, unique in the organisation
 func (o GroupOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.MailNickname }).(pulumi.StringOutput)
 }
 
-// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals. Cannot be used with the `dynamicMembership` block.
-//
-// !> **Warning** Do not use the `members` property at the same time as the GroupMember resource for the same group. Doing so will cause a conflict and group members will be removed.
+// A set of members who should be present in this group. Supported object types are Users, Groups or Service Principals
 func (o GroupOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The object ID of the group.
+// The object ID of the group
 func (o GroupOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premises FQDN, also called dnsDomainName, synchronized from the on-premises directory when Azure AD Connect is
+// used
 func (o GroupOutput) OnpremisesDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesDomainName }).(pulumi.StringOutput)
 }
 
-// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+// Indicates the target on-premise group type the group will be written back as
 func (o GroupOutput) OnpremisesGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesGroupType }).(pulumi.StringOutput)
 }
 
-// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premises NetBIOS name, synchronized from the on-premises directory when Azure AD Connect is used
 func (o GroupOutput) OnpremisesNetbiosName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesNetbiosName }).(pulumi.StringOutput)
 }
 
-// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premises SAM account name, synchronized from the on-premises directory when Azure AD Connect is used
 func (o GroupOutput) OnpremisesSamAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
 }
 
-// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+// The on-premises security identifier (SID), synchronized from the on-premises directory when Azure AD Connect is used
 func (o GroupOutput) OnpremisesSecurityIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.OnpremisesSecurityIdentifier }).(pulumi.StringOutput)
 }
 
-// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+// Whether this group is synchronized from an on-premises directory (true), no longer synchronized (false), or has never
+// been synchronized (null)
 func (o GroupOutput) OnpremisesSyncEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolOutput { return v.OnpremisesSyncEnabled }).(pulumi.BoolOutput)
 }
@@ -656,51 +571,49 @@ func (o GroupOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.Owners }).(pulumi.StringArrayOutput)
 }
 
-// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+// The preferred language for a Microsoft 365 group, in ISO 639-1 notation
 func (o GroupOutput) PreferredLanguage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.PreferredLanguage }).(pulumi.StringOutput)
 }
 
-// If `true`, will return an error if an existing group is found with the same name. Defaults to `false`.
+// If `true`, will return an error if an existing group is found with the same name
 func (o GroupOutput) PreventDuplicateNames() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.PreventDuplicateNames }).(pulumi.BoolPtrOutput)
 }
 
-// A set of provisioning options for a Microsoft 365 group. The only supported value is `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details. Changing this forces a new resource to be created.
+// The group provisioning options for a Microsoft 365 group
 func (o GroupOutput) ProvisioningOptions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.ProvisioningOptions }).(pulumi.StringArrayOutput)
 }
 
-// List of email addresses for the group that direct to the same group mailbox.
+// Email addresses for the group that direct to the same group mailbox
 func (o GroupOutput) ProxyAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.ProxyAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Whether the group is a security group for controlling access to in-app resources. At least one of `securityEnabled` or `mailEnabled` must be specified. A Microsoft 365 group can be security enabled _and_ mail enabled (see the `types` property).
+// Whether the group is a security group for controlling access to in-app resources. At least one of `security_enabled` or
+// `mail_enabled` must be specified. A group can be security enabled _and_ mail enabled
 func (o GroupOutput) SecurityEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.SecurityEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. By default, no theme is set.
+// The colour theme for a Microsoft 365 group
 func (o GroupOutput) Theme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Theme }).(pulumi.StringPtrOutput)
 }
 
-// A set of group types to configure for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group. Required when `mailEnabled` is true. Changing this forces a new resource to be created.
-//
-// > **Supported Group Types** At present, only security groups and Microsoft 365 groups can be created or managed with this resource. Distribution groups and mail-enabled security groups are not supported. Microsoft 365 groups can be security-enabled.
+// A set of group types to configure for the group. `Unified` specifies a Microsoft 365 group. Required when `mail_enabled`
+// is true
 func (o GroupOutput) Types() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringArrayOutput { return v.Types }).(pulumi.StringArrayOutput)
 }
 
-// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility and this value must be set when the group is created. By default, security groups will receive `Private` visibility and Microsoft 365 groups will receive `Public` visibility.
-//
-// > **Group Name Uniqueness** Group names are not unique within Azure Active Directory. Use the `preventDuplicateNames` argument to check for existing groups if you want to avoid name collisions.
+// Specifies the group join policy and group content visibility
 func (o GroupOutput) Visibility() pulumi.StringOutput {
 	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Visibility }).(pulumi.StringOutput)
 }
 
-// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+// Whether this group should be synced from Azure AD to the on-premises directory when Azure AD Connect is used
 func (o GroupOutput) WritebackEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.WritebackEnabled }).(pulumi.BoolPtrOutput)
 }

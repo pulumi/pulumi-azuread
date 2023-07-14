@@ -9,82 +9,11 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var authorized = new AzureAD.Application("authorized", new()
-    ///     {
-    ///         DisplayName = "example-authorized-app",
-    ///     });
-    /// 
-    ///     var authorizer = new AzureAD.Application("authorizer", new()
-    ///     {
-    ///         DisplayName = "example-authorizing-app",
-    ///         Api = new AzureAD.Inputs.ApplicationApiArgs
-    ///         {
-    ///             Oauth2PermissionScopes = new[]
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                 {
-    ///                     AdminConsentDescription = "Administer the application",
-    ///                     AdminConsentDisplayName = "Administer",
-    ///                     Enabled = true,
-    ///                     Id = "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
-    ///                     Type = "Admin",
-    ///                     Value = "administer",
-    ///                 },
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                 {
-    ///                     AdminConsentDescription = "Access the application",
-    ///                     AdminConsentDisplayName = "Access",
-    ///                     Enabled = true,
-    ///                     Id = "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
-    ///                     Type = "User",
-    ///                     UserConsentDescription = "Access the application",
-    ///                     UserConsentDisplayName = "Access",
-    ///                     Value = "user_impersonation",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var example = new AzureAD.ApplicationPreAuthorized("example", new()
-    ///     {
-    ///         ApplicationObjectId = authorizer.ObjectId,
-    ///         AuthorizedAppId = authorized.ApplicationId,
-    ///         PermissionIds = new[]
-    ///         {
-    ///             "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
-    ///             "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
-    /// ```
-    /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
-    /// </summary>
     [AzureADResourceType("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized")]
     public partial class ApplicationPreAuthorized : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        /// The object ID of the application to which this pre-authorized application should be added
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
@@ -96,7 +25,7 @@ namespace Pulumi.AzureAD
         public Output<string> AuthorizedAppId { get; private set; } = null!;
 
         /// <summary>
-        /// A set of permission scope IDs required by the authorized application.
+        /// The IDs of the permission scopes required by the pre-authorized application
         /// </summary>
         [Output("permissionIds")]
         public Output<ImmutableArray<string>> PermissionIds { get; private set; } = null!;
@@ -148,7 +77,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationPreAuthorizedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        /// The object ID of the application to which this pre-authorized application should be added
         /// </summary>
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
@@ -163,7 +92,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _permissionIds;
 
         /// <summary>
-        /// A set of permission scope IDs required by the authorized application.
+        /// The IDs of the permission scopes required by the pre-authorized application
         /// </summary>
         public InputList<string> PermissionIds
         {
@@ -180,7 +109,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationPreAuthorizedState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
+        /// The object ID of the application to which this pre-authorized application should be added
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
@@ -195,7 +124,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _permissionIds;
 
         /// <summary>
-        /// A set of permission scope IDs required by the authorized application.
+        /// The IDs of the permission scopes required by the pre-authorized application
         /// </summary>
         public InputList<string> PermissionIds
         {

@@ -9,70 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages user flow attributes in an Azure Active Directory (Azure AD) tenant.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires the following application role: `IdentityUserFlow.ReadWrite.All`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// *Basic example*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.UserFlowAttribute("example", new()
-    ///     {
-    ///         DataType = "string",
-    ///         Description = "Your hobby",
-    ///         DisplayName = "Hobby",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// User flow attributes can be imported using the `id`, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/userFlowAttribute:UserFlowAttribute example extension_ecc9f88db2924942b8a96f44873616fe_Hobbyjkorv
-    /// ```
-    /// 
-    ///  -&gt; This ID can be queried using the [User Flow Attributes API](https://learn.microsoft.com/en-us/graph/api/identityuserflowattribute-list?view=graph-rest-1.0&amp;tabs=http).
-    /// </summary>
     [AzureADResourceType("azuread:index/userFlowAttribute:UserFlowAttribute")]
     public partial class UserFlowAttribute : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+        /// The type of the user flow attribute
         /// </summary>
         [Output("attributeType")]
         public Output<string> AttributeType { get; private set; } = null!;
 
         /// <summary>
-        /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        /// The data type of the user flow attribute
         /// </summary>
         [Output("dataType")]
         public Output<string> DataType { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the user flow attribute that is shown to the user at the time of sign-up.
+        /// The description of the user flow attribute that is shown to the user at the time of sign-up
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the user flow attribute. Changing this forces a new resource to be created.
+        /// The display name of the user flow attribute.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -124,19 +83,19 @@ namespace Pulumi.AzureAD
     public sealed class UserFlowAttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        /// The data type of the user flow attribute
         /// </summary>
         [Input("dataType", required: true)]
         public Input<string> DataType { get; set; } = null!;
 
         /// <summary>
-        /// The description of the user flow attribute that is shown to the user at the time of sign-up.
+        /// The description of the user flow attribute that is shown to the user at the time of sign-up
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The display name of the user flow attribute. Changing this forces a new resource to be created.
+        /// The display name of the user flow attribute.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -150,25 +109,25 @@ namespace Pulumi.AzureAD
     public sealed class UserFlowAttributeState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the user flow attribute. Values include `builtIn`, `custom` or `required`.
+        /// The type of the user flow attribute
         /// </summary>
         [Input("attributeType")]
         public Input<string>? AttributeType { get; set; }
 
         /// <summary>
-        /// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
+        /// The data type of the user flow attribute
         /// </summary>
         [Input("dataType")]
         public Input<string>? DataType { get; set; }
 
         /// <summary>
-        /// The description of the user flow attribute that is shown to the user at the time of sign-up.
+        /// The description of the user flow attribute that is shown to the user at the time of sign-up
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the user flow attribute. Changing this forces a new resource to be created.
+        /// The display name of the user flow attribute.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

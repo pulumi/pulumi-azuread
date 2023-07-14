@@ -9,76 +9,24 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
-    ///     {
-    ///         DisplayName = "example-group",
-    ///         SecurityEnabled = true,
-    ///     });
-    /// 
-    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
-    ///     {
-    ///         DisplayName = "example-catalog",
-    ///         Description = "Example catalog",
-    ///     });
-    /// 
-    ///     var exampleAccessPackageResourceCatalogAssociation = new AzureAD.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", new()
-    ///     {
-    ///         CatalogId = azuread_access_package_catalog.Example_catalog.Id,
-    ///         ResourceOriginId = azuread_group.Example_group.Object_id,
-    ///         ResourceOriginSystem = "AadGroup",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
-    /// ```
-    /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
-    /// </summary>
     [AzureADResourceType("azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation")]
     public partial class AccessPackageResourceCatalogAssociation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        /// The unique ID of the access package catalog
         /// </summary>
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+        /// the group
         /// </summary>
         [Output("resourceOriginId")]
         public Output<string> ResourceOriginId { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+        /// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
         /// </summary>
         [Output("resourceOriginSystem")]
         public Output<string> ResourceOriginSystem { get; private set; } = null!;
@@ -130,19 +78,20 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageResourceCatalogAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        /// The unique ID of the access package catalog
         /// </summary>
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+        /// the group
         /// </summary>
         [Input("resourceOriginId", required: true)]
         public Input<string> ResourceOriginId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+        /// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
         /// </summary>
         [Input("resourceOriginSystem", required: true)]
         public Input<string> ResourceOriginSystem { get; set; } = null!;
@@ -156,19 +105,20 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageResourceCatalogAssociationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        /// The unique ID of the access package catalog
         /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
 
         /// <summary>
-        /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        /// The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
+        /// the group
         /// </summary>
         [Input("resourceOriginId")]
         public Input<string>? ResourceOriginId { get; set; }
 
         /// <summary>
-        /// The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
+        /// The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
         /// </summary>
         [Input("resourceOriginSystem")]
         public Input<string>? ResourceOriginSystem { get; set; }

@@ -14,10 +14,6 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("excludedGroups")]
         private InputList<string>? _excludedGroups;
-
-        /// <summary>
-        /// A list of group IDs excluded from scope of policy.
-        /// </summary>
         public InputList<string> ExcludedGroups
         {
             get => _excludedGroups ?? (_excludedGroups = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("excludedRoles")]
         private InputList<string>? _excludedRoles;
-
-        /// <summary>
-        /// A list of role IDs excluded from scope of policy.
-        /// </summary>
         public InputList<string> ExcludedRoles
         {
             get => _excludedRoles ?? (_excludedRoles = new InputList<string>());
@@ -38,10 +30,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("excludedUsers")]
         private InputList<string>? _excludedUsers;
-
-        /// <summary>
-        /// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
-        /// </summary>
         public InputList<string> ExcludedUsers
         {
             get => _excludedUsers ?? (_excludedUsers = new InputList<string>());
@@ -50,10 +38,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("includedGroups")]
         private InputList<string>? _includedGroups;
-
-        /// <summary>
-        /// A list of group IDs in scope of policy unless explicitly excluded.
-        /// </summary>
         public InputList<string> IncludedGroups
         {
             get => _includedGroups ?? (_includedGroups = new InputList<string>());
@@ -62,10 +46,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("includedRoles")]
         private InputList<string>? _includedRoles;
-
-        /// <summary>
-        /// A list of role IDs in scope of policy unless explicitly excluded.
-        /// </summary>
         public InputList<string> IncludedRoles
         {
             get => _includedRoles ?? (_includedRoles = new InputList<string>());
@@ -74,12 +54,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("includedUsers")]
         private InputList<string>? _includedUsers;
-
-        /// <summary>
-        /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
-        /// 
-        /// &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
-        /// </summary>
         public InputList<string> IncludedUsers
         {
             get => _includedUsers ?? (_includedUsers = new InputList<string>());

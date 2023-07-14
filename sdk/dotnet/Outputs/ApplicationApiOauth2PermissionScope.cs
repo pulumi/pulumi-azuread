@@ -13,30 +13,12 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ApplicationApiOauth2PermissionScope
     {
-        /// <summary>
-        /// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
-        /// </summary>
         public readonly string? AdminConsentDescription;
-        /// <summary>
-        /// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
-        /// </summary>
         public readonly string? AdminConsentDisplayName;
-        /// <summary>
-        /// Determines if the permission scope is enabled. Defaults to `true`.
-        /// </summary>
         public readonly bool? Enabled;
         public readonly string Id;
-        /// <summary>
-        /// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
-        /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
-        /// </summary>
         public readonly string? UserConsentDescription;
-        /// <summary>
-        /// Display name for the delegated permission that appears in the end user consent experience.
-        /// </summary>
         public readonly string? UserConsentDisplayName;
         public readonly string? Value;
 

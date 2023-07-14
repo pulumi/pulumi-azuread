@@ -9,108 +9,48 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages a Custom Directory Role within Azure Active Directory.
-    /// 
-    /// This resource is for managing custom directory roles. For management of built-in roles, see the azuread.DirectoryRole resource.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.CustomDirectoryRole("example", new()
-    ///     {
-    ///         Description = "Allows reading applications and updating groups",
-    ///         DisplayName = "My Custom Role",
-    ///         Enabled = true,
-    ///         Permissions = new[]
-    ///         {
-    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
-    ///             {
-    ///                 AllowedResourceActions = new[]
-    ///                 {
-    ///                     "microsoft.directory/applications/basic/update",
-    ///                     "microsoft.directory/applications/create",
-    ///                     "microsoft.directory/applications/standard/read",
-    ///                 },
-    ///             },
-    ///             new AzureAD.Inputs.CustomDirectoryRolePermissionArgs
-    ///             {
-    ///                 AllowedResourceActions = new[]
-    ///                 {
-    ///                     "microsoft.directory/groups/allProperties/read",
-    ///                     "microsoft.directory/groups/allProperties/read",
-    ///                     "microsoft.directory/groups/basic/update",
-    ///                     "microsoft.directory/groups/create",
-    ///                     "microsoft.directory/groups/delete",
-    ///                 },
-    ///             },
-    ///         },
-    ///         Version = "1.0",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// This resource does not support importing.
-    /// </summary>
     [AzureADResourceType("azuread:index/customDirectoryRole:CustomDirectoryRole")]
     public partial class CustomDirectoryRole : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the custom directory role.
+        /// The description of the custom directory role
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the custom directory role.
+        /// The display name of the custom directory role
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates whether the role is enabled for assignment.
+        /// Indicates whether the role is enabled for assignment
         /// </summary>
         [Output("enabled")]
         public Output<bool> Enabled { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the custom directory role.
+        /// The object ID of the directory role
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// A collection of `permissions` blocks as documented below.
+        /// List of permissions that are included in the custom directory role
         /// </summary>
         [Output("permissions")]
         public Output<ImmutableArray<Outputs.CustomDirectoryRolePermission>> Permissions { get; private set; } = null!;
 
         /// <summary>
-        /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
+        /// Custom template identifier that is typically used if one needs an identifier to be the same across different
+        /// directories.
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        /// The version of the role definition.
         /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
@@ -162,19 +102,19 @@ namespace Pulumi.AzureAD
     public sealed class CustomDirectoryRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the custom directory role.
+        /// The description of the custom directory role
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the custom directory role.
+        /// The display name of the custom directory role
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Indicates whether the role is enabled for assignment.
+        /// Indicates whether the role is enabled for assignment
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
@@ -183,7 +123,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.CustomDirectoryRolePermissionArgs>? _permissions;
 
         /// <summary>
-        /// A collection of `permissions` blocks as documented below.
+        /// List of permissions that are included in the custom directory role
         /// </summary>
         public InputList<Inputs.CustomDirectoryRolePermissionArgs> Permissions
         {
@@ -192,13 +132,14 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
+        /// Custom template identifier that is typically used if one needs an identifier to be the same across different
+        /// directories.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        /// The version of the role definition.
         /// </summary>
         [Input("version", required: true)]
         public Input<string> Version { get; set; } = null!;
@@ -212,25 +153,25 @@ namespace Pulumi.AzureAD
     public sealed class CustomDirectoryRoleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the custom directory role.
+        /// The description of the custom directory role
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the custom directory role.
+        /// The display name of the custom directory role
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Indicates whether the role is enabled for assignment.
+        /// Indicates whether the role is enabled for assignment
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The object ID of the custom directory role.
+        /// The object ID of the directory role
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
@@ -239,7 +180,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.CustomDirectoryRolePermissionGetArgs>? _permissions;
 
         /// <summary>
-        /// A collection of `permissions` blocks as documented below.
+        /// List of permissions that are included in the custom directory role
         /// </summary>
         public InputList<Inputs.CustomDirectoryRolePermissionGetArgs> Permissions
         {
@@ -248,13 +189,14 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
+        /// Custom template identifier that is typically used if one needs an identifier to be the same across different
+        /// directories.
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// The version of the role definition. This can be any arbitrary string between 1-128 characters.
+        /// The version of the role definition.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

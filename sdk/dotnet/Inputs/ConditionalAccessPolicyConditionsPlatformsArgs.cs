@@ -14,10 +14,6 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("excludedPlatforms")]
         private InputList<string>? _excludedPlatforms;
-
-        /// <summary>
-        /// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-        /// </summary>
         public InputList<string> ExcludedPlatforms
         {
             get => _excludedPlatforms ?? (_excludedPlatforms = new InputList<string>());
@@ -26,10 +22,6 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("includedPlatforms", required: true)]
         private InputList<string>? _includedPlatforms;
-
-        /// <summary>
-        /// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-        /// </summary>
         public InputList<string> IncludedPlatforms
         {
             get => _includedPlatforms ?? (_includedPlatforms = new InputList<string>());

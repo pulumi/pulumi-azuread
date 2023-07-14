@@ -158,137 +158,86 @@ class GetUserResult:
     @property
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> bool:
-        """
-        Whether or not the account is enabled.
-        """
         return pulumi.get(self, "account_enabled")
 
     @property
     @pulumi.getter(name="ageGroup")
     def age_group(self) -> str:
-        """
-        The age group of the user. Supported values are `Adult`, `NotAdult` and `Minor`.
-        """
         return pulumi.get(self, "age_group")
 
     @property
     @pulumi.getter(name="businessPhones")
     def business_phones(self) -> Sequence[str]:
-        """
-        A list of telephone numbers for the user.
-        """
         return pulumi.get(self, "business_phones")
 
     @property
     @pulumi.getter
     def city(self) -> str:
-        """
-        The city in which the user is located.
-        """
         return pulumi.get(self, "city")
 
     @property
     @pulumi.getter(name="companyName")
     def company_name(self) -> str:
-        """
-        The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
-        """
         return pulumi.get(self, "company_name")
 
     @property
     @pulumi.getter(name="consentProvidedForMinor")
     def consent_provided_for_minor(self) -> str:
-        """
-        Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`.
-        """
         return pulumi.get(self, "consent_provided_for_minor")
 
     @property
     @pulumi.getter(name="costCenter")
     def cost_center(self) -> str:
-        """
-        The cost center associated with the user.
-        """
         return pulumi.get(self, "cost_center")
 
     @property
     @pulumi.getter
     def country(self) -> str:
-        """
-        The country/region in which the user is located, e.g. `US` or `UK`.
-        """
         return pulumi.get(self, "country")
 
     @property
     @pulumi.getter(name="creationType")
     def creation_type(self) -> str:
-        """
-        Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
-        """
         return pulumi.get(self, "creation_type")
 
     @property
     @pulumi.getter
     def department(self) -> str:
-        """
-        The name for the department in which the user works.
-        """
         return pulumi.get(self, "department")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
-        """
-        The display name of the user.
-        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter
     def division(self) -> str:
-        """
-        The name of the division in which the user works.
-        """
         return pulumi.get(self, "division")
 
     @property
     @pulumi.getter(name="employeeId")
     def employee_id(self) -> str:
-        """
-        The employee identifier assigned to the user by the organisation.
-        """
         return pulumi.get(self, "employee_id")
 
     @property
     @pulumi.getter(name="employeeType")
     def employee_type(self) -> str:
-        """
-        Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor.
-        """
         return pulumi.get(self, "employee_type")
 
     @property
     @pulumi.getter(name="externalUserState")
     def external_user_state(self) -> str:
-        """
-        For an external user invited to the tenant, this property represents the invited user's invitation status. Possible values are `PendingAcceptance` or `Accepted`.
-        """
         return pulumi.get(self, "external_user_state")
 
     @property
     @pulumi.getter(name="faxNumber")
     def fax_number(self) -> str:
-        """
-        The fax number of the user.
-        """
         return pulumi.get(self, "fax_number")
 
     @property
     @pulumi.getter(name="givenName")
     def given_name(self) -> str:
-        """
-        The given name (first name) of the user.
-        """
         return pulumi.get(self, "given_name")
 
     @property
@@ -302,209 +251,131 @@ class GetUserResult:
     @property
     @pulumi.getter(name="imAddresses")
     def im_addresses(self) -> Sequence[str]:
-        """
-        A list of instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user.
-        """
         return pulumi.get(self, "im_addresses")
 
     @property
     @pulumi.getter(name="jobTitle")
     def job_title(self) -> str:
-        """
-        The user’s job title.
-        """
         return pulumi.get(self, "job_title")
 
     @property
     @pulumi.getter
     def mail(self) -> str:
-        """
-        The SMTP address for the user.
-        """
         return pulumi.get(self, "mail")
 
     @property
     @pulumi.getter(name="mailNickname")
     def mail_nickname(self) -> str:
-        """
-        The email alias of the user.
-        """
         return pulumi.get(self, "mail_nickname")
 
     @property
     @pulumi.getter(name="managerId")
     def manager_id(self) -> str:
-        """
-        The object ID of the user's manager.
-        """
         return pulumi.get(self, "manager_id")
 
     @property
     @pulumi.getter(name="mobilePhone")
     def mobile_phone(self) -> str:
-        """
-        The primary cellular telephone number for the user.
-        """
         return pulumi.get(self, "mobile_phone")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
-        """
-        The object ID of the user.
-        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="officeLocation")
     def office_location(self) -> str:
-        """
-        The office location in the user's place of business.
-        """
         return pulumi.get(self, "office_location")
 
     @property
     @pulumi.getter(name="onpremisesDistinguishedName")
     def onpremises_distinguished_name(self) -> str:
-        """
-        The on-premises distinguished name (DN) of the user, synchronised from the on-premises directory when Azure AD Connect is used.
-        """
         return pulumi.get(self, "onpremises_distinguished_name")
 
     @property
     @pulumi.getter(name="onpremisesDomainName")
     def onpremises_domain_name(self) -> str:
-        """
-        The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
-        """
         return pulumi.get(self, "onpremises_domain_name")
 
     @property
     @pulumi.getter(name="onpremisesImmutableId")
     def onpremises_immutable_id(self) -> str:
-        """
-        The value used to associate an on-premise Active Directory user account with their Azure AD user object.
-        """
         return pulumi.get(self, "onpremises_immutable_id")
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> str:
-        """
-        The on-premise SAM account name of the user.
-        """
         return pulumi.get(self, "onpremises_sam_account_name")
 
     @property
     @pulumi.getter(name="onpremisesSecurityIdentifier")
     def onpremises_security_identifier(self) -> str:
-        """
-        The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
-        """
         return pulumi.get(self, "onpremises_security_identifier")
 
     @property
     @pulumi.getter(name="onpremisesSyncEnabled")
     def onpremises_sync_enabled(self) -> bool:
-        """
-        Whether this user is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
-        """
         return pulumi.get(self, "onpremises_sync_enabled")
 
     @property
     @pulumi.getter(name="onpremisesUserPrincipalName")
     def onpremises_user_principal_name(self) -> str:
-        """
-        The on-premise user principal name of the user.
-        """
         return pulumi.get(self, "onpremises_user_principal_name")
 
     @property
     @pulumi.getter(name="otherMails")
     def other_mails(self) -> Sequence[str]:
-        """
-        A list of additional email addresses for the user.
-        """
         return pulumi.get(self, "other_mails")
 
     @property
     @pulumi.getter(name="postalCode")
     def postal_code(self) -> str:
-        """
-        The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code.
-        """
         return pulumi.get(self, "postal_code")
 
     @property
     @pulumi.getter(name="preferredLanguage")
     def preferred_language(self) -> str:
-        """
-        The user's preferred language, in ISO 639-1 notation.
-        """
         return pulumi.get(self, "preferred_language")
 
     @property
     @pulumi.getter(name="proxyAddresses")
     def proxy_addresses(self) -> Sequence[str]:
-        """
-        List of email addresses for the user that direct to the same mailbox.
-        """
         return pulumi.get(self, "proxy_addresses")
 
     @property
     @pulumi.getter(name="showInAddressList")
     def show_in_address_list(self) -> bool:
-        """
-        Whether or not the Outlook global address list should include this user.
-        """
         return pulumi.get(self, "show_in_address_list")
 
     @property
     @pulumi.getter
     def state(self) -> str:
-        """
-        The state or province in the user's address.
-        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="streetAddress")
     def street_address(self) -> str:
-        """
-        The street address of the user's place of business.
-        """
         return pulumi.get(self, "street_address")
 
     @property
     @pulumi.getter
     def surname(self) -> str:
-        """
-        The user's surname (family name or last name).
-        """
         return pulumi.get(self, "surname")
 
     @property
     @pulumi.getter(name="usageLocation")
     def usage_location(self) -> str:
-        """
-        The usage location of the user.
-        """
         return pulumi.get(self, "usage_location")
 
     @property
     @pulumi.getter(name="userPrincipalName")
     def user_principal_name(self) -> str:
-        """
-        The user principal name (UPN) of the user.
-        """
         return pulumi.get(self, "user_principal_name")
 
     @property
     @pulumi.getter(name="userType")
     def user_type(self) -> str:
-        """
-        The user type in the directory. Possible values are `Guest` or `Member`.
-        """
         return pulumi.get(self, "user_type")
 
 
@@ -567,33 +438,7 @@ def get_user(employee_id: Optional[str] = None,
              user_principal_name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserResult:
     """
-    Gets information about an Azure Active Directory user.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_user(user_principal_name="user@hashicorp.com")
-    ```
-
-
-    :param str employee_id: The employee identifier assigned to the user by the organisation.
-    :param str mail: The SMTP address for the user.
-    :param str mail_nickname: The email alias of the user.
-    :param str object_id: The object ID of the user.
-    :param str user_principal_name: The user principal name (UPN) of the user.
-           
-           > One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['employeeId'] = employee_id
@@ -659,32 +504,6 @@ def get_user_output(employee_id: Optional[pulumi.Input[Optional[str]]] = None,
                     user_principal_name: Optional[pulumi.Input[Optional[str]]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserResult]:
     """
-    Gets information about an Azure Active Directory user.
-
-    ## API Permissions
-
-    The following API permissions are required in order to use this data source.
-
-    When authenticated with a service principal, this data source requires one of the following application roles: `User.Read.All` or `Directory.Read.All`
-
-    When authenticated with a user principal, this data source does not require any additional roles.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_azuread as azuread
-
-    example = azuread.get_user(user_principal_name="user@hashicorp.com")
-    ```
-
-
-    :param str employee_id: The employee identifier assigned to the user by the organisation.
-    :param str mail: The SMTP address for the user.
-    :param str mail_nickname: The email alias of the user.
-    :param str object_id: The object ID of the user.
-    :param str user_principal_name: The user principal name (UPN) of the user.
-           
-           > One of `user_principal_name`, `object_id`, `mail`, `mail_nickname` or `employee_id` must be specified.
+    Use this data source to access information about an existing resource.
     """
     ...

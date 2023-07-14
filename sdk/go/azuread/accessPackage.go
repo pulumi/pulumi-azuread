@@ -11,70 +11,16 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages an Access Package within Identity Governance in Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
-//				DisplayName: pulumi.String("example-catalog"),
-//				Description: pulumi.String("Example catalog"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
-//				CatalogId:   exampleAccessPackageCatalog.ID(),
-//				DisplayName: pulumi.String("access-package"),
-//				Description: pulumi.String("Access Package"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Access Packages can be imported using the `id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
-//
-// ```
 type AccessPackage struct {
 	pulumi.CustomResourceState
 
-	// The ID of the Catalog this access package will be created in.
+	// The ID of the Catalog this access package will be created in
 	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
-	// The description of the access package.
+	// The description of the access package
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The display name of the access package.
+	// The display name of the access package
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Whether the access package is hidden from the requestor.
+	// Whether the access package is hidden from the requestor
 	Hidden pulumi.BoolPtrOutput `pulumi:"hidden"`
 }
 
@@ -116,24 +62,24 @@ func GetAccessPackage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPackage resources.
 type accessPackageState struct {
-	// The ID of the Catalog this access package will be created in.
+	// The ID of the Catalog this access package will be created in
 	CatalogId *string `pulumi:"catalogId"`
-	// The description of the access package.
+	// The description of the access package
 	Description *string `pulumi:"description"`
-	// The display name of the access package.
+	// The display name of the access package
 	DisplayName *string `pulumi:"displayName"`
-	// Whether the access package is hidden from the requestor.
+	// Whether the access package is hidden from the requestor
 	Hidden *bool `pulumi:"hidden"`
 }
 
 type AccessPackageState struct {
-	// The ID of the Catalog this access package will be created in.
+	// The ID of the Catalog this access package will be created in
 	CatalogId pulumi.StringPtrInput
-	// The description of the access package.
+	// The description of the access package
 	Description pulumi.StringPtrInput
-	// The display name of the access package.
+	// The display name of the access package
 	DisplayName pulumi.StringPtrInput
-	// Whether the access package is hidden from the requestor.
+	// Whether the access package is hidden from the requestor
 	Hidden pulumi.BoolPtrInput
 }
 
@@ -142,25 +88,25 @@ func (AccessPackageState) ElementType() reflect.Type {
 }
 
 type accessPackageArgs struct {
-	// The ID of the Catalog this access package will be created in.
+	// The ID of the Catalog this access package will be created in
 	CatalogId string `pulumi:"catalogId"`
-	// The description of the access package.
+	// The description of the access package
 	Description string `pulumi:"description"`
-	// The display name of the access package.
+	// The display name of the access package
 	DisplayName string `pulumi:"displayName"`
-	// Whether the access package is hidden from the requestor.
+	// Whether the access package is hidden from the requestor
 	Hidden *bool `pulumi:"hidden"`
 }
 
 // The set of arguments for constructing a AccessPackage resource.
 type AccessPackageArgs struct {
-	// The ID of the Catalog this access package will be created in.
+	// The ID of the Catalog this access package will be created in
 	CatalogId pulumi.StringInput
-	// The description of the access package.
+	// The description of the access package
 	Description pulumi.StringInput
-	// The display name of the access package.
+	// The display name of the access package
 	DisplayName pulumi.StringInput
-	// Whether the access package is hidden from the requestor.
+	// Whether the access package is hidden from the requestor
 	Hidden pulumi.BoolPtrInput
 }
 
@@ -251,22 +197,22 @@ func (o AccessPackageOutput) ToAccessPackageOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The ID of the Catalog this access package will be created in.
+// The ID of the Catalog this access package will be created in
 func (o AccessPackageOutput) CatalogId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackage) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
 }
 
-// The description of the access package.
+// The description of the access package
 func (o AccessPackageOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackage) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The display name of the access package.
+// The display name of the access package
 func (o AccessPackageOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackage) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Whether the access package is hidden from the requestor.
+// Whether the access package is hidden from the requestor
 func (o AccessPackageOutput) Hidden() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackage) pulumi.BoolPtrOutput { return v.Hidden }).(pulumi.BoolPtrOutput)
 }

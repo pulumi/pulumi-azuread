@@ -9,354 +9,119 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// ## Example Usage
-    /// 
-    /// *Create an application*
-    /// 
-    /// ```csharp
-    /// using System;
-    /// using System.Collections.Generic;
-    /// using System.IO;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// 	private static string ReadFileBase64(string path) {
-    /// 		return Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(File.ReadAllText(path)));
-    /// 	}
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
-    /// 
-    ///     var example = new AzureAD.Application("example", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         IdentifierUris = new[]
-    ///         {
-    ///             "api://example-app",
-    ///         },
-    ///         LogoImage = ReadFileBase64("/path/to/logo.png"),
-    ///         Owners = new[]
-    ///         {
-    ///             current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
-    ///         },
-    ///         SignInAudience = "AzureADMultipleOrgs",
-    ///         Api = new AzureAD.Inputs.ApplicationApiArgs
-    ///         {
-    ///             MappedClaimsEnabled = true,
-    ///             RequestedAccessTokenVersion = 2,
-    ///             KnownClientApplications = new[]
-    ///             {
-    ///                 azuread_application.Known1.Application_id,
-    ///                 azuread_application.Known2.Application_id,
-    ///             },
-    ///             Oauth2PermissionScopes = new[]
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                 {
-    ///                     AdminConsentDescription = "Allow the application to access example on behalf of the signed-in user.",
-    ///                     AdminConsentDisplayName = "Access example",
-    ///                     Enabled = true,
-    ///                     Id = "96183846-204b-4b43-82e1-5d2222eb4b9b",
-    ///                     Type = "User",
-    ///                     UserConsentDescription = "Allow the application to access example on your behalf.",
-    ///                     UserConsentDisplayName = "Access example",
-    ///                     Value = "user_impersonation",
-    ///                 },
-    ///                 new AzureAD.Inputs.ApplicationApiOauth2PermissionScopeArgs
-    ///                 {
-    ///                     AdminConsentDescription = "Administer the example application",
-    ///                     AdminConsentDisplayName = "Administer",
-    ///                     Enabled = true,
-    ///                     Id = "be98fa3e-ab5b-4b11-83d9-04ba2b7946bc",
-    ///                     Type = "Admin",
-    ///                     Value = "administer",
-    ///                 },
-    ///             },
-    ///         },
-    ///         AppRoles = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
-    ///             {
-    ///                 AllowedMemberTypes = new[]
-    ///                 {
-    ///                     "User",
-    ///                     "Application",
-    ///                 },
-    ///                 Description = "Admins can manage roles and perform all task actions",
-    ///                 DisplayName = "Admin",
-    ///                 Enabled = true,
-    ///                 Id = "1b19509b-32b1-4e9f-b71d-4992aa991967",
-    ///                 Value = "admin",
-    ///             },
-    ///             new AzureAD.Inputs.ApplicationAppRoleArgs
-    ///             {
-    ///                 AllowedMemberTypes = new[]
-    ///                 {
-    ///                     "User",
-    ///                 },
-    ///                 Description = "ReadOnly roles have limited query access",
-    ///                 DisplayName = "ReadOnly",
-    ///                 Enabled = true,
-    ///                 Id = "497406e4-012a-4267-bf18-45a1cb148a01",
-    ///                 Value = "User",
-    ///             },
-    ///         },
-    ///         FeatureTags = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
-    ///             {
-    ///                 Enterprise = true,
-    ///                 Gallery = true,
-    ///             },
-    ///         },
-    ///         OptionalClaims = new AzureAD.Inputs.ApplicationOptionalClaimsArgs
-    ///         {
-    ///             AccessTokens = new[]
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
-    ///                 {
-    ///                     Name = "myclaim",
-    ///                 },
-    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsAccessTokenArgs
-    ///                 {
-    ///                     Name = "otherclaim",
-    ///                 },
-    ///             },
-    ///             IdTokens = new[]
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsIdTokenArgs
-    ///                 {
-    ///                     Name = "userclaim",
-    ///                     Source = "user",
-    ///                     Essential = true,
-    ///                     AdditionalProperties = new[]
-    ///                     {
-    ///                         "emit_as_roles",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             Saml2Tokens = new[]
-    ///             {
-    ///                 new AzureAD.Inputs.ApplicationOptionalClaimsSaml2TokenArgs
-    ///                 {
-    ///                     Name = "samlexample",
-    ///                 },
-    ///             },
-    ///         },
-    ///         RequiredResourceAccesses = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///             {
-    ///                 ResourceAppId = "00000003-0000-0000-c000-000000000000",
-    ///                 ResourceAccesses = new[]
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = "df021288-bdef-4463-88db-98f22de89214",
-    ///                         Type = "Role",
-    ///                     },
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = "b4e74841-8e56-480b-be8b-910348b18b4c",
-    ///                         Type = "Scope",
-    ///                     },
-    ///                 },
-    ///             },
-    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///             {
-    ///                 ResourceAppId = "c5393580-f805-4401-95e8-94b7a6ef2fc2",
-    ///                 ResourceAccesses = new[]
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = "594c1fb6-4f81-4475-ae41-0c394909246c",
-    ///                         Type = "Role",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///         Web = new AzureAD.Inputs.ApplicationWebArgs
-    ///         {
-    ///             HomepageUrl = "https://app.example.net",
-    ///             LogoutUrl = "https://app.example.net/logout",
-    ///             RedirectUris = new[]
-    ///             {
-    ///                 "https://app.example.net/account",
-    ///             },
-    ///             ImplicitGrant = new AzureAD.Inputs.ApplicationWebImplicitGrantArgs
-    ///             {
-    ///                 AccessTokenIssuanceEnabled = true,
-    ///                 IdTokenIssuanceEnabled = true,
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// *Create application from a gallery template*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
-    ///     {
-    ///         DisplayName = "Marketo",
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///         UseExisting = true,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Applications can be imported using their object ID, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/application:Application test 00000000-0000-0000-0000-000000000000
-    /// ```
-    /// </summary>
     [AzureADResourceType("azuread:index/application:Application")]
     public partial class Application : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// An `api` block as documented below, which configures API related settings for this application.
-        /// </summary>
         [Output("api")]
         public Output<Outputs.ApplicationApi?> Api { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        /// Mapping of app role names to UUIDs
         /// </summary>
         [Output("appRoleIds")]
         public Output<ImmutableDictionary<string, string>> AppRoleIds { get; private set; } = null!;
 
-        /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        /// </summary>
         [Output("appRoles")]
         public Output<ImmutableArray<Outputs.ApplicationAppRole>> AppRoles { get; private set; } = null!;
 
         /// <summary>
-        /// The Application ID (also called Client ID).
+        /// The Application ID (also called Client ID)
         /// </summary>
         [Output("applicationId")]
         public Output<string> ApplicationId { get; private set; } = null!;
 
         /// <summary>
-        /// A description of the application, as shown to end users.
+        /// Description of the application as shown to end users
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        /// Specifies whether this application supports device authentication without a user.
         /// </summary>
         [Output("deviceOnlyAuthEnabled")]
         public Output<bool?> DeviceOnlyAuthEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        /// Whether Microsoft has disabled the registered application
         /// </summary>
         [Output("disabledByMicrosoft")]
         public Output<string> DisabledByMicrosoft { get; private set; } = null!;
 
         /// <summary>
-        /// The display name for the application.
+        /// The display name for the application
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a
+        /// redirect URI
         /// </summary>
         [Output("fallbackPublicClientEnabled")]
         public Output<bool?> FallbackPublicClientEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
-        /// 
-        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+        /// Block of features to configure for this application using tags
         /// </summary>
         [Output("featureTags")]
         public Output<ImmutableArray<Outputs.ApplicationFeatureTag>> FeatureTags { get; private set; } = null!;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects
         /// </summary>
         [Output("groupMembershipClaims")]
         public Output<ImmutableArray<string>> GroupMembershipClaims { get; private set; } = null!;
 
         /// <summary>
-        /// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        /// The user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom
+        /// domain if the application is multi-tenant
         /// </summary>
         [Output("identifierUris")]
         public Output<ImmutableArray<string>> IdentifierUris { get; private set; } = null!;
 
         /// <summary>
-        /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        /// Base64 encoded logo image in gif, png or jpeg format
         /// </summary>
         [Output("logoImage")]
         public Output<string?> LogoImage { get; private set; } = null!;
 
         /// <summary>
-        /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
+        /// CDN URL to the application's logo
         /// </summary>
         [Output("logoUrl")]
         public Output<string> LogoUrl { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the application's marketing page.
+        /// URL of the application's marketing page
         /// </summary>
         [Output("marketingUrl")]
         public Output<string?> MarketingUrl { get; private set; } = null!;
 
         /// <summary>
-        /// User-specified notes relevant for the management of the application.
+        /// User-specified notes relevant for the management of the application
         /// </summary>
         [Output("notes")]
         public Output<string?> Notes { get; private set; } = null!;
 
         /// <summary>
-        /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+        /// Mapping of OAuth2.0 permission scope names to UUIDs
         /// </summary>
         [Output("oauth2PermissionScopeIds")]
         public Output<ImmutableDictionary<string, string>> Oauth2PermissionScopeIds { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests.
         /// </summary>
         [Output("oauth2PostResponseRequired")]
         public Output<bool?> Oauth2PostResponseRequired { get; private set; } = null!;
 
         /// <summary>
-        /// The application's object ID.
+        /// The application's object ID
         /// </summary>
         [Output("objectId")]
         public Output<string> ObjectId { get; private set; } = null!;
 
-        /// <summary>
-        /// An `optional_claims` block as documented below.
-        /// </summary>
         [Output("optionalClaims")]
         public Output<Outputs.ApplicationOptionalClaims?> OptionalClaims { get; private set; } = null!;
 
@@ -367,86 +132,68 @@ namespace Pulumi.AzureAD
         public Output<ImmutableArray<string>> Owners { get; private set; } = null!;
 
         /// <summary>
-        /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        /// If `true`, will return an error if an existing application is found with the same name
         /// </summary>
         [Output("preventDuplicateNames")]
         public Output<bool?> PreventDuplicateNames { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the application's privacy statement.
+        /// URL of the application's privacy statement
         /// </summary>
         [Output("privacyStatementUrl")]
         public Output<string?> PrivacyStatementUrl { get; private set; } = null!;
 
-        /// <summary>
-        /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
-        /// </summary>
         [Output("publicClient")]
         public Output<Outputs.ApplicationPublicClient?> PublicClient { get; private set; } = null!;
 
         /// <summary>
-        /// The verified publisher domain for the application.
+        /// The verified publisher domain for the application
         /// </summary>
         [Output("publisherDomain")]
         public Output<string> PublisherDomain { get; private set; } = null!;
 
-        /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
-        /// </summary>
         [Output("requiredResourceAccesses")]
         public Output<ImmutableArray<Outputs.ApplicationRequiredResourceAccess>> RequiredResourceAccesses { get; private set; } = null!;
 
         /// <summary>
-        /// References application context information from a Service or Asset Management database.
+        /// References application or service contact information from a Service or Asset Management database
         /// </summary>
         [Output("serviceManagementReference")]
         public Output<string?> ServiceManagementReference { get; private set; } = null!;
 
         /// <summary>
-        /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
-        /// 
-        /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+        /// The Microsoft account types that are supported for the current application
         /// </summary>
         [Output("signInAudience")]
         public Output<string?> SignInAudience { get; private set; } = null!;
 
-        /// <summary>
-        /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
-        /// </summary>
         [Output("singlePageApplication")]
         public Output<Outputs.ApplicationSinglePageApplication?> SinglePageApplication { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the application's support page.
+        /// URL of the application's support page
         /// </summary>
         [Output("supportUrl")]
         public Output<string?> SupportUrl { get; private set; } = null!;
 
         /// <summary>
-        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
-        /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+        /// A set of tags to apply to the application
         /// </summary>
         [Output("tags")]
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// Unique ID of the application template from which this application is created
         /// </summary>
         [Output("templateId")]
         public Output<string> TemplateId { get; private set; } = null!;
 
         /// <summary>
-        /// URL of the application's terms of service statement.
+        /// URL of the application's terms of service statement
         /// </summary>
         [Output("termsOfServiceUrl")]
         public Output<string?> TermsOfServiceUrl { get; private set; } = null!;
 
-        /// <summary>
-        /// A `web` block as documented below, which configures web related settings for this application.
-        /// 
-        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
-        /// </summary>
         [Output("web")]
         public Output<Outputs.ApplicationWeb?> Web { get; private set; } = null!;
 
@@ -496,18 +243,11 @@ namespace Pulumi.AzureAD
 
     public sealed class ApplicationArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An `api` block as documented below, which configures API related settings for this application.
-        /// </summary>
         [Input("api")]
         public Input<Inputs.ApplicationApiArgs>? Api { get; set; }
 
         [Input("appRoles")]
         private InputList<Inputs.ApplicationAppRoleArgs>? _appRoles;
-
-        /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        /// </summary>
         public InputList<Inputs.ApplicationAppRoleArgs> AppRoles
         {
             get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRoleArgs>());
@@ -515,25 +255,26 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A description of the application, as shown to end users.
+        /// Description of the application as shown to end users
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        /// Specifies whether this application supports device authentication without a user.
         /// </summary>
         [Input("deviceOnlyAuthEnabled")]
         public Input<bool>? DeviceOnlyAuthEnabled { get; set; }
 
         /// <summary>
-        /// The display name for the application.
+        /// The display name for the application
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a
+        /// redirect URI
         /// </summary>
         [Input("fallbackPublicClientEnabled")]
         public Input<bool>? FallbackPublicClientEnabled { get; set; }
@@ -542,9 +283,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationFeatureTagArgs>? _featureTags;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
-        /// 
-        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+        /// Block of features to configure for this application using tags
         /// </summary>
         public InputList<Inputs.ApplicationFeatureTagArgs> FeatureTags
         {
@@ -556,7 +295,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _groupMembershipClaims;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects
         /// </summary>
         public InputList<string> GroupMembershipClaims
         {
@@ -568,7 +307,8 @@ namespace Pulumi.AzureAD
         private InputList<string>? _identifierUris;
 
         /// <summary>
-        /// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        /// The user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom
+        /// domain if the application is multi-tenant
         /// </summary>
         public InputList<string> IdentifierUris
         {
@@ -577,32 +317,29 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        /// Base64 encoded logo image in gif, png or jpeg format
         /// </summary>
         [Input("logoImage")]
         public Input<string>? LogoImage { get; set; }
 
         /// <summary>
-        /// URL of the application's marketing page.
+        /// URL of the application's marketing page
         /// </summary>
         [Input("marketingUrl")]
         public Input<string>? MarketingUrl { get; set; }
 
         /// <summary>
-        /// User-specified notes relevant for the management of the application.
+        /// User-specified notes relevant for the management of the application
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests.
         /// </summary>
         [Input("oauth2PostResponseRequired")]
         public Input<bool>? Oauth2PostResponseRequired { get; set; }
 
-        /// <summary>
-        /// An `optional_claims` block as documented below.
-        /// </summary>
         [Input("optionalClaims")]
         public Input<Inputs.ApplicationOptionalClaimsArgs>? OptionalClaims { get; set; }
 
@@ -619,29 +356,22 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        /// If `true`, will return an error if an existing application is found with the same name
         /// </summary>
         [Input("preventDuplicateNames")]
         public Input<bool>? PreventDuplicateNames { get; set; }
 
         /// <summary>
-        /// URL of the application's privacy statement.
+        /// URL of the application's privacy statement
         /// </summary>
         [Input("privacyStatementUrl")]
         public Input<string>? PrivacyStatementUrl { get; set; }
 
-        /// <summary>
-        /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
-        /// </summary>
         [Input("publicClient")]
         public Input<Inputs.ApplicationPublicClientArgs>? PublicClient { get; set; }
 
         [Input("requiredResourceAccesses")]
         private InputList<Inputs.ApplicationRequiredResourceAccessArgs>? _requiredResourceAccesses;
-
-        /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
-        /// </summary>
         public InputList<Inputs.ApplicationRequiredResourceAccessArgs> RequiredResourceAccesses
         {
             get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessArgs>());
@@ -649,27 +379,22 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// References application context information from a Service or Asset Management database.
+        /// References application or service contact information from a Service or Asset Management database
         /// </summary>
         [Input("serviceManagementReference")]
         public Input<string>? ServiceManagementReference { get; set; }
 
         /// <summary>
-        /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
-        /// 
-        /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+        /// The Microsoft account types that are supported for the current application
         /// </summary>
         [Input("signInAudience")]
         public Input<string>? SignInAudience { get; set; }
 
-        /// <summary>
-        /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
-        /// </summary>
         [Input("singlePageApplication")]
         public Input<Inputs.ApplicationSinglePageApplicationArgs>? SinglePageApplication { get; set; }
 
         /// <summary>
-        /// URL of the application's support page.
+        /// URL of the application's support page
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
@@ -678,9 +403,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
-        /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+        /// A set of tags to apply to the application
         /// </summary>
         public InputList<string> Tags
         {
@@ -689,22 +412,17 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// Unique ID of the application template from which this application is created
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// URL of the application's terms of service statement.
+        /// URL of the application's terms of service statement
         /// </summary>
         [Input("termsOfServiceUrl")]
         public Input<string>? TermsOfServiceUrl { get; set; }
 
-        /// <summary>
-        /// A `web` block as documented below, which configures web related settings for this application.
-        /// 
-        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
-        /// </summary>
         [Input("web")]
         public Input<Inputs.ApplicationWebArgs>? Web { get; set; }
 
@@ -716,9 +434,6 @@ namespace Pulumi.AzureAD
 
     public sealed class ApplicationState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// An `api` block as documented below, which configures API related settings for this application.
-        /// </summary>
         [Input("api")]
         public Input<Inputs.ApplicationApiGetArgs>? Api { get; set; }
 
@@ -726,7 +441,7 @@ namespace Pulumi.AzureAD
         private InputMap<string>? _appRoleIds;
 
         /// <summary>
-        /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        /// Mapping of app role names to UUIDs
         /// </summary>
         public InputMap<string> AppRoleIds
         {
@@ -736,10 +451,6 @@ namespace Pulumi.AzureAD
 
         [Input("appRoles")]
         private InputList<Inputs.ApplicationAppRoleGetArgs>? _appRoles;
-
-        /// <summary>
-        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
-        /// </summary>
         public InputList<Inputs.ApplicationAppRoleGetArgs> AppRoles
         {
             get => _appRoles ?? (_appRoles = new InputList<Inputs.ApplicationAppRoleGetArgs>());
@@ -747,37 +458,38 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The Application ID (also called Client ID).
+        /// The Application ID (also called Client ID)
         /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
         /// <summary>
-        /// A description of the application, as shown to end users.
+        /// Description of the application as shown to end users
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether this application supports device authentication without a user. Defaults to `false`.
+        /// Specifies whether this application supports device authentication without a user.
         /// </summary>
         [Input("deviceOnlyAuthEnabled")]
         public Input<bool>? DeviceOnlyAuthEnabled { get; set; }
 
         /// <summary>
-        /// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        /// Whether Microsoft has disabled the registered application
         /// </summary>
         [Input("disabledByMicrosoft")]
         public Input<string>? DisabledByMicrosoft { get; set; }
 
         /// <summary>
-        /// The display name for the application.
+        /// The display name for the application
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a redirect URI. Defaults to `false`.
+        /// Specifies whether the application is a public client. Appropriate for apps using token grant flows that don't use a
+        /// redirect URI
         /// </summary>
         [Input("fallbackPublicClientEnabled")]
         public Input<bool>? FallbackPublicClientEnabled { get; set; }
@@ -786,9 +498,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.ApplicationFeatureTagGetArgs>? _featureTags;
 
         /// <summary>
-        /// A `feature_tags` block as described below. Cannot be used together with the `tags` property.
-        /// 
-        /// &gt; **Features and Tags** Features are configured for an application using tags, and are provided as a shortcut to set the corresponding magic tag value for each feature. You cannot configure `feature_tags` and `tags` for an application at the same time, so if you need to assign additional custom tags it's recommended to use the `tags` property instead. Tag values also propagate to any linked service principals.
+        /// Block of features to configure for this application using tags
         /// </summary>
         public InputList<Inputs.ApplicationFeatureTagGetArgs> FeatureTags
         {
@@ -800,7 +510,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _groupMembershipClaims;
 
         /// <summary>
-        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects. Possible values are `None`, `SecurityGroup`, `DirectoryRole`, `ApplicationGroup` or `All`.
+        /// Configures the `groups` claim issued in a user or OAuth 2.0 access token that the app expects
         /// </summary>
         public InputList<string> GroupMembershipClaims
         {
@@ -812,7 +522,8 @@ namespace Pulumi.AzureAD
         private InputList<string>? _identifierUris;
 
         /// <summary>
-        /// A set of user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        /// The user-defined URI(s) that uniquely identify an application within its Azure AD tenant, or within a verified custom
+        /// domain if the application is multi-tenant
         /// </summary>
         public InputList<string> IdentifierUris
         {
@@ -821,25 +532,25 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A logo image to upload for the application, as a raw base64-encoded string. The image should be in gif, jpeg or png format. Note that once an image has been uploaded, it is not possible to remove it without replacing it with another image.
+        /// Base64 encoded logo image in gif, png or jpeg format
         /// </summary>
         [Input("logoImage")]
         public Input<string>? LogoImage { get; set; }
 
         /// <summary>
-        /// CDN URL to the application's logo, as uploaded with the `logo_image` property.
+        /// CDN URL to the application's logo
         /// </summary>
         [Input("logoUrl")]
         public Input<string>? LogoUrl { get; set; }
 
         /// <summary>
-        /// URL of the application's marketing page.
+        /// URL of the application's marketing page
         /// </summary>
         [Input("marketingUrl")]
         public Input<string>? MarketingUrl { get; set; }
 
         /// <summary>
-        /// User-specified notes relevant for the management of the application.
+        /// User-specified notes relevant for the management of the application
         /// </summary>
         [Input("notes")]
         public Input<string>? Notes { get; set; }
@@ -848,7 +559,7 @@ namespace Pulumi.AzureAD
         private InputMap<string>? _oauth2PermissionScopeIds;
 
         /// <summary>
-        /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+        /// Mapping of OAuth2.0 permission scope names to UUIDs
         /// </summary>
         public InputMap<string> Oauth2PermissionScopeIds
         {
@@ -857,20 +568,17 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. Defaults to `false`, which specifies that only GET requests are allowed.
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests.
         /// </summary>
         [Input("oauth2PostResponseRequired")]
         public Input<bool>? Oauth2PostResponseRequired { get; set; }
 
         /// <summary>
-        /// The application's object ID.
+        /// The application's object ID
         /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
-        /// <summary>
-        /// An `optional_claims` block as documented below.
-        /// </summary>
         [Input("optionalClaims")]
         public Input<Inputs.ApplicationOptionalClaimsGetArgs>? OptionalClaims { get; set; }
 
@@ -887,35 +595,28 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// If `true`, will return an error if an existing application is found with the same name. Defaults to `false`.
+        /// If `true`, will return an error if an existing application is found with the same name
         /// </summary>
         [Input("preventDuplicateNames")]
         public Input<bool>? PreventDuplicateNames { get; set; }
 
         /// <summary>
-        /// URL of the application's privacy statement.
+        /// URL of the application's privacy statement
         /// </summary>
         [Input("privacyStatementUrl")]
         public Input<string>? PrivacyStatementUrl { get; set; }
 
-        /// <summary>
-        /// A `public_client` block as documented below, which configures non-web app or non-web API application settings, for example mobile or other public clients such as an installed application running on a desktop device.
-        /// </summary>
         [Input("publicClient")]
         public Input<Inputs.ApplicationPublicClientGetArgs>? PublicClient { get; set; }
 
         /// <summary>
-        /// The verified publisher domain for the application.
+        /// The verified publisher domain for the application
         /// </summary>
         [Input("publisherDomain")]
         public Input<string>? PublisherDomain { get; set; }
 
         [Input("requiredResourceAccesses")]
         private InputList<Inputs.ApplicationRequiredResourceAccessGetArgs>? _requiredResourceAccesses;
-
-        /// <summary>
-        /// A collection of `required_resource_access` blocks as documented below.
-        /// </summary>
         public InputList<Inputs.ApplicationRequiredResourceAccessGetArgs> RequiredResourceAccesses
         {
             get => _requiredResourceAccesses ?? (_requiredResourceAccesses = new InputList<Inputs.ApplicationRequiredResourceAccessGetArgs>());
@@ -923,27 +624,22 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// References application context information from a Service or Asset Management database.
+        /// References application or service contact information from a Service or Asset Management database
         /// </summary>
         [Input("serviceManagementReference")]
         public Input<string>? ServiceManagementReference { get; set; }
 
         /// <summary>
-        /// The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
-        /// 
-        /// &gt; **Changing `sign_in_audience` for existing applications** When updating an existing application to use a `sign_in_audience` value of `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`, your configuration may no longer be valid. Refer to [official documentation](https://docs.microsoft.com/en-gb/azure/active-directory/develop/supported-accounts-validation) to understand the differences in supported configurations. Where possible, the provider will attempt to validate your configuration and try to avoid applying unsupported settings to your application.
+        /// The Microsoft account types that are supported for the current application
         /// </summary>
         [Input("signInAudience")]
         public Input<string>? SignInAudience { get; set; }
 
-        /// <summary>
-        /// A `single_page_application` block as documented below, which configures single-page application (SPA) related settings for this application.
-        /// </summary>
         [Input("singlePageApplication")]
         public Input<Inputs.ApplicationSinglePageApplicationGetArgs>? SinglePageApplication { get; set; }
 
         /// <summary>
-        /// URL of the application's support page.
+        /// URL of the application's support page
         /// </summary>
         [Input("supportUrl")]
         public Input<string>? SupportUrl { get; set; }
@@ -952,9 +648,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _tags;
 
         /// <summary>
-        /// A set of tags to apply to the application for configuring specific behaviours of the application and linked service principals. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
-        /// 
-        /// &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of applications. These can be specified using either the `tags` property or with the `feature_tags` block. If you need to set any custom tag values not supported by the `feature_tags` block, it's recommended to use the `tags` property. Tag values also propagate to any linked service principals.
+        /// A set of tags to apply to the application
         /// </summary>
         public InputList<string> Tags
         {
@@ -963,22 +657,17 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
+        /// Unique ID of the application template from which this application is created
         /// </summary>
         [Input("templateId")]
         public Input<string>? TemplateId { get; set; }
 
         /// <summary>
-        /// URL of the application's terms of service statement.
+        /// URL of the application's terms of service statement
         /// </summary>
         [Input("termsOfServiceUrl")]
         public Input<string>? TermsOfServiceUrl { get; set; }
 
-        /// <summary>
-        /// A `web` block as documented below, which configures web related settings for this application.
-        /// 
-        /// &gt; **Application Name Uniqueness** Application names are not unique within Azure Active Directory. Use the `prevent_duplicate_names` argument to check for existing applications if you want to avoid name collisions.
-        /// </summary>
         [Input("web")]
         public Input<Inputs.ApplicationWebGetArgs>? Web { get; set; }
 

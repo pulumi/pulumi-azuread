@@ -13,21 +13,9 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationFeatureTagResult
     {
-        /// <summary>
-        /// Whether this application represents a custom SAML application for linked service principals.
-        /// </summary>
         public readonly bool? CustomSingleSignOn;
-        /// <summary>
-        /// Whether this application represents an Enterprise Application for linked service principals.
-        /// </summary>
         public readonly bool? Enterprise;
-        /// <summary>
-        /// Whether this application represents a gallery application for linked service principals.
-        /// </summary>
         public readonly bool? Gallery;
-        /// <summary>
-        /// Whether this app is visible to users in My Apps and Office 365 Launcher.
-        /// </summary>
         public readonly bool? Hide;
 
         [OutputConstructor]

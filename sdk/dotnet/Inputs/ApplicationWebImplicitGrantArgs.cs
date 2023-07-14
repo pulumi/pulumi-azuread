@@ -12,15 +12,9 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ApplicationWebImplicitGrantArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether this web application can request an access token using OAuth 2.0 implicit flow.
-        /// </summary>
         [Input("accessTokenIssuanceEnabled")]
         public Input<bool>? AccessTokenIssuanceEnabled { get; set; }
 
-        /// <summary>
-        /// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
-        /// </summary>
         [Input("idTokenIssuanceEnabled")]
         public Input<bool>? IdTokenIssuanceEnabled { get; set; }
 

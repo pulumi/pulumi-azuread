@@ -9,69 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages a single administrative unit membership within Azure Active Directory.
-    /// 
-    /// &gt; **Warning** Do not use this resource at the same time as the `members` property of the `azuread.AdministrativeUnit` resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
-    ///     {
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
-    ///     });
-    /// 
-    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("exampleAdministrativeUnit", new()
-    ///     {
-    ///         DisplayName = "Example-AU",
-    ///     });
-    /// 
-    ///     var exampleAdministrativeUnitMember = new AzureAD.AdministrativeUnitMember("exampleAdministrativeUnitMember", new()
-    ///     {
-    ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
-    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
-    /// ```
-    /// 
-    ///  -&gt; This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
-    /// </summary>
     [AzureADResourceType("azuread:index/administrativeUnitMember:AdministrativeUnitMember")]
     public partial class AdministrativeUnitMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        /// The object ID of the administrative unit
         /// </summary>
         [Output("administrativeUnitObjectId")]
         public Output<string?> AdministrativeUnitObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        /// The object ID of the member
         /// </summary>
         [Output("memberObjectId")]
         public Output<string?> MemberObjectId { get; private set; } = null!;
@@ -123,13 +71,13 @@ namespace Pulumi.AzureAD
     public sealed class AdministrativeUnitMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        /// The object ID of the administrative unit
         /// </summary>
         [Input("administrativeUnitObjectId")]
         public Input<string>? AdministrativeUnitObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        /// The object ID of the member
         /// </summary>
         [Input("memberObjectId")]
         public Input<string>? MemberObjectId { get; set; }
@@ -143,13 +91,13 @@ namespace Pulumi.AzureAD
     public sealed class AdministrativeUnitMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        /// The object ID of the administrative unit
         /// </summary>
         [Input("administrativeUnitObjectId")]
         public Input<string>? AdministrativeUnitObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+        /// The object ID of the member
         /// </summary>
         [Input("memberObjectId")]
         public Input<string>? MemberObjectId { get; set; }

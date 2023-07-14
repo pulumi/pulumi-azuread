@@ -11,82 +11,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a Named Location within Azure Active Directory.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := azuread.NewNamedLocation(ctx, "example-ip", &azuread.NamedLocationArgs{
-//				DisplayName: pulumi.String("IP Named Location"),
-//				Ip: &azuread.NamedLocationIpArgs{
-//					IpRanges: pulumi.StringArray{
-//						pulumi.String("1.1.1.1/32"),
-//						pulumi.String("2.2.2.2/32"),
-//					},
-//					Trusted: pulumi.Bool(true),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewNamedLocation(ctx, "example-country", &azuread.NamedLocationArgs{
-//				Country: &azuread.NamedLocationCountryArgs{
-//					CountriesAndRegions: pulumi.StringArray{
-//						pulumi.String("GB"),
-//						pulumi.String("US"),
-//					},
-//					IncludeUnknownCountriesAndRegions: pulumi.Bool(false),
-//				},
-//				DisplayName: pulumi.String("Country Named Location"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Named Locations can be imported using the `id`, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/namedLocation:NamedLocation my_location 00000000-0000-0000-0000-000000000000
-//
-// ```
 type NamedLocation struct {
 	pulumi.CustomResourceState
 
-	// A `country` block as documented below, which configures a country-based named location.
-	Country NamedLocationCountryPtrOutput `pulumi:"country"`
-	// The friendly name for this named location.
-	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// An `ip` block as documented below, which configures an IP-based named location.
-	//
-	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-	Ip NamedLocationIpPtrOutput `pulumi:"ip"`
+	Country     NamedLocationCountryPtrOutput `pulumi:"country"`
+	DisplayName pulumi.StringOutput           `pulumi:"displayName"`
+	Ip          NamedLocationIpPtrOutput      `pulumi:"ip"`
 }
 
 // NewNamedLocation registers a new resource with the given unique name, arguments, and options.
@@ -121,25 +51,15 @@ func GetNamedLocation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NamedLocation resources.
 type namedLocationState struct {
-	// A `country` block as documented below, which configures a country-based named location.
-	Country *NamedLocationCountry `pulumi:"country"`
-	// The friendly name for this named location.
-	DisplayName *string `pulumi:"displayName"`
-	// An `ip` block as documented below, which configures an IP-based named location.
-	//
-	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-	Ip *NamedLocationIp `pulumi:"ip"`
+	Country     *NamedLocationCountry `pulumi:"country"`
+	DisplayName *string               `pulumi:"displayName"`
+	Ip          *NamedLocationIp      `pulumi:"ip"`
 }
 
 type NamedLocationState struct {
-	// A `country` block as documented below, which configures a country-based named location.
-	Country NamedLocationCountryPtrInput
-	// The friendly name for this named location.
+	Country     NamedLocationCountryPtrInput
 	DisplayName pulumi.StringPtrInput
-	// An `ip` block as documented below, which configures an IP-based named location.
-	//
-	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-	Ip NamedLocationIpPtrInput
+	Ip          NamedLocationIpPtrInput
 }
 
 func (NamedLocationState) ElementType() reflect.Type {
@@ -147,26 +67,16 @@ func (NamedLocationState) ElementType() reflect.Type {
 }
 
 type namedLocationArgs struct {
-	// A `country` block as documented below, which configures a country-based named location.
-	Country *NamedLocationCountry `pulumi:"country"`
-	// The friendly name for this named location.
-	DisplayName string `pulumi:"displayName"`
-	// An `ip` block as documented below, which configures an IP-based named location.
-	//
-	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-	Ip *NamedLocationIp `pulumi:"ip"`
+	Country     *NamedLocationCountry `pulumi:"country"`
+	DisplayName string                `pulumi:"displayName"`
+	Ip          *NamedLocationIp      `pulumi:"ip"`
 }
 
 // The set of arguments for constructing a NamedLocation resource.
 type NamedLocationArgs struct {
-	// A `country` block as documented below, which configures a country-based named location.
-	Country NamedLocationCountryPtrInput
-	// The friendly name for this named location.
+	Country     NamedLocationCountryPtrInput
 	DisplayName pulumi.StringInput
-	// An `ip` block as documented below, which configures an IP-based named location.
-	//
-	// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
-	Ip NamedLocationIpPtrInput
+	Ip          NamedLocationIpPtrInput
 }
 
 func (NamedLocationArgs) ElementType() reflect.Type {
@@ -256,19 +166,14 @@ func (o NamedLocationOutput) ToNamedLocationOutputWithContext(ctx context.Contex
 	return o
 }
 
-// A `country` block as documented below, which configures a country-based named location.
 func (o NamedLocationOutput) Country() NamedLocationCountryPtrOutput {
 	return o.ApplyT(func(v *NamedLocation) NamedLocationCountryPtrOutput { return v.Country }).(NamedLocationCountryPtrOutput)
 }
 
-// The friendly name for this named location.
 func (o NamedLocationOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NamedLocation) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// An `ip` block as documented below, which configures an IP-based named location.
-//
-// > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
 func (o NamedLocationOutput) Ip() NamedLocationIpPtrOutput {
 	return o.ApplyT(func(v *NamedLocation) NamedLocationIpPtrOutput { return v.Ip }).(NamedLocationIpPtrOutput)
 }

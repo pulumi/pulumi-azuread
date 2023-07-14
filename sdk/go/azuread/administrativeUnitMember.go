@@ -10,74 +10,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Manages a single administrative unit membership within Azure Active Directory.
-//
-// > **Warning** Do not use this resource at the same time as the `members` property of the `AdministrativeUnit` resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
-//
-// ## API Permissions
-//
-// The following API permissions are required in order to use this resource.
-//
-// When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
-//
-// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
-//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			exampleAdministrativeUnit, err := azuread.NewAdministrativeUnit(ctx, "exampleAdministrativeUnit", &azuread.AdministrativeUnitArgs{
-//				DisplayName: pulumi.String("Example-AU"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = azuread.NewAdministrativeUnitMember(ctx, "exampleAdministrativeUnitMember", &azuread.AdministrativeUnitMemberArgs{
-//				AdministrativeUnitObjectId: exampleAdministrativeUnit.ID(),
-//				MemberObjectId:             *pulumi.String(exampleUser.Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
-//
-// ```sh
-//
-//	$ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
-//
-// ```
-//
-//	-> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
 type AdministrativeUnitMember struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId pulumi.StringPtrOutput `pulumi:"administrativeUnitObjectId"`
-	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId pulumi.StringPtrOutput `pulumi:"memberObjectId"`
 }
 
@@ -110,16 +48,16 @@ func GetAdministrativeUnitMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AdministrativeUnitMember resources.
 type administrativeUnitMemberState struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId *string `pulumi:"administrativeUnitObjectId"`
-	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId *string `pulumi:"memberObjectId"`
 }
 
 type AdministrativeUnitMemberState struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId pulumi.StringPtrInput
-	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId pulumi.StringPtrInput
 }
 
@@ -128,17 +66,17 @@ func (AdministrativeUnitMemberState) ElementType() reflect.Type {
 }
 
 type administrativeUnitMemberArgs struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId *string `pulumi:"administrativeUnitObjectId"`
-	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId *string `pulumi:"memberObjectId"`
 }
 
 // The set of arguments for constructing a AdministrativeUnitMember resource.
 type AdministrativeUnitMemberArgs struct {
-	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+	// The object ID of the administrative unit
 	AdministrativeUnitObjectId pulumi.StringPtrInput
-	// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+	// The object ID of the member
 	MemberObjectId pulumi.StringPtrInput
 }
 
@@ -229,12 +167,12 @@ func (o AdministrativeUnitMemberOutput) ToAdministrativeUnitMemberOutputWithCont
 	return o
 }
 
-// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+// The object ID of the administrative unit
 func (o AdministrativeUnitMemberOutput) AdministrativeUnitObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AdministrativeUnitMember) pulumi.StringPtrOutput { return v.AdministrativeUnitObjectId }).(pulumi.StringPtrOutput)
 }
 
-// The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
+// The object ID of the member
 func (o AdministrativeUnitMemberOutput) MemberObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AdministrativeUnitMember) pulumi.StringPtrOutput { return v.MemberObjectId }).(pulumi.StringPtrOutput)
 }

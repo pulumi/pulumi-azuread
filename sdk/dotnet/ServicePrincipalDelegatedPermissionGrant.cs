@@ -9,185 +9,29 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages a delegated permission grant for a service principal, on behalf of a single user, or all users.
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires the following application role: `Directory.ReadWrite.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one the following directory role: `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// 
-    /// *Delegated permission grant for all users*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
-    /// 
-    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
-    ///     {
-    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
-    ///         UseExisting = true,
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         RequiredResourceAccesses = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///             {
-    ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
-    ///                 ResourceAccesses = new[]
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.Openid),
-    ///                         Type = "Scope",
-    ///                     },
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_Read),
-    ///                         Type = "Scope",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///     });
-    /// 
-    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", new()
-    ///     {
-    ///         ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
-    ///         ResourceServicePrincipalObjectId = msgraph.ObjectId,
-    ///         ClaimValues = new[]
-    ///         {
-    ///             "openid",
-    ///             "User.Read.All",
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// *Delegated permission grant for a single user*
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var wellKnown = AzureAD.GetApplicationPublishedAppIds.Invoke();
-    /// 
-    ///     var msgraph = new AzureAD.ServicePrincipal("msgraph", new()
-    ///     {
-    ///         ApplicationId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
-    ///         UseExisting = true,
-    ///     });
-    /// 
-    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
-    ///     {
-    ///         DisplayName = "example",
-    ///         RequiredResourceAccesses = new[]
-    ///         {
-    ///             new AzureAD.Inputs.ApplicationRequiredResourceAccessArgs
-    ///             {
-    ///                 ResourceAppId = wellKnown.Apply(getApplicationPublishedAppIdsResult =&gt; getApplicationPublishedAppIdsResult.Result?.MicrosoftGraph),
-    ///                 ResourceAccesses = new[]
-    ///                 {
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.Openid),
-    ///                         Type = "Scope",
-    ///                     },
-    ///                     new AzureAD.Inputs.ApplicationRequiredResourceAccessResourceAccessArgs
-    ///                     {
-    ///                         Id = msgraph.Oauth2PermissionScopeIds.Apply(oauth2PermissionScopeIds =&gt; oauth2PermissionScopeIds.User_Read),
-    ///                         Type = "Scope",
-    ///                     },
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
-    ///     {
-    ///         ApplicationId = exampleApplication.ApplicationId,
-    ///     });
-    /// 
-    ///     var exampleUser = new AzureAD.User("exampleUser", new()
-    ///     {
-    ///         DisplayName = "J. Doe",
-    ///         UserPrincipalName = "jdoe@hashicorp.com",
-    ///         MailNickname = "jdoe",
-    ///         Password = "SecretP@sswd99!",
-    ///     });
-    /// 
-    ///     var exampleServicePrincipalDelegatedPermissionGrant = new AzureAD.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant", new()
-    ///     {
-    ///         ServicePrincipalObjectId = exampleServicePrincipal.ObjectId,
-    ///         ResourceServicePrincipalObjectId = msgraph.ObjectId,
-    ///         ClaimValues = new[]
-    ///         {
-    ///             "openid",
-    ///             "User.Read.All",
-    ///         },
-    ///         UserObjectId = exampleUser.ObjectId,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Delegated permission grants can be imported using their ID, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
-    /// ```
-    /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant")]
     public partial class ServicePrincipalDelegatedPermissionGrant : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
         /// </summary>
         [Output("claimValues")]
         public Output<ImmutableArray<string>> ClaimValues { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        /// The object ID of the service principal representing the resource to be accessed
         /// </summary>
         [Output("resourceServicePrincipalObjectId")]
         public Output<string> ResourceServicePrincipalObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        /// The object ID of the service principal for which this delegated permission grant should be created
         /// </summary>
         [Output("servicePrincipalObjectId")]
         public Output<string> ServicePrincipalObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
-        /// 
-        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource
         /// </summary>
         [Output("userObjectId")]
         public Output<string?> UserObjectId { get; private set; } = null!;
@@ -242,7 +86,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _claimValues;
 
         /// <summary>
-        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
         /// </summary>
         public InputList<string> ClaimValues
         {
@@ -251,21 +95,19 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        /// The object ID of the service principal representing the resource to be accessed
         /// </summary>
         [Input("resourceServicePrincipalObjectId", required: true)]
         public Input<string> ResourceServicePrincipalObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        /// The object ID of the service principal for which this delegated permission grant should be created
         /// </summary>
         [Input("servicePrincipalObjectId", required: true)]
         public Input<string> ServicePrincipalObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
-        /// 
-        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource
         /// </summary>
         [Input("userObjectId")]
         public Input<string>? UserObjectId { get; set; }
@@ -282,7 +124,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _claimValues;
 
         /// <summary>
-        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        /// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
         /// </summary>
         public InputList<string> ClaimValues
         {
@@ -291,21 +133,19 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        /// The object ID of the service principal representing the resource to be accessed
         /// </summary>
         [Input("resourceServicePrincipalObjectId")]
         public Input<string>? ResourceServicePrincipalObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        /// The object ID of the service principal for which this delegated permission grant should be created
         /// </summary>
         [Input("servicePrincipalObjectId")]
         public Input<string>? ServicePrincipalObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
-        /// 
-        /// &gt; **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
+        /// The object ID of the user on behalf of whom the service principal is authorized to access the resource
         /// </summary>
         [Input("userObjectId")]
         public Input<string>? UserObjectId { get; set; }

@@ -9,274 +9,21 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
-    /// <summary>
-    /// Manages a Conditional Access Policy within Azure Active Directory.
-    /// 
-    /// &gt; **Licensing Requirements** Specifying `client_applications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
-    /// 
-    /// ## API Permissions
-    /// 
-    /// The following API permissions are required in order to use this resource.
-    /// 
-    /// When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
-    /// 
-    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
-    /// 
-    /// ## Example Usage
-    /// ### All users except guests or external users
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
-    ///     {
-    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
-    ///         {
-    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
-    ///             {
-    ///                 ExcludedApplications = new[] {},
-    ///                 IncludedApplications = new[]
-    ///                 {
-    ///                     "All",
-    ///                 },
-    ///             },
-    ///             ClientAppTypes = new[]
-    ///             {
-    ///                 "all",
-    ///             },
-    ///             Devices = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesArgs
-    ///             {
-    ///                 Filter = new AzureAD.Inputs.ConditionalAccessPolicyConditionsDevicesFilterArgs
-    ///                 {
-    ///                     Mode = "exclude",
-    ///                     Rule = "device.operatingSystem eq \"Doors\"",
-    ///                 },
-    ///             },
-    ///             Locations = new AzureAD.Inputs.ConditionalAccessPolicyConditionsLocationsArgs
-    ///             {
-    ///                 ExcludedLocations = new[]
-    ///                 {
-    ///                     "AllTrusted",
-    ///                 },
-    ///                 IncludedLocations = new[]
-    ///                 {
-    ///                     "All",
-    ///                 },
-    ///             },
-    ///             Platforms = new AzureAD.Inputs.ConditionalAccessPolicyConditionsPlatformsArgs
-    ///             {
-    ///                 ExcludedPlatforms = new[]
-    ///                 {
-    ///                     "iOS",
-    ///                 },
-    ///                 IncludedPlatforms = new[]
-    ///                 {
-    ///                     "android",
-    ///                 },
-    ///             },
-    ///             SignInRiskLevels = new[]
-    ///             {
-    ///                 "medium",
-    ///             },
-    ///             UserRiskLevels = new[]
-    ///             {
-    ///                 "medium",
-    ///             },
-    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
-    ///             {
-    ///                 ExcludedUsers = new[]
-    ///                 {
-    ///                     "GuestsOrExternalUsers",
-    ///                 },
-    ///                 IncludedUsers = new[]
-    ///                 {
-    ///                     "All",
-    ///                 },
-    ///             },
-    ///         },
-    ///         DisplayName = "example policy",
-    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
-    ///         {
-    ///             BuiltInControls = new[]
-    ///             {
-    ///                 "mfa",
-    ///             },
-    ///             Operator = "OR",
-    ///         },
-    ///         SessionControls = new AzureAD.Inputs.ConditionalAccessPolicySessionControlsArgs
-    ///         {
-    ///             ApplicationEnforcedRestrictionsEnabled = true,
-    ///             CloudAppSecurityPolicy = "monitorOnly",
-    ///             DisableResilienceDefaults = false,
-    ///             SignInFrequency = 10,
-    ///             SignInFrequencyPeriod = "hours",
-    ///         },
-    ///         State = "disabled",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Included client applications / service principals
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
-    /// 
-    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
-    ///     {
-    ///         DisplayName = "example policy",
-    ///         State = "disabled",
-    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
-    ///         {
-    ///             ClientAppTypes = new[]
-    ///             {
-    ///                 "all",
-    ///             },
-    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
-    ///             {
-    ///                 IncludedApplications = new[]
-    ///                 {
-    ///                     "All",
-    ///                 },
-    ///             },
-    ///             ClientApplications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs
-    ///             {
-    ///                 IncludedServicePrincipals = new[]
-    ///                 {
-    ///                     current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
-    ///                 },
-    ///                 ExcludedServicePrincipals = new[] {},
-    ///             },
-    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
-    ///             {
-    ///                 IncludedUsers = new[]
-    ///                 {
-    ///                     "None",
-    ///                 },
-    ///             },
-    ///         },
-    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
-    ///         {
-    ///             Operator = "OR",
-    ///             BuiltInControls = new[]
-    ///             {
-    ///                 "block",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Excluded client applications / service principals
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using AzureAD = Pulumi.AzureAD;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var current = AzureAD.GetClientConfig.Invoke();
-    /// 
-    ///     var example = new AzureAD.ConditionalAccessPolicy("example", new()
-    ///     {
-    ///         DisplayName = "example policy",
-    ///         State = "disabled",
-    ///         Conditions = new AzureAD.Inputs.ConditionalAccessPolicyConditionsArgs
-    ///         {
-    ///             ClientAppTypes = new[]
-    ///             {
-    ///                 "all",
-    ///             },
-    ///             Applications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsApplicationsArgs
-    ///             {
-    ///                 IncludedApplications = new[]
-    ///                 {
-    ///                     "All",
-    ///                 },
-    ///             },
-    ///             ClientApplications = new AzureAD.Inputs.ConditionalAccessPolicyConditionsClientApplicationsArgs
-    ///             {
-    ///                 IncludedServicePrincipals = new[]
-    ///                 {
-    ///                     "ServicePrincipalsInMyTenant",
-    ///                 },
-    ///                 ExcludedServicePrincipals = new[]
-    ///                 {
-    ///                     current.Apply(getClientConfigResult =&gt; getClientConfigResult.ObjectId),
-    ///                 },
-    ///             },
-    ///             Users = new AzureAD.Inputs.ConditionalAccessPolicyConditionsUsersArgs
-    ///             {
-    ///                 IncludedUsers = new[]
-    ///                 {
-    ///                     "None",
-    ///                 },
-    ///             },
-    ///         },
-    ///         GrantControls = new AzureAD.Inputs.ConditionalAccessPolicyGrantControlsArgs
-    ///         {
-    ///             Operator = "OR",
-    ///             BuiltInControls = new[]
-    ///             {
-    ///                 "block",
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// Conditional Access Policies can be imported using the `id`, e.g.
-    /// 
-    /// ```sh
-    ///  $ pulumi import azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy my_location 00000000-0000-0000-0000-000000000000
-    /// ```
-    /// </summary>
     [AzureADResourceType("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy")]
     public partial class ConditionalAccessPolicy : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-        /// </summary>
         [Output("conditions")]
         public Output<Outputs.ConditionalAccessPolicyConditions> Conditions { get; private set; } = null!;
 
-        /// <summary>
-        /// The friendly name for this Conditional Access Policy.
-        /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
-        /// <summary>
-        /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        /// </summary>
         [Output("grantControls")]
         public Output<Outputs.ConditionalAccessPolicyGrantControls> GrantControls { get; private set; } = null!;
 
-        /// <summary>
-        /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
-        /// </summary>
         [Output("sessionControls")]
         public Output<Outputs.ConditionalAccessPolicySessionControls?> SessionControls { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
@@ -326,33 +73,18 @@ namespace Pulumi.AzureAD
 
     public sealed class ConditionalAccessPolicyArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-        /// </summary>
         [Input("conditions", required: true)]
         public Input<Inputs.ConditionalAccessPolicyConditionsArgs> Conditions { get; set; } = null!;
 
-        /// <summary>
-        /// The friendly name for this Conditional Access Policy.
-        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
-        /// <summary>
-        /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        /// </summary>
         [Input("grantControls", required: true)]
         public Input<Inputs.ConditionalAccessPolicyGrantControlsArgs> GrantControls { get; set; } = null!;
 
-        /// <summary>
-        /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
-        /// </summary>
         [Input("sessionControls")]
         public Input<Inputs.ConditionalAccessPolicySessionControlsArgs>? SessionControls { get; set; }
 
-        /// <summary>
-        /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-        /// </summary>
         [Input("state", required: true)]
         public Input<string> State { get; set; } = null!;
 
@@ -364,33 +96,18 @@ namespace Pulumi.AzureAD
 
     public sealed class ConditionalAccessPolicyState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
-        /// </summary>
         [Input("conditions")]
         public Input<Inputs.ConditionalAccessPolicyConditionsGetArgs>? Conditions { get; set; }
 
-        /// <summary>
-        /// The friendly name for this Conditional Access Policy.
-        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        /// <summary>
-        /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-        /// </summary>
         [Input("grantControls")]
         public Input<Inputs.ConditionalAccessPolicyGrantControlsGetArgs>? GrantControls { get; set; }
 
-        /// <summary>
-        /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
-        /// </summary>
         [Input("sessionControls")]
         public Input<Inputs.ConditionalAccessPolicySessionControlsGetArgs>? SessionControls { get; set; }
 
-        /// <summary>
-        /// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

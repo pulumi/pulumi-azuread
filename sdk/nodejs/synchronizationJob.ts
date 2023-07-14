@@ -6,68 +6,6 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Manages a synchronization job associated with a service principal (enterprise application) within Azure Active Directory.
- *
- * ## API Permissions
- *
- * The following API permissions are required in order to use this resource.
- *
- * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
- *
- * ## Example Usage
- *
- * *Basic example*
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as azuread from "@pulumi/azuread";
- *
- * const exampleApplicationTemplate = azuread.getApplicationTemplate({
- *     displayName: "Azure Databricks SCIM Provisioning Connector",
- * });
- * const exampleApplication = new azuread.Application("exampleApplication", {
- *     displayName: "example",
- *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
- *     featureTags: [{
- *         enterprise: true,
- *         gallery: true,
- *     }],
- * });
- * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
- *     applicationId: exampleApplication.applicationId,
- *     useExisting: true,
- * });
- * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("exampleSynchronizationSecret", {
- *     servicePrincipalId: exampleServicePrincipal.id,
- *     credentials: [
- *         {
- *             key: "BaseAddress",
- *             value: "https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
- *         },
- *         {
- *             key: "SecretToken",
- *             value: "some-token",
- *         },
- *     ],
- * });
- * const exampleSynchronizationJob = new azuread.SynchronizationJob("exampleSynchronizationJob", {
- *     servicePrincipalId: exampleServicePrincipal.id,
- *     templateId: "dataBricks",
- *     enabled: true,
- * });
- * ```
- *
- * ## Import
- *
- * Synchronization jobs can be imported using the `id`, e.g.
- *
- * ```sh
- *  $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example 00000000-0000-0000-0000-000000000000/job/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
- * ```
- *
- *  -> This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `{servicePrincipalId}/job/{jobId}`.
- */
 export class SynchronizationJob extends pulumi.CustomResource {
     /**
      * Get an existing SynchronizationJob resource's state with the given name, ID, and optional extra
@@ -97,15 +35,12 @@ export class SynchronizationJob extends pulumi.CustomResource {
     }
 
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether or not the synchronization job is enabled
      */
     public readonly enabled!: pulumi.Output<boolean | undefined>;
-    /**
-     * A `schedule` list as documented below.
-     */
     public /*out*/ readonly schedules!: pulumi.Output<outputs.SynchronizationJobSchedule[]>;
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The object ID of the service principal for which this synchronization job should be created
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
@@ -153,15 +88,12 @@ export class SynchronizationJob extends pulumi.CustomResource {
  */
 export interface SynchronizationJobState {
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether or not the synchronization job is enabled
      */
     enabled?: pulumi.Input<boolean>;
-    /**
-     * A `schedule` list as documented below.
-     */
     schedules?: pulumi.Input<pulumi.Input<inputs.SynchronizationJobSchedule>[]>;
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The object ID of the service principal for which this synchronization job should be created
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -175,11 +107,11 @@ export interface SynchronizationJobState {
  */
 export interface SynchronizationJobArgs {
     /**
-     * Whether or not the provisioning job is enabled. Default state is `true`.
+     * Whether or not the synchronization job is enabled
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
+     * The object ID of the service principal for which this synchronization job should be created
      */
     servicePrincipalId: pulumi.Input<string>;
     /**

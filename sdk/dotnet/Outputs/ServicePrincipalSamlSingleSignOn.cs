@@ -13,9 +13,6 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ServicePrincipalSamlSingleSignOn
     {
-        /// <summary>
-        /// The relative URI the service provider would redirect to after completion of the single sign-on flow.
-        /// </summary>
         public readonly string? RelayState;
 
         [OutputConstructor]
