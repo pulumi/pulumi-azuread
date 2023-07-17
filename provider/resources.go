@@ -286,9 +286,8 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("azuread_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
-	prov.MustApplyAutoAliases()
-
 	prov.SetAutonaming(255, "-")
+	prov.MustApplyAutoAliases()
 
 	return prov
 }
