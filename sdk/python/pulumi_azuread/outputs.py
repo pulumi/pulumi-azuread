@@ -41,6 +41,7 @@ __all__ = [
     'ApplicationWebImplicitGrant',
     'ConditionalAccessPolicyConditions',
     'ConditionalAccessPolicyConditionsApplications',
+    'ConditionalAccessPolicyConditionsClientApplications',
     'ConditionalAccessPolicyConditionsDevices',
     'ConditionalAccessPolicyConditionsDevicesFilter',
     'ConditionalAccessPolicyConditionsLocations',
@@ -1929,6 +1930,8 @@ class ConditionalAccessPolicyConditions(dict):
         suggest = None
         if key == "clientAppTypes":
             suggest = "client_app_types"
+        elif key == "clientApplications":
+            suggest = "client_applications"
         elif key == "signInRiskLevels":
             suggest = "sign_in_risk_levels"
         elif key == "userRiskLevels":
@@ -1949,6 +1952,7 @@ class ConditionalAccessPolicyConditions(dict):
                  applications: 'outputs.ConditionalAccessPolicyConditionsApplications',
                  client_app_types: Sequence[str],
                  users: 'outputs.ConditionalAccessPolicyConditionsUsers',
+                 client_applications: Optional['outputs.ConditionalAccessPolicyConditionsClientApplications'] = None,
                  devices: Optional['outputs.ConditionalAccessPolicyConditionsDevices'] = None,
                  locations: Optional['outputs.ConditionalAccessPolicyConditionsLocations'] = None,
                  platforms: Optional['outputs.ConditionalAccessPolicyConditionsPlatforms'] = None,
@@ -1958,6 +1962,7 @@ class ConditionalAccessPolicyConditions(dict):
         :param 'ConditionalAccessPolicyConditionsApplicationsArgs' applications: An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
         :param Sequence[str] client_app_types: A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
         :param 'ConditionalAccessPolicyConditionsUsersArgs' users: A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsClientApplicationsArgs' client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsDevicesArgs' devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsPlatformsArgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
@@ -1967,6 +1972,8 @@ class ConditionalAccessPolicyConditions(dict):
         pulumi.set(__self__, "applications", applications)
         pulumi.set(__self__, "client_app_types", client_app_types)
         pulumi.set(__self__, "users", users)
+        if client_applications is not None:
+            pulumi.set(__self__, "client_applications", client_applications)
         if devices is not None:
             pulumi.set(__self__, "devices", devices)
         if locations is not None:
@@ -2001,6 +2008,14 @@ class ConditionalAccessPolicyConditions(dict):
         A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
         """
         return pulumi.get(self, "users")
+
+    @property
+    @pulumi.getter(name="clientApplications")
+    def client_applications(self) -> Optional['outputs.ConditionalAccessPolicyConditionsClientApplications']:
+        """
+        An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        """
+        return pulumi.get(self, "client_applications")
 
     @property
     @pulumi.getter
@@ -2105,6 +2120,56 @@ class ConditionalAccessPolicyConditionsApplications(dict):
         A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `included_applications`. One of `included_applications` or `included_user_actions` must be specified.
         """
         return pulumi.get(self, "included_user_actions")
+
+
+@pulumi.output_type
+class ConditionalAccessPolicyConditionsClientApplications(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludedServicePrincipals":
+            suggest = "excluded_service_principals"
+        elif key == "includedServicePrincipals":
+            suggest = "included_service_principals"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConditionalAccessPolicyConditionsClientApplications. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConditionalAccessPolicyConditionsClientApplications.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConditionalAccessPolicyConditionsClientApplications.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 excluded_service_principals: Optional[Sequence[str]] = None,
+                 included_service_principals: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] excluded_service_principals: A list of service principal IDs explicitly excluded in the policy.
+        :param Sequence[str] included_service_principals: A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+        """
+        if excluded_service_principals is not None:
+            pulumi.set(__self__, "excluded_service_principals", excluded_service_principals)
+        if included_service_principals is not None:
+            pulumi.set(__self__, "included_service_principals", included_service_principals)
+
+    @property
+    @pulumi.getter(name="excludedServicePrincipals")
+    def excluded_service_principals(self) -> Optional[Sequence[str]]:
+        """
+        A list of service principal IDs explicitly excluded in the policy.
+        """
+        return pulumi.get(self, "excluded_service_principals")
+
+    @property
+    @pulumi.getter(name="includedServicePrincipals")
+    def included_service_principals(self) -> Optional[Sequence[str]]:
+        """
+        A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excluded_service_principals` is set.
+        """
+        return pulumi.get(self, "included_service_principals")
 
 
 @pulumi.output_type
@@ -2446,6 +2511,8 @@ class ConditionalAccessPolicySessionControls(dict):
             suggest = "application_enforced_restrictions_enabled"
         elif key == "cloudAppSecurityPolicy":
             suggest = "cloud_app_security_policy"
+        elif key == "disableResilienceDefaults":
+            suggest = "disable_resilience_defaults"
         elif key == "persistentBrowserMode":
             suggest = "persistent_browser_mode"
         elif key == "signInFrequency":
@@ -2467,6 +2534,7 @@ class ConditionalAccessPolicySessionControls(dict):
     def __init__(__self__, *,
                  application_enforced_restrictions_enabled: Optional[bool] = None,
                  cloud_app_security_policy: Optional[str] = None,
+                 disable_resilience_defaults: Optional[bool] = None,
                  persistent_browser_mode: Optional[str] = None,
                  sign_in_frequency: Optional[int] = None,
                  sign_in_frequency_period: Optional[str] = None):
@@ -2475,6 +2543,7 @@ class ConditionalAccessPolicySessionControls(dict):
                
                > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
         :param str cloud_app_security_policy: Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+        :param bool disable_resilience_defaults: Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
         :param str persistent_browser_mode: Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
         :param int sign_in_frequency: Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
         :param str sign_in_frequency_period: The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
@@ -2483,6 +2552,8 @@ class ConditionalAccessPolicySessionControls(dict):
             pulumi.set(__self__, "application_enforced_restrictions_enabled", application_enforced_restrictions_enabled)
         if cloud_app_security_policy is not None:
             pulumi.set(__self__, "cloud_app_security_policy", cloud_app_security_policy)
+        if disable_resilience_defaults is not None:
+            pulumi.set(__self__, "disable_resilience_defaults", disable_resilience_defaults)
         if persistent_browser_mode is not None:
             pulumi.set(__self__, "persistent_browser_mode", persistent_browser_mode)
         if sign_in_frequency is not None:
@@ -2507,6 +2578,14 @@ class ConditionalAccessPolicySessionControls(dict):
         Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
         """
         return pulumi.get(self, "cloud_app_security_policy")
+
+    @property
+    @pulumi.getter(name="disableResilienceDefaults")
+    def disable_resilience_defaults(self) -> Optional[bool]:
+        """
+        Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        """
+        return pulumi.get(self, "disable_resilience_defaults")
 
     @property
     @pulumi.getter(name="persistentBrowserMode")
@@ -4463,6 +4542,7 @@ class GetUsersUserResult(dict):
     def __init__(__self__, *,
                  account_enabled: bool,
                  display_name: str,
+                 employee_id: str,
                  mail: str,
                  mail_nickname: str,
                  object_id: str,
@@ -4474,6 +4554,7 @@ class GetUsersUserResult(dict):
         """
         :param bool account_enabled: Whether or not the account is enabled.
         :param str display_name: The display name of the user.
+        :param str employee_id: The employee identifier assigned to the user by the organisation.
         :param str mail: The primary email address of the user.
         :param str mail_nickname: The email alias of the user.
         :param str object_id: The object ID of the user.
@@ -4485,6 +4566,7 @@ class GetUsersUserResult(dict):
         """
         pulumi.set(__self__, "account_enabled", account_enabled)
         pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "employee_id", employee_id)
         pulumi.set(__self__, "mail", mail)
         pulumi.set(__self__, "mail_nickname", mail_nickname)
         pulumi.set(__self__, "object_id", object_id)
@@ -4509,6 +4591,14 @@ class GetUsersUserResult(dict):
         The display name of the user.
         """
         return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="employeeId")
+    def employee_id(self) -> str:
+        """
+        The employee identifier assigned to the user by the organisation.
+        """
+        return pulumi.get(self, "employee_id")
 
     @property
     @pulumi.getter

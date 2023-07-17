@@ -163,14 +163,14 @@ def get_domains(admin_managed: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getDomains:getDomains', __args__, opts=opts, typ=GetDomainsResult).value
 
     return AwaitableGetDomainsResult(
-        admin_managed=__ret__.admin_managed,
-        domains=__ret__.domains,
-        id=__ret__.id,
-        include_unverified=__ret__.include_unverified,
-        only_default=__ret__.only_default,
-        only_initial=__ret__.only_initial,
-        only_root=__ret__.only_root,
-        supports_services=__ret__.supports_services)
+        admin_managed=pulumi.get(__ret__, 'admin_managed'),
+        domains=pulumi.get(__ret__, 'domains'),
+        id=pulumi.get(__ret__, 'id'),
+        include_unverified=pulumi.get(__ret__, 'include_unverified'),
+        only_default=pulumi.get(__ret__, 'only_default'),
+        only_initial=pulumi.get(__ret__, 'only_initial'),
+        only_root=pulumi.get(__ret__, 'only_root'),
+        supports_services=pulumi.get(__ret__, 'supports_services'))
 
 
 @_utilities.lift_output_func(get_domains)

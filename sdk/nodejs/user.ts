@@ -98,7 +98,7 @@ export class User extends pulumi.CustomResource {
      */
     public readonly costCenter!: pulumi.Output<string | undefined>;
     /**
-     * The country/region in which the user is located, e.g. `US` or `UK`.
+     * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      */
     public readonly country!: pulumi.Output<string | undefined>;
     /**
@@ -421,7 +421,7 @@ export interface UserState {
      */
     costCenter?: pulumi.Input<string>;
     /**
-     * The country/region in which the user is located, e.g. `US` or `UK`.
+     * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      */
     country?: pulumi.Input<string>;
     /**
@@ -616,7 +616,7 @@ export interface UserArgs {
      */
     costCenter?: pulumi.Input<string>;
     /**
-     * The country/region in which the user is located, e.g. `US` or `UK`.
+     * The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
      */
     country?: pulumi.Input<string>;
     /**

@@ -477,6 +477,10 @@ export interface ConditionalAccessPolicyConditions {
      */
     clientAppTypes: string[];
     /**
+     * An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
+     */
+    clientApplications?: outputs.ConditionalAccessPolicyConditionsClientApplications;
+    /**
      * A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
      */
     devices?: outputs.ConditionalAccessPolicyConditionsDevices;
@@ -515,6 +519,17 @@ export interface ConditionalAccessPolicyConditionsApplications {
      * A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
      */
     includedUserActions?: string[];
+}
+
+export interface ConditionalAccessPolicyConditionsClientApplications {
+    /**
+     * A list of service principal IDs explicitly excluded in the policy.
+     */
+    excludedServicePrincipals?: string[];
+    /**
+     * A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
+     */
+    includedServicePrincipals?: string[];
 }
 
 export interface ConditionalAccessPolicyConditionsDevices {
@@ -616,6 +631,10 @@ export interface ConditionalAccessPolicySessionControls {
      * Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
      */
     cloudAppSecurityPolicy?: string;
+    /**
+     * Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+     */
+    disableResilienceDefaults?: boolean;
     /**
      * Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
      */
@@ -1095,6 +1114,10 @@ export interface GetUsersUser {
      * The display name of the user.
      */
     displayName: string;
+    /**
+     * The employee identifier assigned to the user by the organisation.
+     */
+    employeeId: string;
     /**
      * The primary email address of the user.
      */

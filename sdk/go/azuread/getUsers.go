@@ -59,6 +59,8 @@ func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getUsers.
 type GetUsersArgs struct {
+	// The employee identifiers assigned to the users by the organisation.
+	EmployeeIds []string `pulumi:"employeeIds"`
 	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
 	IgnoreMissing *bool `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
@@ -69,12 +71,14 @@ type GetUsersArgs struct {
 	ReturnAll *bool `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	//
-	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames []string `pulumi:"userPrincipalNames"`
 }
 
 // A collection of values returned by getUsers.
 type GetUsersResult struct {
+	// The employee identifiers assigned to the users by the organisation.
+	EmployeeIds []string `pulumi:"employeeIds"`
 	// The provider-assigned unique ID for this managed resource.
 	Id            string `pulumi:"id"`
 	IgnoreMissing *bool  `pulumi:"ignoreMissing"`
@@ -104,6 +108,8 @@ func GetUsersOutput(ctx *pulumi.Context, args GetUsersOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getUsers.
 type GetUsersOutputArgs struct {
+	// The employee identifiers assigned to the users by the organisation.
+	EmployeeIds pulumi.StringArrayInput `pulumi:"employeeIds"`
 	// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
 	IgnoreMissing pulumi.BoolPtrInput `pulumi:"ignoreMissing"`
 	// The email aliases of the users.
@@ -114,7 +120,7 @@ type GetUsersOutputArgs struct {
 	ReturnAll pulumi.BoolPtrInput `pulumi:"returnAll"`
 	// The user principal names (UPNs) of the users.
 	//
-	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds` or `mailNicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+	// > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
 	UserPrincipalNames pulumi.StringArrayInput `pulumi:"userPrincipalNames"`
 }
 
@@ -135,6 +141,11 @@ func (o GetUsersResultOutput) ToGetUsersResultOutput() GetUsersResultOutput {
 
 func (o GetUsersResultOutput) ToGetUsersResultOutputWithContext(ctx context.Context) GetUsersResultOutput {
 	return o
+}
+
+// The employee identifiers assigned to the users by the organisation.
+func (o GetUsersResultOutput) EmployeeIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetUsersResult) []string { return v.EmployeeIds }).(pulumi.StringArrayOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

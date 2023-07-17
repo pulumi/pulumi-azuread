@@ -88,14 +88,14 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     example = azuread.Application("example",
         display_name="example",
         required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-            resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+            resource_app_id=well_known.result["MicrosoftGraph"],
             resource_accesses=[
                 azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    id=msgraph.app_role_ids["User.Read.All"],
                     type="Role",
                 ),
                 azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                    id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                    id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
                     type="Scope",
                 ),
             ],
@@ -107,5 +107,5 @@ def get_application_published_app_ids(opts: Optional[pulumi.InvokeOptions] = Non
     __ret__ = pulumi.runtime.invoke('azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds', __args__, opts=opts, typ=GetApplicationPublishedAppIdsResult).value
 
     return AwaitableGetApplicationPublishedAppIdsResult(
-        id=__ret__.id,
-        result=__ret__.result)
+        id=pulumi.get(__ret__, 'id'),
+        result=pulumi.get(__ret__, 'result'))

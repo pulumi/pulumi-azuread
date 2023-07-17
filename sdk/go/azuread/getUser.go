@@ -56,6 +56,8 @@ func LookupUser(ctx *pulumi.Context, args *LookupUserArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getUser.
 type LookupUserArgs struct {
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId *string `pulumi:"employeeId"`
 	// The SMTP address for the user.
 	Mail *string `pulumi:"mail"`
 	// The email alias of the user.
@@ -64,7 +66,7 @@ type LookupUserArgs struct {
 	ObjectId *string `pulumi:"objectId"`
 	// The user principal name (UPN) of the user.
 	//
-	// > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
+	// > One of `userPrincipalName`, `objectId`, `mail`, `mailNickname` or `employeeId` must be specified.
 	UserPrincipalName *string `pulumi:"userPrincipalName"`
 }
 
@@ -175,6 +177,8 @@ func LookupUserOutput(ctx *pulumi.Context, args LookupUserOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getUser.
 type LookupUserOutputArgs struct {
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId pulumi.StringPtrInput `pulumi:"employeeId"`
 	// The SMTP address for the user.
 	Mail pulumi.StringPtrInput `pulumi:"mail"`
 	// The email alias of the user.
@@ -183,7 +187,7 @@ type LookupUserOutputArgs struct {
 	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 	// The user principal name (UPN) of the user.
 	//
-	// > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
+	// > One of `userPrincipalName`, `objectId`, `mail`, `mailNickname` or `employeeId` must be specified.
 	UserPrincipalName pulumi.StringPtrInput `pulumi:"userPrincipalName"`
 }
 

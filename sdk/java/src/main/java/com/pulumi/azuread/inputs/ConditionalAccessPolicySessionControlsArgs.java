@@ -52,6 +52,21 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     }
 
     /**
+     * Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+     * 
+     */
+    @Import(name="disableResilienceDefaults")
+    private @Nullable Output<Boolean> disableResilienceDefaults;
+
+    /**
+     * @return Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> disableResilienceDefaults() {
+        return Optional.ofNullable(this.disableResilienceDefaults);
+    }
+
+    /**
      * Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
      * 
      */
@@ -101,6 +116,7 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
     private ConditionalAccessPolicySessionControlsArgs(ConditionalAccessPolicySessionControlsArgs $) {
         this.applicationEnforcedRestrictionsEnabled = $.applicationEnforcedRestrictionsEnabled;
         this.cloudAppSecurityPolicy = $.cloudAppSecurityPolicy;
+        this.disableResilienceDefaults = $.disableResilienceDefaults;
         this.persistentBrowserMode = $.persistentBrowserMode;
         this.signInFrequency = $.signInFrequency;
         this.signInFrequencyPeriod = $.signInFrequencyPeriod;
@@ -168,6 +184,27 @@ public final class ConditionalAccessPolicySessionControlsArgs extends com.pulumi
          */
         public Builder cloudAppSecurityPolicy(String cloudAppSecurityPolicy) {
             return cloudAppSecurityPolicy(Output.of(cloudAppSecurityPolicy));
+        }
+
+        /**
+         * @param disableResilienceDefaults Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableResilienceDefaults(@Nullable Output<Boolean> disableResilienceDefaults) {
+            $.disableResilienceDefaults = disableResilienceDefaults;
+            return this;
+        }
+
+        /**
+         * @param disableResilienceDefaults Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableResilienceDefaults(Boolean disableResilienceDefaults) {
+            return disableResilienceDefaults(Output.of(disableResilienceDefaults));
         }
 
         /**

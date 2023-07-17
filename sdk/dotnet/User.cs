@@ -101,7 +101,7 @@ namespace Pulumi.AzureAD
         public Output<string?> CostCenter { get; private set; } = null!;
 
         /// <summary>
-        /// The country/region in which the user is located, e.g. `US` or `UK`.
+        /// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         /// </summary>
         [Output("country")]
         public Output<string?> Country { get; private set; } = null!;
@@ -440,7 +440,7 @@ namespace Pulumi.AzureAD
         public Input<string>? CostCenter { get; set; }
 
         /// <summary>
-        /// The country/region in which the user is located, e.g. `US` or `UK`.
+        /// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }
@@ -687,7 +687,7 @@ namespace Pulumi.AzureAD
         public Input<string>? CostCenter { get; set; }
 
         /// <summary>
-        /// The country/region in which the user is located, e.g. `US` or `UK`.
+        /// The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }

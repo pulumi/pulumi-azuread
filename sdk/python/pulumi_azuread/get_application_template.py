@@ -173,15 +173,15 @@ def get_application_template(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getApplicationTemplate:getApplicationTemplate', __args__, opts=opts, typ=GetApplicationTemplateResult).value
 
     return AwaitableGetApplicationTemplateResult(
-        categories=__ret__.categories,
-        display_name=__ret__.display_name,
-        homepage_url=__ret__.homepage_url,
-        id=__ret__.id,
-        logo_url=__ret__.logo_url,
-        publisher=__ret__.publisher,
-        supported_provisioning_types=__ret__.supported_provisioning_types,
-        supported_single_sign_on_modes=__ret__.supported_single_sign_on_modes,
-        template_id=__ret__.template_id)
+        categories=pulumi.get(__ret__, 'categories'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        homepage_url=pulumi.get(__ret__, 'homepage_url'),
+        id=pulumi.get(__ret__, 'id'),
+        logo_url=pulumi.get(__ret__, 'logo_url'),
+        publisher=pulumi.get(__ret__, 'publisher'),
+        supported_provisioning_types=pulumi.get(__ret__, 'supported_provisioning_types'),
+        supported_single_sign_on_modes=pulumi.get(__ret__, 'supported_single_sign_on_modes'),
+        template_id=pulumi.get(__ret__, 'template_id'))
 
 
 @_utilities.lift_output_func(get_application_template)

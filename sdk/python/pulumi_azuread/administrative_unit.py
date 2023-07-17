@@ -23,7 +23,7 @@ class AdministrativeUnitArgs:
         The set of arguments for constructing a AdministrativeUnit resource.
         :param pulumi.Input[str] display_name: The display name of the administrative unit.
         :param pulumi.Input[str] description: The description of the administrative unit.
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
                
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
@@ -67,7 +67,7 @@ class AdministrativeUnitArgs:
     @pulumi.getter(name="hiddenMembershipEnabled")
     def hidden_membership_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
@@ -115,7 +115,7 @@ class _AdministrativeUnitState:
         Input properties used for looking up and filtering AdministrativeUnit resources.
         :param pulumi.Input[str] description: The description of the administrative unit.
         :param pulumi.Input[str] display_name: The display name of the administrative unit.
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
                
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
@@ -163,7 +163,7 @@ class _AdministrativeUnitState:
     @pulumi.getter(name="hiddenMembershipEnabled")
     def hidden_membership_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
@@ -232,6 +232,18 @@ class AdministrativeUnit(pulumi.CustomResource):
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AdministrativeUnit("example",
+            description="Just an example",
+            display_name="Example-AU",
+            hidden_membership_enabled=False)
+        ```
+
         ## Import
 
         Administrative units can be imported using their object ID, e.g.
@@ -244,7 +256,7 @@ class AdministrativeUnit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the administrative unit.
         :param pulumi.Input[str] display_name: The display name of the administrative unit.
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
                
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
@@ -266,6 +278,18 @@ class AdministrativeUnit(pulumi.CustomResource):
         When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
 
         When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AdministrativeUnit("example",
+            description="Just an example",
+            display_name="Example-AU",
+            hidden_membership_enabled=False)
+        ```
 
         ## Import
 
@@ -337,7 +361,7 @@ class AdministrativeUnit(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the administrative unit.
         :param pulumi.Input[str] display_name: The display name of the administrative unit.
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
                
                !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
@@ -376,7 +400,7 @@ class AdministrativeUnit(pulumi.CustomResource):
     @pulumi.getter(name="hiddenMembershipEnabled")
     def hidden_membership_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 

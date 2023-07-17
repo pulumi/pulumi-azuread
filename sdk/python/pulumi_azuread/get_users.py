@@ -22,7 +22,10 @@ class GetUsersResult:
     """
     A collection of values returned by getUsers.
     """
-    def __init__(__self__, id=None, ignore_missing=None, mail_nicknames=None, object_ids=None, return_all=None, user_principal_names=None, users=None):
+    def __init__(__self__, employee_ids=None, id=None, ignore_missing=None, mail_nicknames=None, object_ids=None, return_all=None, user_principal_names=None, users=None):
+        if employee_ids and not isinstance(employee_ids, list):
+            raise TypeError("Expected argument 'employee_ids' to be a list")
+        pulumi.set(__self__, "employee_ids", employee_ids)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -44,6 +47,14 @@ class GetUsersResult:
         if users and not isinstance(users, list):
             raise TypeError("Expected argument 'users' to be a list")
         pulumi.set(__self__, "users", users)
+
+    @property
+    @pulumi.getter(name="employeeIds")
+    def employee_ids(self) -> Sequence[str]:
+        """
+        The employee identifiers assigned to the users by the organisation.
+        """
+        return pulumi.get(self, "employee_ids")
 
     @property
     @pulumi.getter
@@ -102,6 +113,7 @@ class AwaitableGetUsersResult(GetUsersResult):
         if False:
             yield self
         return GetUsersResult(
+            employee_ids=self.employee_ids,
             id=self.id,
             ignore_missing=self.ignore_missing,
             mail_nicknames=self.mail_nicknames,
@@ -111,7 +123,8 @@ class AwaitableGetUsersResult(GetUsersResult):
             users=self.users)
 
 
-def get_users(ignore_missing: Optional[bool] = None,
+def get_users(employee_ids: Optional[Sequence[str]] = None,
+              ignore_missing: Optional[bool] = None,
               mail_nicknames: Optional[Sequence[str]] = None,
               object_ids: Optional[Sequence[str]] = None,
               return_all: Optional[bool] = None,
@@ -141,15 +154,17 @@ def get_users(ignore_missing: Optional[bool] = None,
     ```
 
 
+    :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param Sequence[str] mail_nicknames: The email aliases of the users.
     :param Sequence[str] object_ids: The object IDs of the users.
     :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
     :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
            
-           > Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+           > Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
+    __args__['employeeIds'] = employee_ids
     __args__['ignoreMissing'] = ignore_missing
     __args__['mailNicknames'] = mail_nicknames
     __args__['objectIds'] = object_ids
@@ -159,17 +174,19 @@ def get_users(ignore_missing: Optional[bool] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getUsers:getUsers', __args__, opts=opts, typ=GetUsersResult).value
 
     return AwaitableGetUsersResult(
-        id=__ret__.id,
-        ignore_missing=__ret__.ignore_missing,
-        mail_nicknames=__ret__.mail_nicknames,
-        object_ids=__ret__.object_ids,
-        return_all=__ret__.return_all,
-        user_principal_names=__ret__.user_principal_names,
-        users=__ret__.users)
+        employee_ids=pulumi.get(__ret__, 'employee_ids'),
+        id=pulumi.get(__ret__, 'id'),
+        ignore_missing=pulumi.get(__ret__, 'ignore_missing'),
+        mail_nicknames=pulumi.get(__ret__, 'mail_nicknames'),
+        object_ids=pulumi.get(__ret__, 'object_ids'),
+        return_all=pulumi.get(__ret__, 'return_all'),
+        user_principal_names=pulumi.get(__ret__, 'user_principal_names'),
+        users=pulumi.get(__ret__, 'users'))
 
 
 @_utilities.lift_output_func(get_users)
-def get_users_output(ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
+def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
+                     ignore_missing: Optional[pulumi.Input[Optional[bool]]] = None,
                      mail_nicknames: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      object_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      return_all: Optional[pulumi.Input[Optional[bool]]] = None,
@@ -199,12 +216,13 @@ def get_users_output(ignore_missing: Optional[pulumi.Input[Optional[bool]]] = No
     ```
 
 
+    :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.
     :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
     :param Sequence[str] mail_nicknames: The email aliases of the users.
     :param Sequence[str] object_ids: The object IDs of the users.
     :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
     :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
            
-           > Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+           > Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     ...

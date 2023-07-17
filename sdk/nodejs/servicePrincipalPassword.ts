@@ -15,6 +15,37 @@ import * as utilities from "./utilities";
  *
  * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
  *
+ * ## Example Usage
+ *
+ * *Basic example*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {servicePrincipalId: exampleServicePrincipal.objectId});
+ * ```
+ *
+ * *Time-based rotation*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ * import * as time from "@pulumiverse/time";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleRotating = new time.Rotating("exampleRotating", {rotationDays: 7});
+ * const exampleServicePrincipalPassword = new azuread.ServicePrincipalPassword("exampleServicePrincipalPassword", {
+ *     servicePrincipalId: exampleServicePrincipal.objectId,
+ *     rotateWhenChanged: {
+ *         rotation: exampleRotating.id,
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * This resource does not support importing.

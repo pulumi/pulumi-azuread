@@ -146,12 +146,12 @@ def get_access_package_catalog(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getAccessPackageCatalog:getAccessPackageCatalog', __args__, opts=opts, typ=GetAccessPackageCatalogResult).value
 
     return AwaitableGetAccessPackageCatalogResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        externally_visible=__ret__.externally_visible,
-        id=__ret__.id,
-        object_id=__ret__.object_id,
-        published=__ret__.published)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        externally_visible=pulumi.get(__ret__, 'externally_visible'),
+        id=pulumi.get(__ret__, 'id'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        published=pulumi.get(__ret__, 'published'))
 
 
 @_utilities.lift_output_func(get_access_package_catalog)

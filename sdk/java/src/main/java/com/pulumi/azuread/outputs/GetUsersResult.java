@@ -15,6 +15,11 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetUsersResult {
     /**
+     * @return The employee identifiers assigned to the users by the organisation.
+     * 
+     */
+    private List<String> employeeIds;
+    /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
      */
@@ -43,6 +48,13 @@ public final class GetUsersResult {
     private List<GetUsersUser> users;
 
     private GetUsersResult() {}
+    /**
+     * @return The employee identifiers assigned to the users by the organisation.
+     * 
+     */
+    public List<String> employeeIds() {
+        return this.employeeIds;
+    }
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -94,6 +106,7 @@ public final class GetUsersResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<String> employeeIds;
         private String id;
         private @Nullable Boolean ignoreMissing;
         private List<String> mailNicknames;
@@ -104,6 +117,7 @@ public final class GetUsersResult {
         public Builder() {}
         public Builder(GetUsersResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.employeeIds = defaults.employeeIds;
     	      this.id = defaults.id;
     	      this.ignoreMissing = defaults.ignoreMissing;
     	      this.mailNicknames = defaults.mailNicknames;
@@ -113,6 +127,14 @@ public final class GetUsersResult {
     	      this.users = defaults.users;
         }
 
+        @CustomType.Setter
+        public Builder employeeIds(List<String> employeeIds) {
+            this.employeeIds = Objects.requireNonNull(employeeIds);
+            return this;
+        }
+        public Builder employeeIds(String... employeeIds) {
+            return employeeIds(List.of(employeeIds));
+        }
         @CustomType.Setter
         public Builder id(String id) {
             this.id = Objects.requireNonNull(id);
@@ -162,6 +184,7 @@ public final class GetUsersResult {
         }
         public GetUsersResult build() {
             final var o = new GetUsersResult();
+            o.employeeIds = employeeIds;
             o.id = id;
             o.ignoreMissing = ignoreMissing;
             o.mailNicknames = mailNicknames;

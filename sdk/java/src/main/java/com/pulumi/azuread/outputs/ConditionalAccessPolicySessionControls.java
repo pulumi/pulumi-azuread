@@ -26,6 +26,11 @@ public final class ConditionalAccessPolicySessionControls {
      */
     private @Nullable String cloudAppSecurityPolicy;
     /**
+     * @return Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+     * 
+     */
+    private @Nullable Boolean disableResilienceDefaults;
+    /**
      * @return Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
      * 
      */
@@ -57,6 +62,13 @@ public final class ConditionalAccessPolicySessionControls {
      */
     public Optional<String> cloudAppSecurityPolicy() {
         return Optional.ofNullable(this.cloudAppSecurityPolicy);
+    }
+    /**
+     * @return Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+     * 
+     */
+    public Optional<Boolean> disableResilienceDefaults() {
+        return Optional.ofNullable(this.disableResilienceDefaults);
     }
     /**
      * @return Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
@@ -91,6 +103,7 @@ public final class ConditionalAccessPolicySessionControls {
     public static final class Builder {
         private @Nullable Boolean applicationEnforcedRestrictionsEnabled;
         private @Nullable String cloudAppSecurityPolicy;
+        private @Nullable Boolean disableResilienceDefaults;
         private @Nullable String persistentBrowserMode;
         private @Nullable Integer signInFrequency;
         private @Nullable String signInFrequencyPeriod;
@@ -99,6 +112,7 @@ public final class ConditionalAccessPolicySessionControls {
     	      Objects.requireNonNull(defaults);
     	      this.applicationEnforcedRestrictionsEnabled = defaults.applicationEnforcedRestrictionsEnabled;
     	      this.cloudAppSecurityPolicy = defaults.cloudAppSecurityPolicy;
+    	      this.disableResilienceDefaults = defaults.disableResilienceDefaults;
     	      this.persistentBrowserMode = defaults.persistentBrowserMode;
     	      this.signInFrequency = defaults.signInFrequency;
     	      this.signInFrequencyPeriod = defaults.signInFrequencyPeriod;
@@ -112,6 +126,11 @@ public final class ConditionalAccessPolicySessionControls {
         @CustomType.Setter
         public Builder cloudAppSecurityPolicy(@Nullable String cloudAppSecurityPolicy) {
             this.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableResilienceDefaults(@Nullable Boolean disableResilienceDefaults) {
+            this.disableResilienceDefaults = disableResilienceDefaults;
             return this;
         }
         @CustomType.Setter
@@ -133,6 +152,7 @@ public final class ConditionalAccessPolicySessionControls {
             final var o = new ConditionalAccessPolicySessionControls();
             o.applicationEnforcedRestrictionsEnabled = applicationEnforcedRestrictionsEnabled;
             o.cloudAppSecurityPolicy = cloudAppSecurityPolicy;
+            o.disableResilienceDefaults = disableResilienceDefaults;
             o.persistentBrowserMode = persistentBrowserMode;
             o.signInFrequency = signInFrequency;
             o.signInFrequencyPeriod = signInFrequencyPeriod;

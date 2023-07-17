@@ -17,6 +17,21 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetUsersPlainArgs Empty = new GetUsersPlainArgs();
 
     /**
+     * The employee identifiers assigned to the users by the organisation.
+     * 
+     */
+    @Import(name="employeeIds")
+    private @Nullable List<String> employeeIds;
+
+    /**
+     * @return The employee identifiers assigned to the users by the organisation.
+     * 
+     */
+    public Optional<List<String>> employeeIds() {
+        return Optional.ofNullable(this.employeeIds);
+    }
+
+    /**
      * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
      * 
      */
@@ -79,7 +94,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The user principal names (UPNs) of the users.
      * 
-     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     @Import(name="userPrincipalNames")
@@ -88,7 +103,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The user principal names (UPNs) of the users.
      * 
-     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
      * 
      */
     public Optional<List<String>> userPrincipalNames() {
@@ -98,6 +113,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     private GetUsersPlainArgs() {}
 
     private GetUsersPlainArgs(GetUsersPlainArgs $) {
+        this.employeeIds = $.employeeIds;
         this.ignoreMissing = $.ignoreMissing;
         this.mailNicknames = $.mailNicknames;
         this.objectIds = $.objectIds;
@@ -121,6 +137,27 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
 
         public Builder(GetUsersPlainArgs defaults) {
             $ = new GetUsersPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param employeeIds The employee identifiers assigned to the users by the organisation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder employeeIds(@Nullable List<String> employeeIds) {
+            $.employeeIds = employeeIds;
+            return this;
+        }
+
+        /**
+         * @param employeeIds The employee identifiers assigned to the users by the organisation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder employeeIds(String... employeeIds) {
+            return employeeIds(List.of(employeeIds));
         }
 
         /**
@@ -190,7 +227,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 
@@ -203,7 +240,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param userPrincipalNames The user principal names (UPNs) of the users.
          * 
-         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids` or `mail_nicknames` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+         * &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
          * 
          * @return builder
          * 

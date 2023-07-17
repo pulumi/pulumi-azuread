@@ -22,6 +22,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<string> ClientAppTypes;
         /// <summary>
+        /// An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+        /// </summary>
+        public readonly Outputs.ConditionalAccessPolicyConditionsClientApplications? ClientApplications;
+        /// <summary>
         /// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsDevices? Devices;
@@ -52,6 +56,8 @@ namespace Pulumi.AzureAD.Outputs
 
             ImmutableArray<string> clientAppTypes,
 
+            Outputs.ConditionalAccessPolicyConditionsClientApplications? clientApplications,
+
             Outputs.ConditionalAccessPolicyConditionsDevices? devices,
 
             Outputs.ConditionalAccessPolicyConditionsLocations? locations,
@@ -66,6 +72,7 @@ namespace Pulumi.AzureAD.Outputs
         {
             Applications = applications;
             ClientAppTypes = clientAppTypes;
+            ClientApplications = clientApplications;
             Devices = devices;
             Locations = locations;
             Platforms = platforms;

@@ -13,6 +13,8 @@ import (
 
 // Manages a Conditional Access Policy within Azure Active Directory.
 //
+// > **Licensing Requirements** Specifying `clientApplications` property requires the activation of Microsoft Entra on your tenant and the availability of sufficient Workload Identities Premium licences (one per service principal managed by a conditional access).
+//
 // ## API Permissions
 //
 // The following API permissions are required in order to use this resource.
@@ -22,6 +24,7 @@ import (
 // When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
 //
 // ## Example Usage
+// ### All users except guests or external users
 //
 // ```go
 // package main
@@ -93,10 +96,127 @@ import (
 //				SessionControls: &azuread.ConditionalAccessPolicySessionControlsArgs{
 //					ApplicationEnforcedRestrictionsEnabled: pulumi.Bool(true),
 //					CloudAppSecurityPolicy:                 pulumi.String("monitorOnly"),
+//					DisableResilienceDefaults:              pulumi.Bool(false),
 //					SignInFrequency:                        pulumi.Int(10),
 //					SignInFrequencyPeriod:                  pulumi.String("hours"),
 //				},
 //				State: pulumi.String("disabled"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Included client applications / service principals
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
+//				DisplayName: pulumi.String("example policy"),
+//				State:       pulumi.String("disabled"),
+//				Conditions: &azuread.ConditionalAccessPolicyConditionsArgs{
+//					ClientAppTypes: pulumi.StringArray{
+//						pulumi.String("all"),
+//					},
+//					Applications: &azuread.ConditionalAccessPolicyConditionsApplicationsArgs{
+//						IncludedApplications: pulumi.StringArray{
+//							pulumi.String("All"),
+//						},
+//					},
+//					ClientApplications: &azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs{
+//						IncludedServicePrincipals: pulumi.StringArray{
+//							*pulumi.String(current.ObjectId),
+//						},
+//						ExcludedServicePrincipals: pulumi.StringArray{},
+//					},
+//					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
+//						IncludedUsers: pulumi.StringArray{
+//							pulumi.String("None"),
+//						},
+//					},
+//				},
+//				GrantControls: &azuread.ConditionalAccessPolicyGrantControlsArgs{
+//					Operator: pulumi.String("OR"),
+//					BuiltInControls: pulumi.StringArray{
+//						pulumi.String("block"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Excluded client applications / service principals
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			current, err := azuread.GetClientConfig(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewConditionalAccessPolicy(ctx, "example", &azuread.ConditionalAccessPolicyArgs{
+//				DisplayName: pulumi.String("example policy"),
+//				State:       pulumi.String("disabled"),
+//				Conditions: &azuread.ConditionalAccessPolicyConditionsArgs{
+//					ClientAppTypes: pulumi.StringArray{
+//						pulumi.String("all"),
+//					},
+//					Applications: &azuread.ConditionalAccessPolicyConditionsApplicationsArgs{
+//						IncludedApplications: pulumi.StringArray{
+//							pulumi.String("All"),
+//						},
+//					},
+//					ClientApplications: &azuread.ConditionalAccessPolicyConditionsClientApplicationsArgs{
+//						IncludedServicePrincipals: pulumi.StringArray{
+//							pulumi.String("ServicePrincipalsInMyTenant"),
+//						},
+//						ExcludedServicePrincipals: pulumi.StringArray{
+//							*pulumi.String(current.ObjectId),
+//						},
+//					},
+//					Users: &azuread.ConditionalAccessPolicyConditionsUsersArgs{
+//						IncludedUsers: pulumi.StringArray{
+//							pulumi.String("None"),
+//						},
+//					},
+//				},
+//				GrantControls: &azuread.ConditionalAccessPolicyGrantControlsArgs{
+//					Operator: pulumi.String("OR"),
+//					BuiltInControls: pulumi.StringArray{
+//						pulumi.String("block"),
+//					},
+//				},
 //			})
 //			if err != nil {
 //				return err

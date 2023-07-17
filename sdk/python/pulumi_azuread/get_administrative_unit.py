@@ -150,12 +150,12 @@ def get_administrative_unit(display_name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('azuread:index/getAdministrativeUnit:getAdministrativeUnit', __args__, opts=opts, typ=GetAdministrativeUnitResult).value
 
     return AwaitableGetAdministrativeUnitResult(
-        description=__ret__.description,
-        display_name=__ret__.display_name,
-        id=__ret__.id,
-        members=__ret__.members,
-        object_id=__ret__.object_id,
-        visibility=__ret__.visibility)
+        description=pulumi.get(__ret__, 'description'),
+        display_name=pulumi.get(__ret__, 'display_name'),
+        id=pulumi.get(__ret__, 'id'),
+        members=pulumi.get(__ret__, 'members'),
+        object_id=pulumi.get(__ret__, 'object_id'),
+        visibility=pulumi.get(__ret__, 'visibility'))
 
 
 @_utilities.lift_output_func(get_administrative_unit)

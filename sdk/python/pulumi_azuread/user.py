@@ -60,7 +60,7 @@ class UserArgs:
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[str] cost_center: The cost center associated with the user.
-        :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
+        :param pulumi.Input[str] country: The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
@@ -269,7 +269,7 @@ class UserArgs:
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[str]]:
         """
-        The country/region in which the user is located, e.g. `US` or `UK`.
+        The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         """
         return pulumi.get(self, "country")
 
@@ -640,7 +640,7 @@ class _UserState:
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[str] cost_center: The cost center associated with the user.
-        :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
+        :param pulumi.Input[str] country: The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
@@ -879,7 +879,7 @@ class _UserState:
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[str]]:
         """
-        The country/region in which the user is located, e.g. `US` or `UK`.
+        The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         """
         return pulumi.get(self, "country")
 
@@ -1439,7 +1439,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[str] cost_center: The cost center associated with the user.
-        :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
+        :param pulumi.Input[str] country: The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
         :param pulumi.Input[bool] disable_strong_password: Whether the user is allowed weaker passwords than the default policy to be specified. Defaults to `false`.
@@ -1693,7 +1693,7 @@ class User(pulumi.CustomResource):
         :param pulumi.Input[str] company_name: The company name which the user is associated. This property can be useful for describing the company that an external user comes from.
         :param pulumi.Input[str] consent_provided_for_minor: Whether consent has been obtained for minors. Supported values are `Granted`, `Denied` and `NotRequired`. Omit this property or specify a blank string to unset.
         :param pulumi.Input[str] cost_center: The cost center associated with the user.
-        :param pulumi.Input[str] country: The country/region in which the user is located, e.g. `US` or `UK`.
+        :param pulumi.Input[str] country: The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         :param pulumi.Input[str] creation_type: Indicates whether the user account was created as a regular school or work account (`null`), an external account (`Invitation`), a local account for an Azure Active Directory B2C tenant (`LocalAccount`) or self-service sign-up using email verification (`EmailVerified`).
         :param pulumi.Input[str] department: The name for the department in which the user works.
         :param pulumi.Input[bool] disable_password_expiration: Whether the user's password is exempt from expiring. Defaults to `false`.
@@ -1857,7 +1857,7 @@ class User(pulumi.CustomResource):
     @pulumi.getter
     def country(self) -> pulumi.Output[Optional[str]]:
         """
-        The country/region in which the user is located, e.g. `US` or `UK`.
+        The country/region in which the user is located. Examples include: `NO`, `JP`, and `GB`.
         """
         return pulumi.get(self, "country")
 

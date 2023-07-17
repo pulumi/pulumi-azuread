@@ -20,6 +20,26 @@ namespace Pulumi.AzureAD
     /// 
     /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.AdministrativeUnit("example", new()
+    ///     {
+    ///         Description = "Just an example",
+    ///         DisplayName = "Example-AU",
+    ///         HiddenMembershipEnabled = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Administrative units can be imported using their object ID, e.g.
@@ -44,7 +64,7 @@ namespace Pulumi.AzureAD
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        /// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         /// </summary>
         [Output("hiddenMembershipEnabled")]
         public Output<bool?> HiddenMembershipEnabled { get; private set; } = null!;
@@ -128,7 +148,7 @@ namespace Pulumi.AzureAD
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        /// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         /// </summary>
         [Input("hiddenMembershipEnabled")]
         public Input<bool>? HiddenMembershipEnabled { get; set; }
@@ -174,7 +194,7 @@ namespace Pulumi.AzureAD
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        /// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         /// </summary>
         [Input("hiddenMembershipEnabled")]
         public Input<bool>? HiddenMembershipEnabled { get; set; }

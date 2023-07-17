@@ -31,6 +31,7 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("azuread:index/getUser:getUser", {
+        "employeeId": args.employeeId,
         "mail": args.mail,
         "mailNickname": args.mailNickname,
         "objectId": args.objectId,
@@ -42,6 +43,10 @@ export function getUser(args?: GetUserArgs, opts?: pulumi.InvokeOptions): Promis
  * A collection of arguments for invoking getUser.
  */
 export interface GetUserArgs {
+    /**
+     * The employee identifier assigned to the user by the organisation.
+     */
+    employeeId?: string;
     /**
      * The SMTP address for the user.
      */
@@ -57,7 +62,7 @@ export interface GetUserArgs {
     /**
      * The user principal name (UPN) of the user.
      *
-     * > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
+     * > One of `userPrincipalName`, `objectId`, `mail`, `mailNickname` or `employeeId` must be specified.
      */
     userPrincipalName?: string;
 }
@@ -274,6 +279,10 @@ export function getUserOutput(args?: GetUserOutputArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetUserOutputArgs {
     /**
+     * The employee identifier assigned to the user by the organisation.
+     */
+    employeeId?: pulumi.Input<string>;
+    /**
      * The SMTP address for the user.
      */
     mail?: pulumi.Input<string>;
@@ -288,7 +297,7 @@ export interface GetUserOutputArgs {
     /**
      * The user principal name (UPN) of the user.
      *
-     * > One of `userPrincipalName`, `objectId`, `mail` or `mailNickname` must be specified.
+     * > One of `userPrincipalName`, `objectId`, `mail`, `mailNickname` or `employeeId` must be specified.
      */
     userPrincipalName?: pulumi.Input<string>;
 }

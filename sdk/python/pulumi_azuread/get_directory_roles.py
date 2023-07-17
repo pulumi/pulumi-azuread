@@ -107,7 +107,7 @@ def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> Awaitabl
     __ret__ = pulumi.runtime.invoke('azuread:index/getDirectoryRoles:getDirectoryRoles', __args__, opts=opts, typ=GetDirectoryRolesResult).value
 
     return AwaitableGetDirectoryRolesResult(
-        id=__ret__.id,
-        object_ids=__ret__.object_ids,
-        roles=__ret__.roles,
-        template_ids=__ret__.template_ids)
+        id=pulumi.get(__ret__, 'id'),
+        object_ids=pulumi.get(__ret__, 'object_ids'),
+        roles=pulumi.get(__ret__, 'roles'),
+        template_ids=pulumi.get(__ret__, 'template_ids'))

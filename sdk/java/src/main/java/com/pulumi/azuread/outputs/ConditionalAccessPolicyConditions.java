@@ -4,6 +4,7 @@
 package com.pulumi.azuread.outputs;
 
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsApplications;
+import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsClientApplications;
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsDevices;
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsLocations;
 import com.pulumi.azuread.outputs.ConditionalAccessPolicyConditionsPlatforms;
@@ -27,6 +28,11 @@ public final class ConditionalAccessPolicyConditions {
      * 
      */
     private List<String> clientAppTypes;
+    /**
+     * @return An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * 
+     */
+    private @Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications;
     /**
      * @return A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
      * 
@@ -72,6 +78,13 @@ public final class ConditionalAccessPolicyConditions {
      */
     public List<String> clientAppTypes() {
         return this.clientAppTypes;
+    }
+    /**
+     * @return An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
+     * 
+     */
+    public Optional<ConditionalAccessPolicyConditionsClientApplications> clientApplications() {
+        return Optional.ofNullable(this.clientApplications);
     }
     /**
      * @return A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
@@ -127,6 +140,7 @@ public final class ConditionalAccessPolicyConditions {
     public static final class Builder {
         private ConditionalAccessPolicyConditionsApplications applications;
         private List<String> clientAppTypes;
+        private @Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications;
         private @Nullable ConditionalAccessPolicyConditionsDevices devices;
         private @Nullable ConditionalAccessPolicyConditionsLocations locations;
         private @Nullable ConditionalAccessPolicyConditionsPlatforms platforms;
@@ -138,6 +152,7 @@ public final class ConditionalAccessPolicyConditions {
     	      Objects.requireNonNull(defaults);
     	      this.applications = defaults.applications;
     	      this.clientAppTypes = defaults.clientAppTypes;
+    	      this.clientApplications = defaults.clientApplications;
     	      this.devices = defaults.devices;
     	      this.locations = defaults.locations;
     	      this.platforms = defaults.platforms;
@@ -158,6 +173,11 @@ public final class ConditionalAccessPolicyConditions {
         }
         public Builder clientAppTypes(String... clientAppTypes) {
             return clientAppTypes(List.of(clientAppTypes));
+        }
+        @CustomType.Setter
+        public Builder clientApplications(@Nullable ConditionalAccessPolicyConditionsClientApplications clientApplications) {
+            this.clientApplications = clientApplications;
+            return this;
         }
         @CustomType.Setter
         public Builder devices(@Nullable ConditionalAccessPolicyConditionsDevices devices) {
@@ -199,6 +219,7 @@ public final class ConditionalAccessPolicyConditions {
             final var o = new ConditionalAccessPolicyConditions();
             o.applications = applications;
             o.clientAppTypes = clientAppTypes;
+            o.clientApplications = clientApplications;
             o.devices = devices;
             o.locations = locations;
             o.platforms = platforms;

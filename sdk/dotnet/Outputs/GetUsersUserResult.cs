@@ -22,6 +22,10 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// The employee identifier assigned to the user by the organisation.
+        /// </summary>
+        public readonly string EmployeeId;
+        /// <summary>
         /// The primary email address of the user.
         /// </summary>
         public readonly string Mail;
@@ -60,6 +64,8 @@ namespace Pulumi.AzureAD.Outputs
 
             string displayName,
 
+            string employeeId,
+
             string mail,
 
             string mailNickname,
@@ -78,6 +84,7 @@ namespace Pulumi.AzureAD.Outputs
         {
             AccountEnabled = accountEnabled;
             DisplayName = displayName;
+            EmployeeId = employeeId;
             Mail = mail;
             MailNickname = mailNickname;
             ObjectId = objectId;

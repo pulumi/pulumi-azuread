@@ -196,14 +196,14 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_app_id=well_known.result["MicrosoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
                         type="Scope",
                     ),
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
                         type="Scope",
                     ),
                 ],
@@ -231,14 +231,14 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_app_id=well_known.result["MicrosoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
                         type="Scope",
                     ),
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
                         type="Scope",
                     ),
                 ],
@@ -308,14 +308,14 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_app_id=well_known.result["MicrosoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
                         type="Scope",
                     ),
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
                         type="Scope",
                     ),
                 ],
@@ -343,14 +343,14 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         example_application = azuread.Application("exampleApplication",
             display_name="example",
             required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
-                resource_app_id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                resource_app_id=well_known.result["MicrosoftGraph"],
                 resource_accesses=[
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
                         type="Scope",
                     ),
                     azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
-                        id=%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference),
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
                         type="Scope",
                     ),
                 ],
