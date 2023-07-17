@@ -13,16 +13,49 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetUsersUserResult
     {
+        /// <summary>
+        /// Whether or not the account is enabled.
+        /// </summary>
         public readonly bool AccountEnabled;
+        /// <summary>
+        /// The display name of the user.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// The employee identifier assigned to the user by the organisation.
+        /// </summary>
         public readonly string EmployeeId;
+        /// <summary>
+        /// The primary email address of the user.
+        /// </summary>
         public readonly string Mail;
+        /// <summary>
+        /// The email alias of the user.
+        /// </summary>
         public readonly string MailNickname;
+        /// <summary>
+        /// The object ID of the user.
+        /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+        /// </summary>
         public readonly string OnpremisesImmutableId;
+        /// <summary>
+        /// The on-premise SAM account name of the user.
+        /// </summary>
         public readonly string OnpremisesSamAccountName;
+        /// <summary>
+        /// The on-premise user principal name of the user.
+        /// </summary>
         public readonly string OnpremisesUserPrincipalName;
+        /// <summary>
+        /// The usage location of the user.
+        /// </summary>
         public readonly string UsageLocation;
+        /// <summary>
+        /// The user principal name (UPN) of the user.
+        /// </summary>
         public readonly string UserPrincipalName;
 
         [OutputConstructor]

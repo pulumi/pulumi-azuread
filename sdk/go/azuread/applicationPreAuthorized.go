@@ -11,14 +11,90 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			authorized, err := azuread.NewApplication(ctx, "authorized", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example-authorized-app"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			authorizer, err := azuread.NewApplication(ctx, "authorizer", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example-authorizing-app"),
+//				Api: &azuread.ApplicationApiArgs{
+//					Oauth2PermissionScopes: azuread.ApplicationApiOauth2PermissionScopeArray{
+//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
+//							AdminConsentDescription: pulumi.String("Administer the application"),
+//							AdminConsentDisplayName: pulumi.String("Administer"),
+//							Enabled:                 pulumi.Bool(true),
+//							Id:                      pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
+//							Type:                    pulumi.String("Admin"),
+//							Value:                   pulumi.String("administer"),
+//						},
+//						&azuread.ApplicationApiOauth2PermissionScopeArgs{
+//							AdminConsentDescription: pulumi.String("Access the application"),
+//							AdminConsentDisplayName: pulumi.String("Access"),
+//							Enabled:                 pulumi.Bool(true),
+//							Id:                      pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
+//							Type:                    pulumi.String("User"),
+//							UserConsentDescription:  pulumi.String("Access the application"),
+//							UserConsentDisplayName:  pulumi.String("Access"),
+//							Value:                   pulumi.String("user_impersonation"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewApplicationPreAuthorized(ctx, "example", &azuread.ApplicationPreAuthorizedArgs{
+//				ApplicationObjectId: authorizer.ObjectId,
+//				AuthorizedAppId:     authorized.ApplicationId,
+//				PermissionIds: pulumi.StringArray{
+//					pulumi.String("ced9c4c3-c273-4f0f-ac71-a20377b90f9c"),
+//					pulumi.String("2d5e07ca-664d-4d9b-ad61-ec07fd215213"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
+//
+// ```
+//
+//	-> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
 type ApplicationPreAuthorized struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the application to which this pre-authorized application should be added
+	// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
 	// The application ID of the pre-authorized application
 	AuthorizedAppId pulumi.StringOutput `pulumi:"authorizedAppId"`
-	// The IDs of the permission scopes required by the pre-authorized application
+	// A set of permission scope IDs required by the authorized application.
 	PermissionIds pulumi.StringArrayOutput `pulumi:"permissionIds"`
 }
 
@@ -60,20 +136,20 @@ func GetApplicationPreAuthorized(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationPreAuthorized resources.
 type applicationPreAuthorizedState struct {
-	// The object ID of the application to which this pre-authorized application should be added
+	// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
 	// The application ID of the pre-authorized application
 	AuthorizedAppId *string `pulumi:"authorizedAppId"`
-	// The IDs of the permission scopes required by the pre-authorized application
+	// A set of permission scope IDs required by the authorized application.
 	PermissionIds []string `pulumi:"permissionIds"`
 }
 
 type ApplicationPreAuthorizedState struct {
-	// The object ID of the application to which this pre-authorized application should be added
+	// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
 	// The application ID of the pre-authorized application
 	AuthorizedAppId pulumi.StringPtrInput
-	// The IDs of the permission scopes required by the pre-authorized application
+	// A set of permission scope IDs required by the authorized application.
 	PermissionIds pulumi.StringArrayInput
 }
 
@@ -82,21 +158,21 @@ func (ApplicationPreAuthorizedState) ElementType() reflect.Type {
 }
 
 type applicationPreAuthorizedArgs struct {
-	// The object ID of the application to which this pre-authorized application should be added
+	// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
 	// The application ID of the pre-authorized application
 	AuthorizedAppId string `pulumi:"authorizedAppId"`
-	// The IDs of the permission scopes required by the pre-authorized application
+	// A set of permission scope IDs required by the authorized application.
 	PermissionIds []string `pulumi:"permissionIds"`
 }
 
 // The set of arguments for constructing a ApplicationPreAuthorized resource.
 type ApplicationPreAuthorizedArgs struct {
-	// The object ID of the application to which this pre-authorized application should be added
+	// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
 	// The application ID of the pre-authorized application
 	AuthorizedAppId pulumi.StringInput
-	// The IDs of the permission scopes required by the pre-authorized application
+	// A set of permission scope IDs required by the authorized application.
 	PermissionIds pulumi.StringArrayInput
 }
 
@@ -187,7 +263,7 @@ func (o ApplicationPreAuthorizedOutput) ToApplicationPreAuthorizedOutputWithCont
 	return o
 }
 
-// The object ID of the application to which this pre-authorized application should be added
+// The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 func (o ApplicationPreAuthorizedOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }
@@ -197,7 +273,7 @@ func (o ApplicationPreAuthorizedOutput) AuthorizedAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringOutput { return v.AuthorizedAppId }).(pulumi.StringOutput)
 }
 
-// The IDs of the permission scopes required by the pre-authorized application
+// A set of permission scope IDs required by the authorized application.
 func (o ApplicationPreAuthorizedOutput) PermissionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationPreAuthorized) pulumi.StringArrayOutput { return v.PermissionIds }).(pulumi.StringArrayOutput)
 }

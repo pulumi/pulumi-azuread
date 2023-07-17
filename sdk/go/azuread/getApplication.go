@@ -10,6 +10,42 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to access information about an existing Application within Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.LookupApplication(ctx, &azuread.LookupApplicationArgs{
+//				DisplayName: pulumi.StringRef("My First AzureAD Application"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("applicationObjectId", example.Id)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	var rv LookupApplicationResult
 	err := ctx.Invoke("azuread:index/getApplication:getApplication", args, &rv, opts...)
@@ -21,46 +57,82 @@ func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ..
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationArgs struct {
+	// Specifies the Application ID (also called Client ID).
 	ApplicationId *string `pulumi:"applicationId"`
-	DisplayName   *string `pulumi:"displayName"`
-	ObjectId      *string `pulumi:"objectId"`
+	// Specifies the display name of the application.
+	DisplayName *string `pulumi:"displayName"`
+	// Specifies the Object ID of the application.
+	//
+	// > One of `objectId`, `applicationId` or `displayName` must be specified.
+	ObjectId *string `pulumi:"objectId"`
 }
 
 // A collection of values returned by getApplication.
 type LookupApplicationResult struct {
-	Apis                        []GetApplicationApi        `pulumi:"apis"`
-	AppRoleIds                  map[string]string          `pulumi:"appRoleIds"`
-	AppRoles                    []GetApplicationAppRole    `pulumi:"appRoles"`
-	ApplicationId               string                     `pulumi:"applicationId"`
-	Description                 string                     `pulumi:"description"`
-	DeviceOnlyAuthEnabled       bool                       `pulumi:"deviceOnlyAuthEnabled"`
-	DisabledByMicrosoft         string                     `pulumi:"disabledByMicrosoft"`
-	DisplayName                 string                     `pulumi:"displayName"`
-	FallbackPublicClientEnabled bool                       `pulumi:"fallbackPublicClientEnabled"`
-	FeatureTags                 []GetApplicationFeatureTag `pulumi:"featureTags"`
-	GroupMembershipClaims       []string                   `pulumi:"groupMembershipClaims"`
+	// An `api` block as documented below.
+	Apis []GetApplicationApi `pulumi:"apis"`
+	// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+	AppRoleIds map[string]string `pulumi:"appRoleIds"`
+	// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+	AppRoles []GetApplicationAppRole `pulumi:"appRoles"`
+	// The Application ID (also called Client ID).
+	ApplicationId string `pulumi:"applicationId"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description string `pulumi:"description"`
+	// Specifies whether this application supports device authentication without a user.
+	DeviceOnlyAuthEnabled bool `pulumi:"deviceOnlyAuthEnabled"`
+	// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+	DisabledByMicrosoft string `pulumi:"disabledByMicrosoft"`
+	// Display name for the app role that appears during app role assignment and in consent experiences.
+	DisplayName string `pulumi:"displayName"`
+	// The fallback application type as public client, such as an installed application running on a mobile device.
+	FallbackPublicClientEnabled bool `pulumi:"fallbackPublicClientEnabled"`
+	// A `features` block as described below.
+	FeatureTags []GetApplicationFeatureTag `pulumi:"featureTags"`
+	// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
+	GroupMembershipClaims []string `pulumi:"groupMembershipClaims"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                         string                                 `pulumi:"id"`
-	IdentifierUris             []string                               `pulumi:"identifierUris"`
-	LogoUrl                    string                                 `pulumi:"logoUrl"`
-	MarketingUrl               string                                 `pulumi:"marketingUrl"`
-	Notes                      string                                 `pulumi:"notes"`
-	Oauth2PermissionScopeIds   map[string]string                      `pulumi:"oauth2PermissionScopeIds"`
-	Oauth2PostResponseRequired bool                                   `pulumi:"oauth2PostResponseRequired"`
-	ObjectId                   string                                 `pulumi:"objectId"`
-	OptionalClaims             []GetApplicationOptionalClaim          `pulumi:"optionalClaims"`
-	Owners                     []string                               `pulumi:"owners"`
-	PrivacyStatementUrl        string                                 `pulumi:"privacyStatementUrl"`
-	PublicClients              []GetApplicationPublicClient           `pulumi:"publicClients"`
-	PublisherDomain            string                                 `pulumi:"publisherDomain"`
-	RequiredResourceAccesses   []GetApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
-	ServiceManagementReference string                                 `pulumi:"serviceManagementReference"`
-	SignInAudience             string                                 `pulumi:"signInAudience"`
-	SinglePageApplications     []GetApplicationSinglePageApplication  `pulumi:"singlePageApplications"`
-	SupportUrl                 string                                 `pulumi:"supportUrl"`
-	Tags                       []string                               `pulumi:"tags"`
-	TermsOfServiceUrl          string                                 `pulumi:"termsOfServiceUrl"`
-	Webs                       []GetApplicationWeb                    `pulumi:"webs"`
+	Id string `pulumi:"id"`
+	// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+	IdentifierUris []string `pulumi:"identifierUris"`
+	// CDN URL to the application's logo.
+	LogoUrl string `pulumi:"logoUrl"`
+	// URL of the application's marketing page.
+	MarketingUrl string `pulumi:"marketingUrl"`
+	// User-specified notes relevant for the management of the application.
+	Notes string `pulumi:"notes"`
+	// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+	Oauth2PermissionScopeIds map[string]string `pulumi:"oauth2PermissionScopeIds"`
+	// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
+	Oauth2PostResponseRequired bool `pulumi:"oauth2PostResponseRequired"`
+	// The application's object ID.
+	ObjectId string `pulumi:"objectId"`
+	// An `optionalClaims` block as documented below.
+	OptionalClaims []GetApplicationOptionalClaim `pulumi:"optionalClaims"`
+	// A list of object IDs of principals that are assigned ownership of the application.
+	Owners []string `pulumi:"owners"`
+	// URL of the application's privacy statement.
+	PrivacyStatementUrl string `pulumi:"privacyStatementUrl"`
+	// A `publicClient` block as documented below.
+	PublicClients []GetApplicationPublicClient `pulumi:"publicClients"`
+	// The verified publisher domain for the application.
+	PublisherDomain string `pulumi:"publisherDomain"`
+	// A collection of `requiredResourceAccess` blocks as documented below.
+	RequiredResourceAccesses []GetApplicationRequiredResourceAccess `pulumi:"requiredResourceAccesses"`
+	// References application context information from a Service or Asset Management database.
+	ServiceManagementReference string `pulumi:"serviceManagementReference"`
+	// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	SignInAudience string `pulumi:"signInAudience"`
+	// A `singlePageApplication` block as documented below.
+	SinglePageApplications []GetApplicationSinglePageApplication `pulumi:"singlePageApplications"`
+	// URL of the application's support page.
+	SupportUrl string `pulumi:"supportUrl"`
+	// A list of tags applied to the application.
+	Tags []string `pulumi:"tags"`
+	// URL of the application's terms of service statement.
+	TermsOfServiceUrl string `pulumi:"termsOfServiceUrl"`
+	// A `web` block as documented below.
+	Webs []GetApplicationWeb `pulumi:"webs"`
 }
 
 func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationResultOutput {
@@ -78,9 +150,14 @@ func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputAr
 
 // A collection of arguments for invoking getApplication.
 type LookupApplicationOutputArgs struct {
+	// Specifies the Application ID (also called Client ID).
 	ApplicationId pulumi.StringPtrInput `pulumi:"applicationId"`
-	DisplayName   pulumi.StringPtrInput `pulumi:"displayName"`
-	ObjectId      pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the display name of the application.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Specifies the Object ID of the application.
+	//
+	// > One of `objectId`, `applicationId` or `displayName` must be specified.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 
 func (LookupApplicationOutputArgs) ElementType() reflect.Type {
@@ -102,46 +179,57 @@ func (o LookupApplicationResultOutput) ToLookupApplicationResultOutputWithContex
 	return o
 }
 
+// An `api` block as documented below.
 func (o LookupApplicationResultOutput) Apis() GetApplicationApiArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationApi { return v.Apis }).(GetApplicationApiArrayOutput)
 }
 
+// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
 func (o LookupApplicationResultOutput) AppRoleIds() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationResult) map[string]string { return v.AppRoleIds }).(pulumi.StringMapOutput)
 }
 
+// A collection of `appRole` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
 func (o LookupApplicationResultOutput) AppRoles() GetApplicationAppRoleArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationAppRole { return v.AppRoles }).(GetApplicationAppRoleArrayOutput)
 }
 
+// The Application ID (also called Client ID).
 func (o LookupApplicationResultOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 func (o LookupApplicationResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specifies whether this application supports device authentication without a user.
 func (o LookupApplicationResultOutput) DeviceOnlyAuthEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationResult) bool { return v.DeviceOnlyAuthEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
 func (o LookupApplicationResultOutput) DisabledByMicrosoft() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.DisabledByMicrosoft }).(pulumi.StringOutput)
 }
 
+// Display name for the app role that appears during app role assignment and in consent experiences.
 func (o LookupApplicationResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The fallback application type as public client, such as an installed application running on a mobile device.
 func (o LookupApplicationResultOutput) FallbackPublicClientEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationResult) bool { return v.FallbackPublicClientEnabled }).(pulumi.BoolOutput)
 }
 
+// A `features` block as described below.
 func (o LookupApplicationResultOutput) FeatureTags() GetApplicationFeatureTagArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationFeatureTag { return v.FeatureTags }).(GetApplicationFeatureTagArrayOutput)
 }
 
+// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
 func (o LookupApplicationResultOutput) GroupMembershipClaims() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []string { return v.GroupMembershipClaims }).(pulumi.StringArrayOutput)
 }
@@ -151,84 +239,104 @@ func (o LookupApplicationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
 func (o LookupApplicationResultOutput) IdentifierUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []string { return v.IdentifierUris }).(pulumi.StringArrayOutput)
 }
 
+// CDN URL to the application's logo.
 func (o LookupApplicationResultOutput) LogoUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.LogoUrl }).(pulumi.StringOutput)
 }
 
+// URL of the application's marketing page.
 func (o LookupApplicationResultOutput) MarketingUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.MarketingUrl }).(pulumi.StringOutput)
 }
 
+// User-specified notes relevant for the management of the application.
 func (o LookupApplicationResultOutput) Notes() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.Notes }).(pulumi.StringOutput)
 }
 
+// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
 func (o LookupApplicationResultOutput) Oauth2PermissionScopeIds() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApplicationResult) map[string]string { return v.Oauth2PermissionScopeIds }).(pulumi.StringMapOutput)
 }
 
+// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
 func (o LookupApplicationResultOutput) Oauth2PostResponseRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupApplicationResult) bool { return v.Oauth2PostResponseRequired }).(pulumi.BoolOutput)
 }
 
+// The application's object ID.
 func (o LookupApplicationResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// An `optionalClaims` block as documented below.
 func (o LookupApplicationResultOutput) OptionalClaims() GetApplicationOptionalClaimArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationOptionalClaim { return v.OptionalClaims }).(GetApplicationOptionalClaimArrayOutput)
 }
 
+// A list of object IDs of principals that are assigned ownership of the application.
 func (o LookupApplicationResultOutput) Owners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []string { return v.Owners }).(pulumi.StringArrayOutput)
 }
 
+// URL of the application's privacy statement.
 func (o LookupApplicationResultOutput) PrivacyStatementUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.PrivacyStatementUrl }).(pulumi.StringOutput)
 }
 
+// A `publicClient` block as documented below.
 func (o LookupApplicationResultOutput) PublicClients() GetApplicationPublicClientArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationPublicClient { return v.PublicClients }).(GetApplicationPublicClientArrayOutput)
 }
 
+// The verified publisher domain for the application.
 func (o LookupApplicationResultOutput) PublisherDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.PublisherDomain }).(pulumi.StringOutput)
 }
 
+// A collection of `requiredResourceAccess` blocks as documented below.
 func (o LookupApplicationResultOutput) RequiredResourceAccesses() GetApplicationRequiredResourceAccessArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationRequiredResourceAccess {
 		return v.RequiredResourceAccesses
 	}).(GetApplicationRequiredResourceAccessArrayOutput)
 }
 
+// References application context information from a Service or Asset Management database.
 func (o LookupApplicationResultOutput) ServiceManagementReference() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.ServiceManagementReference }).(pulumi.StringOutput)
 }
 
+// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 func (o LookupApplicationResultOutput) SignInAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.SignInAudience }).(pulumi.StringOutput)
 }
 
+// A `singlePageApplication` block as documented below.
 func (o LookupApplicationResultOutput) SinglePageApplications() GetApplicationSinglePageApplicationArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationSinglePageApplication { return v.SinglePageApplications }).(GetApplicationSinglePageApplicationArrayOutput)
 }
 
+// URL of the application's support page.
 func (o LookupApplicationResultOutput) SupportUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.SupportUrl }).(pulumi.StringOutput)
 }
 
+// A list of tags applied to the application.
 func (o LookupApplicationResultOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// URL of the application's terms of service statement.
 func (o LookupApplicationResultOutput) TermsOfServiceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApplicationResult) string { return v.TermsOfServiceUrl }).(pulumi.StringOutput)
 }
 
+// A `web` block as documented below.
 func (o LookupApplicationResultOutput) Webs() GetApplicationWebArrayOutput {
 	return o.ApplyT(func(v LookupApplicationResult) []GetApplicationWeb { return v.Webs }).(GetApplicationWebArrayOutput)
 }

@@ -6,6 +6,31 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Gets basic information for multiple Azure Active Directory users.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const users = azuread.getUsers({
+ *     userPrincipalNames: [
+ *         "kat@hashicorp.com",
+ *         "byte@hashicorp.com",
+ *     ],
+ * });
+ * ```
+ */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
 
@@ -24,11 +49,31 @@ export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Prom
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersArgs {
+    /**
+     * The employee identifiers assigned to the users by the organisation.
+     */
     employeeIds?: string[];
+    /**
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
+     */
     ignoreMissing?: boolean;
+    /**
+     * The email aliases of the users.
+     */
     mailNicknames?: string[];
+    /**
+     * The object IDs of the users.
+     */
     objectIds?: string[];
+    /**
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
+     */
     returnAll?: boolean;
+    /**
+     * The user principal names (UPNs) of the users.
+     *
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     */
     userPrincipalNames?: string[];
 }
 
@@ -36,18 +81,58 @@ export interface GetUsersArgs {
  * A collection of values returned by getUsers.
  */
 export interface GetUsersResult {
+    /**
+     * The employee identifiers assigned to the users by the organisation.
+     */
     readonly employeeIds: string[];
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ignoreMissing?: boolean;
+    /**
+     * The email aliases of the users.
+     */
     readonly mailNicknames: string[];
+    /**
+     * The object IDs of the users.
+     */
     readonly objectIds: string[];
     readonly returnAll?: boolean;
+    /**
+     * The user principal names (UPNs) of the users.
+     */
     readonly userPrincipalNames: string[];
+    /**
+     * A list of users. Each `user` object provides the attributes documented below.
+     */
     readonly users: outputs.GetUsersUser[];
 }
+/**
+ * Gets basic information for multiple Azure Active Directory users.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+ *
+ * When authenticated with a user principal, this data source does not require any additional roles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const users = azuread.getUsers({
+ *     userPrincipalNames: [
+ *         "kat@hashicorp.com",
+ *         "byte@hashicorp.com",
+ *     ],
+ * });
+ * ```
+ */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))
 }
@@ -56,10 +141,30 @@ export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOp
  * A collection of arguments for invoking getUsers.
  */
 export interface GetUsersOutputArgs {
+    /**
+     * The employee identifiers assigned to the users by the organisation.
+     */
     employeeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `returnAll`. Defaults to `false`.
+     */
     ignoreMissing?: pulumi.Input<boolean>;
+    /**
+     * The email aliases of the users.
+     */
     mailNicknames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The object IDs of the users.
+     */
     objectIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * When `true`, the data source will return all users. Cannot be used with `ignoreMissing`. Defaults to `false`.
+     */
     returnAll?: pulumi.Input<boolean>;
+    /**
+     * The user principal names (UPNs) of the users.
+     *
+     * > Either `returnAll`, or one of `userPrincipalNames`, `objectIds`, `mailNicknames` or `employeeIds` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+     */
     userPrincipalNames?: pulumi.Input<pulumi.Input<string>[]>;
 }

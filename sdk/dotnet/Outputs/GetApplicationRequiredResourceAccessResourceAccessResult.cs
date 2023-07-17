@@ -13,7 +13,13 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetApplicationRequiredResourceAccessResourceAccessResult
     {
+        /// <summary>
+        /// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+        /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

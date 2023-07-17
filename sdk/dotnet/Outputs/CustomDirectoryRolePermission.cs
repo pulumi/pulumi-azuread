@@ -13,6 +13,9 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class CustomDirectoryRolePermission
     {
+        /// <summary>
+        /// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedResourceActions;
 
         [OutputConstructor]

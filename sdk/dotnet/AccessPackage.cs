@@ -9,29 +9,74 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages an Access Package within Identity Governance in Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
+    ///     {
+    ///         DisplayName = "example-catalog",
+    ///         Description = "Example catalog",
+    ///     });
+    /// 
+    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
+    ///     {
+    ///         CatalogId = exampleAccessPackageCatalog.Id,
+    ///         DisplayName = "access-package",
+    ///         Description = "Access Package",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Access Packages can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
+    /// ```
+    /// </summary>
     [AzureADResourceType("azuread:index/accessPackage:AccessPackage")]
     public partial class AccessPackage : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the Catalog this access package will be created in
+        /// The ID of the Catalog this access package will be created in.
         /// </summary>
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the access package
+        /// The description of the access package.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the access package
+        /// The display name of the access package.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the access package is hidden from the requestor
+        /// Whether the access package is hidden from the requestor.
         /// </summary>
         [Output("hidden")]
         public Output<bool?> Hidden { get; private set; } = null!;
@@ -83,25 +128,25 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Catalog this access package will be created in
+        /// The ID of the Catalog this access package will be created in.
         /// </summary>
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
         /// <summary>
-        /// The description of the access package
+        /// The description of the access package.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The display name of the access package
+        /// The display name of the access package.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Whether the access package is hidden from the requestor
+        /// Whether the access package is hidden from the requestor.
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }
@@ -115,25 +160,25 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the Catalog this access package will be created in
+        /// The ID of the Catalog this access package will be created in.
         /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
 
         /// <summary>
-        /// The description of the access package
+        /// The description of the access package.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the access package
+        /// The display name of the access package.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether the access package is hidden from the requestor
+        /// Whether the access package is hidden from the requestor.
         /// </summary>
         [Input("hidden")]
         public Input<bool>? Hidden { get; set; }

@@ -9,50 +9,89 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleApplicationFederatedIdentityCredential = new AzureAD.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", new()
+    ///     {
+    ///         ApplicationObjectId = exampleApplication.ObjectId,
+    ///         DisplayName = "my-repo-deploy",
+    ///         Description = "Deployments for my-repo",
+    ///         Audiences = new[]
+    ///         {
+    ///             "api://AzureADTokenExchange",
+    ///         },
+    ///         Issuer = "https://token.actions.githubusercontent.com",
+    ///         Subject = "repo:my-organization/my-repo:environment:prod",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
+    /// ```
+    /// 
+    ///  -&gt; This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+    /// </summary>
     [AzureADResourceType("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential")]
     public partial class ApplicationFederatedIdentityCredential : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created
+        /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("applicationObjectId")]
         public Output<string> ApplicationObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
-        /// incoming tokens.
+        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
         [Output("audiences")]
         public Output<ImmutableArray<string>> Audiences { get; private set; } = null!;
 
         /// <summary>
-        /// A UUID used to uniquely identify this federated identity credential
+        /// A UUID used to uniquely identify this federated identity credential.
         /// </summary>
         [Output("credentialId")]
         public Output<string> CredentialId { get; private set; } = null!;
 
         /// <summary>
-        /// A description for the federated identity credential
+        /// A description for the federated identity credential.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// A unique display name for the federated identity credential
+        /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
-        /// combination of the values of issuer and subject must be unique on the app.
+        /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
         /// </summary>
         [Output("issuer")]
         public Output<string> Issuer { get; private set; } = null!;
 
         /// <summary>
-        /// The identifier of the external software workload within the external identity provider. The combination of issuer and
-        /// subject must be unique on the app.
+        /// The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
         /// </summary>
         [Output("subject")]
         public Output<string> Subject { get; private set; } = null!;
@@ -104,7 +143,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationFederatedIdentityCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created
+        /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("applicationObjectId", required: true)]
         public Input<string> ApplicationObjectId { get; set; } = null!;
@@ -113,8 +152,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _audiences;
 
         /// <summary>
-        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
-        /// incoming tokens.
+        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
         public InputList<string> Audiences
         {
@@ -123,27 +161,25 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A description for the federated identity credential
+        /// A description for the federated identity credential.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A unique display name for the federated identity credential
+        /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
-        /// combination of the values of issuer and subject must be unique on the app.
+        /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
         /// </summary>
         [Input("issuer", required: true)]
         public Input<string> Issuer { get; set; } = null!;
 
         /// <summary>
-        /// The identifier of the external software workload within the external identity provider. The combination of issuer and
-        /// subject must be unique on the app.
+        /// The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
         /// </summary>
         [Input("subject", required: true)]
         public Input<string> Subject { get; set; } = null!;
@@ -157,7 +193,7 @@ namespace Pulumi.AzureAD
     public sealed class ApplicationFederatedIdentityCredentialState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the application for which this federated identity credential should be created
+        /// The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("applicationObjectId")]
         public Input<string>? ApplicationObjectId { get; set; }
@@ -166,8 +202,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _audiences;
 
         /// <summary>
-        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
-        /// incoming tokens.
+        /// List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
         /// </summary>
         public InputList<string> Audiences
         {
@@ -176,33 +211,31 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// A UUID used to uniquely identify this federated identity credential
+        /// A UUID used to uniquely identify this federated identity credential.
         /// </summary>
         [Input("credentialId")]
         public Input<string>? CredentialId { get; set; }
 
         /// <summary>
-        /// A description for the federated identity credential
+        /// A description for the federated identity credential.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// A unique display name for the federated identity credential
+        /// A unique display name for the federated identity credential. Changing this forces a new resource to be created.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
-        /// combination of the values of issuer and subject must be unique on the app.
+        /// The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
         /// </summary>
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
         /// <summary>
-        /// The identifier of the external software workload within the external identity provider. The combination of issuer and
-        /// subject must be unique on the app.
+        /// The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }

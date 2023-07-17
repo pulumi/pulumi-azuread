@@ -6,6 +6,77 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an assignment policy for an access package within Identity Governance in Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+ *
+ * When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleGroup = new azuread.Group("exampleGroup", {
+ *     displayName: "group-name",
+ *     securityEnabled: true,
+ * });
+ * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
+ *     displayName: "example-catalog",
+ *     description: "Example catalog",
+ * });
+ * const exampleAccessPackage = new azuread.AccessPackage("exampleAccessPackage", {
+ *     catalogId: exampleAccessPackageCatalog.id,
+ *     displayName: "access-package",
+ *     description: "Access Package",
+ * });
+ * const test = new azuread.AccessPackageAssignmentPolicy("test", {
+ *     accessPackageId: azuread_access_package.test.id,
+ *     displayName: "assignment-policy",
+ *     description: "My assignment policy",
+ *     durationInDays: 90,
+ *     requestorSettings: {
+ *         scopeType: "AllExistingDirectoryMemberUsers",
+ *     },
+ *     approvalSettings: {
+ *         approvalRequired: true,
+ *         approvalStages: [{
+ *             approvalTimeoutInDays: 14,
+ *             primaryApprovers: [{
+ *                 objectId: azuread_group.test.object_id,
+ *                 subjectType: "groupMembers",
+ *             }],
+ *         }],
+ *     },
+ *     assignmentReviewSettings: {
+ *         enabled: true,
+ *         reviewFrequency: "weekly",
+ *         durationInDays: 3,
+ *         reviewType: "Self",
+ *         accessReviewTimeoutBehavior: "keepAccess",
+ *     },
+ *     questions: [{
+ *         text: {
+ *             defaultText: "hello, how are you?",
+ *         },
+ *     }],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * An access package assignment policy can be imported using the ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
+ * ```
+ */
 export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     /**
      * Get an existing AccessPackageAssignmentPolicy resource's state with the given name, ID, and optional extra
@@ -35,43 +106,43 @@ export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the access package that will contain the policy
+     * The ID of the access package that will contain the policy.
      */
     public readonly accessPackageId!: pulumi.Output<string>;
     /**
-     * Settings of whether approvals are required and how they are obtained
+     * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      */
     public readonly approvalSettings!: pulumi.Output<outputs.AccessPackageAssignmentPolicyApprovalSettings | undefined>;
     /**
-     * The settings of whether assignment review is needed and how it's conducted
+     * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      */
     public readonly assignmentReviewSettings!: pulumi.Output<outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings | undefined>;
     /**
-     * The description of the policy
+     * The description of the policy.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The display name of the policy
+     * The display name of the policy.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * How many days this assignment is valid for
+     * How many days this assignment is valid for.
      */
     public readonly durationInDays!: pulumi.Output<number | undefined>;
     /**
-     * The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+     * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      */
     public readonly expirationDate!: pulumi.Output<string | undefined>;
     /**
-     * When enabled, users will be able to request extension of their access to this package before their access expires
+     * Whether users will be able to request extension of their access to this package before their access expires.
      */
     public readonly extensionEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * One or more questions to the requestor
+     * One or more `question` blocks for the requestor, as documented below.
      */
     public readonly questions!: pulumi.Output<outputs.AccessPackageAssignmentPolicyQuestion[] | undefined>;
     /**
-     * This block configures the users who can request access
+     * A `requestorSettings` block to configure the users who can request access, as documented below.
      */
     public readonly requestorSettings!: pulumi.Output<outputs.AccessPackageAssignmentPolicyRequestorSettings | undefined>;
 
@@ -130,43 +201,43 @@ export class AccessPackageAssignmentPolicy extends pulumi.CustomResource {
  */
 export interface AccessPackageAssignmentPolicyState {
     /**
-     * The ID of the access package that will contain the policy
+     * The ID of the access package that will contain the policy.
      */
     accessPackageId?: pulumi.Input<string>;
     /**
-     * Settings of whether approvals are required and how they are obtained
+     * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      */
     approvalSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettings>;
     /**
-     * The settings of whether assignment review is needed and how it's conducted
+     * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      */
     assignmentReviewSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettings>;
     /**
-     * The description of the policy
+     * The description of the policy.
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name of the policy
+     * The display name of the policy.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * How many days this assignment is valid for
+     * How many days this assignment is valid for.
      */
     durationInDays?: pulumi.Input<number>;
     /**
-     * The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+     * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      */
     expirationDate?: pulumi.Input<string>;
     /**
-     * When enabled, users will be able to request extension of their access to this package before their access expires
+     * Whether users will be able to request extension of their access to this package before their access expires.
      */
     extensionEnabled?: pulumi.Input<boolean>;
     /**
-     * One or more questions to the requestor
+     * One or more `question` blocks for the requestor, as documented below.
      */
     questions?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestion>[]>;
     /**
-     * This block configures the users who can request access
+     * A `requestorSettings` block to configure the users who can request access, as documented below.
      */
     requestorSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettings>;
 }
@@ -176,43 +247,43 @@ export interface AccessPackageAssignmentPolicyState {
  */
 export interface AccessPackageAssignmentPolicyArgs {
     /**
-     * The ID of the access package that will contain the policy
+     * The ID of the access package that will contain the policy.
      */
     accessPackageId: pulumi.Input<string>;
     /**
-     * Settings of whether approvals are required and how they are obtained
+     * An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
      */
     approvalSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyApprovalSettings>;
     /**
-     * The settings of whether assignment review is needed and how it's conducted
+     * An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
      */
     assignmentReviewSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyAssignmentReviewSettings>;
     /**
-     * The description of the policy
+     * The description of the policy.
      */
     description: pulumi.Input<string>;
     /**
-     * The display name of the policy
+     * The display name of the policy.
      */
     displayName: pulumi.Input<string>;
     /**
-     * How many days this assignment is valid for
+     * How many days this assignment is valid for.
      */
     durationInDays?: pulumi.Input<number>;
     /**
-     * The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+     * The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
      */
     expirationDate?: pulumi.Input<string>;
     /**
-     * When enabled, users will be able to request extension of their access to this package before their access expires
+     * Whether users will be able to request extension of their access to this package before their access expires.
      */
     extensionEnabled?: pulumi.Input<boolean>;
     /**
-     * One or more questions to the requestor
+     * One or more `question` blocks for the requestor, as documented below.
      */
     questions?: pulumi.Input<pulumi.Input<inputs.AccessPackageAssignmentPolicyQuestion>[]>;
     /**
-     * This block configures the users who can request access
+     * A `requestorSettings` block to configure the users who can request access, as documented below.
      */
     requestorSettings?: pulumi.Input<inputs.AccessPackageAssignmentPolicyRequestorSettings>;
 }

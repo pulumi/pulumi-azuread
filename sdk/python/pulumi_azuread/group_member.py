@@ -18,9 +18,8 @@ class GroupMemberArgs:
                  member_object_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a GroupMember resource.
-        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-               Service Principals
+        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "group_object_id", group_object_id)
         pulumi.set(__self__, "member_object_id", member_object_id)
@@ -29,7 +28,7 @@ class GroupMemberArgs:
     @pulumi.getter(name="groupObjectId")
     def group_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the group you want to add the member to
+        The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "group_object_id")
 
@@ -41,8 +40,7 @@ class GroupMemberArgs:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-        Service Principals
+        The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -58,9 +56,8 @@ class _GroupMemberState:
                  member_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GroupMember resources.
-        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-               Service Principals
+        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         if group_object_id is not None:
             pulumi.set(__self__, "group_object_id", group_object_id)
@@ -71,7 +68,7 @@ class _GroupMemberState:
     @pulumi.getter(name="groupObjectId")
     def group_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the group you want to add the member to
+        The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "group_object_id")
 
@@ -83,8 +80,7 @@ class _GroupMemberState:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-        Service Principals
+        The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -102,12 +98,49 @@ class GroupMember(pulumi.CustomResource):
                  member_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a GroupMember resource with the given unique name, props, and options.
+        Manages a single group membership within Azure Active Directory.
+
+        > **Warning** Do not use this resource at the same time as the `members` property of the `Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+
+        However, if the authenticated service principal is an owner of the group being managed, an application role is not required.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup",
+            display_name="my_group",
+            security_enabled=True)
+        example_group_member = azuread.GroupMember("exampleGroupMember",
+            group_object_id=example_group.id,
+            member_object_id=example_user.id)
+        ```
+
+        ## Import
+
+        Group members can be imported using the object ID of the group and the object ID of the member, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-               Service Principals
+        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -116,7 +149,45 @@ class GroupMember(pulumi.CustomResource):
                  args: GroupMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a GroupMember resource with the given unique name, props, and options.
+        Manages a single group membership within Azure Active Directory.
+
+        > **Warning** Do not use this resource at the same time as the `members` property of the `Group` resource for the same group. Doing so will cause a conflict and group members will be removed.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Group.ReadWrite.All` or `Directory.ReadWrite.All`.
+
+        However, if the authenticated service principal is an owner of the group being managed, an application role is not required.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Groups Administrator`, `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_group = azuread.Group("exampleGroup",
+            display_name="my_group",
+            security_enabled=True)
+        example_group_member = azuread.GroupMember("exampleGroupMember",
+            group_object_id=example_group.id,
+            member_object_id=example_user.id)
+        ```
+
+        ## Import
+
+        Group members can be imported using the object ID of the group and the object ID of the member, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/groupMember:GroupMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Azure AD Group Object ID and the target Member Object ID in the format `{GroupObjectID}/member/{MemberObjectID}`.
+
         :param str resource_name: The name of the resource.
         :param GroupMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -168,9 +239,8 @@ class GroupMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to
-        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-               Service Principals
+        :param pulumi.Input[str] group_object_id: The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -184,7 +254,7 @@ class GroupMember(pulumi.CustomResource):
     @pulumi.getter(name="groupObjectId")
     def group_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the group you want to add the member to
+        The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "group_object_id")
 
@@ -192,8 +262,7 @@ class GroupMember(pulumi.CustomResource):
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or
-        Service Principals
+        The object ID of the principal you want to add as a member to the group. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 

@@ -9,65 +9,165 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages an assignment policy for an access package within Identity Governance in Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+    /// 
+    /// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleGroup = new AzureAD.Group("exampleGroup", new()
+    ///     {
+    ///         DisplayName = "group-name",
+    ///         SecurityEnabled = true,
+    ///     });
+    /// 
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
+    ///     {
+    ///         DisplayName = "example-catalog",
+    ///         Description = "Example catalog",
+    ///     });
+    /// 
+    ///     var exampleAccessPackage = new AzureAD.AccessPackage("exampleAccessPackage", new()
+    ///     {
+    ///         CatalogId = exampleAccessPackageCatalog.Id,
+    ///         DisplayName = "access-package",
+    ///         Description = "Access Package",
+    ///     });
+    /// 
+    ///     var test = new AzureAD.AccessPackageAssignmentPolicy("test", new()
+    ///     {
+    ///         AccessPackageId = azuread_access_package.Test.Id,
+    ///         DisplayName = "assignment-policy",
+    ///         Description = "My assignment policy",
+    ///         DurationInDays = 90,
+    ///         RequestorSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs
+    ///         {
+    ///             ScopeType = "AllExistingDirectoryMemberUsers",
+    ///         },
+    ///         ApprovalSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs
+    ///         {
+    ///             ApprovalRequired = true,
+    ///             ApprovalStages = new[]
+    ///             {
+    ///                 new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs
+    ///                 {
+    ///                     ApprovalTimeoutInDays = 14,
+    ///                     PrimaryApprovers = new[]
+    ///                     {
+    ///                         new AzureAD.Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs
+    ///                         {
+    ///                             ObjectId = azuread_group.Test.Object_id,
+    ///                             SubjectType = "groupMembers",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         AssignmentReviewSettings = new AzureAD.Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs
+    ///         {
+    ///             Enabled = true,
+    ///             ReviewFrequency = "weekly",
+    ///             DurationInDays = 3,
+    ///             ReviewType = "Self",
+    ///             AccessReviewTimeoutBehavior = "keepAccess",
+    ///         },
+    ///         Questions = new[]
+    ///         {
+    ///             new AzureAD.Inputs.AccessPackageAssignmentPolicyQuestionArgs
+    ///             {
+    ///                 Text = new AzureAD.Inputs.AccessPackageAssignmentPolicyQuestionTextArgs
+    ///                 {
+    ///                     DefaultText = "hello, how are you?",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An access package assignment policy can be imported using the ID, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
+    /// ```
+    /// </summary>
     [AzureADResourceType("azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy")]
     public partial class AccessPackageAssignmentPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The ID of the access package that will contain the policy
+        /// The ID of the access package that will contain the policy.
         /// </summary>
         [Output("accessPackageId")]
         public Output<string> AccessPackageId { get; private set; } = null!;
 
         /// <summary>
-        /// Settings of whether approvals are required and how they are obtained
+        /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
         /// </summary>
         [Output("approvalSettings")]
         public Output<Outputs.AccessPackageAssignmentPolicyApprovalSettings?> ApprovalSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The settings of whether assignment review is needed and how it's conducted
+        /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         /// </summary>
         [Output("assignmentReviewSettings")]
         public Output<Outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings?> AssignmentReviewSettings { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the policy
+        /// The description of the policy.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the policy
+        /// The display name of the policy.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// How many days this assignment is valid for
+        /// How many days this assignment is valid for.
         /// </summary>
         [Output("durationInDays")]
         public Output<int?> DurationInDays { get; private set; } = null!;
 
         /// <summary>
-        /// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+        /// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
         /// </summary>
         [Output("expirationDate")]
         public Output<string?> ExpirationDate { get; private set; } = null!;
 
         /// <summary>
-        /// When enabled, users will be able to request extension of their access to this package before their access expires
+        /// Whether users will be able to request extension of their access to this package before their access expires.
         /// </summary>
         [Output("extensionEnabled")]
         public Output<bool?> ExtensionEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// One or more questions to the requestor
+        /// One or more `question` blocks for the requestor, as documented below.
         /// </summary>
         [Output("questions")]
         public Output<ImmutableArray<Outputs.AccessPackageAssignmentPolicyQuestion>> Questions { get; private set; } = null!;
 
         /// <summary>
-        /// This block configures the users who can request access
+        /// A `requestor_settings` block to configure the users who can request access, as documented below.
         /// </summary>
         [Output("requestorSettings")]
         public Output<Outputs.AccessPackageAssignmentPolicyRequestorSettings?> RequestorSettings { get; private set; } = null!;
@@ -119,49 +219,49 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageAssignmentPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the access package that will contain the policy
+        /// The ID of the access package that will contain the policy.
         /// </summary>
         [Input("accessPackageId", required: true)]
         public Input<string> AccessPackageId { get; set; } = null!;
 
         /// <summary>
-        /// Settings of whether approvals are required and how they are obtained
+        /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
         /// </summary>
         [Input("approvalSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyApprovalSettingsArgs>? ApprovalSettings { get; set; }
 
         /// <summary>
-        /// The settings of whether assignment review is needed and how it's conducted
+        /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         /// </summary>
         [Input("assignmentReviewSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs>? AssignmentReviewSettings { get; set; }
 
         /// <summary>
-        /// The description of the policy
+        /// The description of the policy.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The display name of the policy
+        /// The display name of the policy.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// How many days this assignment is valid for
+        /// How many days this assignment is valid for.
         /// </summary>
         [Input("durationInDays")]
         public Input<int>? DurationInDays { get; set; }
 
         /// <summary>
-        /// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+        /// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
-        /// When enabled, users will be able to request extension of their access to this package before their access expires
+        /// Whether users will be able to request extension of their access to this package before their access expires.
         /// </summary>
         [Input("extensionEnabled")]
         public Input<bool>? ExtensionEnabled { get; set; }
@@ -170,7 +270,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.AccessPackageAssignmentPolicyQuestionArgs>? _questions;
 
         /// <summary>
-        /// One or more questions to the requestor
+        /// One or more `question` blocks for the requestor, as documented below.
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyQuestionArgs> Questions
         {
@@ -179,7 +279,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// This block configures the users who can request access
+        /// A `requestor_settings` block to configure the users who can request access, as documented below.
         /// </summary>
         [Input("requestorSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyRequestorSettingsArgs>? RequestorSettings { get; set; }
@@ -193,49 +293,49 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageAssignmentPolicyState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of the access package that will contain the policy
+        /// The ID of the access package that will contain the policy.
         /// </summary>
         [Input("accessPackageId")]
         public Input<string>? AccessPackageId { get; set; }
 
         /// <summary>
-        /// Settings of whether approvals are required and how they are obtained
+        /// An `approval_settings` block to specify whether approvals are required and how they are obtained, as documented below.
         /// </summary>
         [Input("approvalSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyApprovalSettingsGetArgs>? ApprovalSettings { get; set; }
 
         /// <summary>
-        /// The settings of whether assignment review is needed and how it's conducted
+        /// An `assignment_review_settings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
         /// </summary>
         [Input("assignmentReviewSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyAssignmentReviewSettingsGetArgs>? AssignmentReviewSettings { get; set; }
 
         /// <summary>
-        /// The description of the policy
+        /// The description of the policy.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the policy
+        /// The display name of the policy.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// How many days this assignment is valid for
+        /// How many days this assignment is valid for.
         /// </summary>
         [Input("durationInDays")]
         public Input<int>? DurationInDays { get; set; }
 
         /// <summary>
-        /// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+        /// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
         /// </summary>
         [Input("expirationDate")]
         public Input<string>? ExpirationDate { get; set; }
 
         /// <summary>
-        /// When enabled, users will be able to request extension of their access to this package before their access expires
+        /// Whether users will be able to request extension of their access to this package before their access expires.
         /// </summary>
         [Input("extensionEnabled")]
         public Input<bool>? ExtensionEnabled { get; set; }
@@ -244,7 +344,7 @@ namespace Pulumi.AzureAD
         private InputList<Inputs.AccessPackageAssignmentPolicyQuestionGetArgs>? _questions;
 
         /// <summary>
-        /// One or more questions to the requestor
+        /// One or more `question` blocks for the requestor, as documented below.
         /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyQuestionGetArgs> Questions
         {
@@ -253,7 +353,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// This block configures the users who can request access
+        /// A `requestor_settings` block to configure the users who can request access, as documented below.
         /// </summary>
         [Input("requestorSettings")]
         public Input<Inputs.AccessPackageAssignmentPolicyRequestorSettingsGetArgs>? RequestorSettings { get; set; }

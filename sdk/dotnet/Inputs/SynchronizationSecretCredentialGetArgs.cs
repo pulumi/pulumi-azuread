@@ -12,11 +12,18 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class SynchronizationSecretCredentialGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The key of the secret.
+        /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         [Input("value", required: true)]
         private Input<string>? _value;
+
+        /// <summary>
+        /// The value of the secret.
+        /// </summary>
         public Input<string>? Value
         {
             get => _value;

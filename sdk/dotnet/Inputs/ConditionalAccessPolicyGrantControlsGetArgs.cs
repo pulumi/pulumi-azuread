@@ -14,6 +14,10 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("builtInControls", required: true)]
         private InputList<string>? _builtInControls;
+
+        /// <summary>
+        /// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+        /// </summary>
         public InputList<string> BuiltInControls
         {
             get => _builtInControls ?? (_builtInControls = new InputList<string>());
@@ -22,17 +26,28 @@ namespace Pulumi.AzureAD.Inputs
 
         [Input("customAuthenticationFactors")]
         private InputList<string>? _customAuthenticationFactors;
+
+        /// <summary>
+        /// List of custom controls IDs required by the policy.
+        /// </summary>
         public InputList<string> CustomAuthenticationFactors
         {
             get => _customAuthenticationFactors ?? (_customAuthenticationFactors = new InputList<string>());
             set => _customAuthenticationFactors = value;
         }
 
+        /// <summary>
+        /// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        /// </summary>
         [Input("operator", required: true)]
         public Input<string> Operator { get; set; } = null!;
 
         [Input("termsOfUses")]
         private InputList<string>? _termsOfUses;
+
+        /// <summary>
+        /// List of terms of use IDs required by the policy.
+        /// </summary>
         public InputList<string> TermsOfUses
         {
             get => _termsOfUses ?? (_termsOfUses = new InputList<string>());

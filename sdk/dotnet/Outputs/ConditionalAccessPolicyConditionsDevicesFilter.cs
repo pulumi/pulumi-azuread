@@ -13,7 +13,13 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicyConditionsDevicesFilter
     {
+        /// <summary>
+        /// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
+        /// </summary>
         public readonly string Mode;
+        /// <summary>
+        /// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
+        /// </summary>
         public readonly string Rule;
 
         [OutputConstructor]

@@ -19,9 +19,9 @@ class AppRoleAssignmentArgs:
                  resource_object_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a AppRoleAssignment resource.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned
-        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role
-        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "app_role_id", app_role_id)
         pulumi.set(__self__, "principal_object_id", principal_object_id)
@@ -31,7 +31,7 @@ class AppRoleAssignmentArgs:
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> pulumi.Input[str]:
         """
-        The ID of the app role to be assigned
+        The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 
@@ -43,7 +43,7 @@ class AppRoleAssignmentArgs:
     @pulumi.getter(name="principalObjectId")
     def principal_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the user, group or service principal to be assigned this app role
+        The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "principal_object_id")
 
@@ -55,7 +55,7 @@ class AppRoleAssignmentArgs:
     @pulumi.getter(name="resourceObjectId")
     def resource_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal representing the resource
+        The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_object_id")
 
@@ -75,12 +75,12 @@ class _AppRoleAssignmentState:
                  resource_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AppRoleAssignment resources.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned
-        :param pulumi.Input[str] principal_display_name: The display name of the principal to which the app role is assigned
-        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role
-        :param pulumi.Input[str] principal_type: The object type of the principal to which the app role is assigned
-        :param pulumi.Input[str] resource_display_name: The display name of the application representing the resource
-        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] principal_display_name: The display name of the principal to which the app role is assigned.
+        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] principal_type: The object type of the principal to which the app role is assigned.
+        :param pulumi.Input[str] resource_display_name: The display name of the application representing the resource.
+        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         if app_role_id is not None:
             pulumi.set(__self__, "app_role_id", app_role_id)
@@ -99,7 +99,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the app role to be assigned
+        The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 
@@ -111,7 +111,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="principalDisplayName")
     def principal_display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the principal to which the app role is assigned
+        The display name of the principal to which the app role is assigned.
         """
         return pulumi.get(self, "principal_display_name")
 
@@ -123,7 +123,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="principalObjectId")
     def principal_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the user, group or service principal to be assigned this app role
+        The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "principal_object_id")
 
@@ -135,7 +135,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="principalType")
     def principal_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The object type of the principal to which the app role is assigned
+        The object type of the principal to which the app role is assigned.
         """
         return pulumi.get(self, "principal_type")
 
@@ -147,7 +147,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="resourceDisplayName")
     def resource_display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the application representing the resource
+        The display name of the application representing the resource.
         """
         return pulumi.get(self, "resource_display_name")
 
@@ -159,7 +159,7 @@ class _AppRoleAssignmentState:
     @pulumi.getter(name="resourceObjectId")
     def resource_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal representing the resource
+        The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_object_id")
 
@@ -178,12 +178,153 @@ class AppRoleAssignment(pulumi.CustomResource):
                  resource_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AppRoleAssignment resource with the given unique name, props, and options.
+        Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `AppRoleAssignment.ReadWrite.All` and `Application.Read.All`, or `AppRoleAssignment.ReadWrite.All` and `Directory.Read.All`, or `Application.ReadWrite.All`, or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *App role assignment for accessing Microsoft Graph*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.app_role_ids["User.Read.All"],
+                        type="Role",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=msgraph.app_role_ids["User.Read.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=msgraph.object_id)
+        ```
+
+        *App role assignment for internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=["Application"],
+                description="Apps can query the database",
+                display_name="Query",
+                enabled=True,
+                id="00000000-0000-0000-0000-111111111111",
+                value="Query.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=internal_application.application_id,
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=internal_service_principal.app_role_ids["Query.All"],
+                    type="Role",
+                )],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Query.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a user and group to an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_domains = azuread.get_domains(only_initial=True)
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=[
+                    "Application",
+                    "User",
+                ],
+                description="Admins can perform all task actions",
+                display_name="Admin",
+                enabled=True,
+                id="00000000-0000-0000-0000-222222222222",
+                value="Admin.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        example_user = azuread.User("exampleUser",
+            display_name="D. Duck",
+            password="SecretP@sswd99!",
+            user_principal_name=f"d.duck@{example_domains.domains[0].domain_name}")
+        example_index_app_role_assignment_app_role_assignment = azuread.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_user.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a group to the default app role for an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication", display_name="internal")
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id="00000000-0000-0000-0000-000000000000",
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        ## Import
+
+        App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
+
+        ```sh
+         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned
-        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role
-        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -192,7 +333,148 @@ class AppRoleAssignment(pulumi.CustomResource):
                  args: AppRoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AppRoleAssignment resource with the given unique name, props, and options.
+        Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `AppRoleAssignment.ReadWrite.All` and `Application.Read.All`, or `AppRoleAssignment.ReadWrite.All` and `Directory.Read.All`, or `Application.ReadWrite.All`, or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *App role assignment for accessing Microsoft Graph*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.app_role_ids["User.Read.All"],
+                        type="Role",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.ReadWrite"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=msgraph.app_role_ids["User.Read.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=msgraph.object_id)
+        ```
+
+        *App role assignment for internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=["Application"],
+                description="Apps can query the database",
+                display_name="Query",
+                enabled=True,
+                id="00000000-0000-0000-0000-111111111111",
+                value="Query.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=internal_application.application_id,
+                resource_accesses=[azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                    id=internal_service_principal.app_role_ids["Query.All"],
+                    type="Role",
+                )],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Query.All"],
+            principal_object_id=example_service_principal.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a user and group to an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_domains = azuread.get_domains(only_initial=True)
+        internal_application = azuread.Application("internalApplication",
+            display_name="internal",
+            app_roles=[azuread.ApplicationAppRoleArgs(
+                allowed_member_types=[
+                    "Application",
+                    "User",
+                ],
+                description="Admins can perform all task actions",
+                display_name="Admin",
+                enabled=True,
+                id="00000000-0000-0000-0000-222222222222",
+                value="Admin.All",
+            )])
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        example_user = azuread.User("exampleUser",
+            display_name="D. Duck",
+            password="SecretP@sswd99!",
+            user_principal_name=f"d.duck@{example_domains.domains[0].domain_name}")
+        example_index_app_role_assignment_app_role_assignment = azuread.AppRoleAssignment("exampleIndex/appRoleAssignmentAppRoleAssignment",
+            app_role_id=internal_service_principal.app_role_ids["Admin.All"],
+            principal_object_id=example_user.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        *Assign a group to the default app role for an internal application*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        internal_application = azuread.Application("internalApplication", display_name="internal")
+        internal_service_principal = azuread.ServicePrincipal("internalServicePrincipal", application_id=internal_application.application_id)
+        example_group = azuread.Group("exampleGroup",
+            display_name="example",
+            security_enabled=True)
+        example_app_role_assignment = azuread.AppRoleAssignment("exampleAppRoleAssignment",
+            app_role_id="00000000-0000-0000-0000-000000000000",
+            principal_object_id=example_group.object_id,
+            resource_object_id=internal_service_principal.object_id)
+        ```
+
+        ## Import
+
+        App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
+
+        ```sh
+         $ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
+
         :param str resource_name: The name of the resource.
         :param AppRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,12 +537,12 @@ class AppRoleAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned
-        :param pulumi.Input[str] principal_display_name: The display name of the principal to which the app role is assigned
-        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role
-        :param pulumi.Input[str] principal_type: The object type of the principal to which the app role is assigned
-        :param pulumi.Input[str] resource_display_name: The display name of the application representing the resource
-        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource
+        :param pulumi.Input[str] app_role_id: The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] principal_display_name: The display name of the principal to which the app role is assigned.
+        :param pulumi.Input[str] principal_object_id: The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] principal_type: The object type of the principal to which the app role is assigned.
+        :param pulumi.Input[str] resource_display_name: The display name of the application representing the resource.
+        :param pulumi.Input[str] resource_object_id: The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -278,7 +560,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> pulumi.Output[str]:
         """
-        The ID of the app role to be assigned
+        The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "app_role_id")
 
@@ -286,7 +568,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="principalDisplayName")
     def principal_display_name(self) -> pulumi.Output[str]:
         """
-        The display name of the principal to which the app role is assigned
+        The display name of the principal to which the app role is assigned.
         """
         return pulumi.get(self, "principal_display_name")
 
@@ -294,7 +576,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="principalObjectId")
     def principal_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the user, group or service principal to be assigned this app role
+        The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "principal_object_id")
 
@@ -302,7 +584,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="principalType")
     def principal_type(self) -> pulumi.Output[str]:
         """
-        The object type of the principal to which the app role is assigned
+        The object type of the principal to which the app role is assigned.
         """
         return pulumi.get(self, "principal_type")
 
@@ -310,7 +592,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="resourceDisplayName")
     def resource_display_name(self) -> pulumi.Output[str]:
         """
-        The display name of the application representing the resource
+        The display name of the application representing the resource.
         """
         return pulumi.get(self, "resource_display_name")
 
@@ -318,7 +600,7 @@ class AppRoleAssignment(pulumi.CustomResource):
     @pulumi.getter(name="resourceObjectId")
     def resource_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal representing the resource
+        The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_object_id")
 

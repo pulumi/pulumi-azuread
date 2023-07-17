@@ -4,6 +4,34 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleApplicationFederatedIdentityCredential = new azuread.ApplicationFederatedIdentityCredential("exampleApplicationFederatedIdentityCredential", {
+ *     applicationObjectId: exampleApplication.objectId,
+ *     displayName: "my-repo-deploy",
+ *     description: "Deployments for my-repo",
+ *     audiences: ["api://AzureADTokenExchange"],
+ *     issuer: "https://token.actions.githubusercontent.com",
+ *     subject: "repo:my-organization/my-repo:environment:prod",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Federated Identity Credentials can be imported using the object ID of the associated application and the ID of the federated identity credential, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential test 00000000-0000-0000-0000-000000000000/federatedIdentityCredential/11111111-1111-1111-1111-111111111111
+ * ```
+ *
+ *  -> This ID format is unique to Terraform and is composed of the application's object ID, the string "federatedIdentityCredential" and the credential ID in the format `{ObjectId}/federatedIdentityCredential/{CredentialId}`.
+ */
 export class ApplicationFederatedIdentityCredential extends pulumi.CustomResource {
     /**
      * Get an existing ApplicationFederatedIdentityCredential resource's state with the given name, ID, and optional extra
@@ -33,34 +61,31 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
     }
 
     /**
-     * The object ID of the application for which this federated identity credential should be created
+     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
     public readonly applicationObjectId!: pulumi.Output<string>;
     /**
-     * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
-     * incoming tokens.
+     * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
     public readonly audiences!: pulumi.Output<string[]>;
     /**
-     * A UUID used to uniquely identify this federated identity credential
+     * A UUID used to uniquely identify this federated identity credential.
      */
     public /*out*/ readonly credentialId!: pulumi.Output<string>;
     /**
-     * A description for the federated identity credential
+     * A description for the federated identity credential.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A unique display name for the federated identity credential
+     * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
-     * combination of the values of issuer and subject must be unique on the app.
+     * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      */
     public readonly issuer!: pulumi.Output<string>;
     /**
-     * The identifier of the external software workload within the external identity provider. The combination of issuer and
-     * subject must be unique on the app.
+     * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      */
     public readonly subject!: pulumi.Output<string>;
 
@@ -119,34 +144,31 @@ export class ApplicationFederatedIdentityCredential extends pulumi.CustomResourc
  */
 export interface ApplicationFederatedIdentityCredentialState {
     /**
-     * The object ID of the application for which this federated identity credential should be created
+     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
     applicationObjectId?: pulumi.Input<string>;
     /**
-     * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
-     * incoming tokens.
+     * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
     audiences?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A UUID used to uniquely identify this federated identity credential
+     * A UUID used to uniquely identify this federated identity credential.
      */
     credentialId?: pulumi.Input<string>;
     /**
-     * A description for the federated identity credential
+     * A description for the federated identity credential.
      */
     description?: pulumi.Input<string>;
     /**
-     * A unique display name for the federated identity credential
+     * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
-     * combination of the values of issuer and subject must be unique on the app.
+     * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      */
     issuer?: pulumi.Input<string>;
     /**
-     * The identifier of the external software workload within the external identity provider. The combination of issuer and
-     * subject must be unique on the app.
+     * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      */
     subject?: pulumi.Input<string>;
 }
@@ -156,30 +178,27 @@ export interface ApplicationFederatedIdentityCredentialState {
  */
 export interface ApplicationFederatedIdentityCredentialArgs {
     /**
-     * The object ID of the application for which this federated identity credential should be created
+     * The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
      */
     applicationObjectId: pulumi.Input<string>;
     /**
-     * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of
-     * incoming tokens.
+     * List of audiences that can appear in the external token. This specifies what should be accepted in the `aud` claim of incoming tokens.
      */
     audiences: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A description for the federated identity credential
+     * A description for the federated identity credential.
      */
     description?: pulumi.Input<string>;
     /**
-     * A unique display name for the federated identity credential
+     * A unique display name for the federated identity credential. Changing this forces a new resource to be created.
      */
     displayName: pulumi.Input<string>;
     /**
-     * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The
-     * combination of the values of issuer and subject must be unique on the app.
+     * The URL of the external identity provider, which must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app.
      */
     issuer: pulumi.Input<string>;
     /**
-     * The identifier of the external software workload within the external identity provider. The combination of issuer and
-     * subject must be unique on the app.
+     * The identifier of the external software workload within the external identity provider. The combination of issuer and subject must be unique on the app.
      */
     subject: pulumi.Input<string>;
 }

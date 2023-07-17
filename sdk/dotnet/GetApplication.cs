@@ -11,9 +11,83 @@ namespace Pulumi.AzureAD
 {
     public static class GetApplication
     {
+        /// <summary>
+        /// Use this data source to access information about an existing Application within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetApplication.Invoke(new()
+        ///     {
+        ///         DisplayName = "My First AzureAD Application",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetApplicationResult> InvokeAsync(GetApplicationArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Use this data source to access information about an existing Application within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetApplication.Invoke(new()
+        ///     {
+        ///         DisplayName = "My First AzureAD Application",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["applicationObjectId"] = example.Apply(getApplicationResult =&gt; getApplicationResult.Id),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("azuread:index/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
     }
@@ -21,12 +95,23 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specifies the Application ID (also called Client ID).
+        /// </summary>
         [Input("applicationId")]
         public string? ApplicationId { get; set; }
 
+        /// <summary>
+        /// Specifies the display name of the application.
+        /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
+        /// <summary>
+        /// Specifies the Object ID of the application.
+        /// 
+        /// &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+        /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
@@ -38,12 +123,23 @@ namespace Pulumi.AzureAD
 
     public sealed class GetApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Specifies the Application ID (also called Client ID).
+        /// </summary>
         [Input("applicationId")]
         public Input<string>? ApplicationId { get; set; }
 
+        /// <summary>
+        /// Specifies the display name of the application.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Specifies the Object ID of the application.
+        /// 
+        /// &gt; One of `object_id`, `application_id` or `display_name` must be specified.
+        /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
@@ -57,40 +153,133 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetApplicationResult
     {
+        /// <summary>
+        /// An `api` block as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationApiResult> Apis;
+        /// <summary>
+        /// A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> AppRoleIds;
+        /// <summary>
+        /// A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationAppRoleResult> AppRoles;
+        /// <summary>
+        /// The Application ID (also called Client ID).
+        /// </summary>
         public readonly string ApplicationId;
+        /// <summary>
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Specifies whether this application supports device authentication without a user.
+        /// </summary>
         public readonly bool DeviceOnlyAuthEnabled;
+        /// <summary>
+        /// Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        /// </summary>
         public readonly string DisabledByMicrosoft;
+        /// <summary>
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// The fallback application type as public client, such as an installed application running on a mobile device.
+        /// </summary>
         public readonly bool FallbackPublicClientEnabled;
+        /// <summary>
+        /// A `features` block as described below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationFeatureTagResult> FeatureTags;
+        /// <summary>
+        /// The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
+        /// </summary>
         public readonly ImmutableArray<string> GroupMembershipClaims;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        /// </summary>
         public readonly ImmutableArray<string> IdentifierUris;
+        /// <summary>
+        /// CDN URL to the application's logo.
+        /// </summary>
         public readonly string LogoUrl;
+        /// <summary>
+        /// URL of the application's marketing page.
+        /// </summary>
         public readonly string MarketingUrl;
+        /// <summary>
+        /// User-specified notes relevant for the management of the application.
+        /// </summary>
         public readonly string Notes;
+        /// <summary>
+        /// A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+        /// </summary>
         public readonly ImmutableDictionary<string, string> Oauth2PermissionScopeIds;
+        /// <summary>
+        /// Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
+        /// </summary>
         public readonly bool Oauth2PostResponseRequired;
+        /// <summary>
+        /// The application's object ID.
+        /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// An `optional_claims` block as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationOptionalClaimResult> OptionalClaims;
+        /// <summary>
+        /// A list of object IDs of principals that are assigned ownership of the application.
+        /// </summary>
         public readonly ImmutableArray<string> Owners;
+        /// <summary>
+        /// URL of the application's privacy statement.
+        /// </summary>
         public readonly string PrivacyStatementUrl;
+        /// <summary>
+        /// A `public_client` block as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationPublicClientResult> PublicClients;
+        /// <summary>
+        /// The verified publisher domain for the application.
+        /// </summary>
         public readonly string PublisherDomain;
+        /// <summary>
+        /// A collection of `required_resource_access` blocks as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationRequiredResourceAccessResult> RequiredResourceAccesses;
+        /// <summary>
+        /// References application context information from a Service or Asset Management database.
+        /// </summary>
         public readonly string ServiceManagementReference;
+        /// <summary>
+        /// The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        /// </summary>
         public readonly string SignInAudience;
+        /// <summary>
+        /// A `single_page_application` block as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationSinglePageApplicationResult> SinglePageApplications;
+        /// <summary>
+        /// URL of the application's support page.
+        /// </summary>
         public readonly string SupportUrl;
+        /// <summary>
+        /// A list of tags applied to the application.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// URL of the application's terms of service statement.
+        /// </summary>
         public readonly string TermsOfServiceUrl;
+        /// <summary>
+        /// A `web` block as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationWebResult> Webs;
 
         [OutputConstructor]

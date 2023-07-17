@@ -117,46 +117,73 @@ class GetGroupResult:
     @property
     @pulumi.getter(name="assignableToRole")
     def assignable_to_role(self) -> bool:
+        """
+        Indicates whether this group can be assigned to an Azure Active Directory role.
+        """
         return pulumi.get(self, "assignable_to_role")
 
     @property
     @pulumi.getter(name="autoSubscribeNewMembers")
     def auto_subscribe_new_members(self) -> bool:
+        """
+        Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+        """
         return pulumi.get(self, "auto_subscribe_new_members")
 
     @property
     @pulumi.getter
     def behaviors(self) -> Sequence[str]:
+        """
+        A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
+        """
         return pulumi.get(self, "behaviors")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The optional description of the group.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The display name for the group.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="dynamicMemberships")
     def dynamic_memberships(self) -> Sequence['outputs.GetGroupDynamicMembershipResult']:
+        """
+        A `dynamic_membership` block as documented below.
+        """
         return pulumi.get(self, "dynamic_memberships")
 
     @property
     @pulumi.getter(name="externalSendersAllowed")
     def external_senders_allowed(self) -> bool:
+        """
+        Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+        """
         return pulumi.get(self, "external_senders_allowed")
 
     @property
     @pulumi.getter(name="hideFromAddressLists")
     def hide_from_address_lists(self) -> bool:
+        """
+        Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+        """
         return pulumi.get(self, "hide_from_address_lists")
 
     @property
     @pulumi.getter(name="hideFromOutlookClients")
     def hide_from_outlook_clients(self) -> bool:
+        """
+        Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+        """
         return pulumi.get(self, "hide_from_outlook_clients")
 
     @property
@@ -170,101 +197,161 @@ class GetGroupResult:
     @property
     @pulumi.getter
     def mail(self) -> str:
+        """
+        The SMTP address for the group.
+        """
         return pulumi.get(self, "mail")
 
     @property
     @pulumi.getter(name="mailEnabled")
     def mail_enabled(self) -> bool:
+        """
+        Whether the group is mail-enabled.
+        """
         return pulumi.get(self, "mail_enabled")
 
     @property
     @pulumi.getter(name="mailNickname")
     def mail_nickname(self) -> str:
+        """
+        The mail alias for the group, unique in the organisation.
+        """
         return pulumi.get(self, "mail_nickname")
 
     @property
     @pulumi.getter
     def members(self) -> Sequence[str]:
+        """
+        List of object IDs of the group members.
+        """
         return pulumi.get(self, "members")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The object ID of the group.
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="onpremisesDomainName")
     def onpremises_domain_name(self) -> str:
+        """
+        The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
         return pulumi.get(self, "onpremises_domain_name")
 
     @property
     @pulumi.getter(name="onpremisesGroupType")
     def onpremises_group_type(self) -> str:
+        """
+        The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        """
         return pulumi.get(self, "onpremises_group_type")
 
     @property
     @pulumi.getter(name="onpremisesNetbiosName")
     def onpremises_netbios_name(self) -> str:
+        """
+        The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
         return pulumi.get(self, "onpremises_netbios_name")
 
     @property
     @pulumi.getter(name="onpremisesSamAccountName")
     def onpremises_sam_account_name(self) -> str:
+        """
+        The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        """
         return pulumi.get(self, "onpremises_sam_account_name")
 
     @property
     @pulumi.getter(name="onpremisesSecurityIdentifier")
     def onpremises_security_identifier(self) -> str:
+        """
+        The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        """
         return pulumi.get(self, "onpremises_security_identifier")
 
     @property
     @pulumi.getter(name="onpremisesSyncEnabled")
     def onpremises_sync_enabled(self) -> bool:
+        """
+        Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        """
         return pulumi.get(self, "onpremises_sync_enabled")
 
     @property
     @pulumi.getter
     def owners(self) -> Sequence[str]:
+        """
+        List of object IDs of the group owners.
+        """
         return pulumi.get(self, "owners")
 
     @property
     @pulumi.getter(name="preferredLanguage")
     def preferred_language(self) -> str:
+        """
+        The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        """
         return pulumi.get(self, "preferred_language")
 
     @property
     @pulumi.getter(name="provisioningOptions")
     def provisioning_options(self) -> Sequence[str]:
+        """
+        A list of provisioning options for a Microsoft 365 group, such as `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details.
+        """
         return pulumi.get(self, "provisioning_options")
 
     @property
     @pulumi.getter(name="proxyAddresses")
     def proxy_addresses(self) -> Sequence[str]:
+        """
+        List of email addresses for the group that direct to the same group mailbox.
+        """
         return pulumi.get(self, "proxy_addresses")
 
     @property
     @pulumi.getter(name="securityEnabled")
     def security_enabled(self) -> bool:
+        """
+        Whether the group is a security group.
+        """
         return pulumi.get(self, "security_enabled")
 
     @property
     @pulumi.getter
     def theme(self) -> str:
+        """
+        The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
+        """
         return pulumi.get(self, "theme")
 
     @property
     @pulumi.getter
     def types(self) -> Sequence[str]:
+        """
+        A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
+        """
         return pulumi.get(self, "types")
 
     @property
     @pulumi.getter
     def visibility(self) -> str:
+        """
+        The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
+        """
         return pulumi.get(self, "visibility")
 
     @property
     @pulumi.getter(name="writebackEnabled")
     def writeback_enabled(self) -> bool:
+        """
+        Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        """
         return pulumi.get(self, "writeback_enabled")
 
 
@@ -312,7 +399,34 @@ def get_group(display_name: Optional[str] = None,
               security_enabled: Optional[bool] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupResult:
     """
-    Use this data source to access information about an existing resource.
+    Gets information about an Azure Active Directory group.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+    ### By Group Display Name)
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_group(display_name="MyGroupName",
+        security_enabled=True)
+    ```
+
+
+    :param str display_name: The display name for the group.
+    :param bool mail_enabled: Whether the group is mail-enabled.
+    :param str object_id: Specifies the object ID of the group.
+    :param bool security_enabled: Whether the group is a security group.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -362,6 +476,33 @@ def get_group_output(display_name: Optional[pulumi.Input[Optional[str]]] = None,
                      security_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupResult]:
     """
-    Use this data source to access information about an existing resource.
+    Gets information about an Azure Active Directory group.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+    ### By Group Display Name)
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_group(display_name="MyGroupName",
+        security_enabled=True)
+    ```
+
+
+    :param str display_name: The display name for the group.
+    :param bool mail_enabled: Whether the group is mail-enabled.
+    :param str object_id: Specifies the object ID of the group.
+    :param bool security_enabled: Whether the group is a security group.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...

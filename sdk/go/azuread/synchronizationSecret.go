@@ -11,11 +11,87 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+//
+// ## Example Usage
+//
+// *Basic example*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleApplicationTemplate, err := azuread.GetApplicationTemplate(ctx, &azuread.GetApplicationTemplateArgs{
+//				DisplayName: pulumi.StringRef("Azure Databricks SCIM Provisioning Connector"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				TemplateId:  *pulumi.String(exampleApplicationTemplate.TemplateId),
+//				FeatureTags: azuread.ApplicationFeatureTagArray{
+//					&azuread.ApplicationFeatureTagArgs{
+//						Enterprise: pulumi.Bool(true),
+//						Gallery:    pulumi.Bool(true),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewSynchronizationSecret(ctx, "exampleSynchronizationSecret", &azuread.SynchronizationSecretArgs{
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
+//				Credentials: azuread.SynchronizationSecretCredentialArray{
+//					&azuread.SynchronizationSecretCredentialArgs{
+//						Key:   pulumi.String("BaseAddress"),
+//						Value: pulumi.String("abc"),
+//					},
+//					&azuread.SynchronizationSecretCredentialArgs{
+//						Key:   pulumi.String("SecretToken"),
+//						Value: pulumi.String("some-token"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource does not support importing.
 type SynchronizationSecret struct {
 	pulumi.CustomResourceState
 
+	// One or more `credential` blocks as documented below.
 	Credentials SynchronizationSecretCredentialArrayOutput `pulumi:"credentials"`
-	// The object ID of the service principal for which this synchronization secret should be created
+	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringOutput `pulumi:"servicePrincipalId"`
 }
 
@@ -51,14 +127,16 @@ func GetSynchronizationSecret(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SynchronizationSecret resources.
 type synchronizationSecretState struct {
+	// One or more `credential` blocks as documented below.
 	Credentials []SynchronizationSecretCredential `pulumi:"credentials"`
-	// The object ID of the service principal for which this synchronization secret should be created
+	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId *string `pulumi:"servicePrincipalId"`
 }
 
 type SynchronizationSecretState struct {
+	// One or more `credential` blocks as documented below.
 	Credentials SynchronizationSecretCredentialArrayInput
-	// The object ID of the service principal for which this synchronization secret should be created
+	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringPtrInput
 }
 
@@ -67,15 +145,17 @@ func (SynchronizationSecretState) ElementType() reflect.Type {
 }
 
 type synchronizationSecretArgs struct {
+	// One or more `credential` blocks as documented below.
 	Credentials []SynchronizationSecretCredential `pulumi:"credentials"`
-	// The object ID of the service principal for which this synchronization secret should be created
+	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId string `pulumi:"servicePrincipalId"`
 }
 
 // The set of arguments for constructing a SynchronizationSecret resource.
 type SynchronizationSecretArgs struct {
+	// One or more `credential` blocks as documented below.
 	Credentials SynchronizationSecretCredentialArrayInput
-	// The object ID of the service principal for which this synchronization secret should be created
+	// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 	ServicePrincipalId pulumi.StringInput
 }
 
@@ -166,11 +246,12 @@ func (o SynchronizationSecretOutput) ToSynchronizationSecretOutputWithContext(ct
 	return o
 }
 
+// One or more `credential` blocks as documented below.
 func (o SynchronizationSecretOutput) Credentials() SynchronizationSecretCredentialArrayOutput {
 	return o.ApplyT(func(v *SynchronizationSecret) SynchronizationSecretCredentialArrayOutput { return v.Credentials }).(SynchronizationSecretCredentialArrayOutput)
 }
 
-// The object ID of the service principal for which this synchronization secret should be created
+// The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
 func (o SynchronizationSecretOutput) ServicePrincipalId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SynchronizationSecret) pulumi.StringOutput { return v.ServicePrincipalId }).(pulumi.StringOutput)
 }

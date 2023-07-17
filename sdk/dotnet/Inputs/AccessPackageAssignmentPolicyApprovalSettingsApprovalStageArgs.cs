@@ -12,28 +12,48 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether alternative approvers are enabled.
+        /// </summary>
         [Input("alternativeApprovalEnabled")]
         public Input<bool>? AlternativeApprovalEnabled { get; set; }
 
         [Input("alternativeApprovers")]
         private InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs>? _alternativeApprovers;
+
+        /// <summary>
+        /// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs> AlternativeApprovers
         {
             get => _alternativeApprovers ?? (_alternativeApprovers = new InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs>());
             set => _alternativeApprovers = value;
         }
 
+        /// <summary>
+        /// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+        /// </summary>
         [Input("approvalTimeoutInDays", required: true)]
         public Input<int> ApprovalTimeoutInDays { get; set; } = null!;
 
+        /// <summary>
+        /// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+        /// </summary>
         [Input("approverJustificationRequired")]
         public Input<bool>? ApproverJustificationRequired { get; set; }
 
+        /// <summary>
+        /// Number of days before the request is forwarded to alternative approvers.
+        /// </summary>
         [Input("enableAlternativeApprovalInDays")]
         public Input<int>? EnableAlternativeApprovalInDays { get; set; }
 
         [Input("primaryApprovers")]
         private InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs>? _primaryApprovers;
+
+        /// <summary>
+        /// A block specifying the users who will be asked to approve requests, as documented below.
+        /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs> PrimaryApprovers
         {
             get => _primaryApprovers ?? (_primaryApprovers = new InputList<Inputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs>());

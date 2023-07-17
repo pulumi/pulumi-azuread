@@ -53,16 +53,25 @@ class GetApplicationTemplateResult:
     @property
     @pulumi.getter
     def categories(self) -> Sequence[str]:
+        """
+        List of categories for this templated application.
+        """
         return pulumi.get(self, "categories")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The display name for the templated application.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="homepageUrl")
     def homepage_url(self) -> str:
+        """
+        Home page URL of the templated application.
+        """
         return pulumi.get(self, "homepage_url")
 
     @property
@@ -76,26 +85,41 @@ class GetApplicationTemplateResult:
     @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> str:
+        """
+        URL to retrieve the logo for this templated application.
+        """
         return pulumi.get(self, "logo_url")
 
     @property
     @pulumi.getter
     def publisher(self) -> str:
+        """
+        Name of the publisher for this templated application.
+        """
         return pulumi.get(self, "publisher")
 
     @property
     @pulumi.getter(name="supportedProvisioningTypes")
     def supported_provisioning_types(self) -> Sequence[str]:
+        """
+        List of provisioning modes supported by this templated application.
+        """
         return pulumi.get(self, "supported_provisioning_types")
 
     @property
     @pulumi.getter(name="supportedSingleSignOnModes")
     def supported_single_sign_on_modes(self) -> Sequence[str]:
+        """
+        List of single sign on modes supported by this templated application.
+        """
         return pulumi.get(self, "supported_single_sign_on_modes")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
+        """
+        The ID of the templated application.
+        """
         return pulumi.get(self, "template_id")
 
 
@@ -120,7 +144,27 @@ def get_application_template(display_name: Optional[str] = None,
                              template_id: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationTemplateResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
+
+    ## API Permissions
+
+    This data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application_template(display_name="Marketo")
+    pulumi.export("applicationTemplateId", example.template_id)
+    ```
+
+
+    :param str display_name: Specifies the display name of the templated application.
+    :param str template_id: Specifies the ID of the templated application.
+           
+           > One of `template_id` or `display_name` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -145,6 +189,26 @@ def get_application_template_output(display_name: Optional[pulumi.Input[Optional
                                     template_id: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationTemplateResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
+
+    ## API Permissions
+
+    This data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application_template(display_name="Marketo")
+    pulumi.export("applicationTemplateId", example.template_id)
+    ```
+
+
+    :param str display_name: Specifies the display name of the templated application.
+    :param str template_id: Specifies the ID of the templated application.
+           
+           > One of `template_id` or `display_name` must be specified.
     """
     ...

@@ -46,16 +46,25 @@ class GetDirectoryRolesResult:
     @property
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence[str]:
+        """
+        The object IDs of the roles.
+        """
         return pulumi.get(self, "object_ids")
 
     @property
     @pulumi.getter
     def roles(self) -> Sequence['outputs.GetDirectoryRolesRoleResult']:
+        """
+        A list of users. Each `role` object provides the attributes documented below.
+        """
         return pulumi.get(self, "roles")
 
     @property
     @pulumi.getter(name="templateIds")
     def template_ids(self) -> Sequence[str]:
+        """
+        The template IDs of the roles.
+        """
         return pulumi.get(self, "template_ids")
 
 
@@ -73,7 +82,25 @@ class AwaitableGetDirectoryRolesResult(GetDirectoryRolesResult):
 
 def get_directory_roles(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryRolesResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to access information about activated directory roles within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this resource.
+
+    When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    current = azuread.get_directory_roles()
+    pulumi.export("roles", current.object_ids)
+    ```
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

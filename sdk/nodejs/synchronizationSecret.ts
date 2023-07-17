@@ -6,6 +6,57 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * ## Example Usage
+ *
+ * *Basic example*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplicationTemplate = azuread.getApplicationTemplate({
+ *     displayName: "Azure Databricks SCIM Provisioning Connector",
+ * });
+ * const exampleApplication = new azuread.Application("exampleApplication", {
+ *     displayName: "example",
+ *     templateId: exampleApplicationTemplate.then(exampleApplicationTemplate => exampleApplicationTemplate.templateId),
+ *     featureTags: [{
+ *         enterprise: true,
+ *         gallery: true,
+ *     }],
+ * });
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {
+ *     applicationId: exampleApplication.applicationId,
+ *     useExisting: true,
+ * });
+ * const exampleSynchronizationSecret = new azuread.SynchronizationSecret("exampleSynchronizationSecret", {
+ *     servicePrincipalId: exampleServicePrincipal.id,
+ *     credentials: [
+ *         {
+ *             key: "BaseAddress",
+ *             value: "abc",
+ *         },
+ *         {
+ *             key: "SecretToken",
+ *             value: "some-token",
+ *         },
+ *     ],
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource does not support importing.
+ */
 export class SynchronizationSecret extends pulumi.CustomResource {
     /**
      * Get an existing SynchronizationSecret resource's state with the given name, ID, and optional extra
@@ -34,9 +85,12 @@ export class SynchronizationSecret extends pulumi.CustomResource {
         return obj['__pulumiType'] === SynchronizationSecret.__pulumiType;
     }
 
+    /**
+     * One or more `credential` blocks as documented below.
+     */
     public readonly credentials!: pulumi.Output<outputs.SynchronizationSecretCredential[] | undefined>;
     /**
-     * The object ID of the service principal for which this synchronization secret should be created
+     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
 
@@ -72,9 +126,12 @@ export class SynchronizationSecret extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SynchronizationSecret resources.
  */
 export interface SynchronizationSecretState {
+    /**
+     * One or more `credential` blocks as documented below.
+     */
     credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[]>;
     /**
-     * The object ID of the service principal for which this synchronization secret should be created
+     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
 }
@@ -83,9 +140,12 @@ export interface SynchronizationSecretState {
  * The set of arguments for constructing a SynchronizationSecret resource.
  */
 export interface SynchronizationSecretArgs {
+    /**
+     * One or more `credential` blocks as documented below.
+     */
     credentials?: pulumi.Input<pulumi.Input<inputs.SynchronizationSecretCredential>[]>;
     /**
-     * The object ID of the service principal for which this synchronization secret should be created
+     * The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
 }

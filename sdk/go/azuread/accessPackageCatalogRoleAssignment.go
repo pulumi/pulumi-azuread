@@ -11,14 +11,80 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a single catalog role assignment within Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleUser, err := azuread.LookupUser(ctx, &azuread.LookupUserArgs{
+//				UserPrincipalName: pulumi.StringRef("jdoe@hashicorp.com"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackageCatalogRole, err := azuread.GetAccessPackageCatalogRole(ctx, &azuread.GetAccessPackageCatalogRoleArgs{
+//				DisplayName: pulumi.StringRef("Catalog owner"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//				DisplayName: pulumi.String("example-access-package-catalog"),
+//				Description: pulumi.String("Example access package catalog"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "exampleAccessPackageCatalogRoleAssignment", &azuread.AccessPackageCatalogRoleAssignmentArgs{
+//				RoleId:            *pulumi.String(exampleAccessPackageCatalogRole.ObjectId),
+//				PrincipalObjectId: *pulumi.String(exampleUser.ObjectId),
+//				CatalogId:         exampleAccessPackageCatalog.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Catalog role assignments can be imported using the ID of the assignment, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
+//
+// ```
 type AccessPackageCatalogRoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// The unique ID of the access package catalog.
+	// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 	CatalogId pulumi.StringOutput `pulumi:"catalogId"`
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringOutput `pulumi:"principalObjectId"`
-	// The object ID of the catalog role for this assignment
+	// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 }
 
@@ -60,20 +126,20 @@ func GetAccessPackageCatalogRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPackageCatalogRoleAssignment resources.
 type accessPackageCatalogRoleAssignmentState struct {
-	// The unique ID of the access package catalog.
+	// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 	CatalogId *string `pulumi:"catalogId"`
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId *string `pulumi:"principalObjectId"`
-	// The object ID of the catalog role for this assignment
+	// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
 	RoleId *string `pulumi:"roleId"`
 }
 
 type AccessPackageCatalogRoleAssignmentState struct {
-	// The unique ID of the access package catalog.
+	// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 	CatalogId pulumi.StringPtrInput
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringPtrInput
-	// The object ID of the catalog role for this assignment
+	// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
 	RoleId pulumi.StringPtrInput
 }
 
@@ -82,21 +148,21 @@ func (AccessPackageCatalogRoleAssignmentState) ElementType() reflect.Type {
 }
 
 type accessPackageCatalogRoleAssignmentArgs struct {
-	// The unique ID of the access package catalog.
+	// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 	CatalogId string `pulumi:"catalogId"`
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId string `pulumi:"principalObjectId"`
-	// The object ID of the catalog role for this assignment
+	// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
 	RoleId string `pulumi:"roleId"`
 }
 
 // The set of arguments for constructing a AccessPackageCatalogRoleAssignment resource.
 type AccessPackageCatalogRoleAssignmentArgs struct {
-	// The unique ID of the access package catalog.
+	// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 	CatalogId pulumi.StringInput
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringInput
-	// The object ID of the catalog role for this assignment
+	// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
 	RoleId pulumi.StringInput
 }
 
@@ -187,17 +253,17 @@ func (o AccessPackageCatalogRoleAssignmentOutput) ToAccessPackageCatalogRoleAssi
 	return o
 }
 
-// The unique ID of the access package catalog.
+// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 func (o AccessPackageCatalogRoleAssignmentOutput) CatalogId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageCatalogRoleAssignment) pulumi.StringOutput { return v.CatalogId }).(pulumi.StringOutput)
 }
 
-// The object ID of the member principal
+// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 func (o AccessPackageCatalogRoleAssignmentOutput) PrincipalObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageCatalogRoleAssignment) pulumi.StringOutput { return v.PrincipalObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the catalog role for this assignment
+// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
 func (o AccessPackageCatalogRoleAssignmentOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageCatalogRoleAssignment) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

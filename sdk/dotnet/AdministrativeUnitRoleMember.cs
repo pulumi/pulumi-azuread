@@ -9,23 +9,79 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages a single directory role assignment scoped to an administrative unit within Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` and `RoleManagement.ReadWrite.Directory`, or `Directory.ReadWrite.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
+    /// 
+    ///     var exampleAdministrativeUnit = new AzureAD.AdministrativeUnit("exampleAdministrativeUnit", new()
+    ///     {
+    ///         DisplayName = "Example-AU",
+    ///     });
+    /// 
+    ///     var exampleDirectoryRole = new AzureAD.DirectoryRole("exampleDirectoryRole", new()
+    ///     {
+    ///         DisplayName = "Security administrator",
+    ///     });
+    /// 
+    ///     var exampleAdministrativeUnitRoleMember = new AzureAD.AdministrativeUnitRoleMember("exampleAdministrativeUnitRoleMember", new()
+    ///     {
+    ///         RoleObjectId = exampleDirectoryRole.ObjectId,
+    ///         AdministrativeUnitObjectId = exampleAdministrativeUnit.Id,
+    ///         MemberObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.Id),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Administrative unit role members can be imported using the object ID of the administrative unit and the unique ID of the role assignment, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember test 00000000-0000-0000-0000-000000000000/roleMember/zX37MRLyF0uvE-xf2WH4B7x-6CPLfudNnxFGj800htpBXqkxW7bITqGb6Rj4kuTuS
+    /// ```
+    /// 
+    ///  -&gt; This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the role assignment ID in the format `{AdministrativeUnitObjectID}/roleMember/{RoleAssignmentID}`.
+    /// </summary>
     [AzureADResourceType("azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember")]
     public partial class AdministrativeUnitRoleMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The object ID of the administrative unit
+        /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         /// </summary>
         [Output("administrativeUnitObjectId")]
         public Output<string> AdministrativeUnitObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the member
+        /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         /// </summary>
         [Output("memberObjectId")]
         public Output<string> MemberObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the directory role
+        /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
         /// </summary>
         [Output("roleObjectId")]
         public Output<string> RoleObjectId { get; private set; } = null!;
@@ -77,19 +133,19 @@ namespace Pulumi.AzureAD
     public sealed class AdministrativeUnitRoleMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the administrative unit
+        /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         /// </summary>
         [Input("administrativeUnitObjectId", required: true)]
         public Input<string> AdministrativeUnitObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the member
+        /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         /// </summary>
         [Input("memberObjectId", required: true)]
         public Input<string> MemberObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the directory role
+        /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
         /// </summary>
         [Input("roleObjectId", required: true)]
         public Input<string> RoleObjectId { get; set; } = null!;
@@ -103,19 +159,19 @@ namespace Pulumi.AzureAD
     public sealed class AdministrativeUnitRoleMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The object ID of the administrative unit
+        /// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         /// </summary>
         [Input("administrativeUnitObjectId")]
         public Input<string>? AdministrativeUnitObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the member
+        /// The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         /// </summary>
         [Input("memberObjectId")]
         public Input<string>? MemberObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the directory role
+        /// The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
         /// </summary>
         [Input("roleObjectId")]
         public Input<string>? RoleObjectId { get; set; }

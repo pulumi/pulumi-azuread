@@ -14,18 +14,31 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("allowedMemberTypes", required: true)]
         private InputList<string>? _allowedMemberTypes;
+
+        /// <summary>
+        /// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
+        /// </summary>
         public InputList<string> AllowedMemberTypes
         {
             get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
             set => _allowedMemberTypes = value;
         }
 
+        /// <summary>
+        /// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
+        /// <summary>
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
+        /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
+        /// <summary>
+        /// Determines if the app role is enabled. Defaults to `true`.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 

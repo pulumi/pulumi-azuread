@@ -51,6 +51,9 @@ class GetUsersResult:
     @property
     @pulumi.getter(name="employeeIds")
     def employee_ids(self) -> Sequence[str]:
+        """
+        The employee identifiers assigned to the users by the organisation.
+        """
         return pulumi.get(self, "employee_ids")
 
     @property
@@ -69,11 +72,17 @@ class GetUsersResult:
     @property
     @pulumi.getter(name="mailNicknames")
     def mail_nicknames(self) -> Sequence[str]:
+        """
+        The email aliases of the users.
+        """
         return pulumi.get(self, "mail_nicknames")
 
     @property
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence[str]:
+        """
+        The object IDs of the users.
+        """
         return pulumi.get(self, "object_ids")
 
     @property
@@ -84,11 +93,17 @@ class GetUsersResult:
     @property
     @pulumi.getter(name="userPrincipalNames")
     def user_principal_names(self) -> Sequence[str]:
+        """
+        The user principal names (UPNs) of the users.
+        """
         return pulumi.get(self, "user_principal_names")
 
     @property
     @pulumi.getter
     def users(self) -> Sequence['outputs.GetUsersUserResult']:
+        """
+        A list of users. Each `user` object provides the attributes documented below.
+        """
         return pulumi.get(self, "users")
 
 
@@ -116,7 +131,37 @@ def get_users(employee_ids: Optional[Sequence[str]] = None,
               user_principal_names: Optional[Sequence[str]] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUsersResult:
     """
-    Use this data source to access information about an existing resource.
+    Gets basic information for multiple Azure Active Directory users.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    users = azuread.get_users(user_principal_names=[
+        "kat@hashicorp.com",
+        "byte@hashicorp.com",
+    ])
+    ```
+
+
+    :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.
+    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+    :param Sequence[str] mail_nicknames: The email aliases of the users.
+    :param Sequence[str] object_ids: The object IDs of the users.
+    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+    :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
+           
+           > Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
     __args__['employeeIds'] = employee_ids
@@ -148,6 +193,36 @@ def get_users_output(employee_ids: Optional[pulumi.Input[Optional[Sequence[str]]
                      user_principal_names: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUsersResult]:
     """
-    Use this data source to access information about an existing resource.
+    Gets basic information for multiple Azure Active Directory users.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    users = azuread.get_users(user_principal_names=[
+        "kat@hashicorp.com",
+        "byte@hashicorp.com",
+    ])
+    ```
+
+
+    :param Sequence[str] employee_ids: The employee identifiers assigned to the users by the organisation.
+    :param bool ignore_missing: Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+    :param Sequence[str] mail_nicknames: The email aliases of the users.
+    :param Sequence[str] object_ids: The object IDs of the users.
+    :param bool return_all: When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+    :param Sequence[str] user_principal_names: The user principal names (UPNs) of the users.
+           
+           > Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
     """
     ...

@@ -13,11 +13,29 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ServicePrincipalAppRole
     {
+        /// <summary>
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        /// </summary>
         public readonly ImmutableArray<string> AllowedMemberTypes;
+        /// <summary>
+        /// A description of the service principal provided for internal end-users.
+        /// </summary>
         public readonly string? Description;
+        /// <summary>
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
+        /// </summary>
         public readonly string? DisplayName;
+        /// <summary>
+        /// Specifies whether the permission scope is enabled.
+        /// </summary>
         public readonly bool? Enabled;
+        /// <summary>
+        /// The unique identifier of the delegated permission.
+        /// </summary>
         public readonly string? Id;
+        /// <summary>
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

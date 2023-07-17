@@ -9,29 +9,67 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages an access package catalog within Identity Governance in Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.AccessPackageCatalog("example", new()
+    ///     {
+    ///         Description = "Example access package catalog",
+    ///         DisplayName = "example-access-package-catalog",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// An Access Package Catalog can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
+    /// ```
+    /// </summary>
     [AzureADResourceType("azuread:index/accessPackageCatalog:AccessPackageCatalog")]
     public partial class AccessPackageCatalog : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The description of the access package catalog
+        /// The description of the access package catalog.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the access package catalog
+        /// The display name of the access package catalog.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the access packages in this catalog can be requested by users outside the tenant
+        /// Whether the access packages in this catalog can be requested by users outside the tenant.
         /// </summary>
         [Output("externallyVisible")]
         public Output<bool?> ExternallyVisible { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the access packages in this catalog are available for management
+        /// Whether the access packages in this catalog are available for management.
         /// </summary>
         [Output("published")]
         public Output<bool?> Published { get; private set; } = null!;
@@ -83,25 +121,25 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageCatalogArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the access package catalog
+        /// The description of the access package catalog.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The display name of the access package catalog
+        /// The display name of the access package catalog.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Whether the access packages in this catalog can be requested by users outside the tenant
+        /// Whether the access packages in this catalog can be requested by users outside the tenant.
         /// </summary>
         [Input("externallyVisible")]
         public Input<bool>? ExternallyVisible { get; set; }
 
         /// <summary>
-        /// Whether the access packages in this catalog are available for management
+        /// Whether the access packages in this catalog are available for management.
         /// </summary>
         [Input("published")]
         public Input<bool>? Published { get; set; }
@@ -115,25 +153,25 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageCatalogState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the access package catalog
+        /// The description of the access package catalog.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The display name of the access package catalog
+        /// The display name of the access package catalog.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// Whether the access packages in this catalog can be requested by users outside the tenant
+        /// Whether the access packages in this catalog can be requested by users outside the tenant.
         /// </summary>
         [Input("externallyVisible")]
         public Input<bool>? ExternallyVisible { get; set; }
 
         /// <summary>
-        /// Whether the access packages in this catalog are available for management
+        /// Whether the access packages in this catalog are available for management.
         /// </summary>
         [Input("published")]
         public Input<bool>? Published { get; set; }

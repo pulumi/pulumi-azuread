@@ -123,56 +123,89 @@ class GetApplicationResult:
     @property
     @pulumi.getter
     def apis(self) -> Sequence['outputs.GetApplicationApiResult']:
+        """
+        An `api` block as documented below.
+        """
         return pulumi.get(self, "apis")
 
     @property
     @pulumi.getter(name="appRoleIds")
     def app_role_ids(self) -> Mapping[str, str]:
+        """
+        A mapping of app role values to app role IDs, intended to be useful when referencing app roles in other resources in your configuration.
+        """
         return pulumi.get(self, "app_role_ids")
 
     @property
     @pulumi.getter(name="appRoles")
     def app_roles(self) -> Sequence['outputs.GetApplicationAppRoleResult']:
+        """
+        A collection of `app_role` blocks as documented below. For more information see [official documentation on Application Roles](https://docs.microsoft.com/en-us/azure/architecture/multitenant-identity/app-roles).
+        """
         return pulumi.get(self, "app_roles")
 
     @property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> str:
+        """
+        The Application ID (also called Client ID).
+        """
         return pulumi.get(self, "application_id")
 
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="deviceOnlyAuthEnabled")
     def device_only_auth_enabled(self) -> bool:
+        """
+        Specifies whether this application supports device authentication without a user.
+        """
         return pulumi.get(self, "device_only_auth_enabled")
 
     @property
     @pulumi.getter(name="disabledByMicrosoft")
     def disabled_by_microsoft(self) -> str:
+        """
+        Whether Microsoft has disabled the registered application. If the application is disabled, this will be a string indicating the status/reason, e.g. `DisabledDueToViolationOfServicesAgreement`
+        """
         return pulumi.get(self, "disabled_by_microsoft")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        Display name for the app role that appears during app role assignment and in consent experiences.
+        """
         return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="fallbackPublicClientEnabled")
     def fallback_public_client_enabled(self) -> bool:
+        """
+        The fallback application type as public client, such as an installed application running on a mobile device.
+        """
         return pulumi.get(self, "fallback_public_client_enabled")
 
     @property
     @pulumi.getter(name="featureTags")
     def feature_tags(self) -> Sequence['outputs.GetApplicationFeatureTagResult']:
+        """
+        A `features` block as described below.
+        """
         return pulumi.get(self, "feature_tags")
 
     @property
     @pulumi.getter(name="groupMembershipClaims")
     def group_membership_claims(self) -> Sequence[str]:
+        """
+        The `groups` claim issued in a user or OAuth 2.0 access token that the app expects.
+        """
         return pulumi.get(self, "group_membership_claims")
 
     @property
@@ -186,101 +219,161 @@ class GetApplicationResult:
     @property
     @pulumi.getter(name="identifierUris")
     def identifier_uris(self) -> Sequence[str]:
+        """
+        A list of user-defined URI(s) that uniquely identify a Web application within it's Azure AD tenant, or within a verified custom domain if the application is multi-tenant.
+        """
         return pulumi.get(self, "identifier_uris")
 
     @property
     @pulumi.getter(name="logoUrl")
     def logo_url(self) -> str:
+        """
+        CDN URL to the application's logo.
+        """
         return pulumi.get(self, "logo_url")
 
     @property
     @pulumi.getter(name="marketingUrl")
     def marketing_url(self) -> str:
+        """
+        URL of the application's marketing page.
+        """
         return pulumi.get(self, "marketing_url")
 
     @property
     @pulumi.getter
     def notes(self) -> str:
+        """
+        User-specified notes relevant for the management of the application.
+        """
         return pulumi.get(self, "notes")
 
     @property
     @pulumi.getter(name="oauth2PermissionScopeIds")
     def oauth2_permission_scope_ids(self) -> Mapping[str, str]:
+        """
+        A mapping of OAuth2.0 permission scope values to scope IDs, intended to be useful when referencing permission scopes in other resources in your configuration.
+        """
         return pulumi.get(self, "oauth2_permission_scope_ids")
 
     @property
     @pulumi.getter(name="oauth2PostResponseRequired")
     def oauth2_post_response_required(self) -> bool:
+        """
+        Specifies whether, as part of OAuth 2.0 token requests, Azure AD allows POST requests, as opposed to GET requests. When `false`, only GET requests are allowed.
+        """
         return pulumi.get(self, "oauth2_post_response_required")
 
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The application's object ID.
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="optionalClaims")
     def optional_claims(self) -> Sequence['outputs.GetApplicationOptionalClaimResult']:
+        """
+        An `optional_claims` block as documented below.
+        """
         return pulumi.get(self, "optional_claims")
 
     @property
     @pulumi.getter
     def owners(self) -> Sequence[str]:
+        """
+        A list of object IDs of principals that are assigned ownership of the application.
+        """
         return pulumi.get(self, "owners")
 
     @property
     @pulumi.getter(name="privacyStatementUrl")
     def privacy_statement_url(self) -> str:
+        """
+        URL of the application's privacy statement.
+        """
         return pulumi.get(self, "privacy_statement_url")
 
     @property
     @pulumi.getter(name="publicClients")
     def public_clients(self) -> Sequence['outputs.GetApplicationPublicClientResult']:
+        """
+        A `public_client` block as documented below.
+        """
         return pulumi.get(self, "public_clients")
 
     @property
     @pulumi.getter(name="publisherDomain")
     def publisher_domain(self) -> str:
+        """
+        The verified publisher domain for the application.
+        """
         return pulumi.get(self, "publisher_domain")
 
     @property
     @pulumi.getter(name="requiredResourceAccesses")
     def required_resource_accesses(self) -> Sequence['outputs.GetApplicationRequiredResourceAccessResult']:
+        """
+        A collection of `required_resource_access` blocks as documented below.
+        """
         return pulumi.get(self, "required_resource_accesses")
 
     @property
     @pulumi.getter(name="serviceManagementReference")
     def service_management_reference(self) -> str:
+        """
+        References application context information from a Service or Asset Management database.
+        """
         return pulumi.get(self, "service_management_reference")
 
     @property
     @pulumi.getter(name="signInAudience")
     def sign_in_audience(self) -> str:
+        """
+        The Microsoft account types that are supported for the current application. One of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        """
         return pulumi.get(self, "sign_in_audience")
 
     @property
     @pulumi.getter(name="singlePageApplications")
     def single_page_applications(self) -> Sequence['outputs.GetApplicationSinglePageApplicationResult']:
+        """
+        A `single_page_application` block as documented below.
+        """
         return pulumi.get(self, "single_page_applications")
 
     @property
     @pulumi.getter(name="supportUrl")
     def support_url(self) -> str:
+        """
+        URL of the application's support page.
+        """
         return pulumi.get(self, "support_url")
 
     @property
     @pulumi.getter
     def tags(self) -> Sequence[str]:
+        """
+        A list of tags applied to the application.
+        """
         return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="termsOfServiceUrl")
     def terms_of_service_url(self) -> str:
+        """
+        URL of the application's terms of service statement.
+        """
         return pulumi.get(self, "terms_of_service_url")
 
     @property
     @pulumi.getter
     def webs(self) -> Sequence['outputs.GetApplicationWebResult']:
+        """
+        A `web` block as documented below.
+        """
         return pulumi.get(self, "webs")
 
 
@@ -329,7 +422,32 @@ def get_application(application_id: Optional[str] = None,
                     object_id: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApplicationResult:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to access information about an existing Application within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application(display_name="My First AzureAD Application")
+    pulumi.export("applicationObjectId", example.id)
+    ```
+
+
+    :param str application_id: Specifies the Application ID (also called Client ID).
+    :param str display_name: Specifies the display name of the application.
+    :param str object_id: Specifies the Object ID of the application.
+           
+           > One of `object_id`, `application_id` or `display_name` must be specified.
     """
     __args__ = dict()
     __args__['applicationId'] = application_id
@@ -379,6 +497,31 @@ def get_application_output(application_id: Optional[pulumi.Input[Optional[str]]]
                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
     """
-    Use this data source to access information about an existing resource.
+    Use this data source to access information about an existing Application within Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Application.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_application(display_name="My First AzureAD Application")
+    pulumi.export("applicationObjectId", example.id)
+    ```
+
+
+    :param str application_id: Specifies the Application ID (also called Client ID).
+    :param str display_name: Specifies the display name of the application.
+    :param str object_id: Specifies the Object ID of the application.
+           
+           > One of `object_id`, `application_id` or `display_name` must be specified.
     """
     ...

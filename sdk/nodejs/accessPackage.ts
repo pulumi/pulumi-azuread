@@ -4,6 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an Access Package within Identity Governance in Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
+ *     displayName: "example-catalog",
+ *     description: "Example catalog",
+ * });
+ * const exampleAccessPackage = new azuread.AccessPackage("exampleAccessPackage", {
+ *     catalogId: exampleAccessPackageCatalog.id,
+ *     displayName: "access-package",
+ *     description: "Access Package",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Access Packages can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/accessPackage:AccessPackage example_package 00000000-0000-0000-0000-000000000000
+ * ```
+ */
 export class AccessPackage extends pulumi.CustomResource {
     /**
      * Get an existing AccessPackage resource's state with the given name, ID, and optional extra
@@ -33,19 +69,19 @@ export class AccessPackage extends pulumi.CustomResource {
     }
 
     /**
-     * The ID of the Catalog this access package will be created in
+     * The ID of the Catalog this access package will be created in.
      */
     public readonly catalogId!: pulumi.Output<string>;
     /**
-     * The description of the access package
+     * The description of the access package.
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * The display name of the access package
+     * The display name of the access package.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Whether the access package is hidden from the requestor
+     * Whether the access package is hidden from the requestor.
      */
     public readonly hidden!: pulumi.Output<boolean | undefined>;
 
@@ -92,19 +128,19 @@ export class AccessPackage extends pulumi.CustomResource {
  */
 export interface AccessPackageState {
     /**
-     * The ID of the Catalog this access package will be created in
+     * The ID of the Catalog this access package will be created in.
      */
     catalogId?: pulumi.Input<string>;
     /**
-     * The description of the access package
+     * The description of the access package.
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name of the access package
+     * The display name of the access package.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Whether the access package is hidden from the requestor
+     * Whether the access package is hidden from the requestor.
      */
     hidden?: pulumi.Input<boolean>;
 }
@@ -114,19 +150,19 @@ export interface AccessPackageState {
  */
 export interface AccessPackageArgs {
     /**
-     * The ID of the Catalog this access package will be created in
+     * The ID of the Catalog this access package will be created in.
      */
     catalogId: pulumi.Input<string>;
     /**
-     * The description of the access package
+     * The description of the access package.
      */
     description: pulumi.Input<string>;
     /**
-     * The display name of the access package
+     * The display name of the access package.
      */
     displayName: pulumi.Input<string>;
     /**
-     * Whether the access package is hidden from the requestor
+     * Whether the access package is hidden from the requestor.
      */
     hidden?: pulumi.Input<boolean>;
 }

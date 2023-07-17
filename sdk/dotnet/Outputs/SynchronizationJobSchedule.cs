@@ -13,8 +13,17 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class SynchronizationJobSchedule
     {
+        /// <summary>
+        /// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// </summary>
         public readonly string? Expiration;
+        /// <summary>
+        /// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+        /// </summary>
         public readonly string? Interval;
+        /// <summary>
+        /// State of the job.
+        /// </summary>
         public readonly string? State;
 
         [OutputConstructor]

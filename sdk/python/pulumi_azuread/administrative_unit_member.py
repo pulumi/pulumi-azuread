@@ -18,8 +18,8 @@ class AdministrativeUnitMemberArgs:
                  member_object_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AdministrativeUnitMember resource.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
-        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         if administrative_unit_object_id is not None:
             pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
@@ -30,7 +30,7 @@ class AdministrativeUnitMemberArgs:
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the administrative unit
+        The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
@@ -42,7 +42,7 @@ class AdministrativeUnitMemberArgs:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the member
+        The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -58,8 +58,8 @@ class _AdministrativeUnitMemberState:
                  member_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnitMember resources.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
-        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         if administrative_unit_object_id is not None:
             pulumi.set(__self__, "administrative_unit_object_id", administrative_unit_object_id)
@@ -70,7 +70,7 @@ class _AdministrativeUnitMemberState:
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the administrative unit
+        The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
@@ -82,7 +82,7 @@ class _AdministrativeUnitMemberState:
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the member
+        The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 
@@ -100,11 +100,45 @@ class AdministrativeUnitMember(pulumi.CustomResource):
                  member_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AdministrativeUnitMember resource with the given unique name, props, and options.
+        Manages a single administrative unit membership within Azure Active Directory.
+
+        > **Warning** Do not use this resource at the same time as the `members` property of the `AdministrativeUnit` resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
+        example_administrative_unit_member = azuread.AdministrativeUnitMember("exampleAdministrativeUnitMember",
+            administrative_unit_object_id=example_administrative_unit.id,
+            member_object_id=example_user.id)
+        ```
+
+        ## Import
+
+        Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
-        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -113,7 +147,41 @@ class AdministrativeUnitMember(pulumi.CustomResource):
                  args: Optional[AdministrativeUnitMemberArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AdministrativeUnitMember resource with the given unique name, props, and options.
+        Manages a single administrative unit membership within Azure Active Directory.
+
+        > **Warning** Do not use this resource at the same time as the `members` property of the `AdministrativeUnit` resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_user = azuread.get_user(user_principal_name="jdoe@hashicorp.com")
+        example_administrative_unit = azuread.AdministrativeUnit("exampleAdministrativeUnit", display_name="Example-AU")
+        example_administrative_unit_member = azuread.AdministrativeUnitMember("exampleAdministrativeUnitMember",
+            administrative_unit_object_id=example_administrative_unit.id,
+            member_object_id=example_user.id)
+        ```
+
+        ## Import
+
+        Administrative unit members can be imported using the object ID of the administrative unit and the object ID of the member, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/administrativeUnitMember:AdministrativeUnitMember test 00000000-0000-0000-0000-000000000000/member/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Administrative Unit Object ID and the target Member Object ID in the format `{AdministrativeUnitObjectID}/member/{MemberObjectID}`.
+
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitMemberArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -161,8 +229,8 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit
-        :param pulumi.Input[str] member_object_id: The object ID of the member
+        :param pulumi.Input[str] administrative_unit_object_id: The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] member_object_id: The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -176,7 +244,7 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The object ID of the administrative unit
+        The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "administrative_unit_object_id")
 
@@ -184,7 +252,7 @@ class AdministrativeUnitMember(pulumi.CustomResource):
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The object ID of the member
+        The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "member_object_id")
 

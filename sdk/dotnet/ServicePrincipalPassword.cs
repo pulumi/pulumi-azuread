@@ -9,55 +9,136 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages a password credential associated with a service principal within Azure Active Directory. See also the azuread.ApplicationPassword resource.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// *Basic example*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new()
+    ///     {
+    ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// *Time-based rotation*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// using Time = Pulumiverse.Time;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///     });
+    /// 
+    ///     var exampleRotating = new Time.Rotating("exampleRotating", new()
+    ///     {
+    ///         RotationDays = 7,
+    ///     });
+    /// 
+    ///     var exampleServicePrincipalPassword = new AzureAD.ServicePrincipalPassword("exampleServicePrincipalPassword", new()
+    ///     {
+    ///         ServicePrincipalId = exampleServicePrincipal.ObjectId,
+    ///         RotateWhenChanged = 
+    ///         {
+    ///             { "rotation", exampleRotating.Id },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support importing.
+    /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalPassword:ServicePrincipalPassword")]
     public partial class ServicePrincipalPassword : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A display name for the password
+        /// A display name for the password.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Output("endDate")]
         public Output<string> EndDate { get; private set; } = null!;
 
         /// <summary>
-        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
-        /// field forces a new resource to be created
+        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("endDateRelative")]
         public Output<string?> EndDateRelative { get; private set; } = null!;
 
         /// <summary>
-        /// A UUID used to uniquely identify this password credential
+        /// A UUID used to uniquely identify this password credential.
         /// </summary>
         [Output("keyId")]
         public Output<string> KeyId { get; private set; } = null!;
 
         /// <summary>
-        /// Arbitrary map of values that, when changed, will trigger rotation of the password
+        /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         /// </summary>
         [Output("rotateWhenChanged")]
         public Output<ImmutableDictionary<string, string>?> RotateWhenChanged { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this password should be created
+        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
 
         /// <summary>
-        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-        /// this isn't specified, the current date is used
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Output("startDate")]
         public Output<string> StartDate { get; private set; } = null!;
 
         /// <summary>
-        /// The password for this service principal, which is generated by Azure Active Directory
+        /// The password for this service principal, which is generated by Azure Active Directory.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
@@ -113,20 +194,19 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A display name for the password
+        /// A display name for the password.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
-        /// field forces a new resource to be created
+        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
@@ -135,7 +215,7 @@ namespace Pulumi.AzureAD
         private InputMap<string>? _rotateWhenChanged;
 
         /// <summary>
-        /// Arbitrary map of values that, when changed, will trigger rotation of the password
+        /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         /// </summary>
         public InputMap<string> RotateWhenChanged
         {
@@ -144,14 +224,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this password should be created
+        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
 
         /// <summary>
-        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-        /// this isn't specified, the current date is used
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
@@ -165,26 +244,25 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalPasswordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A display name for the password
+        /// A display name for the password.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`)
+        /// The end date until which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDate")]
         public Input<string>? EndDate { get; set; }
 
         /// <summary>
-        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this
-        /// field forces a new resource to be created
+        /// A relative duration for which the password is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("endDateRelative")]
         public Input<string>? EndDateRelative { get; set; }
 
         /// <summary>
-        /// A UUID used to uniquely identify this password credential
+        /// A UUID used to uniquely identify this password credential.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }
@@ -193,7 +271,7 @@ namespace Pulumi.AzureAD
         private InputMap<string>? _rotateWhenChanged;
 
         /// <summary>
-        /// Arbitrary map of values that, when changed, will trigger rotation of the password
+        /// A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         /// </summary>
         public InputMap<string> RotateWhenChanged
         {
@@ -202,14 +280,13 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this password should be created
+        /// The object ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }
 
         /// <summary>
-        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-        /// this isn't specified, the current date is used
+        /// The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
         /// </summary>
         [Input("startDate")]
         public Input<string>? StartDate { get; set; }
@@ -218,7 +295,7 @@ namespace Pulumi.AzureAD
         private Input<string>? _value;
 
         /// <summary>
-        /// The password for this service principal, which is generated by Azure Active Directory
+        /// The password for this service principal, which is generated by Azure Active Directory.
         /// </summary>
         public Input<string>? Value
         {

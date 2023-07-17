@@ -44,6 +44,9 @@ class GetAccessPackageCatalogResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the access package catalog.
+        """
         return pulumi.get(self, "description")
 
     @property
@@ -54,6 +57,9 @@ class GetAccessPackageCatalogResult:
     @property
     @pulumi.getter(name="externallyVisible")
     def externally_visible(self) -> bool:
+        """
+        Whether the access packages in this catalog can be requested by users outside the tenant.
+        """
         return pulumi.get(self, "externally_visible")
 
     @property
@@ -72,6 +78,9 @@ class GetAccessPackageCatalogResult:
     @property
     @pulumi.getter
     def published(self) -> bool:
+        """
+        Whether the access packages in this catalog are available for management.
+        """
         return pulumi.get(self, "published")
 
 
@@ -93,7 +102,42 @@ def get_access_package_catalog(display_name: Optional[str] = None,
                                object_id: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessPackageCatalogResult:
     """
-    Use this data source to access information about an existing resource.
+    i
+    Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+
+    When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+
+    ## Example Usage
+
+    *Look up by ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by DisplayName*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog(display_name="My access package Catalog")
+    ```
+
+
+    :param str display_name: The display name of the access package catalog.
+    :param str object_id: The ID of this access package catalog.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -115,6 +159,41 @@ def get_access_package_catalog_output(display_name: Optional[pulumi.Input[Option
                                       object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageCatalogResult]:
     """
-    Use this data source to access information about an existing resource.
+    i
+    Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+
+    When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+
+    ## Example Usage
+
+    *Look up by ID*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+    *Look up by DisplayName*
+
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog(display_name="My access package Catalog")
+    ```
+
+
+    :param str display_name: The display name of the access package catalog.
+    :param str object_id: The ID of this access package catalog.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...

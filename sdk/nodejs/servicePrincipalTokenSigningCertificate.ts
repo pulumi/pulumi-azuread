@@ -4,6 +4,55 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a token signing certificate associated with a service principal within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+ *
+ * ## Example Usage
+ *
+ * *Using default settings*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", {servicePrincipalId: exampleServicePrincipal.id});
+ * ```
+ *
+ * *Using custom settings*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleApplication = new azuread.Application("exampleApplication", {displayName: "example"});
+ * const exampleServicePrincipal = new azuread.ServicePrincipal("exampleServicePrincipal", {applicationId: exampleApplication.applicationId});
+ * const exampleServicePrincipalTokenSigningCertificate = new azuread.ServicePrincipalTokenSigningCertificate("exampleServicePrincipalTokenSigningCertificate", {
+ *     servicePrincipalId: exampleServicePrincipal.id,
+ *     displayName: "CN=example.com",
+ *     endDate: "2023-05-01T01:02:03Z",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Token signing certificates can be imported using the object ID of the associated service principal and the key ID of the verify certificate credential, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate example 00000000-0000-0000-0000-000000000000/tokenSigningCertificate/11111111-1111-1111-1111-111111111111
+ * ```
+ *
+ *  -> This ID format is unique to Terraform and is composed of the service principal's object ID, the string "tokenSigningCertificate" and the verify certificate's key ID in the format `{ServicePrincipalObjectId}/tokenSigningCertificate/{CertificateKeyId}`.
+ */
 export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResource {
     /**
      * Get an existing ServicePrincipalTokenSigningCertificate resource's state with the given name, ID, and optional extra
@@ -33,12 +82,14 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
     }
 
     /**
-     * A friendly name for the certificate
+     * Specifies a friendly name for the certificate.
+     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     *
+     * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-     * Default is 3 years from current date.
+     * The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     public readonly endDate!: pulumi.Output<string>;
     /**
@@ -46,7 +97,7 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
      */
     public /*out*/ readonly keyId!: pulumi.Output<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created
+     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     public readonly servicePrincipalId!: pulumi.Output<string>;
     /**
@@ -54,11 +105,12 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
      */
     public /*out*/ readonly startDate!: pulumi.Output<string>;
     /**
-     * The thumbprint of the certificate.
+     * A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
      */
     public /*out*/ readonly thumbprint!: pulumi.Output<string>;
     /**
-     * The certificate data, which is PEM encoded but does not include the header/footer
+     * The certificate data, which is PEM encoded but does not include the
+     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      */
     public /*out*/ readonly value!: pulumi.Output<string>;
 
@@ -107,12 +159,14 @@ export class ServicePrincipalTokenSigningCertificate extends pulumi.CustomResour
  */
 export interface ServicePrincipalTokenSigningCertificateState {
     /**
-     * A friendly name for the certificate
+     * Specifies a friendly name for the certificate.
+     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     *
+     * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-     * Default is 3 years from current date.
+     * The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     endDate?: pulumi.Input<string>;
     /**
@@ -120,7 +174,7 @@ export interface ServicePrincipalTokenSigningCertificateState {
      */
     keyId?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created
+     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId?: pulumi.Input<string>;
     /**
@@ -128,11 +182,12 @@ export interface ServicePrincipalTokenSigningCertificateState {
      */
     startDate?: pulumi.Input<string>;
     /**
-     * The thumbprint of the certificate.
+     * A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
      */
     thumbprint?: pulumi.Input<string>;
     /**
-     * The certificate data, which is PEM encoded but does not include the header/footer
+     * The certificate data, which is PEM encoded but does not include the
+     * header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
      */
     value?: pulumi.Input<string>;
 }
@@ -142,16 +197,18 @@ export interface ServicePrincipalTokenSigningCertificateState {
  */
 export interface ServicePrincipalTokenSigningCertificateArgs {
     /**
-     * A friendly name for the certificate
+     * Specifies a friendly name for the certificate.
+     * Must start with `CN=`. Changing this field forces a new resource to be created.
+     *
+     * > If not specified, it will default to `CN=Microsoft Azure Federated SSO Certificate`.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-     * Default is 3 years from current date.
+     * The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
      */
     endDate?: pulumi.Input<string>;
     /**
-     * The object ID of the service principal for which this certificate should be created
+     * The object ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
      */
     servicePrincipalId: pulumi.Input<string>;
 }

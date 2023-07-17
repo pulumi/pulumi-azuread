@@ -6,6 +6,53 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages a Named Location within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ConditionalAccess` and `Policy.Read.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Administrator`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example_ip = new azuread.NamedLocation("example-ip", {
+ *     displayName: "IP Named Location",
+ *     ip: {
+ *         ipRanges: [
+ *             "1.1.1.1/32",
+ *             "2.2.2.2/32",
+ *         ],
+ *         trusted: true,
+ *     },
+ * });
+ * const example_country = new azuread.NamedLocation("example-country", {
+ *     country: {
+ *         countriesAndRegions: [
+ *             "GB",
+ *             "US",
+ *         ],
+ *         includeUnknownCountriesAndRegions: false,
+ *     },
+ *     displayName: "Country Named Location",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Named Locations can be imported using the `id`, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/namedLocation:NamedLocation my_location 00000000-0000-0000-0000-000000000000
+ * ```
+ */
 export class NamedLocation extends pulumi.CustomResource {
     /**
      * Get an existing NamedLocation resource's state with the given name, ID, and optional extra
@@ -34,8 +81,19 @@ export class NamedLocation extends pulumi.CustomResource {
         return obj['__pulumiType'] === NamedLocation.__pulumiType;
     }
 
+    /**
+     * A `country` block as documented below, which configures a country-based named location.
+     */
     public readonly country!: pulumi.Output<outputs.NamedLocationCountry | undefined>;
+    /**
+     * The friendly name for this named location.
+     */
     public readonly displayName!: pulumi.Output<string>;
+    /**
+     * An `ip` block as documented below, which configures an IP-based named location.
+     *
+     * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+     */
     public readonly ip!: pulumi.Output<outputs.NamedLocationIp | undefined>;
 
     /**
@@ -72,8 +130,19 @@ export class NamedLocation extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NamedLocation resources.
  */
 export interface NamedLocationState {
+    /**
+     * A `country` block as documented below, which configures a country-based named location.
+     */
     country?: pulumi.Input<inputs.NamedLocationCountry>;
+    /**
+     * The friendly name for this named location.
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * An `ip` block as documented below, which configures an IP-based named location.
+     *
+     * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+     */
     ip?: pulumi.Input<inputs.NamedLocationIp>;
 }
 
@@ -81,7 +150,18 @@ export interface NamedLocationState {
  * The set of arguments for constructing a NamedLocation resource.
  */
 export interface NamedLocationArgs {
+    /**
+     * A `country` block as documented below, which configures a country-based named location.
+     */
     country?: pulumi.Input<inputs.NamedLocationCountry>;
+    /**
+     * The friendly name for this named location.
+     */
     displayName: pulumi.Input<string>;
+    /**
+     * An `ip` block as documented below, which configures an IP-based named location.
+     *
+     * > Exactly one of `ip` or `country` must be specified. Changing between these forces a new resource to be created.
+     */
     ip?: pulumi.Input<inputs.NamedLocationIp>;
 }

@@ -23,11 +23,11 @@ class InvitationArgs:
                  user_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Invitation resource.
-        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed
-        :param pulumi.Input[str] user_email_address: The email address of the user being invited
-        :param pulumi.Input['InvitationMessageArgs'] message: Customize the message sent to the invited user
-        :param pulumi.Input[str] user_display_name: The display name of the user being invited
-        :param pulumi.Input[str] user_type: The user type of the user being invited
+        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
+        :param pulumi.Input[str] user_email_address: The email address of the user being invited.
+        :param pulumi.Input['InvitationMessageArgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[str] user_display_name: The display name of the user being invited.
+        :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         pulumi.set(__self__, "redirect_url", redirect_url)
         pulumi.set(__self__, "user_email_address", user_email_address)
@@ -42,7 +42,7 @@ class InvitationArgs:
     @pulumi.getter(name="redirectUrl")
     def redirect_url(self) -> pulumi.Input[str]:
         """
-        The URL that the user should be redirected to once the invitation is redeemed
+        The URL that the user should be redirected to once the invitation is redeemed.
         """
         return pulumi.get(self, "redirect_url")
 
@@ -54,7 +54,7 @@ class InvitationArgs:
     @pulumi.getter(name="userEmailAddress")
     def user_email_address(self) -> pulumi.Input[str]:
         """
-        The email address of the user being invited
+        The email address of the user being invited.
         """
         return pulumi.get(self, "user_email_address")
 
@@ -66,7 +66,7 @@ class InvitationArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input['InvitationMessageArgs']]:
         """
-        Customize the message sent to the invited user
+        A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
@@ -78,7 +78,7 @@ class InvitationArgs:
     @pulumi.getter(name="userDisplayName")
     def user_display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the user being invited
+        The display name of the user being invited.
         """
         return pulumi.get(self, "user_display_name")
 
@@ -90,7 +90,7 @@ class InvitationArgs:
     @pulumi.getter(name="userType")
     def user_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The user type of the user being invited
+        The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         return pulumi.get(self, "user_type")
 
@@ -111,13 +111,13 @@ class _InvitationState:
                  user_type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Invitation resources.
-        :param pulumi.Input['InvitationMessageArgs'] message: Customize the message sent to the invited user
-        :param pulumi.Input[str] redeem_url: The URL the user can use to redeem their invitation
-        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed
-        :param pulumi.Input[str] user_display_name: The display name of the user being invited
-        :param pulumi.Input[str] user_email_address: The email address of the user being invited
-        :param pulumi.Input[str] user_id: Object ID of the invited user
-        :param pulumi.Input[str] user_type: The user type of the user being invited
+        :param pulumi.Input['InvitationMessageArgs'] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[str] redeem_url: The URL the user can use to redeem their invitation.
+        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
+        :param pulumi.Input[str] user_display_name: The display name of the user being invited.
+        :param pulumi.Input[str] user_email_address: The email address of the user being invited.
+        :param pulumi.Input[str] user_id: Object ID of the invited user.
+        :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         if message is not None:
             pulumi.set(__self__, "message", message)
@@ -138,7 +138,7 @@ class _InvitationState:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input['InvitationMessageArgs']]:
         """
-        Customize the message sent to the invited user
+        A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
@@ -150,7 +150,7 @@ class _InvitationState:
     @pulumi.getter(name="redeemUrl")
     def redeem_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL the user can use to redeem their invitation
+        The URL the user can use to redeem their invitation.
         """
         return pulumi.get(self, "redeem_url")
 
@@ -162,7 +162,7 @@ class _InvitationState:
     @pulumi.getter(name="redirectUrl")
     def redirect_url(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL that the user should be redirected to once the invitation is redeemed
+        The URL that the user should be redirected to once the invitation is redeemed.
         """
         return pulumi.get(self, "redirect_url")
 
@@ -174,7 +174,7 @@ class _InvitationState:
     @pulumi.getter(name="userDisplayName")
     def user_display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the user being invited
+        The display name of the user being invited.
         """
         return pulumi.get(self, "user_display_name")
 
@@ -186,7 +186,7 @@ class _InvitationState:
     @pulumi.getter(name="userEmailAddress")
     def user_email_address(self) -> Optional[pulumi.Input[str]]:
         """
-        The email address of the user being invited
+        The email address of the user being invited.
         """
         return pulumi.get(self, "user_email_address")
 
@@ -198,7 +198,7 @@ class _InvitationState:
     @pulumi.getter(name="userId")
     def user_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Object ID of the invited user
+        Object ID of the invited user.
         """
         return pulumi.get(self, "user_id")
 
@@ -210,7 +210,7 @@ class _InvitationState:
     @pulumi.getter(name="userType")
     def user_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The user type of the user being invited
+        The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         return pulumi.get(self, "user_type")
 
@@ -231,14 +231,70 @@ class Invitation(pulumi.CustomResource):
                  user_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Invitation resource with the given unique name, props, and options.
+        Manages an invitation of a guest user within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with standard message*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                language="en-US",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with custom message body and an additional recipient*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                additional_recipients="aaliceberg@hashicorp.com",
+                body="Hello there! You are invited to join my Azure tenant!",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_display_name="Bob Bobson",
+            user_email_address="bbobson@hashicorp.com")
+        ```
+
+        ## Import
+
+        This resource does not support importing.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InvitationMessageArgs']] message: Customize the message sent to the invited user
-        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed
-        :param pulumi.Input[str] user_display_name: The display name of the user being invited
-        :param pulumi.Input[str] user_email_address: The email address of the user being invited
-        :param pulumi.Input[str] user_type: The user type of the user being invited
+        :param pulumi.Input[pulumi.InputType['InvitationMessageArgs']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
+        :param pulumi.Input[str] user_display_name: The display name of the user being invited.
+        :param pulumi.Input[str] user_email_address: The email address of the user being invited.
+        :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         ...
     @overload
@@ -247,7 +303,63 @@ class Invitation(pulumi.CustomResource):
                  args: InvitationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Invitation resource with the given unique name, props, and options.
+        Manages an invitation of a guest user within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with standard message*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                language="en-US",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_email_address="jdoe@hashicorp.com")
+        ```
+
+        *Invitation with custom message body and an additional recipient*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.Invitation("example",
+            message=azuread.InvitationMessageArgs(
+                additional_recipients="aaliceberg@hashicorp.com",
+                body="Hello there! You are invited to join my Azure tenant!",
+            ),
+            redirect_url="https://portal.azure.com",
+            user_display_name="Bob Bobson",
+            user_email_address="bbobson@hashicorp.com")
+        ```
+
+        ## Import
+
+        This resource does not support importing.
+
         :param str resource_name: The name of the resource.
         :param InvitationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -312,13 +424,13 @@ class Invitation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InvitationMessageArgs']] message: Customize the message sent to the invited user
-        :param pulumi.Input[str] redeem_url: The URL the user can use to redeem their invitation
-        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed
-        :param pulumi.Input[str] user_display_name: The display name of the user being invited
-        :param pulumi.Input[str] user_email_address: The email address of the user being invited
-        :param pulumi.Input[str] user_id: Object ID of the invited user
-        :param pulumi.Input[str] user_type: The user type of the user being invited
+        :param pulumi.Input[pulumi.InputType['InvitationMessageArgs']] message: A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
+        :param pulumi.Input[str] redeem_url: The URL the user can use to redeem their invitation.
+        :param pulumi.Input[str] redirect_url: The URL that the user should be redirected to once the invitation is redeemed.
+        :param pulumi.Input[str] user_display_name: The display name of the user being invited.
+        :param pulumi.Input[str] user_email_address: The email address of the user being invited.
+        :param pulumi.Input[str] user_id: Object ID of the invited user.
+        :param pulumi.Input[str] user_type: The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,7 +449,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter
     def message(self) -> pulumi.Output[Optional['outputs.InvitationMessage']]:
         """
-        Customize the message sent to the invited user
+        A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         """
         return pulumi.get(self, "message")
 
@@ -345,7 +457,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter(name="redeemUrl")
     def redeem_url(self) -> pulumi.Output[str]:
         """
-        The URL the user can use to redeem their invitation
+        The URL the user can use to redeem their invitation.
         """
         return pulumi.get(self, "redeem_url")
 
@@ -353,7 +465,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter(name="redirectUrl")
     def redirect_url(self) -> pulumi.Output[str]:
         """
-        The URL that the user should be redirected to once the invitation is redeemed
+        The URL that the user should be redirected to once the invitation is redeemed.
         """
         return pulumi.get(self, "redirect_url")
 
@@ -361,7 +473,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter(name="userDisplayName")
     def user_display_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The display name of the user being invited
+        The display name of the user being invited.
         """
         return pulumi.get(self, "user_display_name")
 
@@ -369,7 +481,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter(name="userEmailAddress")
     def user_email_address(self) -> pulumi.Output[str]:
         """
-        The email address of the user being invited
+        The email address of the user being invited.
         """
         return pulumi.get(self, "user_email_address")
 
@@ -377,7 +489,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Output[str]:
         """
-        Object ID of the invited user
+        Object ID of the invited user.
         """
         return pulumi.get(self, "user_id")
 
@@ -385,7 +497,7 @@ class Invitation(pulumi.CustomResource):
     @pulumi.getter(name="userType")
     def user_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The user type of the user being invited
+        The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         """
         return pulumi.get(self, "user_type")
 

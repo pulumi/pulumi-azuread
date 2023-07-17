@@ -41,11 +41,17 @@ class GetAccessPackageCatalogRoleResult:
     @property
     @pulumi.getter
     def description(self) -> str:
+        """
+        The description of the role.
+        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
+        """
+        The display name of the role.
+        """
         return pulumi.get(self, "display_name")
 
     @property
@@ -59,11 +65,17 @@ class GetAccessPackageCatalogRoleResult:
     @property
     @pulumi.getter(name="objectId")
     def object_id(self) -> str:
+        """
+        The object ID of the role.
+        """
         return pulumi.get(self, "object_id")
 
     @property
     @pulumi.getter(name="templateId")
     def template_id(self) -> str:
+        """
+        The object ID of the role.
+        """
         return pulumi.get(self, "template_id")
 
 
@@ -84,7 +96,40 @@ def get_access_package_catalog_role(display_name: Optional[str] = None,
                                     object_id: Optional[str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAccessPackageCatalogRoleResult:
     """
-    Use this data source to access information about an existing resource.
+    Gets information about an access package catalog role.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+    ### By Group Display Name)
+
+    *Look up by display name*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog_role(display_name="Catalog owner")
+    ```
+
+    *Look up by object ID*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog_role(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+
+    :param str display_name: Specifies the display name of the role.
+    :param str object_id: Specifies the object ID of the role.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     __args__ = dict()
     __args__['displayName'] = display_name
@@ -105,6 +150,39 @@ def get_access_package_catalog_role_output(display_name: Optional[pulumi.Input[O
                                            object_id: Optional[pulumi.Input[Optional[str]]] = None,
                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccessPackageCatalogRoleResult]:
     """
-    Use this data source to access information about an existing resource.
+    Gets information about an access package catalog role.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+    ### By Group Display Name)
+
+    *Look up by display name*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog_role(display_name="Catalog owner")
+    ```
+
+    *Look up by object ID*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_access_package_catalog_role(object_id="00000000-0000-0000-0000-000000000000")
+    ```
+
+
+    :param str display_name: Specifies the display name of the role.
+    :param str object_id: Specifies the object ID of the role.
+           
+           > One of `display_name` or `object_id` must be specified.
     """
     ...

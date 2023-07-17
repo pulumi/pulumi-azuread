@@ -4,6 +4,38 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an Administrative Unit within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.AdministrativeUnit("example", {
+ *     description: "Just an example",
+ *     displayName: "Example-AU",
+ *     hiddenMembershipEnabled: false,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * Administrative units can be imported using their object ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
+ * ```
+ */
 export class AdministrativeUnit extends pulumi.CustomResource {
     /**
      * Get an existing AdministrativeUnit resource's state with the given name, ID, and optional extra
@@ -33,24 +65,25 @@ export class AdministrativeUnit extends pulumi.CustomResource {
     }
 
     /**
-     * The description for the administrative unit
+     * The description of the administrative unit.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The display name for the administrative unit
+     * The display name of the administrative unit.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
     public readonly hiddenMembershipEnabled!: pulumi.Output<boolean | undefined>;
     /**
-     * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-     * Groups
+     * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     public readonly members!: pulumi.Output<string[]>;
     /**
-     * The object ID of the administrative unit
+     * The object ID of the administrative unit.
      */
     public /*out*/ readonly objectId!: pulumi.Output<string>;
     /**
@@ -99,24 +132,25 @@ export class AdministrativeUnit extends pulumi.CustomResource {
  */
 export interface AdministrativeUnitState {
     /**
-     * The description for the administrative unit
+     * The description of the administrative unit.
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name for the administrative unit
+     * The display name of the administrative unit.
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**
-     * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-     * Groups
+     * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The object ID of the administrative unit
+     * The object ID of the administrative unit.
      */
     objectId?: pulumi.Input<string>;
     /**
@@ -130,20 +164,21 @@ export interface AdministrativeUnitState {
  */
 export interface AdministrativeUnitArgs {
     /**
-     * The description for the administrative unit
+     * The description of the administrative unit.
      */
     description?: pulumi.Input<string>;
     /**
-     * The display name for the administrative unit
+     * The display name of the administrative unit.
      */
     displayName: pulumi.Input<string>;
     /**
-     * Whether the administrative unit and its members are hidden or publicly viewable in the directory
+     * Whether the administrative unit and its members are hidden or publicly viewable in the directory.
      */
     hiddenMembershipEnabled?: pulumi.Input<boolean>;
     /**
-     * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-     * Groups
+     * A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+     *
+     * !> **Warning** Do not use the `members` property at the same time as the azuread.AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
      */
     members?: pulumi.Input<pulumi.Input<string>[]>;
     /**

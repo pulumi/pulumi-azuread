@@ -14,6 +14,10 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("allowedResourceActions", required: true)]
         private InputList<string>? _allowedResourceActions;
+
+        /// <summary>
+        /// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
+        /// </summary>
         public InputList<string> AllowedResourceActions
         {
             get => _allowedResourceActions ?? (_allowedResourceActions = new InputList<string>());

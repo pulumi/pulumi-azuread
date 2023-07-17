@@ -10,16 +10,89 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a Directory Role within Azure Active Directory. Directory Roles are also known as Administrator Roles.
+//
+// Directory Roles are built-in to Azure Active Directory and are immutable. However, by default they are not activated in a tenant (except for the Global Administrator role). This resource ensures a directory role is activated from its associated role template, and exports the object ID of the role, so that role assignments can be made for it.
+//
+// Once activated, directory roles cannot be deactivated and so this resource does not perform any actions on destroy.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+//
+// ## Example Usage
+//
+// *Activate a directory role by its template ID*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+//				TemplateId: pulumi.String("00000000-0000-0000-0000-000000000000"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Activate a directory role by display name*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewDirectoryRole(ctx, "example", &azuread.DirectoryRoleArgs{
+//				DisplayName: pulumi.String("Printer administrator"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource does not support importing.
 type DirectoryRole struct {
 	pulumi.CustomResourceState
 
-	// The description of the directory role
+	// The description of the directory role.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The display name of the directory role
+	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The object ID of the directory role
+	// The object ID of the directory role.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// The object ID of the template associated with the directory role
+	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
 }
 
@@ -52,24 +125,28 @@ func GetDirectoryRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DirectoryRole resources.
 type directoryRoleState struct {
-	// The description of the directory role
+	// The description of the directory role.
 	Description *string `pulumi:"description"`
-	// The display name of the directory role
+	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
-	// The object ID of the directory role
+	// The object ID of the directory role.
 	ObjectId *string `pulumi:"objectId"`
-	// The object ID of the template associated with the directory role
+	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 type DirectoryRoleState struct {
-	// The description of the directory role
+	// The description of the directory role.
 	Description pulumi.StringPtrInput
-	// The display name of the directory role
+	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
-	// The object ID of the directory role
+	// The object ID of the directory role.
 	ObjectId pulumi.StringPtrInput
-	// The object ID of the template associated with the directory role
+	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -78,17 +155,21 @@ func (DirectoryRoleState) ElementType() reflect.Type {
 }
 
 type directoryRoleArgs struct {
-	// The display name of the directory role
+	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`
-	// The object ID of the template associated with the directory role
+	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId *string `pulumi:"templateId"`
 }
 
 // The set of arguments for constructing a DirectoryRole resource.
 type DirectoryRoleArgs struct {
-	// The display name of the directory role
+	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName pulumi.StringPtrInput
-	// The object ID of the template associated with the directory role
+	// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+	//
+	// > Either `displayName` or `templateId` must be specified.
 	TemplateId pulumi.StringPtrInput
 }
 
@@ -179,22 +260,24 @@ func (o DirectoryRoleOutput) ToDirectoryRoleOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The description of the directory role
+// The description of the directory role.
 func (o DirectoryRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The display name of the directory role
+// The display name of the directory role to activate. Changing this forces a new resource to be created.
 func (o DirectoryRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The object ID of the directory role
+// The object ID of the directory role.
 func (o DirectoryRoleOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the template associated with the directory role
+// The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
+//
+// > Either `displayName` or `templateId` must be specified.
 func (o DirectoryRoleOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRole) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }

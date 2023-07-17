@@ -13,11 +13,31 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicySessionControls
     {
+        /// <summary>
+        /// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+        /// 
+        /// &gt; Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
+        /// </summary>
         public readonly bool? ApplicationEnforcedRestrictionsEnabled;
+        /// <summary>
+        /// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+        /// </summary>
         public readonly string? CloudAppSecurityPolicy;
+        /// <summary>
+        /// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+        /// </summary>
         public readonly bool? DisableResilienceDefaults;
+        /// <summary>
+        /// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+        /// </summary>
         public readonly string? PersistentBrowserMode;
+        /// <summary>
+        /// Number of days or hours to enforce sign-in frequency. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        /// </summary>
         public readonly int? SignInFrequency;
+        /// <summary>
+        /// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified. Due to an API issue, removing this property forces a new resource to be created.
+        /// </summary>
         public readonly string? SignInFrequencyPeriod;
 
         [OutputConstructor]

@@ -9,17 +9,55 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages a Claims Mapping Policy Assignment within Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var app = new AzureAD.ServicePrincipalClaimsMappingPolicyAssignment("app", new()
+    ///     {
+    ///         ClaimsMappingPolicyId = azuread_claims_mapping_policy.My_policy.Id,
+    ///         ServicePrincipalId = azuread_service_principal.My_principal.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app 00000000-0000-0000-0000-000000000000/claimsMappingPolicy/11111111-0000-0000-0000-000000000000
+    /// ```
+    /// </summary>
     [AzureADResourceType("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment")]
     public partial class ServicePrincipalClaimsMappingPolicyAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ID of the claims mapping policy to assign
+        /// The ID of the claims mapping policy to assign.
         /// </summary>
         [Output("claimsMappingPolicyId")]
         public Output<string> ClaimsMappingPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// Object ID of the service principal for which to assign the policy
+        /// The object ID of the service principal for the policy assignment.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -71,13 +109,13 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalClaimsMappingPolicyAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the claims mapping policy to assign
+        /// The ID of the claims mapping policy to assign.
         /// </summary>
         [Input("claimsMappingPolicyId", required: true)]
         public Input<string> ClaimsMappingPolicyId { get; set; } = null!;
 
         /// <summary>
-        /// Object ID of the service principal for which to assign the policy
+        /// The object ID of the service principal for the policy assignment.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -91,13 +129,13 @@ namespace Pulumi.AzureAD
     public sealed class ServicePrincipalClaimsMappingPolicyAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ID of the claims mapping policy to assign
+        /// The ID of the claims mapping policy to assign.
         /// </summary>
         [Input("claimsMappingPolicyId")]
         public Input<string>? ClaimsMappingPolicyId { get; set; }
 
         /// <summary>
-        /// Object ID of the service principal for which to assign the policy
+        /// The object ID of the service principal for the policy assignment.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

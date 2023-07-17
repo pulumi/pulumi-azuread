@@ -13,6 +13,9 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ApplicationPublicClient
     {
+        /// <summary>
+        /// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
+        /// </summary>
         public readonly ImmutableArray<string> RedirectUris;
 
         [OutputConstructor]

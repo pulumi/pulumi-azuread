@@ -11,9 +11,83 @@ namespace Pulumi.AzureAD
 {
     public static class GetUsers
     {
+        /// <summary>
+        /// Gets basic information for multiple Azure Active Directory users.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = AzureAD.GetUsers.Invoke(new()
+        ///     {
+        ///         UserPrincipalNames = new[]
+        ///         {
+        ///             "kat@hashicorp.com",
+        ///             "byte@hashicorp.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Gets basic information for multiple Azure Active Directory users.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `User.ReadBasic.All`, `User.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var users = AzureAD.GetUsers.Invoke(new()
+        ///     {
+        ///         UserPrincipalNames = new[]
+        ///         {
+        ///             "kat@hashicorp.com",
+        ///             "byte@hashicorp.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("azuread:index/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
     }
@@ -23,17 +97,28 @@ namespace Pulumi.AzureAD
     {
         [Input("employeeIds")]
         private List<string>? _employeeIds;
+
+        /// <summary>
+        /// The employee identifiers assigned to the users by the organisation.
+        /// </summary>
         public List<string> EmployeeIds
         {
             get => _employeeIds ?? (_employeeIds = new List<string>());
             set => _employeeIds = value;
         }
 
+        /// <summary>
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// </summary>
         [Input("ignoreMissing")]
         public bool? IgnoreMissing { get; set; }
 
         [Input("mailNicknames")]
         private List<string>? _mailNicknames;
+
+        /// <summary>
+        /// The email aliases of the users.
+        /// </summary>
         public List<string> MailNicknames
         {
             get => _mailNicknames ?? (_mailNicknames = new List<string>());
@@ -42,17 +127,30 @@ namespace Pulumi.AzureAD
 
         [Input("objectIds")]
         private List<string>? _objectIds;
+
+        /// <summary>
+        /// The object IDs of the users.
+        /// </summary>
         public List<string> ObjectIds
         {
             get => _objectIds ?? (_objectIds = new List<string>());
             set => _objectIds = value;
         }
 
+        /// <summary>
+        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+        /// </summary>
         [Input("returnAll")]
         public bool? ReturnAll { get; set; }
 
         [Input("userPrincipalNames")]
         private List<string>? _userPrincipalNames;
+
+        /// <summary>
+        /// The user principal names (UPNs) of the users.
+        /// 
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// </summary>
         public List<string> UserPrincipalNames
         {
             get => _userPrincipalNames ?? (_userPrincipalNames = new List<string>());
@@ -69,17 +167,28 @@ namespace Pulumi.AzureAD
     {
         [Input("employeeIds")]
         private InputList<string>? _employeeIds;
+
+        /// <summary>
+        /// The employee identifiers assigned to the users by the organisation.
+        /// </summary>
         public InputList<string> EmployeeIds
         {
             get => _employeeIds ?? (_employeeIds = new InputList<string>());
             set => _employeeIds = value;
         }
 
+        /// <summary>
+        /// Ignore missing users and return users that were found. The data source will still fail if no users are found. Cannot be specified with `return_all`. Defaults to `false`.
+        /// </summary>
         [Input("ignoreMissing")]
         public Input<bool>? IgnoreMissing { get; set; }
 
         [Input("mailNicknames")]
         private InputList<string>? _mailNicknames;
+
+        /// <summary>
+        /// The email aliases of the users.
+        /// </summary>
         public InputList<string> MailNicknames
         {
             get => _mailNicknames ?? (_mailNicknames = new InputList<string>());
@@ -88,17 +197,30 @@ namespace Pulumi.AzureAD
 
         [Input("objectIds")]
         private InputList<string>? _objectIds;
+
+        /// <summary>
+        /// The object IDs of the users.
+        /// </summary>
         public InputList<string> ObjectIds
         {
             get => _objectIds ?? (_objectIds = new InputList<string>());
             set => _objectIds = value;
         }
 
+        /// <summary>
+        /// When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
+        /// </summary>
         [Input("returnAll")]
         public Input<bool>? ReturnAll { get; set; }
 
         [Input("userPrincipalNames")]
         private InputList<string>? _userPrincipalNames;
+
+        /// <summary>
+        /// The user principal names (UPNs) of the users.
+        /// 
+        /// &gt; Either `return_all`, or one of `user_principal_names`, `object_ids`, `mail_nicknames` or `employee_ids` must be specified. These _may_ be specified as an empty list, in which case no results will be returned.
+        /// </summary>
         public InputList<string> UserPrincipalNames
         {
             get => _userPrincipalNames ?? (_userPrincipalNames = new InputList<string>());
@@ -115,16 +237,31 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetUsersResult
     {
+        /// <summary>
+        /// The employee identifiers assigned to the users by the organisation.
+        /// </summary>
         public readonly ImmutableArray<string> EmployeeIds;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
         public readonly bool? IgnoreMissing;
+        /// <summary>
+        /// The email aliases of the users.
+        /// </summary>
         public readonly ImmutableArray<string> MailNicknames;
+        /// <summary>
+        /// The object IDs of the users.
+        /// </summary>
         public readonly ImmutableArray<string> ObjectIds;
         public readonly bool? ReturnAll;
+        /// <summary>
+        /// The user principal names (UPNs) of the users.
+        /// </summary>
         public readonly ImmutableArray<string> UserPrincipalNames;
+        /// <summary>
+        /// A list of users. Each `user` object provides the attributes documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetUsersUserResult> Users;
 
         [OutputConstructor]

@@ -11,23 +11,84 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a Custom Directory Role within Azure Active Directory.
+//
+// This resource is for managing custom directory roles. For management of built-in roles, see the DirectoryRole resource.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewCustomDirectoryRole(ctx, "example", &azuread.CustomDirectoryRoleArgs{
+//				Description: pulumi.String("Allows reading applications and updating groups"),
+//				DisplayName: pulumi.String("My Custom Role"),
+//				Enabled:     pulumi.Bool(true),
+//				Permissions: azuread.CustomDirectoryRolePermissionArray{
+//					&azuread.CustomDirectoryRolePermissionArgs{
+//						AllowedResourceActions: pulumi.StringArray{
+//							pulumi.String("microsoft.directory/applications/basic/update"),
+//							pulumi.String("microsoft.directory/applications/create"),
+//							pulumi.String("microsoft.directory/applications/standard/read"),
+//						},
+//					},
+//					&azuread.CustomDirectoryRolePermissionArgs{
+//						AllowedResourceActions: pulumi.StringArray{
+//							pulumi.String("microsoft.directory/groups/allProperties/read"),
+//							pulumi.String("microsoft.directory/groups/allProperties/read"),
+//							pulumi.String("microsoft.directory/groups/basic/update"),
+//							pulumi.String("microsoft.directory/groups/create"),
+//							pulumi.String("microsoft.directory/groups/delete"),
+//						},
+//					},
+//				},
+//				Version: pulumi.String("1.0"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// This resource does not support importing.
 type CustomDirectoryRole struct {
 	pulumi.CustomResourceState
 
-	// The description of the custom directory role
+	// The description of the custom directory role.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The display name of the custom directory role
+	// The display name of the custom directory role.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Indicates whether the role is enabled for assignment
+	// Indicates whether the role is enabled for assignment.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// The object ID of the directory role
+	// The object ID of the custom directory role.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
-	// List of permissions that are included in the custom directory role
+	// A collection of `permissions` blocks as documented below.
 	Permissions CustomDirectoryRolePermissionArrayOutput `pulumi:"permissions"`
-	// Custom template identifier that is typically used if one needs an identifier to be the same across different
-	// directories.
+	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringOutput `pulumi:"templateId"`
-	// The version of the role definition.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
 
@@ -72,38 +133,36 @@ func GetCustomDirectoryRole(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CustomDirectoryRole resources.
 type customDirectoryRoleState struct {
-	// The description of the custom directory role
+	// The description of the custom directory role.
 	Description *string `pulumi:"description"`
-	// The display name of the custom directory role
+	// The display name of the custom directory role.
 	DisplayName *string `pulumi:"displayName"`
-	// Indicates whether the role is enabled for assignment
+	// Indicates whether the role is enabled for assignment.
 	Enabled *bool `pulumi:"enabled"`
-	// The object ID of the directory role
+	// The object ID of the custom directory role.
 	ObjectId *string `pulumi:"objectId"`
-	// List of permissions that are included in the custom directory role
+	// A collection of `permissions` blocks as documented below.
 	Permissions []CustomDirectoryRolePermission `pulumi:"permissions"`
-	// Custom template identifier that is typically used if one needs an identifier to be the same across different
-	// directories.
+	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
-	// The version of the role definition.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version *string `pulumi:"version"`
 }
 
 type CustomDirectoryRoleState struct {
-	// The description of the custom directory role
+	// The description of the custom directory role.
 	Description pulumi.StringPtrInput
-	// The display name of the custom directory role
+	// The display name of the custom directory role.
 	DisplayName pulumi.StringPtrInput
-	// Indicates whether the role is enabled for assignment
+	// Indicates whether the role is enabled for assignment.
 	Enabled pulumi.BoolPtrInput
-	// The object ID of the directory role
+	// The object ID of the custom directory role.
 	ObjectId pulumi.StringPtrInput
-	// List of permissions that are included in the custom directory role
+	// A collection of `permissions` blocks as documented below.
 	Permissions CustomDirectoryRolePermissionArrayInput
-	// Custom template identifier that is typically used if one needs an identifier to be the same across different
-	// directories.
+	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
-	// The version of the role definition.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version pulumi.StringPtrInput
 }
 
@@ -112,35 +171,33 @@ func (CustomDirectoryRoleState) ElementType() reflect.Type {
 }
 
 type customDirectoryRoleArgs struct {
-	// The description of the custom directory role
+	// The description of the custom directory role.
 	Description *string `pulumi:"description"`
-	// The display name of the custom directory role
+	// The display name of the custom directory role.
 	DisplayName string `pulumi:"displayName"`
-	// Indicates whether the role is enabled for assignment
+	// Indicates whether the role is enabled for assignment.
 	Enabled bool `pulumi:"enabled"`
-	// List of permissions that are included in the custom directory role
+	// A collection of `permissions` blocks as documented below.
 	Permissions []CustomDirectoryRolePermission `pulumi:"permissions"`
-	// Custom template identifier that is typically used if one needs an identifier to be the same across different
-	// directories.
+	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId *string `pulumi:"templateId"`
-	// The version of the role definition.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a CustomDirectoryRole resource.
 type CustomDirectoryRoleArgs struct {
-	// The description of the custom directory role
+	// The description of the custom directory role.
 	Description pulumi.StringPtrInput
-	// The display name of the custom directory role
+	// The display name of the custom directory role.
 	DisplayName pulumi.StringInput
-	// Indicates whether the role is enabled for assignment
+	// Indicates whether the role is enabled for assignment.
 	Enabled pulumi.BoolInput
-	// List of permissions that are included in the custom directory role
+	// A collection of `permissions` blocks as documented below.
 	Permissions CustomDirectoryRolePermissionArrayInput
-	// Custom template identifier that is typically used if one needs an identifier to be the same across different
-	// directories.
+	// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 	TemplateId pulumi.StringPtrInput
-	// The version of the role definition.
+	// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 	Version pulumi.StringInput
 }
 
@@ -231,38 +288,37 @@ func (o CustomDirectoryRoleOutput) ToCustomDirectoryRoleOutputWithContext(ctx co
 	return o
 }
 
-// The description of the custom directory role
+// The description of the custom directory role.
 func (o CustomDirectoryRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The display name of the custom directory role
+// The display name of the custom directory role.
 func (o CustomDirectoryRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Indicates whether the role is enabled for assignment
+// Indicates whether the role is enabled for assignment.
 func (o CustomDirectoryRoleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// The object ID of the directory role
+// The object ID of the custom directory role.
 func (o CustomDirectoryRoleOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }
 
-// List of permissions that are included in the custom directory role
+// A collection of `permissions` blocks as documented below.
 func (o CustomDirectoryRoleOutput) Permissions() CustomDirectoryRolePermissionArrayOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) CustomDirectoryRolePermissionArrayOutput { return v.Permissions }).(CustomDirectoryRolePermissionArrayOutput)
 }
 
-// Custom template identifier that is typically used if one needs an identifier to be the same across different
-// directories.
+// Custom template identifier that is typically used if one needs an identifier to be the same across different directories. Changing this forces a new resource to be created.
 func (o CustomDirectoryRoleOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.TemplateId }).(pulumi.StringOutput)
 }
 
-// The version of the role definition.
+// The version of the role definition. This can be any arbitrary string between 1-128 characters.
 func (o CustomDirectoryRoleOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *CustomDirectoryRole) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

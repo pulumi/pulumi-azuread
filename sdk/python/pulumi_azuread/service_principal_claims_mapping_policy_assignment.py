@@ -18,8 +18,8 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
                  service_principal_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a ServicePrincipalClaimsMappingPolicyAssignment resource.
-        :param pulumi.Input[str] claims_mapping_policy_id: ID of the claims mapping policy to assign
-        :param pulumi.Input[str] service_principal_id: Object ID of the service principal for which to assign the policy
+        :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
         """
         pulumi.set(__self__, "claims_mapping_policy_id", claims_mapping_policy_id)
         pulumi.set(__self__, "service_principal_id", service_principal_id)
@@ -28,7 +28,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
     @pulumi.getter(name="claimsMappingPolicyId")
     def claims_mapping_policy_id(self) -> pulumi.Input[str]:
         """
-        ID of the claims mapping policy to assign
+        The ID of the claims mapping policy to assign.
         """
         return pulumi.get(self, "claims_mapping_policy_id")
 
@@ -40,7 +40,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
         """
-        Object ID of the service principal for which to assign the policy
+        The object ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -56,8 +56,8 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
                  service_principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalClaimsMappingPolicyAssignment resources.
-        :param pulumi.Input[str] claims_mapping_policy_id: ID of the claims mapping policy to assign
-        :param pulumi.Input[str] service_principal_id: Object ID of the service principal for which to assign the policy
+        :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
         """
         if claims_mapping_policy_id is not None:
             pulumi.set(__self__, "claims_mapping_policy_id", claims_mapping_policy_id)
@@ -68,7 +68,7 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
     @pulumi.getter(name="claimsMappingPolicyId")
     def claims_mapping_policy_id(self) -> Optional[pulumi.Input[str]]:
         """
-        ID of the claims mapping policy to assign
+        The ID of the claims mapping policy to assign.
         """
         return pulumi.get(self, "claims_mapping_policy_id")
 
@@ -80,7 +80,7 @@ class _ServicePrincipalClaimsMappingPolicyAssignmentState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Object ID of the service principal for which to assign the policy
+        The object ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -98,11 +98,39 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServicePrincipalClaimsMappingPolicyAssignment resource with the given unique name, props, and options.
+        Manages a Claims Mapping Policy Assignment within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
+            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
+            service_principal_id=azuread_service_principal["my_principal"]["id"])
+        ```
+
+        ## Import
+
+        Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app 00000000-0000-0000-0000-000000000000/claimsMappingPolicy/11111111-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] claims_mapping_policy_id: ID of the claims mapping policy to assign
-        :param pulumi.Input[str] service_principal_id: Object ID of the service principal for which to assign the policy
+        :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
         """
         ...
     @overload
@@ -111,7 +139,35 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
                  args: ServicePrincipalClaimsMappingPolicyAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServicePrincipalClaimsMappingPolicyAssignment resource with the given unique name, props, and options.
+        Manages a Claims Mapping Policy Assignment within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        app = azuread.ServicePrincipalClaimsMappingPolicyAssignment("app",
+            claims_mapping_policy_id=azuread_claims_mapping_policy["my_policy"]["id"],
+            service_principal_id=azuread_service_principal["my_principal"]["id"])
+        ```
+
+        ## Import
+
+        Claims Mapping Policy can be imported using the `id`, in the form `service-principal-uuid/claimsMappingPolicy/claims-mapping-policy-uuid`, e.g
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment app 00000000-0000-0000-0000-000000000000/claimsMappingPolicy/11111111-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServicePrincipalClaimsMappingPolicyAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -163,8 +219,8 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] claims_mapping_policy_id: ID of the claims mapping policy to assign
-        :param pulumi.Input[str] service_principal_id: Object ID of the service principal for which to assign the policy
+        :param pulumi.Input[str] claims_mapping_policy_id: The ID of the claims mapping policy to assign.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for the policy assignment.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -178,7 +234,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter(name="claimsMappingPolicyId")
     def claims_mapping_policy_id(self) -> pulumi.Output[str]:
         """
-        ID of the claims mapping policy to assign
+        The ID of the claims mapping policy to assign.
         """
         return pulumi.get(self, "claims_mapping_policy_id")
 
@@ -186,7 +242,7 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
         """
-        Object ID of the service principal for which to assign the policy
+        The object ID of the service principal for the policy assignment.
         """
         return pulumi.get(self, "service_principal_id")
 

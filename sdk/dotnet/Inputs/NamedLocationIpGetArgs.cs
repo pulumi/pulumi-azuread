@@ -14,12 +14,19 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("ipRanges", required: true)]
         private InputList<string>? _ipRanges;
+
+        /// <summary>
+        /// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        /// </summary>
         public InputList<string> IpRanges
         {
             get => _ipRanges ?? (_ipRanges = new InputList<string>());
             set => _ipRanges = value;
         }
 
+        /// <summary>
+        /// Whether the named location is trusted. Defaults to `false`.
+        /// </summary>
         [Input("trusted")]
         public Input<bool>? Trusted { get; set; }
 

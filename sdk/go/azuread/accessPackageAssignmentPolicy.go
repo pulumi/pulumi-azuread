@@ -11,28 +11,129 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an assignment policy for an access package within Identity Governance in Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+//
+// When authenticated with a user principal, this resource requires `Global Administrator` directory role, or one of the `Catalog Owner` and `Access Package Manager` role in Idneity Governance.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("group-name"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackageCatalog, err := azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//				DisplayName: pulumi.String("example-catalog"),
+//				Description: pulumi.String("Example catalog"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
+//				CatalogId:   exampleAccessPackageCatalog.ID(),
+//				DisplayName: pulumi.String("access-package"),
+//				Description: pulumi.String("Access Package"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAccessPackageAssignmentPolicy(ctx, "test", &azuread.AccessPackageAssignmentPolicyArgs{
+//				AccessPackageId: pulumi.Any(azuread_access_package.Test.Id),
+//				DisplayName:     pulumi.String("assignment-policy"),
+//				Description:     pulumi.String("My assignment policy"),
+//				DurationInDays:  pulumi.Int(90),
+//				RequestorSettings: &azuread.AccessPackageAssignmentPolicyRequestorSettingsArgs{
+//					ScopeType: pulumi.String("AllExistingDirectoryMemberUsers"),
+//				},
+//				ApprovalSettings: &azuread.AccessPackageAssignmentPolicyApprovalSettingsArgs{
+//					ApprovalRequired: pulumi.Bool(true),
+//					ApprovalStages: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArray{
+//						&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs{
+//							ApprovalTimeoutInDays: pulumi.Int(14),
+//							PrimaryApprovers: azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArray{
+//								&azuread.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs{
+//									ObjectId:    pulumi.Any(azuread_group.Test.Object_id),
+//									SubjectType: pulumi.String("groupMembers"),
+//								},
+//							},
+//						},
+//					},
+//				},
+//				AssignmentReviewSettings: &azuread.AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs{
+//					Enabled:                     pulumi.Bool(true),
+//					ReviewFrequency:             pulumi.String("weekly"),
+//					DurationInDays:              pulumi.Int(3),
+//					ReviewType:                  pulumi.String("Self"),
+//					AccessReviewTimeoutBehavior: pulumi.String("keepAccess"),
+//				},
+//				Questions: azuread.AccessPackageAssignmentPolicyQuestionArray{
+//					&azuread.AccessPackageAssignmentPolicyQuestionArgs{
+//						Text: &azuread.AccessPackageAssignmentPolicyQuestionTextArgs{
+//							DefaultText: pulumi.String("hello, how are you?"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// An access package assignment policy can be imported using the ID, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy example 00000000-0000-0000-0000-000000000000
+//
+// ```
 type AccessPackageAssignmentPolicy struct {
 	pulumi.CustomResourceState
 
-	// The ID of the access package that will contain the policy
+	// The ID of the access package that will contain the policy.
 	AccessPackageId pulumi.StringOutput `pulumi:"accessPackageId"`
-	// Settings of whether approvals are required and how they are obtained
+	// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
 	ApprovalSettings AccessPackageAssignmentPolicyApprovalSettingsPtrOutput `pulumi:"approvalSettings"`
-	// The settings of whether assignment review is needed and how it's conducted
+	// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
 	AssignmentReviewSettings AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput `pulumi:"assignmentReviewSettings"`
-	// The description of the policy
+	// The description of the policy.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The display name of the policy
+	// The display name of the policy.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// How many days this assignment is valid for
+	// How many days this assignment is valid for.
 	DurationInDays pulumi.IntPtrOutput `pulumi:"durationInDays"`
-	// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+	// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
 	ExpirationDate pulumi.StringPtrOutput `pulumi:"expirationDate"`
-	// When enabled, users will be able to request extension of their access to this package before their access expires
+	// Whether users will be able to request extension of their access to this package before their access expires.
 	ExtensionEnabled pulumi.BoolPtrOutput `pulumi:"extensionEnabled"`
-	// One or more questions to the requestor
+	// One or more `question` blocks for the requestor, as documented below.
 	Questions AccessPackageAssignmentPolicyQuestionArrayOutput `pulumi:"questions"`
-	// This block configures the users who can request access
+	// A `requestorSettings` block to configure the users who can request access, as documented below.
 	RequestorSettings AccessPackageAssignmentPolicyRequestorSettingsPtrOutput `pulumi:"requestorSettings"`
 }
 
@@ -74,48 +175,48 @@ func GetAccessPackageAssignmentPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPackageAssignmentPolicy resources.
 type accessPackageAssignmentPolicyState struct {
-	// The ID of the access package that will contain the policy
+	// The ID of the access package that will contain the policy.
 	AccessPackageId *string `pulumi:"accessPackageId"`
-	// Settings of whether approvals are required and how they are obtained
+	// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
 	ApprovalSettings *AccessPackageAssignmentPolicyApprovalSettings `pulumi:"approvalSettings"`
-	// The settings of whether assignment review is needed and how it's conducted
+	// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
 	AssignmentReviewSettings *AccessPackageAssignmentPolicyAssignmentReviewSettings `pulumi:"assignmentReviewSettings"`
-	// The description of the policy
+	// The description of the policy.
 	Description *string `pulumi:"description"`
-	// The display name of the policy
+	// The display name of the policy.
 	DisplayName *string `pulumi:"displayName"`
-	// How many days this assignment is valid for
+	// How many days this assignment is valid for.
 	DurationInDays *int `pulumi:"durationInDays"`
-	// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+	// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// When enabled, users will be able to request extension of their access to this package before their access expires
+	// Whether users will be able to request extension of their access to this package before their access expires.
 	ExtensionEnabled *bool `pulumi:"extensionEnabled"`
-	// One or more questions to the requestor
+	// One or more `question` blocks for the requestor, as documented below.
 	Questions []AccessPackageAssignmentPolicyQuestion `pulumi:"questions"`
-	// This block configures the users who can request access
+	// A `requestorSettings` block to configure the users who can request access, as documented below.
 	RequestorSettings *AccessPackageAssignmentPolicyRequestorSettings `pulumi:"requestorSettings"`
 }
 
 type AccessPackageAssignmentPolicyState struct {
-	// The ID of the access package that will contain the policy
+	// The ID of the access package that will contain the policy.
 	AccessPackageId pulumi.StringPtrInput
-	// Settings of whether approvals are required and how they are obtained
+	// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
 	ApprovalSettings AccessPackageAssignmentPolicyApprovalSettingsPtrInput
-	// The settings of whether assignment review is needed and how it's conducted
+	// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
 	AssignmentReviewSettings AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput
-	// The description of the policy
+	// The description of the policy.
 	Description pulumi.StringPtrInput
-	// The display name of the policy
+	// The display name of the policy.
 	DisplayName pulumi.StringPtrInput
-	// How many days this assignment is valid for
+	// How many days this assignment is valid for.
 	DurationInDays pulumi.IntPtrInput
-	// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+	// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
 	ExpirationDate pulumi.StringPtrInput
-	// When enabled, users will be able to request extension of their access to this package before their access expires
+	// Whether users will be able to request extension of their access to this package before their access expires.
 	ExtensionEnabled pulumi.BoolPtrInput
-	// One or more questions to the requestor
+	// One or more `question` blocks for the requestor, as documented below.
 	Questions AccessPackageAssignmentPolicyQuestionArrayInput
-	// This block configures the users who can request access
+	// A `requestorSettings` block to configure the users who can request access, as documented below.
 	RequestorSettings AccessPackageAssignmentPolicyRequestorSettingsPtrInput
 }
 
@@ -124,49 +225,49 @@ func (AccessPackageAssignmentPolicyState) ElementType() reflect.Type {
 }
 
 type accessPackageAssignmentPolicyArgs struct {
-	// The ID of the access package that will contain the policy
+	// The ID of the access package that will contain the policy.
 	AccessPackageId string `pulumi:"accessPackageId"`
-	// Settings of whether approvals are required and how they are obtained
+	// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
 	ApprovalSettings *AccessPackageAssignmentPolicyApprovalSettings `pulumi:"approvalSettings"`
-	// The settings of whether assignment review is needed and how it's conducted
+	// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
 	AssignmentReviewSettings *AccessPackageAssignmentPolicyAssignmentReviewSettings `pulumi:"assignmentReviewSettings"`
-	// The description of the policy
+	// The description of the policy.
 	Description string `pulumi:"description"`
-	// The display name of the policy
+	// The display name of the policy.
 	DisplayName string `pulumi:"displayName"`
-	// How many days this assignment is valid for
+	// How many days this assignment is valid for.
 	DurationInDays *int `pulumi:"durationInDays"`
-	// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+	// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
 	ExpirationDate *string `pulumi:"expirationDate"`
-	// When enabled, users will be able to request extension of their access to this package before their access expires
+	// Whether users will be able to request extension of their access to this package before their access expires.
 	ExtensionEnabled *bool `pulumi:"extensionEnabled"`
-	// One or more questions to the requestor
+	// One or more `question` blocks for the requestor, as documented below.
 	Questions []AccessPackageAssignmentPolicyQuestion `pulumi:"questions"`
-	// This block configures the users who can request access
+	// A `requestorSettings` block to configure the users who can request access, as documented below.
 	RequestorSettings *AccessPackageAssignmentPolicyRequestorSettings `pulumi:"requestorSettings"`
 }
 
 // The set of arguments for constructing a AccessPackageAssignmentPolicy resource.
 type AccessPackageAssignmentPolicyArgs struct {
-	// The ID of the access package that will contain the policy
+	// The ID of the access package that will contain the policy.
 	AccessPackageId pulumi.StringInput
-	// Settings of whether approvals are required and how they are obtained
+	// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
 	ApprovalSettings AccessPackageAssignmentPolicyApprovalSettingsPtrInput
-	// The settings of whether assignment review is needed and how it's conducted
+	// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
 	AssignmentReviewSettings AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrInput
-	// The description of the policy
+	// The description of the policy.
 	Description pulumi.StringInput
-	// The display name of the policy
+	// The display name of the policy.
 	DisplayName pulumi.StringInput
-	// How many days this assignment is valid for
+	// How many days this assignment is valid for.
 	DurationInDays pulumi.IntPtrInput
-	// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+	// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
 	ExpirationDate pulumi.StringPtrInput
-	// When enabled, users will be able to request extension of their access to this package before their access expires
+	// Whether users will be able to request extension of their access to this package before their access expires.
 	ExtensionEnabled pulumi.BoolPtrInput
-	// One or more questions to the requestor
+	// One or more `question` blocks for the requestor, as documented below.
 	Questions AccessPackageAssignmentPolicyQuestionArrayInput
-	// This block configures the users who can request access
+	// A `requestorSettings` block to configure the users who can request access, as documented below.
 	RequestorSettings AccessPackageAssignmentPolicyRequestorSettingsPtrInput
 }
 
@@ -257,58 +358,58 @@ func (o AccessPackageAssignmentPolicyOutput) ToAccessPackageAssignmentPolicyOutp
 	return o
 }
 
-// The ID of the access package that will contain the policy
+// The ID of the access package that will contain the policy.
 func (o AccessPackageAssignmentPolicyOutput) AccessPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) pulumi.StringOutput { return v.AccessPackageId }).(pulumi.StringOutput)
 }
 
-// Settings of whether approvals are required and how they are obtained
+// An `approvalSettings` block to specify whether approvals are required and how they are obtained, as documented below.
 func (o AccessPackageAssignmentPolicyOutput) ApprovalSettings() AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) AccessPackageAssignmentPolicyApprovalSettingsPtrOutput {
 		return v.ApprovalSettings
 	}).(AccessPackageAssignmentPolicyApprovalSettingsPtrOutput)
 }
 
-// The settings of whether assignment review is needed and how it's conducted
+// An `assignmentReviewSettings` block, to specify whether assignment review is needed and how it is conducted, as documented below.
 func (o AccessPackageAssignmentPolicyOutput) AssignmentReviewSettings() AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput {
 		return v.AssignmentReviewSettings
 	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput)
 }
 
-// The description of the policy
+// The description of the policy.
 func (o AccessPackageAssignmentPolicyOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The display name of the policy
+// The display name of the policy.
 func (o AccessPackageAssignmentPolicyOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// How many days this assignment is valid for
+// How many days this assignment is valid for.
 func (o AccessPackageAssignmentPolicyOutput) DurationInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) pulumi.IntPtrOutput { return v.DurationInDays }).(pulumi.IntPtrOutput)
 }
 
-// The date that this assignment expires, formatted as an RFC3339 date string in UTC (e.g. 2018-01-01T01:02:03Z)
+// The date that this assignment expires, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z).
 func (o AccessPackageAssignmentPolicyOutput) ExpirationDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) pulumi.StringPtrOutput { return v.ExpirationDate }).(pulumi.StringPtrOutput)
 }
 
-// When enabled, users will be able to request extension of their access to this package before their access expires
+// Whether users will be able to request extension of their access to this package before their access expires.
 func (o AccessPackageAssignmentPolicyOutput) ExtensionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) pulumi.BoolPtrOutput { return v.ExtensionEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// One or more questions to the requestor
+// One or more `question` blocks for the requestor, as documented below.
 func (o AccessPackageAssignmentPolicyOutput) Questions() AccessPackageAssignmentPolicyQuestionArrayOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) AccessPackageAssignmentPolicyQuestionArrayOutput {
 		return v.Questions
 	}).(AccessPackageAssignmentPolicyQuestionArrayOutput)
 }
 
-// This block configures the users who can request access
+// A `requestorSettings` block to configure the users who can request access, as documented below.
 func (o AccessPackageAssignmentPolicyOutput) RequestorSettings() AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicy) AccessPackageAssignmentPolicyRequestorSettingsPtrOutput {
 		return v.RequestorSettings

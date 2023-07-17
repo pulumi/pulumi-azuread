@@ -14,24 +14,43 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("allowedMemberTypes")]
         private InputList<string>? _allowedMemberTypes;
+
+        /// <summary>
+        /// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
+        /// </summary>
         public InputList<string> AllowedMemberTypes
         {
             get => _allowedMemberTypes ?? (_allowedMemberTypes = new InputList<string>());
             set => _allowedMemberTypes = value;
         }
 
+        /// <summary>
+        /// A description of the service principal provided for internal end-users.
+        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Display name for the app role that appears during app role assignment and in consent experiences.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Specifies whether the permission scope is enabled.
+        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
+        /// <summary>
+        /// The unique identifier of the delegated permission.
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
+        /// <summary>
+        /// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

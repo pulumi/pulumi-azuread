@@ -9,23 +9,78 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages a single catalog role assignment within Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `EntitlementManagement.ReadWrite.All` or `Directory.ReadWrite.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Identity Governance administrator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleUser = AzureAD.GetUser.Invoke(new()
+    ///     {
+    ///         UserPrincipalName = "jdoe@hashicorp.com",
+    ///     });
+    /// 
+    ///     var exampleAccessPackageCatalogRole = AzureAD.GetAccessPackageCatalogRole.Invoke(new()
+    ///     {
+    ///         DisplayName = "Catalog owner",
+    ///     });
+    /// 
+    ///     var exampleAccessPackageCatalog = new AzureAD.AccessPackageCatalog("exampleAccessPackageCatalog", new()
+    ///     {
+    ///         DisplayName = "example-access-package-catalog",
+    ///         Description = "Example access package catalog",
+    ///     });
+    /// 
+    ///     var exampleAccessPackageCatalogRoleAssignment = new AzureAD.AccessPackageCatalogRoleAssignment("exampleAccessPackageCatalogRoleAssignment", new()
+    ///     {
+    ///         RoleId = exampleAccessPackageCatalogRole.Apply(getAccessPackageCatalogRoleResult =&gt; getAccessPackageCatalogRoleResult.ObjectId),
+    ///         PrincipalObjectId = exampleUser.Apply(getUserResult =&gt; getUserResult.ObjectId),
+    ///         CatalogId = exampleAccessPackageCatalog.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Catalog role assignments can be imported using the ID of the assignment, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment test 00000000-0000-0000-0000-000000000000
+    /// ```
+    /// </summary>
     [AzureADResourceType("azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment")]
     public partial class AccessPackageCatalogRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The unique ID of the access package catalog.
+        /// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
         /// </summary>
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the member principal
+        /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         /// </summary>
         [Output("principalObjectId")]
         public Output<string> PrincipalObjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the catalog role for this assignment
+        /// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
@@ -77,19 +132,19 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageCatalogRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique ID of the access package catalog.
+        /// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
         /// </summary>
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the member principal
+        /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         /// </summary>
         [Input("principalObjectId", required: true)]
         public Input<string> PrincipalObjectId { get; set; } = null!;
 
         /// <summary>
-        /// The object ID of the catalog role for this assignment
+        /// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
@@ -103,19 +158,19 @@ namespace Pulumi.AzureAD
     public sealed class AccessPackageCatalogRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The unique ID of the access package catalog.
+        /// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
         /// </summary>
         [Input("catalogId")]
         public Input<string>? CatalogId { get; set; }
 
         /// <summary>
-        /// The object ID of the member principal
+        /// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
         /// </summary>
         [Input("principalObjectId")]
         public Input<string>? PrincipalObjectId { get; set; }
 
         /// <summary>
-        /// The object ID of the catalog role for this assignment
+        /// The object ID of the catalog role you want to assign. Changing this forces a new resource to be created.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }

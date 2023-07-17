@@ -10,6 +10,70 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// i
+// Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+//
+// When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+//
+// ## Example Usage
+//
+// *Look up by ID*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.LookupAccessPackageCatalog(ctx, &azuread.LookupAccessPackageCatalogArgs{
+//				ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Look up by DisplayName*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.LookupAccessPackageCatalog(ctx, &azuread.LookupAccessPackageCatalogArgs{
+//				DisplayName: pulumi.StringRef("My access package Catalog"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupAccessPackageCatalog(ctx *pulumi.Context, args *LookupAccessPackageCatalogArgs, opts ...pulumi.InvokeOption) (*LookupAccessPackageCatalogResult, error) {
 	var rv LookupAccessPackageCatalogResult
 	err := ctx.Invoke("azuread:index/getAccessPackageCatalog:getAccessPackageCatalog", args, &rv, opts...)
@@ -21,19 +85,26 @@ func LookupAccessPackageCatalog(ctx *pulumi.Context, args *LookupAccessPackageCa
 
 // A collection of arguments for invoking getAccessPackageCatalog.
 type LookupAccessPackageCatalogArgs struct {
+	// The display name of the access package catalog.
 	DisplayName *string `pulumi:"displayName"`
-	ObjectId    *string `pulumi:"objectId"`
+	// The ID of this access package catalog.
+	//
+	// > One of `displayName` or `objectId` must be specified.
+	ObjectId *string `pulumi:"objectId"`
 }
 
 // A collection of values returned by getAccessPackageCatalog.
 type LookupAccessPackageCatalogResult struct {
-	Description       string `pulumi:"description"`
-	DisplayName       string `pulumi:"displayName"`
-	ExternallyVisible bool   `pulumi:"externallyVisible"`
+	// The description of the access package catalog.
+	Description string `pulumi:"description"`
+	DisplayName string `pulumi:"displayName"`
+	// Whether the access packages in this catalog can be requested by users outside the tenant.
+	ExternallyVisible bool `pulumi:"externallyVisible"`
 	// The provider-assigned unique ID for this managed resource.
-	Id        string `pulumi:"id"`
-	ObjectId  string `pulumi:"objectId"`
-	Published bool   `pulumi:"published"`
+	Id       string `pulumi:"id"`
+	ObjectId string `pulumi:"objectId"`
+	// Whether the access packages in this catalog are available for management.
+	Published bool `pulumi:"published"`
 }
 
 func LookupAccessPackageCatalogOutput(ctx *pulumi.Context, args LookupAccessPackageCatalogOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPackageCatalogResultOutput {
@@ -51,8 +122,12 @@ func LookupAccessPackageCatalogOutput(ctx *pulumi.Context, args LookupAccessPack
 
 // A collection of arguments for invoking getAccessPackageCatalog.
 type LookupAccessPackageCatalogOutputArgs struct {
+	// The display name of the access package catalog.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	ObjectId    pulumi.StringPtrInput `pulumi:"objectId"`
+	// The ID of this access package catalog.
+	//
+	// > One of `displayName` or `objectId` must be specified.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 
 func (LookupAccessPackageCatalogOutputArgs) ElementType() reflect.Type {
@@ -74,6 +149,7 @@ func (o LookupAccessPackageCatalogResultOutput) ToLookupAccessPackageCatalogResu
 	return o
 }
 
+// The description of the access package catalog.
 func (o LookupAccessPackageCatalogResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPackageCatalogResult) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -82,6 +158,7 @@ func (o LookupAccessPackageCatalogResultOutput) DisplayName() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupAccessPackageCatalogResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Whether the access packages in this catalog can be requested by users outside the tenant.
 func (o LookupAccessPackageCatalogResultOutput) ExternallyVisible() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccessPackageCatalogResult) bool { return v.ExternallyVisible }).(pulumi.BoolOutput)
 }
@@ -95,6 +172,7 @@ func (o LookupAccessPackageCatalogResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAccessPackageCatalogResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// Whether the access packages in this catalog are available for management.
 func (o LookupAccessPackageCatalogResultOutput) Published() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupAccessPackageCatalogResult) bool { return v.Published }).(pulumi.BoolOutput)
 }

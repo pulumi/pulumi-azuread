@@ -13,9 +13,21 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicyGrantControls
     {
+        /// <summary>
+        /// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+        /// </summary>
         public readonly ImmutableArray<string> BuiltInControls;
+        /// <summary>
+        /// List of custom controls IDs required by the policy.
+        /// </summary>
         public readonly ImmutableArray<string> CustomAuthenticationFactors;
+        /// <summary>
+        /// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+        /// </summary>
         public readonly string Operator;
+        /// <summary>
+        /// List of terms of use IDs required by the policy.
+        /// </summary>
         public readonly ImmutableArray<string> TermsOfUses;
 
         [OutputConstructor]

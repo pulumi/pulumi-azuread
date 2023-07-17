@@ -11,22 +11,41 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a single directory role assignment within Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.ReadWrite.Directory` or `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+//
+// ## Import
+//
+// Directory role assignments can be imported using the ID of the assignment, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/directoryRoleAssignment:DirectoryRoleAssignment test ePROZI_iKE653D_d6aoLHyr-lKgHI8ZGiIdz8CLVcng-1
+//
+// ```
 type DirectoryRoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// Identifier of the app-specific scope when the assignment scope is app-specific
+	// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	AppScopeId pulumi.StringOutput `pulumi:"appScopeId"`
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
 	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId pulumi.StringOutput `pulumi:"appScopeObjectId"`
-	// Identifier of the directory object representing the scope of the assignment
+	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId pulumi.StringOutput `pulumi:"directoryScopeId"`
 	// Identifier of the directory object representing the scope of the assignment
 	DirectoryScopeObjectId pulumi.StringOutput `pulumi:"directoryScopeObjectId"`
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringOutput `pulumi:"principalObjectId"`
-	// The object ID of the directory role for this assignment
+	// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 }
 
@@ -65,36 +84,36 @@ func GetDirectoryRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DirectoryRoleAssignment resources.
 type directoryRoleAssignmentState struct {
-	// Identifier of the app-specific scope when the assignment scope is app-specific
+	// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	AppScopeId *string `pulumi:"appScopeId"`
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
 	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId *string `pulumi:"appScopeObjectId"`
-	// Identifier of the directory object representing the scope of the assignment
+	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId *string `pulumi:"directoryScopeId"`
 	// Identifier of the directory object representing the scope of the assignment
 	DirectoryScopeObjectId *string `pulumi:"directoryScopeObjectId"`
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId *string `pulumi:"principalObjectId"`
-	// The object ID of the directory role for this assignment
+	// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
 	RoleId *string `pulumi:"roleId"`
 }
 
 type DirectoryRoleAssignmentState struct {
-	// Identifier of the app-specific scope when the assignment scope is app-specific
+	// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	AppScopeId pulumi.StringPtrInput
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
 	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId pulumi.StringPtrInput
-	// Identifier of the directory object representing the scope of the assignment
+	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId pulumi.StringPtrInput
 	// Identifier of the directory object representing the scope of the assignment
 	DirectoryScopeObjectId pulumi.StringPtrInput
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringPtrInput
-	// The object ID of the directory role for this assignment
+	// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
 	RoleId pulumi.StringPtrInput
 }
 
@@ -103,37 +122,37 @@ func (DirectoryRoleAssignmentState) ElementType() reflect.Type {
 }
 
 type directoryRoleAssignmentArgs struct {
-	// Identifier of the app-specific scope when the assignment scope is app-specific
+	// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	AppScopeId *string `pulumi:"appScopeId"`
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
 	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId *string `pulumi:"appScopeObjectId"`
-	// Identifier of the directory object representing the scope of the assignment
+	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId *string `pulumi:"directoryScopeId"`
 	// Identifier of the directory object representing the scope of the assignment
 	DirectoryScopeObjectId *string `pulumi:"directoryScopeObjectId"`
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId string `pulumi:"principalObjectId"`
-	// The object ID of the directory role for this assignment
+	// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
 	RoleId string `pulumi:"roleId"`
 }
 
 // The set of arguments for constructing a DirectoryRoleAssignment resource.
 type DirectoryRoleAssignmentArgs struct {
-	// Identifier of the app-specific scope when the assignment scope is app-specific
+	// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	AppScopeId pulumi.StringPtrInput
 	// Identifier of the app-specific scope when the assignment scope is app-specific
 	//
 	// Deprecated: `app_scope_object_id` has been renamed to `app_scope_id` and will be removed in version 3.0 or the AzureAD Provider
 	AppScopeObjectId pulumi.StringPtrInput
-	// Identifier of the directory object representing the scope of the assignment
+	// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	DirectoryScopeId pulumi.StringPtrInput
 	// Identifier of the directory object representing the scope of the assignment
 	DirectoryScopeObjectId pulumi.StringPtrInput
-	// The object ID of the member principal
+	// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringInput
-	// The object ID of the directory role for this assignment
+	// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
 	RoleId pulumi.StringInput
 }
 
@@ -224,7 +243,7 @@ func (o DirectoryRoleAssignmentOutput) ToDirectoryRoleAssignmentOutputWithContex
 	return o
 }
 
-// Identifier of the app-specific scope when the assignment scope is app-specific
+// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 func (o DirectoryRoleAssignmentOutput) AppScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.AppScopeId }).(pulumi.StringOutput)
 }
@@ -236,7 +255,7 @@ func (o DirectoryRoleAssignmentOutput) AppScopeObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.AppScopeObjectId }).(pulumi.StringOutput)
 }
 
-// Identifier of the directory object representing the scope of the assignment
+// Identifier of the directory object representing the scope of the assignment. Cannot be used with `appScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 func (o DirectoryRoleAssignmentOutput) DirectoryScopeId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.DirectoryScopeId }).(pulumi.StringOutput)
 }
@@ -246,12 +265,12 @@ func (o DirectoryRoleAssignmentOutput) DirectoryScopeObjectId() pulumi.StringOut
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.DirectoryScopeObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the member principal
+// The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 func (o DirectoryRoleAssignmentOutput) PrincipalObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.PrincipalObjectId }).(pulumi.StringOutput)
 }
 
-// The object ID of the directory role for this assignment
+// The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
 func (o DirectoryRoleAssignmentOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DirectoryRoleAssignment) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

@@ -13,17 +13,53 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class GetServicePrincipalsServicePrincipalResult
     {
+        /// <summary>
+        /// Whether or not the service principal account is enabled.
+        /// </summary>
         public readonly bool AccountEnabled;
+        /// <summary>
+        /// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+        /// </summary>
         public readonly bool AppRoleAssignmentRequired;
+        /// <summary>
+        /// The application ID (client ID) of the application associated with this service principal.
+        /// </summary>
         public readonly string ApplicationId;
+        /// <summary>
+        /// The tenant ID where the associated application is registered.
+        /// </summary>
         public readonly string ApplicationTenantId;
+        /// <summary>
+        /// The display name of the application associated with this service principal.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// The object ID of the service principal.
+        /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+        /// </summary>
         public readonly string PreferredSingleSignOnMode;
+        /// <summary>
+        /// The URL where the service exposes SAML metadata for federation.
+        /// </summary>
         public readonly string SamlMetadataUrl;
+        /// <summary>
+        /// A list of identifier URI(s), copied over from the associated application.
+        /// </summary>
         public readonly ImmutableArray<string> ServicePrincipalNames;
+        /// <summary>
+        /// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+        /// </summary>
         public readonly string SignInAudience;
+        /// <summary>
+        /// A list of tags applied to the service principal.
+        /// </summary>
         public readonly ImmutableArray<string> Tags;
+        /// <summary>
+        /// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

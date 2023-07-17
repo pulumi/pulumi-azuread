@@ -14,12 +14,19 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("countriesAndRegions", required: true)]
         private InputList<string>? _countriesAndRegions;
+
+        /// <summary>
+        /// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        /// </summary>
         public InputList<string> CountriesAndRegions
         {
             get => _countriesAndRegions ?? (_countriesAndRegions = new InputList<string>());
             set => _countriesAndRegions = value;
         }
 
+        /// <summary>
+        /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        /// </summary>
         [Input("includeUnknownCountriesAndRegions")]
         public Input<bool>? IncludeUnknownCountriesAndRegions { get; set; }
 

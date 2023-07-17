@@ -19,9 +19,9 @@ class ApplicationPreAuthorizedArgs:
                  permission_ids: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         The set of arguments for constructing a ApplicationPreAuthorized resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: The IDs of the permission scopes required by the pre-authorized application
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
         pulumi.set(__self__, "application_object_id", application_object_id)
         pulumi.set(__self__, "authorized_app_id", authorized_app_id)
@@ -31,7 +31,7 @@ class ApplicationPreAuthorizedArgs:
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the application to which this pre-authorized application should be added
+        The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_object_id")
 
@@ -55,7 +55,7 @@ class ApplicationPreAuthorizedArgs:
     @pulumi.getter(name="permissionIds")
     def permission_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The IDs of the permission scopes required by the pre-authorized application
+        A set of permission scope IDs required by the authorized application.
         """
         return pulumi.get(self, "permission_ids")
 
@@ -72,9 +72,9 @@ class _ApplicationPreAuthorizedState:
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ApplicationPreAuthorized resources.
-        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: The IDs of the permission scopes required by the pre-authorized application
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
         if application_object_id is not None:
             pulumi.set(__self__, "application_object_id", application_object_id)
@@ -87,7 +87,7 @@ class _ApplicationPreAuthorizedState:
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the application to which this pre-authorized application should be added
+        The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_object_id")
 
@@ -111,7 +111,7 @@ class _ApplicationPreAuthorizedState:
     @pulumi.getter(name="permissionIds")
     def permission_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The IDs of the permission scopes required by the pre-authorized application
+        A set of permission scope IDs required by the authorized application.
         """
         return pulumi.get(self, "permission_ids")
 
@@ -130,12 +130,61 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                  permission_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
-        Create a ApplicationPreAuthorized resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        authorized = azuread.Application("authorized", display_name="example-authorized-app")
+        authorizer = azuread.Application("authorizer",
+            display_name="example-authorizing-app",
+            api=azuread.ApplicationApiArgs(
+                oauth2_permission_scopes=[
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Administer the application",
+                        admin_consent_display_name="Administer",
+                        enabled=True,
+                        id="ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                        type="Admin",
+                        value="administer",
+                    ),
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Access the application",
+                        admin_consent_display_name="Access",
+                        enabled=True,
+                        id="2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                        type="User",
+                        user_consent_description="Access the application",
+                        user_consent_display_name="Access",
+                        value="user_impersonation",
+                    ),
+                ],
+            ))
+        example = azuread.ApplicationPreAuthorized("example",
+            application_object_id=authorizer.object_id,
+            authorized_app_id=authorized.application_id,
+            permission_ids=[
+                "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+            ])
+        ```
+
+        ## Import
+
+        Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: The IDs of the permission scopes required by the pre-authorized application
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
         ...
     @overload
@@ -144,7 +193,56 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
                  args: ApplicationPreAuthorizedArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ApplicationPreAuthorized resource with the given unique name, props, and options.
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        authorized = azuread.Application("authorized", display_name="example-authorized-app")
+        authorizer = azuread.Application("authorizer",
+            display_name="example-authorizing-app",
+            api=azuread.ApplicationApiArgs(
+                oauth2_permission_scopes=[
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Administer the application",
+                        admin_consent_display_name="Administer",
+                        enabled=True,
+                        id="ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                        type="Admin",
+                        value="administer",
+                    ),
+                    azuread.ApplicationApiOauth2PermissionScopeArgs(
+                        admin_consent_description="Access the application",
+                        admin_consent_display_name="Access",
+                        enabled=True,
+                        id="2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+                        type="User",
+                        user_consent_description="Access the application",
+                        user_consent_display_name="Access",
+                        value="user_impersonation",
+                    ),
+                ],
+            ))
+        example = azuread.ApplicationPreAuthorized("example",
+            application_object_id=authorizer.object_id,
+            authorized_app_id=authorized.application_id,
+            permission_ids=[
+                "ced9c4c3-c273-4f0f-ac71-a20377b90f9c",
+                "2d5e07ca-664d-4d9b-ad61-ec07fd215213",
+            ])
+        ```
+
+        ## Import
+
+        Pre-authorized applications can be imported using the object ID of the authorizing application and the application ID of the application being authorized, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/applicationPreAuthorized:ApplicationPreAuthorized example 00000000-0000-0000-0000-000000000000/preAuthorizedApplication/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the authorizing application's object ID, the string "preAuthorizedApplication" and the authorized application's application ID (client ID) in the format `{ObjectId}/preAuthorizedApplication/{ApplicationId}`.
+
         :param str resource_name: The name of the resource.
         :param ApplicationPreAuthorizedArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -201,9 +299,9 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] application_object_id: The object ID of the application to which this pre-authorized application should be added
+        :param pulumi.Input[str] application_object_id: The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         :param pulumi.Input[str] authorized_app_id: The application ID of the pre-authorized application
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: The IDs of the permission scopes required by the pre-authorized application
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] permission_ids: A set of permission scope IDs required by the authorized application.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -218,7 +316,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
     @pulumi.getter(name="applicationObjectId")
     def application_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the application to which this pre-authorized application should be added
+        The object ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "application_object_id")
 
@@ -234,7 +332,7 @@ class ApplicationPreAuthorized(pulumi.CustomResource):
     @pulumi.getter(name="permissionIds")
     def permission_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The IDs of the permission scopes required by the pre-authorized application
+        A set of permission scope IDs required by the authorized application.
         """
         return pulumi.get(self, "permission_ids")
 

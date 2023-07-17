@@ -6,6 +6,67 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Manages an invitation of a guest user within Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
+ *
+ * ## Example Usage
+ *
+ * *Basic example*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Invitation("example", {
+ *     redirectUrl: "https://portal.azure.com",
+ *     userEmailAddress: "jdoe@hashicorp.com",
+ * });
+ * ```
+ *
+ * *Invitation with standard message*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Invitation("example", {
+ *     message: {
+ *         language: "en-US",
+ *     },
+ *     redirectUrl: "https://portal.azure.com",
+ *     userEmailAddress: "jdoe@hashicorp.com",
+ * });
+ * ```
+ *
+ * *Invitation with custom message body and an additional recipient*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = new azuread.Invitation("example", {
+ *     message: {
+ *         additionalRecipients: "aaliceberg@hashicorp.com",
+ *         body: "Hello there! You are invited to join my Azure tenant!",
+ *     },
+ *     redirectUrl: "https://portal.azure.com",
+ *     userDisplayName: "Bob Bobson",
+ *     userEmailAddress: "bbobson@hashicorp.com",
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * This resource does not support importing.
+ */
 export class Invitation extends pulumi.CustomResource {
     /**
      * Get an existing Invitation resource's state with the given name, ID, and optional extra
@@ -35,31 +96,31 @@ export class Invitation extends pulumi.CustomResource {
     }
 
     /**
-     * Customize the message sent to the invited user
+     * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      */
     public readonly message!: pulumi.Output<outputs.InvitationMessage | undefined>;
     /**
-     * The URL the user can use to redeem their invitation
+     * The URL the user can use to redeem their invitation.
      */
     public /*out*/ readonly redeemUrl!: pulumi.Output<string>;
     /**
-     * The URL that the user should be redirected to once the invitation is redeemed
+     * The URL that the user should be redirected to once the invitation is redeemed.
      */
     public readonly redirectUrl!: pulumi.Output<string>;
     /**
-     * The display name of the user being invited
+     * The display name of the user being invited.
      */
     public readonly userDisplayName!: pulumi.Output<string | undefined>;
     /**
-     * The email address of the user being invited
+     * The email address of the user being invited.
      */
     public readonly userEmailAddress!: pulumi.Output<string>;
     /**
-     * Object ID of the invited user
+     * Object ID of the invited user.
      */
     public /*out*/ readonly userId!: pulumi.Output<string>;
     /**
-     * The user type of the user being invited
+     * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      */
     public readonly userType!: pulumi.Output<string | undefined>;
 
@@ -109,31 +170,31 @@ export class Invitation extends pulumi.CustomResource {
  */
 export interface InvitationState {
     /**
-     * Customize the message sent to the invited user
+     * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      */
     message?: pulumi.Input<inputs.InvitationMessage>;
     /**
-     * The URL the user can use to redeem their invitation
+     * The URL the user can use to redeem their invitation.
      */
     redeemUrl?: pulumi.Input<string>;
     /**
-     * The URL that the user should be redirected to once the invitation is redeemed
+     * The URL that the user should be redirected to once the invitation is redeemed.
      */
     redirectUrl?: pulumi.Input<string>;
     /**
-     * The display name of the user being invited
+     * The display name of the user being invited.
      */
     userDisplayName?: pulumi.Input<string>;
     /**
-     * The email address of the user being invited
+     * The email address of the user being invited.
      */
     userEmailAddress?: pulumi.Input<string>;
     /**
-     * Object ID of the invited user
+     * Object ID of the invited user.
      */
     userId?: pulumi.Input<string>;
     /**
-     * The user type of the user being invited
+     * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      */
     userType?: pulumi.Input<string>;
 }
@@ -143,23 +204,23 @@ export interface InvitationState {
  */
 export interface InvitationArgs {
     /**
-     * Customize the message sent to the invited user
+     * A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
      */
     message?: pulumi.Input<inputs.InvitationMessage>;
     /**
-     * The URL that the user should be redirected to once the invitation is redeemed
+     * The URL that the user should be redirected to once the invitation is redeemed.
      */
     redirectUrl: pulumi.Input<string>;
     /**
-     * The display name of the user being invited
+     * The display name of the user being invited.
      */
     userDisplayName?: pulumi.Input<string>;
     /**
-     * The email address of the user being invited
+     * The email address of the user being invited.
      */
     userEmailAddress: pulumi.Input<string>;
     /**
-     * The user type of the user being invited
+     * The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
      */
     userType?: pulumi.Input<string>;
 }

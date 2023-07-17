@@ -11,16 +11,195 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages a delegated permission grant for a service principal, on behalf of a single user, or all users.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires the following application role: `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one the following directory role: `Global Administrator`
+//
+// ## Example Usage
+//
+// *Delegated permission grant for all users*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+//									return oauth2PermissionScopeIds.Openid, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Scope"),
+//							},
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+//									return oauth2PermissionScopeIds.User.Read, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Scope"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
+//				ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
+//				ResourceServicePrincipalObjectId: msgraph.ObjectId,
+//				ClaimValues: pulumi.StringArray{
+//					pulumi.String("openid"),
+//					pulumi.String("User.Read.All"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Delegated permission grant for a single user*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+//									return oauth2PermissionScopeIds.Openid, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Scope"),
+//							},
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+//									return oauth2PermissionScopeIds.User.Read, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Scope"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
+//				DisplayName:       pulumi.String("J. Doe"),
+//				UserPrincipalName: pulumi.String("jdoe@hashicorp.com"),
+//				MailNickname:      pulumi.String("jdoe"),
+//				Password:          pulumi.String("SecretP@sswd99!"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewServicePrincipalDelegatedPermissionGrant(ctx, "exampleServicePrincipalDelegatedPermissionGrant", &azuread.ServicePrincipalDelegatedPermissionGrantArgs{
+//				ServicePrincipalObjectId:         exampleServicePrincipal.ObjectId,
+//				ResourceServicePrincipalObjectId: msgraph.ObjectId,
+//				ClaimValues: pulumi.StringArray{
+//					pulumi.String("openid"),
+//					pulumi.String("User.Read.All"),
+//				},
+//				UserObjectId: exampleUser.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Delegated permission grants can be imported using their ID, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
+//
+// ```
 type ServicePrincipalDelegatedPermissionGrant struct {
 	pulumi.CustomResourceState
 
-	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues pulumi.StringArrayOutput `pulumi:"claimValues"`
-	// The object ID of the service principal representing the resource to be accessed
+	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId pulumi.StringOutput `pulumi:"resourceServicePrincipalObjectId"`
-	// The object ID of the service principal for which this delegated permission grant should be created
+	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringOutput `pulumi:"servicePrincipalObjectId"`
-	// The object ID of the user on behalf of whom the service principal is authorized to access the resource
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId pulumi.StringPtrOutput `pulumi:"userObjectId"`
 }
 
@@ -62,24 +241,28 @@ func GetServicePrincipalDelegatedPermissionGrant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePrincipalDelegatedPermissionGrant resources.
 type servicePrincipalDelegatedPermissionGrantState struct {
-	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues []string `pulumi:"claimValues"`
-	// The object ID of the service principal representing the resource to be accessed
+	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId *string `pulumi:"resourceServicePrincipalObjectId"`
-	// The object ID of the service principal for which this delegated permission grant should be created
+	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId *string `pulumi:"servicePrincipalObjectId"`
-	// The object ID of the user on behalf of whom the service principal is authorized to access the resource
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId *string `pulumi:"userObjectId"`
 }
 
 type ServicePrincipalDelegatedPermissionGrantState struct {
-	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues pulumi.StringArrayInput
-	// The object ID of the service principal representing the resource to be accessed
+	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId pulumi.StringPtrInput
-	// The object ID of the service principal for which this delegated permission grant should be created
+	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringPtrInput
-	// The object ID of the user on behalf of whom the service principal is authorized to access the resource
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId pulumi.StringPtrInput
 }
 
@@ -88,25 +271,29 @@ func (ServicePrincipalDelegatedPermissionGrantState) ElementType() reflect.Type 
 }
 
 type servicePrincipalDelegatedPermissionGrantArgs struct {
-	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues []string `pulumi:"claimValues"`
-	// The object ID of the service principal representing the resource to be accessed
+	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId string `pulumi:"resourceServicePrincipalObjectId"`
-	// The object ID of the service principal for which this delegated permission grant should be created
+	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId string `pulumi:"servicePrincipalObjectId"`
-	// The object ID of the user on behalf of whom the service principal is authorized to access the resource
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId *string `pulumi:"userObjectId"`
 }
 
 // The set of arguments for constructing a ServicePrincipalDelegatedPermissionGrant resource.
 type ServicePrincipalDelegatedPermissionGrantArgs struct {
-	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues pulumi.StringArrayInput
-	// The object ID of the service principal representing the resource to be accessed
+	// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 	ResourceServicePrincipalObjectId pulumi.StringInput
-	// The object ID of the service principal for which this delegated permission grant should be created
+	// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 	ServicePrincipalObjectId pulumi.StringInput
-	// The object ID of the user on behalf of whom the service principal is authorized to access the resource
+	// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+	//
+	// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 	UserObjectId pulumi.StringPtrInput
 }
 
@@ -197,26 +384,28 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelega
 	return o
 }
 
-// A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) ClaimValues() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringArrayOutput { return v.ClaimValues }).(pulumi.StringArrayOutput)
 }
 
-// The object ID of the service principal representing the resource to be accessed
+// The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) ResourceServicePrincipalObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringOutput {
 		return v.ResourceServicePrincipalObjectId
 	}).(pulumi.StringOutput)
 }
 
-// The object ID of the service principal for which this delegated permission grant should be created
+// The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) ServicePrincipalObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringOutput {
 		return v.ServicePrincipalObjectId
 	}).(pulumi.StringOutput)
 }
 
-// The object ID of the user on behalf of whom the service principal is authorized to access the resource
+// The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+//
+// > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `userObjectId` property.
 func (o ServicePrincipalDelegatedPermissionGrantOutput) UserObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalDelegatedPermissionGrant) pulumi.StringPtrOutput { return v.UserObjectId }).(pulumi.StringPtrOutput)
 }

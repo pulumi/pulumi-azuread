@@ -13,9 +13,21 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ApplicationOptionalClaimsSaml2Token
     {
+        /// <summary>
+        /// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
+        /// </summary>
         public readonly ImmutableArray<string> AdditionalProperties;
+        /// <summary>
+        /// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+        /// </summary>
         public readonly bool? Essential;
+        /// <summary>
+        /// The name of the optional claim.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+        /// </summary>
         public readonly string? Source;
 
         [OutputConstructor]

@@ -14,15 +14,25 @@ namespace Pulumi.AzureAD.Inputs
     {
         [Input("requestors")]
         private InputList<Inputs.AccessPackageAssignmentPolicyRequestorSettingsRequestorGetArgs>? _requestors;
+
+        /// <summary>
+        /// A block specifying the users who are allowed to request on this policy, as documented below.
+        /// </summary>
         public InputList<Inputs.AccessPackageAssignmentPolicyRequestorSettingsRequestorGetArgs> Requestors
         {
             get => _requestors ?? (_requestors = new InputList<Inputs.AccessPackageAssignmentPolicyRequestorSettingsRequestorGetArgs>());
             set => _requestors = value;
         }
 
+        /// <summary>
+        /// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+        /// </summary>
         [Input("requestsAccepted")]
         public Input<bool>? RequestsAccepted { get; set; }
 
+        /// <summary>
+        /// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+        /// </summary>
         [Input("scopeType")]
         public Input<string>? ScopeType { get; set; }
 

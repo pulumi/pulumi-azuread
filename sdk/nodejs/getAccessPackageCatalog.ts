@@ -4,6 +4,42 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * i
+ * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+ *
+ * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+ *
+ * ## Example Usage
+ *
+ * *Look up by ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalog({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ *
+ * *Look up by DisplayName*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalog({
+ *     displayName: "My access package Catalog",
+ * });
+ * ```
+ */
 export function getAccessPackageCatalog(args?: GetAccessPackageCatalogArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessPackageCatalogResult> {
     args = args || {};
 
@@ -18,7 +54,15 @@ export function getAccessPackageCatalog(args?: GetAccessPackageCatalogArgs, opts
  * A collection of arguments for invoking getAccessPackageCatalog.
  */
 export interface GetAccessPackageCatalogArgs {
+    /**
+     * The display name of the access package catalog.
+     */
     displayName?: string;
+    /**
+     * The ID of this access package catalog.
+     *
+     * > One of `displayName` or `objectId` must be specified.
+     */
     objectId?: string;
 }
 
@@ -26,16 +70,61 @@ export interface GetAccessPackageCatalogArgs {
  * A collection of values returned by getAccessPackageCatalog.
  */
 export interface GetAccessPackageCatalogResult {
+    /**
+     * The description of the access package catalog.
+     */
     readonly description: string;
     readonly displayName: string;
+    /**
+     * Whether the access packages in this catalog can be requested by users outside the tenant.
+     */
     readonly externallyVisible: boolean;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly objectId: string;
+    /**
+     * Whether the access packages in this catalog are available for management.
+     */
     readonly published: boolean;
 }
+/**
+ * i
+ * Use this resource to retrieve information for an existing access package catalog within Identity Governance in Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this data source.
+ *
+ * When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All`, or `EntitlementManagement.ReadWrite.All`.
+ *
+ * When authenticated with a user principal, this data source requires one of the following directory roles: `Catalog owner`, `Catalog reader`, `Global Reader`, or `Global Administrator`.
+ *
+ * ## Example Usage
+ *
+ * *Look up by ID*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalog({
+ *     objectId: "00000000-0000-0000-0000-000000000000",
+ * });
+ * ```
+ *
+ * *Look up by DisplayName*
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const example = azuread.getAccessPackageCatalog({
+ *     displayName: "My access package Catalog",
+ * });
+ * ```
+ */
 export function getAccessPackageCatalogOutput(args?: GetAccessPackageCatalogOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPackageCatalogResult> {
     return pulumi.output(args).apply((a: any) => getAccessPackageCatalog(a, opts))
 }
@@ -44,6 +133,14 @@ export function getAccessPackageCatalogOutput(args?: GetAccessPackageCatalogOutp
  * A collection of arguments for invoking getAccessPackageCatalog.
  */
 export interface GetAccessPackageCatalogOutputArgs {
+    /**
+     * The display name of the access package catalog.
+     */
     displayName?: pulumi.Input<string>;
+    /**
+     * The ID of this access package catalog.
+     *
+     * > One of `displayName` or `objectId` must be specified.
+     */
     objectId?: pulumi.Input<string>;
 }

@@ -11,9 +11,79 @@ namespace Pulumi.AzureAD
 {
     public static class GetGroup
     {
+        /// <summary>
+        /// Gets information about an Azure Active Directory group.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### By Group Display Name)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "MyGroupName",
+        ///         SecurityEnabled = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Task<GetGroupResult> InvokeAsync(GetGroupArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupResult>("azuread:index/getGroup:getGroup", args ?? new GetGroupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Gets information about an Azure Active Directory group.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this data source.
+        /// 
+        /// When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// ### By Group Display Name)
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = AzureAD.GetGroup.Invoke(new()
+        ///     {
+        ///         DisplayName = "MyGroupName",
+        ///         SecurityEnabled = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
         public static Output<GetGroupResult> Invoke(GetGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupResult>("azuread:index/getGroup:getGroup", args ?? new GetGroupInvokeArgs(), options.WithDefaults());
     }
@@ -21,15 +91,29 @@ namespace Pulumi.AzureAD
 
     public sealed class GetGroupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The display name for the group.
+        /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
 
+        /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
         [Input("mailEnabled")]
         public bool? MailEnabled { get; set; }
 
+        /// <summary>
+        /// Specifies the object ID of the group.
+        /// </summary>
         [Input("objectId")]
         public string? ObjectId { get; set; }
 
+        /// <summary>
+        /// Whether the group is a security group.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
+        /// </summary>
         [Input("securityEnabled")]
         public bool? SecurityEnabled { get; set; }
 
@@ -41,15 +125,29 @@ namespace Pulumi.AzureAD
 
     public sealed class GetGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The display name for the group.
+        /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
+        /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
         [Input("mailEnabled")]
         public Input<bool>? MailEnabled { get; set; }
 
+        /// <summary>
+        /// Specifies the object ID of the group.
+        /// </summary>
         [Input("objectId")]
         public Input<string>? ObjectId { get; set; }
 
+        /// <summary>
+        /// Whether the group is a security group.
+        /// 
+        /// &gt; One of `display_name` or `object_id` must be specified.
+        /// </summary>
         [Input("securityEnabled")]
         public Input<bool>? SecurityEnabled { get; set; }
 
@@ -63,38 +161,125 @@ namespace Pulumi.AzureAD
     [OutputType]
     public sealed class GetGroupResult
     {
+        /// <summary>
+        /// Indicates whether this group can be assigned to an Azure Active Directory role.
+        /// </summary>
         public readonly bool AssignableToRole;
+        /// <summary>
+        /// Indicates whether new members added to the group will be auto-subscribed to receive email notifications. Only set for Unified groups.
+        /// </summary>
         public readonly bool AutoSubscribeNewMembers;
+        /// <summary>
+        /// A list of behaviors for a Microsoft 365 group, such as `AllowOnlyMembersToPost`, `HideGroupInOutlook`, `SubscribeNewGroupMembers` and `WelcomeEmailDisabled`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for more details.
+        /// </summary>
         public readonly ImmutableArray<string> Behaviors;
+        /// <summary>
+        /// The optional description of the group.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The display name for the group.
+        /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// A `dynamic_membership` block as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetGroupDynamicMembershipResult> DynamicMemberships;
+        /// <summary>
+        /// Indicates whether people external to the organization can send messages to the group. Only set for Unified groups.
+        /// </summary>
         public readonly bool ExternalSendersAllowed;
+        /// <summary>
+        /// Indicates whether the group is displayed in certain parts of the Outlook user interface: in the Address Book, in address lists for selecting message recipients, and in the Browse Groups dialog for searching groups. Only set for Unified groups.
+        /// </summary>
         public readonly bool HideFromAddressLists;
+        /// <summary>
+        /// Indicates whether the group is displayed in Outlook clients, such as Outlook for Windows and Outlook on the web. Only set for Unified groups.
+        /// </summary>
         public readonly bool HideFromOutlookClients;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The SMTP address for the group.
+        /// </summary>
         public readonly string Mail;
+        /// <summary>
+        /// Whether the group is mail-enabled.
+        /// </summary>
         public readonly bool MailEnabled;
+        /// <summary>
+        /// The mail alias for the group, unique in the organisation.
+        /// </summary>
         public readonly string MailNickname;
+        /// <summary>
+        /// List of object IDs of the group members.
+        /// </summary>
         public readonly ImmutableArray<string> Members;
+        /// <summary>
+        /// The object ID of the group.
+        /// </summary>
         public readonly string ObjectId;
+        /// <summary>
+        /// The on-premises FQDN, also called dnsDomainName, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
         public readonly string OnpremisesDomainName;
+        /// <summary>
+        /// The on-premises group type that the AAD group will be written as, when writeback is enabled. Possible values are `UniversalDistributionGroup`, `UniversalMailEnabledSecurityGroup`, or `UniversalSecurityGroup`.
+        /// </summary>
         public readonly string OnpremisesGroupType;
+        /// <summary>
+        /// The on-premises NetBIOS name, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
         public readonly string OnpremisesNetbiosName;
+        /// <summary>
+        /// The on-premises SAM account name, synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
         public readonly string OnpremisesSamAccountName;
+        /// <summary>
+        /// The on-premises security identifier (SID), synchronised from the on-premises directory when Azure AD Connect is used.
+        /// </summary>
         public readonly string OnpremisesSecurityIdentifier;
+        /// <summary>
+        /// Whether this group is synchronised from an on-premises directory (`true`), no longer synchronised (`false`), or has never been synchronised (`null`).
+        /// </summary>
         public readonly bool OnpremisesSyncEnabled;
+        /// <summary>
+        /// List of object IDs of the group owners.
+        /// </summary>
         public readonly ImmutableArray<string> Owners;
+        /// <summary>
+        /// The preferred language for a Microsoft 365 group, in ISO 639-1 notation.
+        /// </summary>
         public readonly string PreferredLanguage;
+        /// <summary>
+        /// A list of provisioning options for a Microsoft 365 group, such as `Team`. See [official documentation](https://docs.microsoft.com/en-us/graph/group-set-options) for details.
+        /// </summary>
         public readonly ImmutableArray<string> ProvisioningOptions;
+        /// <summary>
+        /// List of email addresses for the group that direct to the same group mailbox.
+        /// </summary>
         public readonly ImmutableArray<string> ProxyAddresses;
+        /// <summary>
+        /// Whether the group is a security group.
+        /// </summary>
         public readonly bool SecurityEnabled;
+        /// <summary>
+        /// The colour theme for a Microsoft 365 group. Possible values are `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Red` or `Teal`. When no theme is set, the value is `null`.
+        /// </summary>
         public readonly string Theme;
+        /// <summary>
+        /// A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
+        /// </summary>
         public readonly ImmutableArray<string> Types;
+        /// <summary>
+        /// The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
+        /// </summary>
         public readonly string Visibility;
+        /// <summary>
+        /// Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
+        /// </summary>
         public readonly bool WritebackEnabled;
 
         [OutputConstructor]

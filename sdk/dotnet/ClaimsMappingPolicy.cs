@@ -9,17 +9,83 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages a Claims Mapping Policy within Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires the following application roles: `Policy.ReadWrite.ApplicationConfiguration` and `Policy.Read.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Text.Json;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var myPolicy = new AzureAD.ClaimsMappingPolicy("myPolicy", new()
+    ///     {
+    ///         Definitions = new[]
+    ///         {
+    ///             JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+    ///             {
+    ///                 ["ClaimsMappingPolicy"] = new Dictionary&lt;string, object?&gt;
+    ///                 {
+    ///                     ["ClaimsSchema"] = new[]
+    ///                     {
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["ID"] = "employeeid",
+    ///                             ["JwtClaimType"] = "name",
+    ///                             ["SamlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name",
+    ///                             ["Source"] = "user",
+    ///                         },
+    ///                         new Dictionary&lt;string, object?&gt;
+    ///                         {
+    ///                             ["ID"] = "tenantcountry",
+    ///                             ["JwtClaimType"] = "country",
+    ///                             ["SamlClaimType"] = "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country",
+    ///                             ["Source"] = "company",
+    ///                         },
+    ///                     },
+    ///                     ["IncludeBasicClaimSet"] = "true",
+    ///                     ["Version"] = 1,
+    ///                 },
+    ///             }),
+    ///         },
+    ///         DisplayName = "My Policy",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Claims Mapping Policy can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/claimsMappingPolicy:ClaimsMappingPolicy my_policy 00000000-0000-0000-0000-000000000000
+    /// ```
+    /// </summary>
     [AzureADResourceType("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy")]
     public partial class ClaimsMappingPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A string collection containing a JSON string that defines the rules and settings for this policy
+        /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         /// </summary>
         [Output("definitions")]
         public Output<ImmutableArray<string>> Definitions { get; private set; } = null!;
 
         /// <summary>
-        /// Display name for this policy
+        /// The display name for this Claims Mapping Policy.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -74,7 +140,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _definitions;
 
         /// <summary>
-        /// A string collection containing a JSON string that defines the rules and settings for this policy
+        /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         /// </summary>
         public InputList<string> Definitions
         {
@@ -83,7 +149,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Display name for this policy
+        /// The display name for this Claims Mapping Policy.
         /// </summary>
         [Input("displayName", required: true)]
         public Input<string> DisplayName { get; set; } = null!;
@@ -100,7 +166,7 @@ namespace Pulumi.AzureAD
         private InputList<string>? _definitions;
 
         /// <summary>
-        /// A string collection containing a JSON string that defines the rules and settings for this policy
+        /// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
         /// </summary>
         public InputList<string> Definitions
         {
@@ -109,7 +175,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// Display name for this policy
+        /// The display name for this Claims Mapping Policy.
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }

@@ -11,19 +11,67 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an Administrative Unit within Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewAdministrativeUnit(ctx, "example", &azuread.AdministrativeUnitArgs{
+//				Description:             pulumi.String("Just an example"),
+//				DisplayName:             pulumi.String("Example-AU"),
+//				HiddenMembershipEnabled: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Administrative units can be imported using their object ID, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
+//
+// ```
 type AdministrativeUnit struct {
 	pulumi.CustomResourceState
 
-	// The description for the administrative unit
+	// The description of the administrative unit.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The display name for the administrative unit
+	// The display name of the administrative unit.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrOutput `pulumi:"hiddenMembershipEnabled"`
-	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-	// Groups
+	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members pulumi.StringArrayOutput `pulumi:"members"`
-	// The object ID of the administrative unit
+	// The object ID of the administrative unit.
 	ObjectId pulumi.StringOutput `pulumi:"objectId"`
 	// If `true`, will return an error if an existing administrative unit is found with the same name
 	PreventDuplicateNames pulumi.BoolPtrOutput `pulumi:"preventDuplicateNames"`
@@ -61,32 +109,34 @@ func GetAdministrativeUnit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AdministrativeUnit resources.
 type administrativeUnitState struct {
-	// The description for the administrative unit
+	// The description of the administrative unit.
 	Description *string `pulumi:"description"`
-	// The display name for the administrative unit
+	// The display name of the administrative unit.
 	DisplayName *string `pulumi:"displayName"`
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled *bool `pulumi:"hiddenMembershipEnabled"`
-	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-	// Groups
+	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members []string `pulumi:"members"`
-	// The object ID of the administrative unit
+	// The object ID of the administrative unit.
 	ObjectId *string `pulumi:"objectId"`
 	// If `true`, will return an error if an existing administrative unit is found with the same name
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
 }
 
 type AdministrativeUnitState struct {
-	// The description for the administrative unit
+	// The description of the administrative unit.
 	Description pulumi.StringPtrInput
-	// The display name for the administrative unit
+	// The display name of the administrative unit.
 	DisplayName pulumi.StringPtrInput
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrInput
-	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-	// Groups
+	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members pulumi.StringArrayInput
-	// The object ID of the administrative unit
+	// The object ID of the administrative unit.
 	ObjectId pulumi.StringPtrInput
 	// If `true`, will return an error if an existing administrative unit is found with the same name
 	PreventDuplicateNames pulumi.BoolPtrInput
@@ -97,14 +147,15 @@ func (AdministrativeUnitState) ElementType() reflect.Type {
 }
 
 type administrativeUnitArgs struct {
-	// The description for the administrative unit
+	// The description of the administrative unit.
 	Description *string `pulumi:"description"`
-	// The display name for the administrative unit
+	// The display name of the administrative unit.
 	DisplayName string `pulumi:"displayName"`
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled *bool `pulumi:"hiddenMembershipEnabled"`
-	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-	// Groups
+	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members []string `pulumi:"members"`
 	// If `true`, will return an error if an existing administrative unit is found with the same name
 	PreventDuplicateNames *bool `pulumi:"preventDuplicateNames"`
@@ -112,14 +163,15 @@ type administrativeUnitArgs struct {
 
 // The set of arguments for constructing a AdministrativeUnit resource.
 type AdministrativeUnitArgs struct {
-	// The description for the administrative unit
+	// The description of the administrative unit.
 	Description pulumi.StringPtrInput
-	// The display name for the administrative unit
+	// The display name of the administrative unit.
 	DisplayName pulumi.StringInput
-	// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+	// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 	HiddenMembershipEnabled pulumi.BoolPtrInput
-	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-	// Groups
+	// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+	//
+	// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 	Members pulumi.StringArrayInput
 	// If `true`, will return an error if an existing administrative unit is found with the same name
 	PreventDuplicateNames pulumi.BoolPtrInput
@@ -212,28 +264,29 @@ func (o AdministrativeUnitOutput) ToAdministrativeUnitOutputWithContext(ctx cont
 	return o
 }
 
-// The description for the administrative unit
+// The description of the administrative unit.
 func (o AdministrativeUnitOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The display name for the administrative unit
+// The display name of the administrative unit.
 func (o AdministrativeUnitOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Whether the administrative unit and its members are hidden or publicly viewable in the directory
+// Whether the administrative unit and its members are hidden or publicly viewable in the directory.
 func (o AdministrativeUnitOutput) HiddenMembershipEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.BoolPtrOutput { return v.HiddenMembershipEnabled }).(pulumi.BoolPtrOutput)
 }
 
-// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-// Groups
+// A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+//
+// !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
 func (o AdministrativeUnitOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringArrayOutput { return v.Members }).(pulumi.StringArrayOutput)
 }
 
-// The object ID of the administrative unit
+// The object ID of the administrative unit.
 func (o AdministrativeUnitOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AdministrativeUnit) pulumi.StringOutput { return v.ObjectId }).(pulumi.StringOutput)
 }

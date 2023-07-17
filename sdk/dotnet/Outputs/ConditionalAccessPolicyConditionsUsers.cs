@@ -13,11 +13,31 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class ConditionalAccessPolicyConditionsUsers
     {
+        /// <summary>
+        /// A list of group IDs excluded from scope of policy.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedGroups;
+        /// <summary>
+        /// A list of role IDs excluded from scope of policy.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedRoles;
+        /// <summary>
+        /// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+        /// </summary>
         public readonly ImmutableArray<string> ExcludedUsers;
+        /// <summary>
+        /// A list of group IDs in scope of policy unless explicitly excluded.
+        /// </summary>
         public readonly ImmutableArray<string> IncludedGroups;
+        /// <summary>
+        /// A list of role IDs in scope of policy unless explicitly excluded.
+        /// </summary>
         public readonly ImmutableArray<string> IncludedRoles;
+        /// <summary>
+        /// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+        /// 
+        /// &gt; At least one of `included_groups`, `included_roles` or `included_users` must be specified.
+        /// </summary>
         public readonly ImmutableArray<string> IncludedUsers;
 
         [OutputConstructor]

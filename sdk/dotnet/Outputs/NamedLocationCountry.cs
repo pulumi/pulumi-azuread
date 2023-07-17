@@ -13,7 +13,13 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class NamedLocationCountry
     {
+        /// <summary>
+        /// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+        /// </summary>
         public readonly ImmutableArray<string> CountriesAndRegions;
+        /// <summary>
+        /// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+        /// </summary>
         public readonly bool? IncludeUnknownCountriesAndRegions;
 
         [OutputConstructor]

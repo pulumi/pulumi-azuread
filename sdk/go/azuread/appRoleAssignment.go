@@ -11,20 +11,329 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an app role assignment for a group, user or service principal. Can be used to grant admin consent for application permissions.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires one of the following application roles: `AppRoleAssignment.ReadWrite.All` and `Application.Read.All`, or `AppRoleAssignment.ReadWrite.All` and `Directory.Read.All`, or `Application.ReadWrite.All`, or `Directory.ReadWrite.All`
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Application Administrator` or `Global Administrator`
+//
+// ## Example Usage
+//
+// *App role assignment for accessing Microsoft Graph*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			wellKnown, err := azuread.GetApplicationPublishedAppIds(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			msgraph, err := azuread.NewServicePrincipal(ctx, "msgraph", &azuread.ServicePrincipalArgs{
+//				ApplicationId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//				UseExisting:   pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: *pulumi.String(wellKnown.Result.MicrosoftGraph),
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//									return appRoleIds.User.Read.All, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Role"),
+//							},
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: msgraph.Oauth2PermissionScopeIds.ApplyT(func(oauth2PermissionScopeIds map[string]string) (string, error) {
+//									return oauth2PermissionScopeIds.User.ReadWrite, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Scope"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId: msgraph.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//					return appRoleIds.User.Read.All, nil
+//				}).(pulumi.StringOutput),
+//				PrincipalObjectId: exampleServicePrincipal.ObjectId,
+//				ResourceObjectId:  msgraph.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *App role assignment for internal application*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("internal"),
+//				AppRoles: azuread.ApplicationAppRoleArray{
+//					&azuread.ApplicationAppRoleArgs{
+//						AllowedMemberTypes: pulumi.StringArray{
+//							pulumi.String("Application"),
+//						},
+//						Description: pulumi.String("Apps can query the database"),
+//						DisplayName: pulumi.String("Query"),
+//						Enabled:     pulumi.Bool(true),
+//						Id:          pulumi.String("00000000-0000-0000-0000-111111111111"),
+//						Value:       pulumi.String("Query.All"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: internalApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleApplication, err := azuread.NewApplication(ctx, "exampleApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("example"),
+//				RequiredResourceAccesses: azuread.ApplicationRequiredResourceAccessArray{
+//					&azuread.ApplicationRequiredResourceAccessArgs{
+//						ResourceAppId: internalApplication.ApplicationId,
+//						ResourceAccesses: azuread.ApplicationRequiredResourceAccessResourceAccessArray{
+//							&azuread.ApplicationRequiredResourceAccessResourceAccessArgs{
+//								Id: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//									return appRoleIds.Query.All, nil
+//								}).(pulumi.StringOutput),
+//								Type: pulumi.String("Role"),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleServicePrincipal, err := azuread.NewServicePrincipal(ctx, "exampleServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: exampleApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//					return appRoleIds.Query.All, nil
+//				}).(pulumi.StringOutput),
+//				PrincipalObjectId: exampleServicePrincipal.ObjectId,
+//				ResourceObjectId:  internalServicePrincipal.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Assign a user and group to an internal application*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			exampleDomains, err := azuread.GetDomains(ctx, &azuread.GetDomainsArgs{
+//				OnlyInitial: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("internal"),
+//				AppRoles: azuread.ApplicationAppRoleArray{
+//					&azuread.ApplicationAppRoleArgs{
+//						AllowedMemberTypes: pulumi.StringArray{
+//							pulumi.String("Application"),
+//							pulumi.String("User"),
+//						},
+//						Description: pulumi.String("Admins can perform all task actions"),
+//						DisplayName: pulumi.String("Admin"),
+//						Enabled:     pulumi.Bool(true),
+//						Id:          pulumi.String("00000000-0000-0000-0000-222222222222"),
+//						Value:       pulumi.String("Admin.All"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: internalApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("example"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//					return appRoleIds.Admin.All, nil
+//				}).(pulumi.StringOutput),
+//				PrincipalObjectId: exampleGroup.ObjectId,
+//				ResourceObjectId:  internalServicePrincipal.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleUser, err := azuread.NewUser(ctx, "exampleUser", &azuread.UserArgs{
+//				DisplayName:       pulumi.String("D. Duck"),
+//				Password:          pulumi.String("SecretP@sswd99!"),
+//				UserPrincipalName: pulumi.String(fmt.Sprintf("d.duck@%v", exampleDomains.Domains[0].DomainName)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleIndex/appRoleAssignmentAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId: internalServicePrincipal.AppRoleIds.ApplyT(func(appRoleIds map[string]string) (string, error) {
+//					return appRoleIds.Admin.All, nil
+//				}).(pulumi.StringOutput),
+//				PrincipalObjectId: exampleUser.ObjectId,
+//				ResourceObjectId:  internalServicePrincipal.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Assign a group to the default app role for an internal application*
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			internalApplication, err := azuread.NewApplication(ctx, "internalApplication", &azuread.ApplicationArgs{
+//				DisplayName: pulumi.String("internal"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			internalServicePrincipal, err := azuread.NewServicePrincipal(ctx, "internalServicePrincipal", &azuread.ServicePrincipalArgs{
+//				ApplicationId: internalApplication.ApplicationId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleGroup, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("example"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAppRoleAssignment(ctx, "exampleAppRoleAssignment", &azuread.AppRoleAssignmentArgs{
+//				AppRoleId:         pulumi.String("00000000-0000-0000-0000-000000000000"),
+//				PrincipalObjectId: exampleGroup.ObjectId,
+//				ResourceObjectId:  internalServicePrincipal.ObjectId,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// App role assignments can be imported using the object ID of the service principal representing the resource and the ID of the app role assignment (note_not_ the ID of the app role), e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/appRoleAssignment:AppRoleAssignment example 00000000-0000-0000-0000-000000000000/appRoleAssignment/aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
+//
+// ```
+//
+//	-> This ID format is unique to Terraform and is composed of the Resource Service Principal Object ID and the ID of the App Role Assignment in the format `{ResourcePrincipalID}/appRoleAssignment/{AppRoleAssignmentID}`.
 type AppRoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// The ID of the app role to be assigned
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId pulumi.StringOutput `pulumi:"appRoleId"`
-	// The display name of the principal to which the app role is assigned
+	// The display name of the principal to which the app role is assigned.
 	PrincipalDisplayName pulumi.StringOutput `pulumi:"principalDisplayName"`
-	// The object ID of the user, group or service principal to be assigned this app role
+	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringOutput `pulumi:"principalObjectId"`
-	// The object type of the principal to which the app role is assigned
+	// The object type of the principal to which the app role is assigned.
 	PrincipalType pulumi.StringOutput `pulumi:"principalType"`
-	// The display name of the application representing the resource
+	// The display name of the application representing the resource.
 	ResourceDisplayName pulumi.StringOutput `pulumi:"resourceDisplayName"`
-	// The object ID of the service principal representing the resource
+	// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
 	ResourceObjectId pulumi.StringOutput `pulumi:"resourceObjectId"`
 }
 
@@ -66,32 +375,32 @@ func GetAppRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppRoleAssignment resources.
 type appRoleAssignmentState struct {
-	// The ID of the app role to be assigned
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId *string `pulumi:"appRoleId"`
-	// The display name of the principal to which the app role is assigned
+	// The display name of the principal to which the app role is assigned.
 	PrincipalDisplayName *string `pulumi:"principalDisplayName"`
-	// The object ID of the user, group or service principal to be assigned this app role
+	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId *string `pulumi:"principalObjectId"`
-	// The object type of the principal to which the app role is assigned
+	// The object type of the principal to which the app role is assigned.
 	PrincipalType *string `pulumi:"principalType"`
-	// The display name of the application representing the resource
+	// The display name of the application representing the resource.
 	ResourceDisplayName *string `pulumi:"resourceDisplayName"`
-	// The object ID of the service principal representing the resource
+	// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
 	ResourceObjectId *string `pulumi:"resourceObjectId"`
 }
 
 type AppRoleAssignmentState struct {
-	// The ID of the app role to be assigned
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId pulumi.StringPtrInput
-	// The display name of the principal to which the app role is assigned
+	// The display name of the principal to which the app role is assigned.
 	PrincipalDisplayName pulumi.StringPtrInput
-	// The object ID of the user, group or service principal to be assigned this app role
+	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringPtrInput
-	// The object type of the principal to which the app role is assigned
+	// The object type of the principal to which the app role is assigned.
 	PrincipalType pulumi.StringPtrInput
-	// The display name of the application representing the resource
+	// The display name of the application representing the resource.
 	ResourceDisplayName pulumi.StringPtrInput
-	// The object ID of the service principal representing the resource
+	// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
 	ResourceObjectId pulumi.StringPtrInput
 }
 
@@ -100,21 +409,21 @@ func (AppRoleAssignmentState) ElementType() reflect.Type {
 }
 
 type appRoleAssignmentArgs struct {
-	// The ID of the app role to be assigned
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId string `pulumi:"appRoleId"`
-	// The object ID of the user, group or service principal to be assigned this app role
+	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId string `pulumi:"principalObjectId"`
-	// The object ID of the service principal representing the resource
+	// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
 	ResourceObjectId string `pulumi:"resourceObjectId"`
 }
 
 // The set of arguments for constructing a AppRoleAssignment resource.
 type AppRoleAssignmentArgs struct {
-	// The ID of the app role to be assigned
+	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId pulumi.StringInput
-	// The object ID of the user, group or service principal to be assigned this app role
+	// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	PrincipalObjectId pulumi.StringInput
-	// The object ID of the service principal representing the resource
+	// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
 	ResourceObjectId pulumi.StringInput
 }
 
@@ -205,32 +514,32 @@ func (o AppRoleAssignmentOutput) ToAppRoleAssignmentOutputWithContext(ctx contex
 	return o
 }
 
-// The ID of the app role to be assigned
+// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 func (o AppRoleAssignmentOutput) AppRoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.AppRoleId }).(pulumi.StringOutput)
 }
 
-// The display name of the principal to which the app role is assigned
+// The display name of the principal to which the app role is assigned.
 func (o AppRoleAssignmentOutput) PrincipalDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.PrincipalDisplayName }).(pulumi.StringOutput)
 }
 
-// The object ID of the user, group or service principal to be assigned this app role
+// The object ID of the user, group or service principal to be assigned this app role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 func (o AppRoleAssignmentOutput) PrincipalObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.PrincipalObjectId }).(pulumi.StringOutput)
 }
 
-// The object type of the principal to which the app role is assigned
+// The object type of the principal to which the app role is assigned.
 func (o AppRoleAssignmentOutput) PrincipalType() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.PrincipalType }).(pulumi.StringOutput)
 }
 
-// The display name of the application representing the resource
+// The display name of the application representing the resource.
 func (o AppRoleAssignmentOutput) ResourceDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.ResourceDisplayName }).(pulumi.StringOutput)
 }
 
-// The object ID of the service principal representing the resource
+// The object ID of the service principal representing the resource. Changing this forces a new resource to be created.
 func (o AppRoleAssignmentOutput) ResourceObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AppRoleAssignment) pulumi.StringOutput { return v.ResourceObjectId }).(pulumi.StringOutput)
 }

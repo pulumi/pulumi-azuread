@@ -12,9 +12,15 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The localized content of this question.
+        /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
+        /// <summary>
+        /// The ISO 639 language code for this question content.
+        /// </summary>
         [Input("languageCode", required: true)]
         public Input<string> LanguageCode { get; set; } = null!;
 

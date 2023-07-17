@@ -12,9 +12,15 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class AccessPackageAssignmentPolicyQuestionChoiceArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The actual value of this choice.
+        /// </summary>
         [Input("actualValue", required: true)]
         public Input<string> ActualValue { get; set; } = null!;
 
+        /// <summary>
+        /// A block describing the display text of this choice, as documented below.
+        /// </summary>
         [Input("displayValue", required: true)]
         public Input<Inputs.AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs> DisplayValue { get; set; } = null!;
 

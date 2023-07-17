@@ -65,7 +65,35 @@ class AwaitableGetDirectoryObjectResult(GetDirectoryObjectResult):
 def get_directory_object(object_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDirectoryObjectResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the OData type for a generic directory object having the provided object ID.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up and output type of object by ID*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
+    pulumi.export("objectType", example.type)
+    ```
+    ## Attributes Reference
+
+    The following attributes are exported:
+
+    *`object_id` - The object ID of the directory object.
+    *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+
+
+    :param str object_id: Specifies the Object ID of the directory object to look up.
     """
     __args__ = dict()
     __args__['objectId'] = object_id
@@ -82,6 +110,34 @@ def get_directory_object(object_id: Optional[str] = None,
 def get_directory_object_output(object_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDirectoryObjectResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the OData type for a generic directory object having the provided object ID.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up and output type of object by ID*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_directory_object(object_id="00000000-0000-0000-0000-000000000000")
+    pulumi.export("objectType", example.type)
+    ```
+    ## Attributes Reference
+
+    The following attributes are exported:
+
+    *`object_id` - The object ID of the directory object.
+    *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
+
+
+    :param str object_id: Specifies the Object ID of the directory object to look up.
     """
     ...

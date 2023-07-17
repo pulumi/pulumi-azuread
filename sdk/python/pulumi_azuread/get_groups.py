@@ -55,6 +55,9 @@ class GetGroupsResult:
     @property
     @pulumi.getter(name="displayNames")
     def display_names(self) -> Sequence[str]:
+        """
+        The display names of the groups.
+        """
         return pulumi.get(self, "display_names")
 
     @property
@@ -78,6 +81,9 @@ class GetGroupsResult:
     @property
     @pulumi.getter(name="objectIds")
     def object_ids(self) -> Sequence[str]:
+        """
+        The object IDs of the groups.
+        """
         return pulumi.get(self, "object_ids")
 
     @property
@@ -116,7 +122,74 @@ def get_groups(display_name_prefix: Optional[str] = None,
                security_enabled: Optional[bool] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetGroupsResult:
     """
-    Use this data source to access information about an existing resource.
+    Gets Object IDs or Display Names for multiple Azure Active Directory groups.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by group name*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_groups(display_names=[
+        "group-a",
+        "group-b",
+    ])
+    ```
+
+    *Look up by display name prefix*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    sales = azuread.get_groups(display_name_prefix="sales-")
+    ```
+
+    *Look up all groups*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    all = azuread.get_groups(return_all=True)
+    ```
+
+    *Look up all mail-enabled groups*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    mail_enabled = azuread.get_groups(mail_enabled=True,
+        return_all=True)
+    ```
+
+    *Look up all security-enabled groups that are not mail-enabled*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    security_only = azuread.get_groups(mail_enabled=False,
+        return_all=True,
+        security_enabled=True)
+    ```
+
+
+    :param str display_name_prefix: A common display name prefix to match when returning groups.
+    :param Sequence[str] display_names: The display names of the groups.
+    :param bool ignore_missing: Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+    :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+    :param Sequence[str] object_ids: The object IDs of the groups.
+    :param bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+    :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+           
+           > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
     """
     __args__ = dict()
     __args__['displayNamePrefix'] = display_name_prefix
@@ -150,6 +223,73 @@ def get_groups_output(display_name_prefix: Optional[pulumi.Input[Optional[str]]]
                       security_enabled: Optional[pulumi.Input[Optional[bool]]] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
-    Use this data source to access information about an existing resource.
+    Gets Object IDs or Display Names for multiple Azure Active Directory groups.
+
+    ## API Permissions
+
+    The following API permissions are required in order to use this data source.
+
+    When authenticated with a service principal, this data source requires one of the following application roles: `Group.Read.All` or `Directory.Read.All`
+
+    When authenticated with a user principal, this data source does not require any additional roles.
+
+    ## Example Usage
+
+    *Look up by group name*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    example = azuread.get_groups(display_names=[
+        "group-a",
+        "group-b",
+    ])
+    ```
+
+    *Look up by display name prefix*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    sales = azuread.get_groups(display_name_prefix="sales-")
+    ```
+
+    *Look up all groups*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    all = azuread.get_groups(return_all=True)
+    ```
+
+    *Look up all mail-enabled groups*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    mail_enabled = azuread.get_groups(mail_enabled=True,
+        return_all=True)
+    ```
+
+    *Look up all security-enabled groups that are not mail-enabled*
+    ```python
+    import pulumi
+    import pulumi_azuread as azuread
+
+    security_only = azuread.get_groups(mail_enabled=False,
+        return_all=True,
+        security_enabled=True)
+    ```
+
+
+    :param str display_name_prefix: A common display name prefix to match when returning groups.
+    :param Sequence[str] display_names: The display names of the groups.
+    :param bool ignore_missing: Ignore missing groups and return groups that were found. The data source will still fail if no groups are found. Cannot be specified with `return_all`. Defaults to `false`.
+    :param bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+    :param Sequence[str] object_ids: The object IDs of the groups.
+    :param bool return_all: A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignore_missing`. Defaults to `false`.
+    :param bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+           
+           > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
     """
     ...

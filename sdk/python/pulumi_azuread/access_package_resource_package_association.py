@@ -19,9 +19,9 @@ class AccessPackageResourcePackageAssociationArgs:
                  access_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessPackageResourcePackageAssociation resource.
-        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to
-        :param pulumi.Input[str] catalog_resource_association_id: The ID of the access package catalog association
-        :param pulumi.Input[str] access_type: The role of access type to the specified resource, valid values are `Member` and `Owner`
+        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_resource_association_id: The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] access_type: The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "access_package_id", access_package_id)
         pulumi.set(__self__, "catalog_resource_association_id", catalog_resource_association_id)
@@ -32,7 +32,7 @@ class AccessPackageResourcePackageAssociationArgs:
     @pulumi.getter(name="accessPackageId")
     def access_package_id(self) -> pulumi.Input[str]:
         """
-        The ID of access package this resource association is configured to
+        The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_package_id")
 
@@ -44,7 +44,7 @@ class AccessPackageResourcePackageAssociationArgs:
     @pulumi.getter(name="catalogResourceAssociationId")
     def catalog_resource_association_id(self) -> pulumi.Input[str]:
         """
-        The ID of the access package catalog association
+        The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_resource_association_id")
 
@@ -56,7 +56,7 @@ class AccessPackageResourcePackageAssociationArgs:
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The role of access type to the specified resource, valid values are `Member` and `Owner`
+        The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_type")
 
@@ -73,9 +73,9 @@ class _AccessPackageResourcePackageAssociationState:
                  catalog_resource_association_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessPackageResourcePackageAssociation resources.
-        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to
-        :param pulumi.Input[str] access_type: The role of access type to the specified resource, valid values are `Member` and `Owner`
-        :param pulumi.Input[str] catalog_resource_association_id: The ID of the access package catalog association
+        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] access_type: The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_resource_association_id: The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         if access_package_id is not None:
             pulumi.set(__self__, "access_package_id", access_package_id)
@@ -88,7 +88,7 @@ class _AccessPackageResourcePackageAssociationState:
     @pulumi.getter(name="accessPackageId")
     def access_package_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of access package this resource association is configured to
+        The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_package_id")
 
@@ -100,7 +100,7 @@ class _AccessPackageResourcePackageAssociationState:
     @pulumi.getter(name="accessType")
     def access_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The role of access type to the specified resource, valid values are `Member` and `Owner`
+        The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_type")
 
@@ -112,7 +112,7 @@ class _AccessPackageResourcePackageAssociationState:
     @pulumi.getter(name="catalogResourceAssociationId")
     def catalog_resource_association_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the access package catalog association
+        The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_resource_association_id")
 
@@ -131,12 +131,56 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
                  catalog_resource_association_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AccessPackageResourcePackageAssociation resource with the given unique name, props, and options.
+        Manages the resources added to access packages within Identity Governance in Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="example-group",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
+            resource_origin_id=azuread_group["example_group"]["object_id"],
+            resource_origin_system="AadGroup")
+        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+            display_name="example-package",
+            description="Example Package",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"])
+        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation",
+            access_package_id=example_access_package.id,
+            catalog_resource_association_id=example_access_package_resource_catalog_association.id)
+        ```
+
+        ## Import
+
+        The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to
-        :param pulumi.Input[str] access_type: The role of access type to the specified resource, valid values are `Member` and `Owner`
-        :param pulumi.Input[str] catalog_resource_association_id: The ID of the access package catalog association
+        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] access_type: The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_resource_association_id: The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -145,7 +189,51 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
                  args: AccessPackageResourcePackageAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AccessPackageResourcePackageAssociation resource with the given unique name, props, and options.
+        Manages the resources added to access packages within Identity Governance in Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="example-group",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
+            resource_origin_id=azuread_group["example_group"]["object_id"],
+            resource_origin_system="AadGroup")
+        example_access_package = azuread.AccessPackage("exampleAccessPackage",
+            display_name="example-package",
+            description="Example Package",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"])
+        example_access_package_resource_package_association = azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation",
+            access_package_id=example_access_package.id,
+            catalog_resource_association_id=example_access_package_resource_catalog_association.id)
+        ```
+
+        ## Import
+
+        The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`.
+
         :param str resource_name: The name of the resource.
         :param AccessPackageResourcePackageAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -200,9 +288,9 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to
-        :param pulumi.Input[str] access_type: The role of access type to the specified resource, valid values are `Member` and `Owner`
-        :param pulumi.Input[str] catalog_resource_association_id: The ID of the access package catalog association
+        :param pulumi.Input[str] access_package_id: The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] access_type: The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] catalog_resource_association_id: The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -217,7 +305,7 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     @pulumi.getter(name="accessPackageId")
     def access_package_id(self) -> pulumi.Output[str]:
         """
-        The ID of access package this resource association is configured to
+        The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_package_id")
 
@@ -225,7 +313,7 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     @pulumi.getter(name="accessType")
     def access_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The role of access type to the specified resource, valid values are `Member` and `Owner`
+        The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "access_type")
 
@@ -233,7 +321,7 @@ class AccessPackageResourcePackageAssociation(pulumi.CustomResource):
     @pulumi.getter(name="catalogResourceAssociationId")
     def catalog_resource_association_id(self) -> pulumi.Output[str]:
         """
-        The ID of the access package catalog association
+        The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_resource_association_id")
 

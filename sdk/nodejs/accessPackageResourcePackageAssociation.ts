@@ -4,6 +4,57 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Manages the resources added to access packages within Identity Governance in Azure Active Directory.
+ *
+ * ## API Permissions
+ *
+ * The following API permissions are required in order to use this resource.
+ *
+ * When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+ *
+ * When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as azuread from "@pulumi/azuread";
+ *
+ * const exampleGroup = new azuread.Group("exampleGroup", {
+ *     displayName: "example-group",
+ *     securityEnabled: true,
+ * });
+ * const exampleAccessPackageCatalog = new azuread.AccessPackageCatalog("exampleAccessPackageCatalog", {
+ *     displayName: "example-catalog",
+ *     description: "Example catalog",
+ * });
+ * const exampleAccessPackageResourceCatalogAssociation = new azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation", {
+ *     catalogId: azuread_access_package_catalog.example_catalog.id,
+ *     resourceOriginId: azuread_group.example_group.object_id,
+ *     resourceOriginSystem: "AadGroup",
+ * });
+ * const exampleAccessPackage = new azuread.AccessPackage("exampleAccessPackage", {
+ *     displayName: "example-package",
+ *     description: "Example Package",
+ *     catalogId: azuread_access_package_catalog.example_catalog.id,
+ * });
+ * const exampleAccessPackageResourcePackageAssociation = new azuread.AccessPackageResourcePackageAssociation("exampleAccessPackageResourcePackageAssociation", {
+ *     accessPackageId: exampleAccessPackage.id,
+ *     catalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.id,
+ * });
+ * ```
+ *
+ * ## Import
+ *
+ * The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.
+ *
+ * ```sh
+ *  $ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
+ * ```
+ *
+ *  -> This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`.
+ */
 export class AccessPackageResourcePackageAssociation extends pulumi.CustomResource {
     /**
      * Get an existing AccessPackageResourcePackageAssociation resource's state with the given name, ID, and optional extra
@@ -33,15 +84,15 @@ export class AccessPackageResourcePackageAssociation extends pulumi.CustomResour
     }
 
     /**
-     * The ID of access package this resource association is configured to
+     * The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
      */
     public readonly accessPackageId!: pulumi.Output<string>;
     /**
-     * The role of access type to the specified resource, valid values are `Member` and `Owner`
+     * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      */
     public readonly accessType!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the access package catalog association
+     * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      */
     public readonly catalogResourceAssociationId!: pulumi.Output<string>;
 
@@ -83,15 +134,15 @@ export class AccessPackageResourcePackageAssociation extends pulumi.CustomResour
  */
 export interface AccessPackageResourcePackageAssociationState {
     /**
-     * The ID of access package this resource association is configured to
+     * The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
      */
     accessPackageId?: pulumi.Input<string>;
     /**
-     * The role of access type to the specified resource, valid values are `Member` and `Owner`
+     * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      */
     accessType?: pulumi.Input<string>;
     /**
-     * The ID of the access package catalog association
+     * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      */
     catalogResourceAssociationId?: pulumi.Input<string>;
 }
@@ -101,15 +152,15 @@ export interface AccessPackageResourcePackageAssociationState {
  */
 export interface AccessPackageResourcePackageAssociationArgs {
     /**
-     * The ID of access package this resource association is configured to
+     * The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
      */
     accessPackageId: pulumi.Input<string>;
     /**
-     * The role of access type to the specified resource, valid values are `Member` and `Owner`
+     * The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
      */
     accessType?: pulumi.Input<string>;
     /**
-     * The ID of the access package catalog association
+     * The ID of the catalog association from the `azuread.AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
      */
     catalogResourceAssociationId: pulumi.Input<string>;
 }

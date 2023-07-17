@@ -20,10 +20,10 @@ class AccessPackageCatalogArgs:
                  published: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AccessPackageCatalog resource.
-        :param pulumi.Input[str] description: The description of the access package catalog
-        :param pulumi.Input[str] display_name: The display name of the access package catalog
-        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant
-        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management
+        :param pulumi.Input[str] description: The description of the access package catalog.
+        :param pulumi.Input[str] display_name: The display name of the access package catalog.
+        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
+        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -36,7 +36,7 @@ class AccessPackageCatalogArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[str]:
         """
-        The description of the access package catalog
+        The description of the access package catalog.
         """
         return pulumi.get(self, "description")
 
@@ -48,7 +48,7 @@ class AccessPackageCatalogArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The display name of the access package catalog
+        The display name of the access package catalog.
         """
         return pulumi.get(self, "display_name")
 
@@ -60,7 +60,7 @@ class AccessPackageCatalogArgs:
     @pulumi.getter(name="externallyVisible")
     def externally_visible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the access packages in this catalog can be requested by users outside the tenant
+        Whether the access packages in this catalog can be requested by users outside the tenant.
         """
         return pulumi.get(self, "externally_visible")
 
@@ -72,7 +72,7 @@ class AccessPackageCatalogArgs:
     @pulumi.getter
     def published(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the access packages in this catalog are available for management
+        Whether the access packages in this catalog are available for management.
         """
         return pulumi.get(self, "published")
 
@@ -90,10 +90,10 @@ class _AccessPackageCatalogState:
                  published: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AccessPackageCatalog resources.
-        :param pulumi.Input[str] description: The description of the access package catalog
-        :param pulumi.Input[str] display_name: The display name of the access package catalog
-        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant
-        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management
+        :param pulumi.Input[str] description: The description of the access package catalog.
+        :param pulumi.Input[str] display_name: The display name of the access package catalog.
+        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
+        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -108,7 +108,7 @@ class _AccessPackageCatalogState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the access package catalog
+        The description of the access package catalog.
         """
         return pulumi.get(self, "description")
 
@@ -120,7 +120,7 @@ class _AccessPackageCatalogState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name of the access package catalog
+        The display name of the access package catalog.
         """
         return pulumi.get(self, "display_name")
 
@@ -132,7 +132,7 @@ class _AccessPackageCatalogState:
     @pulumi.getter(name="externallyVisible")
     def externally_visible(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the access packages in this catalog can be requested by users outside the tenant
+        Whether the access packages in this catalog can be requested by users outside the tenant.
         """
         return pulumi.get(self, "externally_visible")
 
@@ -144,7 +144,7 @@ class _AccessPackageCatalogState:
     @pulumi.getter
     def published(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the access packages in this catalog are available for management
+        Whether the access packages in this catalog are available for management.
         """
         return pulumi.get(self, "published")
 
@@ -164,13 +164,41 @@ class AccessPackageCatalog(pulumi.CustomResource):
                  published: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a AccessPackageCatalog resource with the given unique name, props, and options.
+        Manages an access package catalog within Identity Governance in Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AccessPackageCatalog("example",
+            description="Example access package catalog",
+            display_name="example-access-package-catalog")
+        ```
+
+        ## Import
+
+        An Access Package Catalog can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the access package catalog
-        :param pulumi.Input[str] display_name: The display name of the access package catalog
-        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant
-        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management
+        :param pulumi.Input[str] description: The description of the access package catalog.
+        :param pulumi.Input[str] display_name: The display name of the access package catalog.
+        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
+        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management.
         """
         ...
     @overload
@@ -179,7 +207,35 @@ class AccessPackageCatalog(pulumi.CustomResource):
                  args: AccessPackageCatalogArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AccessPackageCatalog resource with the given unique name, props, and options.
+        Manages an access package catalog within Identity Governance in Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AccessPackageCatalog("example",
+            description="Example access package catalog",
+            display_name="example-access-package-catalog")
+        ```
+
+        ## Import
+
+        An Access Package Catalog can be imported using the `id`, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param AccessPackageCatalogArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -237,10 +293,10 @@ class AccessPackageCatalog(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description of the access package catalog
-        :param pulumi.Input[str] display_name: The display name of the access package catalog
-        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant
-        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management
+        :param pulumi.Input[str] description: The description of the access package catalog.
+        :param pulumi.Input[str] display_name: The display name of the access package catalog.
+        :param pulumi.Input[bool] externally_visible: Whether the access packages in this catalog can be requested by users outside the tenant.
+        :param pulumi.Input[bool] published: Whether the access packages in this catalog are available for management.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -256,7 +312,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        The description of the access package catalog
+        The description of the access package catalog.
         """
         return pulumi.get(self, "description")
 
@@ -264,7 +320,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name of the access package catalog
+        The display name of the access package catalog.
         """
         return pulumi.get(self, "display_name")
 
@@ -272,7 +328,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
     @pulumi.getter(name="externallyVisible")
     def externally_visible(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the access packages in this catalog can be requested by users outside the tenant
+        Whether the access packages in this catalog can be requested by users outside the tenant.
         """
         return pulumi.get(self, "externally_visible")
 
@@ -280,7 +336,7 @@ class AccessPackageCatalog(pulumi.CustomResource):
     @pulumi.getter
     def published(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the access packages in this catalog are available for management
+        Whether the access packages in this catalog are available for management.
         """
         return pulumi.get(self, "published")
 

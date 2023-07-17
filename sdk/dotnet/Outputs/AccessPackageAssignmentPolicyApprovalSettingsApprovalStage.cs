@@ -13,11 +13,29 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class AccessPackageAssignmentPolicyApprovalSettingsApprovalStage
     {
+        /// <summary>
+        /// Whether alternative approvers are enabled.
+        /// </summary>
         public readonly bool? AlternativeApprovalEnabled;
+        /// <summary>
+        /// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover> AlternativeApprovers;
+        /// <summary>
+        /// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+        /// </summary>
         public readonly int ApprovalTimeoutInDays;
+        /// <summary>
+        /// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+        /// </summary>
         public readonly bool? ApproverJustificationRequired;
+        /// <summary>
+        /// Number of days before the request is forwarded to alternative approvers.
+        /// </summary>
         public readonly int? EnableAlternativeApprovalInDays;
+        /// <summary>
+        /// A block specifying the users who will be asked to approve requests, as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover> PrimaryApprovers;
 
         [OutputConstructor]

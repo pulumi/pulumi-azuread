@@ -11,27 +11,39 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Import
+//
+// Certificates can be imported using the object ID of the associated application and the key ID of the certificate credential, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/applicationCertificate:ApplicationCertificate test 00000000-0000-0000-0000-000000000000/certificate/11111111-1111-1111-1111-111111111111
+//
+// ```
+//
+//	-> This ID format is unique to Terraform and is composed of the application's object ID, the string "certificate" and the certificate's key ID in the format `{ObjectId}/certificate/{CertificateKeyId}`.
 type ApplicationCertificate struct {
 	pulumi.CustomResourceState
 
-	// The object ID of the application for which this certificate should be created
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringOutput `pulumi:"applicationObjectId"`
-	// Specifies the encoding used for the supplied certificate data
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding pulumi.StringPtrOutput `pulumi:"encoding"`
-	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-	// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate pulumi.StringOutput `pulumi:"endDate"`
-	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
 	EndDateRelative pulumi.StringPtrOutput `pulumi:"endDateRelative"`
-	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringOutput `pulumi:"keyId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-	// If this isn't specified, the current date and time are use
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringOutput `pulumi:"startDate"`
-	// The type of key/certificate
+	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
-	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
-	// argumen
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value pulumi.StringOutput `pulumi:"value"`
 }
 
@@ -77,46 +89,48 @@ func GetApplicationCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ApplicationCertificate resources.
 type applicationCertificateState struct {
-	// The object ID of the application for which this certificate should be created
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId *string `pulumi:"applicationObjectId"`
-	// Specifies the encoding used for the supplied certificate data
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding *string `pulumi:"encoding"`
-	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-	// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
-	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
 	EndDateRelative *string `pulumi:"endDateRelative"`
-	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-	// If this isn't specified, the current date and time are use
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
-	// The type of key/certificate
+	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
-	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
-	// argumen
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value *string `pulumi:"value"`
 }
 
 type ApplicationCertificateState struct {
-	// The object ID of the application for which this certificate should be created
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringPtrInput
-	// Specifies the encoding used for the supplied certificate data
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding pulumi.StringPtrInput
-	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-	// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
-	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
 	EndDateRelative pulumi.StringPtrInput
-	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-	// If this isn't specified, the current date and time are use
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
-	// The type of key/certificate
+	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
-	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
-	// argumen
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value pulumi.StringPtrInput
 }
 
@@ -125,47 +139,49 @@ func (ApplicationCertificateState) ElementType() reflect.Type {
 }
 
 type applicationCertificateArgs struct {
-	// The object ID of the application for which this certificate should be created
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId string `pulumi:"applicationObjectId"`
-	// Specifies the encoding used for the supplied certificate data
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding *string `pulumi:"encoding"`
-	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-	// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate *string `pulumi:"endDate"`
-	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
 	EndDateRelative *string `pulumi:"endDateRelative"`
-	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId *string `pulumi:"keyId"`
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-	// If this isn't specified, the current date and time are use
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate *string `pulumi:"startDate"`
-	// The type of key/certificate
+	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type *string `pulumi:"type"`
-	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
-	// argumen
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value string `pulumi:"value"`
 }
 
 // The set of arguments for constructing a ApplicationCertificate resource.
 type ApplicationCertificateArgs struct {
-	// The object ID of the application for which this certificate should be created
+	// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationObjectId pulumi.StringInput
-	// Specifies the encoding used for the supplied certificate data
+	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+	//
+	// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 	Encoding pulumi.StringPtrInput
-	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-	// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
+	// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 	EndDate pulumi.StringPtrInput
-	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
+	// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+	//
+	// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
 	EndDateRelative pulumi.StringPtrInput
-	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
+	// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 	KeyId pulumi.StringPtrInput
-	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-	// If this isn't specified, the current date and time are use
+	// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 	StartDate pulumi.StringPtrInput
-	// The type of key/certificate
+	// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 	Type pulumi.StringPtrInput
-	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
-	// argumen
+	// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 	Value pulumi.StringInput
 }
 
@@ -256,45 +272,46 @@ func (o ApplicationCertificateOutput) ToApplicationCertificateOutputWithContext(
 	return o
 }
 
-// The object ID of the application for which this certificate should be created
+// The object ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 func (o ApplicationCertificateOutput) ApplicationObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.ApplicationObjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the encoding used for the supplied certificate data
+// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
+//
+// > **Tip for Azure Key Vault** The `hex` encoding option is useful for consuming certificate data from the azurermKeyVaultCertificate resource.
 func (o ApplicationCertificateOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringPtrOutput { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
-// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If
-// omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date
+// The end date until which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If omitted, the API will decide a suitable expiry date, which is typically around 2 years from the start date. Changing this field forces a new resource to be created.
 func (o ApplicationCertificateOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`
+// A relative duration for which the certificate is valid until, for example `240h` (10 days) or `2400h30m`. Changing this field forces a new resource to be created.
+//
+// > One of `endDate` or `endDateRelative` must be set. The maximum allowed duration is determined by Azure AD.
 func (o ApplicationCertificateOutput) EndDateRelative() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringPtrOutput { return v.EndDateRelative }).(pulumi.StringPtrOutput)
 }
 
-// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated
+// A UUID used to uniquely identify this certificate. If omitted, a random UUID will be automatically generated. Changing this field forces a new resource to be created.
 func (o ApplicationCertificateOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
-// If this isn't specified, the current date and time are use
+// The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the value is determined by Azure Active Directory and is usually the start date of the certificate for asymmetric keys, or the current timestamp for symmetric keys. Changing this field forces a new resource to be created.
 func (o ApplicationCertificateOutput) StartDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.StartDate }).(pulumi.StringOutput)
 }
 
-// The type of key/certificate
+// The type of key/certificate. Must be one of `AsymmetricX509Cert` or `Symmetric`. Changing this fields forces a new resource to be created.
 func (o ApplicationCertificateOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding`
-// argumen
+// The certificate data, which can be PEM encoded, base64 encoded DER or hexadecimal encoded DER. See also the `encoding` argument.
 func (o ApplicationCertificateOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationCertificate) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }

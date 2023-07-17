@@ -9,47 +9,131 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages an invitation of a guest user within Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `User.Invite.All`, `User.ReadWrite.All` or `Directory.ReadWrite.All`
+    /// 
+    /// When authenticated with a user principal, this resource requires one of the following directory roles: `Guest Inviter`, `User Administrator` or `Global Administrator`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// *Basic example*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.Invitation("example", new()
+    ///     {
+    ///         RedirectUrl = "https://portal.azure.com",
+    ///         UserEmailAddress = "jdoe@hashicorp.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// *Invitation with standard message*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.Invitation("example", new()
+    ///     {
+    ///         Message = new AzureAD.Inputs.InvitationMessageArgs
+    ///         {
+    ///             Language = "en-US",
+    ///         },
+    ///         RedirectUrl = "https://portal.azure.com",
+    ///         UserEmailAddress = "jdoe@hashicorp.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// *Invitation with custom message body and an additional recipient*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new AzureAD.Invitation("example", new()
+    ///     {
+    ///         Message = new AzureAD.Inputs.InvitationMessageArgs
+    ///         {
+    ///             AdditionalRecipients = "aaliceberg@hashicorp.com",
+    ///             Body = "Hello there! You are invited to join my Azure tenant!",
+    ///         },
+    ///         RedirectUrl = "https://portal.azure.com",
+    ///         UserDisplayName = "Bob Bobson",
+    ///         UserEmailAddress = "bbobson@hashicorp.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// This resource does not support importing.
+    /// </summary>
     [AzureADResourceType("azuread:index/invitation:Invitation")]
     public partial class Invitation : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Customize the message sent to the invited user
+        /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         /// </summary>
         [Output("message")]
         public Output<Outputs.InvitationMessage?> Message { get; private set; } = null!;
 
         /// <summary>
-        /// The URL the user can use to redeem their invitation
+        /// The URL the user can use to redeem their invitation.
         /// </summary>
         [Output("redeemUrl")]
         public Output<string> RedeemUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The URL that the user should be redirected to once the invitation is redeemed
+        /// The URL that the user should be redirected to once the invitation is redeemed.
         /// </summary>
         [Output("redirectUrl")]
         public Output<string> RedirectUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The display name of the user being invited
+        /// The display name of the user being invited.
         /// </summary>
         [Output("userDisplayName")]
         public Output<string?> UserDisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// The email address of the user being invited
+        /// The email address of the user being invited.
         /// </summary>
         [Output("userEmailAddress")]
         public Output<string> UserEmailAddress { get; private set; } = null!;
 
         /// <summary>
-        /// Object ID of the invited user
+        /// Object ID of the invited user.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
 
         /// <summary>
-        /// The user type of the user being invited
+        /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         /// </summary>
         [Output("userType")]
         public Output<string?> UserType { get; private set; } = null!;
@@ -101,31 +185,31 @@ namespace Pulumi.AzureAD
     public sealed class InvitationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Customize the message sent to the invited user
+        /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         /// </summary>
         [Input("message")]
         public Input<Inputs.InvitationMessageArgs>? Message { get; set; }
 
         /// <summary>
-        /// The URL that the user should be redirected to once the invitation is redeemed
+        /// The URL that the user should be redirected to once the invitation is redeemed.
         /// </summary>
         [Input("redirectUrl", required: true)]
         public Input<string> RedirectUrl { get; set; } = null!;
 
         /// <summary>
-        /// The display name of the user being invited
+        /// The display name of the user being invited.
         /// </summary>
         [Input("userDisplayName")]
         public Input<string>? UserDisplayName { get; set; }
 
         /// <summary>
-        /// The email address of the user being invited
+        /// The email address of the user being invited.
         /// </summary>
         [Input("userEmailAddress", required: true)]
         public Input<string> UserEmailAddress { get; set; } = null!;
 
         /// <summary>
-        /// The user type of the user being invited
+        /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }
@@ -139,43 +223,43 @@ namespace Pulumi.AzureAD
     public sealed class InvitationState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Customize the message sent to the invited user
+        /// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
         /// </summary>
         [Input("message")]
         public Input<Inputs.InvitationMessageGetArgs>? Message { get; set; }
 
         /// <summary>
-        /// The URL the user can use to redeem their invitation
+        /// The URL the user can use to redeem their invitation.
         /// </summary>
         [Input("redeemUrl")]
         public Input<string>? RedeemUrl { get; set; }
 
         /// <summary>
-        /// The URL that the user should be redirected to once the invitation is redeemed
+        /// The URL that the user should be redirected to once the invitation is redeemed.
         /// </summary>
         [Input("redirectUrl")]
         public Input<string>? RedirectUrl { get; set; }
 
         /// <summary>
-        /// The display name of the user being invited
+        /// The display name of the user being invited.
         /// </summary>
         [Input("userDisplayName")]
         public Input<string>? UserDisplayName { get; set; }
 
         /// <summary>
-        /// The email address of the user being invited
+        /// The email address of the user being invited.
         /// </summary>
         [Input("userEmailAddress")]
         public Input<string>? UserEmailAddress { get; set; }
 
         /// <summary>
-        /// Object ID of the invited user
+        /// Object ID of the invited user.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
         /// <summary>
-        /// The user type of the user being invited
+        /// The user type of the user being invited. Must be one of `Guest` or `Member`. Only Global Administrators can invite users as members. Defaults to `Guest`.
         /// </summary>
         [Input("userType")]
         public Input<string>? UserType { get; set; }

@@ -20,7 +20,8 @@ class SynchronizationSecretArgs:
                  credentials: Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]] = None):
         """
         The set of arguments for constructing a SynchronizationSecret resource.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secret should be created
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
+        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
         """
         pulumi.set(__self__, "service_principal_id", service_principal_id)
         if credentials is not None:
@@ -30,7 +31,7 @@ class SynchronizationSecretArgs:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal for which this synchronization secret should be created
+        The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -41,6 +42,9 @@ class SynchronizationSecretArgs:
     @property
     @pulumi.getter
     def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
+        """
+        One or more `credential` blocks as documented below.
+        """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
@@ -55,7 +59,8 @@ class _SynchronizationSecretState:
                  service_principal_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SynchronizationSecret resources.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secret should be created
+        :param pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         if credentials is not None:
             pulumi.set(__self__, "credentials", credentials)
@@ -65,6 +70,9 @@ class _SynchronizationSecretState:
     @property
     @pulumi.getter
     def credentials(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SynchronizationSecretCredentialArgs']]]]:
+        """
+        One or more `credential` blocks as documented below.
+        """
         return pulumi.get(self, "credentials")
 
     @credentials.setter
@@ -75,7 +83,7 @@ class _SynchronizationSecretState:
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal for which this synchronization secret should be created
+        The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 
@@ -93,10 +101,55 @@ class SynchronizationSecret(pulumi.CustomResource):
                  service_principal_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a SynchronizationSecret resource with the given unique name, props, and options.
+        Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id,
+            feature_tags=[azuread.ApplicationFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
+            service_principal_id=example_service_principal.id,
+            credentials=[
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="BaseAddress",
+                    value="abc",
+                ),
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="SecretToken",
+                    value="some-token",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        This resource does not support importing.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secret should be created
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         ...
     @overload
@@ -105,7 +158,51 @@ class SynchronizationSecret(pulumi.CustomResource):
                  args: SynchronizationSecretArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a SynchronizationSecret resource with the given unique name, props, and options.
+        Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        ## Example Usage
+
+        *Basic example*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_application_template = azuread.get_application_template(display_name="Azure Databricks SCIM Provisioning Connector")
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            template_id=example_application_template.template_id,
+            feature_tags=[azuread.ApplicationFeatureTagArgs(
+                enterprise=True,
+                gallery=True,
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal",
+            application_id=example_application.application_id,
+            use_existing=True)
+        example_synchronization_secret = azuread.SynchronizationSecret("exampleSynchronizationSecret",
+            service_principal_id=example_service_principal.id,
+            credentials=[
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="BaseAddress",
+                    value="abc",
+                ),
+                azuread.SynchronizationSecretCredentialArgs(
+                    key="SecretToken",
+                    value="some-token",
+                ),
+            ])
+        ```
+
+        ## Import
+
+        This resource does not support importing.
+
         :param str resource_name: The name of the resource.
         :param SynchronizationSecretArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -155,7 +252,8 @@ class SynchronizationSecret(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secret should be created
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SynchronizationSecretCredentialArgs']]]] credentials: One or more `credential` blocks as documented below.
+        :param pulumi.Input[str] service_principal_id: The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -168,13 +266,16 @@ class SynchronizationSecret(pulumi.CustomResource):
     @property
     @pulumi.getter
     def credentials(self) -> pulumi.Output[Optional[Sequence['outputs.SynchronizationSecretCredential']]]:
+        """
+        One or more `credential` blocks as documented below.
+        """
         return pulumi.get(self, "credentials")
 
     @property
     @pulumi.getter(name="servicePrincipalId")
     def service_principal_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal for which this synchronization secret should be created
+        The object ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_id")
 

@@ -20,10 +20,12 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
                  user_object_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePrincipalDelegatedPermissionGrant resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource
-        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed
-        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created
-        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         pulumi.set(__self__, "claim_values", claim_values)
         pulumi.set(__self__, "resource_service_principal_object_id", resource_service_principal_object_id)
@@ -35,7 +37,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+        A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
@@ -47,7 +49,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @pulumi.getter(name="resourceServicePrincipalObjectId")
     def resource_service_principal_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal representing the resource to be accessed
+        The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_service_principal_object_id")
 
@@ -59,7 +61,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @pulumi.getter(name="servicePrincipalObjectId")
     def service_principal_object_id(self) -> pulumi.Input[str]:
         """
-        The object ID of the service principal for which this delegated permission grant should be created
+        The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_object_id")
 
@@ -71,7 +73,9 @@ class ServicePrincipalDelegatedPermissionGrantArgs:
     @pulumi.getter(name="userObjectId")
     def user_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+
+        > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         return pulumi.get(self, "user_object_id")
 
@@ -89,10 +93,12 @@ class _ServicePrincipalDelegatedPermissionGrantState:
                  user_object_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePrincipalDelegatedPermissionGrant resources.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource
-        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed
-        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created
-        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         if claim_values is not None:
             pulumi.set(__self__, "claim_values", claim_values)
@@ -107,7 +113,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+        A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
@@ -119,7 +125,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     @pulumi.getter(name="resourceServicePrincipalObjectId")
     def resource_service_principal_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal representing the resource to be accessed
+        The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_service_principal_object_id")
 
@@ -131,7 +137,7 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     @pulumi.getter(name="servicePrincipalObjectId")
     def service_principal_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the service principal for which this delegated permission grant should be created
+        The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_object_id")
 
@@ -143,7 +149,9 @@ class _ServicePrincipalDelegatedPermissionGrantState:
     @pulumi.getter(name="userObjectId")
     def user_object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+
+        > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         return pulumi.get(self, "user_object_id")
 
@@ -163,13 +171,110 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                  user_object_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ServicePrincipalDelegatedPermissionGrant resource with the given unique name, props, and options.
+        Manages a delegated permission grant for a service principal, on behalf of a single user, or all users.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one the following directory role: `Global Administrator`
+
+        ## Example Usage
+
+        *Delegated permission grant for all users*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ])
+        ```
+
+        *Delegated permission grant for a single user*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_user = azuread.User("exampleUser",
+            display_name="J. Doe",
+            user_principal_name="jdoe@hashicorp.com",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!")
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ],
+            user_object_id=example_user.object_id)
+        ```
+
+        ## Import
+
+        Delegated permission grants can be imported using their ID, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource
-        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed
-        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created
-        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         ...
     @overload
@@ -178,7 +283,102 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
                  args: ServicePrincipalDelegatedPermissionGrantArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ServicePrincipalDelegatedPermissionGrant resource with the given unique name, props, and options.
+        Manages a delegated permission grant for a service principal, on behalf of a single user, or all users.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one the following directory role: `Global Administrator`
+
+        ## Example Usage
+
+        *Delegated permission grant for all users*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ])
+        ```
+
+        *Delegated permission grant for a single user*
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        well_known = azuread.get_application_published_app_ids()
+        msgraph = azuread.ServicePrincipal("msgraph",
+            application_id=well_known.result["MicrosoftGraph"],
+            use_existing=True)
+        example_application = azuread.Application("exampleApplication",
+            display_name="example",
+            required_resource_accesses=[azuread.ApplicationRequiredResourceAccessArgs(
+                resource_app_id=well_known.result["MicrosoftGraph"],
+                resource_accesses=[
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["openid"],
+                        type="Scope",
+                    ),
+                    azuread.ApplicationRequiredResourceAccessResourceAccessArgs(
+                        id=msgraph.oauth2_permission_scope_ids["User.Read"],
+                        type="Scope",
+                    ),
+                ],
+            )])
+        example_service_principal = azuread.ServicePrincipal("exampleServicePrincipal", application_id=example_application.application_id)
+        example_user = azuread.User("exampleUser",
+            display_name="J. Doe",
+            user_principal_name="jdoe@hashicorp.com",
+            mail_nickname="jdoe",
+            password="SecretP@sswd99!")
+        example_service_principal_delegated_permission_grant = azuread.ServicePrincipalDelegatedPermissionGrant("exampleServicePrincipalDelegatedPermissionGrant",
+            service_principal_object_id=example_service_principal.object_id,
+            resource_service_principal_object_id=msgraph.object_id,
+            claim_values=[
+                "openid",
+                "User.Read.All",
+            ],
+            user_object_id=example_user.object_id)
+        ```
+
+        ## Import
+
+        Delegated permission grants can be imported using their ID, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant example aaBBcDDeFG6h5JKLMN2PQrrssTTUUvWWxxxxxyyyzzz
+        ```
+
         :param str resource_name: The name of the resource.
         :param ServicePrincipalDelegatedPermissionGrantArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -238,10 +438,12 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource
-        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed
-        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created
-        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] claim_values: A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
+        :param pulumi.Input[str] resource_service_principal_object_id: The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] service_principal_object_id: The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] user_object_id: The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+               
+               > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -257,7 +459,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of claim values for delegated permission scopes which should be included in access tokens for the resource
+        A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
         """
         return pulumi.get(self, "claim_values")
 
@@ -265,7 +467,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     @pulumi.getter(name="resourceServicePrincipalObjectId")
     def resource_service_principal_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal representing the resource to be accessed
+        The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_service_principal_object_id")
 
@@ -273,7 +475,7 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     @pulumi.getter(name="servicePrincipalObjectId")
     def service_principal_object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the service principal for which this delegated permission grant should be created
+        The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "service_principal_object_id")
 
@@ -281,7 +483,9 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
     @pulumi.getter(name="userObjectId")
     def user_object_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The object ID of the user on behalf of whom the service principal is authorized to access the resource
+        The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
+
+        > **Granting Admin Consent** To grant admin consent for the service principal to impersonate all users, just omit the `user_object_id` property.
         """
         return pulumi.get(self, "user_object_id")
 

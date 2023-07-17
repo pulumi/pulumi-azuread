@@ -10,6 +10,68 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Gets information about an access package catalog role.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires one of the following application roles: `EntitlementManagement.Read.All` or `Directory.Read.All`
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
+//
+// ## Example Usage
+// ### By Group Display Name)
+//
+// *Look up by display name*
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.GetAccessPackageCatalogRole(ctx, &azuread.GetAccessPackageCatalogRoleArgs{
+//				DisplayName: pulumi.StringRef("Catalog owner"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// *Look up by object ID*
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.GetAccessPackageCatalogRole(ctx, &azuread.GetAccessPackageCatalogRoleArgs{
+//				ObjectId: pulumi.StringRef("00000000-0000-0000-0000-000000000000"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetAccessPackageCatalogRole(ctx *pulumi.Context, args *GetAccessPackageCatalogRoleArgs, opts ...pulumi.InvokeOption) (*GetAccessPackageCatalogRoleResult, error) {
 	var rv GetAccessPackageCatalogRoleResult
 	err := ctx.Invoke("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, &rv, opts...)
@@ -21,17 +83,25 @@ func GetAccessPackageCatalogRole(ctx *pulumi.Context, args *GetAccessPackageCata
 
 // A collection of arguments for invoking getAccessPackageCatalogRole.
 type GetAccessPackageCatalogRoleArgs struct {
+	// Specifies the display name of the role.
 	DisplayName *string `pulumi:"displayName"`
-	ObjectId    *string `pulumi:"objectId"`
+	// Specifies the object ID of the role.
+	//
+	// > One of `displayName` or `objectId` must be specified.
+	ObjectId *string `pulumi:"objectId"`
 }
 
 // A collection of values returned by getAccessPackageCatalogRole.
 type GetAccessPackageCatalogRoleResult struct {
+	// The description of the role.
 	Description string `pulumi:"description"`
+	// The display name of the role.
 	DisplayName string `pulumi:"displayName"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	ObjectId   string `pulumi:"objectId"`
+	Id string `pulumi:"id"`
+	// The object ID of the role.
+	ObjectId string `pulumi:"objectId"`
+	// The object ID of the role.
 	TemplateId string `pulumi:"templateId"`
 }
 
@@ -50,8 +120,12 @@ func GetAccessPackageCatalogRoleOutput(ctx *pulumi.Context, args GetAccessPackag
 
 // A collection of arguments for invoking getAccessPackageCatalogRole.
 type GetAccessPackageCatalogRoleOutputArgs struct {
+	// Specifies the display name of the role.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	ObjectId    pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the object ID of the role.
+	//
+	// > One of `displayName` or `objectId` must be specified.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
 }
 
 func (GetAccessPackageCatalogRoleOutputArgs) ElementType() reflect.Type {
@@ -73,10 +147,12 @@ func (o GetAccessPackageCatalogRoleResultOutput) ToGetAccessPackageCatalogRoleRe
 	return o
 }
 
+// The description of the role.
 func (o GetAccessPackageCatalogRoleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPackageCatalogRoleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The display name of the role.
 func (o GetAccessPackageCatalogRoleResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPackageCatalogRoleResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -86,10 +162,12 @@ func (o GetAccessPackageCatalogRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPackageCatalogRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The object ID of the role.
 func (o GetAccessPackageCatalogRoleResultOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPackageCatalogRoleResult) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// The object ID of the role.
 func (o GetAccessPackageCatalogRoleResultOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAccessPackageCatalogRoleResult) string { return v.TemplateId }).(pulumi.StringOutput)
 }

@@ -10,6 +10,49 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the OData type for a generic directory object having the provided object ID.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this data source.
+//
+// When authenticated with a service principal, this data source requires either `User.Read.All`, `Group.Read.All` or `Directory.Read.All`, depending on the type of object being queried.
+//
+// When authenticated with a user principal, this data source does not require any additional roles.
+//
+// ## Example Usage
+//
+// *Look up and output type of object by ID*
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := azuread.GetDirectoryObject(ctx, &azuread.GetDirectoryObjectArgs{
+//				ObjectId: "00000000-0000-0000-0000-000000000000",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("objectType", example.Type)
+//			return nil
+//		})
+//	}
+//
+// ```
+// ## Attributes Reference
+//
+// The following attributes are exported:
+//
+// *`objectId` - The object ID of the directory object.
+// *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 func GetDirectoryObject(ctx *pulumi.Context, args *GetDirectoryObjectArgs, opts ...pulumi.InvokeOption) (*GetDirectoryObjectResult, error) {
 	var rv GetDirectoryObjectResult
 	err := ctx.Invoke("azuread:index/getDirectoryObject:getDirectoryObject", args, &rv, opts...)
@@ -21,6 +64,7 @@ func GetDirectoryObject(ctx *pulumi.Context, args *GetDirectoryObjectArgs, opts 
 
 // A collection of arguments for invoking getDirectoryObject.
 type GetDirectoryObjectArgs struct {
+	// Specifies the Object ID of the directory object to look up.
 	ObjectId string `pulumi:"objectId"`
 }
 
@@ -47,6 +91,7 @@ func GetDirectoryObjectOutput(ctx *pulumi.Context, args GetDirectoryObjectOutput
 
 // A collection of arguments for invoking getDirectoryObject.
 type GetDirectoryObjectOutputArgs struct {
+	// Specifies the Object ID of the directory object to look up.
 	ObjectId pulumi.StringInput `pulumi:"objectId"`
 }
 

@@ -12,6 +12,9 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class ConditionalAccessPolicyConditionsDevicesGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
+        /// </summary>
         [Input("filter")]
         public Input<Inputs.ConditionalAccessPolicyConditionsDevicesFilterGetArgs>? Filter { get; set; }
 

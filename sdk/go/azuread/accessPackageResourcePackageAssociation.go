@@ -11,14 +11,92 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages the resources added to access packages within Identity Governance in Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Access package manager` or `Global Administrator`.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewGroup(ctx, "exampleGroup", &azuread.GroupArgs{
+//				DisplayName:     pulumi.String("example-group"),
+//				SecurityEnabled: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAccessPackageCatalog(ctx, "exampleAccessPackageCatalog", &azuread.AccessPackageCatalogArgs{
+//				DisplayName: pulumi.String("example-catalog"),
+//				Description: pulumi.String("Example catalog"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackageResourceCatalogAssociation, err := azuread.NewAccessPackageResourceCatalogAssociation(ctx, "exampleAccessPackageResourceCatalogAssociation", &azuread.AccessPackageResourceCatalogAssociationArgs{
+//				CatalogId:            pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),
+//				ResourceOriginId:     pulumi.Any(azuread_group.Example_group.Object_id),
+//				ResourceOriginSystem: pulumi.String("AadGroup"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			exampleAccessPackage, err := azuread.NewAccessPackage(ctx, "exampleAccessPackage", &azuread.AccessPackageArgs{
+//				DisplayName: pulumi.String("example-package"),
+//				Description: pulumi.String("Example Package"),
+//				CatalogId:   pulumi.Any(azuread_access_package_catalog.Example_catalog.Id),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = azuread.NewAccessPackageResourcePackageAssociation(ctx, "exampleAccessPackageResourcePackageAssociation", &azuread.AccessPackageResourcePackageAssociationArgs{
+//				AccessPackageId:              exampleAccessPackage.ID(),
+//				CatalogResourceAssociationId: exampleAccessPackageResourceCatalogAssociation.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// The resource and catalog association can be imported using the access package ID, the resource association ID, the resource origin ID, and the access type, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111_22222222-2222-2222-2222-22222222/33333333-3333-3333-3333-33333333/Member
+//
+// ```
+//
+//	-> This ID format is unique to Terraform and is composed of the Access Package ID, the Resource Association ID, the Resource Origin ID, and the Access Type, in the format `{AccessPackageID}/{ResourceAssociationID}/{ResourceOriginID}/{AccessType}`.
 type AccessPackageResourcePackageAssociation struct {
 	pulumi.CustomResourceState
 
-	// The ID of access package this resource association is configured to
+	// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 	AccessPackageId pulumi.StringOutput `pulumi:"accessPackageId"`
-	// The role of access type to the specified resource, valid values are `Member` and `Owner`
+	// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
 	AccessType pulumi.StringPtrOutput `pulumi:"accessType"`
-	// The ID of the access package catalog association
+	// The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
 	CatalogResourceAssociationId pulumi.StringOutput `pulumi:"catalogResourceAssociationId"`
 }
 
@@ -57,20 +135,20 @@ func GetAccessPackageResourcePackageAssociation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPackageResourcePackageAssociation resources.
 type accessPackageResourcePackageAssociationState struct {
-	// The ID of access package this resource association is configured to
+	// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 	AccessPackageId *string `pulumi:"accessPackageId"`
-	// The role of access type to the specified resource, valid values are `Member` and `Owner`
+	// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
 	AccessType *string `pulumi:"accessType"`
-	// The ID of the access package catalog association
+	// The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
 	CatalogResourceAssociationId *string `pulumi:"catalogResourceAssociationId"`
 }
 
 type AccessPackageResourcePackageAssociationState struct {
-	// The ID of access package this resource association is configured to
+	// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 	AccessPackageId pulumi.StringPtrInput
-	// The role of access type to the specified resource, valid values are `Member` and `Owner`
+	// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
 	AccessType pulumi.StringPtrInput
-	// The ID of the access package catalog association
+	// The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
 	CatalogResourceAssociationId pulumi.StringPtrInput
 }
 
@@ -79,21 +157,21 @@ func (AccessPackageResourcePackageAssociationState) ElementType() reflect.Type {
 }
 
 type accessPackageResourcePackageAssociationArgs struct {
-	// The ID of access package this resource association is configured to
+	// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 	AccessPackageId string `pulumi:"accessPackageId"`
-	// The role of access type to the specified resource, valid values are `Member` and `Owner`
+	// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
 	AccessType *string `pulumi:"accessType"`
-	// The ID of the access package catalog association
+	// The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
 	CatalogResourceAssociationId string `pulumi:"catalogResourceAssociationId"`
 }
 
 // The set of arguments for constructing a AccessPackageResourcePackageAssociation resource.
 type AccessPackageResourcePackageAssociationArgs struct {
-	// The ID of access package this resource association is configured to
+	// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 	AccessPackageId pulumi.StringInput
-	// The role of access type to the specified resource, valid values are `Member` and `Owner`
+	// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
 	AccessType pulumi.StringPtrInput
-	// The ID of the access package catalog association
+	// The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
 	CatalogResourceAssociationId pulumi.StringInput
 }
 
@@ -184,17 +262,17 @@ func (o AccessPackageResourcePackageAssociationOutput) ToAccessPackageResourcePa
 	return o
 }
 
-// The ID of access package this resource association is configured to
+// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 func (o AccessPackageResourcePackageAssociationOutput) AccessPackageId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageResourcePackageAssociation) pulumi.StringOutput { return v.AccessPackageId }).(pulumi.StringOutput)
 }
 
-// The role of access type to the specified resource, valid values are `Member` and `Owner`
+// The role of access type to the specified resource. Valid values are `Member`, or `Owner` The default is `Member`. Changing this forces a new resource to be created.
 func (o AccessPackageResourcePackageAssociationOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageResourcePackageAssociation) pulumi.StringPtrOutput { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the access package catalog association
+// The ID of the catalog association from the `AccessPackageResourceCatalogAssociation` resource. Changing this forces a new resource to be created.
 func (o AccessPackageResourcePackageAssociationOutput) CatalogResourceAssociationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageResourcePackageAssociation) pulumi.StringOutput {
 		return v.CatalogResourceAssociationId

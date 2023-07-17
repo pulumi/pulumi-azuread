@@ -11,16 +11,62 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Manages an access package catalog within Identity Governance in Azure Active Directory.
+//
+// ## API Permissions
+//
+// The following API permissions are required in order to use this resource.
+//
+// When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+//
+// When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner`, `Catalog creator` or `Global Administrator`
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := azuread.NewAccessPackageCatalog(ctx, "example", &azuread.AccessPackageCatalogArgs{
+//				Description: pulumi.String("Example access package catalog"),
+//				DisplayName: pulumi.String("example-access-package-catalog"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// An Access Package Catalog can be imported using the `id`, e.g.
+//
+// ```sh
+//
+//	$ pulumi import azuread:index/accessPackageCatalog:AccessPackageCatalog example 00000000-0000-0000-0000-000000000000
+//
+// ```
 type AccessPackageCatalog struct {
 	pulumi.CustomResourceState
 
-	// The description of the access package catalog
+	// The description of the access package catalog.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The display name of the access package catalog
+	// The display name of the access package catalog.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Whether the access packages in this catalog can be requested by users outside the tenant
+	// Whether the access packages in this catalog can be requested by users outside the tenant.
 	ExternallyVisible pulumi.BoolPtrOutput `pulumi:"externallyVisible"`
-	// Whether the access packages in this catalog are available for management
+	// Whether the access packages in this catalog are available for management.
 	Published pulumi.BoolPtrOutput `pulumi:"published"`
 }
 
@@ -59,24 +105,24 @@ func GetAccessPackageCatalog(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AccessPackageCatalog resources.
 type accessPackageCatalogState struct {
-	// The description of the access package catalog
+	// The description of the access package catalog.
 	Description *string `pulumi:"description"`
-	// The display name of the access package catalog
+	// The display name of the access package catalog.
 	DisplayName *string `pulumi:"displayName"`
-	// Whether the access packages in this catalog can be requested by users outside the tenant
+	// Whether the access packages in this catalog can be requested by users outside the tenant.
 	ExternallyVisible *bool `pulumi:"externallyVisible"`
-	// Whether the access packages in this catalog are available for management
+	// Whether the access packages in this catalog are available for management.
 	Published *bool `pulumi:"published"`
 }
 
 type AccessPackageCatalogState struct {
-	// The description of the access package catalog
+	// The description of the access package catalog.
 	Description pulumi.StringPtrInput
-	// The display name of the access package catalog
+	// The display name of the access package catalog.
 	DisplayName pulumi.StringPtrInput
-	// Whether the access packages in this catalog can be requested by users outside the tenant
+	// Whether the access packages in this catalog can be requested by users outside the tenant.
 	ExternallyVisible pulumi.BoolPtrInput
-	// Whether the access packages in this catalog are available for management
+	// Whether the access packages in this catalog are available for management.
 	Published pulumi.BoolPtrInput
 }
 
@@ -85,25 +131,25 @@ func (AccessPackageCatalogState) ElementType() reflect.Type {
 }
 
 type accessPackageCatalogArgs struct {
-	// The description of the access package catalog
+	// The description of the access package catalog.
 	Description string `pulumi:"description"`
-	// The display name of the access package catalog
+	// The display name of the access package catalog.
 	DisplayName string `pulumi:"displayName"`
-	// Whether the access packages in this catalog can be requested by users outside the tenant
+	// Whether the access packages in this catalog can be requested by users outside the tenant.
 	ExternallyVisible *bool `pulumi:"externallyVisible"`
-	// Whether the access packages in this catalog are available for management
+	// Whether the access packages in this catalog are available for management.
 	Published *bool `pulumi:"published"`
 }
 
 // The set of arguments for constructing a AccessPackageCatalog resource.
 type AccessPackageCatalogArgs struct {
-	// The description of the access package catalog
+	// The description of the access package catalog.
 	Description pulumi.StringInput
-	// The display name of the access package catalog
+	// The display name of the access package catalog.
 	DisplayName pulumi.StringInput
-	// Whether the access packages in this catalog can be requested by users outside the tenant
+	// Whether the access packages in this catalog can be requested by users outside the tenant.
 	ExternallyVisible pulumi.BoolPtrInput
-	// Whether the access packages in this catalog are available for management
+	// Whether the access packages in this catalog are available for management.
 	Published pulumi.BoolPtrInput
 }
 
@@ -194,22 +240,22 @@ func (o AccessPackageCatalogOutput) ToAccessPackageCatalogOutputWithContext(ctx 
 	return o
 }
 
-// The description of the access package catalog
+// The description of the access package catalog.
 func (o AccessPackageCatalogOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageCatalog) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The display name of the access package catalog
+// The display name of the access package catalog.
 func (o AccessPackageCatalogOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessPackageCatalog) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Whether the access packages in this catalog can be requested by users outside the tenant
+// Whether the access packages in this catalog can be requested by users outside the tenant.
 func (o AccessPackageCatalogOutput) ExternallyVisible() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageCatalog) pulumi.BoolPtrOutput { return v.ExternallyVisible }).(pulumi.BoolPtrOutput)
 }
 
-// Whether the access packages in this catalog are available for management
+// Whether the access packages in this catalog are available for management.
 func (o AccessPackageCatalogOutput) Published() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageCatalog) pulumi.BoolPtrOutput { return v.Published }).(pulumi.BoolPtrOutput)
 }

@@ -19,10 +19,9 @@ class AccessPackageResourceCatalogAssociationArgs:
                  resource_origin_system: pulumi.Input[str]):
         """
         The set of arguments for constructing a AccessPackageResourceCatalogAssociation resource.
-        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog
-        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-               the group
-        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "resource_origin_id", resource_origin_id)
@@ -32,7 +31,7 @@ class AccessPackageResourceCatalogAssociationArgs:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Input[str]:
         """
-        The unique ID of the access package catalog
+        The unique ID of the access package catalog. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_id")
 
@@ -44,8 +43,7 @@ class AccessPackageResourceCatalogAssociationArgs:
     @pulumi.getter(name="resourceOriginId")
     def resource_origin_id(self) -> pulumi.Input[str]:
         """
-        The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-        the group
+        The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_id")
 
@@ -57,7 +55,7 @@ class AccessPackageResourceCatalogAssociationArgs:
     @pulumi.getter(name="resourceOriginSystem")
     def resource_origin_system(self) -> pulumi.Input[str]:
         """
-        The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_system")
 
@@ -74,10 +72,9 @@ class _AccessPackageResourceCatalogAssociationState:
                  resource_origin_system: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AccessPackageResourceCatalogAssociation resources.
-        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog
-        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-               the group
-        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         if catalog_id is not None:
             pulumi.set(__self__, "catalog_id", catalog_id)
@@ -90,7 +87,7 @@ class _AccessPackageResourceCatalogAssociationState:
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique ID of the access package catalog
+        The unique ID of the access package catalog. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_id")
 
@@ -102,8 +99,7 @@ class _AccessPackageResourceCatalogAssociationState:
     @pulumi.getter(name="resourceOriginId")
     def resource_origin_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-        the group
+        The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_id")
 
@@ -115,7 +111,7 @@ class _AccessPackageResourceCatalogAssociationState:
     @pulumi.getter(name="resourceOriginSystem")
     def resource_origin_system(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_system")
 
@@ -134,13 +130,49 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
                  resource_origin_system: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a AccessPackageResourceCatalogAssociation resource with the given unique name, props, and options.
+        Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="example-group",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
+            resource_origin_id=azuread_group["example_group"]["object_id"],
+            resource_origin_system="AadGroup")
+        ```
+
+        ## Import
+
+        The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog
-        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-               the group
-        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -149,7 +181,44 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
                  args: AccessPackageResourceCatalogAssociationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AccessPackageResourceCatalogAssociation resource with the given unique name, props, and options.
+        Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires the following application role: `EntitlementManagement.ReadWrite.All`.
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Catalog owner` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example_group = azuread.Group("exampleGroup",
+            display_name="example-group",
+            security_enabled=True)
+        example_access_package_catalog = azuread.AccessPackageCatalog("exampleAccessPackageCatalog",
+            display_name="example-catalog",
+            description="Example catalog")
+        example_access_package_resource_catalog_association = azuread.AccessPackageResourceCatalogAssociation("exampleAccessPackageResourceCatalogAssociation",
+            catalog_id=azuread_access_package_catalog["example_catalog"]["id"],
+            resource_origin_id=azuread_group["example_group"]["object_id"],
+            resource_origin_system="AadGroup")
+        ```
+
+        ## Import
+
+        The resource and catalog association can be imported using the catalog ID and the resource origin ID, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation example 00000000-0000-0000-0000-000000000000/11111111-1111-1111-1111-111111111111
+        ```
+
+         -> This ID format is unique to Terraform and is composed of the Catalog ID and the Resource Origin ID in the format `{CatalogID}/{ResourceOriginID}`.
+
         :param str resource_name: The name of the resource.
         :param AccessPackageResourceCatalogAssociationArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -206,10 +275,9 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog
-        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-               the group
-        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        :param pulumi.Input[str] catalog_id: The unique ID of the access package catalog. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_id: The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
+        :param pulumi.Input[str] resource_origin_system: The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -224,7 +292,7 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[str]:
         """
-        The unique ID of the access package catalog
+        The unique ID of the access package catalog. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "catalog_id")
 
@@ -232,8 +300,7 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
     @pulumi.getter(name="resourceOriginId")
     def resource_origin_id(self) -> pulumi.Output[str]:
         """
-        The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of
-        the group
+        The unique identifier of the resource in the origin system. In the case of an Azure AD group, this is the identifier of the group. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_id")
 
@@ -241,7 +308,7 @@ class AccessPackageResourceCatalogAssociation(pulumi.CustomResource):
     @pulumi.getter(name="resourceOriginSystem")
     def resource_origin_system(self) -> pulumi.Output[str]:
         """
-        The type of the resource in the origin system, such as SharePointOnline, AadApplication or AadGroup
+        The type of the resource in the origin system, such as `SharePointOnline`, `AadApplication` or `AadGroup`. Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "resource_origin_system")
 

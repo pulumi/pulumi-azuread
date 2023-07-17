@@ -21,11 +21,12 @@ class AdministrativeUnitArgs:
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AdministrativeUnit resource.
-        :param pulumi.Input[str] display_name: The display name for the administrative unit
-        :param pulumi.Input[str] description: The description for the administrative unit
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-               Groups
+        :param pulumi.Input[str] display_name: The display name of the administrative unit.
+        :param pulumi.Input[str] description: The description of the administrative unit.
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+               
+               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -42,7 +43,7 @@ class AdministrativeUnitArgs:
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Input[str]:
         """
-        The display name for the administrative unit
+        The display name of the administrative unit.
         """
         return pulumi.get(self, "display_name")
 
@@ -54,7 +55,7 @@ class AdministrativeUnitArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description for the administrative unit
+        The description of the administrative unit.
         """
         return pulumi.get(self, "description")
 
@@ -66,7 +67,7 @@ class AdministrativeUnitArgs:
     @pulumi.getter(name="hiddenMembershipEnabled")
     def hidden_membership_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
@@ -78,8 +79,9 @@ class AdministrativeUnitArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-        Groups
+        A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+
+        !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -111,12 +113,13 @@ class _AdministrativeUnitState:
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering AdministrativeUnit resources.
-        :param pulumi.Input[str] description: The description for the administrative unit
-        :param pulumi.Input[str] display_name: The display name for the administrative unit
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-               Groups
-        :param pulumi.Input[str] object_id: The object ID of the administrative unit
+        :param pulumi.Input[str] description: The description of the administrative unit.
+        :param pulumi.Input[str] display_name: The display name of the administrative unit.
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+               
+               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        :param pulumi.Input[str] object_id: The object ID of the administrative unit.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
         if description is not None:
@@ -136,7 +139,7 @@ class _AdministrativeUnitState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description for the administrative unit
+        The description of the administrative unit.
         """
         return pulumi.get(self, "description")
 
@@ -148,7 +151,7 @@ class _AdministrativeUnitState:
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The display name for the administrative unit
+        The display name of the administrative unit.
         """
         return pulumi.get(self, "display_name")
 
@@ -160,7 +163,7 @@ class _AdministrativeUnitState:
     @pulumi.getter(name="hiddenMembershipEnabled")
     def hidden_membership_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
@@ -172,8 +175,9 @@ class _AdministrativeUnitState:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-        Groups
+        A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+
+        !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -185,7 +189,7 @@ class _AdministrativeUnitState:
     @pulumi.getter(name="objectId")
     def object_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The object ID of the administrative unit
+        The object ID of the administrative unit.
         """
         return pulumi.get(self, "object_id")
 
@@ -218,14 +222,44 @@ class AdministrativeUnit(pulumi.CustomResource):
                  prevent_duplicate_names: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Create a AdministrativeUnit resource with the given unique name, props, and options.
+        Manages an Administrative Unit within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AdministrativeUnit("example",
+            description="Just an example",
+            display_name="Example-AU",
+            hidden_membership_enabled=False)
+        ```
+
+        ## Import
+
+        Administrative units can be imported using their object ID, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description for the administrative unit
-        :param pulumi.Input[str] display_name: The display name for the administrative unit
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-               Groups
+        :param pulumi.Input[str] description: The description of the administrative unit.
+        :param pulumi.Input[str] display_name: The display name of the administrative unit.
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+               
+               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
         ...
@@ -235,7 +269,36 @@ class AdministrativeUnit(pulumi.CustomResource):
                  args: AdministrativeUnitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a AdministrativeUnit resource with the given unique name, props, and options.
+        Manages an Administrative Unit within Azure Active Directory.
+
+        ## API Permissions
+
+        The following API permissions are required in order to use this resource.
+
+        When authenticated with a service principal, this resource requires one of the following application roles: `AdministrativeUnit.ReadWrite.All` or `Directory.ReadWrite.All`
+
+        When authenticated with a user principal, this resource requires one of the following directory roles: `Privileged Role Administrator` or `Global Administrator`
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_azuread as azuread
+
+        example = azuread.AdministrativeUnit("example",
+            description="Just an example",
+            display_name="Example-AU",
+            hidden_membership_enabled=False)
+        ```
+
+        ## Import
+
+        Administrative units can be imported using their object ID, e.g.
+
+        ```sh
+         $ pulumi import azuread:index/administrativeUnit:AdministrativeUnit example 00000000-0000-0000-0000-000000000000
+        ```
+
         :param str resource_name: The name of the resource.
         :param AdministrativeUnitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -296,12 +359,13 @@ class AdministrativeUnit(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: The description for the administrative unit
-        :param pulumi.Input[str] display_name: The display name for the administrative unit
-        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-               Groups
-        :param pulumi.Input[str] object_id: The object ID of the administrative unit
+        :param pulumi.Input[str] description: The description of the administrative unit.
+        :param pulumi.Input[str] display_name: The display name of the administrative unit.
+        :param pulumi.Input[bool] hidden_membership_enabled: Whether the administrative unit and its members are hidden or publicly viewable in the directory.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+               
+               !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
+        :param pulumi.Input[str] object_id: The object ID of the administrative unit.
         :param pulumi.Input[bool] prevent_duplicate_names: If `true`, will return an error if an existing administrative unit is found with the same name
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -320,7 +384,7 @@ class AdministrativeUnit(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description for the administrative unit
+        The description of the administrative unit.
         """
         return pulumi.get(self, "description")
 
@@ -328,7 +392,7 @@ class AdministrativeUnit(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        The display name for the administrative unit
+        The display name of the administrative unit.
         """
         return pulumi.get(self, "display_name")
 
@@ -336,7 +400,7 @@ class AdministrativeUnit(pulumi.CustomResource):
     @pulumi.getter(name="hiddenMembershipEnabled")
     def hidden_membership_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Whether the administrative unit and its members are hidden or publicly viewable in the directory
+        Whether the administrative unit and its members are hidden or publicly viewable in the directory.
         """
         return pulumi.get(self, "hidden_membership_enabled")
 
@@ -344,8 +408,9 @@ class AdministrativeUnit(pulumi.CustomResource):
     @pulumi.getter
     def members(self) -> pulumi.Output[Sequence[str]]:
         """
-        A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or
-        Groups
+        A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
+
+        !> **Warning** Do not use the `members` property at the same time as the AdministrativeUnitMember resource for the same administrative unit. Doing so will cause a conflict and administrative unit members will be removed.
         """
         return pulumi.get(self, "members")
 
@@ -353,7 +418,7 @@ class AdministrativeUnit(pulumi.CustomResource):
     @pulumi.getter(name="objectId")
     def object_id(self) -> pulumi.Output[str]:
         """
-        The object ID of the administrative unit
+        The object ID of the administrative unit.
         """
         return pulumi.get(self, "object_id")
 

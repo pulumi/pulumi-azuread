@@ -12,12 +12,21 @@ namespace Pulumi.AzureAD.Inputs
 
     public sealed class SynchronizationJobScheduleGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
+        /// </summary>
         [Input("expiration")]
         public Input<string>? Expiration { get; set; }
 
+        /// <summary>
+        /// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+        /// </summary>
         [Input("interval")]
         public Input<string>? Interval { get; set; }
 
+        /// <summary>
+        /// State of the job.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 

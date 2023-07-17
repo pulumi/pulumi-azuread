@@ -9,20 +9,107 @@ using Pulumi.Serialization;
 
 namespace Pulumi.AzureAD
 {
+    /// <summary>
+    /// Manages a synchronization job associated with a service principal (enterprise application) within Azure Active Directory.
+    /// 
+    /// ## API Permissions
+    /// 
+    /// The following API permissions are required in order to use this resource.
+    /// 
+    /// When authenticated with a service principal, this resource requires one of the following application roles: `Application.ReadWrite.All` or `Directory.ReadWrite.All`
+    /// 
+    /// ## Example Usage
+    /// 
+    /// *Basic example*
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AzureAD = Pulumi.AzureAD;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleApplicationTemplate = AzureAD.GetApplicationTemplate.Invoke(new()
+    ///     {
+    ///         DisplayName = "Azure Databricks SCIM Provisioning Connector",
+    ///     });
+    /// 
+    ///     var exampleApplication = new AzureAD.Application("exampleApplication", new()
+    ///     {
+    ///         DisplayName = "example",
+    ///         TemplateId = exampleApplicationTemplate.Apply(getApplicationTemplateResult =&gt; getApplicationTemplateResult.TemplateId),
+    ///         FeatureTags = new[]
+    ///         {
+    ///             new AzureAD.Inputs.ApplicationFeatureTagArgs
+    ///             {
+    ///                 Enterprise = true,
+    ///                 Gallery = true,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleServicePrincipal = new AzureAD.ServicePrincipal("exampleServicePrincipal", new()
+    ///     {
+    ///         ApplicationId = exampleApplication.ApplicationId,
+    ///         UseExisting = true,
+    ///     });
+    /// 
+    ///     var exampleSynchronizationSecret = new AzureAD.SynchronizationSecret("exampleSynchronizationSecret", new()
+    ///     {
+    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         Credentials = new[]
+    ///         {
+    ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
+    ///             {
+    ///                 Key = "BaseAddress",
+    ///                 Value = "https://adb-example.azuredatabricks.net/api/2.0/preview/scim",
+    ///             },
+    ///             new AzureAD.Inputs.SynchronizationSecretCredentialArgs
+    ///             {
+    ///                 Key = "SecretToken",
+    ///                 Value = "some-token",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var exampleSynchronizationJob = new AzureAD.SynchronizationJob("exampleSynchronizationJob", new()
+    ///     {
+    ///         ServicePrincipalId = exampleServicePrincipal.Id,
+    ///         TemplateId = "dataBricks",
+    ///         Enabled = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Synchronization jobs can be imported using the `id`, e.g.
+    /// 
+    /// ```sh
+    ///  $ pulumi import azuread:index/synchronizationJob:SynchronizationJob example 00000000-0000-0000-0000-000000000000/job/dataBricks.f5532fc709734b1a90e8a1fa9fd03a82.8442fd39-2183-419c-8732-74b6ce866bd5
+    /// ```
+    /// 
+    ///  -&gt; This ID format is unique to Terraform and is composed of the Service Principal Object ID and the ID of the Synchronization Job Id in the format `{servicePrincipalId}/job/{jobId}`.
+    /// </summary>
     [AzureADResourceType("azuread:index/synchronizationJob:SynchronizationJob")]
     public partial class SynchronizationJob : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Whether or not the synchronization job is enabled
+        /// Whether or not the provisioning job is enabled. Default state is `true`.
         /// </summary>
         [Output("enabled")]
         public Output<bool?> Enabled { get; private set; } = null!;
 
+        /// <summary>
+        /// A `schedule` list as documented below.
+        /// </summary>
         [Output("schedules")]
         public Output<ImmutableArray<Outputs.SynchronizationJobSchedule>> Schedules { get; private set; } = null!;
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization job should be created
+        /// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Output("servicePrincipalId")]
         public Output<string> ServicePrincipalId { get; private set; } = null!;
@@ -80,13 +167,13 @@ namespace Pulumi.AzureAD
     public sealed class SynchronizationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the synchronization job is enabled
+        /// Whether or not the provisioning job is enabled. Default state is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization job should be created
+        /// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId", required: true)]
         public Input<string> ServicePrincipalId { get; set; } = null!;
@@ -106,13 +193,17 @@ namespace Pulumi.AzureAD
     public sealed class SynchronizationJobState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether or not the synchronization job is enabled
+        /// Whether or not the provisioning job is enabled. Default state is `true`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
         [Input("schedules")]
         private InputList<Inputs.SynchronizationJobScheduleGetArgs>? _schedules;
+
+        /// <summary>
+        /// A `schedule` list as documented below.
+        /// </summary>
         public InputList<Inputs.SynchronizationJobScheduleGetArgs> Schedules
         {
             get => _schedules ?? (_schedules = new InputList<Inputs.SynchronizationJobScheduleGetArgs>());
@@ -120,7 +211,7 @@ namespace Pulumi.AzureAD
         }
 
         /// <summary>
-        /// The object ID of the service principal for which this synchronization job should be created
+        /// The object ID of the service principal for which this synchronization job should be created. Changing this field forces a new resource to be created.
         /// </summary>
         [Input("servicePrincipalId")]
         public Input<string>? ServicePrincipalId { get; set; }

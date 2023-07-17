@@ -13,9 +13,21 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class AccessPackageAssignmentPolicyApprovalSettings
     {
+        /// <summary>
+        /// Whether an approval is required.
+        /// </summary>
         public readonly bool? ApprovalRequired;
+        /// <summary>
+        /// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+        /// </summary>
         public readonly bool? ApprovalRequiredForExtension;
+        /// <summary>
+        /// An `approval_stage` block specifying the process to obtain an approval, as documented below.
+        /// </summary>
         public readonly ImmutableArray<Outputs.AccessPackageAssignmentPolicyApprovalSettingsApprovalStage> ApprovalStages;
+        /// <summary>
+        /// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+        /// </summary>
         public readonly bool? RequestorJustificationRequired;
 
         [OutputConstructor]

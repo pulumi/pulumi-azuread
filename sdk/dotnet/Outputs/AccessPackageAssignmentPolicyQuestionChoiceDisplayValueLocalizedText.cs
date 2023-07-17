@@ -13,7 +13,13 @@ namespace Pulumi.AzureAD.Outputs
     [OutputType]
     public sealed class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText
     {
+        /// <summary>
+        /// The localized content of this question.
+        /// </summary>
         public readonly string Content;
+        /// <summary>
+        /// The ISO 639 language code for this question content.
+        /// </summary>
         public readonly string LanguageCode;
 
         [OutputConstructor]

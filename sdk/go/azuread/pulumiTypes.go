@@ -11,10 +11,14 @@ import (
 )
 
 type AccessPackageAssignmentPolicyApprovalSettings struct {
-	ApprovalRequired               *bool                                                        `pulumi:"approvalRequired"`
-	ApprovalRequiredForExtension   *bool                                                        `pulumi:"approvalRequiredForExtension"`
-	ApprovalStages                 []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage `pulumi:"approvalStages"`
-	RequestorJustificationRequired *bool                                                        `pulumi:"requestorJustificationRequired"`
+	// Whether an approval is required.
+	ApprovalRequired *bool `pulumi:"approvalRequired"`
+	// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+	ApprovalRequiredForExtension *bool `pulumi:"approvalRequiredForExtension"`
+	// An `approvalStage` block specifying the process to obtain an approval, as documented below.
+	ApprovalStages []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage `pulumi:"approvalStages"`
+	// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+	RequestorJustificationRequired *bool `pulumi:"requestorJustificationRequired"`
 }
 
 // AccessPackageAssignmentPolicyApprovalSettingsInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsArgs and AccessPackageAssignmentPolicyApprovalSettingsOutput values.
@@ -29,10 +33,14 @@ type AccessPackageAssignmentPolicyApprovalSettingsInput interface {
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsArgs struct {
-	ApprovalRequired               pulumi.BoolPtrInput                                                  `pulumi:"approvalRequired"`
-	ApprovalRequiredForExtension   pulumi.BoolPtrInput                                                  `pulumi:"approvalRequiredForExtension"`
-	ApprovalStages                 AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput `pulumi:"approvalStages"`
-	RequestorJustificationRequired pulumi.BoolPtrInput                                                  `pulumi:"requestorJustificationRequired"`
+	// Whether an approval is required.
+	ApprovalRequired pulumi.BoolPtrInput `pulumi:"approvalRequired"`
+	// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
+	ApprovalRequiredForExtension pulumi.BoolPtrInput `pulumi:"approvalRequiredForExtension"`
+	// An `approvalStage` block specifying the process to obtain an approval, as documented below.
+	ApprovalStages AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayInput `pulumi:"approvalStages"`
+	// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
+	RequestorJustificationRequired pulumi.BoolPtrInput `pulumi:"requestorJustificationRequired"`
 }
 
 func (AccessPackageAssignmentPolicyApprovalSettingsArgs) ElementType() reflect.Type {
@@ -112,20 +120,24 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ToAccessPackageAssi
 	}).(AccessPackageAssignmentPolicyApprovalSettingsPtrOutput)
 }
 
+// Whether an approval is required.
 func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.ApprovalRequired }).(pulumi.BoolPtrOutput)
 }
 
+// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
 func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalRequiredForExtension() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.ApprovalRequiredForExtension }).(pulumi.BoolPtrOutput)
 }
 
+// An `approvalStage` block specifying the process to obtain an approval, as documented below.
 func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) ApprovalStages() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
 		return v.ApprovalStages
 	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput)
 }
 
+// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
 func (o AccessPackageAssignmentPolicyApprovalSettingsOutput) RequestorJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettings) *bool { return v.RequestorJustificationRequired }).(pulumi.BoolPtrOutput)
 }
@@ -154,6 +166,7 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) Elem() AccessPac
 	}).(AccessPackageAssignmentPolicyApprovalSettingsOutput)
 }
 
+// Whether an approval is required.
 func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
 		if v == nil {
@@ -163,6 +176,7 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalRequired
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
 func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalRequiredForExtension() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
 		if v == nil {
@@ -172,6 +186,7 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalRequired
 	}).(pulumi.BoolPtrOutput)
 }
 
+// An `approvalStage` block specifying the process to obtain an approval, as documented below.
 func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalStages() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStage {
 		if v == nil {
@@ -181,6 +196,7 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) ApprovalStages()
 	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput)
 }
 
+// Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
 func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) RequestorJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyApprovalSettings) *bool {
 		if v == nil {
@@ -191,12 +207,18 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsPtrOutput) RequestorJustifi
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStage struct {
-	AlternativeApprovalEnabled      *bool                                                                           `pulumi:"alternativeApprovalEnabled"`
-	AlternativeApprovers            []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover `pulumi:"alternativeApprovers"`
-	ApprovalTimeoutInDays           int                                                                             `pulumi:"approvalTimeoutInDays"`
-	ApproverJustificationRequired   *bool                                                                           `pulumi:"approverJustificationRequired"`
-	EnableAlternativeApprovalInDays *int                                                                            `pulumi:"enableAlternativeApprovalInDays"`
-	PrimaryApprovers                []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover     `pulumi:"primaryApprovers"`
+	// Whether alternative approvers are enabled.
+	AlternativeApprovalEnabled *bool `pulumi:"alternativeApprovalEnabled"`
+	// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+	AlternativeApprovers []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover `pulumi:"alternativeApprovers"`
+	// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+	ApprovalTimeoutInDays int `pulumi:"approvalTimeoutInDays"`
+	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+	ApproverJustificationRequired *bool `pulumi:"approverJustificationRequired"`
+	// Number of days before the request is forwarded to alternative approvers.
+	EnableAlternativeApprovalInDays *int `pulumi:"enableAlternativeApprovalInDays"`
+	// A block specifying the users who will be asked to approve requests, as documented below.
+	PrimaryApprovers []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover `pulumi:"primaryApprovers"`
 }
 
 // AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs and AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput values.
@@ -211,12 +233,18 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageInput interface {
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs struct {
-	AlternativeApprovalEnabled      pulumi.BoolPtrInput                                                                     `pulumi:"alternativeApprovalEnabled"`
-	AlternativeApprovers            AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput `pulumi:"alternativeApprovers"`
-	ApprovalTimeoutInDays           pulumi.IntInput                                                                         `pulumi:"approvalTimeoutInDays"`
-	ApproverJustificationRequired   pulumi.BoolPtrInput                                                                     `pulumi:"approverJustificationRequired"`
-	EnableAlternativeApprovalInDays pulumi.IntPtrInput                                                                      `pulumi:"enableAlternativeApprovalInDays"`
-	PrimaryApprovers                AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput     `pulumi:"primaryApprovers"`
+	// Whether alternative approvers are enabled.
+	AlternativeApprovalEnabled pulumi.BoolPtrInput `pulumi:"alternativeApprovalEnabled"`
+	// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
+	AlternativeApprovers AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayInput `pulumi:"alternativeApprovers"`
+	// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
+	ApprovalTimeoutInDays pulumi.IntInput `pulumi:"approvalTimeoutInDays"`
+	// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
+	ApproverJustificationRequired pulumi.BoolPtrInput `pulumi:"approverJustificationRequired"`
+	// Number of days before the request is forwarded to alternative approvers.
+	EnableAlternativeApprovalInDays pulumi.IntPtrInput `pulumi:"enableAlternativeApprovalInDays"`
+	// A block specifying the users who will be asked to approve requests, as documented below.
+	PrimaryApprovers AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayInput `pulumi:"primaryApprovers"`
 }
 
 func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArgs) ElementType() reflect.Type {
@@ -270,34 +298,40 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ToAcce
 	return o
 }
 
+// Whether alternative approvers are enabled.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) AlternativeApprovalEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *bool {
 		return v.AlternativeApprovalEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
+// A block specifying alternative approvers when escalation is enabled and the primary approvers do not respond before the escalation time, as documented below.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) AlternativeApprovers() AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover {
 		return v.AlternativeApprovers
 	}).(AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArrayOutput)
 }
 
+// Maximum number of days within which a request must be approved. If a request is not approved within this time period after it is made, it will be automatically rejected.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ApprovalTimeoutInDays() pulumi.IntOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) int { return v.ApprovalTimeoutInDays }).(pulumi.IntOutput)
 }
 
+// Whether an approver must provide a justification for their decision. Justification is visible to other approvers and the requestor.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *bool {
 		return v.ApproverJustificationRequired
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Number of days before the request is forwarded to alternative approvers.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) EnableAlternativeApprovalInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) *int {
 		return v.EnableAlternativeApprovalInDays
 	}).(pulumi.IntPtrOutput)
 }
 
+// A block specifying the users who will be asked to approve requests, as documented below.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageOutput) PrimaryApprovers() AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStage) []AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover {
 		return v.PrimaryApprovers
@@ -325,9 +359,12 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageArrayOutput) I
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover struct {
-	Backup      *bool   `pulumi:"backup"`
-	ObjectId    *string `pulumi:"objectId"`
-	SubjectType string  `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
 }
 
 // AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs and AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput values.
@@ -342,9 +379,12 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprov
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs struct {
-	Backup      pulumi.BoolPtrInput   `pulumi:"backup"`
-	ObjectId    pulumi.StringPtrInput `pulumi:"objectId"`
-	SubjectType pulumi.StringInput    `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
 func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverArgs) ElementType() reflect.Type {
@@ -398,18 +438,21 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApp
 	return o
 }
 
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *bool {
 		return v.Backup
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the subject.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) *string {
 		return v.ObjectId
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApproverOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApprover) string {
 		return v.SubjectType
@@ -437,9 +480,12 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStageAlternativeApp
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover struct {
-	Backup      *bool   `pulumi:"backup"`
-	ObjectId    *string `pulumi:"objectId"`
-	SubjectType string  `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
 }
 
 // AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverInput is an input type that accepts AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs and AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput values.
@@ -454,9 +500,12 @@ type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverIn
 }
 
 type AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs struct {
-	Backup      pulumi.BoolPtrInput   `pulumi:"backup"`
-	ObjectId    pulumi.StringPtrInput `pulumi:"objectId"`
-	SubjectType pulumi.StringInput    `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
 func (AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverArgs) ElementType() reflect.Type {
@@ -510,18 +559,21 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprove
 	return o
 }
 
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) *bool {
 		return v.Backup
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the subject.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) *string {
 		return v.ObjectId
 	}).(pulumi.StringPtrOutput)
 }
 
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
 func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApproverOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprover) string {
 		return v.SubjectType
@@ -549,15 +601,24 @@ func (o AccessPackageAssignmentPolicyApprovalSettingsApprovalStagePrimaryApprove
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettings struct {
-	AccessRecommendationEnabled   *bool                                                           `pulumi:"accessRecommendationEnabled"`
-	AccessReviewTimeoutBehavior   *string                                                         `pulumi:"accessReviewTimeoutBehavior"`
-	ApproverJustificationRequired *bool                                                           `pulumi:"approverJustificationRequired"`
-	DurationInDays                *int                                                            `pulumi:"durationInDays"`
-	Enabled                       *bool                                                           `pulumi:"enabled"`
-	ReviewFrequency               *string                                                         `pulumi:"reviewFrequency"`
-	ReviewType                    *string                                                         `pulumi:"reviewType"`
-	Reviewers                     []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer `pulumi:"reviewers"`
-	StartingOn                    *string                                                         `pulumi:"startingOn"`
+	// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+	AccessRecommendationEnabled *bool `pulumi:"accessRecommendationEnabled"`
+	// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+	AccessReviewTimeoutBehavior *string `pulumi:"accessReviewTimeoutBehavior"`
+	// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+	ApproverJustificationRequired *bool `pulumi:"approverJustificationRequired"`
+	// How many days each occurrence of the access review series will run.
+	DurationInDays *int `pulumi:"durationInDays"`
+	// Whether to enable assignment review.
+	Enabled *bool `pulumi:"enabled"`
+	// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+	ReviewFrequency *string `pulumi:"reviewFrequency"`
+	// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+	ReviewType *string `pulumi:"reviewType"`
+	// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+	Reviewers []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer `pulumi:"reviewers"`
+	// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+	StartingOn *string `pulumi:"startingOn"`
 }
 
 // AccessPackageAssignmentPolicyAssignmentReviewSettingsInput is an input type that accepts AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs and AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput values.
@@ -572,15 +633,24 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettingsInput interface {
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs struct {
-	AccessRecommendationEnabled   pulumi.BoolPtrInput                                                     `pulumi:"accessRecommendationEnabled"`
-	AccessReviewTimeoutBehavior   pulumi.StringPtrInput                                                   `pulumi:"accessReviewTimeoutBehavior"`
-	ApproverJustificationRequired pulumi.BoolPtrInput                                                     `pulumi:"approverJustificationRequired"`
-	DurationInDays                pulumi.IntPtrInput                                                      `pulumi:"durationInDays"`
-	Enabled                       pulumi.BoolPtrInput                                                     `pulumi:"enabled"`
-	ReviewFrequency               pulumi.StringPtrInput                                                   `pulumi:"reviewFrequency"`
-	ReviewType                    pulumi.StringPtrInput                                                   `pulumi:"reviewType"`
-	Reviewers                     AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput `pulumi:"reviewers"`
-	StartingOn                    pulumi.StringPtrInput                                                   `pulumi:"startingOn"`
+	// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
+	AccessRecommendationEnabled pulumi.BoolPtrInput `pulumi:"accessRecommendationEnabled"`
+	// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
+	AccessReviewTimeoutBehavior pulumi.StringPtrInput `pulumi:"accessReviewTimeoutBehavior"`
+	// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
+	ApproverJustificationRequired pulumi.BoolPtrInput `pulumi:"approverJustificationRequired"`
+	// How many days each occurrence of the access review series will run.
+	DurationInDays pulumi.IntPtrInput `pulumi:"durationInDays"`
+	// Whether to enable assignment review.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
+	ReviewFrequency pulumi.StringPtrInput `pulumi:"reviewFrequency"`
+	// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+	ReviewType pulumi.StringPtrInput `pulumi:"reviewType"`
+	// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
+	Reviewers AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput `pulumi:"reviewers"`
+	// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
+	StartingOn pulumi.StringPtrInput `pulumi:"startingOn"`
 }
 
 func (AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs) ElementType() reflect.Type {
@@ -660,46 +730,55 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ToAccessPac
 	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput)
 }
 
+// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) AccessRecommendationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
 		return v.AccessRecommendationEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) AccessReviewTimeoutBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
 		return v.AccessReviewTimeoutBehavior
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
 		return v.ApproverJustificationRequired
 	}).(pulumi.BoolPtrOutput)
 }
 
+// How many days each occurrence of the access review series will run.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) DurationInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *int { return v.DurationInDays }).(pulumi.IntPtrOutput)
 }
 
+// Whether to enable assignment review.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ReviewFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.ReviewFrequency }).(pulumi.StringPtrOutput)
 }
 
+// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ReviewType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.ReviewType }).(pulumi.StringPtrOutput)
 }
 
+// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) Reviewers() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
 		return v.Reviewers
 	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput)
 }
 
+// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) StartingOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.StartingOn }).(pulumi.StringPtrOutput)
 }
@@ -728,6 +807,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Elem() A
 	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput)
 }
 
+// Whether to show the reviewer decision helpers. If enabled, system recommendations based on users' access information will be shown to the reviewers. The reviewer will be recommended to approve the review if the user has signed-in at least once during the last 30 days. The reviewer will be recommended to deny the review if the user has not signed-in during the last 30 days.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) AccessRecommendationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
 		if v == nil {
@@ -737,6 +817,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) AccessRe
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the actions the system takes if reviewers don't respond in time. Valid values are `keepAccess`, `removeAccess`, or `acceptAccessRecommendation`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) AccessReviewTimeoutBehavior() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
 		if v == nil {
@@ -746,6 +827,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) AccessRe
 	}).(pulumi.StringPtrOutput)
 }
 
+// Whether a reviewer needs to provide a justification for their decision. Justification is visible to other reviewers and the requestor.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ApproverJustificationRequired() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
 		if v == nil {
@@ -755,6 +837,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Approver
 	}).(pulumi.BoolPtrOutput)
 }
 
+// How many days each occurrence of the access review series will run.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) DurationInDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *int {
 		if v == nil {
@@ -764,6 +847,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Duration
 	}).(pulumi.IntPtrOutput)
 }
 
+// Whether to enable assignment review.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *bool {
 		if v == nil {
@@ -773,6 +857,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Enabled(
 	}).(pulumi.BoolPtrOutput)
 }
 
+// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewFrequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
 		if v == nil {
@@ -782,6 +867,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewFr
 	}).(pulumi.StringPtrOutput)
 }
 
+// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
 		if v == nil {
@@ -791,6 +877,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewTy
 	}).(pulumi.StringPtrOutput)
 }
 
+// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Reviewers() AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer {
 		if v == nil {
@@ -800,6 +887,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Reviewer
 	}).(AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput)
 }
 
+// This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) StartingOn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
 		if v == nil {
@@ -810,9 +898,12 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) Starting
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer struct {
-	Backup      *bool   `pulumi:"backup"`
-	ObjectId    *string `pulumi:"objectId"`
-	SubjectType string  `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
 }
 
 // AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput is an input type that accepts AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs and AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput values.
@@ -827,9 +918,12 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerInput interfac
 }
 
 type AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs struct {
-	Backup      pulumi.BoolPtrInput   `pulumi:"backup"`
-	ObjectId    pulumi.StringPtrInput `pulumi:"objectId"`
-	SubjectType pulumi.StringInput    `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
 func (AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs) ElementType() reflect.Type {
@@ -883,14 +977,17 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ToA
 	return o
 }
 
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the subject.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer) string { return v.SubjectType }).(pulumi.StringOutput)
 }
@@ -916,10 +1013,14 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayOutput
 }
 
 type AccessPackageAssignmentPolicyQuestion struct {
-	Choices  []AccessPackageAssignmentPolicyQuestionChoice `pulumi:"choices"`
-	Required *bool                                         `pulumi:"required"`
-	Sequence *int                                          `pulumi:"sequence"`
-	Text     AccessPackageAssignmentPolicyQuestionText     `pulumi:"text"`
+	// One or more blocks configuring a choice to the question, as documented below.
+	Choices []AccessPackageAssignmentPolicyQuestionChoice `pulumi:"choices"`
+	// Whether this question is required.
+	Required *bool `pulumi:"required"`
+	// The sequence number of this question.
+	Sequence *int `pulumi:"sequence"`
+	// A block describing the content of this question, as documented below.
+	Text AccessPackageAssignmentPolicyQuestionText `pulumi:"text"`
 }
 
 // AccessPackageAssignmentPolicyQuestionInput is an input type that accepts AccessPackageAssignmentPolicyQuestionArgs and AccessPackageAssignmentPolicyQuestionOutput values.
@@ -934,10 +1035,14 @@ type AccessPackageAssignmentPolicyQuestionInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionArgs struct {
-	Choices  AccessPackageAssignmentPolicyQuestionChoiceArrayInput `pulumi:"choices"`
-	Required pulumi.BoolPtrInput                                   `pulumi:"required"`
-	Sequence pulumi.IntPtrInput                                    `pulumi:"sequence"`
-	Text     AccessPackageAssignmentPolicyQuestionTextInput        `pulumi:"text"`
+	// One or more blocks configuring a choice to the question, as documented below.
+	Choices AccessPackageAssignmentPolicyQuestionChoiceArrayInput `pulumi:"choices"`
+	// Whether this question is required.
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+	// The sequence number of this question.
+	Sequence pulumi.IntPtrInput `pulumi:"sequence"`
+	// A block describing the content of this question, as documented below.
+	Text AccessPackageAssignmentPolicyQuestionTextInput `pulumi:"text"`
 }
 
 func (AccessPackageAssignmentPolicyQuestionArgs) ElementType() reflect.Type {
@@ -991,20 +1096,24 @@ func (o AccessPackageAssignmentPolicyQuestionOutput) ToAccessPackageAssignmentPo
 	return o
 }
 
+// One or more blocks configuring a choice to the question, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionOutput) Choices() AccessPackageAssignmentPolicyQuestionChoiceArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) []AccessPackageAssignmentPolicyQuestionChoice {
 		return v.Choices
 	}).(AccessPackageAssignmentPolicyQuestionChoiceArrayOutput)
 }
 
+// Whether this question is required.
 func (o AccessPackageAssignmentPolicyQuestionOutput) Required() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) *bool { return v.Required }).(pulumi.BoolPtrOutput)
 }
 
+// The sequence number of this question.
 func (o AccessPackageAssignmentPolicyQuestionOutput) Sequence() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) *int { return v.Sequence }).(pulumi.IntPtrOutput)
 }
 
+// A block describing the content of this question, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionOutput) Text() AccessPackageAssignmentPolicyQuestionTextOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestion) AccessPackageAssignmentPolicyQuestionText { return v.Text }).(AccessPackageAssignmentPolicyQuestionTextOutput)
 }
@@ -1030,7 +1139,9 @@ func (o AccessPackageAssignmentPolicyQuestionArrayOutput) Index(i pulumi.IntInpu
 }
 
 type AccessPackageAssignmentPolicyQuestionChoice struct {
-	ActualValue  string                                                  `pulumi:"actualValue"`
+	// The actual value of this choice.
+	ActualValue string `pulumi:"actualValue"`
+	// A block describing the display text of this choice, as documented below.
 	DisplayValue AccessPackageAssignmentPolicyQuestionChoiceDisplayValue `pulumi:"displayValue"`
 }
 
@@ -1046,7 +1157,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceArgs struct {
-	ActualValue  pulumi.StringInput                                           `pulumi:"actualValue"`
+	// The actual value of this choice.
+	ActualValue pulumi.StringInput `pulumi:"actualValue"`
+	// A block describing the display text of this choice, as documented below.
 	DisplayValue AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput `pulumi:"displayValue"`
 }
 
@@ -1101,10 +1214,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ToAccessPackageAssign
 	return o
 }
 
+// The actual value of this choice.
 func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) ActualValue() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoice) string { return v.ActualValue }).(pulumi.StringOutput)
 }
 
+// A block describing the display text of this choice, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionChoiceOutput) DisplayValue() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoice) AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
 		return v.DisplayValue
@@ -1132,7 +1247,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceArrayOutput) Index(i pulumi.I
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValue struct {
-	DefaultText    string                                                                 `pulumi:"defaultText"`
+	// The default text of this question.
+	DefaultText string `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1148,7 +1265,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueArgs struct {
-	DefaultText    pulumi.StringInput                                                             `pulumi:"defaultText"`
+	// The default text of this question.
+	DefaultText pulumi.StringInput `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1178,10 +1297,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) ToAccessP
 	return o
 }
 
+// The default text of this question.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
+// One or more blocks describing localized text of this question, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValue) []AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
 		return v.LocalizedTexts
@@ -1189,7 +1310,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueOutput) Localized
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText struct {
-	Content      string `pulumi:"content"`
+	// The localized content of this question.
+	Content string `pulumi:"content"`
+	// The ISO 639 language code for this question content.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1205,7 +1328,9 @@ type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextInput i
 }
 
 type AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArgs struct {
-	Content      pulumi.StringInput `pulumi:"content"`
+	// The localized content of this question.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The ISO 639 language code for this question content.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1260,10 +1385,12 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutp
 	return o
 }
 
+// The localized content of this question.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The ISO 639 language code for this question content.
 func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText) string {
 		return v.LanguageCode
@@ -1291,7 +1418,9 @@ func (o AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedTextArra
 }
 
 type AccessPackageAssignmentPolicyQuestionText struct {
-	DefaultText    string                                                   `pulumi:"defaultText"`
+	// The default text of this question.
+	DefaultText string `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
 	LocalizedTexts []AccessPackageAssignmentPolicyQuestionTextLocalizedText `pulumi:"localizedTexts"`
 }
 
@@ -1307,7 +1436,9 @@ type AccessPackageAssignmentPolicyQuestionTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextArgs struct {
-	DefaultText    pulumi.StringInput                                               `pulumi:"defaultText"`
+	// The default text of this question.
+	DefaultText pulumi.StringInput `pulumi:"defaultText"`
+	// One or more blocks describing localized text of this question, as documented below.
 	LocalizedTexts AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayInput `pulumi:"localizedTexts"`
 }
 
@@ -1337,10 +1468,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) ToAccessPackageAssignme
 	return o
 }
 
+// The default text of this question.
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) DefaultText() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) string { return v.DefaultText }).(pulumi.StringOutput)
 }
 
+// One or more blocks describing localized text of this question, as documented below.
 func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionText) []AccessPackageAssignmentPolicyQuestionTextLocalizedText {
 		return v.LocalizedTexts
@@ -1348,7 +1481,9 @@ func (o AccessPackageAssignmentPolicyQuestionTextOutput) LocalizedTexts() Access
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedText struct {
-	Content      string `pulumi:"content"`
+	// The localized content of this question.
+	Content string `pulumi:"content"`
+	// The ISO 639 language code for this question content.
 	LanguageCode string `pulumi:"languageCode"`
 }
 
@@ -1364,7 +1499,9 @@ type AccessPackageAssignmentPolicyQuestionTextLocalizedTextInput interface {
 }
 
 type AccessPackageAssignmentPolicyQuestionTextLocalizedTextArgs struct {
-	Content      pulumi.StringInput `pulumi:"content"`
+	// The localized content of this question.
+	Content pulumi.StringInput `pulumi:"content"`
+	// The ISO 639 language code for this question content.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 }
 
@@ -1419,10 +1556,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) ToAccessPa
 	return o
 }
 
+// The localized content of this question.
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.Content }).(pulumi.StringOutput)
 }
 
+// The ISO 639 language code for this question content.
 func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyQuestionTextLocalizedText) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -1448,9 +1587,12 @@ func (o AccessPackageAssignmentPolicyQuestionTextLocalizedTextArrayOutput) Index
 }
 
 type AccessPackageAssignmentPolicyRequestorSettings struct {
-	Requestors       []AccessPackageAssignmentPolicyRequestorSettingsRequestor `pulumi:"requestors"`
-	RequestsAccepted *bool                                                     `pulumi:"requestsAccepted"`
-	ScopeType        *string                                                   `pulumi:"scopeType"`
+	// A block specifying the users who are allowed to request on this policy, as documented below.
+	Requestors []AccessPackageAssignmentPolicyRequestorSettingsRequestor `pulumi:"requestors"`
+	// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+	RequestsAccepted *bool `pulumi:"requestsAccepted"`
+	// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+	ScopeType *string `pulumi:"scopeType"`
 }
 
 // AccessPackageAssignmentPolicyRequestorSettingsInput is an input type that accepts AccessPackageAssignmentPolicyRequestorSettingsArgs and AccessPackageAssignmentPolicyRequestorSettingsOutput values.
@@ -1465,9 +1607,12 @@ type AccessPackageAssignmentPolicyRequestorSettingsInput interface {
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsArgs struct {
-	Requestors       AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput `pulumi:"requestors"`
-	RequestsAccepted pulumi.BoolPtrInput                                               `pulumi:"requestsAccepted"`
-	ScopeType        pulumi.StringPtrInput                                             `pulumi:"scopeType"`
+	// A block specifying the users who are allowed to request on this policy, as documented below.
+	Requestors AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayInput `pulumi:"requestors"`
+	// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
+	RequestsAccepted pulumi.BoolPtrInput `pulumi:"requestsAccepted"`
+	// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
+	ScopeType pulumi.StringPtrInput `pulumi:"scopeType"`
 }
 
 func (AccessPackageAssignmentPolicyRequestorSettingsArgs) ElementType() reflect.Type {
@@ -1547,16 +1692,19 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ToAccessPackageAss
 	}).(AccessPackageAssignmentPolicyRequestorSettingsPtrOutput)
 }
 
+// A block specifying the users who are allowed to request on this policy, as documented below.
 func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) Requestors() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettings) []AccessPackageAssignmentPolicyRequestorSettingsRequestor {
 		return v.Requestors
 	}).(AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput)
 }
 
+// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
 func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) RequestsAccepted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettings) *bool { return v.RequestsAccepted }).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
 func (o AccessPackageAssignmentPolicyRequestorSettingsOutput) ScopeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettings) *string { return v.ScopeType }).(pulumi.StringPtrOutput)
 }
@@ -1585,6 +1733,7 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) Elem() AccessPa
 	}).(AccessPackageAssignmentPolicyRequestorSettingsOutput)
 }
 
+// A block specifying the users who are allowed to request on this policy, as documented below.
 func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) Requestors() AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) []AccessPackageAssignmentPolicyRequestorSettingsRequestor {
 		if v == nil {
@@ -1594,6 +1743,7 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) Requestors() Ac
 	}).(AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput)
 }
 
+// Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
 func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) RequestsAccepted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) *bool {
 		if v == nil {
@@ -1603,6 +1753,7 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) RequestsAccepte
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
 func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ScopeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyRequestorSettings) *string {
 		if v == nil {
@@ -1613,9 +1764,12 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsPtrOutput) ScopeType() pul
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsRequestor struct {
-	Backup      *bool   `pulumi:"backup"`
-	ObjectId    *string `pulumi:"objectId"`
-	SubjectType string  `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup *bool `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId *string `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType string `pulumi:"subjectType"`
 }
 
 // AccessPackageAssignmentPolicyRequestorSettingsRequestorInput is an input type that accepts AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs and AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput values.
@@ -1630,9 +1784,12 @@ type AccessPackageAssignmentPolicyRequestorSettingsRequestorInput interface {
 }
 
 type AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs struct {
-	Backup      pulumi.BoolPtrInput   `pulumi:"backup"`
-	ObjectId    pulumi.StringPtrInput `pulumi:"objectId"`
-	SubjectType pulumi.StringInput    `pulumi:"subjectType"`
+	// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
+	Backup pulumi.BoolPtrInput `pulumi:"backup"`
+	// The ID of the subject.
+	ObjectId pulumi.StringPtrInput `pulumi:"objectId"`
+	// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
+	SubjectType pulumi.StringInput `pulumi:"subjectType"`
 }
 
 func (AccessPackageAssignmentPolicyRequestorSettingsRequestorArgs) ElementType() reflect.Type {
@@ -1686,14 +1843,17 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ToAccessP
 	return o
 }
 
+// For a user in an approval stage, this property indicates whether the user is a backup fallback approver.
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) Backup() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *bool { return v.Backup }).(pulumi.BoolPtrOutput)
 }
 
+// The ID of the subject.
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) ObjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) *string { return v.ObjectId }).(pulumi.StringPtrOutput)
 }
 
+// Specifies the type of users. Valid values are `singleUser`, `groupMembers`, `connectedOrganizationMembers`, `requestorManager`, `internalSponsors`, or `externalSponsors`.
 func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorOutput) SubjectType() pulumi.StringOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyRequestorSettingsRequestor) string { return v.SubjectType }).(pulumi.StringOutput)
 }
@@ -1719,10 +1879,14 @@ func (o AccessPackageAssignmentPolicyRequestorSettingsRequestorArrayOutput) Inde
 }
 
 type ApplicationApi struct {
-	KnownClientApplications     []string                              `pulumi:"knownClientApplications"`
-	MappedClaimsEnabled         *bool                                 `pulumi:"mappedClaimsEnabled"`
-	Oauth2PermissionScopes      []ApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
-	RequestedAccessTokenVersion *int                                  `pulumi:"requestedAccessTokenVersion"`
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications []string `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+	MappedClaimsEnabled *bool `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+	Oauth2PermissionScopes []ApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+	RequestedAccessTokenVersion *int `pulumi:"requestedAccessTokenVersion"`
 }
 
 // ApplicationApiInput is an input type that accepts ApplicationApiArgs and ApplicationApiOutput values.
@@ -1737,10 +1901,14 @@ type ApplicationApiInput interface {
 }
 
 type ApplicationApiArgs struct {
-	KnownClientApplications     pulumi.StringArrayInput                       `pulumi:"knownClientApplications"`
-	MappedClaimsEnabled         pulumi.BoolPtrInput                           `pulumi:"mappedClaimsEnabled"`
-	Oauth2PermissionScopes      ApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
-	RequestedAccessTokenVersion pulumi.IntPtrInput                            `pulumi:"requestedAccessTokenVersion"`
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications pulumi.StringArrayInput `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
+	MappedClaimsEnabled pulumi.BoolPtrInput `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+	Oauth2PermissionScopes ApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
+	RequestedAccessTokenVersion pulumi.IntPtrInput `pulumi:"requestedAccessTokenVersion"`
 }
 
 func (ApplicationApiArgs) ElementType() reflect.Type {
@@ -1820,18 +1988,22 @@ func (o ApplicationApiOutput) ToApplicationApiPtrOutputWithContext(ctx context.C
 	}).(ApplicationApiPtrOutput)
 }
 
+// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 func (o ApplicationApiOutput) KnownClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationApi) []string { return v.KnownClientApplications }).(pulumi.StringArrayOutput)
 }
 
+// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
 func (o ApplicationApiOutput) MappedClaimsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationApi) *bool { return v.MappedClaimsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 func (o ApplicationApiOutput) Oauth2PermissionScopes() ApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v ApplicationApi) []ApplicationApiOauth2PermissionScope { return v.Oauth2PermissionScopes }).(ApplicationApiOauth2PermissionScopeArrayOutput)
 }
 
+// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
 func (o ApplicationApiOutput) RequestedAccessTokenVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationApi) *int { return v.RequestedAccessTokenVersion }).(pulumi.IntPtrOutput)
 }
@@ -1860,6 +2032,7 @@ func (o ApplicationApiPtrOutput) Elem() ApplicationApiOutput {
 	}).(ApplicationApiOutput)
 }
 
+// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 func (o ApplicationApiPtrOutput) KnownClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationApi) []string {
 		if v == nil {
@@ -1869,6 +2042,7 @@ func (o ApplicationApiPtrOutput) KnownClientApplications() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// Allows an application to use claims mapping without specifying a custom signing key. Defaults to `false`.
 func (o ApplicationApiPtrOutput) MappedClaimsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationApi) *bool {
 		if v == nil {
@@ -1878,6 +2052,7 @@ func (o ApplicationApiPtrOutput) MappedClaimsEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 func (o ApplicationApiPtrOutput) Oauth2PermissionScopes() ApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v *ApplicationApi) []ApplicationApiOauth2PermissionScope {
 		if v == nil {
@@ -1887,6 +2062,7 @@ func (o ApplicationApiPtrOutput) Oauth2PermissionScopes() ApplicationApiOauth2Pe
 	}).(ApplicationApiOauth2PermissionScopeArrayOutput)
 }
 
+// The access token version expected by this resource. Must be one of `1` or `2`, and must be `2` when `signInAudience` is either `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount` Defaults to `1`.
 func (o ApplicationApiPtrOutput) RequestedAccessTokenVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationApi) *int {
 		if v == nil {
@@ -1897,14 +2073,20 @@ func (o ApplicationApiPtrOutput) RequestedAccessTokenVersion() pulumi.IntPtrOutp
 }
 
 type ApplicationApiOauth2PermissionScope struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	Enabled                 *bool   `pulumi:"enabled"`
-	Id                      string  `pulumi:"id"`
-	Type                    *string `pulumi:"type"`
-	UserConsentDescription  *string `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  *string `pulumi:"userConsentDisplayName"`
-	Value                   *string `pulumi:"value"`
+	// Determines if the permission scope is enabled. Defaults to `true`.
+	Enabled *bool  `pulumi:"enabled"`
+	Id      string `pulumi:"id"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
+	Type *string `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription *string `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
+	Value                  *string `pulumi:"value"`
 }
 
 // ApplicationApiOauth2PermissionScopeInput is an input type that accepts ApplicationApiOauth2PermissionScopeArgs and ApplicationApiOauth2PermissionScopeOutput values.
@@ -1919,14 +2101,20 @@ type ApplicationApiOauth2PermissionScopeInput interface {
 }
 
 type ApplicationApiOauth2PermissionScopeArgs struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	Enabled                 pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Id                      pulumi.StringInput    `pulumi:"id"`
-	Type                    pulumi.StringPtrInput `pulumi:"type"`
-	UserConsentDescription  pulumi.StringPtrInput `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	Value                   pulumi.StringPtrInput `pulumi:"value"`
+	// Determines if the permission scope is enabled. Defaults to `true`.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	Id      pulumi.StringInput  `pulumi:"id"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
+	Value                  pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ApplicationApiOauth2PermissionScopeArgs) ElementType() reflect.Type {
@@ -1980,14 +2168,17 @@ func (o ApplicationApiOauth2PermissionScopeOutput) ToApplicationApiOauth2Permiss
 	return o
 }
 
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o ApplicationApiOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.AdminConsentDescription }).(pulumi.StringPtrOutput)
 }
 
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o ApplicationApiOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Determines if the permission scope is enabled. Defaults to `true`.
 func (o ApplicationApiOauth2PermissionScopeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -1996,14 +2187,17 @@ func (o ApplicationApiOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Defaults to `User`. Possible values are `User` or `Admin`.
 func (o ApplicationApiOauth2PermissionScopeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o ApplicationApiOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
 }
 
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o ApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationApiOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
@@ -2033,12 +2227,16 @@ func (o ApplicationApiOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ApplicationAppRole struct {
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
-	Description        string   `pulumi:"description"`
-	DisplayName        string   `pulumi:"displayName"`
-	Enabled            *bool    `pulumi:"enabled"`
-	Id                 string   `pulumi:"id"`
-	Value              *string  `pulumi:"value"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description string `pulumi:"description"`
+	// Display name for the app role that appears during app role assignment and in consent experiences.
+	DisplayName string `pulumi:"displayName"`
+	// Determines if the app role is enabled. Defaults to `true`.
+	Enabled *bool   `pulumi:"enabled"`
+	Id      string  `pulumi:"id"`
+	Value   *string `pulumi:"value"`
 }
 
 // ApplicationAppRoleInput is an input type that accepts ApplicationAppRoleArgs and ApplicationAppRoleOutput values.
@@ -2053,12 +2251,16 @@ type ApplicationAppRoleInput interface {
 }
 
 type ApplicationAppRoleArgs struct {
+	// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
-	Description        pulumi.StringInput      `pulumi:"description"`
-	DisplayName        pulumi.StringInput      `pulumi:"displayName"`
-	Enabled            pulumi.BoolPtrInput     `pulumi:"enabled"`
-	Id                 pulumi.StringInput      `pulumi:"id"`
-	Value              pulumi.StringPtrInput   `pulumi:"value"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Display name for the app role that appears during app role assignment and in consent experiences.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Determines if the app role is enabled. Defaults to `true`.
+	Enabled pulumi.BoolPtrInput   `pulumi:"enabled"`
+	Id      pulumi.StringInput    `pulumi:"id"`
+	Value   pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ApplicationAppRoleArgs) ElementType() reflect.Type {
@@ -2112,18 +2314,22 @@ func (o ApplicationAppRoleOutput) ToApplicationAppRoleOutputWithContext(ctx cont
 	return o
 }
 
+// Specifies whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications (that are accessing this application in a standalone scenario) by setting to `Application`, or to both.
 func (o ApplicationAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
+// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 func (o ApplicationAppRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAppRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Display name for the app role that appears during app role assignment and in consent experiences.
 func (o ApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Determines if the app role is enabled. Defaults to `true`.
 func (o ApplicationAppRoleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationAppRole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
@@ -2157,10 +2363,14 @@ func (o ApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) ApplicationAppRo
 }
 
 type ApplicationFeatureTag struct {
+	// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
 	CustomSingleSignOn *bool `pulumi:"customSingleSignOn"`
-	Enterprise         *bool `pulumi:"enterprise"`
-	Gallery            *bool `pulumi:"gallery"`
-	Hide               *bool `pulumi:"hide"`
+	// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise *bool `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery *bool `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide *bool `pulumi:"hide"`
 }
 
 // ApplicationFeatureTagInput is an input type that accepts ApplicationFeatureTagArgs and ApplicationFeatureTagOutput values.
@@ -2175,10 +2385,14 @@ type ApplicationFeatureTagInput interface {
 }
 
 type ApplicationFeatureTagArgs struct {
+	// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
 	CustomSingleSignOn pulumi.BoolPtrInput `pulumi:"customSingleSignOn"`
-	Enterprise         pulumi.BoolPtrInput `pulumi:"enterprise"`
-	Gallery            pulumi.BoolPtrInput `pulumi:"gallery"`
-	Hide               pulumi.BoolPtrInput `pulumi:"hide"`
+	// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise pulumi.BoolPtrInput `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery pulumi.BoolPtrInput `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide pulumi.BoolPtrInput `pulumi:"hide"`
 }
 
 func (ApplicationFeatureTagArgs) ElementType() reflect.Type {
@@ -2232,18 +2446,22 @@ func (o ApplicationFeatureTagOutput) ToApplicationFeatureTagOutputWithContext(ct
 	return o
 }
 
+// Whether this application represents a custom SAML application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
 func (o ApplicationFeatureTagOutput) CustomSingleSignOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.CustomSingleSignOn }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
 func (o ApplicationFeatureTagOutput) Enterprise() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.Enterprise }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
 func (o ApplicationFeatureTagOutput) Gallery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.Gallery }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
 func (o ApplicationFeatureTagOutput) Hide() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationFeatureTag) *bool { return v.Hide }).(pulumi.BoolPtrOutput)
 }
@@ -2269,9 +2487,12 @@ func (o ApplicationFeatureTagArrayOutput) Index(i pulumi.IntInput) ApplicationFe
 }
 
 type ApplicationOptionalClaims struct {
+	// One or more `accessToken` blocks as documented below.
 	AccessTokens []ApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`
-	IdTokens     []ApplicationOptionalClaimsIdToken     `pulumi:"idTokens"`
-	Saml2Tokens  []ApplicationOptionalClaimsSaml2Token  `pulumi:"saml2Tokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens []ApplicationOptionalClaimsIdToken `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens []ApplicationOptionalClaimsSaml2Token `pulumi:"saml2Tokens"`
 }
 
 // ApplicationOptionalClaimsInput is an input type that accepts ApplicationOptionalClaimsArgs and ApplicationOptionalClaimsOutput values.
@@ -2286,9 +2507,12 @@ type ApplicationOptionalClaimsInput interface {
 }
 
 type ApplicationOptionalClaimsArgs struct {
+	// One or more `accessToken` blocks as documented below.
 	AccessTokens ApplicationOptionalClaimsAccessTokenArrayInput `pulumi:"accessTokens"`
-	IdTokens     ApplicationOptionalClaimsIdTokenArrayInput     `pulumi:"idTokens"`
-	Saml2Tokens  ApplicationOptionalClaimsSaml2TokenArrayInput  `pulumi:"saml2Tokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens ApplicationOptionalClaimsIdTokenArrayInput `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens ApplicationOptionalClaimsSaml2TokenArrayInput `pulumi:"saml2Tokens"`
 }
 
 func (ApplicationOptionalClaimsArgs) ElementType() reflect.Type {
@@ -2368,14 +2592,17 @@ func (o ApplicationOptionalClaimsOutput) ToApplicationOptionalClaimsPtrOutputWit
 	}).(ApplicationOptionalClaimsPtrOutput)
 }
 
+// One or more `accessToken` blocks as documented below.
 func (o ApplicationOptionalClaimsOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken { return v.AccessTokens }).(ApplicationOptionalClaimsAccessTokenArrayOutput)
 }
 
+// One or more `idToken` blocks as documented below.
 func (o ApplicationOptionalClaimsOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken { return v.IdTokens }).(ApplicationOptionalClaimsIdTokenArrayOutput)
 }
 
+// One or more `saml2Token` blocks as documented below.
 func (o ApplicationOptionalClaimsOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaims) []ApplicationOptionalClaimsSaml2Token { return v.Saml2Tokens }).(ApplicationOptionalClaimsSaml2TokenArrayOutput)
 }
@@ -2404,6 +2631,7 @@ func (o ApplicationOptionalClaimsPtrOutput) Elem() ApplicationOptionalClaimsOutp
 	}).(ApplicationOptionalClaimsOutput)
 }
 
+// One or more `accessToken` blocks as documented below.
 func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalClaimsAccessTokenArrayOutput {
 	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsAccessToken {
 		if v == nil {
@@ -2413,6 +2641,7 @@ func (o ApplicationOptionalClaimsPtrOutput) AccessTokens() ApplicationOptionalCl
 	}).(ApplicationOptionalClaimsAccessTokenArrayOutput)
 }
 
+// One or more `idToken` blocks as documented below.
 func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaimsIdTokenArrayOutput {
 	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsIdToken {
 		if v == nil {
@@ -2422,6 +2651,7 @@ func (o ApplicationOptionalClaimsPtrOutput) IdTokens() ApplicationOptionalClaims
 	}).(ApplicationOptionalClaimsIdTokenArrayOutput)
 }
 
+// One or more `saml2Token` blocks as documented below.
 func (o ApplicationOptionalClaimsPtrOutput) Saml2Tokens() ApplicationOptionalClaimsSaml2TokenArrayOutput {
 	return o.ApplyT(func(v *ApplicationOptionalClaims) []ApplicationOptionalClaimsSaml2Token {
 		if v == nil {
@@ -2432,10 +2662,14 @@ func (o ApplicationOptionalClaimsPtrOutput) Saml2Tokens() ApplicationOptionalCla
 }
 
 type ApplicationOptionalClaimsAccessToken struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
-	Essential            *bool    `pulumi:"essential"`
-	Name                 string   `pulumi:"name"`
-	Source               *string  `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
 }
 
 // ApplicationOptionalClaimsAccessTokenInput is an input type that accepts ApplicationOptionalClaimsAccessTokenArgs and ApplicationOptionalClaimsAccessTokenOutput values.
@@ -2450,10 +2684,14 @@ type ApplicationOptionalClaimsAccessTokenInput interface {
 }
 
 type ApplicationOptionalClaimsAccessTokenArgs struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
-	Essential            pulumi.BoolPtrInput     `pulumi:"essential"`
-	Name                 pulumi.StringInput      `pulumi:"name"`
-	Source               pulumi.StringPtrInput   `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (ApplicationOptionalClaimsAccessTokenArgs) ElementType() reflect.Type {
@@ -2507,18 +2745,22 @@ func (o ApplicationOptionalClaimsAccessTokenOutput) ToApplicationOptionalClaimsA
 	return o
 }
 
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o ApplicationOptionalClaimsAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 func (o ApplicationOptionalClaimsAccessTokenOutput) Essential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the optional claim.
 func (o ApplicationOptionalClaimsAccessTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 func (o ApplicationOptionalClaimsAccessTokenOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsAccessToken) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -2544,10 +2786,14 @@ func (o ApplicationOptionalClaimsAccessTokenArrayOutput) Index(i pulumi.IntInput
 }
 
 type ApplicationOptionalClaimsIdToken struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
-	Essential            *bool    `pulumi:"essential"`
-	Name                 string   `pulumi:"name"`
-	Source               *string  `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
 }
 
 // ApplicationOptionalClaimsIdTokenInput is an input type that accepts ApplicationOptionalClaimsIdTokenArgs and ApplicationOptionalClaimsIdTokenOutput values.
@@ -2562,10 +2808,14 @@ type ApplicationOptionalClaimsIdTokenInput interface {
 }
 
 type ApplicationOptionalClaimsIdTokenArgs struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
-	Essential            pulumi.BoolPtrInput     `pulumi:"essential"`
-	Name                 pulumi.StringInput      `pulumi:"name"`
-	Source               pulumi.StringPtrInput   `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (ApplicationOptionalClaimsIdTokenArgs) ElementType() reflect.Type {
@@ -2619,18 +2869,22 @@ func (o ApplicationOptionalClaimsIdTokenOutput) ToApplicationOptionalClaimsIdTok
 	return o
 }
 
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o ApplicationOptionalClaimsIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 func (o ApplicationOptionalClaimsIdTokenOutput) Essential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the optional claim.
 func (o ApplicationOptionalClaimsIdTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 func (o ApplicationOptionalClaimsIdTokenOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsIdToken) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -2656,10 +2910,14 @@ func (o ApplicationOptionalClaimsIdTokenArrayOutput) Index(i pulumi.IntInput) Ap
 }
 
 type ApplicationOptionalClaimsSaml2Token struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
-	Essential            *bool    `pulumi:"essential"`
-	Name                 string   `pulumi:"name"`
-	Source               *string  `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
 }
 
 // ApplicationOptionalClaimsSaml2TokenInput is an input type that accepts ApplicationOptionalClaimsSaml2TokenArgs and ApplicationOptionalClaimsSaml2TokenOutput values.
@@ -2674,10 +2932,14 @@ type ApplicationOptionalClaimsSaml2TokenInput interface {
 }
 
 type ApplicationOptionalClaimsSaml2TokenArgs struct {
+	// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
-	Essential            pulumi.BoolPtrInput     `pulumi:"essential"`
-	Name                 pulumi.StringInput      `pulumi:"name"`
-	Source               pulumi.StringPtrInput   `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (ApplicationOptionalClaimsSaml2TokenArgs) ElementType() reflect.Type {
@@ -2731,18 +2993,22 @@ func (o ApplicationOptionalClaimsSaml2TokenOutput) ToApplicationOptionalClaimsSa
 	return o
 }
 
+// List of additional properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o ApplicationOptionalClaimsSaml2TokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 func (o ApplicationOptionalClaimsSaml2TokenOutput) Essential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the optional claim.
 func (o ApplicationOptionalClaimsSaml2TokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 func (o ApplicationOptionalClaimsSaml2TokenOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOptionalClaimsSaml2Token) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -2768,6 +3034,7 @@ func (o ApplicationOptionalClaimsSaml2TokenArrayOutput) Index(i pulumi.IntInput)
 }
 
 type ApplicationPublicClient struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -2783,6 +3050,7 @@ type ApplicationPublicClientInput interface {
 }
 
 type ApplicationPublicClientArgs struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -2863,6 +3131,7 @@ func (o ApplicationPublicClientOutput) ToApplicationPublicClientPtrOutputWithCon
 	}).(ApplicationPublicClientPtrOutput)
 }
 
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 func (o ApplicationPublicClientOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationPublicClient) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -2891,6 +3160,7 @@ func (o ApplicationPublicClientPtrOutput) Elem() ApplicationPublicClientOutput {
 	}).(ApplicationPublicClientOutput)
 }
 
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` or `ms-appx-web` URL.
 func (o ApplicationPublicClientPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationPublicClient) []string {
 		if v == nil {
@@ -2901,8 +3171,12 @@ func (o ApplicationPublicClientPtrOutput) RedirectUris() pulumi.StringArrayOutpu
 }
 
 type ApplicationRequiredResourceAccess struct {
+	// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 	ResourceAccesses []ApplicationRequiredResourceAccessResourceAccess `pulumi:"resourceAccesses"`
-	ResourceAppId    string                                            `pulumi:"resourceAppId"`
+	// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+	//
+	// > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
+	ResourceAppId string `pulumi:"resourceAppId"`
 }
 
 // ApplicationRequiredResourceAccessInput is an input type that accepts ApplicationRequiredResourceAccessArgs and ApplicationRequiredResourceAccessOutput values.
@@ -2917,8 +3191,12 @@ type ApplicationRequiredResourceAccessInput interface {
 }
 
 type ApplicationRequiredResourceAccessArgs struct {
+	// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 	ResourceAccesses ApplicationRequiredResourceAccessResourceAccessArrayInput `pulumi:"resourceAccesses"`
-	ResourceAppId    pulumi.StringInput                                        `pulumi:"resourceAppId"`
+	// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+	//
+	// > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
+	ResourceAppId pulumi.StringInput `pulumi:"resourceAppId"`
 }
 
 func (ApplicationRequiredResourceAccessArgs) ElementType() reflect.Type {
@@ -2972,12 +3250,16 @@ func (o ApplicationRequiredResourceAccessOutput) ToApplicationRequiredResourceAc
 	return o
 }
 
+// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 func (o ApplicationRequiredResourceAccessOutput) ResourceAccesses() ApplicationRequiredResourceAccessResourceAccessArrayOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccess) []ApplicationRequiredResourceAccessResourceAccess {
 		return v.ResourceAccesses
 	}).(ApplicationRequiredResourceAccessResourceAccessArrayOutput)
 }
 
+// The unique identifier for the resource that the application requires access to. This should be the Application ID of the target application.
+//
+// > **Note:** Documentation on `resourceAppId` values for Microsoft APIs can be difficult to find, but you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) to find them. (e.g. `az ad sp list --display-name "Microsoft Graph" --query '[].{appDisplayName:appDisplayName, appId:appId}'`)
 func (o ApplicationRequiredResourceAccessOutput) ResourceAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccess) string { return v.ResourceAppId }).(pulumi.StringOutput)
 }
@@ -3003,7 +3285,9 @@ func (o ApplicationRequiredResourceAccessArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type ApplicationRequiredResourceAccessResourceAccess struct {
-	Id   string `pulumi:"id"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id string `pulumi:"id"`
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type string `pulumi:"type"`
 }
 
@@ -3019,7 +3303,9 @@ type ApplicationRequiredResourceAccessResourceAccessInput interface {
 }
 
 type ApplicationRequiredResourceAccessResourceAccessArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3074,10 +3360,12 @@ func (o ApplicationRequiredResourceAccessResourceAccessOutput) ToApplicationRequ
 	return o
 }
 
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o ApplicationRequiredResourceAccessResourceAccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccessResourceAccess) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 func (o ApplicationRequiredResourceAccessResourceAccessOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ApplicationRequiredResourceAccessResourceAccess) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -3103,6 +3391,7 @@ func (o ApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i pulu
 }
 
 type ApplicationSinglePageApplication struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -3118,6 +3407,7 @@ type ApplicationSinglePageApplicationInput interface {
 }
 
 type ApplicationSinglePageApplicationArgs struct {
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -3198,6 +3488,7 @@ func (o ApplicationSinglePageApplicationOutput) ToApplicationSinglePageApplicati
 	}).(ApplicationSinglePageApplicationPtrOutput)
 }
 
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 func (o ApplicationSinglePageApplicationOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationSinglePageApplication) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -3226,6 +3517,7 @@ func (o ApplicationSinglePageApplicationPtrOutput) Elem() ApplicationSinglePageA
 	}).(ApplicationSinglePageApplicationOutput)
 }
 
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `https` URL.
 func (o ApplicationSinglePageApplicationPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationSinglePageApplication) []string {
 		if v == nil {
@@ -3236,10 +3528,14 @@ func (o ApplicationSinglePageApplicationPtrOutput) RedirectUris() pulumi.StringA
 }
 
 type ApplicationWeb struct {
-	HomepageUrl   *string                      `pulumi:"homepageUrl"`
+	// Home page or landing page of the application.
+	HomepageUrl *string `pulumi:"homepageUrl"`
+	// An `implicitGrant` block as documented above.
 	ImplicitGrant *ApplicationWebImplicitGrant `pulumi:"implicitGrant"`
-	LogoutUrl     *string                      `pulumi:"logoutUrl"`
-	RedirectUris  []string                     `pulumi:"redirectUris"`
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+	LogoutUrl *string `pulumi:"logoutUrl"`
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
+	RedirectUris []string `pulumi:"redirectUris"`
 }
 
 // ApplicationWebInput is an input type that accepts ApplicationWebArgs and ApplicationWebOutput values.
@@ -3254,10 +3550,14 @@ type ApplicationWebInput interface {
 }
 
 type ApplicationWebArgs struct {
-	HomepageUrl   pulumi.StringPtrInput               `pulumi:"homepageUrl"`
+	// Home page or landing page of the application.
+	HomepageUrl pulumi.StringPtrInput `pulumi:"homepageUrl"`
+	// An `implicitGrant` block as documented above.
 	ImplicitGrant ApplicationWebImplicitGrantPtrInput `pulumi:"implicitGrant"`
-	LogoutUrl     pulumi.StringPtrInput               `pulumi:"logoutUrl"`
-	RedirectUris  pulumi.StringArrayInput             `pulumi:"redirectUris"`
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+	LogoutUrl pulumi.StringPtrInput `pulumi:"logoutUrl"`
+	// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
 func (ApplicationWebArgs) ElementType() reflect.Type {
@@ -3337,18 +3637,22 @@ func (o ApplicationWebOutput) ToApplicationWebPtrOutputWithContext(ctx context.C
 	}).(ApplicationWebPtrOutput)
 }
 
+// Home page or landing page of the application.
 func (o ApplicationWebOutput) HomepageUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationWeb) *string { return v.HomepageUrl }).(pulumi.StringPtrOutput)
 }
 
+// An `implicitGrant` block as documented above.
 func (o ApplicationWebOutput) ImplicitGrant() ApplicationWebImplicitGrantPtrOutput {
 	return o.ApplyT(func(v ApplicationWeb) *ApplicationWebImplicitGrant { return v.ImplicitGrant }).(ApplicationWebImplicitGrantPtrOutput)
 }
 
+// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 func (o ApplicationWebOutput) LogoutUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationWeb) *string { return v.LogoutUrl }).(pulumi.StringPtrOutput)
 }
 
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
 func (o ApplicationWebOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ApplicationWeb) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -3377,6 +3681,7 @@ func (o ApplicationWebPtrOutput) Elem() ApplicationWebOutput {
 	}).(ApplicationWebOutput)
 }
 
+// Home page or landing page of the application.
 func (o ApplicationWebPtrOutput) HomepageUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationWeb) *string {
 		if v == nil {
@@ -3386,6 +3691,7 @@ func (o ApplicationWebPtrOutput) HomepageUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// An `implicitGrant` block as documented above.
 func (o ApplicationWebPtrOutput) ImplicitGrant() ApplicationWebImplicitGrantPtrOutput {
 	return o.ApplyT(func(v *ApplicationWeb) *ApplicationWebImplicitGrant {
 		if v == nil {
@@ -3395,6 +3701,7 @@ func (o ApplicationWebPtrOutput) ImplicitGrant() ApplicationWebImplicitGrantPtrO
 	}).(ApplicationWebImplicitGrantPtrOutput)
 }
 
+// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 func (o ApplicationWebPtrOutput) LogoutUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationWeb) *string {
 		if v == nil {
@@ -3404,6 +3711,7 @@ func (o ApplicationWebPtrOutput) LogoutUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// A set of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent. Must be a valid `http` URL or a URN.
 func (o ApplicationWebPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ApplicationWeb) []string {
 		if v == nil {
@@ -3414,8 +3722,10 @@ func (o ApplicationWebPtrOutput) RedirectUris() pulumi.StringArrayOutput {
 }
 
 type ApplicationWebImplicitGrant struct {
+	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled *bool `pulumi:"accessTokenIssuanceEnabled"`
-	IdTokenIssuanceEnabled     *bool `pulumi:"idTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled *bool `pulumi:"idTokenIssuanceEnabled"`
 }
 
 // ApplicationWebImplicitGrantInput is an input type that accepts ApplicationWebImplicitGrantArgs and ApplicationWebImplicitGrantOutput values.
@@ -3430,8 +3740,10 @@ type ApplicationWebImplicitGrantInput interface {
 }
 
 type ApplicationWebImplicitGrantArgs struct {
+	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled pulumi.BoolPtrInput `pulumi:"accessTokenIssuanceEnabled"`
-	IdTokenIssuanceEnabled     pulumi.BoolPtrInput `pulumi:"idTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled pulumi.BoolPtrInput `pulumi:"idTokenIssuanceEnabled"`
 }
 
 func (ApplicationWebImplicitGrantArgs) ElementType() reflect.Type {
@@ -3511,10 +3823,12 @@ func (o ApplicationWebImplicitGrantOutput) ToApplicationWebImplicitGrantPtrOutpu
 	}).(ApplicationWebImplicitGrantPtrOutput)
 }
 
+// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 func (o ApplicationWebImplicitGrantOutput) AccessTokenIssuanceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationWebImplicitGrant) *bool { return v.AccessTokenIssuanceEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
 func (o ApplicationWebImplicitGrantOutput) IdTokenIssuanceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationWebImplicitGrant) *bool { return v.IdTokenIssuanceEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -3543,6 +3857,7 @@ func (o ApplicationWebImplicitGrantPtrOutput) Elem() ApplicationWebImplicitGrant
 	}).(ApplicationWebImplicitGrantOutput)
 }
 
+// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 func (o ApplicationWebImplicitGrantPtrOutput) AccessTokenIssuanceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationWebImplicitGrant) *bool {
 		if v == nil {
@@ -3552,6 +3867,7 @@ func (o ApplicationWebImplicitGrantPtrOutput) AccessTokenIssuanceEnabled() pulum
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
 func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationWebImplicitGrant) *bool {
 		if v == nil {
@@ -3562,15 +3878,24 @@ func (o ApplicationWebImplicitGrantPtrOutput) IdTokenIssuanceEnabled() pulumi.Bo
 }
 
 type ConditionalAccessPolicyConditions struct {
-	Applications       ConditionalAccessPolicyConditionsApplications        `pulumi:"applications"`
-	ClientAppTypes     []string                                             `pulumi:"clientAppTypes"`
+	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+	Applications ConditionalAccessPolicyConditionsApplications `pulumi:"applications"`
+	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+	ClientAppTypes []string `pulumi:"clientAppTypes"`
+	// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
 	ClientApplications *ConditionalAccessPolicyConditionsClientApplications `pulumi:"clientApplications"`
-	Devices            *ConditionalAccessPolicyConditionsDevices            `pulumi:"devices"`
-	Locations          *ConditionalAccessPolicyConditionsLocations          `pulumi:"locations"`
-	Platforms          *ConditionalAccessPolicyConditionsPlatforms          `pulumi:"platforms"`
-	SignInRiskLevels   []string                                             `pulumi:"signInRiskLevels"`
-	UserRiskLevels     []string                                             `pulumi:"userRiskLevels"`
-	Users              ConditionalAccessPolicyConditionsUsers               `pulumi:"users"`
+	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+	Devices *ConditionalAccessPolicyConditionsDevices `pulumi:"devices"`
+	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
+	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+	Platforms *ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
+	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	SignInRiskLevels []string `pulumi:"signInRiskLevels"`
+	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	UserRiskLevels []string `pulumi:"userRiskLevels"`
+	// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+	Users ConditionalAccessPolicyConditionsUsers `pulumi:"users"`
 }
 
 // ConditionalAccessPolicyConditionsInput is an input type that accepts ConditionalAccessPolicyConditionsArgs and ConditionalAccessPolicyConditionsOutput values.
@@ -3585,15 +3910,24 @@ type ConditionalAccessPolicyConditionsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsArgs struct {
-	Applications       ConditionalAccessPolicyConditionsApplicationsInput          `pulumi:"applications"`
-	ClientAppTypes     pulumi.StringArrayInput                                     `pulumi:"clientAppTypes"`
+	// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
+	Applications ConditionalAccessPolicyConditionsApplicationsInput `pulumi:"applications"`
+	// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
+	ClientAppTypes pulumi.StringArrayInput `pulumi:"clientAppTypes"`
+	// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
 	ClientApplications ConditionalAccessPolicyConditionsClientApplicationsPtrInput `pulumi:"clientApplications"`
-	Devices            ConditionalAccessPolicyConditionsDevicesPtrInput            `pulumi:"devices"`
-	Locations          ConditionalAccessPolicyConditionsLocationsPtrInput          `pulumi:"locations"`
-	Platforms          ConditionalAccessPolicyConditionsPlatformsPtrInput          `pulumi:"platforms"`
-	SignInRiskLevels   pulumi.StringArrayInput                                     `pulumi:"signInRiskLevels"`
-	UserRiskLevels     pulumi.StringArrayInput                                     `pulumi:"userRiskLevels"`
-	Users              ConditionalAccessPolicyConditionsUsersInput                 `pulumi:"users"`
+	// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
+	Devices ConditionalAccessPolicyConditionsDevicesPtrInput `pulumi:"devices"`
+	// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
+	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
+	Platforms ConditionalAccessPolicyConditionsPlatformsPtrInput `pulumi:"platforms"`
+	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	SignInRiskLevels pulumi.StringArrayInput `pulumi:"signInRiskLevels"`
+	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	UserRiskLevels pulumi.StringArrayInput `pulumi:"userRiskLevels"`
+	// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
+	Users ConditionalAccessPolicyConditionsUsersInput `pulumi:"users"`
 }
 
 func (ConditionalAccessPolicyConditionsArgs) ElementType() reflect.Type {
@@ -3673,46 +4007,55 @@ func (o ConditionalAccessPolicyConditionsOutput) ToConditionalAccessPolicyCondit
 	}).(ConditionalAccessPolicyConditionsPtrOutput)
 }
 
+// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsOutput) Applications() ConditionalAccessPolicyConditionsApplicationsOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsApplications {
 		return v.Applications
 	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
+// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 func (o ConditionalAccessPolicyConditionsOutput) ClientAppTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.ClientAppTypes }).(pulumi.StringArrayOutput)
 }
 
+// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsOutput) ClientApplications() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsClientApplications {
 		return v.ClientApplications
 	}).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
 }
 
+// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 func (o ConditionalAccessPolicyConditionsOutput) Devices() ConditionalAccessPolicyConditionsDevicesPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsDevices { return v.Devices }).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
 }
 
+// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
 		return v.Locations
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
+// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
 		return v.Platforms
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
+// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsOutput) SignInRiskLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.SignInRiskLevels }).(pulumi.StringArrayOutput)
 }
 
+// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsOutput) UserRiskLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.UserRiskLevels }).(pulumi.StringArrayOutput)
 }
 
+// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsOutput) Users() ConditionalAccessPolicyConditionsUsersOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) ConditionalAccessPolicyConditionsUsers { return v.Users }).(ConditionalAccessPolicyConditionsUsersOutput)
 }
@@ -3741,6 +4084,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Elem() ConditionalAccessPoli
 	}).(ConditionalAccessPolicyConditionsOutput)
 }
 
+// An `applications` block as documented below, which specifies applications and user actions included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsPtrOutput) Applications() ConditionalAccessPolicyConditionsApplicationsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsApplications {
 		if v == nil {
@@ -3750,6 +4094,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Applications() ConditionalAc
 	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
 }
 
+// A list of client application types included in the policy. Possible values are: `all`, `browser`, `mobileAppsAndDesktopClients`, `exchangeActiveSync`, `easSupported` and `other`.
 func (o ConditionalAccessPolicyConditionsPtrOutput) ClientAppTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
 		if v == nil {
@@ -3759,6 +4104,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) ClientAppTypes() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// An `clientApplications` block as documented below, which specifies service principals included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsPtrOutput) ClientApplications() ConditionalAccessPolicyConditionsClientApplicationsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsClientApplications {
 		if v == nil {
@@ -3768,6 +4114,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) ClientApplications() Conditi
 	}).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
 }
 
+// A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
 func (o ConditionalAccessPolicyConditionsPtrOutput) Devices() ConditionalAccessPolicyConditionsDevicesPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsDevices {
 		if v == nil {
@@ -3777,6 +4124,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Devices() ConditionalAccessP
 	}).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
 }
 
+// A `locations` block as documented below, which specifies locations included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAccessPolicyConditionsLocationsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsLocations {
 		if v == nil {
@@ -3786,6 +4134,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Locations() ConditionalAcces
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
+// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAccessPolicyConditionsPlatformsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsPlatforms {
 		if v == nil {
@@ -3795,6 +4144,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAcces
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
+// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPtrOutput) SignInRiskLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
 		if v == nil {
@@ -3804,6 +4154,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) SignInRiskLevels() pulumi.St
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPtrOutput) UserRiskLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
 		if v == nil {
@@ -3813,6 +4164,7 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) UserRiskLevels() pulumi.Stri
 	}).(pulumi.StringArrayOutput)
 }
 
+// A `users` block as documented below, which specifies users, groups, and roles included in and excluded from the policy.
 func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPolicyConditionsUsersPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) *ConditionalAccessPolicyConditionsUsers {
 		if v == nil {
@@ -3823,9 +4175,12 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Users() ConditionalAccessPol
 }
 
 type ConditionalAccessPolicyConditionsApplications struct {
+	// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 	ExcludedApplications []string `pulumi:"excludedApplications"`
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications []string `pulumi:"includedApplications"`
-	IncludedUserActions  []string `pulumi:"includedUserActions"`
+	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
+	IncludedUserActions []string `pulumi:"includedUserActions"`
 }
 
 // ConditionalAccessPolicyConditionsApplicationsInput is an input type that accepts ConditionalAccessPolicyConditionsApplicationsArgs and ConditionalAccessPolicyConditionsApplicationsOutput values.
@@ -3840,9 +4195,12 @@ type ConditionalAccessPolicyConditionsApplicationsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsApplicationsArgs struct {
+	// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 	ExcludedApplications pulumi.StringArrayInput `pulumi:"excludedApplications"`
+	// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 	IncludedApplications pulumi.StringArrayInput `pulumi:"includedApplications"`
-	IncludedUserActions  pulumi.StringArrayInput `pulumi:"includedUserActions"`
+	// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
+	IncludedUserActions pulumi.StringArrayInput `pulumi:"includedUserActions"`
 }
 
 func (ConditionalAccessPolicyConditionsApplicationsArgs) ElementType() reflect.Type {
@@ -3922,14 +4280,17 @@ func (o ConditionalAccessPolicyConditionsApplicationsOutput) ToConditionalAccess
 	}).(ConditionalAccessPolicyConditionsApplicationsPtrOutput)
 }
 
+// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) ExcludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.ExcludedApplications }).(pulumi.StringArrayOutput)
 }
 
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedApplications }).(pulumi.StringArrayOutput)
 }
 
+// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsOutput) IncludedUserActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsApplications) []string { return v.IncludedUserActions }).(pulumi.StringArrayOutput)
 }
@@ -3958,6 +4319,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) Elem() Condition
 	}).(ConditionalAccessPolicyConditionsApplicationsOutput)
 }
 
+// A list of application IDs explicitly excluded from the policy. Can also be set to `Office365`.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
@@ -3967,6 +4329,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) ExcludedApplicat
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of application IDs the policy applies to, unless explicitly excluded (in `excludedApplications`). Can also be set to `All`, `None` or `Office365`. Cannot be specified with `includedUserActions`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
@@ -3976,6 +4339,7 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedApplicat
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of user actions to include. Supported values are `urn:user:registerdevice` and `urn:user:registersecurityinfo`. Cannot be specified with `includedApplications`. One of `includedApplications` or `includedUserActions` must be specified.
 func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsApplications) []string {
 		if v == nil {
@@ -3986,7 +4350,9 @@ func (o ConditionalAccessPolicyConditionsApplicationsPtrOutput) IncludedUserActi
 }
 
 type ConditionalAccessPolicyConditionsClientApplications struct {
+	// A list of service principal IDs explicitly excluded in the policy.
 	ExcludedServicePrincipals []string `pulumi:"excludedServicePrincipals"`
+	// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 	IncludedServicePrincipals []string `pulumi:"includedServicePrincipals"`
 }
 
@@ -4002,7 +4368,9 @@ type ConditionalAccessPolicyConditionsClientApplicationsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsClientApplicationsArgs struct {
+	// A list of service principal IDs explicitly excluded in the policy.
 	ExcludedServicePrincipals pulumi.StringArrayInput `pulumi:"excludedServicePrincipals"`
+	// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 	IncludedServicePrincipals pulumi.StringArrayInput `pulumi:"includedServicePrincipals"`
 }
 
@@ -4083,12 +4451,14 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ToConditional
 	}).(ConditionalAccessPolicyConditionsClientApplicationsPtrOutput)
 }
 
+// A list of service principal IDs explicitly excluded in the policy.
 func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) ExcludedServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplications) []string {
 		return v.ExcludedServicePrincipals
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 func (o ConditionalAccessPolicyConditionsClientApplicationsOutput) IncludedServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsClientApplications) []string {
 		return v.IncludedServicePrincipals
@@ -4119,6 +4489,7 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) Elem() Con
 	}).(ConditionalAccessPolicyConditionsClientApplicationsOutput)
 }
 
+// A list of service principal IDs explicitly excluded in the policy.
 func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ExcludedServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) []string {
 		if v == nil {
@@ -4128,6 +4499,7 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) ExcludedSe
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of service principal IDs explicitly included in the policy. Can be set to `ServicePrincipalsInMyTenant` to include all service principals. This is mandatory value when at least one `excludedServicePrincipals` is set.
 func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) IncludedServicePrincipals() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsClientApplications) []string {
 		if v == nil {
@@ -4138,6 +4510,7 @@ func (o ConditionalAccessPolicyConditionsClientApplicationsPtrOutput) IncludedSe
 }
 
 type ConditionalAccessPolicyConditionsDevices struct {
+	// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
 	Filter *ConditionalAccessPolicyConditionsDevicesFilter `pulumi:"filter"`
 }
 
@@ -4153,6 +4526,7 @@ type ConditionalAccessPolicyConditionsDevicesInput interface {
 }
 
 type ConditionalAccessPolicyConditionsDevicesArgs struct {
+	// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
 	Filter ConditionalAccessPolicyConditionsDevicesFilterPtrInput `pulumi:"filter"`
 }
 
@@ -4233,6 +4607,7 @@ func (o ConditionalAccessPolicyConditionsDevicesOutput) ToConditionalAccessPolic
 	}).(ConditionalAccessPolicyConditionsDevicesPtrOutput)
 }
 
+// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
 func (o ConditionalAccessPolicyConditionsDevicesOutput) Filter() ConditionalAccessPolicyConditionsDevicesFilterPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevices) *ConditionalAccessPolicyConditionsDevicesFilter {
 		return v.Filter
@@ -4263,6 +4638,7 @@ func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Elem() ConditionalAcc
 	}).(ConditionalAccessPolicyConditionsDevicesOutput)
 }
 
+// A `filter` block as described below. A `filter` block can be added to an existing policy, but removing the `filter` block forces a new resource to be created.
 func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Filter() ConditionalAccessPolicyConditionsDevicesFilterPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevices) *ConditionalAccessPolicyConditionsDevicesFilter {
 		if v == nil {
@@ -4273,7 +4649,9 @@ func (o ConditionalAccessPolicyConditionsDevicesPtrOutput) Filter() ConditionalA
 }
 
 type ConditionalAccessPolicyConditionsDevicesFilter struct {
+	// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
 	Mode string `pulumi:"mode"`
+	// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 	Rule string `pulumi:"rule"`
 }
 
@@ -4289,7 +4667,9 @@ type ConditionalAccessPolicyConditionsDevicesFilterInput interface {
 }
 
 type ConditionalAccessPolicyConditionsDevicesFilterArgs struct {
+	// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
 	Mode pulumi.StringInput `pulumi:"mode"`
+	// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
@@ -4370,10 +4750,12 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterOutput) ToConditionalAcces
 	}).(ConditionalAccessPolicyConditionsDevicesFilterPtrOutput)
 }
 
+// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
 func (o ConditionalAccessPolicyConditionsDevicesFilterOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevicesFilter) string { return v.Mode }).(pulumi.StringOutput)
 }
 
+// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 func (o ConditionalAccessPolicyConditionsDevicesFilterOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsDevicesFilter) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -4402,6 +4784,7 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Elem() Conditio
 	}).(ConditionalAccessPolicyConditionsDevicesFilterOutput)
 }
 
+// Whether to include in, or exclude from, matching devices from the policy. Supported values are `include` or `exclude`.
 func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Mode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevicesFilter) *string {
 		if v == nil {
@@ -4411,6 +4794,7 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Mode() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+// Condition filter to match devices. For more information, see [official documentation](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/concept-condition-filters-for-devices#supported-operators-and-device-properties-for-filters).
 func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsDevicesFilter) *string {
 		if v == nil {
@@ -4421,7 +4805,9 @@ func (o ConditionalAccessPolicyConditionsDevicesFilterPtrOutput) Rule() pulumi.S
 }
 
 type ConditionalAccessPolicyConditionsLocations struct {
+	// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 	ExcludedLocations []string `pulumi:"excludedLocations"`
+	// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 	IncludedLocations []string `pulumi:"includedLocations"`
 }
 
@@ -4437,7 +4823,9 @@ type ConditionalAccessPolicyConditionsLocationsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsLocationsArgs struct {
+	// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 	ExcludedLocations pulumi.StringArrayInput `pulumi:"excludedLocations"`
+	// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 	IncludedLocations pulumi.StringArrayInput `pulumi:"includedLocations"`
 }
 
@@ -4518,10 +4906,12 @@ func (o ConditionalAccessPolicyConditionsLocationsOutput) ToConditionalAccessPol
 	}).(ConditionalAccessPolicyConditionsLocationsPtrOutput)
 }
 
+// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsOutput) ExcludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.ExcludedLocations }).(pulumi.StringArrayOutput)
 }
 
+// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsOutput) IncludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsLocations) []string { return v.IncludedLocations }).(pulumi.StringArrayOutput)
 }
@@ -4550,6 +4940,7 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) Elem() ConditionalA
 	}).(ConditionalAccessPolicyConditionsLocationsOutput)
 }
 
+// A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ExcludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
 		if v == nil {
@@ -4559,6 +4950,7 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) ExcludedLocations()
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
 func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) IncludedLocations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsLocations) []string {
 		if v == nil {
@@ -4569,7 +4961,9 @@ func (o ConditionalAccessPolicyConditionsLocationsPtrOutput) IncludedLocations()
 }
 
 type ConditionalAccessPolicyConditionsPlatforms struct {
+	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	ExcludedPlatforms []string `pulumi:"excludedPlatforms"`
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	IncludedPlatforms []string `pulumi:"includedPlatforms"`
 }
 
@@ -4585,7 +4979,9 @@ type ConditionalAccessPolicyConditionsPlatformsInput interface {
 }
 
 type ConditionalAccessPolicyConditionsPlatformsArgs struct {
+	// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	ExcludedPlatforms pulumi.StringArrayInput `pulumi:"excludedPlatforms"`
+	// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 	IncludedPlatforms pulumi.StringArrayInput `pulumi:"includedPlatforms"`
 }
 
@@ -4666,10 +5062,12 @@ func (o ConditionalAccessPolicyConditionsPlatformsOutput) ToConditionalAccessPol
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
+// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.ExcludedPlatforms }).(pulumi.StringArrayOutput)
 }
 
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsPlatforms) []string { return v.IncludedPlatforms }).(pulumi.StringArrayOutput)
 }
@@ -4698,6 +5096,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) Elem() ConditionalA
 	}).(ConditionalAccessPolicyConditionsPlatformsOutput)
 }
 
+// A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
 		if v == nil {
@@ -4707,6 +5106,7 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) ExcludedPlatforms()
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsPlatforms) []string {
 		if v == nil {
@@ -4717,12 +5117,20 @@ func (o ConditionalAccessPolicyConditionsPlatformsPtrOutput) IncludedPlatforms()
 }
 
 type ConditionalAccessPolicyConditionsUsers struct {
+	// A list of group IDs excluded from scope of policy.
 	ExcludedGroups []string `pulumi:"excludedGroups"`
-	ExcludedRoles  []string `pulumi:"excludedRoles"`
-	ExcludedUsers  []string `pulumi:"excludedUsers"`
+	// A list of role IDs excluded from scope of policy.
+	ExcludedRoles []string `pulumi:"excludedRoles"`
+	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+	ExcludedUsers []string `pulumi:"excludedUsers"`
+	// A list of group IDs in scope of policy unless explicitly excluded.
 	IncludedGroups []string `pulumi:"includedGroups"`
-	IncludedRoles  []string `pulumi:"includedRoles"`
-	IncludedUsers  []string `pulumi:"includedUsers"`
+	// A list of role IDs in scope of policy unless explicitly excluded.
+	IncludedRoles []string `pulumi:"includedRoles"`
+	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+	//
+	// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+	IncludedUsers []string `pulumi:"includedUsers"`
 }
 
 // ConditionalAccessPolicyConditionsUsersInput is an input type that accepts ConditionalAccessPolicyConditionsUsersArgs and ConditionalAccessPolicyConditionsUsersOutput values.
@@ -4737,12 +5145,20 @@ type ConditionalAccessPolicyConditionsUsersInput interface {
 }
 
 type ConditionalAccessPolicyConditionsUsersArgs struct {
+	// A list of group IDs excluded from scope of policy.
 	ExcludedGroups pulumi.StringArrayInput `pulumi:"excludedGroups"`
-	ExcludedRoles  pulumi.StringArrayInput `pulumi:"excludedRoles"`
-	ExcludedUsers  pulumi.StringArrayInput `pulumi:"excludedUsers"`
+	// A list of role IDs excluded from scope of policy.
+	ExcludedRoles pulumi.StringArrayInput `pulumi:"excludedRoles"`
+	// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
+	ExcludedUsers pulumi.StringArrayInput `pulumi:"excludedUsers"`
+	// A list of group IDs in scope of policy unless explicitly excluded.
 	IncludedGroups pulumi.StringArrayInput `pulumi:"includedGroups"`
-	IncludedRoles  pulumi.StringArrayInput `pulumi:"includedRoles"`
-	IncludedUsers  pulumi.StringArrayInput `pulumi:"includedUsers"`
+	// A list of role IDs in scope of policy unless explicitly excluded.
+	IncludedRoles pulumi.StringArrayInput `pulumi:"includedRoles"`
+	// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+	//
+	// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
+	IncludedUsers pulumi.StringArrayInput `pulumi:"includedUsers"`
 }
 
 func (ConditionalAccessPolicyConditionsUsersArgs) ElementType() reflect.Type {
@@ -4822,26 +5238,34 @@ func (o ConditionalAccessPolicyConditionsUsersOutput) ToConditionalAccessPolicyC
 	}).(ConditionalAccessPolicyConditionsUsersPtrOutput)
 }
 
+// A list of group IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedGroups }).(pulumi.StringArrayOutput)
 }
 
+// A list of role IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedRoles }).(pulumi.StringArrayOutput)
 }
 
+// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 func (o ConditionalAccessPolicyConditionsUsersOutput) ExcludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.ExcludedUsers }).(pulumi.StringArrayOutput)
 }
 
+// A list of group IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedGroups }).(pulumi.StringArrayOutput)
 }
 
+// A list of role IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedRoles }).(pulumi.StringArrayOutput)
 }
 
+// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+//
+// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
 func (o ConditionalAccessPolicyConditionsUsersOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditionsUsers) []string { return v.IncludedUsers }).(pulumi.StringArrayOutput)
 }
@@ -4870,6 +5294,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) Elem() ConditionalAcces
 	}).(ConditionalAccessPolicyConditionsUsersOutput)
 }
 
+// A list of group IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -4879,6 +5304,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedGroups() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of role IDs excluded from scope of policy.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -4888,6 +5314,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedRoles() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -4897,6 +5324,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) ExcludedUsers() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of group IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -4906,6 +5334,7 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedGroups() pulumi
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of role IDs in scope of policy unless explicitly excluded.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -4915,6 +5344,9 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedRoles() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
+//
+// > At least one of `includedGroups`, `includedRoles` or `includedUsers` must be specified.
 func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditionsUsers) []string {
 		if v == nil {
@@ -4925,10 +5357,14 @@ func (o ConditionalAccessPolicyConditionsUsersPtrOutput) IncludedUsers() pulumi.
 }
 
 type ConditionalAccessPolicyGrantControls struct {
-	BuiltInControls             []string `pulumi:"builtInControls"`
+	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+	BuiltInControls []string `pulumi:"builtInControls"`
+	// List of custom controls IDs required by the policy.
 	CustomAuthenticationFactors []string `pulumi:"customAuthenticationFactors"`
-	Operator                    string   `pulumi:"operator"`
-	TermsOfUses                 []string `pulumi:"termsOfUses"`
+	// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+	Operator string `pulumi:"operator"`
+	// List of terms of use IDs required by the policy.
+	TermsOfUses []string `pulumi:"termsOfUses"`
 }
 
 // ConditionalAccessPolicyGrantControlsInput is an input type that accepts ConditionalAccessPolicyGrantControlsArgs and ConditionalAccessPolicyGrantControlsOutput values.
@@ -4943,10 +5379,14 @@ type ConditionalAccessPolicyGrantControlsInput interface {
 }
 
 type ConditionalAccessPolicyGrantControlsArgs struct {
-	BuiltInControls             pulumi.StringArrayInput `pulumi:"builtInControls"`
+	// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
+	BuiltInControls pulumi.StringArrayInput `pulumi:"builtInControls"`
+	// List of custom controls IDs required by the policy.
 	CustomAuthenticationFactors pulumi.StringArrayInput `pulumi:"customAuthenticationFactors"`
-	Operator                    pulumi.StringInput      `pulumi:"operator"`
-	TermsOfUses                 pulumi.StringArrayInput `pulumi:"termsOfUses"`
+	// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// List of terms of use IDs required by the policy.
+	TermsOfUses pulumi.StringArrayInput `pulumi:"termsOfUses"`
 }
 
 func (ConditionalAccessPolicyGrantControlsArgs) ElementType() reflect.Type {
@@ -5026,18 +5466,22 @@ func (o ConditionalAccessPolicyGrantControlsOutput) ToConditionalAccessPolicyGra
 	}).(ConditionalAccessPolicyGrantControlsPtrOutput)
 }
 
+// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyGrantControlsOutput) BuiltInControls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.BuiltInControls }).(pulumi.StringArrayOutput)
 }
 
+// List of custom controls IDs required by the policy.
 func (o ConditionalAccessPolicyGrantControlsOutput) CustomAuthenticationFactors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.CustomAuthenticationFactors }).(pulumi.StringArrayOutput)
 }
 
+// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
 func (o ConditionalAccessPolicyGrantControlsOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) string { return v.Operator }).(pulumi.StringOutput)
 }
 
+// List of terms of use IDs required by the policy.
 func (o ConditionalAccessPolicyGrantControlsOutput) TermsOfUses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyGrantControls) []string { return v.TermsOfUses }).(pulumi.StringArrayOutput)
 }
@@ -5066,6 +5510,7 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) Elem() ConditionalAccessP
 	}).(ConditionalAccessPolicyGrantControlsOutput)
 }
 
+// List of built-in controls required by the policy. Possible values are: `block`, `mfa`, `approvedApplication`, `compliantApplication`, `compliantDevice`, `domainJoinedDevice`, `passwordChange` or `unknownFutureValue`.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) BuiltInControls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
 		if v == nil {
@@ -5075,6 +5520,7 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) BuiltInControls() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
+// List of custom controls IDs required by the policy.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) CustomAuthenticationFactors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
 		if v == nil {
@@ -5084,6 +5530,7 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) CustomAuthenticationFacto
 	}).(pulumi.StringArrayOutput)
 }
 
+// Defines the relationship of the grant controls. Possible values are: `AND`, `OR`.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) *string {
 		if v == nil {
@@ -5093,6 +5540,7 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) Operator() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
+// List of terms of use IDs required by the policy.
 func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyGrantControls) []string {
 		if v == nil {
@@ -5103,12 +5551,20 @@ func (o ConditionalAccessPolicyGrantControlsPtrOutput) TermsOfUses() pulumi.Stri
 }
 
 type ConditionalAccessPolicySessionControls struct {
-	ApplicationEnforcedRestrictionsEnabled *bool   `pulumi:"applicationEnforcedRestrictionsEnabled"`
-	CloudAppSecurityPolicy                 *string `pulumi:"cloudAppSecurityPolicy"`
-	DisableResilienceDefaults              *bool   `pulumi:"disableResilienceDefaults"`
-	PersistentBrowserMode                  *string `pulumi:"persistentBrowserMode"`
-	SignInFrequency                        *int    `pulumi:"signInFrequency"`
-	SignInFrequencyPeriod                  *string `pulumi:"signInFrequencyPeriod"`
+	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+	//
+	// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
+	ApplicationEnforcedRestrictionsEnabled *bool `pulumi:"applicationEnforcedRestrictionsEnabled"`
+	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+	CloudAppSecurityPolicy *string `pulumi:"cloudAppSecurityPolicy"`
+	// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+	DisableResilienceDefaults *bool `pulumi:"disableResilienceDefaults"`
+	// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+	PersistentBrowserMode *string `pulumi:"persistentBrowserMode"`
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	SignInFrequency *int `pulumi:"signInFrequency"`
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	SignInFrequencyPeriod *string `pulumi:"signInFrequencyPeriod"`
 }
 
 // ConditionalAccessPolicySessionControlsInput is an input type that accepts ConditionalAccessPolicySessionControlsArgs and ConditionalAccessPolicySessionControlsOutput values.
@@ -5123,12 +5579,20 @@ type ConditionalAccessPolicySessionControlsInput interface {
 }
 
 type ConditionalAccessPolicySessionControlsArgs struct {
-	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput   `pulumi:"applicationEnforcedRestrictionsEnabled"`
-	CloudAppSecurityPolicy                 pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
-	DisableResilienceDefaults              pulumi.BoolPtrInput   `pulumi:"disableResilienceDefaults"`
-	PersistentBrowserMode                  pulumi.StringPtrInput `pulumi:"persistentBrowserMode"`
-	SignInFrequency                        pulumi.IntPtrInput    `pulumi:"signInFrequency"`
-	SignInFrequencyPeriod                  pulumi.StringPtrInput `pulumi:"signInFrequencyPeriod"`
+	// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+	//
+	// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
+	ApplicationEnforcedRestrictionsEnabled pulumi.BoolPtrInput `pulumi:"applicationEnforcedRestrictionsEnabled"`
+	// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
+	CloudAppSecurityPolicy pulumi.StringPtrInput `pulumi:"cloudAppSecurityPolicy"`
+	// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
+	DisableResilienceDefaults pulumi.BoolPtrInput `pulumi:"disableResilienceDefaults"`
+	// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
+	PersistentBrowserMode pulumi.StringPtrInput `pulumi:"persistentBrowserMode"`
+	// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	SignInFrequency pulumi.IntPtrInput `pulumi:"signInFrequency"`
+	// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
+	SignInFrequencyPeriod pulumi.StringPtrInput `pulumi:"signInFrequencyPeriod"`
 }
 
 func (ConditionalAccessPolicySessionControlsArgs) ElementType() reflect.Type {
@@ -5208,26 +5672,34 @@ func (o ConditionalAccessPolicySessionControlsOutput) ToConditionalAccessPolicyS
 	}).(ConditionalAccessPolicySessionControlsPtrOutput)
 }
 
+// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+//
+// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
 func (o ConditionalAccessPolicySessionControlsOutput) ApplicationEnforcedRestrictionsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *bool { return v.ApplicationEnforcedRestrictionsEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 func (o ConditionalAccessPolicySessionControlsOutput) CloudAppSecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.CloudAppSecurityPolicy }).(pulumi.StringPtrOutput)
 }
 
+// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
 func (o ConditionalAccessPolicySessionControlsOutput) DisableResilienceDefaults() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *bool { return v.DisableResilienceDefaults }).(pulumi.BoolPtrOutput)
 }
 
+// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
 func (o ConditionalAccessPolicySessionControlsOutput) PersistentBrowserMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.PersistentBrowserMode }).(pulumi.StringPtrOutput)
 }
 
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *int { return v.SignInFrequency }).(pulumi.IntPtrOutput)
 }
 
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicySessionControls) *string { return v.SignInFrequencyPeriod }).(pulumi.StringPtrOutput)
 }
@@ -5256,6 +5728,9 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) Elem() ConditionalAcces
 	}).(ConditionalAccessPolicySessionControlsOutput)
 }
 
+// Whether or not application enforced restrictions are enabled. Defaults to `false`.
+//
+// > Only Office 365, Exchange Online and Sharepoint Online support application enforced restrictions.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) ApplicationEnforcedRestrictionsEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *bool {
 		if v == nil {
@@ -5265,6 +5740,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) ApplicationEnforcedRest
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Enables cloud app security and specifies the cloud app security policy to use. Possible values are: `blockDownloads`, `mcasConfigured`, `monitorOnly` or `unknownFutureValue`.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
 		if v == nil {
@@ -5274,6 +5750,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) CloudAppSecurityPolicy(
 	}).(pulumi.StringPtrOutput)
 }
 
+// Disables [resilience defaults](https://learn.microsoft.com/en-us/azure/active-directory/conditional-access/resilience-defaults). Defaults to `false`.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) DisableResilienceDefaults() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *bool {
 		if v == nil {
@@ -5283,6 +5760,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) DisableResilienceDefaul
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Session control to define whether to persist cookies or not. Possible values are: `always` or `never`.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) PersistentBrowserMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
 		if v == nil {
@@ -5292,6 +5770,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) PersistentBrowserMode()
 	}).(pulumi.StringPtrOutput)
 }
 
+// Number of days or hours to enforce sign-in frequency. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *int {
 		if v == nil {
@@ -5301,6 +5780,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequency() pulum
 	}).(pulumi.IntPtrOutput)
 }
 
+// The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `signInFrequencyPeriod` is specified. Due to an API issue, removing this property forces a new resource to be created.
 func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicySessionControls) *string {
 		if v == nil {
@@ -5311,6 +5791,7 @@ func (o ConditionalAccessPolicySessionControlsPtrOutput) SignInFrequencyPeriod()
 }
 
 type CustomDirectoryRolePermission struct {
+	// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
 	AllowedResourceActions []string `pulumi:"allowedResourceActions"`
 }
 
@@ -5326,6 +5807,7 @@ type CustomDirectoryRolePermissionInput interface {
 }
 
 type CustomDirectoryRolePermissionArgs struct {
+	// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
 	AllowedResourceActions pulumi.StringArrayInput `pulumi:"allowedResourceActions"`
 }
 
@@ -5380,6 +5862,7 @@ func (o CustomDirectoryRolePermissionOutput) ToCustomDirectoryRolePermissionOutp
 	return o
 }
 
+// A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
 func (o CustomDirectoryRolePermissionOutput) AllowedResourceActions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomDirectoryRolePermission) []string { return v.AllowedResourceActions }).(pulumi.StringArrayOutput)
 }
@@ -5405,8 +5888,12 @@ func (o CustomDirectoryRolePermissionArrayOutput) Index(i pulumi.IntInput) Custo
 }
 
 type GroupDynamicMembership struct {
-	Enabled bool   `pulumi:"enabled"`
-	Rule    string `pulumi:"rule"`
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled bool `pulumi:"enabled"`
+	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	//
+	// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+	Rule string `pulumi:"rule"`
 }
 
 // GroupDynamicMembershipInput is an input type that accepts GroupDynamicMembershipArgs and GroupDynamicMembershipOutput values.
@@ -5421,8 +5908,12 @@ type GroupDynamicMembershipInput interface {
 }
 
 type GroupDynamicMembershipArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Rule    pulumi.StringInput `pulumi:"rule"`
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+	//
+	// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
+	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
 func (GroupDynamicMembershipArgs) ElementType() reflect.Type {
@@ -5502,10 +5993,14 @@ func (o GroupDynamicMembershipOutput) ToGroupDynamicMembershipPtrOutputWithConte
 	}).(GroupDynamicMembershipPtrOutput)
 }
 
+// Whether rule processing is "On" (true) or "Paused" (false).
 func (o GroupDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GroupDynamicMembership) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+//
+// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
 func (o GroupDynamicMembershipOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GroupDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -5534,6 +6029,7 @@ func (o GroupDynamicMembershipPtrOutput) Elem() GroupDynamicMembershipOutput {
 	}).(GroupDynamicMembershipOutput)
 }
 
+// Whether rule processing is "On" (true) or "Paused" (false).
 func (o GroupDynamicMembershipPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GroupDynamicMembership) *bool {
 		if v == nil {
@@ -5543,6 +6039,9 @@ func (o GroupDynamicMembershipPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
+//
+// > **Dynamic Group Memberships** Remember to include `DynamicMembership` in the set of `types` for the group when configuring a dynamic membership rule. Dynamic membership is a premium feature which requires an Azure Active Directory P1 or P2 license.
 func (o GroupDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupDynamicMembership) *string {
 		if v == nil {
@@ -5553,9 +6052,12 @@ func (o GroupDynamicMembershipPtrOutput) Rule() pulumi.StringPtrOutput {
 }
 
 type InvitationMessage struct {
+	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 	AdditionalRecipients *string `pulumi:"additionalRecipients"`
-	Body                 *string `pulumi:"body"`
-	Language             *string `pulumi:"language"`
+	// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+	Body *string `pulumi:"body"`
+	// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+	Language *string `pulumi:"language"`
 }
 
 // InvitationMessageInput is an input type that accepts InvitationMessageArgs and InvitationMessageOutput values.
@@ -5570,9 +6072,12 @@ type InvitationMessageInput interface {
 }
 
 type InvitationMessageArgs struct {
+	// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 	AdditionalRecipients pulumi.StringPtrInput `pulumi:"additionalRecipients"`
-	Body                 pulumi.StringPtrInput `pulumi:"body"`
-	Language             pulumi.StringPtrInput `pulumi:"language"`
+	// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
+	Body pulumi.StringPtrInput `pulumi:"body"`
+	// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
+	Language pulumi.StringPtrInput `pulumi:"language"`
 }
 
 func (InvitationMessageArgs) ElementType() reflect.Type {
@@ -5652,14 +6157,17 @@ func (o InvitationMessageOutput) ToInvitationMessagePtrOutputWithContext(ctx con
 	}).(InvitationMessagePtrOutput)
 }
 
+// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 func (o InvitationMessageOutput) AdditionalRecipients() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InvitationMessage) *string { return v.AdditionalRecipients }).(pulumi.StringPtrOutput)
 }
 
+// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
 func (o InvitationMessageOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InvitationMessage) *string { return v.Body }).(pulumi.StringPtrOutput)
 }
 
+// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
 func (o InvitationMessageOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InvitationMessage) *string { return v.Language }).(pulumi.StringPtrOutput)
 }
@@ -5688,6 +6196,7 @@ func (o InvitationMessagePtrOutput) Elem() InvitationMessageOutput {
 	}).(InvitationMessageOutput)
 }
 
+// Email addresses of additional recipients the invitation message should be sent to. Only 1 additional recipient is currently supported by Azure.
 func (o InvitationMessagePtrOutput) AdditionalRecipients() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InvitationMessage) *string {
 		if v == nil {
@@ -5697,6 +6206,7 @@ func (o InvitationMessagePtrOutput) AdditionalRecipients() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Customized message body you want to send if you don't want to send the default message. Cannot be specified with `language`.
 func (o InvitationMessagePtrOutput) Body() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InvitationMessage) *string {
 		if v == nil {
@@ -5706,6 +6216,7 @@ func (o InvitationMessagePtrOutput) Body() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The language you want to send the default message in. The value specified must be in ISO 639 format. Defaults to `en-US`. Cannot be specified with `body`.
 func (o InvitationMessagePtrOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *InvitationMessage) *string {
 		if v == nil {
@@ -5716,8 +6227,10 @@ func (o InvitationMessagePtrOutput) Language() pulumi.StringPtrOutput {
 }
 
 type NamedLocationCountry struct {
-	CountriesAndRegions               []string `pulumi:"countriesAndRegions"`
-	IncludeUnknownCountriesAndRegions *bool    `pulumi:"includeUnknownCountriesAndRegions"`
+	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+	CountriesAndRegions []string `pulumi:"countriesAndRegions"`
+	// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+	IncludeUnknownCountriesAndRegions *bool `pulumi:"includeUnknownCountriesAndRegions"`
 }
 
 // NamedLocationCountryInput is an input type that accepts NamedLocationCountryArgs and NamedLocationCountryOutput values.
@@ -5732,8 +6245,10 @@ type NamedLocationCountryInput interface {
 }
 
 type NamedLocationCountryArgs struct {
-	CountriesAndRegions               pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
-	IncludeUnknownCountriesAndRegions pulumi.BoolPtrInput     `pulumi:"includeUnknownCountriesAndRegions"`
+	// List of countries and/or regions in two-letter format specified by ISO 3166-2.
+	CountriesAndRegions pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
+	// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
+	IncludeUnknownCountriesAndRegions pulumi.BoolPtrInput `pulumi:"includeUnknownCountriesAndRegions"`
 }
 
 func (NamedLocationCountryArgs) ElementType() reflect.Type {
@@ -5813,10 +6328,12 @@ func (o NamedLocationCountryOutput) ToNamedLocationCountryPtrOutputWithContext(c
 	}).(NamedLocationCountryPtrOutput)
 }
 
+// List of countries and/or regions in two-letter format specified by ISO 3166-2.
 func (o NamedLocationCountryOutput) CountriesAndRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NamedLocationCountry) []string { return v.CountriesAndRegions }).(pulumi.StringArrayOutput)
 }
 
+// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
 func (o NamedLocationCountryOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NamedLocationCountry) *bool { return v.IncludeUnknownCountriesAndRegions }).(pulumi.BoolPtrOutput)
 }
@@ -5845,6 +6362,7 @@ func (o NamedLocationCountryPtrOutput) Elem() NamedLocationCountryOutput {
 	}).(NamedLocationCountryOutput)
 }
 
+// List of countries and/or regions in two-letter format specified by ISO 3166-2.
 func (o NamedLocationCountryPtrOutput) CountriesAndRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NamedLocationCountry) []string {
 		if v == nil {
@@ -5854,6 +6372,7 @@ func (o NamedLocationCountryPtrOutput) CountriesAndRegions() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
 func (o NamedLocationCountryPtrOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NamedLocationCountry) *bool {
 		if v == nil {
@@ -5864,8 +6383,10 @@ func (o NamedLocationCountryPtrOutput) IncludeUnknownCountriesAndRegions() pulum
 }
 
 type NamedLocationIp struct {
+	// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
 	IpRanges []string `pulumi:"ipRanges"`
-	Trusted  *bool    `pulumi:"trusted"`
+	// Whether the named location is trusted. Defaults to `false`.
+	Trusted *bool `pulumi:"trusted"`
 }
 
 // NamedLocationIpInput is an input type that accepts NamedLocationIpArgs and NamedLocationIpOutput values.
@@ -5880,8 +6401,10 @@ type NamedLocationIpInput interface {
 }
 
 type NamedLocationIpArgs struct {
+	// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
-	Trusted  pulumi.BoolPtrInput     `pulumi:"trusted"`
+	// Whether the named location is trusted. Defaults to `false`.
+	Trusted pulumi.BoolPtrInput `pulumi:"trusted"`
 }
 
 func (NamedLocationIpArgs) ElementType() reflect.Type {
@@ -5961,10 +6484,12 @@ func (o NamedLocationIpOutput) ToNamedLocationIpPtrOutputWithContext(ctx context
 	}).(NamedLocationIpPtrOutput)
 }
 
+// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
 func (o NamedLocationIpOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NamedLocationIp) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
 
+// Whether the named location is trusted. Defaults to `false`.
 func (o NamedLocationIpOutput) Trusted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NamedLocationIp) *bool { return v.Trusted }).(pulumi.BoolPtrOutput)
 }
@@ -5993,6 +6518,7 @@ func (o NamedLocationIpPtrOutput) Elem() NamedLocationIpOutput {
 	}).(NamedLocationIpOutput)
 }
 
+// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
 func (o NamedLocationIpPtrOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NamedLocationIp) []string {
 		if v == nil {
@@ -6002,6 +6528,7 @@ func (o NamedLocationIpPtrOutput) IpRanges() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Whether the named location is trusted. Defaults to `false`.
 func (o NamedLocationIpPtrOutput) Trusted() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NamedLocationIp) *bool {
 		if v == nil {
@@ -6012,12 +6539,18 @@ func (o NamedLocationIpPtrOutput) Trusted() pulumi.BoolPtrOutput {
 }
 
 type ServicePrincipalAppRole struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
-	Description        *string  `pulumi:"description"`
-	DisplayName        *string  `pulumi:"displayName"`
-	Enabled            *bool    `pulumi:"enabled"`
-	Id                 *string  `pulumi:"id"`
-	Value              *string  `pulumi:"value"`
+	// A description of the service principal provided for internal end-users.
+	Description *string `pulumi:"description"`
+	// Display name for the app role that appears during app role assignment and in consent experiences.
+	DisplayName *string `pulumi:"displayName"`
+	// Specifies whether the permission scope is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The unique identifier of the delegated permission.
+	Id *string `pulumi:"id"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value *string `pulumi:"value"`
 }
 
 // ServicePrincipalAppRoleInput is an input type that accepts ServicePrincipalAppRoleArgs and ServicePrincipalAppRoleOutput values.
@@ -6032,12 +6565,18 @@ type ServicePrincipalAppRoleInput interface {
 }
 
 type ServicePrincipalAppRoleArgs struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
-	Description        pulumi.StringPtrInput   `pulumi:"description"`
-	DisplayName        pulumi.StringPtrInput   `pulumi:"displayName"`
-	Enabled            pulumi.BoolPtrInput     `pulumi:"enabled"`
-	Id                 pulumi.StringPtrInput   `pulumi:"id"`
-	Value              pulumi.StringPtrInput   `pulumi:"value"`
+	// A description of the service principal provided for internal end-users.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Display name for the app role that appears during app role assignment and in consent experiences.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Specifies whether the permission scope is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The unique identifier of the delegated permission.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ServicePrincipalAppRoleArgs) ElementType() reflect.Type {
@@ -6091,26 +6630,32 @@ func (o ServicePrincipalAppRoleOutput) ToServicePrincipalAppRoleOutputWithContex
 	return o
 }
 
+// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are: `User` and `Application`, or both.
 func (o ServicePrincipalAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
+// A description of the service principal provided for internal end-users.
 func (o ServicePrincipalAppRoleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Display name for the app role that appears during app role assignment and in consent experiences.
 func (o ServicePrincipalAppRoleOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether the permission scope is enabled.
 func (o ServicePrincipalAppRoleOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The unique identifier of the delegated permission.
 func (o ServicePrincipalAppRoleOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o ServicePrincipalAppRoleOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalAppRole) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6248,10 +6793,14 @@ func (o ServicePrincipalFeatureArrayOutput) Index(i pulumi.IntInput) ServicePrin
 }
 
 type ServicePrincipalFeatureTag struct {
+	// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
 	CustomSingleSignOn *bool `pulumi:"customSingleSignOn"`
-	Enterprise         *bool `pulumi:"enterprise"`
-	Gallery            *bool `pulumi:"gallery"`
-	Hide               *bool `pulumi:"hide"`
+	// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise *bool `pulumi:"enterprise"`
+	// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery *bool `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide *bool `pulumi:"hide"`
 }
 
 // ServicePrincipalFeatureTagInput is an input type that accepts ServicePrincipalFeatureTagArgs and ServicePrincipalFeatureTagOutput values.
@@ -6266,10 +6815,14 @@ type ServicePrincipalFeatureTagInput interface {
 }
 
 type ServicePrincipalFeatureTagArgs struct {
+	// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
 	CustomSingleSignOn pulumi.BoolPtrInput `pulumi:"customSingleSignOn"`
-	Enterprise         pulumi.BoolPtrInput `pulumi:"enterprise"`
-	Gallery            pulumi.BoolPtrInput `pulumi:"gallery"`
-	Hide               pulumi.BoolPtrInput `pulumi:"hide"`
+	// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
+	Enterprise pulumi.BoolPtrInput `pulumi:"enterprise"`
+	// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
+	Gallery pulumi.BoolPtrInput `pulumi:"gallery"`
+	// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
+	Hide pulumi.BoolPtrInput `pulumi:"hide"`
 }
 
 func (ServicePrincipalFeatureTagArgs) ElementType() reflect.Type {
@@ -6323,18 +6876,22 @@ func (o ServicePrincipalFeatureTagOutput) ToServicePrincipalFeatureTagOutputWith
 	return o
 }
 
+// Whether this service principal represents a custom SAML application. Enabling this will assign the `WindowsAzureActiveDirectoryCustomSingleSignOnApplication` tag. Defaults to `false`.
 func (o ServicePrincipalFeatureTagOutput) CustomSingleSignOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.CustomSingleSignOn }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this service principal represents an Enterprise Application. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
 func (o ServicePrincipalFeatureTagOutput) Enterprise() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.Enterprise }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this service principal represents a gallery application. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
 func (o ServicePrincipalFeatureTagOutput) Gallery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.Gallery }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
 func (o ServicePrincipalFeatureTagOutput) Hide() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalFeatureTag) *bool { return v.Hide }).(pulumi.BoolPtrOutput)
 }
@@ -6360,14 +6917,22 @@ func (o ServicePrincipalFeatureTagArrayOutput) Index(i pulumi.IntInput) ServiceP
 }
 
 type ServicePrincipalOauth2PermissionScope struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription *string `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName *string `pulumi:"adminConsentDisplayName"`
-	Enabled                 *bool   `pulumi:"enabled"`
-	Id                      *string `pulumi:"id"`
-	Type                    *string `pulumi:"type"`
-	UserConsentDescription  *string `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  *string `pulumi:"userConsentDisplayName"`
-	Value                   *string `pulumi:"value"`
+	// Specifies whether the permission scope is enabled.
+	Enabled *bool `pulumi:"enabled"`
+	// The unique identifier of the delegated permission.
+	Id *string `pulumi:"id"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	Type *string `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription *string `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName *string `pulumi:"userConsentDisplayName"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value *string `pulumi:"value"`
 }
 
 // ServicePrincipalOauth2PermissionScopeInput is an input type that accepts ServicePrincipalOauth2PermissionScopeArgs and ServicePrincipalOauth2PermissionScopeOutput values.
@@ -6382,14 +6947,22 @@ type ServicePrincipalOauth2PermissionScopeInput interface {
 }
 
 type ServicePrincipalOauth2PermissionScopeArgs struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringPtrInput `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringPtrInput `pulumi:"adminConsentDisplayName"`
-	Enabled                 pulumi.BoolPtrInput   `pulumi:"enabled"`
-	Id                      pulumi.StringPtrInput `pulumi:"id"`
-	Type                    pulumi.StringPtrInput `pulumi:"type"`
-	UserConsentDescription  pulumi.StringPtrInput `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
-	Value                   pulumi.StringPtrInput `pulumi:"value"`
+	// Specifies whether the permission scope is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The unique identifier of the delegated permission.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription pulumi.StringPtrInput `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName pulumi.StringPtrInput `pulumi:"userConsentDisplayName"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ServicePrincipalOauth2PermissionScopeArgs) ElementType() reflect.Type {
@@ -6443,34 +7016,42 @@ func (o ServicePrincipalOauth2PermissionScopeOutput) ToServicePrincipalOauth2Per
 	return o
 }
 
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o ServicePrincipalOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.AdminConsentDescription }).(pulumi.StringPtrOutput)
 }
 
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o ServicePrincipalOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.AdminConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
+// Specifies whether the permission scope is enabled.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
+// The unique identifier of the delegated permission.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o ServicePrincipalOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.UserConsentDescription }).(pulumi.StringPtrOutput)
 }
 
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o ServicePrincipalOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.UserConsentDisplayName }).(pulumi.StringPtrOutput)
 }
 
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o ServicePrincipalOauth2PermissionScopeOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalOauth2PermissionScope) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6496,6 +7077,7 @@ func (o ServicePrincipalOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ServicePrincipalSamlSingleSignOn struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 	RelayState *string `pulumi:"relayState"`
 }
 
@@ -6511,6 +7093,7 @@ type ServicePrincipalSamlSingleSignOnInput interface {
 }
 
 type ServicePrincipalSamlSingleSignOnArgs struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 	RelayState pulumi.StringPtrInput `pulumi:"relayState"`
 }
 
@@ -6591,6 +7174,7 @@ func (o ServicePrincipalSamlSingleSignOnOutput) ToServicePrincipalSamlSingleSign
 	}).(ServicePrincipalSamlSingleSignOnPtrOutput)
 }
 
+// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 func (o ServicePrincipalSamlSingleSignOnOutput) RelayState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePrincipalSamlSingleSignOn) *string { return v.RelayState }).(pulumi.StringPtrOutput)
 }
@@ -6619,6 +7203,7 @@ func (o ServicePrincipalSamlSingleSignOnPtrOutput) Elem() ServicePrincipalSamlSi
 	}).(ServicePrincipalSamlSingleSignOnOutput)
 }
 
+// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 func (o ServicePrincipalSamlSingleSignOnPtrOutput) RelayState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePrincipalSamlSingleSignOn) *string {
 		if v == nil {
@@ -6629,9 +7214,12 @@ func (o ServicePrincipalSamlSingleSignOnPtrOutput) RelayState() pulumi.StringPtr
 }
 
 type SynchronizationJobSchedule struct {
+	// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	Expiration *string `pulumi:"expiration"`
-	Interval   *string `pulumi:"interval"`
-	State      *string `pulumi:"state"`
+	// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+	Interval *string `pulumi:"interval"`
+	// State of the job.
+	State *string `pulumi:"state"`
 }
 
 // SynchronizationJobScheduleInput is an input type that accepts SynchronizationJobScheduleArgs and SynchronizationJobScheduleOutput values.
@@ -6646,9 +7234,12 @@ type SynchronizationJobScheduleInput interface {
 }
 
 type SynchronizationJobScheduleArgs struct {
+	// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 	Expiration pulumi.StringPtrInput `pulumi:"expiration"`
-	Interval   pulumi.StringPtrInput `pulumi:"interval"`
-	State      pulumi.StringPtrInput `pulumi:"state"`
+	// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
+	Interval pulumi.StringPtrInput `pulumi:"interval"`
+	// State of the job.
+	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
 func (SynchronizationJobScheduleArgs) ElementType() reflect.Type {
@@ -6702,14 +7293,17 @@ func (o SynchronizationJobScheduleOutput) ToSynchronizationJobScheduleOutputWith
 	return o
 }
 
+// Date and time when this job will expire, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
 func (o SynchronizationJobScheduleOutput) Expiration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SynchronizationJobSchedule) *string { return v.Expiration }).(pulumi.StringPtrOutput)
 }
 
+// The interval between synchronization iterations ISO8601. E.g. PT40M run every 40 minutes.
 func (o SynchronizationJobScheduleOutput) Interval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SynchronizationJobSchedule) *string { return v.Interval }).(pulumi.StringPtrOutput)
 }
 
+// State of the job.
 func (o SynchronizationJobScheduleOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SynchronizationJobSchedule) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -6735,7 +7329,9 @@ func (o SynchronizationJobScheduleArrayOutput) Index(i pulumi.IntInput) Synchron
 }
 
 type SynchronizationSecretCredential struct {
-	Key   string `pulumi:"key"`
+	// The key of the secret.
+	Key string `pulumi:"key"`
+	// The value of the secret.
 	Value string `pulumi:"value"`
 }
 
@@ -6751,7 +7347,9 @@ type SynchronizationSecretCredentialInput interface {
 }
 
 type SynchronizationSecretCredentialArgs struct {
-	Key   pulumi.StringInput `pulumi:"key"`
+	// The key of the secret.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of the secret.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -6806,10 +7404,12 @@ func (o SynchronizationSecretCredentialOutput) ToSynchronizationSecretCredential
 	return o
 }
 
+// The key of the secret.
 func (o SynchronizationSecretCredentialOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v SynchronizationSecretCredential) string { return v.Key }).(pulumi.StringOutput)
 }
 
+// The value of the secret.
 func (o SynchronizationSecretCredentialOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v SynchronizationSecretCredential) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -6835,10 +7435,14 @@ func (o SynchronizationSecretCredentialArrayOutput) Index(i pulumi.IntInput) Syn
 }
 
 type GetApplicationApi struct {
-	KnownClientApplications     []string                                 `pulumi:"knownClientApplications"`
-	MappedClaimsEnabled         bool                                     `pulumi:"mappedClaimsEnabled"`
-	Oauth2PermissionScopes      []GetApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
-	RequestedAccessTokenVersion int                                      `pulumi:"requestedAccessTokenVersion"`
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications []string `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key.
+	MappedClaimsEnabled bool `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+	Oauth2PermissionScopes []GetApplicationApiOauth2PermissionScope `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Possible values are `1` or `2`.
+	RequestedAccessTokenVersion int `pulumi:"requestedAccessTokenVersion"`
 }
 
 // GetApplicationApiInput is an input type that accepts GetApplicationApiArgs and GetApplicationApiOutput values.
@@ -6853,10 +7457,14 @@ type GetApplicationApiInput interface {
 }
 
 type GetApplicationApiArgs struct {
-	KnownClientApplications     pulumi.StringArrayInput                          `pulumi:"knownClientApplications"`
-	MappedClaimsEnabled         pulumi.BoolInput                                 `pulumi:"mappedClaimsEnabled"`
-	Oauth2PermissionScopes      GetApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
-	RequestedAccessTokenVersion pulumi.IntInput                                  `pulumi:"requestedAccessTokenVersion"`
+	// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
+	KnownClientApplications pulumi.StringArrayInput `pulumi:"knownClientApplications"`
+	// Allows an application to use claims mapping without specifying a custom signing key.
+	MappedClaimsEnabled pulumi.BoolInput `pulumi:"mappedClaimsEnabled"`
+	// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
+	Oauth2PermissionScopes GetApplicationApiOauth2PermissionScopeArrayInput `pulumi:"oauth2PermissionScopes"`
+	// The access token version expected by this resource. Possible values are `1` or `2`.
+	RequestedAccessTokenVersion pulumi.IntInput `pulumi:"requestedAccessTokenVersion"`
 }
 
 func (GetApplicationApiArgs) ElementType() reflect.Type {
@@ -6910,18 +7518,22 @@ func (o GetApplicationApiOutput) ToGetApplicationApiOutputWithContext(ctx contex
 	return o
 }
 
+// A set of application IDs (client IDs), used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app.
 func (o GetApplicationApiOutput) KnownClientApplications() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationApi) []string { return v.KnownClientApplications }).(pulumi.StringArrayOutput)
 }
 
+// Allows an application to use claims mapping without specifying a custom signing key.
 func (o GetApplicationApiOutput) MappedClaimsEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationApi) bool { return v.MappedClaimsEnabled }).(pulumi.BoolOutput)
 }
 
+// One or more `oauth2PermissionScope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
 func (o GetApplicationApiOutput) Oauth2PermissionScopes() GetApplicationApiOauth2PermissionScopeArrayOutput {
 	return o.ApplyT(func(v GetApplicationApi) []GetApplicationApiOauth2PermissionScope { return v.Oauth2PermissionScopes }).(GetApplicationApiOauth2PermissionScopeArrayOutput)
 }
 
+// The access token version expected by this resource. Possible values are `1` or `2`.
 func (o GetApplicationApiOutput) RequestedAccessTokenVersion() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationApi) int { return v.RequestedAccessTokenVersion }).(pulumi.IntOutput)
 }
@@ -6947,14 +7559,22 @@ func (o GetApplicationApiArrayOutput) Index(i pulumi.IntInput) GetApplicationApi
 }
 
 type GetApplicationApiOauth2PermissionScope struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	Enabled                 bool   `pulumi:"enabled"`
-	Id                      string `pulumi:"id"`
-	Type                    string `pulumi:"type"`
-	UserConsentDescription  string `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  string `pulumi:"userConsentDisplayName"`
-	Value                   string `pulumi:"value"`
+	// Determines if the app role is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id string `pulumi:"id"`
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
+	Type string `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription string `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	Value string `pulumi:"value"`
 }
 
 // GetApplicationApiOauth2PermissionScopeInput is an input type that accepts GetApplicationApiOauth2PermissionScopeArgs and GetApplicationApiOauth2PermissionScopeOutput values.
@@ -6969,14 +7589,22 @@ type GetApplicationApiOauth2PermissionScopeInput interface {
 }
 
 type GetApplicationApiOauth2PermissionScopeArgs struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	Enabled                 pulumi.BoolInput   `pulumi:"enabled"`
-	Id                      pulumi.StringInput `pulumi:"id"`
-	Type                    pulumi.StringInput `pulumi:"type"`
-	UserConsentDescription  pulumi.StringInput `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	Value                   pulumi.StringInput `pulumi:"value"`
+	// Determines if the app role is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetApplicationApiOauth2PermissionScopeArgs) ElementType() reflect.Type {
@@ -7030,34 +7658,42 @@ func (o GetApplicationApiOauth2PermissionScopeOutput) ToGetApplicationApiOauth2P
 	return o
 }
 
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetApplicationApiOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.AdminConsentDescription }).(pulumi.StringOutput)
 }
 
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetApplicationApiOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
 }
 
+// Determines if the app role is enabled.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o GetApplicationApiOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.UserConsentDescription }).(pulumi.StringOutput)
 }
 
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o GetApplicationApiOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
 }
 
+// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 func (o GetApplicationApiOauth2PermissionScopeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationApiOauth2PermissionScope) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7083,12 +7719,18 @@ func (o GetApplicationApiOauth2PermissionScopeArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetApplicationAppRole struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
-	Description        string   `pulumi:"description"`
-	DisplayName        string   `pulumi:"displayName"`
-	Enabled            bool     `pulumi:"enabled"`
-	Id                 string   `pulumi:"id"`
-	Value              string   `pulumi:"value"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description string `pulumi:"description"`
+	// Specifies the display name of the application.
+	DisplayName string `pulumi:"displayName"`
+	// Determines if the app role is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id string `pulumi:"id"`
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	Value string `pulumi:"value"`
 }
 
 // GetApplicationAppRoleInput is an input type that accepts GetApplicationAppRoleArgs and GetApplicationAppRoleOutput values.
@@ -7103,12 +7745,18 @@ type GetApplicationAppRoleInput interface {
 }
 
 type GetApplicationAppRoleArgs struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
-	Description        pulumi.StringInput      `pulumi:"description"`
-	DisplayName        pulumi.StringInput      `pulumi:"displayName"`
-	Enabled            pulumi.BoolInput        `pulumi:"enabled"`
-	Id                 pulumi.StringInput      `pulumi:"id"`
-	Value              pulumi.StringInput      `pulumi:"value"`
+	// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Specifies the display name of the application.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Determines if the app role is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetApplicationAppRoleArgs) ElementType() reflect.Type {
@@ -7162,26 +7810,32 @@ func (o GetApplicationAppRoleOutput) ToGetApplicationAppRoleOutputWithContext(ct
 	return o
 }
 
+// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in a standalone scenario). Possible values are `User` or `Application`, or both.
 func (o GetApplicationAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
+// Description of the app role that appears when the role is being assigned and, if the role functions as an application permissions, during the consent experiences.
 func (o GetApplicationAppRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Specifies the display name of the application.
 func (o GetApplicationAppRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Determines if the app role is enabled.
 func (o GetApplicationAppRoleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationAppRole) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o GetApplicationAppRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
 func (o GetApplicationAppRoleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationAppRole) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -7207,10 +7861,14 @@ func (o GetApplicationAppRoleArrayOutput) Index(i pulumi.IntInput) GetApplicatio
 }
 
 type GetApplicationFeatureTag struct {
+	// Whether this application represents a custom SAML application for linked service principals.
 	CustomSingleSignOn *bool `pulumi:"customSingleSignOn"`
-	Enterprise         *bool `pulumi:"enterprise"`
-	Gallery            *bool `pulumi:"gallery"`
-	Hide               *bool `pulumi:"hide"`
+	// Whether this application represents an Enterprise Application for linked service principals.
+	Enterprise *bool `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals.
+	Gallery *bool `pulumi:"gallery"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	Hide *bool `pulumi:"hide"`
 }
 
 // GetApplicationFeatureTagInput is an input type that accepts GetApplicationFeatureTagArgs and GetApplicationFeatureTagOutput values.
@@ -7225,10 +7883,14 @@ type GetApplicationFeatureTagInput interface {
 }
 
 type GetApplicationFeatureTagArgs struct {
+	// Whether this application represents a custom SAML application for linked service principals.
 	CustomSingleSignOn pulumi.BoolPtrInput `pulumi:"customSingleSignOn"`
-	Enterprise         pulumi.BoolPtrInput `pulumi:"enterprise"`
-	Gallery            pulumi.BoolPtrInput `pulumi:"gallery"`
-	Hide               pulumi.BoolPtrInput `pulumi:"hide"`
+	// Whether this application represents an Enterprise Application for linked service principals.
+	Enterprise pulumi.BoolPtrInput `pulumi:"enterprise"`
+	// Whether this application represents a gallery application for linked service principals.
+	Gallery pulumi.BoolPtrInput `pulumi:"gallery"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	Hide pulumi.BoolPtrInput `pulumi:"hide"`
 }
 
 func (GetApplicationFeatureTagArgs) ElementType() reflect.Type {
@@ -7282,18 +7944,22 @@ func (o GetApplicationFeatureTagOutput) ToGetApplicationFeatureTagOutputWithCont
 	return o
 }
 
+// Whether this application represents a custom SAML application for linked service principals.
 func (o GetApplicationFeatureTagOutput) CustomSingleSignOn() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.CustomSingleSignOn }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this application represents an Enterprise Application for linked service principals.
 func (o GetApplicationFeatureTagOutput) Enterprise() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.Enterprise }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this application represents a gallery application for linked service principals.
 func (o GetApplicationFeatureTagOutput) Gallery() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.Gallery }).(pulumi.BoolPtrOutput)
 }
 
+// Whether this app is visible to users in My Apps and Office 365 Launcher.
 func (o GetApplicationFeatureTagOutput) Hide() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationFeatureTag) *bool { return v.Hide }).(pulumi.BoolPtrOutput)
 }
@@ -7319,9 +7985,12 @@ func (o GetApplicationFeatureTagArrayOutput) Index(i pulumi.IntInput) GetApplica
 }
 
 type GetApplicationOptionalClaim struct {
+	// One or more `accessToken` blocks as documented below.
 	AccessTokens []GetApplicationOptionalClaimAccessToken `pulumi:"accessTokens"`
-	IdTokens     []GetApplicationOptionalClaimIdToken     `pulumi:"idTokens"`
-	Saml2Tokens  []GetApplicationOptionalClaimSaml2Token  `pulumi:"saml2Tokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens []GetApplicationOptionalClaimIdToken `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens []GetApplicationOptionalClaimSaml2Token `pulumi:"saml2Tokens"`
 }
 
 // GetApplicationOptionalClaimInput is an input type that accepts GetApplicationOptionalClaimArgs and GetApplicationOptionalClaimOutput values.
@@ -7336,9 +8005,12 @@ type GetApplicationOptionalClaimInput interface {
 }
 
 type GetApplicationOptionalClaimArgs struct {
+	// One or more `accessToken` blocks as documented below.
 	AccessTokens GetApplicationOptionalClaimAccessTokenArrayInput `pulumi:"accessTokens"`
-	IdTokens     GetApplicationOptionalClaimIdTokenArrayInput     `pulumi:"idTokens"`
-	Saml2Tokens  GetApplicationOptionalClaimSaml2TokenArrayInput  `pulumi:"saml2Tokens"`
+	// One or more `idToken` blocks as documented below.
+	IdTokens GetApplicationOptionalClaimIdTokenArrayInput `pulumi:"idTokens"`
+	// One or more `saml2Token` blocks as documented below.
+	Saml2Tokens GetApplicationOptionalClaimSaml2TokenArrayInput `pulumi:"saml2Tokens"`
 }
 
 func (GetApplicationOptionalClaimArgs) ElementType() reflect.Type {
@@ -7392,14 +8064,17 @@ func (o GetApplicationOptionalClaimOutput) ToGetApplicationOptionalClaimOutputWi
 	return o
 }
 
+// One or more `accessToken` blocks as documented below.
 func (o GetApplicationOptionalClaimOutput) AccessTokens() GetApplicationOptionalClaimAccessTokenArrayOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaim) []GetApplicationOptionalClaimAccessToken { return v.AccessTokens }).(GetApplicationOptionalClaimAccessTokenArrayOutput)
 }
 
+// One or more `idToken` blocks as documented below.
 func (o GetApplicationOptionalClaimOutput) IdTokens() GetApplicationOptionalClaimIdTokenArrayOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaim) []GetApplicationOptionalClaimIdToken { return v.IdTokens }).(GetApplicationOptionalClaimIdTokenArrayOutput)
 }
 
+// One or more `saml2Token` blocks as documented below.
 func (o GetApplicationOptionalClaimOutput) Saml2Tokens() GetApplicationOptionalClaimSaml2TokenArrayOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaim) []GetApplicationOptionalClaimSaml2Token { return v.Saml2Tokens }).(GetApplicationOptionalClaimSaml2TokenArrayOutput)
 }
@@ -7425,10 +8100,14 @@ func (o GetApplicationOptionalClaimArrayOutput) Index(i pulumi.IntInput) GetAppl
 }
 
 type GetApplicationOptionalClaimAccessToken struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
-	Essential            *bool    `pulumi:"essential"`
-	Name                 string   `pulumi:"name"`
-	Source               *string  `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
 }
 
 // GetApplicationOptionalClaimAccessTokenInput is an input type that accepts GetApplicationOptionalClaimAccessTokenArgs and GetApplicationOptionalClaimAccessTokenOutput values.
@@ -7443,10 +8122,14 @@ type GetApplicationOptionalClaimAccessTokenInput interface {
 }
 
 type GetApplicationOptionalClaimAccessTokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
-	Essential            pulumi.BoolPtrInput     `pulumi:"essential"`
-	Name                 pulumi.StringInput      `pulumi:"name"`
-	Source               pulumi.StringPtrInput   `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (GetApplicationOptionalClaimAccessTokenArgs) ElementType() reflect.Type {
@@ -7500,18 +8183,22 @@ func (o GetApplicationOptionalClaimAccessTokenOutput) ToGetApplicationOptionalCl
 	return o
 }
 
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o GetApplicationOptionalClaimAccessTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 func (o GetApplicationOptionalClaimAccessTokenOutput) Essential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the optional claim.
 func (o GetApplicationOptionalClaimAccessTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 func (o GetApplicationOptionalClaimAccessTokenOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimAccessToken) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -7537,10 +8224,14 @@ func (o GetApplicationOptionalClaimAccessTokenArrayOutput) Index(i pulumi.IntInp
 }
 
 type GetApplicationOptionalClaimIdToken struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
-	Essential            *bool    `pulumi:"essential"`
-	Name                 string   `pulumi:"name"`
-	Source               *string  `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
 }
 
 // GetApplicationOptionalClaimIdTokenInput is an input type that accepts GetApplicationOptionalClaimIdTokenArgs and GetApplicationOptionalClaimIdTokenOutput values.
@@ -7555,10 +8246,14 @@ type GetApplicationOptionalClaimIdTokenInput interface {
 }
 
 type GetApplicationOptionalClaimIdTokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
-	Essential            pulumi.BoolPtrInput     `pulumi:"essential"`
-	Name                 pulumi.StringInput      `pulumi:"name"`
-	Source               pulumi.StringPtrInput   `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (GetApplicationOptionalClaimIdTokenArgs) ElementType() reflect.Type {
@@ -7612,18 +8307,22 @@ func (o GetApplicationOptionalClaimIdTokenOutput) ToGetApplicationOptionalClaimI
 	return o
 }
 
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o GetApplicationOptionalClaimIdTokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 func (o GetApplicationOptionalClaimIdTokenOutput) Essential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the optional claim.
 func (o GetApplicationOptionalClaimIdTokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 func (o GetApplicationOptionalClaimIdTokenOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimIdToken) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -7649,10 +8348,14 @@ func (o GetApplicationOptionalClaimIdTokenArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetApplicationOptionalClaimSaml2Token struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties []string `pulumi:"additionalProperties"`
-	Essential            *bool    `pulumi:"essential"`
-	Name                 string   `pulumi:"name"`
-	Source               *string  `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential *bool `pulumi:"essential"`
+	// The name of the optional claim.
+	Name string `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source *string `pulumi:"source"`
 }
 
 // GetApplicationOptionalClaimSaml2TokenInput is an input type that accepts GetApplicationOptionalClaimSaml2TokenArgs and GetApplicationOptionalClaimSaml2TokenOutput values.
@@ -7667,10 +8370,14 @@ type GetApplicationOptionalClaimSaml2TokenInput interface {
 }
 
 type GetApplicationOptionalClaimSaml2TokenArgs struct {
+	// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 	AdditionalProperties pulumi.StringArrayInput `pulumi:"additionalProperties"`
-	Essential            pulumi.BoolPtrInput     `pulumi:"essential"`
-	Name                 pulumi.StringInput      `pulumi:"name"`
-	Source               pulumi.StringPtrInput   `pulumi:"source"`
+	// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
+	Essential pulumi.BoolPtrInput `pulumi:"essential"`
+	// The name of the optional claim.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
+	Source pulumi.StringPtrInput `pulumi:"source"`
 }
 
 func (GetApplicationOptionalClaimSaml2TokenArgs) ElementType() reflect.Type {
@@ -7724,18 +8431,22 @@ func (o GetApplicationOptionalClaimSaml2TokenOutput) ToGetApplicationOptionalCla
 	return o
 }
 
+// List of Additional Properties of the claim. If a property exists in this list, it modifies the behaviour of the optional claim.
 func (o GetApplicationOptionalClaimSaml2TokenOutput) AdditionalProperties() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) []string { return v.AdditionalProperties }).(pulumi.StringArrayOutput)
 }
 
+// Whether the claim specified by the client is necessary to ensure a smooth authorization experience.
 func (o GetApplicationOptionalClaimSaml2TokenOutput) Essential() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) *bool { return v.Essential }).(pulumi.BoolPtrOutput)
 }
 
+// The name of the optional claim.
 func (o GetApplicationOptionalClaimSaml2TokenOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The source of the claim. If `source` is absent, the claim is a predefined optional claim. If `source` is `user`, the value of `name` is the extension property from the user object.
 func (o GetApplicationOptionalClaimSaml2TokenOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetApplicationOptionalClaimSaml2Token) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
@@ -7761,6 +8472,7 @@ func (o GetApplicationOptionalClaimSaml2TokenArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetApplicationPublicClient struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -7776,6 +8488,7 @@ type GetApplicationPublicClientInput interface {
 }
 
 type GetApplicationPublicClientArgs struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -7830,6 +8543,7 @@ func (o GetApplicationPublicClientOutput) ToGetApplicationPublicClientOutputWith
 	return o
 }
 
+// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 func (o GetApplicationPublicClientOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationPublicClient) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -7855,8 +8569,10 @@ func (o GetApplicationPublicClientArrayOutput) Index(i pulumi.IntInput) GetAppli
 }
 
 type GetApplicationRequiredResourceAccess struct {
+	// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 	ResourceAccesses []GetApplicationRequiredResourceAccessResourceAccess `pulumi:"resourceAccesses"`
-	ResourceAppId    string                                               `pulumi:"resourceAppId"`
+	// The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
+	ResourceAppId string `pulumi:"resourceAppId"`
 }
 
 // GetApplicationRequiredResourceAccessInput is an input type that accepts GetApplicationRequiredResourceAccessArgs and GetApplicationRequiredResourceAccessOutput values.
@@ -7871,8 +8587,10 @@ type GetApplicationRequiredResourceAccessInput interface {
 }
 
 type GetApplicationRequiredResourceAccessArgs struct {
+	// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 	ResourceAccesses GetApplicationRequiredResourceAccessResourceAccessArrayInput `pulumi:"resourceAccesses"`
-	ResourceAppId    pulumi.StringInput                                           `pulumi:"resourceAppId"`
+	// The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
+	ResourceAppId pulumi.StringInput `pulumi:"resourceAppId"`
 }
 
 func (GetApplicationRequiredResourceAccessArgs) ElementType() reflect.Type {
@@ -7926,12 +8644,14 @@ func (o GetApplicationRequiredResourceAccessOutput) ToGetApplicationRequiredReso
 	return o
 }
 
+// A collection of `resourceAccess` blocks as documented below, describing OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
 func (o GetApplicationRequiredResourceAccessOutput) ResourceAccesses() GetApplicationRequiredResourceAccessResourceAccessArrayOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccess) []GetApplicationRequiredResourceAccessResourceAccess {
 		return v.ResourceAccesses
 	}).(GetApplicationRequiredResourceAccessResourceAccessArrayOutput)
 }
 
+// The unique identifier for the resource that the application requires access to. This is the Application ID of the target application.
 func (o GetApplicationRequiredResourceAccessOutput) ResourceAppId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccess) string { return v.ResourceAppId }).(pulumi.StringOutput)
 }
@@ -7957,7 +8677,9 @@ func (o GetApplicationRequiredResourceAccessArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetApplicationRequiredResourceAccessResourceAccess struct {
-	Id   string `pulumi:"id"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id string `pulumi:"id"`
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type string `pulumi:"type"`
 }
 
@@ -7973,7 +8695,9 @@ type GetApplicationRequiredResourceAccessResourceAccessInput interface {
 }
 
 type GetApplicationRequiredResourceAccessResourceAccessArgs struct {
-	Id   pulumi.StringInput `pulumi:"id"`
+	// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -8028,10 +8752,12 @@ func (o GetApplicationRequiredResourceAccessResourceAccessOutput) ToGetApplicati
 	return o
 }
 
+// The unique identifier for an app role or OAuth2 permission scope published by the resource application.
 func (o GetApplicationRequiredResourceAccessResourceAccessOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccessResourceAccess) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Specifies whether the `id` property references an app role or an OAuth2 permission scope. Possible values are `Role` or `Scope`.
 func (o GetApplicationRequiredResourceAccessResourceAccessOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationRequiredResourceAccessResourceAccess) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8057,6 +8783,7 @@ func (o GetApplicationRequiredResourceAccessResourceAccessArrayOutput) Index(i p
 }
 
 type GetApplicationSinglePageApplication struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 	RedirectUris []string `pulumi:"redirectUris"`
 }
 
@@ -8072,6 +8799,7 @@ type GetApplicationSinglePageApplicationInput interface {
 }
 
 type GetApplicationSinglePageApplicationArgs struct {
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
@@ -8126,6 +8854,7 @@ func (o GetApplicationSinglePageApplicationOutput) ToGetApplicationSinglePageApp
 	return o
 }
 
+// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 func (o GetApplicationSinglePageApplicationOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationSinglePageApplication) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -8151,10 +8880,14 @@ func (o GetApplicationSinglePageApplicationArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetApplicationWeb struct {
-	HomepageUrl    string                           `pulumi:"homepageUrl"`
+	// Home page or landing page of the application.
+	HomepageUrl string `pulumi:"homepageUrl"`
+	// An `implicitGrant` block as documented above.
 	ImplicitGrants []GetApplicationWebImplicitGrant `pulumi:"implicitGrants"`
-	LogoutUrl      string                           `pulumi:"logoutUrl"`
-	RedirectUris   []string                         `pulumi:"redirectUris"`
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+	LogoutUrl string `pulumi:"logoutUrl"`
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris []string `pulumi:"redirectUris"`
 }
 
 // GetApplicationWebInput is an input type that accepts GetApplicationWebArgs and GetApplicationWebOutput values.
@@ -8169,10 +8902,14 @@ type GetApplicationWebInput interface {
 }
 
 type GetApplicationWebArgs struct {
-	HomepageUrl    pulumi.StringInput                       `pulumi:"homepageUrl"`
+	// Home page or landing page of the application.
+	HomepageUrl pulumi.StringInput `pulumi:"homepageUrl"`
+	// An `implicitGrant` block as documented above.
 	ImplicitGrants GetApplicationWebImplicitGrantArrayInput `pulumi:"implicitGrants"`
-	LogoutUrl      pulumi.StringInput                       `pulumi:"logoutUrl"`
-	RedirectUris   pulumi.StringArrayInput                  `pulumi:"redirectUris"`
+	// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
+	LogoutUrl pulumi.StringInput `pulumi:"logoutUrl"`
+	// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
+	RedirectUris pulumi.StringArrayInput `pulumi:"redirectUris"`
 }
 
 func (GetApplicationWebArgs) ElementType() reflect.Type {
@@ -8226,18 +8963,22 @@ func (o GetApplicationWebOutput) ToGetApplicationWebOutputWithContext(ctx contex
 	return o
 }
 
+// Home page or landing page of the application.
 func (o GetApplicationWebOutput) HomepageUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationWeb) string { return v.HomepageUrl }).(pulumi.StringOutput)
 }
 
+// An `implicitGrant` block as documented above.
 func (o GetApplicationWebOutput) ImplicitGrants() GetApplicationWebImplicitGrantArrayOutput {
 	return o.ApplyT(func(v GetApplicationWeb) []GetApplicationWebImplicitGrant { return v.ImplicitGrants }).(GetApplicationWebImplicitGrantArrayOutput)
 }
 
+// The URL that will be used by Microsoft's authorization service to sign out a user using front-channel, back-channel or SAML logout protocols.
 func (o GetApplicationWebOutput) LogoutUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationWeb) string { return v.LogoutUrl }).(pulumi.StringOutput)
 }
 
+// A list of URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
 func (o GetApplicationWebOutput) RedirectUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetApplicationWeb) []string { return v.RedirectUris }).(pulumi.StringArrayOutput)
 }
@@ -8263,8 +9004,10 @@ func (o GetApplicationWebArrayOutput) Index(i pulumi.IntInput) GetApplicationWeb
 }
 
 type GetApplicationWebImplicitGrant struct {
+	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled bool `pulumi:"accessTokenIssuanceEnabled"`
-	IdTokenIssuanceEnabled     bool `pulumi:"idTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled bool `pulumi:"idTokenIssuanceEnabled"`
 }
 
 // GetApplicationWebImplicitGrantInput is an input type that accepts GetApplicationWebImplicitGrantArgs and GetApplicationWebImplicitGrantOutput values.
@@ -8279,8 +9022,10 @@ type GetApplicationWebImplicitGrantInput interface {
 }
 
 type GetApplicationWebImplicitGrantArgs struct {
+	// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 	AccessTokenIssuanceEnabled pulumi.BoolInput `pulumi:"accessTokenIssuanceEnabled"`
-	IdTokenIssuanceEnabled     pulumi.BoolInput `pulumi:"idTokenIssuanceEnabled"`
+	// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
+	IdTokenIssuanceEnabled pulumi.BoolInput `pulumi:"idTokenIssuanceEnabled"`
 }
 
 func (GetApplicationWebImplicitGrantArgs) ElementType() reflect.Type {
@@ -8334,10 +9079,12 @@ func (o GetApplicationWebImplicitGrantOutput) ToGetApplicationWebImplicitGrantOu
 	return o
 }
 
+// Whether this web application can request an access token using OAuth 2.0 implicit flow.
 func (o GetApplicationWebImplicitGrantOutput) AccessTokenIssuanceEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationWebImplicitGrant) bool { return v.AccessTokenIssuanceEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether this web application can request an ID token using OAuth 2.0 implicit flow.
 func (o GetApplicationWebImplicitGrantOutput) IdTokenIssuanceEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationWebImplicitGrant) bool { return v.IdTokenIssuanceEnabled }).(pulumi.BoolOutput)
 }
@@ -8363,10 +9110,14 @@ func (o GetApplicationWebImplicitGrantArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetDirectoryRolesRole struct {
+	// The description of the directory role.
 	Description string `pulumi:"description"`
+	// The display name of the directory role.
 	DisplayName string `pulumi:"displayName"`
-	ObjectId    string `pulumi:"objectId"`
-	TemplateId  string `pulumi:"templateId"`
+	// The object ID of the directory role.
+	ObjectId string `pulumi:"objectId"`
+	// The template ID of the directory role.
+	TemplateId string `pulumi:"templateId"`
 }
 
 // GetDirectoryRolesRoleInput is an input type that accepts GetDirectoryRolesRoleArgs and GetDirectoryRolesRoleOutput values.
@@ -8381,10 +9132,14 @@ type GetDirectoryRolesRoleInput interface {
 }
 
 type GetDirectoryRolesRoleArgs struct {
+	// The description of the directory role.
 	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of the directory role.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	ObjectId    pulumi.StringInput `pulumi:"objectId"`
-	TemplateId  pulumi.StringInput `pulumi:"templateId"`
+	// The object ID of the directory role.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// The template ID of the directory role.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
 }
 
 func (GetDirectoryRolesRoleArgs) ElementType() reflect.Type {
@@ -8438,18 +9193,22 @@ func (o GetDirectoryRolesRoleOutput) ToGetDirectoryRolesRoleOutputWithContext(ct
 	return o
 }
 
+// The description of the directory role.
 func (o GetDirectoryRolesRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The display name of the directory role.
 func (o GetDirectoryRolesRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The object ID of the directory role.
 func (o GetDirectoryRolesRoleOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// The template ID of the directory role.
 func (o GetDirectoryRolesRoleOutput) TemplateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoryRolesRole) string { return v.TemplateId }).(pulumi.StringOutput)
 }
@@ -8475,14 +9234,22 @@ func (o GetDirectoryRolesRoleArrayOutput) Index(i pulumi.IntInput) GetDirectoryR
 }
 
 type GetDomainsDomain struct {
-	AdminManaged       bool     `pulumi:"adminManaged"`
-	AuthenticationType string   `pulumi:"authenticationType"`
-	Default            bool     `pulumi:"default"`
-	DomainName         string   `pulumi:"domainName"`
-	Initial            bool     `pulumi:"initial"`
-	Root               bool     `pulumi:"root"`
-	SupportedServices  []string `pulumi:"supportedServices"`
-	Verified           bool     `pulumi:"verified"`
+	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+	AdminManaged bool `pulumi:"adminManaged"`
+	// The authentication type of the domain. Possible values include `Managed` or `Federated`.
+	AuthenticationType string `pulumi:"authenticationType"`
+	// Whether this is the default domain that is used for user creation.
+	Default bool `pulumi:"default"`
+	// The name of the domain.
+	DomainName string `pulumi:"domainName"`
+	// Whether this is the initial domain created by Azure Active Directory.
+	Initial bool `pulumi:"initial"`
+	// Whether the domain is a verified root domain (not a subdomain).
+	Root bool `pulumi:"root"`
+	// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	SupportedServices []string `pulumi:"supportedServices"`
+	// Whether the domain has completed domain ownership verification.
+	Verified bool `pulumi:"verified"`
 }
 
 // GetDomainsDomainInput is an input type that accepts GetDomainsDomainArgs and GetDomainsDomainOutput values.
@@ -8497,14 +9264,22 @@ type GetDomainsDomainInput interface {
 }
 
 type GetDomainsDomainArgs struct {
-	AdminManaged       pulumi.BoolInput        `pulumi:"adminManaged"`
-	AuthenticationType pulumi.StringInput      `pulumi:"authenticationType"`
-	Default            pulumi.BoolInput        `pulumi:"default"`
-	DomainName         pulumi.StringInput      `pulumi:"domainName"`
-	Initial            pulumi.BoolInput        `pulumi:"initial"`
-	Root               pulumi.BoolInput        `pulumi:"root"`
-	SupportedServices  pulumi.StringArrayInput `pulumi:"supportedServices"`
-	Verified           pulumi.BoolInput        `pulumi:"verified"`
+	// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
+	AdminManaged pulumi.BoolInput `pulumi:"adminManaged"`
+	// The authentication type of the domain. Possible values include `Managed` or `Federated`.
+	AuthenticationType pulumi.StringInput `pulumi:"authenticationType"`
+	// Whether this is the default domain that is used for user creation.
+	Default pulumi.BoolInput `pulumi:"default"`
+	// The name of the domain.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// Whether this is the initial domain created by Azure Active Directory.
+	Initial pulumi.BoolInput `pulumi:"initial"`
+	// Whether the domain is a verified root domain (not a subdomain).
+	Root pulumi.BoolInput `pulumi:"root"`
+	// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
+	SupportedServices pulumi.StringArrayInput `pulumi:"supportedServices"`
+	// Whether the domain has completed domain ownership verification.
+	Verified pulumi.BoolInput `pulumi:"verified"`
 }
 
 func (GetDomainsDomainArgs) ElementType() reflect.Type {
@@ -8558,34 +9333,42 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 	return o
 }
 
+// Set to `true` to only return domains whose DNS is managed by Microsoft 365. Defaults to `false`.
 func (o GetDomainsDomainOutput) AdminManaged() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.AdminManaged }).(pulumi.BoolOutput)
 }
 
+// The authentication type of the domain. Possible values include `Managed` or `Federated`.
 func (o GetDomainsDomainOutput) AuthenticationType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.AuthenticationType }).(pulumi.StringOutput)
 }
 
+// Whether this is the default domain that is used for user creation.
 func (o GetDomainsDomainOutput) Default() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Default }).(pulumi.BoolOutput)
 }
 
+// The name of the domain.
 func (o GetDomainsDomainOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
+// Whether this is the initial domain created by Azure Active Directory.
 func (o GetDomainsDomainOutput) Initial() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Initial }).(pulumi.BoolOutput)
 }
 
+// Whether the domain is a verified root domain (not a subdomain).
 func (o GetDomainsDomainOutput) Root() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Root }).(pulumi.BoolOutput)
 }
 
+// A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
 func (o GetDomainsDomainOutput) SupportedServices() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDomainsDomain) []string { return v.SupportedServices }).(pulumi.StringArrayOutput)
 }
 
+// Whether the domain has completed domain ownership verification.
 func (o GetDomainsDomainOutput) Verified() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDomainsDomain) bool { return v.Verified }).(pulumi.BoolOutput)
 }
@@ -8611,8 +9394,10 @@ func (o GetDomainsDomainArrayOutput) Index(i pulumi.IntInput) GetDomainsDomainOu
 }
 
 type GetGroupDynamicMembership struct {
-	Enabled bool   `pulumi:"enabled"`
-	Rule    string `pulumi:"rule"`
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled bool `pulumi:"enabled"`
+	// The rule that determines membership of this group.
+	Rule string `pulumi:"rule"`
 }
 
 // GetGroupDynamicMembershipInput is an input type that accepts GetGroupDynamicMembershipArgs and GetGroupDynamicMembershipOutput values.
@@ -8627,8 +9412,10 @@ type GetGroupDynamicMembershipInput interface {
 }
 
 type GetGroupDynamicMembershipArgs struct {
-	Enabled pulumi.BoolInput   `pulumi:"enabled"`
-	Rule    pulumi.StringInput `pulumi:"rule"`
+	// Whether rule processing is "On" (true) or "Paused" (false).
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The rule that determines membership of this group.
+	Rule pulumi.StringInput `pulumi:"rule"`
 }
 
 func (GetGroupDynamicMembershipArgs) ElementType() reflect.Type {
@@ -8682,10 +9469,12 @@ func (o GetGroupDynamicMembershipOutput) ToGetGroupDynamicMembershipOutputWithCo
 	return o
 }
 
+// Whether rule processing is "On" (true) or "Paused" (false).
 func (o GetGroupDynamicMembershipOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGroupDynamicMembership) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The rule that determines membership of this group.
 func (o GetGroupDynamicMembershipOutput) Rule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGroupDynamicMembership) string { return v.Rule }).(pulumi.StringOutput)
 }
@@ -8711,12 +9500,18 @@ func (o GetGroupDynamicMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupD
 }
 
 type GetServicePrincipalAppRole struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`
-	Description        string   `pulumi:"description"`
-	DisplayName        string   `pulumi:"displayName"`
-	Enabled            bool     `pulumi:"enabled"`
-	Id                 string   `pulumi:"id"`
-	Value              string   `pulumi:"value"`
+	// Permission help text that appears in the admin app assignment and consent experiences.
+	Description string `pulumi:"description"`
+	// The display name of the application associated with this service principal.
+	DisplayName string `pulumi:"displayName"`
+	// Determines if the permission scope is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
+	Id string `pulumi:"id"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value string `pulumi:"value"`
 }
 
 // GetServicePrincipalAppRoleInput is an input type that accepts GetServicePrincipalAppRoleArgs and GetServicePrincipalAppRoleOutput values.
@@ -8731,12 +9526,18 @@ type GetServicePrincipalAppRoleInput interface {
 }
 
 type GetServicePrincipalAppRoleArgs struct {
+	// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
 	AllowedMemberTypes pulumi.StringArrayInput `pulumi:"allowedMemberTypes"`
-	Description        pulumi.StringInput      `pulumi:"description"`
-	DisplayName        pulumi.StringInput      `pulumi:"displayName"`
-	Enabled            pulumi.BoolInput        `pulumi:"enabled"`
-	Id                 pulumi.StringInput      `pulumi:"id"`
-	Value              pulumi.StringInput      `pulumi:"value"`
+	// Permission help text that appears in the admin app assignment and consent experiences.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of the application associated with this service principal.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Determines if the permission scope is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetServicePrincipalAppRoleArgs) ElementType() reflect.Type {
@@ -8790,26 +9591,32 @@ func (o GetServicePrincipalAppRoleOutput) ToGetServicePrincipalAppRoleOutputWith
 	return o
 }
 
+// Specifies whether this app role definition can be assigned to users and groups, or to other applications (that are accessing this application in daemon service scenarios). Possible values are: `User` and `Application`, or both.
 func (o GetServicePrincipalAppRoleOutput) AllowedMemberTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) []string { return v.AllowedMemberTypes }).(pulumi.StringArrayOutput)
 }
 
+// Permission help text that appears in the admin app assignment and consent experiences.
 func (o GetServicePrincipalAppRoleOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// The display name of the application associated with this service principal.
 func (o GetServicePrincipalAppRoleOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Determines if the permission scope is enabled.
 func (o GetServicePrincipalAppRoleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The unique identifier of the delegated permission. Must be a valid UUID.
 func (o GetServicePrincipalAppRoleOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o GetServicePrincipalAppRoleOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalAppRole) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -8835,10 +9642,14 @@ func (o GetServicePrincipalAppRoleArrayOutput) Index(i pulumi.IntInput) GetServi
 }
 
 type GetServicePrincipalFeature struct {
+	// Whether this service principal represents a custom SAML application.
 	CustomSingleSignOnApp bool `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application.
 	EnterpriseApplication bool `pulumi:"enterpriseApplication"`
-	GalleryApplication    bool `pulumi:"galleryApplication"`
-	VisibleToUsers        bool `pulumi:"visibleToUsers"`
+	// Whether this service principal represents a gallery application.
+	GalleryApplication bool `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	VisibleToUsers bool `pulumi:"visibleToUsers"`
 }
 
 // GetServicePrincipalFeatureInput is an input type that accepts GetServicePrincipalFeatureArgs and GetServicePrincipalFeatureOutput values.
@@ -8853,10 +9664,14 @@ type GetServicePrincipalFeatureInput interface {
 }
 
 type GetServicePrincipalFeatureArgs struct {
+	// Whether this service principal represents a custom SAML application.
 	CustomSingleSignOnApp pulumi.BoolInput `pulumi:"customSingleSignOnApp"`
+	// Whether this service principal represents an Enterprise Application.
 	EnterpriseApplication pulumi.BoolInput `pulumi:"enterpriseApplication"`
-	GalleryApplication    pulumi.BoolInput `pulumi:"galleryApplication"`
-	VisibleToUsers        pulumi.BoolInput `pulumi:"visibleToUsers"`
+	// Whether this service principal represents a gallery application.
+	GalleryApplication pulumi.BoolInput `pulumi:"galleryApplication"`
+	// Whether this app is visible to users in My Apps and Office 365 Launcher.
+	VisibleToUsers pulumi.BoolInput `pulumi:"visibleToUsers"`
 }
 
 func (GetServicePrincipalFeatureArgs) ElementType() reflect.Type {
@@ -8910,18 +9725,22 @@ func (o GetServicePrincipalFeatureOutput) ToGetServicePrincipalFeatureOutputWith
 	return o
 }
 
+// Whether this service principal represents a custom SAML application.
 func (o GetServicePrincipalFeatureOutput) CustomSingleSignOnApp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.CustomSingleSignOnApp }).(pulumi.BoolOutput)
 }
 
+// Whether this service principal represents an Enterprise Application.
 func (o GetServicePrincipalFeatureOutput) EnterpriseApplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.EnterpriseApplication }).(pulumi.BoolOutput)
 }
 
+// Whether this service principal represents a gallery application.
 func (o GetServicePrincipalFeatureOutput) GalleryApplication() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.GalleryApplication }).(pulumi.BoolOutput)
 }
 
+// Whether this app is visible to users in My Apps and Office 365 Launcher.
 func (o GetServicePrincipalFeatureOutput) VisibleToUsers() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalFeature) bool { return v.VisibleToUsers }).(pulumi.BoolOutput)
 }
@@ -9059,14 +9878,22 @@ func (o GetServicePrincipalFeatureTagArrayOutput) Index(i pulumi.IntInput) GetSe
 }
 
 type GetServicePrincipalOauth2PermissionScope struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName string `pulumi:"adminConsentDisplayName"`
-	Enabled                 bool   `pulumi:"enabled"`
-	Id                      string `pulumi:"id"`
-	Type                    string `pulumi:"type"`
-	UserConsentDescription  string `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  string `pulumi:"userConsentDisplayName"`
-	Value                   string `pulumi:"value"`
+	// Determines if the permission scope is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
+	Id string `pulumi:"id"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	Type string `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription string `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName string `pulumi:"userConsentDisplayName"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value string `pulumi:"value"`
 }
 
 // GetServicePrincipalOauth2PermissionScopeInput is an input type that accepts GetServicePrincipalOauth2PermissionScopeArgs and GetServicePrincipalOauth2PermissionScopeOutput values.
@@ -9081,14 +9908,22 @@ type GetServicePrincipalOauth2PermissionScopeInput interface {
 }
 
 type GetServicePrincipalOauth2PermissionScopeArgs struct {
+	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription pulumi.StringInput `pulumi:"adminConsentDescription"`
+	// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDisplayName pulumi.StringInput `pulumi:"adminConsentDisplayName"`
-	Enabled                 pulumi.BoolInput   `pulumi:"enabled"`
-	Id                      pulumi.StringInput `pulumi:"id"`
-	Type                    pulumi.StringInput `pulumi:"type"`
-	UserConsentDescription  pulumi.StringInput `pulumi:"userConsentDescription"`
-	UserConsentDisplayName  pulumi.StringInput `pulumi:"userConsentDisplayName"`
-	Value                   pulumi.StringInput `pulumi:"value"`
+	// Determines if the permission scope is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The unique identifier of the delegated permission. Must be a valid UUID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
+	UserConsentDescription pulumi.StringInput `pulumi:"userConsentDescription"`
+	// Display name for the delegated permission that appears in the end user consent experience.
+	UserConsentDisplayName pulumi.StringInput `pulumi:"userConsentDisplayName"`
+	// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetServicePrincipalOauth2PermissionScopeArgs) ElementType() reflect.Type {
@@ -9142,34 +9977,42 @@ func (o GetServicePrincipalOauth2PermissionScopeOutput) ToGetServicePrincipalOau
 	return o
 }
 
+// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) AdminConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.AdminConsentDescription }).(pulumi.StringOutput)
 }
 
+// Display name for the delegated permission, intended to be read by an administrator granting the permission on behalf of all users.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) AdminConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.AdminConsentDisplayName }).(pulumi.StringOutput)
 }
 
+// Determines if the permission scope is enabled.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// The unique identifier of the delegated permission. Must be a valid UUID.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// Whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator should be required for consent to the permissions. Possible values are `User` or `Admin`.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.Type }).(pulumi.StringOutput)
 }
 
+// Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) UserConsentDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.UserConsentDescription }).(pulumi.StringOutput)
 }
 
+// Display name for the delegated permission that appears in the end user consent experience.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) UserConsentDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.UserConsentDisplayName }).(pulumi.StringOutput)
 }
 
+// The value that is used for the `scp` claim in OAuth 2.0 access tokens.
 func (o GetServicePrincipalOauth2PermissionScopeOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalOauth2PermissionScope) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -9195,6 +10038,7 @@ func (o GetServicePrincipalOauth2PermissionScopeArrayOutput) Index(i pulumi.IntI
 }
 
 type GetServicePrincipalSamlSingleSignOn struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 	RelayState string `pulumi:"relayState"`
 }
 
@@ -9210,6 +10054,7 @@ type GetServicePrincipalSamlSingleSignOnInput interface {
 }
 
 type GetServicePrincipalSamlSingleSignOnArgs struct {
+	// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 	RelayState pulumi.StringInput `pulumi:"relayState"`
 }
 
@@ -9264,6 +10109,7 @@ func (o GetServicePrincipalSamlSingleSignOnOutput) ToGetServicePrincipalSamlSing
 	return o
 }
 
+// The relative URI the service provider would redirect to after completion of the single sign-on flow.
 func (o GetServicePrincipalSamlSingleSignOnOutput) RelayState() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalSamlSingleSignOn) string { return v.RelayState }).(pulumi.StringOutput)
 }
@@ -9289,18 +10135,30 @@ func (o GetServicePrincipalSamlSingleSignOnArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetServicePrincipalsServicePrincipal struct {
-	AccountEnabled            bool     `pulumi:"accountEnabled"`
-	AppRoleAssignmentRequired bool     `pulumi:"appRoleAssignmentRequired"`
-	ApplicationId             string   `pulumi:"applicationId"`
-	ApplicationTenantId       string   `pulumi:"applicationTenantId"`
-	DisplayName               string   `pulumi:"displayName"`
-	ObjectId                  string   `pulumi:"objectId"`
-	PreferredSingleSignOnMode string   `pulumi:"preferredSingleSignOnMode"`
-	SamlMetadataUrl           string   `pulumi:"samlMetadataUrl"`
-	ServicePrincipalNames     []string `pulumi:"servicePrincipalNames"`
-	SignInAudience            string   `pulumi:"signInAudience"`
-	Tags                      []string `pulumi:"tags"`
-	Type                      string   `pulumi:"type"`
+	// Whether or not the service principal account is enabled.
+	AccountEnabled bool `pulumi:"accountEnabled"`
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+	AppRoleAssignmentRequired bool `pulumi:"appRoleAssignmentRequired"`
+	// The application ID (client ID) of the application associated with this service principal.
+	ApplicationId string `pulumi:"applicationId"`
+	// The tenant ID where the associated application is registered.
+	ApplicationTenantId string `pulumi:"applicationTenantId"`
+	// The display name of the application associated with this service principal.
+	DisplayName string `pulumi:"displayName"`
+	// The object ID of the service principal.
+	ObjectId string `pulumi:"objectId"`
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+	PreferredSingleSignOnMode string `pulumi:"preferredSingleSignOnMode"`
+	// The URL where the service exposes SAML metadata for federation.
+	SamlMetadataUrl string `pulumi:"samlMetadataUrl"`
+	// A list of identifier URI(s), copied over from the associated application.
+	ServicePrincipalNames []string `pulumi:"servicePrincipalNames"`
+	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	SignInAudience string `pulumi:"signInAudience"`
+	// A list of tags applied to the service principal.
+	Tags []string `pulumi:"tags"`
+	// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+	Type string `pulumi:"type"`
 }
 
 // GetServicePrincipalsServicePrincipalInput is an input type that accepts GetServicePrincipalsServicePrincipalArgs and GetServicePrincipalsServicePrincipalOutput values.
@@ -9315,18 +10173,30 @@ type GetServicePrincipalsServicePrincipalInput interface {
 }
 
 type GetServicePrincipalsServicePrincipalArgs struct {
-	AccountEnabled            pulumi.BoolInput        `pulumi:"accountEnabled"`
-	AppRoleAssignmentRequired pulumi.BoolInput        `pulumi:"appRoleAssignmentRequired"`
-	ApplicationId             pulumi.StringInput      `pulumi:"applicationId"`
-	ApplicationTenantId       pulumi.StringInput      `pulumi:"applicationTenantId"`
-	DisplayName               pulumi.StringInput      `pulumi:"displayName"`
-	ObjectId                  pulumi.StringInput      `pulumi:"objectId"`
-	PreferredSingleSignOnMode pulumi.StringInput      `pulumi:"preferredSingleSignOnMode"`
-	SamlMetadataUrl           pulumi.StringInput      `pulumi:"samlMetadataUrl"`
-	ServicePrincipalNames     pulumi.StringArrayInput `pulumi:"servicePrincipalNames"`
-	SignInAudience            pulumi.StringInput      `pulumi:"signInAudience"`
-	Tags                      pulumi.StringArrayInput `pulumi:"tags"`
-	Type                      pulumi.StringInput      `pulumi:"type"`
+	// Whether or not the service principal account is enabled.
+	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
+	// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
+	AppRoleAssignmentRequired pulumi.BoolInput `pulumi:"appRoleAssignmentRequired"`
+	// The application ID (client ID) of the application associated with this service principal.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The tenant ID where the associated application is registered.
+	ApplicationTenantId pulumi.StringInput `pulumi:"applicationTenantId"`
+	// The display name of the application associated with this service principal.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The object ID of the service principal.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
+	PreferredSingleSignOnMode pulumi.StringInput `pulumi:"preferredSingleSignOnMode"`
+	// The URL where the service exposes SAML metadata for federation.
+	SamlMetadataUrl pulumi.StringInput `pulumi:"samlMetadataUrl"`
+	// A list of identifier URI(s), copied over from the associated application.
+	ServicePrincipalNames pulumi.StringArrayInput `pulumi:"servicePrincipalNames"`
+	// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
+	SignInAudience pulumi.StringInput `pulumi:"signInAudience"`
+	// A list of tags applied to the service principal.
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetServicePrincipalsServicePrincipalArgs) ElementType() reflect.Type {
@@ -9380,50 +10250,62 @@ func (o GetServicePrincipalsServicePrincipalOutput) ToGetServicePrincipalsServic
 	return o
 }
 
+// Whether or not the service principal account is enabled.
 func (o GetServicePrincipalsServicePrincipalOutput) AccountEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
 }
 
+// Whether this service principal requires an app role assignment to a user or group before Azure AD will issue a user or access token to the application.
 func (o GetServicePrincipalsServicePrincipalOutput) AppRoleAssignmentRequired() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) bool { return v.AppRoleAssignmentRequired }).(pulumi.BoolOutput)
 }
 
+// The application ID (client ID) of the application associated with this service principal.
 func (o GetServicePrincipalsServicePrincipalOutput) ApplicationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationId }).(pulumi.StringOutput)
 }
 
+// The tenant ID where the associated application is registered.
 func (o GetServicePrincipalsServicePrincipalOutput) ApplicationTenantId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ApplicationTenantId }).(pulumi.StringOutput)
 }
 
+// The display name of the application associated with this service principal.
 func (o GetServicePrincipalsServicePrincipalOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The object ID of the service principal.
 func (o GetServicePrincipalsServicePrincipalOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// The single sign-on mode configured for this application. Azure AD uses the preferred single sign-on mode to launch the application from Microsoft 365 or the Azure AD My Apps.
 func (o GetServicePrincipalsServicePrincipalOutput) PreferredSingleSignOnMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.PreferredSingleSignOnMode }).(pulumi.StringOutput)
 }
 
+// The URL where the service exposes SAML metadata for federation.
 func (o GetServicePrincipalsServicePrincipalOutput) SamlMetadataUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.SamlMetadataUrl }).(pulumi.StringOutput)
 }
 
+// A list of identifier URI(s), copied over from the associated application.
 func (o GetServicePrincipalsServicePrincipalOutput) ServicePrincipalNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) []string { return v.ServicePrincipalNames }).(pulumi.StringArrayOutput)
 }
 
+// The Microsoft account types that are supported for the associated application. Possible values include `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`.
 func (o GetServicePrincipalsServicePrincipalOutput) SignInAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.SignInAudience }).(pulumi.StringOutput)
 }
 
+// A list of tags applied to the service principal.
 func (o GetServicePrincipalsServicePrincipalOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
+// Identifies whether the service principal represents an application or a managed identity. Possible values include `Application` or `ManagedIdentity`.
 func (o GetServicePrincipalsServicePrincipalOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServicePrincipalsServicePrincipal) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -9449,17 +10331,28 @@ func (o GetServicePrincipalsServicePrincipalArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetUsersUser struct {
-	AccountEnabled              bool   `pulumi:"accountEnabled"`
-	DisplayName                 string `pulumi:"displayName"`
-	EmployeeId                  string `pulumi:"employeeId"`
-	Mail                        string `pulumi:"mail"`
-	MailNickname                string `pulumi:"mailNickname"`
-	ObjectId                    string `pulumi:"objectId"`
-	OnpremisesImmutableId       string `pulumi:"onpremisesImmutableId"`
-	OnpremisesSamAccountName    string `pulumi:"onpremisesSamAccountName"`
+	// Whether or not the account is enabled.
+	AccountEnabled bool `pulumi:"accountEnabled"`
+	// The display name of the user.
+	DisplayName string `pulumi:"displayName"`
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId string `pulumi:"employeeId"`
+	// The primary email address of the user.
+	Mail string `pulumi:"mail"`
+	// The email alias of the user.
+	MailNickname string `pulumi:"mailNickname"`
+	// The object ID of the user.
+	ObjectId string `pulumi:"objectId"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+	OnpremisesImmutableId string `pulumi:"onpremisesImmutableId"`
+	// The on-premise SAM account name of the user.
+	OnpremisesSamAccountName string `pulumi:"onpremisesSamAccountName"`
+	// The on-premise user principal name of the user.
 	OnpremisesUserPrincipalName string `pulumi:"onpremisesUserPrincipalName"`
-	UsageLocation               string `pulumi:"usageLocation"`
-	UserPrincipalName           string `pulumi:"userPrincipalName"`
+	// The usage location of the user.
+	UsageLocation string `pulumi:"usageLocation"`
+	// The user principal name (UPN) of the user.
+	UserPrincipalName string `pulumi:"userPrincipalName"`
 }
 
 // GetUsersUserInput is an input type that accepts GetUsersUserArgs and GetUsersUserOutput values.
@@ -9474,17 +10367,28 @@ type GetUsersUserInput interface {
 }
 
 type GetUsersUserArgs struct {
-	AccountEnabled              pulumi.BoolInput   `pulumi:"accountEnabled"`
-	DisplayName                 pulumi.StringInput `pulumi:"displayName"`
-	EmployeeId                  pulumi.StringInput `pulumi:"employeeId"`
-	Mail                        pulumi.StringInput `pulumi:"mail"`
-	MailNickname                pulumi.StringInput `pulumi:"mailNickname"`
-	ObjectId                    pulumi.StringInput `pulumi:"objectId"`
-	OnpremisesImmutableId       pulumi.StringInput `pulumi:"onpremisesImmutableId"`
-	OnpremisesSamAccountName    pulumi.StringInput `pulumi:"onpremisesSamAccountName"`
+	// Whether or not the account is enabled.
+	AccountEnabled pulumi.BoolInput `pulumi:"accountEnabled"`
+	// The display name of the user.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The employee identifier assigned to the user by the organisation.
+	EmployeeId pulumi.StringInput `pulumi:"employeeId"`
+	// The primary email address of the user.
+	Mail pulumi.StringInput `pulumi:"mail"`
+	// The email alias of the user.
+	MailNickname pulumi.StringInput `pulumi:"mailNickname"`
+	// The object ID of the user.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+	// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
+	OnpremisesImmutableId pulumi.StringInput `pulumi:"onpremisesImmutableId"`
+	// The on-premise SAM account name of the user.
+	OnpremisesSamAccountName pulumi.StringInput `pulumi:"onpremisesSamAccountName"`
+	// The on-premise user principal name of the user.
 	OnpremisesUserPrincipalName pulumi.StringInput `pulumi:"onpremisesUserPrincipalName"`
-	UsageLocation               pulumi.StringInput `pulumi:"usageLocation"`
-	UserPrincipalName           pulumi.StringInput `pulumi:"userPrincipalName"`
+	// The usage location of the user.
+	UsageLocation pulumi.StringInput `pulumi:"usageLocation"`
+	// The user principal name (UPN) of the user.
+	UserPrincipalName pulumi.StringInput `pulumi:"userPrincipalName"`
 }
 
 func (GetUsersUserArgs) ElementType() reflect.Type {
@@ -9538,46 +10442,57 @@ func (o GetUsersUserOutput) ToGetUsersUserOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Whether or not the account is enabled.
 func (o GetUsersUserOutput) AccountEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetUsersUser) bool { return v.AccountEnabled }).(pulumi.BoolOutput)
 }
 
+// The display name of the user.
 func (o GetUsersUserOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// The employee identifier assigned to the user by the organisation.
 func (o GetUsersUserOutput) EmployeeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.EmployeeId }).(pulumi.StringOutput)
 }
 
+// The primary email address of the user.
 func (o GetUsersUserOutput) Mail() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.Mail }).(pulumi.StringOutput)
 }
 
+// The email alias of the user.
 func (o GetUsersUserOutput) MailNickname() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.MailNickname }).(pulumi.StringOutput)
 }
 
+// The object ID of the user.
 func (o GetUsersUserOutput) ObjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.ObjectId }).(pulumi.StringOutput)
 }
 
+// The value used to associate an on-premises Active Directory user account with their Azure AD user object.
 func (o GetUsersUserOutput) OnpremisesImmutableId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesImmutableId }).(pulumi.StringOutput)
 }
 
+// The on-premise SAM account name of the user.
 func (o GetUsersUserOutput) OnpremisesSamAccountName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesSamAccountName }).(pulumi.StringOutput)
 }
 
+// The on-premise user principal name of the user.
 func (o GetUsersUserOutput) OnpremisesUserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.OnpremisesUserPrincipalName }).(pulumi.StringOutput)
 }
 
+// The usage location of the user.
 func (o GetUsersUserOutput) UsageLocation() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UsageLocation }).(pulumi.StringOutput)
 }
 
+// The user principal name (UPN) of the user.
 func (o GetUsersUserOutput) UserPrincipalName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetUsersUser) string { return v.UserPrincipalName }).(pulumi.StringOutput)
 }
