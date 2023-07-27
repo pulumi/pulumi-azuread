@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewDirectoryRoleMember(ctx *pulumi.Context,
 		args = &DirectoryRoleMemberArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource DirectoryRoleMember
 	err := ctx.RegisterResource("azuread:index/directoryRoleMember:DirectoryRoleMember", name, args, &resource, opts...)
 	if err != nil {

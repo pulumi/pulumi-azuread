@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -96,6 +97,7 @@ import (
 //
 // ```
 func GetApplicationPublishedAppIds(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetApplicationPublishedAppIdsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationPublishedAppIdsResult
 	err := ctx.Invoke("azuread:index/getApplicationPublishedAppIds:getApplicationPublishedAppIds", nil, &rv, opts...)
 	if err != nil {

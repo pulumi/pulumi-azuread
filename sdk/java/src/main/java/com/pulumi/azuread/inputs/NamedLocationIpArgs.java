@@ -18,14 +18,14 @@ public final class NamedLocationIpArgs extends com.pulumi.resources.ResourceArgs
     public static final NamedLocationIpArgs Empty = new NamedLocationIpArgs();
 
     /**
-     * List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+     * List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * 
      */
     @Import(name="ipRanges", required=true)
     private Output<List<String>> ipRanges;
 
     /**
-     * @return List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+     * @return List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      * 
      */
     public Output<List<String>> ipRanges() {
@@ -73,7 +73,7 @@ public final class NamedLocationIpArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipRanges List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+         * @param ipRanges List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class NamedLocationIpArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipRanges List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+         * @param ipRanges List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class NamedLocationIpArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param ipRanges List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+         * @param ipRanges List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
          * 
          * @return builder
          * 

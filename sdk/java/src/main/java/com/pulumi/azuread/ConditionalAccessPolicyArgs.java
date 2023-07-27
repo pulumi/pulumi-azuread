@@ -52,19 +52,21 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
      * A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
-    @Import(name="grantControls", required=true)
-    private Output<ConditionalAccessPolicyGrantControlsArgs> grantControls;
+    @Import(name="grantControls")
+    private @Nullable Output<ConditionalAccessPolicyGrantControlsArgs> grantControls;
 
     /**
      * @return A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
-    public Output<ConditionalAccessPolicyGrantControlsArgs> grantControls() {
-        return this.grantControls;
+    public Optional<Output<ConditionalAccessPolicyGrantControlsArgs>> grantControls() {
+        return Optional.ofNullable(this.grantControls);
     }
 
     /**
      * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * 
+     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
      * 
      */
     @Import(name="sessionControls")
@@ -72,6 +74,8 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
 
     /**
      * @return A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * 
+     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
      * 
      */
     public Optional<Output<ConditionalAccessPolicySessionControlsArgs>> sessionControls() {
@@ -169,7 +173,7 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
          * @return builder
          * 
          */
-        public Builder grantControls(Output<ConditionalAccessPolicyGrantControlsArgs> grantControls) {
+        public Builder grantControls(@Nullable Output<ConditionalAccessPolicyGrantControlsArgs> grantControls) {
             $.grantControls = grantControls;
             return this;
         }
@@ -187,6 +191,8 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         /**
          * @param sessionControls A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
          * 
+         * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+         * 
          * @return builder
          * 
          */
@@ -197,6 +203,8 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
 
         /**
          * @param sessionControls A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+         * 
+         * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
          * 
          * @return builder
          * 
@@ -229,7 +237,6 @@ public final class ConditionalAccessPolicyArgs extends com.pulumi.resources.Reso
         public ConditionalAccessPolicyArgs build() {
             $.conditions = Objects.requireNonNull($.conditions, "expected parameter 'conditions' to be non-null");
             $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.grantControls = Objects.requireNonNull($.grantControls, "expected parameter 'grantControls' to be non-null");
             $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
             return $;
         }

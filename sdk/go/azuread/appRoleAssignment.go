@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -353,6 +354,7 @@ func NewAppRoleAssignment(ctx *pulumi.Context,
 	if args.ResourceObjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceObjectId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AppRoleAssignment
 	err := ctx.RegisterResource("azuread:index/appRoleAssignment:AppRoleAssignment", name, args, &resource, opts...)
 	if err != nil {

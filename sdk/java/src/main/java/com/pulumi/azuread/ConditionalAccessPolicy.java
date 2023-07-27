@@ -263,17 +263,19 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
      * 
      */
     @Export(name="grantControls", type=ConditionalAccessPolicyGrantControls.class, parameters={})
-    private Output<ConditionalAccessPolicyGrantControls> grantControls;
+    private Output</* @Nullable */ ConditionalAccessPolicyGrantControls> grantControls;
 
     /**
      * @return A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      * 
      */
-    public Output<ConditionalAccessPolicyGrantControls> grantControls() {
-        return this.grantControls;
+    public Output<Optional<ConditionalAccessPolicyGrantControls>> grantControls() {
+        return Codegen.optional(this.grantControls);
     }
     /**
      * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * 
+     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
      * 
      */
     @Export(name="sessionControls", type=ConditionalAccessPolicySessionControls.class, parameters={})
@@ -281,6 +283,8 @@ public class ConditionalAccessPolicy extends com.pulumi.resources.CustomResource
 
     /**
      * @return A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * 
+     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
      * 
      */
     public Output<Optional<ConditionalAccessPolicySessionControls>> sessionControls() {

@@ -66,12 +66,16 @@ public final class ConditionalAccessPolicyState extends com.pulumi.resources.Res
     /**
      * A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
      * 
+     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+     * 
      */
     @Import(name="sessionControls")
     private @Nullable Output<ConditionalAccessPolicySessionControlsArgs> sessionControls;
 
     /**
      * @return A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     * 
+     * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
      * 
      */
     public Optional<Output<ConditionalAccessPolicySessionControlsArgs>> sessionControls() {
@@ -187,6 +191,8 @@ public final class ConditionalAccessPolicyState extends com.pulumi.resources.Res
         /**
          * @param sessionControls A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
          * 
+         * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
+         * 
          * @return builder
          * 
          */
@@ -197,6 +203,8 @@ public final class ConditionalAccessPolicyState extends com.pulumi.resources.Res
 
         /**
          * @param sessionControls A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+         * 
+         * &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
          * 
          * @return builder
          * 

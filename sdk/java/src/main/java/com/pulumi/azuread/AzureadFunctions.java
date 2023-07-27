@@ -24,6 +24,8 @@ import com.pulumi.azuread.inputs.GetGroupArgs;
 import com.pulumi.azuread.inputs.GetGroupPlainArgs;
 import com.pulumi.azuread.inputs.GetGroupsArgs;
 import com.pulumi.azuread.inputs.GetGroupsPlainArgs;
+import com.pulumi.azuread.inputs.GetNamedLocationArgs;
+import com.pulumi.azuread.inputs.GetNamedLocationPlainArgs;
 import com.pulumi.azuread.inputs.GetServicePrincipalArgs;
 import com.pulumi.azuread.inputs.GetServicePrincipalPlainArgs;
 import com.pulumi.azuread.inputs.GetServicePrincipalsArgs;
@@ -41,10 +43,12 @@ import com.pulumi.azuread.outputs.GetApplicationResult;
 import com.pulumi.azuread.outputs.GetApplicationTemplateResult;
 import com.pulumi.azuread.outputs.GetClientConfigResult;
 import com.pulumi.azuread.outputs.GetDirectoryObjectResult;
+import com.pulumi.azuread.outputs.GetDirectoryRoleTemplatesResult;
 import com.pulumi.azuread.outputs.GetDirectoryRolesResult;
 import com.pulumi.azuread.outputs.GetDomainsResult;
 import com.pulumi.azuread.outputs.GetGroupResult;
 import com.pulumi.azuread.outputs.GetGroupsResult;
+import com.pulumi.azuread.outputs.GetNamedLocationResult;
 import com.pulumi.azuread.outputs.GetServicePrincipalResult;
 import com.pulumi.azuread.outputs.GetServicePrincipalsResult;
 import com.pulumi.azuread.outputs.GetUserResult;
@@ -3472,6 +3476,264 @@ public final class AzureadFunctions {
         return Deployment.getInstance().invokeAsync("azuread:index/getDirectoryObject:getDirectoryObject", TypeShape.of(GetDirectoryObjectResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to access information about directory role templates within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates() {
+        return getDirectoryRoleTemplates(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about directory role templates within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain() {
+        return getDirectoryRoleTemplatesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about directory role templates within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(InvokeArgs args) {
+        return getDirectoryRoleTemplates(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about directory role templates within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain(InvokeArgs args) {
+        return getDirectoryRoleTemplatesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to access information about directory role templates within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplates(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", TypeShape.of(GetDirectoryRoleTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to access information about directory role templates within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this resource.
+     * 
+     * When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+     * 
+     * When authenticated with a user principal, this data source does not require any additional roles.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = AzureadFunctions.getDirectoryRoleTemplates();
+     * 
+     *         ctx.export(&#34;roles&#34;, current.applyValue(getDirectoryRoleTemplatesResult -&gt; getDirectoryRoleTemplatesResult.objectIds()));
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetDirectoryRoleTemplatesResult> getDirectoryRoleTemplatesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates", TypeShape.of(GetDirectoryRoleTemplatesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Use this data source to access information about activated directory roles within Azure Active Directory.
      * 
      * ## API Permissions
@@ -5306,6 +5568,270 @@ public final class AzureadFunctions {
      */
     public static CompletableFuture<GetGroupsResult> getGroupsPlain(GetGroupsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a Named Location within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this resource requires the following application roles: `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
+     *             .displayName(&#34;My Named Location&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `country` - A `country` block as documented below, which describes a country-based named location.
+     * * `id` - The ID of the named location.
+     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+     * * 
+     * ***
+     * 
+     * `country` block exports the following:
+     * 
+     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * 
+     * ***
+     * 
+     * `ip` block exports the following:
+     * 
+     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `trusted` - Whether the named location is trusted.
+     * 
+     */
+    public static Output<GetNamedLocationResult> getNamedLocation(GetNamedLocationArgs args) {
+        return getNamedLocation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about a Named Location within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this resource requires the following application roles: `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
+     *             .displayName(&#34;My Named Location&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `country` - A `country` block as documented below, which describes a country-based named location.
+     * * `id` - The ID of the named location.
+     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+     * * 
+     * ***
+     * 
+     * `country` block exports the following:
+     * 
+     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * 
+     * ***
+     * 
+     * `ip` block exports the following:
+     * 
+     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `trusted` - Whether the named location is trusted.
+     * 
+     */
+    public static CompletableFuture<GetNamedLocationResult> getNamedLocationPlain(GetNamedLocationPlainArgs args) {
+        return getNamedLocationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets information about a Named Location within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this resource requires the following application roles: `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
+     *             .displayName(&#34;My Named Location&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `country` - A `country` block as documented below, which describes a country-based named location.
+     * * `id` - The ID of the named location.
+     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+     * * 
+     * ***
+     * 
+     * `country` block exports the following:
+     * 
+     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * 
+     * ***
+     * 
+     * `ip` block exports the following:
+     * 
+     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `trusted` - Whether the named location is trusted.
+     * 
+     */
+    public static Output<GetNamedLocationResult> getNamedLocation(GetNamedLocationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getNamedLocation:getNamedLocation", TypeShape.of(GetNamedLocationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets information about a Named Location within Azure Active Directory.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this resource requires the following application roles: `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this resource requires one of the following directory roles: `Conditional Access Administrator` or `Global Reader`
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetNamedLocationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getNamedLocation(GetNamedLocationArgs.builder()
+     *             .displayName(&#34;My Named Location&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * ## Attributes Reference
+     * 
+     * The following attributes are exported:
+     * 
+     * * `country` - A `country` block as documented below, which describes a country-based named location.
+     * * `id` - The ID of the named location.
+     * * `ip` - An `ip` block as documented below, which describes an IP-based named location.
+     * * 
+     * ***
+     * 
+     * `country` block exports the following:
+     * 
+     * * `countries_and_regions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
+     * * `include_unknown_countries_and_regions` - Whether IP addresses that don&#39;t map to a country or region are included in the named location.
+     * 
+     * ***
+     * 
+     * `ip` block exports the following:
+     * 
+     * * `ip_ranges` - List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
+     * * `trusted` - Whether the named location is trusted.
+     * 
+     */
+    public static CompletableFuture<GetNamedLocationResult> getNamedLocationPlain(GetNamedLocationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getNamedLocation:getNamedLocation", TypeShape.of(GetNamedLocationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Gets information about an existing service principal associated with an application within Azure Active Directory.

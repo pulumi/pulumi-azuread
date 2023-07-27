@@ -75,9 +75,12 @@ __all__ = [
     'GetApplicationSinglePageApplicationResult',
     'GetApplicationWebResult',
     'GetApplicationWebImplicitGrantResult',
+    'GetDirectoryRoleTemplatesRoleTemplateResult',
     'GetDirectoryRolesRoleResult',
     'GetDomainsDomainResult',
     'GetGroupDynamicMembershipResult',
+    'GetNamedLocationCountryResult',
+    'GetNamedLocationIpResult',
     'GetServicePrincipalAppRoleResult',
     'GetServicePrincipalFeatureResult',
     'GetServicePrincipalFeatureTagResult',
@@ -440,7 +443,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
         :param int duration_in_days: How many days each occurrence of the access review series will run.
         :param bool enabled: Whether to enable assignment review.
         :param str review_frequency: This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
-        :param str review_type: Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        :param str review_type: Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
         :param Sequence['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs'] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
         :param str starting_on: This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
         """
@@ -515,7 +518,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings(dict):
     @pulumi.getter(name="reviewType")
     def review_type(self) -> Optional[str]:
         """
-        Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
         """
         return pulumi.get(self, "review_type")
 
@@ -1932,6 +1935,8 @@ class ConditionalAccessPolicyConditions(dict):
             suggest = "client_app_types"
         elif key == "clientApplications":
             suggest = "client_applications"
+        elif key == "servicePrincipalRiskLevels":
+            suggest = "service_principal_risk_levels"
         elif key == "signInRiskLevels":
             suggest = "sign_in_risk_levels"
         elif key == "userRiskLevels":
@@ -1956,6 +1961,7 @@ class ConditionalAccessPolicyConditions(dict):
                  devices: Optional['outputs.ConditionalAccessPolicyConditionsDevices'] = None,
                  locations: Optional['outputs.ConditionalAccessPolicyConditionsLocations'] = None,
                  platforms: Optional['outputs.ConditionalAccessPolicyConditionsPlatforms'] = None,
+                 service_principal_risk_levels: Optional[Sequence[str]] = None,
                  sign_in_risk_levels: Optional[Sequence[str]] = None,
                  user_risk_levels: Optional[Sequence[str]] = None):
         """
@@ -1966,7 +1972,8 @@ class ConditionalAccessPolicyConditions(dict):
         :param 'ConditionalAccessPolicyConditionsDevicesArgs' devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsPlatformsArgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-        :param Sequence[str] sign_in_risk_levels: A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        :param Sequence[str] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        :param Sequence[str] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param Sequence[str] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
         pulumi.set(__self__, "applications", applications)
@@ -1980,6 +1987,8 @@ class ConditionalAccessPolicyConditions(dict):
             pulumi.set(__self__, "locations", locations)
         if platforms is not None:
             pulumi.set(__self__, "platforms", platforms)
+        if service_principal_risk_levels is not None:
+            pulumi.set(__self__, "service_principal_risk_levels", service_principal_risk_levels)
         if sign_in_risk_levels is not None:
             pulumi.set(__self__, "sign_in_risk_levels", sign_in_risk_levels)
         if user_risk_levels is not None:
@@ -2042,10 +2051,18 @@ class ConditionalAccessPolicyConditions(dict):
         return pulumi.get(self, "platforms")
 
     @property
+    @pulumi.getter(name="servicePrincipalRiskLevels")
+    def service_principal_risk_levels(self) -> Optional[Sequence[str]]:
+        """
+        A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "service_principal_risk_levels")
+
+    @property
     @pulumi.getter(name="signInRiskLevels")
     def sign_in_risk_levels(self) -> Optional[Sequence[str]]:
         """
-        A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
         return pulumi.get(self, "sign_in_risk_levels")
 
@@ -2812,7 +2829,7 @@ class NamedLocationIp(dict):
                  ip_ranges: Sequence[str],
                  trusted: Optional[bool] = None):
         """
-        :param Sequence[str] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        :param Sequence[str] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
         :param bool trusted: Whether the named location is trusted. Defaults to `false`.
         """
         pulumi.set(__self__, "ip_ranges", ip_ranges)
@@ -2823,7 +2840,7 @@ class NamedLocationIp(dict):
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> Sequence[str]:
         """
-        List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
         """
         return pulumi.get(self, "ip_ranges")
 
@@ -3954,6 +3971,46 @@ class GetApplicationWebImplicitGrantResult(dict):
 
 
 @pulumi.output_type
+class GetDirectoryRoleTemplatesRoleTemplateResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 display_name: str,
+                 object_id: str):
+        """
+        :param str description: The description of the directory role template.
+        :param str display_name: The display name of the directory role template.
+        :param str object_id: The object ID of the directory role template.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "object_id", object_id)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the directory role template.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        The display name of the directory role template.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> str:
+        """
+        The object ID of the directory role template.
+        """
+        return pulumi.get(self, "object_id")
+
+
+@pulumi.output_type
 class GetDirectoryRolesRoleResult(dict):
     def __init__(__self__, *,
                  description: str,
@@ -4126,6 +4183,44 @@ class GetGroupDynamicMembershipResult(dict):
         The rule that determines membership of this group.
         """
         return pulumi.get(self, "rule")
+
+
+@pulumi.output_type
+class GetNamedLocationCountryResult(dict):
+    def __init__(__self__, *,
+                 countries_and_regions: Sequence[str],
+                 include_unknown_countries_and_regions: bool):
+        pulumi.set(__self__, "countries_and_regions", countries_and_regions)
+        pulumi.set(__self__, "include_unknown_countries_and_regions", include_unknown_countries_and_regions)
+
+    @property
+    @pulumi.getter(name="countriesAndRegions")
+    def countries_and_regions(self) -> Sequence[str]:
+        return pulumi.get(self, "countries_and_regions")
+
+    @property
+    @pulumi.getter(name="includeUnknownCountriesAndRegions")
+    def include_unknown_countries_and_regions(self) -> bool:
+        return pulumi.get(self, "include_unknown_countries_and_regions")
+
+
+@pulumi.output_type
+class GetNamedLocationIpResult(dict):
+    def __init__(__self__, *,
+                 ip_ranges: Sequence[str],
+                 trusted: bool):
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "trusted", trusted)
+
+    @property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Sequence[str]:
+        return pulumi.get(self, "ip_ranges")
+
+    @property
+    @pulumi.getter
+    def trusted(self) -> bool:
+        return pulumi.get(self, "trusted")
 
 
 @pulumi.output_type

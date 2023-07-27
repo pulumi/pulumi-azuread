@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -149,6 +150,7 @@ func NewServicePrincipalTokenSigningCertificate(ctx *pulumi.Context,
 		"value",
 	})
 	opts = append(opts, secrets)
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePrincipalTokenSigningCertificate
 	err := ctx.RegisterResource("azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate", name, args, &resource, opts...)
 	if err != nil {

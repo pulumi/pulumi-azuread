@@ -153,6 +153,10 @@ export const getDirectoryObject: typeof import("./getDirectoryObject").getDirect
 export const getDirectoryObjectOutput: typeof import("./getDirectoryObject").getDirectoryObjectOutput = null as any;
 utilities.lazyLoad(exports, ["getDirectoryObject","getDirectoryObjectOutput"], () => require("./getDirectoryObject"));
 
+export { GetDirectoryRoleTemplatesResult } from "./getDirectoryRoleTemplates";
+export const getDirectoryRoleTemplates: typeof import("./getDirectoryRoleTemplates").getDirectoryRoleTemplates = null as any;
+utilities.lazyLoad(exports, ["getDirectoryRoleTemplates"], () => require("./getDirectoryRoleTemplates"));
+
 export { GetDirectoryRolesResult } from "./getDirectoryRoles";
 export const getDirectoryRoles: typeof import("./getDirectoryRoles").getDirectoryRoles = null as any;
 utilities.lazyLoad(exports, ["getDirectoryRoles"], () => require("./getDirectoryRoles"));
@@ -171,6 +175,11 @@ export { GetGroupsArgs, GetGroupsResult, GetGroupsOutputArgs } from "./getGroups
 export const getGroups: typeof import("./getGroups").getGroups = null as any;
 export const getGroupsOutput: typeof import("./getGroups").getGroupsOutput = null as any;
 utilities.lazyLoad(exports, ["getGroups","getGroupsOutput"], () => require("./getGroups"));
+
+export { GetNamedLocationArgs, GetNamedLocationResult, GetNamedLocationOutputArgs } from "./getNamedLocation";
+export const getNamedLocation: typeof import("./getNamedLocation").getNamedLocation = null as any;
+export const getNamedLocationOutput: typeof import("./getNamedLocation").getNamedLocationOutput = null as any;
+utilities.lazyLoad(exports, ["getNamedLocation","getNamedLocationOutput"], () => require("./getNamedLocation"));
 
 export { GetServicePrincipalArgs, GetServicePrincipalResult, GetServicePrincipalOutputArgs } from "./getServicePrincipal";
 export const getServicePrincipal: typeof import("./getServicePrincipal").getServicePrincipal = null as any;

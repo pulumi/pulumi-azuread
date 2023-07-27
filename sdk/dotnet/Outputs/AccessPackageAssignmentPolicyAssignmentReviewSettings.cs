@@ -38,7 +38,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly string? ReviewFrequency;
         /// <summary>
-        /// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        /// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
         /// </summary>
         public readonly string? ReviewType;
         /// <summary>

@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -105,6 +106,7 @@ func NewAdministrativeUnitRoleMember(ctx *pulumi.Context,
 	if args.RoleObjectId == nil {
 		return nil, errors.New("invalid value for required argument 'RoleObjectId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AdministrativeUnitRoleMember
 	err := ctx.RegisterResource("azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember", name, args, &resource, opts...)
 	if err != nil {

@@ -175,9 +175,11 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
     /**
      * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      */
-    public readonly grantControls!: pulumi.Output<outputs.ConditionalAccessPolicyGrantControls>;
+    public readonly grantControls!: pulumi.Output<outputs.ConditionalAccessPolicyGrantControls | undefined>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     *
+     * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      */
     public readonly sessionControls!: pulumi.Output<outputs.ConditionalAccessPolicySessionControls | undefined>;
     /**
@@ -211,9 +213,6 @@ export class ConditionalAccessPolicy extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.grantControls === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'grantControls'");
-            }
             if ((!args || args.state === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'state'");
             }
@@ -246,6 +245,8 @@ export interface ConditionalAccessPolicyState {
     grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     *
+     * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      */
     sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls>;
     /**
@@ -269,9 +270,11 @@ export interface ConditionalAccessPolicyArgs {
     /**
      * A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
      */
-    grantControls: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
+    grantControls?: pulumi.Input<inputs.ConditionalAccessPolicyGrantControls>;
     /**
      * A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+     *
+     * > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
      */
     sessionControls?: pulumi.Input<inputs.ConditionalAccessPolicySessionControls>;
     /**

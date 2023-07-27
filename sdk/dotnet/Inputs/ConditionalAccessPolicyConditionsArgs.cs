@@ -54,11 +54,23 @@ namespace Pulumi.AzureAD.Inputs
         [Input("platforms")]
         public Input<Inputs.ConditionalAccessPolicyConditionsPlatformsArgs>? Platforms { get; set; }
 
+        [Input("servicePrincipalRiskLevels")]
+        private InputList<string>? _servicePrincipalRiskLevels;
+
+        /// <summary>
+        /// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        /// </summary>
+        public InputList<string> ServicePrincipalRiskLevels
+        {
+            get => _servicePrincipalRiskLevels ?? (_servicePrincipalRiskLevels = new InputList<string>());
+            set => _servicePrincipalRiskLevels = value;
+        }
+
         [Input("signInRiskLevels")]
         private InputList<string>? _signInRiskLevels;
 
         /// <summary>
-        /// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        /// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         /// </summary>
         public InputList<string> SignInRiskLevels
         {
