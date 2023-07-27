@@ -595,6 +595,9 @@
                                         }
                                     }
                                 },
+                                "service_principal_risk_levels": {
+                                    "maxItemsOne": false
+                                },
                                 "sign_in_risk_levels": {
                                     "maxItemsOne": false,
                                     "elem": {}
@@ -1291,6 +1294,17 @@
             "azuread_directory_object": {
                 "current": "azuread:index/getDirectoryObject:getDirectoryObject"
             },
+            "azuread_directory_role_templates": {
+                "current": "azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates",
+                "fields": {
+                    "object_ids": {
+                        "maxItemsOne": false
+                    },
+                    "role_templates": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "azuread_directory_roles": {
                 "current": "azuread:index/getDirectoryRoles:getDirectoryRoles",
                 "fields": {
@@ -1357,6 +1371,31 @@
                     },
                     "object_ids": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_named_location": {
+                "current": "azuread:index/getNamedLocation:getNamedLocation",
+                "fields": {
+                    "country": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "countries_and_regions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "ip": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_ranges": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1516,10 +1555,12 @@
             "azuread:index/getApplicationTemplate:getApplicationTemplate": "azuread_application_template",
             "azuread:index/getClientConfig:getClientConfig": "azuread_client_config",
             "azuread:index/getDirectoryObject:getDirectoryObject": "azuread_directory_object",
+            "azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates": "azuread_directory_role_templates",
             "azuread:index/getDirectoryRoles:getDirectoryRoles": "azuread_directory_roles",
             "azuread:index/getDomains:getDomains": "azuread_domains",
             "azuread:index/getGroup:getGroup": "azuread_group",
             "azuread:index/getGroups:getGroups": "azuread_groups",
+            "azuread:index/getNamedLocation:getNamedLocation": "azuread_named_location",
             "azuread:index/getServicePrincipal:getServicePrincipal": "azuread_service_principal",
             "azuread:index/getServicePrincipals:getServicePrincipals": "azuread_service_principals",
             "azuread:index/getUser:getUser": "azuread_user",
@@ -1648,6 +1689,7 @@
             "azuread:index/ConditionalAccessPolicyConditions:ConditionalAccessPolicyConditions": {
                 "clientAppTypes": "client_app_types",
                 "clientApplications": "client_applications",
+                "servicePrincipalRiskLevels": "service_principal_risk_levels",
                 "signInRiskLevels": "sign_in_risk_levels",
                 "userRiskLevels": "user_risk_levels"
             },
@@ -1985,6 +2027,14 @@
             "azuread:index/getDirectoryObject:getDirectoryObject": {
                 "objectId": "object_id"
             },
+            "azuread:index/getDirectoryRoleTemplates:getDirectoryRoleTemplates": {
+                "objectIds": "object_ids",
+                "roleTemplates": "role_templates"
+            },
+            "azuread:index/getDirectoryRoleTemplatesRoleTemplate:getDirectoryRoleTemplatesRoleTemplate": {
+                "displayName": "display_name",
+                "objectId": "object_id"
+            },
             "azuread:index/getDirectoryRoles:getDirectoryRoles": {
                 "objectIds": "object_ids",
                 "templateIds": "template_ids"
@@ -2039,6 +2089,18 @@
                 "objectIds": "object_ids",
                 "returnAll": "return_all",
                 "securityEnabled": "security_enabled"
+            },
+            "azuread:index/getNamedLocation:getNamedLocation": {
+                "countries": "country",
+                "displayName": "display_name",
+                "ips": "ip"
+            },
+            "azuread:index/getNamedLocationCountry:getNamedLocationCountry": {
+                "countriesAndRegions": "countries_and_regions",
+                "includeUnknownCountriesAndRegions": "include_unknown_countries_and_regions"
+            },
+            "azuread:index/getNamedLocationIp:getNamedLocationIp": {
+                "ipRanges": "ip_ranges"
             },
             "azuread:index/getServicePrincipal:getServicePrincipal": {
                 "accountEnabled": "account_enabled",
