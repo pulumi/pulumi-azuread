@@ -38,7 +38,11 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly Outputs.ConditionalAccessPolicyConditionsPlatforms? Platforms;
         /// <summary>
-        /// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        /// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        /// </summary>
+        public readonly ImmutableArray<string> ServicePrincipalRiskLevels;
+        /// <summary>
+        /// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         /// </summary>
         public readonly ImmutableArray<string> SignInRiskLevels;
         /// <summary>
@@ -64,6 +68,8 @@ namespace Pulumi.AzureAD.Outputs
 
             Outputs.ConditionalAccessPolicyConditionsPlatforms? platforms,
 
+            ImmutableArray<string> servicePrincipalRiskLevels,
+
             ImmutableArray<string> signInRiskLevels,
 
             ImmutableArray<string> userRiskLevels,
@@ -76,6 +82,7 @@ namespace Pulumi.AzureAD.Outputs
             Devices = devices;
             Locations = locations;
             Platforms = platforms;
+            ServicePrincipalRiskLevels = servicePrincipalRiskLevels;
             SignInRiskLevels = signInRiskLevels;
             UserRiskLevels = userRiskLevels;
             Users = users;

@@ -4,6 +4,7 @@
 package azuread
 
 import (
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -38,6 +39,7 @@ import (
 //
 // ```
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClientConfigResult
 	err := ctx.Invoke("azuread:index/getClientConfig:getClientConfig", nil, &rv, opts...)
 	if err != nil {

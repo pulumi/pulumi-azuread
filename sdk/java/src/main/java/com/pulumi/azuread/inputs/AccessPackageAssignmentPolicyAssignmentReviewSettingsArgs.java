@@ -110,14 +110,14 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
     }
 
     /**
-     * Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     * Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      * 
      */
     @Import(name="reviewType")
     private @Nullable Output<String> reviewType;
 
     /**
-     * @return Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     * @return Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      * 
      */
     public Optional<Output<String>> reviewType() {
@@ -313,7 +313,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param reviewType Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+         * @param reviewType Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs ext
         }
 
         /**
-         * @param reviewType Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+         * @param reviewType Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
          * 
          * @return builder
          * 

@@ -113,14 +113,29 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
     }
 
     /**
-     * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     * A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+     * 
+     */
+    @Import(name="servicePrincipalRiskLevels")
+    private @Nullable Output<List<String>> servicePrincipalRiskLevels;
+
+    /**
+     * @return A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+     * 
+     */
+    public Optional<Output<List<String>>> servicePrincipalRiskLevels() {
+        return Optional.ofNullable(this.servicePrincipalRiskLevels);
+    }
+
+    /**
+     * A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      * 
      */
     @Import(name="signInRiskLevels")
     private @Nullable Output<List<String>> signInRiskLevels;
 
     /**
-     * @return A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     * @return A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      * 
      */
     public Optional<Output<List<String>>> signInRiskLevels() {
@@ -166,6 +181,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         this.devices = $.devices;
         this.locations = $.locations;
         this.platforms = $.platforms;
+        this.servicePrincipalRiskLevels = $.servicePrincipalRiskLevels;
         this.signInRiskLevels = $.signInRiskLevels;
         this.userRiskLevels = $.userRiskLevels;
         this.users = $.users;
@@ -326,7 +342,38 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param signInRiskLevels A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+         * @param servicePrincipalRiskLevels A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalRiskLevels(@Nullable Output<List<String>> servicePrincipalRiskLevels) {
+            $.servicePrincipalRiskLevels = servicePrincipalRiskLevels;
+            return this;
+        }
+
+        /**
+         * @param servicePrincipalRiskLevels A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalRiskLevels(List<String> servicePrincipalRiskLevels) {
+            return servicePrincipalRiskLevels(Output.of(servicePrincipalRiskLevels));
+        }
+
+        /**
+         * @param servicePrincipalRiskLevels A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder servicePrincipalRiskLevels(String... servicePrincipalRiskLevels) {
+            return servicePrincipalRiskLevels(List.of(servicePrincipalRiskLevels));
+        }
+
+        /**
+         * @param signInRiskLevels A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
          * 
          * @return builder
          * 
@@ -337,7 +384,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param signInRiskLevels A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+         * @param signInRiskLevels A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
          * 
          * @return builder
          * 
@@ -347,7 +394,7 @@ public final class ConditionalAccessPolicyConditionsArgs extends com.pulumi.reso
         }
 
         /**
-         * @param signInRiskLevels A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+         * @param signInRiskLevels A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
          * 
          * @return builder
          * 

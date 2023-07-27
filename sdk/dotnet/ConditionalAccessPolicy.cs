@@ -266,10 +266,12 @@ namespace Pulumi.AzureAD
         /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         /// </summary>
         [Output("grantControls")]
-        public Output<Outputs.ConditionalAccessPolicyGrantControls> GrantControls { get; private set; } = null!;
+        public Output<Outputs.ConditionalAccessPolicyGrantControls?> GrantControls { get; private set; } = null!;
 
         /// <summary>
         /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        /// 
+        /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         /// </summary>
         [Output("sessionControls")]
         public Output<Outputs.ConditionalAccessPolicySessionControls?> SessionControls { get; private set; } = null!;
@@ -341,11 +343,13 @@ namespace Pulumi.AzureAD
         /// <summary>
         /// A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
         /// </summary>
-        [Input("grantControls", required: true)]
-        public Input<Inputs.ConditionalAccessPolicyGrantControlsArgs> GrantControls { get; set; } = null!;
+        [Input("grantControls")]
+        public Input<Inputs.ConditionalAccessPolicyGrantControlsArgs>? GrantControls { get; set; }
 
         /// <summary>
         /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        /// 
+        /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         /// </summary>
         [Input("sessionControls")]
         public Input<Inputs.ConditionalAccessPolicySessionControlsArgs>? SessionControls { get; set; }
@@ -384,6 +388,8 @@ namespace Pulumi.AzureAD
 
         /// <summary>
         /// A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
+        /// 
+        /// &gt; Note: At least one of `grant_controls` and/or `session_controls` blocks must be specified.
         /// </summary>
         [Input("sessionControls")]
         public Input<Inputs.ConditionalAccessPolicySessionControlsGetArgs>? SessionControls { get; set; }

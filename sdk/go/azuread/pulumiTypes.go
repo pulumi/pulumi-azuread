@@ -7,8 +7,11 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
+
+var _ = internal.GetEnvOrDefault
 
 type AccessPackageAssignmentPolicyApprovalSettings struct {
 	// Whether an approval is required.
@@ -613,7 +616,7 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettings struct {
 	Enabled *bool `pulumi:"enabled"`
 	// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
 	ReviewFrequency *string `pulumi:"reviewFrequency"`
-	// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+	// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
 	ReviewType *string `pulumi:"reviewType"`
 	// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
 	Reviewers []AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewer `pulumi:"reviewers"`
@@ -645,7 +648,7 @@ type AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
 	ReviewFrequency pulumi.StringPtrInput `pulumi:"reviewFrequency"`
-	// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+	// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
 	ReviewType pulumi.StringPtrInput `pulumi:"reviewType"`
 	// One or more `reviewer` blocks to specify the users who will be reviewers (when `reviewType` is `Reviewers`), as documented below.
 	Reviewers AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArrayInput `pulumi:"reviewers"`
@@ -766,7 +769,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ReviewFrequ
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.ReviewFrequency }).(pulumi.StringPtrOutput)
 }
 
-// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsOutput) ReviewType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AccessPackageAssignmentPolicyAssignmentReviewSettings) *string { return v.ReviewType }).(pulumi.StringPtrOutput)
 }
@@ -867,7 +870,7 @@ func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewFr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
 func (o AccessPackageAssignmentPolicyAssignmentReviewSettingsPtrOutput) ReviewType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AccessPackageAssignmentPolicyAssignmentReviewSettings) *string {
 		if v == nil {
@@ -3890,7 +3893,9 @@ type ConditionalAccessPolicyConditions struct {
 	Locations *ConditionalAccessPolicyConditionsLocations `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
 	Platforms *ConditionalAccessPolicyConditionsPlatforms `pulumi:"platforms"`
-	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+	ServicePrincipalRiskLevels []string `pulumi:"servicePrincipalRiskLevels"`
+	// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	SignInRiskLevels []string `pulumi:"signInRiskLevels"`
 	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	UserRiskLevels []string `pulumi:"userRiskLevels"`
@@ -3922,7 +3927,9 @@ type ConditionalAccessPolicyConditionsArgs struct {
 	Locations ConditionalAccessPolicyConditionsLocationsPtrInput `pulumi:"locations"`
 	// A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
 	Platforms ConditionalAccessPolicyConditionsPlatformsPtrInput `pulumi:"platforms"`
-	// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+	// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+	ServicePrincipalRiskLevels pulumi.StringArrayInput `pulumi:"servicePrincipalRiskLevels"`
+	// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	SignInRiskLevels pulumi.StringArrayInput `pulumi:"signInRiskLevels"`
 	// A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 	UserRiskLevels pulumi.StringArrayInput `pulumi:"userRiskLevels"`
@@ -4045,7 +4052,12 @@ func (o ConditionalAccessPolicyConditionsOutput) Platforms() ConditionalAccessPo
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
-// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsOutput) ServicePrincipalRiskLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.ServicePrincipalRiskLevels }).(pulumi.StringArrayOutput)
+}
+
+// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsOutput) SignInRiskLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ConditionalAccessPolicyConditions) []string { return v.SignInRiskLevels }).(pulumi.StringArrayOutput)
 }
@@ -4144,7 +4156,17 @@ func (o ConditionalAccessPolicyConditionsPtrOutput) Platforms() ConditionalAcces
 	}).(ConditionalAccessPolicyConditionsPlatformsPtrOutput)
 }
 
-// A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+// A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+func (o ConditionalAccessPolicyConditionsPtrOutput) ServicePrincipalRiskLevels() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServicePrincipalRiskLevels
+	}).(pulumi.StringArrayOutput)
+}
+
+// A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
 func (o ConditionalAccessPolicyConditionsPtrOutput) SignInRiskLevels() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicyConditions) []string {
 		if v == nil {
@@ -6383,7 +6405,7 @@ func (o NamedLocationCountryPtrOutput) IncludeUnknownCountriesAndRegions() pulum
 }
 
 type NamedLocationIp struct {
-	// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+	// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 	IpRanges []string `pulumi:"ipRanges"`
 	// Whether the named location is trusted. Defaults to `false`.
 	Trusted *bool `pulumi:"trusted"`
@@ -6401,7 +6423,7 @@ type NamedLocationIpInput interface {
 }
 
 type NamedLocationIpArgs struct {
-	// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+	// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
 	// Whether the named location is trusted. Defaults to `false`.
 	Trusted pulumi.BoolPtrInput `pulumi:"trusted"`
@@ -6484,7 +6506,7 @@ func (o NamedLocationIpOutput) ToNamedLocationIpPtrOutputWithContext(ctx context
 	}).(NamedLocationIpPtrOutput)
 }
 
-// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 func (o NamedLocationIpOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NamedLocationIp) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
 }
@@ -6518,7 +6540,7 @@ func (o NamedLocationIpPtrOutput) Elem() NamedLocationIpOutput {
 	}).(NamedLocationIpOutput)
 }
 
-// List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+// List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
 func (o NamedLocationIpPtrOutput) IpRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NamedLocationIp) []string {
 		if v == nil {
@@ -9109,6 +9131,121 @@ func (o GetApplicationWebImplicitGrantArrayOutput) Index(i pulumi.IntInput) GetA
 	}).(GetApplicationWebImplicitGrantOutput)
 }
 
+type GetDirectoryRoleTemplatesRoleTemplate struct {
+	// The description of the directory role template.
+	Description string `pulumi:"description"`
+	// The display name of the directory role template.
+	DisplayName string `pulumi:"displayName"`
+	// The object ID of the directory role template.
+	ObjectId string `pulumi:"objectId"`
+}
+
+// GetDirectoryRoleTemplatesRoleTemplateInput is an input type that accepts GetDirectoryRoleTemplatesRoleTemplateArgs and GetDirectoryRoleTemplatesRoleTemplateOutput values.
+// You can construct a concrete instance of `GetDirectoryRoleTemplatesRoleTemplateInput` via:
+//
+//	GetDirectoryRoleTemplatesRoleTemplateArgs{...}
+type GetDirectoryRoleTemplatesRoleTemplateInput interface {
+	pulumi.Input
+
+	ToGetDirectoryRoleTemplatesRoleTemplateOutput() GetDirectoryRoleTemplatesRoleTemplateOutput
+	ToGetDirectoryRoleTemplatesRoleTemplateOutputWithContext(context.Context) GetDirectoryRoleTemplatesRoleTemplateOutput
+}
+
+type GetDirectoryRoleTemplatesRoleTemplateArgs struct {
+	// The description of the directory role template.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The display name of the directory role template.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The object ID of the directory role template.
+	ObjectId pulumi.StringInput `pulumi:"objectId"`
+}
+
+func (GetDirectoryRoleTemplatesRoleTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoryRoleTemplatesRoleTemplate)(nil)).Elem()
+}
+
+func (i GetDirectoryRoleTemplatesRoleTemplateArgs) ToGetDirectoryRoleTemplatesRoleTemplateOutput() GetDirectoryRoleTemplatesRoleTemplateOutput {
+	return i.ToGetDirectoryRoleTemplatesRoleTemplateOutputWithContext(context.Background())
+}
+
+func (i GetDirectoryRoleTemplatesRoleTemplateArgs) ToGetDirectoryRoleTemplatesRoleTemplateOutputWithContext(ctx context.Context) GetDirectoryRoleTemplatesRoleTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoryRoleTemplatesRoleTemplateOutput)
+}
+
+// GetDirectoryRoleTemplatesRoleTemplateArrayInput is an input type that accepts GetDirectoryRoleTemplatesRoleTemplateArray and GetDirectoryRoleTemplatesRoleTemplateArrayOutput values.
+// You can construct a concrete instance of `GetDirectoryRoleTemplatesRoleTemplateArrayInput` via:
+//
+//	GetDirectoryRoleTemplatesRoleTemplateArray{ GetDirectoryRoleTemplatesRoleTemplateArgs{...} }
+type GetDirectoryRoleTemplatesRoleTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetDirectoryRoleTemplatesRoleTemplateArrayOutput() GetDirectoryRoleTemplatesRoleTemplateArrayOutput
+	ToGetDirectoryRoleTemplatesRoleTemplateArrayOutputWithContext(context.Context) GetDirectoryRoleTemplatesRoleTemplateArrayOutput
+}
+
+type GetDirectoryRoleTemplatesRoleTemplateArray []GetDirectoryRoleTemplatesRoleTemplateInput
+
+func (GetDirectoryRoleTemplatesRoleTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirectoryRoleTemplatesRoleTemplate)(nil)).Elem()
+}
+
+func (i GetDirectoryRoleTemplatesRoleTemplateArray) ToGetDirectoryRoleTemplatesRoleTemplateArrayOutput() GetDirectoryRoleTemplatesRoleTemplateArrayOutput {
+	return i.ToGetDirectoryRoleTemplatesRoleTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetDirectoryRoleTemplatesRoleTemplateArray) ToGetDirectoryRoleTemplatesRoleTemplateArrayOutputWithContext(ctx context.Context) GetDirectoryRoleTemplatesRoleTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDirectoryRoleTemplatesRoleTemplateArrayOutput)
+}
+
+type GetDirectoryRoleTemplatesRoleTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetDirectoryRoleTemplatesRoleTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDirectoryRoleTemplatesRoleTemplate)(nil)).Elem()
+}
+
+func (o GetDirectoryRoleTemplatesRoleTemplateOutput) ToGetDirectoryRoleTemplatesRoleTemplateOutput() GetDirectoryRoleTemplatesRoleTemplateOutput {
+	return o
+}
+
+func (o GetDirectoryRoleTemplatesRoleTemplateOutput) ToGetDirectoryRoleTemplatesRoleTemplateOutputWithContext(ctx context.Context) GetDirectoryRoleTemplatesRoleTemplateOutput {
+	return o
+}
+
+// The description of the directory role template.
+func (o GetDirectoryRoleTemplatesRoleTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRoleTemplatesRoleTemplate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The display name of the directory role template.
+func (o GetDirectoryRoleTemplatesRoleTemplateOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRoleTemplatesRoleTemplate) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The object ID of the directory role template.
+func (o GetDirectoryRoleTemplatesRoleTemplateOutput) ObjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDirectoryRoleTemplatesRoleTemplate) string { return v.ObjectId }).(pulumi.StringOutput)
+}
+
+type GetDirectoryRoleTemplatesRoleTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDirectoryRoleTemplatesRoleTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDirectoryRoleTemplatesRoleTemplate)(nil)).Elem()
+}
+
+func (o GetDirectoryRoleTemplatesRoleTemplateArrayOutput) ToGetDirectoryRoleTemplatesRoleTemplateArrayOutput() GetDirectoryRoleTemplatesRoleTemplateArrayOutput {
+	return o
+}
+
+func (o GetDirectoryRoleTemplatesRoleTemplateArrayOutput) ToGetDirectoryRoleTemplatesRoleTemplateArrayOutputWithContext(ctx context.Context) GetDirectoryRoleTemplatesRoleTemplateArrayOutput {
+	return o
+}
+
+func (o GetDirectoryRoleTemplatesRoleTemplateArrayOutput) Index(i pulumi.IntInput) GetDirectoryRoleTemplatesRoleTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDirectoryRoleTemplatesRoleTemplate {
+		return vs[0].([]GetDirectoryRoleTemplatesRoleTemplate)[vs[1].(int)]
+	}).(GetDirectoryRoleTemplatesRoleTemplateOutput)
+}
+
 type GetDirectoryRolesRole struct {
 	// The description of the directory role.
 	Description string `pulumi:"description"`
@@ -9497,6 +9634,206 @@ func (o GetGroupDynamicMembershipArrayOutput) Index(i pulumi.IntInput) GetGroupD
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGroupDynamicMembership {
 		return vs[0].([]GetGroupDynamicMembership)[vs[1].(int)]
 	}).(GetGroupDynamicMembershipOutput)
+}
+
+type GetNamedLocationCountry struct {
+	CountriesAndRegions               []string `pulumi:"countriesAndRegions"`
+	IncludeUnknownCountriesAndRegions bool     `pulumi:"includeUnknownCountriesAndRegions"`
+}
+
+// GetNamedLocationCountryInput is an input type that accepts GetNamedLocationCountryArgs and GetNamedLocationCountryOutput values.
+// You can construct a concrete instance of `GetNamedLocationCountryInput` via:
+//
+//	GetNamedLocationCountryArgs{...}
+type GetNamedLocationCountryInput interface {
+	pulumi.Input
+
+	ToGetNamedLocationCountryOutput() GetNamedLocationCountryOutput
+	ToGetNamedLocationCountryOutputWithContext(context.Context) GetNamedLocationCountryOutput
+}
+
+type GetNamedLocationCountryArgs struct {
+	CountriesAndRegions               pulumi.StringArrayInput `pulumi:"countriesAndRegions"`
+	IncludeUnknownCountriesAndRegions pulumi.BoolInput        `pulumi:"includeUnknownCountriesAndRegions"`
+}
+
+func (GetNamedLocationCountryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamedLocationCountry)(nil)).Elem()
+}
+
+func (i GetNamedLocationCountryArgs) ToGetNamedLocationCountryOutput() GetNamedLocationCountryOutput {
+	return i.ToGetNamedLocationCountryOutputWithContext(context.Background())
+}
+
+func (i GetNamedLocationCountryArgs) ToGetNamedLocationCountryOutputWithContext(ctx context.Context) GetNamedLocationCountryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamedLocationCountryOutput)
+}
+
+// GetNamedLocationCountryArrayInput is an input type that accepts GetNamedLocationCountryArray and GetNamedLocationCountryArrayOutput values.
+// You can construct a concrete instance of `GetNamedLocationCountryArrayInput` via:
+//
+//	GetNamedLocationCountryArray{ GetNamedLocationCountryArgs{...} }
+type GetNamedLocationCountryArrayInput interface {
+	pulumi.Input
+
+	ToGetNamedLocationCountryArrayOutput() GetNamedLocationCountryArrayOutput
+	ToGetNamedLocationCountryArrayOutputWithContext(context.Context) GetNamedLocationCountryArrayOutput
+}
+
+type GetNamedLocationCountryArray []GetNamedLocationCountryInput
+
+func (GetNamedLocationCountryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamedLocationCountry)(nil)).Elem()
+}
+
+func (i GetNamedLocationCountryArray) ToGetNamedLocationCountryArrayOutput() GetNamedLocationCountryArrayOutput {
+	return i.ToGetNamedLocationCountryArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamedLocationCountryArray) ToGetNamedLocationCountryArrayOutputWithContext(ctx context.Context) GetNamedLocationCountryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamedLocationCountryArrayOutput)
+}
+
+type GetNamedLocationCountryOutput struct{ *pulumi.OutputState }
+
+func (GetNamedLocationCountryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamedLocationCountry)(nil)).Elem()
+}
+
+func (o GetNamedLocationCountryOutput) ToGetNamedLocationCountryOutput() GetNamedLocationCountryOutput {
+	return o
+}
+
+func (o GetNamedLocationCountryOutput) ToGetNamedLocationCountryOutputWithContext(ctx context.Context) GetNamedLocationCountryOutput {
+	return o
+}
+
+func (o GetNamedLocationCountryOutput) CountriesAndRegions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamedLocationCountry) []string { return v.CountriesAndRegions }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNamedLocationCountryOutput) IncludeUnknownCountriesAndRegions() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNamedLocationCountry) bool { return v.IncludeUnknownCountriesAndRegions }).(pulumi.BoolOutput)
+}
+
+type GetNamedLocationCountryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamedLocationCountryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamedLocationCountry)(nil)).Elem()
+}
+
+func (o GetNamedLocationCountryArrayOutput) ToGetNamedLocationCountryArrayOutput() GetNamedLocationCountryArrayOutput {
+	return o
+}
+
+func (o GetNamedLocationCountryArrayOutput) ToGetNamedLocationCountryArrayOutputWithContext(ctx context.Context) GetNamedLocationCountryArrayOutput {
+	return o
+}
+
+func (o GetNamedLocationCountryArrayOutput) Index(i pulumi.IntInput) GetNamedLocationCountryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamedLocationCountry {
+		return vs[0].([]GetNamedLocationCountry)[vs[1].(int)]
+	}).(GetNamedLocationCountryOutput)
+}
+
+type GetNamedLocationIp struct {
+	IpRanges []string `pulumi:"ipRanges"`
+	Trusted  bool     `pulumi:"trusted"`
+}
+
+// GetNamedLocationIpInput is an input type that accepts GetNamedLocationIpArgs and GetNamedLocationIpOutput values.
+// You can construct a concrete instance of `GetNamedLocationIpInput` via:
+//
+//	GetNamedLocationIpArgs{...}
+type GetNamedLocationIpInput interface {
+	pulumi.Input
+
+	ToGetNamedLocationIpOutput() GetNamedLocationIpOutput
+	ToGetNamedLocationIpOutputWithContext(context.Context) GetNamedLocationIpOutput
+}
+
+type GetNamedLocationIpArgs struct {
+	IpRanges pulumi.StringArrayInput `pulumi:"ipRanges"`
+	Trusted  pulumi.BoolInput        `pulumi:"trusted"`
+}
+
+func (GetNamedLocationIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamedLocationIp)(nil)).Elem()
+}
+
+func (i GetNamedLocationIpArgs) ToGetNamedLocationIpOutput() GetNamedLocationIpOutput {
+	return i.ToGetNamedLocationIpOutputWithContext(context.Background())
+}
+
+func (i GetNamedLocationIpArgs) ToGetNamedLocationIpOutputWithContext(ctx context.Context) GetNamedLocationIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamedLocationIpOutput)
+}
+
+// GetNamedLocationIpArrayInput is an input type that accepts GetNamedLocationIpArray and GetNamedLocationIpArrayOutput values.
+// You can construct a concrete instance of `GetNamedLocationIpArrayInput` via:
+//
+//	GetNamedLocationIpArray{ GetNamedLocationIpArgs{...} }
+type GetNamedLocationIpArrayInput interface {
+	pulumi.Input
+
+	ToGetNamedLocationIpArrayOutput() GetNamedLocationIpArrayOutput
+	ToGetNamedLocationIpArrayOutputWithContext(context.Context) GetNamedLocationIpArrayOutput
+}
+
+type GetNamedLocationIpArray []GetNamedLocationIpInput
+
+func (GetNamedLocationIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamedLocationIp)(nil)).Elem()
+}
+
+func (i GetNamedLocationIpArray) ToGetNamedLocationIpArrayOutput() GetNamedLocationIpArrayOutput {
+	return i.ToGetNamedLocationIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetNamedLocationIpArray) ToGetNamedLocationIpArrayOutputWithContext(ctx context.Context) GetNamedLocationIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNamedLocationIpArrayOutput)
+}
+
+type GetNamedLocationIpOutput struct{ *pulumi.OutputState }
+
+func (GetNamedLocationIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNamedLocationIp)(nil)).Elem()
+}
+
+func (o GetNamedLocationIpOutput) ToGetNamedLocationIpOutput() GetNamedLocationIpOutput {
+	return o
+}
+
+func (o GetNamedLocationIpOutput) ToGetNamedLocationIpOutputWithContext(ctx context.Context) GetNamedLocationIpOutput {
+	return o
+}
+
+func (o GetNamedLocationIpOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNamedLocationIp) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+func (o GetNamedLocationIpOutput) Trusted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNamedLocationIp) bool { return v.Trusted }).(pulumi.BoolOutput)
+}
+
+type GetNamedLocationIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNamedLocationIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNamedLocationIp)(nil)).Elem()
+}
+
+func (o GetNamedLocationIpArrayOutput) ToGetNamedLocationIpArrayOutput() GetNamedLocationIpArrayOutput {
+	return o
+}
+
+func (o GetNamedLocationIpArrayOutput) ToGetNamedLocationIpArrayOutputWithContext(ctx context.Context) GetNamedLocationIpArrayOutput {
+	return o
+}
+
+func (o GetNamedLocationIpArrayOutput) Index(i pulumi.IntInput) GetNamedLocationIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNamedLocationIp {
+		return vs[0].([]GetNamedLocationIp)[vs[1].(int)]
+	}).(GetNamedLocationIpOutput)
 }
 
 type GetServicePrincipalAppRole struct {
@@ -10644,12 +10981,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebArrayInput)(nil)).Elem(), GetApplicationWebArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantInput)(nil)).Elem(), GetApplicationWebImplicitGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationWebImplicitGrantArrayInput)(nil)).Elem(), GetApplicationWebImplicitGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRoleTemplatesRoleTemplateInput)(nil)).Elem(), GetDirectoryRoleTemplatesRoleTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRoleTemplatesRoleTemplateArrayInput)(nil)).Elem(), GetDirectoryRoleTemplatesRoleTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRolesRoleInput)(nil)).Elem(), GetDirectoryRolesRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDirectoryRolesRoleArrayInput)(nil)).Elem(), GetDirectoryRolesRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainInput)(nil)).Elem(), GetDomainsDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDomainsDomainArrayInput)(nil)).Elem(), GetDomainsDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipInput)(nil)).Elem(), GetGroupDynamicMembershipArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGroupDynamicMembershipArrayInput)(nil)).Elem(), GetGroupDynamicMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationCountryInput)(nil)).Elem(), GetNamedLocationCountryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationCountryArrayInput)(nil)).Elem(), GetNamedLocationCountryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationIpInput)(nil)).Elem(), GetNamedLocationIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNamedLocationIpArrayInput)(nil)).Elem(), GetNamedLocationIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalAppRoleInput)(nil)).Elem(), GetServicePrincipalAppRoleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalAppRoleArrayInput)(nil)).Elem(), GetServicePrincipalAppRoleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServicePrincipalFeatureInput)(nil)).Elem(), GetServicePrincipalFeatureArgs{})
@@ -10790,12 +11133,18 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationWebArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantOutput{})
 	pulumi.RegisterOutputType(GetApplicationWebImplicitGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetDirectoryRoleTemplatesRoleTemplateOutput{})
+	pulumi.RegisterOutputType(GetDirectoryRoleTemplatesRoleTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetDirectoryRolesRoleOutput{})
 	pulumi.RegisterOutputType(GetDirectoryRolesRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainOutput{})
 	pulumi.RegisterOutputType(GetDomainsDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetGroupDynamicMembershipOutput{})
 	pulumi.RegisterOutputType(GetGroupDynamicMembershipArrayOutput{})
+	pulumi.RegisterOutputType(GetNamedLocationCountryOutput{})
+	pulumi.RegisterOutputType(GetNamedLocationCountryArrayOutput{})
+	pulumi.RegisterOutputType(GetNamedLocationIpOutput{})
+	pulumi.RegisterOutputType(GetNamedLocationIpArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalAppRoleArrayOutput{})
 	pulumi.RegisterOutputType(GetServicePrincipalFeatureOutput{})

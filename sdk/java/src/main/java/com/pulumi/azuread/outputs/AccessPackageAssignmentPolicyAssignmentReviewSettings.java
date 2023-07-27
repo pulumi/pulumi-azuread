@@ -46,7 +46,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
      */
     private @Nullable String reviewFrequency;
     /**
-     * @return Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     * @return Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      * 
      */
     private @Nullable String reviewType;
@@ -105,7 +105,7 @@ public final class AccessPackageAssignmentPolicyAssignmentReviewSettings {
         return Optional.ofNullable(this.reviewFrequency);
     }
     /**
-     * @return Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     * @return Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      * 
      */
     public Optional<String> reviewType() {

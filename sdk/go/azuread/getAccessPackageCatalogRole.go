@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ import (
 //
 // ```
 func GetAccessPackageCatalogRole(ctx *pulumi.Context, args *GetAccessPackageCatalogRoleArgs, opts ...pulumi.InvokeOption) (*GetAccessPackageCatalogRoleResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessPackageCatalogRoleResult
 	err := ctx.Invoke("azuread:index/getAccessPackageCatalogRole:getAccessPackageCatalogRole", args, &rv, opts...)
 	if err != nil {

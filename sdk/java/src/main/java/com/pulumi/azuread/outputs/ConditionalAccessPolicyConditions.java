@@ -49,7 +49,12 @@ public final class ConditionalAccessPolicyConditions {
      */
     private @Nullable ConditionalAccessPolicyConditionsPlatforms platforms;
     /**
-     * @return A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     * @return A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+     * 
+     */
+    private @Nullable List<String> servicePrincipalRiskLevels;
+    /**
+     * @return A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      * 
      */
     private @Nullable List<String> signInRiskLevels;
@@ -108,7 +113,14 @@ public final class ConditionalAccessPolicyConditions {
         return Optional.ofNullable(this.platforms);
     }
     /**
-     * @return A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     * @return A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+     * 
+     */
+    public List<String> servicePrincipalRiskLevels() {
+        return this.servicePrincipalRiskLevels == null ? List.of() : this.servicePrincipalRiskLevels;
+    }
+    /**
+     * @return A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      * 
      */
     public List<String> signInRiskLevels() {
@@ -144,6 +156,7 @@ public final class ConditionalAccessPolicyConditions {
         private @Nullable ConditionalAccessPolicyConditionsDevices devices;
         private @Nullable ConditionalAccessPolicyConditionsLocations locations;
         private @Nullable ConditionalAccessPolicyConditionsPlatforms platforms;
+        private @Nullable List<String> servicePrincipalRiskLevels;
         private @Nullable List<String> signInRiskLevels;
         private @Nullable List<String> userRiskLevels;
         private ConditionalAccessPolicyConditionsUsers users;
@@ -156,6 +169,7 @@ public final class ConditionalAccessPolicyConditions {
     	      this.devices = defaults.devices;
     	      this.locations = defaults.locations;
     	      this.platforms = defaults.platforms;
+    	      this.servicePrincipalRiskLevels = defaults.servicePrincipalRiskLevels;
     	      this.signInRiskLevels = defaults.signInRiskLevels;
     	      this.userRiskLevels = defaults.userRiskLevels;
     	      this.users = defaults.users;
@@ -195,6 +209,14 @@ public final class ConditionalAccessPolicyConditions {
             return this;
         }
         @CustomType.Setter
+        public Builder servicePrincipalRiskLevels(@Nullable List<String> servicePrincipalRiskLevels) {
+            this.servicePrincipalRiskLevels = servicePrincipalRiskLevels;
+            return this;
+        }
+        public Builder servicePrincipalRiskLevels(String... servicePrincipalRiskLevels) {
+            return servicePrincipalRiskLevels(List.of(servicePrincipalRiskLevels));
+        }
+        @CustomType.Setter
         public Builder signInRiskLevels(@Nullable List<String> signInRiskLevels) {
             this.signInRiskLevels = signInRiskLevels;
             return this;
@@ -223,6 +245,7 @@ public final class ConditionalAccessPolicyConditions {
             o.devices = devices;
             o.locations = locations;
             o.platforms = platforms;
+            o.servicePrincipalRiskLevels = servicePrincipalRiskLevels;
             o.signInRiskLevels = signInRiskLevels;
             o.userRiskLevels = userRiskLevels;
             o.users = users;

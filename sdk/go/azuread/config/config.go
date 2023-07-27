@@ -4,9 +4,12 @@
 package config
 
 import (
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
+
+var _ = internal.GetEnvOrDefault
 
 // Base64 encoded PKCS#12 certificate bundle to use when authenticating as a Service Principal using a Client Certificate
 func GetClientCertificate(ctx *pulumi.Context) string {
@@ -48,7 +51,7 @@ func GetEnvironment(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
+	if d := internal.GetEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -66,7 +69,7 @@ func GetMsiEndpoint(ctx *pulumi.Context) string {
 		return v
 	}
 	var value string
-	if d := getEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
+	if d := internal.GetEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
 		value = d.(string)
 	}
 	return value
@@ -116,7 +119,7 @@ func GetUseMsi(ctx *pulumi.Context) bool {
 		return v
 	}
 	var value bool
-	if d := getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI"); d != nil {
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "ARM_USE_MSI"); d != nil {
 		value = d.(bool)
 	}
 	return value

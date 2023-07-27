@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -43,6 +44,7 @@ import (
 //
 // ```
 func GetApplicationTemplate(ctx *pulumi.Context, args *GetApplicationTemplateArgs, opts ...pulumi.InvokeOption) (*GetApplicationTemplateResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationTemplateResult
 	err := ctx.Invoke("azuread:index/getApplicationTemplate:getApplicationTemplate", args, &rv, opts...)
 	if err != nil {

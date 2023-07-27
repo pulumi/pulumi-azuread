@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -244,8 +245,10 @@ type ConditionalAccessPolicy struct {
 	// The friendly name for this Conditional Access Policy.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-	GrantControls ConditionalAccessPolicyGrantControlsOutput `pulumi:"grantControls"`
+	GrantControls ConditionalAccessPolicyGrantControlsPtrOutput `pulumi:"grantControls"`
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+	//
+	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
 	SessionControls ConditionalAccessPolicySessionControlsPtrOutput `pulumi:"sessionControls"`
 	// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
 	State pulumi.StringOutput `pulumi:"state"`
@@ -264,12 +267,10 @@ func NewConditionalAccessPolicy(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
-	if args.GrantControls == nil {
-		return nil, errors.New("invalid value for required argument 'GrantControls'")
-	}
 	if args.State == nil {
 		return nil, errors.New("invalid value for required argument 'State'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ConditionalAccessPolicy
 	err := ctx.RegisterResource("azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -299,6 +300,8 @@ type conditionalAccessPolicyState struct {
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
 	GrantControls *ConditionalAccessPolicyGrantControls `pulumi:"grantControls"`
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+	//
+	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
 	SessionControls *ConditionalAccessPolicySessionControls `pulumi:"sessionControls"`
 	// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
 	State *string `pulumi:"state"`
@@ -312,6 +315,8 @@ type ConditionalAccessPolicyState struct {
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
 	GrantControls ConditionalAccessPolicyGrantControlsPtrInput
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+	//
+	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
 	SessionControls ConditionalAccessPolicySessionControlsPtrInput
 	// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
 	State pulumi.StringPtrInput
@@ -327,8 +332,10 @@ type conditionalAccessPolicyArgs struct {
 	// The friendly name for this Conditional Access Policy.
 	DisplayName string `pulumi:"displayName"`
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-	GrantControls ConditionalAccessPolicyGrantControls `pulumi:"grantControls"`
+	GrantControls *ConditionalAccessPolicyGrantControls `pulumi:"grantControls"`
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+	//
+	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
 	SessionControls *ConditionalAccessPolicySessionControls `pulumi:"sessionControls"`
 	// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
 	State string `pulumi:"state"`
@@ -341,8 +348,10 @@ type ConditionalAccessPolicyArgs struct {
 	// The friendly name for this Conditional Access Policy.
 	DisplayName pulumi.StringInput
 	// A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-	GrantControls ConditionalAccessPolicyGrantControlsInput
+	GrantControls ConditionalAccessPolicyGrantControlsPtrInput
 	// A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+	//
+	// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
 	SessionControls ConditionalAccessPolicySessionControlsPtrInput
 	// Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
 	State pulumi.StringInput
@@ -446,11 +455,13 @@ func (o ConditionalAccessPolicyOutput) DisplayName() pulumi.StringOutput {
 }
 
 // A `grantControls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
-func (o ConditionalAccessPolicyOutput) GrantControls() ConditionalAccessPolicyGrantControlsOutput {
-	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicyGrantControlsOutput { return v.GrantControls }).(ConditionalAccessPolicyGrantControlsOutput)
+func (o ConditionalAccessPolicyOutput) GrantControls() ConditionalAccessPolicyGrantControlsPtrOutput {
+	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicyGrantControlsPtrOutput { return v.GrantControls }).(ConditionalAccessPolicyGrantControlsPtrOutput)
 }
 
 // A `sessionControls` block as documented below, which specifies the session controls that are enforced after sign-in.
+//
+// > Note: At least one of `grantControls` and/or `sessionControls` blocks must be specified.
 func (o ConditionalAccessPolicyOutput) SessionControls() ConditionalAccessPolicySessionControlsPtrOutput {
 	return o.ApplyT(func(v *ConditionalAccessPolicy) ConditionalAccessPolicySessionControlsPtrOutput {
 		return v.SessionControls

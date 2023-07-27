@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -99,6 +100,7 @@ func NewNamedLocation(ctx *pulumi.Context,
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource NamedLocation
 	err := ctx.RegisterResource("azuread:index/namedLocation:NamedLocation", name, args, &resource, opts...)
 	if err != nil {

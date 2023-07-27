@@ -362,7 +362,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
         :param pulumi.Input[int] duration_in_days: How many days each occurrence of the access review series will run.
         :param pulumi.Input[bool] enabled: Whether to enable assignment review.
         :param pulumi.Input[str] review_frequency: This will determine how often the access review campaign runs, valid values are `weekly`, `monthly`, `quarterly`, `halfyearly`, or `annual`.
-        :param pulumi.Input[str] review_type: Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        :param pulumi.Input[str] review_type: Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
         :param pulumi.Input[Sequence[pulumi.Input['AccessPackageAssignmentPolicyAssignmentReviewSettingsReviewerArgs']]] reviewers: One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
         :param pulumi.Input[str] starting_on: This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
         """
@@ -461,7 +461,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs:
     @pulumi.getter(name="reviewType")
     def review_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
         """
         return pulumi.get(self, "review_type")
 
@@ -1782,6 +1782,7 @@ class ConditionalAccessPolicyConditionsArgs:
                  devices: Optional[pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs']] = None,
                  locations: Optional[pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs']] = None,
                  platforms: Optional[pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs']] = None,
+                 service_principal_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  sign_in_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  user_risk_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -1792,7 +1793,8 @@ class ConditionalAccessPolicyConditionsArgs:
         :param pulumi.Input['ConditionalAccessPolicyConditionsDevicesArgs'] devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param pulumi.Input['ConditionalAccessPolicyConditionsLocationsArgs'] locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
         :param pulumi.Input['ConditionalAccessPolicyConditionsPlatformsArgs'] platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sign_in_risk_levels: A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_risk_levels: A list of user risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
         pulumi.set(__self__, "applications", applications)
@@ -1806,6 +1808,8 @@ class ConditionalAccessPolicyConditionsArgs:
             pulumi.set(__self__, "locations", locations)
         if platforms is not None:
             pulumi.set(__self__, "platforms", platforms)
+        if service_principal_risk_levels is not None:
+            pulumi.set(__self__, "service_principal_risk_levels", service_principal_risk_levels)
         if sign_in_risk_levels is not None:
             pulumi.set(__self__, "sign_in_risk_levels", sign_in_risk_levels)
         if user_risk_levels is not None:
@@ -1896,10 +1900,22 @@ class ConditionalAccessPolicyConditionsArgs:
         pulumi.set(self, "platforms", value)
 
     @property
+    @pulumi.getter(name="servicePrincipalRiskLevels")
+    def service_principal_risk_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+        """
+        return pulumi.get(self, "service_principal_risk_levels")
+
+    @service_principal_risk_levels.setter
+    def service_principal_risk_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "service_principal_risk_levels", value)
+
+    @property
     @pulumi.getter(name="signInRiskLevels")
     def sign_in_risk_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+        A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
         """
         return pulumi.get(self, "sign_in_risk_levels")
 
@@ -2595,7 +2611,7 @@ class NamedLocationIpArgs:
                  ip_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
                  trusted: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_ranges: List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
         :param pulumi.Input[bool] trusted: Whether the named location is trusted. Defaults to `false`.
         """
         pulumi.set(__self__, "ip_ranges", ip_ranges)
@@ -2606,7 +2622,7 @@ class NamedLocationIpArgs:
     @pulumi.getter(name="ipRanges")
     def ip_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+        List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
         """
         return pulumi.get(self, "ip_ranges")
 

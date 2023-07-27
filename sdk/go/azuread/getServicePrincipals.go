@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -111,6 +112,7 @@ import (
 //
 // ```
 func GetServicePrincipals(ctx *pulumi.Context, args *GetServicePrincipalsArgs, opts ...pulumi.InvokeOption) (*GetServicePrincipalsResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServicePrincipalsResult
 	err := ctx.Invoke("azuread:index/getServicePrincipals:getServicePrincipals", args, &rv, opts...)
 	if err != nil {

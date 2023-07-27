@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -101,6 +102,7 @@ func NewAccessPackageResourceCatalogAssociation(ctx *pulumi.Context,
 	if args.ResourceOriginSystem == nil {
 		return nil, errors.New("invalid value for required argument 'ResourceOriginSystem'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AccessPackageResourceCatalogAssociation
 	err := ctx.RegisterResource("azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation", name, args, &resource, opts...)
 	if err != nil {

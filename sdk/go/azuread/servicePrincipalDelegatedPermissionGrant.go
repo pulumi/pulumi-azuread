@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -219,6 +220,7 @@ func NewServicePrincipalDelegatedPermissionGrant(ctx *pulumi.Context,
 	if args.ServicePrincipalObjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ServicePrincipalObjectId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ServicePrincipalDelegatedPermissionGrant
 	err := ctx.RegisterResource("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", name, args, &resource, opts...)
 	if err != nil {

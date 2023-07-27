@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -128,6 +129,7 @@ func NewSynchronizationJob(ctx *pulumi.Context,
 	if args.TemplateId == nil {
 		return nil, errors.New("invalid value for required argument 'TemplateId'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource SynchronizationJob
 	err := ctx.RegisterResource("azuread:index/synchronizationJob:SynchronizationJob", name, args, &resource, opts...)
 	if err != nil {

@@ -49,7 +49,7 @@ namespace Pulumi.AzureAD.Inputs
         public Input<string>? ReviewFrequency { get; set; }
 
         /// <summary>
-        /// Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+        /// Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
         /// </summary>
         [Input("reviewType")]
         public Input<string>? ReviewType { get; set; }

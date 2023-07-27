@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -73,6 +74,7 @@ import (
 //
 // ```
 func LookupAdministrativeUnit(ctx *pulumi.Context, args *LookupAdministrativeUnitArgs, opts ...pulumi.InvokeOption) (*LookupAdministrativeUnitResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAdministrativeUnitResult
 	err := ctx.Invoke("azuread:index/getAdministrativeUnit:getAdministrativeUnit", args, &rv, opts...)
 	if err != nil {

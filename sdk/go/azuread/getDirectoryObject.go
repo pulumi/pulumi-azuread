@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -54,6 +55,7 @@ import (
 // *`objectId` - The object ID of the directory object.
 // *`type` - The shortened OData type of the directory object. Possible values include: `Group`, `User` or `ServicePrincipal`.
 func GetDirectoryObject(ctx *pulumi.Context, args *GetDirectoryObjectArgs, opts ...pulumi.InvokeOption) (*GetDirectoryObjectResult, error) {
+	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoryObjectResult
 	err := ctx.Invoke("azuread:index/getDirectoryObject:getDirectoryObject", args, &rv, opts...)
 	if err != nil {

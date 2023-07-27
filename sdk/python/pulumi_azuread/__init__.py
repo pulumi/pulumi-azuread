@@ -35,10 +35,12 @@ from .get_application_published_app_ids import *
 from .get_application_template import *
 from .get_client_config import *
 from .get_directory_object import *
+from .get_directory_role_templates import *
 from .get_directory_roles import *
 from .get_domains import *
 from .get_group import *
 from .get_groups import *
+from .get_named_location import *
 from .get_service_principal import *
 from .get_service_principals import *
 from .get_user import *

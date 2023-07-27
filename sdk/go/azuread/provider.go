@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -64,20 +65,21 @@ func NewProvider(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'MetadataHost'")
 	}
 	if args.Environment == nil {
-		if d := getEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
+		if d := internal.GetEnvOrDefault("public", nil, "ARM_ENVIRONMENT"); d != nil {
 			args.Environment = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.MsiEndpoint == nil {
-		if d := getEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
+		if d := internal.GetEnvOrDefault(nil, nil, "ARM_MSI_ENDPOINT"); d != nil {
 			args.MsiEndpoint = pulumi.StringPtr(d.(string))
 		}
 	}
 	if args.UseMsi == nil {
-		if d := getEnvOrDefault(false, parseEnvBool, "ARM_USE_MSI"); d != nil {
+		if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "ARM_USE_MSI"); d != nil {
 			args.UseMsi = pulumi.BoolPtr(d.(bool))
 		}
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:azuread", name, args, &resource, opts...)
 	if err != nil {

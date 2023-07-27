@@ -107,7 +107,7 @@ export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
      */
     reviewFrequency?: pulumi.Input<string>;
     /**
-     * Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     * Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      */
     reviewType?: pulumi.Input<string>;
     /**
@@ -493,7 +493,11 @@ export interface ConditionalAccessPolicyConditions {
      */
     platforms?: pulumi.Input<inputs.ConditionalAccessPolicyConditionsPlatforms>;
     /**
-     * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     * A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+     */
+    servicePrincipalRiskLevels?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
     signInRiskLevels?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -697,7 +701,7 @@ export interface NamedLocationCountry {
 
 export interface NamedLocationIp {
     /**
-     * List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+     * List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      */
     ipRanges: pulumi.Input<pulumi.Input<string>[]>;
     /**

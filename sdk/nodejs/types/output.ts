@@ -107,7 +107,7 @@ export interface AccessPackageAssignmentPolicyAssignmentReviewSettings {
      */
     reviewFrequency?: string;
     /**
-     * Self review or specific reviewers. Valid values are `Self`, or `Reviewers`.
+     * Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
      */
     reviewType?: string;
     /**
@@ -493,7 +493,11 @@ export interface ConditionalAccessPolicyConditions {
      */
     platforms?: outputs.ConditionalAccessPolicyConditionsPlatforms;
     /**
-     * A list of sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
+     * A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
+     */
+    servicePrincipalRiskLevels?: string[];
+    /**
+     * A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
      */
     signInRiskLevels?: string[];
     /**
@@ -894,6 +898,21 @@ export interface GetApplicationWebImplicitGrant {
     idTokenIssuanceEnabled: boolean;
 }
 
+export interface GetDirectoryRoleTemplatesRoleTemplate {
+    /**
+     * The description of the directory role template.
+     */
+    description: string;
+    /**
+     * The display name of the directory role template.
+     */
+    displayName: string;
+    /**
+     * The object ID of the directory role template.
+     */
+    objectId: string;
+}
+
 export interface GetDirectoryRolesRole {
     /**
      * The description of the directory role.
@@ -957,6 +976,16 @@ export interface GetGroupDynamicMembership {
      * The rule that determines membership of this group.
      */
     rule: string;
+}
+
+export interface GetNamedLocationCountry {
+    countriesAndRegions: string[];
+    includeUnknownCountriesAndRegions: boolean;
+}
+
+export interface GetNamedLocationIp {
+    ipRanges: string[];
+    trusted: boolean;
 }
 
 export interface GetServicePrincipalAppRole {
@@ -1193,7 +1222,7 @@ export interface NamedLocationCountry {
 
 export interface NamedLocationIp {
     /**
-     * List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596.
+     * List of IP address ranges in IPv4 CIDR format (e.g. `1.2.3.4/32`) or any allowable IPv6 format from IETF RFC596.
      */
     ipRanges: string[];
     /**

@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -88,6 +89,7 @@ func NewAdministrativeUnitMember(ctx *pulumi.Context,
 		args = &AdministrativeUnitMemberArgs{}
 	}
 
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource AdministrativeUnitMember
 	err := ctx.RegisterResource("azuread:index/administrativeUnitMember:AdministrativeUnitMember", name, args, &resource, opts...)
 	if err != nil {
