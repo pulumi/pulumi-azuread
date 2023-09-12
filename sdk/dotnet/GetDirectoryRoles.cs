@@ -47,6 +47,43 @@ namespace Pulumi.AzureAD
         /// </summary>
         public static Task<GetDirectoryRolesResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDirectoryRolesResult>("azuread:index/getDirectoryRoles:getDirectoryRoles", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to access information about activated directory roles within Azure Active Directory.
+        /// 
+        /// ## API Permissions
+        /// 
+        /// The following API permissions are required in order to use this resource.
+        /// 
+        /// When authenticated with a service principal, this resource requires one of the following application roles: `RoleManagement.Read.Directory` or `Directory.Read.All`
+        /// 
+        /// When authenticated with a user principal, this data source does not require any additional roles.
+        /// 
+        /// {{% examples %}}
+        /// ## Example Usage
+        /// {{% example %}}
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AzureAD = Pulumi.AzureAD;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = AzureAD.GetDirectoryRoles.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["roles"] = current.Apply(getDirectoryRolesResult =&gt; getDirectoryRolesResult.ObjectIds),
+        ///     };
+        /// });
+        /// ```
+        /// {{% /example %}}
+        /// {{% /examples %}}
+        /// </summary>
+        public static Output<GetDirectoryRolesResult> Invoke(InvokeOptions? options = null)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDirectoryRolesResult>("azuread:index/getDirectoryRoles:getDirectoryRoles", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

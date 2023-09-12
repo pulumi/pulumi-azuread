@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Use this data source to access information about an Application Template from the [Azure AD App Gallery](https://azuremarketplace.microsoft.com/en-US/marketplace/apps/category/azure-active-directory-apps).
@@ -125,6 +126,12 @@ func (o GetApplicationTemplateResultOutput) ToGetApplicationTemplateResultOutput
 
 func (o GetApplicationTemplateResultOutput) ToGetApplicationTemplateResultOutputWithContext(ctx context.Context) GetApplicationTemplateResultOutput {
 	return o
+}
+
+func (o GetApplicationTemplateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetApplicationTemplateResult] {
+	return pulumix.Output[GetApplicationTemplateResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // List of categories for this templated application.

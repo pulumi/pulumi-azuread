@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -217,6 +218,12 @@ func (i *ApplicationFederatedIdentityCredential) ToApplicationFederatedIdentityC
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFederatedIdentityCredentialOutput)
 }
 
+func (i *ApplicationFederatedIdentityCredential) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFederatedIdentityCredential] {
+	return pulumix.Output[*ApplicationFederatedIdentityCredential]{
+		OutputState: i.ToApplicationFederatedIdentityCredentialOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ApplicationFederatedIdentityCredentialArrayInput is an input type that accepts ApplicationFederatedIdentityCredentialArray and ApplicationFederatedIdentityCredentialArrayOutput values.
 // You can construct a concrete instance of `ApplicationFederatedIdentityCredentialArrayInput` via:
 //
@@ -240,6 +247,12 @@ func (i ApplicationFederatedIdentityCredentialArray) ToApplicationFederatedIdent
 
 func (i ApplicationFederatedIdentityCredentialArray) ToApplicationFederatedIdentityCredentialArrayOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFederatedIdentityCredentialArrayOutput)
+}
+
+func (i ApplicationFederatedIdentityCredentialArray) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationFederatedIdentityCredential] {
+	return pulumix.Output[[]*ApplicationFederatedIdentityCredential]{
+		OutputState: i.ToApplicationFederatedIdentityCredentialArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ApplicationFederatedIdentityCredentialMapInput is an input type that accepts ApplicationFederatedIdentityCredentialMap and ApplicationFederatedIdentityCredentialMapOutput values.
@@ -267,6 +280,12 @@ func (i ApplicationFederatedIdentityCredentialMap) ToApplicationFederatedIdentit
 	return pulumi.ToOutputWithContext(ctx, i).(ApplicationFederatedIdentityCredentialMapOutput)
 }
 
+func (i ApplicationFederatedIdentityCredentialMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationFederatedIdentityCredential] {
+	return pulumix.Output[map[string]*ApplicationFederatedIdentityCredential]{
+		OutputState: i.ToApplicationFederatedIdentityCredentialMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ApplicationFederatedIdentityCredentialOutput struct{ *pulumi.OutputState }
 
 func (ApplicationFederatedIdentityCredentialOutput) ElementType() reflect.Type {
@@ -279,6 +298,12 @@ func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIden
 
 func (o ApplicationFederatedIdentityCredentialOutput) ToApplicationFederatedIdentityCredentialOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialOutput {
 	return o
+}
+
+func (o ApplicationFederatedIdentityCredentialOutput) ToOutput(ctx context.Context) pulumix.Output[*ApplicationFederatedIdentityCredential] {
+	return pulumix.Output[*ApplicationFederatedIdentityCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The object ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
@@ -330,6 +355,12 @@ func (o ApplicationFederatedIdentityCredentialArrayOutput) ToApplicationFederate
 	return o
 }
 
+func (o ApplicationFederatedIdentityCredentialArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ApplicationFederatedIdentityCredential] {
+	return pulumix.Output[[]*ApplicationFederatedIdentityCredential]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ApplicationFederatedIdentityCredentialArrayOutput) Index(i pulumi.IntInput) ApplicationFederatedIdentityCredentialOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ApplicationFederatedIdentityCredential {
 		return vs[0].([]*ApplicationFederatedIdentityCredential)[vs[1].(int)]
@@ -348,6 +379,12 @@ func (o ApplicationFederatedIdentityCredentialMapOutput) ToApplicationFederatedI
 
 func (o ApplicationFederatedIdentityCredentialMapOutput) ToApplicationFederatedIdentityCredentialMapOutputWithContext(ctx context.Context) ApplicationFederatedIdentityCredentialMapOutput {
 	return o
+}
+
+func (o ApplicationFederatedIdentityCredentialMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ApplicationFederatedIdentityCredential] {
+	return pulumix.Output[map[string]*ApplicationFederatedIdentityCredential]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ApplicationFederatedIdentityCredentialMapOutput) MapIndex(k pulumi.StringInput) ApplicationFederatedIdentityCredentialOutput {

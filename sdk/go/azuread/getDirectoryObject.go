@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Retrieves the OData type for a generic directory object having the provided object ID.
@@ -114,6 +115,12 @@ func (o GetDirectoryObjectResultOutput) ToGetDirectoryObjectResultOutput() GetDi
 
 func (o GetDirectoryObjectResultOutput) ToGetDirectoryObjectResultOutputWithContext(ctx context.Context) GetDirectoryObjectResultOutput {
 	return o
+}
+
+func (o GetDirectoryObjectResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetDirectoryObjectResult] {
+	return pulumix.Output[GetDirectoryObjectResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The provider-assigned unique ID for this managed resource.

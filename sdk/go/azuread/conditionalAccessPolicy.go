@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Conditional Access Policy within Azure Active Directory.
@@ -380,6 +381,12 @@ func (i *ConditionalAccessPolicy) ToConditionalAccessPolicyOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyOutput)
 }
 
+func (i *ConditionalAccessPolicy) ToOutput(ctx context.Context) pulumix.Output[*ConditionalAccessPolicy] {
+	return pulumix.Output[*ConditionalAccessPolicy]{
+		OutputState: i.ToConditionalAccessPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ConditionalAccessPolicyArrayInput is an input type that accepts ConditionalAccessPolicyArray and ConditionalAccessPolicyArrayOutput values.
 // You can construct a concrete instance of `ConditionalAccessPolicyArrayInput` via:
 //
@@ -403,6 +410,12 @@ func (i ConditionalAccessPolicyArray) ToConditionalAccessPolicyArrayOutput() Con
 
 func (i ConditionalAccessPolicyArray) ToConditionalAccessPolicyArrayOutputWithContext(ctx context.Context) ConditionalAccessPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyArrayOutput)
+}
+
+func (i ConditionalAccessPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*ConditionalAccessPolicy] {
+	return pulumix.Output[[]*ConditionalAccessPolicy]{
+		OutputState: i.ToConditionalAccessPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ConditionalAccessPolicyMapInput is an input type that accepts ConditionalAccessPolicyMap and ConditionalAccessPolicyMapOutput values.
@@ -430,6 +443,12 @@ func (i ConditionalAccessPolicyMap) ToConditionalAccessPolicyMapOutputWithContex
 	return pulumi.ToOutputWithContext(ctx, i).(ConditionalAccessPolicyMapOutput)
 }
 
+func (i ConditionalAccessPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConditionalAccessPolicy] {
+	return pulumix.Output[map[string]*ConditionalAccessPolicy]{
+		OutputState: i.ToConditionalAccessPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ConditionalAccessPolicyOutput struct{ *pulumi.OutputState }
 
 func (ConditionalAccessPolicyOutput) ElementType() reflect.Type {
@@ -442,6 +461,12 @@ func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyOutput() Conditi
 
 func (o ConditionalAccessPolicyOutput) ToConditionalAccessPolicyOutputWithContext(ctx context.Context) ConditionalAccessPolicyOutput {
 	return o
+}
+
+func (o ConditionalAccessPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*ConditionalAccessPolicy] {
+	return pulumix.Output[*ConditionalAccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A `conditions` block as documented below, which specifies the rules that must be met for the policy to apply.
@@ -487,6 +512,12 @@ func (o ConditionalAccessPolicyArrayOutput) ToConditionalAccessPolicyArrayOutput
 	return o
 }
 
+func (o ConditionalAccessPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ConditionalAccessPolicy] {
+	return pulumix.Output[[]*ConditionalAccessPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ConditionalAccessPolicyArrayOutput) Index(i pulumi.IntInput) ConditionalAccessPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ConditionalAccessPolicy {
 		return vs[0].([]*ConditionalAccessPolicy)[vs[1].(int)]
@@ -505,6 +536,12 @@ func (o ConditionalAccessPolicyMapOutput) ToConditionalAccessPolicyMapOutput() C
 
 func (o ConditionalAccessPolicyMapOutput) ToConditionalAccessPolicyMapOutputWithContext(ctx context.Context) ConditionalAccessPolicyMapOutput {
 	return o
+}
+
+func (o ConditionalAccessPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ConditionalAccessPolicy] {
+	return pulumix.Output[map[string]*ConditionalAccessPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ConditionalAccessPolicyMapOutput) MapIndex(k pulumi.StringInput) ConditionalAccessPolicyOutput {

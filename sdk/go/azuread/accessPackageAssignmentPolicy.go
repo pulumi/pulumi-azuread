@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an assignment policy for an access package within Identity Governance in Azure Active Directory.
@@ -296,6 +297,12 @@ func (i *AccessPackageAssignmentPolicy) ToAccessPackageAssignmentPolicyOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyOutput)
 }
 
+func (i *AccessPackageAssignmentPolicy) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageAssignmentPolicy] {
+	return pulumix.Output[*AccessPackageAssignmentPolicy]{
+		OutputState: i.ToAccessPackageAssignmentPolicyOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessPackageAssignmentPolicyArrayInput is an input type that accepts AccessPackageAssignmentPolicyArray and AccessPackageAssignmentPolicyArrayOutput values.
 // You can construct a concrete instance of `AccessPackageAssignmentPolicyArrayInput` via:
 //
@@ -319,6 +326,12 @@ func (i AccessPackageAssignmentPolicyArray) ToAccessPackageAssignmentPolicyArray
 
 func (i AccessPackageAssignmentPolicyArray) ToAccessPackageAssignmentPolicyArrayOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyArrayOutput)
+}
+
+func (i AccessPackageAssignmentPolicyArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageAssignmentPolicy] {
+	return pulumix.Output[[]*AccessPackageAssignmentPolicy]{
+		OutputState: i.ToAccessPackageAssignmentPolicyArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessPackageAssignmentPolicyMapInput is an input type that accepts AccessPackageAssignmentPolicyMap and AccessPackageAssignmentPolicyMapOutput values.
@@ -346,6 +359,12 @@ func (i AccessPackageAssignmentPolicyMap) ToAccessPackageAssignmentPolicyMapOutp
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageAssignmentPolicyMapOutput)
 }
 
+func (i AccessPackageAssignmentPolicyMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageAssignmentPolicy] {
+	return pulumix.Output[map[string]*AccessPackageAssignmentPolicy]{
+		OutputState: i.ToAccessPackageAssignmentPolicyMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPackageAssignmentPolicyOutput struct{ *pulumi.OutputState }
 
 func (AccessPackageAssignmentPolicyOutput) ElementType() reflect.Type {
@@ -358,6 +377,12 @@ func (o AccessPackageAssignmentPolicyOutput) ToAccessPackageAssignmentPolicyOutp
 
 func (o AccessPackageAssignmentPolicyOutput) ToAccessPackageAssignmentPolicyOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyOutput {
 	return o
+}
+
+func (o AccessPackageAssignmentPolicyOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageAssignmentPolicy] {
+	return pulumix.Output[*AccessPackageAssignmentPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the access package that will contain the policy.
@@ -432,6 +457,12 @@ func (o AccessPackageAssignmentPolicyArrayOutput) ToAccessPackageAssignmentPolic
 	return o
 }
 
+func (o AccessPackageAssignmentPolicyArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageAssignmentPolicy] {
+	return pulumix.Output[[]*AccessPackageAssignmentPolicy]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPackageAssignmentPolicyArrayOutput) Index(i pulumi.IntInput) AccessPackageAssignmentPolicyOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPackageAssignmentPolicy {
 		return vs[0].([]*AccessPackageAssignmentPolicy)[vs[1].(int)]
@@ -450,6 +481,12 @@ func (o AccessPackageAssignmentPolicyMapOutput) ToAccessPackageAssignmentPolicyM
 
 func (o AccessPackageAssignmentPolicyMapOutput) ToAccessPackageAssignmentPolicyMapOutputWithContext(ctx context.Context) AccessPackageAssignmentPolicyMapOutput {
 	return o
+}
+
+func (o AccessPackageAssignmentPolicyMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageAssignmentPolicy] {
+	return pulumix.Output[map[string]*AccessPackageAssignmentPolicy]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPackageAssignmentPolicyMapOutput) MapIndex(k pulumi.StringInput) AccessPackageAssignmentPolicyOutput {

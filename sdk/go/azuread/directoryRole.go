@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a Directory Role within Azure Active Directory. Directory Roles are also known as Administrator Roles.
@@ -198,6 +199,12 @@ func (i *DirectoryRole) ToDirectoryRoleOutputWithContext(ctx context.Context) Di
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleOutput)
 }
 
+func (i *DirectoryRole) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRole] {
+	return pulumix.Output[*DirectoryRole]{
+		OutputState: i.ToDirectoryRoleOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DirectoryRoleArrayInput is an input type that accepts DirectoryRoleArray and DirectoryRoleArrayOutput values.
 // You can construct a concrete instance of `DirectoryRoleArrayInput` via:
 //
@@ -221,6 +228,12 @@ func (i DirectoryRoleArray) ToDirectoryRoleArrayOutput() DirectoryRoleArrayOutpu
 
 func (i DirectoryRoleArray) ToDirectoryRoleArrayOutputWithContext(ctx context.Context) DirectoryRoleArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleArrayOutput)
+}
+
+func (i DirectoryRoleArray) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRole] {
+	return pulumix.Output[[]*DirectoryRole]{
+		OutputState: i.ToDirectoryRoleArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DirectoryRoleMapInput is an input type that accepts DirectoryRoleMap and DirectoryRoleMapOutput values.
@@ -248,6 +261,12 @@ func (i DirectoryRoleMap) ToDirectoryRoleMapOutputWithContext(ctx context.Contex
 	return pulumi.ToOutputWithContext(ctx, i).(DirectoryRoleMapOutput)
 }
 
+func (i DirectoryRoleMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRole] {
+	return pulumix.Output[map[string]*DirectoryRole]{
+		OutputState: i.ToDirectoryRoleMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DirectoryRoleOutput struct{ *pulumi.OutputState }
 
 func (DirectoryRoleOutput) ElementType() reflect.Type {
@@ -260,6 +279,12 @@ func (o DirectoryRoleOutput) ToDirectoryRoleOutput() DirectoryRoleOutput {
 
 func (o DirectoryRoleOutput) ToDirectoryRoleOutputWithContext(ctx context.Context) DirectoryRoleOutput {
 	return o
+}
+
+func (o DirectoryRoleOutput) ToOutput(ctx context.Context) pulumix.Output[*DirectoryRole] {
+	return pulumix.Output[*DirectoryRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the directory role.
@@ -298,6 +323,12 @@ func (o DirectoryRoleArrayOutput) ToDirectoryRoleArrayOutputWithContext(ctx cont
 	return o
 }
 
+func (o DirectoryRoleArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*DirectoryRole] {
+	return pulumix.Output[[]*DirectoryRole]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DirectoryRoleArrayOutput) Index(i pulumi.IntInput) DirectoryRoleOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *DirectoryRole {
 		return vs[0].([]*DirectoryRole)[vs[1].(int)]
@@ -316,6 +347,12 @@ func (o DirectoryRoleMapOutput) ToDirectoryRoleMapOutput() DirectoryRoleMapOutpu
 
 func (o DirectoryRoleMapOutput) ToDirectoryRoleMapOutputWithContext(ctx context.Context) DirectoryRoleMapOutput {
 	return o
+}
+
+func (o DirectoryRoleMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*DirectoryRole] {
+	return pulumix.Output[map[string]*DirectoryRole]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DirectoryRoleMapOutput) MapIndex(k pulumi.StringInput) DirectoryRoleOutput {

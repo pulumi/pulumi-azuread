@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages an Administrative Unit within Azure Active Directory.
@@ -202,6 +203,12 @@ func (i *AdministrativeUnit) ToAdministrativeUnitOutputWithContext(ctx context.C
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitOutput)
 }
 
+func (i *AdministrativeUnit) ToOutput(ctx context.Context) pulumix.Output[*AdministrativeUnit] {
+	return pulumix.Output[*AdministrativeUnit]{
+		OutputState: i.ToAdministrativeUnitOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AdministrativeUnitArrayInput is an input type that accepts AdministrativeUnitArray and AdministrativeUnitArrayOutput values.
 // You can construct a concrete instance of `AdministrativeUnitArrayInput` via:
 //
@@ -225,6 +232,12 @@ func (i AdministrativeUnitArray) ToAdministrativeUnitArrayOutput() Administrativ
 
 func (i AdministrativeUnitArray) ToAdministrativeUnitArrayOutputWithContext(ctx context.Context) AdministrativeUnitArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitArrayOutput)
+}
+
+func (i AdministrativeUnitArray) ToOutput(ctx context.Context) pulumix.Output[[]*AdministrativeUnit] {
+	return pulumix.Output[[]*AdministrativeUnit]{
+		OutputState: i.ToAdministrativeUnitArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AdministrativeUnitMapInput is an input type that accepts AdministrativeUnitMap and AdministrativeUnitMapOutput values.
@@ -252,6 +265,12 @@ func (i AdministrativeUnitMap) ToAdministrativeUnitMapOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(AdministrativeUnitMapOutput)
 }
 
+func (i AdministrativeUnitMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdministrativeUnit] {
+	return pulumix.Output[map[string]*AdministrativeUnit]{
+		OutputState: i.ToAdministrativeUnitMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AdministrativeUnitOutput struct{ *pulumi.OutputState }
 
 func (AdministrativeUnitOutput) ElementType() reflect.Type {
@@ -264,6 +283,12 @@ func (o AdministrativeUnitOutput) ToAdministrativeUnitOutput() AdministrativeUni
 
 func (o AdministrativeUnitOutput) ToAdministrativeUnitOutputWithContext(ctx context.Context) AdministrativeUnitOutput {
 	return o
+}
+
+func (o AdministrativeUnitOutput) ToOutput(ctx context.Context) pulumix.Output[*AdministrativeUnit] {
+	return pulumix.Output[*AdministrativeUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the administrative unit.
@@ -312,6 +337,12 @@ func (o AdministrativeUnitArrayOutput) ToAdministrativeUnitArrayOutputWithContex
 	return o
 }
 
+func (o AdministrativeUnitArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AdministrativeUnit] {
+	return pulumix.Output[[]*AdministrativeUnit]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AdministrativeUnitArrayOutput) Index(i pulumi.IntInput) AdministrativeUnitOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AdministrativeUnit {
 		return vs[0].([]*AdministrativeUnit)[vs[1].(int)]
@@ -330,6 +361,12 @@ func (o AdministrativeUnitMapOutput) ToAdministrativeUnitMapOutput() Administrat
 
 func (o AdministrativeUnitMapOutput) ToAdministrativeUnitMapOutputWithContext(ctx context.Context) AdministrativeUnitMapOutput {
 	return o
+}
+
+func (o AdministrativeUnitMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AdministrativeUnit] {
+	return pulumix.Output[map[string]*AdministrativeUnit]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AdministrativeUnitMapOutput) MapIndex(k pulumi.StringInput) AdministrativeUnitOutput {

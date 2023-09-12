@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages synchronization secrets associated with a service principal (enterprise application) within Azure Active Directory.
@@ -184,6 +185,12 @@ func (i *SynchronizationSecret) ToSynchronizationSecretOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationSecretOutput)
 }
 
+func (i *SynchronizationSecret) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationSecret] {
+	return pulumix.Output[*SynchronizationSecret]{
+		OutputState: i.ToSynchronizationSecretOutputWithContext(ctx).OutputState,
+	}
+}
+
 // SynchronizationSecretArrayInput is an input type that accepts SynchronizationSecretArray and SynchronizationSecretArrayOutput values.
 // You can construct a concrete instance of `SynchronizationSecretArrayInput` via:
 //
@@ -207,6 +214,12 @@ func (i SynchronizationSecretArray) ToSynchronizationSecretArrayOutput() Synchro
 
 func (i SynchronizationSecretArray) ToSynchronizationSecretArrayOutputWithContext(ctx context.Context) SynchronizationSecretArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationSecretArrayOutput)
+}
+
+func (i SynchronizationSecretArray) ToOutput(ctx context.Context) pulumix.Output[[]*SynchronizationSecret] {
+	return pulumix.Output[[]*SynchronizationSecret]{
+		OutputState: i.ToSynchronizationSecretArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // SynchronizationSecretMapInput is an input type that accepts SynchronizationSecretMap and SynchronizationSecretMapOutput values.
@@ -234,6 +247,12 @@ func (i SynchronizationSecretMap) ToSynchronizationSecretMapOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, i).(SynchronizationSecretMapOutput)
 }
 
+func (i SynchronizationSecretMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*SynchronizationSecret] {
+	return pulumix.Output[map[string]*SynchronizationSecret]{
+		OutputState: i.ToSynchronizationSecretMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type SynchronizationSecretOutput struct{ *pulumi.OutputState }
 
 func (SynchronizationSecretOutput) ElementType() reflect.Type {
@@ -246,6 +265,12 @@ func (o SynchronizationSecretOutput) ToSynchronizationSecretOutput() Synchroniza
 
 func (o SynchronizationSecretOutput) ToSynchronizationSecretOutputWithContext(ctx context.Context) SynchronizationSecretOutput {
 	return o
+}
+
+func (o SynchronizationSecretOutput) ToOutput(ctx context.Context) pulumix.Output[*SynchronizationSecret] {
+	return pulumix.Output[*SynchronizationSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 // One or more `credential` blocks as documented below.
@@ -272,6 +297,12 @@ func (o SynchronizationSecretArrayOutput) ToSynchronizationSecretArrayOutputWith
 	return o
 }
 
+func (o SynchronizationSecretArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*SynchronizationSecret] {
+	return pulumix.Output[[]*SynchronizationSecret]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o SynchronizationSecretArrayOutput) Index(i pulumi.IntInput) SynchronizationSecretOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *SynchronizationSecret {
 		return vs[0].([]*SynchronizationSecret)[vs[1].(int)]
@@ -290,6 +321,12 @@ func (o SynchronizationSecretMapOutput) ToSynchronizationSecretMapOutput() Synch
 
 func (o SynchronizationSecretMapOutput) ToSynchronizationSecretMapOutputWithContext(ctx context.Context) SynchronizationSecretMapOutput {
 	return o
+}
+
+func (o SynchronizationSecretMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*SynchronizationSecret] {
+	return pulumix.Output[map[string]*SynchronizationSecret]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o SynchronizationSecretMapOutput) MapIndex(k pulumi.StringInput) SynchronizationSecretOutput {

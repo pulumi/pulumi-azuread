@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a single catalog role assignment within Azure Active Directory.
@@ -191,6 +192,12 @@ func (i *AccessPackageCatalogRoleAssignment) ToAccessPackageCatalogRoleAssignmen
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageCatalogRoleAssignmentOutput)
 }
 
+func (i *AccessPackageCatalogRoleAssignment) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageCatalogRoleAssignment] {
+	return pulumix.Output[*AccessPackageCatalogRoleAssignment]{
+		OutputState: i.ToAccessPackageCatalogRoleAssignmentOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessPackageCatalogRoleAssignmentArrayInput is an input type that accepts AccessPackageCatalogRoleAssignmentArray and AccessPackageCatalogRoleAssignmentArrayOutput values.
 // You can construct a concrete instance of `AccessPackageCatalogRoleAssignmentArrayInput` via:
 //
@@ -214,6 +221,12 @@ func (i AccessPackageCatalogRoleAssignmentArray) ToAccessPackageCatalogRoleAssig
 
 func (i AccessPackageCatalogRoleAssignmentArray) ToAccessPackageCatalogRoleAssignmentArrayOutputWithContext(ctx context.Context) AccessPackageCatalogRoleAssignmentArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageCatalogRoleAssignmentArrayOutput)
+}
+
+func (i AccessPackageCatalogRoleAssignmentArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageCatalogRoleAssignment] {
+	return pulumix.Output[[]*AccessPackageCatalogRoleAssignment]{
+		OutputState: i.ToAccessPackageCatalogRoleAssignmentArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessPackageCatalogRoleAssignmentMapInput is an input type that accepts AccessPackageCatalogRoleAssignmentMap and AccessPackageCatalogRoleAssignmentMapOutput values.
@@ -241,6 +254,12 @@ func (i AccessPackageCatalogRoleAssignmentMap) ToAccessPackageCatalogRoleAssignm
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageCatalogRoleAssignmentMapOutput)
 }
 
+func (i AccessPackageCatalogRoleAssignmentMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageCatalogRoleAssignment] {
+	return pulumix.Output[map[string]*AccessPackageCatalogRoleAssignment]{
+		OutputState: i.ToAccessPackageCatalogRoleAssignmentMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPackageCatalogRoleAssignmentOutput struct{ *pulumi.OutputState }
 
 func (AccessPackageCatalogRoleAssignmentOutput) ElementType() reflect.Type {
@@ -253,6 +272,12 @@ func (o AccessPackageCatalogRoleAssignmentOutput) ToAccessPackageCatalogRoleAssi
 
 func (o AccessPackageCatalogRoleAssignmentOutput) ToAccessPackageCatalogRoleAssignmentOutputWithContext(ctx context.Context) AccessPackageCatalogRoleAssignmentOutput {
 	return o
+}
+
+func (o AccessPackageCatalogRoleAssignmentOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageCatalogRoleAssignment] {
+	return pulumix.Output[*AccessPackageCatalogRoleAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
@@ -284,6 +309,12 @@ func (o AccessPackageCatalogRoleAssignmentArrayOutput) ToAccessPackageCatalogRol
 	return o
 }
 
+func (o AccessPackageCatalogRoleAssignmentArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageCatalogRoleAssignment] {
+	return pulumix.Output[[]*AccessPackageCatalogRoleAssignment]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPackageCatalogRoleAssignmentArrayOutput) Index(i pulumi.IntInput) AccessPackageCatalogRoleAssignmentOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPackageCatalogRoleAssignment {
 		return vs[0].([]*AccessPackageCatalogRoleAssignment)[vs[1].(int)]
@@ -302,6 +333,12 @@ func (o AccessPackageCatalogRoleAssignmentMapOutput) ToAccessPackageCatalogRoleA
 
 func (o AccessPackageCatalogRoleAssignmentMapOutput) ToAccessPackageCatalogRoleAssignmentMapOutputWithContext(ctx context.Context) AccessPackageCatalogRoleAssignmentMapOutput {
 	return o
+}
+
+func (o AccessPackageCatalogRoleAssignmentMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageCatalogRoleAssignment] {
+	return pulumix.Output[map[string]*AccessPackageCatalogRoleAssignment]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPackageCatalogRoleAssignmentMapOutput) MapIndex(k pulumi.StringInput) AccessPackageCatalogRoleAssignmentOutput {

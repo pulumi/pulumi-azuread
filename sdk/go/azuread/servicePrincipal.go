@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // ## Example Usage
@@ -527,6 +528,12 @@ func (i *ServicePrincipal) ToServicePrincipalOutputWithContext(ctx context.Conte
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalOutput)
 }
 
+func (i *ServicePrincipal) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipal] {
+	return pulumix.Output[*ServicePrincipal]{
+		OutputState: i.ToServicePrincipalOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServicePrincipalArrayInput is an input type that accepts ServicePrincipalArray and ServicePrincipalArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalArrayInput` via:
 //
@@ -550,6 +557,12 @@ func (i ServicePrincipalArray) ToServicePrincipalArrayOutput() ServicePrincipalA
 
 func (i ServicePrincipalArray) ToServicePrincipalArrayOutputWithContext(ctx context.Context) ServicePrincipalArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalArrayOutput)
+}
+
+func (i ServicePrincipalArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipal] {
+	return pulumix.Output[[]*ServicePrincipal]{
+		OutputState: i.ToServicePrincipalArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServicePrincipalMapInput is an input type that accepts ServicePrincipalMap and ServicePrincipalMapOutput values.
@@ -577,6 +590,12 @@ func (i ServicePrincipalMap) ToServicePrincipalMapOutputWithContext(ctx context.
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalMapOutput)
 }
 
+func (i ServicePrincipalMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipal] {
+	return pulumix.Output[map[string]*ServicePrincipal]{
+		OutputState: i.ToServicePrincipalMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServicePrincipalOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalOutput) ElementType() reflect.Type {
@@ -589,6 +608,12 @@ func (o ServicePrincipalOutput) ToServicePrincipalOutput() ServicePrincipalOutpu
 
 func (o ServicePrincipalOutput) ToServicePrincipalOutputWithContext(ctx context.Context) ServicePrincipalOutput {
 	return o
+}
+
+func (o ServicePrincipalOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipal] {
+	return pulumix.Output[*ServicePrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 // Whether or not the service principal account is enabled. Defaults to `true`.
@@ -758,6 +783,12 @@ func (o ServicePrincipalArrayOutput) ToServicePrincipalArrayOutputWithContext(ct
 	return o
 }
 
+func (o ServicePrincipalArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipal] {
+	return pulumix.Output[[]*ServicePrincipal]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServicePrincipalArrayOutput) Index(i pulumi.IntInput) ServicePrincipalOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipal {
 		return vs[0].([]*ServicePrincipal)[vs[1].(int)]
@@ -776,6 +807,12 @@ func (o ServicePrincipalMapOutput) ToServicePrincipalMapOutput() ServicePrincipa
 
 func (o ServicePrincipalMapOutput) ToServicePrincipalMapOutputWithContext(ctx context.Context) ServicePrincipalMapOutput {
 	return o
+}
+
+func (o ServicePrincipalMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipal] {
+	return pulumix.Output[map[string]*ServicePrincipal]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePrincipalMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalOutput {

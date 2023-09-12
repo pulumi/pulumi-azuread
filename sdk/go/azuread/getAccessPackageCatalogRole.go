@@ -9,6 +9,7 @@ import (
 
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Gets information about an access package catalog role.
@@ -147,6 +148,12 @@ func (o GetAccessPackageCatalogRoleResultOutput) ToGetAccessPackageCatalogRoleRe
 
 func (o GetAccessPackageCatalogRoleResultOutput) ToGetAccessPackageCatalogRoleResultOutputWithContext(ctx context.Context) GetAccessPackageCatalogRoleResultOutput {
 	return o
+}
+
+func (o GetAccessPackageCatalogRoleResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetAccessPackageCatalogRoleResult] {
+	return pulumix.Output[GetAccessPackageCatalogRoleResult]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The description of the role.

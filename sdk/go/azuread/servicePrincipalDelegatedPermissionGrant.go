@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages a delegated permission grant for a service principal, on behalf of a single user, or all users.
@@ -322,6 +323,12 @@ func (i *ServicePrincipalDelegatedPermissionGrant) ToServicePrincipalDelegatedPe
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDelegatedPermissionGrantOutput)
 }
 
+func (i *ServicePrincipalDelegatedPermissionGrant) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalDelegatedPermissionGrant] {
+	return pulumix.Output[*ServicePrincipalDelegatedPermissionGrant]{
+		OutputState: i.ToServicePrincipalDelegatedPermissionGrantOutputWithContext(ctx).OutputState,
+	}
+}
+
 // ServicePrincipalDelegatedPermissionGrantArrayInput is an input type that accepts ServicePrincipalDelegatedPermissionGrantArray and ServicePrincipalDelegatedPermissionGrantArrayOutput values.
 // You can construct a concrete instance of `ServicePrincipalDelegatedPermissionGrantArrayInput` via:
 //
@@ -345,6 +352,12 @@ func (i ServicePrincipalDelegatedPermissionGrantArray) ToServicePrincipalDelegat
 
 func (i ServicePrincipalDelegatedPermissionGrantArray) ToServicePrincipalDelegatedPermissionGrantArrayOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDelegatedPermissionGrantArrayOutput)
+}
+
+func (i ServicePrincipalDelegatedPermissionGrantArray) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalDelegatedPermissionGrant] {
+	return pulumix.Output[[]*ServicePrincipalDelegatedPermissionGrant]{
+		OutputState: i.ToServicePrincipalDelegatedPermissionGrantArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // ServicePrincipalDelegatedPermissionGrantMapInput is an input type that accepts ServicePrincipalDelegatedPermissionGrantMap and ServicePrincipalDelegatedPermissionGrantMapOutput values.
@@ -372,6 +385,12 @@ func (i ServicePrincipalDelegatedPermissionGrantMap) ToServicePrincipalDelegated
 	return pulumi.ToOutputWithContext(ctx, i).(ServicePrincipalDelegatedPermissionGrantMapOutput)
 }
 
+func (i ServicePrincipalDelegatedPermissionGrantMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalDelegatedPermissionGrant] {
+	return pulumix.Output[map[string]*ServicePrincipalDelegatedPermissionGrant]{
+		OutputState: i.ToServicePrincipalDelegatedPermissionGrantMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type ServicePrincipalDelegatedPermissionGrantOutput struct{ *pulumi.OutputState }
 
 func (ServicePrincipalDelegatedPermissionGrantOutput) ElementType() reflect.Type {
@@ -384,6 +403,12 @@ func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelega
 
 func (o ServicePrincipalDelegatedPermissionGrantOutput) ToServicePrincipalDelegatedPermissionGrantOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantOutput {
 	return o
+}
+
+func (o ServicePrincipalDelegatedPermissionGrantOutput) ToOutput(ctx context.Context) pulumix.Output[*ServicePrincipalDelegatedPermissionGrant] {
+	return pulumix.Output[*ServicePrincipalDelegatedPermissionGrant]{
+		OutputState: o.OutputState,
+	}
 }
 
 // A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
@@ -426,6 +451,12 @@ func (o ServicePrincipalDelegatedPermissionGrantArrayOutput) ToServicePrincipalD
 	return o
 }
 
+func (o ServicePrincipalDelegatedPermissionGrantArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*ServicePrincipalDelegatedPermissionGrant] {
+	return pulumix.Output[[]*ServicePrincipalDelegatedPermissionGrant]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o ServicePrincipalDelegatedPermissionGrantArrayOutput) Index(i pulumi.IntInput) ServicePrincipalDelegatedPermissionGrantOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *ServicePrincipalDelegatedPermissionGrant {
 		return vs[0].([]*ServicePrincipalDelegatedPermissionGrant)[vs[1].(int)]
@@ -444,6 +475,12 @@ func (o ServicePrincipalDelegatedPermissionGrantMapOutput) ToServicePrincipalDel
 
 func (o ServicePrincipalDelegatedPermissionGrantMapOutput) ToServicePrincipalDelegatedPermissionGrantMapOutputWithContext(ctx context.Context) ServicePrincipalDelegatedPermissionGrantMapOutput {
 	return o
+}
+
+func (o ServicePrincipalDelegatedPermissionGrantMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*ServicePrincipalDelegatedPermissionGrant] {
+	return pulumix.Output[map[string]*ServicePrincipalDelegatedPermissionGrant]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o ServicePrincipalDelegatedPermissionGrantMapOutput) MapIndex(k pulumi.StringInput) ServicePrincipalDelegatedPermissionGrantOutput {

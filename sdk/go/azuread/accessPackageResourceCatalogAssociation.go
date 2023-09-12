@@ -10,6 +10,7 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-azuread/sdk/v5/go/azuread/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Manages the resources added to access package catalogs within Identity Governance in Azure Active Directory.
@@ -188,6 +189,12 @@ func (i *AccessPackageResourceCatalogAssociation) ToAccessPackageResourceCatalog
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageResourceCatalogAssociationOutput)
 }
 
+func (i *AccessPackageResourceCatalogAssociation) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageResourceCatalogAssociation] {
+	return pulumix.Output[*AccessPackageResourceCatalogAssociation]{
+		OutputState: i.ToAccessPackageResourceCatalogAssociationOutputWithContext(ctx).OutputState,
+	}
+}
+
 // AccessPackageResourceCatalogAssociationArrayInput is an input type that accepts AccessPackageResourceCatalogAssociationArray and AccessPackageResourceCatalogAssociationArrayOutput values.
 // You can construct a concrete instance of `AccessPackageResourceCatalogAssociationArrayInput` via:
 //
@@ -211,6 +218,12 @@ func (i AccessPackageResourceCatalogAssociationArray) ToAccessPackageResourceCat
 
 func (i AccessPackageResourceCatalogAssociationArray) ToAccessPackageResourceCatalogAssociationArrayOutputWithContext(ctx context.Context) AccessPackageResourceCatalogAssociationArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageResourceCatalogAssociationArrayOutput)
+}
+
+func (i AccessPackageResourceCatalogAssociationArray) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageResourceCatalogAssociation] {
+	return pulumix.Output[[]*AccessPackageResourceCatalogAssociation]{
+		OutputState: i.ToAccessPackageResourceCatalogAssociationArrayOutputWithContext(ctx).OutputState,
+	}
 }
 
 // AccessPackageResourceCatalogAssociationMapInput is an input type that accepts AccessPackageResourceCatalogAssociationMap and AccessPackageResourceCatalogAssociationMapOutput values.
@@ -238,6 +251,12 @@ func (i AccessPackageResourceCatalogAssociationMap) ToAccessPackageResourceCatal
 	return pulumi.ToOutputWithContext(ctx, i).(AccessPackageResourceCatalogAssociationMapOutput)
 }
 
+func (i AccessPackageResourceCatalogAssociationMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageResourceCatalogAssociation] {
+	return pulumix.Output[map[string]*AccessPackageResourceCatalogAssociation]{
+		OutputState: i.ToAccessPackageResourceCatalogAssociationMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type AccessPackageResourceCatalogAssociationOutput struct{ *pulumi.OutputState }
 
 func (AccessPackageResourceCatalogAssociationOutput) ElementType() reflect.Type {
@@ -250,6 +269,12 @@ func (o AccessPackageResourceCatalogAssociationOutput) ToAccessPackageResourceCa
 
 func (o AccessPackageResourceCatalogAssociationOutput) ToAccessPackageResourceCatalogAssociationOutputWithContext(ctx context.Context) AccessPackageResourceCatalogAssociationOutput {
 	return o
+}
+
+func (o AccessPackageResourceCatalogAssociationOutput) ToOutput(ctx context.Context) pulumix.Output[*AccessPackageResourceCatalogAssociation] {
+	return pulumix.Output[*AccessPackageResourceCatalogAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 // The unique ID of the access package catalog. Changing this forces a new resource to be created.
@@ -281,6 +306,12 @@ func (o AccessPackageResourceCatalogAssociationArrayOutput) ToAccessPackageResou
 	return o
 }
 
+func (o AccessPackageResourceCatalogAssociationArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*AccessPackageResourceCatalogAssociation] {
+	return pulumix.Output[[]*AccessPackageResourceCatalogAssociation]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o AccessPackageResourceCatalogAssociationArrayOutput) Index(i pulumi.IntInput) AccessPackageResourceCatalogAssociationOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *AccessPackageResourceCatalogAssociation {
 		return vs[0].([]*AccessPackageResourceCatalogAssociation)[vs[1].(int)]
@@ -299,6 +330,12 @@ func (o AccessPackageResourceCatalogAssociationMapOutput) ToAccessPackageResourc
 
 func (o AccessPackageResourceCatalogAssociationMapOutput) ToAccessPackageResourceCatalogAssociationMapOutputWithContext(ctx context.Context) AccessPackageResourceCatalogAssociationMapOutput {
 	return o
+}
+
+func (o AccessPackageResourceCatalogAssociationMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*AccessPackageResourceCatalogAssociation] {
+	return pulumix.Output[map[string]*AccessPackageResourceCatalogAssociation]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o AccessPackageResourceCatalogAssociationMapOutput) MapIndex(k pulumi.StringInput) AccessPackageResourceCatalogAssociationOutput {
